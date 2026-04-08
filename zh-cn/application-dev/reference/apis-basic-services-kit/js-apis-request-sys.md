@@ -83,11 +83,11 @@ query(id: string, callback: AsyncCallback&lt;TaskInfo&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | permission denied. |
+| 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |
-| 401 | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | task service ability error. |
-| 21900006 | task not found. |
+| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+| 13400003 | Task service ability error. |
+| 21900006 | Task removed or not found. |
 
 **示例：**
 
@@ -134,11 +134,11 @@ query(id: string): Promise&lt;TaskInfo&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | permission denied. |
+| 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |
-| 401 | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | task service ability error. |
-| 21900006 | task not found. |
+| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+| 13400003 | Task service ability error. |
+| 21900006 | Task removed or not found. |
 
 **示例：**
 

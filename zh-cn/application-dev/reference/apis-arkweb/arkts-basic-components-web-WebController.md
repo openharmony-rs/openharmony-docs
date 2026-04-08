@@ -1,20 +1,20 @@
 # Class (WebController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
 通过WebController可以控制Web组件各种行为。一个WebController对象只能控制一个Web组件，且必须在Web组件和WebController绑定后，才能调用WebController上的方法。
-
-从API version 9开始不再维护，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
 
 > **说明：**
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
+>
+> - 该组件接口从API version 9开始废弃，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
 >
 > - 示例效果请以真机运行为准。
 
@@ -405,8 +405,8 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 | data       | string | 是   | 按照”Base64“或者”URL"编码后的一段字符串。              |
 | mimeType   | string | 是   | 媒体类型（MIME）。                              |
 | encoding   | string | 是   | 编码类型，具体为“Base64"或者”URL编码。                |
-| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。 |
-| historyUrl | string | 否   | 历史记录URL。非空时，可被历史记录管理，实现前后后退功能。当baseUrl为空时，此属性无效。 |
+| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
+| historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前进后退功能。当baseUrl为空时，此属性无效。 |
 
 **示例：**
 
@@ -559,7 +559,7 @@ zoom(factor: number): void
 
 | 参数名    | 类型   | 必填   | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，正值为放大，负值为缩小。 |
+| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，当入参为1时为默认加载网页的缩放比例，小于1为缩小，大于1为放大。取值范围(0, 100]。 |
 
 **示例：**
 
@@ -714,7 +714,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 | 参数名      | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
 | script   | string                   | 是   | JavaScript脚本。                            |
-| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。 |
+| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。不传入时不进行回调。 |
 
 **示例：**
 

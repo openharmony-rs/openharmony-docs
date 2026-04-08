@@ -915,8 +915,7 @@ Wi-Fi的SSID和BSSID信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | 否   | 否 | Wi-Fi热点名称，编码格式为UTF-8，最大长度为32字节（中文字符占3位，英文字符占1位）。           |
@@ -1026,6 +1025,10 @@ IP配置信息。
 ## EapMethod
 
 表示EAP认证方式的枚举。
+
+> **说明**：
+>
+> 当前仅支持使用EAP_PEAP、EAP_TLS两种认证方式，其他暂不支持。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

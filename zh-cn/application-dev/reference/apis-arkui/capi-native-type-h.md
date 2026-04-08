@@ -49,7 +49,7 @@
 | [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | 定义Grid布局选项onGetIrregularSizeByIndex回调返回值结构体。 |
 | [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | 定义Grid布局选项onGetRectByIndex回调返回值结构体。 |
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | 定义Grid布局选项。 |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | 定义FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | 定义[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | 定义ListItemSwipeActionOption方法内Item的配置信息。 |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | 定义ListItemSwipeActionOption方法的配置信息。 |
 | [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | 定义ArkUI native UI的上下文实例对象。 |
@@ -112,6 +112,7 @@
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md) | OH_ArkUI_TextEditorTextStyle | 定义文本编辑器的文本样式。 |
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | 定义文本的字体粗细配置。可以通过[OH_ArkUI_FontWeightConfigs_Create](#oh_arkui_fontweightconfigs_create) 接口创建对应的文本字体粗细配置对象。可以通过[OH_ArkUI_FontWeightConfigs_Destroy](#oh_arkui_fontweightconfigs_destroy) 接口销毁文本字体粗细配置对象。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_setenablevariablefontweight) 接口设置是否启用可变字体粗细调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_getenablevariablefontweight) 接口查看是否启用了可变字体粗细调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) 接口设置文本字体粗细是否跟随设备的字体粗细级别更新。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) 接口查看文本字体粗细是否跟随设备的字体粗细级别更新。 |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | 定义文本的字体配置。可以通过[OH_ArkUI_FontConfigs_Create](#oh_arkui_fontconfigs_create) 接口创建文本字体配置对象。可以通过[OH_ArkUI_FontConfigs_Destroy](#oh_arkui_fontconfigs_destroy) 接口销毁文本字体配置对象。配置创建后通过[OH_ArkUI_FontConfigs_SetFontWeightConfigs](#oh_arkui_fontconfigs_setfontweightconfigs) 接口设置文本的字体粗细配置。配置创建后通过[OH_ArkUI_FontConfigs_GetFontWeightConfigs](#oh_arkui_fontconfigs_getfontweightconfigs) 接口查看文本的字体粗细配置。 |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | 定义文本组件的控制器。可以通过[OH_ArkUI_TextController_Create](#oh_arkui_textcontroller_create)创建文本组件控制器对象。可以通过[OH_ArkUI_TextController_Destroy](#oh_arkui_textcontroller_destroy)接口销毁文本组件控制器对象。控制器创建后通过[OH_ArkUI_TextController_SetStyledString](#oh_arkui_textcontroller_setstyledstring) 接口设置文本组件的属性字符串。 |
 
 ### 枚举
 
@@ -141,13 +142,13 @@
 | [ArkUI_EdgeEffect](#arkui_edgeeffect)                               | ArkUI_EdgeEffect                | 定义边缘滑动效果枚举值。                      |
 | [ArkUI_BarState](#arkui_barstate)                               | ArkUI_BarState                | 定义文本控制滚动条状态枚举值。                      |
 | [ArkUI_EffectEdge](#arkui_effectedge)                               | ArkUI_EffectEdge                | 定义边缘效果生效边缘的方向枚举值。                 |
-| [ArkUI_ScrollDirection](#arkui_scrolldirection)                     | ArkUI_ScrollDirection           | 定义Scroll组件排列方向枚举值。                |
+| [ArkUI_ScrollDirection](#arkui_scrolldirection)                     | ArkUI_ScrollDirection           | 定义[Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md)组件排列方向枚举值。                |
 | [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign)                     | ArkUI_ScrollSnapAlign           | 定义列表项滚动结束对齐效果枚举值。                 |
 | [ArkUI_ScrollBarDisplayMode](#arkui_scrollbardisplaymode)           | ArkUI_ScrollBarDisplayMode      | 定义滚动条状态枚举值。                       |
 | [ArkUI_Axis](#arkui_axis)                                           | ArkUI_Axis                      | 定义滚动方向和List组件排列方向枚举值。             |
 | [ArkUI_StickyStyle](#arkui_stickystyle)                             | ArkUI_StickyStyle               | 定义列表是否吸顶和吸底枚举值。                   |
 | [ArkUI_ContentClipMode](#arkui_contentclipmode)                     | ArkUI_ContentClipMode           | 定义滚动容器的内容层裁剪区域枚举值。                |
-| [ArkUI_WaterFlowLayoutMode](#arkui_waterflowlayoutmode)             | ArkUI_WaterFlowLayoutMode       | 定义WaterFlow组件布局模式枚举值。             |
+| [ArkUI_WaterFlowLayoutMode](#arkui_waterflowlayoutmode)             | ArkUI_WaterFlowLayoutMode       | 定义[WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md)组件布局模式枚举值。             |
 | [ArkUI_BorderStyle](#arkui_borderstyle)                             | ArkUI_BorderStyle               | 边框线条样式枚举值。                        |
 | [ArkUI_HitTestMode](#arkui_hittestmode)                             | ArkUI_HitTestMode               | 触摸测试控制枚举值。                        |
 | [ArkUI_ShadowStyle](#arkui_shadowstyle)                             | ArkUI_ShadowStyle               | 阴影效果枚举值。                          |
@@ -256,6 +257,7 @@
 | [OH_ArkUI_TextEditorResponseType](#oh_arkui_texteditorresponsetype) | OH_ArkUI_TextEditorResponseType | 自定义文本选择菜单响应类型枚举。 |
 | [OH_ArkUI_TextMenuType](#oh_arkui_textmenutype) | OH_ArkUI_TextMenuType | 文本菜单类型枚举。 |
 | [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | 换行策略类型枚举。 |
+| [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | 原始输入事件类型枚举。 |
 
 ### 函数
 
@@ -292,8 +294,8 @@
 | [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | 通过FlowItem分组配置信息获取对应索引下的分组的行间距。 |
 | [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | 设置分组的外边距。 |
 | [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | 通过FlowItem分组配置信息获取对应索引下的分组的外边距。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | 通过FlowItem分组配置信息根据flowItemIndex获取指定Item的主轴大小。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | 通过FlowItem分组配置信息根据flowItemIndex获取指定Item的主轴大小。 |
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | 通过FlowItem分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。 |
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | 通过FlowItem分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。 |
 | [ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)](#oh_arkui_guidelineoption_create) | - | 创建RelativeContainer容器内的辅助线信息。 |
 | [void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)](#oh_arkui_guidelineoption_dispose) | - | 销毁辅助线信息。 |
 | [void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)](#oh_arkui_guidelineoption_setid) | - | 设置辅助线的Id。 |
@@ -799,6 +801,10 @@
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode mode)](#oh_arkui_texteditorselectionmenuoptions_sethapticfeedbackmode) | - | 设置文本编辑器中文本选择菜单的触觉反馈模式。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_HapticFeedbackMode* mode)](#oh_arkui_texteditorselectionmenuoptions_gethapticfeedbackmode) | - | 获取文本编辑器中文本选择菜单的触觉反馈模式。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_ArkUI_TextEditorStyledStringController* controller)](#oh_arkui_texteditorstyledstringcontroller_closeselectionmenu) | - | 关闭文本编辑器属性字符串控制器的文本选择菜单。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetSelection(const OH_ArkUI_TextEditorStyledStringController* controller, uint32_t* start, uint32_t* end)](#oh_arkui_texteditorstyledstringcontroller_getselection) | - | 通过属性字符串控制器获取选中区域。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledstring) | - | 通过属性字符串控制器设置显示的属性字符串。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_getstyledstring) | - | 通过属性字符串控制器获取显示的属性字符串。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledplaceholder) | - | 通过属性字符串控制器设置属性字符串样式的提示文本。 |
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | - | 创建文本字体粗细配置对象。 |
 | [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | - | 销毁文本字体粗细配置对象。 |
 | [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | - | 设置是否启用可变字体粗细调节。 |
@@ -809,6 +815,9 @@
 | [void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_destroy) | - | 销毁文本字体配置对象。 |
 | [void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_ArkUI_FontWeightConfigs* fontWeightConfigs)](#oh_arkui_fontconfigs_setfontweightconfigs) | - | 设置文本字体配置对象的文本字体粗细配置。 |
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_getfontweightconfigs) | - | 获取文本字体配置对象的文本字体粗细配置。 |
+| [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | - | 创建文本组件控制器对象。 |
+| [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | - | 销毁文本组件控制器对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_textcontroller_setstyledstring) | - | 设置文本组件的属性字符串。 |
 
 ## 枚举类型说明
 
@@ -1301,7 +1310,7 @@ enum ArkUI_EdgeEffect
 **描述：**
 
 
-定义边缘滑动效果枚举值。
+定义边缘滑动效果枚举值。Grid、Scroll、WaterFlow组件默认值为ARKUI_EDGE_EFFECT_NONE，List组件默认值为ARKUI_EDGE_EFFECT_SPRING。
 
 **起始版本：** 12
 
@@ -1327,7 +1336,7 @@ enum ArkUI_BarState
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BAR_STATE_OFF = 0 | 不显示。 |
-| ARKUI_BAR_STATE_AUTO = 1 | 按需显示。 |
+| ARKUI_BAR_STATE_AUTO = 1 | 按需显示（在触摸时显示滚动条，2秒后自动消失）。 |
 | ARKUI_BAR_STATE_ON = 2 | 常驻显示。 |
 
 ### ArkUI_EffectEdge
@@ -1357,7 +1366,7 @@ enum ArkUI_ScrollDirection
 **描述：**
 
 
-定义Scroll组件排列方向枚举值。
+定义[Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md)组件排列方向枚举值。
 
 **起始版本：** 12
 
@@ -1383,7 +1392,7 @@ enum ArkUI_ScrollSnapAlign
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SCROLL_SNAP_ALIGN_NONE = 0 | 默认无项目滚动对齐效果。 |
+| ARKUI_SCROLL_SNAP_ALIGN_NONE = 0 | 默认无列表滚动对齐效果。 |
 | ARKUI_SCROLL_SNAP_ALIGN_START = 1 | 视图中的第一项将在列表的开头对齐。 |
 | ARKUI_SCROLL_SNAP_ALIGN_CENTER = 2 | 视图中的中间项将在列表中心对齐。 |
 | ARKUI_SCROLL_SNAP_ALIGN_END = 3 | 视图中的最后一项将在列表末尾对齐。 |
@@ -1441,9 +1450,9 @@ enum ArkUI_StickyStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_STICKY_STYLE_NONE = 0 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸底。 |
-| ARKUI_STICKY_STYLE_HEADER = 1 | ListItemGroup的header吸顶，footer不吸底。 |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的header不吸顶，footer吸底。 |
-| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的header吸顶，footer吸底。 |
+| ARKUI_STICKY_STYLE_HEADER = 1 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸底。 |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸底。 |
+| ARKUI_STICKY_STYLE_BOTH = 3 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸底。 |
 
 ### ArkUI_ContentClipMode
 
@@ -1462,7 +1471,7 @@ enum ArkUI_ContentClipMode
 | -- | -- |
 | ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY = 0 | 按内容区裁剪。 |
 | ARKUI_CONTENT_CLIP_MODE_BOUNDARY = 1 | 按组件区域裁剪。 |
-| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | 按组件配置的SafeArea区域裁剪。 |
+| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | 按组件配置的[SafeArea](./arkui-ts/ts-universal-attributes-expand-safe-area.md)区域裁剪。 |
 
 ### ArkUI_WaterFlowLayoutMode
 
@@ -1473,14 +1482,14 @@ enum ArkUI_WaterFlowLayoutMode
 **描述：**
 
 
-定义WaterFlow组件布局模式枚举值。
+定义[WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md)组件布局模式枚举值。
 
 **起始版本：** 18
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | 从上到下布局。列数切换场景需要从第一个FlowItem开始布局到当前显示的FlowItem。 |
-| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW = 1 | 移动窗口布局。列数切换场景只重新布局当前显示范围到FlowItem，手指向下滑动再布局从上方进入显示范围的FlowItem。 |
+| ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | 从上到下布局。列数切换场景需要从第一个[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)开始布局到当前显示的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)。 |
+| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW = 1 | 移动窗口布局。列数切换场景只重新布局当前显示范围到[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)，手指向下滑动再布局从上方进入显示范围的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)。 |
 
 ### ArkUI_BorderStyle
 
@@ -1723,9 +1732,9 @@ enum ArkUI_ScrollNestedMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_NESTED_MODE_SELF_ONLY = 0 | 只自身滚动，不与父组件联动。 |
-| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST = 1 | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后 |
-| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST = 2 | 父组件先滚动，父组件滚动到边缘以后自身滚动。 |
-| ARKUI_SCROLL_NESTED_MODE_PARALLEL = 3 | 自身和父组件同时滚动，自身和父组件都到达边缘以后 |
+| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST = 1 | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。 |
+| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST = 2 | 父组件先滚动，父组件滚动到边缘以后自身滚动。自身滚动到边缘后，如果有边缘效果，会触发自身的边缘效果，否则触发父组件的边缘效果。 |
+| ARKUI_SCROLL_NESTED_MODE_PARALLEL = 3 | 自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。 |
 
 ### ArkUI_ScrollEdge
 
@@ -2970,39 +2979,39 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_PARAM_INVALID = 401 | 参数错误。 |
 | ARKUI_ERROR_CODE_CAPI_INIT_ERROR = 500 |  接口初始化错误。<br>**起始版本：** 18 |
 | ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 |  出现内部错误，例如内部环境错误导致失败，或者由于内部执行失败导致操作失败。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  参数错误。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md#100023-参数错误)。<br>**起始版本：** 21 |
+| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  参数错误。错误码的详细介绍请参见[100023 参数错误](../apis-arkui/errorcode-node.md#100023-参数错误)。<br>**起始版本：** 21 |
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  当前XComponent状态异常，方法调用失败。错误码的详细介绍请参见[XComponent组件错误码](../apis-arkui/errorcode-xcomponent.md)。<br>**起始版本：** 19 |
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | 组件不支持特定的属性或者事件。错误码的详细介绍请参见[交互事件错误码](../apis-arkui/errorcode-event.md)。 |
-| ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE = 106103 | 不支持对ArkTS创建的节点执行对应的操作。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md#106103-对应的操作不支持arkts创建的节点)。 |
-| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见[106104-适配器未绑定](../apis-arkui/errorcode-nodeadapter.md#106104-适配器未绑定)。 |
-| ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见[106105-适配器已存在](../apis-arkui/errorcode-nodeadapter.md#106105-适配器已存在)。 |
-| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见[106106-子节点已存在](../apis-arkui/errorcode-nodeadapter.md#106106-子节点已存在)。 |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中参数长度超限。错误码的详细介绍请参见[106107-参数下标越界](../apis-arkui/errorcode-nodeadapter.md#106107-参数下标越界)。 |
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见[106108-数据不存在](../apis-arkui/errorcode-nodeadapter.md#106108-数据不存在)。 |
-| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见[106109-不支持返回值](../apis-arkui/errorcode-nodeadapter.md#106109-不支持返回值)。 |
-| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | 暂不支持该事件类型。错误码的详细介绍请参见[106110-暂不支持该事件类型](../apis-arkui/errorcode-nodeadapter.md#106110-暂不支持该事件类型)。<br>**起始版本：** 21 |
-| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。<br/>错误码的详细介绍请参见[106200-传入的索引值非法](../apis-arkui/errorcode-router.md#106200-传入的索引值非法)。 |
-| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。<br/>错误码的详细介绍请参见[106201-查询路由导航信息失败](../apis-arkui/errorcode-router.md#106201-查询路由导航信息失败)。 |
-| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。<br/>错误码的详细介绍请参见[106202-传入的buffer size异常](../apis-arkui/errorcode-router.md#106202-传入的buffer-size异常)。 |
-| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md#106203-传入的节点未挂载到组件树上)。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  不支持在非UI线程操作传入的节点。错误码的详细介绍请参见[自定义节点错误码](../apis-arkui/errorcode-node.md#106204-不支持在非ui线程操作传入的节点)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[反色能力错误码](../apis-arkui/errorcode-force-dark.md)。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  节点已被接纳为附属节点。错误码的详细介绍请参见[附属节点错误码](../apis-arkui/errorcode-adopt.md#106206-节点已被接纳为附属节点)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 |  被接纳的节点已有父节点。错误码的详细介绍请参见[附属节点错误码](../apis-arkui/errorcode-adopt.md#106207-被接纳的附属节点已有父节点)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  节点无法被接纳为附属节点。错误码的详细介绍请参见[附属节点错误码](../apis-arkui/errorcode-adopt.md#106208-节点无法被接纳为附属节点)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  节点无法接纳其他节点。错误码的详细介绍请参见[附属节点错误码](../apis-arkui/errorcode-adopt.md#106209-节点无法接纳其他节点)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见[附属节点错误码](../apis-arkui/errorcode-adopt.md#106210-节点不是被目标节点接纳的附属节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE = 106103 | 不支持对ArkTS创建的节点执行对应的操作。错误码的详细介绍请参见[106103 对应的操作不支持ArkTS创建的节点](../apis-arkui/errorcode-node.md#106103-对应的操作不支持arkts创建的节点)。 |
+| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | 懒加载适配器未绑定到组件上。错误码的详细介绍请参见[106104 适配器未绑定](../apis-arkui/errorcode-nodeadapter.md#106104-适配器未绑定)。 |
+| ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST = 106105 | 适配器已存在。错误码的详细介绍请参见[106105 适配器已存在](../apis-arkui/errorcode-nodeadapter.md#106105-适配器已存在)。 |
+| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | 对应节点已存在子节点，无法添加适配器。错误码的详细介绍请参见[106106 子节点已存在](../apis-arkui/errorcode-nodeadapter.md#106106-子节点已存在)。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | 组件事件中参数长度超限。错误码的详细介绍请参见[106107 参数下标越界](../apis-arkui/errorcode-nodeadapter.md#106107-参数下标越界)。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见[106108 数据不存在](../apis-arkui/errorcode-nodeadapter.md#106108-数据不存在)。 |
+| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见[106109 不支持返回值](../apis-arkui/errorcode-nodeadapter.md#106109-不支持返回值)。 |
+| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | 暂不支持该事件类型。错误码的详细介绍请参见[106110 暂不支持该事件类型](../apis-arkui/errorcode-nodeadapter.md#106110-暂不支持该事件类型)。<br>**起始版本：** 21 |
+| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。<br/>错误码的详细介绍请参见[106200 传入的索引值非法](../apis-arkui/errorcode-router.md#106200-传入的索引值非法)。 |
+| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。<br/>错误码的详细介绍请参见[106201 查询路由导航信息失败](../apis-arkui/errorcode-router.md#106201-查询路由导航信息失败)。 |
+| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。<br/>错误码的详细介绍请参见[106202 传入的buffer size异常](../apis-arkui/errorcode-router.md#106202-传入的buffer-size异常)。 |
+| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[106203 传入的节点未挂载到组件树上](../apis-arkui/errorcode-node.md#106203-传入的节点未挂载到组件树上)。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  不支持在非UI线程操作传入的节点。错误码的详细介绍请参见[106204 不支持在非UI线程操作传入的节点](../apis-arkui/errorcode-node.md#106204-不支持在非ui线程操作传入的节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[106205 反色能力入参错误](../apis-arkui/errorcode-force-dark.md#106205-反色能力入参错误)。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  节点已被接纳为附属节点。错误码的详细介绍请参见[106206 节点已被接纳为附属节点](../apis-arkui/errorcode-adopt.md#106206-节点已被接纳为附属节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 |  被接纳的节点已有父节点。错误码的详细介绍请参见[106207 被接纳的附属节点已有父节点](../apis-arkui/errorcode-adopt.md#106207-被接纳的附属节点已有父节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  节点无法被接纳为附属节点。错误码的详细介绍请参见[106208 节点无法被接纳为附属节点](../apis-arkui/errorcode-adopt.md#106208-节点无法被接纳为附属节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  节点无法接纳其他节点。错误码的详细介绍请参见[106209 节点无法接纳其他节点](../apis-arkui/errorcode-adopt.md#106209-节点无法接纳其他节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见[106210 节点不是被目标节点接纳的附属节点](../apis-arkui/errorcode-adopt.md#106210-节点不是被目标节点接纳的附属节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  当前节点不是自定义节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  当前节点已存在子节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父组件。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  未找到对应的渲染子节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  参数值超出范围。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  当前渲染节点从[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)中获取。错误码的详细介绍请参见[106406-当前渲染节点从framenode中获取](../apis-arkui/errorcode-node-render.md#106406-当前渲染节点从framenode中获取)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  当前渲染节点从[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)中获取且该[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)已被取消接纳为附属节点或销毁。错误码的详细介绍请参见[106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁](../apis-arkui/errorcode-node-render.md#106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  当前节点不处于被接纳状态。错误码的详细介绍请参见[106408-当前节点不处于被接纳状态](../apis-arkui/errorcode-node-render.md#106408-当前节点不处于被接纳状态)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  当前节点无法获得焦点。错误码的详细介绍请参见[焦点错误码](../apis-arkui/errorcode-focus.md#150001-节点无法获得焦点)。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见[焦点错误码](../apis-arkui/errorcode-focus.md#150002-祖先节点无法获得焦点)。<br>**起始版本：** 15 |
-| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  当前节点不存在。错误码的详细介绍请参见[焦点错误码](../apis-arkui/errorcode-focus.md#150003-节点不存在)。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  当前渲染节点从[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)中获取。错误码的详细介绍请参见[106406 当前渲染节点从FrameNode中获取](../apis-arkui/errorcode-node-render.md#106406-当前渲染节点从framenode中获取)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  当前渲染节点从[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)中获取且该[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)已被取消接纳为附属节点或销毁。错误码的详细介绍请参见[106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁](../apis-arkui/errorcode-node-render.md#106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  当前节点不处于被接纳状态。错误码的详细介绍请参见[106408 当前节点不处于被接纳状态](../apis-arkui/errorcode-node-render.md#106408-当前节点不处于被接纳状态)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  当前节点无法获得焦点。错误码的详细介绍请参见[150001 节点无法获得焦点](../apis-arkui/errorcode-focus.md#150001-节点无法获得焦点)。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见[150002 祖先节点无法获得焦点](../apis-arkui/errorcode-focus.md#150002-祖先节点无法获得焦点)。<br>**起始版本：** 15 |
+| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  当前节点不存在。错误码的详细介绍请参见[150003 节点不存在](../apis-arkui/errorcode-focus.md#150003-节点不存在)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 |  截图超时。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | 截图选项不支持的色彩空间或动态范围模式。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 23 |
 | ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | 离屏节点截图不支持色彩空间或动态范围模式的isAuto参数设置为true。错误码的详细介绍请参见[截图错误码](../apis-arkui/errorcode-snapshot.md)。<br>**起始版本：** 23 |
@@ -3035,7 +3044,7 @@ enum ArkUI_ScrollSource
 | -- | -- |
 | ARKUI_SCROLL_SOURCE_DRAG = 0 | 手指拖动。 |
 | ARKUI_SCROLL_SOURCE_FLING = 1 | 手指拖动后的惯性滚动。 |
-| ARKUI_SCROLL_SOURCE_EDGE_EFFECT = 2 | 在过界时执行EdgeEffect.Spring边缘特效。 |
+| ARKUI_SCROLL_SOURCE_EDGE_EFFECT = 2 | 在过界时执行[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)边缘特效。 |
 | ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT = 3 | 除了拖动以外的其他用户输入，如鼠标滚轮、键盘事件等。 |
 | ARKUI_SCROLL_SOURCE_SCROLL_BAR = 4 | 拖动滚动条。 |
 | ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING = 5 | 拖动滚动条后的惯性滚动。 |
@@ -3255,7 +3264,7 @@ enum ArkUI_FocusWrapMode
 **描述：**
 
 
-组件走焦换行规则。
+组件走焦换行规则。Grid、List组件默认值为ARKUI_FOCUS_WRAP_MODE_DEFAULT。
 
 **起始版本：** 20
 
@@ -3387,7 +3396,7 @@ enum ArkUI_GridItemAlignment
 ```
 **描述：**
 
-GridItem对齐方式枚举。
+[GridItem](../apis-arkui/arkui-ts/ts-container-griditem.md)对齐方式枚举。
 
 **起始版本：** 22
 
@@ -3788,6 +3797,23 @@ enum OH_ArkUI_LineBreakStrategy
 | OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | 贪婪模式。<br>使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。 |
 | OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | 高质量模式。<br>在平衡模式的基础上，尽可能填满行，同时最后一行的权重较低，可能出现最后一行留白较多的情形。 |
 | OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | 平衡模式。<br>在不拆词的情况下，尽量使一个段落中每一行的宽度相同。 |
+
+### ArkUI_RawInputEventType
+
+```c
+enum ArkUI_RawInputEventType
+```
+
+**描述**
+
+原始输入事件类型枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | 触摸事件类型。 |
+| ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | 鼠标事件类型。 |
 
 ## 函数说明
 
@@ -4205,7 +4231,7 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 **描述：**
 
 
-创建FlowItem分组配置信息。
+创建[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。
 
 **起始版本：** 12
 
@@ -4213,7 +4239,7 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 
 | 类型                                | 说明 |
 |-----------------------------------| -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_Dispose()
 
@@ -4224,7 +4250,7 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 **描述：**
 
 
-销毁FlowItem分组配置信息指针。
+销毁[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息指针。
 
 **起始版本：** 12
 
@@ -4233,7 +4259,7 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_SetSize()
 
@@ -4265,7 +4291,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* op
 **描述：**
 
 
-获取FlowItem分组配置信息数组长度。
+获取[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息数组长度。
 
 **起始版本：** 12
 
@@ -4291,7 +4317,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 **描述：**
 
 
-设置分组中FlowItem数量。
+设置分组中[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量。
 
 **起始版本：** 12
 
@@ -4300,9 +4326,9 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
-| int32_t itemCount | 分组中FlowItem数量。 |
+| int32_t itemCount | 分组中[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetItemCount()
 
@@ -4313,7 +4339,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 **描述：**
 
 
-通过FlowItem分组配置信息获取对应索引下的FlowItem数量。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量。
 
 **起始版本：** 12
 
@@ -4322,7 +4348,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
 
 **返回：**
@@ -4362,7 +4388,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOpti
 **描述：**
 
 
-通过FlowItem分组配置信息获取对应索引下的布局栅格数。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的布局栅格数。
 
 **起始版本：** 12
 
@@ -4400,7 +4426,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* 
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
-| float columnGap | 列间距。 |
+| float columnGap | 列间距。单位：vp。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetColumnGap()
 
@@ -4427,7 +4453,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption*
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 列间距。 |
+| float | 列间距。单位：vp。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_SetRowGap()
 
@@ -4438,7 +4464,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 **描述：**
 
 
-设置分组的行间距。
+设置FlowItem分组的行间距。
 
 **起始版本：** 12
 
@@ -4448,8 +4474,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| float rowGap | 行间距。 |
+| int32_t index | FlowItem分组配置信息数组索引值。 |
+| float rowGap | 行间距。单位：vp。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetRowGap()
 
@@ -4460,7 +4486,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 **描述：**
 
 
-通过FlowItem分组配置信息获取对应索引下的分组的行间距。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的分组的行间距。
 
 **起始版本：** 12
 
@@ -4469,14 +4495,14 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 行间距。 |
+| float | 行间距。单位：vp。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_SetMargin()
 
@@ -4496,12 +4522,12 @@ void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
-| float marginTop | FlowItem上外边距。 |
-| float marginRight | FlowItem右外边距。 |
-| float marginBottom | FlowItem下外边距。 |
-| float marginLeft | FlowItem左外边距。 |
+| float marginTop | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)上外边距。 |
+| float marginRight | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)右外边距。 |
+| float marginBottom | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)下外边距。 |
+| float marginLeft | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)左外边距。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetMargin()
 
@@ -4512,7 +4538,7 @@ ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOpt
 **描述：**
 
 
-通过FlowItem分组配置信息获取对应索引下的分组的外边距。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的分组的外边距。
 
 **起始版本：** 12
 
@@ -4521,14 +4547,14 @@ ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOpt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md) | 外边距。 |
+| [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md) | 外边距。单位：vp。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex()
 
@@ -4539,7 +4565,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 **描述：**
 
 
-通过FlowItem分组配置信息根据flowItemIndex获取指定Item的主轴大小。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。
 
 **起始版本：** 12
 
@@ -4548,9 +4574,9 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 
 | 参数项                                            | 描述 |
 |------------------------------------------------| -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index                                  | 分组配置信息数组索引值。 |
-| callback                                       | 根据index获取指定Item的主轴大小。itemIndex：FlowItem索引值。 |
+| callback                                       | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData()
 
@@ -4561,7 +4587,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 **描述：**
 
 
-通过FlowItem分组配置信息根据flowItemIndex获取指定Item的主轴大小。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。
 
 **起始版本：** 12
 
@@ -4570,10 +4596,10 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
-|  void* userData | FlowItem自定义数据。 |
-| callback | 根据index获取指定Item的主轴大小。itemIndex：FlowItem索引值。 |
+|  void* userData |用户自定义数据指针，将在回调函数中回传给用户。 |
+| callback | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值；userData：用户自定义数据。 |
 
 ### OH_ArkUI_GuidelineOption_Create()
 
@@ -15386,6 +15412,106 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+### OH_ArkUI_TextEditorStyledStringController_GetSelection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetSelection(const OH_ArkUI_TextEditorStyledStringController* controller, uint32_t* start, uint32_t* end)
+```
+
+**描述**
+
+通过属性字符串控制器获取选中区域。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| uint32_t* start | 选中区域的起始位置。 |
+| uint32_t* end | 选中区域的结束位置。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。 <br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_SetStyledString()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)
+```
+
+**描述**
+
+通过属性字符串控制器设置显示的属性字符串。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| const [ ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。 <br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_GetStyledString()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_StyledString_Descriptor* descriptor)
+```
+
+**描述**
+
+通过属性字符串控制器获取显示的属性字符串。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。 <br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)
+```
+
+**描述**
+
+通过属性字符串控制器设置属性字符串样式的提示文本。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
+| const [ ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。 <br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_Create()
 
@@ -17047,3 +17173,64 @@ OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_F
 | 类型 | 说明 |
 | -- | -- |
 | [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | 返回文本字体粗细配置。 |
+
+### OH_ArkUI_TextController_Create()
+
+```c
+OH_ArkUI_TextController* OH_ArkUI_TextController_Create()
+```
+
+**描述**
+
+创建文本组件控制器对象。
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_TextController*](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | 返回指向文本组件控制器对象的指针。如果创建失败，返回空指针。 |
+
+### OH_ArkUI_TextController_Destroy()
+
+```c
+void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)
+```
+
+**描述**
+
+销毁文本组件控制器对象。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | 指向文本组件控制器对象的指针。 |
+
+### OH_ArkUI_TextController_SetStyledString()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)
+```
+
+**描述**
+
+设置文本组件的属性字符串。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | 指向[OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)对象的指针。 |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | 指向[ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |

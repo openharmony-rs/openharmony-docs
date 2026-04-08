@@ -449,7 +449,7 @@ Allows a system application to forcibly restore a device to its factory settings
 
 **Enable via ACL**: true
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -753,7 +753,7 @@ With this permission, the system application can overwrite an installed applicat
 
 **Enable via ACL**: true
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_SHORTCUTS
 
@@ -1166,7 +1166,7 @@ Allows a system service or system application to enable or disable system trace.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.DEVICE_STANDBY_EXEMPTION
 
@@ -4911,7 +4911,7 @@ Allows a system application to inject playback audio into the capture stream.
 
 **Supported devices**: general devices
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
@@ -5249,7 +5249,7 @@ Allows an application to access the directory containing compatible applications
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.MANAGE_SELF_SKILLS
 
@@ -5265,7 +5265,7 @@ With this permission, the application can extend its implicit matching capabilit
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.DATA_IDENTIFY_ANONYMIZE
 
@@ -5279,7 +5279,7 @@ Allows a system application to invoke the data identification and anonymization 
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.CAPTURE_SCREEN_ALL
 
@@ -5307,7 +5307,7 @@ Allows an application to obtain background task status.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.SET_BACKGROUND_TASK_STATE
 
@@ -5321,7 +5321,7 @@ Allows an application to obtain and set the user authorization status of special
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.SET_LAUNCH_REASON_MESSAGE
 
@@ -5383,7 +5383,7 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 **Supported devices**: general devices
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
 
@@ -5397,7 +5397,7 @@ Allows a system application to access media sharing resources within the camera 
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
@@ -5411,7 +5411,7 @@ Allows an application that has accessed Cloud to manage cloud data.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_RISK_PHOTOS
 
@@ -5425,7 +5425,7 @@ Allows a system application to access potentially risky images or videos.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.READ_CLOUD_IMAGEVIDEO
 
@@ -5439,7 +5439,7 @@ Allows an application to read image or video files from the user's cloud storage
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACCESS_SECURE_FENCE
 
@@ -5453,10 +5453,10 @@ Allows a system application to access the security fence capability.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
- 	 
+
 Allows a system application to use the running capability framework.
 
 **Permission level**: system_basic
@@ -5467,10 +5467,10 @@ Allows a system application to use the running capability framework.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
- 	
+
 Allows a system application to start the preview panel for adding application widgets to the home screen.
 
 With this permission, the system application can help users add the widgets to distribute to the home screen.
@@ -5497,7 +5497,7 @@ Allows users to add WiseCard widgets of other apps.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
 
@@ -5511,7 +5511,7 @@ Allows an application to manage local education space accounts.
 
 **Supported devices**: tablets
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
 
@@ -5525,7 +5525,7 @@ Allows an application to query the properties of local education space accounts.
 
 **Supported devices**: tablets
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_STANDBY
 
@@ -5537,9 +5537,9 @@ Allows an application to manage the standby state of the page, such as controlli
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+**Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACCESS_STANDBY
 
@@ -5551,9 +5551,9 @@ Allows an application to query whether the page is in the standby state and acce
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+**Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
@@ -5569,7 +5569,7 @@ With this permission, the application can call the API to obtain the local accou
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.GET_AGENT_CARD
 
@@ -5583,7 +5583,7 @@ Allows a system application to obtain AgentCard information.
 
 **Supported devices**: general devices
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.CONNECT_AGENT
 
@@ -5597,7 +5597,7 @@ Allows a system application to connect to the Agent.
 
 **Supported devices**: general devices
 
-**Since**: 24
+**Valid since**: 24
 
 ### ohos.permission.READ_APP_PROTECTION_RECORD
 
@@ -5637,7 +5637,7 @@ Allows a system application to read the spam shield settings.
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.0.0
 
@@ -5651,7 +5651,7 @@ Allows a system application to modify the spam shield settings.
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.0.0
 
@@ -5659,7 +5659,7 @@ Allows a system application to modify the spam shield settings.
 
 Allows an application to bypass sensor controls.
 
-With the permission, the application can always use sensors.
+With this permission, the application can always use sensors.
 
 **Permission level**: system_basic
 
@@ -5668,5 +5668,75 @@ With the permission, the application can always use sensors.
 **Enable via ACL**: true
 
 **Supported devices**: general devices
+
+**Since**: 24
+
+## ohos.permission.MODIFY_AGENT_CARD
+
+Allows a system application to update and delete AgentCard.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+### ohos.permission.START_ABILITY_TO_PAGE
+
+Allows a system application to launch another application to a specified page stack.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ENCRYPT_VOLUME_MANAGER
+ 	 
+Allows an application to call the API of storage manager for managing volume encryption.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.ODD_MANAGER
+
+Allows an application to call the API of storage manager for managing optical disc burning.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.DCAS_OTA_PERMISSION
+
+Allows an application and a service to access the device-side model deployment management.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
 
 **Since**: 24

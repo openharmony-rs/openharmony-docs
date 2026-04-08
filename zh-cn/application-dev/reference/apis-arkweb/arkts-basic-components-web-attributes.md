@@ -1,8 +1,8 @@
 # 属性
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -551,8 +551,8 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 > **说明：**
 >
-> - 通过@State变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
-> - 通过@State变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2074,6 +2074,48 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
   </body>
   </html>
   ```
+
+## enableScrollDirectionalLock
+
+enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
+
+设置Web组件滑动方向锁定。不调用该方法设置时，默认在嵌套滚动场景下支持滑动方向锁定。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明|
+| ------ | ---------------- | ---- | -------- |
+| value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
+| type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 在所有场景下支持滑动方向的锁定
+        .enableScrollDirectionalLock(true, ScrollDirectionalLockType.ALL)
+    }
+  }
+}
+```
 
 ## bypassVsyncCondition<sup>20+</sup>
 
@@ -3869,7 +3911,7 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 enableImageAnalyzer(enable: boolean)
 
-设置是否启用网页图片AI分析，当前支持图片文字识别功能，该功能默认开启。
+设置是否启用网页图片AI分析，当前支持图片文字识别功能。属性未显式调用时，该功能默认开启。
 
 > **说明：** 
 >
@@ -4039,6 +4081,62 @@ enableDefaultContextMenu(enable: boolean)
     }
   }
   ```
+
+## enableDrag
+
+enableDrag(value: boolean)
+
+设置是否启用拖拽功能。不调用该属性时，默认启用网页拖拽功能。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | 是   | 是否启用网页拖拽功能，true表示启用，false表示不启用。 |
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct Index {
+    private controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('test.html'), controller: this.controller })
+          .enableDrag(false)
+      }
+    }
+  }
+  ```
+
+ 加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8"><title>拖拽测试</title></head>
+  <body>
+    <div id="drag" draggable="true" style="width:100px;height:100px;background:red;margin:20px;"></div>
+    <div id="drop" style="width:200px;height:200px;background:gray;margin:20px;"></div>
+    <script>
+      drag.ondragstart=e=>e.dataTransfer.setData('text/plain','');
+      drop.ondragover=e=>e.preventDefault();
+      drop.ondrop=e=>{e.preventDefault(); drop.style.background='green';};
+      drag.ondragend=()=>{drop.style.background='gray';};
+    </script>
+  </body>
+</html>
+```
 
 ## password<sup>(deprecated)</sup>
 
@@ -4280,6 +4378,224 @@ zoomControlAccess(zoomControlAccess: boolean)
   <body>
     <h1>zoomControlAccess Demo</h1>
     <span>You can zoom in/out page when zoomControlAccess is true.</span>
+  </body>
+  </html>
+  ```
+
+## aiSessionOptions
+
+aiSessionOptions(aiSessions: Array&lt;AISessionEvent&gt;)
+
+自定义Web组件的前端AI会话配置，用于注册多个自定义AI会话。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| aiSessions | Array&lt;[AISessionEvent](./arkts-basic-components-web-i.md#aisessionevent)&gt; | 是 | 前端AI会话配置对象数组，每个对象包含AI会话类型及对应的生命周期回调方法。当前仅支持[AISessionType](./arkts-basic-components-web-e.md#aisessiontype)中包含的模型。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct DemoPage {
+  private webController: webview.WebviewController = new webview.WebviewController();
+  sessions: Map<string, string> = new Map<string, string>();
+
+  onCreateAISession = (id: string, params: string, result: OnAISessionCallback): boolean => {
+    this.sessions.set(id, params); // 模拟创建AI会话
+    console.info(`[AISession]onCreateAISession params: ${params}`);
+    result(AISessionResultType.SUCCESS, "AISession created");
+    return true;
+  }
+
+  onExecuteAIAction = (id: string, params: string, result: OnAISessionCallback): void => {
+    this.sessions.get(id); // 模拟取出会话，并执行动作
+    console.info(`[AISession]onExecuteAIAction params: ${params}`);
+    result(AISessionResultType.RUNNING, "AISession chunk 1\n");
+    result(AISessionResultType.RUNNING, "AISession chunk 2\n");
+    result(AISessionResultType.SUCCESS, "AISession chunk end\n");
+  }
+
+  onDestroyAISession = (id: string): void => {
+    this.sessions.delete(id); // 模拟销毁会话并释放资源
+  }
+
+  @State options: AISessionEvent = {
+    aiSessionType: AISessionType.SUMMARIZER,
+    onCreateAISession: this.onCreateAISession,
+    onExecuteAIAction: this.onExecuteAIAction,
+    onDestroyAISession: this.onDestroyAISession
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.webController })
+        .aiSessionOptions([this.options])
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```
+
+加载的html文件
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Summarizer API Test</title>
+</head>
+<body style="max-width:600px;margin:20px auto;padding:0 16px;">
+  <p id="status">checking...</p>
+  <button id="initBtn" onclick="init()">Create Session</button>
+  <br><br>
+  <textarea id="input" rows="6" style="width:100%;font:inherit" placeholder="paste text to summarize"></textarea>
+  <br><br>
+  <button id="btn" onclick="run()" disabled>Summarize</button>
+  <pre id="result"></pre>
+  <script>
+    let s;
+    (async () => {
+      const d = document.getElementById('status');
+      if (!('Summarizer' in self)) { d.textContent = 'API not supported'; return; }
+      const a = await Summarizer.availability();
+      d.textContent = 'Summarizer: ' + a;
+      if (a === 'unavailable') document.getElementById('initBtn').disabled = true;
+    })();
+
+    async function init() {
+      const d = document.getElementById('status'), ib = document.getElementById('initBtn');
+      ib.disabled = true;
+      d.textContent = 'creating...';
+      try {
+        s = await Summarizer.create({
+          type: 'tldr', length: 'medium', format: 'plain-text',
+          monitor(m) { m.addEventListener('downloadprogress', e => { d.textContent = 'downloading ' + (e.loaded * 100 | 0) + '%' }); }
+        });
+        d.textContent = 'ready';
+        document.getElementById('btn').disabled = false;
+      } catch (e) { d.textContent = 'Error: ' + e.message; ib.disabled = false; }
+    }
+
+    async function run() {
+      const t = document.getElementById('input').value.trim();
+      if (!t || !s) return;
+      const btn = document.getElementById('btn'), r = document.getElementById('result');
+      btn.disabled = true;
+      r.textContent = '...';
+      try { r.textContent = await s.summarize(t); }
+      catch (e) { r.textContent = 'Error: ' + e.message; }
+      btn.disabled = false;
+    }
+  </script>
+</body>
+</html>
+```
+
+## scrollbarLayoutPolicy
+
+scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
+
+选择Web组件内垂直滚动条的布局方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型| 必填 | 说明 |
+| ------ | -------------- | ---- | -------------- |
+| policy | [ScrollbarLayoutPolicy](./arkts-basic-components-web-e.md#scrollbarlayoutpolicy) | 是   | 设置Web组件内垂直滚动条布局模式，可选择跟随系统语言方向设置或网页css的direction属性设置。入参设置为：<br/>CONTENT，表示跟随网页css的direction属性设置。<br/>SYSTEM，滚动条会根据系统语种的左右书写方向进行布局。对于从右向左书写的语言，滚动条将布局在左侧。对于网页内嵌套的多层滚动条均适用。|
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 设置为SYSTEM表示跟随系统语言方向布局。设置为CONTENT表示沿用Web样式布局
+        .scrollbarLayoutPolicy(ScrollbarLayoutPolicy.SYSTEM)
+    }
+  }
+}
+```
+
+## keyboardAppearance
+
+keyboardAppearance(mode: WebKeyboardAppearanceMode)
+
+设置键盘外观。不调用该方法时，默认跟随系统的沉浸式模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | --------- | ---- | ---- |
+| mode | [WebKeyboardAppearanceMode](./arkts-basic-components-web-e.md#webkeyboardappearancemode)| 是   | 键盘外观。传入undefined或null时，跟随系统的沉浸式模式。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State appearanceMode: WebKeyboardAppearanceMode = WebKeyboardAppearanceMode.DARK_IMMERSIVE;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+        .keyboardAppearance(this.appearanceMode)
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>测试网页</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Text">
   </body>
   </html>
   ```

@@ -164,7 +164,7 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="generateBtn" @click="generateKey">Generate key</input>
+    <input type="button" class="generateBtn" @click="generateKey">Generate Key</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -385,7 +385,7 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="deleteBtn" @click="deleteKey">Delete key</input>
+    <input type="button" class="deleteBtn" @click="deleteKey">Delete Key</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -1230,6 +1230,123 @@ async function anonAttestKey(): Promise<void> {
 }
 ```
 
+## huks.anonAttestKeyItemOffline
+
+anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
+
+Obtains an anonymous key certificate in offline mode. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Offline key attestation depends on the network. You need to periodically connect to the network to use this API to update the offline certificate. Offline anonymous key attestation is recommended.
+> - Offline anonymous key attestation requires that the local time be accurate. Otherwise, the peer end may fail to verify the certificate expiration.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Security.Huks.Extension
+
+**Parameters**
+
+| Name  | Type                       | Mandatory| Description                                |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| keyAlias | string                      | Yes  | Alias of the key. The certificate to be obtained stores the key.|
+| params | [HuksParam[]](#huksparam) | Yes  | Parameters and data required for obtaining the certificate.  |
+
+**Return value**
+
+| Type                                          | Description                                         |
+| ---------------------------------------------- | --------------------------------------------- |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise used to return the result. When the call is successful, the **certChains** member of the **HuksReturnResult** object is the obtained certificate chain. Otherwise, the member is empty.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HUKS Error Codes](errorcode-huks.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | api is not supported. |
+| 12000001 | algorithm mode is not supported. |
+| 12000002 | The algorithm parameter is missing. |
+| 12000003 | The algorithm parameter is invalid. |
+| 12000004 | operating file failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist. |
+| 12000012 | Device environment or input parameter abnormal. |
+| 12000014 | memory is insufficient. |
+| 12000018 | group id specified by the access group tag is invalid. |
+| 12000024 | The operation times out. This may be caused by network jitter. |
+| 12000027 | The network is unavailable. Check network connections. |
+
+**Example**
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
+}
+
+let challenge = stringToUint8Array('challenge_data');
+let keyAliasString = "key anon local attest";
+
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItem(alias, options);
+}
+
+async function anonAttestKeyOffline() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOffline(aliasString, properties);
+}
+```
+
 ## huks.importWrappedKeyItem<sup>9+</sup>
 
 importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions, callback: AsyncCallback\<void>) : void
@@ -1876,7 +1993,7 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="existBtn" @click="existKey">Query Key</input>
+    <input type="button" class="existBtn" @click="existKey">Query Key</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -2612,8 +2729,8 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="threeStageBtn1" @click="threeStageEncrypt">Encrypt data</input>
-    <input class="threeStageBtn2" @click="threeStageDecrypt">Decrypt data</input>
+    <input type="button" class="threeStageBtn1" @click="threeStageEncrypt">Encrypt Data</input>
+    <input type="button" class="threeStageBtn2" @click="threeStageDecrypt">Decrypt Data</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -3256,7 +3373,7 @@ Enumerates the key algorithms.
 | ------------------------- | ---- | --------------------- |
 | HUKS_ALG_RSA              | 1    | RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_ECC              | 2    | ECC.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_ALG_DSA              | 3    | DSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_ALG_DSA              | 3    | DSA<!--RP5--><!--RP5End-->.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_AES              | 20   | AES.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_ALG_HMAC             | 50   | HMAC.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_HKDF             | 51   | HKDF.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -3559,11 +3676,11 @@ Enumerates the tags used to invoke parameters.
 | HUKS_TAG_ALL_USERS                                          | HuksTagType.HUKS_TAG_TYPE_BOOL \| 301    | Reserved.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_USER_ID                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 302    | ID of the user to which the key belongs.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_NO_AUTH_REQUIRED                                   | HuksTagType.HUKS_TAG_TYPE_BOOL \| 303    | Reserved.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_TAG_USER_AUTH_TYPE                                     | HuksTagType.HUKS_TAG_TYPE_UINT \| 304    | User authentication type. For details, see [HuksUserAuthType](#huksuserauthtype9). This parameter must be set together with [HuksAuthAccessType](#huksauthaccesstype9). You can set a maximum of two user authentication types at a time. For example, if **HuksAuthAccessType** is **HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL**, you can set two of **HUKS_USER_AUTH_TYPE_FACE**, **HUKS_USER_AUTH_TYPE_FINGERPRINT**, and **HUKS_USER_AUTH_TYPE_FACE \**| **HUKS_USER_AUTH_TYPE_FINGERPRINT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_USER_AUTH_TYPE                                     | HuksTagType.HUKS_TAG_TYPE_UINT \| 304    | User authentication type. For details, see [HuksUserAuthType](#huksuserauthtype9). This parameter must be set together with [HuksAuthAccessType](#huksauthaccesstype9). You can set a maximum of two user authentication types at a time. For example, if **HuksAuthAccessType** is **HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL**, you can set two of **HUKS_USER_AUTH_TYPE_FACE**, **HUKS_USER_AUTH_TYPE_FINGERPRINT**, and **HUKS_USER_AUTH_TYPE_FACE \| HUKS_USER_AUTH_TYPE_FINGERPRINT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_AUTH_TIMEOUT                                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 305    | One-time validity period of the authentication token, in seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_AUTH_TOKEN                                         | HuksTagType.HUKS_TAG_TYPE_BYTES \| 306   | Authentication token.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_AUTH_ACCESS_TYPE<sup>9+</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 307    | Access control type. For details, see [HuksAuthAccessType](#huksauthaccesstype9). This parameter must be set together with [HuksUserAuthType](#huksuserauthtype9).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
-| HUKS_TAG_KEY_SECURE_SIGN_TYPE<sup>9+</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 308    | Signature type of the key generated or imported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_KEY_SECURE_SIGN_TYPE<sup>9+</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 308    | Enumerates the signature types of the key generated or imported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_CHALLENGE_TYPE<sup>9+</sup>                        | HuksTagType.HUKS_TAG_TYPE_UINT \| 309    | Type of the challenge generated for a key. For details, see [HuksChallengeType](#hukschallengetype9).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_CHALLENGE_POS<sup>9+</sup>                         | HuksTagType.HUKS_TAG_TYPE_UINT \| 310    | Position of the 8-byte valid value in a custom challenge. For details, see [HuksChallengePosition](#hukschallengeposition9).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_AUTH_PURPOSE<sup>10+</sup>                     | HuksTagType.HUKS_TAG_TYPE_UINT \|311     | Key authentication purpose.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
@@ -3588,6 +3705,7 @@ Enumerates the tags used to invoke parameters.
 | HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | Length of the specified AEAD tag, in bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_KEY_CLASS<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 522   | Key source.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_ACCESS_GROUP<sup>23+</sup>                     | HuksTagType.HUKS_TAG_TYPE_BYTES \| 523   | Information about the specified group.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br> **System capability**: SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_AAD<sup>24+</sup>                                  | HuksTagType.HUKS_TAG_TYPE_BYTES \| 527   | Additional verification data indicating the GCM or CCM mode. <br>**Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model restriction**: This API can be used only in the stage model.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | Whether to use the alias passed in during key generation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | Key storage mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_IS_ALLOWED_WRAP                                    | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1003   | Reserved.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -4113,7 +4231,7 @@ Obtains key properties. This API uses a promise to return the result.
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<[HuksResult](#huksoptions)> | Promise that returns the **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
 
 **Example**
 

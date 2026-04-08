@@ -10,9 +10,9 @@ You can use the APIs of the input method framework service to easily switch betw
 
 > **NOTE**
 >
-> - The following APIs can be called only in the current input method application.
+> 1. The following APIs can be called only in the current input method application.
 >
-> - This example assumes that an input method application has been executed. For details about how to implement an input method application, see [Implementing an Input Method Application](./inputmethod-application-guide.md).
+> 2. This example assumes that an input method application has been executed. For details about how to implement an input method application, see [Implementing an Input Method Application](./inputmethod-application-guide.md).
 
 ## Switching Between Input Method Subtypes
 
@@ -57,12 +57,17 @@ In the input method application in use, call [switchInputMethod](../reference/ap
    
    ``` TypeScript
    async switchInputMethod(item: string) {
-     this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
-     let currentInputMethod = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
-     for (let i = 0; i < this.inputMethods.length; i++) {
-       if (item != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can switch to a fixed input method as required.
-         await inputMethod.switchInputMethod(this.inputMethods[i]);
+     try {
+       this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // Obtain the list of enabled input methods.
+       let currentInputMethod = inputMethod.getCurrentInputMethod(); // Obtain the current input method.
+       for (let i = 0; i < this.inputMethods.length; i++) {
+         if (item != currentInputMethod.name) { // If the current input method is not the specified one, switch to the specified one. You can switch to a fixed input method as required.
+           await inputMethod.switchInputMethod(this.inputMethods[i]);
+         }
        }
+     } catch (err) {
+       let error = err as BusinessError;
+       Log.showError(TAG, `switchInputMethod catch error: ${error.code} ${error.message}`);
      }
    }
    ```

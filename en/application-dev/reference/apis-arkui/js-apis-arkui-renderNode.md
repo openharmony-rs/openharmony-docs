@@ -1,9 +1,9 @@
 # RenderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs.
@@ -2307,7 +2307,7 @@ Sets the border width for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border width of the RenderNode, in vp.|
+| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border width of the RenderNode, in vp.|
 
 get borderWidth(): Edges\<number>
 
@@ -2321,7 +2321,7 @@ Obtains the border width of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border width of the RenderNode. The default width of all borders is 0 vp.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border width of the RenderNode. The default width of all borders is 0 vp.|
 
 **Example**
 
@@ -2380,7 +2380,7 @@ Sets the border color for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border color of the RenderNode.|
+| color  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border color of the RenderNode.|
 
 get borderColor(): Edges\<number>
 
@@ -2394,7 +2394,7 @@ Obtains the border color of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
 
 **Example**
 
@@ -2405,7 +2405,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-// Set the border style of the renderNode.
+// Set the border color of the renderNode.
 renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
 // Obtain the border color of the renderNode.
 const borderColor = renderNode.borderColor;

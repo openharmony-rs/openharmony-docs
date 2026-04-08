@@ -180,11 +180,11 @@ agentManager.getAgentCardByAgentId(bundleName, agentId)
 ```
 
 ## agentManager.connectAgentExtensionAbility
- 	 
+
 connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensionConnectCallback): Promise\<AgentProxy>
- 	 
-将当前调用方组件连接到[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)。通过返回的[AgentProxy](js-apis-inner-application-agentProxy.md)与[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)进行通信，以使用AgentExtensionAbility对外提供的能力。
- 	 
+
+将当前调用方组件连接到[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)。通过返回的[AgentProxy](js-apis-inner-application-agentProxy-sys.md)与[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)进行通信，以使用AgentExtensionAbility对外提供的能力。
+
 **系统接口**：该接口为系统接口。
 
 **需要权限**：ohos.permission.CONNECT_AGENT
@@ -197,16 +197,16 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 | -------- | ------------------------------------- | ---- | ------------ |
 | want     | [Want](js-apis-app-ability-want.md)   | 是   | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)所属的Want信息，通常需要包括bundle名称、ability名称。 |
 | agentId  | string                                | 是   | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)所属的agentId。 |
-| callback | [AgentExtensionConnectCallback](js-apis-inner-application-agentExtensionConnectCallback.md) | 是   | 连接回调函数，包含接收[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端的数据、安全认证数据以及断开连接事件的回调接口。 |
- 	 
+| callback | [AgentExtensionConnectCallback](js-apis-inner-application-agentExtensionConnectCallback-sys.md) | 是   | 连接回调函数，包含接收[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端的数据、安全认证数据以及断开连接事件的回调接口。 |
+
 **返回值：**
- 	 
+
 | 类型                       | 说明                         |
 | -------------------------- | ---------------------------- |
-| Promise\<[AgentProxy](js-apis-inner-application-agentProxy.md)> | Promise对象，返回的AgentProxy对象，用于从客户端向AgentExtensionAbility服务端发送数据或安全认证请求。 |
- 	 
+| Promise\<[AgentProxy](js-apis-inner-application-agentProxy-sys.md)> | Promise对象，返回的AgentProxy对象，用于从客户端向AgentExtensionAbility服务端发送数据或安全认证请求。 |
+
 **错误码：**
- 	 
+
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
@@ -218,11 +218,13 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000008 | The crowdtesting application expires. |
-| 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service fled to communicate with dependency module. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by enterprise device management (EDM). |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000073 | The app clone index is invalid. |
 | 35600001 | The specified agentId does not exist. |
-| 35600003 | Maximum connections from the same caller have been reached. |
+| 35600003 | Maximum connections from the same caller have been reached. Please disconnect at least one agent extension beforehand.|
 
 **示例：**
 
@@ -280,7 +282,7 @@ struct Index {
 ```
 
 ## agentManager.disconnectAgentExtensionAbility
- 	 
+
 disconnectAgentExtensionAbility(proxy: AgentProxy): Promise\<void>
 
 断开与指定proxy的[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)的连接。
@@ -295,7 +297,7 @@ disconnectAgentExtensionAbility(proxy: AgentProxy): Promise\<void>
 
 | 参数名 | 类型                                             | 必填 | 说明           |
 | ------ | ------------------------------------------------ | ---- | ------------ |
-| proxy  | [AgentProxy](js-apis-inner-application-agentProxy.md) | 是   | 要断开连接的[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)对应的Proxy对象，在调用[connectAgentExtensionAbility](#agentmanagerconnectagentextensionability)接口连接[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)时会返回其对应的proxy对象。 |
+| proxy  | [AgentProxy](js-apis-inner-application-agentProxy-sys.md) | 是   | 要断开连接的[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)对应的Proxy对象，在调用[connectAgentExtensionAbility](#agentmanagerconnectagentextensionability)接口连接[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)时会返回其对应的proxy对象。 |
 
 **返回值：**
 
@@ -312,7 +314,7 @@ disconnectAgentExtensionAbility(proxy: AgentProxy): Promise\<void>
 | 201      | Permission denied. |
 | 202      | Not system application. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
- 	 
+
 **示例：**
 
 ```ts

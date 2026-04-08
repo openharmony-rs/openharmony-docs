@@ -199,13 +199,15 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_THREAD_PTHREAD | 线程创建时的调用栈。 | 23 |
 | RES_THREAD_ALL | 以上线程相关操作时的调用栈。 | 23 |
 | RES_ARKTS_HEAP_MASK | arkts内存分配栈。 | 23 |
-| RES_JS_HEAP_MASK | arkweb内存分配栈。 | 23 |
+| RES_JS_HEAP_MASK | 龙雀虚拟机JSVM内存跟踪 | 23 |
 | RES_KMP_HEAP_MASK | kmp内存分配栈。 | 23 |
 | RES_SO_MASK | so内存分配栈。 | 23 |
 | RES_ASHMEM_MASK | ashmem内存分配栈。 | 23 |
 | RES_RN_HEAP_MASK | rn内存分配栈。 | 23 |
 | RES_DMABUF_MASK | dmabuf内存分配栈。 | 23 |
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
+| RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
+| RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
 
 **结果分析**
 
@@ -835,6 +837,63 @@ plugin_configs {
 }
 CONFIG
 ```
+
+从API version 23开始支持LocalHandle对象内存录制功能。例如，可通过如下方式对com.example.insight_test_stage进程进行内存录制。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 20 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 20
+  process_name: "com.example.insight_test_stage"
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  startup_mode: true
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_LOCAL_HANDLE"
+  }
+}
+CONFIG
+```
+LocalHandle对象内存录制功能要求被测应用在启动时替换加载维测库，才能正常采集LocalHandle内存信息。
+
+应用替换加载维测库方法：
+
+1.应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
+
+2.应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
+
+> **说明：**
+>
+> 1.应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制localhandle内存。
+>
+> 2.使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
+>
+> 3.此种方式抓取到的localhandle内存一定是泄漏的。
+>
+> 4.命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+
 
 使用手动控制采集时长调优启停方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈。
 

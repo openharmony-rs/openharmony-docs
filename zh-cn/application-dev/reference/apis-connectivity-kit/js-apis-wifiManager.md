@@ -543,7 +543,7 @@ WLAN配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -666,6 +666,25 @@ WAPI认证方式的枚举。
 | WIFI6_PLUS | 3 | Wifi6+。 |
 | WIFI7<sup>15+</sup> | 4 | Wifi7。 |
 | WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 |
+
+## ConnectSettings
+
+连接WLAN设置信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| networkId | number | 否 | 否 | 候选网络配置的ID。 |
+| withUserAction | boolean | 否 | 是 | 连接时是否提示用户进行信任确认，true表示与connectToCandidateConfigWithUserAction接口功能一致，false表示不要求不一致，默认false 。|
+| userActionTimeout | number | 否 | 是 | 提示用户进行信任确认弹框显示时间（单位秒）有效值范围1-30秒，默认10秒 。|
+| addNetworkToSystem | boolean | 否 | 是 | 是否添加网络到系统，true表示将建议网络添加到到系统网络中，false表示保持建议网络，默认false 。|
+
 
 ## wifiManager.addCandidateConfig
 
@@ -1016,6 +1035,53 @@ connectToCandidateConfig(networkId: number): void
   try {
     let networkId = 0; // 候选网络ID，在添加候选网络时生成
     wifiManager.connectToCandidateConfig(networkId);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+  
+```
+
+## wifiManager.connectToCandidateConfig
+
+connectToCandidateConfig(settings: ConnectSettings): void
+
+应用使用该接口连接到自己添加的候选网络，支持设置自定义参数。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.SET_WIFI_INFO
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | settings | [ConnectSettings](#connectsettings) | 是 | 连接WLAN设置信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+| 201 | Permission denied.                 |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+| 2501001  | Wi-Fi STA disabled.|
+
+**示例：**
+```ts
+  import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let setting:wifiManager.ConnectSettings = { networkId: 0 }; // 候选网络ID，在添加候选网络时生成
+    wifiManager.connectToCandidateConfig(setting);
   }catch(error){
     console.error("failed:" + JSON.stringify(error));
   }
@@ -1438,6 +1504,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID（Service Set Identifier，服务集标识符），用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

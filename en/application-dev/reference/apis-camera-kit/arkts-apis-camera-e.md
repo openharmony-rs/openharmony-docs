@@ -118,23 +118,22 @@ Enumerates the camera error codes,
 
 which are returned when an API call is incorrect or the **on()** API is used to listen for the error status.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                      | Value         | Description           |
 | -------------------------  | ----       | ------------    |
-| INVALID_ARGUMENT           | 7400101    | A parameter is missing or the parameter type is incorrect.  |
-| OPERATION_NOT_ALLOWED      | 7400102    | The operation is not allowed.    |
-| SESSION_NOT_CONFIG         | 7400103    | The session is not configured.      |
-| SESSION_NOT_RUNNING        | 7400104    | The session is not running.   |
-| SESSION_CONFIG_LOCKED      | 7400105    | The session configuration is locked.    |
-| DEVICE_SETTING_LOCKED      | 7400106    | The device setting is locked.    |
-| CONFLICT_CAMERA            | 7400107    | The device is already started.    |
-| DEVICE_DISABLED            | 7400108    | The camera is disabled for security reasons.    |
-| DEVICE_PREEMPTED           | 7400109    | The camera is preempted.    |
-| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.    |
-| SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.    |
+| INVALID_ARGUMENT           | 7400101    | A parameter is missing or the parameter type is incorrect.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| OPERATION_NOT_ALLOWED      | 7400102    | The operation is not allowed.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| SESSION_NOT_CONFIG         | 7400103    | The session is not configured.<br> **Atomic service API**: This API can be used in atomic services since API version 19. |
+| SESSION_NOT_RUNNING        | 7400104    | The session is not running.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| SESSION_CONFIG_LOCKED      | 7400105    | The session configuration is locked.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| DEVICE_SETTING_LOCKED      | 7400106    | The device setting is locked.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| CONFLICT_CAMERA            | 7400107    | The device is already started.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| DEVICE_DISABLED            | 7400108    | The camera is disabled for security reasons.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| DEVICE_PREEMPTED           | 7400109    | The camera is preempted.<br> **Atomic service API**: This API can be used in atomic services since API version 19. |
+| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.<br> **Atomic service API**: This API can be used in atomic services since API version 19.   |
+| UNSUPPORTED_MULTI_CAMERA_COMBINATION<sup>24+</sup> | 7400113 | Combination of multiple cameras is not supported.<br>**Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## TorchMode<sup>11+</sup>
 
@@ -166,6 +165,7 @@ Enumerates the camera output formats.
 | CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010 image.     |
 | CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010 image.     |
 | CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF image.           |
+| CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  Digital Negative (DNG) image.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -397,14 +397,13 @@ Enumerates the system pressure levels.
 
 Enumerates the effect types supported by the camera controller.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name     | Value| Description   |
 |-----------|---|---------|
-| BEAUTY    | 0 | Beauty effect.  |
-| PORTRAIT  | 1 | Portrait blur effect.|
+| BEAUTY    | 0 | Beauty effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.  |
+| PORTRAIT  | 1 | Portrait blur effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| AUTO_FRAMING<sup>24+</sup> | 2 | Automatic composition.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
@@ -418,3 +417,81 @@ Enumerates the photo quality prioritization strategies.
 |--------------|-------|---------|
 | HIGH_QUALITY | 0     | Focuses on image quality, which may increase the time required for capturing photos to ensure high-quality output.|
 | SPEED        | 1     | Focuses on performance, trading off image quality for faster capture times.|
+
+## SensorColorFilterArrangement<sup>24+</sup>
+
+Enumerates the arrangement modes of the sensor color filter.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                        | Value  | Description                                                             |
+| --------------------------- | ---- |-----------------------------------------------------------------|
+| BGGR                        | 0    | Blue-green-green-red filter arrangement.                                                       |
+| GBRG                        | 1    | Green-blue-red-green filter arrangement.                                                          |
+| GRBG                        | 2    | Green-red-blue-green arrangement mode.                                                          |
+| RGGB                        | 3    | Red-green-green-blue arrangement mode.                                                          |
+
+## FlashState<sup>24+</sup>
+
+Enumerates the flash states.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| FLASH_STATE_UNAVAILABLE      | 0    | The flash is unavailable. This is the default value.  |
+| FLASH_STATE_READY   | 1    | The flash is available.|
+| FLASH_STATE_FLASHING   | 2    | The flash is turned on.      |
+
+## ExposureMeteringMode<sup>24+</sup>
+
+Enumerates the exposure metering modes.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| MATRIX      | 0    | Matrix metering mode. A wide area of the screen is selected, which is ideal for shooting natural landscapes.  |
+| CENTER   | 1    | Center-weighted metering mode. Metering is performed on the entire image, with the center allocated with the maximum weight, which is ideal for shooting portraits.|
+| SPOT   | 2    | Spot metering mode. Metering is performed around 2.5% of the metering points, focusing on the light in a specific small area, such as the eyes of the subject.      |
+
+## OISMode<sup>24+</sup>
+
+Enumerates the optical image stabilization (OIS) mode.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| OFF      | 0    | OIS is disabled.  |
+| AUTO   | 1    | OIS is automatically controlled.|
+| CUSTOM   | 2    | OIS is controlled by the application.      |
+
+## OISAxes<sup>24+</sup>
+
+Enumerates the OIS axes.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.  |
+| YAW   | 1    | Yaw axis. It controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|

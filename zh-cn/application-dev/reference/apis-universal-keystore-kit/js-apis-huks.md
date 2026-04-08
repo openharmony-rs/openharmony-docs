@@ -1230,6 +1230,123 @@ async function anonAttestKey(): Promise<void> {
 }
 ```
 
+## huks.anonAttestKeyItemOffline
+
+anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
+
+离线模式下获取匿名化密钥证书。使用Promise异步回调。
+
+> **说明：**
+>
+> - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书，推荐优先使用离线匿名密钥证明。
+> - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                 |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| keyAlias | string                      | 是   | 密钥别名，存放待获取证书密钥的别名。 |
+| params | [HuksParam[]](#huksparam) | 是   | 用于获取证书时指定所需参数与数据。   |
+
+**返回值：**
+
+| 类型                                           | 说明                                          |
+| ---------------------------------------------- | --------------------------------------------- |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链，失败时为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | api is not supported. |
+| 12000001 | algorithm mode is not supported. |
+| 12000002 | The algorithm parameter is missing. |
+| 12000003 | The algorithm parameter is invalid. |
+| 12000004 | operating file failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist. |
+| 12000012 | Device environment or input parameter abnormal. |
+| 12000014 | memory is insufficient. |
+| 12000018 | group id specified by the access group tag is invalid. |
+| 12000024 | The operation times out. This may be caused by network jitter. |
+| 12000027 | The network is unavailable. Check network connections. |
+
+**示例：**
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
+}
+
+let challenge = stringToUint8Array('challenge_data');
+let keyAliasString = "key anon local attest";
+
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItem(alias, options);
+}
+
+async function anonAttestKeyOffline() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOffline(aliasString, properties);
+}
+```
+
 ## huks.importWrappedKeyItem<sup>9+</sup>
 
 importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions, callback: AsyncCallback\<void>) : void
@@ -3588,6 +3705,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | 表示指定的AEAD标签长度，单位：byte。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_CLASS<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 522   | 表示密钥来源。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_ACCESS_GROUP<sup>23+</sup>                     | HuksTagType.HUKS_TAG_TYPE_BYTES \| 523   | 表示指定的分组信息。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_AAD<sup>24+</sup>                                  | HuksTagType.HUKS_TAG_TYPE_BYTES \| 527   | 标记指示GCM或CCM模式的附加验证数据。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | 表示密钥存储方式的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_ALLOWED_WRAP                                    | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1003   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|

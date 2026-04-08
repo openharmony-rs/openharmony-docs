@@ -10,6 +10,7 @@
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](state-management/arkts-basic-syntax-overview.md)
+    - [UI装饰器总览](state-management/arkts-decorator-overview.md)
     - [声明式UI描述](state-management/arkts-declarative-ui-description.md)
     - 自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](state-management/arkts-create-custom-components.md)
@@ -23,8 +24,6 @@
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
-    - UI装饰器<!--arkts-ui-decorator-->
-      - [UI装饰器总览](state-management/arkts-decorator-overview.md)
     - 组件扩展<!--arkts-extend-components-->
       - [组件扩展概述](state-management/arkts-extend-components-overview.md)
       - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
@@ -65,7 +64,7 @@
         - [\@Local装饰器：组件内部状态](state-management/arkts-new-local.md)
         - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
         - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
-        - [\@Event装饰器：组件输出](state-management/arkts-new-event.md)
+        - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
         - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
       - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
@@ -276,15 +275,17 @@
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)
+  - [添加事件监听](ndk-add-component-events.md)
   - 添加交互事件<!--arkts-add-event-->
-    - [监听组件事件](ndk-listen-to-component-events.md)
+    - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
-    - [拖拽事件](ndk-drag-event.md)
-    - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
+    - [绑定拖拽事件](ndk-drag-event.md)
   - 使用动画<!--arkts-use-animation-ndk-->
     - [动画概述](ndk-use-animation.md)
     - [使用动画开发指导](ndk-use-animation-scene.md)
   - 构建布局<!--arkts-build-layout-ndk-->
+    - [使用布局组件](ndk-layout-container.md)
+    - [设置通用布局属性](ndk-common-attribute-layout.md)
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
@@ -396,6 +397,7 @@
     - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
+    - [弹窗组件常见问题](arkts-popup-component-faq.md)
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)

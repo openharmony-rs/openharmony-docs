@@ -95,7 +95,7 @@ export struct ScrollSnapshot {
 
 ``` TypeScript
 /**
- * 归滚动截图，直到滚动到底，最后合并所有截图
+ * 递归滚动截图，直到滚动到底，最后合并所有截图
  */
 async scrollSnapAndMerge() {
   try {
@@ -123,7 +123,7 @@ async scrollSnapAndMerge() {
     }
   } catch (err) {
     let error = err as BusinessError;
-    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error mesage: ${error.message}`);
+    Logger.error(TAG, `scrollSnapAndMerge err, errCode: ${error.code}, error message: ${error.message}`);
   }
 }
 ```
@@ -347,7 +347,7 @@ export class GlobalStaticSnapshot {
 
 应用可通过以下几种方式进行优化：
 1. 自行提前解析图片为PixelMap格式，将PixelMap配置给图片组件；建议优先以此方法进行优化。
-2. 配置所使用的图片组件的syncload属性为true来强制同步加载，这样组件被构建时，即可确保资源可以直接被提交；
+2. 配置所使用的图片组件的syncLoad属性为true来强制同步加载，这样组件被构建时，即可确保资源可以直接被提交；
 3. 通过指定延迟时长以及checkImageStatus设置为true，尝试截图，当返回160001错误后，重新加大时长进行截图；
 
 

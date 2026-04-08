@@ -615,7 +615,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
-从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
+从API version 20开始，支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -713,7 +713,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
-从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+从API version 20开始，该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2568,7 +2568,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise对象。如果操作成功，则返回LiteResultSet对象。 |
 
 **错误码：**
 
@@ -2844,7 +2844,7 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
 聚合函数不支持嵌套使用。
 
@@ -2921,7 +2921,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，支持传入SQL语句中参数的值，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
 聚合函数不支持嵌套使用。
 
@@ -2981,7 +2981,7 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
 聚合函数不支持嵌套使用。
 
@@ -3421,7 +3421,7 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 执行包含指定参数的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。使用该接口执行插入操作，数据来源于子查询时，支持全字段插入，暂不支持部分字段插入。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。使用该接口执行插入操作，数据来源于子查询时，支持全字段插入，暂不支持部分字段插入。
 
 此接口不支持执行查询，可以使用[querySql](#querysql10)接口代替。
 
@@ -3781,7 +3781,7 @@ beginTrans(): Promise&lt;number&gt;
 
 与[beginTransaction](#begintransaction)的区别在于：该接口会返回事务ID，[execute](#execute12-1)可以指定不同事务ID达到事务隔离目的。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3968,7 +3968,7 @@ commit(txId : number):Promise&lt;void&gt;
 
 提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4106,7 +4106,7 @@ rollback(txId : number):Promise&lt;void&gt;
 
 回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
-该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口仅支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4178,7 +4178,7 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
 
 以指定名称备份数据库，使用callback异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4236,7 +4236,7 @@ backup(destName:string): Promise&lt;void&gt;
 
 以指定名称备份数据库，使用Promise异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4299,7 +4299,7 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
 
 从指定的数据库备份文件恢复数据库，使用callback异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4356,7 +4356,7 @@ restore(srcName:string): Promise&lt;void&gt;
 
 从指定的数据库备份文件恢复数据库，使用Promise异步回调。
 
-该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
+该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

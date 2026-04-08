@@ -29,7 +29,7 @@
 
 ### 设备限制
 
-WebNativeMessagingExtensionAbility组件当前仅支持2in1设备。
+对于API版本21-23，WebNativeMessagingExtensionAbility组件仅支持2in1设备；从API版本24开始，增加支持在平板上使用。
 
 ### 规格限制
 
@@ -146,33 +146,33 @@ function sendMessageToNative() {
 **实现配置background.js**
 
 1. 使用chrome.runtime.connectNative连接
-   ``` ts	
-   var port = null;	
-   //监听来自main.js的信息	
-   chrome.runtime.onMessage.addListener(	
-     function (request, sender, sendResponse) {	
-       if (request.type == "sendMessage") {	
-         if (port == null) {	
-           connectToNativeHost();	
-         }	
-         port.postMessage(request.message); //向应用程序发送信息	
-       }	
-       return true; //保持消息通道开放	
-   });	
-   function connectToNativeHost() {	
-     var bundleName = "com.example.app"; //插件对应应用的bundleName	
-     port = chrome.runtime.connectNative(bundleName); //根据bundleName名得到通信端口port	
-     port.onMessage.addListener(onNativeMessage); //监听native应用程序是否发来消息	
-     port.onDisconnect.addListener(onDisconnected); //监听是否断开连接	
-   }	
-    //接收到来自native程序的消息时触发	
-   async function onNativeMessage(message) {	
-     console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); //示例中的pong	
-   }	
-   //断开连接时触发	
-   function onDisconnected() {	
-     port = null;	
-   }	
+   ``` ts
+   var port = null;
+   // 监听来自main.js的信息
+   chrome.runtime.onMessage.addListener(
+     function (request, sender, sendResponse) {
+       if (request.type == "sendMessage") {
+         if (port == null) {
+           connectToNativeHost();
+         }
+         port.postMessage(request.message); // 向应用程序发送信息
+       }
+       return true; // 保持消息通道开放
+   });
+   function connectToNativeHost() {
+     var bundleName = "com.example.app"; // 插件对应应用的bundleName
+     port = chrome.runtime.connectNative(bundleName); // 根据bundleName名得到通信端口port
+     port.onMessage.addListener(onNativeMessage); // 监听native应用程序是否发来消息
+     port.onDisconnect.addListener(onDisconnected); // 监听是否断开连接
+   }
+    // 接收到来自native程序的消息时触发
+   async function onNativeMessage(message) {
+     console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); // 示例中的pong
+   }
+   // 断开连接时触发
+   function onDisconnected() {
+     port = null;
+   }
    ```
  
 2. 使用chrome.runtime.sendNativeMessage连接
@@ -210,7 +210,7 @@ function sendMessageToNative() {
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import {buffer, util} from '@kit.ArkTS';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
    const TAG: string = '[MyWebNativeMessageExtAbility]';
    const DOMAIN_NUMBER: number = 0xFF00;
@@ -221,7 +221,7 @@ function sendMessageToNative() {
        try {
          // read
          let arrayBuffer = new ArrayBuffer(1024);
-         let readLen = await fs.read(fdRead, arrayBuffer);
+         let readLen = await fileIo.read(fdRead, arrayBuffer);
          if (readLen <= 4) {
            hilog.error(DOMAIN_NUMBER, TAG, 'read pipe length failed');
            return;
@@ -241,10 +241,10 @@ function sendMessageToNative() {
          const writeBuffer = new Uint8Array(4 + bufferLen);
          writeBuffer.set(lenBytes, 0);
          writeBuffer.set(strBytes, 4);
-         let writeLen = await fs.write(fdWrite, writeBuffer.buffer);
+         let writeLen = await fileIo.write(fdWrite, writeBuffer.buffer);
          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
        } catch (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, 'fs io failed, error code: ' + err.code + " message: " + err.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + " message: " + err.code);
        }
      }
 

@@ -899,7 +899,10 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 
 获取调用方自身信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -984,7 +987,10 @@ getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1041,7 +1047,10 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1124,7 +1133,10 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1182,7 +1194,10 @@ getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1234,7 +1249,10 @@ getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 
 根据给定的uid获取对应应用的bundleName。使用callback异步回调。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1283,7 +1301,10 @@ getBundleNameByUid(uid: number): Promise\<string>
 
 根据给定的uid获取对应应用的bundleName。使用Promise异步回调。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1335,7 +1356,10 @@ getBundleNameByUidSync(uid: number): string
 
 以同步方法根据给定的uid获取对应应用的bundleName。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1384,7 +1408,10 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 根据uid查询分身应用的包名和分身索引。使用Promise异步回调。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1685,6 +1712,62 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getApplicationLabel
+
+getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
+
+获取指定包名和分身索引的应用名称。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**参数：**
+
+| 参数名        | 类型                                                | 必填 | 说明                    |
+| ------------ | --------------------------------------------------- | ---- | ----------------------- |
+| bundleName  | string |是 | 应用的包名。 |
+| appIndex   | number  | 是   | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。  |
+
+**返回值：**
+
+| 类型                                                         | 说明                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| Promise\<string> | Promise对象，调用成功返回应用名称；调用失败返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID |    错误信息                   |
+|----------|-------------------------|
+| 201 | Permission denied. |
+| 17700001 | The specified bundleName is not found. |
+| 17700061 | The specified app index is invalid. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
+    console.info('getApplicationLabel succeed:' + data);
+  }).catch((err: BusinessError) => {
+    console.error('getApplicationLabel failed: error code is ' + err.code + ' and error msg is ' + err.message);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('getApplicationLabel failed: error code is ' + code + ' and error msg is ' + message);
 }
 ```
 

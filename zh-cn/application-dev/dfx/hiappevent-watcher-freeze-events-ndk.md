@@ -77,7 +77,7 @@
       编辑“napi_init.cpp”文件，定义onReceive类型观察者相关方法：
 
       ```c++
-      // 定义一变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher; 
       
       static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
@@ -110,6 +110,7 @@
                           auto memory = writer.write(params["memory"]);
                           auto externalLog = writer.write(params["external_log"]);
                           auto logOverLimit = params["log_over_limit"].asBool();
+                          auto externalCallbackLog = params["external_callback_log"].asString();
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
@@ -128,6 +129,7 @@
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
                       }
                   }
               }
@@ -141,7 +143,7 @@
           const char *names[] = {EVENT_APP_FREEZE};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcher);
@@ -154,7 +156,7 @@
       编辑“napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
       ```c++
-      // 定义一变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher;
       
       // 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。
@@ -186,10 +188,11 @@
                       auto handleSize6s =  eventInfo["event_handler_size_6s"].asString();
                       auto peerBindSize =  eventInfo["peer_binder"].size();
                       auto threadSize =  eventInfo["threads"].size();
-                       auto memory =  writer.write(eventInfo["memory"]);
+                      auto memory =  writer.write(eventInfo["memory"]);
                       auto externalLog = writer.write(eventInfo["external_log"]);
                       auto logOverLimit = eventInfo["log_over_limit"].asBool();
                       auto process_life_time = eventInfo["process_life_time"].asString();
+                      auto externalCallbackLog = params["external_callback_log"].asString();
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
@@ -209,6 +212,7 @@
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}s", process_life_time.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
                   }
               }
           }
@@ -308,6 +312,7 @@
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1502049185239_1587.log"]
    HiAppEvent eventInfo.params.log_over_limit=0
    HiAppEvent eventInfo.params.process_life_time=18
+   HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
    ```
 
 2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。

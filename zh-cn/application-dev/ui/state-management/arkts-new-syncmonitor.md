@@ -48,11 +48,11 @@
 | ------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 参数              | 回调方法名称                             | 监听到的状态变量名称和属性名称                                      | 监听到的状态变量名称和属性名称                                      |
 | 监听目标数量        | 单个状态变量                   | 多个状态变量                                      | 多个状态变量     |
-| 监听类型          | 模糊监听          | 精准深度监听                                | 支持模糊监听和精准监听                                |
+| 监听类型          | 模糊监听          | 支持模糊监听和精准监听                         | 支持模糊监听和精准监听                                |
 | 获取变更前的值| 否                     | 是                                            | 是                                            |
 | 观察条件          | 被观察对象是状态变量                     | 被观察对象是状态变量或用\@Trace装饰的类成员属性               | 被观察对象是状态变量或用\@Trace装饰的类成员属性               |
 | 约束条件          | 仅在\@Component装饰的自定义组件中| 在\@ComponentV2装饰的自定义组件和\@ObservedV2装饰的类中 | 在\@ComponentV2装饰的自定义组件和\@ObservedV2装饰的类中 |
-| 通配符支持 | 否  | 否 | 是 |
+| 通配符支持 | 否  | 默认不支持，从API版本26.0.0开始可以通过配置项支持 | 是 |
 | 回调调用时机 | 立即（同步） | 状态变更函数结束后（异步），多次变更， 只触发一次。 |  立即（同步） |
 
 [addMonitor和clearMonitor](./arkts-new-addMonitor-clearMonitor.md)API允许在应用程序执行期间动态添加和清除监听器。当isSynchronous设置为true，addMonitor类似于\@SyncMonitor, 当设置为false，addMonitor类似于\@Monitor功能。
@@ -96,7 +96,7 @@ struct CompV2 {
 \@SyncMonitor将调用其回调3次，分别对应从0到1、1到3和3到6的变化。
 
  <!-- @[compare_syncmonitor_with_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/CompareSyncMonitorWithMonitor.ets) -->
- 
+
  ``` TypeScript
  import { hilog } from '@kit.PerformanceAnalysisKit';
  

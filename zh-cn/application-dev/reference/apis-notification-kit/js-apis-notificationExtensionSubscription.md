@@ -22,7 +22,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调。
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -42,7 +42,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -70,11 +70,13 @@ try {
 }
 ```
 
-## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
 
 openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
 
-打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -92,7 +94,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 | 类型     | 说明 | 
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise对象，返回用户设置的授权的结果。 | 
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权的结果。 |
 
 **错误码：**
 
@@ -148,7 +150,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -193,7 +195,7 @@ unsubscribe(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -230,7 +232,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -253,7 +255,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExt
 
 isUserGranted(): Promise\<boolean\>
 
-查询"允许获取本机通知"的开关状态。使用Promise异步回调。
+查询“允许获取本机通知”的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -267,7 +269,7 @@ isUserGranted(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -294,7 +296,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-获取指定应用中"已获取的本机通知"通知开关开启的应用列表。使用Promise异步回调。
+获取指定应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -304,11 +306,11 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中"已获取的本机通知"通知开关开启的应用列表。        |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -385,11 +387,13 @@ type GrantedBundleInfo = _GrantedBundleInfo
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
 
-## UserGrantSetting<sup>26+</sup>
+## UserGrantSetting
 
 type UserGrantSetting = _UserGrantSetting
 
 用户授权的设置信息。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -397,4 +401,4 @@ type UserGrantSetting = _UserGrantSetting
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | 用户授权的设置信息。 |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | 用户授权的设置信息。 |

@@ -15,7 +15,7 @@ ArkUI开发框架在NDK接口提供了列表组件，使用列表可以轻松高
 
 ## 监听滚动事件 
 
-参考[监听组件事件](ndk-listen-to-component-events.md)章节实现列表滚动事件监听。 
+参考[添加事件监听](ndk-add-component-events.md)章节实现列表滚动事件监听。 
 
 ## 使用懒加载 
 
@@ -35,6 +35,8 @@ NDK提供了NodeAdapter对象替代ArkTS侧的[LazyForEach](../reference/apis-ar
 ### 实现懒加载适配器
 
 使用ArkUIListItemAdapter类来管理懒加载适配器，在类的构造中创建NodeAdapter对象，并给NodeAdapter对象设置事件监听器，在类的析构函数中，销毁NodeAdapter对象。
+
+ArkUIListItemAdapter类为自定义的通用模板类，模板参数类型可按业务数据和节点模型进行自定义。该模板对外开放“创建子组件”回调，用于按需创建并挂载每个ListItem对应的子组件。该模板还提供“复用ListItem”回调，用于在节点回收后执行状态重置与复用逻辑。
 
 <!-- @[Lazy_loading_of_text_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
 
@@ -542,7 +544,7 @@ private:
    ```
 ## ListItem横划删除 
 
-1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)对象作为属性参数传入。
+1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象作为属性参数传入。
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
    
    ``` C
@@ -591,8 +593,107 @@ private:
    } // namespace NativeModule
    #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
    ```
+2. 设置创建ListItem和复用ListItem的回调函数。当创建[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)时，创建ListItem的划出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新划出组件的绑定事件。
+    <!-- @[SetCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample1.h) -->
 
-2. 创建[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)时，创建ListItem的划出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新划出组件的绑定事件。
+   ``` C
+   // LazyTextListExample
+   // 懒加载列表示例代码。
+
+   #ifndef MYAPPLICATION_LAZYTEXTLISTEXAMPLE1_H
+   #define MYAPPLICATION_LAZYTEXTLISTEXAMPLE1_H
+
+   #include "ArkUIBaseNode.h"
+   #include "ArkUIListNode.h"
+   #include "ArkUITextNode.h"
+
+   #include <algorithm>
+   #include <memory>
+   #include <string>
+   #include <vector>
+
+   namespace NativeModule {
+   using StringAdapter = ArkUIListItemAdapterT<std::string>;
+   using AdapterWeakHolder = std::shared_ptr<std::weak_ptr<StringAdapter>>;
+
+   std::vector<std::string> BuildSampleData()
+   {
+       std::vector<std::string> data;
+       data.reserve(1000); // 每个分组预分配1000条数据空间。
+       for (int32_t i = 0; i < 1000; i++) { // 1000：1000条数据空间
+           data.emplace_back(std::to_string(i));
+       }
+       return data;
+   }
+
+   void RegisterDeleteClick(const std::shared_ptr<ArkUINode> &target, const AdapterWeakHolder &adapterWeakHolder,
+       const std::string &item)
+   {
+       // 为删除区域注册点击事件：通过弱引用获取适配器，避免回调长期持有强引用。
+       target->RegisterOnClick([adapterWeakHolder, item](ArkUI_NodeEvent *event) {
+           (void)event;
+           auto adapter = adapterWeakHolder->lock();
+           if (!adapter) {
+               return;
+           }
+           // 基于当前数据查找当前 item，确保复用场景下删除的是最新绑定项。
+           const auto &currentData = adapter->GetData();
+           auto it = std::find(currentData.begin(), currentData.end(), item);
+           if (it != currentData.end()) {
+               // RemoveItem 需要索引，这里把迭代器位置转换为 size_t。
+               auto removeIndex = static_cast<size_t>(std::distance(currentData.begin(), it));
+               adapter->RemoveItem(removeIndex);
+           }
+       });
+   }
+
+   std::shared_ptr<ArkUIListItemNode> BuildListItemNode(const std::string &item,
+       const AdapterWeakHolder &adapterWeakHolder)
+   {
+       // 构建一个 ListItem：主文本区域 + 右滑删除操作区。
+       auto listItem = std::make_shared<ArkUIListItemNode>();
+
+       // 主内容文本，展示当前数据项。
+       auto textNode = std::make_shared<ArkUITextNode>();
+       textNode->SetTextContent(item);
+       // ...
+       listItem->AddChild(textNode);
+
+       // 右滑动作区文本，点击后触发删除当前 item。
+       auto swipeNode = std::make_shared<ArkUITextNode>();
+       swipeNode->SetTextContent("del");
+       // ...
+       RegisterDeleteClick(swipeNode, adapterWeakHolder, item);
+       listItem->SetSwiperAction(swipeNode);
+       return listItem;
+   }
+
+   void ReuseListItemNode(const std::shared_ptr<ArkUIListItemNode> &listItem, const std::string &item,
+       const AdapterWeakHolder &adapterWeakHolder)
+   {
+       auto &children = listItem->GetChildren();
+       if (children.empty()) {
+           return;
+       }
+       auto textNode = std::dynamic_pointer_cast<ArkUITextNode>(children.front());
+       if (textNode) {
+           textNode->SetTextContent(item);
+           textNode->SetBackgroundColor(0xFFfffacd);
+       }
+       auto swipeContent = listItem->GetSwipeContent();
+       if (swipeContent) {
+           RegisterDeleteClick(swipeContent, adapterWeakHolder, item);
+       }
+   }
+
+   // ...
+
+   } // namespace NativeModule
+
+   #endif // MYAPPLICATION_LAZYTEXTLISTEXAMPLE1_H
+   ```
+
+3. 添加新的ListItem时，优先复用已缓存的[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)实例，并更新其内容；若无可用缓存，则创建新的ListItem。当回调返回空时，创建一个默认的ListItem作为兜底方案。最后，将生成的节点句柄回填至[OH_ArkUI_NodeAdapterEvent_SetItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapterevent_setitem)事件中，完成绑定。
    <!-- @[Item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C
@@ -631,7 +732,7 @@ private:
        // ...
    };
    ```
-3. ArkUIListItemAdapter中新增RemoveItem，用于删除数据源并且调用[OH_ArkUI_NodeAdapter_RemoveItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_removeitem)接口通知框架刷新UI。
+4. ArkUIListItemAdapter中新增RemoveItem，用于删除数据源并且调用[OH_ArkUI_NodeAdapter_RemoveItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_removeitem)接口通知框架刷新UI。
    <!-- @[Remove_Item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C

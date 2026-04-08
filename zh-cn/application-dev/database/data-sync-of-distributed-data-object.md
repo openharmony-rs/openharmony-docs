@@ -41,7 +41,7 @@
 
 ### JS对象型存储与封装机制
 
-- 为每个分布式数据对象实例创建一个内存数据库，通过SessionId标识，每个应用程序创建的内存数据库相互隔离。
+- 为每个分布式数据对象实例创建一个内存数据库，通过sessionId标识，每个应用程序创建的内存数据库相互隔离。
 
 - 在分布式数据对象实例化的时候，（递归）遍历对象所有属性，使用“Object.defineProperty”定义所有属性的set和get方法，set和get中分别对应数据库一条记录的put和get操作，Key对应属性名，Value对应属性值。
 
@@ -51,14 +51,14 @@
 
 | 分布式对象实例 | 对象实例 | 属性名称 | 属性值 | 
 | -------- | -------- | -------- | -------- |
-| 分布式内存数据库 | 一个数据库（sessionID标识） | 一条数据库记录的key | 一条数据库记录的value | 
+| 分布式内存数据库 | 一个数据库（sessionId标识） | 一条数据库记录的key | 一条数据库记录的value | 
 
 
 ### 跨设备同步和数据变更通知机制
 
-分布式数据对象，最重要的功能就是对象之间的数据同步。可信组网内的设备可以在本地创建分布式数据对象，并设置sessionID。不同设备上的分布式数据对象，通过设置相同的sessionID，建立对象之间的同步关系。
+分布式数据对象，最重要的功能就是对象之间的数据同步。可信组网内的设备可以在本地创建分布式数据对象，并设置sessionId。不同设备上的分布式数据对象，通过设置相同的sessionId，建立对象之间的同步关系。
 
-如下图所示，设备A和设备B上的“分布式数据对象1”，其sessionID均为session1，这两个对象建立了session1的同步关系。
+如下图所示，设备A和设备B上的“分布式数据对象1”，其sessionId均为session1，这两个对象建立了session1的同步关系。
 
   **图2** 对象的同步关系  
 
@@ -119,7 +119,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
   - [支持同应用中不同Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用中不同ability跨端迁移)
   - [支持同应用不同BundleName的Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用不同bundlename的ability跨端迁移)
 <!--RP5End-->
-- 分布式数据对象的数据同步发生在同一个应用程序下，且同sessionID之间。
+- 分布式数据对象的数据同步发生在同一个应用程序下，且同sessionId之间。
 
 - 设备A修改1KB数据，设备B收到变更通知，50ms内完成。
 
@@ -133,7 +133,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ## 接口说明
 
-以下是分布式对象跨设备数据同步功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[分布式数据对象](../reference/apis-arkdata/js-apis-data-distributedobject.md)。
+以下是分布式对象跨设备数据同步功能的相关接口，更多接口及使用方式请见[分布式数据对象](../reference/apis-arkdata/js-apis-data-distributedobject.md)。
 
 
 

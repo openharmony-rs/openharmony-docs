@@ -692,7 +692,7 @@ open(path: string, flags: number, mode: number, callback: AsyncCallback&lt;numbe
 | path     | string                          | 是   | 待打开文件的应用沙箱路径。                                   |
 | flags    | number                          | 否   | 打开文件的选项，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;0o0：只读打开。<br/>-&nbsp;0o1：只写打开。<br/>-&nbsp;0o2：读写打开。<br/>同时，也可给定如下选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;0o100：若文件不存在，则创建文件。使用该选项时必须指定第三个参数&nbsp;mode。<br/>-&nbsp;0o200：如果追加了0o100选项，且文件已经存在，则出错。<br/>-&nbsp;0o1000：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;0o2000：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;0o4000：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;0o200000：如果path不指向目录，则出错。<br/>-&nbsp;0o400000：如果path指向符号链接，则出错。<br/>-&nbsp;0o4010000：以同步IO的方式打开文件。 |
 | mode     | number                          | 否   | 若创建文件，则指定文件的权限，可给定如下权限，以按位或的方式追加权限，默认给定0o660。<br/>-&nbsp;0o660：所有者具有读、写权限，所有用户组具有读、写权限。<br/>-&nbsp;0o700：所有者具有读、写及可执行权限。<br/>-&nbsp;0o400：所有者具有读权限。<br/>-&nbsp;0o200：所有者具有写权限。<br/>-&nbsp;0o100：所有者具有可执行权限。<br/>-&nbsp;0o070：所有用户组具有读、写及可执行权限。<br/>-&nbsp;0o040：所有用户组具有读权限。<br/>-&nbsp;0o020：所有用户组具有写权限。<br/>-&nbsp;0o010：所有用户组具有可执行权限。<br/>-&nbsp;0o007：其余用户具有读、写及可执行权限。<br/>-&nbsp;0o004：其余用户具有读权限。<br/>-&nbsp;0o002：其余用户具有写权限。<br/>-&nbsp;0o001：其余用户具有可执行权限。 |
-| callback | AsyncCallback&lt;number&gt; | 是   | 异步打开文件之后的回调。                                     |
+| callback | AsyncCallback&lt;number&gt; | 是   | 异步打开文件之后的回调，返回打开文件的文件描述符。                                     |
 
 **示例：**
 
@@ -750,7 +750,7 @@ read(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: numb
 | ------- | ----------- | ---- | ------------------------------------------------------------ |
 | fd      | number      | 是   | 待读取文件的文件描述符。                                     |
 | buffer  | ArrayBuffer | 是   | 用于保存读取到的文件数据的缓冲区。                           |
-| options | Object      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。 |
+| options | Object      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 
@@ -777,7 +777,7 @@ read(fd: number, buffer: ArrayBuffer, options: { offset?: number; length?: numbe
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                                   | 是    | 待读取文件的文件描述符。                             |
   | buffer   | ArrayBuffer                              | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，单位为Byte，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | 是    | 异步读取数据之后的回调。                             |
 
 
@@ -799,13 +799,13 @@ readSync(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: 
   | ------- | ----------- | ---- | ---------------------------------------- |
   | fd      | number      | 是    | 待读取文件的文件描述符。                             |
   | buffer  | ArrayBuffer | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1022,13 +1022,13 @@ write(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; lengt
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 待写入文件的文件描述符。                             |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1062,8 +1062,8 @@ write(fd: number, buffer: ArrayBuffer|string, options: { offset?: number; length
   | -------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                          | 是    | 待写入文件的文件描述符。                             |
   | buffer   | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
-  | callback | AsyncCallback&lt;number&gt;     | 是    | 异步将数据写入完成后执行的回调函数。                       |
+  | options  | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | callback | AsyncCallback&lt;number&gt;     | 是    | 异步将数据写入完成后执行的回调函数。返回实际写入的长度，单位为Byte。                       |
 
 **示例：**
 
@@ -1097,13 +1097,13 @@ writeSync(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; l
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 待写入文件的文件描述符。                             |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1400,7 +1400,7 @@ ftruncate(fd: number, len?: number): Promise&lt;void&gt;
   | 参数名  | 类型     | 必填   | 说明               |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | 是    | 待截断文件的文件描述符。     |
-  | len  | number | 否    | 文件截断后的长度，以字节为单位。 |
+  | len  | number | 否    | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **返回值：**
 
@@ -1439,7 +1439,7 @@ ftruncate(fd: number, len?: number, callback: AsyncCallback&lt;void&gt;): void
   | 参数名      | 类型                        | 必填   | 说明               |
   | -------- | ------------------------- | ---- | ---------------- |
   | fd       | number                    | 是    | 待截断文件的文件描述符。     |
-  | len      | number                    | 否    | 文件截断后的长度，以字节为单位。 |
+  | len      | number                    | 否    | 文件截断后的长度，单位为Byte。默认为0。|
   | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，本调用无返回值。  |
 
 **示例：**
@@ -1472,7 +1472,7 @@ ftruncateSync(fd: number, len?: number): void
   | 参数名  | 类型     | 必填   | 说明               |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | 是    | 待截断文件的文件描述符。     |
-  | len  | number | 否    | 文件截断后的长度，以字节为单位。 |
+  | len  | number | 否    | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **示例：**
 
@@ -1501,7 +1501,7 @@ truncate(path: string, len?: number): Promise&lt;void&gt;
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | 是   | 待截断文件的应用沙箱路径。       |
-| len    | number | 否   | 文件截断后的长度，以字节为单位。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **返回值：**
 
@@ -1540,7 +1540,7 @@ truncate(path: string, len?: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                             |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | path     | string                    | 是   | 待截断文件的应用沙箱路径。       |
-| len      | number                    | 否   | 文件截断后的长度，以字节为单位。 |
+| len      | number                    | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，本调用无返回值。   |
 
 **示例：**
@@ -1572,7 +1572,7 @@ truncateSync(path: string, len?: number): void
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | 是   | 待截断文件的应用沙箱路径。       |
-| len    | number | 否   | 文件截断后的长度，以字节为单位。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **示例：**
 
@@ -1600,7 +1600,7 @@ readText(filePath: string, options?: { position?: number; length?: number; encod
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 待读取文件的应用沙箱路径。                                   |
-| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -1638,7 +1638,7 @@ readText(filePath: string, options: { position?: number; length?: number; encodi
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | filePath | string                      | 是   | 待读取文件的应用沙箱路径。                                   |
-| options  | Object                      | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | Object                      | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回读取文件的内容。                         |
 
 **示例：**
@@ -1677,7 +1677,7 @@ readTextSync(filePath: string, options?: { position?: number; length?: number; e
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 待读取文件的应用沙箱路径。                                   |
-| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -2949,8 +2949,8 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 
 | 名称        | 类型       | 只读   | 可写   | 说明                |
 | --------- | ---------- | ---- | ---- | ----------------- |
-| bytesRead | number     | 是    | 是    | 实际读取长度。           |
-| offset    | number     | 是    | 是    | 读取数据相对于缓冲区首地址的偏移。 |
+| bytesRead | number     | 是    | 是    | 实际读取长度，单位为Byte。           |
+| offset    | number     | 是    | 是    | 读取数据相对于缓冲区首地址的偏移，单位为Byte。 |
 | buffer    | ArrayBuffer | 是    | 是    | 保存读取数据的缓冲区。       |
 
 
@@ -2975,7 +2975,7 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 | uid    | number | 是    | 否    | 文件所有者的ID。                                |
 | gid    | number | 是    | 否    | 文件所有组的ID。                                |
 | rdev   | number | 是    | 否    | 标识包含该文件的从设备号。                            |
-| size   | number | 是    | 否    | 文件的大小，以字节为单位。仅对普通文件有效。                   |
+| size   | number | 是    | 否    | 文件的大小，单位为Byte。仅对普通文件有效。                   |
 | blocks | number | 是    | 否    | 文件占用的块数，计算时块大小按512B计算。                   |
 | atime  | number | 是    | 否    | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。        |
 | mtime  | number | 是    | 否    | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。        |
@@ -3419,13 +3419,13 @@ write(buffer: ArrayBuffer|string, options?: { offset?: number; length?: number; 
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -3468,8 +3468,8 @@ write(buffer: ArrayBuffer|string, options: { offset?: number; length?: number; p
   | 参数名   | 类型                            | 必填 | 说明                                                         |
   | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
   | buffer   | ArrayBuffer\|string | 是   | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | Object                          | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
-  | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数。                               |
+  | options  | Object                          | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数，返回实际写入的长度，单位为Byte。                               |
 
 **示例：**
 
@@ -3513,13 +3513,13 @@ writeSync(buffer: ArrayBuffer|string, options?: { offset?: number; length?: numb
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -3557,7 +3557,7 @@ read(buffer: ArrayBuffer, options?: { position?: number; offset?: number; length
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
@@ -3609,7 +3609,7 @@ read(buffer: ArrayBuffer, options: { position?: number; offset?: number; length?
   | 参数名      | 类型                                       | 必填   | 说明                                       |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | 是    | 用于读取文件的缓冲区。                              |
-  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | 是    | 异步从流文件读取数据之后的回调。                         |
 
 **示例：**
@@ -3656,13 +3656,13 @@ readSync(buffer: ArrayBuffer, options?: { position?: number; offset?: number; le
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **示例：**
 

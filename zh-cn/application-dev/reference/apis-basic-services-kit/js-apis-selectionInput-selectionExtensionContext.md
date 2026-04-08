@@ -24,6 +24,10 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 
 ## SelectionExtensionContext
 
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### startAbility
 
 startAbility(want: Want): Promise\<void>
@@ -32,7 +36,7 @@ startAbility(want: Want): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 

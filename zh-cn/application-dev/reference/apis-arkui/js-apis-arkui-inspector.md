@@ -129,7 +129,7 @@ off(type: 'draw', callback?: () => void): void
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
-通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -165,7 +165,7 @@ onLayoutChildren(callback: Callback\<void\>): void
 
 通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，子树中的节点完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。
+把当前注册监听的节点作为根节点，子树中的节点完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。取消最顶层的回调后，其余layoutChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +205,7 @@ onDrawChildren(callback: Callback\<number[]\>): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -302,14 +302,15 @@ struct ImageExample {
     let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
       // 从API version 24开始，新增onDrawChildren接口。监听到DrawChildren事件后，用户可以自定义实现逻辑。
     }
-  }
+
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
     this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
-    // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
   }
+
+  // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+  // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
 }
 ```

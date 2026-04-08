@@ -316,7 +316,7 @@ const DOMAIN = 0x0000;
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
   @State message: string = "Click to obtain the device list and monitor device hot-plug events";
-  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
+  keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   build() {
     RelativeContainer() {
@@ -331,7 +331,7 @@ struct Index {
                     if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
                       // 物理键盘已连接
                       this.isPhysicalKeyboardExist = true;
-                      this.keyBoards.set(data[i], type);
+                      this.keyboards.set(data[i], type);
                     }
                   });
                 }
@@ -344,14 +344,14 @@ struct Index {
                   if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
                     // 物理键盘已插入
                     this.isPhysicalKeyboardExist = true;
-                    this.keyBoards.set(data.deviceId, type);
+                    this.keyboards.set(data.deviceId, type);
                   }
                 });
-                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
                   // 物理键盘已拔掉
                   this.isPhysicalKeyboardExist = false;
-                  this.keyBoards.delete(data.deviceId);
+                  this.keyboards.delete(data.deviceId);
                 }
               });
               this.message = "Device monitoring enabled successfully"
@@ -626,7 +626,7 @@ supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallbac
 | 参数名     | 类型                                      | 必填 | 说明                                                   |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number                                    | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode)  | 是   | 需要查询的键值，最多支持5个按键查询。                |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt;  | 是   | 需要查询的键值，最多支持5个按键查询。                |
 | callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | 是   | 回调函数，返回查询结果。                           |
 
 **错误码**：
@@ -677,7 +677,7 @@ supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;b
 | 参数名     | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number               | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键值，最多支持查询5个按键。                |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | 是   | 需要查询的键值，最多支持查询5个按键。                |
 
 **返回值**：
 
@@ -735,7 +735,7 @@ supportKeysSync(deviceId: number, keys: Array&lt;KeyCode&gt;): Array&lt;boolean&
 | 参数名     | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number               | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键值，最多支持查询5个按键。                |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | 是   | 需要查询的键值，最多支持查询5个按键。                |
 
 **返回值**：
 
@@ -814,7 +814,7 @@ struct Index {
         .onClick(() => {
           // 查询ID为1的输入设备的键盘类型。
           try {
-            inputDevice.getKeyboardType(1, (error: BusinessError, type: number) => {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: inputDevice.KeyboardType) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -873,7 +873,7 @@ struct Index {
         .onClick(() => {
           // 示例查询设备ID为1的设备键盘类型。
           try {
-            inputDevice.getKeyboardType(1).then((type: number) => {
+            inputDevice.getKeyboardType(1).then((type: inputDevice.KeyboardType) => {
               console.info(`Keyboard type: ${JSON.stringify(type)}`);
             }).catch((error: BusinessError) => {
               console.error(`Get keyboard type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -929,7 +929,7 @@ struct Index {
         .onClick(() => {
           // 示例查询设备ID为1的设备键盘类型。
           try {
-            let type: number = inputDevice.getKeyboardTypeSync(1)
+            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1)
             console.info(`Keyboard type: ${JSON.stringify(type)}`)
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`)
@@ -1115,6 +1115,7 @@ struct Index {
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | id                   | number                                 | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔，设备ID可能会发生变化。 |
@@ -1148,7 +1149,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 |'pressure'    | 压力轴。  |
 | 'x'          | 横坐标轴。         |
 | 'y'           | 纵坐标轴。         |
-|'null'        |  无。             |
+|'null'        |  无类型。             |
 
 ## AxisRange
 

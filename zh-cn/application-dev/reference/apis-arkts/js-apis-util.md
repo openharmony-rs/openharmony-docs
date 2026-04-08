@@ -698,9 +698,9 @@ try {
 
 static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
 
-注册一个回调函数，在虚拟机完成垃圾回收后，如果堆内存超过临界警告阈值则触发回调执行。
+注册一个回调函数，在虚拟机主线程完成垃圾回收后，如果堆内存超过预警阈值则触发回调执行。
 
-虚拟机是通过统计存活对象大小来判断是否达到内存警告阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
+虚拟机是通过统计存活对象大小来判断是否达到内存预警阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -708,14 +708,14 @@ static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback\<string\> | 是 | 垃圾回收后内存达到阈值时触发的回调函数，字符串参数表示内存压力事件的类型。 |
-| heapMemoryThreshold | [HeapMemoryThreshold](#heapmemorythreshold24) | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
+| callback | Callback\<string\> | 是 | 垃圾回收后内存达到预警阈值时触发的回调函数，字符串参数表示内存压力事件的类型。目前事件的类型有三种取值，"LocalHeapMemPressure"，"SharedHeapMemPressure"，"ProcessHeapMemPressure"。 |
+| heapMemoryThreshold | [HeapMemoryThreshold](#heapmemorythreshold24) | 是 | 堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 注册成功返回true，否则返回false。当不在主线程调用或回调已注册时返回false。 |
+| boolean | 注册成功返回true，当不在主线程调用或回调已注册时返回false。 |
 
 **示例：**
 
@@ -754,15 +754,15 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 
 ## HeapMemoryThreshold<sup>24+</sup>
 
-堆内存阈值配置，用于指定触发回调的堆内存阈值。
+堆内存预警阈值配置，用于指定触发回调的堆内存预警阈值。
 
 **系统能力：** SystemCapability.Utils.Lang
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | ---- |
-| localHeapThreshold | number | 否 | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
-| sharedHeapThreshold | number | 否 | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
-| processHeapThreshold | number | 否 | 是 | 堆内存阈值配置，以百分比呈现，取值范围为[70, 95]。 |
+| localHeapThreshold | number | 否 | 是 | local堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听local堆。|
+| sharedHeapThreshold | number | 否 | 是 | shared堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听shared堆。|
+| processHeapThreshold | number | 否 | 是 | 进程总虚拟机堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听进程总虚拟机堆大小。|
 
 ## HeapMemoryInfo<sup>24+</sup>
 

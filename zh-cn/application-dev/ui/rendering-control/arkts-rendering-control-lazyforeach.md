@@ -109,7 +109,7 @@ struct InitialRendering {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -197,7 +197,7 @@ LazyForEach(this.data, (item: string) => {
     Row() {
       Text(item).fontSize(50)
         .onAppear(() => {
-          hilog.info(DOMAIN, TAG, 'appear: ${item}');
+          hilog.info(DOMAIN, TAG, `appear: ${item}`);
         })
     }.margin({ left: 10, right: 10 })
   }
@@ -337,7 +337,7 @@ struct DataDeletion {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -418,7 +418,7 @@ struct SwappingData {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -496,7 +496,7 @@ struct ModifyingIndividualDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -574,7 +574,7 @@ struct ModifyingMultipleDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -667,7 +667,7 @@ struct PreciselyModifyingData {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
-                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                  hilog.info(DOMAIN, TAG, `appear: ${item}`);
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -750,7 +750,7 @@ struct PreciselyModifyingDataTwo {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
-                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                  hilog.info(DOMAIN, TAG, `appear: ${item}`);
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -1327,7 +1327,7 @@ struct UnexpectedRenderingResults {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -1508,7 +1508,7 @@ struct ImageFlickeringChildComponent {
     Column() {
       Text(this.data.message).fontSize(50)
         .onAppear(() => {
-          hilog.info(DOMAIN, TAG, 'appear: ${this.data.message}');
+          hilog.info(DOMAIN, TAG, `appear: ${this.data.message}`);
         })
       Image(this.data.imgSrc)
         .width(500)
@@ -1836,7 +1836,7 @@ struct ScreenFlickeringInList {
               .height(80)
               .backgroundColor(Color.Gray)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -2109,10 +2109,9 @@ LazyForEach(this.data, (item: string, index: number) => {
 
 ### string类型数组的BasicDataSource代码
 
-<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->    
+<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->
 
 ``` TypeScript
-// BasicDataSource.ets
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2194,7 +2193,6 @@ export class BasicDataSource implements IDataSource {
 <!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/GenericBasicDataSource.ets) -->
 
 ``` TypeScript
-// GenericBasicDataSource.ets
 // GenericBasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 export class GenericBasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];

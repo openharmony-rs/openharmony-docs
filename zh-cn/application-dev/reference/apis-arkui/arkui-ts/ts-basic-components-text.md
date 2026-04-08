@@ -1117,6 +1117,26 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
+### orphanCharOptimization
+
+orphanCharOptimization(enabled: Optional\<boolean>)
+
+设置文本排版时是否使能孤字优化。不通过该接口设置，默认不使能孤字优化。
+
+孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak11)为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 段落最后一行是否使能孤字优化。<br/>true表示使能孤字优化，false表示不使能孤字优化。<br/>值为undefined或null时，不使能孤字优化。 |
+
 ### privacySensitive<sup>12+</sup>
 
 privacySensitive(supported: boolean)
@@ -1504,6 +1524,26 @@ onCopy(callback:(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
 | value  | string | 是   | 复制的文本内容。 |
+
+### onWillCopy
+
+onWillCopy(callback: Callback\<string, boolean>)
+
+在进行复制操作前，触发该回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | 是   | string为将要被复制的文本内容；boolean表示当前文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。 |
 
 ### onTextSelectionChange<sup>11+</sup>
 
@@ -2107,7 +2147,9 @@ struct TextExample4 {
 
 ### 示例5（设置文本选中和复制）
 
-该示例通过[selection](#selection11)（从API version 11开始）、[onCopy](#oncopy11)（从API version 11开始）、[draggable](#draggable9)（从API version 9开始）、[caretColor](#caretcolor14)（从API version 14开始）、[selectedBackgroundColor](#selectedbackgroundcolor14)（从API version 14开始）接口展示了文本选中、触发复制回调、设置文本选中可拖拽以及修改手柄和选中颜色的效果。
+该示例通过[selection](#selection11)（从API version 11开始）、[onCopy](#oncopy11)（从API version 11开始）、[draggable](#draggable9)（从API version 9开始）、[caretColor](#caretcolor14)（从API version 14开始）、[selectedBackgroundColor](#selectedbackgroundcolor14)（从API version 14开始）、[onWillCopy](#onwillcopy)接口展示了文本选中、触发复制回调、设置文本选中可拖拽、修改手柄和选中颜色的效果以及如何拦截系统复制。
+
+从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)接口。
 
 ```ts
 // xxx.ets
@@ -2132,6 +2174,11 @@ struct TextExample5 {
           .selection(this.start, this.end)
           .onCopy((value: string) => {
             this.onCopy = value;
+          })
+          // 从API版本26.0.0开始支持onWillCopy
+          .onWillCopy((value: string) => {
+            this.onCopy = value;
+            return false;
           })
           .draggable(true)
           .caretColor(Color.Red)
@@ -3238,3 +3285,40 @@ struct TextExample10 {
 ```
 
 ![textRangePosition](figures/textRange_Position.gif)
+
+### 示例28（设置文本排版时是否使能孤字优化）
+
+该示例通过[orphanCharOptimization](#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
+
+从API版本26.0.0开始，新增orphanCharOptimization接口。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本aaaaaaaaaaaaa';
+
+  build() {
+    Column({ space: 3 }) {
+      Text('Text不使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+      Text('Text使能孤字优化')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+        .orphanCharOptimization(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![textOrphanCharOptimization](figures/textOrphanCharOptimization.png)

@@ -1,9 +1,9 @@
 # FrameNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
@@ -17,6 +17,8 @@
 > - FrameNodes cannot be dragged.
 >
 > - FrameNode objects do not support JSON serialization.
+>
+> - When the API of the [FrameNode](#framenode-1) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 
 ## Modules to Import
 
@@ -185,7 +187,7 @@ struct Index {
 
 isModifiable(): boolean
 
-Checks whether the current FrameNode is modifiable.
+Checks whether this FrameNode is modifiable.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -195,7 +197,7 @@ Checks whether the current FrameNode is modifiable.
 
 | Type   | Description                                                                                                                                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | Whether the current FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
+| boolean | Whether this FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
 
 **Example**
 
@@ -1188,7 +1190,7 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getId(): string
 
-Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).
+Obtains the node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1198,7 +1200,7 @@ Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| string | Node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).|
+| string | Node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).|
 
 **Example**
 
@@ -1784,6 +1786,8 @@ Adds component content. The current node must be modifiable, which means the ret
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
@@ -2052,6 +2056,8 @@ Sets the cross-language access options for this FrameNode. This API allows you t
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                         |
 | -------- | -------------------------------- |
 | 100022   | The FrameNode cannot be set whether to support cross-language common attribute setting. |
@@ -2148,7 +2154,7 @@ Adds the polymorphic style states supported by the component.
 
 | Name  | Type                     | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                                      |
+| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                                      |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | Yes  | Callback invoked when the state changes.                                          |
 | excludeInner  | boolean | No  | Whether to disable the default state style processing. Default value: **false**.<br> **true**: Disable default state style processing. **false**: Enable default state style processing.|
 
@@ -2170,7 +2176,7 @@ Removes the state processing registration from the component.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                         |
+| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                         |
 
 **Example**
 
@@ -2409,7 +2415,7 @@ See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes a previously adopted node.
+Removes a previously-adopted affiliated node.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -4614,7 +4620,7 @@ See [Scroll Event Example](#scroll-event-example).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 
-Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5449,7 +5455,7 @@ See the example for [createNode('List')](#createnodelist12).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -6118,7 +6124,7 @@ See the example for [createNode('WaterFlow')](#createnodewaterflow12).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [WaterFlow](#waterflow12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [WaterFlow](#waterflow12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -6699,7 +6705,7 @@ See the example for [createNode('Grid')](#createnodegrid14).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -9508,7 +9514,7 @@ export struct TrackNode {
     // Build the virtual tree of the tracking point and obtain the root node (Row in this example) of the current page.
     let uid = this.getUniqueId()
     let node: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(uid);
-    console.info(`Track onDidBuild node:${node?.getNodeType()}`))
+    console.info(`Track onDidBuild node:${node?.getNodeType()}`);
     if (node === null) {
       return
     }

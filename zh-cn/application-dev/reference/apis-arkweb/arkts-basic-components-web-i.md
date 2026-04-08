@@ -1,8 +1,8 @@
 # Interfaces（其他）
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -245,7 +245,7 @@ Web同层渲染的配置。
 | userAgent          | string | 否 | 否 | 用于下载的用户代理。                          |
 | contentDisposition | string | 否 | 否 | 服务器返回的 Content-Disposition响应头，服务器可能返回空。 |
 | mimetype           | string | 否 | 否 | 服务器返回内容媒体类型（MIME）信息。                |
-| contentLength      | number | 否 | 否 | 服务器返回文件的长度。                         |
+| contentLength      | number | 否 | 否 | 服务器返回文件的长度。  单位：字节。                       |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
@@ -951,5 +951,22 @@ Web屏幕捕获的配置。
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
-| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。    |
-| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。    |
+| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。<br>单位：毫秒。 |
+| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。<br>单位：毫秒。|
+
+## AISessionEvent
+
+自定义AI会话配置对象，用于定义AI会话的生命周期回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| aiSessionType | [AISessionType](./arkts-basic-components-web-e.md#aisessiontype) | 否 | 否 | AI会话类型。 |
+| onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | 否 | 否 | AI会话创建时触发的回调函数。返回`true`跳过系统默认行为，返回`false`继续执行系统默认逻辑。 |
+| onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | 否 | 否 | AI会话执行操作时触发的回调函数。 |
+| onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | 否 | 否 | AI会话销毁时触发的回调函数，用于清理与自定义AI模型关联的资源。 |

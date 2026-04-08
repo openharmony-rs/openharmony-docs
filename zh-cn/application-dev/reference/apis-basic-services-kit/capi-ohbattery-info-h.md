@@ -77,7 +77,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 **描述**
 
-返回当前电池容量。
+返回当前电池容量百分比。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 

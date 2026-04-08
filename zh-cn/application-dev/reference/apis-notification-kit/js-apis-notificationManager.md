@@ -37,7 +37,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -108,7 +108,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -170,7 +170,7 @@ cancel(id: number, label: string, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -219,7 +219,7 @@ cancel(id: number, label?: string): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -258,7 +258,7 @@ cancel(id: number, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -300,7 +300,7 @@ cancelAll(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -341,7 +341,7 @@ cancelAll(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -378,7 +378,7 @@ addSlot(type: SlotType, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -426,7 +426,7 @@ addSlot(type: SlotType): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -465,7 +465,7 @@ getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -513,7 +513,7 @@ getSlot(slotType: SlotType): Promise\<NotificationSlot\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -551,7 +551,7 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 
 | 错误码ID | 错误信息                            |
@@ -593,7 +593,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -630,7 +630,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -678,7 +678,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -716,7 +716,7 @@ removeAllSlots(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -756,7 +756,7 @@ removeAllSlots(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -792,7 +792,7 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- |
@@ -835,7 +835,7 @@ isNotificationEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -873,7 +873,7 @@ isNotificationEnabledSync(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -912,7 +912,7 @@ setBadgeNumber(badgeNumber: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -955,7 +955,7 @@ setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1034,7 +1034,7 @@ getActiveNotificationCount(callback: AsyncCallback\<number\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1075,7 +1075,7 @@ getActiveNotificationCount(): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1111,7 +1111,7 @@ getActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1151,7 +1151,7 @@ getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1236,7 +1236,7 @@ cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1283,7 +1283,7 @@ cancelGroup(groupName: string): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1322,7 +1322,7 @@ isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1369,7 +1369,7 @@ isSupportTemplate(templateName: string): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1400,7 +1400,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 > **说明：**
 >
 > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1415,7 +1415,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1465,7 +1465,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 > **说明：**
 >
 > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1485,7 +1485,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1543,7 +1543,7 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1589,7 +1589,7 @@ requestEnableNotification(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1629,7 +1629,7 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1672,7 +1672,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1717,7 +1717,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1753,11 +1753,13 @@ class MyAbility extends UIAbility {
 }
 ```
 
-## notificationManager.openNotificationSettingsWithResult<sup>26+</sup>
+## notificationManager.openNotificationSettingsWithResult
 
 openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>
 
 拉起应用的通知设置界面，该页面以半模态形式呈现，可用于设置通知开关、通知提醒方式等。使用Promise异步回调, 当半模态窗口关闭时返回用户设置的状态。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1829,7 +1831,7 @@ getNotificationSetting(): Promise\<NotificationSetting\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1948,10 +1950,10 @@ notificationManager.isGeofenceEnabled().then((data: boolean) => {
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | 否   |  否  | 表示是否开启振动。<br/> - true：开启。<br/> - false：关闭。 |
 | soundEnabled     | boolean | 否   |  否  | 表示是否开启响铃。<br/> - true：开启。<br/> - false：关闭。 |
-| lockScreenEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/> - true：开启。<br/> - false：关闭。 |
-| bannerEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/> - true：开启。<br/> - false：关闭。 |
-| badgeNumberEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/> - true：开启。<br/> - false：关闭。 |
-| notificationEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示应用通知使能状态。<br/> - true：开启。<br/> - false：关闭。 |
+| lockScreenEnabled     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| bannerEnabled     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| badgeNumberEnabled     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
+| notificationEnabled     | boolean | 否   |  是  | 表示应用通知使能状态。<br/>**起始版本**：26.0.0<br/> - true：开启。<br/> - false：关闭。 |
 
 ## BundleOption
 

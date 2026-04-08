@@ -35,21 +35,21 @@
 | 实例名          | 接口名                                                       | 描述                                         |
 | --------------- | ------------------------------------------------------------ | -------------------------------------------- |
 | certificateManager        | installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>) : void  | 使用callback方式安装应用证书凭据。        |
-| certificateManager        | installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string) : Promise\<CMResult> | 使用promise方式安装应用证书凭据。               |
-| certificateManager        | installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel) : Promise\<CMResult><sup>18+</sup> | 使用promise方式安装应用证书凭据，并指定凭据的存储级别。 |
+| certificateManager        | installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string) : Promise\<CMResult> | 使用Promise方式安装应用证书凭据。               |
+| certificateManager        | installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel) : Promise\<CMResult><sup>18+</sup> | 使用Promise方式安装应用证书凭据，并指定凭据的存储级别。 |
 | certificateManager        | getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>) : void    | 使用callback方式获取应用证书凭据。       |
-| certificateManager        | getPrivateCertificate(keyUri: string) : Promise\<CMResult>                         | 使用promise方式获取应用证书凭据。        |
+| certificateManager        | getPrivateCertificate(keyUri: string) : Promise\<CMResult>                         | 使用Promise方式获取应用证书凭据。        |
 | certificateManager        | uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>) : void  | 使用callback方式卸载应用证书凭据。      |
-| certificateManager        | uninstallPrivateCertificate(keyUri: string) : Promise\<void> | 使用promise方式卸载应用证书凭据。 |
+| certificateManager        | uninstallPrivateCertificate(keyUri: string) : Promise\<void> | 使用Promise方式卸载应用证书凭据。 |
 | certificateManager | init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>) : void | 使用callback方式进行签名验签的初始化操作。 |
-| certificateManager | init(authUri: string, spec: CMSignatureSpec) : Promise\<CMHandle>  | 使用promise方式进行签名验签的初始化操作。 |
+| certificateManager | init(authUri: string, spec: CMSignatureSpec) : Promise\<CMHandle>  | 使用Promise方式进行签名验签的初始化操作。 |
 | certificateManager        | update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>) : void         | 使用callback方式对待签名、验签的数据进行更新操作。        |
-| certificateManager        | update(handle: Uint8Array, data: Uint8Array) : Promise\<void> | 使用promise方式对待签名、验签的数据进行更新操作。 |
+| certificateManager        | update(handle: Uint8Array, data: Uint8Array) : Promise\<void> | 使用Promise方式对待签名、验签的数据进行更新操作。 |
 | certificateManager        | finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>) : void         | 使用callback方式完成数据的签名操作。        |
 | certificateManager        | finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>) : void     | 使用callback方式完成数据的签名操作。        |
-| certificateManager        | finish(handle: Uint8Array, signature?: Uint8Array) : Promise\<CMResult> | 使用promise方式完成数据的签名、验签操作。 |
-| certificateManager        | abort(handle: Uint8Array, callback: AsyncCallback\<void>) : void         | 使用callback方式中止签名、验证操作。        |
-| certificateManager        | abort(handle: Uint8Array) : Promise\<void> | 使用promise方式中止签名、验证操作。 |
+| certificateManager        | finish(handle: Uint8Array, signature?: Uint8Array) : Promise\<CMResult> | 使用Promise方式完成数据的签名、验签操作。 |
+| certificateManager        | abort(handle: Uint8Array, callback: AsyncCallback\<void>) : void         | 使用callback方式中止签名、验签操作。        |
+| certificateManager        | abort(handle: Uint8Array) : Promise\<void> | 使用Promise方式中止签名、验签操作。 |
 
 ## 开发步骤
 

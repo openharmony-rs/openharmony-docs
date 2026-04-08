@@ -16,7 +16,7 @@
 - [ColorPicker](#colorpicker)：智能取色器。
 
 > **说明：**
-> 
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -373,6 +373,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
+![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
 
 ### getMainColorSync
 
@@ -489,7 +490,7 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
- | Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。 |
+| Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。 |
 
 **示例：**
 
@@ -694,7 +695,7 @@ blur(radius: number): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
+|  radius   | number | 是   | 模糊半径，单位为px。模糊效果与所设置的值成正比，值越大效果越明显。 |
 
 **返回值：**
 
@@ -782,7 +783,7 @@ blur(radius: number, tileMode: TileMode): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
+|  radius   | number | 是   | 模糊半径，单位为px。模糊效果与所设置的值成正比，值越大效果越明显。 |
 |  tileMode   | [TileMode](#tilemode14) | 是   | 着色器效果平铺模式。影响图像边缘的模糊效果。目前仅支持CPU渲染，所以目前着色器平铺模式仅支持DECAL。 |
 
 **返回值：**
@@ -1027,6 +1028,7 @@ struct Index {
   }
 }
 ```
+![zh-ch_image_Set_ColorMatrix.png](figures/zh-ch_image_Set_ColorMatrix.png)
 
 ### brightness
 

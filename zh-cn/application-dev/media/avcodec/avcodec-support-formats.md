@@ -32,6 +32,7 @@
 | DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Cinepak<sup>24+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
 通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。
@@ -129,6 +130,7 @@
 | 音频       | amr                        |音频轨：AMR(amrnb、amrwb)|
 | 音频       | ape                        |音频轨：APE|
 | 音频       | wma<sup>22+</sup>                        |音频轨：AC3、WMAV1、WMAV2、Vorbis、Flac、AMR(amrnb、amrwb)、AAC、MPEG(MP2、MP3)、GSM_MS、G711mu、G711a、PCM、ADPCM_G722、ADPCM_G726、ADPCM_IMA_WAV、ADPCM_MS、ADPCM_YAMAHA、DVAUDIO<sup>23+</sup>、DTS<sup>23+</sup>|
+| 音频       | sunAU<sup>24+</sup>          |音频轨：PCM、ADPCM_G722、ADPCM_G726LE、G711mu、G711a|
 | 音频       | dts<sup>23+</sup>          |音频轨：DTS|
 | 外挂字幕   | srt                        |字幕轨：SRT|
 | 外挂字幕   | webvtt                     |字幕轨：WEBVTT|

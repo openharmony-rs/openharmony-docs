@@ -2014,7 +2014,9 @@ finishTransition(): void
 
 ### 示例1（设置导航点交互及翻页动效）
 
-该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效模式，实现了Swiper组件翻页至指定页面。
+该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效以跳转指定页面，并使用[onScrollStateChanged](#onscrollstatechanged20)回调监听滑动状态的变化。
+
+从API version 20开始，新增onScrollStateChanged事件。
 
 ```ts
 // xxx.ets

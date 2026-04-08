@@ -6,6 +6,8 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
+在声明式UI开发范式中，UI是程序状态的运行结果，状态的变化会驱动UI的刷新。ArkUI提供了一套装饰器机制，使开发者能够便捷地定义和管理状态变量，实现数据与UI的联动。
+
 ArkUI包含的V2状态管理装饰器列表如下：
 
 | V2状态管理装饰器                                    | 装饰器说明           |
@@ -20,7 +22,7 @@ ArkUI包含的V2状态管理装饰器列表如下：
 | [\@Monitor](./arkts-new-monitor.md)                 | 状态变量修改异步监听。   |
 | [\@SyncMonitor](./arkts-new-syncmonitor.md)                 | 状态变量修改同步监听。   |
 | [\@Computed](./arkts-new-computed.md)               | 计算属性。           |
-| [\@ObservedV2](./arkts-new-observedV2-and-trace.md) | 标记类可观察         |
+| [\@ObservedV2](./arkts-new-observedV2-and-trace.md) | 标记类可观察。       |
 | [\@Trace](./arkts-new-observedV2-and-trace.md)      | 标记类属性可观察。   |
 | [\@Type](./arkts-new-type.md)                       | 标记类属性的类型。   |
 | [\@ReusableV2](./arkts-new-reusableV2.md)           | 标记组件可复用。     |

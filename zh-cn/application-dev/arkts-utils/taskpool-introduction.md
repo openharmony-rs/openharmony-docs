@@ -22,7 +22,7 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 - 从API version 11开始，跨并发实例传递带方法的实例对象时，该类必须使用装饰器[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标注，且仅支持在.ets文件中使用。如果不考虑使用@Sendable装饰器标注，可以考虑worker方法，请参考[Worker同步调用宿主线程的接口](worker-invoke-mainthread-interface.md)。
 
-- 任务函数（[LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)除外）在TaskPool工作线程中的执行时长不能超过3分钟。否则，若因任务逻辑导致阻塞，使任务无法完成，将导致该线程后续无法调度其他任务。当所有线程均被超时占用时，后续提交的任务将无法正常调度执行。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步运行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过[Task](../reference/apis-arkts/js-apis-taskpool.md#task)的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
+- 任务函数（[LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)除外）在TaskPool工作线程中的执行时长不能超过3分钟。否则，若因任务逻辑导致阻塞，使任务无法完成，将导致该线程后续无法调度其他任务。当所有线程均被超时占用时，后续提交的任务将无法正常调度执行。需要注意的是，这里的3分钟限制仅统计TaskPool线程的​​同步执行时长​​，不包含异步操作（如Promise或async/await）的等待时长。例如，数据库的插入、删除、更新等操作，如果是异步操作，仅计入CPU实际处理时长（如SQL解析），网络传输或磁盘I/O等待时长不计入；如果是同步操作，整个操作时长（含I/O阻塞时间）均计入限制。开发者可通过[Task](../reference/apis-arkts/js-apis-taskpool.md#task)的属性ioDuration、cpuDuration获取执行当前任务的异步IO耗时和CPU耗时。
 
 - 实现任务的函数入参需满足序列化支持的类型。详情请参见[线程间通信对象概述](serializable-overview.md)。目前不支持使用[@State装饰器](../ui/state-management/arkts-state.md)、[@Prop装饰器](../ui/state-management/arkts-prop.md)、[@Link装饰器](../ui/state-management/arkts-link.md)等装饰器修饰的复杂类型。
 
@@ -155,14 +155,7 @@ struct Index {
 import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
-function testPromise(args1: number, args2: number): Promise<number> {
-  return new Promise<number>((resolve, reject) => {
-    resolve(args1 + args2);
-  });
-}
-
-@Concurrent
-async function testPromise1(args1: number, args2: number): Promise<number> {
+function testPromise1(args1: number, args2: number): Promise<number> {
   return new Promise<number>((resolve, reject) => {
     resolve(args1 + args2);
   });
@@ -170,23 +163,30 @@ async function testPromise1(args1: number, args2: number): Promise<number> {
 
 @Concurrent
 async function testPromise2(args1: number, args2: number): Promise<number> {
+  return new Promise<number>((resolve, reject) => {
+    resolve(args1 + args2);
+  });
+}
+
+@Concurrent
+async function testPromise3(args1: number, args2: number): Promise<number> {
   return await new Promise<number>((resolve, reject) => {
     resolve(args1 + args2);
   });
 }
 
 @Concurrent
-function testPromise3() {
+function testPromise4() {
   return Promise.resolve(1);
 }
 
 @Concurrent
-async function testPromise4(): Promise<number> {
+async function testPromise5(): Promise<number> {
   return 1;
 }
 
 @Concurrent
-async function testPromise5(): Promise<string> {
+async function testPromise6(): Promise<string> {
   return await new Promise((resolve) => {
     setTimeout(() => {
       resolve('Promise setTimeout after resolve');
@@ -195,12 +195,12 @@ async function testPromise5(): Promise<string> {
 }
 
 async function testConcurrentFunc() {
-  const task1: taskpool.Task = new taskpool.Task(testPromise, 1, 2);
-  const task2: taskpool.Task = new taskpool.Task(testPromise1, 1, 2);
-  const task3: taskpool.Task = new taskpool.Task(testPromise2, 1, 2);
-  const task4: taskpool.Task = new taskpool.Task(testPromise3);
-  const task5: taskpool.Task = new taskpool.Task(testPromise4);
-  const task6: taskpool.Task = new taskpool.Task(testPromise5);
+  const task1: taskpool.Task = new taskpool.Task(testPromise1, 1, 2);
+  const task2: taskpool.Task = new taskpool.Task(testPromise2, 1, 2);
+  const task3: taskpool.Task = new taskpool.Task(testPromise3, 1, 2);
+  const task4: taskpool.Task = new taskpool.Task(testPromise4);
+  const task5: taskpool.Task = new taskpool.Task(testPromise5);
+  const task6: taskpool.Task = new taskpool.Task(testPromise6);
 
   taskpool.execute(task1).then((d: object) => {
     console.info(`task1 res is: ${d}`); // 输出结果：task1 res is: 3

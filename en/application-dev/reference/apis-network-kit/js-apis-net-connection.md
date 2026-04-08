@@ -1908,8 +1908,8 @@ Sets the URL of the Proxy Auto-Configuration Script (PAC) and enables the PAC pr
 
 >**NOTE**
 >
-> 1. Currently, this API can be used to parse scripts and enable the PAC proxy capability only on PCs. For other device types, only the script address is saved and the PAC proxy capability is not enabled.<br>
-> 2. This API does not verify the URL authenticity. After the URL is set on the PC, the PAC proxy is started. If the URL is incorrect, the proxy fails to be started and the error code 2100002 is returned.
+> 1. This API can parse scripts and enable the PAC proxy capability on **PC/2in1<sup>20+</sup>**, **Phone<sup>23+</sup>**, **Tablet<sup>23+</sup>** and **TV<sup>23+</sup>** devices. For wearable devices, only the script address is saved, and the PAC proxy capability is not enabled.<br>
+> 2. This API does not verify the URL authenticity. If the URL is incorrect when the PAC proxy is enabled, the proxy fails to be enabled and error code 2100002 is returned.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 
@@ -1978,8 +1978,8 @@ Parses the specified URL proxy address based on the configured PAC script and re
 > **NOTE**
 >
 > 1. You can use [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15) to set the PAC script.<br>
-> 2. If no PAC script is set before this interface is called, an empty string is returned.
-> 3. Currently, the [setPacFileUrl](#connectionsetpacfileurl20) interface can be used to parse scripts and enable the PAC proxy capability only for PCs. Therefore, this interface can be used to obtain PAC proxy information only for PCs. If other devices call this API, the function does not take effect and an empty string is returned.
+> 2. If no PAC script is set before this interface is called, an empty string is returned.<br>
+> 3. The [setPacFileUrl](#connectionsetpacfileurl20) API supports parsing scripts and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup> and TV<sup>23+</sup> devices. Therefore, this API can be used to obtain the PAC proxy information on the preceding devices. For wearable devices, this API does not take effect, and an empty string is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -2598,6 +2598,123 @@ connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) =>
   }
 }).catch((error: BusinessError) => {
   console.error(`Error fetching getSystemNetPortStates. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.queryTraceRoute
+
+queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<TraceRouteInfo[]\>
+
+Queries the network route tracing information. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> To call this API, the application needs to apply for the precise location permission. <!--RP1-->According to [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md)<!--RP1End-->, the caller needs to apply for both **ohos.permission.APPROXIMATELY_LOCATION** and **ohos.permission.LOCATION**.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.INTERNET, ohos.permission.ACCESS_NET_TRACE_INFO, ohos.permission.LOCATION, and ohos.permission.APPROXIMATELY_LOCATION
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| destination | string | Yes| Target domain name or IP address, for example, www.example.com or 8.8.8.8.|
+| option | [TraceRouteOptions](#tracerouteoptions) | No| Options for route tracing. If this parameter is not specified, the default configuration is used.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<[TraceRouteInfo](#tracerouteinfo)[]\> | Promise used to return the array of route tracing information.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let options: connection.TraceRouteOptions = {
+    maxJumpNumber: 30,
+    packetsType: connection.PacketsType.NETCONN_PACKETS_ICMP
+};
+
+connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
+    console.info(JSON.stringify(data));
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+});
+```
+
+
+## connection.queryProbeResult
+
+queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
+
+Queries network probe results. If an exception (for example, network disconnection) occurs and the request fails to be sent, the API immediately returns the result without performing subsequent probe. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is used to perform network probe on a target host for a period of time to obtain the packet loss rate and RTT information.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| destination | string | Yes| Target domain name or IP address, for example, www.example.com or 8.8.8.8.|
+| duration | number | Yes| Probe duration, in seconds. The value must be a positive integer. The probe interval is one second. If no exception (such as network disconnection) occurs, the probe result is returned when the probe duration expires.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<[ProbeResultInfo](#proberesultinfo)\> | Promise used to return the probe result.|
+
+**Error codes**
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+  
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let duration: number = 10;
+
+connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
+    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
 });
 ```
 
@@ -3448,7 +3565,7 @@ Enumerates the parameters of the ASCII/Unicode transcoding process.
 | ALLOW_UNASSIGNED | 1 | Allows the translation of domain names that contain unassigned Unicode code points (in a Unicode character set, not all code points are assigned characters, i.e., unassigned Unicode code points).|
 | USE_STD3_ASCII_RULES | 2 | During the conversion, the STD-3 ASCII rule (RFC 1123 standard) is forcibly used to check the generated ASCII domain name.|
 
-## TcpState
+## TcpState<sup>24+</sup>
 
 Enumerates TCP states.
 
@@ -3463,12 +3580,27 @@ Enumerates TCP states.
 | SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
 | FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
 | FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
-| TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After 2MSL (maximum segment lifetime), the connection is completely released.|
+| TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.|
 | CLOSE       | 7  | Initial/closed state, with no connection.|
 | CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
 | LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
 | LISTEN      | 10 | The server listens and waits for the client to connect.|
 | CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
+  
+  ## PacketsType
+
+Defines the type of network probe data packets.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| NETCONN_PACKETS_ICMP | 0 | ICMP packet type.|
+| NETCONN_PACKETS_UDP | 1 | UDP packet type.|
 
 ## HttpProxy<sup>10+</sup>
 
@@ -3584,14 +3716,16 @@ Defines the network connection properties.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name   | Type  | Read Only|Optional|Description                     |
-| ------ | ------ | --- |---|------------------------- |
-| interfaceName | string                              | No| No|Network interface card (NIC) name.                               |
-| domains       | string                              | No| No|Domain name.                                   |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No|Network link information.                               |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No|Network route information.                               |
-| dnses         | Array\<[NetAddress](#netaddress)>   | No| No|Network address. For details, see [NetAddress](#netaddress).|
-| mtu           | number                              | No| No|Maximum transmission unit (MTU).                           |
+| Name   | Type  | Read Only|Optional| Description                                                                                            |
+| ------ | ------ | --- |---|------------------------------------------------------------------------------------------------|
+| interfaceName | string                              | No| No| Network interface card (NIC) name.                                                                                         |
+| domains       | string                              | No| No| Domain name.                                                                                           |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No| Network link information.                                                                                         |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No| Network route information.                                                                                         |
+| dnses         | Array\<[NetAddress](#netaddress)>   | No| No| Network address. For details, see [NetAddress](#netaddress).                                                             |
+| mtu           | number                              | No| No| Maximum transmission unit (MTU).                                                                                       |
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.|
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv6 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.|
 
 ## RouteInfo
 
@@ -3711,7 +3845,7 @@ Describes the TCP port state information.
 | tcpRemotePort | number | No| Yes|Remote port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
 | tcpUid        | number | No| Yes|UID of the process that listens for the TCP port. The default value is **0**.|
 | tcpPid        | number | No| Yes|UID of the user who listens for the TCP port. The default value is **0**.|
-| tcpState      | [TcpState](#tcpstate) | No| Yes|TCP network state. The default value is **0**. |
+| tcpState      | [TcpState](#tcpstate24) | No| Yes|TCP network state. The default value is **0**. |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -3742,3 +3876,52 @@ Describes the information about the TCP and UDP ports that are currently listene
 | ------ | ------ | --- |---|------------------------- |
 | tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | No| No| TCP information currently listened for by the system.  |
 | udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | No| No| UDP information currently listened for by the system.  |
+  
+ 
+## TraceRouteOptions
+
+Defines options for route tracing.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| maxJumpNumber | number | No| Yes| Maximum number of jumps. The maximum value is **30**, and the default value is **30**.|
+| packetsType | [PacketsType](#packetstype) | No| Yes| Type of the data packet used for probe. The default value is **NETCONN_PACKETS_ICMP**.|
+  
+
+## TraceRouteInfo
+
+Defines the route tracing information.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| jumpNo | number | No| No| Jump number.|
+| address | string | No| No| IP address to jump to.|
+| rtt | number[] | No| No| Round-trip time (RTT), in milliseconds. Five probe packets are sent for each jump. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.|
+  
+
+## ProbeResultInfo
+
+Defines the network probe result information.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| lossRate | number | No| No| Packet loss rate. The value ranges from 0 to 100. For example, 100 indicates 100% packet loss, and 50 indicates 50% packet loss.|
+| rtt | number[] | No| No| Round-trip time (RTT), in milliseconds. Multiple probe packets are sent to the target host. The number of probe packets is determined by the **duration** parameter in the [queryProbeResult](#connectionqueryproberesult) API. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.|

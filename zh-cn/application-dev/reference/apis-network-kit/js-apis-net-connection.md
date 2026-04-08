@@ -1908,8 +1908,8 @@ setPacFileUrl(pacFileUrl: string): void
 
 >**注意：**
 >
-> 1、本接口当前只在PC设备上支持解析脚本并启用PAC代理能力，其他设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
-> 2、该接口不会校验URL真实性，PC设备上在设置完成之后，会启动PAC代理，若URL有误，则启动代理失败，返回2100002错误码。
+> 1、本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
+> 2、该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -1978,8 +1978,8 @@ findProxyForUrl(url: string): string
 > **说明：**
 >
 > 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
-> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
-> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
+> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。<br>
+> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口支持PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2598,6 +2598,123 @@ connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) =>
   }
 }).catch((error: BusinessError) => {
   console.error(`Error fetching getSystemNetPortStates. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.queryTraceRoute
+
+queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<TraceRouteInfo[]\>
+
+查询网络路由跟踪信息，使用Promise方式作为异步方法。
+
+> **说明：**
+>
+> 应用调用该接口需申请精确位置权限。<!--RP1-->根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)<!--RP1End-->，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.INTERNET、ohos.permission.ACCESS_NET_TRACE_INFO、ohos.permission.LOCATION和ohos.permission.APPROXIMATELY_LOCATION
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
+| option | [TraceRouteOptions](#tracerouteoptions) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<[TraceRouteInfo](#tracerouteinfo)[]\> | Promise对象，返回路由跟踪信息数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let options: connection.TraceRouteOptions = {
+    maxJumpNumber: 30,
+    packetsType: connection.PacketsType.NETCONN_PACKETS_ICMP
+};
+
+connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
+    console.info(JSON.stringify(data));
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+});
+```
+
+
+## connection.queryProbeResult
+
+queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
+
+查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口使用Promise方式作为异步方法。
+
+> **说明：**
+>
+> 此接口用于对目标主机进行一段持续时间的网络探测，以获取丢包率和RTT信息。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.INTERNET。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
+| duration | number | 是 | 探测持续时间，单位为秒，传入值需为正整数。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<[ProbeResultInfo](#proberesultinfo)\> | Promise对象，返回探测结果信息。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+  
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let duration: number = 10;
+
+connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
+    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
 });
 ```
 
@@ -3469,6 +3586,21 @@ TCP状态。
 | LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
 | LISTEN      | 10 | 服务端监听，等待客户端连接。 |
 | CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
+  
+  ## PacketsType
+
+网络探测数据包类型。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NETCONN_PACKETS_ICMP | 0 | ICMP数据包类型。 |
+| NETCONN_PACKETS_UDP | 1 | UDP数据包类型。 |
 
 ## HttpProxy<sup>10+</sup>
 
@@ -3593,7 +3725,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。                                                              |
 | mtu           | number                              | 否 | 否 | 最大传输单元。                                                                                        |
 | isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。 |
-| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv4的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。 |
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。 |
 
 ## RouteInfo
 
@@ -3744,3 +3876,52 @@ UDP端口状态信息。
 | ------ | ------ | --- |---|------------------------- |
 | tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
 | udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
+  
+ 
+## TraceRouteOptions
+
+路由跟踪的选项。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| maxJumpNumber | number | 否 | 是 | 最大跳数，最大值为30，默认值为30。 |
+| packetsType | [PacketsType](#packetstype) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
+  
+
+## TraceRouteInfo
+
+路由跟踪信息。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| jumpNo | number | 否 | 否 | 跳数序号。 |
+| address | string | 否 | 否 | 该跳的IP地址。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
+  
+
+## ProbeResultInfo
+
+网络探测结果信息。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| lossRate | number | 否 | 否 | 丢包率，取值范围0-100。例如，100表示100%丢包，50表示50%丢包。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |

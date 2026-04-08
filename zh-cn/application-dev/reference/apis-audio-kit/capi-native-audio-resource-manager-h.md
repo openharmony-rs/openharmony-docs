@@ -93,7 +93,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceMa
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                        1. 参数resourceManager为nullptr;<br>                                                        2. 参数name为nullptr;<br>                                                        3. 参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：创建workgroup失败，返回workgroup为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                        1. 参数resourceManager为nullptr；<br>                                                        2. 参数name为nullptr；<br>                                                        3. 参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 ### OH_AudioResourceManager_ReleaseWorkgroup()
 
@@ -119,7 +119,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceM
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                        1. 参数resourceManager为nullptr;<br>                                                        2. 参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：释放workgroup失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                        1. 参数resourceManager为nullptr；<br>                                                        2. 参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 ### OH_AudioWorkgroup_AddCurrentThread()
 
@@ -145,7 +145,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *grou
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：当前线程加入分组失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                        1. 参数group为nullptr；<br>                                                        2. 参数tokenId为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 ### OH_AudioWorkgroup_RemoveThread()
 
@@ -171,7 +171,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, i
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：当前线程从分组中移除失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                        1. 参数group为nullptr；<br>                                                        2. 参数tokenId无效。<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 ### OH_AudioWorkgroup_Start()
 
@@ -198,7 +198,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：当前工作组通知系统启动失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                        1. 参数group为nullptr；<br>                                                        2. 参数startTime无效；<br>                                                        3. 参数deadlineTime无效。<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 ### OH_AudioWorkgroup_Stop()
 
@@ -223,6 +223,6 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE：当前工作组通知系统结束失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数group为nullptr。<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM：系统处理错误。 |
 
 

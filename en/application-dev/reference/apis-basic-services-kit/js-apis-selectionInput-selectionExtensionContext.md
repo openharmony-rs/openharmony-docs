@@ -105,12 +105,10 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       this.context.startAbility(wantAbility).then(() => {
         console.info(`startAbility success`);
       }).catch((err: BusinessError) => {
-        let error = err as BusinessError;
-        console.error(`startAbility error: ${error.code} ${error.message}`);
+        console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
       })
     } catch (err) {
-      let error = err as BusinessError;
-      console.error(`startAbility error: ${error.code} ${error.message}`);
+      console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
     }
     return new SelectionAbilityStub('remote');
   }
