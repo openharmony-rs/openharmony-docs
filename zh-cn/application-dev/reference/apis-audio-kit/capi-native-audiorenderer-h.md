@@ -433,7 +433,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | clockid_t clockId | 时钟标识符，使用CLOCK_MONOTONIC。 |
 | int64_t* framePosition | 指向要接收位置的变量的指针。 |
-| int64_t* timestamp | 指向接收时间戳的变量的指针。 |
+| int64_t* timestamp | 指向接收时间戳的变量的指针，单位为纳秒。 |
 
 **返回：**
 
@@ -459,7 +459,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | int64_t* framePosition | 指向要接收位置的变量的指针。 |
-| int64_t* timestamp | 指向接收时间戳的变量的指针。 |
+| int64_t* timestamp | 指向接收时间戳的变量的指针，单位为纳秒。 |
 
 **返回：**
 
@@ -1000,7 +1000,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* rendere
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| float* loudnessGain | 指向接收播放响度值的变量的指针。 |
+| float* loudnessGain | 指向接收播放响度值的变量的指针，单位为分贝。 |
 
 **返回：**
 
