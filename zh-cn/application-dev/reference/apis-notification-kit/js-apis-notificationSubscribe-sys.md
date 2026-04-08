@@ -290,7 +290,7 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 类型     | 说明               | 
 | ------- |------------------|
-| Promise\<void\> | 无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
@@ -367,7 +367,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 | 类型     | 说明               | 
 | ------- |------------------|
-| Promise\<void\> | 无返回结果的Promise对象。 | 
+| Promise\<void\> | Promise对象，无返回结果。 | 
 
 **错误码：**
 
