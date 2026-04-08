@@ -1703,6 +1703,155 @@ struct TextPickerDialogExample {
 }
 ```
 
+## Magnifier<sup>22+</sup>
+
+提供控制放大镜的显示与隐藏的能力，放大镜会对组件内容进行放大显示，便于查看组件细节。
+
+### bind<sup>22+</sup>
+
+bind(id: string): void
+
+绑定放大镜与指定id的组件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| id | string | 是 | 组件id，可通过通用属性id或key设置。当组件id为空字符串或未找到匹配id的组件时，不显示放大镜。|
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### show<sup>22+</sup>
+
+ArkTS-Dyn: show(x: number, y: number): void
+
+ArkTS-Sta: show(x: double, y: double): void
+
+设置放大镜显示的组件内容相对于组件左上角的位置，设置成功后放大镜会对以该坐标点为中心的区域内容进行放大显示。
+
+> **说明：**
+>
+> 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 放大镜显示的组件内容相对组件水平方向坐标，单位为vp。当坐标值大于组件宽度或小于0时不显示放大镜；将值设为undefined时保持放大镜的当前显示状态。|
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 放大镜显示的组件内容相对组件垂直方向坐标，单位为vp。当坐标值大于组件高度或小于0时不显示放大镜；将值设为undefined时保持放大镜的当前显示状态。|
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### unbind<sup>22+</sup>
+
+unbind(): void
+
+解除放大镜与当前组件的绑定。
+
+> **说明：**
+>
+> 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+获取Magnifier对象以控制放大镜显示与隐藏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Magnifier](#magnifier22) | Magnifier对象，用于控制放大镜的显示与隐藏。|
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, Image, $r, TouchEvent, TouchType, SourceTool } from '@kit.ArkUI';
+import { Magnifier } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct MagnifierExample {
+  private magnifier: Magnifier = this.getUIContext().getMagnifier();
+
+  build() {
+    Column() {
+      Image($r('app.media.startIcon'))
+        .width(200)
+        .height(200)
+        .margin(50)
+        .id('image')
+        .onTouch((event?: TouchEvent) => {
+          if (!event || event.sourceTool !== SourceTool.Finger) {
+            return;
+          }
+
+          if (event.type === TouchType.Down) {
+            console.info('[MagnifierExample] Screen touch down.');
+            this.magnifier.bind('image');
+          } else if (event.type === TouchType.Move) {
+            console.info('[MagnifierExample] Screen touch moving.');
+            let x = event.touches[0].x;
+            let y = event.touches[0].y;
+            this.magnifier.show(x, y)
+          } else if (event.type === TouchType.Up) {
+            console.info('[MagnifierExample] Screen touch up.');
+            this.magnifier.unbind()
+          } else if (event.type === TouchType.Cancel) {
+            console.info('[MagnifierExample] Screen touch cancel.');
+            this.magnifier.unbind()
+          }
+        })
+    }
+  }
+}
+```
+
+![image](figures/magnifier_static.jpg)
+
 ## showTextPickerDialog<sup>20+</sup>
 
 showTextPickerDialog(style: TextPickerDialogOptions \| TextPickerDialogOptionsExt): void
@@ -7914,6 +8063,195 @@ offAfterPanEnd(callback?: PanListenerCallback): void
 
 参考[onBeforePanStart](#onbeforepanstart24)接口示例。
 
+### onTextChange<sup>24+</sup>
+
+onTextChange(callback: Callback<observer.TextChangeEventInfo>): void
+
+注册当文本框的文本内容发生变化时触发的回调函数。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 是 | 当任意文本框的文本发生改变时，调用该回调函数。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Row, Column, Tabs, TextArea, TextInput, Search } from '@kit.ArkUI';
+import uiObserver from '@ohos.arkui.observer';
+
+function callbackFunc(info: uiObserver.TextChangeEventInfo) {
+  console.info('[id: ' + JSON.stringify(info.id) + '] [uniqueId: ' + JSON.stringify(info.uniqueId) + '] [content: ' + JSON.stringify(info.content) + ']');
+}
+
+@Entry
+@Component
+struct TabsExample {
+  aboutToAppear(): void {
+    this.getUIContext().getUIObserver().onTextChange(callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offTextChange(callbackFunc);
+  }
+
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+    }.width('100%')
+  }
+}
+```
+
+### offTextChange<sup>24+</sup>
+
+offTextChange(callback?: Callback<observer.TextChangeEventInfo>): void
+
+移除由[onTextChange](#ontextchange24)注册的回调函数。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 否 | 由[onTextChange](#ontextchange24)注册的回调函数。 |
+
+**示例：**
+
+请参考[onTextChange](#ontextchange24)的示例。
+
+### onTextChange<sup>24+</sup>
+
+onTextChange(identity: observer.ObserverOptions, callback: Callback<observer.TextChangeEventInfo>): void
+
+为指定ID的组件注册文本框内文本变化时触发的回调函数，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| identity | observer.[ObserverOptions](./js-apis-arkui-observer.md#observeroptions12) | 是 | 指定组件的ID。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 是 | 指定ID的文本框内文本变化时触发的回调函数。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Row, Column, Tabs, TextArea, TextInput, Search, ClickEvent, Button } from '@kit.ArkUI';
+import uiObserver from '@ohos.arkui.observer';
+
+function callbackFunc(info: uiObserver.TextChangeEventInfo) {
+  console.info('[id: ' + JSON.stringify(info.id) + '] [uniqueId: ' + JSON.stringify(info.uniqueId) + '] [content: ' + JSON.stringify(info.content) + ']');
+}
+
+@Entry
+@Component
+struct TabsExample {
+  aboutToAppear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    observer.onTextChange({ id: 'TestId1' }, callbackFunc);
+    observer.onTextChange({ id: 'TestId2' }, callbackFunc);
+    observer.onTextChange({ id: 'TestId3' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    observer.offTextChange(callbackFunc);
+  }
+
+  build() {
+    Column() {
+      TextArea({ text: 'Hello World TextArea' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId1')
+      TextInput({ text: 'Hello World TextInput' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId2')
+      Search({ value: 'Hello World Search' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId3')
+      TextArea({ text: 'Hello World TextArea' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      TextInput({ text: 'Hello World TextInput' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      Search({ value: 'Hello World Search' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      Button().onClick((event: ClickEvent) => {
+        let observer = this.getUIContext().getUIObserver();
+        observer.onTextChange({ id: 'TestId1' }, callbackFunc);
+        observer.onTextChange({ id: 'TestId2' }, callbackFunc);
+        observer.onTextChange({ id: 'TestId3' }, callbackFunc);
+      })
+    }.width('100%')
+  }
+}
+```
+
+### offTextChange<sup>24+</sup>
+
+offTextChange(identity: observer.ObserverOptions, callback?: Callback<observer.TextChangeEventInfo>): void
+
+为指定ID的组件移除先前使用onTextChange注册的回调函数，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| identity | observer.[ObserverOptions](./js-apis-arkui-observer.md#observeroptions12) | 是 | 指定组件的ID。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 否 | 指定ID的文本框内文本变化时触发的回调函数。 |
+
+**示例：**
+
+请参考[onTextChange](#ontextchange24-1)的示例。
 
 ## NodeIdentity<sup>20+</sup>
 
@@ -14084,6 +14422,98 @@ struct Index {
   }
 }
 ```
+
+### getParagraphs<sup>20+</sup>
+
+getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<Paragraph\>
+
+获取属性字符串的布局信息。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| styledString | [StyledString](./arkui-ts/ts-universal-styled-string.md#styledstring) | 是 | 属性字符串的值。 |
+| options | [TextLayoutOptions](./arkui-ts/ts-text-common.md#textlayoutoptions对象说明20) | 否 | 布局选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<Paragraph\> | 属性字符串的段落数组。 | 
+
+**示例：**
+
+```ts
+import {
+  Entry, Component,Text, Column, Button, FontWeight, LengthMetrics, MutableStyledString, TextStyle, TextController, StyleOptions, State, StyledStringKey
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GetParagraphsDemo {
+  @State testStr: string = "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.";
+
+  testStyledString: MutableStyledString = new MutableStyledString(this.testStr, [{
+    start: 0,
+    length: 3,
+    styledKey: StyledStringKey.FONT,
+    styledValue: { fontSize: 20 } as TextStyle
+  } as StyleOptions]);
+
+  @State paragraphInfo: string = "";
+  textController: TextController = new TextController();
+
+  getParagraphsInfo(constraintWidth: LengthMetrics) {
+    const paragraphs = this.getUIContext().getMeasureUtils().getParagraphs(this.testStyledString, { constraintWidth });
+
+    let info = `总段落数：${paragraphs.length}\n`;
+    paragraphs.forEach((para, index) => {
+      info += `第${index+1}段行数：${para.getLineCount()}\n`;
+    });
+    this.paragraphInfo = info;
+
+    this.textController.setStyledString(this.testStyledString);
+  }
+
+  build() {
+    Column() {
+      Button('点击获取 Paragraphs 信息')
+        .onClick(() => this.getParagraphsInfo(LengthMetrics.px(500)))
+        .margin(10)
+
+      Text('Paragraphs 信息：')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+
+      Text(this.paragraphInfo)
+        .fontSize(14)
+        .margin(5)
+        .width('100%')
+
+      Text('实际文本排版：')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+
+      Text(undefined, { controller: this.textController })
+        .width('500px')
+        .fontSize(20)
+    }
+    .width('100%')
+    .padding(20)
+  }
+}
+```
+
+![image](figures/getParagraphsInfo_static.gif)
 
 ## ComponentSnapshot<sup>12+</sup>
 
