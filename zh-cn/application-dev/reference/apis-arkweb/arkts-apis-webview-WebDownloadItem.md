@@ -842,7 +842,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download, origin URL:" + webDownloadItem.getOriginalUrl());
+              console.info("will start a download, original URL:" + webDownloadItem.getOriginalUrl());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
