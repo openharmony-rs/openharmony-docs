@@ -1810,7 +1810,7 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 
 | 类型             | 说明              |
 | -------------- | --------------- |
-| enabled | 是否开启获取悬浮三键导航类型的避让区域。<br>true表示开启，false表示关闭。</br> |
+| boolean | 是否开启获取悬浮三键导航类型的避让区域。<br>true表示开启，false表示关闭。 |
 
 **错误码：**
 
