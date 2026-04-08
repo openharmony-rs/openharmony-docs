@@ -46,7 +46,7 @@ play(): void
 **示例：**
 
 ```ts
-audioPlayer.on('play', () => {    //设置'play'事件回调。
+audioPlayer.on('play', () => {    // 设置'play'事件回调。
   console.info('audio play called');
 });
 audioPlayer.play();
@@ -66,7 +66,7 @@ pause(): void
 **示例：**
 
 ```ts
-audioPlayer.on('pause', () => {    //设置'pause'事件回调。
+audioPlayer.on('pause', () => {    // 设置'pause'事件回调。
   console.info('audio pause called');
 });
 audioPlayer.pause();
@@ -86,7 +86,7 @@ stop(): void
 **示例：**
 
 ```ts
-audioPlayer.on('stop', () => {    //设置'stop'事件回调。
+audioPlayer.on('stop', () => {    // 设置'stop'事件回调。
   console.info('audio stop called');
 });
 audioPlayer.stop();
@@ -106,7 +106,7 @@ reset(): void
 **示例：**
 
 ```ts
-audioPlayer.on('reset', () => {    //设置'reset'事件回调。
+audioPlayer.on('reset', () => {    // 设置'reset'事件回调。
   console.info('audio reset called');
 });
 audioPlayer.reset();
@@ -132,14 +132,14 @@ seek(timeMs: number): void
 **示例：**
 
 ```ts
-audioPlayer.on('timeUpdate', (seekDoneTime: number) => {    //设置'timeUpdate'事件回调。
+audioPlayer.on('timeUpdate', (seekDoneTime: number) => {    // 设置'timeUpdate'事件回调。
   if (seekDoneTime == null) {
     console.error('Failed to seek');
     return;
   }
   console.info('Succeeded in seek. seekDoneTime: ' + seekDoneTime);
 });
-audioPlayer.seek(30000);    //seek到30000ms的位置。
+audioPlayer.seek(30000);    // seek到30000ms的位置。
 ```
 
 ## setVolume<sup>(deprecated)</sup>
@@ -162,10 +162,10 @@ setVolume(vol: number): void
 **示例：**
 
 ```ts
-audioPlayer.on('volumeChange', () => {    //设置'volumeChange'事件回调。
+audioPlayer.on('volumeChange', () => {    // 设置'volumeChange'事件回调。
   console.info('audio volumeChange called');
 });
-audioPlayer.setVolume(1);    //设置音量到100%。
+audioPlayer.setVolume(1);    // 设置音量到100%。
 ```
 
 ## release<sup>(deprecated)</sup>
@@ -342,7 +342,7 @@ let path = '/data/accounts/account_0/appdata/ohos.xxx.xxx.xxx/01.mp3';
 fileIo.open(path).then((file) => {
   fdPath = fdPath + '' + file.fd;
   console.info('Succeeded in opening fd, fd is' + fdPath);
-  audioPlayer.src = fdPath;  //设置src属性，并触发'dataLoad'事件回调。
+  audioPlayer.src = fdPath;  // 设置src属性，并触发'dataLoad'事件回调。
 }, (err: BusinessError) => {
   console.error('Failed to open fd, err is' + err);
 }).catch((err: BusinessError) => {
@@ -371,7 +371,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 **示例：**
 
 ```ts
-audioPlayer.on('timeUpdate', (newTime: number) => {    //设置'timeUpdate'事件回调。
+audioPlayer.on('timeUpdate', (newTime: number) => {    // 设置'timeUpdate'事件回调。
   if (newTime == null) {
     console.error('Failed to do timeUpdate');
     return;
@@ -432,8 +432,8 @@ on(type: 'error', callback: ErrorCallback): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioPlayer.on('error', (error: BusinessError) => {  //设置'error'事件回调。
+audioPlayer.on('error', (error: BusinessError) => {  // 设置'error'事件回调。
   console.error(`audio error called, error: ${error}`);
 });
-audioPlayer.setVolume(3);  //设置volume为无效值，触发'error'事件。
+audioPlayer.setVolume(3);  // 设置volume为无效值，触发'error'事件。
 ```
