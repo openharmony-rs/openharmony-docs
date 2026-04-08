@@ -286,7 +286,7 @@ The form edit page is not in the foreground. The current operation is not suppor
 
 检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability-overview.md#半模态卡片编辑)是否已打开。
 
-## 16501015 不能关闭其它应用的半模态卡片编辑页
+## 16501015 不能关闭其他应用的半模态卡片编辑页
 
 **错误信息**
 
@@ -294,7 +294,7 @@ Cannot close the widget editing page opened by other apps.
 
 **错误描述**
 
-不能关闭其它应用的半模态卡片编辑页。
+不能关闭其他应用的半模态卡片编辑页。
 
 **可能原因**
 
