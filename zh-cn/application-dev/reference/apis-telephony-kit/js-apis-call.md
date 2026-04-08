@@ -266,7 +266,7 @@ let makeOptions: call.MakeCallOptions = {
   isHideDialScreen: true
 }
 
-call.makeCall("138xxxxxxxx"， makeOptions).then(() => {
+call.makeCall("138xxxxxxxx", makeOptions).then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
