@@ -86,6 +86,7 @@
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
+      - [LayoutAlgorithm](js-apis-arkui-layoutAlgorithm.md)
       - [NodeController](js-apis-arkui-nodeController.md)
       - [RenderNode](js-apis-arkui-renderNode.md)
       - [AttributeUpdater](js-apis-arkui-AttributeUpdater.md)
