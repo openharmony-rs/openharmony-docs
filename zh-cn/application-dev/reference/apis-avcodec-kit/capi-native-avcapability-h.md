@@ -33,7 +33,6 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVCodecType](#oh_avcodectype) | OH_AVCodecType | 编解码器类型。 |
 | [OH_AVCodecCategory](#oh_avcodeccategory) | OH_AVCodecCategory | 编解码器类别。 |
 | [OH_AVCapabilityFeature](#oh_avcapabilityfeature) | OH_AVCapabilityFeature | 可以在特定编解码器场景中使用的可选特性。 |
 
