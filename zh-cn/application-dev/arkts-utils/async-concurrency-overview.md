@@ -143,3 +143,15 @@ struct PromiseAsyncAwait {
 
 <!-- @[async_operation_error_handling_with_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+async function myAsyncFunction(): Promise<void> {
+  try {
+     const result: string = await new Promise((resolve: Function) => {
+        resolve('Hello, world!');
+     });
+  } catch (e) {
+     console.error(`Get exception: ${e}`);
+  }
+}
+```
+
