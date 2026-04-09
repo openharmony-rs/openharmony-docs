@@ -50,7 +50,8 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| attributeSetting  | boolean | 否   | 是   | FrameNode是否支持跨ArkTS语言进行属性设置。<br/>true表示支持跨ArkTS语言进行属性设置，false表示不支持跨ArkTS语言进行属性设置。<br/>默认为false。 |
+| attributeSetting  | boolean | 否   | 是   | FrameNode是否支持跨ArkTS语言进行属性设置。<br/>true表示支持跨ArkTS语言进行属性设置，false表示不支持跨ArkTS语言进行属性设置。<br/>默认值为false。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| treeOperating  | boolean | 否   | 是   | FrameNode是否支持跨ArkTS语言进行组件树操作。<br/>true表示支持跨ArkTS语言进行组件树操作，false表示不支持跨ArkTS语言进行组件树操作。<br/>默认值为false。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 当FrameNode启用了跨ArkTS语言进行组件树操作的选项后，支持该FrameNode跨ArkTS语言调用[addChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)、[insertChildAfter](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter)、[insertChildAt](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat)、[insertChildBefore](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore)和[removeChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)。|
 
 ## ExpandMode<sup>15+</sup>
 
@@ -2038,7 +2039,7 @@ struct Index {
 
 setCrossLanguageOptions(options: CrossLanguageOptions): void
 
-设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置。当前FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。
+设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。
 
 > **说明：**
 >
@@ -2070,7 +2071,7 @@ setCrossLanguageOptions(options: CrossLanguageOptions): void
 
 getCrossLanguageOptions(): CrossLanguageOptions
 
-获取当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，返回该节点是否可通过非ArkTS语言进行属性设置。
+获取当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，返回该节点是否可通过非ArkTS语言进行属性设置和跨语言组件树操作，从API版本26.0.0开始支持获取是否可通过非ArkTS语言进行组件树操作。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
