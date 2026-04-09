@@ -11,7 +11,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。	
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 
 
@@ -66,10 +66,10 @@ let captureImage: image.PixelMap | undefined = undefined;
 let metadata: string = "";
 let srcImage: image.PixelMap | undefined = undefined;
 metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) =>{
-	captureImage = pixelMap;
+    captureImage = pixelMap;
 }).catch((error:BusinessError)=>{
-	console.error("encode image error" + error);
-});	
+    console.error("encode image error" + error);
+});
 ```
 **ArkTS-Sta示例**:
 ```ts
@@ -81,12 +81,12 @@ let captureImage: image.PixelMap | undefined = undefined;
 let metadata: string = "";
 let srcImage: image.PixelMap;
 metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) =>{
-	captureImage = pixelMap;
+    captureImage = pixelMap;
 }).catch((error: Error) => {
     const err = error as BusinessError;
-	console.error("encode image error" + error);
+    console.error("encode image error" + error);
 });
-```	
+```
 
 ## metadataBinding.decodeImage
 function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
@@ -132,10 +132,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let encodeImage: image.PixelMap | undefined = undefined;
 let captrueMetadata: string = "";
 metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{
-	captrueMetadata = metadata;	
+    captrueMetadata = metadata;
 }).catch((error:BusinessError)=>{
-	console.error("decode image error" + error);
-}); 
+    console.error("decode image error" + error);
+});
 ```
 **ArkTS-Sta示例**:
 ```ts
@@ -146,19 +146,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let encodeImage: image.PixelMap | undefined = undefined;
 let captrueMetadata: string = "";
 if (encodeImage) {
-	metadataBinding.decodeImage(encodeImage)
-		.then((metadata: string) => {
-			captrueMetadata = metadata;
-		})
-		.catch((error: Error) => {
-			const err = error as BusinessError;	
-			console.error("decode image error " + err);
-		});
+    metadataBinding.decodeImage(encodeImage)
+        .then((metadata: string) => {
+            captrueMetadata = metadata;
+        })
+        .catch((error: Error) => {
+            const err = error as BusinessError;	
+            console.error("decode image error " + err);
+        });
 } else {
-	console.warn("encodeImage is undefined, skip decodeImage");
-	captrueMetadata = "";
+    console.warn("encodeImage is undefined, skip decodeImage");
+    captrueMetadata = "";
 }
-```	
+```
 
 ## metadataBinding.notifyMetadataBindingEvent
 notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
@@ -202,9 +202,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let bundleName:string = ";";
 
 metadataBinding.notifyMetadataBindingEvent(bundleName).then(appLink:string)=>{
-console.info("notify metadata error" + appLink);
+    console.info("notify metadata error" + appLink);
 }).catch((error: BusinessError) => {
-console.error("notify metadata error" + error);
+    console.error("notify metadata error" + error);
 });
 ```
 **ArkTS-Sta示例**：
@@ -215,10 +215,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName:string = ";";
 metadataBinding.notifyMetadataBindingEvent(bundleName)
-.then((appLink:string)=>{ 
-	console.info("notify metadata error" + appLink);
+.then((appLink:string)=>{
+    console.info("notify metadata error" + appLink);
 })
 .catch((error: Error) => {
-	console.error("notify metadata error" + error);
+    console.error("notify metadata error" + error);
 });
 ```
