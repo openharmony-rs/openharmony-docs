@@ -35,7 +35,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -89,7 +89,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -151,7 +151,7 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 **需要权限**:  ohos.permission.COMMONEVENT_STICKY
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -197,7 +197,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **需要权限**:  ohos.permission.COMMONEVENT_STICKY
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -246,7 +246,7 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -290,7 +290,7 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
