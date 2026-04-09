@@ -169,15 +169,15 @@ if (createdVDecNum < NEEDED_VDEC_NUM) {
 
 ### 控制编码质量
 
-提供四种码控模式供开发者选择：恒定码率（CBR）、动态码率（VBR）、恒定质量（CQ）及质量稳定（SQR）。
-- CBR和VBR码控模式下，编码质量取决于码率参数。
+提供以下码控模式供开发者选择：恒定码率（CBR）、动态码率（VBR）、恒定质量（CQ）、质量稳定（SQR）和高质量恒定码率（CBRHQ）。
+- CBR、VBR和CBRHQ码控模式下，编码质量取决于码率参数。CBRHQ码控模式从API版本26.0.0开始使用，仅支持H.265（HEVC）编码。如果配置了CBRHQ但是平台不支持，会自动使用CBR码控模式替代。
 - CQ码控模式下，编码质量取决于质量参数。
 - SQR码控模式下，编码质量由质量稳定码率因子和最大码率决定，且仅支持H.265（HEVC）编码。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCapability_IsEncoderBitrateModeSupported  | 确认当前编码器是否支持给定的码控模式。 |
-| OH_AVCapability_GetEncoderBitrateRange     | 获取当前编码器支持的码率范围，适用于CBR、VBR和SQR码控模式。 |
+| OH_AVCapability_GetEncoderBitrateRange     | 获取当前编码器支持的码率范围，适用于CBR、VBR、SQR和CBRHQ码控模式。 |
 | OH_AVCapability_GetEncoderQualityRange  | 获取当前编码器支持的质量范围，适用于CQ码控模式。  |
 
 CBR和VBR码控模式示例如下。
@@ -338,6 +338,50 @@ if (ret != AV_ERR_OK) {
 }
 OH_AVFormat_Destroy(dynamicFormat);
 ```
+CBRHQ码控模式示例如下：
+```c++
+OH_BitrateMode bitrateMode = BITRATE_MODE_CBR_HIGH_QUALITY;
+int32_t bitrate = 3000000;
+OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true);
+if (capability == nullptr) {
+   // 异常处理。
+}
+// 1. 确认待配置码控模式是否支持。
+bool isSupported = OH_AVCapability_IsEncoderBitrateModeSupported(capability, bitrateMode);
+if (!isSupported) {
+   // 异常处理。
+}
+// 2. 获取码率范围，判断待配置最大码率参数是否在范围内。
+OH_AVRange bitrateRange = {-1, -1};
+// 最大码率参数的取值范围同码率参数，故复用OH_AVCapability_GetEncoderBitrateRange获取取值范围。
+int32_t ret = OH_AVCapability_GetEncoderBitrateRange(capability, &bitrateRange);
+if (ret != AV_ERR_OK || bitrateRange.maxVal <= 0) {
+   // 异常处理。
+}
+
+if (bitrate > bitrateRange.maxVal || bitrate < bitrateRange.minVal) {
+   // 3.（可选）调整待配置最大码率参数。
+}
+
+// 4. 配置编码参数。
+OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+if (videoEnc == nullptr) {
+   // 异常处理。
+}
+OH_AVFormat *format = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, 1920, 1080);
+if (format == nullptr) {
+   // 异常处理。
+}
+if (!OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, bitrateMode) ||
+   !OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, static_cast<int64_t>(bitrate))) {
+   // 异常处理。
+}
+if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
+   // 异常处理。
+}
+OH_AVFormat_Destroy(format);
+```
+
 
 ### 查询编码器支持复杂度范围
 
