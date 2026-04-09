@@ -13,6 +13,61 @@
 1. 首先，在宿主线程实现需要调用的接口，并创建Worker对象，在Worker对象上注册需要调用的对象。
 
    <!-- @[create_worker_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerCallGlobalUsage.ets) -->
+   
+   ``` TypeScript
+   import worker from '@ohos.worker';
+   import { IconItemSource } from './IconItemSource';
+   
+   // 创建Worker对象
+   const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('../workers/Worker');
+   
+   class PicData {
+     public iconItemSourceList: IconItemSource[] = [];
+   
+     public setUp(): string {
+       for (let index = 0; index < 20; index++) {
+         const numStart: number = index * 6;
+         // 此处循环使用6张图片资源
+         this.iconItemSourceList.push(new IconItemSource('$media:startIcon', `item${numStart + 1}`));
+         this.iconItemSourceList.push(new IconItemSource('$media:background', `item${numStart + 2}`));
+         this.iconItemSourceList.push(new IconItemSource('$media:foreground', `item${numStart + 3}`));
+         this.iconItemSourceList.push(new IconItemSource('$media:startIcon', `item${numStart + 4}`));
+         this.iconItemSourceList.push(new IconItemSource('$media:background', `item${numStart + 5}`));
+         this.iconItemSourceList.push(new IconItemSource('$media:foreground', `item${numStart + 6}`));
+   
+       }
+       return 'setUpIconItemSourceList success!';
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       RelativeContainer() {
+         Text(this.message)
+           .id('HelloWorld')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: '__container__', align: VerticalAlign.Center },
+             middle: { anchor: '__container__', align: HorizontalAlign.Center }
+           })
+           .onClick(() => {
+             let picData = new PicData();
+             // 在Worker上注册需要调用的对象
+             workerInstance.registerGlobalCallObject('picData', picData);
+             workerInstance.postMessage('run setUp in picData');
+             this.message = 'success';
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
 
    <!-- @[create_worker_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerCallGlobalUsage.ets) -->
 
