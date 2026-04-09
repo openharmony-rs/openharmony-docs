@@ -598,7 +598,7 @@ Web同层渲染的配置。
 
 | 名称                     | 类型   | 只读   | 可选 | 说明                                   |
 | ------------------------ | ---- | ---- | ---- | -------------------------------------- |
-| jsStack      | string | 否 | 否 | 网页的javaScript调用栈信息。       |
+| jsStack      | string | 否 | 否 | 网页的JavaScript调用栈信息。       |
 | pid | number | 否 | 否 | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 否 | 否 | 触发渲染进程无响应回调的原因。 |
 
