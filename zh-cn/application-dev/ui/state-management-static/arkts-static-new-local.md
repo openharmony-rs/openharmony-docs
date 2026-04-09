@@ -36,8 +36,7 @@ import { Local } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-  import { Local } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -66,8 +65,7 @@ import { Local } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-  import { Local, ObservedV2, Trace } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
   class RawObject {
     name: string;
     constructor(name: string) {
@@ -113,8 +111,7 @@ import { Local } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-  import { Local } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -158,8 +155,7 @@ import { Local } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@kit.ArkUI';
-  import { Local } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -193,8 +189,7 @@ import { Local } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, Component, ComponentV2 } from '@kit.ArkUI';
-  import { Local } from '@kit.ArkUI';
+  import { Component, ComponentV2, Entry, Local } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct MyComponent {
@@ -215,8 +210,7 @@ import { Local } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column } from '@kit.ArkUI';
-  import { Local } from '@kit.ArkUI';
+  import { Column, ComponentV2, Entry, Local } from '@kit.ArkUI';
   @ComponentV2
   struct ChildComponent {
     @Local message: string = 'Hello World';
@@ -251,8 +245,7 @@ import { Local } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local, ObservedV2, Trace } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
 @ObservedV2
 class Info {
   @Trace name: string;
@@ -288,8 +281,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
@@ -324,8 +316,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct DateExample {
@@ -366,8 +357,7 @@ struct DateExample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct MapSample {
@@ -411,8 +401,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct SetSample {
@@ -452,8 +441,7 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {

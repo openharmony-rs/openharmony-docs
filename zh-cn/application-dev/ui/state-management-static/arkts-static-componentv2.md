@@ -19,7 +19,7 @@
     ```ts
     'use static'
     
-    import { Entry, ComponentV2, Local } from '@kit.ArkUI';
+    import { ComponentV2, Entry, Local } from '@kit.ArkUI';
     
     @ComponentV2 // 装饰器
     struct Index { // struct声明的数据结构
@@ -42,8 +42,7 @@
 ```typescript
 'use static'
 
-import { Text, Entry, Color, ComponentV2, ResourceColor, Column, ColorMetrics } from '@kit.ArkUI';
-import { Provider, Consumer, Local } from '@kit.ArkUI';
+import { Color, ColorMetrics, Column, ComponentV2, Consumer, Entry, Local, Provider, ResourceColor, Text } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 
 @ComponentV2

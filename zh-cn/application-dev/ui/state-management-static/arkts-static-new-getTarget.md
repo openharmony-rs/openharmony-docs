@@ -33,8 +33,7 @@
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text } from '@kit.ArkUI';
-  import { State, Observed, UIUtils } from '@kit.ArkUI';
+  import { Column, Component, Entry, Observed, State, Text, UIUtils } from '@kit.ArkUI';
   @Observed
   class Info {
     name: string = 'Tom';
@@ -57,8 +56,7 @@
   ```ts
   'use static'
   
-  import { Text, Column, Component, Entry, Button, ClickEvent } from '@kit.ArkUI';
-  import { State, UIUtils } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, Component, Entry, State, Text, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
   }
@@ -101,8 +99,7 @@ UIUtils.getTarget(value) === value
 ```ts
 'use static'
 
-import { Text, Column, Component, Entry } from '@kit.ArkUI';
-import { State, UIUtils } from '@kit.ArkUI';
+import { Column, Component, Entry, State, Text, UIUtils } from '@kit.ArkUI';
 interface Info {
   name: string;
 }

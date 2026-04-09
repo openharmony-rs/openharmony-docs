@@ -32,7 +32,7 @@
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
-import { Provide, Consume } from '@kit.ArkUI';
+import { Consume, Provide } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -72,8 +72,7 @@ import { Provide, Consume } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
-  import { Provide, Consume } from '@kit.ArkUI';
+  import { ClickEvent, Column, Component, Consume, Entry, Provide, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -126,8 +125,7 @@ import { Provide, Consume } from '@kit.ArkUI';
    ```ts
    'use static'
 
-   import { Entry, Component, Column, Text } from '@kit.ArkUI';
-   import { Provide, Consume } from '@kit.ArkUI';
+   import { Column, Component, Consume, Entry, Provide, Text } from '@kit.ArkUI';
    @Component
    struct Child {
      @Consume message: string;
@@ -156,8 +154,7 @@ import { Provide, Consume } from '@kit.ArkUI';
    ```ts
    'use static'
 
-   import { Entry, Component, Column, Text } from '@kit.ArkUI';
-   import { Provide, Consume } from '@kit.ArkUI';
+   import { Column, Component, Consume, Entry, Provide, Text } from '@kit.ArkUI';
    @Component
    struct Child {
      @Consume num: number;
@@ -202,8 +199,7 @@ import { Provide, Consume } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Entry, Component, Column, Text } from '@kit.ArkUI';
-   import { Provide, Consume, State } from '@kit.ArkUI';
+   import { Column, Component, Consume, Entry, Provide, State, Text } from '@kit.ArkUI';
    
    @Component
    struct Child {
@@ -234,8 +230,7 @@ import { Provide, Consume } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Entry, Component, Column, Text } from '@kit.ArkUI';
-   import { Provide, Consume, State } from '@kit.ArkUI';
+   import { Column, Component, Consume, Entry, Provide, State, Text } from '@kit.ArkUI';
    
    @Component
    struct Child {
@@ -271,8 +266,7 @@ import { Provide, Consume } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@kit.ArkUI';
-import { Provide, Consume } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct ContentComponent {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Index内的@Provide装饰的变量
@@ -325,8 +319,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@kit.ArkUI';
-import { Provide, Consume } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Consume, Divider, Entry, ForEach, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct Child {
   @Consume message: Map<number, string>;
@@ -384,8 +377,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@kit.ArkUI';
-import { Provide, Consume } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Consume, Divider, Entry, ForEach, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct Child {
   @Consume message: Set<number>;
@@ -440,8 +432,7 @@ struct SetSample {
 ```typescript
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { Provide, Consume } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Text } from '@kit.ArkUI';
 @Component
 struct Child {
   @Consume selectedDate: Date;
@@ -493,8 +484,7 @@ struct Parent {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@kit.ArkUI';
-import { Provide, Consume } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct Child {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内@Provide装饰的变量
@@ -559,8 +549,7 @@ struct MyComponent {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@kit.ArkUI';
-import { Provide, Consume } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
 @Component
 struct GrandSon {
   // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
@@ -631,8 +620,7 @@ struct GrandParent {
 ```ts
 'use static'
 
-import { Entry, Text, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Provide, Consume, Observed, Track, Watch } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Consume, Entry, Observed, Provide, Text, Track, Watch } from '@kit.ArkUI';
 
 interface View {
   num: number;

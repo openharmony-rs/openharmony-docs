@@ -155,8 +155,7 @@ import { LocalStorageLink } from '@kit.ArkUI';
     ```ts
     'use static'
     
-    import { Entry, Column, Component, Text } from '@kit.ArkUI';
-    import { LocalStorage, LocalStoragePropRef, LocalStorageLink } from '@kit.ArkUI';
+    import { Column, Component, Entry, LocalStorage, LocalStorageLink, LocalStoragePropRef, Text } from '@kit.ArkUI';
     
     let storage = new LocalStorage();
     storage.setOrCreate('PropA', 48);
@@ -221,8 +220,7 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
   ```ts
   'use static'
   
-  import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-  import { LocalStorage, LocalStorageLink } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, Text } from '@kit.ArkUI';
   
   class Data {
     code: number;
@@ -303,8 +301,7 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
   ```ts
   'use static'
   
-  import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-  import { LocalStorage, LocalStoragePropRef } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStoragePropRef, Row, Text } from '@kit.ArkUI';
   
   // 创建新实例并使用给定对象初始化
   let para: Record<string, Any> = { 'PropA': 47 };
@@ -414,8 +411,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorage, LocalStorageLink, SubscribedAbstractProperty } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, SubscribedAbstractProperty, Text } from '@kit.ArkUI';
 
 // 构造LocalStorage实例
 let para: Record<string, Any> = { 'PropA': 47 };
@@ -469,8 +465,7 @@ Child自定义组件中的变化：
     ```ts
     'use static'
     
-    import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-    import { LocalStorage, LocalStorageLink } from '@kit.ArkUI'
+    import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, Text } from '@kit.ArkUI';
     
     let count: Record<string, Any> = { 'countStorage': 1 };
     let storageA: LocalStorage = new LocalStorage(count);
@@ -544,8 +539,7 @@ Child自定义组件中的变化：
 'use static'
 
 import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { LocalStorage } from '@kit.ArkUI'
+import { LocalStorage, window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   para: Record<string, Any> = {
@@ -571,8 +565,7 @@ export default class EntryAbility extends UIAbility {
 // index.ets
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorage, LocalStorageLink } from '@kit.ArkUI'
+import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, Text } from '@kit.ArkUI';
 
 // 预览器上不支持获取页面共享的LocalStorage实例。
 @Entry({ useSharedStorage: true })
@@ -618,8 +611,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorage, LocalStorageLink, State, Link } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, Link, LocalStorage, LocalStorageLink, Row, State, Text } from '@kit.ArkUI';
 
 let localStorage1: LocalStorage = new LocalStorage();
 localStorage1.setOrCreate('PropA', 'PropA');
@@ -670,8 +662,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorage, LocalStorageLink, State } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, State, Text } from '@kit.ArkUI';
 
 let localStorage1: LocalStorage = new LocalStorage();
 localStorage1.setOrCreate('PropA', 'PropA');
@@ -724,8 +715,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorageLink, LocalStoragePropRef } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, LocalStoragePropRef, Row, Text } from '@kit.ArkUI';
 
 @Component
 struct StorageLinkComponent {
@@ -789,8 +779,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorageLink } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -832,8 +821,7 @@ struct DateSample {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorageLink } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, Row, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -874,8 +862,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorageLink } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, Row, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -915,8 +902,7 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorageLink, LocalStorage } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, Text } from '@kit.ArkUI';
 
 let storageA = new LocalStorage();
 storageA.setOrCreate<number>('count', 47);
