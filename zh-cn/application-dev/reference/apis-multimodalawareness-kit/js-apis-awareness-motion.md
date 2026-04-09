@@ -64,7 +64,7 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的接口ArkTS-Sta是[onOperatingHandChanged](#motiononoperatinghandChanged23)
+**相关接口**：该接口对应的接口ArkTS-Sta是[onOperatingHandChanged](#motiononoperatinghandchanged23)
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
@@ -169,7 +169,7 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的接口ArkTS-Sta是[offOperatingHandChanged](#motionoffoperatinghandChanged23)
+**相关接口**：该接口对应的接口ArkTS-Sta是[offOperatingHandChanged](#motionoffoperatinghandchanged23)
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
