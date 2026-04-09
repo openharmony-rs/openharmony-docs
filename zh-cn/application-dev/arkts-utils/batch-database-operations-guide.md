@@ -159,6 +159,30 @@ struct Index {
 1. 定义数据库中的数据格式，可以使用Sendable，以减少跨线程操作的耗时。
 
    <!-- @[define_data_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SharedValuesBucket.ets) -->
+   
+   ``` TypeScript
+   export interface IValueBucket {
+     id: number;
+     name: string;
+     age: number;
+     salary: number;
+   }
+   
+   @Sendable
+   export class SharedValuesBucket implements IValueBucket {
+     public id: number = 0;
+     public name: string = '';
+     public age: number = 0;
+     public salary: number = 0;
+   
+     constructor(v: IValueBucket) {
+       this.id = v.id;
+       this.name = v.name;
+       this.age = v.age;
+       this.salary = v.salary;
+     }
+   }
+   ```
 
    <!-- @[define_data_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SharedValuesBucket.ets) -->
 
