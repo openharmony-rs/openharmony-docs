@@ -66,7 +66,7 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **注意：** URL地址长度不能超过1024个字符，否则会连接失败。从API15开始，URL地址长度限制由1024修改为2048。
 
@@ -144,7 +144,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **注意：** URL地址长度不能超过1024个字符，否则会连接失败。
 
@@ -241,7 +241,7 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **注意：** URL地址长度不能超过1024个字符，否则会连接失败。
 
@@ -301,7 +301,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -398,7 +398,7 @@ send(data: string | ArrayBuffer): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -501,7 +501,7 @@ close(callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -566,7 +566,7 @@ close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -644,7 +644,7 @@ close(options?: WebSocketCloseOptions): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -740,7 +740,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 });
 ```
 
-### onOpen()<sup>22+</sup>
+### onOpen()<sup>23+</sup>
 
 onOpen(callback: Callback\<OpenResult\>): void
 
@@ -808,7 +808,7 @@ ws.on('open', callback1);
 ws.off('open', callback1);
 ```
 
-### offOpen()<sup>22+</sup>
+### offOpen()<sup>23+</sup>
 
 offOpen(callback?: Callback\<OpenResult\>): void
 
@@ -876,7 +876,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 });
 ```
 
-### onMessage()<sup>22+</sup>
+### onMessage()<sup>23+</sup>
 
 onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 
@@ -940,7 +940,7 @@ let ws = webSocket.createWebSocket();
 ws.off('message');
 ```
 
-### offMessage()<sup>22+</sup>
+### offMessage()<sup>23+</sup>
 
 offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
@@ -1007,7 +1007,7 @@ ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
 });
 ```
 
-### onWebSocketClose()<sup>22+</sup>
+### onWebSocketClose()<sup>23+</sup>
 
 onWebSocketClose(callback: AsyncCallback\<CloseResult\>): void
 
@@ -1066,7 +1066,7 @@ let ws = webSocket.createWebSocket();
 ws.off('close');
 ```
 
-### offWebSocketClose()<sup>22+</sup>
+### offWebSocketClose()<sup>23+</sup>
 
 offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 
@@ -1131,7 +1131,7 @@ ws.on('error', (err: BusinessError) => {
 });
 ```
 
-### onWebSocketError()<sup>22+</sup>
+### onWebSocketError()<sup>23+</sup>
 
 onWebSocketError(callback: ErrorCallback): void
 
@@ -1188,7 +1188,7 @@ let ws = webSocket.createWebSocket();
 ws.off('error');
 ```
 
-### offWebSocketError()<sup>22+</sup>
+### offWebSocketError()<sup>23+</sup>
 
 offWebSocketError(callback?: ErrorCallback): void
 
@@ -1245,7 +1245,7 @@ ws.on('dataEnd', () => {
 });
 ```
 
-### onDataEnd()<sup>22+</sup>
+### onDataEnd()<sup>23+</sup>
 
 onDataEnd(callback: Callback\<void\>): void
 
@@ -1299,7 +1299,7 @@ let ws = webSocket.createWebSocket();
 ws.off('dataEnd');
 ```
 
-### offDataEnd()<sup>22+</sup>
+### offDataEnd()<sup>23+</sup>
 
 offDataEnd(callback?: Callback\<void\>): void
 
@@ -1359,7 +1359,7 @@ ws.on('headerReceive', (data) => {
 });
 ```
 
-### onHeaderReceive()<sup>22+</sup>
+### onHeaderReceive()<sup>23+</sup>
 
 onHeaderReceive(callback: Callback\<ResponseHeaders\>): void
 
@@ -1411,7 +1411,7 @@ let ws = webSocket.createWebSocket();
 ws.off('headerReceive');
 ```
 
-### offHeaderReceive()<sup>22+</sup>
+### offHeaderReceive()<sup>23+</sup>
 
 offHeaderReceive(callback?: Callback\<ResponseHeaders\>): void
 
@@ -1486,7 +1486,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1581,7 +1581,7 @@ send(data: string \| ArrayBuffer, connection: WebSocketConnection): Promise\<boo
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1699,7 +1699,7 @@ listAllConnections(): WebSocketConnection[]
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型                                        | 说明                         |
@@ -1809,7 +1809,7 @@ close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1920,7 +1920,7 @@ stop(): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2032,7 +2032,7 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 });
 ```
 
-### onConnect()<sup>22+</sup>
+### onConnect()<sup>23+</sup>
 
 onConnect(callback: Callback\<WebSocketConnection\>): void
 
@@ -2087,7 +2087,7 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('connect');
 ```
 
-### offConnect()<sup>22+</sup>
+### offConnect()<sup>23+</sup>
 
 offConnect(callback?: Callback\<WebSocketConnection\>): void
 
@@ -2146,7 +2146,7 @@ localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
 });
 ```
 
-### onMessageReceive()<sup>22+</sup>
+### onMessageReceive()<sup>23+</sup>
 
 onMessageReceive(callback: Callback\<WebSocketMessage\>): void
 
@@ -2201,7 +2201,7 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('messageReceive');
 ```
 
-### offMessageReceive()<sup>22+</sup>
+### offMessageReceive()<sup>23+</sup>
 
 offMessageReceive(callback?: Callback\<WebSocketMessage\>): void
 
@@ -2260,7 +2260,7 @@ localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeR
 });
 ```
 
-### onWebSocketServerClose()<sup>22+</sup>
+### onWebSocketServerClose()<sup>23+</sup>
 
 onWebSocketServerClose(callback: ClientConnectionCloseCallback): void
 
@@ -2315,7 +2315,7 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('close');
 ```
 
-### offWebSocketServerClose()<sup>22+</sup>
+### offWebSocketServerClose()<sup>23+</sup>
 
 offWebSocketServerClose(callback?: ClientConnectionCloseCallback): void
 
@@ -2374,7 +2374,7 @@ localServer.on('error', (err: BusinessError) => {
 });
 ```
 
-### onWebSocketServerError()<sup>22+</sup>
+### onWebSocketServerError()<sup>23+</sup>
 
 onWebSocketServerError(callback: ErrorCallback): void
 
@@ -2429,7 +2429,7 @@ let localServer = webSocket.createWebSocketServer();
 localServer.off('error');
 ```
 
-### offWebSocketServerError()<sup>22+</sup>
+### offWebSocketServerError()<sup>23+</sup>
 
 offWebSocketServerError(callback?: ErrorCallback): void
 
@@ -2548,7 +2548,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 | code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 否   | 错误码，订阅close事件得到的关闭连接的错误码。 |
 | reason | string |  否 | 否   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
 
-## OpenResult<sup>22+</sup>
+## OpenResult
 
 打开WebSocket连接时，订阅onOpen事件得到的打开结果。
 
@@ -2653,7 +2653,7 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                      |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------- |
@@ -2668,14 +2668,14 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ------ | ------ | ---- | --- |------------------ |
 | clientIP   | string | 否   | 否   | 客户端的ip地址。     |
 | clientPort | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 客户端的端口号port。 |
 
-## ClientConnectionCloseCallback<sup>19+</sup>
+## ClientConnectionCloseCallback<sup>23+</sup>
 
 type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, closeReason: CloseResult) => void
 
