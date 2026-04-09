@@ -96,7 +96,7 @@ for (int i = 0; i < 100000; i++) {
 **错误示例**：
 
 ```cpp
-// 线程1执行，在env1创建string对象，值为"bar"、
+// 线程1执行，在env1创建string对象，值为"bar"
 napi_create_string_utf8(env1, "bar", NAPI_AUTO_LENGTH, &string);
 // 线程2执行，在env2创建object对象，并将上述的string对象设置到object对象中
 napi_status status = napi_create_object(env2, &object);
@@ -266,7 +266,7 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
     void* data = nullptr;
 
     napi_create_arraybuffer(env, arrSize * sizeof(int32_t), &data, &arrBuffer);
-    // data为空指针，取消对data进行写入
+    // data为空指针，避免对data进行写入
     if (data == nullptr) {
         return arrBuffer;
     }
