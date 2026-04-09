@@ -73,7 +73,7 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 **ArkTS-Sta示例**:
 ```ts
-import image from '@ohos.multimedia.image';	
+import image from '@ohos.multimedia.image';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -139,7 +139,7 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{
 ```
 **ArkTS-Sta示例**:
 ```ts
-import image from '@ohos.multimedia.image';	
+import image from '@ohos.multimedia.image';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -151,7 +151,7 @@ if (encodeImage) {
             captrueMetadata = metadata;
         })
         .catch((error: Error) => {
-            const err = error as BusinessError;	
+            const err = error as BusinessError;
             console.error("decode image error " + err);
         });
 } else {
