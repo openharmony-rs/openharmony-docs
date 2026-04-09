@@ -23,5 +23,40 @@
 2. 使用TaskPool的execute方法执行任务，加载图片。
 
    <!-- @[execute_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTimeConsumingTask.ets) -->
+   
+   ``` TypeScript
+   import { taskpool } from '@kit.ArkTS';
+   import { IconItemSource } from './IconItemSource';
+   import { loadPicture } from './IndependentTask';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               let iconItemSourceList: IconItemSource[] = [];
+               // 创建Task
+               let lodePictureTask: taskpool.Task = new taskpool.Task(loadPicture, 30);
+               // 执行Task，并返回结果
+               taskpool.execute(lodePictureTask).then((res: object) => {
+                 // loadPicture方法的执行结果
+                 iconItemSourceList = res as IconItemSource[];
+               })
+               this.message = 'success';
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
    <!-- @[execute_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTimeConsumingTask.ets) -->
