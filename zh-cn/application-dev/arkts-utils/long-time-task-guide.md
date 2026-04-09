@@ -51,6 +51,70 @@
    - 销毁：发送取消传感器监听的事件，并结束长时任务。
 
    <!-- @[taskpool_listen_sensor_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   
+   ``` TypeScript
+   import { sensor } from '@kit.SensorServiceKit';
+   import { taskpool } from '@kit.ArkTS';
+   import { BusinessError, emitter } from '@kit.BasicServicesKit';
+   
+   @Concurrent
+   async function sensorListener(): Promise<void> {
+     sensor.on(sensor.SensorId.ACCELEROMETER, (data) => {
+       emitter.emit({ eventId: 0 }, { data: data });
+     }, { interval: 1000000000 });
+   
+     emitter.on({ eventId: 1 }, () => {
+       sensor.off(sensor.SensorId.ACCELEROMETER)
+       emitter.off(1)
+     })
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     sensorTask?: taskpool.LongTask
+     @State addListener: string = 'Add listener';
+     @State deleteListener: string = 'Delete listener';
+   
+     build() {
+       Column() {
+         Text(this.addListener)
+           .id('Add listener')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .onClick(() => {
+             this.sensorTask = new taskpool.LongTask(sensorListener);
+             emitter.on({ eventId: 0 }, (data) => {
+               // Do something here
+               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}`);
+             });
+             taskpool.execute(this.sensorTask).then(() => {
+               console.info('Add listener of ACCELEROMETER success');
+             }).catch((e: BusinessError) => {
+               // Process error
+             })
+             this.addListener = 'success';
+           })
+         Text(this.deleteListener)
+           .id('Delete listener')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .onClick(() => {
+             emitter.emit({ eventId: 1 });
+             emitter.off(0);
+             if (this.sensorTask != undefined) {
+               taskpool.terminateTask(this.sensorTask);
+             } else {
+               console.error('sensorTask is undefined.');
+             }
+             this.deleteListener = 'success';
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
 
    <!-- @[taskpool_listen_sensor_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
    
