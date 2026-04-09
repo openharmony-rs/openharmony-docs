@@ -672,7 +672,7 @@ let types = unifiedData.getTypes();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| summary   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |	
+| summary   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 | 
 | totalSize | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | overview<sup>22+</sup>   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
@@ -1473,8 +1473,8 @@ text.textAbstract = 'This is a text abstract';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| url         | string | 否 | 否 | 链接url。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23       |	
-| description | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 否 | 是 | 链接内容描述，非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|	
+| url         | string | 否 | 否 | 链接url。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23       | 
+| description | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 否 | 是 | 链接内容描述，非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23| 
 
 **示例：**
 
@@ -1494,8 +1494,8 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlContent  | string | 否 | 否 | html格式内容。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23             |	
-| plainContent  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |	
+| htmlContent  | string | 否 | 否 | html格式内容。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23             | 
+| plainContent  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 | 
 
 **示例：**
 
@@ -1515,7 +1515,7 @@ File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| details | ArkTS-Dyn: Record<string, string> <br/>ArkTS-Sta: Record<string, string> \| undefined | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |	
+| details | ArkTS-Dyn: Record<string, string> <br/>ArkTS-Sta: Record<string, string> \| undefined | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 | 
 | uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                                                                                                                           |
 
 **示例：**
@@ -1962,8 +1962,8 @@ UDMF提供的数据操作接口包含三个可选参数：intention、key和visi
 
 | 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
 | --------- | ----------------------- | ---- | ----- | ------------------------------------------------------- |
-| intention | [Intention](#intention) | 否 | 是 | 表示数据操作相关的数据通路类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                            |	
-| key       | string                  | 否 | 是 | UDMF中数据对象的唯一标识符，可通过[insertData](#unifieddatachannelinsertdata)接口的返回值获取。<br>由udmf:/、intention、bundleName和groupId四部分组成，以'/'连接，比如：udmf://DataHub/com.ohos.test/0123456789。<br>其中udmf:/固定，DataHub为对应枚举的取值，com.ohos.test为包名，0123456789为随机生成的groupId。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |	
+| intention | [Intention](#intention) | 否 | 是 | 表示数据操作相关的数据通路类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                            | 
+| key       | string                  | 否 | 是 | UDMF中数据对象的唯一标识符，可通过[insertData](#unifieddatachannelinsertdata)接口的返回值获取。<br>由udmf:/、intention、bundleName和groupId四部分组成，以'/'连接，比如：udmf://DataHub/com.ohos.test/0123456789。<br>其中udmf:/固定，DataHub为对应枚举的取值，com.ohos.test为包名，0123456789为随机生成的groupId。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 | 
 | visibility<sup>20+</sup> | [Visibility](#visibility20) | 否 | 是 | 表示数据的可见性等级。只在写入数据的时候填写才生效，若不填写默认是Visibility.ALL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23  |
 
 ## FileConflictOptions<sup>15+</sup>

@@ -42,7 +42,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | | 说明 |
+| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | 是 | - | 内容卡片数据。 |
 | formType | [FormType](#formtype) | 是 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 内容卡片类型，影响内容卡片的大小。 |
