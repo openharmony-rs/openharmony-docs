@@ -62,7 +62,7 @@ enum ArkWeb_NativeAPIVariantKind
 | ARKWEB_NATIVE_WEB_MESSAGE_PORT | webMessagePort相关API类型。 |
 | ARKWEB_NATIVE_WEB_MESSAGE | webMessage相关API类型。 |
 | ARKWEB_NATIVE_COOKIE_MANAGER | cookieManager相关API类型。 |
-| ARKWEB_NATIVE_JAVASCRIPT_VALUE | JavaScriptValue相关接口类型。<br>**起始版本：** 18 |
+| ARKWEB_NATIVE_JAVASCRIPT_VALUE | JavaScriptValue相关API类型。<br>**起始版本：** 18 |
 
 
 ## 函数说明
