@@ -1749,7 +1749,7 @@ getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
 | 错误码ID |    错误信息                   |
 |----------|-------------------------|
 | 201 | Permission denied. |
-| 17700001 | The specified bundleName is not found. |
+| 17700001 | The specified bundle is not found. |
 | 17700061 | The specified app index is invalid. |
 
 **示例：**
