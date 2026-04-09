@@ -1248,6 +1248,8 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 创建一个子窗，并绑定父窗。使用Promise异步回调。
 
+仅支持主窗口作为绑定的父窗。
+
 子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。
 
 建议在父窗销毁后主动销毁创建的子窗。
@@ -1282,6 +1284,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
 | 1300003 | This window manager service works abnormally. |
 | 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
