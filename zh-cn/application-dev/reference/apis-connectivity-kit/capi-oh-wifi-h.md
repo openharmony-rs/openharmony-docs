@@ -26,8 +26,8 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| WIFI_MAX_SSID_LEN 33 | [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinktype) 成员变量ssid数组的长度（32 + \0）。 <br>**起始版本：** 24|
-| WIFI_MAC_LEN 18 | [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinktype) 成员变量macAddress数组和bssid数组的长度（17 + \0）。 <br>**起始版本：** 24|
+| WIFI_MAX_SSID_LEN 33 | [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinkedinfo) 成员变量ssid数组的长度（32 + \0）。 <br>**起始版本：** 24|
+| WIFI_MAC_LEN 18 | [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinkedinfo) 成员变量macAddress数组和bssid数组的长度（17 + \0）。 <br>**起始版本：** 24|
       
 ### 枚举
 
