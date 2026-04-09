@@ -553,7 +553,7 @@ JS示例：
 <!-- xxx.hml -->
 <div class="container">
   <text class="title" style="font-size: 30px;">test</text>
-  <input type="button" value="get" class="button" onclick="get"></input>
+  <input type="button" value="delete" class="button" onclick="delete"></input>
 </div>
 ```
 
