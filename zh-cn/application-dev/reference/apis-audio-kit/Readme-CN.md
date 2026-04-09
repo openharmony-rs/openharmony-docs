@@ -58,6 +58,7 @@
     - [native_audiostreambuilder.h](capi-native-audiostreambuilder-h.md)
     - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
     - [native_audio_suite_engine.h](capi-native-audio-suite-engine-h.md)
+    - [native_audio_session_base.h](capi-native-audio-session-base-h.md)
   - 结构体<!--audio-struct-->
     - [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)
     - [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md)

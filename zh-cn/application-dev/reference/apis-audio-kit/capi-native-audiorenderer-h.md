@@ -41,7 +41,7 @@
 | [OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)](#oh_audiorenderer_getencodingtype) | - | 查询当前输出音频流编码类型。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)](#oh_audiorenderer_getframeswritten) | - | 查询自创建流以来已写入的帧数。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - | 获取输出音频流时间戳和位置信息。<br> 该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时候的时间戳（timestamp），时间戳单位为纳秒。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，频繁调用可能会带来功耗问题，调用时间间隔建议不要小于200ms，可以每分钟调用一次。因此在能保证音画同步效果的情况下，请避免频繁查询时间戳。 |
-| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | 获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。<br> 注意，当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。当调用Flush接口时实际播放位置也会被重置。<br> 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。<br> |
+| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | 获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)](#oh_audiorenderer_getframesizeincallback) | - | 在回调中查询帧大小，它是一个固定的长度，每次回调都要填充流。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)](#oh_audiorenderer_getspeed) | - | 获取音频渲染速率。 |
 | [OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)](#oh_audiorenderer_setspeed) | - | 设置音频渲染速率。 |
@@ -66,6 +66,7 @@
 | [OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)](#oh_audiorenderer_getloudnessgain) | - | 获取音频流的响度值。 |
 | [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | 该函数指针将指向用于写入音频数据的回调函数。不同于OH_AudioRenderer_OnWriteDataCallback，此函数允许应用填充[0, audioDataSize]长度的数据。<br> 其中audioDataSize为回调buffer的长度。调用方通过返回值告知系统写入的数据长度。<br> 如果返回0，回调线程将会sleep一段时间。<br> 否则，系统可能会立刻进行下一次回调。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)](#oh_audiorenderer_getlatency) | - | 获取当前音频路由的估算时延（单位：毫秒）。无线连接的音频设备，时延估算可能存在误差，结果仅供参考。<br> 由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。<br> 当音频数据输出到硬件后，建议使用[OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)进行音视频同步。 |
+| [OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)](#oh_audiorenderer_setindependentaudiosessionstrategy) | - | 设置独立的音频会话策略和行为参数。当音频渲染器在运行状态时调用此接口后，必须重新调用接口[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)使其生效。 |
 
 ## 函数说明
 
@@ -422,7 +423,12 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **描述**
 
-获取输出音频流时间戳和位置信息。<br> 该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时候的时间戳（timestamp），时间戳单位为纳秒。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，建议频率不要太频繁，可以每分钟一次，最好不要低200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁的查询时间戳。
+获取输出音频流时间戳和位置信息。<br> 该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时候的时间戳（timestamp），时间戳单位为纳秒。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，建议频率不要太频繁，可以每分钟一次，最好不要低于200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁地查询时间戳。
+
+> **说明：**
+>
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。
+> - 当调用Flush接口时实际播放位置也会被重置。
 
 **起始版本：** 10
 
@@ -449,7 +455,13 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 **描述**
 
-获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。<br> 注意，当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。当调用Flush接口时实际播放位置也会被重置。<br> 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。<br>
+获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。
+
+> **说明：**
+>
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。
+> - 当调用Flush接口时实际播放位置也会被重置。
+> - 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
 
 **起始版本：** 15
 
@@ -1060,5 +1072,31 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：<br>                                                 1. 参数renderer为nullptr；<br>                                                 2. 参数latencyMs为nullptr；<br>                                                 3. 参数type无效。<br>         AUDIOSTREAM_ERROR_SYSTEM：系统内部错误，例如音频服务异常。 |
+
+### OH_AudioRenderer_SetIndependentAudioSessionStrategy()
+
+```c
+OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)
+```
+
+**描述**
+
+设置独立的音频会话策略和行为参数。当音频渲染器在运行状态时调用此接口后，必须重新调用接口[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)使其生效。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
+| [const OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md)* strategy | 用于设置独立的音频会话策略。 |
+| uint32_t behavior | 音频会话行为标志，可以是单个标志，也可以是多个标志的按位OR组合。当前支持的音频会话行为详见[OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数为空指针或超出范围。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：执行状态异常。 |
 
 

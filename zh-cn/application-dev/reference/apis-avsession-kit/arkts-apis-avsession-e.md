@@ -283,3 +283,18 @@
 | ------------------------- | - | ----------------------- |
 | ENABLE_BACKGROUND_PLAY    | 0 | 支持后台播放。            |
 | DISABLE_BACKGROUND_PLAY   | 1 | 不支持后台播放。          |
+
+## ExtraKey
+
+表示定义在不同场景中使用的额外键的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| DLNA_CURRENT_URI_METADATA      | "CurrentURIMetadata"    | DLNA投播场景下，用于提供与资源相关元数据的键。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_DIDL_LITE      | "DIDL-Lite"    | DLNA投播场景下，用于在传输中描述内容元数据的键。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
