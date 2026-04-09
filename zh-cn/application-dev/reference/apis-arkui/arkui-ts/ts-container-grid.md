@@ -1131,13 +1131,20 @@ export class GridDataSource implements IDataSource {
       listener.onDataMove(from, to);
     })
   }
+  
+  // 重新加载所有数据
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
 
   // 交换元素位置
   public swapItem(from: number, to: number): void {
     let temp: string = this.list[from];
     this.list[from] = this.list[to];
     this.list[to] = temp;
-    this.notifyDataMove(from, to);
+    this.notifyDataReload()
   }
 }
 ```
