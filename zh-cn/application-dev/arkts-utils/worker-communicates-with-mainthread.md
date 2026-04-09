@@ -100,6 +100,69 @@
      }
    }
    ```
+   
+   ``` TypeScript
+   import { worker } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function promiseCase() {
+     let p: Promise<void> = new Promise<void>((resolve: Function, reject: Function) => {
+       setTimeout(() => {
+         resolve(1);
+       }, 100)
+     }).then(undefined, (error: BusinessError) => {
+     })
+     return p;
+   }
+   
+   async function postMessageTest() {
+     let ss = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+     let res = undefined;
+     let flag = false;
+     let isTerminate = false;
+     ss.onexit = () => {
+       isTerminate = true;
+     }
+     // 接收Worker线程发送的消息
+     ss.onmessage = (e) => {
+       res = e.data;
+       flag = true;
+       console.info('worker:: res is  ' + res);
+     }
+     // 给Worker线程发送消息
+     ss.postMessage('hello world');
+     while (!flag) {
+       await promiseCase();
+     }
+   
+     ss.terminate();
+     while (!isTerminate) {
+       await promiseCase();
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               postMessageTest();
+               this.message = 'success';
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
    <!-- @[respond_worker_instant_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerCommunicatesWithMainthread.ets) -->
 
