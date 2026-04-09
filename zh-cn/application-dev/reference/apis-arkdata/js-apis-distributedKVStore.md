@@ -235,7 +235,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 用于备份数据库的配置信息。
 
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **ArkTS-Dyn起始版本：** 24
 
@@ -243,8 +243,8 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
 | --------------| -------------- | ---- | ----| -------------------------|
-| fileName      | string         | 否 | 否 | 备份数据库的名称，无长度限制，不能包含特殊字符'/'。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
-| filePath      | string         | 否 | 否 | 备份数据库的路径，无长度限制。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| fileName      | string         | 否 | 否 | 备份数据库的名称，无长度限制，不能包含特殊字符'/'。 |
+| filePath      | string         | 否 | 否 | 备份数据库的路径，无长度限制。 |
 
 ## Schema
 
