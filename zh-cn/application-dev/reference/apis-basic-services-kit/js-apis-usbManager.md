@@ -635,7 +635,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -710,7 +710,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其它属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -1339,7 +1339,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -1440,7 +1440,7 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
 | id             | number                                           | 否 | 否 |配置的唯一标识。        |
 | attributes     | number                                           | 否 | 否 |配置的属性。          |
-| maxPower       | number                                           | 否 | 否 |最大功耗，以毫安为单位。    |
+| maxPower       | number                                           | 否 | 否 |最大功耗，（单位：毫安）。    |
 | name           | string                                           | 否 | 否 |配置的名称，可以为空。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
 | isSelfPowered  | boolean                                          | 否 | 否 |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
@@ -1566,12 +1566,12 @@ USB配件句柄。
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
 | endpoint | number | 否 | 否 | 端点地址，正整数。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
-| timeout | number | 否 | 否 | 超时时间，单位为毫秒。 |
-| length | number | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），单位为字节。 |
+| timeout | number | 否 | 否 | 超时时间，（单位：毫秒）。 |
+| length | number | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
 | callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
 | buffer | Uint8Array | 否 | 否 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，单位为个数。 |
+| isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个数）。 |
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1606,7 +1606,7 @@ Usb异步传输回调。
 
 | 名称        | 类型 | 只读 | 可选   | 说明    |
 | ---------- | ------ | ---- | ----- | ------ |
-| actualLength | number | 否 |  否 |读写操作的实际长度值，单位为字节。 |
+| actualLength | number | 否 |  否 |读写操作的实际长度值，（单位：字节）。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |读写操作完成的状态。 |
 | isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | 否 | 否 |实时传输的分包信息。 |
 
@@ -1634,8 +1634,8 @@ Usb异步传输回调。
 
 | 名称         | 类型 | 只读  | 可选 | 说明    |
 | ---------- | ------ | ----| ----- | ------ |
-| length | number | 否 | 否 |读写操作的期望长度值，单位为字节。 |
-| actualLength | number|否 | 否 |读写操作的实际长度值，单位为字节。 |
+| length | number | 否 | 否 |读写操作的期望长度值，（单位：字节）。 |
+| actualLength | number|否 | 否 |读写操作的实际长度值，（单位：字节）。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |实时传输分包的状态码。 |
 
 ## USBControlParams<sup>(deprecated)</sup>
