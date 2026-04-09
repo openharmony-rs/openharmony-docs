@@ -211,7 +211,7 @@ getOriginalFileName(fileName: string): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回DLP文件的原始文件名。例如：DLP文件名为test.txt.dlp，则返回的原始文件名为test.txt。 |
+| string | 返回DLP文件的原始文件名。例如：DLP文件名为test.txt.dlp，则返回的原始文件名为test.txt。不超过255字节。 |
 
 **错误码：**
 
@@ -244,7 +244,7 @@ getDLPSuffix(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回DLP文件扩展名。例如：原文件"text.txt"，加密后的DLP文件名为"test.txt.dlp"，返回拓展名为".dlp"。 |
+| string | 返回DLP文件扩展名。例如：原文件"text.txt"，加密后的DLP文件名为"test.txt.dlp"，返回拓展名为".dlp"。不超过255字节。 |
 
 **错误码：**
 
@@ -987,7 +987,7 @@ getSandboxAppConfig(): Promise&lt;string&gt;
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象。返回沙箱应用配置信息。 |
+| Promise&lt;string&gt; | Promise对象。返回沙箱应用配置信息。 长度小于4MB。|
 
 **错误码：**
 
@@ -1375,7 +1375,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的json字符串。 |
+| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的json字符串。长度不超过4M（单位：兆）。 |
 
 **错误码：**
 
@@ -1506,9 +1506,9 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| requestId | string | 是 | SA（System Ability）侧传递的本次请求的标识。|
-| requestData | string | 是 | SA（System Ability）侧传递的数据。|
-| callback | Callback\<string\>| 是 | SA（System Ability）侧传递的接口，用于回调。 |
+| requestId | string | 是 | SA（System Ability）侧传递的本次请求的标识。可取任意值。|
+| requestData | string | 是 | SA（System Ability）侧传递的数据。可取任意值。|
+| callback | Callback\<string\>| 是 | SA（System Ability）侧传递的接口，用于回调。可取任意值。 |
 
 **错误码：**
 
