@@ -53,6 +53,7 @@
     - [@ohos.app.appstartup.startupManager (启动框架管理能力)](js-apis-app-appstartup-startupManager.md)
     - [@ohos.app.appstartup.StartupTask (启动框架任务)](js-apis-app-appstartup-startupTask.md)
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](js-apis-app-ability-autoStartupManager.md)
+    - [@ohos.app.agent.AgentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](js-apis-app-agent-agentExtensionAbility.md)
     - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
@@ -116,6 +117,7 @@
     - [@ohos.app.ability.abilityManager (AbilityManager)(系统接口)](js-apis-app-ability-abilityManager-sys.md)
     - [@ohos.app.ability.appManager (appManager)(系统接口)](js-apis-app-ability-appManager-sys.md)
     - [@ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)](js-apis-app-agent-agentManager-sys.md)
+    - [@ohos.app.agent.AgentConstant (Agent常量)(系统接口)](js-apis-app-agent-agentConstant-sys.md)
     - [@ohos.app.ability.kioskManager (Kiosk管理模块)(系统接口)](js-apis-app-ability-kioskManager-sys.md)
     - [@ohos.app.ability.missionManager (missionManager)(系统接口)](js-apis-app-ability-missionManager-sys.md)
     - [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](js-apis-app-ability-quickFixManager-sys.md)
