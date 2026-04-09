@@ -82,7 +82,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | startIndex           | number                                                             | 否   | 否   | 在屏幕上的第一个项目的列表索引。默认值为0。 |
 | text                 | string                                                             | 否   | 否   | 元素的文本。 |
 | textLengthLimit      | number                                                             | 否   | 否   | 元素文本的最大长度限制。 |
-| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否   | 否   | 文本被读取时的移动单位。 |
+| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否   | 否   | 文本被读取时的移动粒度。 |
 | triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | 否   | 否   | 触发元素事件的动作。 |
 | type                 | [WindowType](#windowtype)                                          | 否   | 否   | 元素的窗口类型。 |
 | valueMax             | number                                                             | 否   | 否   | 最大值。默认值为0。 |
@@ -798,7 +798,7 @@ axContext.injectGestureSync(gesturePath);
 
 ## AccessibilityElement
 
-无障碍节点元素, 在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
+无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
