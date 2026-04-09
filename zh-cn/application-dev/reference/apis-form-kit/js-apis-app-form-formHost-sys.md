@@ -3222,11 +3222,9 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import { formInfo } from '@kit.FormKit';
-import formHost from '@ohos.app.form.formHost';
-import Want from '@ohos.app.ability.Want';
-import { RecordData } from '@ohos.base';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { formInfo, formHost } from '@kit.FormKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 try {
   let wantParams: Record<String, RecordData> = {
@@ -3910,8 +3908,8 @@ on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): voi
 **示例：**
 
 ```ts
-import formHost from '@ohos.app.form.formHost';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formHost } from '@kit.FormKit';
 
 try {
   formHost.on('getLiveFormStatus', (): Record<string,string> => {
@@ -4098,7 +4096,7 @@ onFormUninstall(callback: Callback&lt;string&gt;): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
+import { formHost } from '@kit.FormKit';
 
 try {
   formHost.onFormUninstall((formId: string) => {
@@ -4147,7 +4145,7 @@ offFormUninstall(callback?: Callback&lt;string&gt;): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
+import { formHost } from '@kit.FormKit';
 
 try {
   formHost.offFormUninstall();
