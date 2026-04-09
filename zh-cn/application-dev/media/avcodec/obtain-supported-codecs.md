@@ -38,7 +38,7 @@
 
 3. 获得音视频编解码能力实例。
 
-   支持两种方式获取音视频编解码能力实例。
+   支持以下方式获取音视频编解码能力实例，若获取能力实例成功，继续向下执行。实例无显性释放接口，使用完毕后系统会自动回收。
    
    方式一：通过`OH_AVCodec_GetCapability`获取系统推荐的音视频编解码器能力实例。推荐策略与`OH_XXX_CreateByMime`系列接口一致。
 
@@ -61,7 +61,6 @@
    uint32_t count = 0;
    OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
    ```
-   若获取能力实例成功，继续向下执行。实例无显性释放接口，使用完毕后系统会自动回收。
    
 4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
 
@@ -789,7 +788,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 
 ### 筛选特定MIME类型的安全解码器（DRM播放场景）
 
-在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的“安全解码器”。
+从API version24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的“安全解码器”。
 
 开发者可以通过获取解码器列表，并结合MIME类型通过接口OH_AVCapability_IsSecure查询解码器类型，精准筛选出符合要求的安全解码器。
 
@@ -800,28 +799,28 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 | OH_AVCapability_CheckMimeType             | 校验该能力实例的MIME类型是否与目标类型一致。 |
 | OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理DRM资源的安全解码器。 |
 
-查找并创建 H.264 安全硬件解码器的示例代码如下：
+查找并创建H.264安全硬件解码器的示例代码如下：
 
 ```c++
-// 1. 定义期望的MIME类型
+// 1. 定义期望的MIME类型。
 const char *targetMime = OH_AVCODEC_MIMETYPE_VIDEO_AVC;
 uint32_t count = 0;
 
-// 2. 获取所有视频解码器的能力列表
+// 2. 获取所有视频解码器的能力列表。
 OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
 
 if (capabilityList != nullptr && count > 0) {
     for (uint32_t i = 0; i < count; i++) {
         OH_AVCapability *cap = capabilityList[i];
         
-        // 3. 检查是否为目标的MIME类型，且必须是安全解码器
+        // 3. 检查是否为目标的MIME类型，且必须是安全解码器。
         if (OH_AVCapability_CheckMimeType(cap, targetMime) && OH_AVCapability_IsSecure(cap)) {
-            // 4. 找到符合条件的编解码器，获取其名称用于创建实例
+            // 4. 找到符合条件的编解码器，获取其名称用于创建实例。
             const char *codecName = OH_AVCapability_GetName(cap);
             OH_AVCodec *secureVideoDec = OH_VideoDecoder_CreateByName(codecName);
             
             if (secureVideoDec != nullptr) {
-                // 成功创建安全解码器，跳出循环执行后续业务
+                // 成功创建安全解码器，跳出循环执行后续业务。
                 break;
             }
         }
