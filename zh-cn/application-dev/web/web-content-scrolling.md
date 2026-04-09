@@ -31,7 +31,7 @@
 
 + [pageUp](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pageup)：将Webview的内容向上滚动半个视口大小或者滚动到页面最顶部，通过top入参控制。
 + [pageDown](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pagedown)：将Webview的内容向下滚动半个视口大小或者滚动到页面最底部，通过bottom入参控制。
-## 调用js侧接口控制Web页面滚动
+## 调用JS侧接口控制Web页面滚动
 + scrollBy：相对当前滚动位置滚动一定距离（正数向下/右，负数向上/左）。
 
   ```javascript

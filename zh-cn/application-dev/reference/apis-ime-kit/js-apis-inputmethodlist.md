@@ -77,10 +77,10 @@ struct SettingsItem {
   @State defaultPattern: number = 1;
   private oneHandAction: PatternOptions = {
     defaultSelected: this.defaultPattern,
-    patterns: [
+    patterns: [ // patterns中的图标需要在工程的resource中添加对应图标资源后使用
       {
-        icon: $r('app.media.hand_icon'),
-        selectedIcon: $r('app.media.hand_icon_selected')
+        icon: $r('app.media.hand_icon'), // 此处为输入法模式选项的图标资源，例如单手模式图标
+        selectedIcon: $r('app.media.hand_icon_selected') // 此处为输入法模式选项的图标资源选中状态，例如单手模式选中状态的图标
       },
       {
         icon: $r('app.media.hand_icon1'),
@@ -118,4 +118,5 @@ struct SettingsItem {
 ```
 
 示例效果图：
+
 ![示例效果图](./figures/示例效果图.png)

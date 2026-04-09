@@ -42,7 +42,7 @@ setUrlSource(url: string, headers?: Record\<string, string>): void
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| url | string       | 是   | 媒体资源URL。<br/>1. 支持的视频格式包括：mp4、mpeg-ts、mkv。<br/>2. 支持的音频格式包括：m4a、aac、mp3、ogg、wav、flac、amr。<br/>**支持路径示例**：<br/>1. http网络播放：`http\://xx`。<br/>2. https网络播放：`https\://xx`。<br/>**说明：** 不支持设置hls/dash、直播资源。|
+| url | string       | 是   | 媒体资源URL。<br/>1. 支持的视频格式包括：mp4、mpeg-ts、mkv。<br/>2. 支持的音频格式包括：m4a、aac、mp3、ogg、wav、flac、amr。<br/>**支持路径示例**：<br/>1. http网络播放：`http://xx`。<br/>2. https网络播放：`https://xx`。<br/>**说明：** 不支持设置HLS/Dash、直播资源。|
 | headers | Record\<string, string> | 否   | 支持访问网络资源HttpHeader自定义。默认为空。|
 
 **示例：**
@@ -196,7 +196,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor != null) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap) => {
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
       pixelMap = pixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
@@ -506,8 +506,10 @@ async function test() {
   // 创建AVMetadataExtractor对象。
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   let timeoutMs = 3000;
-  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata) => {
-    console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata | undefined) => {
+    if (metadata) {
+      console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+    }
   }).catch((error: BusinessError) => {
     console.error(`Failed to fetch Metadata, code: ${error.code}, message: ${error.message}`);
   });

@@ -58,14 +58,14 @@ function createShaderPromise(): Promise<Shader> {
 
 ## SceneNodeParameters
 
-场景结点参数对象，它用于提供场景结点层次中的名称和路径。
+场景节点参数对象，它用于提供场景节点层次中的名称和路径。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 要创建的结点名称，可由开发者自定义填写，用于标识场景结点。|
-| path | string | 否 | 是 | 场景结点层次中的路径。用于指定创建的摄影机、灯光或结点在场景结点层次中的放置位置。每层之间使用'/'符号进行分割。如果未提供，则将其设置为根结点的子结点。默认值为undefined。|
+| name | string | 否 | 否 | 要创建的节点名称，可由开发者自定义填写，用于标识场景节点。|
+| path | string | 否 | 是 | 场景节点层次中的路径。用于指定创建的摄影机、灯光或节点在场景节点层次中的放置位置。每层之间使用'/'符号进行分割。如果未提供，则将其设置为根节点的子节点。默认值为undefined。|
 
 **示例：**
 
@@ -116,7 +116,7 @@ function createNodePromise() : Promise<Node> {
 
 ## RenderResourceFactory<sup>20+</sup>
 
-用于创建可在共享RenderContext的多个场景（Scene）中共享的渲染资源。
+用于创建可在共享[RenderContext](#rendercontext20)的多个场景（[Scene](#scene-1)）中共享的渲染资源。
 
 ### createShader<sup>20+</sup>
 
@@ -386,7 +386,7 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 
 ## EffectParameters<sup>21+</sup>
 
-特效参数。
+特效参数配置，用于指定创建特效时所需的特效ID，作为[createEffect](#createeffect21)接口的入参来创建特效对象。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -402,7 +402,7 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 
 createCamera(params: SceneNodeParameters): Promise\<Camera>
 
-根据结点参数创建相机，使用Promise异步回调。
+根据节点参数创建相机，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -410,7 +410,7 @@ createCamera(params: SceneNodeParameters): Promise\<Camera>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
+| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景节点参数。 |
 
 **返回值：**
 
@@ -445,7 +445,7 @@ function createCameraPromise(): Promise<Camera> {
 
 createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise\<Camera>
 
-根据结点参数与相机参数创建相机，使用Promise异步回调。
+根据节点参数与相机参数创建相机，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -453,7 +453,7 @@ createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
+| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景节点参数。 |
 | cameraParams | [CameraParameters](#cameraparameters21) | 是 | 相机参数。 |
 
 **返回值：**
@@ -491,7 +491,7 @@ function createCameraPromise(): Promise<Camera> {
 
 createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
-根据结点参数和灯光类型创建灯光，使用Promise异步回调。
+根据节点参数和灯光类型创建灯光，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -499,7 +499,7 @@ createLight(params: SceneNodeParameters, lightType: LightType): Promise\<Light>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
+| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景节点参数。 |
 | lightType | [LightType](js-apis-inner-scene-nodes.md#lighttype) | 是 | 灯光类型。 |
 
 **返回值：**
@@ -535,7 +535,7 @@ function createLightPromise() : Promise<Light> {
 
 createNode(params: SceneNodeParameters): Promise\<Node>
 
-创建结点，使用Promise异步回调。
+创建节点，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -543,13 +543,13 @@ createNode(params: SceneNodeParameters): Promise\<Node>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
+| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景节点参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise对象，返回结点对象。 |
+| Promise\<[Node](js-apis-inner-scene-nodes.md#node)> | Promise对象，返回节点对象。 |
 
 **示例：**
 
@@ -667,7 +667,7 @@ function createEnvironmentPromise(): Promise<Environment> {
 
 createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise\<Geometry>
 
-根据场景结点参数和网格数据创建几何对象，使用Promise异步回调。
+根据场景节点参数和网格数据创建几何对象，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -675,7 +675,7 @@ createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise\<Geometr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景结点参数。 |
+| params | [SceneNodeParameters](#scenenodeparameters) | 是 | 场景节点参数。 |
 | mesh | [MeshResource](js-apis-inner-scene-resources.md#meshresource18) | 是 | 网格数据参数。 |
 
 **返回值：**
@@ -697,10 +697,13 @@ function createGeometryPromise() : Promise<Geometry> {
         return;
       }
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      // 创建立方体几何数据
       let cubeGeom = new CubeGeometry();
       cubeGeom.size = { x: 1, y: 1, z: 1 };
+      // 根据立方体几何数据创建网格资源
       let meshRes = await sceneFactory.createMesh({ name: "MeshName" }, cubeGeom);
       console.info("TEST createGeometryPromise");
+      // 根据场景节点参数和网格资源创建几何对象
       let geometry: Geometry = await sceneFactory.createGeometry({ name: "GeometryName" }, meshRes);
       resolve(geometry);
     }).catch((error: Error) => {
@@ -848,8 +851,8 @@ registerResourcePath(protocol: string, uri: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| protocol | string | 是 | 要注册的路径检索名，必须是系统未预定义或未注册且非空的检索名称。|
-| uri | string | 是 | 要注册的资产路径目录，与检索名对应，必须是资产文件所在文件夹路径。|
+| protocol | string | 是 | 要注册的路径检索名，用作shader内部关联文件路径的前缀标识，必须是系统未预定义或未注册且非空的检索名称。|
+| uri | string | 是 | 要注册的资产路径目录，与检索名对应，shader加载时会将路径中的检索名前缀替换为该目录，必须是资产文件所在文件夹路径。|
 
 **返回值：**
 
@@ -865,13 +868,17 @@ import { Scene, RenderContext } from '@kit.ArkGraphics3D';
 function registerResourcePath(): void {
   // 创建shader资源，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("shaders/custom_shader/custom_material_sample.shader"))
-    .then(scene => {
+    .then(() => {
       const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
       if (!renderContext) {
         console.error("RenderContext is null");
         return false;
       }
-      return renderContext.registerResourcePath("protocol", "OhosRawFile://uri");
+      // 注册路径检索名"myproto"及其对应的资产路径目录"OhosRawFile://shaders/custom_shader/"
+      // 当shader内部通过检索名引用关联文件，如路径为"myproto://textures/base.png"，
+      // 系统会将"myproto://"替换为"OhosRawFile://shaders/custom_shader/"，
+      // 最终从"OhosRawFile://shaders/custom_shader/textures/base.png"加载关联文件
+      return renderContext.registerResourcePath("myproto", "OhosRawFile://shaders/custom_shader/");
     })
     .then(result => {
       if (result) {
@@ -915,7 +922,7 @@ function registerResourcePath(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。 |
 | animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。|
-| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。 |
+| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根节点。 |
 | renderConfiguration<sup>23+</sup> | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。 |
 
 ### load
@@ -947,7 +954,9 @@ import { Scene } from '@kit.ArkGraphics3D';
 function loadModel(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
-  scene.then(async (result: Scene) => {});
+  scene.then((result: Scene) => {
+    console.info("Scene loaded, root node: " + result.root?.name);
+  });
 }
 ```
 
@@ -957,10 +966,9 @@ import { common } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { Scene } from '@kit.ArkGraphics3D';
 
-async loadModelFromAbsolutePath(): Promise<void> {
+async function loadModelFromAbsolutePath(context: common.UIAbilityContext): Promise<void> {
   // 获取应用沙盒目录（Scene.load仅能读取应用自身写入的文件，不能读取hdc/adb push写入的文件）
-  const uiCtx = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  const appCtx = uiCtx.getApplicationContext();
+  const appCtx = context.getApplicationContext();
   const filesDir = appCtx.filesDir; // /data/storage/el2/base/files
 
   // 从rawfile读取模型内容（实际使用中也可以替换为其他来源的数据）
@@ -969,7 +977,7 @@ async loadModelFromAbsolutePath(): Promise<void> {
   const load_uri = `${filesDir}/AnimatedCube.glb`;
 
   // 写入模型文件到应用沙盒目录，生成可被Scene.load(绝对路径)访问的实际文件
-  const rawData = await uiCtx.resourceManager.getRawFileContent(src);
+  const rawData = await context.resourceManager.getRawFileContent(src);
   const file = fileIo.openSync(load_uri, fileIo.OpenMode.CREATE | fileIo.OpenMode.TRUNC | fileIo.OpenMode.WRITE_ONLY);
   fileIo.writeSync(file.fd, rawData.buffer.slice(rawData.byteOffset, rawData.byteOffset + rawData.byteLength));
   fileIo.closeSync(file);
@@ -987,7 +995,7 @@ async loadModelFromAbsolutePath(): Promise<void> {
 
 getNodeByPath(path: string, type?: NodeType): Node | null
 
-通过路径获取结点。
+通过路径获取节点。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -995,14 +1003,14 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 场景结点层次中的路径。每层之间使用'/'符号进行分割。|
-| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | 否 | 预期返回的结点类型。默认值为空。|
+| path | string | 是 | 场景节点层次中的路径。每层之间使用'/'符号进行分割。|
+| type | [NodeType](js-apis-inner-scene-nodes.md#nodetype) | 否 | 预期返回的节点类型。默认值为空。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) \| null | 返回请求结点的实例，如果没有找到或者找到的节点类型与传入的参数不相符则返回空。 |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | 返回请求节点的实例，如果没有找到或者找到的节点类型与传入的参数不相符则返回空。 |
 
 **示例：**
 
@@ -1081,7 +1089,7 @@ function destroy(): void {
 
 importNode(name: string, node: Node, parent: Node | null): Node
 
-一般用于从其他场景导入结点。
+一般用于从其他场景导入节点。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -1089,15 +1097,15 @@ importNode(name: string, node: Node, parent: Node | null): Node
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| name | string | 是 | 导入结点后的名称，由开发者自定义，无特殊要求。|
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被导入的结点。|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 被导入结点在新场景中的父结点。|
+| name | string | 是 | 导入节点后的名称，由开发者自定义，无特殊要求。|
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被导入的节点。|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 被导入节点在新场景中的父节点。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) | 被导入的结点。|
+| [Node](js-apis-inner-scene-nodes.md#node) | 被导入的节点。|
 
 **示例：**
 
@@ -1135,15 +1143,15 @@ importScene(name: string, scene: Scene, parent: Node | null): Node
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| name | string | 是 | 导入场景的根结点名称，由开发者自定义，无特殊要求。|
+| name | string | 是 | 导入场景的根节点名称，由开发者自定义，无特殊要求。|
 | scene | [Scene](#scene-1) | 是 | 被导入的场景。|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 被导入场景在新场景中的父结点。|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 被导入场景在新场景中的父节点。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) | 被导入场景的根结点。|
+| [Node](js-apis-inner-scene-nodes.md#node) | 被导入场景的根节点。|
 
 **示例：**
 
@@ -1325,7 +1333,7 @@ function getDefaultRenderContextTest() {
 
 cloneNode(node: Node, parent: Node, name: string): Node | null
 
-在当前所在场景中克隆结点，不支持跨场景克隆结点。
+在当前所在场景中克隆节点，不支持跨场景克隆节点。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -1333,15 +1341,15 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点。|
-| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点在当前所在场景中的目标父结点。被克隆的结点node和目标父结点parent需要属于同一个场景scene。|
-| name | string | 是 | 克隆结点的名称，由开发者自定义，无特殊要求。|
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的节点。|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的节点在当前所在场景中的目标父节点。被克隆的节点node和目标父节点parent需要属于同一个场景scene。|
+| name | string | 是 | 克隆节点的名称，由开发者自定义，无特殊要求。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](js-apis-inner-scene-nodes.md#node) \| null | 返回克隆结点。克隆失败则返回null。 |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | 返回克隆节点。克隆失败则返回null。 |
 
 **示例：**
 
