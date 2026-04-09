@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
 
 ## 导入模块
 
@@ -25,17 +26,23 @@ import { LayerMask, NodeType, Container, Node, Geometry, LightType, Light, SpotL
 
 ### getEnabled
 
-getEnabled(index: number): boolean
+ArkTS-Dyn: getEnabled(index: number): boolean
+
+ArkTS-Sta: getEnabled(index: int): boolean
 
 获取指定图层下标图层掩码的使能状态。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| index | number | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
 
 **返回值：**
 
@@ -67,17 +74,23 @@ function layerMask(): void {
 
 ### setEnabled
 
-setEnabled(index: number, enabled: boolean): void
+ArkTS-Dyn: setEnabled(index: number, enabled: boolean): void
+
+ArkTS-Sta: setEnabled(index: int, enabled: boolean): void
 
 将特定下标的图层掩码使能。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| index | number | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
 | enabled | boolean | 是 | 要设置的使能状态。true表示使用图层掩码，false表示不使用。 |
 
 **示例：**
@@ -110,11 +123,11 @@ function layerMask(): void {
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| NODE | 1 | 节点是空节点。 |
-| GEOMETRY | 2 | 几何类型节点。 |
-| CAMERA | 3 | 相机类型节点。 |
-| LIGHT | 4 | 灯光类型节点。 |
-| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。 |
+| NODE | 1 | 节点是空节点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GEOMETRY | 2 | 几何类型节点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| CAMERA | 3 | 相机类型节点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| LIGHT | 4 | 灯光类型节点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ## Container\<T>
 
@@ -127,6 +140,10 @@ append(item: T): void
 追加一个对象到容器。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -163,6 +180,10 @@ insertAfter(item: T, sibling: T | null): void
 在兄弟节点后面插入对象。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -201,6 +222,10 @@ remove(item: T): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -231,17 +256,23 @@ function remove(): void {
 
 ### get
 
-get(index: number): T | null
+ArkTS-Dyn: get(index: number): T | null
+
+ArkTS-Sta: get(index: int): T | null
 
 获取特定下标对象，获取不到则返回空。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| index | number | 是 | 要获取对象的下标，取值范围是大于等于0的整数。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要获取对象的下标，取值范围是大于等于0的整数。 |
 
 **返回值：**
 
@@ -277,6 +308,10 @@ clear(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts
@@ -301,17 +336,23 @@ function clear(): void {
 
 ### count
 
-count(): number
+ArkTS-Dyn: count(): number
+
+ArkTS-Sta: count(): int
 
 获取容器中对象的数量。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| number | 返回容器中对象个数，取值范围是非负整数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回容器中对象个数，取值范围是非负整数。 |
 
 **示例：**
 
@@ -342,6 +383,10 @@ function count(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | position | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 节点位置，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
@@ -361,6 +406,10 @@ getNodeByPath(path: string): Node | null
 根据路径获取节点，如果获取不到则返回空。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -399,14 +448,18 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| mesh | [Mesh](js-apis-inner-scene-resources.md#mesh) | 是 | 否 | 网格属性。 |
-| morpher<sup>20+</sup> | [Morpher](js-apis-inner-scene-resources.md#morpher20) | 是 | 是 | 可选的形变器，用于为几何体添加基于顶点的形变或动画效果。若未设置，则该几何体不支持形变功能。 |
+| mesh | [Mesh](js-apis-inner-scene-resources.md#mesh) | 是 | 否 | 网格属性。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| morpher<sup>20+</sup> | [Morpher](js-apis-inner-scene-resources.md#morpher20) | 是 | 是 | 可选的形变器，用于为几何体添加基于顶点的形变或动画效果。若未设置，则该几何体不支持形变功能。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## LightType
 
 光源类型枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -419,11 +472,15 @@ function getNode(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | 是 | 否 | 光源类型。 |
 | color | [Color](js-apis-inner-scene-types.md#color) | 否 | 否 | 颜色。 |
-| intensity | number | 否 | 否 | 光照密度，单位为坎德拉（cd），取值范围是大于0的实数。 |
+| intensity | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 光照密度，单位为坎德拉（cd），取值范围是大于0的实数。 |
 | shadowEnabled | boolean | 否 | 否 | 是否使能阴影。true表示添加阴影，false表示没有阴影效果。 |
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
@@ -435,10 +492,14 @@ function getNode(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。单位为弧度（rad），默认值为0。设置的值必须大于等于0，小于等于outerAngle。 |
-| outerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。单位为弧度（rad），默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 |
+| innerAngle<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。单位为弧度（rad），默认值为0。设置的值必须大于等于0，小于等于outerAngle。 |
+| outerAngle<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。单位为弧度（rad），默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 |
 
 > **注意：** 
 > 
@@ -450,6 +511,10 @@ function getNode(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ## Camera
 
 相机类型，Camera继承自[Node](#node)。
@@ -460,15 +525,15 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fov | number | 否 | 否 | 视场，单位为弧度（rad），取值在0到π弧度之间。 |
-| nearPlane | number | 否 | 否 | 近平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。 |
-| farPlane | number | 否 | 否 | 远平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于nearPlane。 |
-| enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
-| postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。 |
-| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | 是 | 否 | 应用于相机输出的后处理特效。 |
-| clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。 |
-| msaa<sup>22+</sup> | boolean | 否 | 是 | 控制MSAA是否使能。true表示使能MSAA，false表示不使能MSAA。若未设置，默认为false。 |
-| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线。若未设置，默认使用轻量级前向渲染管线。（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。） |
+| fov | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 视场，单位为弧度（rad），取值在0到π弧度之间。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| nearPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 近平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| farPlane | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 远平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于nearPlane。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | 是 | 否 | 应用于相机输出的后处理特效。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| clearColor | [Color](js-apis-inner-scene-types.md#color) \| null | 否 | 否 | 将渲染目标（render target）清空后的特定颜色。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| msaa<sup>22+</sup> | boolean | 否 | 是 | 控制MSAA是否使能。true表示使能MSAA，false表示不使能MSAA。若未设置，默认为false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
+| renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线。若未设置，默认使用轻量级前向渲染管线。（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。）<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ### raycast<sup>20+</sup>
 
@@ -477,6 +542,10 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 从屏幕指定位置发射射线，检测并返回所有命中的3D物体信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -613,6 +682,10 @@ getViewMatrix(): Mat4x4
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -649,6 +722,10 @@ getProjectionMatrix(): Mat4x4
 获取相机的投影矩阵。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
