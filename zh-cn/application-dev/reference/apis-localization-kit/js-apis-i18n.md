@@ -4443,7 +4443,7 @@ is24HourClock(): boolean
 
 set24HourClock(option: boolean): boolean
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.set24HourClock](./js-apis-i18n-sys.md#set24hourclock9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅支持系统应用使用。
 
 修改系统时间的24小时制设置。
 
@@ -4594,6 +4594,7 @@ getFirstPreferredLanguage(): string
 
 ### unitConvert<sup>(deprecated)</sup>
 
+
 unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string, style?: string): string
 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[unitConvert](#unitconvert9)替代。
@@ -4620,6 +4621,7 @@ unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string,
 
 
 ## Character<sup>(deprecated)</sup>
+
 
 ### isDigit<sup>(deprecated)</sup>
 
