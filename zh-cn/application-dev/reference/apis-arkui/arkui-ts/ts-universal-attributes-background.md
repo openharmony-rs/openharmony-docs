@@ -49,6 +49,7 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 > - 同时设置background，backgroundColor，backgroundImage时，三者将按以下规则叠加显示：
 >   - 若background为ResourceColor类型，或设置ignoresLayoutSafeAreaEdges属性，则background位于最底层。
 >   - 其他情况下，background位于最上层。
+> - 在background设置content参数为CustomBuilder类型时，background不会跟随CustomBuilder内容更新而变化。
 
 ## BackgroundOptions<sup>20+</sup>对象说明
 
