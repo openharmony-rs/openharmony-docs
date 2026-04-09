@@ -1377,7 +1377,7 @@ async sendSysExMessage(): Promise<void> {
   - 销毁客户端
 
     <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-  
+    
     ``` C++
     static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
     {
