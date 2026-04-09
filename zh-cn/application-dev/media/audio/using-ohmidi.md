@@ -134,27 +134,18 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 - 创建MIDI客户端
 
   <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-
-  ``` C++
-  // 定义设备变化回调。
-  static void OnDeviceChange(void *userData, OH_MIDIDeviceChangeAction action,
-                             const OH_MIDIDeviceInformation *info) {
-      // 处理设备连接/断开事件。
-  }
-
-  // 定义错误回调。
-  static void OnError(void *userData, OH_MIDIStatusCode error) {
-      OH_LOG_ERROR(LOG_APP, "MIDI error: %{public}d", error);
-  }
-
-  // 创建MIDI客户端。
-  OH_MIDIClient *client = nullptr;
-  OH_MIDIStatusCode status = OH_MIDIClient_Create(OnDeviceChange, OnError, nullptr, &client);
-  if (status != OH_MIDI_STATUS_OK) {
-      OH_LOG_ERROR(LOG_APP, "Failed to create MIDI client: %{public}d", status);
-      return;
-  }
-  ```
+    
+    ``` C++
+    // Create MIDI client
+    static napi_value CreateMIDIClient(napi_env env, napi_callback_info info)
+    {
+        // ...
+        std::lock_guard<std::mutex> lock(g_midiMutex);
+        // ...
+        OH_MIDIStatusCode status = OH_MIDIClient_Create(&g_midiClient, g_midiCallbacks, nullptr);
+        // ...
+    }
+    ```
 
 ArkTS调用示例
 
@@ -164,6 +155,45 @@ ArkTS调用示例
 
   <!-- @[arkts_create_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
+  ``` TypeScript
+  createClient(): void {
+    try {
+      // Device change callback
+      const deviceChangeCallback = (action: number, deviceInfo: MidiDeviceInfo) => {
+        // In callback: only copy data and emit event, do not hold locks or execute heavy operations
+        // ...
+        const eventData: DeviceChangeEventData = {
+          action: action,
+          deviceId: deviceInfo.deviceId,
+          deviceName: deviceInfo.deviceName,
+          deviceType: deviceInfo.deviceType,
+          deviceAddress: deviceInfo.deviceAddress
+        };
+        emitter.emit({ eventId: EVENT_DEVICE_CHANGE }, { data: eventData });
+        // ...
+      };
+  
+      // Error callback
+      const errorCallback = (error: ErrorEventData) => {
+        // ...
+        emitter.emit({ eventId: EVENT_ERROR }, { data: error });
+      };
+  
+      const status = midi.createMIDIClient(deviceChangeCallback, errorCallback);
+  
+      // ...
+      if (status === MidiStatusCode.OK) {
+        this.clientCreated = true;
+        this.log('MIDI client created successfully');
+        // ...
+        this.refreshDevices();
+      } else {
+        // ...
+      }
+      // ...
+  }
+  ```
+
 ### 销毁MIDI客户端
 
 当不再需要MIDI功能时，应销毁客户端以释放资源。销毁前需要先关闭所有已打开的设备。
@@ -172,11 +202,49 @@ ArkTS调用示例
 
   <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
+  ``` C++
+  static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
+  {
+      // ...
+      std::lock_guard<std::mutex> lock(g_midiMutex);
+  
+      if (g_midiClient != nullptr) {
+          CloseAllOpenedDevices();
+          OH_MIDIClient_Destroy(g_midiClient);
+          g_midiClient = nullptr;
+      }
+      CleanupAllPortContexts();
+  
+      // ...
+  }
+  ```
+
 ArkTS调用示例：
 
-- ArkTS代码示例
-
   <!-- @[arkts_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+
+  ``` TypeScript
+  destroyClient(): void {
+    try {
+      this.cleanup();
+      this.clientCreated = false;
+      this.deviceList = [];
+      this.selectedDeviceId = -1;
+      this.portList = [];
+      this.inputPorts = [];
+      this.outputPorts = [];
+      this.isDeviceOpen = false;
+      this.openInputPorts.clear();
+      this.openOutputPorts.clear();
+      this.activeKeys.clear();
+      this.bleDeviceList = [];
+      this.log('MIDI client destroyed');
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[destroyClient] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error destroying client: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 ### 枚举MIDI设备
 
@@ -209,8 +277,6 @@ ArkTS调用示例：
   ```
 
 ArkTS调用示例：
-
-- ArkTS代码示例
 
   <!-- @[arkts_enum_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -267,7 +333,6 @@ ArkTS调用示例：
 
 ArkTS调用示例：
 
-- ArkTS代码示例
 
   <!-- @[arkts_open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -326,8 +391,6 @@ static napi_value CloseDevice(napi_env env, napi_callback_info info)
 ```
 
 ArkTS调用示例：
-
-- ArkTS代码示例
 
   <!-- @[arkts_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -424,8 +487,6 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 
 ArkTS调用示例：
 
-- ArkTS代码示例
-
   <!-- @[arkts_open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -518,8 +579,6 @@ ArkTS调用示例：
 
 ArkTS调用示例：
 
-- ArkTS代码示例
-
   <!-- @[arkts_load_ports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -605,8 +664,6 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 ```
 
 ArkTS调用示例：
-
-- ArkTS代码示例
 
   <!-- @[arkts_open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -709,7 +766,7 @@ ArkTS调用示例：
   }
   ```
 
-- ArkTS代码示例
+ArkTS调用示例：
 
   <!-- @[arkts_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -778,8 +835,6 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 ```
 
 ArkTS调用示例：
-
-- ArkTS代码示例
 
   <!-- @[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -850,7 +905,7 @@ ArkTS调用示例：
   }
   ```
 
-- ArkTS代码示例
+ArkTS调用示例：
 
   <!-- @[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -961,7 +1016,7 @@ sendMIDIEvents(0, [midiEvent]);
 <!-- @[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 发送Note On消息（用于测试的辅助函数）。
+// Send Note On message (helper function for testing)
 static napi_value SendNoteOn(napi_env env, napi_callback_info info)
 {
     NoteMessageArgs args = ParseNoteMessageArgs(env, info);
@@ -969,7 +1024,7 @@ static napi_value SendNoteOn(napi_env env, napi_callback_info info)
 }
 ```
 
-- ArkTS代码示例
+ArkTS调用示例：
 
   <!-- @[arkts_on_key_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
@@ -1012,7 +1067,7 @@ static napi_value SendNoteOff(napi_env env, napi_callback_info info)
 }
 ```
 
-- ArkTS代码示例
+ArkTS调用示例：
 
   <!-- @[arkts_on_key_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
   
