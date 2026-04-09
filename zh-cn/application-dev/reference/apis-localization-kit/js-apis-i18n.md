@@ -2293,6 +2293,8 @@ static setAppDefaultTimeZoneById(zoneID: string): void
 
 **系统能力：** SystemCapability.Global.I18n
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
@@ -2334,6 +2336,8 @@ static getAppDefaultTimeZone(): TimeZone
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -3285,6 +3289,8 @@ static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): s
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
