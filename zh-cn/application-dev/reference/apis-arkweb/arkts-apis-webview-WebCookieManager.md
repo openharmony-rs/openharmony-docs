@@ -1221,7 +1221,7 @@ struct WebComponent {
 
 static clearSessionCookie(): Promise\<void>
 
-以Promise方式异步清除所有会话cookie。
+清除所有会话cookie。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
