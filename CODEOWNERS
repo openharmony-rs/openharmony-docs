@@ -1297,6 +1297,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md	@
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-frameNode.md	@sunbees	@khq	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-graphics.md	@sunbees	@khq  	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-inspector.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md  @lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-node.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-NodeContent.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-nodeController.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
