@@ -2464,6 +2464,83 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setPreferredOrientationWithResult<sup>26+</sup>
+
+setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
+
+设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅支持主窗口调用且生效，其他窗口类型调用后不生效。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，支持主窗口和WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口调用且生效，其他窗口类型调用后不生效。当系统窗口调用setPreferredOrientation接口时，若存在层级更高的窗口设置了显示方向，那么本次调用不会立即生效。此时，设置的显示方向会被记录，当不存在有更高层级且设置了显示方向的窗口时，将还原最后一次的方向请求。当WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口设置显示方向且生效时，会将前台应用退至后台。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：**
+
+- 设备支持sensor旋转且未处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：立即生效。
+- 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：调用不生效不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。
+- 其他情况：不生效不报错。
+
+**参数：**
+
+| 参数名              | 类型                                        | 必填 | 说明                   |
+| ------------------- | ------------------------------------------- | ---- | ---------------------- |
+| orientation         | [Orientation](arkts-apis-window-e.md#orientation9)                | 是   | 窗口显示方向的属性。       |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID   | 错误信息                                                                                                              |
+|---------|-------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: Invalid parameter value range.                                                   |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let orientation = window.Orientation.AUTO_ROTATION;
+      try {
+        let promise = windowClass.setPreferredOrientationWithResult(orientation);
+        promise.then(() => {
+          console.info('Succeeded in setting the window orientation.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set the window orientation. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to set window orientation. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
 ## getPreferredOrientation<sup>12+</sup>
 
 getPreferredOrientation(): Orientation
