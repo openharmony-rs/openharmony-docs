@@ -1114,7 +1114,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 | 名称               | 类型      | 只读 | 可选 | 说明                               |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | 否  | 否  | 报告事件的时间戳。                        |
+| timestamp        | number  | 否  | 否  | 报告事件的时间戳，单位ms。                        |
 | deviceId         | number  | 否  | 否  | 设备的ID。                           |
 | vibratorCount    | number  | 否  | 否  | 设备上的马达的数量。                       |
 | isVibratorOnline | boolean | 否  | 否  | 指示设备的上线和下线状态，true表示上线，false表示下线。 |
@@ -1495,7 +1495,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| time      | number | 否   | 否   | 起始时间偏移。                                               |
+| time      | number | 否   | 否   | 起始时间偏移，单位ms。                                               |
 | intensity | number | 否   | 是   | 可选参数，相对事件振动强度增益，取值范围[0,100%]，省略时默认值为1。 |
 | frequency | number | 否   | 是   | 可选参数，相对事件振动频率变化，取值范围[-100,100]内所有整数，省略时默认值为0。 |
 
@@ -1509,7 +1509,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | --------- | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | eventType | VibratorEventType               | 否   | 否   | 振动事件类型。                                               |
 | time      | number                          | 否   | 否   | 振动起始时间，单位ms。取值范围[0,1800000]区间内所有整数。    |
-| duration  | number                          | 否   | 是   | 可选参数，表示振动持续时间，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000 |
+| duration  | number                          | 否   | 是   | 可选参数，表示振动持续时间，单位ms，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000 |
 | intensity | number                          | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。 |
 | frequency | number                          | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。 |
 | index     | number                          | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。        |
@@ -1523,7 +1523,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 名称   | 类型                       | 只读 | 可选 | 说明                                                 |
 | ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
-| time   | number                     | 否   | 否   | 振动绝对起始时间。                                   |
+| time   | number                     | 否   | 否   | 振动绝对起始时间，单位ms。                                   |
 | events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
 
 ## ContinuousParam<sup>18+</sup>
