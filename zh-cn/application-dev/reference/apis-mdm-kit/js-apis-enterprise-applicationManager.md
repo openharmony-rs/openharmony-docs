@@ -609,7 +609,7 @@ try {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
+<!--no-check-->
 ```ts
 // 返回示例
 [
@@ -749,7 +749,7 @@ try {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
+<!--no-check-->
 ```ts
 // 返回示例
 [
@@ -2077,7 +2077,7 @@ try {
   console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
+<!--no-check-->
 ```ts
 // 返回示例
 [
