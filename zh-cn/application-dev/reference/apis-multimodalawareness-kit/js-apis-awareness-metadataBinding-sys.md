@@ -10,9 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> 本模块为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。	
+> - 本模块为系统接口。
 
 
 ## 导入模块
@@ -25,9 +25,13 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 
 在图片中加入信息。使用promise异步回调。
 
-**系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
+**系统能力：** SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API**：此接口为系统接口
+**系统API：** 此接口为系统接口	
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -52,31 +56,50 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 | 32100001 | Internal handling failed. File creation failed. |
 | 32100002 | Encode process fail. Possible causes: 1. Image processing error; 2. Channel coding error. |
 
-**示例**：
+**ArkTS-Dyn示例**:
+```ts	
+import image from '@ohos.multimedia.image';	
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
+import { BusinessError } from '@kit.BasicServicesKit';	
 
-```ts
-import { image } from '@kit.ImageKit';
-import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let captureImage: image.PixelMap | undefined = undefined;
-let metadata: string = "";
-let srcImage: image.PixelMap | undefined = undefined;
-metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) => {
-  captureImage = pixelMap;
-}).catch((error: BusinessError) => {
-  console.error("encode image error" + error);
-});
+let captureImage: image.PixelMap | undefined = undefined;	
+let metadata: string = "";	
+let srcImage: image.PixelMap | undefined = undefined;	
+metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) =>{	
+	captureImage = pixelMap;	
+}).catch((error:BusinessError)=>{	
+	console.error("encode image error" + error);	
+});	
 ```
+**ArkTS-Sta示例**:
+```ts	
+import image from '@ohos.multimedia.image';	
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
+import { BusinessError } from '@kit.BasicServicesKit';	
+
+let captureImage: image.PixelMap | undefined = undefined;	
+let metadata: string = "";	
+let srcImage: image.PixelMap;	
+metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) =>{	
+	captureImage = pixelMap;	
+}).catch((error: Error) => {	
+    const err = error as BusinessError;	
+	console.error("encode image error" + error);	
+});	
+```	
 
 ## metadataBinding.decodeImage
 function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 解析图片中携带的信息。使用promise异步回调。
 
-**系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
+**系统能力：** SystemCapability.MultimodalAwareness.metadataBinding	
 
-**系统API**：此接口为系统接口
+**系统API：** 此接口为系统接口	
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：  
 
@@ -100,29 +123,55 @@ function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 | 32100001 | Internal handling failed. File read failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
-**示例：**  
-```ts
-import { image } from '@kit.ImageKit';
-import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+**ArkTS-Dyn示例**:
+```ts	
+import image from '@ohos.multimedia.image';	
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
+import { BusinessError } from '@kit.BasicServicesKit';	
 
-let encodeImage: image.PixelMap | undefined = undefined;
-let captureMetadata: string = "";
-metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
-  captureMetadata = metadata;
-}).catch((error: BusinessError) => {
-  console.error("decode image error" + error);
-}); 
+let encodeImage: image.PixelMap | undefined = undefined;	
+let captrueMetadata: string = "";	
+metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{	
+	captrueMetadata = metadata;	
+}).catch((error:BusinessError)=>{	
+	console.error("decode image error" + error);	
+}); 	
 ```
+**ArkTS-Sta示例**:
+```ts	
+import image from '@ohos.multimedia.image';	
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
+import { BusinessError } from '@kit.BasicServicesKit';	
+
+let encodeImage: image.PixelMap | undefined = undefined;	
+let captrueMetadata: string = "";	
+if (encodeImage) {	
+	metadataBinding.decodeImage(encodeImage)	
+		.then((metadata: string) => {	
+			captrueMetadata = metadata;	
+		})	
+		.catch((error: Error) => {	
+			const err = error as BusinessError;	
+			console.error("decode image error " + err);	
+		});	
+} else {	
+	console.warn("encodeImage is undefined, skip decodeImage");	
+	captrueMetadata = "";	
+}	
+```	
 
 ## metadataBinding.notifyMetadataBindingEvent
 notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 推送待嵌入的信息给调用编码接口的应用或服务。使用promise异步回调。
 
-**系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
+**系统能力：** SystemCapability.MultimodalAwareness.metadataBinding	
 
-**系统API**：此接口为系统接口
+**系统API：** 此接口为系统接口	
+
+**ArkTS-Dyn起始版本：** 18	
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：  
 
@@ -145,16 +194,31 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 |   202    | Permission check failed. A non-system application uses the system API. |
 | 32100001 | Internal handling failed. Obtain metadata failed. |
 
-**示例**：
+**ArkTS-Dyn示例**：	
+```ts	
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
+import { BusinessError } from '@kit.BasicServicesKit';	
+
+let bundleName:string = ";";
+
+metadataBinding.notifyMetadataBindingEvent(bundleName).then(appLink:string)=>{
+console.info("notify metadata error" + appLink);
+}).catch((error: BusinessError) => {
+console.error("notify metadata error" + error);
+});
+```
+**ArkTS-Sta示例**：
 
 ```ts
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName: string = '';
-metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string)=>{
-  console.info("notify metadata:" + appLink);
-}).catch((error: BusinessError) => {
-  console.error("notify metadata error" + error);
+let bundleName:string = ";";
+metadataBinding.notifyMetadataBindingEvent(bundleName)
+.then((appLink:string)=>{ 
+	console.info("notify metadata error" + appLink);
+})
+.catch((error: Error) => {
+	console.error("notify metadata error" + error);
 });
 ```
