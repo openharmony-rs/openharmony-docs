@@ -60,3 +60,4 @@ OpenHarmony SDK 6.1.0.21
 **Adaptation Guide**
 
 This change updates the default behavior of APIs. You need to assess whether it affects your UI or display logic and update the code as needed.
+<!--no_check-->
