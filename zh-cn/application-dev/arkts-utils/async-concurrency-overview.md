@@ -31,6 +31,19 @@ Promise提供了then、catch、finally方法来注册回调函数，以处理异
 
 <!-- @[promise_async_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
+  setTimeout(() => {
+    const randomNumber: number = Math.random();
+    if (randomNumber > 0.5) {
+      resolve(randomNumber);
+    } else {
+      reject(new Error('Random number is too small'));
+    }
+  }, 1000);
+})
+```
+
 
 在上述代码中，setTimeout函数模拟了一个异步操作，1秒后生成一个随机数。如果随机数大于0.5，调用resolve回调函数并传递该随机数；否则调用reject回调函数并传递一个错误对象。
 
