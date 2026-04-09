@@ -5488,7 +5488,7 @@ getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix:
 | --------------------- | ---------------------------------------- | ---- | --------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | 是   | 当前旋转矩阵。                |
 | preRotationMatrix     | Array&lt;number&gt;                      | 是   | 相对旋转矩阵。                    |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，异步返回绕z、x、y轴方向的旋转角度。 |
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，异步返回绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -5556,7 +5556,7 @@ getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix:
 
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -5927,7 +5927,7 @@ getOrientation(rotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;A
 | 参数名         | 类型                                     | 必填 | 说明                              |
 | -------------- | ---------------------------------------- | ---- | --------------------------------- |
 | rotationMatrix | Array&lt;number&gt;                      | 是   | 旋转矩阵。                    |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，异步返回围绕z、x、y轴方向的旋转角度。 |
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，异步返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -5987,7 +5987,7 @@ getOrientation(rotationMatrix: Array&lt;number&gt;): Promise&lt;Array&lt;number&
 
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，使用异步方式返回围绕z、x、y轴方向的旋转角度。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，使用异步方式返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -6459,7 +6459,7 @@ try {
 
 | 名称           | 类型     | 只读 | 可选 | 说明                          |
 |----------------|---------|-----|-----|-----------------------------|
-| timestamp      | number  | 否  | 否  | 事件发生的时间戳。                   |
+| timestamp      | number  | 否  | 否  | 事件发生的时间戳，单位ms。                   |
 | sensorId       | number  | 否  | 否  | 传感器ID。                      |
 | sensorIndex    | number  | 否  | 否  | 传感器索引。                      |
 | isSensorOnline | boolean | 否  | 否  | 传感器上线或者下线，true为上线，false为下线。 |
@@ -6880,13 +6880,13 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | number | 否   | 否   | 地磁场的北分量。                                   |
-| y               | number | 否   | 否   | 地磁场的东分量。                                   |
-| z               | number | 否   | 否   | 地磁场的垂直分量。                                 |
-| geomagneticDip  | number | 否   | 否   | 地磁倾角，即地球磁场线与水平面的夹角。             |
-| deflectionAngle | number | 否   | 否   | 地磁偏角，即地磁北方向与正北方向在水平面上的角度。 |
-| levelIntensity  | number | 否   | 否   | 地磁场的水平强度。                                 |
-| totalIntensity  | number | 否   | 否   | 地磁场的总强度。                                   |
+| x               | number | 否   | 否   | 地磁场的北分量，单位nT。                                   |
+| y               | number | 否   | 否   | 地磁场的东分量，单位nT。                                   |
+| z               | number | 否   | 否   | 地磁场的垂直分量，单位nT。                                 |
+| geomagneticDip  | number | 否   | 否   | 地磁倾角，即地球磁场线与水平面的夹角，单位度（°）。             |
+| deflectionAngle | number | 否   | 否   | 地磁偏角，即地磁北方向与正北方向在水平面上的角度，单位度（°）。 |
+| levelIntensity  | number | 否   | 否   | 地磁场的水平强度，单位nT。                                 |
+| totalIntensity  | number | 否   | 否   | 地磁场的总强度，单位nT。                                   |
 
 ## LocationOptions
 
@@ -6896,9 +6896,9 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | number | 否   | 否   | 纬度。     |
-| longitude | number | 否   | 否   | 经度。     |
-| altitude  | number | 否   | 否   | 海拔高度。 |
+| latitude  | number | 否   | 否   | 纬度，单位度（°）。     |
+| longitude | number | 否   | 否   | 经度，单位度（°）。     |
+| altitude  | number | 否   | 否   | 海拔高度，单位m。 |
 
 ## sensor.on<sup>(deprecated)</sup>
 
@@ -9263,7 +9263,7 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 | --------------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | 是   | 表示当前旋转矩阵。                    |
 | preRotationMatrix     | Array&lt;number&gt;                      | 是   | 表示旋转矩阵。                        |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回z、x、y轴方向的旋转角度变化。 |
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回z、x、y轴方向的旋转角度变化，单位度（°）。 |
 
 **示例**：
 
@@ -9306,7 +9306,7 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 
 | 类型                               | 说明                                          |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回z、x、y轴方向的旋转角度变化。 |
+| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回z、x、y轴方向的旋转角度变化，单位度（°）。 |
 
 **示例**：
 
@@ -9499,7 +9499,7 @@ getDirection(rotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Arr
 | 参数名         | 类型                                     | 必填 | 说明                                  |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | rotationMatrix | Array&lt;number&gt;                      | 是   | 表示旋转矩阵。                        |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回围绕z、x、y轴方向的旋转角度。 |
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **示例**：
 
@@ -9541,7 +9541,7 @@ getDirection(rotationMatrix: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt
 
 | 类型                               | 说明                                          |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回围绕z、x、y轴方向的旋转角度。 |
+| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **示例**：
 
