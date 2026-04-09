@@ -6,7 +6,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-数据防泄漏（data protection kit, DLP）是系统提供的系统级的数据防泄漏解决方案，提供跨设备的文件的权限管理、加密存储、授权访问等能力。
+数据防泄漏DLP（data loss protection）是系统提供的系统级的数据防泄漏解决方案，提供跨设备的文件的权限管理、加密存储、授权访问等能力。
 
 > **说明：**
 >
@@ -849,7 +849,7 @@ dlpPermission.getDLPFileAccessRecords((err, res) => {
 
 startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt;
 
-在当前UIAbility界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
+在当前[UIAbility](./js-apis-app-ability-uiAbility.md)界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
 
 > **说明：**
 >
