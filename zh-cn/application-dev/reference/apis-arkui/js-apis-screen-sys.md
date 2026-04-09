@@ -208,7 +208,7 @@ onConnect(callback: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect-disconnect-change)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect--disconnect--change)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -247,7 +247,7 @@ onDisconnect(callback: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect-disconnect-change)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect--disconnect--change)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -286,7 +286,7 @@ onChange(callback: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect-disconnect-change)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.on('connect' | 'disconnect' | 'change')](#screenonconnect--disconnect--change)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -367,7 +367,7 @@ offConnect(callback?: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect-disconnect-change)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect--disconnect--change)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -407,7 +407,7 @@ offDisconnect(callback?: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect-disconnect-change)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect--disconnect--change)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -447,7 +447,7 @@ offChange(callback?: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect-disconnect-change)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[screen.off('connect' | 'disconnect' | 'change')](#screenoffconnect--disconnect--change)。
 
 **系统接口：** 此接口为系统接口。
 
