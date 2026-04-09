@@ -136,7 +136,7 @@
        try {
          // 将分布式目录下的文件拷贝到其他沙箱路径下
          fileIo.copy(srcUri, destUri, options).then(()=>{
-           console.info(`Succeeded in copying from distribted path`);
+           console.info(`Succeeded in copying from distributed path`);
            console.info(`src: ${srcUri} dest: ${destUri}`);
            fileIo.unlinkSync(srcPath); // 拷贝完成后清理分布式目录下的临时文件
          }).catch((error: BusinessError)=>{
