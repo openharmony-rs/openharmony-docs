@@ -1590,7 +1590,9 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 深度清理用户数据及操作系统。使用 Promise 异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1640,7 +1642,9 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 获取深度恢复出厂设置信息。使用 Promise 异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2201,7 +2205,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 恢复出厂设置策略。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2214,7 +2220,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 恢复出厂设置信息。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2226,7 +2234,9 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 恢复出厂设置范围。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Update.UpdateService
 
