@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,10 +28,11 @@ import { uniformDataStruct } from '@kit.ArkData';
 
 | 名称        | 类型   | 只读 | 可选 | 说明                    |
 | ----------- | ------ | ---- | ---- |-----------------------|
-| uniformDataType | 'general.plain-text'| 是   | 否   | 统一数据类型标识，标识为纯文本类型数据，固定为“general.plain-text”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。                |
-| textContent | string | 否   | 否   | 纯文本内容。                |
-| abstract    | string | 否   | 是   | 纯文本摘要，非必填字段，默认值为空字符串。 |
-| details | Record<string, string> | 否   | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文本内容详细属性。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象，用于描述一篇文章的详细属性。非必填字段，默认值为空字典对象。 |
+| uniformDataType | 'general.plain-text'| 是   | 否   | 统一数据类型标识，标识为纯文本类型数据，固定为“general.plain-text”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                |
+| textContent | string | 否   | 否   | 纯文本内容。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                |
+| abstract<sup>12+</sup>    | string | 否   | 是   | 纯文本摘要，非必填字段，默认值为空字符串。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12 |
+| textAbstract<sup>23+</sup>    | string | 否   | 是   | 纯文本摘要，非必填字段，默认值为空字符串。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| details | Record<string, string> | 否   | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文本内容详细属性。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象，用于描述一篇文章的详细属性。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
@@ -55,11 +58,37 @@ if(plainText.details != undefined){
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let plainTextDetails: Record<string, string> = {
+  'attr1': 'value1',
+  'attr2': 'value2'
+}
+
+let plainText: uniformDataStruct.PlainText = {
+  uniformDataType: 'general.plain-text',
+  textContent: 'This is plainText textContent example',
+  textAbstract: 'This is a text abstract',
+  details: plainTextDetails
+};
+console.info('plainText.uniformDataType: ' + plainText.uniformDataType);
+console.info('plainText.details: ' + JSON.stringify(plainText.details));
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+```
+
 ## Hyperlink
 
 超链接类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读 | 可选 | 说明           |
 | ----------- | ------ | ---- | ---- |--------------|
@@ -92,6 +121,10 @@ HTML类型数据，用于描述超文本标记语言数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称         | 类型   | 只读 | 可选 | 说明                    |
 | ------------ | ------ | ---- | ---- |-----------------------|
 | uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
@@ -123,6 +156,10 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称        | 类型   | 只读 | 可选 | 说明              |
 | ----------- | ------ | ---- | ---- |-----------------|
 | uniformDataType | 'openharmony.app-item'| 是   | 否   | 统一数据类型标识为桌面图标类型数据，固定为“openharmony.app-item”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
@@ -132,8 +169,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | appLabelId  | string | 否   | 否   | 图标名称对应的标签id。    |
 | bundleName  | string | 否   | 否   | 图标对应的应用bundle名。 |
 | abilityName | string | 否   | 否   | 图标对应的应用ability名。 |
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
-
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
 
@@ -159,11 +195,39 @@ console.info('appItem.uniformDataType: ' + appItem.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_APP_ITEM, appItem);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let appItemDetails: Record<string, int | long | double | string | Uint8Array> = {
+  'appItemKey1': 123,
+  'appItemKey2': 'appItemValue',
+  'appItemKey3': u8Array
+}
+let appItem: uniformDataStruct.OpenHarmonyAppItem = {
+  uniformDataType:'openharmony.app-item',
+  appId: 'MyAppId',
+  appName: 'MyAppName',
+  appIconId: 'MyAppIconId',
+  appLabelId: 'MyAppLabelId',
+  bundleName: 'MyBundleName',
+  abilityName: 'MyAbilityName',
+  details: appItemDetails
+}
+console.info('appItem.uniformDataType: ' + appItem.uniformDataType);
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_APP_ITEM, appItem);
+```
+
 ## ContentForm<sup>14+</sup>
 
 内容卡片类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
@@ -201,16 +265,19 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
-| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
-|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'openharmony.form'| 是   | 否  | 统一数据类型标识为卡片类型数据，固定为“openharmony.form”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
-| formId     | number | 否   | 否  | 卡片id。|
-| formName   | string | 否   | 否  | 卡片名。|
-| bundleName | string | 否   | 否  | 卡片所属的bundle名。|
-| abilityName| string | 否   | 否  | 卡片对应的ability名。|
-| module     | string | 否   | 否  | 卡片所属的module名。|
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
+**ArkTS-Dyn起始版本**：15
 
+**ArkTS-Sta起始版本**：23
+
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |	
+|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
+| uniformDataType | 'openharmony.form'| 是   | 否  | 统一数据类型标识为卡片类型数据，固定为“openharmony.form”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
+| formId     | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   | 否  | 卡片id。|	
+| formName   | string | 否   | 否  | 卡片名。|	
+| bundleName | string | 否   | 否  | 卡片所属的bundle名。|	
+| abilityName| string | 否   | 否  | 卡片对应的ability名。|	
+| module     | string | 否   | 否  | 卡片所属的module名。|
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
 
@@ -235,18 +302,45 @@ console.info('form.uniformDataType: ' + form.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let formDetails : Record<string, int | long | double | string | Uint8Array> = {
+  'formKey1': 123,
+  'formKey2': 'formValue',
+  'formKey3': u8Array
+}
+let form: uniformDataStruct.Form = {
+  uniformDataType: 'openharmony.form',
+  formId: 1,
+  formName: 'formName',
+  bundleName: 'com.xx.app',
+  abilityName: 'abilityName',
+  module: 'module',
+  details: formDetails
+}
+console.info('form.uniformDataType: ' + form.uniformDataType);
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
+```
+
 ## FileUri<sup>15+</sup>
 
 文件地址类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
-| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
-|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
-| oriUri     | string | 否   | 否  | 文件路径。|
-| fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节。|
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |	
+|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
+| uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
+| oriUri     | string | 否   | 否  | 文件路径。|	
+| fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节。|	
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 
 **示例：**
@@ -270,18 +364,42 @@ console.info('fileUri.uniformDataType: ' + fileUri.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let fileUriDetails: Record<string, int | long | double | string | Uint8Array> = {
+  'fileUriKey1': 123,
+  'fileUriKey2': 'fileUriValue',
+  'fileUriKey3': u8Array
+}
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'www.xx.com',
+  fileType: 'general.image',
+  details: fileUriDetails
+}
+console.info('fileUri.uniformDataType: ' + fileUri.uniformDataType);
+// 当使用FileUri类型的标准化数据结构构造record时，推荐入参中的type值设为uniformTypeDescriptor.UniformDataType.FILE_URI
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
+```
+
 ## PixelMap<sup>15+</sup>
 
 系统定义的像素图类型数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
 | uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为“openharmony.pixel-map”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | pixelMap     | image.PixelMap | 否   | 否  | 像素图二进制数据。|
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
-
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
 
@@ -301,6 +419,37 @@ let pixelMap : uniformDataStruct.PixelMap = {
   uniformDataType : 'openharmony.pixel-map',
   pixelMap : image.createPixelMapSync(arrayBuffer, opt),
   details : pixelMapDetails
+}
+console.info('pixelMap.uniformDataType: ' + pixelMap.uniformDataType);
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+
+let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
+let opt: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: image.PixelMapFormat.BGRA_8888,
+  size: { height: 200, width: 200 },
+  alphaType: image.AlphaType.UNPREMUL
+  }
+let pixelMapDetails: Record<string, int | long | double | string | Uint8Array> = {
+  'pixelMapKey1': 123,
+  'pixelMapKey2': 'pixelMapValue',
+  'pixelMapKey3': u8Array
+  }
+
+let pixelMaps: image.PixelMap = image.createPixelMapSync(arrayBuffer, opt);
+
+let pixelMap: uniformDataStruct.PixelMap = {
+  uniformDataType: 'openharmony.pixel-map',
+  pixelMap: pixelMaps,
+  details: pixelMapDetails
 }
 console.info('pixelMap.uniformDataType: ' + pixelMap.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
