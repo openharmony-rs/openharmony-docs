@@ -257,8 +257,8 @@ createFileAccessHelper(context: Context) : FileAccessHelper
 | relativePath<sup>10+</sup> | string | 是 | 否 | 文件(夹)的相对路径。 |
 | fileName | string | 否 | 否 | 文件(夹)的名称。 |
 | mode | number | 否 | 否 | 文件(夹)的权限信息。 |
-| size | number | 否 | 否 |  文件(夹)的大小。 |
-| mtime | number | 否 | 否 |  文件(夹)的修改时间。 |
+| size | number | 否 | 否 |  文件(夹)的大小。（单位：字节） |
+| mtime | number | 否 | 否 |  文件(夹)的修改时间。自1970年1月1日起至目标时间的毫秒数。 |
 | mimeType | string | 否 | 否 |  文件(夹)的媒体资源类型。 |
 
 ### listFile
