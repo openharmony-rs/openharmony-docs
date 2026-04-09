@@ -126,6 +126,7 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 **参数：**
 
 | 参数项 | 描述 |
+|---|---|
 | [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | 配置指向输入音频格式的指针。 |
 | inputFormat | 配置指向输入音频格式的指针。 |
 | [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | 配置指向输出音频格式的指针。 |
