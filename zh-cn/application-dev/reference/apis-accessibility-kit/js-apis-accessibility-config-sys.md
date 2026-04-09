@@ -93,7 +93,7 @@ let name: string = 'com.ohos.example/axExtension';
 let capability: accessibility.Capability[] = ['retrieve'];
 
 config.enableAbility(name, capability).then(() => {
-  console.info(`Succeeded  in enable ability, name is ${name}, capability is ${capability}`);
+  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
@@ -299,7 +299,7 @@ let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name, (err: BusinessError) => {
   if (err) {
-    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
   console.info(`Succeeded in disable, name is ${name}`);

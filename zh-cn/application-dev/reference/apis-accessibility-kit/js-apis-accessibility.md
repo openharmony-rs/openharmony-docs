@@ -241,7 +241,7 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
 | 参数名      | 类型                      | 必填   | 说明                                      |
 | -------- | ----------------------- | ---- | --------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘enableChange’，即字幕配置启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在启用状态变化时将状态通过此函数进行通知。              |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在启用状态变化时将状态通过此函数进行通知。true表示字幕配置开启，false表示字幕配置关闭。              |
 
 **错误码：**
 
@@ -345,7 +345,7 @@ off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | 是   | 取消监听的事件名，固定为‘enableChange’，即字幕配置启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与on('enableChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与[on('enableChange')](#onenablechangedeprecated)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -402,7 +402,7 @@ off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void;
 | 参数名   | 类型                                             | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                           | 是   | 取消监听的事件名，固定为‘styleChange’，即字幕风格变化事件。  |
-| callback | Callback&lt;[CaptionsStyle](#captionsstyle8)&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与on('styleChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;[CaptionsStyle](#captionsstyle8)&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与[on('styleChange')](#onstylechangedeprecated)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -459,27 +459,27 @@ struct Index {
 | type             | [EventType](#eventtype)               | 否   | 否   | 无障碍事件类型，不可缺省。         |
 | windowUpdateType | [WindowUpdateType](#windowupdatetype) | 否   | 是   | 窗口变化类型。               |
 | bundleName       | string                                | 否   | 否   | 目标应用名；不可缺省。           |
-| componentType    | string                                | 否   | 是   | 应与事件源组件类型对应，如：按钮Button类型->'Button'、图片Image类型->'Image'。       |
+| componentType    | string                                | 否   | 是   | 应与事件源组件类型对应，如：按钮Button类型->'Button'、图片Image类型->'Image'，默认值为空。       |
 | pageId           | number                                | 否   | 是   | 事件源的页面ID，默认值为0。            |
-| description      | string                                | 否   | 是   | 事件描述，根据实际场景设置，无特殊限制。        |
+| description      | string                                | 否   | 是   | 事件描述，根据实际场景设置，无特殊限制，默认值为空。        |
 | triggerAction    | [Action](#action)                     | 否   | 否   | 触发事件的Action，不可缺省。    |
-| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | 否   | 是   | 文本移动粒度。      |
-| contents         | Array&lt;string&gt;                   | 否   | 是   | 内容列表，根据实际场景设置，无特殊限制。                 |
-| lastContent      | string                                | 否   | 是   | 最新内容，根据实际场景设置，无特殊限制。                 |
+| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | 否   | 是   | 文本移动粒度，默认值为'char'。      |
+| contents         | Array&lt;string&gt;                   | 否   | 是   | 内容列表，根据实际场景设置，无特殊限制，默认值为空。                 |
+| lastContent      | string                                | 否   | 是   | 最新内容，根据实际场景设置，无特殊限制，默认值为空。                 |
 | beginIndex       | number                                | 否   | 是   | 画面显示条目的开始序号，默认值为0。 |
 | currentIndex     | number                                | 否   | 是   | 当前条目序号，默认值为0。      |
 | endIndex         | number                                | 否   | 是   | 画面显示条目的结束序号，默认值为0。 |
 | itemCount        | number                                | 否   | 是   | 条目总数，默认值为0。        |
 | elementId<sup>12+</sup>        | number                  | 否   | 是   | 组件elementId，默认值为0。        |
-| textAnnouncedForAccessibility<sup>12+</sup>     | string     | 否   | 是   | 主动播报的内容。当应用需要主动播报时，根据实际场景设置播报内容，无特殊限制。 |
+| textAnnouncedForAccessibility<sup>12+</sup>     | string     | 否   | 是   | 主动播报的内容。当应用需要主动播报时，根据实际场景设置播报内容，无特殊限制，默认值为空。 |
 | textResourceAnnouncedForAccessibility<sup>18+</sup>      | Resource   | 否   | 是   | 主动播报的内容支持传入Resource类型，且只能传入string。  |
-| customId<sup>12+</sup>        | string                                | 否   | 是   | 主动聚焦的组件ID。        |
+| customId<sup>12+</sup>        | string                                | 否   | 是   | 主动聚焦的组件ID，默认值为空。        |
 
 ### constructor
 
 constructor(jsonObject: Object)
 
-构造函数。
+构造函数，通过JSON对象构造EventInfo实例。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -509,7 +509,7 @@ constructor(jsonObject: Object)
 
 constructor(type: EventType, bundleName: string, triggerAction: Action)
 
-构造函数。
+构造函数，通过独立参数构造EventInfo实例。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -668,7 +668,7 @@ getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: Asyn
 | ----------- | ---------------------------------------- | ---- | ---------------- |
 | abilityType | [AbilityType](#abilitytype)              | 是    | 辅助应用的类型。         |
 | stateType   | [AbilityState](#abilitystate)            | 是    | 辅助应用的状态。         |
-| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数，返回辅助应用信息列表。 |
+| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
 
 **示例：**
 
@@ -789,7 +789,7 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 | ----------- | ---------------------------------------- | ---- | ---------------- |
 | abilityType | [AbilityType](#abilitytype)              | 是    | 辅助应用的类型。         |
 | stateType   | [AbilityState](#abilitystate)            | 是    | 辅助应用的状态。         |
-| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数，返回辅助应用信息列表。 |
+| callback    | AsyncCallback&lt;Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt;&gt; | 是    | 回调函数，返回辅助应用信息列表。若返回成功，err为undefined，data为辅助应用信息列表；否则为错误对象。 |
 
 **错误码：**
 
@@ -905,7 +905,7 @@ try {
   console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
 } catch (error) {
   let err = error as BusinessError;
-  console.error(`error code: ${err.code}`);
+  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
 }
 
 // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
@@ -934,7 +934,7 @@ try {
   console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
 } catch (error) {
   let err = error as BusinessError;
-  console.error(`error code: ${err.code}`);
+  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
 }
 ```
 
@@ -984,7 +984,7 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | 是   | 监听的事件名，固定为‘accessibilityStateChange’，即辅助应用启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在辅助应用启用状态变化时将状态通过此函数进行通知。此状态为全局辅助应用启用状态。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在辅助应用启用状态变化时将状态通过此函数进行通知。此状态为全局辅助应用启用状态。true表示已启用辅助应用，false表示已禁用辅助应用。 |
 
 **错误码：**
 
@@ -1027,7 +1027,7 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名      | 类型                      | 必填   | 说明                                       |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘touchGuideStateChange’，即触摸浏览启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在触摸浏览启用状态变化时将状态通过此函数进行通知。           |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在触摸浏览启用状态变化时将状态通过此函数进行通知。true表示触摸浏览功能已开启，false表示触摸浏览功能已关闭。           |
 
 **错误码：**
 
@@ -1067,7 +1067,7 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名      | 类型                      | 必填   | 说明                                       |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘screenReaderStateChange’，即屏幕朗读启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在屏幕朗读启用状态变化时将状态通过此函数进行通知。           |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在屏幕朗读启用状态变化时将状态通过此函数进行通知。true表示屏幕朗读功能已开启，false表示屏幕朗读功能已关闭。           |
 
 **错误码：**
 
@@ -1317,7 +1317,7 @@ off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | 是   | 取消监听的事件名，固定为‘accessibilityStateChange’，即辅助应用启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.on('accessibilityStateChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与[accessibility.on('accessibilityStateChange')](#accessibilityonaccessibilitystatechange)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -1354,7 +1354,7 @@ off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | 是   | 取消监听的事件名，固定为‘touchGuideStateChange’，即触摸浏览启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.on('touchGuideStateChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与[accessibility.on('touchGuideStateChange')](#accessibilityontouchguidestatechange)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -1391,7 +1391,7 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | 是   | 取消监听的事件名，固定为‘screenReaderStateChange’，即屏幕朗读启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与accessibility.on('screenReaderStateChange')的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数，取消指定callback对象的事件响应。需与[accessibility.on('screenReaderStateChange')](#accessibilityonscreenreaderstatechange18)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
