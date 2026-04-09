@@ -49,6 +49,44 @@
 1. 在UI主线程中创建Worker对象并接收Worker线程发送的消息。DevEco Studio支持一键生成Worker。在{moduleName}目录下任意位置，点击鼠标右键 > New > Worker，即可生成Worker的模板文件及配置信息。
 
     <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+    
+      build() {
+        Row() {
+          Column() {
+            Text(this.message)
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+              .onClick(async () => {
+                mainFunc();
+                let w: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker2.ts');
+                w.onmessage = (): void => {
+                  // 接收Worker子线程的结果
+                }
+                w.onerror = (): void => {
+                  // 接收Worker子线程的错误信息
+                }
+                // 向Worker子线程发送Set消息
+                w.postMessage({ 'type': 0, 'data': 'data' });
+                // 向Worker子线程发送Get消息
+                w.postMessage({ 'type': 1 });
+                // ...
+                // 根据实际业务，选择时机以销毁线程
+                w.terminate();
+                this.message = 'success';
+              })
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
     <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) -->
 
