@@ -79,7 +79,7 @@ struct Index {
   }
 }
 ```
-<!-- @[across_concurrent_instance_transfer_large_data ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/sendable.ets) -->
+<!-- @[across_concurrent_instance_transfer_large_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/sendable.ets) -->
 
 ```ts
 // sendable.ets
