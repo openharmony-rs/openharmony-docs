@@ -1044,6 +1044,7 @@ let html: string = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charse
 let htmlRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_HTML, html);
 pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
+
 ```
 ### addRecord<sup>9+</sup>
 
@@ -1635,6 +1636,7 @@ hasMimeType(mimeType: string): boolean
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
 ```
+
 ### removeRecordAt<sup>(deprecated)</sup>
 
 removeRecordAt(index: number): boolean
