@@ -18,6 +18,17 @@
 
 <!-- @[define_sendable_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SendableData.ets) -->
 
+``` TypeScript
+@Sendable
+export class SendableData {
+  public name: string = 'Tom';
+  public age: number = 20;
+  public gender: number = 1;
+  public likes: number = 1;
+  public follow: boolean = false;
+}
+```
+
 <!-- @[update_arkui_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/MakeobservedSendable.ets) -->
 
 <!-- @[update_arkui_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/MakeobservedSendable.ets) -->
