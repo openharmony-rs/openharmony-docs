@@ -10,11 +10,9 @@
 >
 >  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-
 ## 子组件
 
 无
-
 
 ## 接口
 
@@ -32,7 +30,7 @@ Radio(options: RadioOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名  | 类型                                  | 必填 | 说明               |
 | ------- | ------------------------------------- | ---- | ------------------ |
@@ -66,10 +64,10 @@ Radio(options: RadioOptions)
 **ArkTS-Sta起始版本：** 23
 
 | 名称            | 值           | 说明                           |
-| --------------- | -------------------------------- | -------------------------------- |
-| TICK            | 0           | 选中样式为系统默认TICK图标。  |
+| --------------- | ----- | -------------------------------- |
+| TICK            | 0           | 选中样式为系统默认TICK图标。 |
 | DOT             | 1            | 选中样式为系统默认DOT图标。   |
-| CUSTOM          | 2         | 选中样式为indicatorBuilder中的内容。|
+| CUSTOM          | 2         | 选中样式为indicatorBuilder中的内容。 |
 
 ## 属性
 
@@ -96,7 +94,7 @@ checked(value: boolean)
 
 **ArkTS-Dyn起始版本：** 8
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -104,7 +102,7 @@ checked(value: boolean)
 
 ### checked<sup>23+</sup>
 
-checked(isChecked: boolean | undefined | Bindable\<boolean>)
+checked(isChecked: boolean | undefined | Bindable\<boolean\>)
 
 设置单选框的选中状态。与[checked](#checked)相比，isChecked参数新增了对undefined类型的支持。
 
@@ -122,11 +120,11 @@ checked(isChecked: boolean | undefined | Bindable\<boolean>)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | boolean \| undefined \|Bindable\<boolean> | 是   | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+| isChecked | boolean \| undefined \|Bindable\<boolean\> | 是   | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
 ### checked<sup>18+</sup>
 
-checked(isChecked: Optional\<boolean>)
+checked(isChecked: Optional\<boolean\>)
 
 设置单选框的选中状态。与[checked](#checked)相比，isChecked参数新增了对undefined类型的支持。
 
@@ -140,15 +138,15 @@ checked(isChecked: Optional\<boolean>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[checked<sup>23+</sup>](#checked23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[checked<sup>23+</sup>](#checked23).
 
 **ArkTS-Dyn起始版本：** 18
 
-**参数：** 
+**参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+| isChecked | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean\> | 是   | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
 ### radioStyle<sup>10+</sup>
 
@@ -168,7 +166,7 @@ ArkTS-Sta: radioStyle(value?: RadioStyle | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                               |
 | ------ | ----------------------------------- | ---- | ---------------------------------- |
@@ -176,7 +174,7 @@ ArkTS-Sta: radioStyle(value?: RadioStyle | undefined)
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<RadioConfiguration>)
+contentModifier(modifier: ContentModifier\<RadioConfiguration\>)
 
 定制Radio内容区的方法。
 
@@ -186,7 +184,7 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[contentModifier<sup>23+</sup>](#contentmodifier23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[contentModifier<sup>23+</sup>](#contentmodifier23)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -194,11 +192,11 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明) \| undefined | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置值为undefined时，不使用内容修改器。 |
+| modifier  | [ContentModifier\<RadioConfiguration\>](#radioconfiguration12对象说明) | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### contentModifier<sup>18+</sup>
 
-contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
+contentModifier(modifier: Optional\<ContentModifier\<RadioConfiguration\>\>)
 
 定制Radio内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。
 
@@ -208,7 +206,7 @@ contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[contentModifier<sup>23+</sup>](#contentmodifier23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[contentModifier<sup>23+</sup>](#contentmodifier23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -216,11 +214,11 @@ contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)><br/>ArkTS-Sta: [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明) \| undefined | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<RadioConfiguration\>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### contentModifier<sup>23+</sup>
 
-contentModifier(modifier: ContentModifier<RadioConfiguration> | undefined)
+contentModifier(modifier: ContentModifier\<RadioConfiguration\> | undefined)
 
 定制Radio内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。
 
@@ -230,7 +228,7 @@ contentModifier(modifier: ContentModifier<RadioConfiguration> | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[contentModifier<sup>12+</sup>](#contentmodifier12)和[contentModifier<sup>18+</sup>](#contentmodifier18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[contentModifier<sup>12+</sup>](#contentmodifier12)和[contentModifier<sup>18+</sup>](#contentmodifier18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -238,7 +236,27 @@ contentModifier(modifier: ContentModifier<RadioConfiguration> | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier |  [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明) \| undefined | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier |  [ContentModifier\<RadioConfiguration\>](#radioconfiguration12对象说明) \| undefined | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<RadioAttribute\> | AttributeModifier\<CommonMethod\> | undefined)
+
+定制Radio属性区的方法。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[RadioAttribute](#radioattribute)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[CommonMethod](ts-universal-attributes-common-methods.md#commonmethod)\> \| undefined | 是   | 在Radio组件上，定制属性区的方法。<br/>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ## 事件
 
@@ -258,7 +276,7 @@ onChange(callback: (isChecked: boolean) => void)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedColor](#selectedcolor23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -270,7 +288,7 @@ onChange(callback: (isChecked: boolean) => void)
 
 ### onChange<sup>18+</sup>
 
-onChange(callback: Optional\<OnRadioChangeCallback>)
+onChange(callback: Optional\<OnRadioChangeCallback\>)
 
 单选框选中状态改变时触发的回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
@@ -282,7 +300,7 @@ onChange(callback: Optional\<OnRadioChangeCallback>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedColor](#selectedcolor23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -290,17 +308,13 @@ onChange(callback: Optional\<OnRadioChangeCallback>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[OnRadioChangeCallback](#onradiochangecallback18)> | 是   | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[OnRadioChangeCallback](#onradiochangecallback18)\> | 是   | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onChange<sup>23+</sup>
 
 onChange(callback: OnRadioChangeCallback | undefined)
 
 单选框选中状态改变时触发的回调。
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,9 +326,9 @@ onChange(callback: OnRadioChangeCallback | undefined)
 
 **参数：** 
 
-| 参数名    | 类型    | 必填 | 说明                             |
-| --------- | ------- | ---- | -------------------------------- |
-| isChecked | boolean | 是   | 单选框选中状态改变时触发该回调。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [OnRadioChangeCallback](#onradiochangecallback18) \| undefined | 是   | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## OnRadioChangeCallback<sup>18+</sup>
 
@@ -370,8 +384,7 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 | ------ | ------ |-------------------------------- |-------------------------------- |-------------------------------- |
 | value | string | 否 | 否 |当前单选框的值。 |
 | checked | boolean| 否 | 否 | 设置单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
-| triggerChange |Callback\<boolean>|否|否|触发单选框选中状态变化。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
-
+| triggerChange |Callback\<boolean\>|否|否|触发单选框选中状态变化。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
 ## 示例
 ### 示例1 （设置底板颜色）

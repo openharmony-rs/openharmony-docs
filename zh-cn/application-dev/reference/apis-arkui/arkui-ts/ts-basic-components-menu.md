@@ -20,7 +20,7 @@ Menu()
 
 作为菜单的固定容器，无参数。
 
-> **说明：** 
+> **说明：**
 >
 > 菜单和菜单项宽度计算规则：
 >
@@ -36,9 +36,31 @@ Menu()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<MenuAttribute\> | AttributeModifier\<CommonMethod\> | undefined)
+
+设置Menu组件的属性修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                                                                    | 必填 | 说明                       |
+| --------- | ------------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[MenuAttribute](#menuattribute)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[CommonMethod](ts-universal-events-click.md#commonmethod)\> \| undefined | 是   | Menu组件的属性修改器。 |
 
 ### font<sup>10+</sup>
 

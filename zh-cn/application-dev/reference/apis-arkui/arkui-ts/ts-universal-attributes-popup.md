@@ -32,7 +32,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -76,7 +76,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | shadow<sup>11+</sup>             | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)    | 否   | 设置气泡阴影。<br/>默认值：ShadowStyle.OUTER_DEFAULT_MD <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23  |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 设置气泡模糊背景参数。<br />默认值：BlurStyle.COMPONENT_ULTRA_THICK<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否 | 自定义设置Popup气泡显示和退出的动画效果。<br/>**说明：**<br/>1.不设置时使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，back键不被响应。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
-| onWillDismiss<sup>12+</sup>           | boolean \| Callback\<([DismissPopupAction](#dismisspopupaction12类型说明))> | 否   | 设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。<br />1.当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件；<br />2.如果设置为函数类型，则拦截退出事件且执行回调函数。<br />**说明：**<br />在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| onWillDismiss<sup>12+</sup>           | boolean \| Callback\<([DismissPopupAction](#dismisspopupaction12类型说明))\> | 否   | 设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。<br />1.当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件；<br />2.如果设置为函数类型，则拦截退出事件且执行回调函数。<br />**说明：**<br />在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 | followTransformOfTarget<sup>13+</sup>          | boolean | 否   | 气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，值为true表示气泡可以拿到变换后宿主的位置，显示到相应位置，值为false表示气泡拿不到宿主变换后的位置，可能显示异常。<br/>默认值：false <br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23 |
 | keyboardAvoidMode<sup>15+</sup>          | [KeyboardAvoidMode](ts-types.md#keyboardavoidmode12枚举说明) | 否   | 气泡是否避让软键盘，默认不避让。设置为避让后，气泡显示空间不足时，由原先居中覆盖父组件的方式改为平移覆盖父组件，且气泡箭头不指向宿主时，不再显示箭头。<br/>默认值：KeyboardAvoidMode.NONE <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
 |  enableHoverMode<sup>18+</sup>| boolean  | 否   | Popup组件是否响应悬停态变化。如果Popup的点击位置在悬停态折痕区域，Popup组件不会响应悬停态。<br/>**说明：**<br/>enableHoverMode主动设置为true时，Popup组件响应悬停态变化，其余情况（设置为false、未设置或者值为非法值）均不响应。<br/>从API version 20开始，在2in1设备上，在窗口的瀑布模式下，enableHoverMode主动设置为false时，Popup组件不会响应悬停态变化，其余情况（设置为true，未设置或者值为非法值）均响应。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
@@ -95,7 +95,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
- 	 
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                       | 必填 |说明                                                       |
@@ -112,7 +112,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
- 	 
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                      | 必填 | 说明                                                       |
@@ -124,15 +124,17 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 
 关闭原因类型。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 值   | 说明                                                       |
-| ------------- | ---- | ------------------------------------------------------------ |
-| PRESS_BACK    | 0    | 点击三键back、侧滑（左滑/右滑）、键盘ESC。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
-| TOUCH_OUTSIDE | 1    | 点击遮障层时。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| CLOSE_BUTTON  | 2    | 点击关闭按钮。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| SLIDE_DOWN    | 3    | 下拉关闭。<br/>**说明：** <br/>该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| SLIDE<sup>20+</sup>    | 4    | 侧拉关闭。<br/>**说明：** <br/>该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| 名称          | 值   |说明                                                       |
+| ------------- | ---- |------------------------------------------------------------ |
+| PRESS_BACK    | 0    | 点击三键back、侧滑（左滑/右滑）、键盘ESC。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| TOUCH_OUTSIDE | 1    | 点击遮障层时。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| CLOSE_BUTTON  | 2    | 点击关闭按钮。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| SLIDE_DOWN    | 3    | 下拉关闭。<br/>**说明：** 该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| SLIDE<sup>20+</sup>    | 4    | 侧拉关闭。<br/>**说明：** 该接口仅支持在[半模态转场](ts-universal-attributes-sheet-transition.md)中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## CustomPopupOptions<sup>8+</sup>类型说明
 
@@ -163,7 +165,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 设置气泡模糊背景参数。<br />默认值：BlurStyle.COMPONENT_ULTRA_THICK <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | focusable<sup>11+</sup> | boolean | 否 | 设置气泡弹出后是否获焦。值为true时，气泡可以获焦，值为false时，气泡不会获焦。<br />默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否 | 自定义设置Popup气泡显示和退出的动画效果。<br/>**说明：**<br/>如果不设置，则使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
-| onWillDismiss<sup>12+</sup>           | boolean \| Callback\<([DismissPopupAction](#dismisspopupaction12类型说明))> | 否   | 设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。<br />1.当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件；<br />2.如果设置为函数类型，则拦截退出事件且执行回调函数。<br />**说明：**<br />在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| onWillDismiss<sup>12+</sup>           | boolean \| Callback\<([DismissPopupAction](#dismisspopupaction12类型说明))\> | 否   | 设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。<br />1.当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件；<br />2.如果设置为函数类型，则拦截退出事件且执行回调函数。<br />**说明：**<br />在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 | followTransformOfTarget<sup>13+</sup>          | boolean | 否   | 气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，值为true表示气泡可以拿到变换后宿主的位置，显示到相应位置，值为false表示气泡拿不到宿主变换后的位置，可能显示异常。<br/>默认值：false <br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23|
 | keyboardAvoidMode<sup>15+</sup>          | [KeyboardAvoidMode](ts-types.md#keyboardavoidmode12枚举说明) | 否   | 气泡是否避让软键盘，默认不避让。设置为避让后，气泡显示空间不足时，由原先居中覆盖父组件的方式改为平移覆盖父组件，且气泡箭头不指向宿主时，不再显示箭头。<br/>默认值：KeyboardAvoidMode.NONE <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
 |enableHoverMode<sup>18+</sup>  | boolean  | 否   |  Popup组件是否响应悬停态变化。如果Popup的点击位置在悬停态折痕区域，Popup组件不会响应悬停态。<br/>**说明：**<br/>enableHoverMode主动设置为true时，Popup组件响应悬停态变化，其余情况（设置为false、未设置或者值为非法值）均不响应。<br/>从API version 20开始，在2in1设备上，在窗口的瀑布模式下，enableHoverMode主动设置为false时，Popup组件不会响应悬停态变化，其余情况（设置为true，未设置或者值为非法值）均响应。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
@@ -191,7 +193,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | mask           | boolean&nbsp;\|&nbsp;[PopupMaskType](#popupmasktype18类型说明) | 否    | 设置气泡是否有遮罩层及遮罩颜色。设置为false时不显示遮罩层，设置为true时显示透明色遮罩层，设置为PopupMaskType时显示指定颜色的遮罩层。默认值：true<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | targetSpace    | [Length](ts-types.md#length)             | 否    | 设置Popup与目标的间隙。不支持设置百分比。<br/>默认值：8<br/>单位：vp<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | offset         | [Position](ts-types.md#position)                            | 否   | 设置Popup组件相对于placement设置的显示位置的偏移。<br />**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| width | [Dimension](ts-types.md#dimension10) | 否 | 气泡宽度。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| width | [Dimension](ts-types.md#dimension10) | 否 | 气泡宽度。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | arrowPointPosition | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否 | 气泡尖角相对于父组件显示位置，气泡尖角在垂直和水平方向上有 ”Start“、”Center“、”End“三个位置点可选。以上所有位置点均位于父组件区域的范围内，不会超出父组件的边界范围。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | arrowWidth             | [Dimension](ts-types.md#dimension10)                                                      | 否   | 设置箭头宽度。若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br />**说明：**<br />不支持设置百分比。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | arrowHeight             | [Dimension](ts-types.md#dimension10)                  | 否   | 设置箭头高度。<br/>默认值：8<br/>单位：vp<br />**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -200,7 +202,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 设置气泡模糊背景参数。<br />默认值：BlurStyle.COMPONENT_ULTRA_THICK <br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
 | focusable | boolean | 否 | 设置气泡弹出后是否获焦。值为true时，气泡可以获焦，值为false时，气泡不会获焦。<br />默认值：false<br />**说明：**<br />不支持通过[updatePopup](../js-apis-arkui-UIContext.md#updatepopup18)进行更新。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | transition | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否 | 自定义设置Popup气泡显示和退出的动画效果。<br/>**说明：**<br/>1.如果不设置，则使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。<br/>4.不支持通过[updatePopup](../js-apis-arkui-UIContext.md#updatepopup18)进行更新。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| onWillDismiss           | boolean\|Callback<[DismissPopupAction](#dismisspopupaction12类型说明)> | 否   | 设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。<br />1.当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件；<br />2.如果设置为函数类型，则拦截退出事件且执行回调函数。<br />**说明：**<br />1.在onWillDismiss回调中，不能再做onWillDismiss拦截。<br />2.不支持通过[updatePopup](../js-apis-arkui-UIContext.md#updatepopup18)进行更新。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| onWillDismiss           | boolean\|Callback\<[DismissPopupAction](#dismisspopupaction12类型说明)\> | 否   | 设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。<br />1.当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back或键盘ESC退出事件，仅当设置”气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件；<br />2.如果设置为函数类型，则拦截退出事件且执行回调函数。<br />**说明：**<br />1.在onWillDismiss回调中，不能再做onWillDismiss拦截。<br />2.不支持通过[updatePopup](../js-apis-arkui-UIContext.md#updatepopup18)进行更新。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | followTransformOfTarget          | boolean | 否   | 气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，值为true表示气泡可以拿到变换后宿主的位置，显示到相应位置，值为false表示气泡拿不到宿主变换后的位置，可能显示异常。<br/>默认值：false <br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
 |enableHoverMode  | boolean  | 否   |  Popup组件是否响应悬停态变化。如果Popup的点击位置在悬停态折痕区域，Popup组件不会响应悬停态。<br/>**说明：**<br/>enableHoverMode主动设置为true时，Popup组件响应悬停态变化，其余情况（设置为false、未设置或者值为非法值）均不响应。<br/>从API version 20开始，在2in1设备上，在窗口的瀑布模式下，enableHoverMode主动设置为false时，Popup组件不会响应悬停态变化，其余情况（设置为true，未设置或者值为非法值）均响应。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | outlineWidth<sup>20+</sup>| [Dimension](ts-types.md#dimension10)  | 否   | 设置Popup组件外描边的宽度。<br />默认值：1 <br />单位：vp<br />**说明：** <br />1.不支持设置百分比。<br />2.在没有设置Popup组件外描边的情况下，该接口需要和outlineLinearGradient配合使用。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -213,13 +215,13 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 
 气泡的显示状态。
 
-**ArkTS-Dyn起始版本：** 18 
-
-**ArkTS-Sta起始版本：** 23
-
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型    | 必填 | 说明                                                         |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
@@ -340,7 +342,6 @@ struct PopupExample {
         })
         .position({ x: 100, y: 150 })
 
-
       // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')
         .onClick(() => {
@@ -429,7 +430,6 @@ struct PopupExample {
           }
         } as PopupOptions)
         .position({ x: 100, y: 150 } as Position)
-
 
       // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')

@@ -37,7 +37,7 @@ import {
 
 不支持[通用事件](ts-component-general-events.md)。
 
-## ArcSlider
+## ArcSlider<sup>18+</sup>
 
 ArcSlider({ options: ArcSliderOptions })
 
@@ -59,7 +59,7 @@ ArcSlider({ options: ArcSliderOptions })
 | ------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
 | options | [ArcSliderOptions](#arcslideroptions) | 是   | 配置弧形滑动条的参数。<br/>默认值：[ArcSliderOptions](#arcslideroptions)的各项子属性均取其默认值。 |
 
-## ArcSliderOptions
+## ArcSliderOptions<sup>18+</sup>
 
 配置弧形Slider的信息。
 
@@ -103,7 +103,7 @@ ArcSliderOptions的构造函数。
 | ------- | ------------------------------------------------------------ | ---- | ---------------------------- |
 | options | [ArcSliderOptionsConstructorOptions](#arcslideroptionsconstructoroptions) | 否   | ArcSliderOptions的构造信息。 |
 
-## ArcSliderValueOptions
+## ArcSliderValueOptions<sup>18+</sup>
 
 配置弧形Slider的数值信息。
 
@@ -143,7 +143,7 @@ ArcSliderValueOptions的构造函数。
 | ------- | ------------------------------------------------------------ | ---- | --------------------------------- |
 | options | [ArcSliderValueOptionsConstructorOptions](#arcslidervalueoptionsconstructoroptions) | 否   | ArcSliderValueOptions的构造信息。 |
 
-## ArcSliderLayoutOptions
+## ArcSliderLayoutOptions<sup>18+</sup>
 
 配置弧形Slider的布局信息。
 
@@ -182,7 +182,7 @@ ArcSliderLayoutOptions的构造函数。
 | ------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
 | options | [ArcSliderLayoutOptionsConstructorOptions](#arcsliderlayoutoptionsconstructoroptions) | 否   | ArcSliderLayoutOptions的构造信息。 |
 
-## ArcSliderStyleOptions
+## ArcSliderStyleOptions<sup>18+</sup>
 
 配置弧形Slider的样式信息。
 
@@ -224,7 +224,7 @@ ArcSliderStyleOptions的构造函数。
 | ------- | ------------------------------------------------------------ | ---- | --------------------------------- |
 | options | [ArcSliderStyleOptionsConstructorOptions](#arcsliderstyleoptionsconstructoroptions) | 否   | ArcSliderStyleOptions的构造信息。 |
 
-## ArcSliderPosition
+## ArcSliderPosition<sup>18+</sup>
 
 配置弧形Slider的屏幕显示位置。
 
@@ -241,7 +241,7 @@ ArcSliderStyleOptions的构造函数。
 | LEFT  | 0    | 弧形Slider的屏幕显示位置在左侧。 |
 | RIGHT | 1    | 弧形Slider的屏幕显示位置在右侧。 |
 
-## ArcSliderTouchHandler
+## ArcSliderTouchHandler<sup>18+</sup>
 
 type ArcSliderTouchHandler = (event: TouchEvent) => void
 
@@ -261,7 +261,7 @@ type ArcSliderTouchHandler = (event: TouchEvent) => void
 | ------ | ------------------------------------------------------------ | ---- | -------------------- |
 | event  | [TouchEvent](ts-universal-events-touch.md#touchevent对象说明) | 是   | 获得TouchEvent对象。 |
 
-## ArcSliderChangeHandler
+## ArcSliderChangeHandler<sup>18+</sup>
 
 ArkTS-Dyn: type ArcSliderChangeHandler = (progress: number) => void
 
@@ -283,7 +283,7 @@ ArkTS-Sta: type ArcSliderChangeHandler = (progress: double) => void
 | -------- | ------ | ---- | -------------------- |
 | progress | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 是   | Slider当前的进度值。 |
 
-## ArcSliderEnlargeHandler
+## ArcSliderEnlargeHandler<sup>18+</sup>
 
 type ArcSliderEnlargeHandler = (isEnlarged: boolean) => void
 
@@ -303,7 +303,7 @@ type ArcSliderEnlargeHandler = (isEnlarged: boolean) => void
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | isEnlarged | boolean | 是   | ArcSlider当前是否放大。<br/>isEnlarged为false时，ArcSlider组件处于缩小状态。<br/>isEnlarged为true时，ArcSlider组件处于放大状态。 |
 
-## ArcSliderOptionsConstructorOptions
+## ArcSliderOptionsConstructorOptions<sup>18+</sup>
 
 ArcSliderOptions的构造信息。
 
@@ -325,7 +325,7 @@ ArcSliderOptions的构造信息。
 | onChange                | [ArcSliderChangeHandler](#arcsliderchangehandler)           | 否   | 弧形Slider的进度值发生变化时，告知应用。<br/>默认值：不传入的情况，无回调。 |
 | onEnlarge               | [ArcSliderEnlargeHandler](#arcsliderenlargehandler)         | 否   | 弧形Slider放大或缩小时，告知应用。<br/>默认值：不传入的情况，无回调。 |
 
-## ArcSliderValueOptionsConstructorOptions
+## ArcSliderValueOptionsConstructorOptions<sup>18+</sup>
 
 ArcSliderValueOptions的构造信息。
 
@@ -343,14 +343,13 @@ ArcSliderValueOptions的构造信息。
 | min   | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 设置最小值。<br />默认值：0                               |
 | max   | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 设置最大值。<br />默认值：100<br />**说明：**<br/>当出现异常情况min >= max时，min取默认值0，max取默认值100。<br/>progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 |
 
-## ArcSliderLayoutOptionsConstructorOptions
+## ArcSliderLayoutOptionsConstructorOptions<sup>18+</sup>
 
 ArcSliderLayoutOptions的构造信息。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
-
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -361,7 +360,7 @@ ArcSliderLayoutOptions的构造信息。
 | reverse  | boolean                                 | 否   | 设置弧形Slider取值范围是否反向。<br />默认值：true。表示从下往上滑动。 |
 | position | [ArcSliderPosition](#arcsliderposition) | 否   | 弧形Slider的屏幕显示位置。<br />默认值：ArcSliderPosition.RIGHT |
 
-## ArcSliderStyleOptionsConstructorOptions
+## ArcSliderStyleOptionsConstructorOptions<sup>18+</sup>
 
 ArcSliderStyleOptions的构造信息。
 

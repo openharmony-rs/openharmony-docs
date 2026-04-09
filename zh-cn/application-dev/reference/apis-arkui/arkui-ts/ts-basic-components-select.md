@@ -14,9 +14,9 @@
 
 ## 接口
 
-Select(options: Array\<SelectOption>)
+Select(options: Array\<SelectOption\>)
 
-**原子化服务API：** 从API version 11开始，该接口支持在在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,19 +42,129 @@ Select(options: Array\<SelectOption>)
 | icon   | [ResourceStr](ts-types.md#resourcestr) | 否   | 下拉选项图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 | symbolIcon<sup>12+</sup>  | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 下拉选项Symbol图片。<br/>symbolIcon优先级高于icon。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
+## MenuAlignType<sup>10+</sup>
+
+定义Select组件下拉菜单与Select组件本身的对齐方式。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 值   | 说明                     |
+| ------ | ---- | ------------------------ |
+| START  | 0    | 菜单与Select组件左对齐。  |
+| CENTER | 1    | 菜单与Select组件居中对齐。|
+| END    | 2    | 菜单与Select组件右对齐。  |
+
+## AvoidanceMode<sup>19+</sup>
+
+定义Select下拉菜单的避让模式。
+
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                | 值   | 说明                                                         |
+| ------------------- | ---- | ------------------------------------------------------------ |
+| COVER_TARGET       | 0    | 菜单覆盖目标组件。                                           |
+| AVOID_AROUND_TARGET | 1    | 菜单在最大空间内显示（压缩滚动条）。                         |
+
+## OnSelectCallback<sup>18+</sup>
+
+type OnSelectCallback = (index: number, selectStr: string) => void
+
+Select组件选择项的回调函数类型。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                 |
+| ---------- | ------ | ---- | -------------------- |
+| index      | number | 是   | 选中的项的索引。     |
+| selectStr  | string | 是   | 选中的项的文本内容。 |
+
+## MenuOutlineOptions<sup>20+</sup>
+
+菜单外描边选项。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  | 类型                                                     | 必填 | 说明           |
+| ----- | -------------------------------------------------------- | ---- | -------------- |
+| width | [Dimension](ts-types.md#dimension10) \| [EdgeOutlineWidths](ts-types.md#edgeoutlinewidths9) | 否   | 外描边宽度。   |
+| color | [ResourceColor](ts-types.md#resourcecolor) \| [EdgeColors](ts-types.md#edgecolors9) | 否   | 外描边颜色。   |
+
+## MenuItemConfiguration<sup>12+</sup>
+
+菜单项配置接口，用于ContentModifier中。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称        | 类型                                                         | 只读 | 可选 | 说明                     |
+| ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
+| value       | [ResourceStr](ts-types.md#resourcestr)                     | 否   | 否   | 菜单项的文本内容。       |
+| icon        | [ResourceStr](ts-types.md#resourcestr)                     | 否   | 是   | 菜单项的图标。           |
+| symbolIcon  | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 是   | 菜单项的Symbol图标。     |
+| selected    | boolean                                                      | 否   | 否   | 菜单项是否被选中。       |
+| index       | number                                                       | 否   | 否   | 菜单项的索引。           |
+
+### triggerSelect<sup>12+</sup>
+
+triggerSelect(index: number, value: string): void
+
+触发选中该菜单项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| index  | number | 是   | 菜单项的索引。       |
+| value  | string | 是   | 菜单项的文本内容。   |
+
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
-### selected
+### selected<sup>8+</sup>
 
 selected(value: number | Resource)
 
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置为异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
-ArkTS-Dyn：从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
-
-ArkTS-Sta：从API version 22开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -64,11 +174,9 @@ ArkTS-Sta：从API version 22开始，该属性支持[$$](../../../ui/state-mana
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[selected](#selected23)。
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
@@ -76,7 +184,7 @@ ArkTS-Sta：从API version 22开始，该属性支持[$$](../../../ui/state-mana
 
 ### selected<sup>18+</sup>
 
-selected(numCount: Optional<number | Resource>)
+selected(numCount: Optional\<number | Resource\>)
 
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置异常值时，默认选择值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
@@ -92,15 +200,15 @@ selected(numCount: Optional<number | Resource>)
 
 **ArkTS-Dyn起始版本：** 18
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| numCount | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
+| numCount | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)\> | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
 
 ### selected<sup>23+</sup>
 
-selected(numCount: int | Resource | undefined | Bindable\<int> | Bindable\<Resource>)
+selected(numCount: int | Resource | undefined | Bindable\<int\> | Bindable\<Resource\>)
 
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置异常值时，默认选择值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
@@ -118,15 +226,15 @@ selected(numCount: int | Resource | undefined | Bindable\<int> | Bindable\<Resou
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| numCount  | int&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined \| Bindable\<int> \| Bindable\<[Resource](ts-types.md#resource)> | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
+| numCount  | int&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined \| Bindable\<int\> \| Bindable\<[Resource](ts-types.md#resource)\> | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
 
-### value
+### value<sup>8+</sup>
 
 value(value: ResourceStr)
 
 设置下拉按钮的文本内容。选中菜单项后，按钮文本将自动更新为选中的菜单项文本。
 
-ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -138,7 +246,7 @@ ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-mana
 
 **ArkTS-Dyn起始版本：** 8
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明                     |
 | ------ | ---------------------------------------------------- | ---- | ------------------------ |
@@ -146,7 +254,7 @@ ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-mana
 
 ### value<sup>18+</sup>
 
-value(resStr: Optional\<ResourceStr>)
+value(resStr: Optional\<ResourceStr\>)
 
 设置下拉按钮的文本内容。选中菜单项后，按钮文本将自动更新为选中的菜单项文本。与[value](#value)相比，resStr参数新增了对undefined类型的支持。
 
@@ -162,15 +270,15 @@ value(resStr: Optional\<ResourceStr>)
 
 **ArkTS-Dyn起始版本：** 18
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resStr | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceStr](ts-types.md#resourcestr)> | 是   | 下拉按钮本身的文本内容。<br/>当resStr的值为undefined时维持上次取值。 |
+| resStr | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceStr](ts-types.md#resourcestr)\> | 是   | 下拉按钮本身的文本内容。<br/>当resStr的值为undefined时维持上次取值。 |
 
 ### value<sup>23+</sup>
 
-value(resStr: ResourceStr | undefined | Bindable\<string> | Bindable\<Resource>)
+value(resStr: ResourceStr | undefined | Bindable\<string\> | Bindable\<Resource\>)
 
 设置下拉按钮的文本内容。选中菜单项后，按钮文本将自动更新为选中的菜单项文本。string和resource类型支持Bindable双向绑定变量。
 
@@ -186,7 +294,7 @@ value(resStr: ResourceStr | undefined | Bindable\<string> | Bindable\<Resource>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resStr | <[Resource](ts-types.md#resource) \| undefined \| Bindable\<string> \| Bindable\<[Resource](ts-types.md#resource)> | 是   | 下拉按钮本身的文本内容。<br/>当resStr的值为undefined时维持上次取值。 |
+| resStr | <[Resource](ts-types.md#resource) \| undefined \| Bindable\<string\> \| Bindable\<[Resource](ts-types.md#resource)\> | 是   | 下拉按钮本身的文本内容。<br/>当resStr的值为undefined时维持上次取值。 |
 
 ### controlSize<sup>12+</sup>
 
@@ -200,11 +308,11 @@ controlSize(value: ControlSize)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[controlSize<sup>23+</sup>](#controlsize23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[controlSize<sup>23+</sup>](#controlsize23).
 
 **ArkTS-Dyn起始版本：** 12
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------- |
@@ -220,7 +328,7 @@ controlSize、width、height接口作用优先级：
 
 ### controlSize<sup>18+</sup>
 
-controlSize(size: Optional\<ControlSize>)
+controlSize(size: Optional\<ControlSize\>)
 
 设置Select组件的尺寸。与[controlSize](#controlsize12)<sup>12+</sup>相比，size参数新增了对undefined类型的支持。
 
@@ -238,7 +346,7 @@ controlSize(size: Optional\<ControlSize>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| size   | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ControlSize](ts-basic-components-button.md#controlsize11枚举说明)> | 是   | Select组件的尺寸。<br/>当size的值为undefined时，默认值为ControlSize.NORMAL。 |
+| size   | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ControlSize](ts-basic-components-button.md#controlsize11枚举说明)\> | 是   | Select组件的尺寸。<br/>当size的值为undefined时，默认值为ControlSize.NORMAL。 |
 
 controlSize、width、height接口作用优先级：
 
@@ -264,7 +372,7 @@ controlSize(value: ControlSize | undefined)
 
 **参数：** 
 
-| 参数名 | | 必填 | 说明                                                         |
+| 参数名 | 类型 | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ControlSize](ts-basic-components-button.md#controlsize11枚举说明) \| undefined | 是   | Select组件的尺寸。<br/>当value的值为undefined时，默认值为ControlSize.NORMAL。 |
 
@@ -278,7 +386,7 @@ controlSize、width、height接口作用优先级：
 
 ### menuItemContentModifier<sup>12+</sup>
 
-menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration>)
+menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration\>)
 
 定制Select下拉菜单项内容区的方法。在应用了menuItemContentModifier后，下拉菜单的内容将完全由开发者自定义，此时为Select组件设置的分割线、选项颜色及下拉菜单的字体颜色等属性将不再生效。
 
@@ -296,13 +404,11 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<MenuItemConfiguration>](#menuitemconfiguration12对象说明) | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier\<MenuItemConfiguration\>](#menuitemconfiguration12对象说明) | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### menuItemContentModifier<sup>18+</sup>
 
-ArkTS-Dyn: menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfiguration>>)
-
-ArkTS-Sta: menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration> | undefined)
+menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfiguration\>>)
 
 定制Select下拉菜单项内容区的方法。与[menuItemContentModifier](#menuitemcontentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。在应用了menuItemContentModifier后，下拉菜单的内容将完全由开发者自定义，此时为Select组件设置的分割线、选项颜色及下拉菜单的字体颜色等属性将不再生效。
 
@@ -320,11 +426,11 @@ ArkTS-Sta: menuItemContentModifier(modifier: ContentModifier\<MenuItemConfigurat
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<MenuItemConfiguration>](#menuitemconfiguration12对象说明)><br/>ArkTS-Sta: [ContentModifier\<MenuItemConfiguration>](#menuitemconfiguration12对象说明) \| undefined | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<MenuItemConfiguration\>](#menuitemconfiguration12对象说明)\> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### menuItemContentModifier<sup>23+</sup>
 
-menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration> | undefined)
+menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration\> | undefined)
 
 定制Select下拉菜单项内容区的方法。
 
@@ -340,11 +446,11 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration> | unde
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [ContentModifier\<MenuItemConfiguration>](#menuitemconfiguration12对象说明) \| undefined | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [ContentModifier\<MenuItemConfiguration\>](#menuitemconfiguration12对象说明) \| undefined | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### divider<sup>12+</sup>
 
-divider(options: Optional\<DividerOptions> | null)
+divider(options: Optional\<DividerOptions\> | null)
 
 设置分割线样式，不设置该属性则按"默认值"展示分割线。
 
@@ -354,15 +460,15 @@ divider(options: Optional\<DividerOptions> | null)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[divider<sup>23+</sup>](#divider23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[divider<sup>23+</sup>](#divider23).
 
 **ArkTS-Dyn起始版本：** 12
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                                  |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| options  | Optional\<[DividerOptions](ts-basic-components-textpicker.md#divideroptions12对象说明)> \| null | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null时，不显示分割线。<br/>3.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
+| options  | Optional\<[DividerOptions](ts-basic-components-textpicker.md#divideroptions12对象说明)\> \| null | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null时，不显示分割线。<br/>3.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线.|
 
 ### divider<sup>23+</sup>
 
@@ -386,7 +492,7 @@ divider(value: DividerOptions | null | undefined)
 
 ### dividerStyle<sup>19+</sup>
 
-dividerStyle(style: Optional\<DividerStyleOptions>)
+dividerStyle(style: Optional\<DividerStyleOptions\>)
 
 设置分割线样式，不设置该属性则按"默认值"展示分割线。该属性与divider互斥，按调用顺序生效。
 
@@ -404,7 +510,7 @@ dividerStyle(style: Optional\<DividerStyleOptions>)
 
 | 参数名 | 类型    | 必填 | 说明                                                                  |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| style  | Optional\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)>  | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null或undefined时，展示默认分割线。<br/>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
+| style  | Optional\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)\>  | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null或undefined时，展示默认分割线。<br/>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
 
 ### dividerStyle<sup>23+</sup>
 
@@ -426,7 +532,7 @@ dividerStyle(value: DividerStyleOptions | undefined)
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
 | value  |[DividerStyleOptions](ts-types.md#dividerstyleoptions12) \| undefined| 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null或undefined时，展示默认分割线。<br/>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
 
-### font
+### font<sup>8+</sup>
 
 font(value: Font)
 
@@ -450,7 +556,7 @@ font(value: Font)
 
 ### font<sup>18+</sup>
 
-font(selectFont: Optional\<Font>)
+font(selectFont: Optional\<Font\>)
 
 设置下拉按钮本身的文本样式。当size为0时，文本不显示，当size为负值时，文本的size按照默认值显示。与[font](#font)相比，selectFont参数新增了对undefined类型的支持。
 
@@ -468,7 +574,7 @@ font(selectFont: Optional\<Font>)
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Font](ts-types.md#font)> | 是   | 下拉按钮本身的文本样式。<br/>如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。<br/>当value的值为undefined时，恢复为系统文本样式。 |
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Font](ts-types.md#font)\> | 是   | 下拉按钮本身的文本样式。<br/>如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。<br/>当value的值为undefined时，恢复为系统文本样式。 |
 
 ### font<sup>23+</sup>
 
@@ -490,7 +596,7 @@ font(value: Font | undefined)
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [Font](ts-types.md#font) \| undefined | 是   | 下拉按钮本身的文本样式。<br/>如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。<br/>当value的值为undefined时，恢复为系统文本样式。 |
 
-### fontColor
+### fontColor<sup>8+</sup>
 
 fontColor(value: ResourceColor)
 
@@ -510,11 +616,11 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉按钮本身的文本颜色。<br/>默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 下拉按钮本身的文本颜色。<br/>默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。 |
 
 ### fontColor<sup>18+</sup>
 
-fontColor(resColor: Optional\<ResourceColor>)
+fontColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉按钮本身的文本颜色。与[fontColor](#fontcolor)相比，resColor参数新增了对undefined类型的支持。
 
@@ -532,7 +638,7 @@ fontColor(resColor: Optional\<ResourceColor>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 下拉按钮本身的文本颜色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。<br/>当value的值为undefined时，维持上次取值。 |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 下拉按钮本身的文本颜色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。<br/>当value的值为undefined时，维持上次取值。 |
 
 ### fontColor<sup>23+</sup>
 
@@ -554,7 +660,7 @@ fontColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉按钮本身的文本颜色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。<br/>当value的值为undefined时，维持上次取值。 |
 
-### selectedOptionBgColor
+### selectedOptionBgColor<sup>8+</sup>
 
 selectedOptionBgColor(value: ResourceColor)
 
@@ -578,7 +684,7 @@ selectedOptionBgColor(value: ResourceColor)
 
 ### selectedOptionBgColor<sup>18+</sup>
 
-selectedOptionBgColor(resColor: Optional\<ResourceColor>)
+selectedOptionBgColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单选中项的背景色。与[selectedOptionBgColor](#selectedoptionbgcolor)相比，resColor参数新增了对undefined类型的支持。
 
@@ -596,7 +702,7 @@ selectedOptionBgColor(resColor: Optional\<ResourceColor>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 下拉菜单选中项的背景色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 下拉菜单选中项的背景色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
 
 ### selectedOptionBgColor<sup>23+</sup>
 
@@ -618,7 +724,7 @@ selectedOptionBgColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 下拉菜单选中项的背景色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
 
-### selectedOptionFont
+### selectedOptionFont<sup>8+</sup>
 
 selectedOptionFont(value: Font)
 
@@ -642,7 +748,7 @@ selectedOptionFont(value: Font)
 
 ### selectedOptionFont<sup>18+</sup>
 
-selectedOptionFont(selectFont: Optional\<Font>)
+selectedOptionFont(selectFont: Optional\<Font\>)
 
 设置下拉菜单选中项的文本样式。当size为0的时候，文本不显示，当size为负值的时候，文本的size按照默认值显示。与[selectedOptionFont](#selectedoptionfont)相比，selectFont参数新增了对undefined类型的支持。
 
@@ -660,7 +766,7 @@ selectedOptionFont(selectFont: Optional\<Font>)
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Font](ts-types.md#font)> | 是   | 下拉菜单选中项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Font](ts-types.md#font)\> | 是   | 下拉菜单选中项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
 
 ### selectedOptionFont<sup>23+</sup>
 
@@ -682,7 +788,7 @@ selectedOptionFont(value: Font | undefined)
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [Font](ts-types.md#font) \| undefined | 是   | 下拉菜单选中项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
 
-### selectedOptionFontColor
+### selectedOptionFontColor<sup>8+</sup>
 
 selectedOptionFontColor(value: ResourceColor)
 
@@ -706,7 +812,7 @@ selectedOptionFontColor(value: ResourceColor)
 
 ### selectedOptionFontColor<sup>18+</sup>
 
-selectedOptionFontColor(resColor: Optional\<ResourceColor>)
+selectedOptionFontColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单选中项的文本颜色。与[selectedOptionFontColor](#selectedoptionfontcolor)相比，resColor参数新增了对undefined类型的支持。
 
@@ -724,7 +830,7 @@ selectedOptionFontColor(resColor: Optional\<ResourceColor>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 下拉菜单选中项的文本颜色。<br/>当resColor的值为undefined时，默认值为$r('sys.color.ohos_id_color_text_primary_activated')。 |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 下拉菜单选中项的文本颜色。<br/>当resColor的值为undefined时，默认值为$r('sys.color.ohos_id_color_text_primary_activated')。 |
 
 ### selectedOptionFontColor<sup>23+</sup>
 
@@ -746,7 +852,7 @@ selectedOptionFontColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单选中项的文本颜色。<br/>当resColor的值为undefined时，默认值为$r('sys.color.ohos_id_color_text_primary_activated')。 |
 
-### optionBgColor
+### optionBgColor<sup>8+</sup>
 
 optionBgColor(value: ResourceColor)
 
@@ -770,7 +876,7 @@ optionBgColor(value: ResourceColor)
 
 ### optionBgColor<sup>18+</sup>
 
-optionBgColor(resColor: Optional\<ResourceColor>)
+optionBgColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单项的背景色。与[optionBgColor](#optionbgcolor)相比，resColor参数新增了对undefined类型的支持。
 
@@ -788,7 +894,7 @@ optionBgColor(resColor: Optional\<ResourceColor>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 下拉菜单项的背景色。<br/>当resColor的值为undefined时，默认值为Color.Transparent。 |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 下拉菜单项的背景色。<br/>当resColor的值为undefined时，默认值为Color.Transparent。 |
 
 ### optionBgColor<sup>23+</sup>
 
@@ -810,7 +916,7 @@ optionBgColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单项的背景色。<br/>当resColor的值为undefined时，默认值为Color.Transparent。 |
 
-### optionFont
+### optionFont<sup>8+</sup>
 
 optionFont(value: Font)
 
@@ -834,7 +940,7 @@ optionFont(value: Font)
 
 ### optionFont<sup>18+</sup>
 
-optionFont(selectFont: Optional\<Font>)
+optionFont(selectFont: Optional\<Font\>)
 
 设置下拉菜单项的文本样式。当size为0的时候，文本不显示，当size为负值的时候，文本的size按照默认值显示。
 
@@ -854,7 +960,7 @@ optionFont(selectFont: Optional\<Font>)
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Font](ts-types.md#font)> | 是   | 下拉菜单项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Font](ts-types.md#font)\> | 是   | 下拉菜单项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
 
 ### optionFont<sup>23+</sup>
 
@@ -878,7 +984,7 @@ optionFont(value: Font | undefined)
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [Font](ts-types.md#font) \| undefined | 是   | 下拉菜单项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
 
-### optionFontColor
+### optionFontColor<sup>8+</sup>
 
 optionFontColor(value: ResourceColor)
 
@@ -898,11 +1004,11 @@ optionFontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单项的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary') |
+| value  | [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单项的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary') |
 
 ### optionFontColor<sup>18+</sup>
 
-optionFontColor(resColor: Optional\<ResourceColor>)
+optionFontColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单项的文本颜色。与[optionFontColor](#optionfontcolor)相比，resColor参数新增了对undefined类型的支持。
 
@@ -920,7 +1026,7 @@ optionFontColor(resColor: Optional\<ResourceColor>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单项的文本颜色。<br/>当resColor的值为undefined时，默认值：$r('sys.color.ohos_id_color_text_primary') |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)\> <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单项的文本颜色。<br/>当resColor的值为undefined时，默认值：$r('sys.color.ohos_id_color_text_primary') |
 
 ### optionFontColor<sup>23+</sup>
 
@@ -966,7 +1072,7 @@ space(value: Length)
 
 ### space<sup>18+</sup>
 
-space(spaceLength: Optional\<Length>)
+space(spaceLength: Optional\<Length\>)
 
 设置下拉菜单项的文本与箭头的间距。不支持设置百分比。设置为null、undefined，或者小于等于8的值，取默认值。
 
@@ -978,11 +1084,11 @@ space(spaceLength: Optional\<Length>)
 
 **ArkTS-Dyn起始版本：** 18
 
-**参数：** 
+**参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| spaceLength | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Length](ts-types.md#length)> <br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 下拉菜单项的文本与箭头之间的间距。<br/>当spaceLength的值为undefined时，默认值：8 |
+| spaceLength | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Length](ts-types.md#length)\> <br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 下拉菜单项的文本与箭头之间的间距。<br/>当spaceLength的值为undefined时，默认值：8 |
 
 ### space<sup>23+</sup>
 
@@ -1026,7 +1132,7 @@ arrowPosition(value: ArrowPosition)
 
 ### arrowPosition<sup>18+</sup>
 
-arrowPosition(position: Optional\<ArrowPosition>)
+arrowPosition(position: Optional\<ArrowPosition\>)
 
 设置下拉菜单项的文本与箭头之间的对齐方式。与[arrowPosition](#arrowposition10)相比，position参数新增了对undefined类型的支持。
 
@@ -1044,7 +1150,7 @@ arrowPosition(position: Optional\<ArrowPosition>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| position | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ArrowPosition](#arrowposition10枚举说明)> <br/>ArkTS-Sta: [ArrowPosition](#arrowposition10枚举说明) \| undefined | 是   | 下拉菜单项的文本与箭头之间的对齐方式。<br/>当position的值为undefined时，默认值：ArrowPosition.END |
+| position | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ArrowPosition](#arrowposition10枚举说明)\> <br/>ArkTS-Sta: [ArrowPosition](#arrowposition10枚举说明) \| undefined | 是   | 下拉菜单项的文本与箭头之间的对齐方式。<br/>当position的值为undefined时，默认值：ArrowPosition.END |
 
 ### arrowPosition<sup>23+</sup>
 
@@ -1091,7 +1197,7 @@ menuAlign(alignType: MenuAlignType, offset?: Offset)
 
 ### menuAlign<sup>18+</sup>
 
-menuAlign(alignType: Optional\<MenuAlignType>, offset?: Offset)
+menuAlign(alignType: Optional\<MenuAlignType\>, offset?: Offset)
 
 设置下拉按钮与下拉菜单间的对齐方式。与[menuAlign](#menualign10)<sup>10+</sup>相比，alignType参数新增了对undefined类型的支持。
 
@@ -1109,7 +1215,7 @@ menuAlign(alignType: Optional\<MenuAlignType>, offset?: Offset)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| alignType | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[MenuAlignType](#menualigntype10枚举说明)> | 是   | 对齐方式类型。<br/>当alignType的值为undefined时，默认值：MenuAlignType.START |
+| alignType | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[MenuAlignType](#menualigntype10枚举说明)\> | 是   | 对齐方式类型。<br/>当alignType的值为undefined时，默认值：MenuAlignType.START |
 | offset    | [Offset](ts-types.md#offset)                                 | 否   | 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。<br/> 默认值：{dx: 0, dy: 0} |
 
 ### menuAlign<sup>23+</sup>
@@ -1120,11 +1226,11 @@ menuAlign(alignType: MenuAlignType | undefined, offset?: Offset)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[menuAlign<sup>10+</sup>](#menualign10)和[menuAlign<sup>18+</sup>](#menualign18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[menuAlign<sup>10+</sup>](#menualign10)和[menuAlign<sup>18+</sup>](#menualign18)。
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1159,7 +1265,7 @@ optionWidth(value: Dimension | OptionWidthMode )
 
 ### optionWidth<sup>18+</sup>
 
-optionWidth(width: Optional\<Dimension | OptionWidthMode> )
+optionWidth(width: Optional\<Dimension | OptionWidthMode\> )
 
 设置下拉菜单项的宽度，不支持设置百分比。OptionWidthMode类型为枚举类型，OptionWidthMode决定下拉菜单是否继承下拉按钮宽度。与[optionWidth](#optionwidth11)<sup>11+</sup>相比，width参数新增了对undefined类型的支持。
 
@@ -1179,7 +1285,7 @@ optionWidth(width: Optional\<Dimension | OptionWidthMode> )
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OptionWidthMode](ts-appendix-enums.md#optionwidthmode11)> | 是   | 下拉菜单项的宽度。<br/>当width的值为undefined时，属性无效，菜单项宽度设为默认值，即2栅格。 |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OptionWidthMode](ts-appendix-enums.md#optionwidthmode11)\> | 是   | 下拉菜单项的宽度。<br/>当width的值为undefined时，属性无效，菜单项宽度设为默认值，即2栅格。 |
 
 ### optionWidth<sup>23+</sup>
 
@@ -1193,7 +1299,7 @@ optionWidth(value: Dimension | OptionWidthMode | undefined )
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[optionWidth<sup>11+</sup>](#optionwidth11)和[optionWidth<sup>18+</sup>](#optionwidth18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[optionWidth<sup>11+</sup>](#optionwidth11)和[optionWidth<sup>18+</sup>](#optionwidth18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1231,7 +1337,7 @@ optionHeight(value: Dimension)
 
 ### optionHeight<sup>18+</sup>
 
-optionHeight(height: Optional\<Dimension>)
+optionHeight(height: Optional\<Dimension\>)
 
 设置下拉菜单显示的最大高度，不支持设置百分比。默认最大高度是屏幕可用高度的80%，设置的菜单最大高度不能超过默认最大高度。与[optionHeight](#optionheight11)<sup>11+</sup>相比，height参数新增了对undefined类型的支持。
 
@@ -1253,7 +1359,7 @@ optionHeight(height: Optional\<Dimension>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| height | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Dimension](ts-types.md#dimension10)> | 是   | 下拉菜单显示的最大高度。<br/>当height的值为undefined时，属性不生效，下拉菜单最大高度设为默认值，即下拉菜单最大高度默认值为屏幕可用高度的80%。 |
+| height | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[Dimension](ts-types.md#dimension10)\> | 是   | 下拉菜单显示的最大高度。<br/>当height的值为undefined时，属性不生效，下拉菜单最大高度设为默认值，即下拉菜单最大高度默认值为屏幕可用高度的80%。 |
 
 ### optionHeight<sup>23+</sup>
 
@@ -1269,7 +1375,7 @@ optionHeight(value: Dimension | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[optionHeight<sup>11+</sup>](#optionheight11)和[optionHeight<sup>18+</sup>](#optionheight18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[optionHeight<sup>11+</sup>](#optionheight11)和[optionHeight<sup>18+</sup>](#optionheight18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1303,7 +1409,7 @@ menuBackgroundColor(value: ResourceColor)
 
 ### menuBackgroundColor<sup>18+</sup>
 
-menuBackgroundColor(resColor: Optional\<ResourceColor>)
+menuBackgroundColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单的背景色。与[menuBackgroundColor](#menubackgroundcolor11)<sup>11+</sup>相比，resColor参数新增了对undefined类型的支持。
 
@@ -1321,7 +1427,7 @@ menuBackgroundColor(resColor: Optional\<ResourceColor>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 下拉菜单的背景色。<br/>当resColor的值为undefined时，默认值为Color.Transparent。 |
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 下拉菜单的背景色。<br/>当resColor的值为undefined时，默认值为Color.Transparent。 |
 
 ### menuBackgroundColor<sup>23+</sup>
 
@@ -1339,7 +1445,7 @@ menuBackgroundColor(value: ResourceColor | undefined)
 
 **参数：** 
 
-| 参数名   | 类型                                                         | 必填填 | 说明                                                         |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单的背景色。<br/>当resColor的值为undefined时，默认值为Color.Transparent。 |
 
@@ -1367,7 +1473,7 @@ menuBackgroundBlurStyle(value: BlurStyle)
 
 ### menuBackgroundBlurStyle<sup>18+</sup>
 
-ArkTS-Dyn: menuBackgroundBlurStyle(style: Optional\<BlurStyle>)
+menuBackgroundBlurStyle(style: Optional\<BlurStyle\>)
 
 设置下拉菜单的背景模糊材质。与[menuBackgroundBlurStyle](#menubackgroundblurstyle11)<sup>11+</sup>相比，style参数新增了对undefined类型的支持。
 
@@ -1381,11 +1487,11 @@ ArkTS-Dyn: menuBackgroundBlurStyle(style: Optional\<BlurStyle>)
 
 **ArkTS-Dyn起始版本：** 18
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> <br/>ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined | 是   | 下拉菜单的背景模糊材质。<br/>当style的值为undefined时，默认值：BlurStyle.COMPONENT_ULTRA_THICK |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)\> | 是   | 下拉菜单的背景模糊材质。<br/>当style的值为undefined时，默认值：BlurStyle.COMPONENT_ULTRA_THICK |
 
 ### menuBackgroundBlurStyle<sup>23+</sup>
 
@@ -1483,7 +1589,7 @@ ArkTS-Sta: showDefaultSelectedIcon(show:boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 20 
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1495,7 +1601,7 @@ ArkTS-Sta: showDefaultSelectedIcon(show:boolean | undefined)
 
 ### textModifier<sup>20+</sup>
 
-textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)>)
+textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
 
 定制Select按钮文本样式的方法，在应用了textModifier之后，Select按钮的文本样式将完全由开发者自定义。
 
@@ -1513,7 +1619,7 @@ textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribut
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 在Select组件上，定制按钮文本样式的方法。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\> | 是   | 在Select组件上，定制按钮文本样式的方法。 |
 
 ### textModifier<sup>23+</sup>
 
@@ -1537,7 +1643,7 @@ textModifier(value: TextModifier | undefined)
 
 ### arrowModifier<sup>20+</sup>
 
-arrowModifier(modifier: Optional\<[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)>)
+arrowModifier(modifier: Optional\<[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)\>)
 
 定制Select按钮下拉箭头图标样式的方法，在应用arrowModifier之后，Select按钮下拉箭头的图标样式将完全由开发者自定义。
 
@@ -1555,7 +1661,7 @@ arrowModifier(modifier: Optional\<[SymbolGlyphModifier](ts-universal-attributes-
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)\> | 是   | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。 |
 
 ### arrowModifier<sup>23+</sup>
 
@@ -1567,7 +1673,7 @@ arrowModifier(value: SymbolGlyphModifier | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[arrowModifier<sup>20+</sup>](#arrowmodifier20)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[arrowModifier<sup>20+</sup>](#arrowmodifier20)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1579,7 +1685,7 @@ arrowModifier(value: SymbolGlyphModifier | undefined)
 
 ### optionTextModifier<sup>20+</sup>
 
-optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)>)
+optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
 
 定制Select下拉菜单未选中项文本样式的方法，在应用optionTextModifier之后，下拉菜单未选中项的文本样式将完全由开发者自定义。
 
@@ -1599,7 +1705,7 @@ optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-at
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。|
 
 ### optionTextModifier<sup>23+</sup>
 
@@ -1625,7 +1731,7 @@ optionTextModifier(value: [TextModifier](ts-universal-attributes-attribute-modif
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
-selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)>)
+selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
 
 定制Select下拉菜单选中项文本样式的方法，在应用selectedOptionTextModifier之后，下拉菜单选中项的文本样式将完全由开发者自定义。
 
@@ -1639,13 +1745,13 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedOptionTextModifier<sup>23+</sup>](#selectedoptiontextmodifier23)。
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Dyn起始版本：** 20
 
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 |
 
 ### selectedOptionTextModifier<sup>23+</sup>
 
@@ -1671,7 +1777,7 @@ selectedOptionTextModifier(modifier: TextModifier | undefined)
 
 ### showInSubWindow<sup>20+</sup>
 
-ArkTS-Dyn: showInSubWindow(showInSubWindow:Optional\<boolean>)
+ArkTS-Dyn: showInSubWindow(showInSubWindow:Optional\<boolean\>)
 
 ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
@@ -1689,7 +1795,95 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br>ArkTS-Sta: boolean \| undefined | 是   | 设置Select的Menu是否显示在子窗中。<br>true代表Select的Menu显示在子窗中，仅对2in1设备生效。<br>false代表Select的Menu不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。 |
+| showInSubWindow  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean\><br>ArkTS-Sta: boolean \| undefined | 是   | 设置Select的Menu是否显示在子窗中。<br>true代表Select的Menu显示在子窗中，仅对2in1设备生效。<br>false代表Select的Menu不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。 |
+
+### keyboardAvoidMode<sup>23+</sup>
+
+ArkTS-Dyn: keyboardAvoidMode(mode: Optional\<MenuKeyboardAvoidMode\>)
+
+ArkTS-Sta: keyboardAvoidMode(mode: MenuKeyboardAvoidMode | undefined)
+
+设置Select菜单避让键盘的模式。默认不避让。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型限制：** 仅支持Stage模型。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| mode   | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<MenuKeyboardAvoidMode\><br/>ArkTS-Sta: MenuKeyboardAvoidMode \| undefined | 是   | Select菜单避让键盘的模式。<br/>当mode的值为undefined时，默认不避让键盘。 |
+
+### minKeyboardAvoidDistance<sup>23+</sup>
+
+ArkTS-Dyn: minKeyboardAvoidDistance(distance: Optional\<LengthMetrics\>)
+
+ArkTS-Sta: minKeyboardAvoidDistance(distance: LengthMetrics | undefined)
+
+设置Select菜单与键盘之间的最小距离。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型限制：** 仅支持Stage模型。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| distance | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<LengthMetrics\><br/>ArkTS-Sta: LengthMetrics \| undefined | 是   | Select菜单与键盘之间的最小距离。<br/>当distance的值为undefined时，使用默认距离。 |
+
+### menuSystemMaterial<sup>23+</sup>
+
+ArkTS-Dyn: menuSystemMaterial(material: Optional\<SystemUiMaterial\>)
+
+ArkTS-Sta: menuSystemMaterial(material: SystemUiMaterial | undefined)
+
+设置Select菜单的系统材质。不同材质具有不同的效果，可以影响Select菜单的backgroundColor、border、shadow等视觉属性。
+
+**设备差异：** 相同的材质在不同设备上的效果可能会有所不同，具体取决于设备的计算能力。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型限制：** 仅支持Stage模型。
+
+**系统API：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| material | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<SystemUiMaterial\><br/>ArkTS-Sta: SystemUiMaterial \| undefined | 是   | Select菜单的系统材质。<br/>当material的值为undefined时，保留Select菜单的原始视觉样式。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModifier\<CommonMethod\> | undefined)
+
+设置Select组件的属性修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                                                                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier | AttributeModifier\<[SelectAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](ts-universal-attributes-common.md)\> \| undefined | 是   | Select组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
@@ -1738,10 +1932,10 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                | 说明             |
-| ------------------- | ------------------ |
-| COVER_TARGET        | 目标组件下方无足够空间时，覆盖目标组件。 |
-| AVOID_AROUND_TARGET | 目标组件四周无足够空间时，在最大空间处压缩显示（可滚动）。 |
+| 名称                | 值               | 说明             |
+| ------------------- | ------------------ | ------------------ |
+| COVER_TARGET        | 0                  | 目标组件下方无足够空间时，覆盖目标组件。 |
+| AVOID_AROUND_TARGET | 1                  | 目标组件四周无足够空间时，在最大空间处压缩显示（可滚动）。 |
 
 ## MenuItemConfiguration<sup>12+</sup>对象说明
 
@@ -1767,9 +1961,9 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 ### triggerSelect<sup>12+</sup>
 
-ArkTS-Dyn: type triggerSelect(index: number, value: string): void
+ArkTS-Dyn: triggerSelect(index: number, value: string): void
 
-ArkTS-Sta: type triggerSelect(index: int, value: string): void
+ArkTS-Sta: triggerSelect(index: int, value: string): void
 
 下拉菜单选中某一项的回调函数。index会赋值给事件onSelect回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件onSelect回调中的文本参数。
 
@@ -1807,7 +2001,7 @@ ArkTS-Sta: type triggerSelect(index: int, value: string): void
 
 ## 事件
 
-### onSelect
+### onSelect<sup>8+</sup>
 
 onSelect(callback: (index: number, value: string) => void)
 
@@ -1817,11 +2011,9 @@ onSelect(callback: (index: number, value: string) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onSelect<sup>23+</sup>](#onselect23)。
-
 **ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1832,7 +2024,7 @@ onSelect(callback: (index: number, value: string) => void)
 
 ### onSelect<sup>18+</sup>
 
-onSelect(callback: Optional\<OnSelectCallback> )
+onSelect(callback: Optional\<OnSelectCallback\> )
 
 下拉菜单选中某一项时，会触发回调。与[onSelect](#onselect)相比，callback参数新增了对undefined类型的支持。
 
@@ -1840,9 +2032,9 @@ onSelect(callback: Optional\<OnSelectCallback> )
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onSelect<sup>23+</sup>](#onselect23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onSelect<sup>23+</sup>](#onselect23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1850,7 +2042,7 @@ onSelect(callback: Optional\<OnSelectCallback> )
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[OnSelectCallback](#onselectcallback18)> | 是   | 下拉菜单选中某一项的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[OnSelectCallback](#onselectcallback18)\> | 是   | 下拉菜单选中某一项的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onSelect<sup>23+</sup>
 
@@ -1870,7 +2062,7 @@ onSelect(callback: OnSelectCallback | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[OnSelectCallback](#onselectcallback18)> | 是   | 下拉菜单选中某一项的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[OnSelectCallback](#onselectcallback18)\> | 是   | 下拉菜单选中某一项的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## OnSelectCallback<sup>18+</sup>
 
@@ -1940,8 +2132,6 @@ struct SelectExample {
 ```
 
 ![](figures/selectExample.png)
-
-
 
 ##  示例2（设置symbol类型图标）
 该示例实现了一个下拉菜单中图片为Symbol的Select组件。
