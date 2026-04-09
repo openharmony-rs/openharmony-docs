@@ -48,7 +48,7 @@
    
 2. 增加角标个数。
 
-   发布通知在[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的badgeNumber字段里携带，可参考[通知发布](text-notification.md)章节。
+   发布通知时，可在[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的badgeNumber字段里携带相关信息，具体可参考[通知发布](text-notification.md)章节。
    
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
 
