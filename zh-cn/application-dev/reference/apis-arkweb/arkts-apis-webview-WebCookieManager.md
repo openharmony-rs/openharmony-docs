@@ -485,7 +485,7 @@ struct WebComponent {
 
 static configCookie(url: string, value: string): Promise\<void>
 
-以Promise方式异步为指定url设置单个cookie的值。
+指定url设置单个cookie的值。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
