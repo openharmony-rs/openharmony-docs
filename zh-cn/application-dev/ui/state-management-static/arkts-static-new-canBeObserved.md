@@ -395,7 +395,7 @@ canBeObserved接口返回信息：
 			],
 			"owningComponentId": -1,
 			"stateVariableName": "Any Object Literal Property",
-			"owningComponentOrClassName": "entry$src$main$ets$pages$Index$Info$ObjectLiteral"
+			"owningComponentOrClassName": "Info"
 		}
 	]
 }

@@ -8,11 +8,9 @@
 >
 >  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-
 ## 子组件
 
 可以包含单个子组件。
-
 
 ## 接口
 
@@ -32,7 +30,7 @@ Button(options: ButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名  | 类型                                    | 必填 | 说明                 |
 | ------- | --------------------------------------- | ---- | -------------------- |
@@ -56,7 +54,7 @@ Button(label: ResourceStr, options?: ButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名  | 类型                                    | 必填 | 说明                 |
 | ------- | --------------------------------------- | ---- | -------------------- |
@@ -82,6 +80,10 @@ Button()
 ## ButtonOptions对象说明
 
 按钮的样式。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,7 +117,7 @@ ArkTS-Sta: type(value: ButtonType | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                                        |
 | ------ | --------------------------------- | ---- | ------------------------------------------- |
@@ -139,7 +141,7 @@ ArkTS-Sta: fontSize(value: Length | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
@@ -163,7 +165,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -187,7 +189,7 @@ ArkTS-Sta: fontWeight(value: int&nbsp;|&nbsp;FontWeight&nbsp;|&nbsp;string | und
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -211,7 +213,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                            |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
@@ -235,14 +237,14 @@ ArkTS-Sta: stateEffect(value: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。设置为true时，开启按压效果。<br/>默认值：true |
 
 >  **说明：**
-> 
+>
 >  使用多态样式设置按压态时，需优先设置stateEffect为false，防止内置按压态与多态样式按压态冲突。
 
 ### fontFamily<sup>8+</sup>
@@ -263,7 +265,7 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -285,7 +287,7 @@ ArkTS-Sta: labelStyle(value: ButtonLabelStyle | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                              |
 | ------ | ----------------------------------- | ---- | --------------------------------- |
@@ -309,7 +311,7 @@ ArkTS-Sta: buttonStyle(value: ButtonStyleMode | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -333,7 +335,7 @@ ArkTS-Sta: controlSize(value: ControlSize | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                  | 必填 | 说明                                              |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------- |
@@ -357,7 +359,7 @@ ArkTS-Sta: role(value: ButtonRole | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                                                 |
 | ------ | ----------------------------------- | ---- | ---------------------------------------------------- |
@@ -365,9 +367,9 @@ ArkTS-Sta: role(value: ButtonRole | undefined)
 
 ### contentModifier<sup>12+</sup>
 
-ArkTS-Dyn: contentModifier(modifier: ContentModifier\<ButtonConfiguration>)
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<ButtonConfiguration\>)
 
-ArkTS-Sta: contentModifier(modifier: ContentModifier\<ButtonConfiguration> | undefined)
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<ButtonConfiguration\> | undefined)
 
 定制Button内容区的方法。
 
@@ -383,7 +385,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ButtonConfiguration> | und
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier\<ButtonConfiguration>](#buttonconfiguration12对象说明) <br/>ArkTS-Sta: [ContentModifier\<ButtonConfiguration>](#buttonconfiguration12对象说明) \| undefined| 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier\<ButtonConfiguration\>](#buttonconfiguration12对象说明) <br/>ArkTS-Sta: [ContentModifier\<ButtonConfiguration\>](#buttonconfiguration12对象说明) \| undefined| 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### minFontScale<sup>18+</sup>
 
@@ -401,7 +403,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
@@ -423,11 +425,29 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
 | scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined| 是   | 文本最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。<br/>未设置最大缩放倍数时，圆形按钮最大缩放倍数为1倍，胶囊型按钮、普通按钮、圆角矩形按钮最大缩放倍数跟随系统设置。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ButtonAttribute\> | AttributeModifier\<CommonMethod\> | undefined)
+
+设置Button组件的属性修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                                                                                                           | 必填 | 说明                      |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------- |
+| modifier | AttributeModifier\<[ButtonAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](ts-component-common-methods.md)\> \| undefined | 是   | Button组件的属性修改器。 |
 
 ## ButtonType枚举说明
 
@@ -435,12 +455,12 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明               |
-| ------- | ------------------ |
-| Capsule | 胶囊型按钮（圆角默认为高度的一半）。**<br>卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
-| Circle  | 圆形按钮。**<br>卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23              |
-| Normal  | 普通按钮（默认不带圆角）。 **<br>卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23     |
-| ROUNDED_RECTANGLE<sup>15+</sup> | 圆角矩形按钮（默认值：controlSize为NORMAL，圆角大小20vp，controlSize为SMALL，圆角大小14vp）。**<br>卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
+| 名称      | 值 | 说明               |
+| ------- | ----- | ------------------ |
+| Capsule | 0 | 胶囊型按钮（圆角默认为高度的一半）。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Circle  | 1 | 圆形按钮。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Normal  | 2 | 普通按钮（默认不带圆角）。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| ROUNDED_RECTANGLE<sup>15+</sup> | 3 | 圆角矩形按钮（默认值：controlSize为NORMAL，圆角大小20vp，controlSize为SMALL，圆角大小14vp）。<br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 >  **说明：**
 >  - 按钮圆角通过[通用属性borderRadius](ts-universal-attributes-border.md#borderradius)设置。
@@ -454,22 +474,17 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 按钮中文本的显示样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型                                                         | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否   | 设置label文本超长时的显示方式。文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格。<br>默认值：TextOverflow.Ellipsis |
-| maxLines             | number                                                       | 否   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过overflow来指定截断方式。<br>默认值：1 |
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。 |
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 |
-| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
-| font                 | [Font](ts-types.md#font)                                     | 否   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 |
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否   | 设置label文本超长时的显示方式。文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格。<br>默认值：TextOverflow.Ellipsis<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| maxLines             | number                                                       | 否   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过overflow来指定截断方式。<br>默认值：1<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置label文本最大显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| font                 | [Font](ts-types.md#font)                                     | 否   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 设置内容的水平对齐模式。<br>默认值：TextAlign.Start<br/>**设备差异：** <br/>默认值是TextAlign.Start。在穿戴设备上，默认值为TextAlign.Center。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ButtonLabelStyle<sup>23+</sup>对象说明
 
@@ -489,6 +504,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 | maxFontSize          | double \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 否   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 |
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否 | 否   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
 | font                 | [Font](ts-types.md#font)                                     | 否   | 否   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 |
+| textAlign | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 否   | 设置内容的水平对齐模式。<br>默认值：TextAlign.Start<br/>**设备差异：** <br/>默认值是TextAlign.Start。在穿戴设备上，默认值为TextAlign.Center。 |
 
 ## ButtonStyleMode<sup>11+</sup>枚举说明
 
@@ -520,10 +536,14 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 值 |说明               |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称      | 值 | 说明               |
 | ------- | -- |------------------ |
-| SMALL | "small" |小尺寸按钮。 |
-| NORMAL  | "normal" |正常尺寸按钮。              |
+| SMALL | "small" |组件尺寸为小尺寸。 |
+| NORMAL  | "normal" |组件尺寸为正常尺寸。              |
 
 ## ButtonRole<sup>12+</sup>枚举说明
 
@@ -578,7 +598,7 @@ ArkTS-Sta: type ButtonTriggerClickCallback = (xPos: double, yPos: double) => voi
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |

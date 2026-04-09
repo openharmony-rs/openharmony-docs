@@ -25,7 +25,25 @@
 
 | 参数名 | 类型                                        | 必填 | 说明                         |
 | ------ | ------------------------------------------------- | ---- | ---------------------------- |
-| value  | string \| ProvideOptions<br/>ProvideOptions用于设置allowOverride参数，指定是否允许重写。 | 否   | 用于设置别名及是否允许重写。 |
+| value  | string \| [ProvideOptions](#provideoptions11) | 否   | 用于设置别名及是否允许重写。<br/>ProvideOptions用于设置allowOverride参数，指定是否允许重写。 |
+
+## ProvideOptions<sup>11+</sup>
+
+ProvideOptions是\@Provide的选项。允许在同一组件树下通过allowOverride重写同名的\@Provide。
+
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**属性**：
+
+| 名称 | 类型     | 只读 | 可选 | 说明                                                         |
+| ------ | -------- | ---- | ---- | ------------------------------------------------------------ |
+| allowOverride  | string   | 否   | 是   | 是否允许\@Provide重写。允许在同一组件树下通过allowOverride重写同名的@Provide。如果开发者未写allowOverride，定义同名的\@Provide，运行时会报错。<br/>默认值：undefined，表示\@Provide不需要重写。 |
 
 **示例：**
 

@@ -458,6 +458,159 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 }
 ```
 
+### destroy<sup>20+</sup>
+
+destroy(vpnId: string): Promise\<void\>
+  
+根据vpnId销毁指定的VPN网络。使用Promise异步回调。
+  
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                                                        |
+| -------- | ------ | ---- | ------------------------------------------------------------------------------------------- |
+| vpnId | string |  是  | vpn唯一标识。 |
+
+**返回值：**
+
+| 类型            | 说明                                                  |
+| --------------- | ----------------------------------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)。
+
+| 错误码ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 19900001       |  Invalid parameter value.  |
+| 19900002  |  System internal error.  |
+
+**示例：**
+
+```ts
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { BusinessError } from "@kit.BasicServicesKit";
+
+export default class MyVpnExtAbility extends VpnExtensionAbility {
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+
+    // 可通过generateVpnId()获取vpnId
+    let vpnId = 'testVpnId';
+    vpnConnection.destroy(vpnId).then(() => {
+      console.info("destroy success");
+    }).catch((error: BusinessError) => {
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
+    });
+  }
+}
+```
+
+### generateVpnId<sup>20+</sup>
+
+generateVpnId(): Promise\<string\>
+
+生成VPN唯一标识。使用Promise异步回调。
+
+如需使用系统多VPN能力，需调用该接口生成vpnId，配置到VpnConfig中。
+
+>**注意**
+>
+>当前系统多VPN能力仅支持IPv4。
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型            | 说明                                                  |
+| --------------- | ----------------------------------------------------- |
+| Promise\<string\> | 以Promise形式返回获取结果，返回vpnId。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)。
+
+| 错误码ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 19900001       |  Invalid parameter value.  |
+| 19900002  |  System internal error.  |
+
+**示例：**
+
+```ts
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { BusinessError } from "@kit.BasicServicesKit";
+
+export default class MyVpnExtAbility extends VpnExtensionAbility {
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+    vpnConnection.generateVpnId().then((data) => {
+      if (data) {
+        console.info("generateVpnId success, vpnId = " + JSON.stringify(data));
+      }
+    }).catch((error: BusinessError) => {
+      console.error(`generateVpnId fail, Code is ${error.code}, message is ${error.message}`);
+    });
+  }
+}
+```
+### protectProcessNet<sup>22+</sup>
+
+protectProcessNet(): Promise\<void\>
+
+保护应用进程不受VPN连接影响，被保护的进程直接基于物理网络收发数据，流量不通过VPN转发。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型            | 说明                                                  |
+| --------------- | ----------------------------------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**示例：**
+
+```js
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let g_tunnelFd = -1;
+export default class MyVpnExtAbility  extends VpnExtensionAbility {
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+    console.info("VPN createVpnConnection: " + JSON.stringify(vpnConnection));
+    this.ProtectNetByProcess();
+  }
+  CreateTunnel() {
+    g_tunnelFd = 8888;
+  }
+  ProtectNetByProcess() {
+    hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess');
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+    vpnConnection.protectProcessNet().then(() => {
+      hilog.info(0x0000, 'developTag', '%{public}s', 'vpn ProtectNetByProcess Success');
+      this.CreateTunnel();
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'developTag', 'vpn ProtectNetByProcess Failed %{public}s', JSON.stringify(err) ?? '');
+    })
+  }
+}
+```
+
 ## VpnConfig
 
 三方VPN配置参数。

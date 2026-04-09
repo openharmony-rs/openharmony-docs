@@ -1852,6 +1852,92 @@ connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
 });
 ```
 
+## connection.getAddressesByNameWithOptions<sup>23+</sup>
+
+getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Array\<NetAddress\>\>
+
+使用当前默认网络基于指定IP类型进行DNS解析。使用Promise异步回调。
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
+| option | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型，默认值为FAMILY_TYPE_ALL。 |
+
+**返回值：**
+
+| 类型                                        | 说明                          |
+| ------------------------------------------- | ----------------------------- |
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 2100001 | Invalid parameter value.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.         |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+let option: connection.QueryOptions = {
+  family: connection.FamilyType.FAMILY_TYPE_IPV4
+};
+connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+});
+```
+
+
+## QueryOptions<sup>23+</sup>
+
+需要查询的IP类型。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 类型  | 只读 | 可选 | 说明               |
+| ------ | ------| ---- | ---- | ------------------ |
+| family   | [FamilyType](#familytype23) | 否 | 是   | 需要查询的具体IP地址类型，默认值为FAMILY_TYPE_ALL。 |
+
+## FamilyType<sup>23+</sup>
+
+需要查询的具体IP地址类型。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称  |值         | 说明               |
+| ------ |---------- | ------------------ |
+| FAMILY_TYPE_ALL    | 0   | 查询所有IPv4和IPv6地址。 |
+| FAMILY_TYPE_IPV4   | 1   | 仅查询IPv4地址。       |
+| FAMILY_TYPE_IPV6   | 2   | 仅查询IPv6地址。       |
+
 ## connection.addCustomDnsRule<sup>11+</sup>
 
 addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<void\>): void
@@ -2235,6 +2321,123 @@ connection.clearCustomDnsRules().then(() => {
 })
 ```
 
+## connection.setPacFileUrl<sup>20+</sup>
+
+setPacFileUrl(pacFileUrl: string): void
+
+设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
+
+>**注意：**
+>
+> 1、本接口当前只在PC设备上支持解析脚本并启用PAC代理能力，其他设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
+> 2、该接口不会校验URL真实性，PC设备上在设置完成之后，会启动PAC代理，若URL有误，则启动代理失败，返回2100002错误码。
+
+**需要权限**：ohos.permission.SET_PAC_URL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                           |
+| ----------- | ------ | ---- | ------------------------------ |
+| pacFileUrl  | string | 是   | 当前PAC脚本的URL地址。         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息     |
+|---------|----------|
+| 201     | Permission denied.   |
+| 2100002 | Failed to connect to the service. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let pacFileUrl = "http://example.com/proxy.pac";
+connection.setPacFileUrl(pacFileUrl);
+```
+## connection.getPacFileUrl<sup>20+</sup>
+
+getPacFileUrl(): string
+
+获取当前PAC脚本的URL地址。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明                                            |
+| -------- | ----------------------------------------------- |
+| string   | 当前PAC脚本的URL地址，如果没有PAC脚本则返回空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息                          |
+| -------- | --------------------------------- |
+| 2100002  | Failed to connect to the service.                 |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let pacFileUrl = connection.getPacFileUrl();
+console.info(pacFileUrl);
+```
+
+## connection.findProxyForUrl<sup>20+</sup>
+
+findProxyForUrl(url: string): string
+
+通过设置的PAC脚本，解析指定的URL代理地址，返回对应的PAC代理信息。
+
+> **说明：**
+>
+> 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
+> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
+> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明              |
+| ------ | ------ | ---- | ----------------- |
+| url    | string | 是   | 要查找代理信息的URL。 |
+
+**返回值：**
+
+| 类型 | 说明                     |
+| -------- | ------------------------ |
+| string   | 返回代理信息。              |
+
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let proxyInfo = connection.findProxyForUrl("http://example.com");
+console.info(proxyInfo);
+```
+
 ## connection.setPacUrl<sup>15+</sup>
 
 setPacUrl(pacUrl: string): void
@@ -2516,6 +2719,355 @@ if (netHandle.netId != 0) {
   let netExtAttribute: string = connection.getNetExtAttributeSync(netHandle);
   console.info(`getNetExtAttribute: ${netExtAttribute}`);
 }
+```
+
+## connection.getIpNeighTable<sup>22+</sup>
+
+getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
+
+获取本地设备IP邻居表条目信息，包括IPv4和IPv6，每个条目信息包括IP地址、MAC地址、网卡名。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口获取IP邻居表的缓存的数据，并非局域网内所有连接的数据。
+>
+> 开发者可使用此接口排查网络异常、解析IP地址与MAC地址映射。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.GET_IP_MAC_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<Array\<[NetIpMacInfo](#netipmacinfo22)>> | Promise对象，返回ip邻居表条目信息。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
+  if (data.length !== 0) {
+    console.info(`ipAddress:${data[0].ipAddress}`);
+    console.info(`ifaceName:${data[0].iface}`);
+    console.info(`macAddress:${data[0].macAddress}`);
+  }
+}).catch((error: BusinessError) => {
+  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.getConnectOwnerUid<sup>23+</sup>
+
+getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<number>
+
+用于查询发起指定网络连接的应用UID。使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口仅限在VPN应用中调用。
+> - 调用接口时请设置local和remote参数的端口号。若未设置端口号或将端口号设置为0，接口会基于其他参数筛选出符合条件的UID的集合，并从中返回一个匹配的UID。
+> - protocol参数为PROTO_TYPE_UDP时，若通过local，remote参数未筛选出符合条件的UID，则仅基于local参数筛选并返回匹配的UID。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明            |
+| -------- | ------------------------------- | ---- | -------------- |
+| protocol | [ProtocolType](#protocoltype23) | 是   | 网络协议的类型。 |
+| local    | [NetAddress](#netaddress)       | 是   | 源网络地址。     |
+| remote   | [NetAddress](#netaddress)       | 是   | 目标网络地址。   |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<number> | Promise对象，返回应用程序的UID。如果不存在匹配的UID则返回-1。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100001 | Invalid parameter value.          |
+| 2100002 | Failed to connect to the service. |
+| 2100301 | Incorrect usage in non-VPN application. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
+let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
+  console.info(`uid: ${uid}`);
+}).catch((error: BusinessError) => {
+  console.error(`getConnectOwnerUid failed. errorCode: ${error.code} message:${error.message}`);
+});
+```
+
+## connection.getConnectOwnerUidSync<sup>23+</sup>
+
+getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): number
+
+用于查询发起指定网络连接的应用UID。使用同步方式返回。
+
+> **说明：**
+>
+> - 该接口仅限在VPN应用中调用。
+> - 调用接口时请设置local和remote参数的端口号。若未设置端口号或将端口号设置为0，接口会基于其他参数筛选出符合条件的UID的集合，并从中返回一个匹配的UID。
+> - protocol参数为PROTO_TYPE_UDP时，若通过local，remote参数未筛选出符合条件的UID，则仅基于local参数筛选并返回匹配的UID。
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明            |
+| -------- | ------------------------------- | ---- | -------------- |
+| protocol | [ProtocolType](#protocoltype23) | 是   | 网络协议的类型。 |
+| local    | [NetAddress](#netaddress)       | 是   | 源网络地址。     |
+| remote   | [NetAddress](#netaddress)       | 是   | 目标网络地址。   |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| number | 返回应用程序的UID。如果不存在匹配的UID则返回-1。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100001 | Invalid parameter value.          |
+| 2100002 | Failed to connect to the service. |
+| 2100301 | Incorrect usage in non-VPN application. |
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
+let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+try {
+  let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
+  console.info(`uid: ${uid}`);
+} catch (e) {
+  let err = e as BusinessError;
+  console.error(`getConnectOwnerUid failed. errorCode: ${err.code} message:${err.message}`);
+}
+```
+
+## connection.getDnsAscii<sup>23+</sup>
+
+getDnsAscii(host: string, flag?: ConversionProcess): string
+
+将Unicode编码形式的主机名转换为ASCII编码形式，并可通过可选的转换流程参数（conversionProcess）控制转换行为。
+
+> **说明：**
+>
+> conversionProcess设置为NO_CONFIGURATION时，只能转换已正式分配含义的Unicode字符所对应的域名。<br/>
+> conversionProcess设置为ALLOW_UNASSIGNED时，可以转换包含尚未分配含义的Unicode字符的域名。<br/>
+> conversionProcess设置为USE_STD3_ASCII_RULES时，会在转换过程中强制按照STD-3 ASCII规则（即RFC 1123标准）对生成的ASCII域名进行检查。<br/>
+> 传入参数中的数字和英文不做转码。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| host | string | 是 | 要转换的主机名（host）。每个标签（点分隔的部分）长度不超过63字节。 |
+| flag | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| string | 返回转换结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 2100001 | Invalid parameter value. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.xn--fsq092h.com
+let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.example.com
+```
+
+## connection.getDnsUnicode<sup>23+</sup>
+
+getDnsUnicode(host: string, flag?: ConversionProcess): string
+
+使用Punycode编码方式，将ASCII编码形式的主机名转换为Unicode编码形式，并通过可选的conversionProcess参数控制转换行为。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| host | string | 是 | 要转换的主机名（host）。 |
+| flag | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| string | 返回转换结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 2100001 | Invalid parameter value. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.示例.com
+let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.example.com
+```
+
+## connection.getSystemNetPortStates<sup>24+</sup>
+
+getSystemNetPortStates(): Promise\<NetPortStatesInfo>
+
+获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPV4和IPV6。  
+
+> **说明：**
+>
+> 该接口获取系统当前监听的TCP、UDP端口信息，详细字段包括：
+>
+>  TCP端口字段：本地地址、本地端口、远端地址、远端端口、TCP连接状态、进程PID、进程UID  
+>
+>  UDP端口字段：本地地址、本地端口、进程PID 、进程UID  
+
+**需要权限**：ohos.permission.GET_IP_MAC_INFO
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<[NetPortStatesInfo](#netportstatesinfo24)> | Promise对象，返回系统当前监听的TCP、UDP端口信息。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  if (data.tcpPortStatesInfo?.length) {
+    data.tcpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Tcp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("TcpPortStatesInfo is undefined ");
+  }
+  if (data.udpPortStatesInfo?.length) {
+    data.udpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Udp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("UdpPortStatesInfo is undefined ");
+  }
+}).catch((error: BusinessError) => {
+  console.error(`Error fetching getSystemNetPortStates. Code:${error.code}, message:${error.message}`);
+});
 ```
 
 ## NetConnection
@@ -3532,6 +4084,69 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
+### getAddressesByNameWithOptions<sup>23+</sup>
+
+getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Array\<NetAddress\>\>
+
+使用当前NetHandle对应的网络基于指定IP类型进行DNS解析。使用Promise异步回调。
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明               |
+| ------ | ------ | ---- | ------------------ |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
+| option | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
+
+**返回值：**
+
+| 类型                                        | 说明                          |
+| ------------------------------------------- | ----------------------------- |
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise对象，返回查询到的IP地址。返回值中的port字段固定为0，无需关注。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 2100001 | Invalid parameter value.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.         |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  if (netHandle.netId == 0) {
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    return;
+  }
+  let host = "www.example.com";
+  let option: connection.QueryOptions = {
+      family: connection.FamilyType.FAMILY_TYPE_IPV4
+    };
+  netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
+    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+  });
+});
+```
+
 ## NetCap
 
 网络具体能力。
@@ -3569,6 +4184,48 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 | BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+
+## ConversionProcess<sup>23+</sup>
+
+ASCII/Unicode转码转换流程参数的枚举。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 值 | 说明 |
+| ---------------- | --------------- | --------------------------- |
+| NO_CONFIGURATION | 0 | 仅允许转换已分配的Unicode代码点的域名（Unicode为每个字符分配一个唯一的数字，这个数字就叫做代码点）。 |
+| ALLOW_UNASSIGNED | 1 | 允许转换包含未分配Unicode代码点的域名(在Unicode字符集中，并非所有代码点都已分配字符，即未分配Unicode代码点)。 |
+| USE_STD3_ASCII_RULES | 2 | 在转换过程中，强制使用STD-3 ASCII规则（即RFC 1123标准）检查生成的ASCII域名。 |
+
+## TcpState<sup>24+</sup>
+
+TCP状态。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+|            名称         | 值   | 说明        |
+| ----------------------- | ---- | ---------- |
+| ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
+| SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
+| SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
+| FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
+| FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
+| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
+| CLOSE       | 7  | 初始/关闭状态，无连接。 |
+| CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
+| LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
+| LISTEN      | 10 | 服务端监听，等待客户端连接。 |
+| CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
 
 ## HttpProxy<sup>10+</sup>
 
@@ -3762,6 +4419,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
 | hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
 | isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|
+| isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## LinkAddress
 
@@ -3833,3 +4491,81 @@ type UDPSocket = socket.UDPSocket
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | socket.UDPSocket | 定义UDPSocket连接。     |
+
+## NetIpMacInfo<sup>22+</sup>
+
+IP邻居表条目信息。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| ipAddress | [NetAddress](#netaddress)     | 否 | 否 |IP地址相关信息。   |
+| iface       | string                              | 否 | 否 |网卡名。                                    |
+| macAddress | string | 否 | 否 |MAC地址。                                |
+
+
+
+## TcpNetPortStatesInfo<sup>24+</sup>
+
+TCP端口状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
+| tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
+| tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
+| tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
+
+
+## UdpNetPortStatesInfo<sup>24+</sup>
+
+UDP端口状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
+| udpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| udpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
+| udpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
+
+
+## NetPortStatesInfo<sup>24+</sup>
+
+系统当前监听的TCP、UDP端口信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |

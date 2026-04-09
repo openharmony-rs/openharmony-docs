@@ -1102,11 +1102,11 @@ getCaptionsManager(): CaptionsManager
 >
 > 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 **ArkTS-Dyn起始版本**：8
-
-**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
