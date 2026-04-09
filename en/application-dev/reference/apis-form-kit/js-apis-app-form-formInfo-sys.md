@@ -36,7 +36,6 @@ Defines the widget information.
 | isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isFontScaleFollowSystem<sup>26+</sup> | boolean  |  Yes   | Yes    | Whether the font scaling factor follows system settings.<br>-**true**：The font scaling factor follows system settings.<br>-**false**：The font scaling factor doesn't follow system settings.|
 
 ##  FormParam
 
@@ -53,8 +52,6 @@ Enumerates widget parameters.
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | Template widget data.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | Display name of a template widget.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | Template widget description.<br>**System API**: This is a system API. |
-| FORM_FONT_SIZE_SCALE_KEY<sup>26+</sup>    | 'ohos.extra.param.key.form_font_size_scale'   | Font size scale of the widget.<br>**System API**: This is a system API. |
-| FORM_FONT_WEIGHT_SCALE_KEY<sup>26+</sup>    | 'ohos.extra.param.key.form_font_weight_scale'   | Font weight scale of the widget.<br>**System API**: This is a system API. |
 
 ## FormUsageState<sup>11+</sup>
 
