@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -23,6 +24,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 提供输入信号的类型。接口根据输入信号类型，执行对应算法。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值   | 说明                    |
 | ------------------- | ---- | ----------------------- |
@@ -38,6 +43,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                 | 值   | 说明                   |
 | ------------------------------------ | ---- | -----------------------|
 | REPORT_MODE_PERIODIC_REPORTING       | 0    | 表示周期性上报。   |
@@ -48,6 +57,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 测距结果的距离挡位，不同的挡位对应不同的距离范围。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                 | 值                | 说明                   |
 | ------------------------------------ | ------------------| -----------------------|
@@ -62,6 +75,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型            | 只读   | 可选   | 说明     |
 | -------------------| ---------------| -------|------  |-------------|
 | rank               | DistanceRank   | 是     | 否     | 表示距离档位。|
@@ -75,6 +92,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 值             | 说明                   |
 | -------------------| ---------------| -----------------------|
 | OUTDOOR            | 0              | 表示门外。         |
@@ -85,6 +106,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 门内外识别接口执行完成后的回调结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型                   | 只读      | 可选       | 说明     |
 | -------------------| ----------------------| ----------|----------|--------|
@@ -97,6 +122,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 测距接口的输入参数配置。根据不同的参数配置，执行对应的算法。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               |  类型                   | 只读      | 可选       | 说明     |
 | -------------------| ----------------------| -----------|------------|----------|
@@ -114,6 +143,10 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callb
 **需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -165,6 +198,10 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
@@ -215,6 +252,10 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callbac
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
@@ -264,6 +305,10 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 **需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
