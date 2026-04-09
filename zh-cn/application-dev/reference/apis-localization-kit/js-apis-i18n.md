@@ -2287,11 +2287,15 @@ static setAppDefaultTimeZoneById(zoneID: string): void
 >
 > 进行日期时间格式化时，若未指定时区，会优先使用应用设置的默认时区。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2329,11 +2333,15 @@ static getAppDefaultTimeZone(): TimeZone
 
 获取应用使用的默认时区对象。若调用[setAppDefaultTimeZoneById](#setappdefaulttimezonebyid)设置了默认时区，则返回设置的默认时区对象；否则，返回系统时区对象。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -3280,11 +3288,15 @@ static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): s
 >
 > 在强字符（指具有明确书写方向的字符）中不生效。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
