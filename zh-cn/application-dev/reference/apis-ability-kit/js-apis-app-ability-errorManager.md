@@ -780,19 +780,19 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
 
-let oldHandler: errorManager.ErrorHandler;
-const errorHandler: errorManager.ErrorHandler = (reason: Error) => {
-    // 自定义的errorHandler实现逻辑
-    console.info('[Handler]  Uncaught exception handler invoked.');
-    if (oldHandler) {
-        oldHandler(reason);
-    } else {
-        // 建议增加判空操作，如果为空采用同步退出方式
-        const processManager = new process.ProcessManager();
-        processManager.exit(0);
-    }
+let oldObserver: errorManager.ResourceUsageObserver;
+const resourceUsageObserver: errorManager.ResourceUsageObserver = (leakType, leakSize, detailInfo) => {
+  // 自定义的resourceUsageObserver实现逻辑
+  console.info('[Observer]  Uncaught exception observer invoked.');
+  if (oldObserver) {
+    oldObserver(leakType, leakSize, detailInfo);
+  } else {
+    // 建议增加判空操作，如果为空采用同步退出方式
+    const processManager = new process.ProcessManager();
+    processManager.exit(0);
+  }
 };
-oldHandler = errorManager.setDefaultErrorHandler(errorHandler);
+oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver);
 ```
 
 ## ErrorObserver
