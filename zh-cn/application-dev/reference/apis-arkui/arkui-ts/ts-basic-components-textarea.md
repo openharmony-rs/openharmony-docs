@@ -24,6 +24,10 @@ TextArea(value?: TextAreaOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -40,9 +44,9 @@ TextArea初始化参数。
 
 | 名称 | 类型  | 必填   | 说明 |
 | ---- | ----- | ---- | ---- |
-| placeholder      | [ResourceStr](ts-types.md#resourcestr)  | 否    | 设置无输入时的提示文本。输入内容后，提示文本不显示。<br/>仅设置placeholder属性时，手柄依然跟随拖动，手柄松开后光标停留在文字开头位置。     |
-| text             | [ResourceStr](ts-types.md#resourcestr)  | 否    | 设置输入框当前的文本内容。</br>建议通过onChange事件将状态变量与文本实时绑定，</br>避免组件刷新时TextArea中的文本内容异常。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| controller<sup>8+</sup> | [TextAreaController](#textareacontroller8) | 否    | 设置TextArea控制器。 |
+| placeholder      | [ResourceStr](ts-types.md#resourcestr)  | 否    | 设置无输入时的提示文本。输入内容后，提示文本不显示。<br/>仅设置placeholder属性时，手柄依然跟随拖动，手柄松开后光标停留在文字开头位置。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23    |
+| text             | [ResourceStr](ts-types.md#resourcestr)  | 否    | 设置输入框当前的文本内容。</br>建议通过onChange事件将状态变量与文本实时绑定，</br>避免组件刷新时TextArea中的文本内容异常。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| controller<sup>8+</sup> | [TextAreaController](#textareacontroller8) | 否    | 设置TextArea控制器。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 
 
 ## 属性
@@ -476,11 +480,11 @@ maxLines(value: number)
 
 配置textOverflow一起使用时，maxLines为可显示行数，超出截断；未配置textOverflow时，内联模式获焦状态下内容超出maxLines时，文本可滚动显示，内联模式非获焦状态下不生效maxLines，非内联模式按行截断。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -510,9 +514,11 @@ maxLines(value: int | undefined, options?: MaxLinesOptions)
 >
 > - 非内联模式：文本按maxLines指定的行数截断。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[maxLines](#maxlines20)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -532,6 +538,12 @@ maxLines(lines: number, options: MaxLinesOptions)
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[maxLines](#maxlines23)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：** 
 
@@ -554,7 +566,7 @@ ArkTS-Sta: minLines(lines: int | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -591,8 +603,6 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -689,7 +699,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1228,7 +1238,7 @@ ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 ### strokeWidth<sup>20+</sup>
 
-ArkTS-Dyn: strokeWidth(width: Optional<LengthMetrics>)
+ArkTS-Dyn: strokeWidth(width: Optional\<LengthMetrics>)
 
 ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
@@ -1240,7 +1250,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1250,7 +1260,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 ### strokeColor<sup>20+</sup>
 
-ArkTS-Dyn: strokeColor(color: Optional<ResourceColor>)
+ArkTS-Dyn: strokeColor(color: Optional\<ResourceColor>)
 
 ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
 
@@ -1262,7 +1272,7 @@ ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1272,7 +1282,7 @@ ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
 
 ### stopBackPress<sup>15+</sup>
 
-ArkTS-Dyn: stopBackPress(isStopped: Optional<boolean>)
+ArkTS-Dyn: stopBackPress(isStopped: Optional\<boolean>)
 
 ArkTS-Sta: stopBackPress(isStopped: boolean | undefined)
 
@@ -1396,7 +1406,7 @@ ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1416,7 +1426,7 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1566,7 +1576,7 @@ ArkTS-Sta: onChange(callback:&nbsp;EditableTextOnChangeCallback | undefined)
 
 ArkTS-Dyn: onEditChange(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
-ArkTS-Sta: onEditChange(callback:&nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void) | undefined)
+ArkTS-Sta: onEditChange(callback: &nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void) | undefined)
 
 输入状态变化时，触发该回调。有光标时为编辑态，无光标时为非编辑态。
 
@@ -1588,7 +1598,7 @@ ArkTS-Sta: onEditChange(callback:&nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbs
 
 ArkTS-Dyn: onCopy(callback:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 
-ArkTS-Sta: onCopy(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&gt;&nbsp;void) | undefined)
+ArkTS-Sta: onCopy(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&nbsp;void) | undefined)
 
 进行复制操作时，触发该回调。
 
@@ -1634,7 +1644,7 @@ ArkTS-Sta: onWillCopy(callback:Callback\<string, boolean> \| undefined)
 
 ArkTS-Dyn: onCut(callback:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 
-ArkTS-Sta: onCut(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&gt;&nbsp;void) | undefined)
+ArkTS-Sta: onCut(callback:&nbsp;((value:&nbsp;string)&nbsp;=&gt;&nbsp;void) | undefined)
 
 进行剪切操作时，触发该回调。
 
@@ -1681,7 +1691,7 @@ ArkTS-Sta: onWillCut(callback:Callback\<string, boolean> \| undefined)
 
 ArkTS-Dyn: onPaste(callback:&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&nbsp;=&gt;&nbsp;void)
 
-ArkTS-Sta: onPaste(callback:&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&nbsp;=&gt;&nbsp;void \| undefined)
+ArkTS-Sta: onPaste(callback:(&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&nbsp;=&gt;&nbsp;void) \| undefined)
 
 进行粘贴操作时，触发该回调。
 
@@ -1727,7 +1737,7 @@ ArkTS-Sta: onTextSelectionChange(callback: ((selectionStart: int, selectionEnd: 
 
 ArkTS-Dyn: onContentScroll(callback: (totalOffsetX: number, totalOffsetY: number) => void)
 
-ArkTS-Sta: onContentScroll(callback: (totalOffsetX: double, totalOffsetY: double) => void | undefined)
+ArkTS-Sta: onContentScroll(callback: ((totalOffsetX: double, totalOffsetY: double) => void) | undefined)
 
 文本内容滚动时，触发该回调。
 
@@ -1923,7 +1933,7 @@ IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1955,9 +1965,15 @@ TextAreaController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 ### caretPosition<sup>8+</sup>
 
-caretPosition(value: number): void
+ArkTS-Dyn: caretPosition(value: number): void
+
+ArkTS-Sta: caretPosition(value: int): void
 
 设置输入光标的位置。
 
@@ -1965,15 +1981,21 @@ caretPosition(value: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ---- |
-| value  | number   | 是   | 从字符串开始到光标所在位置的字符长度。 |
+| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 是   | 从字符串开始到光标所在位置的字符长度。 |
 
 ### setTextSelection<sup>10+</sup>
 
-setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
+ArkTS-Dyn: setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
+
+ArkTS-Sta: setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions): void
 
 组件在获焦状态下，调用该接口设置文本选择区域并高亮显示，且只有在selectionStart小于selectionEnd时，文字才会被选取、高亮显示。
 
@@ -1981,12 +2003,16 @@ setTextSelection(selectionStart: number, selectionEnd: number, options?: Selecti
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ---- |
-| selectionStart | number   | 是   | 文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时，按0处理；当selectionStart大于文字最大长度时，按照文字最大长度处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| selectionEnd   | number   | 是   | 文本选择区域结束位置。<br/>当selectionEnd小于0时，按0处理；当selectionEnd大于文字最大长度时，按照文字最大长度处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selectionStart | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 是   | 文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时，按0处理；当selectionStart大于文字最大长度时，按照文字最大长度处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selectionEnd   | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 是   | 文本选择区域结束位置。<br/>当selectionEnd小于0时，按0处理；当selectionEnd大于文字最大长度时，按照文字最大长度处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | options<sup>12+</sup>   | [SelectionOptions](ts-types.md#selectionoptions12对象说明) | 否    | 选中文字时的配置。<br />默认值：MenuPolicy.DEFAULT<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 >  **说明：**
@@ -2005,6 +2031,10 @@ stopEditing(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ## TextAreaType<sup>11+</sup>枚举说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -2017,7 +2047,7 @@ stopEditing(): void
 | EMAIL    | 5 | 邮箱地址输入模式。<br/>支持数字，字母，下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | NUMBER_DECIMAL<sup>12+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | URL<sup>12+</sup>  | 13 | 带URL的输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24  |
 
 ## TextAreaSubmitCallback<sup>14+</sup>
 
@@ -2028,6 +2058,10 @@ type TextAreaSubmitCallback = (enterKeyType: EnterKeyType, event?: SubmitEvent) 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
