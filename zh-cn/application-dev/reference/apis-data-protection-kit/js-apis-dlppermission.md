@@ -1308,8 +1308,8 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待解密文件的fd。取值范围为0-2<sup>31</sup>-1。 |
-| plaintextFd | number | 是 | 目标解密文件的fd。取值范围为0-2<sup>31</sup>-1。 |
+| dlpFd | number | 是 | 待解密文件的FD。取值范围为0-2<sup>31</sup>-1。 |
+| plaintextFd | number | 是 | 目标解密文件的FD。取值范围为0-2<sup>31</sup>-1。 |
 
 **返回值：**
 
@@ -1369,7 +1369,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待解密文件的fd。取值范围为0-2<sup>31</sup>-1。 |
+| dlpFd | number | 是 | 待解密文件的FD。取值范围为0-2<sup>31</sup>-1。 |
 
 **返回值：**
 
