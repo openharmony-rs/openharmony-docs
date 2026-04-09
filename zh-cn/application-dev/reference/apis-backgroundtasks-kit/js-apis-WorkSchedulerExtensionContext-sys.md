@@ -42,7 +42,7 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 **ArkTS-Dyn起始版本：** 13
- 	 
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -146,7 +146,7 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
 **ArkTS-Dyn起始版本：** 13
- 	 
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
