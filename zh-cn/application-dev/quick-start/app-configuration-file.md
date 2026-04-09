@@ -82,6 +82,7 @@ app.json5配置文件包含以下标签。
 | bundleType| 标识应用的Bundle类型。支持的取值如下：<br/>-&nbsp;app：当前Bundle为应用。<br/>-&nbsp;atomicService：当前Bundle为原子化服务。<br/>-&nbsp;shared：当前Bundle为共享库应用，仅支持系统应用配置，三方应用配置后应用无法安装。<br/>-&nbsp;appService：当前Bundle为系统级共享库应用，仅系统应用生效。<br/>-&nbsp;appPlugin：当前Bundle为应用的插件包。从API version 19开始，支持该标签。 | 字符串| 该标签可缺省，缺省值为app。 |
 | debug | 标识应用是否可调试。<br/>-&nbsp;true：可调试，一般用于开发阶段。<br/>-&nbsp;false：不可调试，一般用于发布阶段。 | 布尔值 | 由DevEco Studio编译构建时生成。该标签可缺省，缺省值为false。 |
 | icon | 标识应用的图标，取值为图标资源文件的索引。支持配置单层图标和分层图标，配置规则和示例请参考[配置应用图标和名称](layered-image.md)。 | 字符串 | 该标签不可缺省。 |
+| [alternateIcons](#alternateicons标签) | 标识应用的备选图标列表，用于应用运行时动态切换图标。每个备选图标包含图标名称和图标资源文件的索引。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。<br/>仅当bundleType为app时，可以配置该标签。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | label | 标识应用的名称，取值为字符串资源的索引，以支持多语言，字符串长度不超过63字节，具体请参考[配置应用图标和名称](layered-image.md) 。 | 字符串 | 该标签不可缺省。 |
 | description | 标识应用的描述信息，取值为长度不超过255字节的字符串，内容为描述信息的字符串或者字符串资源索引。该标签可用于应用信息展示，如在应用的关于页面，取该标签展示应用描述信息。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | vendor | 标识对应用开发厂商的描述，取值为长度不超过255字节的字符串。该标签可用于展示开发厂商信息，如在应用的关于页面，取该标签展示开发厂商信息。 | 字符串 | 该标签可缺省，缺省值为空。 |
@@ -222,3 +223,20 @@ configuration标签示例：
   }
 }
 ```
+
+## alternateIcons标签
+
+该标签用于配置应用的备选图标列表，支持应用在运行时动态切换图标。开发者可以预先配置多个备选图标，应用可根据用户偏好、节日主题、品牌活动等场景动态更换应用图标。
+
+从API版本26.0.0开始，支持该标签。
+
+**表5** alternateIcons标签说明
+
+| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+| -------- | -------- | -------- | -------- |
+| name | 标识备选图标的名称，用于标识和区分不同的备选图标。取值为长度不超过255字节的字符串。 | 字符串 | 该标签不可缺省。 |
+| icon | 标识备选图标的图标资源文件索引，取值为图标资源文件的索引，格式为"$media:icon_name"。支持配置单层图标和分层图标，配置规则请参考[配置应用图标和名称](layered-image.md)。 | 字符串 | 该标签不可缺省。 |
+
+alternateIcons标签示例：
+
+<!-- @[app_json5_alternateIcons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
