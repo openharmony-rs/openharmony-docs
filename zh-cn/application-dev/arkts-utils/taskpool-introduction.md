@@ -131,6 +131,24 @@ function foo() {
 
 <!-- @[concurrent_taskpool_test_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/Test.ets) -->
 
+``` TypeScript
+export function testAdd(arg: number) {
+  return ++arg;
+}
+
+@Sendable
+export class MyTestA {
+  constructor(name: string) {
+    this.name = name;
+  }
+  name: string = 'MyTestA';
+}
+
+export class MyTestB {
+  static nameStr:string = 'MyTestB';
+}
+```
+
 <!-- @[concurrent_taskpool_test_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/Test.ets) -->
 
 ### 并发异步函数中使用Promise
