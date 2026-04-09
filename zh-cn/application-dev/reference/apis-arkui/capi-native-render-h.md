@@ -49,6 +49,7 @@
 
 ### 函数
 
+<!--Table: 45%; 10%; 45%-->
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addrendernode) | - | 向父自定义节点添加子渲染节点。|
