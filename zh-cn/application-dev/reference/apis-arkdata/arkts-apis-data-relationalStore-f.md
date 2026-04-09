@@ -242,7 +242,7 @@ getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
 | 非加密 | 加密                          | 将数据库以加密方式打开。   |
 | 加密 | 非加密                          | 将数据库以非加密方式打开。   |
 
-getRdbStoreSync目前不支持多线程并发操作。
+getRdbStoreSync支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
