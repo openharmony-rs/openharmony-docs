@@ -538,7 +538,7 @@ int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* r
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 请求的资源类型。如果resourceRequest无效，则为-1。 |
+| int32_t | 请求的资源类型。如果resourceRequest无效，则为-1。表示请求对象为空或已失效。其他值参考[ArkWeb_ResourceType](#arkweb_resourcetype) |
 
 ### OH_ArkWebResourceRequest_GetFrameUrl()
 
