@@ -744,7 +744,7 @@ oldHandler = errorManager.setDefaultErrorHandler(errorHandler);
 
 setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver;
 
-设置资源观察者，支持链式回调，返回上一次注册的资源观察者，仅限主线程调用。
+设置资源占用观察者，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。
 
 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
 
@@ -924,7 +924,7 @@ type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: long, de
 |--------| ------------- | ---- | --- |
 | resourceType | [ResourceType](#resourcetype24)   | 是   | 表示应用资源超基线的类型。 |
 | resourceSize | long   | 是   | 表示应用资源超基线的资源使用量。 |
-| detailInfo | Record<string, long>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，其他类型或缺省时为空；<br>key 为小写内存类型，value 为对应细分项资源大小；<br>细分析包含 arkts、native、ion、gpu、ashmem、other 。 |
+| detailInfo | Record<string, long>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key 为小写内存类型，value 为对应细分项资源大小；<br>细分析的key包含 arkts、native、ion、gpu、ashmem、other 。 |
 
 ## ResourceType<sup>24+</sup>
 
@@ -936,11 +936,11 @@ type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: long, de
 
 | 名称  | 值  | 说明   |
 | ---- | --- | ------ |
-| resourceType     | 1   | 表示应用当前超基线的资源是PSS的内存。 |
-| ION_MEMORY   | 2   | 表示应用当前超基线的资源是ION的内存。 |
-| ASHMEM_MEMORY | 3   | 表示应用当前超基线的资源是ASHMEM的内存。 |
-| GPU_MEMORY | 4   | 表示应用当前超基线的资源是GPU的内存。 |
-| FD   | 5   | 表示应用当前超基线的资源是FD的数量。 |
-| THREAD   | 6   | 表示应用当前超基线的资源是THREAD的数量。 |
+| PSS_MEMORY     | 1   | 表示应用当前超基线的资源是PSS的内存。 |
+| ION_MEMORY     | 2   | 表示应用当前超基线的资源是ION的内存。 |
+| ASHMEM_MEMORY  | 3   | 表示应用当前超基线的资源是ASHMEM的内存。 |
+| GPU_MEMORY     | 4   | 表示应用当前超基线的资源是GPU的内存。 |
+| FD             | 5   | 表示应用当前超基线的资源是FD的数量。 |
+| THREAD         | 6   | 表示应用当前超基线的资源是THREAD的数量。 |
 
 
