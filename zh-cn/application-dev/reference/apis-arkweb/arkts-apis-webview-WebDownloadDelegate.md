@@ -140,7 +140,7 @@ onDownloadUpdated(callback: Callback\<WebDownloadItem>): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载的回调已更新。 |
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载更新的回调。 |
 
 **示例：**
 
@@ -242,7 +242,7 @@ onDownloadFinish(callback: Callback\<WebDownloadItem>): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载的回调已完成。 |
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载完成的回调。 |
 
 **示例：**
 
@@ -344,7 +344,7 @@ onDownloadFailed(callback: Callback\<WebDownloadItem>): void
 
 | 参数名  | 类型   | 必填 | 说明           |
 | ------- | ------ | ---- | :------------- |
-| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载回调失败。 |
+| callback | Callback\<[WebDownloadItem](./arkts-apis-webview-WebDownloadItem.md)> | 是   | 下载失败的回调。 |
 
 **示例：**
 
