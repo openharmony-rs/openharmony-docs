@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供2d 绘制文本相关的数据结构声明
+提供2D 绘制文本相关的数据结构声明
 
 **引用文件：** <native_drawing/drawing_text_declaration.h>
 

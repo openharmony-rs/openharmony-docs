@@ -449,7 +449,7 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。 |
+| Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。如果找不到字体文件，路径无效，无权限或非字体文件，则返回空数组。 |
 
 **示例：**
 
@@ -1538,7 +1538,7 @@ struct RenderTest {
 
 loadFont(name: string, path: string | Resource): Promise\<void>
 
-异步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf。
+异步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf。使用Promise异步回调。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -4840,7 +4840,7 @@ import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let glyphs = runs[0].getGlyphs(); // 获取渲染块全部字形序号
-  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形序号
+  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始，长度为2范围内的字形序号
   glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1是非法参数，将返回undefined
   glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10是非法参数，将返回undefined
   let glyphsNull = runs[0].getGlyphs(null); // null是非法参数，将返回undefined
