@@ -206,15 +206,15 @@ zh-cn/application-dev/graphics3d @ge-yafang @zhangqiang183 @zhouyaoying @zxg-git
 zh-cn/application-dev/arkts-utils @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
 zh-cn/application-dev/arkts-utils/arkts-commonlibrary-overview.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
 zh-cn/application-dev/arkts-utils/concurrency-overview.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
-zh-cn/application-dev/arkts-utils/async-concurrency-overview.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
+zh-cn/application-dev/arkts-utils/async-concurrency-overview.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
 zh-cn/application-dev/arkts-utils/single-io-development.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
-zh-cn/application-dev/arkts-utils/multi-thread-concurrency-overview.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
-zh-cn/application-dev/arkts-utils/taskpool-introduction.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
-zh-cn/application-dev/arkts-utils/worker-introduction.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
-zh-cn/application-dev/arkts-utils/taskpool-vs-worker.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
-zh-cn/application-dev/arkts-utils/cpu-intensive-task-development.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
+zh-cn/application-dev/arkts-utils/multi-thread-concurrency-overview.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/arkts-utils/taskpool-introduction.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/arkts-utils/worker-introduction.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/arkts-utils/taskpool-vs-worker.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/arkts-utils/cpu-intensive-task-development.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
 zh-cn/application-dev/arkts-utils/io-intensive-task-development.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
-zh-cn/application-dev/arkts-utils/sync-task-development.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
+zh-cn/application-dev/arkts-utils/sync-task-development.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
 zh-cn/application-dev/arkts-utils/actor-model-development-samples.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
 zh-cn/application-dev/arkts-utils/serialization-support-types.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
 zh-cn/application-dev/arkts-utils/multi-thread-safety.md @ge-yafang @gongjunsong @weng-changcheng @blackstone-oh
@@ -1024,30 +1024,30 @@ zh-cn/application-dev/reference/apis-arkgraphics3d @zhangqiang183 @ge-yafang @zx
 [API参考-ArkTS]
 zh-cn/application-dev/reference/apis-arkts @ge-yafang @gongjunsong @blackstone-oh @weng-changcheng @yingguofeng
 zh-cn/application-dev/reference/apis-arkts/errorcode-utils.md @ge-yafang @gongjunsong @blackstone-oh @weng-changcheng @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-arraylist.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-treemap.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-treeset.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-stack.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-buffer.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-convertxml.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-deque.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-hashmap.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-hashset.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightmap.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightset.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-linkedlist.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-list.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-logs.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-plainarray.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-process.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-queue.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-uri.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-url.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-util.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-vector.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-xml.md @gongjunsong @ge-yafang @flyingwolf@blackstone-oh @yingguofeng
-zh-cn/application-dev/reference/apis-arkts/js-apis-worker.md @gongjunsong @ge-yafang @flyingwolf @weng-changcheng @blackstone-oh
-zh-cn/application-dev/reference/apis-arkts/js-apis-taskpool.md @gongjunsong @ge-yafang @flyingwolf @weng-changcheng @blackstone-oh
+zh-cn/application-dev/reference/apis-arkts/js-apis-arraylist.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-treemap.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-treeset.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-stack.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-buffer.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-convertxml.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-deque.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-hashmap.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-hashset.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightmap.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-lightweightset.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-linkedlist.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-list.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-logs.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-plainarray.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-process.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-queue.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-uri.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-url.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-util.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-vector.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-xml.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-worker.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
+zh-cn/application-dev/reference/apis-arkts/js-apis-taskpool.md @wang_zhaoyong @ge-yafang @zsw_zhushiwei
 zh-cn/application-dev/reference/apis-arkts/errorcode-ets-loader.md @aftott @hufeng20 @kirl75 @zsw_zhushiwei @jinqiuheng
 zh-cn/application-dev/reference/apis-arkts/errorcode-tsc.md @zju-wyx @xiao-peiyang @liyancheng @kirl75 @zsw_zhushiwei @jinqiuheng
 zh-cn/application-dev/reference/apis-arkts/Readme-CN.md @lijiamin2025 @xliu-huanwei @weng-changcheng @yuanyao14 @kirl75 @zsw_zhushiwei @jinqiuheng
