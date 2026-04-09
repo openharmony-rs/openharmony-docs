@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.display (屏幕属性)](js-apis-display.md)。
@@ -22,7 +24,9 @@ import { display } from '@kit.ArkUI';
 
 ## display.hasPrivateWindow<sup>9+</sup>
 
-hasPrivateWindow(displayId: number): boolean
+ArkTS-Dyn: hasPrivateWindow(displayId: number): boolean
+
+ArkTS-Sta: hasPrivateWindow(displayId: long): boolean
 
 查询指定display对象上是否有可见的隐私窗口。可通过[setWindowPrivacyMode()](arkts-apis-window-Window.md#setwindowprivacymode9)接口设置隐私窗口。隐私窗口内容将无法被截屏或录屏。
 
@@ -30,11 +34,15 @@ hasPrivateWindow(displayId: number): boolean
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId    | number                    | 是   | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
+| displayId    | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是   | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
 
 **返回值：**
 
@@ -53,6 +61,8 @@ hasPrivateWindow(displayId: number): boolean
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { display } from '@kit.ArkUI';
@@ -80,15 +90,51 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+
+  let ret: boolean = true;
+  try {
+    ret = display.hasPrivateWindow(displayClass.id);
+  } catch (exception) {
+    let error = exception as BusinessError;
+    console.error(`Failed to check has privateWindow or not. Code: ${error.code} , message : ${error.message}`);
+  }
+  if (ret == undefined) {
+    console.error("Failed to check has privateWindow or not.");
+  }
+  if (ret) {
+    console.info("There has privateWindow.");
+  } else if (!ret) {
+    console.info("There has no privateWindow.");
+  }
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to obtain the default display object. Code: ${error.code} , message : ${error.message}`);
+}
+```
+
 ## display.on('privateModeChange')<sup>10+</sup>
 
 on(type: 'privateModeChange', callback: Callback&lt;boolean&gt;): void
 
 开启屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onPrivateModeChange](#displayonprivatemodechange22)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -121,15 +167,67 @@ try {
 }
 ```
 
+## display.onPrivateModeChange<sup>22+</sup>
+
+onPrivateModeChange(callback: Callback&lt;boolean&gt;): void
+
+开启屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('privateModeChange')](#displayonprivatemodechange10)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<boolean> = (data: boolean) => {
+  console.info(`Listening enabled. Data: ${data}`);
+};
+try {
+  display.onPrivateModeChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Code: ${error.code} , message : ${error.message}`);
+}
+```
+
 ## display.off('privateModeChange')<sup>10+</sup>
 
 off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offPrivateModeChange](#displayoffprivatemodechange22)。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -157,6 +255,47 @@ try {
 }
 ```
 
+## display.offPrivateModeChange<sup>22+</sup>
+
+offPrivateModeChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭屏幕隐私模式变化的监听。当屏幕前台有隐私窗口，则屏幕处于隐私模式，屏幕中的隐私窗口内容无法被截屏或录屏。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('privateModeChange')](#displayoffprivatemodechange10)。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填 | 说明                                                    |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 否   | 需要取消注册的回调函数。表示屏幕隐私模式是否改变。true表示屏幕由非隐私窗口模式变为隐私模式，false表示屏幕由隐私模式变为非隐私模式。若无此参数，则取消注册屏幕隐私模式变化监听的所有回调函数。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+try {
+  display.offPrivateModeChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Code: ${error.code} , message : ${error.message}`);
+}
+```
+
 ## display.setFoldDisplayMode<sup>10+</sup>
 setFoldDisplayMode(mode: FoldDisplayMode): void
 
@@ -165,6 +304,10 @@ setFoldDisplayMode(mode: FoldDisplayMode): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
 
@@ -186,6 +329,8 @@ setFoldDisplayMode(mode: FoldDisplayMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -197,6 +342,20 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+try {
+  let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL;
+  display.setFoldDisplayMode(mode);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to change the fold display mode. Code: ${error.code} , message : ${error.message}`);
+}
+```
+
 ## display.setFoldDisplayMode<sup>19+</sup>
 setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
@@ -205,6 +364,10 @@ setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
 
@@ -226,6 +389,8 @@ setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -237,6 +402,20 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+try {
+  let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN;
+  display.setFoldDisplayMode(mode, 'backSelfie');
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to change the fold display mode. Code: ${error.code} , message : ${error.message}`);
+}
+```
+
 ## display.setFoldStatusLocked<sup>11+</sup>
 setFoldStatusLocked(locked: boolean): void
 
@@ -245,6 +424,10 @@ setFoldStatusLocked(locked: boolean): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -264,6 +447,8 @@ setFoldStatusLocked(locked: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { display } from '@kit.ArkUI';
 
@@ -275,8 +460,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+
+try {
+  let locked: boolean = false;
+  display.setFoldStatusLocked(locked);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to change the fold status locked mode. Code: ${error.code} , message : ${error.message}`);
+}
+```
+
 ## display.addVirtualScreenBlocklist<sup>18+</sup>
-addVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
+ArkTS-Dyn: addVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
+
+ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 将窗口添加到禁止投屏显示的名单中，被添加的窗口无法在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。
 
@@ -284,11 +485,15 @@ addVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | Array\<number>    | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowIds     | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;int&gt;  | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 
@@ -308,6 +513,8 @@ addVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -330,8 +537,33 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // ...
+    let windowId = windowStage.getMainWindowSync().getWindowProperties().id;
+    let windowIds = [windowId];
+
+    let promise = display.addVirtualScreenBlocklist(windowIds);
+    promise.then(() => {
+      console.info('Succeeded in adding virtual screen blocklist.');
+    }).catch((err: Error) => {
+      console.error(`Failed to add virtual screen blocklist. Code: ${err?.code} , message : ${err?.message}`);
+    })
+  }
+}
+```
+
 ## display.removeVirtualScreenBlocklist<sup>18+</sup>
-removeVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
+ArkTS-Dyn: removeVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
+
+ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 将窗口从禁止投屏显示的名单中移除，被移除的窗口可以在投屏时显示。仅对应用主窗或系统窗口生效。使用Promise异步回调。
 
@@ -339,11 +571,15 @@ removeVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | Array\<number>    | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowIds     | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 
@@ -363,6 +599,8 @@ removeVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -392,6 +630,36 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // ...
+    let windowId = windowStage.getMainWindowSync().getWindowProperties().id;
+    let windowIds = [windowId];
+
+    let promise = display.addVirtualScreenBlocklist(windowIds);
+    promise.then(() => {
+      console.info('Succeeded in adding virtual screen blocklist.');
+    }).catch((err: Error) => {
+      console.error(`Failed to add virtual screen blocklist. Code: ${err?.code} , message : ${err?.message}`);
+    })
+
+    promise = display.removeVirtualScreenBlocklist(windowIds);
+    promise.then(() => {
+      console.info('Succeeded in removing virtual screen blocklist.');
+    }).catch((err: Error) => {
+      console.error(`Failed to remove virtual screen blocklist. Code: ${err?.code} , message: ${err?.message}`);
+    })
+  }
+}
+```
+
 ## Display
 屏幕实例。描述display对象的属性和方法。
 
@@ -405,6 +673,10 @@ hasImmersiveWindow(callback: AsyncCallback&lt;boolean&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -425,6 +697,8 @@ hasImmersiveWindow(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
@@ -440,6 +714,25 @@ displayClass.hasImmersiveWindow((err: BusinessError, data) => {
     console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+displayClass.hasImmersiveWindow((err: BusinessError | null, data) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to check whether there is immersive window. Code: ${err?.code} , message : ${err?.message}`);
+      return;
+    }
+    console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
+});
+```
+
 ### hasImmersiveWindow<sup>11+</sup>
 hasImmersiveWindow(): Promise&lt;boolean&gt;
 
@@ -448,6 +741,10 @@ hasImmersiveWindow(): Promise&lt;boolean&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -468,6 +765,8 @@ hasImmersiveWindow(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
@@ -479,5 +778,21 @@ promise.then((data) => {
   console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to check whether there is immersive window. Code: ${err.code} , message: ${err.message}`);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+let promise = displayClass.hasImmersiveWindow();
+promise.then((data: boolean) => {
+  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
+}).catch((err: Error) => {
+  console.error(`Failed to check whether there is immersive window. Code: ${err?.code} , message: ${err?.message}`);
 })
 ```
