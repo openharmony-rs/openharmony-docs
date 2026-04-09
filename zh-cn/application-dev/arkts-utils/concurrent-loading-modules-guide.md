@@ -21,6 +21,24 @@
    定时器业务模块的定义如下：
 
    <!-- @[define_timer_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/TimerSdk.ets) -->
+   
+   ``` TypeScript
+   @Sendable
+   export class TimerSdk {
+     static init(): TimerSdk {
+       let timer = new TimerSdk();
+       return timer;
+     }
+   
+     async Countdown(time: number) {
+       return new Promise((resolve: (value: boolean) => void) => {
+         setTimeout(() => {
+           resolve(true);
+         }, time);
+       });
+     }
+   }
+   ```
 
    <!-- @[define_timer_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/TimerSdk.ets) -->
 
