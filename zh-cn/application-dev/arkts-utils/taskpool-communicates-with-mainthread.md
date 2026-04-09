@@ -13,6 +13,15 @@
 1. 实现接收Task消息的方法。
 
    <!-- @[receive_task_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
+   
+   ``` TypeScript
+   import { taskpool } from '@kit.ArkTS';
+   import { IconItemSource } from './IconItemSource';
+   
+   function notice(data: number): void {
+     console.info('子线程任务已执行完，共加载图片: ', data);
+   }
+   ```
 
    <!-- @[receive_task_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
 
