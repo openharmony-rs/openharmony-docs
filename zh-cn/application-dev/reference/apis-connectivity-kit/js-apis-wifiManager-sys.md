@@ -903,7 +903,7 @@ factoryReset(): void
 
 **系统接口：** 此接口为系统接口。
 
-重置wifi相关配置。
+重置Wi-Fi相关配置并关闭Wi-Fi。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 
