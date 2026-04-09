@@ -61,7 +61,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[OnUserAgeGroupDetectedInner](#userstatusonuseragegroupdetecteddeprecated23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[OnUserAgeGroupDetected](#userstatusonuseragegroupdetecteddeprecated23)。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
