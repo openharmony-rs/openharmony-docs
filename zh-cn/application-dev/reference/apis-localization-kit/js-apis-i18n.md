@@ -2415,7 +2415,7 @@ static getAvailableIDs(): string[]
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
-  // 共支持742个ID。每一个ID由使用中划线分割的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为译拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
+  // 共支持742个ID。每一个ID由使用中划线分隔的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为译拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
   // 更多使用信息可以参考ISO-15924。
   let ids: string[] = i18n.Transliterator.getAvailableIDs();
   ```
@@ -2763,7 +2763,7 @@ static getType(ch: string): string
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| string | 输入字符的一般类别值。取值包括：<br>U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 <br>U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 <br>U_UPPERCASE_LETTER： 表示大写字母。 <br>U_LOWERCASE_LETTER： 表示小写字母。  <br>U_TITLECASE_LETTER： 表示首字母大写。 <br>U_MODIFIER_LETTER： 表示字母修饰符。 <br>U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 <br>U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 <br>U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 <br>U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 <br>U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 <br>U_LETTER_NUMBER： 表示字母数字，罗马数字。 <br>U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 <br>U_SPACE_SEPARATOR： 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 <br>U_LINE_SEPARATOR： 表示行分隔符。<br>U_PARAGRAPH_SEPARATOR： 表示段落分隔符。 <br>U_CONTROL_CHAR： 表示控制字符。 <br>U_FORMAT_CHAR： 表示格式字符。 <br>U_PRIVATE_USE_CHAR： 表示私人使用区代码点类别，例如公司 logo。 <br>U_SURROGATE： 表示代理项，在UTF-16中用来表示补充字符的方法。 <br>U_DASH_PUNCTUATION： 表示短划线标点。 <br>U_START_PUNCTUATION： 表示开始标点，如左括号。 <br>U_END_PUNCTUATION： 表示结束标点，如右括号。 <br>U_INITIAL_PUNCTUATION： 表示前引号，例如左双引号、左单引号。 <br>U_FINAL_PUNCTUATION： 表示后引号，例如右双引号、右单引号。 <br>U_CONNECTOR_PUNCTUATION： 表示连接符标点。 <br>U_OTHER_PUNCTUATION： 表示其他标点。 <br>U_MATH_SYMBOL： 表示数学符号。 <br>U_CURRENCY_SYMBOL： 表示货币符号。 <br>U_MODIFIER_SYMBOL： 表示修饰符号。 <br>U_OTHER_SYMBOL： 表示其它符号。 <br> 更详细的介绍可以参考Unicode标准。|
+| string | 输入字符的一般类别值。取值包括：<br>U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 <br>U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 <br>U_UPPERCASE_LETTER： 表示大写字母。 <br>U_LOWERCASE_LETTER： 表示小写字母。  <br>U_TITLECASE_LETTER： 表示首字母大写。 <br>U_MODIFIER_LETTER： 表示字母修饰符。 <br>U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 <br>U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 <br>U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 <br>U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 <br>U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 <br>U_LETTER_NUMBER： 表示字母数字，罗马数字。 <br>U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 <br>U_SPACE_SEPARATOR： 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 <br>U_LINE_SEPARATOR： 表示行分隔符。 <br>U_PARAGRAPH_SEPARATOR： 表示段落分隔符。 <br>U_CONTROL_CHAR： 表示控制字符。 <br>U_FORMAT_CHAR： 表示格式字符。 <br>U_PRIVATE_USE_CHAR： 表示私人使用区代码点类别，例如公司 logo。 <br>U_SURROGATE： 表示代理项，在UTF-16中用来表示补充字符的方法。 <br>U_DASH_PUNCTUATION： 表示短划线标点。 <br>U_START_PUNCTUATION： 表示开始标点，如左括号。 <br>U_END_PUNCTUATION： 表示结束标点，如右括号。 <br>U_INITIAL_PUNCTUATION： 表示前引号，例如左双引号、左单引号。 <br>U_FINAL_PUNCTUATION： 表示后引号，例如右双引号、右单引号。 <br>U_CONNECTOR_PUNCTUATION： 表示连接符标点。 <br>U_OTHER_PUNCTUATION： 表示其他标点。 <br>U_MATH_SYMBOL： 表示数学符号。 <br>U_CURRENCY_SYMBOL： 表示货币符号。 <br>U_MODIFIER_SYMBOL： 表示修饰符号。 <br>U_OTHER_SYMBOL： 表示其它符号。 <br> 更详细的介绍可以参考Unicode标准。|
 
 **示例：**
   ```ts
