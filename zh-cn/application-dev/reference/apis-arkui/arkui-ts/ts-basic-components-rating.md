@@ -374,36 +374,6 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 | End        | 移动到最后一个星星， 不改变实际分值。         |
 | Space/Enter | 根据当前评分提交评分结果。               |
 
-## RatingAttribute<sup>7+</sup>
-
-Rating组件的属性方法，继承自[CommonMethod](ts-basic-components-common.md)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 23
-
-### stars
-
-设置评分总数。参见[stars](#stars)。
-
-### stepSize
-
-设置操作评级的步长。参见[stepSize](#stepsize)。
-
-### starStyle
-
-设置评分的样式。参见[starStyle](#starstyle)。
-
-### onChange
-
-评分条的评星变化事件。参见[onChange](#onchange)。
-
-### contentModifier<sup>12+</sup>
-
-定制Rating内容区的方法。参见[contentModifier](#contentmodifier12)。
-
 ## RatingConfiguration<sup>12+</sup>对象说明
 
 开发者需要自定义class实现ContentModifier接口。
@@ -437,6 +407,10 @@ Rating组件的属性方法，继承自[CommonMethod](ts-basic-components-common
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 类型    | 必填 | 说明                                                         |
 | ---------------------- | ------- | ---- | ------------------------------------------------------------ |

@@ -139,6 +139,10 @@ Dialog关闭的信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型    | 必填 | 说明 |
 | ------------ | ------- | ---- | ---- |
 | enabled<sup>10+</sup> | boolean | 否   | 点击Button是否响应，true表示Button可以响应，false表示Button不可以响应。<br/>默认值：true<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |

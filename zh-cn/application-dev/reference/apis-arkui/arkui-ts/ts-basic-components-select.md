@@ -158,7 +158,7 @@ triggerSelect(index: number, value: string): void
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
-### selected<sup>8+</sup>
+### selected
 
 selected(value: number | Resource)
 
@@ -228,7 +228,7 @@ selected(numCount: int | Resource | undefined | Bindable\<int\> | Bindable\<Reso
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | numCount  | int&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined \| Bindable\<int\> \| Bindable\<[Resource](ts-types.md#resource)\> | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
 
-### value<sup>8+</sup>
+### value
 
 value(value: ResourceStr)
 
@@ -532,7 +532,7 @@ dividerStyle(value: DividerStyleOptions | undefined)
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
 | value  |[DividerStyleOptions](ts-types.md#dividerstyleoptions12) \| undefined| 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null或undefined时，展示默认分割线。<br/>3.当mode为FLOAT_ABOVE_MENU时，strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。当mode为EMBEDDED_IN_MENU时，分割线在Menu中展开，独立占用高度。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
 
-### font<sup>8+</sup>
+### font
 
 font(value: Font)
 
@@ -596,7 +596,7 @@ font(value: Font | undefined)
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [Font](ts-types.md#font) \| undefined | 是   | 下拉按钮本身的文本样式。<br/>如果设置controlSize的值为：controlSize.SMALL，size默认值是`$r('sys.float.ohos_id_text_size_button2')`，否则为`$r('sys.float.ohos_id_text_size_button1')`。<br/>当value的值为undefined时，恢复为系统文本样式。 |
 
-### fontColor<sup>8+</sup>
+### fontColor
 
 fontColor(value: ResourceColor)
 
@@ -660,7 +660,7 @@ fontColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉按钮本身的文本颜色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_text_primary')`混合`$r('sys.color.ohos_id_alpha_content_primary')`的透明度。<br/>当value的值为undefined时，维持上次取值。 |
 
-### selectedOptionBgColor<sup>8+</sup>
+### selectedOptionBgColor
 
 selectedOptionBgColor(value: ResourceColor)
 
@@ -724,7 +724,7 @@ selectedOptionBgColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 下拉菜单选中项的背景色。<br/>当resColor的值为undefined时，默认值：`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_alpha_highlight_bg')`的透明度。 |
 
-### selectedOptionFont<sup>8+</sup>
+### selectedOptionFont
 
 selectedOptionFont(value: Font)
 
@@ -788,7 +788,7 @@ selectedOptionFont(value: Font | undefined)
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [Font](ts-types.md#font) \| undefined | 是   | 下拉菜单选中项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
 
-### selectedOptionFontColor<sup>8+</sup>
+### selectedOptionFontColor
 
 selectedOptionFontColor(value: ResourceColor)
 
@@ -852,7 +852,7 @@ selectedOptionFontColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单选中项的文本颜色。<br/>当resColor的值为undefined时，默认值为$r('sys.color.ohos_id_color_text_primary_activated')。 |
 
-### optionBgColor<sup>8+</sup>
+### optionBgColor
 
 optionBgColor(value: ResourceColor)
 
@@ -916,7 +916,7 @@ optionBgColor(value: ResourceColor | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 下拉菜单项的背景色。<br/>当resColor的值为undefined时，默认值为Color.Transparent。 |
 
-### optionFont<sup>8+</sup>
+### optionFont
 
 optionFont(value: Font)
 
@@ -984,7 +984,7 @@ optionFont(value: Font | undefined)
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [Font](ts-types.md#font) \| undefined | 是   | 下拉菜单项的文本样式。<br/>当value的值为undefined时，默认值：<br/>{<br/>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br/>weight:&nbsp;FontWeight.Regular<br/>} |
 
-### optionFontColor<sup>8+</sup>
+### optionFontColor
 
 optionFontColor(value: ResourceColor)
 
@@ -2001,7 +2001,7 @@ ArkTS-Sta: triggerSelect(index: int, value: string): void
 
 ## 事件
 
-### onSelect<sup>8+</sup>
+### onSelect
 
 onSelect(callback: (index: number, value: string) => void)
 
