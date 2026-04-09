@@ -90,4 +90,22 @@ struct Index {
 
 <!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/pixelMapTest.ets) -->
 
+``` TypeScript
+import { image } from '@kit.ImageKit';
+
+@Concurrent
+export async function loadPixelMap(rawFileDescriptor: number): Promise<PixelMap> {
+  // 创建imageSource。
+  const imageSource = image.createImageSource(rawFileDescriptor);
+  // 创建pixelMap。
+  const pixelMap = imageSource.createPixelMapSync();
+  // 释放imageSource。
+  imageSource.release();
+  // 使pixelMap在跨线程传输完成后，脱离原线程的引用。
+  pixelMap.setTransferDetached(true);
+  // 返回pixelMap给主线程。
+  return pixelMap;
+}
+```
+
 <!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/pixelMapTest.ets) -->
