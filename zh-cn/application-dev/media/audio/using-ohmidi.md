@@ -134,7 +134,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 - 创建MIDI客户端
 
   <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-    
+  
   ``` C++
   // Create MIDI client
   static napi_value CreateMIDIClient(napi_env env, napi_callback_info info)
