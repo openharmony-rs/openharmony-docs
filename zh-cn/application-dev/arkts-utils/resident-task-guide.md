@@ -23,5 +23,34 @@
 3. 在Worker线程中，当接收到宿主线程发送的消息为'start'时，开始执行某个长时间不定期运行的任务，并实时向宿主线程返回消息。当接收到的消息为'stop'时，结束该任务的执行并返回相应的消息给宿主线程。
 
    <!-- @[worker_correspond_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/Worker.ets) -->
+   
+   ``` TypeScript
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+   let isRunning = false;
+   workerPort.onmessage = (e: MessageEvents) => {
+     const type = e.data.type as string;
+     if (type === 'End') {
+       if (!isRunning) {
+         isRunning = true;
+         // 开始常驻任务
+         performTask();
+       }
+     } else if (type === 'stop') {
+       isRunning = false;
+       workerPort.close();  // 关闭Worker
+     }
+   }
+   // 模拟常驻任务
+   function performTask() {
+     if (isRunning) {
+       // 模拟某个长期运行的任务
+       workerPort.postMessage('Worker is performing a task');
+       // 1秒后再次执行任务
+       setTimeout(performTask, 1000);
+     }
+     workerPort.postMessage('Worker is stop performing a task');
+   }
+   ```
 
    <!-- @[worker_correspond_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/Worker.ets) -->
