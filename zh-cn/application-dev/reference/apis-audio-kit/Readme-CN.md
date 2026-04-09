@@ -43,6 +43,7 @@
   - 模块<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
+    - [AudioConverter](capi-audioconverter.md)
   - 头文件<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
     - [native_audio_manager.h](capi-native-audio-manager-h.md)
