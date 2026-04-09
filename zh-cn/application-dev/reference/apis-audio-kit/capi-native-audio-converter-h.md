@@ -42,8 +42,7 @@
 | -- | -- | -- |
 | [OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format* inputFormat, const OH_AudioConverter_Format* outputFormat, OH_AudioConverter** converter)](#oh_audioconverter_create) | - | 创建音频转换器。 |
 | [void OH_AudioConverter_Destroy(OH_AudioConverter* converter)](#oh_audioconverter_destroy) | - | 请求释放转换器。 |
-| [typedef int32_t (\*OH_AudioConverter_RequestDataCallback)(void* userData, const void** outInputData, OH_AudioConverter_InputStatus* outStatus
-)](#oh_audioconverter_requestdatacallback) | OH_AudioConverter_RequestDataCallback | 请求数据的回调函数。转换器在[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process)期间调用此回调函数以主动请求输入音频数据。<br> 调用者必须填充输出参数（outInputData，outStatus），并返回通过回调函数读取的数据大小。<br> 单个回调返回的最大数据大小为400KB。<br> outInputData指向的内存必须保持有效，直到OH_AudioConverter_Process返回处理完成为止。 |
+| [typedef int32_t (\*OH_AudioConverter_RequestDataCallback)(void* userData, const void** outInputData, OH_AudioConverter_InputStatus* outStatus)](#oh_audioconverter_requestdatacallback) | OH_AudioConverter_RequestDataCallback | 请求数据的回调函数。转换器在[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process)期间调用此回调函数以主动请求输入音频数据。<br> 调用者必须填充输出参数（outInputData，outStatus），并返回通过回调函数读取的数据大小。<br> 单个回调返回的最大数据大小为400KB。<br> outInputData指向的内存必须保持有效，直到OH_AudioConverter_Process返回处理完成为止。 |
 | [OH_AudioConverter_Result OH_AudioConverter_SetInputCallback(OH_AudioConverter* converter, OH_AudioConverter_RequestDataCallback callback, void* userData
 )](#oh_audioconverter_setinputcallback) | - | 设置转换器请求数据回调函数。此函数绑定音频转换器的输入数据回调函数。回调函数由[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process)调用，获取输入音频数据并进行处理。 |
 | [OH_AudioConverter_Result OH_AudioConverter_Process(OH_AudioConverter* converter, void* outputData, int32_t outputCapacity, int32_t* outputSize
