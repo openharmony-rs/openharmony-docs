@@ -107,6 +107,46 @@ function foo() {
 
 <!-- @[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets) -->
 
+``` TypeScript
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+function add(num1: number, num2: number): number {
+  return num1 + num2;
+}
+
+async function concurrentFunc(): Promise<void> {
+  try {
+    const task: taskpool.Task = new taskpool.Task(add, 1, 2);
+    console.info(`taskpool res is: ${await taskpool.execute(task)}`); // 输出结果：taskpool res is: 3
+  } catch (e) {
+    console.error(`taskpool execute error is: ${e}`);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            concurrentFunc();
+            this.message = 'success';
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 <!-- @[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets) -->
 
 ### 并发函数返回Promise
