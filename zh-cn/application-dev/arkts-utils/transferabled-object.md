@@ -35,8 +35,6 @@ Transferable对象，也称为NativeBinding对象，是指绑定C++对象的JS�
 
 <!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/TransferabledObject.ets) -->
 
-<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/TransferabledObject.ets) -->
-
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { loadPixelMap } from './pixelMapTest';
@@ -107,5 +105,3 @@ export async function loadPixelMap(rawFileDescriptor: number): Promise<PixelMap>
   return pixelMap;
 }
 ```
-
-<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/pixelMapTest.ets) -->
