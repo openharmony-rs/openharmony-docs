@@ -162,7 +162,7 @@ type ContinuousAuthStatusCallback = (isAuthPassed: boolean, authTrustLevel?: Use
 | 参数名 | 类型 | 必填 | 说明 |
 | -------------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | isAuthPassed | boolean | 是 | 是否通过认证，true：通过认证；false：未通过认证。 |
-| authTrustLevel | [UserAuth.AuthTrustLevel](./js-apis-useriam-userauth.md#authtrustlevel8) | 否 | 期望达到的认证可信等级。典型操作需要的身份认证可信等级，具体请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。 |
+| authTrustLevel | [UserAuth.AuthTrustLevel](./js-apis-useriam-userauth.md#authtrustlevel8) | 否 | 伴随设备当前能达到的最高认证可信等级，仅当isAuthPassed为true时提供。典型操作需要的身份认证可信等级，具体请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。 |
 
 ## AvailableDeviceStatusCallback
 

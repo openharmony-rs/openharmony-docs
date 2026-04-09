@@ -47,7 +47,8 @@ HiCollie provides APIs for checking service thread stuck and jank events and rep
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)](#oh_hicollie_init_stuckdetection) | - | Registers a callback used to periodically detect service thread stuck events.  <br> By default, the **BUSSINESS_THREAD_BLOCK_3S** event is reported when the thread is blocked for 3s and the **BUSSINESS_THREAD_BLOCK_6S** event is reported when the thread is blocked for 6s.<br>Note: Use this API in non-main threads.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task task, uint32_t stuckTimeout)](#oh_hicollie_init_stuckdetectionwithtimeout) | - | Registers a callback used to periodically detect service thread stuck events.  <br> You can set the interval for the stuck event detection. The value range is [3, 15], in seconds.<br>Note: Use this API in non-main threads.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)](#oh_hicollie_init_jankdetection) | - | Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  <br>Note: Use this API in non-main threads.|
-| [HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)](#oh_hicollie_report) | - | Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.<br>Note: Use this API in non-main threads.|
+| [HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)](#oh_hicollie_report) | - | Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.<br>Note:<br>- Use this API in non-main threads.<br>- This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)|
+| [HiCollie_ErrorCode OH_HiCollie_ReportInputBlock()](#oh_hicollie_reportinputblock) | - | Reports an application input unresponsive event and generates logs to help locate application freeze issues. On a PC or tablet, a dialog box is displayed, prompting the user to wait or close the application. On other devices, no dialog box is displayed. You are advised to use this API in either of the following ways:<br>Method 1 (recommended): Use this API together with **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout**. The service thread periodically checks whether it is frozen through the preceding APIs. When the service thread is frozen and an input event (such as screen tapping, mouse clicking, or keyboard input) occurs, the service thread calls **OH_HiCollie_ReportInputBlock**.<br>Method 2: If the service thread can detect its own freeze without using the **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout** API, the application calls the **OH_HiCollie_ReportInputBlock** API based on the service thread freeze and input event.<br>Note:<br>- This API can be used in the main thread. For example, an input event needs to be processed by the main thread before being encapsulated and passed to the service thread for processing. When the service thread freezes, a status flag is maintained. The main thread calls this API based on the status flag of the service thread and the input event.<br>- This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)|
 | [typedef void (\*OH_HiCollie_Callback)(void*)](#oh_hicollie_callback) | OH_HiCollie_Callback | Triggered when [OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer) is not called within the custom task timeout period after [OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer) is called.|
 | [HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)](#oh_hicollie_settimer) | - | Registers a timer to check whether the execution time of a function or code block exceeds the custom time.<br> This API is used together with the **OH_HiCollie_CancelTimer** API.|
 | [void OH_HiCollie_CancelTimer(int id)](#oh_hicollie_canceltimer) | - | Cancels a timer based on the ID.<br> This API is used together with the **OH_HiCollie_SetTimer** API. It must be used after the function or code block is executed.<br> If a timer is not canceled within the custom time, a callback function is executed to generate fault logs for the specified timeout event.|
@@ -157,6 +158,10 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)
 
 Registers a callback used to periodically detect service thread stuck events.  <br> By default, the **BUSSINESS_THREAD_BLOCK_3S** event is reported when the thread is blocked for 3s and the **BUSSINESS_THREAD_BLOCK_6S** event is reported when the thread is blocked for 6s.
 
+> **NOTE**
+> 
+> - Use this API in non-main threads.
+
 **Since**: 12
 
 **Parameters**
@@ -180,6 +185,10 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task t
 **Description**
 
 Registers a callback used to periodically detect service thread stuck events.  <br> You can set the interval for the stuck event detection. The value range is [3, 15], in seconds.
+
+> **NOTE**
+> 
+> - Use this API in non-main threads.
 
 **Since**: 18
 
@@ -205,6 +214,10 @@ HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFu
 **Description**
 
 Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  
+
+> **NOTE**
+> 
+> - Use this API in non-main threads.
 
 **Since**: 12
 
@@ -232,6 +245,11 @@ HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)
 
 Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.
 
+> **NOTE**
+> 
+> - Use this API in non-main threads.
+> - This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)
+
 **Since**: 12
 
 **Parameters**
@@ -245,6 +263,29 @@ Reports a service thread stuck event and generates logs to help locate applicati
 | Type| Description|
 | -- | -- |
 | [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br>   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - The begin and end functions are not both set or both unset; they must either both have valid values or both be empty.<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>         [HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - Remote call error. The IPC remote service fails to be called.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
+
+### OH_HiCollie_ReportInputBlock()
+
+```c
+HiCollie_ErrorCode OH_HiCollie_ReportInputBlock()
+```
+
+**Description**
+
+Reports an application input unresponsive event and generates logs to help locate application freeze issues. On a PC or tablet, a dialog box is displayed, prompting the user to wait or close the application. On other devices, no dialog box is displayed. You are advised to use this API in either of the following ways:<br> Method 1 (recommended): Use this API together with **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout**. The service thread periodically checks whether it is frozen through the preceding APIs. When the service thread is frozen and an input event (such as screen tapping, mouse clicking, or keyboard input) occurs, the service thread calls **OH_HiCollie_ReportInputBlock**.<br> Method 2: If the service thread can detect its own freeze without using the **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout** API, the application calls the **OH_HiCollie_ReportInputBlock** API based on the service thread freeze and input event.
+
+> **NOTE**
+> 
+> - This API can be used in the main thread. For example, an input event needs to be processed by the main thread before being encapsulated and passed to the service thread for processing. When the service thread freezes, a status flag is maintained. The main thread calls this API based on the status flag of the service thread and the input event.
+> - This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)
+
+**Since**: 24
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br>         [HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - Remote call error. The IPC remote service fails to be called.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
 
 ### OH_HiCollie_Callback()
 

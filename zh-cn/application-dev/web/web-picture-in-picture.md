@@ -65,7 +65,7 @@ try {
 
 ## 监听画中画事件
 
-当用户启动画中画模式播放视频时，会显示一个悬浮窗口用于播放视频。系统规定每次只能播放一个画中画视频。
+当用户启动画中画模式播放视频时，会显示一个浮动窗口用于播放视频。系统规定每次只能播放一个画中画视频。
 
 HTMLVideoElement的enterpictureinpicture事件在HTMLVideoElement成功进入画中画模式时触发，而HTMLVideoElement的leavepictureinpicture事件在HTMLVideoElement成功退出画中画模式时触发。
 

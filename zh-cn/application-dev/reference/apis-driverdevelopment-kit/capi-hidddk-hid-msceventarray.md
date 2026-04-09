@@ -27,6 +27,6 @@ typedef struct Hid_MscEventArray {...} Hid_MscEventArray
 | 名称 | 描述 |
 | -- | -- |
 | Hid_MscEvent* hidMscEvent | 其他特殊事件属性编码 |
-| uint16_t length | 数组长度 |
+| uint16_t length | 数组的有效长度 |
 
 

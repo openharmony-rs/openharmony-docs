@@ -161,7 +161,7 @@ Represents the WLAN configuration.
 | configStatus<sup>12+</sup> | number | No| Yes| Status indicating whether the current network can be selected.<br>  **1**: network selection allowed<br>**2**: network selection forbidden<br> **3**: network selection permanently forbidden<br>4: unknown<br> **System API**: This is a system API.|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | No| Yes| Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 | isSecureWifi<sup>20+</sup> | boolean | No| Yes| Whether Wi-Fi is secure. The value **true** indicates that Wi-Fi is secure, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
-| isRandomMacDisabled<sup>21+</sup> | boolean | No| Yes| Whether the random MAC address is disabled. The value **true** indicates that the random MAC address is disabled, and the value **false** indicatesthe opposite.<br> **System API**: This is a system API.|
+| isRandomMacDisabled<sup>21+</sup> | boolean | No| Yes| Whether the random MAC address is disabled. The value **true** indicates that the random MAC address is disabled, and the value **false** indicates the opposite.<br> **System API**: This is a system API.|
 ## IpType<sup>9+</sup>
 
 Enumerates the IP address types.
@@ -224,6 +224,54 @@ Enumerates the Wi-Fi proxy methods.
 | METHOD_NONE  | 0 | No proxy.|
 | METHOD_AUTO  | 1 | Use an automatically configured proxy.|
 | METHOD_MANUAL  | 2 | Use a manually configured proxy.|
+
+## wifiManager.getDeviceConfig<sup>24+</sup>
+
+getDeviceConfig(networkId: number): WifiDeviceConfig
+
+Obtains the configuration of a single network based on the network ID.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG (for system applications only)
+
+**System capability**: SystemCapability.Communication.WiFi.STA
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| networkId | number | Yes| ID of the network configuration to be queried.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| [WifiDeviceConfig](#wifideviceconfig9) | Network configuration of a specified network ID.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| Error Codes| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**Example**
+```ts
+  import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let networkId = 0;
+    let config = wifiManager.getDeviceConfig(networkId);
+    console.info(`config: ${JSON.stringify(config)}`);    
+  }catch(error){
+    console.error(`failed: ${JSON.stringify(error)}`);
+  }
+```
 
 ## wifiManager.connectToDevice<sup>9+</sup>
 
@@ -1769,7 +1817,7 @@ Unsubscribes from the event of an STA joining a WLAN hotspot. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-| callback | Callback&lt;StationInfo&gt; | No| Callback to unregister.|
+| callback | Callback&lt;StationInfo&gt; | No| Callback used to return the event.|
 
 **Error codes**
 
@@ -1847,7 +1895,7 @@ Unsubscribes from the event of an STA leaving a WLAN hotspot. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-| callback | Callback&lt;StationInf&gt; | No| Callback to unregister.|
+| callback | Callback&lt;StationInf&gt; | No| Callback used to return the event.|
 
 **Error codes**
 

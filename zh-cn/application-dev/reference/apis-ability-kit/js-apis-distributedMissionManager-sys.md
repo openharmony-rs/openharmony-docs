@@ -493,7 +493,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](./errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](./errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -566,7 +566,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](./errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](./errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -630,7 +630,7 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](./errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](./errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -696,7 +696,7 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](./errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](./errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |

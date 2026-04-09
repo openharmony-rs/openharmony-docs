@@ -222,6 +222,8 @@ requestPermissionsFromUser(permissions: Array\<string>, requestCode: number, res
 
 **示例：**
 
+ArkTS示例：
+
 <!--code_no_check_fa-->
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -244,6 +246,74 @@ context.requestPermissionsFromUser(
 );
 ```
 
+JS示例：
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <div>
+        <input class="perm-btn" type="button" value="申请权限" onclick="requestPermissions" />
+    </div>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.perm-btn {
+    width: 200px;
+    height: 60px;
+    background-color: #007dff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.perm-btn:active {
+    background-color: #0058b3;
+}
+```
+
+```js
+// xxx.js
+import featureAbility from '@ohos.ability.featureAbility';
+
+export default {
+    data: {
+    },
+    onInit() {
+    },
+    requestPermissions() {
+        let context = featureAbility.getContext();
+        context.requestPermissionsFromUser(
+            ['com.example.permission1',
+            'com.example.permission2',
+            'com.example.permission3',
+            'com.example.permission4',
+            'com.example.permission5'],
+            1,
+            (error, data) => {
+                if (error && error.code !== 0) {
+                    console.error(`requestPermissionsFromUser fail, error: ${JSON.stringify(error)}`);
+                } else {
+                    console.info(`requestPermissionsFromUser success, data: ${JSON.stringify(data)}`);
+                }
+            }
+        );
+    }
+}
+```
 
 ## Context.requestPermissionsFromUser<sup>7+</sup>
 
@@ -268,6 +338,8 @@ requestPermissionsFromUser(permissions: Array\<string>, requestCode: number): Pr
 
 **示例：**
 
+ArkTS示例：
+
 <!--code_no_check_fa-->
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -283,6 +355,70 @@ context.requestPermissionsFromUser(
         console.info(`requestPermissionsFromUser data: ${JSON.stringify(data)}`);
     }
 );
+```
+
+JS示例：
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <div>
+        <input class="perm-btn" type="button" value="申请权限" onclick="requestPermissions" />
+    </div>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.perm-btn {
+    width: 200px;
+    height: 60px;
+    background-color: #007dff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.perm-btn:active {
+    background-color: #0058b3;
+}
+```
+
+```js
+// xxx.js
+import featureAbility from '@ohos.ability.featureAbility';
+
+export default {
+    data: {
+    },
+    onInit() {
+    },
+    requestPermissions() {
+        let context = featureAbility.getContext();
+        context.requestPermissionsFromUser(
+            ['com.example.permission1',
+            'com.example.permission2',
+            'com.example.permission3',
+            'com.example.permission4',
+            'com.example.permission5'],
+            1).then((data)=>{
+                console.info(`requestPermissionsFromUser data: ${JSON.stringify(data)}`);
+            }
+        );
+    }
+}
 ```
 
 

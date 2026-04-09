@@ -705,6 +705,59 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: 
 });
 ```
 
+## privacyManager.checkPermissionInUse
+
+checkPermissionInUse(permissionName: Permissions): boolean
+
+查询指定敏感权限是否正在被使用。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.PERMISSION_USED_STATS，仅系统应用可用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名          | 类型   | 必填 | 说明                                  |
+| -------------- | ------ | ---- | ------------------------------------ |
+| permissionName | Permissions                | 是   | 需要查询的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
+
+**返回值：**
+
+| 类型          | 说明                                    |
+| ------------- | --------------------------------------- |
+| boolean | 指定的敏感权限是否正在被使用。true：指定的敏感权限正在被使用；false：指定的敏感权限未被使用。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| 12100003 | The specified permission does not exist or is not a user_grant permission. |
+| 12100007 | The service is abnormal. |
+
+**示例：**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+
+try {
+  let result = privacyManager.checkPermissionInUse('ohos.permission.CAMERA')
+  console.info('checkPermissionInUse success, result: ' + result);
+} catch (err) {
+  console.error(`checkPermissionInUse fail, code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## privacyManager.on
 
 on(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;ActiveChangeResponse&gt;): void

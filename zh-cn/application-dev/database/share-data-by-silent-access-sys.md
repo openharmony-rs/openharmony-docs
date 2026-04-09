@@ -73,7 +73,7 @@
 
 ## 接口说明
 
-以下是静默数据访问的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[数据共享](../reference/apis-arkdata/js-apis-data-dataShare-sys.md)。
+以下是静默数据访问的相关接口，更多接口及使用方式请见[数据共享](../reference/apis-arkdata/js-apis-data-dataShare-sys.md)。
 
 ### 通用接口
 
@@ -129,13 +129,12 @@
 
    **module.json5配置样例：**
 
+   以下配置仅作示例，应用需根据具体业务需求和数据库结构配置各个字段。
+
    ```json
-   // 以下配置仅作示例，应用需根据具体业务需求和数据库结构配置各个字段
    "proxyData": [
      {
-       // uri应根据实际应用包名以及数据库情况进行修改，当前仅为示例
        "uri": "datashareproxy://com.ohos.datashareprovider/datapath",
-       // 请根据应用的数据访问需求和权限要求进行配置，如配置应用自定义权限、系统权限或用户授权权限，当前权限仅为示例
        "requiredReadPermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "requiredWritePermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "metadata": {
@@ -308,12 +307,12 @@
 
 **module.json5配置样例：**
 
+以下配置仅为示例，应用需根据实际情况配置各个字段。
+
 ```json
-// 以下配置仅为示例，应用需根据实际情况配置各个字段
 "proxyData": [
   {
     "uri": "datashareproxy://com.acts.ohos.data.datasharetest/weather",
-    // 实际请按照应用具体场景需要的安全权限配置，如配置应用自定义权限、系统权限或用户授权权限，当前权限仅为示例
     "requiredReadPermission": "ohos.permission.READ_WEATHER_DATA",
     "requiredWritePermission": "ohos.permission.KEEP_BACKGROUND_RUNNING"
   }

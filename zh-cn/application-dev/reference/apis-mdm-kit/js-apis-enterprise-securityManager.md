@@ -1072,7 +1072,7 @@ installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, f
 ```ts
 import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import fs from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换

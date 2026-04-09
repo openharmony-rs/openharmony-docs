@@ -32,19 +32,19 @@ Run the **param set persist.ace.testmode.enabled 1** command and restart the dev
 ## 17000002 Unable to Call the API
 **Error Message**
 
-The async function is not called with await.
+The API does not support concurrent calls.
 
 **Description**
 
-The API is not called asynchronously.
+The API does not support concurrent calls.
 
 **Possible Causes**
 
-The API was not called using **await**.
+The async API does not use **await** to wait until the asynchronous execution is complete. As a result, the API is called concurrently.
 
 **Solution**
 
-Check test cases and make sure asynchronous APIs are called using **await**.
+Use **await** to wait until the asynchronous function execution is complete.
 
 ## 17000003 Assertion Failure
 **Error Message**

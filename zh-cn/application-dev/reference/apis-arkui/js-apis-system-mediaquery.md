@@ -66,9 +66,9 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型    | 只读 | 可选   | 说明    |
-| ------- | ------- | ---- | ---- | ----- |
-| matches | boolean | 否 |否    | 匹配结果。true表示满足查询条件，false表示不满足查询条件。 |
+| 名称      | 类型    | 可选   | 说明    |
+| ------- | ------- | ---- | ----- |
+| matches | boolean | 否    | 匹配结果。true表示满足查询条件，false表示不满足查询条件。 |
 
 ## MediaQueryList
 
@@ -82,9 +82,9 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 
 | 名称      | 类型    | 只读 | 可选   | 说明                |
 | ------- | ------- | ---- |---- | ----------------- |
-| media   | string  | 否|  是    | 序列化媒体查询条件，该参数为只读。 |
-| matches | boolean | 否|  是     | 匹配结果。 true表示满足查询条件，false表示不满足查询条件。            |
-| onchange | (matches: boolean) => void | 否|  是     | 匹配结果发生变化时的执行函数。matches表示是否匹配媒体查询条件，true满足查询条件，false不满足查询条件。 |
+| media   | string  | 是|  是    | 序列化媒体查询条件。 |
+| matches | boolean | 是|  是     | 匹配结果。 true表示满足查询条件，false表示不满足查询条件。            |
+| onchange | (matches: boolean) => void | 是|  是     | 匹配结果发生变化时的执行函数。matches表示是否匹配媒体查询条件，true满足查询条件，false不满足查询条件。 |
 
 
 ### MediaQueryList.addListener

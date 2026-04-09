@@ -73,6 +73,7 @@ app.json5配置文件包含以下标签。
 
   **表1** app.json5配置文件标签说明
 
+<!--Table: 15%; 60%; 10%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | bundleName | 标识应用的Bundle名称，用于标识应用的唯一性。命名规则如下&nbsp;：<br/>-&nbsp;必须为以点号（.）分隔的字符串，且至少包含三段，每段中仅允许使用英文字母、数字、下划线（_）。<br/>-&nbsp;首段以英文字母开头，非首段以数字或英文字母开头，每一段以数字或者英文字母结尾。<br/>-&nbsp;不允许多个点号（.）连续出现。<br/>-&nbsp;字符串最小长度为7字节，最大长度128字节。<br/>-&nbsp;推荐采用反域名形式命名（如“com.example.demo”，建议第一级为域名后缀com，第二级为厂商/个人名，第三级为应用名，也可以多级）。 | 字符串 | 该标签不可缺省。 |
@@ -91,11 +92,11 @@ app.json5配置文件包含以下标签。
 | accessible | 标识应用是否能访问应用的安装目录，仅预置的系统应用配置生效，三方应用配置不生效。<br/>-&nbsp;true：当前应用可以访问应用的安装目录。<br/>-&nbsp;false：当前应用不可以访问应用的安装目录。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | multiProjects | 标识当前工程是否支持多个工程的联合开发。<br/>-&nbsp;true：当前工程支持多个工程的联合开发。多工程开发可参考[多工程构建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-multi-projects)。<br/>-&nbsp;false：当前工程不支持多个工程的联合开发。 | 布尔值 | 该标签在应用编译构建时自动生成，手动配置无效，对应[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)中的multiProjects标签。 |
 | asanEnabled | 标识应用程序是否开启[asan检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-asan)，用于辅助定位buffer越界造成的crash问题。<br/>-&nbsp;true：当前工程开启asan检测。<br/>-&nbsp;false：当前工程不开启asan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| tablet | 标识对tablet设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对tablet设备做了特殊配置，则应用在tablet设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时tablet设备使用app.json5公共区域配置的属性值。 |
-| tv | 标识对tv设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对tv设备做了特殊配置，则应用在tv设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时tv设备使用app.json5公共区域配置的属性值。 |
-| wearable | 标识对wearable设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对wearable设备做了特殊配置，则应用在wearable设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时wearable设备使用app.json5公共区域配置的属性值。 |
-| car | 标识对car设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对car设备做了特殊配置，则应用在car设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时car设备使用app.json5公共区域配置的属性值。 |
-| default | 标识对default设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对default设备做了特殊配置，则应用在default设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时default设备使用app.json5公共区域配置的属性值。 |
+| tablet | 标识对tablet设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对tablet设备做了特殊配置，则应用在tablet设备中会采用此处配置的属性值，并忽略在app.json5公共区域的属性值。 | 对象 | 该标签可缺省，缺省时tablet设备使用app.json5公共区域的属性值。 |
+| tv | 标识对tv设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对tv设备做了特殊配置，则应用在tv设备中会采用此处配置的属性值，并忽略在app.json5公共区域的属性值。 | 对象 | 该标签可缺省，缺省时tv设备使用app.json5公共区域的属性值。 |
+| wearable | 标识对wearable设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对wearable设备做了特殊配置，则应用在wearable设备中会采用此处配置的属性值，并忽略在app.json5公共区域的属性值。 | 对象 | 该标签可缺省，缺省时wearable设备使用app.json5公共区域的属性值。 |
+| car | 标识对car设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对car设备做了特殊配置，则应用在car设备中会采用此处配置的属性值，并忽略在app.json5公共区域的属性值。 | 对象 | 该标签可缺省，缺省时car设备使用app.json5公共区域的属性值。 |
+| default | 标识对default设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对default设备做了特殊配置，则应用在default设备中会采用此处配置的属性值，并忽略在app.json5公共区域的属性值。 | 对象 | 该标签可缺省，缺省时default设备使用app.json5公共区域的属性值。 |
 |targetBundleName|标识当前包所指定的目标应用，标签值的取值规则和范围与bundleName标签一致。配置该标签的应用为具有overlay特征的应用。|字符串|该标签可缺省，缺省值为空。|
 |targetPriority|标识当前应用的优先级，取值范围为1~100。配置targetBundleName标签之后，才支持配置该标签。|数值|该标签可缺省，缺省值为1。|
 |generateBuildHash |标识当前应用的所有HAP和HSP是否由打包工具生成哈希值。<br/>该标签配置为true时，该应用下的所有HAP和HSP都会由打包工具生成对应的哈希值。系统OTA升级时，若应用的versionCode保持不变，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：当前应用下所有HAP和HSP都会由打包工具生成对应的哈希值。<br/>-&nbsp;false：当前应用下所有HAP和HSP都不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该标签仅对预置应用生效。|布尔值|该标签可缺省，缺省值为false。|
@@ -194,6 +195,7 @@ configuration标签示例：
 
    **表4** configuration标签说明
 
+<!--Table: 15%; 50%; 10%; 25%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | 应用字体大小是否跟随系统，支持的取值如下：<br/>-&nbsp;followSystem：跟随系统。<br/>-&nbsp;nonFollowSystem：不跟随系统。| 字符串 | 该标签可缺省，缺省值为nonFollowSystem。 |

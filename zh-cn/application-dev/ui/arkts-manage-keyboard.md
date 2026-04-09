@@ -247,7 +247,7 @@ struct demo_text_1 {
 
 ```
 
-在工程resources/base/profile中创建route_map.json文件。添加如下配置信息
+在工程resources/base/profile中创建route_map.json文件。添加如下配置信息。
 
 ```json5
 // route_map.json

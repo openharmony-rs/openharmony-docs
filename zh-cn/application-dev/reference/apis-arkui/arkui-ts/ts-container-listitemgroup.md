@@ -116,7 +116,7 @@ childrenMainSize(value: ChildrenMainSize)
 
 ## ListItemGroupStyle<sup>10+</sup>枚举说明
 
-List组件卡片样式枚举。
+ListItemGroup组件卡片样式枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

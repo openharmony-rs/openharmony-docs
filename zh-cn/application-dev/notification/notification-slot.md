@@ -28,7 +28,7 @@
 
 ## 接口说明
 
-通知渠道主要接口如下。其他接口介绍详情参见[API参考](../reference/apis-notification-kit/js-apis-notificationManager.md)。
+通知渠道主要接口如下。其他接口介绍详情参见[@ohos.notificationManager (NotificationManager模块)](../reference/apis-notification-kit/js-apis-notificationManager.md)。
 
 | **接口名** | **描述** |
 | ---------- | -------- |

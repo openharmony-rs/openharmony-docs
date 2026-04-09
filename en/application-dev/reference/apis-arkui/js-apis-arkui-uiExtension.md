@@ -47,13 +47,13 @@ Obtains the area where this window cannot be displayed, for example, the system 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the area.|
+| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoidance area.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-|[window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | Area where the window cannot be displayed.|
+|[window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | Avoidance area for the content of the host window.|
 
 **Error codes**
 
@@ -61,7 +61,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
 **Example**
 
@@ -84,7 +84,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
-Subscribes to the event indicating changes to the area where the window cannot be displayed.
+Subscribes to events of system avoidance area changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +95,7 @@ Subscribes to the event indicating changes to the area where the window cannot b
 | Name| Type| Mandatory| Description|
 | ------ | ---- | ---- | ---- |
 | type   | string | Yes| Event type. The value is fixed at **'avoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | Yes| Callback used to return the area information.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | Yes| Callback function that receives the information about the current avoidance area.|
 
 **Error codes**
 
@@ -103,7 +103,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
 **Example**
 
@@ -127,7 +127,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
-Unsubscribes from the event indicating changes to the area where the window cannot be displayed.
+Unsubscribes from events of system avoidance area changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,7 +146,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -186,7 +186,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
 **Example**
 
@@ -221,7 +221,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -229,7 +229,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
 **Example**
 
@@ -348,6 +348,8 @@ Creates a subwindow for this window proxy. This API uses a promise to return the
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API returns error code 801 when called.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
@@ -363,11 +365,11 @@ Creates a subwindow for this window proxy. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). and [Window Error Codes](errorcode-window.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
 
@@ -389,15 +391,15 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     // Create a subwindow.
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
       .then((subWindow: window.Window) => {
-        subWindow.setUIContent('pages/Index', (err, data) =>{
+        subWindow.setUIContent('pages/Index', (err, data) => {
           if (err && err.code != 0) {
             return;
           }
-          subWindow?.resize(300, 300, (err, data)=>{
+          subWindow?.resize(300, 300, (err, data) => {
             if (err && err.code != 0) {
               return;
             }
-            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+            subWindow?.moveWindowTo(100, 100, (err, data) => {
               if (err && err.code != 0) {
                 return;
               }
@@ -412,8 +414,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
           });
         });
       }).catch((error: BusinessError) => {
-        console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
-      })
+      console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+    })
   }
 }
 ```
@@ -427,6 +429,8 @@ Creates a subwindow under this **WindowProxy** instance. By setting **followCrea
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API returns error code 801 when called.
 
 **Parameters**
 
@@ -469,15 +473,15 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     // Create a subwindow.
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
-        subWindow.setUIContent('pages/Index', (err, data) =>{
+        subWindow.setUIContent('pages/Index', (err, data) => {
           if (err && err.code != 0) {
             return;
           }
-          subWindow?.resize(300, 300, (err, data)=>{
+          subWindow?.resize(300, 300, (err, data) => {
             if (err && err.code != 0) {
               return;
             }
-            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+            subWindow?.moveWindowTo(100, 100, (err, data) => {
               if (err && err.code != 0) {
                 return;
               }
@@ -492,8 +496,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
           });
         });
       }).catch((error: BusinessError) => {
-        console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
-      })
+      console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+    })
   }
 }
 ```
@@ -544,7 +548,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     // Occupy events.
     setTimeout(() => {
       try {
-        let promise = extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
+        let promise =
+          extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
         promise.then(() => {
           console.info(`Succeeded in occupying events`);
         }).catch((err: BusinessError) => {
@@ -578,7 +583,7 @@ Enumerates event types.
 
 ## AvoidAreaInfo
 
-Describes the information about the area where the window cannot be displayed.
+Represents the information about the avoidance area of the window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -586,8 +591,8 @@ Describes the information about the area where the window cannot be displayed.
 
 | Name| Type                | Read-Only| Optional| Description       |
 | ------ | -------------------- | ----- | ---- | ------------------ |
-| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the area where the window cannot be displayed.|
-| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Area where the window cannot be displayed.|
+| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the avoidance area of the window.|
+| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | No| No| Avoidance area for the content of the window.|
 
 ## WindowProxyProperties<sup>14+</sup>
 
@@ -632,160 +637,162 @@ This example shows how to use all the available APIs in the [EmbeddedUIExtension
 
 - The **EntryAbility** (**UIAbility**) of the sample application loads the **pages/Index.ets** file, whose content is as follows:
 
-  ```ts
-  // The UIAbility loads pages/Index.ets when started.
-  import { Want } from '@kit.AbilityKit';
+```ts
+// The UIAbility loads pages/Index.ets when started.
+import { Want } from '@kit.AbilityKit';
 
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'Message: ';
-    private want: Want = {
-      bundleName: "com.example.embeddeddemo",
-      abilityName: "ExampleEmbeddedAbility",
-    }
-
-    build() {
-      Row() {
-        Column() {
-          Text(this.message).fontSize(30)
-          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-            .width('100%')
-            .height('90%')
-            .onTerminated((info)=>{
-              this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
-            })
-            .onError((error)=>{
-              this.message = 'Error: code = ' + error.code;
-            })
-        }
-        .width('100%')
-      }
-      .height('100%')
-    }
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Message: ';
+  private want: Want = {
+    bundleName: "com.example.embeddeddemo",
+    abilityName: "ExampleEmbeddedAbility",
   }
-  ```
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message).fontSize(30)
+        EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+          .width('100%')
+          .height('90%')
+          .onTerminated((info) => {
+            this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
+          })
+          .onError((error) => {
+            this.message = 'Error: code = ' + error.code;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 - The **EmbeddedUIExtensionAbility** to start by the **EmbeddedComponent** is implemented in the **ets/extensionAbility/ExampleEmbeddedAbility** file. The file content is as follows:
 
-  ```ts
-  import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+```ts
+import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
-  const TAG: string = '[ExampleEmbeddedAbility]';
-  export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
-    
-    onCreate() {
-      console.info(TAG, `onCreate`);
-    }
+const TAG: string = '[ExampleEmbeddedAbility]';
 
-    onForeground() {
-      console.info(TAG, `onForeground`);
-    }
-
-    onBackground() {
-      console.info(TAG, `onBackground`);
-    }
-
-    onDestroy() {
-      console.info(TAG, `onDestroy`);
-    }
-
-    onSessionCreate(want: Want, session: UIExtensionContentSession) {
-      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
-      let param: Record<string, UIExtensionContentSession> = {
-        'session': session
-      };
-      let storage: LocalStorage = new LocalStorage(param);
-      session.loadContent('pages/extension', storage);
-    }
+export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
+  onCreate() {
+    console.info(TAG, `onCreate`);
   }
-  ```
+
+  onForeground() {
+    console.info(TAG, `onForeground`);
+  }
+
+  onBackground() {
+    console.info(TAG, `onBackground`);
+  }
+
+  onDestroy() {
+    console.info(TAG, `onDestroy`);
+  }
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    let param: Record<string, UIExtensionContentSession> = {
+      'session': session
+    };
+    let storage: LocalStorage = new LocalStorage(param);
+    session.loadContent('pages/extension', storage);
+  }
+}
+```
 
 - The entry page file of the **EmbeddedUIExtensionAbility** is **pages/extension.ets**, whose content is as follows:
 
-  ```ts
-  import { UIExtensionContentSession } from '@kit.AbilityKit';
-  import { uiExtension, window } from '@kit.ArkUI';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import { uiExtension, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Entry()
-  @Component
-  struct Extension {
-    @State message: string = 'EmbeddedUIExtensionAbility Index';
-    private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
-    private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
-    private extensionWindow: uiExtension.WindowProxy | undefined = this.session?.getUIExtensionWindowProxy();
-    private subWindow: window.Window | undefined = undefined;
+@Entry()
+@Component
+struct Extension {
+  @State message: string = 'EmbeddedUIExtensionAbility Index';
+  private storage: LocalStorage | undefined = this.getUIContext()?.getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
+  private extensionWindow: uiExtension.WindowProxy | undefined = this.session?.getUIExtensionWindowProxy();
+  private subWindow: window.Window | undefined = undefined;
 
-    aboutToAppear(): void {
-      this.extensionWindow?.on('windowSizeChange', (size: window.Size) => {
-          console.info(`size = ${JSON.stringify(size)}`);
+  aboutToAppear(): void {
+    this.extensionWindow?.on('windowSizeChange', (size: window.Size) => {
+      console.info(`size = ${JSON.stringify(size)}`);
+    });
+    this.extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE,
+      (data: uiExtension.RectChangeOptions) => {
+        console.info('Succeeded window rect changes. Data: ' + JSON.stringify(data));
       });
-      this.extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, (data: uiExtension.RectChangeOptions) => {
-          console.info('Succeeded window rect changes. Data: ' + JSON.stringify(data));
-      });
-      this.extensionWindow?.on('avoidAreaChange', (info: uiExtension.AvoidAreaInfo) => {
-          console.info(`type = ${JSON.stringify(info.type)}, area = ${JSON.stringify(info.area)}`);
-      });
-    }
-
-    aboutToDisappear(): void {
-      this.extensionWindow?.off('windowSizeChange');
-      this.extensionWindow?.off('rectChange');
-      this.extensionWindow?.off('avoidAreaChange');
-    }
-
-    build() {
-      Column() {
-        Text(this.message)
-          .fontSize(20)
-          .fontWeight(FontWeight.Bold)
-        Button("Obtain Component Size").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
-          let rect = this.extensionWindow?.properties.uiExtensionHostWindowProxyRect;
-          console.info(`EmbeddedComponent position and size: ${JSON.stringify(rect)}`);
-        })
-        Button("Obtain Avoid Area Info").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
-          let avoidArea: window.AvoidArea | undefined = this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`System avoid area: ${JSON.stringify(avoidArea)}`);
-        })
-        Button("Create Subwindow").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
-          let subWindowOpts: window.SubWindowOptions = {
-              'title': 'This is a subwindow',
-              decorEnabled: true
-          };
-          this.extensionWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
-              .then((subWindow: window.Window) => {
-                  this.subWindow = subWindow;
-                  this.subWindow.loadContent('pages/Index', this.storage, (err, data) =>{
-                      if (err && err.code != 0) {
-                          return;
-                      }
-                      this.subWindow?.resize(300, 300, (err, data)=>{
-                          if (err && err.code != 0) {
-                              return;
-                          }
-                          this.subWindow?.moveWindowTo(100, 100, (err, data)=>{
-                              if (err && err.code != 0) {
-                                  return;
-                              }
-                              this.subWindow?.showWindow((err, data) => {
-                                  if (err && err.code == 0) {
-                                      console.info(`The subwindow has been shown!`);
-                                  } else {
-                                      console.error(`Failed to show the subwindow!`);
-                                  }
-                              });
-                          });
-                      });
-                  });
-              }).catch((error: BusinessError) => {
-                  console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
-              })
-        })
-      }.width('100%').height('100%')
-    }
+    this.extensionWindow?.on('avoidAreaChange', (info: uiExtension.AvoidAreaInfo) => {
+      console.info(`type = ${JSON.stringify(info.type)}, area = ${JSON.stringify(info.area)}`);
+    });
   }
-  ```
+
+  aboutToDisappear(): void {
+    this.extensionWindow?.off('windowSizeChange');
+    this.extensionWindow?.off('rectChange');
+    this.extensionWindow?.off('avoidAreaChange');
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+      Button("Obtain Component Size").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+        let rect = this.extensionWindow?.properties.uiExtensionHostWindowProxyRect;
+        console.info(`EmbeddedComponent position and size: ${JSON.stringify(rect)}`);
+      })
+      Button("Obtain Avoid Area Info").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+        let avoidArea: window.AvoidArea | undefined =
+          this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
+        console.info(`Avoidance area: ${JSON.stringify(avoidArea)}`);
+      })
+      Button("Create Subwindow").width('90%').margin({ top: 5, bottom: 5 }).fontSize(16).onClick(() => {
+        let subWindowOpts: window.SubWindowOptions = {
+          'title': 'This is a subwindow',
+          decorEnabled: true
+        };
+        this.extensionWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+          .then((subWindow: window.Window) => {
+            this.subWindow = subWindow;
+            this.subWindow.loadContent('pages/Index', this.storage, (err, data) => {
+              if (err && err.code != 0) {
+                return;
+              }
+              this.subWindow?.resize(300, 300, (err, data) => {
+                if (err && err.code != 0) {
+                  return;
+                }
+                this.subWindow?.moveWindowTo(100, 100, (err, data) => {
+                  if (err && err.code != 0) {
+                    return;
+                  }
+                  this.subWindow?.showWindow((err, data) => {
+                    if (err && err.code == 0) {
+                      console.info(`The subwindow has been shown!`);
+                    } else {
+                      console.error(`Failed to show the subwindow!`);
+                    }
+                  });
+                });
+              });
+            });
+          }).catch((error: BusinessError) => {
+          console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+        })
+      })
+    }.width('100%').height('100%')
+  }
+}
+```
 
 - Add an item to **extensionAbilities** in the **module.json5** file of the sample application. The details are as follows:
   ```json

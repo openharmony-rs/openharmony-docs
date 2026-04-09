@@ -203,7 +203,7 @@ struct PanGestureWithFingerCount {
   @State offsetY: number = 0
   @State positionX: number = 0
   @State positionY: number = 0
-  @State fingerCount: number = 0 //用于记录参与手势的触点数量
+  @State fingerCount: number = 0 // 用于记录参与手势的触点数量
   private panOption: PanGestureOptions = new PanGestureOptions({
     direction: PanDirection.All,
     fingers: 1
@@ -236,7 +236,7 @@ struct PanGestureWithFingerCount {
               console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`)
               this.offsetX = this.positionX + event.offsetX
               this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量,记录下参与当前手势的有效触点的数量
+              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量，记录下参与当前手势的有效触点的数量
             }
           })
           .onActionEnd((event: GestureEvent) => {

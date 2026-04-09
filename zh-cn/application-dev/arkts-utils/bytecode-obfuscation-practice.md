@@ -110,4 +110,4 @@
 
 > **说明**
 >
-> HSP生成obfuscation.txt的规则来源，仅来自于当前模块的consumer-rules.txt文件，不包含依赖模块的consumer-rules.txt文件或obfuscation.txt文件。
+> HSP生成obfuscation.txt的规则来源，仅来自当前模块的consumer-rules.txt文件，不包含依赖模块的consumer-rules.txt文件或obfuscation.txt文件。

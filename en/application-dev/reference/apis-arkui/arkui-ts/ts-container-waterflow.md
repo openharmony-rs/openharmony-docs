@@ -27,7 +27,7 @@ Child components can be dynamically generated using rendering control types [if/
 >  **NOTE**
 >
 >  When the **visibility** attribute of a child component of **WaterFlow** is set to **None**, this child component is not displayed in the container, but its **columnsGap**, **rowsGap**, and **margin** settings are still effective.
->  If there are a large number of child components,you are advised to adopt methods such as lazy loading, data caching, component reuse, fixed dimensions, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
+>  If there are a large number of child components, you are advised to adopt methods such as lazy loading, data caching, component reuse, fixed dimensions, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
 >
 > In vertical layout mode, **WaterFlow** calculates the cumulative height of child components in each column and places new child components in the column with the smallest cumulative height to maintain a compact overall layout.
 >
@@ -509,6 +509,26 @@ Sets whether to synchronously load all child components in the **WaterFlow** com
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enable   | boolean | Yes  | Whether to synchronously load all child components in the **WaterFlow** component.<br>**true**: synchronous loading; false: asynchronous loading<br>Default value: **true**<br>**NOTE**<br>When this parameter is set to **false**, in the first display or [scrollToIndex](ts-container-scroll.md#scrolltoindex) jumps without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the **WaterFlow** component are delayed to the next frame for layout.|
 
+### supportEmptyBranchInLazyLoading
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+Defines whether the **WaterFlow** component supports the generation of empty branch nodes that do not contain any child components using the **if/else** rendering control syntax in **LazyForEach** or **Repeat**. If this attribute is not set, empty branch nodes are not supported. This attribute cannot be updated after being set. Therefore, you cannot switch between the behavior of supporting empty branches and the behavior of not supporting empty branches after setting this attribute.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                              |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | Yes  | Whether the current **WaterFlow** component supports the use of the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) rendering syntax in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to generate an empty branch node that contains no child component.<br>**true**: yes; **false**: no<br>If the value is **undefined**, it is processed as **false**.|
+
 ## Events
 
 In addition to [universal events](ts-component-general-events.md) and [scrollable component common events](ts-container-scrollable-common.md#events), the following events are also supported.
@@ -934,7 +954,7 @@ struct WaterFlowDemo {
           .backgroundColor(this.colors[item % this.colors.length])
         }, (item: string) => item)
       }
-      .columnsTemplate('1fr 1fr') // Set the layout of two columns with equal width.
+      .columnsTemplate('1fr 1fr')    // Set the layout of two columns with equal width.
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -1428,7 +1448,7 @@ struct WaterFlowDemo {
           }, (item: string) => item)
         }
         .id('waterflow') // Set the ID for capturing snapshots.
-        .columnsTemplate('1fr '.repeat(this.columns)) // Dynamically generate a column template. For example, '1fr 1fr 1fr' indicates three columns with the same width.
+        .columnsTemplate('1fr '.repeat(this.columns))  // Dynamically generate a column template. For example, '1fr 1fr 1fr' indicates three columns with the same width.
         .backgroundColor(0xFAEEE0)
         .width('100%')
         .height('100%')
@@ -1690,7 +1710,7 @@ function buildText(params: Params) {
 @Entry
 @Component
 struct Index {
-  @State message1: string = 'You have reached the bottom.';
+  @State message1: string = 'End';
   @State message2: string = 'Load more';
   @State colors: number[] = [0xD5D5D5, 0x7F7F7F, 0xF7F7F7];
   @State minSize: number = 80;
@@ -1860,7 +1880,7 @@ struct WaterFlowDemo {
 
 ![waterFlow_refresh](figures/waterFlow_refresh.gif)
 
-### Example 9: Configuring the Number of Columns in the WaterFlow Component Based on Breakpoints)
+### Example 9: Configuring the Number of Columns in the WaterFlow Component Based on Breakpoints
 
 In API version 22 and later versions, this example shows how to configure the number of columns in the **WaterFlow** component based on breakpoints.
 
@@ -2049,7 +2069,7 @@ struct WaterFlowContentSizeDemo {
 
 ### Example 11: Setting a Scrolling Event
 
-This example obtains a [UIWaterFlowEvent](#uiwaterflowevent19) instance via [getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19) on a FrameNode and sets scroll event callbacks for a **WaterFlow** component. This approach is intended for scenarios where the page code cannot be directly modified to use declarative callbacks.
+This example obtains a [UIWaterFlowEvent](#uiwaterflowevent19) instance via [getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19) on a **FrameNode** and sets scroll event callbacks for a **WaterFlow** component. This approach is intended for scenarios where the page code cannot be directly modified to use declarative callbacks.
 
 The **UIWaterFlowEvent** API is added since API version 19.
 

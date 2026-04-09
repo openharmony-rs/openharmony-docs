@@ -55,7 +55,7 @@
 
 1. 指定密钥别名。
 
-2. 指定密钥删除[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+2. 使用[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置密钥删除算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
 
 3. 调用[deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
 

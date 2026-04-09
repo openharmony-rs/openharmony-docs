@@ -38,3 +38,5 @@ Specifically, the secure access mechanism is implemented by system Pickers and s
 - [Security components](security-component-overview.md)
 
   Security components are a set of button-like ArkUI components provided with certain permissions. You can integrate them to your application UI. When a security component is tapped, the application is temporarily granted with the related permission. For example, if your application needs to access pasteboard data, you can use **PasteButton** in the UI. After the user taps the **PasteButton** button, the application can access the pasteboard data without displaying any permission request dialog box. This ensures security while minimizing the interference of pop-ups to users.
+
+<!--RP1--> <!--RP1End-->

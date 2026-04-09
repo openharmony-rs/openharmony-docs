@@ -33,8 +33,8 @@ You can refer to the corresponding development guide and samples based on your d
 
 | Name| Description|
 | -- | -- |
-| [camera.h](capi-camera-h.md) | Declares the basic concepts of the camera.|
-| [camera_device.h](capi-camera-device-h.md) | Declares the basic concepts of the camera device.|
+| [camera.h](capi-camera-h.md) | Defines the basic APIs of the camera.|
+| [camera_device.h](capi-camera-device-h.md) | Defines the basic APIs of the camera device.|
 | [camera_input.h](capi-camera-input-h.md) | Declares the camera input concepts.|
 | [camera_manager.h](capi-camera-manager-h.md) | Declares the camera manager concepts.|
 | [capture_session.h](capi-capture-session-h.md) | Declares the capture session concepts.|

@@ -32,7 +32,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 ## Parameter<sup>20+</sup>
 
-无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。详见[无障碍节点元素可执行的操作](./js-apis-accessibility-sys.md#accessibilityaction)。
+无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。详见[AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)（无障碍节点元素可执行的操作）。
 
 **系统接口**：此接口为系统接口。
 
@@ -55,7 +55,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## AccessibilityGrid<sup>20+</sup>
 
-辅助功能网格信息。详见[AccessibilityElement.currentItem](#accessibilityelement)。
+辅助功能网格信息。详见[AccessibilityElement](#accessibilityelement)中的属性currentItem。
 
 **系统接口**：此接口为系统接口。
 
@@ -69,7 +69,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## AccessibilitySpan<sup>20+</sup>
 
-辅助功能超链接文本信息。详见[AccessibilityElement.spans](#accessibilityelement)。
+辅助功能超链接文本信息。详见[AccessibilityElement](#accessibilityelement)中的属性spans。
 
 **系统接口**：此接口为系统接口。
 
@@ -988,7 +988,7 @@ export default class AccessibilityManager {
 | valueMin<sup>20+</sup>             | number                                                             | 否  | 是  | 最小值。<br>默认值：0。|
 | valueNow<sup>20+</sup>             | number                                                             | 否  | 是  | 当前值。<br>默认值：0。|
 | windowId<sup>20+</sup>             | number                                                             | 否  | 是  | 窗口ID。<br>默认值：-1。|
-| offset<sup>20+</sup>             | number              | 否  | 是  | 内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量。<br>默认值：0。|
+| offset<sup>20+</sup>             | number              | 否  | 是  | 内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量，单位为像素（px）。<br>默认值：0。|
 | textType<sup>20+</sup>             | string                                                             | 否  | 是  | 元素的无障碍文本类型，由组件的accessibilityTextHint属性配置。|
 | accessibilityText<sup>20+</sup> | string                                                  | 否  | 是  | 元素的无障碍文本信息。|
 | accessibilityStateDescription<sup>23+</sup> | string                                      | 否  | 是  | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。|

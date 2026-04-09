@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。具体用法请参考[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
+绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，包含所有绘制组件的通用属性。具体用法请参考[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
 
 
 ## 创建绘制组件
@@ -309,10 +309,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
-  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
-  //开启抗锯齿
+  // 开启抗锯齿
   Circle()
     .width(150)
     .height(200)
@@ -323,10 +323,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   ![无标题](figures/无标题.png)
 
-  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
-  //关闭抗锯齿
+  // 关闭抗锯齿
   Circle()
     .width(150)
     .height(200)
@@ -547,7 +547,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   >
   > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
 
-  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -555,9 +555,9 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆
         Circle({ width: 150, height: 150 })
-        //绘制一个直径为150、线条为红色虚线的圆环
+        // 绘制一个直径为150、线条为红色虚线的圆环
         Circle()
           .width(150)
           .height(200)
@@ -577,10 +577,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 >  **说明：**
 >
-> [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
+> [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
-  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -589,7 +589,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column({ space: 10 }) {
         // ...
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆
         Circle()
           .width(150)
           .height(200)

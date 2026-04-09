@@ -317,9 +317,9 @@ struct OrientationTestView {
   private windowClass = (this.context as common.UIAbilityContext).windowStage.getMainWindowSync();
   setOrientation(orientation: number) {
     this.windowClass.setPreferredOrientation(orientation).then(() => {
-      console.log('setWindowOrientation: ' + orientation + ' Succeeded.');
+      console.info('setWindowOrientation: ' + orientation + ' Succeeded.');
     }).catch((err: BusinessError) => {
-      console.log('setWindowOrientation: ' + orientation + ' Failed. Cause: ' + JSON.stringify(err));
+      console.error('setWindowOrientation: ' + orientation + ' Failed. Cause: ' + JSON.stringify(err));
     })
   }
   build() {
@@ -444,7 +444,7 @@ supportWindowMode支持的取值如下：
 
 module.json5配置示例如下：
 
-```json
+```json5
 {
   "module": {
     "abilities": [
@@ -517,7 +517,7 @@ module.json5配置示例如下：
       try {
         // 注册窗口状态变化监听
         windowClass.on('windowStatusChange', (windowStatusType: window.WindowStatusType) => {
-          console.log(`status change, new status: ${windowStatusType}`);
+          console.info(`status change, new status: ${windowStatusType}`);
         });
       } catch (error) {
         console.error(`status listen err: ${JSON.stringify(error)}`);
@@ -639,8 +639,8 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
   return;
   }
   console.info('Succeeded in loading the content.');
-  let color1: string = '#8800FF33'; //采用ARGB方式
-  let color2: ColorMetrics = ColorMetrics.numeric(0x88112233);  //采用ColorMetrics方式
+  let color1: string = '#8800FF33'; // 采用ARGB方式
+  let color2: ColorMetrics = ColorMetrics.numeric(0x88112233);  // 采用ColorMetrics方式
   try {
     windowClass?.setWindowBackgroundColor(color1);
     windowClass?.setWindowBackgroundColor(color2);
@@ -654,10 +654,69 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 当前不支持设置页面级亮度，仅支持设置窗口级亮度。
 
-应用若想实现页面级亮度调整，可以在进入特定页面时在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)调整亮度，在退出特定页面时，在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，恢复成系统默认亮度。
+应用若想实现页面级亮度调整，可以在进入特定页面时在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)调整亮度，在退出特定页面时，在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，恢复为系统屏幕亮度。
 
-## 如何恢复系统默认亮度
+## 如何恢复系统屏幕亮度
 
-针对Phone、Tablet设备，应用可以调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，即可恢复为系统默认亮度。
+针对Phone、Tablet设备，应用可以调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，即可恢复为系统屏幕亮度。
 
-针对PC/2in1设备，由于窗口亮度和系统亮度已实现归一化，故调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口后将直接改变系统亮度，目前没有可以恢复设置窗口亮度前的方法。
+针对PC/2in1设备，由于窗口亮度和系统亮度已实现归一化，故调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口后将直接改变系统亮度，目前尚无恢复至调用前窗口亮度的方法。
+
+## 如何正常获取顶层窗口
+
+**问题现象**
+
+当使用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)获取应用最顶层窗口时，获取到了正在销毁的子窗。
+
+**产生原因**
+
+当使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗时，未等待其销毁完成即调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)，导致获取到了正在销毁的子窗。
+
+**解决措施**
+
+在使用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)获取应用最顶层窗口前，应确保子窗销毁、窗口创建等操作已完成。
+
+**示例代码**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let lastWindow: window.Window | undefined = undefined;
+// 不建议写法
+try {
+  // 请先获取window实例
+  windowClass.destroyWindow();
+  try {
+    window.getLastWindow(this.context).then((topWindow) => {
+      lastWindow = topWindow;
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to obtain the last window. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (exception) {
+    console.error(`Failed to obtain the last window. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+} catch (exception) {
+  console.error(`Failed to destroy. Cause code: ${exception.code}, message: ${exception.message}`);
+};
+
+// 建议写法
+try {
+  // 请先获取window实例
+  windowClass.destroyWindow().then(() => {
+    try {
+      window.getLastWindow(this.context).then((topWindow) => {
+        lastWindow = topWindow;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the last window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to obtain the last window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to destroy. Cause code: ${exception.code}, message: ${exception.message}`);
+};
+```

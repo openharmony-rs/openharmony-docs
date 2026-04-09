@@ -58,7 +58,9 @@ This error code is reported when the provided ID points to a non-existent, detac
 
 **Possible Causes**
 
-The provided ID is incorrect, or the component has been destroyed.
+- The provided ID is incorrect, or the component has been destroyed.
+
+- Focus is requested for a component that is not focusable. For details about such components, see [Component Focusability](../../ui/arkts-common-events-focus-event.md#component-focusability).
 
 **Solution**
 

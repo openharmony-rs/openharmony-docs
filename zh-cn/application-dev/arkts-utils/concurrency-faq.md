@@ -71,13 +71,14 @@
 
    3. 如果调用态日志和执行态日志时间间隔较久，且应用关注任务的执行时机，可以按照以下步骤继续分析。
 
-      1. 查看是否发生大量TaskPool任务堆积未执行的情况。如果在较短时间内执行大量任务（出现大量调用态日志），后执行的任务需要等待前置任务执行完。此时可以检查TaskPool的扩容情况，如果在调用态日志打印之前，TaskPool工作线程数量已扩容到接近上限（上限数量为日志片段log2中的maxThreads字段），则可能是短时间内任务数量太多导致，应用可以通过合理设置优先级将重要任务和有时效要求的任务优先执行。
+      1. 查看是否发生大量TaskPool任务堆积未执行的情况。如果在较短时间内执行大量任务（出现大量调用态日志），后执行的任务需要等待前置任务执行完。此时可以检查TaskPool的扩容情况，如果在调用态日志打印之前，TaskPool工作线程数量已扩容到接近上限（上限数量为日志片段log2中的maxNum值），则可能是短时间内任务数量太多导致，应用可以通过合理设置优先级将重要任务和有时效要求的任务优先执行。
 
       2. 查看前置执行的TaskPool任务是否本身耗时较长或者发生阻塞。如果前置任务本身耗时较长，应用可以通过合理设置优先级解决。如果前置任务发生了意料之外的阻塞（一段时间后阻塞解除），应用需要排查自身业务逻辑。
 
    ```ts
    // hilog 日志片段（模拟），格式如下，具体数值由应用运行时决定
    // log1： 大量任务提交
+   // 其中taskId为可变值表示任务id，priority为可变值表示优先级，以实际程序打印为准。
    taskpool:: Task Allocation: taskId, priority
    taskpool:: Task Allocation: taskId, priority
    taskpool:: Task Allocation: taskId, priority
@@ -85,9 +86,12 @@
    taskpool:: Task Allocation: taskId, priority
    ...
    // log2: 扩容日志
-   taskpool: max:, create:, total:
+   // 其中 maxNum为可变值表示最大支持的taskpool线程数，createNum为可变值表示当前创建的taskpool线程数，totalNum为可变值表示当前创建出来的taskpool线程总数，以实际程序打印为准。不同版本因为日志限流优化等原因，日志会进行细微调整，可能呈现的日志如下：
+   版本1: taskpool:: maxThreads: maxNum, created num: createNum, total num: totalNum
+   版本2: taskpool:: max: maxNum, create: createNum, total: totalNum
    // log3: 执行态日志
-   taskpool:: Task Perform: name, taskId, runningLoop:
+   // 其中name为可变值表示执行的函数名，taskId为可变值表示任务id，runningLoopId为可变值表示线程创建出来的loop的id，以实际程序打印为准。
+   taskpool:: Task Perform: name, taskId, runningLoop: runningLoopId
    ```
 
 3. **TaskPool任务执行时是否发生异常**。
@@ -169,19 +173,28 @@
 **场景示例**
 
 如果问题场景对应的TaskPool任务是串行队列任务，查看该串行队列内前面任务的执行情况。如日志片段1所示该串行队列有四个任务，问题场景对应的是第四个任务，查看日志片段2发现第二个任务执行了2s，对于应用业务逻辑是不正常的。
+
 ```ts
 // hilog 日志片段1（模拟）
 // seqRunner共有四个任务
+// 其中389508780288为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: taskId 389508780288 in seqRunner 393913878464 immediately.
+// 其中394062838784为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: add taskId: 394062838784 to seqRunner 393913878464
+// 其中393918679936为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: add taskId: 393918679936 to seqRunner 393913878464
+// 其中393918673408为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: add taskId: 393918673408 to seqRunner 393913878464
 
 // hilog 日志片段2（模拟）
 // 查看第二个任务, 发现任务执行到执行结束间隔2s
+// 其中394062838784为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 18:28:28.223 taskpool:: taskId 394062838784 in seqRunner 393913878464 immediately.
+// 其中name为可变值表示执行的函数名, 394062838784为可变值表示任务id，3959344048为可变值表示线程创建出来的loop的id，以实际程序打印为准。
 18:28:28.224 taskpool:: Task Perform: name, 394062838784, runningLoop: 3959344048
-18:28:30.243 taskpool:: Task Perform End: 394062838784, performResult : Successful
+// 其中394062838784为可变值表示任务id，12为可变值表示日期 18:28:28.240为可变值表示时间，以实际程序打印为准。不同版本因为日志限流优化等原因，日志会进行细微调整，可能呈现的日志如下：
+版本1: 18:28:30.243 taskpool:: Task Perform End: 394062838784
+版本2: 18:28:30.243 taskpool:: Task Perform End: 394062838784, 12 18:28:28.240
 ```
 
 **解决方案**

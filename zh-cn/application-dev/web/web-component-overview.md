@@ -1,8 +1,8 @@
 # ArkWeb简介
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -27,7 +27,7 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 - 与应用界面交互：自定义文本选择菜单、上下文菜单、文件上传界面等与应用界面交互能力。
 
-- App通过JavaScriptProxy，与Web页面进行JavaScript交互。
+- 应用通过JavaScriptProxy，与Web页面进行JavaScript交互。
 
 - 安全与隐私：无痕浏览模式、广告拦截、坚盾守护模式等。
 
@@ -59,7 +59,9 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
   | OpenHarmony 4.1-5.1 | M114 |
   | OpenHarmony 6.0 | M132（默认，推荐使用）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)） |
   | OpenHarmony开发套件（基于API 23） | M132 |
+<!--RP3--><!--RP3End-->
 
+<!--RP4--><!--RP4End-->
 ## 相关实例
 
 针对Web组件开发，有以下相关实例可供参考：

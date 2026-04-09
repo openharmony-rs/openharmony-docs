@@ -23,8 +23,14 @@ The struct describes the image effect parameters.
 ## Summary
 
 ### Member Variables
-
+**The following table lists the declarations supporting C++ syntax.**
 | Name| Description|
 | -- | -- |
 | [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType = [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype)::EFFECT_DATA_TYPE_UNKNOWN | Parameter type. The default value is **UNKNOWN**.|
 | [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue = { 0 } | Parameter value. The default value is null.|
+
+**The following table lists the declarations supporting C syntax.**
+| Name| Description|
+| -- | -- |
+| [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType  | Parameter type.|
+| [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue  | Value.|

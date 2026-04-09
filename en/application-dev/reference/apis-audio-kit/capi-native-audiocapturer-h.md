@@ -28,8 +28,8 @@ The file declares the functions related to an audio capturer.
 | -- | -- | -- |
 | [OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)](#oh_audiocapturer_release) | - | Releases an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer)](#oh_audiocapturer_start) | - | Starts an audio capturer to start capturing audio data.|
-| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#oh_audiocapturer_pause) | - | Pauses an audio capturer.|
-| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#oh_audiocapturer_stop) | - | Stops an audio capturer, ceasing the input audio stream.|
+| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#oh_audiocapturer_pause) | - | Pauses an audio capturer. You are advised to use the pause function if you need to resume audio recording later.|
+| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#oh_audiocapturer_stop) | - | Stops an audio capturer, ceasing the input audio stream. You are advised to use the stop function if you need to terminate recording completely.|
 | [OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer)](#oh_audiocapturer_flush) | - | Flushes audio data captured by an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetCurrentState(OH_AudioCapturer* capturer, OH_AudioStream_State* state)](#oh_audiocapturer_getcurrentstate) | - | Obtains the state of an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetLatencyMode(OH_AudioCapturer* capturer, OH_AudioStream_LatencyMode* latencyMode)](#oh_audiocapturer_getlatencymode) | - | Obtains the latency mode of an audio capturer.|
@@ -49,6 +49,8 @@ The file declares the functions related to an audio capturer.
 | [typedef void (\*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error)](#oh_audiocapturer_onerrorcallback) | OH_AudioCapturer_OnErrorCallback | Defines the callback for error events of an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetFastStatus(OH_AudioCapturer* capturer, OH_AudioStream_FastStatus* status)](#oh_audiocapturer_getfaststatus) | - | Obtains the running status of an audio capturer to determine whether it is running in low-latency mode.|
 | [typedef void (\*OH_AudioCapturer_OnFastStatusChange)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_FastStatus status)](#oh_audiocapturer_onfaststatuschange) | OH_AudioCapturer_OnFastStatusChange | Defines a callback function for low-latency status changes during audio recording.|
+| [typedef void (\*OH_AudioCapturer_OnPlaybackCaptureStartCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_PlaybackCaptureStartState state)](#oh_audiocapturer_onplaybackcapturestartcallback) | OH_AudioCapturer_OnPlaybackCaptureStartCallback | Defines the callback function for the starting result of internal audio recording (capturing sound from the applications on the device) during audio recording. This API is currently not available for public use.|
+| [OH_AudioStream_Result OH_AudioCapturer_RequestPlaybackCaptureStart(OH_AudioCapturer* capturer, OH_AudioCapturer_OnPlaybackCaptureStartCallback callback, void* userData)](#oh_audiocapturer_requestplaybackcapturestart) | - | Asynchronously requests to start the internal recording stream. This API works in non-blocking mode, which means that the system continues to process user authorization and start the internal recording stream after receiving a start request.<br> The final result is returned through a callback. This API is currently not available for public use.|
 
 ## Function Description
 
@@ -114,7 +116,7 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 **Description**
 
-Pauses an audio capturer.
+Pauses an audio capturer. You are advised to use the pause function if you need to resume audio recording later.
 
 **Required permissions**: ohos.permission.MICROPHONE
 
@@ -141,7 +143,7 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 **Description**
 
-Stops an audio capturer, ceasing the input audio stream.
+Stops an audio capturer, ceasing the input audio stream. You are advised to use the stop function if you need to terminate recording completely.
 
 **Required permissions**: ohos.permission.MICROPHONE
 
@@ -517,7 +519,7 @@ Defines the callback used to read audio data.
 | Name| Description|
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
-|  void* userData | Pointer to the data storage area customized by the application.|
+|  void* userData | Pointer to the data storage region customized by an application, allowing the application to transfer data to itself.|
 |  void* audioData | Pointer to the captured data storage area, which is used by the application to read captured data.|
 | int32_t audioDataSize | Length of the captured data.|
 
@@ -631,3 +633,49 @@ Defines a callback function for low-latency status changes during audio recordin
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
 | void* userData | Pointer to the data storage area customized by the application.|
 | [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | Low-latency status.|
+
+### OH_AudioCapturer_OnPlaybackCaptureStartCallback()
+
+```c
+typedef void (*OH_AudioCapturer_OnPlaybackCaptureStartCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_PlaybackCaptureStartState state)
+```
+
+**Description**
+
+Defines the callback function for the starting result of internal audio recording (capturing sound from the applications on the device) during audio recording. This API is currently not available for public use.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
+| void\* userData | Pointer to the custom data storage region of an application via [OH_AudioCapturer_RequestPlaybackCaptureStart](capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart).|
+| [OH_AudioStream_PlaybackCaptureStartState](capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturestartstate) state | Whether the internal recording request is successful.|
+
+### OH_AudioCapturer_RequestPlaybackCaptureStart()
+
+```c
+OH_AudioStream_Result OH_AudioCapturer_RequestPlaybackCaptureStart(OH_AudioCapturer* capturer, OH_AudioCapturer_OnPlaybackCaptureStartCallback callback, void* userData)
+```
+
+**Description**
+
+Asynchronously requests to start the internal recording stream. This API works in non-blocking mode, which means that the system continues to process user authorization and start the internal recording stream after receiving a start request.<br> The final result is returned through a callback. This API is currently not available for public use.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
+| [OH_AudioCapturer_OnPlaybackCaptureStartCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onplaybackcapturestartcallback) callback | Callback function used to receive the final result of the start request.|
+| void* userData | Pointer to the data storage region customized by an application. This struct will be passed to the callback function.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: Invalid capturer or callback.<br>         **AUDIOSTREAM_ERROR_ILLEGAL_STATE**: The stream is either active or has been released.<br>         **AUDIOSTREAM_ERROR_SYSTEM**: Internal system error, for example, abnormal audio error.|

@@ -43,10 +43,6 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 > **说明：**
 >
-> 当USB服务正常运行但无设备接入时，那么将会返回一个空的列表，这是正常情况，表示调用成功但当前没有连接的USB设备。
->
-> 在USB主机模式未开启、USB服务未正确初始化、USB服务连接失败（如开发者模式关闭）、权限不足或其他系统错误时，接口会返回`undefined`，注意需要对接口返回值做判空处理。
->
 > 三方应用没有权限获取serial字段读取设备序列号，需要通过requestRight申请权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -166,7 +162,7 @@ function connectDevice() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
@@ -214,7 +210,7 @@ function hasRight(): boolean {
     return false;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
@@ -261,9 +257,11 @@ function requestRight() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`requestRight failed : ${error}`);
   });
 }
 ```
@@ -307,7 +305,7 @@ function removeRight(): boolean {
     return false;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   if (usbManager.removeRight(device.name)) {
     console.info(`Succeed in removing right`);
     return true;
@@ -362,10 +360,10 @@ function claimInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number= usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
 }
@@ -415,10 +413,10 @@ function releaseInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
@@ -465,10 +463,10 @@ function setConfiguration() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let config: usbManager.USBConfiguration = device.configs[0];
+  let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: number= usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
 }
@@ -520,10 +518,10 @@ function setInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
@@ -569,8 +567,8 @@ function getRawDescriptor() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
 }
 ```
@@ -614,8 +612,8 @@ function getFileDescriptor() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: number = usbManager.closePipe(devicepipe);
@@ -685,8 +683,8 @@ function controlTransfer() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`controlTransfer = ${ret}`);
   })
@@ -753,8 +751,8 @@ function usbControlTransfer() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`usbControlTransfer = ${ret}`);
   })
@@ -816,18 +814,23 @@ function bulkTransfer() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
-
+  if (!usbManager.hasRight(device.name)) {
+    console.error(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  for (let i = 0; i < device.configs[0].interfaces.length; i++) {
-    if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
-      let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
-      let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
+  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+    if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
+      let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: number = usbManager.claimInterface(devicepipe, interfaces);
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
+      }).catch((error: BusinessError) => {
+        console.error(`bulkTransfer failed : ${error}`);
       });
     }
   }
@@ -884,15 +887,19 @@ function usbSubmitTransfer() {
     console.info(`device list is empty`);
     return;
   }
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
+  if (!usbManager.hasRight(device.name)) {
+    console.info(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   // 获取endpoint端点地址。
-  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+  let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
   // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -967,15 +974,23 @@ function usbCancelTransfer() {
     console.info(`device list is empty`);
     return;
   }
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe === undefined) {
+    console.info(`connect device fail`);
+    return;
+  }
   // 获取endpoint端点地址。
-  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+  let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
+  if (endpoint === undefined) {
+    console.info(`invalid endpoint`);
+    return;
+  }
   // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1045,8 +1060,8 @@ function closePipe() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
 }
@@ -1092,7 +1107,7 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.hasAccessoryRight(accList[0])
+  let flag = usbManager.hasAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `hasAccessoryRight success, ret:${flag}`)
 } catch (error) {
   hilog.info(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
@@ -1139,7 +1154,7 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `requestAccessoryRight success, ret:${flag}`)
 } catch (error) {
   hilog.info(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
@@ -1180,8 +1195,8 @@ cancelAccessoryRight(accessory: USBAccessory): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  usbManager.cancelAccessoryRight(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  usbManager.cancelAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
 } catch (error) {
   hilog.info(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
@@ -1263,14 +1278,14 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  let handle = usbManager.openAccessory(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  let handle = usbManager.openAccessory(accList?.[0])
   hilog.info(0, 'testTag ui', `openAccessory success`)
   let arrayBuffer = new ArrayBuffer(4096);
-  let readLength = fs.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
+  let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
   hilog.info(0, 'testTag ui', 'readSync ret: ' + readLength.toString(10));
 } catch (error) {
   hilog.info(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
@@ -1309,8 +1324,8 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  let handle = usbManager.openAccessory(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  let handle = usbManager.openAccessory(accList?.[0])
   usbManager.closeAccessory(handle)
   hilog.info(0, 'testTag ui', `closeAccessory success`)
 } catch (error) {
@@ -1365,8 +1380,8 @@ function resetUsbDevice() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
     console.info(`resetUsbDevice  = ${ret}`);

@@ -53,10 +53,10 @@ aa help
 ```bash
 # 显示启动Ability。
 # 如果需要启动分身应用，可以使用[--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>]来指定分身应用的索引。
-aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # 隐式启动Ability。如果命令中的参数都不填，会导致启动失败。
-aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u <userId>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>] 
 ```
 
   **启动命令参数列表**
@@ -71,6 +71,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -U | 可选参数，URI。<br>**说明：** 仅支持传递字符串。 |
   | -A | 可选参数，action。      |
   | -e | 可选参数，entity。      |
+  | -u | 可选参数，userId，表示用户ID。在多用户场景下，用于区分同一设备上不同用户账号下的应用。<br>**说明：** 从API版本26.0.0开始，支持该参数。|
   | -t | 可选参数，type。        |
   | --pi  | 可选参数，整型类型键值对。<br>**说明：** 仅支持无符号整型值。     |
   | --pb  | 可选参数，布尔类型键值对。     |
@@ -893,11 +894,15 @@ The target application is under control.
 
 - 目标应用疑似存在恶意行为，受到应用市场管控不允许启动。
 - 目标应用是系统预装应用，并且使用本地编译的版本进行覆盖安装。
+- 目标应用开发证书过期，拉起时被系统管控拦截，此时会有系统弹框提示“应用已过期”。
+- 目标应用刚完成应用克隆，处于数据恢复中，此时会有系统弹框提示“数据恢复中，请稍后再试”。
 
 **处理步骤**
 
 - 针对可能原因1，建议卸载该应用。
 - 针对可能原因2，需要先卸载该应用，再使用本地编译的版本进行安装。
+- 针对可能原因3，需要[更换证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-cert-faq-0000002329508280#section11365113515519)。
+- 针对可能原因4，需要等待数据恢复完成后再尝试启动。
 
 ### 10106106 目标应用被EDM管控
 

@@ -1,8 +1,8 @@
 # Permissions for Enterprise Applications
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -20,7 +20,7 @@ Enterprise applications have the following characteristics:
 For details about how to request the permissions for enterprise applications, see [declaring permissions](declare-permissions.md).
 
 > **NOTE**
-> 
+>
 > The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) during the debugging and release phases.
 
 ## ohos.permission.SET_FILE_GUARD_POLICY
@@ -86,6 +86,23 @@ Allows an application to interact across local accounts.
 **Valid since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
+
+## ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+Allows an application to query the identities (such as names and IDs) of specified or all local accounts.
+
+With this permission, the application can query the identities of specified or all local accounts in the system. Based on the obtained identities, the application can further access or manage the target local accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.GET_RUNNING_INFO
 
@@ -402,9 +419,9 @@ With this permission, the software can obtain 802.1X packets and add information
 
 ## ohos.permission.SUPPORT_INSTALL_ON_U1
 
-Allows a normal enterprise application to be installed under the specific user.
+Allows a normal enterprise application to be installed under a specific user.
 
-The specific user is a user who supports third-party applications running in singleton mode.
+The specific user supports applications running in singleton mode.
 
 **Permission level**: system_basic
 
@@ -513,6 +530,23 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 
 **Valid since**: 20
 
+## ohos.permission.SCAN_REMEDIATE_VIRUS
+ 	 
+ Allows an application to scan for and remediate viruses.
+
+ This permission is only available to antivirus apps.
+
+ **Permission level**: system_basic
+
+ **Authorization mode**: system_grant
+
+ <!--Del-->
+ **Enable via ACL**: true<!--DelEnd-->
+
+ **Supported devices**: PCs/2-in-1 devices
+
+ **Valid since**: 24
+
 ## ohos.permission.sec.ACCESS_UDID
 
 Allows an application to obtain the Unified Device ID (UDID).
@@ -529,3 +563,20 @@ The UDID uniquely identifies a device.
 **Valid since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 19. From API version 20, it is available to normal enterprise applications.
+
+## ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+Allows an enterprise application to call print management APIs.
+
+With this permission, the application can update print status and printer information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 24

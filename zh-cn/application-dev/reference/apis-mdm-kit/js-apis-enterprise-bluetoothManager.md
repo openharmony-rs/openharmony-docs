@@ -291,11 +291,11 @@ import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-//需根据实际情况进行替换
+// 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.addDisallowedBluetoothDevices(wantTemp,deviceIds);
@@ -343,11 +343,11 @@ import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-//需根据实际情况进行替换
+// 需根据实际情况进行替换
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
     bluetoothManager.removeDisallowedBluetoothDevices(wantTemp,deviceIds);
@@ -398,7 +398,7 @@ import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -409,20 +409,6 @@ try {
     console.error(`Failed to get disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-## BluetoothInfo
-
-设备的蓝牙信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称            | 类型                                                         | 只读 | 可选 | 说明                     |
-| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
-| name            | string                                                       | 否   | 否 | 表示设备的蓝牙名称。     |
-| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | 否   | 否 | 表示设备的蓝牙状态。     |
-| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | 否   | 否 | 表示设备的蓝牙连接状态。 |
 
 ## bluetoothManager.turnOnBluetooth<sup>20+</sup>
 
@@ -687,6 +673,20 @@ try{
     console.error(`Failed to get disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## BluetoothInfo
+
+设备的蓝牙信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型                                                         | 只读 | 可选 | 说明                     |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
+| name            | string                                                       | 否   | 否 | 表示设备的蓝牙名称。     |
+| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | 否   | 否 | 表示设备的蓝牙状态。     |
+| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | 否   | 否 | 表示设备的蓝牙连接状态。 |
 
 ## Protocol<sup>20+</sup>
 

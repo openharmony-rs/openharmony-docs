@@ -59,9 +59,7 @@ PageAbility创建成功后，其abilities相关的配置项在config.json中体�
 
 ```json
 {
-  ...
   "module": {
-    ...
     "abilities": [
       {
         "skills": [
@@ -86,9 +84,7 @@ PageAbility创建成功后，其abilities相关的配置项在config.json中体�
         "visible": true,
         "launchType": "singleton"
       },
-      ...
     ]
-    ...
   }
 }
 ```
@@ -108,7 +104,7 @@ PageAbility创建成功后，其abilities相关的配置项在config.json中体�
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
-import fs from '@ohos.file.fs';
+import fileIo from '@ohos.file.fs';
 import promptAction from '@ohos.promptAction';
 import hilog from '@ohos.hilog';
 
@@ -127,8 +123,8 @@ const domain: number = 0xFF00;
     hilog.info(domain, TAG, 'distribute dir is ' + dir);
     let fd: number;
     let path = dir + '/a.txt';
-    fd = fs.openSync(path, fs.OpenMode.READ_WRITE).fd;
-    fs.close(fd);
+    fd = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE).fd;
+    fileIo.close(fd);
   } catch (error) {
     hilog.error(domain, TAG, 'getOrCreateDistributedDir failed with : ' + error);
   }

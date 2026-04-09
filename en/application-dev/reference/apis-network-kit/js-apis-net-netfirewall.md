@@ -541,19 +541,19 @@ Defines a firewall rule.
 | userId      | number                                                      | No|No|System user ID, which must exist.                  |
 | name        | string                                                      | No|No|Rule name. This parameter is mandatory and can contain a maximum of 128 characters.                               |
 | direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | No|No|Rule direction, which can be inbound or outbound.                                        |
-| action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action, which can be allow or deny.                                                        |
+| action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action, which can be allowing or denying.                                                        |
 | type        | [NetFirewallRuleType](#netfirewallruletype)                 | No|No|Rule type, which can be IP, Domain, or DNS.                                                   |
 | isEnabled   | boolean                                                     | No|No|Whether to enable the rule. The value **true** means to enable the rule, and the value **false** means the opposite.                                                    |
 | id          | number                                                      | No|Yes| ID of the firewall rule.                                                      |
 | description | string                                                      | No|Yes|Firewall rule description. This parameter is optional and can contain a maximum of 256 characters.                               |
 | appUid      | number                                                      | No|Yes|Application or service UID.                                           |
-| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Local IP addresses. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.        |
-| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Remote IP addresses. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.|
-| protocol    | number                                                      | No| Yes|Protocol, which can be TCP (value **6**) or UDP (value **17**). This parameter is valid only when **ruleType** is set to **RULE_IP**. |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|Local ports. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.  |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|Remote ports. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 ports can be specified.  |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **ruleType** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **ruleType** is set to **RULE_DNS**. This parameter cannot be empty when ruleType is set to RULE_DNS.                |
+| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Local IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.        |
+| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Remote IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.|
+| protocol    | number                                                      | No| Yes|Protocol, which can be TCP (value **6**) or UDP (value **17**). This parameter is valid only when **type** is set to **RULE_IP**. |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|Local ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.  |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|Remote ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 ports can be specified.  |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **type** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **type** is set to **RULE_DNS**. This parameter cannot be empty when **type** is set to **RULE_DNS**.                |
 
 ## RequestParam
 
@@ -684,7 +684,7 @@ Defines the port parameters of a firewall rule.
 
 ## NetFirewallDomainParams
 
-Defines the domain name parameters of a firewall rule. Currently, Chinese domain names are not supported.
+Defines domain name parameters of a firewall rule. Currently, Chinese domain names are not supported.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 

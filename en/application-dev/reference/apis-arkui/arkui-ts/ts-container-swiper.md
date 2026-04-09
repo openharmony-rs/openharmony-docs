@@ -426,7 +426,7 @@ Sets the number of elements to display per page.
 >
 > - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 18.
 
-When the navigation dot is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario), the number of displayed navigation dots follows the rules below.
+When the navigation indicator is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario)<!--RP1--><!--RP1End-->, the number of displayed navigation dots follows the rules below.
 
 | Total Children Count > Visible Children Count| Swiping by Group Enabled| Loop Status       | Number of Navigation Dots Displayed                                          | Description                                    |
 | ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |
@@ -860,7 +860,7 @@ Sets the drag distance of drag simulation.
 >
 > - The drag distance of drag simulation depends on the layout. You are advised to call this API before the layout, so that the drag effect can be displayed after the current frame layout. If this API is called multiple times before the layout, only the drag distance passed in the last call takes effect during the current frame layout.
 >
-> - In the loop scenario, an excessively large drag distance of drag simulation is passed in, causing nesting during the layout process. When the child nodes displayed in the current viewport are laid out multiple times, the drag distance passed in for that pass will be adjusted to drag exactly to the first child node (dragging toward the layout start) or the last child node (dragging toward the layout end).
+> - In the loop scenario where [loop](#loop) is set to **true**, if the drag distance of drag simulation is greater than the total layout length, the drag distance will be adjusted to the distance required to drag just far enough to display the first child node (when dragging toward the start of the layout) or the last child node (when dragging toward the end of the layout).
 >
 > - The [onGestureSwipe](#ongestureswipe10) and [onContentWillScroll](#oncontentwillscroll15) events are not triggered during the drag. The [customContentTransition](#customcontenttransition12) event is triggered before the layout. Since the actual drag distance may be adjusted during the layout, if the passed drag distance is too large, the returned node display information may be inconsistent with the layout result when the event is triggered.
 
@@ -1632,7 +1632,7 @@ Triggered when the page transition animation starts.
 >
 > - When this callback is invoked, the page transition animation logic is executed in the rendering thread, allowing the idle main thread to load resources required by child components. This reduces preloading time for nodes within the **cachedCount** range. For best practices, see [Optimizing Frame Loss During Swiper Component Loading – Preloading Data](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-swiper_high_performance_development_guide#section8783121513246).
 >
-> - When the duration of the page transition animation is set to **0**, this callback is triggered only in the following scenarios: swiping to turn pages, automatic playback, calling **SwiperController.showNext()** or **SwiperController.showPrevious()**, and touching navigation points to navigate.
+> - When the duration of the page transition animation is set to **0**, this callback is triggered only in the following scenarios: swiping to turn pages, automatic playback, calling **SwiperController.showNext()** or **SwiperController.showPrevious()**, and touching navigation indicators to navigate.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1684,7 +1684,7 @@ Triggered on a frame-by-frame basis when the page is turned by a swipe.
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| event  | [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18) | Yes  | Callback triggered on a frame-by-frame basis during a swipe-based page turn. **onGestureSwipe** is called after **onTouch**. For post-release operations, consider using [onAnimationStart](#onanimationstart9).|
+| event  | [OnSwiperGestureSwipeCallback](#onswipergestureswipecallback18) | Yes  | Callback triggered on a frame-by-frame basis when the page is turned by a swipe. **onGestureSwipe** is called after **onTouch**. For post-release operations, consider using [onAnimationStart](#onanimationstart9).|
 
 ### customContentTransition<sup>12+</sup>
 
@@ -3062,4 +3062,4 @@ struct SwiperFakeDragExample {
   }
 }
 ```
-
+![swiper](figures/fakedrag.gif)

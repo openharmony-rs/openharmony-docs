@@ -1481,7 +1481,7 @@ let policies: Array<string> = ["disabled_hdc"];
 try {
   adminManager.setDelegatedPolicies(bundleName, userId, policies);
   console.info(`Succeeded in setting delegated policies.`);
-} catch (error) {
+} catch (err) {
   console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
 }
 ```

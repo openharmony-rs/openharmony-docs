@@ -35,7 +35,7 @@ Defines the text style and layout manager for the component whose [type](../apis
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)](#oh_arkui_styledstring_create) | Creates an **ArkUI_StyledString** object and returns its pointer.|
+| [ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)](#oh_arkui_styledstring_create) | Creates a pointer to the **ArkUI_StyledString** object.|
 | [void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)](#oh_arkui_styledstring_destroy) | Destroys an **ArkUI_StyledString** object and reclaims the memory occupied by the object.|
 | [void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)](#oh_arkui_styledstring_pushtextstyle) | Pushes a text style to the top of the style stack of a styled string.|
 | [void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)](#oh_arkui_styledstring_addtext) | Adds text for a styled string.|
@@ -252,7 +252,7 @@ Unmarshals a byte array containing styled string information into a styled strin
 
 | Name| Description|
 | -- | -- |
-| uint8_t* buffer | Byte array to be deserialized.|
+| uint8_t* buffer | Pointer to the byte array to be deserialized.|
 | size_t bufferSize | Length of the byte array.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | Pointer to an **ArkUI_StyledString_Descriptor** object.|
 
@@ -278,10 +278,10 @@ Marshals the styled string information into a byte array.
 
 | Name| Description|
 | -- | -- |
-| uint8_t* buffer | Byte array where the serialized data will be stored.|
+| uint8_t* buffer | Pointer to the byte array where the serialized data will be stored.|
 | size_t bufferSize | Length of the byte array.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | Pointer to an **ArkUI_StyledString_Descriptor** object.|
-| size_t* resultSize | Actual length of the resulting byte array after deserialization.|
+| size_t* resultSize | Pointer to the actual length of the resulting byte array after deserialization.|
 
 **Return value**
 
@@ -311,7 +311,7 @@ Converts styled string information into HTML.
 
 | Type| Description|
 | -- | -- |
-| const char* | HTML object. This pointer is internally managed and is released when [OH_ArkUI_StyledString_Descriptor_Destroy()](#oh_arkui_styledstring_descriptor_destroy) is called.|
+| const char* | Pointer to the HTML object. This pointer is internally managed and is released when [OH_ArkUI_StyledString_Descriptor_Destroy()](#oh_arkui_styledstring_descriptor_destroy) is called.|
 
 ### OH_ArkUI_TextLayoutManager_Dispose()
 
@@ -348,7 +348,7 @@ Obtains the number of lines.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)* layoutManager | Pointer to the **ArkUI_TextLayoutManager** object.|
-| int32_t* outLineCount | Number of text lines.|
+| int32_t* outLineCount | Pointer to the number of text lines.|
 
 **Return value**
 

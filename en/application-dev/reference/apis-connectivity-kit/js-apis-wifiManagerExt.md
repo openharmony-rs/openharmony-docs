@@ -173,9 +173,6 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 Obtains the power mode. This API uses a promise to return the result.
 
-> **NOTE**<br>
-> This API is supported since API version 9 and deprecated since API version 10.
-
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Extension

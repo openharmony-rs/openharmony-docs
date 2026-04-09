@@ -56,6 +56,13 @@ Declares the APIs for accessing Native XComponent features.
 | [OH_NativeXComponent_MouseEventButton](#oh_nativexcomponent_mouseeventbutton) | OH_NativeXComponent_MouseEventButton | Enumerates the mouse event buttons.|
 | [OH_NativeXComponent_TouchEvent_SourceTool](#oh_nativexcomponent_touchevent_sourcetool) | OH_NativeXComponent_TouchEvent_SourceTool | Enumerates the source tool types of touch events.|
 
+### Macros
+
+| Name| Description|
+| -------- | -------- |
+| OH_NATIVE_XCOMPONENT_OBJ ("__NATIVE_XCOMPONENT_OBJ__") | Native **XComponent** instance.|
+| OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | Maximum number of identifiable touch points in a touch event.|
+
 ### Functions
 
 | Name| Description|

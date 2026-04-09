@@ -1601,6 +1601,7 @@ async function ExampleFunction(dlpFilePath: string) {
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印。 |
 | countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
 
@@ -1632,7 +1633,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 >
 > connectServer接口代表系统能力侧向前端通信的一次调用。
 
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
   
@@ -1668,7 +1669,7 @@ constructor()
 
 [DlpConnManager](#dlpconnmanager21) 实例化时的构造函数。
  
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
  
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1689,7 +1690,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 >
 > registerPlugin将plugin注册到SA（System Ability）侧，待SA（System Ability）调用。
 
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1726,7 +1727,7 @@ static unregisterPlugin(): void
 >
 > unregisterPlugin将plugin从SA（System Ability）侧注销注册。
   
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 

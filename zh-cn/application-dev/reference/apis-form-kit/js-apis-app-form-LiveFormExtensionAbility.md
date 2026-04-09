@@ -1,4 +1,4 @@
-# @ohos.app.form.LiveFormExtensionAbility  (LiveFormExtensionAbility)
+# @ohos.app.form.LiveFormExtensionAbility (LiveFormExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->

@@ -140,7 +140,7 @@ build() {
 
 ## 动态切换列数
 
-通过动态调整瀑布流的列数，应用能够实现在列表模式与瀑布流模式间的切换，或适应屏幕宽度的变化。 若要动态设置列数，建议采用瀑布流的移动窗口布局模式，这可以实现更快速的列数转换。
+通过动态调整瀑布流的列数，应用能够实现在列表模式与瀑布流模式间的切换，或适应屏幕宽度的变化。 若要动态设置列数，建议采用瀑布流的移动窗口布局模式，即取值为[WaterFlowLayoutMode枚举说明](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowlayoutmode12枚举说明)中的SLIDING_WINDOW，这可以实现更快速的列数转换。
 
 <!-- @[waterFlowDynamicSwitchover_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowDynamicSwitchover.ets) -->
 

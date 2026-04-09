@@ -8,7 +8,7 @@
 
 ## Overview
 
-The file declares the basic concepts of the camera device.
+Defines the basic APIs of the camera device.
 
 **File to include**: <ohcamera/camera_device.h>
 

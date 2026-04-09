@@ -20,6 +20,7 @@
     - [Class (ExifMetadata)](arkts-apis-image-ExifMetadata.md)
     - [Class (MakerNoteHuaweiMetadata)](arkts-apis-image-MakerNoteHuaweiMetadata.md)
     - [Class (HeifsMetadata)](arkts-apis-image-HeifsMetadata.md)
+    - [Class (WebPMetadata)](arkts-apis-image-WebPMetadata.md)
     - [Interface (Picture)](arkts-apis-image-Picture.md)
     - [Interface (PixelMap)](arkts-apis-image-PixelMap.md)
     - [Interfaces (其他)](arkts-apis-image-i.md)
@@ -123,6 +124,7 @@
     - [Image_PositionArea](capi-image-nativemodule-image-positionarea.md)
     - [Image_Scale](capi-image-nativemodule-image-scale.md)
     - [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md)
+    - [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md)
 - 错误码<!--image-arkts-errcode-->
   - [Image错误码](errorcode-image.md)
   - [视频处理引擎错误码](errorcode-videoprocessingengine.md)

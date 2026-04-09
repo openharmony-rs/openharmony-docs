@@ -382,7 +382,7 @@ int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindo
 | 参数项 | 描述 |
 | -- | -- |
 | [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *nativeWindowBuffer | 一个指向[OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)实例的指针。 |
-| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) **buffer | 一个指向OH_NativeBuffer实例的指针。 |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) **buffer | 一个指向OH_NativeBuffer实例的二级指针。 |
 
 **返回：**
 
@@ -509,7 +509,7 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射失败时返回NATIVE_ERROR_UNKNOWN。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射失败时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeBuffer_WriteToParcel()
 
@@ -538,7 +538,7 @@ int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer或parcel为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>IPC发送失败返回NATIVE_ERROR_BINDER_ERROR。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer或parcel为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>IPC发送失败返回NATIVE_ERROR_BINDER_ERROR。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeBuffer_ReadFromParcel()
 
@@ -569,7 +569,7 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>parcel或buffer为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>parcel反序列化失败返回NATIVE_ERROR_UNKNOWN。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>parcel或buffer为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>parcel反序列化失败返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeBuffer_IsSupported()
 
@@ -598,7 +598,7 @@ int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSuppo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>isSupported为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>isSupported为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeBuffer_MapAndGetConfig()
 
@@ -620,7 +620,7 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)* buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的结构体实例的二级指针。 |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)* buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的结构体实例的指针。 |
 | void** virAddr | 一个指向映射到当前进程的虚拟内存的地址的二级指针，作为出参使用。 |
 | [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)* config | 一个指向[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)的结构体实例的指针，作为出参使用。 |
 
@@ -628,4 +628,4 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射时返回NATIVE_ERROR_UNKNOWN。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |

@@ -12,7 +12,7 @@
 
 ## AVErrorCode<sup>9+</sup>
 
-Enumerates the [media error codes](errorcode-media.md).
+Enumerates the types of [Media error codes](errorcode-media.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -98,7 +98,7 @@ Enumerates the supported Advanced Audio Coding (AAC) formats.
 | Name        | Value                   | Description                       |
 | ------------ | --------------------- | --------------------------- |
 | AAC_LC       |     0                 | Standard AAC Low Complexity profile.       |
-| AAC_HE       |     1                 | AAC High Efficiency profile (also known as HE-AAC).       |
+| AAC_HE       |     1                 | Standard AAC High Efficiency profile.       |
 | AAC_HE_V2    |     2                 | AAC High Efficiency Version 2 profile (also known as HE-AAC v2).    |
 
 ## MediaDescriptionKey<sup>8+</sup>
@@ -226,7 +226,7 @@ Enumerates the video playback seek modes, which can be passed in the **seek** AP
 | SEEK_NEXT_SYNC | 0    | Seeks to the next key frame at the specified position. You are advised to use this value for the rewind operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_PREV_SYNC | 1    | Seeks to the previous key frame at the specified position. You are advised to use this value for the fast-forward operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_CLOSEST<sup>12+</sup> | 2    | Seeks to the frame closest to the specified position. You are advised to use this value for accurate seek.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Offers a smooth and fluid visual experience for seeking. Applications can use a progress bar component to continuously invoke the **seek** method, and the AVPlayer will update the video frames smoothly in response to these calls.<br>Applications can call [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) to check whether the video source supports this seeking mode.<br>If the video source does not support this mode, calling **seek** will result in an **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error (see [Media Error Codes](#averrorcode9)), and the smoothness of frame updates will be compromised.<br>This seeking mode does not trigger the [seekDone event](arkts-apis-media-AVPlayer.md#onseekdone9).<br>To exit this seeking mode, applications must call **seek(-1, SeekMode.SEEK_CONTINUOUS)** to end the seeking process.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Offers a smooth and fluid visual experience for seeking. Applications can use a progress bar component to continuously invoke the **seek** method, and the AVPlayer will update the video frames smoothly in response to these calls.<br>Applications can call [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) to check whether the video source supports this seeking mode.<br>If the video source does not support this mode, calling **seek** will result in an **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error (see [AVErrorCode](#averrorcode9)), and the smoothness of frame updates will be compromised.<br>This seek mode does not trigger the [on('seekDone')](arkts-apis-media-AVPlayer.md#onseekdone9) event.<br>To exit this seeking mode, applications must call **seek(-1, SeekMode.SEEK_CONTINUOUS)** to end the seeking process.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## SwitchMode<sup>12+</sup>
 
@@ -486,7 +486,7 @@ Enumerates the audio output formats.
 Enumerates the media error codes.
 
 > **NOTE**
-> This enum is supported since API version 8 and deprecated since API version 11. You are advised to use [Media Error Codes](#averrorcode9) instead.
+> This API is supported since API version 8 and deprecated since API version 11. You are advised to use [AVErrorCode](#averrorcode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

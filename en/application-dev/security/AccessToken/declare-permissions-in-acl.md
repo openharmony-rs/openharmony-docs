@@ -23,7 +23,7 @@ This topic describes two methods for debugging, neither of which can be used to 
       - Add the restricted permissions that do not carry permission data in **acls** > **allowed-acls**.
       - Add the restricted permissions that carry permission data in the **app-services-capabilities** field.
 
-        ```json
+        ```json5
         {
           // ...
           "acls":{

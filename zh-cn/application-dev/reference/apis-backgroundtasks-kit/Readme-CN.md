@@ -22,7 +22,7 @@
   - application<!--background-tasks-arkts-application-->
     - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext(系统接口)](js-apis-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext（系统接口）](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (后台任务管理)](js-apis-backgroundTaskManager.md)

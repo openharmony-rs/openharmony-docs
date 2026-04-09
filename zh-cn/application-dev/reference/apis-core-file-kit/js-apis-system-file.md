@@ -28,7 +28,7 @@ move(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.moveFile](js-apis-file-fs.md#fsmovefile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.moveFile](js-apis-file-fs.md#fileiomovefile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -77,7 +77,7 @@ copy(Object): void
 
 > **说明**：
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -127,7 +127,7 @@ list(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -152,7 +152,7 @@ success返回值：
 | -------- | -------- | -------- |
 | uri | string | 文件的&nbsp;uri。 |
 | lastModifiedTime | number | 文件上一次保存时的时间戳，显示从1970/01/01&nbsp;00:00:00&nbsp;GMT到当前时间的毫秒数。 |
-| length | number | 文件的大小，单位为字节。 |
+| length | number | 文件的大小，单位为Byte。 |
 | type | string | 文件的类型，可选值为：<br/>-&nbsp;dir：目录；<br/>-&nbsp;file：文件。 |
 
 fail返回错误代码：
@@ -190,7 +190,7 @@ get(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.stat](js-apis-file-fs.md#fileiostat)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -209,7 +209,7 @@ success返回值：
 | 参数名 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | uri | string | 文件的uri。 |
-| length | number | 文件字节长。 |
+| length | number | 文件长度，单位为Byte。 |
 | lastModifiedTime | number | 文件保存时的时间戳，从1970/01/01&nbsp;00:00:00到当前时间的毫秒数。 |
 | type | string | 文件类型，可选值为：<br/>-&nbsp;dir：目录；<br/>-&nbsp;file：文件。 |
 | subFiles | Array | 文件列表。 |
@@ -249,7 +249,7 @@ delete(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.unlink](js-apis-file-fs.md#fileiounlink)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -297,7 +297,7 @@ writeText(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -348,7 +348,7 @@ writeArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -358,7 +358,7 @@ writeArrayBuffer(Object): void
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 本地文件uri，如果文件不存在会创建文件。 |
 | buffer | Uint8Array | 是 | 写入的Buffer。 |
-| position | number | 否 | 文件开始写入数据的位置的偏移量，默认为0。 |
+| position | number | 否 | 文件开始写入数据的位置的偏移量，单位为Byte，默认为0。 |
 | append | boolean | 否 | 是否追加模式，默认为false。当设置为true时，position参数无效。true为追加，false为不追加。 |
 | success | Function | 否 | 接口调用成功的回调函数。 |
 | fail | Function | 否 | 接口调用失败的回调函数。 |
@@ -378,7 +378,7 @@ export default {
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
       uri: 'internal://app/test',           
-      buffer: new Uint8Array(8), //buffer为Uint8Array类型           
+      buffer: new Uint8Array(8),// buffer为Uint8Array类型
       success: function() {                
         console.info('call writeArrayBuffer success.');            
       },           
@@ -399,7 +399,7 @@ readText(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.readText](js-apis-file-fs.md#fileioreadtext)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -409,8 +409,8 @@ readText(Object): void
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 本地文件uri。 |
 | encoding | string | 否 | 编码格式，缺省为UTF-8。 |
-| position | number | 否 | 读取的起始位置，默认值为文件的起始位置。 |
-| length | number | 否 | 读取的长度，默认值为4096。 |
+| position | number | 否 | 读取的起始位置，单位为Byte，默认值为文件的起始位置。 |
+| length | number | 否 | 读取的长度，单位为Byte，默认值为4096。 |
 | success | Function | 否 | 接口调用成功的回调函数。 |
 | fail | Function | 否 | 接口调用失败的回调函数。 |
 | complete | Function | 否 | 接口调用结束的回调函数。 |
@@ -457,7 +457,7 @@ readArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.read](js-apis-file-fs.md#fileioread)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -466,8 +466,8 @@ readArrayBuffer(Object): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 本地文件uri。 |
-| position | number | 否 | 读取的起始位置，缺省为文件的起始位置。 |
-| length | number | 否 | 需要读取的长度，缺省则读取到文件结尾。 |
+| position | number | 否 | 读取的起始位置，单位为Byte，缺省为文件的起始位置。 |
+| length | number | 否 | 需要读取的长度，单位为Byte，缺省则读取到文件结尾。 |
 | success | Function | 否 | 接口调用成功的回调函数。 |
 | fail | Function | 否 | 接口调用失败的回调函数。 |
 | complete | Function | 否 | 接口调用结束的回调函数。 |
@@ -515,7 +515,7 @@ access(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.access](js-apis-file-fs.md#fileioaccess)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -563,7 +563,7 @@ mkdir(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.mkdir](js-apis-file-fs.md#fileiomkdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -611,7 +611,7 @@ rmdir(Object): void
 
 > **说明**： 
 >
-> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.rmdir](js-apis-file-fs.md#fileiormdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 

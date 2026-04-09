@@ -55,6 +55,10 @@ Toggle的信息。
 
 Toggle的样式。
 
+> **说明：**
+>
+> Toggle的样式继承对应组件样式的默认值，且不支持设置。例如，如果ToggleType为Button，则该组件样式继承[ButtonType](ts-basic-components-button.md#buttontype枚举说明)的默认值。由于Button.type从API version 18开始，默认类型从胶囊型变更为圆角矩形，胶囊型按钮不支持设置[borderRadius](ts-universal-attributes-border.md#borderradius)，此时使用Toggle组件设置borderRadius也不生效。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。

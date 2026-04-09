@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @kunsilva-->
-<!--Designer: @weimingjin-->
+<!--Designer: @mgce1;@MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -173,6 +173,33 @@ hdc list targets
 ```shell
 hdc shell echo "Hello world"
 ```
+
+### 常用调试工具
+
+hdc支持和其他调试工具配套使用，工具列表如下：
+
+| 命令 | 说明 |
+| -------- | -------- |
+| [aa](../tools/aa-tool.md) | 应用调试工具 |
+| [bm](../tools/bm-tool.md) | 包管理工具 |
+| [cem](../tools/cem-tool.md) | 公共事件管理工具 |
+| [anm](../tools/anm-tool.md) | 通知管理工具 |
+| [edm](../tools/edm-tool.md) | 企业设备管理工具 |
+| [param](../tools/param-tool.md) | 操作系统参数管理工具 |
+| [power-shell](../tools/power-shell.md) | 设备电源状态转换工具 |
+| [atm](../tools/atm-tool.md) | 程序访问控制管理工具 |
+| [hilog](./hilog.md) | 日志管理工具 |
+| [hidumper](./hidumper.md) | 系统信息导出工具 |
+| [hitrace](./hitrace.md) | 系统打点及采集工具 |
+| [hiperf](./hiperf.md) | 性能分析工具 |
+| [uinput](./uinput.md) | 模拟操作工具 |
+| [mediatool](../tools/mediatool.md) | 媒体资源库工具 |
+| [devicedebug](../tools/devicedebug-tool.md) | 调试应用发送信号工具 |
+| [rawheap-translator](../tools/rawheap-translator.md) | rawheap文件解析工具 |
+| <!--DelRow-->[UItest](../application-test/uitest-guidelines.md) | UI测试框架 |
+| <!--DelRow-->[SmartPerf Device daemon](../application-test/smartperf-guidelines.md#smartperf-device-daemon端) | SmartPerf Device-daemon端工具命令 |
+| <!--DelRow-->[wukong](../application-test/wukong-guidelines.md) | wukong稳定性工具 |
+<!--RP1--><!--RP1End-->
 
 ### 获取帮助
 
@@ -608,26 +635,6 @@ name of a command to run, followed by any arguments to that command.
 $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 ```
 
-**常用调试工具**
-
-| 命令 | 说明 |
-| -------- | -------- |
-| [aa](../tools/aa-tool.md) | 应用调试工具 |
-| [bm](../tools/bm-tool.md) | 包管理工具 |
-| [cem](../tools/cem-tool.md) | 公共事件管理工具 |
-| [anm](../tools/anm-tool.md) | 通知管理工具 |
-| [edm](../tools/edm-tool.md) | 企业设备管理工具 |
-| [param](../tools/param-tool.md) | 操作系统参数管理工具 |
-| [power-shell](../tools/power-shell.md) | 设备电源状态转换工具 |
-| [atm](../tools/atm-tool.md) | 程序访问控制管理工具 |
-| [hilog](./hilog.md) | 日志管理工具 |
-| [hidumper](./hidumper.md) | 系统信息导出工具 |
-| [hitrace](./hitrace.md) | 系统打点及采集工具 |
-| [hiperf](./hiperf.md) | 性能分析工具 |
-| [mediatool](../tools/mediatool.md) | 媒体资源库工具 |
-| [devicedebug](../tools/devicedebug-tool.md) | 调试应用发送信号工具 |
-| [rawheap-translator](../tools/rawheap-translator.md) | rawheap文件解析工具 |
-
 ## 应用管理
 
 | 命令 | 说明 |
@@ -640,7 +647,7 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 应用安装功能在设备端集成bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)，简化了安装流程，开发者可以在电脑端直接执行命令完成应用安装。命令格式如下：
 
 ```shell
-hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
+hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-g|-h] src
 ```
 
 **参数**：
@@ -654,6 +661,7 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最短的等待时长为180s，最长的等待时长为600s，默认缺省为180s。 |
 | -u | 可选参数，指定[用户](../tools/bm-tool.md#userid)，默认在当前活跃用户下安装应用。 |
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
+| -g | 可选参数，安装调试包时支持[用户授权](../security/AccessToken/app-permission-mgmt-overview.md#user_grant用户授权)和[手动设置授权](../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。<br>仅对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)生效，debug应用更新为release应用时取消授予的用户授权和手动设置授权。<br>**说明**：从API version 24开始，支持该参数。 |
 | -h | 可选参数，显示bm模块[安装命令（install）](../tools/bm-tool.md#安装命令install)帮助信息。 |
 
 **返回信息**：
@@ -691,18 +699,23 @@ $ hdc install -s D:\example.hsp
 AppMod finish
 
 # 安装example.hap包示例（-w为bm模块install命令支持参数，指定bm工具等待时间）。
-$ hdc "-w 180" install D:\example.hap
+$ hdc install "-w 180" D:\example.hap
 [Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 
 # 安装example.hap包示例（-u为bm模块install命令支持参数，指定用户id）。
-$ hdc "-u 100" install D:\example.hap
+$ hdc install "-u 100" D:\example.hap
 [Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 
 # 安装D:\hap_dir下应用示例（-p为bm模块install命令支持参数，指定安装路径）。
-$ hdc -p install D:\hap_dir
+$ hdc install -p D:\hap_dir
 [Info]App install path:D:\hap_dir msg:install bundle successfully.
+AppMod finish
+
+# 安装example.hap包示例（安装签名证书类型为debug版本应用时自动授予用户授权和手动设置授权）
+$ hdc install -g D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 ```
 
@@ -1969,6 +1982,43 @@ Please wait for several seconds and try again.
 **处理步骤**
 
 连接设备后等待大约10秒，待连接建立后进行调试。
+
+### E000006 设备禁止被当前计算机调试
+
+**错误信息**
+
+The current computer has not obtained the permission to debug the control device.
+
+**错误描述**
+
+当前计算机未获取调试管控设备的权限，导致设备端拒绝授权调试。
+
+**可能原因**
+
+该设备禁止被未授权的计算机调试。
+
+**处理步骤**
+
+更换为已获取调试授权的计算机。
+
+### E000010 设备侧鉴权失败
+
+**错误信息**
+
+Auth failed, cannt login the device.
+
+**错误描述**
+
+设备侧公钥校验失败，拒绝当前计算机调试。
+
+**可能原因**
+
+1. 设备侧缺少公钥文件。
+2. 设备侧公钥和计算机侧公钥文件不匹配。
+
+**处理步骤**
+
+设备侧重新获取调试鉴权公钥文件。
 
 ### E001000 tmode不支持设置USB调试
 

@@ -49,16 +49,19 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 | appId | string | Yes| - |  Application ID of the atomic service to be launched. It is the unique identifier for the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<!--RP1--><!--RP1End-->|
 | options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | No| - | Parameters for launching the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onError<sup>18+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Triggered when an exception occurs during the execution of an embedded atomic service. You can obtain the error information based on the **code**, **name**, and **message** parameters in the callback and rectify the exception accordingly.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| onTerminated<sup>18+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Triggered when an embedded atomic service exits properly by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onTerminated<sup>18+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Triggered when an embedded atomic service exits properly after [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) is called.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 > **NOTE**
 >
-> - If the atomic service exits by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult), the information it carries is passed to the callback parameter.
-> - If the atomic service exits by calling [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself), the callback parameter has a default **code** value of **0** and **want** of **undefined**.
+> - If the atomic service exits when [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) is called, the information it carries is passed to the callback parameter.
+> - If the atomic service exits when [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) is called, the callback parameter has a default **code** value of **0** and **want** of **undefined**.
 
 ## Example
-This example demonstrates component usage with extended atomic service capabilities. In real-world development, replace the sample **appId** with the actual application of your ID atomic service.
+
+This example demonstrates component usage with extended atomic service capabilities. In real-world development, replace the sample **appId** with the actual application ID of the atomic service.
+
+**FullScreenLaunchComponent** needs to be invoked by the user. After the provider completes local installation, the component can be launched in full-screen embedded mode within the user application or atomic service.
 
 **User Implementation**
 ```ts

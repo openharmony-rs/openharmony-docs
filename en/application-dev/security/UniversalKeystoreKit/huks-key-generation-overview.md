@@ -31,6 +31,9 @@ In versions earlier than API version 11, the default storage level is DE when a 
 | HUKS_AUTH_STORAGE_LEVEL_DE | 0    | The key can be accessed only after the device is started.|
 | HUKS_AUTH_STORAGE_LEVEL_CE | 1    | The key can be accessed only after the first unlock of the device.|
 | HUKS_AUTH_STORAGE_LEVEL_ECE | 2    | The key can be accessed only when the device is unlocked.|
+> **NOTE**
+>
+>  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [lock screen event](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) to ensure security.
 
 ## Supported Algorithms
 
@@ -81,4 +84,3 @@ Before implementing the specifications for mini-system devices, determine whethe
 | RSA | An integer multiple of 8, ranging from 1024 to 2048 (inclusive)| 12+ |
 | HMAC | An integer multiple of 8, ranging from 8 to 1024 (inclusive)| 12+ |
 | CMAC | 128 (supporting only 3DES)| 12+ |
-<!--no_check-->

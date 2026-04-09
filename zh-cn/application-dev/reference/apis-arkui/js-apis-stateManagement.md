@@ -1513,7 +1513,7 @@ type TaskCallback = () => T
 
 ## MonitorOptions<sup>20+</sup>
 
-[addMonitor](#addmonitor20)的可选参数，用于配置回调类型。
+[addMonitor](#addmonitor20)的可选参数，用于配置回调类型以及是否使能通配符能力。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1522,6 +1522,7 @@ type TaskCallback = () => T
 | 名称 | 类型 | 只读 | 可选 | 说明     |
 | ------ | ---- | ---- | ---- | ------------ |
 |isSynchronous|boolean|否|是|配置当前回调函数否是为同步回调。true为同步回调。默认值为false，即异步回调。|
+|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
@@ -1648,7 +1649,7 @@ struct SampleComp {
 
 ## PersistenceErrorCallback
 
-type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown', message: string) => void
+type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown', message: string, oldValue?: string) => void
 
 持久化失败时返回错误原因的回调。
 
@@ -1663,6 +1664,7 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 | key | string    | 是   | 出错的键值。   |
 |reason| 'quota' \| 'serialization' \| 'unknown'    | 是   | 出错的原因类型。   |
 | message | string    | 是   | 出错的更多消息。   |
+| oldValue | string    | 否   | 反序列化失败时，返回的旧的存储于磁盘的序列化数据。<br> **起始版本：** 26.0.0。   |
 
 **示例：**
 
@@ -1683,9 +1685,9 @@ export class Sample {
 }
 
 // 接受序列化失败的回调
-// PersistenceErrorCallback 指的是 (key: string, reason: string, msg: string) => {console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);}
-PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+// PersistenceErrorCallback 指的是 (key: string, reason: string, msg: string, oldValue?: string) => {console.error(`error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);}
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);
 });
 
 @Entry

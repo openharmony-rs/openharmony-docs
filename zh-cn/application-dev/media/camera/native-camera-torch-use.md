@@ -14,9 +14,9 @@
 - 当使用前置相机时，手电筒可以正常启用并保持常亮状态。
 - 从前置相机切换至后置相机时，如果手电筒原本处于开启状态，它将会被自动关闭。
 
-## 开发步骤
+## 开发步骤 
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。
 

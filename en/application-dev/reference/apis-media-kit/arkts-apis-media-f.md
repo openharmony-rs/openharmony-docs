@@ -126,7 +126,7 @@ Creates an AVRecorder instance. This API uses an asynchronous callback to return
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Yes  | Callback used to return the result. If the operation is successful, an AVRecorder instance is returned; otherwise, **null** is returned. The instance can be used to record audio and video.|
+| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Yes  | Callback function, which returns an **AVRecorder** instance for recording audio and video. Otherwise, **null** is returned.|
 
 **Error codes**
 
@@ -143,7 +143,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 
 media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -170,7 +170,7 @@ Creates an AVRecorder instance. This API uses a promise to return the result.
 
 | Type                                | Description                                                        |
 | ------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise used to return the result. If the operation is successful, an AVRecorder instance is returned; otherwise, **null** is returned. The instance can be used to record audio and video.|
+| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise used to return an **AVRecorder** instance, which can be used to record audio and video. Otherwise, **null** is returned.|
 
 **Error codes**
 
@@ -186,7 +186,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 media.createAVRecorder().then((recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -232,7 +232,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avTranscoder: media.AVTranscoder | undefined = undefined;
 media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
-  if (transcoder != null) {
+  if (transcoder) {
     avTranscoder = transcoder;
     console.info('Succeeded in creating AVTranscoder');
   } else {
@@ -272,7 +272,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -310,7 +310,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -419,7 +419,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 };
 
 media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) => {
-  if (soundpool_ != null) {
+  if (soundpool_) {
     soundPool = soundpool_;
     console.info('Succeeded in creating SoundPool');
   } else {
@@ -446,6 +446,8 @@ Creates an AVScreenCaptureRecorder instance. This API uses a promise to return t
 
 **Error codes**
 
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
 | ID| Error Message                      |
 | -------- | ------------------------------ |
 | 5400101  | No memory. Return by promise. |
@@ -457,7 +459,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avScreenCaptureRecorder: media.AVScreenCaptureRecorder;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
+  if (captureRecorder) {
     avScreenCaptureRecorder = captureRecorder;
     console.info('Succeeded in createAVScreenCaptureRecorder');
   } else {
@@ -497,7 +499,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
@@ -535,7 +537,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
@@ -571,7 +573,7 @@ Creates a media source for streaming media to be pre-downloaded.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |

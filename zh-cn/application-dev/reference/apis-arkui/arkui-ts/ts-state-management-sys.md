@@ -123,7 +123,7 @@ createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 |类型   |说明       |
 |-----------|--------------|
-|[SyncedPropertyOneWay\<T\>](#syncedpropertytwowayt)  |返回单向同步属性。 |
+|[SyncedPropertyOneWay\<T\>](#syncedpropertyonewayt)  |返回单向同步属性。 |
 
 ### unlinkSuscriber
 

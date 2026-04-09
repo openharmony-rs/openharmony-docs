@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[API文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)。
 
 | 接口名称 | 功能描述 |
 | -------- | -------- |
@@ -39,7 +39,7 @@ async obtainingAuthLockState() : Promise<string> {
     Logger.info(`get auth lock state success, authLockState is: ${authLockStateContent}`);
     return authLockStateContent;
   } catch (error) {
-    const errorMessage : string = `get auth lock state failed， err code is : ${error?.code}, err message is : ${error?.message}`;
+    const errorMessage : string = `get auth lock state failed, err code is : ${error?.code}, err message is : ${error?.message}`;
     Logger.error(errorMessage);
     return errorMessage;
   }

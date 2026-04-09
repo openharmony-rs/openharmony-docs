@@ -1,4 +1,4 @@
-# class (HeifsMetadata)
+# Class (HeifsMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -148,7 +148,7 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type. |
+| 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type|
 
 **示例：**
 
@@ -278,7 +278,7 @@ async function heifsMetadataClone(context: Context) {
 ```
 
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -319,7 +319,7 @@ async function heifsMetadataGetBlob(context: Context) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 

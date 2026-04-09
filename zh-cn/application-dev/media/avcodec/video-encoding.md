@@ -75,7 +75,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
+详细的API说明请参考[native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
 
 如下为视频编码调用关系图：
 
@@ -234,8 +234,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     ```c++
-    // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
-    // 系统优先创建硬件编码器实例，若硬件编码不支持或硬件编码器实例已占满，则创建软件编码器实例。
+    // 通过MIME TYPE创建编码器。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
@@ -668,8 +667,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     ```c++
-    // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
-    // 涉及创建多路编解码器时，优先创建硬件编码器实例，硬件资源不够时再创建软件编码器实例。
+    // 通过MIME TYPE创建编码器。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 

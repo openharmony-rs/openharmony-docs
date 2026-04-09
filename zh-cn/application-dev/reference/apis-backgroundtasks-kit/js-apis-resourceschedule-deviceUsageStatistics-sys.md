@@ -39,7 +39,7 @@ isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -90,7 +90,7 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -139,7 +139,7 @@ isIdleStateSync(bundleName: string): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -176,7 +176,7 @@ queryAppGroup(): Promise&lt;number&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -221,7 +221,7 @@ queryAppGroup(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -269,7 +269,7 @@ queryAppGroupSync(): number
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -314,7 +314,7 @@ queryAppGroup(bundleName : string): Promise&lt;number&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -363,7 +363,7 @@ queryAppGroup(bundleName : string, callback: AsyncCallback&lt;number&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -418,7 +418,7 @@ queryAppGroupSync(bundleName: string): number
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -465,7 +465,7 @@ setAppGroup(bundleName: string, newGroup: GroupType): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -515,7 +515,7 @@ setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCallback&lt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -561,13 +561,13 @@ queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                   |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                   |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                   |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                   |
 | callback | AsyncCallback&lt;[BundleStatsMap](#bundlestatsmap)&gt; | 是    | 回调函数，返回指定时间段内应用使用时长的具体信息。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -611,8 +611,8 @@ queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -622,7 +622,7 @@ queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -664,8 +664,8 @@ queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -675,7 +675,7 @@ queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -727,7 +727,7 @@ queryLastUseTime(appInfo: Record&lt;string, Array&lt;number&gt;&gt;): Promise&lt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -771,13 +771,13 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 | 参数名        | 类型                                       | 必填   | 说明                                       |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | byInterval | [IntervalType](#intervaltype)            | 是    | 查询类型。                                    |
-| begin      | number                                   | 是    | 起始时间，以毫秒为单位。                                    |
-| end        | number                                   | 是    | 结束时间，以毫秒为单位。                                    |
+| begin      | number                                   | 是    | 起始时间，单位：ms。                                    |
+| end        | number                                   | 是    | 结束时间，单位：ms。                                    |
 | callback   | AsyncCallback&lt;Array&lt;[BundleStatsInfo](#bundlestatsinfo)&gt;&gt; | 是    | 回调函数，返回指定时间段间隔内，应用使用时长的统计信息。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -825,8 +825,8 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 | 参数名        | 类型                            | 必填   | 说明    |
 | ---------- | ----------------------------- | ---- | ----- |
 | byInterval | [IntervalType](#intervaltype) | 是    | 查询类型。 |
-| begin      | number                        | 是    | 起始时间，以毫秒为单位。 |
-| end        | number                        | 是    | 结束时间，以毫秒为单位。 |
+| begin      | number                        | 是    | 起始时间，单位：ms。 |
+| end        | number                        | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -836,7 +836,7 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -881,13 +881,13 @@ queryBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&l
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                   |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                   |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                   |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                   |
 | callback | AsyncCallback&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | 是    | 回调函数，返回起始和结束时间段内，所有应用的事件集合。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -934,8 +934,8 @@ queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -945,7 +945,7 @@ queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -988,13 +988,13 @@ queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                   |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                   |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                   |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                   |
 | callback | AsyncCallback&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | 是    | 回调函数，返回指定起始和结束时间段内，当前应用的事件集合。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1038,8 +1038,8 @@ queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;Bundle
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -1049,7 +1049,7 @@ queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;Bundle
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1093,8 +1093,8 @@ queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEve
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -1104,7 +1104,7 @@ queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEve
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1146,13 +1146,13 @@ queryDeviceEventStats(begin: number, end: number, callback: AsyncCallback&lt;Arr
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                    |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                    |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                    |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                    |
 | callback | AsyncCallback&lt;Array&lt;[DeviceEventStats](#deviceeventstats)&gt;&gt; | 是    | 回调函数，返回起始和结束时间段内，系统事件（休眠、唤醒、解锁、锁屏）的统计信息。 | 
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1196,8 +1196,8 @@ queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;Dev
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 
 **返回值**：
 
@@ -1207,7 +1207,7 @@ queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;Dev
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1249,13 +1249,13 @@ queryNotificationEventStats(begin: number, end: number, callback: AsyncCallback&
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                    |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                    |
+| begin    | number                                   | 是    | 起始时间，单位：ms。                                    |
+| end      | number                                   | 是    | 结束时间，单位：ms。                                    |
 | callback | AsyncCallback&lt;Array&lt;[DeviceEventStats](#deviceeventstats)&gt;&gt; | 是    | 回调函数，返回指定起始和结束时间段内，所有应用的通知次数。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1305,7 +1305,7 @@ queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1355,7 +1355,7 @@ queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID        | 错误信息                       |
 | ---------- | ----------------------------       |
@@ -1412,7 +1412,7 @@ queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&g
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1462,7 +1462,7 @@ queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapM
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1519,7 +1519,7 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;): P
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1573,7 +1573,7 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;, ca
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1628,7 +1628,7 @@ unregisterAppGroupCallBack(): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1672,7 +1672,7 @@ unregisterAppGroupCallBack(callback: AsyncCallback&lt;void&gt;): void;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备信息使用统计错误码](errorcode-DeviceUsageStatistics.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -1719,7 +1719,7 @@ FA模型的使用信息属性集合。
 | abilityDescriptionId | number                                   | 否    | 是    | FA的MainAbility descriptionId。 |
 | abilityIconId        | number                                   | 否    | 是    | FA的MainAbility iconId。        |
 | launchedCount        | number                                   | 否    | 否    | FA的启动次数。                      |
-| lastModuleUsedTime   | number                                   | 否    | 否    | FA的上一次使用时间。                   |
+| lastModuleUsedTime   | number                                   | 否    | 否    | FA的上一次使用时间，单位：ms。                   |
 | formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | 否    | 否    | FA中卡片的使用记录。                   |
 
 ## HapFormInfo
@@ -1733,7 +1733,7 @@ FA卡片的使用信息属性集合。
 | formName         | string | 否    | 否    | 卡片名称。       |
 | formDimension    | number | 否    | 否    | 卡片尺寸。       |
 | formId           | number | 否    | 否    | 卡片Id。       |
-| formLastUsedTime | number | 否    | 否    | 卡片的上一次点击时间。 |
+| formLastUsedTime | number | 否    | 否    | 卡片的上一次点击时间，单位：ms。 |
 | count            | number | 否    | 否    | 卡片的点击次数。    |
 
 ## AppGroupCallbackInfo
@@ -1759,15 +1759,15 @@ FA卡片的使用信息属性集合。
 | 名称                      | 类型     | 只读   | 可选   | 说明                                       |
 | ------------------------ | ------ | ---- | ---- | ---------------------------------------- |
 | bundleName               | string | 否    | 是    | 应用包名。                                    |
-| abilityPrevAccessTime    | number | 否    | 是    | 应用最后一次使用的时间。                             |
-| abilityInFgTotalTime     | number | 否    | 是    | 应用在前台使用的总时间。                             |
+| abilityPrevAccessTime    | number | 否    | 是    | 应用最后一次使用的时间，单位：ms。                             |
+| abilityInFgTotalTime     | number | 否    | 是    | 应用在前台使用的总时间，单位：ms。                             |
 | id                       | number | 否    | 否    | 用户id。 |
-| abilityPrevSeenTime      | number | 否    | 是    | 应用最后一次在前台可见的时间。 |
-| abilitySeenTotalTime     | number | 否    | 是    | 应用在前台可见的总时间。 |
-| fgAbilityAccessTotalTime | number | 否    | 是    | 应用访问前台的总时间。 |
-| fgAbilityPrevAccessTime  | number | 否    | 是    | 应用最后一次访问前台的时间。|
-| infosBeginTime           | number | 否    | 是    | BundleActiveInfo对象中第一条应用使用统计的记录时间。 |
-| infosEndTime             | number | 否    | 是    | BundleActiveInfo对象中最后一条应用使用统计的记录时间。 |
+| abilityPrevSeenTime      | number | 否    | 是    | 应用最后一次在前台可见的时间，单位：ms。 |
+| abilitySeenTotalTime     | number | 否    | 是    | 应用在前台可见的总时间，单位：ms。 |
+| fgAbilityAccessTotalTime | number | 否    | 是    | 应用访问前台的总时间，单位：ms。 |
+| fgAbilityPrevAccessTime  | number | 否    | 是    | 应用最后一次访问前台的时间，单位：ms。|
+| infosBeginTime           | number | 否    | 是    | BundleActiveInfo对象中第一条应用使用统计的记录时间，单位：ms。 |
+| infosEndTime             | number | 否    | 是    | BundleActiveInfo对象中最后一条应用使用统计的记录时间，单位：ms。 |
 | appIndex<sup>15+</sup>                 | number | 否    | 是    | 应用程序的索引。 |
 
 ## BundleEvents
@@ -1780,7 +1780,7 @@ FA卡片的使用信息属性集合。
 | --------------------- | ------ | ---- | ---- | ---------------------------------------- |
 | bundleName            | string | 否    | 是    | 应用包名。                                    |
 | eventId             | number | 否    | 是    | 应用事件类型。                                  |
-| eventOccurredTime     | number | 否    | 是    | 应用事件发生的时间戳。                              |
+| eventOccurredTime     | number | 否    | 是    | 应用事件发生的时间戳，单位：ms。                              |
 | appGroup | number | 否    | 是    | 应用程序的使用优先级组。|
 | indexOfLink           | string | 否    | 是    | 快捷方式id。|
 | nameOfClass           | string | 否    | 是    | 类名。|

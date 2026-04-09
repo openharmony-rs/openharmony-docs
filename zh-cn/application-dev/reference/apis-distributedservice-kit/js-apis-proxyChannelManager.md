@@ -89,8 +89,8 @@ struct Index {
         .onClick(() => {
           let channelInfo: proxyChannelManager.ChannelInfo = {
             linkType: proxyChannelManager.LinkType.LINK_BR,
-            peerDevAddr: "xx:xx:xx:xx:xx:xx", //穿戴设备蓝牙mac
-            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", //穿戴侧监听的uuid
+            peerDevAddr: "xx:xx:xx:xx:xx:xx", // 穿戴设备蓝牙mac
+            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 穿戴侧监听的uuid
           };
           // 以下为使用 try/catch 判断
           try {

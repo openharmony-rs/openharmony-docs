@@ -244,6 +244,8 @@ Represents the pinch mode of the grid in the picker.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | Name                  | Type               | Read-Only| Optional| Description          |

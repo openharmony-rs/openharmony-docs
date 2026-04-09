@@ -263,6 +263,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | STREAM_USAGE_ENFORCED_TONE<sup>10+</sup>  | 15     | 强制音(如相机快门音)。 |
 | STREAM_USAGE_ULTRASONIC<sup>10+</sup>     | 16     | 超声波（目前仅提供给MSDP使用）。 |
 | STREAM_USAGE_VOICE_CALL_ASSISTANT<sup>12+</sup>     | 21     | 通话辅助语音。 |
+| STREAM_USAGE_ANNOUNCEMENT<sup>24+</sup>   | 22     | 通知音。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| STREAM_USAGE_EMERGENCY<sup>24+</sup>      | 23     | 告警音。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## InterruptRequestType<sup>9+</sup>
 
@@ -840,7 +842,7 @@ forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | volumeType     | [AudioVolumeType](#audiovolumetype)                       | 是   | 应用程序期望控制的音频音量类型。 |
-| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
+| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间，单位为秒。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
@@ -985,7 +987,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-根据应用ID获取指定应用的音量（范围为0到100）。使用Promise异步回调。
+根据应用ID获取指定应用的音量百分比（范围为0到100）。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -1001,7 +1003,7 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回应用的音量（范围为[0, 100]）。 |
+| Promise&lt;number&gt; | Promise对象，返回应用的音量百分比，范围为[0, 100]。 |
 
 **错误码：**
 
@@ -1027,7 +1029,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-根据应用ID设置指定应用的音量（范围为[0, 100]）。使用Promise异步回调。
+根据应用ID设置指定应用的音量百分比（范围为[0, 100]）。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -1038,7 +1040,7 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 | 参数名     | 类型                                      | 必填 | 说明       |
 | ---------- | ---------------------------------------- | ---- |----------|
 | uid    | number                                   | 是   | 表示应用ID。   |
-| volume    | number                                   | 是   | 要设置的音量值。 |
+| volume    | number                                   | 是   | 要设置的音量百分比，范围为[0, 100]。 |
 
 **返回值：**
 

@@ -30,7 +30,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) | OH_AVDemuxer | 为OH_AVDemuxer接口定义native层对象。 |
-| [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | 为DRM_MediaKeySystemInf接口定义native层对象。 |
+| [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | 为DRM_MediaKeySystemInfo接口定义native层对象。 |
 
 ### 函数
 
@@ -276,7 +276,7 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) *demuxer | 指向OH_AVDemuxer实例的指针。 |
-| int64_t millisecond | 期望跳转位置对应的时间，单位为毫秒，该时间戳是相对文件开始的位置。 |
+| int64_t millisecond | 期望跳转位置对应的时间，单位为ms，该时间戳是相对文件开始的位置。 |
 | [OH_AVSeekMode](capi-native-avcodec-base-h.md#oh_avseekmode) mode | 跳转的模式。 |
 
 **返回：**

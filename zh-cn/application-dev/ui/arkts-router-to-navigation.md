@@ -12,7 +12,7 @@
 
 Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需要在`main_page.json`中声明。
 
-```json
+```json5
 // main_page.json
 {
   "src": [
@@ -164,9 +164,9 @@ export struct PageOne {
 }
 ```
 
-每个子页也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
+每个子页面也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
 
-```json
+```json5
 // 工程配置文件module.json5中配置 {"routerMap": "$profile:router_map"}
 // router_map.json
 {
@@ -224,7 +224,7 @@ struct Index {
     Navigation(this.pathStack) {
       // ...
     }.width('100%').height('100%')
-    .title('Navigation， Navigation')
+    .title('Navigation, Navigation')
     .mode(NavigationMode.Stack)
   }
 }
@@ -678,7 +678,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 **方案二：** 系统路由表
 
-从API version 12版本开始，Navigation支持系统跨模块的路由表方案，整体设计是将路由表方案下沉到系统中管理，即在需要路由的各个业务模块（HSP/HAR）中独立配置`router_map.json`文件，在触发路由跳转时，应用只需要通过`NavPathStack`进行路由跳转，此时系统会自动完成路由模块的动态加载、组件构建，并完成路由跳转功能，从而实现了开发层面的模块解耦。
+从API version 12开始，Navigation支持系统跨模块的路由表方案，整体设计是将路由表方案下沉到系统中管理，即在需要路由的各个业务模块（HSP/HAR）中独立配置`router_map.json`文件，在触发路由跳转时，应用只需要通过`NavPathStack`进行路由跳转，此时系统会自动完成路由模块的动态加载、组件构建，并完成路由跳转功能，从而实现了开发层面的模块解耦。
 
 具体可参考Navigation[系统路由表](./arkts-navigation-cross-package.md#系统路由表)。
 
@@ -785,9 +785,9 @@ Navigation也可以通过[queryNavDestinationInfo](../reference/apis-arkui/arkui
 | navigationId                  | ResourceStr         | 是   | 包含NavDestination组件的Navigation组件的id。 |
 | name                          | ResourceStr         | 是   | NavDestination组件的名称。                   |
 | state                         | NavDestinationState | 是   | NavDestination组件的状态。                   |
-| index<sup>12+<sup>            | number              | 是   | NavDestination在路由栈中的索引。             |
-| param<sup>12+<sup>            | Object              | 否   | NavDestination组件的参数。                   |
-| navDestinationId<sup>12+<sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
+| index<sup>12+</sup>            | number              | 是   | NavDestination在路由栈中的索引。             |
+| param<sup>12+</sup>            | Object              | 否   | NavDestination组件的参数。                   |
+| navDestinationId<sup>12+</sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
 
 <!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
 

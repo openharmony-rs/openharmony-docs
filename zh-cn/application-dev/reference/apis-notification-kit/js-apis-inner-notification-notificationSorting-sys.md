@@ -1,4 +1,4 @@
-# NotificationSorting(系统接口)
+# NotificationSorting (系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->

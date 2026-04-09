@@ -8,7 +8,7 @@
 
 The **geolocation** module provides a wide array of location services, including GNSS positioning, network positioning, geocoding, reverse geocoding, and geofencing.
 
-> **NOTE**<br>
+> **NOTE**
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are no longer maintained since API version 9. You are advised to use [geoLocationManager](js-apis-geoLocationManager.md).
 > This module supports only the WGS-84 coordinate system.
@@ -1213,7 +1213,7 @@ Defines a reverse geocoding request.
 | -------- | -------- | -------- | -------- | -------- |
 | locale | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | latitude | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
+| longitude | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The value must be greater than or equal to **0**. A value smaller than **10** is recommended.|
 
 
@@ -1253,7 +1253,7 @@ Geocoding address information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude<sup>7+</sup> | number | No| Yes| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude<sup>7+</sup> | number | No| Yes| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
+| longitude<sup>7+</sup> | number | No| Yes| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
 | locale<sup>7+</sup> | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | placeName<sup>7+</sup> | string | No| Yes| Landmark of the location.|
 | countryCode<sup>7+</sup> | string | No| Yes| Country code.|
@@ -1422,7 +1422,7 @@ Defines location information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude<sup>7+</sup> | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude<sup>7+</sup> | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
+| longitude<sup>7+</sup> | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
 | altitude<sup>7+</sup> | number | No| No| Location altitude, in meters.|
 | accuracy<sup>7+</sup> | number | No| No| Location accuracy, in meters.|
 | speed<sup>7+</sup> | number | No| No| Speed, in m/s.|
@@ -1497,7 +1497,7 @@ Sets the priority of a location request.
 Enumerates error codes of the location service.
 
 > **NOTE**<br>
-> This API is deprecated since API version 9. You are advised to use [geoLocationManager](errorcode-geoLocationManager.md).
+> This API is deprecated since API version 9. You are advised to use [Location Kit Error Codes](errorcode-geoLocationManager.md) instead.
 
 **Required permissions**: ohos.permission.LOCATION
 

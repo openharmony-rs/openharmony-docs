@@ -254,7 +254,7 @@ struct AutoFillPage {
 }
 ```
 
-### onCancel<sup>11+</sup>
+### onCancel
 
 onCancel(fillContent?: string): void
 

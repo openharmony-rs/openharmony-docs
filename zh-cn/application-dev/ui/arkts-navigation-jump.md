@@ -81,7 +81,7 @@ export struct PageOne {
 
 系统提供了系统路由表和自定义路由表两种实现方式，此处以系统路由表为例。将子页面中写好的实例化方法与它的name（开发者自定义）在路由表配置文件中注册，配置文件需要自行创建，路径：`entry/src/main/resources/base/profile/router_map.json`。
 
-``` json
+``` json5
 {
   "routerMap": [
     {
@@ -369,7 +369,7 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
-   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
    
    ``` TypeScript
    class NavParam {
@@ -390,7 +390,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
            console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
            return;
          }
-         console.info('TestTag', 'param not instance of NavParam');;
+         console.info('TestTag', 'param not instance of NavParam');
        })
      }
    }
@@ -553,7 +553,7 @@ struct NavigationDemo {
 
 3. 在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的pop方法，使组件可以在点击之后弹出路由栈栈顶元素实现页面的返回。
 
-<!-- @[NavigationExampleOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
+<!-- @[NavigationExampleOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->  
 
 ``` TypeScript
 @Builder
@@ -596,14 +596,14 @@ export struct PageOne {
           .height(40)
           .margin({ top: 50 })
           .onClick(() => {
-            //弹出路由栈栈顶元素，返回上个页面
+            // 弹出路由栈栈顶元素，返回上个页面
             this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
-      // NavDestinationContext获取当前所在的导航控制器
+      // 通过NavDestinationContext获取当前所在页面的导航控制器
       this.navPathStack = ctx.pathStack;
     })
   }

@@ -123,7 +123,7 @@ isMediaKeySystemSupported(name: string, mimeType: string): boolean
 | 参数名     | 类型                                             | 必填 | 说明                                                                                                          |
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------|
 | name  | string     | 是   | DRM解决方案名称。建议先调用[isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported)判断是否是支持的解决方案名称。 |
-| mimeType  | string     | 是   | 媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hev。                                                               |
+| mimeType  | string     | 是   | 媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hevc。                                                               |
 
 **返回值：**
 

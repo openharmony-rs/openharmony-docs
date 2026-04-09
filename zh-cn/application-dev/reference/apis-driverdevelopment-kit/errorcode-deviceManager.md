@@ -22,14 +22,14 @@ ExternalDeviceManager service exception or busType parameter error.
 
 **可能原因**
 
-1. 产品形态不正确，仅支持2in1和tablet。
+1. 产品形态不正确，仅支持PC/2in1。
 2. 服务内部遇到通信输入输出异常。
 3. 若接口存在busType参数，请检查参数是否错误。
 
 **处理步骤**
 
 1. 请更换目标产品形态。
-2. 请尝试重启设备，<!--RP1-->或通过[在线提交issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose)来反映问题。<!--RP1End-->
+2. 请尝试重启设备，<!--RP1-->或通过[在线提交issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose)来反馈问题。<!--RP1End-->
 3. 通过[deviceManager.BusType](js-apis-driver-deviceManager.md#bustype)查询支持的枚举值。
 
 ## 26300001 扩展外设驱动服务异常
@@ -44,13 +44,13 @@ ExternalDeviceManager service exception.
 
 **可能原因**
 
-1. 产品形态不正确，仅支持2in1和tablet。
+1. 产品形态不正确，仅支持PC/2in1。
 2. 服务内部遇到通信输入输出异常。
 
 **处理步骤**
 
 1. 请更换目标产品形态。
-2. 请尝试重启设备，<!--RP1-->或通过[在线提交issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose)来反映问题。<!--RP1End-->
+2. 请尝试重启设备，<!--RP1-->或通过[在线提交issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose)来反馈问题。<!--RP1End-->
 
 ## 26300002 驱动服务端不允许驱动客户端绑定
 

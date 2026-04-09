@@ -38,7 +38,15 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)，当布局算法为[StackLayoutAlgorithm](#stacklayoutalgorithm)时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效。
+支持[通用属性](ts-component-general-attributes.md)。
+
+> **说明：**
+>
+> - 当布局算法为[RowLayoutAlgorithm](#rowlayoutalgorithm)或[ColumnLayoutAlgorithm](#columnlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性生效。
+>
+> - 当布局算法为[StackLayoutAlgorithm](#stacklayoutalgorithm)时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效。
+>
+> - 当布局算法为[CustomLayoutAlgorithm](#customlayoutalgorithm)时，DynamicLayout的大小通过[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法设置，[尺寸设置](ts-universal-attributes-size.md)和[边框](ts-universal-attributes-border.md)属性不影响DynamicLayout组件的大小，此时子组件设置[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性不生效，开发者可以自定义实现安全区延伸的效果。
 
 ## 事件
 

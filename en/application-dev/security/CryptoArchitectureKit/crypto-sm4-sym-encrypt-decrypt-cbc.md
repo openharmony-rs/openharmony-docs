@@ -41,25 +41,29 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[async_symmetry_encrypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_cbc_encryption_decryption/sm4_cbc_encryption_decryption_asynchronous.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16); // 16 bytes
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
-      algName: "IvParamsSpec",
+      algName: 'IvParamsSpec',
       iv: ivBlob
     };
     return ivParamsSpec;
   }
+  
   let iv = genIvParamsSpec();
+  
   // Encrypt the message.
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -67,6 +71,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
+  
   // Decrypt the message.
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -74,54 +79,61 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = await symGenerator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function main() {
     try {
       let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
       let symKey = await genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
-        console.error('decrypt failed');
+        console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`SM4 ${error}, error code: ${error.code}`);
+      console.error(`SM4 failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
-  ```ts
+  <!-- @[sync_symmetry_encrypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_cbc_encryption_decryption/sm4_cbc_encryption_decryption_synchronous.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16); // 16 bytes
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
-      algName: "IvParamsSpec",
+      algName: 'IvParamsSpec',
       iv: ivBlob
     };
     return ivParamsSpec;
   }
+  
   let iv = genIvParamsSpec();
+  
   // Encrypt the message.
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -129,6 +141,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
+  
   // Decrypt the message.
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|CBC|PKCS7');
@@ -136,29 +149,31 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
+  
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let symGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = symGenerator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
+  
   function main() {
     try {
       let keyData = new Uint8Array([7, 154, 52, 176, 4, 236, 150, 43, 237, 9, 145, 166, 141, 174, 224, 131]);
       let symKey = genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
-        console.error('decrypt failed');
+        console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`SM4 ${error}, error code: ${error.code}`);
+      console.error(`SM4 failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```

@@ -17,13 +17,13 @@
 - 支持基于网卡/UID 的流量变化订阅。
 
 > **说明：**
-> 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 Promise 函数，更多方式可以查阅[API 参考](../reference/apis-network-kit/js-apis-net-statistics.md)。
+> 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 Promise 函数，更多方式可以查阅[@ohos.net.statistics (流量管理)](../reference/apis-network-kit/js-apis-net-statistics.md)。
 
 以下分别介绍具体开发方式。
 
 ## 开发步骤
 
-1. 导入statistics、socket以及错误码模块。
+1. 导入[statistics](../reference/apis-network-kit/js-apis-net-statistics.md)、[socket](../reference/apis-network-kit/js-apis-socket.md)以及错误码模块。
 
    <!-- @[flow_management_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -34,7 +34,7 @@
    ```
 2. 获取指定网卡实时流量数据
 
-    调用getIfaceRxBytes接口传入网卡名获取实时下行流量数据。
+    调用[getIfaceRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetifacerxbytes-1)接口传入网卡名获取实时下行流量数据。
 
    <!-- @[flow_management_getIfaceRxBytes_and_getIfaceTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -62,7 +62,7 @@
    ```
 3. 获取蜂窝实时流量数据
 
-    调用getCellularRxBytes接口获取蜂窝实时上下行流量数据。
+    调用[getCellularRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetcellularrxbytes-1)接口获取蜂窝实时上下行流量数据。
 
    <!-- @[flow_management_getCellularRxBytes_and_getCellularTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -82,7 +82,7 @@
    ```
 4. 获取所有网卡实时流量数据
 
-    调用getAllRxBytes接口获取所有网卡实时上下行流量数据。
+    调用[getAllRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetallrxbytes-1)接口获取所有网卡实时上下行流量数据。
 
    <!-- @[flow_management_getAllRxBytes_and_getAllTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -102,7 +102,7 @@
    ```
 5. 获取指定应用实时流量数据
 
-    调用getUidRxBytes接口，传入UID获取指定应用实时上下行流量数据。
+    调用[getUidRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetuidrxbytes-1)接口，传入UID获取指定应用实时上下行流量数据。
    ```ts
     let UID = 20010038;
    ```
@@ -126,7 +126,7 @@
    ```
 6. 获取指定socket实时流量数据
 
-    调用getSockfdRxBytes接口，传入指定的sockFd获取指定socket实时上下行流量数据。
+    调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)接口，传入指定的sockFd获取指定socket实时上下行流量数据。
 
    <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
