@@ -482,7 +482,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   systemDateTime.updateNtpTime().then(() => {
-    console.info(`Succeeded in update ntp time.`);
+    console.info(`Succeeded in updating ntp time.`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
   });
