@@ -137,7 +137,7 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | OH_AVTranscoder实例的指针。 |
-| int32_t progress | 转码进度。 |
+| int32_t progress | 转码百分比进度。 |
 | void *userData | 用户特定数据的指针。 |
 
 
