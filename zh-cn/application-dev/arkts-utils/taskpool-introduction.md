@@ -141,6 +141,77 @@ function foo() {
 
 <!-- @[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets) -->
 
+``` TypeScript
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+async function testPromiseError() {
+  await new Promise<number>((resolve, reject) => {
+    resolve(1);
+  }).then(()=>{
+    throw new Error('testPromise Error');
+  })
+}
+
+@Concurrent
+async function testPromiseError1() {
+  await new Promise<string>((resolve, reject) => {
+    reject('testPromiseError1 Error msg');
+  })
+}
+
+@Concurrent
+function testPromiseError2() {
+  return new Promise<string>((resolve, reject) => {
+    reject('testPromiseError2 Error msg');
+  })
+}
+
+async function testConcurrentFunc() {
+  const task1: taskpool.Task = new taskpool.Task(testPromiseError);
+  const task2: taskpool.Task = new taskpool.Task(testPromiseError1);
+  const task3: taskpool.Task = new taskpool.Task(testPromiseError2);
+
+  taskpool.execute(task1).then((d: object) => {
+    console.info(`task1 res is: ${d}`);
+  }).catch((e: object) => {
+    console.error(`task1 catch e: ${e}`); // task1 catch e: Error: testPromise Error
+  })
+  taskpool.execute(task2).then((d: object) => {
+    console.info(`task2 res is: ${d}`);
+  }).catch((e: object) => {
+    console.error(`task2 catch e: ${e}`); // task2 catch e: testPromiseError1 Error msg
+  })
+  taskpool.execute(task3).then((d: object) => {
+    console.info(`task3 res is: ${d}`);
+  }).catch((e: object) => {
+    console.error(`task3 catch e: ${e}`); // task3 catch e: testPromiseError2 Error msg
+  })
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Button(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            testConcurrentFunc();
+            // ...
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 <!-- @[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets) -->
 
 ## TaskPool扩缩容机制
