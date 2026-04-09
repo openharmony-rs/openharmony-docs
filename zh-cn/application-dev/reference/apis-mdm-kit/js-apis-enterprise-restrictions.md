@@ -719,3 +719,16 @@ try {
   console.error(`Failed to get user restricted. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+## FeatureForDevice<sup>24+</sup>
+ 	 
+设备特性枚举。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                        | 值  | 说明    |
+| ----------------------------| ----| ------------------------------- |
+| WIFI_P2P   | 0   | Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直接相互连接。禁用后，设备无法通过Wi-Fi P2P进行点对点连接，影响文件传输、游戏联机、屏幕共享等需要直接Wi-Fi连接的应用功能。 |
+| CORE_DUMP<sup>26.0.0</sup>   | 6   | 无法通过任务管理器创建转存文件。 |
