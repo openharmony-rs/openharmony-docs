@@ -16,6 +16,21 @@
 1. 首先，创建一个执行任务的Worker。创建方法可参考[创建worker的注意事项](worker-introduction.md#创建worker的注意事项)。
 
    <!-- @[create_worker_execute_multi_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) -->
+   
+   ``` TypeScript
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { CopyEntry } from '../Sendable/CopyEntry';
+   
+   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+   
+   // ...
+   
+   // Worker接收宿主线程的消息，做相应的处理
+   workerPort.onmessage = (e: MessageEvents) => {
+     let obj: CopyEntry[] = e.data;
+     console.info(`The type of the first set of data is ${obj[0].type}.`);
+   }
+   ```
 
    <!-- @[create_worker_execute_multi_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) -->
 
