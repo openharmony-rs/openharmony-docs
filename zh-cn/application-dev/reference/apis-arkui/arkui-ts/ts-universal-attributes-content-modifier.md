@@ -31,7 +31,7 @@ contentModifier(modifier: ContentModifier\<T>): T
 
 开发者需要自定义class实现ContentModifier接口。
 
-### applyContent<sup>12+</sup>
+### applyContent
 
 ArkTS-Dyn: applyContent(): WrappedBuilder\<[T]\>
 

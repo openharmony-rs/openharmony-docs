@@ -78,7 +78,7 @@ Slider(options?: SliderOptions)
 
 支持除触摸热区以外的[通用属性](ts-component-general-attributes.md)。
 
-### blockColor<sup>7+</sup>
+### blockColor
 
 ArkTS-Dyn: blockColor(value: ResourceColor)
 
@@ -108,7 +108,7 @@ ArkTS-Sta: blockColor(value: ResourceColor | LinearGradient | undefined)
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
 | value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)<sup>23+</sup> \| undefined | 是   | 滑块的颜色。 <br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
 
-### trackColor<sup>7+</sup>
+### trackColor
 
 ArkTS-Dyn: trackColor(value: ResourceColor | LinearGradient)
 
@@ -134,7 +134,7 @@ ArkTS-Sta: trackColor(value: ResourceColor | LinearGradient | undefined)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) \| undefined | 是   | 滑轨的背景颜色。<br/>**说明：** <br/>设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。默认值：`$r('sys.color.ohos_id_color_component_normal')`。注意：该接口中的LinearGradient类型不支持在原子化服务中使用。 |
 
-### selectedColor<sup>7+</sup>
+### selectedColor
 
 selectedColor(value: ResourceColor)
 
@@ -162,7 +162,7 @@ selectedColor(value: ResourceColor)
 
 selectedColor(selectedColor: ResourceColor | LinearGradient)
 
-设置滑轨的已滑动部分颜色。与[selectedColor<sup>7+</sup>](#selectedcolor7)相比，新增了LinearGradient类型的支持。
+设置滑轨的已滑动部分颜色。与[selectedColor](#selectedcolor)相比，新增了LinearGradient类型的支持。
 
 从API version 18开始支持利用LinearGradient设置滑轨的已滑动部分的渐变色。
 
@@ -188,7 +188,7 @@ selectedColor(selectedColor: ResourceColor | LinearGradient)
 
 selectedColor(selectedColor: ResourceColor | LinearGradient | undefined)
 
-设置滑轨的已滑动部分颜色。与[selectedColor<sup>7+</sup>](#selectedcolor7)相比，新增了LinearGradient类型的支持。
+设置滑轨的已滑动部分颜色。与[selectedColor](#selectedcolor)相比，新增了LinearGradient类型的支持。
 
 从API version 18开始支持利用LinearGradient设置滑轨的已滑动部分的渐变色。
 
@@ -200,7 +200,7 @@ selectedColor(selectedColor: ResourceColor | LinearGradient | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[selectedColor<sup>7+</sup>](#selectedcolor7)和[selectedColor<sup>18+</sup>](#selectedcolor18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[selectedColor](#selectedcolor)和[selectedColor<sup>18+</sup>](#selectedcolor18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -210,7 +210,7 @@ selectedColor(selectedColor: ResourceColor | LinearGradient | undefined)
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | selectedColor | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) \| undefined | 是   | 滑轨的已滑动部分颜色。 <br/>**说明：** <br/>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。 <br/>默认值：`$r('sys.color.ohos_id_color_emphasize')` |
 
-### showSteps<sup>7+</sup>
+### showSteps
 
 ArkTS-Dyn: showSteps(value: boolean)
 
@@ -234,7 +234,7 @@ ArkTS-Sta: showSteps(value: boolean | undefined)
 | ------ | ------- | ---- | ------------------------------------------ |
 | value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 当前是否显示步长刻度值。值为true时显示刻度值，值为false时不显示刻度值。<br/>默认值：false |
 
-### showTips<sup>7+</sup>
+### showTips
 
 ArkTS-Dyn: showTips(value: boolean, content?: ResourceStr)
 
@@ -970,7 +970,7 @@ Slider组件滑块形状枚举。
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
 
-### onChange<sup>7+</sup>
+### onChange
 
 ArkTS-Dyn: onChange(callback:&nbsp;(value:&nbsp;number,&nbsp;mode:&nbsp;SliderChangeMode)&nbsp;=&gt;&nbsp;void)
 

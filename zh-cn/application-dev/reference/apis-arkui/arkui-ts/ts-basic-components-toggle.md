@@ -79,7 +79,7 @@ Toggle的样式。
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
-### selectedColor<sup>8+</sup>
+### selectedColor
 
 设置组件在打开状态下的背景颜色。
 
@@ -103,7 +103,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 组件打开状态的背景颜色。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_color_text_highlight_bg')`的透明度。 |
 
-### switchPointColor<sup>8+</sup>
+### switchPointColor
 
 设置Switch类型的圆形滑块颜色。仅对type为ToggleType.Switch生效。
 
@@ -194,7 +194,7 @@ Switch类型的样式。
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
 
-### onChange<sup>8+</sup>
+### onChange
 
 开关状态切换时触发该事件。
 

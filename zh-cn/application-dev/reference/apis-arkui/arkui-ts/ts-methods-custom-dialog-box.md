@@ -141,7 +141,7 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 >
 > - 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后面。详细用法可参考[示例1弹出嵌套弹窗](#示例1弹出嵌套弹窗)。
 
-### constructor<sup>7+</sup>
+### constructor
 
 constructor(value: CustomDialogControllerOptions)
 
@@ -161,7 +161,7 @@ constructor(value: CustomDialogControllerOptions)
 | ------ | ------------------------------------------------------------ | ---- | ---------------------- |
 | value  | [CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明) | 是   | 配置自定义弹窗的参数。 |
 
-### open<sup>7+</sup>
+### open
 
 open()
 
@@ -175,7 +175,7 @@ open()
 
 **ArkTS-Sta起始版本：** 23
 
-### close<sup>7+</sup>
+### close
 
 close()
 
