@@ -797,7 +797,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 字体阴影的颜色，默认为黑色Color(255, 0, 0, 0)。        |
 | point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零。    |
-| blurRadius    | number                                               | 否  |  是   | 模糊半径，浮点数，单位为物理像素px，默认为0.0px。       |
+| blurRadius    | number                                               | 否  |  是   | 模糊半径，浮点数，单位为物理像素px，默认为0.0。       |
 
 ## RectStyle
 
@@ -885,15 +885,15 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
 | fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。                    |
 | fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为物理像素px。  |
-| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。|
-| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为物理像素px。                 |
+| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。|
+| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，单位为物理像素px，默认为0.0。                 |
 | heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。              |
 | heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。|
 | halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。|
 | ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。       |
 | ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。                       |
 | locale        | string                                               | 否 | 是 | 语言类型，如字段为'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范，默认为空字符串。|
-| baselineShift | number                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，单位为物理像素px，默认为0.0px。                 |
+| baselineShift | number                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，单位为物理像素px，默认为0.0。                 |
 | fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。|
 | fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。|
 | textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。|
@@ -2701,7 +2701,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## TextBox
 
-文本矩形区域表示文本在布局时所占用的矩形空间。
+文本矩形区域，表示文本在布局时所占用的矩形空间。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
