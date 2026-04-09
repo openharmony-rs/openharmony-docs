@@ -135,17 +135,17 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 
   <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
     
-    ``` C++
-    // Create MIDI client
-    static napi_value CreateMIDIClient(napi_env env, napi_callback_info info)
-    {
-        // ...
-        std::lock_guard<std::mutex> lock(g_midiMutex);
-        // ...
-        OH_MIDIStatusCode status = OH_MIDIClient_Create(&g_midiClient, g_midiCallbacks, nullptr);
-        // ...
-    }
-    ```
+  ``` C++
+  // Create MIDI client
+  static napi_value CreateMIDIClient(napi_env env, napi_callback_info info)
+  {
+      // ...
+      std::lock_guard<std::mutex> lock(g_midiMutex);
+      // ...
+      OH_MIDIStatusCode status = OH_MIDIClient_Create(&g_midiClient, g_midiCallbacks, nullptr);
+      // ...
+  }
+  ```
 
 ArkTS调用示例
 
@@ -154,7 +154,7 @@ ArkTS调用示例
 - ArkTS调用示例
 
   <!-- @[arkts_create_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   createClient(): void {
     try {
@@ -201,7 +201,7 @@ ArkTS调用示例
 - 销毁MIDI客户端
 
   <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-
+  
   ``` C++
   static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
   {
@@ -222,7 +222,7 @@ ArkTS调用示例
 ArkTS调用示例：
 
   <!-- @[arkts_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   destroyClient(): void {
     try {
@@ -1377,7 +1377,7 @@ async sendSysExMessage(): Promise<void> {
   - 销毁客户端
 
     <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-    
+  
     ``` C++
     static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
     {
