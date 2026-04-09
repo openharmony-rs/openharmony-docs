@@ -74,7 +74,7 @@
    > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
    > - 避免在Picker回调中直接操作URI。
    > - 建议使用全局变量保存URI以供后续使用。
-   > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
+   > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
 4. 待界面从FilePicker返回后，使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
@@ -101,7 +101,7 @@
 
    ```ts
    import { picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
