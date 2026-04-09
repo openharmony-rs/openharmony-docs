@@ -202,7 +202,7 @@ Enumerates the key codes.
 | HID_KEY_NUMPAD_SUBTRACT = 74 | Minus key (-) on the numeric keypad|
 | HID_KEY_NUMPAD_ADD = 78 | Plus key (+) on the numeric keypad|
 | HID_KEY_NUMPAD_DOT = 83 | Decimal point (.) on the numeric keypad|
-| HID_KEY_SYSRQ = 99 | SYSRQ key|
+| HID_KEY_SYSRQ = 99 | Key print screen|
 | HID_KEY_DELETE = 111 | Delete key|
 | HID_KEY_MUTE = 113 | Mute key|
 | HID_KEY_VOLUME_DOWN = 114 | Volume Down key|
