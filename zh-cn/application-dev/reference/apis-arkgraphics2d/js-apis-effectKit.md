@@ -122,6 +122,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
     console.info("Succeeded in creating colorPicker.");
   }).catch((err : BusinessError) => {
     console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
+  })
 })
 ```
 
@@ -180,6 +181,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
     console.info("Succeeded in creating colorPicker.");
   }).catch((err : BusinessError) => {
     console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
+  })
 })
 ```
 
