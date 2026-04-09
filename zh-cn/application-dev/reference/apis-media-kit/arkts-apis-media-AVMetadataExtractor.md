@@ -196,7 +196,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor != null) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap) => {
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
       pixelMap = pixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
@@ -506,8 +506,10 @@ async function test() {
   // 创建AVMetadataExtractor对象。
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   let timeoutMs = 3000;
-  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata) => {
-    console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata | undefined) => {
+    if (metadata) {
+      console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+    }
   }).catch((error: BusinessError) => {
     console.error(`Failed to fetch Metadata, code: ${error.code}, message: ${error.message}`);
   });
