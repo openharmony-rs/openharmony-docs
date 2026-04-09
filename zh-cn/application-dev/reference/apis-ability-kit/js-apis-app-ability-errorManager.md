@@ -936,7 +936,7 @@ type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: long, de
 
 | 名称  | 值  | 说明   |
 | ---- | --- | ------ |
-| PSS_MEM     | 1   | 表示应用当前超基线的资源是PSS的内存。 |
+| resourceType     | 1   | 表示应用当前超基线的资源是PSS的内存。 |
 | ION_MEMORY   | 2   | 表示应用当前超基线的资源是ION的内存。 |
 | ASHMEM_MEMORY | 3   | 表示应用当前超基线的资源是ASHMEM的内存。 |
 | GPU_MEMORY | 4   | 表示应用当前超基线的资源是GPU的内存。 |
