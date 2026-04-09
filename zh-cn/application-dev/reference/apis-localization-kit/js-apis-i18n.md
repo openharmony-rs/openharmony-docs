@@ -4592,8 +4592,8 @@ getFirstPreferredLanguage(): string
 
 ## Util<sup>(deprecated)</sup>
 
-### unitConvert<sup>(deprecated)</sup>
 
+### unitConvert<sup>(deprecated)</sup>
 
 unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string, style?: string): string
 
