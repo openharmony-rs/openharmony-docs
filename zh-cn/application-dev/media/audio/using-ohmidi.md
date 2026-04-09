@@ -39,8 +39,6 @@ OH_MIDI的主要接口包括：
 
 ## 使用入门
 
-本节提供最简化的MIDI开发示例。
-
 - 在CMake脚本中链接动态库。
 
   <!-- @[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt) -->
