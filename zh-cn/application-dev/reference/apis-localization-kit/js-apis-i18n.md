@@ -3129,7 +3129,7 @@ try {
 
 static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl.Locale): string
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl.Locale)](#getunicodewrappedfilepath20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[getUnicodeWrappedFilePath](#getunicodewrappedfilepath20)替代。
 
 对文件路径进行本地化处理。<br>例如，将/data/out/tmp本地化处理后生成tmp/out/data/。
 
@@ -3508,7 +3508,7 @@ try {
 
 getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.Locale): SimpleDateTimeFormat
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[i18n.getSimpleDateTimeFormatByPattern(pattern: string, locale?: Intl.Locale)](#i18ngetsimpledatetimeformatbypattern20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[getSimpleDateTimeFormatByPattern](#i18ngetsimpledatetimeformatbypattern20)替代。
 
 通过模式字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatBySkeleton](#i18ngetsimpledatetimeformatbyskeletondeprecated)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](#format18)的示例。
 
@@ -3600,7 +3600,7 @@ try {
 
 getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleDateTimeFormat
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[i18n.getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Intl.Locale)](#i18ngetsimpledatetimeformatbyskeleton20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[getSimpleDateTimeFormatBySkeleton](#i18ngetsimpledatetimeformatbyskeleton20)替代。
 
 通过框架字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatByPattern](#i18ngetsimpledatetimeformatbypatterndeprecated)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](#format18)的示例。
 
@@ -3876,7 +3876,7 @@ try {
 
 getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleNumberFormat
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[i18n.getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale)](#i18ngetsimplenumberformatbyskeleton20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[getSimpleNumberFormatBySkeleton](#i18ngetsimplenumberformatbyskeleton20)替代。
 
 通过框架字符串获取SimpleNumberFormat对象。
 
@@ -3976,7 +3976,7 @@ try {
 
 constructor(numberFormat: intl.NumberFormat | SimpleNumberFormat, options?: StyledNumberFormatOptions)
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[constructor(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: StyledNumberFormatOptions)](#constructor20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[constructor](#constructor20)替代。
 
 创建需要富文本显示的数字格式化的对象。
 
@@ -4282,7 +4282,7 @@ format(num: number): string
 
 getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[i18n.System.getDisplayCountry](#getdisplaycountry9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getDisplayCountry](#getdisplaycountry9)替代。
 
 获取指定国家的本地化名称。
 
@@ -4314,7 +4314,7 @@ getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): stri
 
 getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[i18n.System.getDisplayLanguage](#getdisplaylanguage9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getDisplayLanguage](#getdisplaylanguage9)替代。
 
 获取指定语言的本地化显示文本。
 
@@ -4347,7 +4347,7 @@ getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): st
 
 getSystemLanguage(): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[i18n.System.getSystemLanguage](#getsystemlanguage9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLanguage](#getsystemlanguage9)替代。
 
 获取系统语言。
 
@@ -4371,7 +4371,7 @@ getSystemLanguage(): string
 
 getSystemRegion(): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[i18n.System.getSystemRegion](#getsystemregion9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemRegion](#getsystemregion9)替代。
 
 获取系统地区。
 
@@ -4395,7 +4395,7 @@ getSystemRegion(): string
 
 getSystemLocale(): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[i18n.System.getSystemLocale](#getsystemlocaleinstance20)代替。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaleinstance20)代替。
 
 获取系统区域ID。
 
@@ -4419,7 +4419,7 @@ getSystemLocale(): string
 
 is24HourClock(): boolean
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[i18n.System.is24HourClock](#is24hourclock9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.is24HourClock](#is24hourclock9)替代。
 
 判断系统时间是否为24小时制。
 
@@ -4443,7 +4443,7 @@ is24HourClock(): boolean
 
 set24HourClock(option: boolean): boolean
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[i18n.System.set24HourClock](./js-apis-i18n-sys.md#set24hourclock9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.set24HourClock](./js-apis-i18n-sys.md#set24hourclock9)替代。
 
 修改系统时间的24小时制设置。
 
@@ -4476,7 +4476,7 @@ set24HourClock(option: boolean): boolean
 
 addPreferredLanguage(language: string, index?: number): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.System.addPreferredLanguage](./js-apis-i18n-sys.md#addpreferredlanguage9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅支持系统应用使用。
 
 在系统偏好语言列表的指定位置添加偏好语言。
 
@@ -4512,7 +4512,7 @@ addPreferredLanguage(language: string, index?: number): boolean
 
 removePreferredLanguage(index: number): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.System.removePreferredLanguage](./js-apis-i18n-sys.md#removepreferredlanguage9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅支持系统应用使用。
 
 从系统偏好语言列表中移除指定位置的偏好语言。
 
@@ -4546,7 +4546,7 @@ removePreferredLanguage(index: number): boolean
 
 getPreferredLanguageList(): Array&lt;string&gt;
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.System.getPreferredLanguageList](#getpreferredlanguagelist9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[System.getPreferredLanguageList](#getpreferredlanguagelist9)替代。
 
 获取系统偏好语言列表。
 
@@ -4570,7 +4570,7 @@ getPreferredLanguageList(): Array&lt;string&gt;
 
 getFirstPreferredLanguage(): string
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.System.getFirstPreferredLanguage](#getfirstpreferredlanguage9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[System.getFirstPreferredLanguage](#getfirstpreferredlanguage9)替代。
 
 获取偏好语言列表中的第一个语言。
 
@@ -4592,13 +4592,11 @@ getFirstPreferredLanguage(): string
 
 ## Util<sup>(deprecated)</sup>
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.I18NUtil](#i18nutil9)替代。
-
 ### unitConvert<sup>(deprecated)</sup>
 
 unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string, style?: string): string
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.I18NUtil.unitConvert](#unitconvert9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[unitConvert](#unitconvert9)替代。
 
 将fromUnit的单位转换为toUnit的单位，并根据区域与风格进行格式化。
 
@@ -4623,13 +4621,11 @@ unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string,
 
 ## Character<sup>(deprecated)</sup>
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode](#unicode9)替代。
-
 ### isDigit<sup>(deprecated)</sup>
 
 isDigit(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isDigit](#isdigit9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isDigit](#isdigit9)替代。
 
 判断输入的字符是否是数字。
 
@@ -4652,7 +4648,7 @@ isDigit(ch: string): boolean
 
 isSpaceChar(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isSpaceChar](#isspacechar9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isSpaceChar](#isspacechar9)替代。
 
 判断输入的字符是否是空格符。
 
@@ -4675,7 +4671,7 @@ isSpaceChar(ch: string): boolean
 
 isWhitespace(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isWhitespace](#iswhitespace9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isWhitespace](#iswhitespace9)替代。
 
 判断输入的字符是否是空白符。
 
@@ -4698,7 +4694,7 @@ isWhitespace(ch: string): boolean
 
 isRTL(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isRTL](#isrtl9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isRTL](#isrtl9)替代。
 
 判断输入的字符是否是从右到左语言的字符。
 
@@ -4721,7 +4717,7 @@ isRTL(ch: string): boolean
 
 isIdeograph(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isIdeograph](#isideograph9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isIdeograph](#isideograph9)替代。
 
 判断输入的字符是否是表意文字。
 
@@ -4744,7 +4740,7 @@ isIdeograph(ch: string): boolean
 
 isLetter(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isLetter](#isletter9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isLetter](#isletter9)替代。
 
 判断输入的字符是否是字母。
 
@@ -4767,7 +4763,7 @@ isLetter(ch: string): boolean
 
 isLowerCase(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isLowerCase](#islowercase9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isLowerCase](#islowercase9)替代。
 
 判断输入的字符是否是小写字母。
 
@@ -4790,7 +4786,7 @@ isLowerCase(ch: string): boolean
 
 isUpperCase(ch: string): boolean
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.isUpperCase](#isuppercase9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isUpperCase](#isuppercase9)替代。
 
 判断输入的字符是否是大写字母。
 
@@ -4813,7 +4809,7 @@ isUpperCase(ch: string): boolean
 
 getType(ch: string): string
 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode.getType](#gettype9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getType](#gettype9)替代。
 
 获取输入的字符的一般类别值。
 
