@@ -193,7 +193,7 @@ hilog_param=40960
 
   系统参数标签定义：
 
-  ```
+  ```txt
   type default_param, parameter_attr;
   type devinfo_private_param, parameter_attr;
   type devinfo_public_param, parameter_attr;
@@ -380,7 +380,7 @@ hilog_param=40960
     }
     ```
 2. 系统参数使用实例
-    ```
+    ```cpp
     // set && get
     char key1[] = "rw.sys.version";
     char value1[] = "10.1.0";
