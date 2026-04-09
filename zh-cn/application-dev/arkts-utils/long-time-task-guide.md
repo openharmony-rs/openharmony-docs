@@ -50,50 +50,8 @@
    - 注册：发起长时任务，并通过emitter接收监听数据。
    - 销毁：发送取消传感器监听的事件，并结束长时任务。
 
-   ```ts
-   // Index.ets
-   @Entry
-   @Component
-   struct Index {
-     sensorTask?: taskpool.LongTask
-   
-     build() {
-       Column() {
-         Text("Add listener")
-           .id('HelloWorld')
-           .fontSize(50)
-           .fontWeight(FontWeight.Bold)
-           .onClick(() => {
-             this.sensorTask = new taskpool.LongTask(SensorListener);
-             emitter.on({ eventId: 0 }, (data) => {
-               // Do something here
-               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
-             });
-             taskpool.execute(this.sensorTask).then(() => {
-               console.info("Add listener of ACCELEROMETER success");
-             }).catch((e: BusinessError) => {
-               // Process error
-             })
-           })
-         Text("Delete listener")
-           .id('HelloWorld')
-           .fontSize(50)
-           .fontWeight(FontWeight.Bold)
-           .onClick(() => {
-             emitter.emit({ eventId: 1 });
-             emitter.off(0);
-             if(this.sensorTask != undefined) {
-               taskpool.terminateTask(this.sensorTask);
-             } else {
-               console.error("sensorTask is undefined.");
-             }
-           })
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
+   <!-- @[taskpool_listen_sensor_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+
    <!-- @[taskpool_listen_sensor_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
    
    

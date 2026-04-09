@@ -155,58 +155,8 @@ function Main(): void {
 
 Actor模型中，不同角色之间并不共享内存，生产者线程和UI线程都有自己的虚拟机实例，两个虚拟机实例之间拥有独占的内存，相互隔离。生产者生产出结果后，通过序列化通信将结果发送给UI线程。UI线程消费结果后，再发送新的生产任务给生产者线程。
 
-```ts
-import { taskpool } from '@kit.ArkTS';
+<!-- @[actor_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/MultiThreadConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
 
-// 跨线程并发任务
-@Concurrent
-async function produce(): Promise<number> {
-  // 添加生产相关逻辑
-  console.info('producing...');
-  return Math.random();
-}
-
-class Consumer {
-  public consume(value: Object) {
-    // 添加消费相关逻辑
-    console.info('consuming value: ' + value);
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        Button() {
-          Text('start')
-        }.onClick(() => {
-          let produceTask: taskpool.Task = new taskpool.Task(produce);
-          let consumer: Consumer = new Consumer();
-          for (let index: number = 0; index < 10; index++) {
-            // 执行生产异步并发任务
-            taskpool.execute(produceTask).then((res: Object) => {
-              consumer.consume(res);
-            }).catch((e: Error) => {
-              console.error(e.message);
-            })
-          }
-        })
-        .width('20%')
-        .height('20%')
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 <!-- @[actor_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/MultiThreadConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
 
 也可以等待生产者完成所有任务，通过序列化通信将结果发送给UI线程。UI线程接收后，由消费者统一消费结果。

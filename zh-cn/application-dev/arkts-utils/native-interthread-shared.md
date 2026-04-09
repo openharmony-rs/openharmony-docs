@@ -232,36 +232,8 @@ export const testSendSendable: () => void;
 
 UI主线程发起调用。
 
-```ts
-// Index.ets
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-import { SendableObjTest } from './SendableObjTest'
+<!-- @[main_thread_init_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/Index.ets) -->
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            SendableObjTest.newSendable()
-            hilog.info(0x0000, 'testTag', 'Test send Sendable begin');
-            testNapi.testSendSendable();
-            hilog.info(0x0000, 'testTag', 'Test send Sendable end');
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
 <!-- @[main_thread_init_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/Index.ets) -->
 
 整个过程主要包括的逻辑实现为：
