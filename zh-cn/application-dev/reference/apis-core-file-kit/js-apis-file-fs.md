@@ -970,7 +970,7 @@ dup(fd: number): File
 
 connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
-业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](#onstatus12)通知应用。
+业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](#onstatus12)通知应用。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1021,7 +1021,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
 
-业务调用disconnectDfs接口，传入networkId参数，触发断链。
+业务调用disconnectDfs接口，传入networkId参数，触发断链。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
