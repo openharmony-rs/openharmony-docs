@@ -50,7 +50,9 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -71,7 +73,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -162,7 +164,9 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -183,7 +187,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -288,7 +292,9 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -308,7 +314,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -408,7 +414,9 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -428,7 +436,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -517,7 +525,9 @@ fail返回错误代码：
 | 300 | I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -537,7 +547,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -628,7 +638,9 @@ fail返回错误代码：
 | 202 | 参数错误。 |
 | 300 | I/O错误。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -649,7 +661,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -741,7 +753,9 @@ fail返回错误代码：
 | 202 | 出现参数错误。 |
 | 300 | 出现I/O错误。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -762,7 +776,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -862,7 +876,9 @@ fail返回错误代码：
 | 301 | 文件或目录不存在。 |
 | 302 | 要读取的文件内容超过4KB。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -882,7 +898,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -979,7 +995,9 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -1001,7 +1019,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -1092,7 +1110,9 @@ fail返回错误代码：
 | 300 | 出现I/O&nbsp;错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -1112,7 +1132,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -1201,7 +1221,9 @@ fail返回错误代码：
 | 202 | 出现参数错误。 |
 | 300 | 出现I/O&nbsp;错误。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -1221,7 +1243,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
@@ -1310,7 +1332,9 @@ fail返回错误代码：
 | 300 | 出现I/O&nbsp;错误。 |
 | 301 | 文件或目录不存在。 |
 
-**ArkTS示例：**
+**示例：**
+
+ArkTS示例：
 
 ```ts
 import file from '@system.file';
@@ -1330,7 +1354,7 @@ export default {
 }
 ```
 
-**JS示例：**
+JS示例：
 
 ```xml
 <!-- xxx.hml -->
