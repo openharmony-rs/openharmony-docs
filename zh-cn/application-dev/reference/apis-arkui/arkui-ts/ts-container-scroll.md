@@ -872,6 +872,7 @@ scrollPage(value: { next: boolean, direction?: Axis })
 currentOffset(): OffsetResult
 
 获取当前的滚动总偏移量。
+
 Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总偏移量通过估算得到，估算结果可能会有误差。其中List组件可以通过[childrenMainSize](./ts-container-list.md#childrenmainsize12)属性解决估算不准确的问题。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -1295,7 +1296,7 @@ struct ScrollExample {
       Button('scroll 100')
         .height('5%')
         .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
-          let curve = curves.interpolatingSpring(10, 1, 228, 30); //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(10, 1, 228, 30); // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({ xOffset: 0, yOffset: yOffset + 100, animation: { duration: 1000, curve: curve } });
         })
@@ -1789,7 +1790,7 @@ struct StickyNestedScroll {
     Column() {
       Row() {
         Button('有动画scrollTo').onClick(() => {
-          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({
             xOffset: 0,
@@ -1821,8 +1822,8 @@ struct StickyNestedScroll {
         .height('100%')
       }
       .scrollable(ScrollDirection.Vertical)
-      .edgeEffect(EdgeEffect.Spring) //设置边缘效果
-      .fadingEdge(false) //关闭边缘渐隐效果
+      .edgeEffect(EdgeEffect.Spring) // 设置边缘效果
+      .fadingEdge(false) // 关闭边缘渐隐效果
       .scrollBar(BarState.Auto)
       .friction(undefined)
       .backgroundColor('#DCDCDC')
