@@ -832,7 +832,7 @@ Enter键的功能类型。
 | top  | number | 否 | 否 | 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
 | width  | number | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
 | height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度|
-| displayId  | number | 否 | 是 | 光标所在显示器的ID。|
+| displayId<sup>26+  | number | 否 | 是 | 光标所在显示器的ID。|
 
 ## Range<sup>10+</sup>
 
