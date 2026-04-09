@@ -10,8 +10,9 @@
 
 > **说明：**
 >
-> 1. 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 2. 本模块为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块为系统接口。
 
 ## 导入模块
 
@@ -27,6 +28,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统API**：此接口为系统接口
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
 | UNKNOWN | 0    | 表示屏上内容所处场景未知。 |
@@ -40,6 +45,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统API**：此接口为系统接口
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
 | SCROLL_TO_HOOK  | 1    | 表示滚动到hook点事件。 |
@@ -51,6 +60,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统API**：此接口为系统接口
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -67,6 +80,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统API**：此接口为系统接口
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | windowId   | number | 否   | 是   | 需要获取内容的窗口ID，不赋值或赋值undefined则默认获取全屏窗口。 |
@@ -81,6 +98,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统API**：此接口为系统接口
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -100,6 +121,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统API**：此接口为系统接口
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -256,11 +281,15 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 在需要抓取内容的窗口在桌面上时，调用该接口以获取屏上内容。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统API**：此接口为系统接口
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -285,6 +314,8 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 **示例**：
 
+ArkTS-Dyn示例:
+
    ```ts
    import { onScreen } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -304,6 +335,27 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
    }
    ```
 
+ArkTS-Sta示例:
+
+   ```ts
+   import { onScreen } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   let options: onScreen.ContentOptions = {
+      contentUnderstand: true,
+      pageLink: true
+   };
+   try {
+      onScreen.getPageContent(options).then((pageContent: onScreen.PageContent) => {
+         console.info("get page content succeed, bundleName = " + pageContent.bundleName);
+      }).catch((err: BusinessError): void => {
+         console.error("get page content failed, errCode = " + err.code);
+      });
+   } catch (err: BusinessError) {
+      console.error('get page content failed, errCode = ' + err.code);
+   }
+   ```
+
 ## onScreen.sendControlEvent
 
 sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
@@ -315,6 +367,10 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统API**：此接口为系统接口
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -335,6 +391,8 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 | 34000005 | The target is not found. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
    ```ts
    import { onScreen } from '@kit.MultimodalAwarenessKit';
@@ -371,6 +429,23 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
          console.error('invoke failed, errCode = ' + err.code);
       }
    }
+   ```
+
+ArkTS-Sta示例:
+
+   ```ts
+   import { onScreen } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   let controlEvent: onScreen.ControlEvent = {
+      windowId:1,
+      sessionId:1,
+      eventType:onScreen.EventType.SCROLL_TO_HOOK,
+      hookId:1
+   }
+   onScreen.sendControlEvent(controlEvent).then(() => {
+      console.info("屏上感知发送成功");
+   });
    ```
 
 ## onScreen.subscribe<sup>23+</sup>
