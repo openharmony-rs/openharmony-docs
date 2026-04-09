@@ -11561,7 +11561,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains whether the text marquee option is displayed.
+Obtains whether the text marquee option is played.
 
 **Since**: 23
 
