@@ -8,16 +8,19 @@
 
 本模块提供3D图形中常用的基本资源类型。
 
-> **说明：** 
+> **说明：**
+>
 > - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
 > - 页面仅包含本模块的系统接口，其他公开接口参见[SceneResources](js-apis-inner-scene-resources.md)。
 
 ## 导入模块
+
 ```ts
 import { MaterialType, UnlitShadowAlphaMaterial } from '@kit.ArkGraphics3D';
 ```
 
 ## MaterialType
+
 场景中物体材质类型枚举，定义材质的渲染方式。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D

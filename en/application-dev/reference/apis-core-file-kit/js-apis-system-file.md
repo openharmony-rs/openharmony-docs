@@ -358,7 +358,7 @@ Writes buffer data into a file. Only text files can be read and written.
 | -------- | -------- | -------- | -------- |
 | uri | string | Yes| URI of a local file. If it does not exist, a file will be created.|
 | buffer | Uint8Array | Yes| Buffer from which the data is derived.|
-| position | number | No| Offset to the position where the writing starts, in bytes. The default value is **0**.|
+| position | number | No| Offset of the position in the file where writing starts, in bytes. The default value is **0**.|
 | append | boolean | No| Whether to enable the append mode. The default value is **false**. If the value is **true**, the **position** parameter will become invalid. The value **true** means to enable the append mode; the value **false** means the opposite.|
 | success | Function | No| Callback invoked when the API call is successful.|
 | fail | Function | No| Callback invoked when the API call fails.|

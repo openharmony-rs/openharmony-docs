@@ -373,6 +373,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
+![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
 
 ### getMainColorSync
 
@@ -1027,6 +1028,7 @@ struct Index {
   }
 }
 ```
+![zh-ch_image_Set_ColorMatrix.png](figures/zh-ch_image_Set_ColorMatrix.png)
 
 ### brightness
 

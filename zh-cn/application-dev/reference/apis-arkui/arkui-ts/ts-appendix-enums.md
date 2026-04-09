@@ -180,6 +180,23 @@
 | HORIZONTAL_AXIS  | 1    | 水平滚动轴。 |
 | PINCH_AXIS | 2    | 捏合轴。 |
 
+## RawInputEventType
+
+原始输入事件类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称   | 值  | 说明       |
+| ------ | --- | ---------- |
+| TOUCH  | 0   | 触摸事件。 |
+| MOUSE  | 1   | 鼠标事件。 |
+
 ## BarState
 
 用于设置滚动条的状态。

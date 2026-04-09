@@ -870,9 +870,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：21
+
+**变更信息**：从API版本24开始，增加支持在手机和平板上申请。
 
 ## ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -1173,3 +1175,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：24
+
+## ohos.permission.FLOAT_VIEW
+
+允许应用使用应用浮窗。
+
+<!--RP78--><!--RP78End-->
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
