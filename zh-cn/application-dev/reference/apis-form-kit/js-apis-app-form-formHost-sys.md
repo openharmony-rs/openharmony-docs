@@ -129,7 +129,7 @@ try {
   formHost.deleteForm(formId).then(() => {
     console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
-    console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
+    console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -1163,7 +1163,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getAllFormsInfo`);
     }
   });
 } catch(error) {
@@ -1207,7 +1207,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info(`formHost getAllFormsInfo`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1262,7 +1262,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo`);
     }
   });
 } catch(error) {
@@ -1317,7 +1317,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo`);
     }
   });
 } catch(error) {
@@ -1374,7 +1374,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1436,7 +1436,7 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -1515,7 +1515,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+      console.info(`formHost deleteInvalidForms`);
     }
   });
 } catch(error) {
@@ -1658,7 +1658,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormState`);
     }
   });
 } catch (error) {
@@ -1725,7 +1725,7 @@ let want: Want = {
 };
 try {
   formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1747,8 +1747,6 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 **系统能力：** SystemCapability.Ability.Form
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1789,8 +1787,6 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 **系统能力：** SystemCapability.Ability.Form
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2315,7 +2311,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormData`);
     }
   });
 } catch(error) {
@@ -2457,12 +2453,12 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.info(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info(`formHost recv router event`);
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
                 console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
@@ -2558,12 +2554,12 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.info(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info(`formHost recv router event`);
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
                 console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
