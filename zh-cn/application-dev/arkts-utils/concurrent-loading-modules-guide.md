@@ -27,5 +27,88 @@
 2. 在UI主线程触发各业务模块分发到子线程，加载完成后在UI主线程使用，示例如下：
 
    <!-- @[distribute_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ConcurrentLoadingModulesGuide.ets) -->
+   
+   ``` TypeScript
+   import { Calculator } from '../sdk/Calculator';
+   import { TimerSdk } from '../sdk/TimerSdk';
+   import { taskpool } from '@kit.ArkTS';
+   
+   @Concurrent
+   function initCalculator(): Calculator {
+     return Calculator.init();
+   }
+   
+   @Concurrent
+   function initTimerSdk(): TimerSdk {
+     return TimerSdk.init();
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State calculateAdd: string = 'calculate add';
+     @State showHistory: string = 'show history';
+     @State countdown: string = 'countdown';
+     calc?: Calculator;
+     timer?: TimerSdk;
+   
+     aboutToAppear(): void {
+       taskpool.execute(initCalculator).then((ret) => {
+         this.calc = ret as Calculator;
+       })
+       taskpool.execute(initTimerSdk).then((ret) => {
+         this.timer = ret as TimerSdk;
+       })
+     }
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.calculateAdd)
+             .id('add')
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .alignRules({
+               center: { anchor: '__container__', align: VerticalAlign.Center },
+               middle: { anchor: '__container__', align: HorizontalAlign.Center }
+             })
+             .onClick(async () => {
+               let result = this.calc?.add(1, 2)
+               console.info(`Result is ${result}`)
+               this.calculateAdd = 'success';
+             })
+           Text(this.showHistory)
+             .id('show')
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .alignRules({
+               center: { anchor: '__container__', align: VerticalAlign.Center },
+               middle: { anchor: '__container__', align: HorizontalAlign.Center }
+             })
+             .onClick(async () => {
+               this.calc?.showHistory();
+               this.showHistory = 'success';
+             })
+           Text(this.countdown)
+             .id('get')
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .alignRules({
+               center: { anchor: '__container__', align: VerticalAlign.Center },
+               middle: { anchor: '__container__', align: HorizontalAlign.Center }
+             })
+             .onClick(async () => {
+               console.info(`Timer start`);
+               await this.timer?.Countdown(1000);
+               console.info(`Timer end`);
+               this.countdown = 'success';
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
    <!-- @[distribute_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ConcurrentLoadingModulesGuide.ets) -->
