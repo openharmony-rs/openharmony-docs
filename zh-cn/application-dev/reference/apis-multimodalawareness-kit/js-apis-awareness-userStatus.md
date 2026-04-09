@@ -61,7 +61,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[OnUserAgeGroupDetectedInner](#userstatusonuseragegroupdetected23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[OnUserAgeGroupDetectedInner](#userstatusonuseragegroupdetecteddeprecated23)。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -106,7 +106,7 @@ try {
 }
 ```
 
-## userStatus.onUserAgeGroupDetected<sup>23+</sup>
+## userStatus.onUserAgeGroupDetected<sup>(deprecated)23+</sup>
 
 onUserAgeGroupDetected(callback: Callback&lt;UserClassification&gt;): void
 
@@ -162,7 +162,7 @@ off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;)
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offUserAgeGroupDetected](#userstatusoffuseragegroupdetecteddeprecated)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offUserAgeGroupDetected](#userstatusoffuseragegroupdetecteddeprecated23)。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -205,7 +205,7 @@ try {
 }
 ```
 
-## userStatus.offUserAgeGroupDetected<sup>23+</sup>
+## userStatus.offUserAgeGroupDetected<sup>(deprecated)23+</sup>
 
 offUserAgeGroupDetected(callback?: Callback&lt;UserClassification&gt;): void
 
