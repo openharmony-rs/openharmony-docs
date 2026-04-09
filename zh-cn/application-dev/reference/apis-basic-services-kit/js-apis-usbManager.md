@@ -1440,7 +1440,7 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | -------------- | ------------------------------------------------ | ---- | --------------- |--------------- |
 | id             | number                                           | 否 | 否 |配置的唯一标识。        |
 | attributes     | number                                           | 否 | 否 |配置的属性。          |
-| maxPower       | number                                           | 否 | 否 |最大功耗，单位：毫安。    |
+| maxPower       | number                                           | 否 | 否 |最大功耗，（单位：毫安）。    |
 | name           | string                                           | 否 | 否 |配置的名称，可以为空。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
 | isSelfPowered  | boolean                                          | 否 | 否 |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
@@ -1585,12 +1585,12 @@ USB配件句柄。
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
 | endpoint | number | 否 | 否 | 端点地址，正整数。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
-| timeout | number | 否 | 否 | 超时时间，单位：毫秒。 |
-| length | number | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），单位：字节。 |
+| timeout | number | 否 | 否 | 超时时间，（单位：毫秒）。 |
+| length | number | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
 | callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
 | buffer | Uint8Array | 否 | 否 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，单位：个数。 |
+| isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个数）。 |
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1625,7 +1625,7 @@ Usb异步传输回调。
 
 | 名称        | 类型 | 只读 | 可选   | 说明    |
 | ---------- | ------ | ---- | ----- | ------ |
-| actualLength | number | 否 |  否 |读写操作的实际长度值，单位：字节。 |
+| actualLength | number | 否 |  否 |读写操作的实际长度值，（单位：字节）。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |读写操作完成的状态。 |
 | isoPacketDescs | Array<Readonly<[UsbIsoPacketDescriptor](#usbisopacketdescriptor18)>> | 否 | 否 |实时传输的分包信息。 |
 
@@ -1653,6 +1653,6 @@ Usb异步传输回调。
 
 | 名称         | 类型 | 只读  | 可选 | 说明    |
 | ---------- | ------ | ----| ----- | ------ |
-| length | number | 否 | 否 |读写操作的期望长度值，单位：字节。 |
-| actualLength | number|否 | 否 |读写操作的实际长度值，单位：字节。 |
+| length | number | 否 | 否 |读写操作的期望长度值，（单位：字节）。 |
+| actualLength | number|否 | 否 |读写操作的实际长度值，（单位：字节）。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |实时传输分包的状态码。 |
