@@ -217,7 +217,7 @@ onChange(callback: Callback\<Date>)
 
 ### onChange<sup>18+</sup>
 
-onChange(callback: Optional\<\<Callback\<Date>>)
+onChange(callback: Optional\<Callback\<Date>>)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 

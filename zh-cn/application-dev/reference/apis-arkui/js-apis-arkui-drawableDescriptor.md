@@ -64,7 +64,7 @@ try {
 
 ArkTS-Dyn: getPixelMap(): image.PixelMap
 
-ArkTS-Sta:getPixelMap(): image.PixelMap | undefined
+ArkTS-Sta: getPixelMap(): image.PixelMap | undefined
 
 获取pixelMap。
 
@@ -613,16 +613,14 @@ struct Index {
 
 用于控制通过Image组件显示的PixelMap数组动画的播放行为。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 类型    | 必填  | 说明                                    |
 | ---------- | ------ | -----| --------------------------------------- |
-| duration   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置图片数组播放总时间。默认每张图片播放1秒。<br/> 取值范围：[0, +∞) <br/>  ArkTS-Dyn起始版本：12 <br/> ArkTS-Sta起始版本：22 |
-| iterations | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置图片数组播放次数。默认为1，值为-1时表示无限播放，值为0时表示不播放，值大于0时表示播放次数。 <br/>  ArkTS-Dyn起始版本：12 <br/> ArkTS-Sta起始版本：22 |
-| frameDurations | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否   |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>当设置的frameDurations长度与图片的数量不一致时，按照总时间播放。<br/>单位：毫秒<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/>  ArkTS-Dyn起始版本：21 <br/> ArkTS-Sta起始版本：23 |
-| autoPlay | boolean | 否   |设置动图是否自动播放。<br/> true表示自动播放，false表示不自动播放。<br/>默认值为true。<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/>  ArkTS-Dyn起始版本：21 <br/> ArkTS-Sta起始版本：23 |
+| duration   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置图片数组播放总时间。默认每张图片播放1秒。<br/> 取值范围：[0, +∞) <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| iterations | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 设置图片数组播放次数。默认为1，值为-1时表示无限播放，值为0时表示不播放，值大于0时表示播放次数。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| frameDurations<sup>21+</sup> | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否   |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>当设置的frameDurations长度与图片的数量不一致时，按照总时间播放。<br/>单位：毫秒<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 23 |
+| autoPlay<sup>21+</sup> | boolean | 否   |设置动图是否自动播放。<br/> true表示自动播放，false表示不自动播放。<br/>默认值为true。<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 

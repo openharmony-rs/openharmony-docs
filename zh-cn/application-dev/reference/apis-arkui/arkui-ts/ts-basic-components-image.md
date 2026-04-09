@@ -1262,6 +1262,8 @@ type ImageErrorCallback = (error: ImageError) => void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名 | 类型                       | 必填 | 说明                               |
 | ------ | -------------------------- | ---- | ---------------------------------- |
 | error  | [ImageError](#imageerror9) | 是   | 图片加载异常时触发回调的返回对象。 |
@@ -1286,7 +1288,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T> = BusinessError\<T>
+type BusinessError\<T = void> = BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -1296,9 +1298,9 @@ type BusinessError\<T> = BusinessError\<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 20
 
 | 类型  | 说明   |
 | ---- | ------ |

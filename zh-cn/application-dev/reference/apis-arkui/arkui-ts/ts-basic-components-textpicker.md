@@ -764,6 +764,8 @@ ArkTS-Sta: enableHapticFeedback(enable: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置是否开启触控反馈。<br/>默认值：true，true表示开启触控反馈，false表示不开启触控反馈。 |
