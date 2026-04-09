@@ -1554,7 +1554,7 @@ export default class EntryAbility extends UIAbility {
 | continuousTaskId | number | 否    | 否    | 被暂停的长时任务 Id。|
 | suspendState | boolean | 否    | 否    | 长时任务状态，false表示激活，true表示暂停。|
 | suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停原因。|
-| suspendMessage | [SuspendMessage](#suspendmessage26) | 否    | 否    | 长时任务暂停信息。|
+| suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 否    | 长时任务暂停信息。|
 
 ## SuspendMessage
 
