@@ -199,7 +199,9 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -274,7 +276,9 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
