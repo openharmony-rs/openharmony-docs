@@ -1871,7 +1871,7 @@ ArkTS-Dyn: createHttpResponseCache(cacheSize?: number): HttpResponseCache<br>Ark
 
 **ArkTS-Dyn起始版本：**  9
 
-**ArkTS-Sta起始版本：**  22
+**ArkTS-Sta起始版本：**  23
 
 **参数：**
 
