@@ -300,9 +300,24 @@ After the application creates a session and obtains the session ID, you can call
 
 After the applications are successfully connected, you can call **sendMessage()** on device A or device B to send text messages to the peer application.
 
+**ArkTS-Dyn示例：**
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
+    hilog.info(0x0000, 'testTag', "sendMessage success");
+  }).catch(() => {
+    hilog.error(0x0000, 'testTag', "connect failed");
+  })
+  ```
+
+**ArkTS-Sta示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import hilog from '@ohos.hilog';
 
   abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
@@ -315,11 +330,30 @@ After the applications are successfully connected, you can call **sendMessage()*
 
 After the applications are successfully connected, you can call **sendData()** on device A or device B to send byte streams to the peer application. (This function is supported only for system applications.)
 
+**ArkTS-Dyn示例：**
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
-  
+
+  let textEncoder = util.TextEncoder.create("utf-8");
+  const arrayBuffer  = textEncoder.encodeInto("data send success");
+
+  abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
+    hilog.info(0x0000, 'testTag', "sendMessage success");
+  }).catch(() => {
+    hilog.info(0x0000, 'testTag', "sendMessage failed");
+  })
+  ```
+
+**ArkTS-Sta示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import hilog from '@ohos.hilog';
+  import { util } from '@kit.ArkTS';
+
   let textEncoder = util.TextEncoder.create("utf-8");
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
@@ -333,6 +367,8 @@ After the applications are successfully connected, you can call **sendData()** o
 **3. Send images.**
 
 After the applications are successfully connected, you can call **sendImage()** on device A or device B to send images to the peer application. (This function is supported only for system applications.)
+
+**ArkTS-Dyn示例：**
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -369,9 +405,48 @@ After the applications are successfully connected, you can call **sendImage()** 
   }
   ```
 
+**ArkTS-Sta示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import hilog from '@ohos.hilog';
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { image } from '@kit.ImageKit';
+  import { fileIo } from '@kit.CoreFileKit';
+
+  try {
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    photoPicker.select(photoSelectOptions).then((photoSelectResult) => {
+      if (!photoSelectResult) {
+        hilog.error(0x0000, 'testTag', 'photoSelectResult = null');
+      return;
+      }
+
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
+      hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
+
+      let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
+      if (imageSourceApi) {
+        imageSourceApi.createPixelMap().then((pixelMap) => {
+          abilityConnectionManager.sendImage(this.sessionId, pixelMap)
+        });
+      } else {
+        hilog.info(0x0000, 'testTag', 'imageSourceApi is undefined');
+      }
+    })
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'photoPicker failed with error: ' + JSON.stringify(error));
+  }
+  ```
+
 **4. Send streams.**
 
 After the applications are successfully connected, you can call **createStream()** on device A or device B to create transport streams and call **startStream()** to send the transport streams to the peer application. (This function is supported only for system applications.)
+
+**ArkTS-Dyn示例：**
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -391,13 +466,52 @@ After the applications are successfully connected, you can call **createStream()
   })
   ```
 
+**ArkTS-Sta示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import hilog from '@ohos.hilog';
+
+  hilog.info(0x0000, 'testTag', 'startStream');
+  abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
+    let surfaceParam: abilityConnectionManager.SurfaceParam = {
+      width: 640,
+      height: 480,
+      format: 1
+    }
+    let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
+    hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
+    AppStorage.setOrCreate<string>('surfaceId', surfaceId);
+    abilityConnectionManager.startStream(streamId);
+  })
+  ```
+
 **Ending Collaboration**
 
 After the service collaboration is complete, the collaboration status must be ended in a timely manner. If service collaboration is required in a near future, you can call **disconnect()** to disconnect the connection between applications while retaining the session ID. This allows you to reuse the same session ID for establishing a connection next time. If service coordination is not required, you can directly call **destroyAbilityConnectionSession()** to destroy the session. In this case, the connection is automatically disconnected.
 
+**ArkTS-Dyn示例：**
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
+  if (this.sessionId == -1) {
+    hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+  return;
+  }
+  abilityConnectionManager.disconnect(this.sessionId);
+
+  hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
+  abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
+  ```
+
+**ArkTS-Sta示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import hilog from '@ohos.hilog';
 
   hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
   if (this.sessionId == -1) {
