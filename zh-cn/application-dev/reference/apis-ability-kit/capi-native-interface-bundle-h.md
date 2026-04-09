@@ -35,10 +35,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | 获取当前应用信息，包含应用包名和应用指纹信息。 |
+| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | 获取当前应用信息，包含应用包名和应用指纹信息。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回对象下的字段的指针。 |
 | [char* OH_NativeBundle_GetAppId()](#oh_nativebundle_getappid) | 获取当前应用的appId。appId是应用的唯一标识，由应用包名和签名信息决定。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
 | [char* OH_NativeBundle_GetAppIdentifier()](#oh_nativebundle_getappidentifier)| 获取当前应用的应用程序标识符。该应用程序标识符在应用的整个生命周期中不会发生变化，包括版本更新、证书更改、公钥和私钥更改以及应用程序迁移。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
-| [OH_NativeBundle_ElementName_OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | 获取当前应用入口元素mainElement的信息，包括包名、模块名和组件名。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
+| [OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | 获取当前应用入口元素mainElement的信息，包括包名、模块名和组件名。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回对象下的字段的指针。 |
 | [char* OH_NativeBundle_GetCompatibleDeviceType()](#oh_nativebundle_getcompatibledevicetype) | 获取当前应用适用的设备类型。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
 | [bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)](#oh_nativebundle_isdebugmode) | 查询当前应用的调试模式。 |
 | [OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)](#oh_nativebundle_getmodulemetadata) | 获取当前应用程序的模块元数据数组。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
