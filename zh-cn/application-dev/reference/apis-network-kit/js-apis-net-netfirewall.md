@@ -153,7 +153,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 >    - 当addNetFirewallRule的入参rule.type配置为RULE_IP时：<br>
 >      - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
 >      - 若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
->    - 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
+>    - 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置，该规则不生效。<br>
 > 3. 防火墙规则添加上限说明： <br>
 >    - 单个系统用户ID添加的防火墙规则上限是1000，若超过该上限，则报错29400001。<br>
 >    - 所有的系统用户ID添加的防火墙规则总和的上限是2000，若超过该上限，则报错29400001。<br>
