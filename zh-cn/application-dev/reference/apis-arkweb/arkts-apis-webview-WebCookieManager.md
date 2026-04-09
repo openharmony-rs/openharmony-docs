@@ -1084,7 +1084,7 @@ struct WebComponent {
 
 static clearAllCookies(): Promise\<void>
 
-以Promise方式异步清除所有cookie。
+清除所有cookie。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
