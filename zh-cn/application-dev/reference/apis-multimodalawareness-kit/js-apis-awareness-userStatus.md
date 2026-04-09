@@ -116,7 +116,7 @@ onUserAgeGroupDetected(callback: Callback&lt;UserClassification&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('userAgeGroupDetected')](#userstatusonuseragegroupdetected)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('userAgeGroupDetected')](#userstatusonuseragegroupdetecteddeprecated)。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -162,7 +162,7 @@ off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;)
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offUserAgeGroupDetected](#userstatusoffuseragegroupdetected23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offUserAgeGroupDetected](#userstatusoffuseragegroupdetecteddeprecated)。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
