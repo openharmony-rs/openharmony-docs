@@ -1211,7 +1211,7 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| policyString | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4M（单位：兆）。 |
+| policyString | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4MB。 |
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
@@ -1375,7 +1375,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的json字符串。长度不超过4M（单位：兆）。 |
+| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的json字符串。长度不超过4MB。 |
 
 **错误码：**
 
@@ -1442,7 +1442,7 @@ if (dlpFd) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4M（单位：兆）。 |
+| enterprise | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4MB。 |
 
 ## DLPProperty<sup>21+</sup>
 
