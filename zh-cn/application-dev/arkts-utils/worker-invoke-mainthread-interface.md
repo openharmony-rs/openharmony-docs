@@ -19,5 +19,21 @@
 2. 然后，在Worker中通过callGlobalCallObjectMethod接口可以调用宿主线程中的getMessage()方法。
 
    <!-- @[call_main_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) -->
+   
+   ``` TypeScript
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { CopyEntry } from '../Sendable/CopyEntry';
+   
+   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+   
+   try {
+     // 调用方法无入参
+     let res: string = workerPort.callGlobalCallObjectMethod('picData', 'setUp', 0) as string;
+     console.error('worker: ', res);
+   } catch (error) {
+     // 异常处理
+     console.error('worker: error code is ' + error.code + ' error message is ' + error.message);
+   }
+   ```
 
    <!-- @[call_main_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) -->
