@@ -572,6 +572,8 @@ let lightWeightSet = new LightWeightSet<string>();
 lightWeightSet.add("squirrel");
 lightWeightSet.add("sparrow");
 let result = lightWeightSet.toArray();
+console.info(result.toString());
+// sparrow,squirrel
 ```
 
 
