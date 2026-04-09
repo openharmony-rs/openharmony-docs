@@ -52,6 +52,7 @@
     - [native_audio_volume_manager.h](capi-native-audio-volume-manager-h.md)
     - [native_audiorenderer.h](capi-native-audiorenderer-h.md)
     - [native_audio_common.h](capi-native-audio-common-h.md)
+    - [native_audio_converter.h](capi-native-audio-converter-h.md)
     - [native_audio_device_base.h](capi-native-audio-device-base-h.md)
     - [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
     - [native_audiostream_base.h](capi-native-audiostream-base-h.md)
