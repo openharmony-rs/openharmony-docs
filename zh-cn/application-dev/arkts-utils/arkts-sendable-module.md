@@ -109,7 +109,7 @@
    ```
 
 2. 在多个线程中操作共享模块导出的对象。
-<!-- @[ multi_thread_operate_exported_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsSendableModule.ets) -->
+<!-- @[multi_thread_operate_exported_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsSendableModule.ets) -->
 
    ```ts
    import { taskpool } from '@kit.ArkTS';
