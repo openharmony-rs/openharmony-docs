@@ -139,7 +139,7 @@ struct WebComponent {
   MenuBuilder() {
     // 以垂直列表形式显示的菜单。
     Menu() {
-      // 展示菜单Menu中具体的item菜单项。
+      // 展示菜单Menu中具体的菜单项。
       MenuItem({
         content: 'Copy Image',
       })
