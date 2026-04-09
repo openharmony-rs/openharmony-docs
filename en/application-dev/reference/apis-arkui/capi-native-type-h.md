@@ -16084,7 +16084,7 @@ Sets the y-axis offset of a single matrix transformation center point relative t
 | Name| Description|
 | -- | -- |
 | [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)* options| Pointer to the rotation parameter object for matrix operations.|
-| const float centerY | Pointer to the y-axis offset of a single matrix transformation center point relative to a component transformation center point. The value range is (-∞, +∞). **0** indicates that there is no y-axis offset based on the transformation center. The unit is px.|
+| const float centerY | Y-axis offset of a single matrix transformation center point relative to a component transformation center point. The value range is (-∞, +∞). **0** indicates that there is no y-axis offset based on the transformation center. The unit is px.|
 
 **Returns**
 
