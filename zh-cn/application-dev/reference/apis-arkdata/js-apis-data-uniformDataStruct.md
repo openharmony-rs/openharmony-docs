@@ -269,13 +269,13 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **ArkTS-Sta起始版本**：23
 
-| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |	
-|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
-| uniformDataType | 'openharmony.form'| 是   | 否  | 统一数据类型标识为卡片类型数据，固定为“openharmony.form”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
-| formId     | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   | 否  | 卡片id。|	
-| formName   | string | 否   | 否  | 卡片名。|	
-| bundleName | string | 否   | 否  | 卡片所属的bundle名。|	
-| abilityName| string | 否   | 否  | 卡片对应的ability名。|	
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
+|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
+| uniformDataType | 'openharmony.form'| 是   | 否  | 统一数据类型标识为卡片类型数据，固定为“openharmony.form”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。|
+| formId     | ArkTS-Dyn: number <br/>ArkTS-Sta: int| 否   | 否  | 卡片id。|
+| formName   | string | 否   | 否  | 卡片名。|
+| bundleName | string | 否   | 否  | 卡片所属的bundle名。|
+| abilityName| string | 否   | 否  | 卡片对应的ability名。|
 | module     | string | 否   | 否  | 卡片所属的module名。|
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
@@ -335,11 +335,11 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **ArkTS-Sta起始版本**：23
 
-| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |	
-|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
-| uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
-| oriUri     | string | 否   | 否  | 文件路径。|	
-| fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节。|	
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
+|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
+| uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为"general.file-uri"，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。|
+| oriUri     | string | 否   | 否  | 文件路径。|
+| fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节。|
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 
