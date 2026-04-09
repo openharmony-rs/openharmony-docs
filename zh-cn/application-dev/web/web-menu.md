@@ -837,7 +837,7 @@ struct WebComponent {
 
   onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
     let items = menuItems.filter((menuItem) => {
-      // 过滤用户需要的系统按键
+      // 过滤用户需要的系统菜单项
       return false;
     });
     return items;
