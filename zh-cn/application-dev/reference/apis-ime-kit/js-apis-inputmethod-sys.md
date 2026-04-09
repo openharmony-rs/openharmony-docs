@@ -358,6 +358,7 @@ function enableInputMethodSafely() {
 
 enableInputMethodSafely();
 ```
+
 ### getCursorInfo
 
 getCursorInfo(userId?: number): CursorInfo;
