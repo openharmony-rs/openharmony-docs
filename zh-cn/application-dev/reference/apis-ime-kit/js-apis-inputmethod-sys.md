@@ -358,6 +358,58 @@ function enableInputMethodSafely() {
 
 enableInputMethodSafely();
 ```
+### getCursorInfo
+
+getCursorInfo(userId?: number): CursorInfo;
+
+获取指定用户的光标信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | userId |  number | 否 | 指定的用户ID。</br>如果调用者不是用户0应用，该值默认为调用者的用户ID。</br> 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [CursorInfo](js-apis-inputmethod.md#cursorinfo10) | 指定用户下的光标信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800003 | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exit. |
+| 12800024 | the specified user is not in the foregeound. |
+| 12800025 | cross-user operation denied.Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo();
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### getDefaultInputMethodAbility
 
