@@ -427,10 +427,11 @@ for (let item of deque) {
   console.info("value:" + item);
 }
 /*
-输出结果：4
-        5
-        4
-        2
+输出结果：
+value:4
+value:5
+value:4
+value:2
 */
 
 // 使用方法二：
@@ -441,9 +442,10 @@ while(!temp.done) {
   temp = iter.next();
 }
 /*
-输出结果：4
-        5
-        4
-        2
+输出结果：
+value:4
+value:5
+value:4
+value:2
 */
 ```
