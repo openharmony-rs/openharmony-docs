@@ -1115,6 +1115,9 @@ invalidate(): void
 
 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。
 
+在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](#customspan)或[ImageAttachment](#imageattachment)时，设置在该段落上的段落样式不生效。从API版本26.0.0开始，设置段落样式生效。
+
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### 属性
