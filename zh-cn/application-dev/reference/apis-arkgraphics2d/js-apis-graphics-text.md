@@ -885,7 +885,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
 | fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。                    |
 | fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为物理像素px。  |
-| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。|
+| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，如果为负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。|
 | wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，单位为物理像素px，默认为0.0。                 |
 | heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。              |
 | heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。|
