@@ -286,7 +286,7 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 完整示例代码参考[onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20)。
 
-## OnNativeEmbedObjectParamChangeCallback<sup>21+<sup>
+## OnNativeEmbedObjectParamChangeCallback<sup>21+</sup>
 
 type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void
 
@@ -304,7 +304,7 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 
 完整示例代码参考[onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)。
 
-## OnDetectBlankScreenCallback<sup>22+<sup>
+## OnDetectBlankScreenCallback<sup>22+</sup>
 
 type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
 
