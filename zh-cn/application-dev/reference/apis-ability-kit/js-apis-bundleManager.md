@@ -1762,7 +1762,7 @@ getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
 
 | 参数名     | 类型   | 必填 | 说明                                             |
 | ----------- | ------ | ---- | -------------------------------------------------- |
-| bundleFlags | number | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag) 。                 |
+| bundleFlags | number | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag) 。                |
 
 **返回值：**
 
