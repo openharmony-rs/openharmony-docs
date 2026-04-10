@@ -1054,7 +1054,7 @@ httpRequest.on("headersReceive", (header: Object) => {
 httpRequest.off("headersReceive");
 ```
 
-### offHeadersReceive<sup>22+</sup>
+### offHeadersReceive
 
 offHeadersReceive(callback?: Callback\<Record\<string, string\>\>): void
 
@@ -1064,7 +1064,7 @@ offHeadersReceive(callback?: Callback\<Record\<string, string\>\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1116,7 +1116,7 @@ httpRequest.once("headersReceive", (header: Object) => {
 });
 ```
 
-### onceHeadersReceive<sup>22+</sup>
+### onceHeadersReceive
 
 onceHeadersReceive(callback: Callback\<Record\<string, string\>\>): void
 
@@ -1126,7 +1126,7 @@ onceHeadersReceive(callback: Callback\<Record\<string, string\>\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1178,7 +1178,7 @@ httpRequest.on("dataReceive", (data: ArrayBuffer) => {
 httpRequest.off("dataReceive");
 ```
 
-### onDataReceive<sup>22+</sup>
+### onDataReceive
 
 onDataReceive(callback: Callback\<ArrayBuffer\>): void
 
@@ -1188,7 +1188,7 @@ onDataReceive(callback: Callback\<ArrayBuffer\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1241,7 +1241,7 @@ httpRequest.on("dataReceive", (data: ArrayBuffer) => {
 httpRequest.off("dataReceive");
 ```
 
-### offDataReceive<sup>22+</sup>
+### offDataReceive
 
 offDataReceive(callback?: Callback\<ArrayBuffer\>): void
 
@@ -1251,7 +1251,7 @@ offDataReceive(callback?: Callback\<ArrayBuffer\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1305,7 +1305,7 @@ httpRequest.on("dataEnd", () => {
 httpRequest.off("dataEnd");
 ```
 
-### onDataEnd<sup>22+</sup>
+### onDataEnd
 
 onDataEnd(callback: Callback\<void\>): void
 
@@ -1315,7 +1315,7 @@ onDataEnd(callback: Callback\<void\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1368,7 +1368,7 @@ httpRequest.on("dataEnd", () => {
 httpRequest.off("dataEnd");
 ```
 
-### offDataEnd<sup>22+</sup>
+### offDataEnd
 
 offDataEnd(callback?: Callback\<void\>): void
 
@@ -1378,7 +1378,7 @@ offDataEnd(callback?: Callback\<void\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1431,7 +1431,7 @@ httpRequest.on("dataReceiveProgress", (data: http.DataReceiveProgressInfo) => {
 httpRequest.off("dataReceiveProgress");
 ```
 
-### onDataReceiveProgress<sup>22+</sup>
+### onDataReceiveProgress
 
 onDataReceiveProgress(callback: Callback\<DataReceiveProgressInfo\>): void
 
@@ -1441,7 +1441,7 @@ onDataReceiveProgress(callback: Callback\<DataReceiveProgressInfo\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1494,7 +1494,7 @@ httpRequest.on("dataReceiveProgress", (data: http.DataReceiveProgressInfo) => {
 httpRequest.off("dataReceiveProgress");
 ```
 
-### offDataReceiveProgress<sup>22+</sup>
+### offDataReceiveProgress
 
 offDataReceiveProgress(callback?: Callback\<DataReceiveProgressInfo\>): void
 
@@ -1504,7 +1504,7 @@ offDataReceiveProgress(callback?: Callback\<DataReceiveProgressInfo\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1557,7 +1557,7 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
-### onDataSendProgress<sup>22+</sup>
+### onDataSendProgress
 
 onDataSendProgress(callback: Callback\<DataSendProgressInfo\>): void
 
@@ -1567,7 +1567,7 @@ onDataSendProgress(callback: Callback\<DataSendProgressInfo\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1620,7 +1620,7 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
-### offDataSendProgress<sup>22+</sup>
+### offDataSendProgress
 
 off(type: 'dataSendProgress', callback?: Callback\<DataSendProgressInfo\>): void
 
@@ -1630,7 +1630,7 @@ off(type: 'dataSendProgress', callback?: Callback\<DataSendProgressInfo\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2038,7 +2038,7 @@ ArkTS-Dyn: flush(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：**  11
 
-**ArkTS-Sta起始版本：**  23
+**ArkTS-Sta起始版本：**  26.0.0
 
 **返回值：**
 
@@ -2104,7 +2104,7 @@ delete(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2178,7 +2178,7 @@ delete(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
