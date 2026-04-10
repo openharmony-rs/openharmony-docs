@@ -79,11 +79,11 @@ Possible causes:
 
 8. 无法将原生对象绑定到JS对象（Failed to bind native object to JavaScript object）。
 
-9. 原生对象解绑失败（Failed to unwrap native object）。
+9. 原生对象解包失败（Failed to unwrap native object）。
 
 10. 布尔值创建失败（Failed to create Boolean value）。
 
-11. int32创建失败（Failed to get int32 value）。
+11. int32值获取失败（Failed to get int32 value）。
 
 12. 返回数据初始化失败（Failed to initialize data field）。
 
