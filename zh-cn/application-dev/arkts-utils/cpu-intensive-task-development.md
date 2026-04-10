@@ -97,30 +97,30 @@ struct Index {
    例如，向Worker线程发送训练和预测的消息，并接收Worker线程发送回来的消息。
 
    <!-- @[call_worker_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) -->
-    
-    ``` TypeScript
-    import { worker } from '@kit.ArkTS';
-    
-    const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker1.ts');
-    
-    let done = false;
-    
-    // 接收Worker子线程的结果
-    workerInstance.onmessage = (() => {
-      console.info('MyWorker.ts onmessage');
-      if (!done) {
-        workerInstance.postMessage({ 'type': 1, 'value': 0 });
-        done = true;
-      }
-    })
-    
-    workerInstance.onerror = (() => {
-      // 接收Worker子线程的错误信息
-    })
-    
-    // 向Worker子线程发送训练消息
-    workerInstance.postMessage({ 'type': 0 });
-    ```
+   
+   ``` TypeScript
+   import { worker } from '@kit.ArkTS';
+   
+   const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker1.ts');
+   
+   let done = false;
+   
+   // 接收Worker子线程的结果
+   workerInstance.onmessage = (() => {
+     console.info('MyWorker.ts onmessage');
+     if (!done) {
+       workerInstance.postMessage({ 'type': 1, 'value': 0 });
+       done = true;
+     }
+   })
+   
+   workerInstance.onerror = (() => {
+     // 接收Worker子线程的错误信息
+   })
+   
+   // 向Worker子线程发送训练消息
+   workerInstance.postMessage({ 'type': 0 });
+   ```
 
 
 3. 在MyWorker.ets文件中绑定Worker对象，当前线程即为Worker线程。在Worker线程中通过注册[onmessage()](../reference/apis-arkts/js-apis-worker.md#属性-2)回调接收宿主线程发送的消息，并通过调用[postMessage()](../reference/apis-arkts/js-apis-worker.md#postmessage9-2)方法向宿主线程发送消息。
