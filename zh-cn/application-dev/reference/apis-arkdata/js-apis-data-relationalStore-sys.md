@@ -90,7 +90,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                        |
 |------|------|------|------|-------------------------------------------|
-| downloadOnly<sup>26+</sup> | boolean | 否 | 是 | 是否仅下载同步。true表示仅下载，false表示上传和下载。默认值为false。 |
+| downloadOnly | boolean | 否 | 是 | 是否仅下载同步。true表示仅下载，false表示上传和下载。默认值为false。 |
 
 ## RdbStore
 
