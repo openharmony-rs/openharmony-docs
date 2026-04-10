@@ -115,6 +115,8 @@ XComponent(params: XComponentParameters | XComponentOptions | NativeXComponentPa
 
 创建XComponent组件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -364,26 +366,6 @@ onLoad(callback: function)
 
 插件加载完成时回调事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onLoad](#onload23)。
-
-**ArkTS-Dyn起始版本：** 8
-
-**参数：**
-
-| 参数名   | 类型   | 必填   | 说明                                       |
-| ----- | ------ | ---- | ---------------------------------------- |
-| callback | function | 是    | XComponent持有的Surface创建后回调事件。|
-
-### onLoad<sup>12+</sup>
-
-onLoad(callback: function)
-
-插件加载完成时回调事件。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -392,7 +374,7 @@ onLoad(callback: function)
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onLoad](#onload23)。
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -452,26 +434,6 @@ onDestroy(event: function)
 
 插件卸载完成时回调事件。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDestroy](#ondestroy23)。
-
-**ArkTS-Dyn起始版本：** 8
-
-**参数：**
-
-|   参数名   | 类型    | 必填 | 说明                      |
-| ---------- | ------- | ---- | ------------------------- |
-| event      | function | 是   | XComponent销毁后回调事件。 |
-
-### onDestroy<sup>12+</sup>
-
-onDestroy(event: function)
-
-插件卸载完成时回调事件。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -480,7 +442,7 @@ onDestroy(event: function)
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onDestroy](#ondestroy23)。
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -935,6 +897,42 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 > 3. 使用此接口后，同时在NDK侧获取NativeWindow并调用相关接口进行绘制，可能出现缓冲区竞争和上下文冲突而发生绘制画面错误等异常，因此不允许使用。
 >
 > 4. 此接口需要和[lockCanvas](#lockcanvas20)接口配对使用，具体参考[示例3使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
+
+### setXComponentSurfaceConfig<sup>22+</sup>
+
+setXComponentSurfaceConfig(config: SurfaceConfig): void
+
+设置XComponent持有Surface的配置。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| config | [SurfaceConfig](#surfaceconfig22对象说明) | 是 | Surface配置信息。 |
+
+## SurfaceConfig<sup>22+</sup>对象说明
+
+XComponent持有Surface的配置信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| isOpaque | boolean | 否 | 是 | XComponent持有的Surface是否需要被视为不透明，即使Surface包含半透明像素。<br/>true表示视为不透明，false表示不视为不透明。<br/>默认值：false |
 
 ## SurfaceRotationOptions<sup>12+</sup>对象说明
 

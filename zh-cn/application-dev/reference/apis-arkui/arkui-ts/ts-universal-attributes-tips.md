@@ -30,7 +30,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -62,8 +62,6 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 | showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | 否   | 设置Tips跟随类型。<br/>默认值：TipsAnchorType.TARGET<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23  |
 
 ## TipsMessageType
-
-type TipsMessageType = ResourceStr | StyledString
 
 悬浮气泡弹窗信息。
 
@@ -171,7 +169,6 @@ struct TipsExample {
         })
         .position({ x: 100, y: 350 })
 
-
     }.width('100%').padding({ top: 5 })
   }
 }
@@ -210,7 +207,6 @@ struct TipsExample {
           enableArrow: true,
         })
         .position({ x: 100, y: 350 } as Position)
-
 
     }.width('100%').padding({ top: 5 } as Padding)
   }

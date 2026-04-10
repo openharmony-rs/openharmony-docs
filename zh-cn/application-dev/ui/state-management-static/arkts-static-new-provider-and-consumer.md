@@ -13,7 +13,7 @@
 在静态语言上下文中使用时，需导入装饰器：
 
 ```ts
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Consumer, Provider } from '@kit.ArkUI';
 ```
 
 ## \@Provider/\@Consumer与\@Provide/\@Consume能力对比
@@ -129,8 +129,7 @@ struct Child {
    ```ts
    'use static'
    
-   import { Entry, ComponentV2 } from '@kit.ArkUI';
-   import { Provider, Consumer } from '@kit.ArkUI';
+   import { ComponentV2, Consumer, Entry, Provider } from '@kit.ArkUI';
    
    // 错误用法
    @Provider
@@ -165,8 +164,7 @@ struct Child {
    ```ts
    'use static'
    
-   import { Entry, Component, ComponentV2 } from '@kit.ArkUI';
-   import { Provider, Consumer } from '@kit.ArkUI';
+   import { Component, ComponentV2, Consumer, Entry, Provider } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -199,8 +197,7 @@ struct Child {
    ```ts
    'use static'
    
-   import { Entry, ComponentV2, Column } from '@kit.ArkUI';
-   import { Provider, Consumer } from '@kit.ArkUI';
+   import { Column, ComponentV2, Consumer, Entry, Provider } from '@kit.ArkUI';
    
    @ComponentV2
    struct ProviderComponent {
@@ -245,8 +242,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -292,8 +288,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -334,8 +329,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider, Text } from '@kit.ArkUI';
 
 interface Info {
   name: string;
@@ -391,8 +385,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent, ForEach, Text } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, ForEach, Provider, Text } from '@kit.ArkUI';
 
 @ComponentV2
 struct Child {
@@ -445,8 +438,7 @@ struct Parent {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -500,8 +492,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent, ForEach, Text, Divider } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, Provider, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -556,8 +547,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent, ForEach, Text, Divider } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, Provider, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -608,8 +598,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { Provider, Consumer, Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Local, Provider, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -653,8 +642,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, ClickEvent, Text, ForEach, Divider } from '@kit.ArkUI';
-import { Provider, Consumer, ObservedV2, Trace } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, ObservedV2, Provider, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
@@ -718,8 +706,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text } from '@kit.ArkUI';
-import { Provider, Consumer } from '@kit.ArkUI';
+import { Column, ComponentV2, Consumer, Entry, Provider, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -771,8 +758,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, ClickEvent, Color } from '@kit.ArkUI';
-import { Provider, Consumer, Param } from '@kit.ArkUI';
+import { ClickEvent, Color, Column, ComponentV2, Consumer, Entry, Param, Provider, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2

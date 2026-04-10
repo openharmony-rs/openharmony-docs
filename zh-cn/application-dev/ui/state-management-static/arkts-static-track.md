@@ -21,8 +21,7 @@ import { Track } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text } from '@kit.ArkUI';
-import { Observed, State } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
 class Info {
@@ -113,8 +112,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, FontWeight, Row, Text } from '@kit.ArkUI';
-import { State, Track, Observed } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, FontWeight, Observed, Row, State, Text, Track } from '@kit.ArkUI';
 
 class LogTrack {
   @Track str1: string;
@@ -212,8 +210,7 @@ struct AddLog {
 ```ts
 'use static'
 
-import { Column, Component, Entry, FontWeight, Row, Text } from '@kit.ArkUI';
-import { State, Track } from '@kit.ArkUI';
+import { Column, Component, Entry, FontWeight, Row, State, Text, Track } from '@kit.ArkUI';
 
 class Log {
   @Track logInfo: string;

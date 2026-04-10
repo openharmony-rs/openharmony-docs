@@ -351,7 +351,6 @@ ArcSliderLayoutOptions的构造信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23

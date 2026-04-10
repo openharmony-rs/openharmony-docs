@@ -346,6 +346,7 @@
     - [Component3D](arkui-ts/ts-basic-components-component3d.md)
     - [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md)
     - [XComponent(系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
+    - [嵌入式组件公共接口](reference/apis-arkui/arkui-ts/ts-embedded-component-common.md)
   - 菜单<!--menus-->
     - [Menu](arkui-ts/ts-basic-components-menu.md)
     - [MenuItem](arkui-ts/ts-basic-components-menuitem.md)

@@ -161,7 +161,7 @@ onRelease(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#cal
 
 ArkTS-Dyn: onError(callback:[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback))
 
-ArkTS-Sta: onError(callback:[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | undefined)
+ArkTS-Sta: onError(callback:[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> | undefined)
 
 被拉起的Ability扩展在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
@@ -236,13 +236,13 @@ ArkTS-Sta: onDrawReady(callback: VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 12
 
 |  名称 | 类型   | 只读 |可选 | 说明                                                 |
 | ------- | ------ | ------ | ------ |---------------------------------------------------  |
-| code    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 被拉起UIExtensionAbility退出时返回的结果码。 |
+| code    | number  | 否 | 是 | 被拉起UIExtensionAbility退出时返回的结果码。 |
 | want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。   |
 
 ## ReceiveCallback<sup>18+</sup>

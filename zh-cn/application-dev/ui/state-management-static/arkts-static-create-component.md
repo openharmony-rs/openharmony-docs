@@ -17,8 +17,7 @@
 ```typescript
 'use static'
 
-import { Text, Entry, Column, Component, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 
 @Component
 struct HelloComponent {
@@ -44,8 +43,7 @@ struct HelloComponent {
 ```typescript
 'use static'
 
-import { Text, Entry, Column, Component, Divider, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { ClickEvent, Column, Component, Divider, Entry, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct ParentComponent {
@@ -101,7 +99,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
   ```typescript
   'use static'
 
-  import {Component, Button } from '@kit.ArkUI';
+  import { Button, Component } from '@kit.ArkUI';
   @Component
   struct MyComponent {
     build() {
@@ -122,8 +120,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 ```ts
 'use static'
 
-import { Component, Entry } from '@kit.ArkUI';
-import { LocalStorage } from '@kit.ArkUI';
+import { Component, Entry, LocalStorage } from '@kit.ArkUI';
 
 const myStorage: () => LocalStorage = () => new LocalStorage();
 
@@ -146,7 +143,7 @@ struct MyComponent {
 ```typescript
 'use static'
 
-import { Text, Entry, Column, Component, Color } from '@kit.ArkUI';
+import { Color, Column, Component, Entry, Text } from '@kit.ArkUI';
 @Component
 struct MyComponent {
   private countDownFrom: number = 0;
@@ -179,7 +176,7 @@ struct ParentComponent {
 ```typescript
   'use static'
 
-  import { Text, Entry, Component, Row } from '@kit.ArkUI';
+  import { Component, Entry, Row, Text } from '@kit.ArkUI';
 
   @Entry
   @Component
@@ -210,7 +207,7 @@ struct ParentComponent {
 ```typescript
   'use static'
 
-  import { Entry, Text, Column, Component } from '@kit.ArkUI';
+  import { Column, Component, Entry, Text } from '@kit.ArkUI';
 
   @Entry
   @Component
@@ -231,8 +228,7 @@ struct ParentComponent {
 ```typescript
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -261,8 +257,7 @@ struct MyStateSample {
 ```typescript
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -302,7 +297,7 @@ struct MyStateSample {
 ```typescript
 'use static'
 
-import { Text, Entry, Component } from '@kit.ArkUI';
+import { Component, Entry, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -320,8 +315,7 @@ struct MyComponent {
 ```typescript
 'use static'
 
-import { Entry, Text, Column, Component, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyComponent {
@@ -352,9 +346,9 @@ struct MyComponent {
 ```typescript
 'use static'
 
-import { Text, Entry, Column, Component, State } from '@kit.ArkUI';
-import pasteboard from '@ohos.pasteboard';
+import { Column, Component, Entry, State, Text } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import pasteboard from '@ohos.pasteboard';
 
 @Entry
 @Component
@@ -382,8 +376,7 @@ struct MyStateSample {
 ```typescript
 'use static'
 
-import { Text, Entry, Column, Component } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { Column, Component, Entry, State, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -409,8 +402,7 @@ struct MyStateSample {
 ```typescript
 'use static'
 
-import { Text, Entry, Column, Button, Component, Color, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -445,7 +437,7 @@ struct MyComponent {
 ```typescript
 'use static'
 
-import { Button, Entry, Row, Color, Component } from '@kit.ArkUI';
+import { Button, Color, Component, Entry, Row } from '@kit.ArkUI';
 
 @Component
 struct ChildComponent {
@@ -481,8 +473,7 @@ struct MyComponent {
 'use static'
 
 
-import { Text, Entry, Color, Component, ResourceColor, Column, ColorMetrics } from '@kit.ArkUI';
-import { State, Link } from '@kit.ArkUI';
+import { Color, ColorMetrics, Column, Component, Entry, Link, ResourceColor, State, Text } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 
 @Component

@@ -111,8 +111,7 @@ this.parent.child.num = 5;
     ```ts
     'use static'
     
-    import { Component, Text } from '@kit.ArkUI';
-    import { ObjectLink, Observed } from '@kit.ArkUI';
+    import { Component, ObjectLink, Observed, Text } from '@kit.ArkUI';
     
     @Observed
     class Info {
@@ -150,8 +149,7 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Entry, Column, Component, Text } from '@kit.ArkUI';
-    import { State, ObjectLink, Observed } from '@kit.ArkUI';
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
 
     @Observed
     class Info {
@@ -195,8 +193,7 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Column, Component, Text, Entry } from '@kit.ArkUI';
-    import { ObjectLink, Observed, State } from '@kit.ArkUI';
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
 
     @Observed
     class Info {
@@ -241,8 +238,7 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Button, Column, Component, Text, Entry } from '@kit.ArkUI';
-    import { ObjectLink, Observed, State } from '@kit.ArkUI';
+    import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
 
     @Observed
     class Info {
@@ -292,7 +288,7 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Entry, Column, Component, Text, State, ObjectLink, Observed } from '@kit.ArkUI';
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
 
     @Observed
     class Info {
@@ -327,7 +323,7 @@ this.parent.child.num = 5;
 
     ```ts
     'use static'
-    import { Entry, Column, Component, Text, State, ObjectLink, Observed } from '@kit.ArkUI';
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
     @Observed
     class Info {
       count: number = 99;
@@ -361,7 +357,7 @@ this.parent.child.num = 5;
     ```ts
     'use static'
     
-    import { Entry, Column, Component, Text, State, ObjectLink, Observed } from '@kit.ArkUI';
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
     
     @Observed
     class Info {
@@ -413,8 +409,7 @@ this.parent.child.num = 5;
 ```ts
 'use static'
 
-import { Button, Column, Component, Text, Entry, TextAlign } from '@kit.ArkUI';
-import { ObjectLink, Observed, State } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign } from '@kit.ArkUI';
 
 @Observed
 class Book {
@@ -466,8 +461,7 @@ Book被\@Observed装饰，其属性的修改可以被观察到。所以点击But
 ```ts
 'use static'
 
-import { Button, Column, CommonMethod, Component, Entry, Text, TextAlign, TextAttribute } from '@kit.ArkUI';
-import { Observed, State } from '@kit.ArkUI';
+import { Button, Column, CommonMethod, Component, Entry, Observed, State, Text, TextAlign, TextAttribute } from '@kit.ArkUI';
 
 @Observed
 class Animal {
@@ -550,8 +544,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text, TextAlign } from '@kit.ArkUI';
-import { Observed, ObjectLink, State } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign } from '@kit.ArkUI';
 
 @Observed
 class Book {
@@ -622,8 +615,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text, TextAlign } from '@kit.ArkUI';
-import { Observed, ObjectLink, State, UIUtils } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign, UIUtils } from '@kit.ArkUI';
 
 interface Book {
   name: string;
@@ -692,8 +684,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, ForEach, Row } from '@kit.ArkUI';
-import { ObjectLink, Observed, State } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, ForEach, ObjectLink, Observed, Row, State } from '@kit.ArkUI';
 
 let NextID: number = 1;
 
@@ -805,8 +796,7 @@ struct Parent {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button } from '@kit.ArkUI';
-import { State, Observed } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
 class Source {
@@ -845,8 +835,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button } from '@kit.ArkUI'
-import { State, Observed } from '@kit.ArkUI'
+import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
 class Source {
@@ -897,8 +886,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text } from '@kit.ArkUI';
-import { ObjectLink, Observed, State } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
 class Source {

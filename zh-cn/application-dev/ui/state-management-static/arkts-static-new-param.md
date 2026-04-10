@@ -39,8 +39,7 @@ import { Param } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-  import { Local, Param, Require } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -87,8 +86,7 @@ import { Param } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-  import { Local, Param, ObservedV2, Trace, Require } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
   class RawObject {
     name: string;
     constructor(name: string) {
@@ -149,8 +147,7 @@ import { Param } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-  import { Local, Param, Require } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -214,8 +211,7 @@ import { Param } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@kit.ArkUI';
-  import { Local, Param, Require } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -281,8 +277,7 @@ import { Param } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent } from '@kit.ArkUI';
-  import { Local, Param, Require } from '@kit.ArkUI';
+  import { ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
   @ComponentV2
   struct ChildComponent {
     @Param param1: string = 'Initialize local';
@@ -317,8 +312,7 @@ import { Param } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@kit.ArkUI';
-  import { Local, Param, ObservedV2, Trace, Require } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
   @ObservedV2
   class Info {
     @Trace name: string;
@@ -372,8 +366,7 @@ import { Param } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, ForEach, Button, Text, ClickEvent } from '@kit.ArkUI';
-import { Local, Param, ObservedV2, Trace, Require } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, ForEach, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
 @ObservedV2
 class Region {
   @Trace x: number;
@@ -441,8 +434,7 @@ struct SubComponent {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local, Param, Require } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
@@ -487,8 +479,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, Text, ClickEvent } from '@kit.ArkUI';
-import { Local, Param } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Text } from '@kit.ArkUI';
 @ComponentV2
 struct DateComponent {
   @Param selectedDate: Date = new Date('2024-01-01');
@@ -540,8 +531,7 @@ struct ParentComponent {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
-import { Local, Param } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
 @ComponentV2
 struct Child {
   @Param value: Map<number, string> = new Map<number, string>()
@@ -595,8 +585,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
-import { Local, Param } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
 @ComponentV2
 struct Child {
   @Param message: Set<number> = new Set<number>()
@@ -647,8 +636,7 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local, Param } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {

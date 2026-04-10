@@ -117,8 +117,7 @@ Environment和UIContext相关联，需要在[UIContext](../../reference/apis-ark
 'use static'
 
 import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { Environment } from '@kit.ArkUI';
+import { Environment, window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
