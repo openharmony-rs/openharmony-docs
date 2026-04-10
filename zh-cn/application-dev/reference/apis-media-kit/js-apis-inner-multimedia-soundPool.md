@@ -415,7 +415,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool. Code: ${err.code}, message: ${err.message}');
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     });
   }
@@ -451,7 +451,7 @@ function create(context: Context) {
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool. Code: ${err.code}, message: ${err.message}');
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     }
   });
@@ -1140,7 +1140,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setRate(streamID, selectedAudioRendererRate).then(() => {
       console.info('Succeeded in setting Rate soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to set Rate. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to set Rate. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
