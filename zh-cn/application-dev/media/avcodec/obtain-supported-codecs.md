@@ -786,7 +786,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 }
 ```
 
-### 筛选特定MIME类型的安全解码器（DRM播放场景）
+从API version 24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的"安全解码器"。
 
 从API version 24开始，在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的“安全解码器”。
 
