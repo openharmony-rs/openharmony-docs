@@ -86,9 +86,13 @@ import { window } from '@kit.ArkUI';
 | SECONDARY  | 4    | 表示APP分屏多窗口次要模式。上下分屏时，下分屏为次要模式。左右分屏时，右分屏为次要模式。  |
 | FLOATING   | 5    | 表示APP自由悬浮形式窗口模式。 |
 
-## WindowLayoutMode<sup>9+</sup>
+## WindowLayoutMode<sup>(deprecated)</sup>
 
 窗口布局模式枚举。
+
+> **说明：**
+>
+> 该接口不支持使用。从API version 9开始支持，从API version 26开始废弃。
 
 **系统接口：** 此接口为系统接口。
 
@@ -96,8 +100,8 @@ import { window } from '@kit.ArkUI';
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
-| WINDOW_LAYOUT_MODE_CASCADE  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。     |
-| WINDOW_LAYOUT_MODE_TILE | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。           |
+| WINDOW_LAYOUT_MODE_CASCADE<sup>(deprecated)</sup>  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。<br>**说明：** 该接口不支持使用。从API version 9开始支持，从API version 26开始废弃。|
+| WINDOW_LAYOUT_MODE_TILE<sup>(deprecated)</sup> | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。<br>**说明：** 该接口不支持使用。从API version 9开始支持，从API version 26开始废弃。|
 
 
 ## BlurStyle<sup>9+</sup>
@@ -508,10 +512,14 @@ promise.then(() => {
 });
 ```
 
-## window.setWindowLayoutMode<sup>9+</sup>
+## window.setWindowLayoutMode<sup>(deprecated)</sup>
 setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
 
 设置窗口布局模式，使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持使用。从API version 9开始支持，从API version 26开始废弃。
 
 **系统接口：** 此接口为系统接口。
 
@@ -553,10 +561,14 @@ try {
 }
 ```
 
-## window.setWindowLayoutMode<sup>9+</sup>
+## window.setWindowLayoutMode<sup>(deprecated)</sup>
 setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
 
 设置窗口布局模式，使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持使用。从API version 9开始支持，从API version 26开始废弃。
 
 **系统接口：** 此接口为系统接口。
 
@@ -566,7 +578,7 @@ setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
 
 | 参数名   | 类型                      | 必填 | 说明           |
 | -------- | ------------------------- | ---- | -------------- |
-| mode       | [WindowLayoutMode](#windowlayoutmode9)                    | 是   | 设置的窗口布局模式。 |
+| mode       | [WindowLayoutMode](#windowlayoutmode9)                  | 是   | 设置的窗口布局模式。 |
 
 **返回值：**
 
@@ -2363,11 +2375,15 @@ try {
 }
 ```
 
-### setForbidSplitMove<sup>9+</sup>
+### setForbidSplitMove<sup>(deprecated)</sup>
 
 setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 设置主窗口在分屏模式下是否被禁止移动，使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持使用。从API version 9开始支持，从API version 26开始废弃。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2428,11 +2444,15 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### setForbidSplitMove<sup>9+</sup>
+### setForbidSplitMove<sup>(deprecated)</sup>
 
 setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
 
 设置主窗口在分屏模式下是否被禁止移动，使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持使用。从API version 9开始支持，从API version 26开始废弃。
 
 **系统接口：** 此接口为系统接口。
 
