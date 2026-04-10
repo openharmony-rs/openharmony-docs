@@ -1310,7 +1310,7 @@ cloudSync.unregisterChange(uri);
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | 否   | 否   | 文件内容修改时间。 |
+| editedTime | number | 否   | 否   | 文件内容修改时间，时间戳，单位：ms。 |
 | fileSize | number | 否   | 否   | 文件大小，单位：Byte。 |
 | versionId | string | 否   | 否   | 文件版本号。 |
 | originalFileName | string | 否   | 否   | 当前版本对应的文件名。 |
@@ -1342,7 +1342,7 @@ cloudSync.unregisterChange(uri);
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | 否   | 否   | 所选版本云文件的下载状态。 |
-| progress | number | 否   | 否   | 下载进度。 |
+| progress | number | 否   | 否   | 下载进度，单位：百分比。 |
 | errType | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 若出现下载失败，失败的错误类型。 |
 
 ## FileVersion<sup>20+</sup>
