@@ -11,7 +11,7 @@ Data loss prevention (DLP) is a system solution provided to prevent data disclos
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The kit to which **@ohos.dlpPermission** belongs has been changed from **DataLossPreventionKit** to **DataProtectionKit**. You are advised to use the new module name **@kit.DataProtectionKit** to import the module. If **@kit.DataLossPreventionKit** is imported, only the APIs before the change can be called and the APIs after the change cannot be used.
+> - The kit to which **@ohos.dlpPermission** belongs has been changed from `DataLossPreventionKit` to `DataProtectionKit`. You are advised to use the new module name `@kit.DataProtectionKit` to import the module. If `@kit.DataLossPreventionKit` is imported, only the APIs before the change can be called and the APIs after the change cannot be used.
 
 ## Modules to Import
 
@@ -59,7 +59,7 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 try {
   file = fileIo.openSync(uri).fd;
-  let res = dlpPermission.isDLPFile(file); // Check whether the file is a DLP file.
+  let res = dlpPermission.isDLPFile(file);
   console.info('res', res);
 } catch (err) {
   console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
@@ -203,7 +203,7 @@ try {
     if (inSandbox) {
       dlpPermission.getDLPPermissionInfo((err, res) => {
         if (err != undefined) {
-          console.error('getDLPPermissionInfo error,', err.code, err.message);
+          console.error('getDLPPermissionInfo error', err.code, err.message);
         } else {
           console.info('res', JSON.stringify(res));
         }
@@ -211,7 +211,7 @@ try {
     }
   });
 } catch (err) {
-  console.error('getDLPPermissionInfo error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPPermissionInfo error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -445,13 +445,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.isInSandbox((err, data) => {
     if (err) {
-      console.error('isInSandbox error,', err.code, err.message);
+      console.error('isInSandbox error', err.code, err.message);
     } else {
       console.info('isInSandbox, data', JSON.stringify(data));
     }
   }); // Whether the application is running in a sandbox.
 } catch (err) {
-  console.error('isInSandbox error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('isInSandbox error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -525,13 +525,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.getDLPSupportedFileTypes((err, res) => {
     if (err != undefined) {
-      console.error('getDLPSupportedFileTypes error,', err.code, err.message);
+      console.error('getDLPSupportedFileTypes error', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
     }
   }); // Obtain the file types that support DLP.
 } catch (err) {
-  console.error('getDLPSupportedFileTypes error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPSupportedFileTypes error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -947,6 +947,10 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 Starts the DLP manager application on the current UIAbility page in borderless mode. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only by domain accounts.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
@@ -1122,14 +1126,18 @@ async function ExampleFunction() {
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
-Queries whether the current system provides the DLP feature. This API uses a promise to return the result.
+Queries whether the current system provides the data encryption feature. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> This API is enabled by the [MDM](../../mdm/mdm-kit-intro.md) kit and is used for enterprise devices. For other devices (such as consumer devices), this API is inapplicable. Calling it returns **false**.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the current system provides the DLP feature; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the current system provides the data encryption feature; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -1324,9 +1332,10 @@ Represents an enterprise custom policy.
 generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
 
 Obtains a **DLPFile** object. This API uses a promise to return the result.
->**NOTE**
+
+> **NOTE**
 >
-> This API generates a DLP file, which is an encrypted file that can be accessed only by users with full control permissions.
+> This API can be called only by enterprise accounts. Enterprises need to set up their own enterprise account servers. This API generates a DLP file, which is an encrypted file that can be accessed only by accounts authorized by the enterprise server.
 
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1391,7 +1400,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty);
     console.info('Successfully generate DLP file for enterprise.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1410,7 +1419,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 Decrypts a DLP file to generate a plaintext file. This API uses a promise to return the result.
 >**NOTE**
 >
-> This API can decrypt DLP files only by users with full control permissions.
+> This API can be called only by enterprise accounts. Enterprises need to set up their own enterprise account servers. The enterprise server determines whether an account is authorized to decrypt DLP files.
 
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1462,7 +1471,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.decryptDlpFile(dlpFd, plaintextFd);
     console.info('Successfully decrypt DLP file.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1527,7 +1536,7 @@ async function ExampleFunction(dlpFilePath: string) {
     let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
     console.info('DLP policy:' + policy);
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1590,7 +1599,10 @@ Represents the authorization information.
 | actionUponExpiry | [ActionType](#actiontype21) | No| Yes| Whether the file can be opened after the permission expires (with the editing permission). This parameter is valid only when **expireTime** is not empty.|
 | fileId | string | No| Yes| File identifier. The value contains up to 255 bytes.|
 | allowedOpenCount | number | No| Yes| Number of allowed opening times.|
- 
+| waterMarkConfig<sup>23+</sup> | boolean | No| Yes| Whether watermarks are required. **true**: yes; **false**: no.|
+| countdown<sup>23+</sup> | number | No| Yes| Validity period for file viewing, in seconds. After the validity period expires, the file is automatically closed.<br>**Model restriction**: This API can be used only in the stage model.|
+| extensionFields<sup>24+</sup> | Record<string, Object> | No| Yes| Extended attribute of a DLP file.<br>**Model restriction**: This API can be used only in the stage model.|
+
 ## AuthUser<sup>21+</sup>
 
 Represents the user authorization information.

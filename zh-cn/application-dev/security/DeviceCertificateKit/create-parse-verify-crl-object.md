@@ -52,7 +52,7 @@ import { util } from '@kit.ArkTS';
 function crlSample(): void {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
-    // 将CRL数据从string转为Unit8Array。
+    // 将CRL数据从string转为Uint8Array。
     data: textEncoder.encodeInto(crlData),
     // CRL格式，仅支持PEM和DER格式。在这个例子中，CRL用的是PEM格式。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM

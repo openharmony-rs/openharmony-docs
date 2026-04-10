@@ -14,7 +14,7 @@ This topic provides signing and signature verification development cases with th
 - The key algorithm is SM2 and digest algorithm is NoDigest. For details, see [SM2/NoDigest](#sm2nodigest).
 - The key algorithm is RSA, digest algorithm is SHA-256, and padding mode is PSS. For details, see [RSA/SHA-256/PSS](#rsasha-256pss).
 - The key algorithm is RSA, digest algorithm is SHA-256, and padding mode is PKCS1_V1_5. For details, see [RSA/SHA-256/PKCS1_V1_5](#rsasha-256pkcs1_v1_5).
-- The key algorithm is RSA, digest algorithm is SHA-384, and padding mode is PSS. For details, see [RSA2048/SHA-384/PSS](#rsa2048sha-384pss).
+- The key algorithm is RSA, digest algorithm is SHA-384, and padding mode is PSS. For details, see [RSA/SHA-384/PSS](#rsasha-384pss).
 <!--RP1--><!--RP1End-->
 
 For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-signing-signature-verification-overview.md#supported-algorithms).
@@ -922,7 +922,7 @@ napi_value SignVerifyKeyRsaSha256Pkcs1V15(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-### RSA2048/SHA-384/PSS
+### RSA/SHA-384/PSS
 <!-- @[key_algorithm_rsa_sha384_pss_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha384_pss_sign_verify.cpp) -->
 
 ``` C++

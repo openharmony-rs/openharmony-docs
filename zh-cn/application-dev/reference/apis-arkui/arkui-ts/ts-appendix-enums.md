@@ -180,6 +180,23 @@
 | HORIZONTAL_AXIS  | 1    | 水平滚动轴。 |
 | PINCH_AXIS | 2    | 捏合轴。 |
 
+## RawInputEventType
+
+原始输入事件类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称   | 值  | 说明       |
+| ------ | --- | ---------- |
+| TOUCH  | 0   | 触摸事件。 |
+| MOUSE  | 1   | 鼠标事件。 |
+
 ## BarState
 
 用于设置滚动条的状态。
@@ -193,7 +210,7 @@
 | 名称   | 值 | 说明                 |
 | ---- | --- | ------------------ |
 | Off  | 0 | 不显示。               |
-| Auto | 1 | 按需显示(触摸时显示，2s后消失)。 |
+| Auto | 1 | 按需显示（触摸时显示，2s后消失）。 |
 | On   | 2 | 常驻显示。              |
 
 ## BorderStyle
@@ -1242,7 +1259,7 @@ type Nullable\<T> = T | undefined
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
 | FAST | 0 | 在线绘制模式，组件进行圆角内容绘制时，绘制内容被裁剪成圆角，直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
-| OFFSCREEN | 1 | 离屏绘制模式，组件进行圆角内容绘制时，绘制内容先不带圆角绘制到离屏画布上，随后对离屏画布上的内容进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式相比在线绘制模式会带来额外的性能损失。<br/>2. 离屏绘制模式是指将内容绘制到主画布之前，先在一个额外的画布上完成绘制工作，然后将绘制结果绘制到主画布上。<br/>3. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
+| OFFSCREEN | 1 | 离屏绘制模式，组件进行圆角内容绘制时，绘制内容先不带圆角绘制到离屏画布上，随后对离屏画布上的内容进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式相比在线绘制模式会带来额外的性能损失。<br/>2. 离屏绘制模式是指将内容绘制到主画布之前，先在一个额外的画布上完成绘制工作，然后将绘制结果绘制到主画布上。<br/>3. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
 
 ## ScrollSource<sup>12+</sup>
 
@@ -1322,6 +1339,21 @@ type Nullable\<T> = T | undefined
 | Insert | 1 | 指定当前的Transition动效在组件的插入显示场景中生效。 |
 | Delete | 2 | 指定当前的Transition动效在组件的删除隐藏场景中生效。 |
 
+## CompetitionStrategy<sup>24+</sup>
+
+定义分发的事件是否为竞争手势，竞争场景手势原始节点和目标节点只有一个节点会响应手势，非竞争场景可以同时响应。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                | 值  | 说明                         |
+| ------------------- | --- | ---------------------------- |
+| DEFAULT | 0   | 表示分发的事件为非竞争手势。 |
+| COMPETITION | 1   | 表示分发的事件为竞争手势。 |
+
 ## TextAlign
 
 文本段落在水平方向的对齐方式。
@@ -1334,7 +1366,7 @@ type Nullable\<T> = T | undefined
 | Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## TextOverflow
@@ -1483,8 +1515,8 @@ type Nullable\<T> = T | undefined
 
 | 名称      | 值 | 说明               |
 | ------- | ---------------- | ---------------- |
-| Hidden  | 1 | 隐藏，但参与布局进行占位。    |
 | Visible | 0 | 显示。              |
+| Hidden  | 1 | 隐藏，但参与布局进行占位。    |
 | None    | 2 | 隐藏，但不参与布局，不进行占位。 |
 
 ## Week

@@ -159,4 +159,4 @@ HUKS supports various types of keys in different formats. The following table li
 | Symmetric key| - | Key in bytes|
 | Asymmetric key pair| - | [Key pair material format](huks-concepts.md#key-pair-material-format)|
 | Public key of an asymmetric key pair| Ed25519, X25519| Key in bytes. For details, see [Importing the Public Key of an X25519 Key Pair](huks-import-key-in-plaintext-arkts.md#importing-the-public-key-of-an-x25519-key-pair).|
-| Public key of an asymmetric key pair| RSA, ECC, ECDH, DSA, DH, SM2| DER format defined in X.509|
+| Public key of an asymmetric key pair| RSA, ECC, ECDH, <!--Del-->DSA, <!--DelEnd-->DH, SM2| DER format defined in X.509|

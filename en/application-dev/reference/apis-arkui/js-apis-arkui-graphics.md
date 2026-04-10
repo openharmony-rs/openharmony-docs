@@ -1704,7 +1704,7 @@ Generates an **edgeColors** object with the specified edge color for all edges.
 
 | Type                    | Description                                  |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | **edgeColors** object whose edge colors are all at the specified value.|
+| [Edges](#edgest12)\<number> | **edgeColors** object whose edge colors are all at the specified value.|
 
 **Example**
 
@@ -1767,7 +1767,7 @@ Generates an **edgeWidths** object with the specified edge width for all edges.
 
 | Type                    | Description                                  |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | **edgeWidths** object whose edge widths are all at the specified value.|
+| [Edges](#edgest12)\<number> | **edgeWidths** object whose edge widths are all at the specified value.|
 
 **Example**
 

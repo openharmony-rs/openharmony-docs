@@ -7,13 +7,13 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-更新已发布的通知。主要用于上传下载进度更新、IM会话消息更新等场景。
+从API version 18开始，支持应用只更新已发布的通知。主要用于上传下载进度更新、IM会话消息更新等场景。
 
 ## 接口说明
 
 通知发布更新接口说明详见下表，通知更新可通过入参[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)携带updateOnly字段来指定，不指定该字段默认为false。
 
-- 当updateOnly为true时，若相同ID通知存在，则更新通知；若相同ID通知不存在，则更新失败，不创建新的通知。
+- 当updateOnly为true时，若相同ID通知存在，则更新通知；若相同ID通知不存在，则更新失败，并且不创建新的通知。
 
 - 当updateOnly为false时，若相同ID通知存在，则更新通知；若相同ID通知不存在，则创建通知。
 

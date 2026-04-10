@@ -62,3 +62,4 @@
   - [全局快捷键管理错误码](errorcode-inputconsumer.md)
   - [输入设备错误码](errorcode-inputdevice.md)
   - [鼠标光标错误码](errorcode-pointer.md)
+  - [红外管理错误码](errorcode-infraredemitter.md)

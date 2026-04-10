@@ -187,6 +187,8 @@ Describes the information about the context of exiting the PhotoPicker. It can b
 | selectedRecommendationType    | number   | No  | No| Enumerated value of the recommended content selected by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was selected during the last selection or **All** was selected, the default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | version    | number   | No  | No| Version number of the state data, used to verify the compatibility of the state information data with the state recovery capability.<br>The version number must be greater than or equal to 1.0.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | gridLevel    | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)   | No  | Yes| Level of the grid when the user exits last time.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| sortRule<sup>24+</sup>    | string   | No  | Yes| Sorting rule of the grid interface when the user last selected an image. The default value is an empty string.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| fileSize<sup>24+</sup>    | number   | No  | Yes| File size of the top-left image in the grid interface when the user last selected an image. The default value is **0**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## OperationItem<sup>22+</sup>
 

@@ -25,15 +25,15 @@
     - [MediaControlExtensionContext (播控扩展能力上下文)(系统接口)](js-apis-inner-application-MediaControlExtensionContext-sys.md)
     <!--DelEnd-->
   - @ohos.multimedia.avMusicTemplate (音频模板)<!--apis-avsession-avmusictemplate-->
-    - [模块描述](arkts-apis-AVMusicTemplate.md)
-    - [Functions](arkts-apis-avsession-AVMusicTemplate-f.md)
-    - [Class (AVMusicTemplate)](arkts-apis-avsession-AVMusicTemplate.md)
-    - [Class (AVMusicTemplateController)](arkts-apis-avsession-AVMusicTemplateController.md)
-    - [Interface (其他)](arkts-apis-avsession-AVMusicTemplate-i.md)
-    - [Enums](arkts-apis-avsession-AVMusicTemplate-e.md)
-    - [Types](arkts-apis-avsession-AVMusicTemplate-t.md)
+    - [模块描述](arkts-apis-avMusicTemplate.md)
+    - [Functions](arkts-apis-avMusicTemplate-f.md)
+    - [Class (AVMusicTemplate)](arkts-apis-avMusicTemplate-AVMusicTemplate.md)
+    - [Class (AVMusicTemplateController)](arkts-apis-avMusicTemplate-AVMusicTemplateController.md)
+    - [Interface (其他)](arkts-apis-avMusicTemplate-i.md)
+    - [Enums](arkts-apis-avMusicTemplate-e.md)
+    - [Types](arkts-apis-avMusicTemplate-t.md)
   <!--Del-->
-  - [@ohos.multimedia.avMusicTemplate (音频模板)(系统接口)](js-apis-avsession-avMusicTemplate-sys.md)
+  - [@ohos.multimedia.avMusicTemplate (音频模板)(系统接口)](js-apis-avMusicTemplate-sys.md)
   <!--DelEnd-->
 - ArkTS组件<!--avsession-comp-->
   - [@ohos.multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)
@@ -64,4 +64,4 @@
     - [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md)
 - 错误码<!--avsession-arkts-errcode-->
   - [媒体会话管理错误码](errorcode-avsession.md)
-  - [音频模板错误码](errorcode-avsession-avmusictemplate.md)
+  - [音频模板错误码](errorcode-avmusictemplate.md)

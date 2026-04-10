@@ -557,7 +557,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
   ability = data;
   let state = abilityDelegator.getAbilityState(ability);
-  console.info('getAbilityState ${state}');
+  console.info(`getAbilityState ${state}`);
 });
 ```
 

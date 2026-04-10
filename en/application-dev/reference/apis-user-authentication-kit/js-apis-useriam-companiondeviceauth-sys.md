@@ -162,7 +162,7 @@ Defines the callback used to receive the continuous authentication status.
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | isAuthPassed | boolean | Yes| Whether the authentication is successful. The options are as follows: **true**: yes; **false**: no.|
-| authTrustLevel | [UserAuth.AuthTrustLevel](./js-apis-useriam-userauth.md#authtrustlevel8) | No| Authentication trust level, that is, the trust level of identity authentication required for typical operations. For details, see [Principles for Classifying Biometric Authentication Trust Levels](../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels).|
+| authTrustLevel | [UserAuth.AuthTrustLevel](./js-apis-useriam-userauth.md#authtrustlevel8) | No| Highest trust level of authentication that the device can currently achieve. This parameter is provided only when **isAuthPassed** is **true**. that is, the trust level of identity authentication required for typical operations. For details, see [Principles for Classifying Biometric Authentication Trust Levels](../../security/UserAuthenticationKit/user-authentication-overview.md#principles-for-classifying-biometric-authentication-trust-levels).|
 
 ## AvailableDeviceStatusCallback
 

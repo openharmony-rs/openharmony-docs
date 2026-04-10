@@ -14,6 +14,7 @@
 ![matrix_3x3](figures/matrix3X3.PNG)
 
 矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。
+
 设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
 
 ![matrix_xy](figures/matrix_xy.PNG)
@@ -429,7 +430,7 @@ matrix1.postConcat(matrix2);
 
 ## isEqual<sup>12+</sup>
 
-isEqual(matrix: Matrix): Boolean
+isEqual(matrix: Matrix): boolean
 
 判断两个矩阵是否相等。
 
@@ -445,7 +446,7 @@ isEqual(matrix: Matrix): Boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| Boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
+| boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
 
 **错误码：**
 
@@ -473,7 +474,7 @@ if (matrix1.isEqual(matrix2)) {
 
 ## invert<sup>12+</sup>
 
-invert(matrix: Matrix): Boolean
+invert(matrix: Matrix): boolean
 
 将矩阵matrix设置为当前矩阵的逆矩阵，并返回是否设置成功的结果。
 
@@ -489,7 +490,7 @@ invert(matrix: Matrix): Boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| Boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
+| boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
 
 **错误码：**
 
@@ -517,7 +518,7 @@ if (matrix1.invert(matrix2)) {
 
 ## isIdentity<sup>12+</sup>
 
-isIdentity(): Boolean
+isIdentity(): boolean
 
 判断矩阵是否是单位矩阵。
 
@@ -527,7 +528,7 @@ isIdentity(): Boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| Boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
+| boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
 
 **示例：**
 

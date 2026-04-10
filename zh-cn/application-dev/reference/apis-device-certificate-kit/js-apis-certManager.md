@@ -1797,7 +1797,6 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 | 错误码ID    | 错误信息                                                                                                                                            |
 | ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
-| 202         | Permission verification failed. A non-system application calls a system API. |
 | 801         | Capability not supported. |
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 | 17500010    | Indicates that access USB key service failed. |

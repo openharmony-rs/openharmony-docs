@@ -562,10 +562,10 @@ Defines the decorator and component information associated with the observable o
 
 | Parameter| Type| Read-Only | Optional| Description    |
 | ------ | ---- | ---- |---- | ------------ |
-| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br>If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br>If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br>If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br>If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br>If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
+| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br> If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br> If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br> If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br> If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br> If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
 | stateVariableName | string  | No| No  | Name of the attribute decorated by the decorator.|
-| owningComponentOrClassName | string  | No| No  | Component or object name.<br>For a V1 object, the component name is returned.<br>For a V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator, the object name is returned.<br>For a V2 object, the object name is returned.|
-| owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br>For the V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator or for the V2 object, **-1** is returned instead of the component ID.|
+| owningComponentOrClassName | string  | No| No  | Component or object name.<br>For a V1 object, the component name is returned.<br> For a V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator, the object name is returned.<br> For a V2 object, the object name is returned.|
+| owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br> For the V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator or for the V2 object, **-1** is returned instead of the component ID.|
 | dependentInfo | Array<[ElementInfo](#elementinfo23)>  | No| No  | Information about the component that uses the observable object. If the object is not used in any UI, an empty array is returned.|
 
 ## ElementInfo<sup>23+</sup>
@@ -1087,7 +1087,7 @@ Creates a mutable two-way data binding instance, which is used to construct the 
 
 | Type| Description                                            |
 | ---- | ------------------------------------------------ |
-| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
+| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
 
 **Example**
 
@@ -1648,7 +1648,7 @@ struct SampleComp {
 
 ## PersistenceErrorCallback
 
-type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown', message: string) => void
+type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown', message: string, oldValue?: string) => void
 
 Defines a callback used to return the cause of the persistence failure.
 
@@ -1663,6 +1663,7 @@ Defines a callback used to return the cause of the persistence failure.
 | key | string    | Yes  | Key of the error.  |
 |reason| 'quota' \| 'serialization' \| 'unknown'    | Yes  | Reason of the error.  |
 | message | string    | Yes  | Extra information about the error.  |
+| oldValue | string    | No  | Old serialized data stored on the disk when deserialization fails.<br> **Since**: 26.0.0  |
 
 **Example**
 
@@ -1683,9 +1684,9 @@ export class Sample {
 }
 
 // Callback used to receive persistence errors.
-// PersistenceErrorCallback refers to (key: string, reason: string, msg: string) => {console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);}.
-PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+// PersistenceErrorCallback refers to (key: string, reason: string, msg: string, oldValue?: string) => {console.error(`error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);}.
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);
 });
 
 @Entry

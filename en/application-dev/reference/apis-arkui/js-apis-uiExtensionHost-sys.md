@@ -316,6 +316,8 @@ Creates a subwindow for this **UIExtensionHostWindowProxy** instance. This API u
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API returns error code 801 when called.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
@@ -397,6 +399,8 @@ Creates a subwindow under this **UIExtensionHostWindowProxy** instance. By setti
 **System API**: This is a system API.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, this API returns error code 801 when called.
 
 **Parameters**
 

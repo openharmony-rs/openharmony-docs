@@ -312,9 +312,9 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  blurRadius   | number | 是   | 模糊半径，取正整数，单位是px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
-|  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 设置椭圆的中心点，[0, 0]表示组件的左上角，[1, 1]表示组件的右下角。 |
-|  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 第一个值表示椭圆x方向轴半径，第二个值表示椭圆y方向轴半径，两个轴半径的数值1均对应于组件的高度，取值范围均大于0。 |
+|  blurRadius   | number | 是   | 模糊半径，取正整数，单位为px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
+|  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 椭圆形遮罩的中心点坐标。 |
+|  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 椭圆形遮罩在X轴和Y轴方向的半径。 |
 |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1。 模糊程度0表示无模糊，模糊程度1表示输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增，二元数组个数不能小于2，最大为12。 |
 
 **返回值：**
@@ -326,17 +326,17 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 **示例：**
 
 ``` ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-	  let blurRadius:number = 25;
-	  let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
-	  let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
-	  let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
+    let blurRadius:number = 25;
+    let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
+    let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
+    let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
     imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -403,7 +403,7 @@ type EllipticalMaskRadius = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 椭圆形遮罩的半径。|
+| [ number, number ] | 椭圆形遮罩的半径。第一个值表示X轴方向的半径，第二个值表示Y轴方向的半径。<br>X轴半径以组件宽度为基准，Y轴半径以组件高度为基准，取值均需大于0。<br>例如[1, 1]表示半径等于组件宽和高。|
 
 ## EllipticalMaskCenter<sup>23+</sup>
 type EllipticalMaskCenter = [ number, number ]
@@ -418,4 +418,4 @@ type EllipticalMaskCenter = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 椭圆形遮罩的中心点。|
+| [ number, number ] | 椭圆形遮罩的中心点坐标。<br>第一个值表示X轴坐标，取值为正表示在原点右方，取值为负表示在原点左方。<br>第二个值表示Y轴坐标，取值为正表示在原点下方，取值为负表示在原点上方。<br>原点坐标为[0,0]，对应为组件的左上角，[1, 1]对应为组件的右下角。|
