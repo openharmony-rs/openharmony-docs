@@ -132,7 +132,7 @@ struct Index {
           let resolvedUIContext = UIContext.resolveUIContext();
           let contextByAtomicInterface = GetUIContextByAtomicInterface();
           hilog.info(0x00, 'testTag',
-            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
           this.message = 'Welcome';
         })
     }
@@ -1019,13 +1019,13 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'")
+        Text("cacheDir='" + this.uiContext?.getHostContext()?.cacheDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
-        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'")
+        Text("bundleCodeDir='" + this.uiContext?.getHostContext()?.bundleCodeDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
       }
       .width('100%')
@@ -1619,6 +1619,155 @@ struct TextPickerDialogExample {
 ```
 ![showTextPickerDialog](figures/showTextPickerDialog.gif)
 
+## Magnifier<sup>22+</sup>
+
+提供控制放大镜的显示与隐藏的能力，放大镜会对组件内容进行放大显示，便于查看组件细节。
+
+### bind<sup>22+</sup>
+
+bind(id: string): void
+
+绑定放大镜与指定id的组件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| id | string | 是 | 组件id，可通过通用属性id或key设置。当组件id为空字符串或未找到匹配id的组件时，不显示放大镜。|
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### show<sup>22+</sup>
+
+ArkTS-Dyn: show(x: number, y: number): void
+
+ArkTS-Sta: show(x: double, y: double): void
+
+设置放大镜显示的组件内容相对于组件左上角的位置，设置成功后放大镜会对以该坐标点为中心的区域内容进行放大显示。
+
+> **说明：**
+>
+> 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 放大镜显示的组件内容相对组件水平方向坐标，单位为vp。当坐标值大于组件宽度或小于0时不显示放大镜；将值设为undefined时保持放大镜的当前显示状态。|
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 放大镜显示的组件内容相对组件垂直方向坐标，单位为vp。当坐标值大于组件高度或小于0时不显示放大镜；将值设为undefined时保持放大镜的当前显示状态。|
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### unbind<sup>22+</sup>
+
+unbind(): void
+
+解除放大镜与当前组件的绑定。
+
+> **说明：**
+>
+> 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+获取Magnifier对象以控制放大镜显示与隐藏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Magnifier](#magnifier22) | Magnifier对象，用于控制放大镜的显示与隐藏。|
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, Image, $r, TouchEvent, TouchType, SourceTool } from '@kit.ArkUI';
+import { Magnifier } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct MagnifierExample {
+  private magnifier: Magnifier = this.getUIContext().getMagnifier();
+
+  build() {
+    Column() {
+      Image($r('app.media.startIcon'))
+        .width(200)
+        .height(200)
+        .margin(50)
+        .id('image')
+        .onTouch((event?: TouchEvent) => {
+          if (!event || event.sourceTool !== SourceTool.Finger) {
+            return;
+          }
+
+          if (event.type === TouchType.Down) {
+            console.info('[MagnifierExample] Screen touch down.');
+            this.magnifier.bind('image');
+          } else if (event.type === TouchType.Move) {
+            console.info('[MagnifierExample] Screen touch moving.');
+            let x = event.touches[0].x;
+            let y = event.touches[0].y;
+            this.magnifier.show(x, y)
+          } else if (event.type === TouchType.Up) {
+            console.info('[MagnifierExample] Screen touch up.');
+            this.magnifier.unbind()
+          } else if (event.type === TouchType.Cancel) {
+            console.info('[MagnifierExample] Screen touch cancel.');
+            this.magnifier.unbind()
+          }
+        })
+    }
+  }
+}
+```
+
+![image](figures/magnifier_static.jpg)
+
 ## showTextPickerDialog<sup>20+</sup>
 
 showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt): void
@@ -1790,8 +1939,8 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("run task").onClick(()=>{
-          this.uiContext.runScopedTask(()=>{
+        Button("run task").onClick(() => {
+          this.uiContext.runScopedTask(() => {
             // do something
           })
         })
@@ -2052,6 +2201,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **参数：**
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>其余字段仅供测试场景使用。 |
@@ -2853,7 +3003,7 @@ postFrameCallback(frameCallback: FrameCallback): void
 **示例：**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2902,7 +3052,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 **示例：**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2962,14 +3112,14 @@ import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
 @Component
 struct Frame {
   @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
-  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: SwiperDynamicSyncScene[] = [];
 
   build() {
     Column() {
-      Text("动画"+ JSON.stringify(this.ANIMATION))
-      Text("跟手"+ JSON.stringify(this.GESTURE))
-      Row(){
+      Text("动画" + JSON.stringify(this.ANIMATION))
+      Text("跟手" + JSON.stringify(this.GESTURE))
+      Row() {
         Swiper() {
           Text("one")
           Text("two")
@@ -2980,7 +3130,7 @@ struct Frame {
         .id("dynamicSwiper")
         .backgroundColor(Color.Blue)
         .autoPlay(true)
-        .onAppear(()=>{
+        .onAppear(() => {
           this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
         })
       }
@@ -3702,7 +3852,7 @@ getTextMenuController(): TextMenuController
 
 ## createUIContextWithoutWindow<sup>17+</sup>
 
-static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext) : UIContext | undefined
+static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext): UIContext | undefined
 
 创建一个不依赖窗口的UI实例，并返回其UI上下文。该接口所创建的UI实例是单例。
 
@@ -3747,7 +3897,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
   }
 
   // ......
@@ -3775,7 +3925,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
     UIContext.destroyUIContextWithoutWindow();
   }
 
@@ -3870,14 +4020,14 @@ setPixelRoundMode(mode: PixelRoundMode): void
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
 
-export default class EntryAbility extends UIAbility{
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
 
-      windowStage.loadContent('pages/Index', (err, data) => {
-        let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
-        uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
-      });
-    }
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+    });
+  }
 }
 ```
 
@@ -4079,6 +4229,73 @@ getMagnifier(): Magnifier
 **示例：**
 
 参考[Magnifier](arkts-apis-uicontext-magnifier.md)的[bind](arkts-apis-uicontext-magnifier.md#bind)接口示例。
+
+## enableEventPassthrough
+
+ArkTS-Dyn: enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
+
+ArkTS-Sta: enableEventPassthrough(enabled: boolean | undefined, eventType: RawInputEventType): void
+
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过重采样直接下发给组件。未通过该接口设置时，默认禁用事件直通。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填   | 说明                                    |
+| ----- | ---------------------------------------- | ---- | ------------------------------------- |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是    | 启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通，undefined表示禁用事件直通。 |
+| eventType | [RawInputEventType](./arkui-ts/ts-appendix-enums.md#rawinputeventtype) | 是    | 指定启用或禁用事件直通的原始输入事件类型。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, RawInputEventType } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## setCustomKeyboardContinueFeature<sup>23+</sup>
 
@@ -4405,3 +4622,202 @@ struct Index {
   }
 }
 ```
+
+## UIObserver<sup>11+</sup>
+
+以下API需先使用UIContext中的[getUIObserver()](#getuiobserver11)方法获取到UIObserver对象，再通过该对象调用对应方法。
+
+> **说明：**
+>
+> UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
+>
+
+### onTextChange<sup>24+</sup>
+
+onTextChange(callback: Callback<observer.TextChangeEventInfo>): void
+
+注册当文本框的文本内容发生变化时触发的回调函数。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 是 | 当任意文本框的文本发生改变时，调用该回调函数。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Row, Column, Tabs, TextArea, TextInput, Search } from '@kit.ArkUI';
+import uiObserver from '@ohos.arkui.observer';
+
+function callbackFunc(info: uiObserver.TextChangeEventInfo) {
+  console.info('[id: ' + JSON.stringify(info.id) + '] [uniqueId: ' + JSON.stringify(info.uniqueId) + '] [content: ' + JSON.stringify(info.content) + ']');
+}
+
+@Entry
+@Component
+struct TabsExample {
+  aboutToAppear(): void {
+    this.getUIContext().getUIObserver().onTextChange(callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offTextChange(callbackFunc);
+  }
+
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+    }.width('100%')
+  }
+}
+```
+
+### offTextChange<sup>24+</sup>
+
+offTextChange(callback?: Callback<observer.TextChangeEventInfo>): void
+
+移除由[onTextChange](#ontextchange24)注册的回调函数。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 否 | 由[onTextChange](#ontextchange24)注册的回调函数。 |
+
+**示例：**
+
+请参考[onTextChange](#ontextchange24)的示例。
+
+### onTextChange<sup>24+</sup>
+
+onTextChange(identity: observer.ObserverOptions, callback: Callback<observer.TextChangeEventInfo>): void
+
+为指定ID的组件注册文本框内文本变化时触发的回调函数，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| identity | observer.[ObserverOptions](./js-apis-arkui-observer.md#observeroptions12) | 是 | 指定组件的ID。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 是 | 指定ID的文本框内文本变化时触发的回调函数。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Row, Column, Tabs, TextArea, TextInput, Search, ClickEvent, Button } from '@kit.ArkUI';
+import uiObserver from '@ohos.arkui.observer';
+
+function callbackFunc(info: uiObserver.TextChangeEventInfo) {
+  console.info('[id: ' + JSON.stringify(info.id) + '] [uniqueId: ' + JSON.stringify(info.uniqueId) + '] [content: ' + JSON.stringify(info.content) + ']');
+}
+
+@Entry
+@Component
+struct TabsExample {
+  aboutToAppear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    observer.onTextChange({ id: 'TestId1' }, callbackFunc);
+    observer.onTextChange({ id: 'TestId2' }, callbackFunc);
+    observer.onTextChange({ id: 'TestId3' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    observer.offTextChange(callbackFunc);
+  }
+
+  build() {
+    Column() {
+      TextArea({ text: 'Hello World TextArea' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId1')
+      TextInput({ text: 'Hello World TextInput' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId2')
+      Search({ value: 'Hello World Search' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId3')
+      TextArea({ text: 'Hello World TextArea' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      TextInput({ text: 'Hello World TextInput' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      Search({ value: 'Hello World Search' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      Button().onClick((event: ClickEvent) => {
+        let observer = this.getUIContext().getUIObserver();
+        observer.onTextChange({ id: 'TestId1' }, callbackFunc);
+        observer.onTextChange({ id: 'TestId2' }, callbackFunc);
+        observer.onTextChange({ id: 'TestId3' }, callbackFunc);
+      })
+    }.width('100%')
+  }
+}
+```
+
+### offTextChange<sup>24+</sup>
+
+offTextChange(identity: observer.ObserverOptions, callback?: Callback<observer.TextChangeEventInfo>): void
+
+为指定ID的组件移除先前使用onTextChange注册的回调函数，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| identity | observer.[ObserverOptions](./js-apis-arkui-observer.md#observeroptions12) | 是 | 指定组件的ID。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 否 | 指定ID的文本框内文本变化时触发的回调函数。 |
+
+**示例：**
+
+请参考[onTextChange](#ontextchange24-1)的示例。

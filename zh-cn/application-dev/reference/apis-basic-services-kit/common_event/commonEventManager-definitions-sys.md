@@ -20,7 +20,6 @@
 
 ## Ability Kit
 
-
 ### COMMON_EVENT_BOOT_COMPLETED
 
 表示用户已完成引导并加载系统。
@@ -33,9 +32,7 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
-
 **取值：** "usual.event.BOOT_COMPLETED"
-
 
 
 ### COMMON_EVENT_PACKAGE_INSTALLATION_STARTED<sup>12+</sup>
@@ -123,6 +120,7 @@
 
 **取值：** "usual.event.KIOSK_MODE_OFF"
 
+
 ### COMMON_EVENT_APP_FIRST_LAUNCH<sup>24+</sup>
 
 在应用安装后首次启动时，事件通知服务将触发并发布系统公共事件。
@@ -173,6 +171,7 @@
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
+
 
 ### COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED<sup>20+</sup>
 
@@ -303,7 +302,6 @@
 
 文件管理子系统面向应用发布如下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[@ohos.commonEventManager](../js-apis-commonEventManager.md)。
 
-
 ### COMMON_EVENT_VOLUME_REMOVED
 
 表示外部存储设备正常移除的公共事件。
@@ -317,7 +315,6 @@
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **取值：** "usual.event.data.VOLUME_REMOVED"
-
 
 
 ### COMMON_EVENT_VOLUME_UNMOUNTED
@@ -394,6 +391,7 @@
 
 **取值：** "usual.event.RESTORE_START"
 
+
 ### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 提示云盘同步根已更新。
@@ -407,6 +405,7 @@
 **订阅者所需权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO（该权限仅系统应用可申请）
 
 **取值：** "usual.event.CLOUD_DISK_STATE_CHANGED"
+
 
 ## Media Kit
 
@@ -470,9 +469,6 @@
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.SMS_CB_RECEIVE_COMPLETED"
-
-
-
 
 
 ### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+</sup>
@@ -717,6 +713,7 @@
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.STK_ALPHA_IDENTIFIER"
+
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 

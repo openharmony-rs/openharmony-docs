@@ -31,8 +31,8 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| positionX | number | 否    | 否    | 触摸点X坐标。 |
-| positionY | number | 否    | 否    | 触摸点Y坐标。 |
+| positionX | number | 否    | 否    | 触摸点X坐标，单位为像素（px）。 |
+| positionY | number | 否    | 否    | 触摸点Y坐标，单位为像素（px）。 |
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -50,8 +50,8 @@ constructor(positionX: number, positionY: number);
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| positionX | number | 是 | 触摸点X坐标。 |
-| positionY | number | 是  | 触摸点Y坐标。 |
+| positionX | number | 是 | 触摸点X坐标，单位为像素（px）。 |
+| positionY | number | 是  | 触摸点Y坐标，单位为像素（px）。 |
 
 **示例：**
 

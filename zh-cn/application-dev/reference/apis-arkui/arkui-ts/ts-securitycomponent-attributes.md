@@ -587,7 +587,7 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 ## id<sup>15+</sup>
 
-id(description: string): T
+id(id: string): T
 
 组件的唯一标识，唯一性由使用者保证。
 
@@ -599,7 +599,7 @@ id(description: string): T
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| description | string   |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/> |
+| id | string   |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/> |
 
 **返回值：**
 

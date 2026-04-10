@@ -1026,6 +1026,10 @@ IP配置信息。
 
 表示EAP认证方式的枚举。
 
+> **说明**：
+>
+> 当前仅支持使用EAP_PEAP、EAP_TLS两种认证方式，其他暂不支持。
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 

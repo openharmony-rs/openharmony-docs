@@ -34,7 +34,7 @@ Rating(options?: RatingOptions)
 
 | 参数名  | 类型                                      | 必填 | 说明           |
 | ------- | ----------------------------------------- | ---- | -------------- |
-| options | [RatingOptions](#ratingoptions18对象说明) | 否   | 设置评分组件。 |
+| options | [RatingOptions](#ratingoptions18对象说明) | 否   | 设置评分组件。<br/> 未设置时，则按照RatingOptions中各参数的默认值配置。 |
 
 ## 属性
 

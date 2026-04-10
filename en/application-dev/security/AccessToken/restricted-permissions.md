@@ -870,9 +870,11 @@ With this permission, the application can enable communication between browser e
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 21
+
+**Changelog**: Since API version 24, this permission is also available on phones and tablets.
 
 ## ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -1113,3 +1115,17 @@ Allows an application or a service to use the DLP to register or unregister the 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
+
+Allows an application to apply for a continuous task of the special scenario type.
+
+<!--RP76--><!--RP76End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24

@@ -262,6 +262,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。 |
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。|
+| encoder | string | 否 | 是 | 用于编码的软件、硬件及其设置的标识符。不支持AVRecorder设置该属性。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
@@ -291,8 +292,8 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                                            |
 |--------|--------|------|------|---------------------------------------------------------------------------------|
-| width  | number | 否   | 是   | 输出的缩略图宽度。应保证大于0且不大于原始视频宽度。否则返回的缩略图不会进行缩放。 |
-| height | number | 否   | 是   | 输出的缩略图高度。应保证大于0且不大于原始视频高度。否则返回的缩略图不会进行缩放。 |
+| width  | number | 否   | 是   | 输出的缩略图宽度，单位为像素（px）。<br/>应保证大于0且不大于原始视频宽度。否则返回的缩略图不会进行缩放。 |
+| height | number | 否   | 是   | 输出的缩略图高度，单位为像素（px）。<br/>应保证大于0且不大于原始视频高度。否则返回的缩略图不会进行缩放。 |
 
 ## OutputSize<sup>20+</sup>
 
@@ -302,8 +303,8 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | 否   | 是   | 输出的缩略图宽度。<br/>- 如果该值小于0，宽度是视频的原始宽度。<br/>- 如果值为0或未分配任何值，缩放比例同高度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
-| height | number | 否   | 是   | 输出的缩略图高度。<br/>- 如果该值小于0，高度是视频的原始高度。<br/>- 如果值为0或未分配任何值，缩放比例同宽度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
+| width  | number | 否   | 是   | 输出的缩略图宽度，单位为像素（px）。<br/>- 如果该值小于0，宽度是视频的原始宽度。<br/>- 如果值为0或未分配任何值，缩放比例同高度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
+| height | number | 否   | 是   | 输出的缩略图高度，单位为像素（px）。<br/>- 如果该值小于0，高度是视频的原始高度。<br/>- 如果值为0或未分配任何值，缩放比例同宽度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
 
 ## FrameInfo<sup>23+</sup>
 
@@ -454,6 +455,39 @@ async function setupPlayer() {
 | timeStamp | number | 否   | 否   | 事件发生时的系统时间。 |
 | playbackPosition | number | 否   | 否   | 事件发生时的播放进度位置。 |
 | details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## VideoSize<sup>24+</sup>
+
+描述视频尺寸。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| width  | number | 否   | 是   | 视频分辨率的宽度。<br>该值必须为正整数（大于0）。 |
+| height | number | 否   | 是   | 视频分辨率的高度。<br>该值必须为正整数（大于0）。 |
+
+## TrackSelectionFilter<sup>24+</sup>
+
+描述轨道选择的过滤条件。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| maxVideoBitrate | number | 否   | 是   | 允许的视频最大比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
+| minVideoBitrate | number | 否   | 是   | 允许的视频最小比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
+| maxVideoFrameRate | number | 否   | 是   | 允许的视频最大帧率，单位为赫兹（Hz）。<br>该值必须为正整数（大于0）。 |
+| minVideoFrameRate | number | 否   | 是   | 允许的视频最小帧率，单位为赫兹（Hz）。<br>该值必须为正整数（大于0）。 |
+| maxVideoResolution | [VideoSize](#videosize24) | 否   | 是   | 允许的视频最大分辨率。 |
+| minVideoResolution | [VideoSize](#videosize24) | 否   | 是   | 允许的视频最小分辨率。 |
+| preferredVideoMimeTypes | Array\<string> | 否   | 是   | 视频轨道的首选MIME类型，按优先级排序；空值表示接受任意类型。 |
+| maxAudioBitrate | number | 否   | 是   | 允许的音频最大比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
+| minAudioBitrate | number | 否   | 是   | 允许的音频最小比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
+| maxAudioChannels | number | 否   | 是   | 允许的音频最大通道数。<br>该值必须为正整数（大于0）。 |
+| preferredAudioMimeTypes | Array\<string> | 否   | 是   | 音频轨道的首选MIME类型，按优先级排序；空值表示接受任意类型。 |
+| preferredAudioLanguages | Array\<string> | 否   | 是   | 音频轨道的首选语言，使用符合IETF BCP 47标准的语言标签，按优先级排序；空值表示接受任意类型。 |
+| preferredSubtitleLanguages | Array\<string> | 否   | 是   | 字幕轨道的首选语言，使用符合IETF BCP 47标准的语言标签，按优先级排序；空值表示接受任意类型。 |
 
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 

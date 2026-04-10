@@ -19,6 +19,7 @@
   - [@ohos.inputMethodEngine (输入法服务)](js-apis-inputmethodengine.md)
   - [@ohos.inputMethodList (输入法切换列表控件)](js-apis-inputmethodlist.md)
   - [@ohos.inputMethod.ExtraConfig (输入法扩展信息)](js-apis-inputmethod-extraconfig.md)
+  - [@ohos.inputMethodSystemPanelManager (输入法系统面板管理器)(系统接口)](js-apis-inputmethod-system-panel-manager-sys.md)
 - C API<!--ime-c-->
   - 模块<!--ime-module-->
     - [InputMethod](capi-inputmethod.md)

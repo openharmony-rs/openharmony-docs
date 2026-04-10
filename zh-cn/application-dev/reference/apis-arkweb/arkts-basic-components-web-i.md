@@ -245,7 +245,7 @@ Web同层渲染的配置。
 | userAgent          | string | 否 | 否 | 用于下载的用户代理。                          |
 | contentDisposition | string | 否 | 否 | 服务器返回的 Content-Disposition响应头，服务器可能返回空。 |
 | mimetype           | string | 否 | 否 | 服务器返回内容媒体类型（MIME）信息。                |
-| contentLength      | number | 否 | 否 | 服务器返回文件的长度。                         |
+| contentLength      | number | 否 | 否 | 服务器返回文件的长度。  单位：字节。                       |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
@@ -951,5 +951,5 @@ Web屏幕捕获的配置。
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
-| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。    |
-| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。    |
+| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。<br>单位：毫秒。 |
+| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。<br>单位：毫秒。|

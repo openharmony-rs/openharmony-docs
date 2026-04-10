@@ -127,7 +127,7 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 > **说明：**
 >
-> javaScriptProxy接口需要和deleteJavaScriptRegister接口配合使用，防止内存泄漏。
+> javaScriptProxy接口需要和[deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
 > javaScriptProxy对象的所有参数不支持更新。
 > 注册javaScriptProxy对象时，同步与异步列表请至少选择一项不为空，可同时注册两类方法。
 > 此接口只支持注册一个对象，若需要注册多个对象请使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)。
@@ -2077,25 +2077,30 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 ## enableScrollDirectionalLock
 
-enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
+ArkTS-Dyn: enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
 
-设置Web组件滑动方向锁定。不调用该方法进行设置时，默认在嵌套滚动场景下是支持滑动方向锁定的。
+ArkTS-Sta: enableScrollDirectionalLock(value: boolean | undefined, type: ScrollDirectionalLockType | undefined)
+
+设置Web组件滑动方向锁定。不调用该方法设置时，默认在嵌套滚动场景下支持滑动方向锁定。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
-| 参数名 | 类型                      | 必填 | 说明                                                                                                                                                |
-| ------ | ------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 参数名 | 类型     | 必填 | 说明|
+| ------ | ---------------- | ---- | -------- |
 | value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
 | type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2116,6 +2121,54 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, $rawfile, ScrollDirectionalLockType } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .width('100%')
+          .height('100%')
+          // 在所有场景下支持滑动方向的锁定
+          .enableScrollDirectionalLock(true, ScrollDirectionalLockType.ALL)
+      }
+    }
+  }
+  ```
+  
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Demo</title>
+      <style>
+        body {
+          width:2560px;
+          height:2560px;
+          padding-right:170px;
+          padding-left:170px;
+          border:5px solid blueviolet;
+        }
+      </style>
+  </head>
+  <body>
+  Scroll Test
+  </body>
+  </html>
+  ```
 
 ## bypassVsyncCondition<sup>20+</sup>
 
@@ -4448,3 +4501,84 @@ ArkTS-Sta: enableDrag(value: boolean | undefined)
   </body>
 </html>
 ```
+
+## keyboardAppearance
+
+ArkTS-Dyn: keyboardAppearance(mode: WebKeyboardAppearanceMode)
+
+ArkTS-Sta: keyboardAppearance(mode: WebKeyboardAppearanceMode | undefined)
+
+设置键盘外观。不调用该方法时，默认跟随系统的沉浸式模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | --------- | ---- | ---- |
+| mode | ArkTS-Dyn: [WebKeyboardAppearanceMode](./arkts-basic-components-web-e.md#webkeyboardappearancemode)<br/>ArkTS-Sta: [WebKeyboardAppearanceMode](./arkts-basic-components-web-e.md#webkeyboardappearancemode)\|  undefined| 是   | 键盘外观。<br>ArkTS-Dyn：传入undefined或null时，跟随系统的沉浸式模式。<br>ArkTS-Sta：传入undefined时，跟随系统的沉浸式模式。|
+
+**示例：**
+
+  ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State appearanceMode: WebKeyboardAppearanceMode = WebKeyboardAppearanceMode.DARK_IMMERSIVE;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+        .keyboardAppearance(this.appearanceMode)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Column, Component, Web, $rawfile, WebKeyboardAppearanceMode } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    @State appearanceMode: WebKeyboardAppearanceMode = WebKeyboardAppearanceMode.DARK_IMMERSIVE;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+        .keyboardAppearance(this.appearanceMode)
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>测试网页</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Text">
+  </body>
+  </html>
+  ```

@@ -317,7 +317,9 @@ TabContent() {
 <!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
 
 ``` TypeScript
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct ContentPageNoAndTabLinkage {
 
@@ -476,7 +478,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'AgeFriendlyTabs';
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct AgeFriendlyTabs {
   @State fontColor: string = '#182431';
@@ -644,11 +648,13 @@ export struct AgeFriendlyTabs {
 <!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
 
 ``` TypeScript
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct NumberOfCachesTabBar {
   build() {
-    // ···
+    // ...
           Tabs({ barPosition: BarPosition.Start }) {
             TabContent() {
               MyComponent({ color: '#00CB87' })
@@ -674,7 +680,7 @@ export struct NumberOfCachesTabBar {
           .height(296)
           .backgroundColor('#F1F3F5')
           .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
-        // ···
+          // ...
   }
 }
 
