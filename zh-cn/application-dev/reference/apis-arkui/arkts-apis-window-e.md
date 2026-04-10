@@ -40,7 +40,10 @@
 | TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--Del-->OpenHarmony各设备不支持此能力。<!--DelEnd--> <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_FLOAT_NAVIGATION | 5    | 表示三键导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> <br>**系统能力：** SystemCapability.Window.SessionManager<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。|
-<!--RP13--><!--RP13End-->
+
+<!--RP13-->
+
+<!--RP13End-->
 
 ## Orientation<sup>9+</sup>
 
