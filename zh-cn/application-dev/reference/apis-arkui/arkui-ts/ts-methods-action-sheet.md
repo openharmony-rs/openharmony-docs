@@ -180,7 +180,7 @@ static show(value: ActionSheetOptions)
 
 ### 示例1（弹出列表选择弹窗）
 
-该示例通过点击按钮弹窗列表选择弹窗。
+该示例通过点击按钮弹出列表选择弹窗。
 
 ```ts
 // xxx.ets
