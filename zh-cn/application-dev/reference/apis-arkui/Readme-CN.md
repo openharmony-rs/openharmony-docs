@@ -466,10 +466,12 @@
     - [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)
     - [ContentSlot](arkui-ts/ts-components-contentSlot.md)
   - 自定义组件<!--custom-comp-->
+    - [页面生命周期](arkui-ts/ts-custom-component-pagelifecycle.md)
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
     - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
+    - [自定义组件内置方法（静态）](arkui-ts/ts-custom-component-api-sta.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
     - 组件扩展装饰器<!--arkts-extend-component-decorator-->
       - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)

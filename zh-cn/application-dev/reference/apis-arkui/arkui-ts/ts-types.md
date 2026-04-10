@@ -524,6 +524,25 @@ type CustomBuilderT\<T> = (t: T) => void
 | ----------- | -------- | ---- | ---------------------------------------- |
 | t | T| 是 | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用，并允许传入一个参数。|
 
+## PageMapBuilder<sup>23+</sup>
+
+type PageMapBuilder = @Builder ((name: string, param: Object | null | undefined) => void)
+
+Navigation路由的构造方式类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名         | 类型    | 必填 | 说明  |
+| ------------- | ------- | ---- | -------- |
+| name | string | 是 | NavDestination页面名称。|
+| param | Object&nbsp;\|&nbsp;null&nbsp;\|&nbsp;undefined  | 是 | NavDestination页面详细参数。 |
+
 ## MarkStyle<sup>10+</sup>对象说明
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
