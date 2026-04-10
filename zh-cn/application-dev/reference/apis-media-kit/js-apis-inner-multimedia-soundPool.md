@@ -826,7 +826,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // 设置循环2次。
     soundPool.setLoop(streamID, 2, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to setLoop soundPool. Code: ${error.code}, message: ${erro.message}`);
+        console.error(`Failed to setLoop soundPool. Code: ${error.code}, message: ${error.message}`);
       } else {
         console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
       }
