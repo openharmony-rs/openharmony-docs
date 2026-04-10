@@ -840,7 +840,7 @@ forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | volumeType     | [AudioVolumeType](#audiovolumetype)                       | 是   | 应用程序期望控制的音频音量类型。 |
-| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
+| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间，单位为秒。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
@@ -985,7 +985,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-根据应用ID获取指定应用的音量（范围为0到100）。使用Promise异步回调。
+根据应用ID获取指定应用的音量百分比（范围为0到100）。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -1001,7 +1001,7 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回应用的音量（范围为[0, 100]）。 |
+| Promise&lt;number&gt; | Promise对象，返回应用的音量百分比，范围为[0, 100]。 |
 
 **错误码：**
 
@@ -1027,7 +1027,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-根据应用ID设置指定应用的音量（范围为[0, 100]）。使用Promise异步回调。
+根据应用ID设置指定应用的音量百分比（范围为[0, 100]）。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -1038,7 +1038,7 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 | 参数名     | 类型                                      | 必填 | 说明       |
 | ---------- | ---------------------------------------- | ---- |----------|
 | uid    | number                                   | 是   | 表示应用ID。   |
-| volume    | number                                   | 是   | 要设置的音量值。 |
+| volume    | number                                   | 是   | 要设置的音量百分比，范围为[0, 100]。 |
 
 **返回值：**
 

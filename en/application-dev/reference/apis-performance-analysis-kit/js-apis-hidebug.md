@@ -1071,7 +1071,7 @@ You are advised to use **TRIM_LEVEL_1** to ensure application stability and use 
 | Name        | Value  | Description                                                        |
 | ------------ | ---- | ------------------------------------------------------------ |
 | TRIM_LEVEL_1 | 0    | Level 1 trimming, mainly used for strings.                      |
-| TRIM_LEVEL_2 | 1    | Level 2 trimming, which reduces the size of the object address identifier from 8 bytes to 4 bytes.|
+| TRIM_LEVEL_2 | 1    | Level 2 trimming, which reduces the size of the object address identifier from 8 bytes to 4 bytes based on **TRIM_LEVEL_1**.|
 
 ## hidebug.isDebugState<sup>12+</sup>
 

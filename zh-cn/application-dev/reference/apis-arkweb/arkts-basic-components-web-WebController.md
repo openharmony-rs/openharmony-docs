@@ -80,7 +80,7 @@ getCookieManager(): WebCookie
 
 requestFocus()
 
-使当前web页面获取焦点。
+使当前Web页面获取焦点。
 
 > **说明：**
 >

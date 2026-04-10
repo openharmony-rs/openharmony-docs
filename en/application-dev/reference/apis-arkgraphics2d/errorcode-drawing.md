@@ -14,7 +14,7 @@
 
 **Error Message**
 
-The parameter value is out of range.
+Parameter error. Possible causes: Incorrect parameter range.
 
 **Description**
 

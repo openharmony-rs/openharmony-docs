@@ -1605,7 +1605,6 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 import { certificateManager } from '@kit.DeviceCertificateKit';
-import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1821,7 +1820,6 @@ struct Index {
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
-    import { promptAction } from '@kit.ArkUI';
 
     @Entry
     @Component
@@ -2321,9 +2319,9 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 >
 > 通知的是页面全局滚动位置，局部滚动位置的变化是无法触发此回调。
 >
-> 判断页面是否是全局滚动，在滚动前后打印window.pagYOffset或者window.pagXOffset。
+> 判断页面是否是全局滚动，在滚动前后打印window.pageYOffset或者window.pageXOffset。
 >
-> 如果是全局滚动，window.pagYOffset或者window.pagXOffset的值在滚动前后会有变化，反之没有变化。
+> 如果是全局滚动，window.pageYOffset或者window.pageXOffset的值在滚动前后会有变化，反之没有变化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
