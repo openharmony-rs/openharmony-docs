@@ -54,7 +54,7 @@
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
 
-   方式三：通过OH_AVCodec_GetCapabilityList获取指定编解码器类型的全量能力实例列表。此方式适用于需要遍历系统支持的所有特定类型（如视频解码器）并根据多个条件进行组合筛选的场景。
+   方式三：从API version 24开始，通过OH_AVCodec_GetCapabilityList获取指定编解码器类型的全量能力实例列表。此方式适用于需要遍历系统支持的所有特定类型（如视频解码器）并根据多个条件进行组合筛选的场景。
 
    ```c++
    // 获取系统中所有视频解码器的能力实例列表。
