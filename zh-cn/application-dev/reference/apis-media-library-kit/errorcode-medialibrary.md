@@ -34,7 +34,28 @@ Context is invalid.
 
 **错误信息**
 
-System inner fail.
+medialibrary inner fail.
+
+Possible causes: 
+1. Failed to create reference. 
+2. Failed to create instance.
+3. Failed to get undefined value.
+4. Failed to get callbakc info.
+5. Failed to bind native object to JavaScript object.
+6. Failed to unwrap native object.
+7. Failed to create Boolean value.
+8. Failed to get int32 value.
+9. Failed to initialize data field.
+10. Failed to initialize error field.
+11. Failed to get argument type.
+12. Failed to check argument type.
+13. Failed to create photoAlbumNapi.
+14. Failed to add property.
+15. Failed to get fetch option.
+16. Invaild fetch columns.
+17. Failed to check array type.
+18. Failed to get array length.
+19. Failed to get array element.
 
 **错误描述**
 
@@ -48,6 +69,44 @@ System inner fail.
 
 3. IPC消息超时。
 
+4. 创建构造函数引用失败（Failed to create reference）。
+
+5. 实例创建失败（Failed to create instance）。
+
+6. 无法获取undefined值（Failed to get undefined value）。
+
+7. 回调信息获取失败（Failed to get callbakc info）。
+
+8. 无法将原生对象绑定到JS对象（Failed to bind native object to JavaScript object）。
+
+9. 原生对象解绑失败（Failed to unwrap native object）。
+
+10. 布尔值创建失败（Failed to create Boolean value）。
+
+11. int32创建失败（Failed to get int32 value）。
+
+12. 返回数据初始化失败（Failed to initialize data field）。
+
+13. 返回error信息初始化失败（Failed to initialize error field）。
+
+14. 获取参数类型失败（Failed to get argument type）。
+
+15. 参数类型校验失败（Failed to check argument type）。
+
+16. 创建photoAlbumNapi失败（Failed to create photoAlbumNapi）。
+
+17. JS对象添加属性失败（Failed to add property）。
+
+18. 无法获取提取选项（Failed to get fetch option）。
+
+19. 无效的相册列（Invaild fetch columns）。
+
+20. 数组类型校验失败（Failed to check array type）。
+
+21. 获取数组长度失败（Failed to get array length）。
+
+22. 获取数组元素失败（Failed to get array element）。
+
 **处理步骤**
 
 清理后台或重启设备。
@@ -56,7 +115,7 @@ System inner fail.
 
 **错误信息**
 
-Scene parameter validation failed.
+invalid parameter.
 
 **错误描述**
 
@@ -78,7 +137,7 @@ Scene parameter validation failed.
 
 **错误信息**
 
-The provided member must be a property name of PhotoKey.
+invalid input parameter.
 
 **错误描述**
 
