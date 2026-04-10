@@ -336,10 +336,9 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
+updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
+  console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
+  console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1584,6 +1583,105 @@ restorer.forceFactoryReset().then(() => {
 });
 ```
 
+### deepFactoryReset
+
+deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
+
+深度清理用户数据及操作系统。使用 Promise 异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+**需要权限**：ohos.permission.FACTORY_RESET
+
+**参数：**
+
+| 参数名                | 类型                                       | 必填   | 说明             |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 恢复出厂设置策略。         |
+
+**返回值：**
+
+| 类型             | 说明                         |
+| -------------- | -------------------------- |
+| Promise\<void> | Promise 对象。无返回结果。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let factoryResetStrategy: update.FactoryResetStrategy = {
+  scope: update.FactoryResetScope.DATA,
+  strategy: "deepFactoryReset test"
+};
+restorer.deepFactoryReset(factoryResetStrategy).then(() => {
+  console.info(`deepFactoryReset success`);
+}).catch((err: BusinessError) => {
+  console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
+});
+```
+### getDeepFactoryResetInfo
+
+getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<FactoryResetInfo>
+
+获取深度恢复出厂设置信息。使用 Promise 异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+**需要权限**：ohos.permission.FACTORY_RESET
+
+**参数：**
+
+| 参数名                | 类型                                       | 必填   | 说明             |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是 | 恢复出厂设置策略。         |
+
+**返回值：**
+
+| 类型                              | 说明                  |
+| ------------------------------- | ------------------- |
+| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回任务信息对象。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let factoryResetStrategy: update.FactoryResetStrategy = {
+  scope: update.FactoryResetScope.DATA,
+  strategy: "deepFactoryReset"
+};
+restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
+  console.info(`getDeepFactoryResetInfo success`);
+}).catch((err: BusinessError) => {
+  console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
+});
+```
+
 ## LocalUpdater
 
 ### verifyUpgradePackage
@@ -1624,7 +1722,7 @@ const upgradeFile: update.UpgradeFile = {
 };
 
 localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
+  console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -2096,6 +2194,44 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | -------- | ------------------------------- | ---- | ---- | ---- |
 | fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
 | filePath | string                          | 否    | 否 | 文件路径。 |
+
+## FactoryResetStrategy
+
+恢复出厂设置策略。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称       | 类型                            | 只读 | 可选 | 说明   |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| scope | [FactoryResetScope](#factoryresetscope) | 否    | 否 | 重置范围。|
+| strategy | string                          | 否    | 否 | 重置策略。 |
+
+## FactoryResetInfo
+
+恢复出厂设置信息。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称       | 类型                            | 只读 | 可选 | 说明   |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| duration | int                          | 否    | 否 | 恢复出厂设置所需持续时间。 |
+
+## FactoryResetScope
+
+恢复出厂设置范围。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称           | 值  | 说明   |
+| ------------- | ---- | ---- |
+| DATA | 1    | 用户数据。|
+| DATA_AND_OS | 2    | 用户数据和操作系统。|
 
 ## UpgradeTaskCallback<sup>23+</sup>
 
