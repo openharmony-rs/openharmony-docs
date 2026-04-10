@@ -54,7 +54,7 @@
 
 ### 函数
 
-<!--Table: 45%; 10%; 45%-->
+<!--Table: 40%; 20%; 40%-->
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)](#oh_arkui_nodeevent_geteventtype) | - | 获取组件事件类型。 |
