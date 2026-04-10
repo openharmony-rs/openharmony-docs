@@ -5278,7 +5278,7 @@ let config: relationalStore.CloudSyncConfig = {
 };
 if (store != undefined) {
   (store as relationalStore.RdbStore).cloudSync(config, (progressDetails: relationalStore.ProgressDetails) => {
-      console.info(`progress: ${progressDetail.schedule}`);
+      console.info(`progress: ${progressDetails.schedule}`);
   }).then(() => {
       console.info('cloud sync succeeded');
   }).catch((err: BusinessError) => {
