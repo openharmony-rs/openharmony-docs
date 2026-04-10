@@ -379,7 +379,7 @@ getCursorInfo(userId?: long): CursorInfo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | userId |  long | 否 | 指定的用户ID。</br>如果调用者不是用户0应用，该值默认为调用者的用户ID。</br> 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。|
+  | userId |  long | 否 | 指定的用户ID。<br>如果调用者不是用户0应用，该值默认为调用者的用户ID。<br> 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。|
 
 **返回值：**
 
@@ -396,9 +396,9 @@ getCursorInfo(userId?: long): CursorInfo
 | 202      | not system application. |
 | 12800003 | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exit. |
-| 12800024 | the specified user is not in the foregeound. |
-| 12800025 | cross-user operation denied.Only user 0 applications are authorized for this operation. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
 **示例：**
 
