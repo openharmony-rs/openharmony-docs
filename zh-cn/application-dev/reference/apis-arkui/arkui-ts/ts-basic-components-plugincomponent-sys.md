@@ -62,7 +62,7 @@ PluginComponent(options: PluginComponentOptions)
 | 名称       | 类型  | 只读 | 可选 | 说明                        |
 | ---------- | ------ | ------ | ------ | --------------------------- |
 | source     | string | 否 | 否 | 组件模板名。                |
-| bundleName | string | 否 | 否 | 提供方Ability的bundleName。使用绝对路径提供资源时不需要填写，使用相对路径或FA模型AbilityName方式时必须填写。 |
+| bundleName | string | 否 | 否 | 提供方Ability的bundleName。 |
 
 ## 属性
 
