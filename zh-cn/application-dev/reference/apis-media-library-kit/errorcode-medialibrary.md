@@ -153,7 +153,7 @@ Invalid input parameter.
 检查传入参数是否在PhotoKeys枚举范围之内。
 
 ## 23800202 非法场景调用错误
- 	 
+
 **错误信息**
 
 Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.
