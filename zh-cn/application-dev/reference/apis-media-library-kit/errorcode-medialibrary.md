@@ -34,9 +34,7 @@ Context is invalid.
 
 **错误信息**
 
-MediaLibrary inner fail.
-
-Possible causes: 
+MediaLibrary inner fail.Possible causes: 
 1. Failed to create reference. 
 2. Failed to create instance.
 3. Failed to get undefined value.
