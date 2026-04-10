@@ -5178,11 +5178,13 @@ if (store != undefined) {
 };
 ```
 
-## cloudSync<sup>26+</sup>
+## cloudSync
 
 cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
 同步数据到云端，使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5209,7 +5211,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | 801       | Capability not supported because the device does not support the device-cloud capability. |
 | 14800014  | The target instance is already closed. |
 
-**示例:**
+**示例：**
 
 ```ts
 import { relationalStore } from '@kit.ArkData';
@@ -5233,30 +5235,32 @@ if (store != undefined) {
 }
 ```
 
-## cloudSync<sup>26+</sup>
+## cloudSync
 
 cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
 根据配置同步数据到云端，使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**参数:**
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| config | [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig26) | 是 | 云同步配置。 |
+| config | [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。 |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数，返回ProgressDetails实例对象。 |
 
-**返回值:**
+**返回值：**
 
 | 类型 | 说明 |
 |------|------|
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码:**
+**错误码：**
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
 
@@ -5264,7 +5268,7 @@ cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): P
 |-----------| ------------------------------------------------------------ |
 | 14800014  | The target instance is already closed. |
 
-**示例:**
+**示例：**
 
 ```ts
 import { relationalStore } from '@kit.ArkData';
@@ -5289,23 +5293,25 @@ if (store != undefined) {
 }
 ```
 
-## stopCloudSync<sup>26+</sup>
+## stopCloudSync
 
 stopCloudSync(): Promise&lt;void&gt;
 
 停止与云端的数据同步，使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**返回值:**
+**返回值：**
 
 | 类型 | 说明 |
 |------|------|
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码:**
+**错误码：**
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
 
@@ -5315,7 +5321,7 @@ stopCloudSync(): Promise&lt;void&gt;
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed. |
 
-**示例:**
+**示例：**
 
 ```ts
 import { relationalStore } from '@kit.ArkData';

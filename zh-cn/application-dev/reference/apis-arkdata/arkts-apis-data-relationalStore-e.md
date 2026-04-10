@@ -299,9 +299,11 @@ export default class EntryAbility extends UIAbility {
 | ON_CONFLICT_IGNORE   | 4    | 表示当冲突发生时，跳过包含违反约束的行并继续处理 SQL 语句的后续行。 |
 | ON_CONFLICT_REPLACE  | 5    | 表示当冲突发生时，在插入或更新当前行之前删除导致约束违例的预先存在的行，并且命令会继续正常执行。 |
 
-## AssetConflictPolicy<sup>26+</sup>
+## AssetConflictPolicy
 
 资产冲突策略枚举。请使用枚举名称而非枚举值。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

@@ -1375,11 +1375,13 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 ```
 
-### cloudSync<sup>26+</sup>
+### cloudSync
 
 static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
 
 同步数据到云端，使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1394,7 +1396,7 @@ static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
 | bundleInfo | BundleInfo | 是 | 应用包信息配置。BundleInfo的实例对象。 |
-| config | [relationalStore.CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig26) | 是 | 云同步配置。relationalStore.CloudSyncConfig的实例对象。 |
+| config | [relationalStore.CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。relationalStore.CloudSyncConfig的实例对象。 |
 | progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
 
 **返回值：**
@@ -1446,11 +1448,13 @@ try {
 }
 ```
 
-### stopCloudSync<sup>26+</sup>
+### stopCloudSync
 
 static stopCloudSync(bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;void&gt;
 
 停止与云端的数据同步，使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

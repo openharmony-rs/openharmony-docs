@@ -76,9 +76,11 @@ import { relationalStore } from '@kit.ArkData';
 | -------- | ------- | ----  | ---- | ------------------------------------------------------------ |
 | references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | 否 | 是   | 设置表之间的关联关系，可以设置多个字段的关联，子表和父表关联字段的值必须相同。默认数据库表之间无关联关系。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。|
 
-## CloudSyncConfig<sup>26+</sup>
+## CloudSyncConfig
 
 云同步配置信息。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

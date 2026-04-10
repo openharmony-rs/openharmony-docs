@@ -85,9 +85,11 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 
 ```
 
-## AutoSyncTriggerMode<sup>26+</sup>
+## AutoSyncTriggerMode
 
 自动同步触发模式枚举。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -101,9 +103,11 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 | CLOUD_DATA_CHANGE | 3 | 云端数据变更触发模式。 |
 | USER_CHANGE | 4 | 用户变更触发模式。 |
 
-## AutoSyncTriggerInfo<sup>26+</sup>
+## AutoSyncTriggerInfo
 
 自动同步触发信息。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -111,13 +115,15 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
-| mode | [AutoSyncTriggerMode](#autosynctriggermode26) | 否 | 否 | 自动同步触发模式。 |
+| mode | [AutoSyncTriggerMode](#autosynctriggermode) | 否 | 否 | 自动同步触发模式。 |
 
-## onAutoSyncTrigger<sup>26+</sup>
+## onAutoSyncTrigger
 
 onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 订阅自动同步触发事件，使用callback异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -127,7 +133,7 @@ onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo26)&gt; | 是 | 自动同步触发拦截的回调函数。 |
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 是 | 自动同步触发拦截的回调函数。 |
 
 **错误码：**
 
@@ -149,11 +155,13 @@ function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
 cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
 ```
 
-## offAutoSyncTrigger<sup>26+</sup>
+## offAutoSyncTrigger
 
 offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 取消订阅自动同步触发事件，使用callback异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -163,7 +171,7 @@ offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo26)&gt; | 否 | 自动同步触发拦截的回调函数。如果不传参数，则取消所有已注册的回调。 |
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 自动同步触发拦截的回调函数。如果不传参数，则取消所有已注册的回调。 |
 
 **错误码：**
 

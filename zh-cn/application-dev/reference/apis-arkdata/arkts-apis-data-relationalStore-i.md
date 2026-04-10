@@ -89,7 +89,7 @@
 | asyncDownloadAsset<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库在端云同步时，同步或异步下载资产。true表示优先下载完所有数据后，使用异步任务下载资产；false表示同步下载资产；默认值为false。 |
 | enableCloud<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库是否允许端云同步。true表示允许端云同步；false表示不允许端云同步。默认值为true。 |
 | tableType<sup>23+</sup> |  [DistributedTableType](arkts-apis-data-relationalStore-e.md#distributedtabletype23)  | 否 | 是 | 分布式表类型。DEVICE_COLLABORATION表示设备协作表；SINGLE_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE_COLLABORATION；端云数据同步时，默认值为SINGLE_VERSION，不支持DEVICE_COLLABORATION。 |
-| assetConflictPolicy<sup>26+</sup> | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy26) | 否 | 是 | 资产冲突策略。 |
+| assetConflictPolicy<sup>26+</sup> | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy) | 否 | 是 | 资产冲突策略。 |
 | assetTempPath<sup>26+</sup> | string | 否 | 是 | 资产临时路径。 |
 | assetDownloadOnDemand<sup>26+</sup> | boolean | 否 | 是 | 是否按需下载资产。true表示按需下载，false表示不按需下载。 |
 | autoSyncSwitch<sup>26+</sup> | boolean | 否 | 是 | 自动同步开关。true表示启用自动同步，false表示不启用。 |
@@ -131,9 +131,11 @@
 | details  | Record<string, [TableDetails](#tabledetails10)> | 否   |   否   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
 | message<sup>26+</sup> | string | 否 | 否 | 同步状态的详情消息。                                |
 
-## CloudSyncConfig<sup>26+</sup>
+## CloudSyncConfig
 
 云同步配置信息。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -142,8 +144,8 @@
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
 | mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 否 | 否 | 数据库同步模式。 |
-| enablePredicate<sup>26+</sup> | boolean | 否 | 是 | 表级同步开关。true表示启用表级同步，false表示不启用。 |
-| predicate<sup>26+</sup> | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 否 | 是 | 表级同步谓词。当enablePredicate为true时，此参数有效。 |
+| enablePredicate | boolean | 否 | 是 | 表级同步开关。true表示启用表级同步，false表示不启用。 |
+| predicate | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 否 | 是 | 表级同步谓词。当enablePredicate为true时，此参数有效。 |
 
 ## SqlExecutionInfo<sup>12+</sup>
 
