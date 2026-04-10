@@ -27,7 +27,7 @@ The notification service process involves the notification subsystem, notificati
 
 ## Available APIs
 
-The major APIs for notification subscription are described as follows. For details about the APIs, see [@ohos.notificationSubscribe (NotificationSubscribe)](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md).
+The major APIs for notification subscription are described as follows. For details about the APIs, see [@ohos.notificationSubscribe (NotificationSubscribe) (System API)](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md).
 
 **Table 1** Major APIs for notification subscription
 
