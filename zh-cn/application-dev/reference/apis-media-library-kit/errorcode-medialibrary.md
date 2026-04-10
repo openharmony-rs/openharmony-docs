@@ -40,7 +40,7 @@ Possible causes:
 1. Failed to create reference. 
 2. Failed to create instance.
 3. Failed to get undefined value.
-4. Failed to get callbakc info.
+4. Failed to get callback info.
 5. Failed to bind native object to JavaScript object.
 6. Failed to unwrap native object.
 7. Failed to create Boolean value.
@@ -52,7 +52,7 @@ Possible causes:
 13. Failed to create photoAlbumNapi.
 14. Failed to add property.
 15. Failed to get fetch option.
-16. Invaild fetch columns.
+16. Invalid fetch columns.
 17. Failed to check array type.
 18. Failed to get array length.
 19. Failed to get array element.
@@ -75,7 +75,7 @@ Possible causes:
 
 6. 无法获取undefined值（Failed to get undefined value）。
 
-7. 回调信息获取失败（Failed to get callbakc info）。
+7. 回调信息获取失败（Failed to get callback info）。
 
 8. 无法将原生对象绑定到JS对象（Failed to bind native object to JavaScript object）。
 
@@ -99,7 +99,7 @@ Possible causes:
 
 18. 无法获取提取选项（Failed to get fetch option）。
 
-19. 无效的相册列（Invaild fetch columns）。
+19. 无效的相册列（Invalid fetch columns）。
 
 20. 数组类型校验失败（Failed to check array type）。
 
