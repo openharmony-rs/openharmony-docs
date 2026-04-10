@@ -1801,7 +1801,7 @@ uninstallNewPreinstalledApps(bundleNames: Array\<string\>): Promise\<void\>
 
 | 参数名        | 类型                           | 必填 | 说明                       |
 | ------------  | ----------------------------- | ---- | ------------------------- |
-| bundleNames   | Array\<string\>               | 是   | 待卸载的应用列表。          |
+| bundleNames   | Array\<string\>               | 是   | 待卸载的应用的包名列表。          |
 
 **返回值：**
 
