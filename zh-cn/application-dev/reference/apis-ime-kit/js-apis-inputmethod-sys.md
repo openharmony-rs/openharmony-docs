@@ -361,7 +361,7 @@ enableInputMethodSafely();
 
 ### getCursorInfo
 
-getCursorInfo(userId?: long): CursorInfo;
+getCursorInfo(userId?: long): CursorInfo
 
 获取指定用户的光标信息。
 
