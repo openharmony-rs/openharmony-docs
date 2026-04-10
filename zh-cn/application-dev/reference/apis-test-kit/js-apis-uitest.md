@@ -272,32 +272,36 @@ UI事件的相关信息。
 | addition       | boolean | 否  | 是  | 输入文本时是否以追加的方式进行输入。true：以追加方式输入。false：不以追加方式输入。默认为false。|
 
 
-## KeyOptions<sup>26+</sup>
+## KeyOptions
 
 按键操作选项。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| key1 | int | 否  | 是  | 操作时注入的第一个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。 |
-| key2 | int | 否  | 是  | 操作时注入的第二个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br> **说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
+| key1 | number | 否  | 是  | 操作时注入的第一个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。 |
+| key2 | number | 否  | 是  | 操作时注入的第二个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br> **说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
 
-## TouchOptions<sup>26+</sup>
+## TouchOptions
 
 触摸操作通用选项。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| speed | int | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
-| duration | int | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。为小于1500的值时抛出17000007错误码。为null或undefined时使用默认值。 |
-| pressure | double | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。为超出范围的值时抛出17000007错误码。为null或undefined时使用默认值。 |
+| speed | number | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
+| duration | number | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。为小于1500的值时抛出17000007错误码。为null或undefined时使用默认值。 |
+| pressure | number | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。为超出范围的值时抛出17000007错误码。为null或undefined时使用默认值。 |
 
 ## On<sup>9+</sup>
 
@@ -3044,13 +3048,15 @@ async function demo() {
 }
 ```
 
-### clickAt<sup>26+</sup>
+### clickAt
 
 clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 在目标坐标点进行单击，支持指定触摸选项。使用Promise异步回调。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3059,7 +3065,7 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
 | point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| options      | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
@@ -3267,13 +3273,15 @@ async function demo() {
 }
 ```
 
-### longClickAt<sup>26+</sup>
+### longClickAt
 
 longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3282,7 +3290,7 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 | 参数名 | 类型   | 必填 |说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
 | point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| options      | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置duration和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置duration和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
@@ -3408,13 +3416,15 @@ async function demo() {
 }
 ```
 
-### swipeBetween<sup>26+</sup>
+### swipeBetween
 
 swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点滑向目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3424,7 +3434,7 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| options  | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
@@ -3555,15 +3565,19 @@ async function demo() {
 }
 ```
 
-### dragBetween<sup>26+</sup>
+### dragBetween
 
 dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点拖拽至目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -3571,7 +3585,7 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| options  | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
@@ -3693,13 +3707,15 @@ async function demo() {
 }
 ```
 
-### dumpLayout<sup>26+</sup>
+### dumpLayout
 
-dumpLayout(savePath: string, displayId?: int): Promise\<boolean>
+dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 
 获取当前布局信息并保存为JSON格式的文件。使用Promise异步回调。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3708,13 +3724,13 @@ dumpLayout(savePath: string, displayId?: int): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | JSON文件保存路径。路径需为当前应用的沙箱目录。 |
-| displayId     | int | 否  | 指定设备屏幕ID，默认为主屏幕的displayId。 |
+| displayId     | number | 否  | 指定设备屏幕ID，默认为主屏幕的displayId。 |
 
 **返回值：**
 
 | 类型              | 说明                                        |
 | ----------------- |-------------------------------------------|
-| Promise\<boolean> | Promise对象，返回截屏和文件存储是否成功完成。true：完成。false：未完成。 |
+| Promise\<boolean> | Promise对象，返回布局信息导出和文件存储是否成功完成。true：完成。false：未完成。 |
 
 **错误码：**
 
@@ -4966,15 +4982,19 @@ async function demo() {
 }
 ```
 
-### mouseDrag<sup>26+</sup>
+### mouseDrag
 
 mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -4982,8 +5002,8 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
-| touchOptions  | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
-| keyOptions  | [KeyOptions](#keyoptions26) | 否   | 按键操作选项。拖拽过程中同时按下指定的按键。默认值参考[KeyOptions](#keyoptions26)各属性默认值。 |
+| touchOptions  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
+| keyOptions  | [KeyOptions](#keyoptions) | 否   | 按键操作选项。拖拽过程中同时按下指定的按键。默认值参考[KeyOptions](#keyoptions)各属性默认值。 |
 
 **返回值：**
 
