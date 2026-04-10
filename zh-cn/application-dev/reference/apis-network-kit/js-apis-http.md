@@ -1314,7 +1314,7 @@ HTTP 请求方法。
 | DELETE  | "DELETE"  | DELETE方法用于删除指定的资源。 |
 | TRACE   | "TRACE"   | TRACE方法沿到达目标资源的路径执行消息环回测试。 |
 | CONNECT | "CONNECT" | CONNECT方法建立到由目标资源标识的服务器的隧道。 |
-| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。 <br>**起始版本：**26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。 <br/>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ResponseCode
 
