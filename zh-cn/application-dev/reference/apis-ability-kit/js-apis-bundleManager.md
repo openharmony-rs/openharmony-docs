@@ -1768,7 +1768,7 @@ getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise对象，返回当前已安装应用的信息列表。 |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)>> | Promise对象，返回当前已安装应用的信息列表。 |
 
 **错误码：**
 
