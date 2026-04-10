@@ -461,7 +461,7 @@ Camera node, which inherits from [Node](#node).
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | fov | number | No| No| Field of view. The unit is radian (rad). The value ranges from 0 to π radians.|
-| nearPlane | number | No| No| Near plane. The unit is the scenario unit (such as cm, m, and km) in the world coordinate system. The value is greater than 0.|
+| nearPlane | number | No| No| Near plane. The unit is the scene unit (such as cm, m, and km) in the world coordinate system. The value is greater than 0.|
 | farPlane | number | No| No| Far plane. The unit is the scenario unit (such as cm, m, and km) in the world coordinate system. The value is greater than that of nearPlane.|
 | enabled | boolean | No| No| Whether the camera is enabled. **true** if enabled, **false** otherwise.|
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | No| No| Post-processing settings.|
