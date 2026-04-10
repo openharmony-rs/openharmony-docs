@@ -5214,25 +5214,20 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 **示例：**
 
 ```ts
-import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-predicates.equalTo('NAME', 'Lisa');
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.in("id", ["id1", "id2"]);
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(
-    relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
-    predicates,
-    (progressDetails: relationalStore.ProgressDetails) => {
-      console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
-    }
-  ).then(() => {
-    console.info('Succeeded in cloud sync');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
-  });
-}
+    (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
+        console.info(`progress: ${progressDetail.schedule}`);
+    }).then(() => {
+        console.info('cloud sync succeeded');
+    }).catch((err: BusinessError) => {
+        console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
+    });
+};
 ```
 
 ## cloudSync
@@ -5271,11 +5266,10 @@ cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): P
 **示例：**
 
 ```ts
-import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-predicates.equalTo('NAME', 'Lisa');
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.in("id", ["id1", "id2"]);
 
 let config: relationalStore.CloudSyncConfig = {
   mode: relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
@@ -5284,11 +5278,11 @@ let config: relationalStore.CloudSyncConfig = {
 };
 if (store != undefined) {
   (store as relationalStore.RdbStore).cloudSync(config, (progressDetails: relationalStore.ProgressDetails) => {
-    console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
+      console.info(`progress: ${progressDetail.schedule}`);
   }).then(() => {
-    console.info('Succeeded in cloud sync');
+      console.info('cloud sync succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
+      console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
