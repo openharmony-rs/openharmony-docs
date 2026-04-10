@@ -38,7 +38,7 @@
 
 3. 获得音视频编解码能力实例。
 
-   支持以下方式获取音视频编解码能力实例，若获取能力实例成功，继续向下执行。实例无显式释放接口，使用完毕后系统会自动回收。
+   支持以下方式获取音视频编解码能力实例。若获取能力实例成功，继续向下执行。实例无显式释放接口，使用完毕后系统会自动回收。
    
    方式一：通过`OH_AVCodec_GetCapability`获取系统推荐的音视频编解码器能力实例。推荐策略与`OH_XXX_CreateByMime`系列接口一致。
 
@@ -54,7 +54,7 @@
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
 
-   方式三：通过OH_AVCodec_GetCapabilityList获取指定编解码器类型的全量能力实例列表。此方式适用于需要遍历系统支持的所有特定类型（如视频解码器）并根据多个条件进行组合筛选的场景。
+   方式三：从API version 24开始，通过OH_AVCodec_GetCapabilityList获取指定编解码器类型的全量能力实例列表。此方式适用于需要遍历系统支持的所有特定类型（如视频解码器）并根据多个条件进行组合筛选的场景。
 
    ```c++
    // 获取系统中所有视频解码器的能力实例列表。
