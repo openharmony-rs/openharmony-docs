@@ -43,8 +43,7 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 | options         | [SegmentButtonOptions](#segmentbuttonoptions) | 是   | @ObjectLink | 分段按钮选项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | selectedIndexes | ArkTS-Dyn: number[]<br> ArkTS-Sta: int[]                                     | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/>**说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | onItemClicked<sup>13+</sup> | ArkTS-Dyn: Callback\<number\><br/> ArkTS-Sta: Callback\<int\>  | 否 | - | 当分段按钮选项被点击时触发的回调函数，回调入参为被点击的选项下标。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23|
-| maxFontScale<sup>14+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: douoble&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>默认值：1<br/>取值范围：[1,2]<br/>**说明：** <br/>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |
-| enableStateAnimation<sup>24+</sup> | boolean | 是 | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef | 设置当通过变量修改selectedIndex时，是否开启分段按钮的属性动画。<br/>默认值：false<br/>**说明：** <br/>当enableStateAnimation值为true时使用属性动画，值为false时使用原有动画。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
+| maxFontScale<sup>14+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>默认值：1<br/>取值范围：[1,2]<br/>**说明：** <br/>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |
 
 >**说明：** 
 >
@@ -380,7 +379,7 @@ push(...items: SegmentButtonItemArray): number
 
 | 参数名 | 类型                                              | 必填 | 说明                   |
 | ------ | ------------------------------------------------- | ---- | ---------------------- |
-| items  | [SegmentButtonItemArray](#segmentbuttonitemarray) | 是   | 被添加的按钮信息数组。|
+| items  | [SegmentButtonItemArray](#segmentbuttonitemarray) | 否   | 被添加的按钮信息数组。<br>默认值：0个被添加的按钮信息数组。 |
 
 **返回值：**
 
@@ -546,7 +545,7 @@ unshift(...items: SegmentButtonItemArray): number
 
 | 参数名 | 类型                                              | 必填 | 说明                   |
 | ------ | ------------------------------------------------- | ---- | ---------------------- |
-| items  | [SegmentButtonItemArray](#segmentbuttonitemarray) | 是   | 被添加的按钮信息数组。|
+| items  | [SegmentButtonItemArray](#segmentbuttonitemarray) | 否   | 被添加的按钮信息数组。<br>默认值：0个被添加的按钮信息数组。 |
 
 **返回值：**
 
@@ -584,7 +583,7 @@ unshift(item: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconT
 
 ### unshift<sup>22+</sup>
 
-unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem, item2：SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem): int
+unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem, item2: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem): int
 
 在数组开头添加两个新的元素，返回添加元素后数组的长度。
 
@@ -613,7 +612,7 @@ unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIcon
 
 ### unshift<sup>22+</sup>
 
-unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem, item2：SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem, item3：SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem): int
+unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem, item2: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem, item3: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIconTextItem): int
 
 在数组开头添加三个新的元素，返回添加元素后数组的长度。
 
@@ -643,7 +642,8 @@ unshift(item1: SegmentButtonTextItem | SegmentButtonIconItem | SegmentButtonIcon
 
 ### splice
 
-ArkTS-Dyn: splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[]): SegmentButtonItemOptions[]<br/>
+ArkTS-Dyn: splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[]): SegmentButtonItemOptions[]
+
 ArkTS-Sta: splice(start: int, deleteCount: int, ...items: SegmentButtonItemOptions[]): SegmentButtonItemOptions[]
 
 在数组中，删除从start位置开始的deleteCount数量的元素，并插入items中的元素，返回一个包含了被删除的元素的数组。
