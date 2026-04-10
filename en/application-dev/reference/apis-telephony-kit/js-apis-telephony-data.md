@@ -79,7 +79,7 @@ data.getDefaultCellularDataSlotId().then((contextData: number) => {
 
 getDefaultCellularDataSlotIdSync(): number
 
-Card slot ID.
+Obtains the default SIM card used for mobile data synchronously.
 
 **System capability**: SystemCapability.Telephony.CellularData
 

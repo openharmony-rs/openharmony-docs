@@ -412,9 +412,9 @@ After the EGL display connection is initialized, determine the type and configur
   
   ```cpp
   EGLBoolean eglGetConfigAttrib(EGLDisplay display,     // Handle to the EGL display connection for which configurations are selected.
-                                     EGLConfig config, // EGL configuration to query.
-                                     EGLint attribute, // Attribute identifier of the EGLint type, indicating the attribute to query.
-                                     EGLint *value); // Pointer to the variable of the EGLint type, which is used to store the attribute value obtained.
+                                     EGLConfig config,  // EGL configuration to query.
+                                     EGLint attribute,  // Attribute identifier of the EGLint type, indicating the attribute to query.
+                                     EGLint *value);    // Pointer to the variable of the EGLint type, which is used to store the attribute value obtained.
   ```
 
 
