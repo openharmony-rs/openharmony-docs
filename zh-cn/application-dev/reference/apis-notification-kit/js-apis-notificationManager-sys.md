@@ -9035,7 +9035,7 @@ try {
 }
 ```
 
-## notificationManager.setGeofenceEnabled<sup>23</sup>
+## notificationManager.setGeofenceEnabled<sup>23+</sup>
 
 setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
