@@ -608,6 +608,10 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 > **说明：**
 >
 > - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+>
+> - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
+>
+> - 自由窗口状态下，如果主窗口或子窗口的标题栏移出屏幕，系统将按标题栏高度将窗口回弹至屏幕内（无标题栏时默认回弹37vp），确保标题栏始终可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7680,6 +7684,12 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
 
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式的窗口在尺寸变化时受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。触发场景包括：（1）应用主动改变窗口大小（如调用[resize()](#resize9)）；（2）系统调节窗口大小（如分辨率变化、显示大小缩放系数density变化）。
+>
+> - 非自由窗口模式下，主窗口尺寸不受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束，其他类型窗口仍受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -7739,6 +7749,12 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 
 未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
+
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式的窗口在尺寸变化时受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。触发场景包括：（1）应用主动改变窗口大小（如调用[resize()](#resize9)）；（2）系统调节窗口大小（如分辨率变化、显示大小缩放系数density变化）。
+>
+> - 非自由窗口模式下，主窗口尺寸不受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束，其他类型窗口仍受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
