@@ -34,7 +34,7 @@ Context is invalid.
 
 **错误信息**
 
-medialibrary inner fail.
+MediaLibrary inner fail.
 
 Possible causes: 
 1. Failed to create reference. 
@@ -49,7 +49,7 @@ Possible causes:
 10. Failed to initialize error field.
 11. Failed to get argument type.
 12. Failed to check argument type.
-13. Failed to create photoAlbumNapi.
+13. Failed to create PhotoAlbumNapi.
 14. Failed to add property.
 15. Failed to get fetch option.
 16. Invalid fetch columns.
@@ -93,7 +93,7 @@ Possible causes:
 
 15. 参数类型校验失败（Failed to check argument type）。
 
-16. 创建photoAlbumNapi失败（Failed to create photoAlbumNapi）。
+16. 创建PhotoAlbumNapi失败（Failed to create PhotoAlbumNapi）。
 
 17. JS对象添加属性失败（Failed to add property）。
 
@@ -115,7 +115,7 @@ Possible causes:
 
 **错误信息**
 
-invalid parameter.
+Invalid parameter.
 
 **错误描述**
 
@@ -137,7 +137,7 @@ invalid parameter.
 
 **错误信息**
 
-invalid input parameter.
+Invalid input parameter.
 
 **错误描述**
 
