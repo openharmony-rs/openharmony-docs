@@ -2037,6 +2037,8 @@ on(type: 'connect', callback: Callback\<WebSocketConnection\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
@@ -2093,6 +2095,8 @@ off(type: 'connect', callback?: Callback\<WebSocketConnection\>): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2151,6 +2155,8 @@ on(type: 'messageReceive', callback: Callback\<WebSocketMessage\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
@@ -2207,6 +2213,8 @@ off(type: 'messageReceive', callback?: Callback\<WebSocketMessage\>): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2265,6 +2273,8 @@ on(type: 'close', callback: ClientConnectionCloseCallback): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
@@ -2321,6 +2331,8 @@ off(type: 'close', callback?: ClientConnectionCloseCallback): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
