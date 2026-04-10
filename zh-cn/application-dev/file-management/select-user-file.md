@@ -85,11 +85,11 @@
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-   	// 这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
-   	let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. 通过fd使用[fileIo.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioreadsync)接口读取这个文件内的数据。
