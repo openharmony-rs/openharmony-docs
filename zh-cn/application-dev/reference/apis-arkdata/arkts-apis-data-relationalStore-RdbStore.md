@@ -5192,7 +5192,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 是 | 数据库同步模式。 |
+| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 是 | 数据库的同步模式。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是 | 同步条件，通过RdbPredicates实例对象指定。 |
 | progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数，返回ProgressDetails实例对象。 |
 
@@ -5262,7 +5262,7 @@ cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |

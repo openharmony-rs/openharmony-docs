@@ -89,10 +89,10 @@
 | asyncDownloadAsset<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库在端云同步时，同步或异步下载资产。true表示优先下载完所有数据后，使用异步任务下载资产；false表示同步下载资产；默认值为false。 |
 | enableCloud<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库是否允许端云同步。true表示允许端云同步；false表示不允许端云同步。默认值为true。 |
 | tableType<sup>23+</sup> |  [DistributedTableType](arkts-apis-data-relationalStore-e.md#distributedtabletype23)  | 否 | 是 | 分布式表类型。DEVICE_COLLABORATION表示设备协作表；SINGLE_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE_COLLABORATION；端云数据同步时，默认值为SINGLE_VERSION，不支持DEVICE_COLLABORATION。 |
-| assetConflictPolicy<sup>26+</sup> | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy) | 否 | 是 | 资产冲突策略。 |
-| assetTempPath<sup>26+</sup> | string | 否 | 是 | 资产临时路径。 |
-| assetDownloadOnDemand<sup>26+</sup> | boolean | 否 | 是 | 是否按需下载资产。true表示按需下载，false表示不按需下载。 |
-| autoSyncSwitch<sup>26+</sup> | boolean | 否 | 是 | 自动同步开关。true表示启用自动同步，false表示不启用。 |
+| assetConflictPolicy | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy) | 否 | 是 | 资产冲突策略。默认值为CONFLICT_POLICY_DEFAULT。<br/>**起始版本**：26.0.0 |
+| assetTempPath | string | 否 | 是 | 资产临时路径。默认值为空。<br/>**起始版本**：26.0.0 |
+| assetDownloadOnDemand | boolean | 否 | 是 | 是否按需下载资产。true表示按需下载，false表示不按需下载。默认值为false。<br/>**起始版本**：26.0.0 |
+| autoSyncSwitch | boolean | 否 | 是 | 自动同步开关。true表示启用自动同步，false表示不启用。默认值为true。<br/>**起始版本**：26.0.0 |
 
 ## Statistic<sup>10+</sup>
 
@@ -129,7 +129,7 @@
 | schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | 否   |   否   | 表示端云同步过程。                                 |
 | code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | 否   |   否   | 表示端云同步过程的状态。                              |
 | details  | Record<string, [TableDetails](#tabledetails10)> | 否   |   否   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
-| message<sup>26+</sup> | string | 否 | 否 | 同步状态的详情消息。                                |
+| message | string | 否 | 是   | 同步状态的详情消息。默认值为空。<br/>**起始版本**：26.0.0 |
 
 ## CloudSyncConfig
 

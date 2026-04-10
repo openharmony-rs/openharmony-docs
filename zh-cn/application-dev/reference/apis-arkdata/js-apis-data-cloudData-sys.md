@@ -1414,7 +1414,7 @@ static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application is not a system application. |
 | 801      | Capability not supported because the device does not support the device-cloud capability. |
-| 14800001 | Invalid arguments. Possible causes: 1. Empty conditions. |
+| 14800001 | Invalid arguments. Possible causes: Empty conditions. |
 
 **示例：**
 
