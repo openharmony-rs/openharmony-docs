@@ -3326,7 +3326,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+struct CardExample {
   private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State formId: long = 0;
   @State fwidth: number = 420;
@@ -3342,7 +3342,7 @@ struct Index {
         module: "entry",
         dimension: FormDimension.Dimension_2_2,
         temporary: false,
-      } )
+      })
         .allowUpdate(true)
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
@@ -3489,7 +3489,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+struct CardExample {
   private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State formId: long = 0;
   @State fwidth: number = 420;
@@ -3505,7 +3505,7 @@ struct Index {
         module: "entry",
         dimension: FormDimension.Dimension_2_2,
         temporary: false,
-      } )
+      })
         .allowUpdate(true)
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
