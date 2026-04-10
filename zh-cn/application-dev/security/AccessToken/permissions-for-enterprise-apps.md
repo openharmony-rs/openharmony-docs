@@ -583,7 +583,7 @@ UDID（Unified Device ID）是设备的唯一标识。
 
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
-允许企业应用获取已安装全量应用列表。
+允许企业普通应用获取已安装全量应用列表。
 
 **权限级别**：system_basic
 
