@@ -25,7 +25,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -38,7 +38,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -50,7 +50,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -65,7 +65,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -80,7 +80,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -99,7 +99,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -114,7 +114,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -153,7 +153,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -165,7 +165,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -189,7 +189,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -201,7 +201,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -214,7 +214,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -242,7 +242,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -260,7 +260,7 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -314,7 +314,7 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -385,7 +385,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -558,7 +558,8 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-|capture接口的capList支持的能力列表|功能说明|
+capture接口支持的capList能力列表
+|capList能力列表|功能说明|
 | ---- | ------ |
 |UiImage|获取页面内子图信息|
 |QuickSnap|获取截屏信息|
@@ -617,7 +618,8 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-|interact接口支持的capList能力列表|功能说明|
+interact接口支持的capList能力列表
+|capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
 
@@ -686,7 +688,8 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-|groupId支持能力列表|对应子项能力|功能说明|
+apperceive接口支持的groupId能力列表
+|groupId能力列表|对应子项能力|功能说明|
 | ---- | ------ | ------|
 |SmartEdge|Acticle|获取阅读场景感知信息|
 |SmartEdge|ShortVideo|获取短视频场景的感知信息|
@@ -738,7 +741,7 @@ onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionS
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
