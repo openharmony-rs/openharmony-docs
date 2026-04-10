@@ -89,9 +89,9 @@ startAbility(parameter: StartAbilityParameter): Promise\<number>
 >
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **参数：**
 
@@ -924,9 +924,9 @@ type Context = _Context
 
 Context模块。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
@@ -938,9 +938,9 @@ type AppVersionInfo = _AppVersionInfo
 
 应用版本信息。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
@@ -952,9 +952,9 @@ type ProcessInfo = _ProcessInfo
 
 进程信息。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
