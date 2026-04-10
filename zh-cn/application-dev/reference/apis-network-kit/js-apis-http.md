@@ -2038,7 +2038,7 @@ ArkTS-Dyn: flush(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：**  11
 
-**ArkTS-Sta起始版本：**  26
+**ArkTS-Sta起始版本：**  26.0.0
 
 **返回值：**
 
