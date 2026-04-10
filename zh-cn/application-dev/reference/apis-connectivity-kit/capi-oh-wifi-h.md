@@ -218,12 +218,12 @@ Struct OH_WifiLinkedInfo
 | macType | int32_t | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 |
 | macAddress | char[] | 否 | 否 | 设备的MAC地址。当macType为1时需要申请ohos.permission.GET_WIFI_LOCAL_MAC权限。<br>格式："AA:BB:CC:DD:EE:FF"<br>长度 WIFI_MAC_LEN = 18。 |
 | ipAddress | uint32_t | 否 | 否 | WLAN连接的IP地址。 |
-| connState | [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) | 否 | 否 | WLAN连接状态。详情见 OH_WifiConnState。 |
-| channelWidth | [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。详情见 OH_WifiChannelWidth。 |
-| wifiStandard | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) | 否 | 否 | 当前连接热点的WIFI标准。详情见 OH_WifiStandard。 |
-| supportedWifiCategory | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) | 否 | 否 | 热点支持的最高WIFI级别。详情见 OH_WifiCategory。 |
+| connState | [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) | 否 | 否 | WLAN连接状态。详情见OH_WifiConnState。 |
+| channelWidth | [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。详情见OH_WifiChannelWidth。 |
+| wifiStandard | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) | 否 | 否 | 当前连接热点的WIFI标准。详情见OH_WifiStandard。 |
+| supportedWifiCategory | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) | 否 | 否 | 热点支持的最高WIFI级别。详情见OH_WifiCategory。 |
 | isHiLinkNetwork | bool | 否 | 否 | 热点是否支持hilink，true表示支持，false表示不支持。 |
-| wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | 否 | 否 | WIFI7连接类型。详情见 OH_WifiLinkType。 |
+| wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | 否 | 否 | WIFI7连接类型。详情见OH_WifiLinkType。 |
 
 ## 函数说明
 
@@ -289,7 +289,7 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 该接口用于获取WIFI连接信息。
 
 > **说明：**
-> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
+> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API version 8-15仅面向系统应用开放。从API version 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实bssid地址，否则为随机设备地址。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -300,7 +300,7 @@ Wifi_ResultCode OH_Wifi_GetLinkedInfo(OH_WifiLinkedInfo *info)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_WifiLinkedInfo *info | OH_WifiLinkedInfo 结构体。 |
+| OH_WifiLinkedInfo *info | OH_WifiLinkedInfo类型的结构体。 |
 
 **返回：**
 
