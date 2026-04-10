@@ -61,7 +61,7 @@ ArkTS-Dyn: onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
-被拉起的EmbeddedUIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时，触发本回调函数。
+被拉起的EmbeddedUIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时，触发本回调函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -102,7 +102,7 @@ ArkTS-Sta: onError(callback: ErrorCallback | undefined)
 
 | 参数名 | 类型                                                                         | 必填                                                                       | 说明      |
 | ------ | ---------------------------------------------------------------------------- | --------- | --------- |
-| callback    | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) \| undefined| 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
+| callback    | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> \| undefined| 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
 
 > **说明：**
 >
@@ -121,15 +121,15 @@ ArkTS-Sta: onError(callback: ErrorCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 12
 
 ### 属性
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
-| code | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码。 |
+| code | number | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码。 |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
 
 ## 示例（加载EmbeddedComponent）

@@ -10,9 +10,7 @@
 
 ## accessibilityGroup
 
-ArkTS-Dyn: accessibilityGroup(value: boolean):T
-
-ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
+accessibilityGroup(value: boolean):T
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -24,27 +22,27 @@ ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；设置为false表示不启用无障碍分组。<br/>默认值：false |
+| value  | boolean | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容；设置为false表示不启用无障碍分组。<br/>默认值：false |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+| T  | 返回当前对象。 |
 
 ## accessibilityGroup<sup>14+</sup>
 
 ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions):T
 
-ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions: AccessibilityOptions): this
+ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: AccessibilityOptions): this
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -111,7 +109,7 @@ ArkTS-Sta: accessibilityText(value: Resource | string | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍文本，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：“”<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
+| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: Resource | string \| undefined | 是   | 无障碍文本，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：“”<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
 
 **返回值：**
 
@@ -123,7 +121,7 @@ ArkTS-Sta: accessibilityText(value: Resource | string | undefined): this
 
 ArkTS-Dyn: accessibilityText(text: Resource):T
 
-ArkTS-Sta: accessibilityText(text: Resource | undefined): this
+ArkTS-Sta: accessibilityText(text: Resource | string | undefined): this
 
 设置无障碍文本，支持通过Resource引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容。
 
@@ -154,7 +152,7 @@ ArkTS-Sta: accessibilityText(text: Resource | undefined): this
 
 ArkTS-Dyn: accessibilityDescription(value: string):T
 
-ArkTS-Sta: accessibilityDescription(value: string | undefined): this
+ArkTS-Sta: accessibilityDescription(value: Resource | string | undefined): this
 
 设置无障碍说明。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -184,7 +182,7 @@ ArkTS-Sta: accessibilityDescription(value: string | undefined): this
 
 ArkTS-Dyn: accessibilityDescription(description: Resource):T
 
-ArkTS-Sta: accessibilityDescription(description: Resource | undefined): this
+ArkTS-Sta: accessibilityDescription(description: Resource | string | undefined): this
 
 设置无障碍说明，支持通过Resource引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
