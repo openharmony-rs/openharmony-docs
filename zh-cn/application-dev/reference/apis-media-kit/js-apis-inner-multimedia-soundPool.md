@@ -397,7 +397,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-   console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
+   console.error(`Failed to createSoundPool. Code: ${err.code}, message: ${err.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -415,7 +415,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool and catch error is ' + err.message);
+        console.error(`Failed to load soundpool.  Code: ${err.code}, message: ${err.message}`);
       });
     });
   }
