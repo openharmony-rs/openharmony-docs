@@ -25,7 +25,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -38,7 +38,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -50,7 +50,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -65,7 +65,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -80,7 +80,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -99,7 +99,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -118,7 +118,7 @@ getPageContent(options?: [ContentOptions](#onscreencontentoptions)): Promise&lt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -172,7 +172,7 @@ sendControlEvent(event: [ControlEvent](#onscreencontrolevent)): Promise&lt;void&
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
