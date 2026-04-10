@@ -1293,6 +1293,8 @@ HTTP请求交互的详细信息。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称                | 类型                          | 只读 | 可选 | 说明                                                         |
 | ------------------- | ----------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | networkProtocolName | string                        | 否   | 否   | [request](#request)请求过程中的HTTP协议版本，如'HTTP/1.0'，'HTTP/1.1'，'HTTP/2'，'HTTP/2 over TLS'，'HTTP/3'，'Unknown/Non-HTTP'等。 |
