@@ -3194,7 +3194,7 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 
 列出目录下所有文件名，支持递归列出和自定义文件名过滤。使用Promise异步回调。
 
-可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以"/"开头。
+可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
 **起始版本**：26.0.0
 
@@ -3243,12 +3243,13 @@ let options: ListFileExtOptions = {
   fileFilter: filter
 };
 fileIo.listFileExt(pathDir, options).then((filenames: Array<string>) => {
-  console.info("listFileExt succeed");
+  console.info(`Succeeded in listing file.`);
   for (let i = 0; i < filenames.length; i++) {
-    console.info("fileName: %s", filenames[i]);
+    console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
   }
-}).catch((err: BusinessError) => {
-  console.error("listFileExt failed with error message: " + err.message + ", error code: " + err.code);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -3258,7 +3259,7 @@ listFileExtSync(path: string, options?: ListFileExtOptions): string[]
 
 以同步方式列出目录下所有文件名，支持递归列出和自定义文件名过滤。
 
-可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以"/"开头。
+可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
 **起始版本**：26.0.0
 
@@ -3308,13 +3309,13 @@ let options: ListFileExtOptions = {
 };
 try {
   let filenames = fileIo.listFileExtSync(pathDir, options);
-  console.info("listFileExtSync succeed");
+  console.info(`Succeeded in listing file.`);
   for (let i = 0; i < filenames.length; i++) {
-    console.info("filename: %s", filenames[i]);
+    console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
   }
-} catch (err) {
-  let error = err as BusinessError;
-  console.error("listFileExtSync failed with error message: " + error.message + ", error code: " + error.code);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -6245,29 +6246,33 @@ open接口flags参数常量。文件打开标签。
 
 **起始版本**：26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
 ### filter
 
 filter(name: string): boolean
 
-过滤函数，判断指定文件名是否应包含在返回的文件列表中。返回true表示包含，false表示排除。
+用于[listFileExt](#fileiolistfileext)或[listFileExtSync](#fileiolistfileextsync)接口的文件过滤，判断指定文件名是否应包含在返回的文件列表中。
 
-**说明**：该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
+> **说明**：
+>
+> 该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---- |
-| name | string | 是 | 待过滤的文件名。 |
+| name | string | 是 | 待过滤的文件名或文件相对路径。递归模式下为文件的相对路径，相对路径以“/”开头。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| boolean | 返回true表示包含该文件，false表示排除。 |
+| boolean | 表示是否包含在返回的文件列表中。true：包含该文件；false：不包含该文件。 |
 
 ## Filter<sup>10+</sup>
 
