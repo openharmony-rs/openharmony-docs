@@ -28,7 +28,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 ## 导入模块
 
 ```ts
-import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -271,6 +271,37 @@ UI事件的相关信息。
 | paste | boolean | 否  | 是  | 输入文本时是否指定以复制粘贴方式输入。true：指定以复制粘贴方式输入。false：指定以逐字键入方式输入。默认为false。<br /> **说明：** 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论该参数取值为何，均以复制粘贴方式输入。|
 | addition       | boolean | 否  | 是  | 输入文本时是否以追加的方式进行输入。true：以追加方式输入。false：不以追加方式输入。默认为false。|
 
+
+## KeyOptions<sup>26+</sup>
+
+按键操作选项。
+
+**模型限制**：本文档所述接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| key1 | int | 否  | 是  | 操作时注入的第一个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。 |
+| key2 | int | 否  | 是  | 操作时注入的第二个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br> **说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
+
+## TouchOptions<sup>26+</sup>
+
+触摸操作通用选项。
+
+**模型限制**：本文档所述接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| speed | int | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
+| duration | int | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。为小于1500的值时抛出17000007错误码。为null或undefined时使用默认值。 |
+| pressure | double | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。为超出范围的值时抛出17000007错误码。为null或undefined时使用默认值。 |
 
 ## On<sup>9+</sup>
 
@@ -3017,6 +3048,52 @@ async function demo() {
 }
 ```
 
+### clickAt<sup>26+</sup>
+
+clickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+在目标坐标点进行单击，支持指定触摸选项。使用Promise异步回调。
+
+**模型限制**：本文档所述接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                            |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
+| options      | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, { pressure: 0.5 });
+}
+```
+
 ### doubleClick<sup>9+</sup>
 
 doubleClick(x: number, y: number): Promise\<void>
@@ -3192,6 +3269,52 @@ async function demo() {
 }
 ```
 
+### longClickAt<sup>26+</sup>
+
+longClickAt(point: Point, options?: TouchOptions): Promise\<void>
+
+长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
+
+**模型限制**：本文档所述接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 |说明                                            |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
+| options      | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置duration和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, { duration: 2000, pressure: 0.8 });
+}
+```
+
 ### swipe<sup>9+</sup>
 
 swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
@@ -3281,6 +3404,53 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
+}
+```
+
+### swipeBetween<sup>26+</sup>
+
+swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+从起始坐标点滑向目标坐标点，支持指定触摸选项。使用Promise异步回调。
+
+**模型限制**：本文档所述接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| options  | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, { speed: 800, pressure: 0.5 });
 }
 ```
 
@@ -3381,6 +3551,53 @@ async function demo() {
 }
 ```
 
+### dragBetween<sup>26+</sup>
+
+dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
+
+从起始坐标点拖拽至目标坐标点，支持指定触摸选项。使用Promise异步回调。
+
+**模型限制**：本文档所述接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                     |
+| ------ | ------ | ---- |--------------------------------------------------------|
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| options  | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, { speed: 800, duration: 2000, pressure: 0.5 });
+}
+```
+
 ### screenCap<sup>9+</sup>
 
 screenCap(savePath: string): Promise\<boolean>
@@ -3465,6 +3682,50 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png', 0);
+}
+```
+
+### dumpLayout<sup>26+</sup>
+
+dumpLayout(savePath: string, displayId?: int): Promise\<boolean>
+
+获取当前布局信息并保存为JSON格式的文件。使用Promise异步回调。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                       |
+| -------- | ------ | ---- | ------------------------------------------ |
+| savePath | string | 是   | JSON文件保存路径。路径需为当前应用的沙箱目录。 |
+| displayId     | int | 否  | 指定设备屏幕ID，默认为主屏幕的displayId。 |
+
+**返回值：**
+
+| 类型              | 说明                                        |
+| ----------------- |-------------------------------------------|
+| Promise\<boolean> | Promise对象，返回截屏和文件存储是否成功完成。true：完成。false：未完成。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.dumpLayout('/data/storage/el2/base/cache/layout.json', 0);
 }
 ```
 
@@ -4693,6 +4954,54 @@ import { Driver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
+}
+```
+
+### mouseDrag<sup>26+</sup>
+
+mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
+
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。
+
+**模型限制**：本文档所述接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名  | 类型             | 必填 | 说明                                                     |
+| --------- | ---------------- | ---- |--------------------------------------------------------|
+| from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
+| to        | [Point](#point9) | 是   | 终点坐标。                                                  |
+| touchOptions  | [TouchOptions](#touchoptions26) | 否   | 触摸操作选项。仅支持设置speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions26)各属性默认值。 |
+| keyOptions  | [KeyOptions](#keyoptions26) | 否   | 按键操作选项。拖拽过程中同时按下指定的按键。默认值参考[KeyOptions](#keyoptions26)各属性默认值。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.             |
+| 17000007 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, { speed: 800, duration: 2000 }, { key1: 2072, key2: 2019 });
 }
 ```
 
