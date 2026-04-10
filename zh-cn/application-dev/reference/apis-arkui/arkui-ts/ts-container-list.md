@@ -91,6 +91,7 @@ List(options?: [ListOptions](#listoptions18对象说明))
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | 名称       | 类型                                    | 只读 | 可选 | 说明                                                     |
 | ------------ | ------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | initialIndex<sup>7+</sup> | number | 否 | 是 | 设置当前List初次加载时显示区域起始位置的item索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前List最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>从API version 14开始，如果在List组件创建完成后首次布局前（如List的[onAttach](ts-universal-events-show-hide.md#onattach12)事件中），调用Scroller滚动控制器中不带动画的scrollToIndex或scrollEdge方法，会覆盖initialIndex设置的值。<br/>设置了initialIndex后，List从initialIndex对应的子组件开始布局，在这之前的子组件未参与布局，无法计算准确大小，因此通过[currentOffset](ts-container-scroll.md#currentoffset)接口获取到的List的滚动总偏移量通过估算得出，可能会有误差。可通过设置[childrenMainSize](#childrenmainsize12)确保List的滚动总偏移量的准确性。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -753,6 +754,7 @@ ListItemGroup吸顶或吸底效果枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | 名称     | 类型     | 只读 | 可选 | 说明                   |
 | ------- | -------- | ---- | -- | ---------------------- |
 | strokeWidth<sup>7+</sup> | [Length](ts-types.md#length) | 否   | 否 | 分割线的线宽。<br/>单位：vp<br/>**说明：** <br/>设置为负数，百分比，或者大于等于List内容区长度时，按0处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|

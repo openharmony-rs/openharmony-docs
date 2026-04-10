@@ -1265,6 +1265,7 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 8%; 67%-->
 | 名称                          |  值   | 说明                       |
 | ----------------------------- | ----- | --------------------------- |
 | Normal                        | 0 | 基本输入模式，无特殊限制。<br/>内联输入风格只支持InputType.Normal类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -1285,6 +1286,7 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 8%; 67%-->
 | 名称                       | 值   | 说明                                                         |
 | -------------------------- | ---- | ------------------------------------------------------------ |
 | USER_NAME                  | 0    | 【用户名】在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
