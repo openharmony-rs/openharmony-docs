@@ -10105,7 +10105,7 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 | --------------------- | ---------------------------------------- | ---- | --------------------------------- |
 | currentRotationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt;                      | 是   | 当前旋转矩阵。                |
 | preRotationMatrix     | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta:  Array&lt;double&gt;                      | 是   | 相对旋转矩阵。                    |
-| callback              | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt;<br> ArkTS-Sta: AsyncCallback&lt;Array&lt;double&gt;&gt; | 是   | 回调函数，异步返回绕z、x、y轴方向的旋转角度。 |
+| callback              | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt;<br> ArkTS-Sta: AsyncCallback&lt;Array&lt;double&gt;&gt; | 是   | 回调函数，异步返回绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -10221,7 +10221,7 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;   | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;   | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -10837,7 +10837,7 @@ ArkTS-Sta: getOrientation(rotationMatrix: Array&lt;double&gt;, callback: AsyncCa
 | 参数名         | 类型                                     | 必填 | 说明                              |
 | -------------- | ---------------------------------------- | ---- | --------------------------------- |
 | rotationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br> ArkTS-Sta: Array&lt;double&gt;                      | 是   | 旋转矩阵。                    |
-| callback       | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt;<br> ArkTS-Sta: AsyncCallback&lt;Array&lt;double&gt;&gt; | 是   | 回调函数，异步返回围绕z、x、y轴方向的旋转角度。 |
+| callback       | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt;<br> ArkTS-Sta: AsyncCallback&lt;Array&lt;double&gt;&gt; | 是   | 回调函数，异步返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -10931,7 +10931,7 @@ ArkTS-Sta: getOrientation(rotationMatrix: Array&lt;double&gt;): Promise&lt;Array
 
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，使用异步方式返回围绕z、x、y轴方向的旋转角度。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，使用异步方式返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **错误码**：
 
@@ -11525,7 +11525,7 @@ try {
 
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
-| timestamp      | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 事件发生的时间戳。                   |
+| timestamp      | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 事件发生的时间戳，单位ms。                   |
 | sensorId       | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 传感器ID。                      |
 | sensorIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 传感器索引。                      |
 | isSensorOnline | boolean | 否  | 否  | 传感器上线或者下线，true为上线，false为下线。 |
@@ -12065,13 +12065,13 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的北分量。                                   |
-| y               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的东分量。                                   |
-| z               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的垂直分量。                                 |
-| geomagneticDip  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁倾角，即地球磁场线与水平面的夹角。             |
-| deflectionAngle | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁偏角，即地磁北方向与正北方向在水平面上的角度。 |
-| levelIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的水平强度。                                 |
-| totalIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的总强度。                                   |
+| x               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的北分量，单位nT。                                   |
+| y               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的东分量，单位nT。                                   |
+| z               | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的垂直分量，单位nT。                                 |
+| geomagneticDip  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁倾角，即地球磁场线与水平面的夹角，单位度（°）。             |
+| deflectionAngle | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁偏角，即地磁北方向与正北方向在水平面上的角度，单位度（°）。 |
+| levelIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的水平强度，单位nT。                                 |
+| totalIntensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 地磁场的总强度，单位nT。                                   |
 
 ## LocationOptions
 
@@ -12085,9 +12085,9 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 纬度。     |
-| longitude | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 经度。     |
-| altitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 海拔高度。 |
+| latitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 纬度，单位度（°）。     |
+| longitude | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 经度，单位度（°）。     |
+| altitude  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 海拔高度，单位m。 |
 
 ## sensor.on<sup>(deprecated)</sup>
 
@@ -14452,7 +14452,7 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 | --------------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | 是   | 表示当前旋转矩阵。                    |
 | preRotationMatrix     | Array&lt;number&gt;                      | 是   | 表示旋转矩阵。                        |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回z、x、y轴方向的旋转角度变化。 |
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回z、x、y轴方向的旋转角度变化，单位度（°）。 |
 
 **示例**：
 
@@ -14495,7 +14495,7 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 
 | 类型                               | 说明                                          |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回z、x、y轴方向的旋转角度变化。 |
+| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回z、x、y轴方向的旋转角度变化，单位度（°）。 |
 
 **示例**：
 
@@ -14688,7 +14688,7 @@ getDirection(rotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Arr
 | 参数名         | 类型                                     | 必填 | 说明                                  |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | rotationMatrix | Array&lt;number&gt;                      | 是   | 表示旋转矩阵。                        |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回围绕z、x、y轴方向的旋转角度。 |
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 异步返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **示例**：
 
@@ -14730,7 +14730,7 @@ getDirection(rotationMatrix: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt
 
 | 类型                               | 说明                                          |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回围绕z、x、y轴方向的旋转角度。 |
+| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回围绕z、x、y轴方向的旋转角度，单位度（°）。 |
 
 **示例**：
 
