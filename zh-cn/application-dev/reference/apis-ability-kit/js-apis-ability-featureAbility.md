@@ -477,7 +477,7 @@ getWant(callback: AsyncCallback\<Want>): void
 
 | 参数名       | 类型                            | 必填   | 说明        |
 | -------- | ----------------------------- | ---- | --------- |
-| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，当获取要拉起的Ability对应的Want成功，err为undefined，data为当前Ability对应的窗口；否则为错误对象。 |
+| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，当获取要拉起的Ability对应的Want成功，err为undefined，data为当前Ability对应的Want；否则为错误对象。 |
 
 **示例：**
 
