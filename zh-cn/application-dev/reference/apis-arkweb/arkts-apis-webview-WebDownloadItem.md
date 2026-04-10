@@ -819,6 +819,11 @@ getOriginalUrl(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -827,6 +832,7 @@ getOriginalUrl(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -876,6 +882,65 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { Entry, State, Component, Column, Web, Button, Context, Alignment,ClickEvent } from "@kit.ArkUI"
+import { UIContext } from '@ohos.arkui.UIContext';
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  uiContext : UIContext = this.getUIContext();
+  context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear(): void {
+    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE)
+  }
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem): void => {
+              console.info("will start a download, original URL: " + webDownloadItem.getOriginalUrl());
+              // 传入一个下载路径，并开始下载。
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getReferrerUrl<sup>24+</sup>
 
 getReferrerUrl(): string
@@ -886,6 +951,10 @@ getReferrerUrl(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -894,6 +963,7 @@ getReferrerUrl(): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -935,6 +1005,65 @@ struct WebComponent {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { Entry, State, Component, Column, Web, Button, Context, Alignment,ClickEvent } from "@kit.ArkUI"
+import { UIContext } from '@ohos.arkui.UIContext';
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  delegate: webview.WebDownloadDelegate = new webview.WebDownloadDelegate();
+  uiContext : UIContext = this.getUIContext();
+  context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear(): void {
+    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE)
+  }
+
+  build() {
+    Column() {
+      Button('setDownloadDelegate')
+        .onClick(() => {
+          try {
+            this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem): void => {
+              console.info("will start a download, referrer URL: " + webDownloadItem.getReferrerUrl());
+              // 传入一个下载路径，并开始下载。
+              webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
+            })
+            this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+            })
+            this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
+              console.error("download failed guid: " + webDownloadItem.getGuid());
+            })
+            this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
+              console.info("download finish guid: " + webDownloadItem.getGuid());
+            })
+            this.controller.setDownloadDelegate(this.delegate);
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
+      Button('startDownload')
+        .onClick(() => {
+          try {
+            this.controller.startDownload('https://www.example.com');
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
