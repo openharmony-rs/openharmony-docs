@@ -12,7 +12,7 @@ typedef const struct {...} JSVM_CompileProfile
 
 ## 概述
 
-与JSVM_COMPILE_PROFILE一起传递的编译采样文件。
+与JSVM_COMPILE_COMPILE_PROFILE一起传递的编译采样文件。
 
 **起始版本：** 12
 
