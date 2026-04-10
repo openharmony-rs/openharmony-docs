@@ -1164,7 +1164,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.CONTROL_DEVICE
 
-允许应用注入输入事件以控制本设备。可申请此权限的特殊场景和功能：面向远程登录场景的被控端开放，当被控端需要接收主控端传递的输入事件来操作本地设备时申请。
+允许应用注入输入事件以控制本设备。
 
 <!--RP79--><!--RP79End-->
 
@@ -1172,7 +1172,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：手动设置授权（manual_settings）
 
-**支持设备**：PC/2-in-1
+**支持设备**：PC/2in1
 
 **起始版本**：26.0.0
 

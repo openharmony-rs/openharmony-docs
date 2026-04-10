@@ -1164,7 +1164,7 @@ Allows an application or a service to use the DLP to register or unregister the 
 
 ## ohos.permission.CONTROL_DEVICE
 
-Allows an application to inject input events to control the device. Applicable scenarios and functionalities: Required when the controlled end of the remote login device needs to receive input events from the controlling end to operate the local device.
+Allows an application to inject input events to control the device.
 
 <!--RP79--><!--RP79End-->
 
