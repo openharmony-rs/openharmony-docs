@@ -235,7 +235,15 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | compileSdkType                 | String  | 标识编译该应用时使用的sdk类别。   | 仅限API10及以后的应用。   |
 | labels                         | HashMap\<String, String> | 标识多语言应用程序AppJson的标签。 | NA          |
 | descriptions                   | HashMap\<String, String> | 标识多语言应用程序AppJson的说明。 | NA          |
+| alternateIcons                  | List\<AlternateIcon> | 标识应用的动态图标列表。 | stage模型新增。 |
 | buildVersion                    | String  | 标识App中的[buildVersion](../quick-start/app-configuration-file.md#配置文件标签)信息。  | 从API version 23开始支持。          |
+
+### AlternateIcon结构体信息
+
+| 字段  | 类型   | 描述                           | 备注 |
+| ----- | ------ | ------------------------------ | ---- |
+| name  | String | 标识动态图标的名称。           | NA   |
+| icon  | String | 标识动态图标的资源路径。       | NA   |
 
 ### HapInfo结构体信息
 
