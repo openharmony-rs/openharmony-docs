@@ -276,8 +276,6 @@ UI事件的相关信息。
 
 按键操作选项。
 
-**模型限制**：本文档所述接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -290,8 +288,6 @@ UI事件的相关信息。
 ## TouchOptions<sup>26+</sup>
 
 触摸操作通用选项。
-
-**模型限制**：本文档所述接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -3054,8 +3050,6 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 在目标坐标点进行单击，支持指定触摸选项。使用Promise异步回调。
 
-**模型限制**：本文档所述接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -3090,7 +3084,11 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, { pressure: 0.5 });
+  let options: TouchOptions = {
+    pressure: 0.5
+  };
+  // 在目标坐标点进行单击，并指定触摸压力
+  await driver.clickAt({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -3275,8 +3273,6 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
-**模型限制**：本文档所述接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -3311,7 +3307,12 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, { duration: 2000, pressure: 0.8 });
+  let options: TouchOptions = {
+    duration: 2000, // 长按持续2000ms
+    pressure: 0.8  // 触摸压力值
+  };
+  // 在目标坐标点进行长按，并指定长按时长和触摸压力
+  await driver.longClickAt({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
 
@@ -3413,8 +3414,6 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点滑向目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
-**模型限制**：本文档所述接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -3450,7 +3449,12 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, { speed: 800, pressure: 0.5 });
+  let options: TouchOptions = {
+    speed: 800,   // 滑动速率800px/s
+    pressure: 0.5  // 触摸压力值
+  };
+  // 从起始坐标点滑向目标坐标点，并指定滑动速率和触摸压力
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -3557,8 +3561,6 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 从起始坐标点拖拽至目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
-**模型限制**：本文档所述接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -3594,7 +3596,13 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, { speed: 800, duration: 2000, pressure: 0.5 });
+  let options: TouchOptions = {
+    speed: 800,     // 拖拽速率800px/s
+    duration: 2000, // 拖拽前长按2000ms
+    pressure: 0.5   // 触摸压力值
+  };
+  // 从起始坐标点拖拽至目标坐标点，并指定拖拽速率、长按时长和触摸压力
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
 
@@ -3725,6 +3733,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // 获取当前布局信息并保存为JSON文件
   await driver.dumpLayout('/data/storage/el2/base/cache/layout.json', 0);
 }
 ```
@@ -4963,8 +4972,6 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。
 
-**模型限制**：本文档所述接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -5001,7 +5008,16 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, { speed: 800, duration: 2000 }, { key1: 2072, key2: 2019 });
+  let touchOptions: TouchOptions = {
+    speed: 800,     // 拖拽速率800px/s
+    duration: 2000  // 拖拽前长按2000ms
+  };
+  let keyOptions: KeyOptions = {
+    key1: 2072,  // Ctrl键
+    key2: 2019   // C键
+  };
+  // 鼠标拖拽并同时按下Ctrl+C组合键
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
 
