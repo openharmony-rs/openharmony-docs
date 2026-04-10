@@ -58,6 +58,8 @@ deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -141,6 +143,8 @@ deleteForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -213,6 +217,8 @@ releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -287,6 +293,8 @@ releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -367,6 +375,8 @@ releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -439,6 +449,8 @@ requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -517,6 +529,8 @@ requestForm(formId: string): Promise&lt;void&gt;
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -597,6 +611,8 @@ requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Prom
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -676,6 +692,8 @@ castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -754,6 +772,8 @@ castToNormalForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -824,6 +844,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -901,6 +923,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -971,6 +995,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -1048,6 +1074,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1119,6 +1147,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -1197,6 +1227,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1269,6 +1301,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -1348,6 +1382,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1412,6 +1448,8 @@ isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1472,6 +1510,8 @@ isSystemReady(): Promise&lt;void&gt;
 | 202 | The application is not a system application.   |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -1536,6 +1576,8 @@ getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): 
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -1603,6 +1645,8 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -1673,6 +1717,8 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -1748,6 +1794,8 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -1829,6 +1877,8 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1903,6 +1953,8 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -2142,6 +2194,8 @@ acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&g
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -2189,7 +2243,7 @@ let want: Want = {
   }
 };
 try {
-  formHost.acquireFormState(want, (error: BusinessError, data: formInfo.FormStateInfo) => { zg+=
+  formHost.acquireFormState(want, (error, data) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
@@ -2242,6 +2296,8 @@ acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -2416,6 +2472,8 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2494,6 +2552,8 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2566,6 +2626,8 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, c
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -2645,6 +2707,8 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2716,6 +2780,8 @@ shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;)
 | 16501003 | The form cannot be operated by the current application. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -2797,6 +2863,8 @@ shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2870,6 +2938,8 @@ notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callb
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -2946,6 +3016,10 @@ notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Pro
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred. |
 
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3018,6 +3092,8 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 16501000 | An internal functional error occurred, invalid input parameter during form operation. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -3101,6 +3177,8 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3183,6 +3261,8 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callba
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common, Want } from '@kit.AbilityKit';
 import { formHost } from '@kit.FormKit';
@@ -3239,7 +3319,58 @@ ArkTS-Sta示例：
 
 ```ts
 'use static'
-zg+=
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@ohos.arkui.component'
+import { formHost, formInfo } from '@kit.FormKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State formId: long = 0;
+  @State fwidth: number = 420;
+  @State fheight: number = 280;
+
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "widget",
+        bundle: "com.example.cardprovider",
+        ability: "EntryFormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      } )
+        .allowUpdate(true)
+        .size({ width: this.fwidth, height: this.fheight })
+        .visibility(Visibility.Visible)
+        .onAcquired((form) => {
+          console.info(`testTag form info`);
+          this.formId = form.id;
+          try {
+            let formIds: Array<string> = [this.formId.toString()];
+            formHost.setRouterProxy(formIds, (want) => {
+              console.info(`formHost recv router event`);
+              // 卡片使用方自己处理跳转
+              this.context.startAbility(want, (error) => {
+                console.info(`formHost startAbility error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+              });
+            }).then(() => {
+              console.info('formHost set router proxy success');
+            }).catch((err) => {
+              console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
+            })
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## setRouterProxy<sup>11+</sup>
@@ -3290,6 +3421,8 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promi
 | 16501003 | The form cannot be operated by the current application.     |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -3349,7 +3482,58 @@ ArkTS-Sta示例：
 
 ```ts
 'use static'
-zg+=
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@ohos.arkui.component'
+import { formHost, formInfo } from '@kit.FormKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State formId: long = 0;
+  @State fwidth: number = 420;
+  @State fheight: number = 280;
+
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "widget",
+        bundle: "com.example.cardprovider",
+        ability: "EntryFormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      } )
+        .allowUpdate(true)
+        .size({ width: this.fwidth, height: this.fheight })
+        .visibility(Visibility.Visible)
+        .onAcquired((form) => {
+          console.info(`testTag form info`);
+          this.formId = form.id;
+          try {
+            let formIds: Array<string> = [this.formId.toString()];
+            formHost.setRouterProxy(formIds, (want) => {
+              console.info(`formHost recv router event`);
+              // 卡片使用方自己处理跳转
+              this.context.startAbility(want, (error) => {
+                console.info(`formHost startAbility error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+              });
+            }).then(() => {
+              console.info('formHost set router proxy success');
+            }).catch((err) => {
+              console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
+            })
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## clearRouterProxy<sup>11+</sup>
@@ -3388,6 +3572,8 @@ clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt
 | 16501003 | The form cannot be operated by the current application.     |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -3466,6 +3652,8 @@ clearRouterProxy(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3537,6 +3725,8 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 | 16501000 | An internal functional error occurred.                       |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -3616,6 +3806,8 @@ setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3687,6 +3879,8 @@ recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): 
 | 16501000 | An internal functional error occurred.                       |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -3766,6 +3960,8 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3844,6 +4040,8 @@ recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3918,6 +4116,8 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3983,6 +4183,8 @@ setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 | 16501001 | The ID of the form to be operated does not exist.            |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -4059,6 +4261,8 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 | 16501003 | The form cannot be operated by the current application.     |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -4814,6 +5018,8 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 | 16501012 | The dimension parameter is incorrect. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
