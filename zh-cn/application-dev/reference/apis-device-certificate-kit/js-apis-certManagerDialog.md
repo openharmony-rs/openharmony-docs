@@ -442,7 +442,7 @@ import { UIContext } from '@kit.ArkUI';
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
     certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Success to authorize certificate, uri: ${uri}`)
+        console.info(`Succeeded in authorize certificate, uri: ${uri}`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
     });
@@ -510,7 +510,7 @@ let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: c
 try {
     certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
       let reference = certReference;
-      console.info(`Success to open authorize dialog.`)
+      console.info(`Succeeded in open authorize dialog.`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -573,7 +573,7 @@ let keyUri: string = "test"
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
 try {
     certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Success to open ukey authorization dialog`)
+        console.info(`Succeeded in open ukey authorization dialog`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -616,7 +616,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
-  console.info(`Success to check whether the device supports CA dialog.`)
+  console.info(`Succeeded in check whether the device supports CA dialog.`)
 } catch (err) {
     let error = err as BusinessError;
     console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
