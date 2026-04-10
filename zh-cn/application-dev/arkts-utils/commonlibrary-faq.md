@@ -67,11 +67,11 @@ xmlCleanupParser();
 export class testClass {
     // 初始值设置为0
     private timeoutId: number = 0;
-    private interbalId: number = 0;
+    private intervalId: number = 0;
 
     // 在某些情况下没有调用setTimeout设置定时器就调用了clearAnimation函数删除了定时器，就会导致timeoutId为0的定时器被删除
     clearAnimation(): void {
-        clearInterval(this.interbalId);
+        clearInterval(this.intervalId);
         clearTimeout(this.timeoutId);
     }
 }
