@@ -102,7 +102,6 @@ The following table describes the APIs for cross-device connection management. F
 | on(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Enable listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | off(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Cancels listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;; | Sends a text message.|
-| sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;; | Sends byte streams.|
 
 
 ### Development Procedure
@@ -296,24 +295,9 @@ After the application creates a session and obtains the session ID, you can call
 
 After the applications are successfully connected, you can call **sendMessage()** on device A or device B to send text messages to the peer application.
 
-**ArkTS-Dyn示例：**
-
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
-  })
-  ```
-
-**ArkTS-Sta示例：**
-
-  ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
 
   abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
@@ -325,30 +309,11 @@ After the applications are successfully connected, you can call **sendMessage()*
 
 After the applications are successfully connected, you can call **sendData()** on device A or device B to send byte streams to the peer application.
 
-**ArkTS-Dyn示例：**
-
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
-
-  let textEncoder = util.TextEncoder.create("utf-8");
-  const arrayBuffer  = textEncoder.encodeInto("data send success");
-
-  abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
-  })
-  ```
-
-**ArkTS-Sta示例：**
-
-  ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
-  import { util } from '@kit.ArkTS';
-
+  
   let textEncoder = util.TextEncoder.create("utf-8");
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
@@ -363,28 +328,9 @@ After the applications are successfully connected, you can call **sendData()** o
 
 After the service collaboration is complete, the collaboration status must be ended in a timely manner. If service collaboration is required in a near future, you can call **disconnect()** to disconnect the connection between applications while retaining the session ID. This allows you to reuse the same session ID for establishing a connection next time. If service coordination is not required, you can directly call **destroyAbilityConnectionSession()** to destroy the session. In this case, the connection is automatically disconnected.
 
-**ArkTS-Dyn示例：**
-
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
-  if (this.sessionId == -1) {
-    hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-  return;
-  }
-  abilityConnectionManager.disconnect(this.sessionId);
-
-  hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
-  abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
-  ```
-
-**ArkTS-Sta示例：**
-
-  ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
 
   hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
   if (this.sessionId == -1) {
