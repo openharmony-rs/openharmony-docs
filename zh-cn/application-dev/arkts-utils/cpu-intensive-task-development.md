@@ -95,7 +95,7 @@ struct Index {
 2. 在宿主线程中首先调用ThreadWorker的[constructor()](../reference/apis-arkts/js-apis-worker.md#constructor9)方法创建Worker对象；然后通过注册[onmessage()](../reference/apis-arkts/js-apis-worker.md#属性-1)回调接收Worker线程发送过来的消息；最后通过调用[postMessage()](../reference/apis-arkts/js-apis-worker.md#postmessage9)方法向Worker线程发送消息。
 
   例如，向Worker线程发送训练和预测的消息，并接收Worker线程发送回来的消息。
-  
+
   <!-- @[call_worker_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) -->
     
     ``` TypeScript
