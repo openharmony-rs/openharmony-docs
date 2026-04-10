@@ -826,7 +826,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // 设置循环2次。
     soundPool.setLoop(streamID, 2, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to setLoop soundPool. Code: ${error.code}, message: ${error.message}`);
       } else {
         console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
       }
@@ -893,7 +893,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setLoop(streamID, 1).then(() => {
       console.info('Succeeded in setting Priority soundpool, streamID:' + streamID);
     }).catch((err: BusinessError) => {
-      console.error('Failed to setLoop soundPool and catch error is ' + err.message);
+      console.error(`Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
