@@ -817,6 +817,8 @@ getOriginalUrl(): string
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型   | 说明                      |
@@ -881,6 +883,8 @@ getReferrerUrl(): string
 获取下载文件的referrer地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
