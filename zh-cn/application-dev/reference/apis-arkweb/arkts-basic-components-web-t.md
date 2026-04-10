@@ -268,7 +268,7 @@ onOverrideErrorPage的回调函数，网页加载失败时触发。
 | ------- | ------------------------ |
 | string | 返回以Base64编码的HTML文本内容。 |
 
-## MouseInfoCallback<sup>20+<sup>
+## MouseInfoCallback<sup>20+</sup>
 
 type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
