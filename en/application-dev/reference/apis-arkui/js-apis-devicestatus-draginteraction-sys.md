@@ -31,7 +31,7 @@ Enumerates dragging states.
 
 | Name                 | Value  | Description          |
 | --------------------- | ---- | -------------- |
-| MSG_DRAG_STATE_START  | 1    | Dragging starts.|
+| MSG_DRAG_STATE_START  | 1    | Dragging is started.|
 | MSG_DRAG_STATE_STOP   | 2    | Dragging is ended.|
 | MSG_DRAG_STATE_CANCEL | 3    | Dragging is canceled.|
 

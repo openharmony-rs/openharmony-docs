@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
- 滑块视图容器，提供子组件滑动轮播显示的能力。 
+滑块视图容器，提供子组件滑动轮播显示的能力。 
 
 > **说明：**
 >
@@ -365,7 +365,7 @@ cachedCount(count: number, options: CachedCountOptions)
 
 > **说明：**
 >
-> - 当options的independent设置为true时，预加载子组件个数按count个数计算，与[displaycount](#displaycount22)的分组swipeByGroup计算解耦。例如cachedCount的count为1时，会将当前显示子节点的前一个和后一个子组件预加载。
+> - 当options的independent设置为true时，预加载子组件个数按count个数计算，与[displayCount](#displaycount22)的分组swipeByGroup计算解耦。例如cachedCount的count为1时，会将当前显示子节点的前一个和后一个子组件预加载。
 > - 当displayCount的swipeByGroup参数设为true，且options的independent为false（默认值）时，预加载子组件个数以组为基本单位。例如cachedCount的count为1，displayCount的value为2，displayCount的swipeByGroup为true时，会将当前显示组的前一组和后一组的各两个子组件预加载。
 > - 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，生效后超出缓存范围的子节点会被释放。
 
@@ -2014,7 +2014,9 @@ finishTransition(): void
 
 ### 示例1（设置导航点交互及翻页动效）
 
-该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效模式，实现了Swiper组件翻页至指定页面。
+该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效以跳转指定页面，并使用[onScrollStateChanged](#onscrollstatechanged20)回调监听滑动状态的变化。
+
+从API version 20开始，新增onScrollStateChanged事件。
 
 ```ts
 // xxx.ets
@@ -2937,7 +2939,7 @@ struct SwiperExample {
 
 该示例展示了Swiper组件基于断点配置显示个数的效果。
 
-从API version 22开始，新增[displaycount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
+从API version 22开始，新增[displayCount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
 
 ```ts
 class MyDataSource implements IDataSource {

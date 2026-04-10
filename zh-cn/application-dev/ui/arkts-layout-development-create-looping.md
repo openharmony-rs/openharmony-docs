@@ -467,7 +467,7 @@ export struct SwiperCustomAnimation {
 
 ## Swiper与Tabs联动
 
-Swiper选中的元素改变时，会通过[onSelected](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onselected18)回调事件，将元素的索引值index返回。通过调用[tabsController.changeIndex(index)](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#changeindex)方法来实现Tabs页签的切换。
+从API version 18开始，Swiper选中的元素改变时，会通过[onSelected](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onselected18)回调事件，将元素的索引值index返回。通过调用[tabsController.changeIndex(index)](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#changeindex)方法来实现Tabs页签的切换。
 
 <!-- @[swiper_tabs_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets) -->
 
@@ -580,7 +580,7 @@ export struct SwiperAndTabsLinkage {
 
 ## 设置圆点导航点间距
 
-针对圆点导航点，可以通过DotIndicator的[space](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#space19)属性来设置圆点导航点的间距。
+从API version 19开始，针对圆点导航点，可以通过DotIndicator的[space](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#space19)属性来设置圆点导航点的间距。
 
 <!-- @[dot_indicator_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
 
@@ -598,7 +598,7 @@ Swiper(
 
 ## 导航点忽略组件大小
 
-当导航点的[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom)设为0之后，导航点的底部与Swiper的底部还会有一定间距。如果希望消除该间距，可通过调用bottom(bottom, ignoreSize)属性来进行设置。将ignoreSize设置为true，即可忽略导航点组件大小，达到消除该间距的目的。
+当导航点的[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom)设为0之后，导航点的底部与Swiper的底部还会有一定间距。如果希望消除该间距，从API version 19开始，可通过调用[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom19)(bottom, ignoreSize)属性来进行设置。将ignoreSize设置为true，即可忽略导航点组件大小，达到消除该间距的目的。
 
 - 圆点导航点忽略组件大小。
 
@@ -744,7 +744,7 @@ export struct SwiperIgnoreComponentSize {
 
 ## 保持可见内容位置不变
 
-Swiper通过设置[maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20)属性，可在使用LazyForEach懒加载数据时（如通过onDataAdd新增数据），保持当前可见内容位置不变，避免因数据增删导致的视图跳动。该属性默认值为false。
+从API version 20开始，Swiper通过设置[maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20)属性，可在使用LazyForEach懒加载数据时（如通过onDataAdd新增数据），保持当前可见内容位置不变，避免因数据增删导致的视图跳动。该属性默认值为false。
 
 maintainVisibleContentPosition为true时，显示区域上方或前方插入或删除数据时可见内容位置不变。
 

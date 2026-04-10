@@ -1,8 +1,8 @@
 # 属性
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -127,7 +127,7 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 > **说明：**
 >
-> javaScriptProxy接口需要和deleteJavaScriptRegister接口配合使用，防止内存泄漏。
+> javaScriptProxy接口需要和[deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
 > javaScriptProxy对象的所有参数不支持更新。
 > 注册javaScriptProxy对象时，同步与异步列表请至少选择一项不为空，可同时注册两类方法。
 > 此接口只支持注册一个对象，若需要注册多个对象请使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)。
@@ -2079,7 +2079,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
 
-设置Web组件滑动方向锁定。不调用该方法进行设置时，默认在嵌套滚动场景下是支持滑动方向锁定的。
+设置Web组件滑动方向锁定。不调用该方法设置时，默认在嵌套滚动场景下支持滑动方向锁定。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2089,8 +2089,8 @@ enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType)
 
 **参数：**
 
-| 参数名 | 类型                      | 必填 | 说明                                                                                                                                                |
-| ------ | ------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 参数名 | 类型     | 必填 | 说明|
+| ------ | ---------------- | ---- | -------- |
 | value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
 | type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
 

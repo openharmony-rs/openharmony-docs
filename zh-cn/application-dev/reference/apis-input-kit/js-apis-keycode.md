@@ -316,7 +316,7 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | 键盘输入Assist_Cancel。          |
 | KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | 鼠标AI助手键。          |
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | 鼠标智慧框选键。          |
-| KEYCODE_AOD_SINGLE_CLICK<sup>24+</sup> | 2740 | 手机触摸屏单击事件，在熄屏显示状态下使用。 |
+| KEYCODE_AOD_SINGLE_CLICK         |  2740 | 手机触摸屏单击事件，在熄屏显示状态下使用。<br/>**起始版本：** 26.0.0 |
 | KEYCODE_FRONT                    |  2800 | 挡风玻璃除雾器开关。                   |
 | KEYCODE_SETUP                    |  2801 | 设置键。                         |
 | KEYCODE_WAKEUP                   |  2802 | 唤醒键。                         |

@@ -230,7 +230,9 @@ Codec MIME类型枚举。
 
 ## SwitchMode<sup>12+</sup>
 
-视频播放的selectTrack模式枚举，可通过selectTrack方法作为参数传递下去，当前仅DASH协议视频轨支持该扩展参数。
+表示视频播放的selectTrack模式枚举。
+
+可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API version 24开始HLS协议视频轨支持该扩展参数）。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -446,6 +448,25 @@ Codec MIME类型枚举。
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
+
+## PlaylistLoopMode
+
+表示播放列表循环模式的枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYLIST_LOOP_MODE_ALL | 1    | 列表循环模式。 |
+| PLAYLIST_LOOP_MODE_ONE | 2    | 单曲循环模式。 |
+| PLAYLIST_LOOP_MODE_SHUFFLE | 3    | 随机循环模式。 |
+| PLAYLIST_LOOP_MODE_NONE | 4    | 关闭循环模式。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 
