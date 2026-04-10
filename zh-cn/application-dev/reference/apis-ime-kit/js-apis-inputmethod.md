@@ -832,7 +832,7 @@ Enter键的功能类型。
 | top | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
 | width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
 | height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
-| displayId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 光标所在显示器的ID。<br/>**ArkTS-Dyn起始版本：** 26<br/>**ArkTS-Sta起始版本：** 26|
+| displayId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是 | 光标所在显示器的ID。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## Range<sup>10+</sup>
 
