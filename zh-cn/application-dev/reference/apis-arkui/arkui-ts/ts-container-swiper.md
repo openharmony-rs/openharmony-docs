@@ -1038,7 +1038,7 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 
 **参数：** 
 
-
+<!--Table: 15%; 25%; 10%; 50%-->
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)| 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
