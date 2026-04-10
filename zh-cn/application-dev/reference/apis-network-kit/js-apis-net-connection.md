@@ -378,7 +378,7 @@ getAppNet(callback: AsyncCallback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -436,7 +436,7 @@ getAppNet(): Promise\<NetHandle>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -490,7 +490,7 @@ getAppNetSync(): NetHandle
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1299,7 +1299,7 @@ isDefaultNetMetered(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1354,7 +1354,7 @@ isDefaultNetMetered(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1394,7 +1394,7 @@ isDefaultNetMeteredSync(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1566,7 +1566,7 @@ reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1625,7 +1625,7 @@ reportNetConnected(netHandle: NetHandle): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1674,7 +1674,7 @@ reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1719,7 +1719,7 @@ reportNetDisconnected(netHandle: NetHandle): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1952,7 +1952,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2017,7 +2017,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2085,7 +2085,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2149,7 +2149,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2214,7 +2214,7 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2275,7 +2275,7 @@ clearCustomDnsRules(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -2450,7 +2450,7 @@ setPacUrl(pacUrl: string): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2488,7 +2488,7 @@ getPacUrl(): string
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
