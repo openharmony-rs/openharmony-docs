@@ -893,7 +893,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setLoop(streamID, 1).then(() => {
       console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
     }).catch((err: BusinessError) => {
-      console.error('Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
