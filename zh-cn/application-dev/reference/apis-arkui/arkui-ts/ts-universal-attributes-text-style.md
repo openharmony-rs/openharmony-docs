@@ -212,8 +212,8 @@ clearPreviewText(): void
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | type  | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 设置文本装饰线类型。 |
-| color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 设置文本装饰线颜色。 |
-| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 设置文本装饰线样式。 |
+| color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 设置文本装饰线颜色。<br/>默认值：Color.Black。 |
+| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 设置文本装饰线样式。<br/>默认值：TextDecorationStyle.SOLID。 |
 
 ## SelectionOptions<sup>12+</sup>对象说明
 
@@ -225,7 +225,7 @@ setTextSelection选中文字时的配置。
 
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
-| menuPolicy | [MenuPolicy](#menupolicy12) | 否   | 是 | 菜单弹出的策略。 |
+| menuPolicy | [MenuPolicy](#menupolicy12) | 否   | 是 | 菜单弹出的策略。 默认值：MenuPolicy.DEFAULT。|
 
 ## MenuPolicy<sup>12+</sup>
 
@@ -265,4 +265,4 @@ SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| offset | number | 否   | 是   | 插入文本的位置。 |
+| offset | number | 否   | 是   | 插入文本的位置。<br/>**说明：**<br/>当需要在指定位置（而非末尾）插入文本时传入此参数。不传入时默认插入到文本末尾。 |
