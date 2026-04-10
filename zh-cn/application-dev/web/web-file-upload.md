@@ -481,7 +481,7 @@ struct WebComponent {
 
 ### onShowFileSelector配合ArkWeb默认弹窗使用
 
-用户点击文件上传按钮后，程序优先执行onShowFileSelector中的回调进行逻辑处理，应用开发者可以根据处理结果选择 `return false;` ，进而拉起ArkWeb默认弹窗，此时不推荐同时拉起应用侧各Picker。
+用户点击文件上传按钮后，程序优先执行onShowFileSelector中的回调进行逻辑处理，应用开发者可根据处理结果选择返回`false`以触发ArkWeb默认弹窗，此时应避免同时触发应用侧的其他Picker。
 
 ### 回调中getAcceptType和getMimeTypes的区别
 
