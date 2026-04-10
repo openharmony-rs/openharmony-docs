@@ -717,6 +717,8 @@ on(type: 'open', callback: AsyncCallback\<Object\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                          |
@@ -781,6 +783,8 @@ off(type: 'open', callback?: AsyncCallback\<Object\>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -857,6 +861,8 @@ on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。 
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                         |
@@ -924,6 +930,8 @@ off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                         |
@@ -988,6 +996,8 @@ on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                                            | 必填 | 说明                           |
@@ -1049,6 +1059,8 @@ off(type: 'close', callback?: AsyncCallback\<CloseResult\>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1112,6 +1124,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型          | 必填 | 说明                            |
@@ -1172,6 +1186,8 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型          | 必填 | 说明                            |
@@ -1226,6 +1242,8 @@ on(type: 'dataEnd', callback: Callback\<void\>): void
 订阅WebSocket的数据接收结束事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1282,6 +1300,8 @@ off(type: 'dataEnd', callback?: Callback\<void\>): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1341,6 +1361,8 @@ on(type: 'headerReceive', callback: Callback\<ResponseHeaders\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   |        类型       | 必填 |                说明                    |
@@ -1394,6 +1416,8 @@ off(type: 'headerReceive', callback?: Callback\<ResponseHeaders\>): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
