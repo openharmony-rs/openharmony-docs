@@ -4174,6 +4174,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 >
 > - 私有数据通道是系统预置输入法应用与系统特定组件（如文本框、桌面应用等）的通信机制，常用于设备级厂商在特定设备上实现自定义的输入法功能。
 > - 私有数据规格限制：总大小32KB，数量限制5条。
+> - 私有数据默认发送给文本框，如果需要发送给桌面应用，请在私有数据中携带一条`{'sys_cmd':1}`数据。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

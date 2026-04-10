@@ -560,6 +560,64 @@ try {
 }
 ```
 
+## deviceSettings.setSwitchStatus
+
+setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
+
+设置开关的状态。支持设置星闪、蓝牙、Wi-Fi的状态为开启或关闭，设置完毕后，用户可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口解除该开关禁用策略。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                           | 必填   | 说明                                  |
+| ------- | ---------------------------------------------- | ---- |------------------------------------------------------------|
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。   |
+| key     | [SwitchKey](#switchkey)                        | 是      | 开关的名称，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口设置以下开关：星闪、蓝牙、Wi-Fi。 |
+| status  | [SwitchStatus](#switchstatus)                  | 是      | 开关的状态，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口设置以下状态：ON、OFF。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let key: deviceSettings.SwitchKey = deviceSettings.SwitchKey.BLUETOOTH;
+  let status: deviceSettings.SwitchStatus  = deviceSettings.SwitchStatus.ON;
+  deviceSettings.setSwitchStatus(wantTemp, key, status);
+  console.info(`Succeeded in setting switch status.`);
+} catch (err) {
+  console.error(`Failed to set switch status. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## SettingsItem<sup>24+</sup>
 
 设置的策略类型。
@@ -623,3 +681,34 @@ try {
 | TEXT_DISPLAY_SIZE           | 40     | 显示和亮度-字体大小和界面缩放。 |
 | APP_DUPLICATOR              | 41     | 系统-应用分身。 |
 | SEARCH                      | 42     | 搜索。 |
+
+## SwitchKey
+
+开关名称的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称       | 值   | 说明       | 需要权限 |
+| ---------- | --- | -----------|----------|
+| NEARLINK  | 0    | 星闪开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
+| BLUETOOTH | 1    | 蓝牙开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
+| WIFI      | 2    | Wi-Fi开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
+
+## SwitchStatus
+
+开关状态的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称 | 值   | 说明      | 需要权限 |
+| ----| ---- | ----------|----------|
+| ON  | 0    | 开启状态。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
+| OFF | 1    | 关闭状态。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |

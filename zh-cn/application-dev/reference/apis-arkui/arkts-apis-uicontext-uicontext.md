@@ -2052,6 +2052,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **参数：**
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>其余字段仅供测试场景使用。 |
@@ -4398,6 +4399,46 @@ struct Index {
       Button('Check EasySplit')
         .onClick(() => {
           this.isEasySplit = this.getUIContext()?.isEasySplit();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## enableEventPassthrough
+
+enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
+
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过重采样直接下发给组件。未通过该接口设置时，默认禁用事件直通。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                    |
+| --------- | ------------------- | ---- | --------------------------------------- |
+| enabled   | boolean             | 是   |启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通。        |
+| eventType | [RawInputEventType](./arkui-ts/ts-appendix-enums.md#rawinputeventtype)   | 是   | 指定启用或禁用事件直通的原始输入事件类型。            |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
         })
     }
     .width('100%')

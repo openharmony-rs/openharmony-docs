@@ -511,7 +511,7 @@ getAudioTime(): Promise<number\>
 
 | 类型             | 说明                          |
 | :--------------- | :---------------------------- |
-| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始），单位为纳秒。 |
+| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始）。<br>单位为纳秒。 |
 
 **示例：**
 
@@ -637,7 +637,7 @@ getBufferSize(callback: AsyncCallback<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                 |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。 |
+| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
 **示例：**
 
@@ -665,7 +665,7 @@ getBufferSize(): Promise<number\>
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| Promise<number\> | Promise对象，返回缓冲区大小。 |
+| Promise<number\> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
@@ -691,7 +691,7 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| number | 返回缓冲区大小。 |
+| number | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 

@@ -1,8 +1,8 @@
 # Class (WebviewController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -11148,6 +11148,60 @@ struct WebComponent {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
+    }
+  }
+}
+```
+
+## enableAdvancedSecurityMode
+
+static enableAdvancedSecurityMode(securityParams: SecurityParams): void
+
+通过配置安全特性选项禁用特定的Web引擎能力，以降低攻击面。
+
+> **说明：**
+>
+> - 该接口为全局静态API，在整个APP生命周期中调用一次即可，不需要重复调用。
+> - 必须在[initializeWebEngine()](#initializewebengine)之前调用，否则设置无效。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明        |
+| -------- | ------- | ---- | -------- |
+| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 否 | 安全特性选项配置。 |
+
+**示例：**
+
+```ts
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear() {
+    webview.WebviewController.enableAdvancedSecurityMode({
+      disableJITCompilation: true,
+      disableWebAssembly: true,
+      disableWebGL: true,
+      disablePDFViewer: true,
+      disableMathML: true,
+      disableServiceWorker: true,
+      disableNonProxyUDP: true
+    });
+    webview.WebviewController.initializeWebEngine();
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
     }
   }
 }
