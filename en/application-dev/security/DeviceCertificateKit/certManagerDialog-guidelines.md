@@ -15,7 +15,7 @@ You can use the **certificateManagerDialog** APIs to open the certificate manage
 
 ## Available APIs
 
-For details about the APIs, see [Certificate Management Dialog Box](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md).
+For details about the APIs, see [@ohos.security.certManagerDialog (Certificate Management Dialog Box)](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md).
 
 The following table describes the commonly used APIs.
 

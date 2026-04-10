@@ -2869,7 +2869,7 @@ struct Example {
             console.info('drop:' + item + '' + extraParams + JSON.stringify(event!));
             this.changeIndex(parseInt(JSON.parse(extraParams!).extraInfo), index);
           })
-        }, (item: string) => item)
+        }, (item: string, index: number) => item + '+' + index)
       }
       .columnsGap(5)
       .rowsGap(5)
@@ -2989,7 +2989,7 @@ struct GridExample {
               this.contentHeight = this.scroller.contentSize().height;
             } catch (error) {
               let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
             }
           })
         // 将获取到的内容尺寸信息通过文本进行呈现

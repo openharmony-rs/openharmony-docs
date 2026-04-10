@@ -20,13 +20,13 @@ Sets the background luminance sampling parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| **Name**     | **Type**| **Read-Only** | **Optional**| **Description**                   |
+| Name     | Type| Read-Only | Optional| Description                   |
 | --------- | ---- | ----- | ---- | -----------------------|
 | samplingInterval  | number | No| Yes| Color sampling interval, in milliseconds. The minimum value is 180 ms.<br> Default value: **500**  |
 | brightThreshold     | number | No| Yes| Light color brightness threshold. The value must be an integer in the range of [0, 255]. The dark color brightness threshold must be less than the light color brightness threshold.<br> Default value: **220**|

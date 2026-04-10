@@ -350,7 +350,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelH
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | tensor_name所对应的输入张量的张量指针，如果输出中没有该张量则返回空。 |
+| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | tensor_name所对应的输出张量的张量指针，如果输出中没有该张量则返回空。 |
 
 ### OH_AI_TrainCfgCreate()
 
@@ -871,7 +871,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char
 
 ```c
 OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)
-															
+
 ```
 
 **描述**
@@ -889,7 +889,7 @@ OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, con
 | [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) *outputs | 模型输出对应的张量数组结构体的指针。 |
 | const char *config | 模型配置文件。字符串长度限制跟随文件系统。 |
 | [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) before | 模型推理前执行的回调函数。 |
-| after | 模型推理后执行的回调函数。 |
+| [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) after | 模型推理后执行的回调函数。 |
 
 **返回：**
 

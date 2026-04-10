@@ -50,7 +50,7 @@ Retry by the current application.
 
 **Error Message**
 
-Cloud disk not allowed on this device.
+Cloud disk is not allowed on this device.
 
 **Description**
 

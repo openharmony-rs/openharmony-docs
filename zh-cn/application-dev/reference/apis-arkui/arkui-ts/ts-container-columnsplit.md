@@ -103,7 +103,7 @@ divider(value: ColumnSplitDividerStyle | null)
 @Component
 struct ColumnSplitExample {
   build() {
-    Column(){
+    Column() {
       Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
       ColumnSplit() {
         Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)

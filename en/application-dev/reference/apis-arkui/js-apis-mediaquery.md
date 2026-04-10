@@ -101,7 +101,7 @@ Registers a media query listener. The callback is triggered when the media attri
 
 **Example**
 
-  See the example of [off](#offchange).
+  For details, see [off('change')](#offchange).
 
 ### off('change')
 

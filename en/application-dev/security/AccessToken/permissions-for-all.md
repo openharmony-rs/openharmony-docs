@@ -1,8 +1,8 @@
 # Open system_grant Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -669,11 +669,11 @@ With this permission, the application can apply HDR brightening effects to compo
 
 **Supported devices**: general devices
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
-Allows an application to query information about and launch ObjectEditorExtensionAbility components.
+Allows an application to query information about and launch **ObjectEditorExtensionAbility** components.
 
 With this permission, the application can query available types of pluggable embedded content and edit the corresponding content.
 
@@ -683,4 +683,4 @@ With this permission, the application can query available types of pluggable emb
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
-**Since**: 24
+**Valid since**: 24

@@ -389,4 +389,4 @@ Describes the video playback state. You can obtain the state through the **state
 | 'playing'  | Video playback is in progress.|
 | 'paused'   | Video playback is paused.|
 | 'stopped'  | Video playback is stopped.|
-| 'error'    | The AVRecorder enters this state    |
+| 'error'    | Video playback is in the error state.    |

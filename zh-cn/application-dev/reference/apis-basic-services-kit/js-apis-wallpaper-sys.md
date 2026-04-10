@@ -373,11 +373,15 @@ try {
 }
 ```
 
-## wallpaper.getColorsSync<sup>9+</sup>
+## wallpaper.getColorsSync<sup>(deprecated)</sup>
 
 getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 获取指定类型壁纸的主要颜色信息。
+
+> **说明：**
+> 
+> 从 API version 9开始支持，从API version 23开始废弃。
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 

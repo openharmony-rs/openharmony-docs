@@ -20,7 +20,7 @@
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
+// ...
 
 @Entry
 @Component
@@ -79,7 +79,7 @@ export default class EntryAbility extends UIAbility {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
+// ...
 @Entry
 @Component
 struct WebComponent {
@@ -107,7 +107,7 @@ struct WebComponent {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
+// ...
 @Entry
 @Component
 struct WebComponent {
@@ -147,7 +147,7 @@ struct WebComponent {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
+// ...
 @Entry
 @Component
 struct WebComponent {

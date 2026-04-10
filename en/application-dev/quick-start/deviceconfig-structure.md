@@ -53,7 +53,7 @@ For details about the properties of the **deviceConfig** tag, see [Internal Stru
 
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| domainSettings | Security settings of the custom network domain. This property allows nested domains. That is, the **domainSettings** object of a network domain can be nested with the **domainSettings** objects of smaller network domains.| Object| Yes (initial value: left empty)|
+| domainSettings | Security configuration for custom domain name ranges. This property allows nested domains. A **domainSettings** object can nest **domainSettings** objects of smaller domain name ranges.| Object| Yes (initial value: left empty)|
 
 ## Internal Structure of the domainSettings Property
 
@@ -61,8 +61,8 @@ For details about the properties of the **deviceConfig** tag, see [Internal Stru
 
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| cleartextPermitted | Whether cleartext is allowed in the custom network domain. If both **cleartextTraffic** and **securityConfig** exist, the value of **cleartextPermitted** is used.<br>- **true**: Cleartext is allowed.<br>- **false**: Cleartext is not allowed.| Boolean| Yes (initial value: **false**)|
-| domains | Domain name. This property consists of two sub-properties: **subdomains** and **name**.<br>- **subdomains** (boolean): whether the domain name contains subdomains. If it is set to **true**, the domain naming convention applies to all related domains and subdomains (including the lower-level domains of the subdomains). If it is set to **false**, the convention applies only to exact matches.<br>- **name** (string): domain name.| Object array| Yes (initial value: left empty)|
+| cleartextPermitted | Whether cleartext traffic transmission is allowed within the custom domain name range. If both **cleartextTraffic** and **securityConfig** exist, the value of **cleartextPermitted** is used.<br>- **true**: Cleartext is allowed.<br>- **false**: Cleartext is not allowed.| Boolean| Yes (initial value: **false**)|
+| domains | Domain name. This property consists of two sub-properties: **subdomains** and **name**.<br>- **subdomains** (boolean): whether the domain name contains subdomains. When set to **true**, the rule matches the corresponding domain and all its subdomains (including subdomains of subdomains). When set to **false**, the rule applies only to exact matches.<br>- **name** (string): domain name.| Object array| Yes (initial value: left empty)|
 
 Example of the **deviceConfig** tag:
 

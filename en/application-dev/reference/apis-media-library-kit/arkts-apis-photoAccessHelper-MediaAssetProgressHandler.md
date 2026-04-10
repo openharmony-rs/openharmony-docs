@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-MediaAssetProgressHandler is used to obtain the media asset processing progress from **onProgress()**.
+**MediaAssetProgressHandler** is used to obtain the media asset processing progress from **onProgress()**.
 
 > **NOTE**
 >

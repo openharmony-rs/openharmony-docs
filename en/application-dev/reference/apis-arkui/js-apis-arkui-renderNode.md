@@ -2307,7 +2307,7 @@ Sets the border width for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border width of the RenderNode, in vp.|
+| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border width of the RenderNode, in vp.|
 
 get borderWidth(): Edges\<number>
 
@@ -2321,7 +2321,7 @@ Obtains the border width of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border width of the RenderNode. The default width of all borders is 0 vp.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border width of the RenderNode. The default width of all borders is 0 vp.|
 
 **Example**
 
@@ -2380,7 +2380,7 @@ Sets the border color for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border color of the RenderNode.|
+| color  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border color of the RenderNode.|
 
 get borderColor(): Edges\<number>
 
@@ -2394,7 +2394,7 @@ Obtains the border color of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
 
 **Example**
 

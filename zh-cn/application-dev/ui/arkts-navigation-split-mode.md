@@ -28,7 +28,7 @@
 
 ### navBarPosition
 
-[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)用于控制导航栏显示的位置，用navBarPosition控制导航栏显示位置时，同样会被系统语言所影响。比如，在以汉语、英语为代表的LTR语言体系下，NavBarPosition.Start指代的是导航栏出现在左侧，而在以阿拉伯语为代表的RTL语言体系下，NavBarPosition.Start则指代导航栏出现在右侧。类似的效果也出现在NavBarPosition.End上。
+[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)用于控制导航栏显示的位置，用navBarPosition控制导航栏显示位置时，会被系统语言所影响。比如，在以汉语、英语为代表的LTR语言体系下，NavBarPosition.Start指代的是导航栏出现在左侧，而在以阿拉伯语为代表的RTL语言体系下，NavBarPosition.Start则指代导航栏出现在右侧。类似的效果也出现在NavBarPosition.End上。
 
 **NavBarPosition.Start**
 
@@ -148,7 +148,7 @@ struct NewsDetail {
       }
     }
     .title(this.title)
-    .backgroundColor('# fff6e3c8')
+    .backgroundColor('#fff6e3c8')
     .onReady((ctx: NavDestinationContext) => {
       // 在onReady生命周期拿到传来的页面参数
       let param = ctx.pathInfo.param as NewsItem;
@@ -187,7 +187,7 @@ struct NewsHome {
           Column() {
             Text(`${item.title}`).margin(15).fontSize(25).fontColor(Color.Black)
             Text(`${item.overview}`).fontSize(13).fontColor(Color.Gray)
-          }.margin({bottom: 15}).backgroundColor('# eeeeee').width('100%')
+          }.margin({bottom: 15}).backgroundColor('#eeeeee').width('100%')
           .borderRadius(15).height(120).onClick(() => {
             // 用户点击某一个新闻标签时，就在右侧子页区域push一个NavDestination页面，用来展示新闻详情
             this.stack?.pushPath({name: 'NewsDetail', param: item})

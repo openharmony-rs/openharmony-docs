@@ -150,7 +150,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Dr
 | const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* endPt | 表示渐变的终点。 |
 | const uint32_t* colors | 表示在两个点之间分布的颜色。 |
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在起点和终点之间。 |
-| uint32_t size | 表示颜色和位置的数量（如果pos不为NULL）。 |
+| uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型，支持可选的具体模式可见[OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode)枚举。 |
 
 **返回：**
@@ -182,7 +182,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMat
 | const [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* endPt | 表示渐变的终点。 |
 | const uint32_t* colors | 表示在两个点之间分布的颜色。 |
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在起点和终点之间。 |
-| uint32_t size | 表示颜色和位置的数量（如果pos不为NULL）。 |
+| uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型，支持可选的具体模式可见[OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode)枚举。 |
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 表示作用于着色器上的矩阵变换，如果matrix是NULL, 默认是一个单位矩阵。 |
 
@@ -215,7 +215,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Dr
 | float radius | 表示渐变的半径，需为非负数。 |
 | const uint32_t* colors | 表示在径向上分布的颜色。 |
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在径向上。 |
-| uint32_t size | 表示颜色和位置的数量（如果pos不为NULL）。 |
+| uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型，支持可选的具体模式可见[OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode)枚举。 |
 
 **返回：**
@@ -247,7 +247,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMat
 | float radius | 表示渐变的半径。 |
 | const uint32_t* colors | 表示在径向上分布的颜色。 |
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在径向上。 |
-| uint32_t size | 表示颜色和位置的数量（如果pos不为NULL）。 |
+| uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型，支持可选的具体模式可见[OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode)枚举。 |
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 表示作用于着色器上的矩阵变换，如果matrix是NULL, 默认是一个单位矩阵。 |
 
@@ -279,7 +279,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatr
 | const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* centerPt | 表示渐变的圆心。 |
 | const uint32_t* colors | 表示在两个点之间分布的颜色。 |
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在0°和360°之间。 |
-| uint32_t size | 表示颜色和位置的数量（如果pos不为NULL）。 |
+| uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型，支持可选的具体模式可见[OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode)枚举。 |
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 表示作用于着色器上的矩阵变换，如果matrix是NULL, 默认是一个单位矩阵。 |
 
@@ -311,7 +311,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Dra
 | const [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)* centerPt | 表示渐变的圆心。 |
 | const uint32_t* colors | 表示在两个点之间分布的颜色。 |
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在0°和360°之间。 |
-| uint32_t size | 表示颜色和位置的数量（如果pos不为NULL）。 |
+| uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型，支持可选的具体模式可见[OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode)枚举。 |
 
 **返回：**
@@ -376,7 +376,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(co
 | float endRadius | 表示渐变的终点半径，需为非负数。 |
 | const uint32_t* colors | 表示在两个圆之间分布的颜色。 |
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在两个圆之间。 |
-| uint32_t size | 表示颜色和位置的数量(如果pos不为NULL)。 |
+| uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型，支持可选的具体模式可见[OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode)枚举。 |
 | const [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | 表示作用于着色器上的矩阵变换，如果matrix是NULL, 默认是一个单位矩阵。 |
 

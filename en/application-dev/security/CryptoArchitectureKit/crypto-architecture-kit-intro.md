@@ -55,6 +55,8 @@ Before you get started, be sure to understand the following basic concepts:
 
   For signing and signature verification, the private key is used to sign the plaintext, and the public key is used to verify the signature.
 
+<!--RP1--><!--RP1End-->
+
 ## Related Kits
 
 Crypto Architecture Kit provides cryptographic operations, but not key management. Therefore, applications must manage their own keys. This kit is applicable to scenarios where keys are used only in memory, such as temporary session keys, or where keys are securely stored by applications.

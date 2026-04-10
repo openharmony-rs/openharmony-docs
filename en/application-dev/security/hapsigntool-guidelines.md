@@ -28,7 +28,7 @@
 
    You can find the **hap-sign-tool** in the **lib** directory.
 
-## How to Development
+## How to Develop
 
 ### When to Use
 

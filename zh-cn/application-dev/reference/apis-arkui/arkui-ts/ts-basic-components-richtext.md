@@ -89,7 +89,7 @@ onComplete(callback: () => void)
 | \<p>\</p> | 定义段落。 | \<p>这是一个段落\</p> |
 | \<br/> | 插入一个简单的换行符。 | \<p>这是一个段落\<br/>这是换行段落\</p> |
 | \<font/> | 规定文本的字体、字体尺寸、字体颜色。在<font/>标签中font size能够设置的值只有1到7的数字，默认值是3，由于<font/>标签在HTML 4.01中不建议使用，在XHTML1.0 Strict DTD中不支持，所以不建议使用此标签，请使用CSS代替。CSS语法：\<p style="font-size: 35px; font-family: verdana; color: rgb(24,78,228)"> | \<font size="3" face="arial" color="red">这是一段红色字体。\</font> |
-| \<hr/> | 定义HTML页面中的主题变化（比如话题的转移），并显示为一条水平线。 | \<p>这个一个段落\</p>\<hr/>\<p>这是一个段落\</p> |
+| \<hr/> | 定义HTML页面中的主题变化（比如话题的转移），并显示为一条水平线。 | \<p>这是一个段落\</p>\<hr/>\<p>这是一个段落\</p> |
 | \<image>\</image> | 用来定义图片。 | \<image src="resource://rawfile/icon.png">\</image> |
 | \<div>\</div> | 常用于组合块级元素，以便通过CSS来对这些元素进行格式化。 | \<div style='color:#0000FF'>\<h3>这是一个在div元素中的标题。\</h3>\</div> |
 | \<i>\</i> | 定义与文本中其余部分不同的部分，并把这部分文本呈现为斜体文本。 | \<i>这是一个斜体\</i> |

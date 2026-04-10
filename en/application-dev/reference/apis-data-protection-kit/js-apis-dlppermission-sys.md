@@ -274,7 +274,7 @@ async function ExampleFunction() {
   try {
     let res = await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri);
     console.info('res', JSON.stringify(res));
-    await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex); // UnInstall a DLP sandbox application.
+    await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex); // Uninstall a DLP sandbox application.
   } catch (err) {
     console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
   }
@@ -1885,7 +1885,7 @@ Represents the DLP sandbox information.
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | No| No| Index of the DLP sandbox application.|
 | tokenID | number | No| No| Token ID of the DLP sandbox application.|
-| bindAppIndex<sup>23+</sup> | number | No| Yes| Index of the DLP sandbox application to be bound.|
+| bindAppIndex<sup>24+</sup> | number | No| Yes| Index of the DLP sandbox application to be bound.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## DLPSandboxState
 

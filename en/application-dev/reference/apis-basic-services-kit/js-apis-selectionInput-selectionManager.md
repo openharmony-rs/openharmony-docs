@@ -51,10 +51,10 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+    console.info(`Enter the callback function.`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -79,14 +79,14 @@ Unregisters the callback used to listen for the word selection completion event.
 import { selectionManager } from '@kit.BasicServicesKit';
 
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+  console.info(`Enter the callback function.`);
 };
 
 selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister selectionCompleted: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -125,7 +125,7 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
   try {
     let content = await selectionManager.getSelectionContent();
   } catch (err) {
-    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+    console.error(`Failed to get selection content: ${err.code}, errormessage: ${err.message}`);
   }
 });
 ```
@@ -147,7 +147,7 @@ Only one [main panel](./js-apis-selectionInput-selectionPanel.md) and one [menu 
 | Name  | Type       | Mandatory| Description                    |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context that the current word selection panel depends on.|
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md)   | Yes  | Information about the word selection panel.|
+| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md#panelinfo)   | Yes  | Information about the word selection panel.|
 
 **Return value**
 | Type  | Description                                                                |
@@ -197,7 +197,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
       .then((panel: selectionManager.Panel) => {
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -275,14 +275,14 @@ class ServiceExtAbility extends SelectionExtensionAbility {
             selectionManager.destroyPanel(selectionPanel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+              console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+          console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}`);
         }
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -363,10 +363,10 @@ try {
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+    console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+  console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -403,7 +403,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to show panel: ${err.code}, errormessage: ${err.message}`);
 });
 ```
 
@@ -438,7 +438,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to hide panel: ${err.code}, errormessage: ${err.message}`);
 });
 ```
 
@@ -474,7 +474,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 RelativeContainer() {
   /* 
-   * Page layout content, which be defined based on your actual needs.
+   * Page layout content, which should be defined based on your actual needs.
    */
 }
 .onTouch((event: TouchEvent) => {
@@ -483,7 +483,7 @@ RelativeContainer() {
       selectionPanel.startMoving().then(() => {   // selectionPanel is the panel instance created by createPanel.
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${JSON.stringify(err)}`);
+        console.error(`Failed to startMoving panel: ${err.code}, errormessage: ${err.message}`);
       });
     }
   }
@@ -536,10 +536,10 @@ try {
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+    console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 <!--DelEnd-->
@@ -585,10 +585,10 @@ try {
   selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+    console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -617,7 +617,7 @@ try {
     console.info('Panel has destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register destroyed callback: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -644,7 +644,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister destroyed: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -673,7 +673,7 @@ try {
     console.info('Panel has hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register hidden callback: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -700,7 +700,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister hidden: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 

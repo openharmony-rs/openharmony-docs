@@ -7,6 +7,10 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct RawDir RawDir
+```
+
 ## Overview
 
 Provides access to the **rawfile** directory.

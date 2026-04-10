@@ -27,4 +27,4 @@ Defines a struct for the key code array.
 | Name| Description|
 | -- | -- |
 | Hid_KeyCode* hidKeyCode | Key code array.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|

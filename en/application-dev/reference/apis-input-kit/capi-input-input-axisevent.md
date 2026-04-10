@@ -25,5 +25,5 @@ Defines an axis event.
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) | Creates an axis event object.|
+| [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) | Creates an axis event object. You can call [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent) to destroy an axis event object.|
 | [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent) | Destroys an axis event object.|

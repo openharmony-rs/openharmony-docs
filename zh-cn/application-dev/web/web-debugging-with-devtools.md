@@ -403,23 +403,35 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 ### 找不到DevTools的domain socket
 **问题现象**
 
-   在hdc shell里执行如下命令后，没有结果。
-   ```shell
-   cat /proc/net/unix | grep devtools
-   ```
+   1. 在hdc shell里执行如下命令后，没有结果。
+      ``` shell
+      cat /proc/net/unix | grep devtools
+      ```
+   2. 运行脚本出现'Failed to retrieve PID from the device'报错。
 
 **解决方法**
 
   * 请确保应用[开启了Web调试开关](#应用代码开启web调试开关)。
   * 请确保应用使用Web组件加载了网页。
 
+### 删除端口转发任务失败
+**问题现象**
+
+   运行脚本出现'Failed to remove forward rule, taskline:'报错。
+
+**解决方法**
+
+  * 执行hdc kill终止hdc服务，再执行hdc start重启服务。
+  * 执行hdc list targets确认设备在线状态，若返回空则重新连接设备。
+
 ### 端口转发不成功
 **问题现象**
 
-   在命令行里执行如下命令后，没有列出之前设置过转发任务。
-   ```shell
-   hdc fport ls
-   ```
+   1. 在命令行里执行如下命令后，没有列出之前设置过转发任务。
+      ``` shell
+      hdc fport ls
+      ```
+   2. 运行脚本出现'Failed to execute hdc fport command'报错。
 
 **解决方法**
 
