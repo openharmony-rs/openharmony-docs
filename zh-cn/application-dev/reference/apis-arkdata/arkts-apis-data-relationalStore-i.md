@@ -141,11 +141,11 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-|------|------|------|------|------|
-| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 否 | 否 | 数据库同步模式。 |
-| enablePredicate | boolean | 否 | 是 | 表级同步开关。true表示启用表级同步，false表示不启用。 |
-| predicate | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 否 | 是 | 表级同步谓词。当enablePredicate为true时，此参数有效。 |
+| 名称 | 类型 | 只读 | 可选 | 说明                                        |
+|------|------|------|------|-------------------------------------------|
+| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 否 | 否 | 数据库同步模式。                                  |
+| enablePredicate | boolean | 否 | 是 | 表级同步开关。true表示启用表级同步，false表示不启用。默认值为false。 |
+| predicate | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 否 | 是 | 表级同步谓词。当enablePredicate为true时，此参数有效。      |
 
 ## SqlExecutionInfo<sup>12+</sup>
 

@@ -88,9 +88,9 @@ import { relationalStore } from '@kit.ArkData';
 
 **系统接口：** 此接口为系统接口。
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-|------|------|------|------|------|
-| downloadOnly<sup>26+</sup> | boolean | 否 | 是 | 是否仅下载同步。true表示仅下载，false表示上传和下载。 |
+| 名称 | 类型 | 只读 | 可选 | 说明                                        |
+|------|------|------|------|-------------------------------------------|
+| downloadOnly<sup>26+</sup> | boolean | 否 | 是 | 是否仅下载同步。true表示仅下载，false表示上传和下载。默认值为false。 |
 
 ## RdbStore
 
@@ -689,92 +689,6 @@ if (store != undefined) {
       return;
     }
     console.info('cloud sync succeeded');
-  });
-};
-```
-
-### cloudSync<sup>11+</sup>
-
-cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
-
-手动执行按条件进行端云同步，使用Promise异步回调。使用该接口需要实现云同步功能。
-
-> **说明：**
->
-> 从API version 18开始，手动执行端云同步时，设置谓词条件时新增支持指定资产下载能力。此时，同步模式需要设置为`relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST`。
->
-> 谓词中支持使用主键（必填）和资产（可选）作为同步条件：选择资产作为同步条件时，谓词仅支持[equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)；指定资产的数量较多时（最多支持指定50个资产），建议谓词中仅使用主键作为同步条件。
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名        | 类型                              | 必填 | 说明                  |
-|------------|---------------------------------| ---- |---------------------|
-| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)           | 是   | 表示数据库的同步模式。         |
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                   | 是   | 表示同步数据的谓词条件。                |
-| progress   | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。 |
-
-**返回值**：
-
-| 类型                | 说明                                    |
-| ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，用于向调用者发送同步结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
-
-| **错误码ID** | **错误信息**            |
-|-----------|---------------------------|
-| 202       | if permission verification failed, application which is not a system application uses system API.  |
-| 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
-| 801       | Capability not supported.       |
-| 14800014  | The target instance is already closed.      |
-
-**示例1：手动同步，同步模式为云端同步到本地设备**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-predicates.in("id", ["id1", "id2"]);
-
-if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail.schedule}`);
-  }).then(() => {
-    console.info('cloud sync succeeded');
-  }).catch((err: BusinessError) => {
-    console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
-  });
-};
-```
-**示例2：指定资产下载**
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-let asset: relationalStore.Asset = {
-  name: "name",
-  uri: "uri",
-  path: "path",
-  createTime: new Date().getTime().toString(),
-  modifyTime: new Date().getTime().toString(),
-  size: "1024"
-};
-// 谓词条件中指定主键和资产，asset为数据库的资产列
-predicates.beginWrap().equalTo("id", "id1").and().equalTo("asset", asset).endWrap();
-
-if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail.schedule}`);
-  }).then(() => {
-    console.info('Cloud sync succeeded');
-  }).catch((err: BusinessError) => {
-    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
   });
 };
 ```
