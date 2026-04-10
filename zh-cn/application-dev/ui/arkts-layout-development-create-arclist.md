@@ -335,11 +335,11 @@ ArcListItem() {
 
 ``` TypeScript
 ArcList({ header: this.arcListHeader }) {
-  // ···
+  // ...
 }
 .scrollBar(BarState.Auto)
 .scrollBarWidth(LengthMetrics.px(10))
-.scrollBarColor(ColorMetrics.resourceColor(Color.White))
+.scrollBarColor(ColorMetrics.numeric(Color.White))
 ```
 
   **图6** 弧形列表的内置滚动条 
