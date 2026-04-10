@@ -912,7 +912,7 @@ type ErrorHandler = (errObject: Error) => void
 
 ## ResourceUsageObserver <sup>24+</sup>
 
-type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: long, detailInfo?: Record<string, long>) => void;
+type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, detailInfo?: Record<string, number>) => void;
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -923,8 +923,8 @@ type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: long, de
 | 参数名  | 类型          | 必填 | 说明 |
 |--------| ------------- | ---- | --- |
 | resourceType | [ResourceType](#resourcetype24)   | 是   | 表示应用资源超基线的类型。 |
-| resourceSize | long   | 是   | 表示应用资源超基线的资源使用量。 |
-| detailInfo | Record<string, long>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key 为小写内存类型，value 为对应细分项资源大小；<br>细分析的key包含 arkts、native、ion、gpu、ashmem、other 。 |
+| resourceSize | number   | 是   | 表示应用资源超基线的资源使用量。 |
+| detailInfo | Record<string, number>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key 为小写内存类型，value 为对应细分项资源大小；<br>细分析的key包含 arkts、native、ion、gpu、ashmem、other 。 |
 
 ## ResourceType<sup>24+</sup>
 
