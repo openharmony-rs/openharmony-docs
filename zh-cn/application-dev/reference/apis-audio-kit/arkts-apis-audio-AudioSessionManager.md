@@ -954,5 +954,5 @@ setAudioSessionBehavior(behavior: number): void
 
 ```ts
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
-sessionManager.setAudioSessionBehavior(behavior);
+audioSessionManager.setAudioSessionBehavior(behavior);
 ```
