@@ -583,7 +583,7 @@ let abilityType: accessibility.AbilityType = 'spoken';
 let abilityState: accessibility.AbilityState = 'enable';
 
 accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
 });
@@ -623,7 +623,7 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
     console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
     return;
   }
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 })
 ```
 
@@ -675,7 +675,7 @@ let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所�
 let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
 });
@@ -700,7 +700,7 @@ let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为�
 let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
 });
@@ -754,7 +754,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
     console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 });
 
 // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
@@ -782,7 +782,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
     console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -829,7 +829,7 @@ let data: accessibility.AccessibilityAbilityInfo[];
 
 try {
   data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 } catch (error) {
   let err = error as BusinessError;
   console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
@@ -858,7 +858,7 @@ let data: accessibility.AccessibilityAbilityInfo[];
 
 try {
   data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 } catch (error) {
   let err = error as BusinessError;
   console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
@@ -1438,7 +1438,7 @@ let eventInfo: accessibility.EventInfo = ({
 });
 
 accessibility.sendEvent(eventInfo).then(() => {
-  console.info(`Succeeded in send event,eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event,eventInfo is ${eventInfo}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to sendEvent, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1480,7 +1480,7 @@ accessibility.sendEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to sendEvent, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in sendEvent, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -1525,7 +1525,7 @@ let eventInfo: accessibility.EventInfo = ({
 });
 
 accessibility.sendAccessibilityEvent(eventInfo).then(() => {
-  console.info(`Succeeded in send event,eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to send event , Code is ${err.code}, message is ${err.message}`);
 });
@@ -1571,7 +1571,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -1606,7 +1606,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -1628,7 +1628,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
