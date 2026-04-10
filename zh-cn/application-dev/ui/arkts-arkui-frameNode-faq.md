@@ -73,3 +73,54 @@ struct FrameNodeTypeTest {
 针对上述示例，在UnbindNode函数中，把disposeNode移至函数末尾前执行，即可修复此问题。
 
 <!-- @[dispose_in_wrong_sequence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisposeNodeCrash/entry/src/main/cpp/BindCallback.cpp) -->
+
+``` C++
+void OnSurfaceDestroyedNative(OH_ArkUI_SurfaceHolder *holder)
+{
+    std::string *helloWorld = reinterpret_cast<std::string *>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0xff00, "TestTag", "OnSurfaceDestroyed triggered, registered string is %{public}s",
+                 helloWorld->c_str());
+    delete helloWorld;
+}
+
+napi_value UnbindNode(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_INFO, 0xff00, "TestTag", "移除XComponent与衍生资源");
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    if (!g_node1) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "TestTag", "NodeId does not exist error");
+        return nullptr;
+    }
+    nodeAPI->disposeNode(g_node1); // 在销毁SurfaceCallback与SurfaceHolder前销毁node，会引发crash
+    g_node1 = nullptr;
+    if (g_holder) {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0xff00, "TestTag", "Start Dispose SurfaceCallback");
+        OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback(g_holder, g_callback); // 移除SurfaceCallback
+        OH_ArkUI_SurfaceCallback_Dispose(g_callback);                       // 销毁SurfaceCallback
+        g_callback = nullptr;
+    }
+    OH_ArkUI_SurfaceHolder_Dispose(g_holder); // 销毁SurfaceHolder
+    g_holder = nullptr;
+    // 将nodeAPI->disposeNode(g_node1);移至此处即可修复crash
+    
+    return nullptr;
+}
+
+napi_value BindNode(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &g_node1); // 获取nodeHandle
+    g_holder = OH_ArkUI_SurfaceHolder_Create(g_node1);           // 获取SurfaceHolder
+    g_callback = OH_ArkUI_SurfaceCallback_Create();              // 创建SurfaceCallback
+    auto hello = new std::string("helloWorld");
+    OH_ArkUI_SurfaceHolder_SetUserData(g_holder, hello); // 设置std::string至SurfaceHolder
+    OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(g_callback,
+                                                      OnSurfaceDestroyedNative); // 注册OnSurfaceDestroyed回调
+    OH_ArkUI_SurfaceHolder_AddSurfaceCallback(g_holder, g_callback);             // 注册SurfaceCallback回调
+    return nullptr;
+}
+```
