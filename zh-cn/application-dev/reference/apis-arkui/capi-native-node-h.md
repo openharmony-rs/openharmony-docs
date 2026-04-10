@@ -256,6 +256,7 @@ enum ArkUI_NodeAttributeType
 
 **起始版本：** 12
 
+<!--Table: 30%; 70%-->
 | 枚举项 | 描述 |
 | -- | -- |
 | [基础属性](./capi-native-node-h-nodeattributetype-base.md) | 定义ArkUI在Native侧可以设置的基础属性集合，包含背景、背景图片样式和组件标识等属性设置。 |
