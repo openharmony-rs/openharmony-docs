@@ -159,7 +159,7 @@ addEventListener("blur", (event) => {});
 onblur = (event) => {};
 ```
 - W3C autofocus，表示元素应在页面加载时或其所属的 `dialog` 显示时获焦
-```js
+```
 <input name="q" autofocus />
 ```
 在文档或对话框中，最多只能有一个元素具有 autofocus 属性。若应用于多个元素，第一个元素将获得焦点。
