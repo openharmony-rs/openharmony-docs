@@ -20,7 +20,7 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>deprecated</sup>
 
 subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback\<void\>): void
 
@@ -31,6 +31,8 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+说明：从API version 9 开始支持，从API version 26.0.0 开始废弃，建议使用[subscribeNotification](#notificationsubscribesubscribenotification)替代。
 
 **参数：**
 
@@ -80,7 +82,7 @@ let info: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>deprecated</sup>
 
 subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
@@ -91,6 +93,8 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+说明：从API version 9 开始支持，从API version 26.0.0 开始废弃，建议使用[subscribeNotification](#notificationsubscribesubscribenotification)替代。
 
 **参数：**
 
@@ -136,7 +140,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>deprecated</sup>
 
 subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise\<void\>
 
@@ -147,6 +151,8 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+说明：从API version 9 开始支持，从API version 26.0.0 开始废弃，建议使用[subscribeNotification](#notificationsubscribesubscribenotification)替代。
 
 **参数：**
 
