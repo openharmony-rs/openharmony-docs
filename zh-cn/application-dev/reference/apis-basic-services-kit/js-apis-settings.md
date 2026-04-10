@@ -1268,11 +1268,13 @@ try {
 }
 ```
 
-## settings.openAboutDeviceSettingsPage<sup>26+</sup>
+## settings.openAboutDeviceSettingsPage
 
 openAboutDeviceSettingsPage(context: Context): void
 
 打开关于本机设置页面。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1310,11 +1312,13 @@ try {
 }
 ```
 
-## settings.openAppDetailSettings<sup>26+</sup>
+## settings.openAppDetailSettings
 
 openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
 
 打开应用详情设置页面。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
