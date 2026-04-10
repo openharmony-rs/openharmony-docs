@@ -205,19 +205,21 @@ pauseRecording(): Promise\<void>
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **返回值：**
 
-| Type          | Description                             |
+| 类型           | 说明                             |
 | -------------- | --------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | **Promise<void>：**Promise对象，无返回结果。|
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
-| ID| Error Message                        |
+| 错误码ID| 错误信息                        |
 | -------- | -------------------------------- |
 | 5400102  | Operation not be permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
@@ -261,19 +263,21 @@ resumeRecording(): Promise\<void>
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **返回值：**
 
-| Type          | Description                             |
+| 类型          | 描述                             |
 | -------------- | --------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | **Promise<void>：**Promise对象，无返回结果。|
 
 **错误码：**
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
-| ID| Error Message                        |
+| 错误码ID| 错误信息                        |
 | -------- | -------------------------------- |
 | 5400102  | Operation not be permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
