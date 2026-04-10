@@ -1060,13 +1060,11 @@ offHeadersReceive(callback?: Callback\<Record\<string, string\>\>): void
 
 取消订阅HTTP响应头事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1124,13 +1122,11 @@ onceHeadersReceive(callback: Callback\<Record\<string, string\>\>): void
 
 订阅HTTP响应头事件，只能触发一次。触发之后，订阅器就会被移除。使用callback方式作为异步方法。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1188,13 +1184,11 @@ onDataReceive(callback: Callback\<ArrayBuffer\>): void
 
 订阅HTTP流式响应数据接收事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1253,13 +1247,11 @@ offDataReceive(callback?: Callback\<ArrayBuffer\>): void
 
 取消订阅HTTP流式响应数据接收事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1319,13 +1311,11 @@ onDataEnd(callback: Callback\<void\>): void
 
 订阅HTTP流式响应数据接收完毕事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1384,13 +1374,11 @@ offDataEnd(callback?: Callback\<void\>): void
 
 取消订阅HTTP流式响应数据接收完毕事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1449,13 +1437,11 @@ onDataReceiveProgress(callback: Callback\<DataReceiveProgressInfo\>): void
 
 订阅HTTP流式响应数据接收进度事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1514,13 +1500,11 @@ offDataReceiveProgress(callback?: Callback\<DataReceiveProgressInfo\>): void
 
 取消订阅HTTP流式响应数据接收进度事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1579,13 +1563,11 @@ onDataSendProgress(callback: Callback\<DataSendProgressInfo\>): void
 
 订阅HTTP网络请求数据发送进度事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1644,13 +1626,11 @@ off(type: 'dataSendProgress', callback?: Callback\<DataSendProgressInfo\>): void
 
 取消订阅HTTP网络请求数据发送进度事件。
 
-**起始版本**：26.0.0
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
