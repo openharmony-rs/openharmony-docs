@@ -58,15 +58,20 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 | close()                                    | 销毁Connection对象，注销所有注册的事件，调用该接口后Connection对象将不能再使用。                                 |
 | getPeerDeviceId()                          | 获取远端设备的deviceId。                                                                           |
 | sendData(data:ArrayBuffer)                 | 向远端设备发送数据。                                                                                     |
-| on(type: 'connectResult')                  | 订阅连接结果通知变化的事件。                                                                              |
-| on(type: 'disconnected')                   | 订阅连接状态断开的事件。                                                                                  |
-| on(type: 'dataReceived')                   | 注册收数据的通知事件。                                                                                    |
-| createConnection(deviceId: string,name:string)| 创建一个connection对象。                                                                              |
+| ArkTS-Dyn: on(type: 'connectResult')</br>ArkTS-Sta: onConnectResult() | 订阅连接结果通知变化的事件。                                                 |
+| ArkTS-Dyn: on(type: 'disconnected')</br>ArkTS-Sta: onDisconnected()     | 订阅连接状态断开的事件。                                                         |
+| ArkTS-Dyn: on(type: 'dataReceived')</br>ArkTS-Sta: onDataReceived()     | 注册收数据的通知事件。                                                       |
+| ArkTS-Dyn: off(type: 'connectResult')</br>ArkTS-Sta: offConnectResult() | 取消订阅连接结果通知变化的事件。                                                 |
+| ArkTS-Dyn: off(type: 'disconnected')</br>ArkTS-Sta: offDisconnected()     | 取消订阅连接状态断开的事件。                                                         |
+| ArkTS-Dyn: off(type: 'dataReceived')</br>ArkTS-Sta: offDataReceived()     | 取消注册收数据的通知事件。                                                       |
+| createConnection(deviceId: string, name: string)| 创建一个connection对象。                                                                          |
 | start()                                    | 服务端开启服务。                                                                                         |   
 | stop()                                     | 服务端停止服务。                                                                                           |
 | close()                                    | 销毁Server对象，注销已注册的服务并取消已订阅的所有事件，调用该接口后Server对象将不能再使用。                    |
-| on(type: 'connectionAccepted')                | Server端订阅收到对端连接的事件。                                                                           |
-| on(type: 'serverStopped')                  | Server端订阅服务状态停止的事件。                                                                           |
+| ArkTS-Dyn: on(type: 'connectionAccepted')</br>ArkTS-Sta: onConnectionAccepted()           | Server端订阅收到对端连接的事件。                                 |
+| ArkTS-Dyn: on(type: 'serverStopped')</br>ArkTS-Sta: onServerStopped()               | Server端订阅服务状态停止的事件。                                    |
+| ArkTS-Dyn: off(type: 'connectionAccepted')</br>ArkTS-Sta: offConnectionAccepted()         | Server端取消订阅收到对端连接的事件。                                 |
+| ArkTS-Dyn: off(type: 'serverStopped')</br>ArkTS-Sta: offServerStopped()             | Server端取消订阅服务状态停止的事件。                                    |
 | createServer(name: string)                 | 创建一个server对象。                                                                                      |
 
 ## 增强连接开发指导
@@ -77,10 +82,12 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 ### 服务端开发指导
 1. 导入所需的模块。
+
     ```ts
     import {linkEnhance} from '@kit.DistributedServiceKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
+
 2. 在module.json5配置文件中配置分布式数据同步权限ohos.permission.DISTRIBUTED_DATASYNC。
 
    ```ts
@@ -101,7 +108,11 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
      }
    }
    ```
+
 3. 创建server对象，并开启服务，注册监听。
+
+   ArkTS-Dyn示例：
+
     ```ts
     const TAG = 'TEST';
     // server端注册服务
@@ -126,7 +137,38 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
+
+    ArkTS-Sta示例：
+
+    ```ts
+    const TAG = 'TEST';
+    // server端注册服务
+    function linkEnhanceStart(name: string) {
+      console.info(TAG + 'start server deviceId = ' + name);
+      try {
+      // 使用服务名构造Server
+      let server: linkEnhance.Server = linkEnhance.createServer(name);
+
+        // 订阅服务接收事件和服务停止事件
+        server.onConnectionAccepted((connection: linkEnhance.Connection): void => {
+          console.info(TAG + 'serverOnCallback');
+        });
+        server.onServerStopped((reason: int): void => {
+          console.info(TAG, 'serverStopped， reason= ' + reason);
+        });
+        // 启动服务
+        server.start();
+      } catch (err) {
+        console.error(TAG + 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+        (err as BusinessError).message);
+      }
+    }
+    ```
+
 4. 当连接被连上时，需要保存connection对象。
+
+   ArkTS-Dyn示例：
+
     ```ts
     serverAcceptOnCallback = (connection: linkEnhance.Connection): void => {
       console.info(TAG + 'serverOnCallback');
@@ -151,10 +193,39 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
+
+    ArkTS-Sta示例：
+
+    ```ts
+    let serverAcceptOnCallback = (connection: linkEnhance.Connection): void => {
+      console.info(TAG + 'serverOnCallback');
+      try {
+
+        // 收到连接请求后，订阅connection的断连事件。
+        connection.onDisconnected((reason: int)=> {
+          console.info(TAG + 'disconnected, reason = ' + reason);
+        });
+        // 收到连接请求后，订阅connection的数据接收事件。
+        connection.onDataReceived((data: ArrayBuffer)=> {
+          console.info(TAG + 'dataReceived, dataLen=' + data.byteLength);
+        });
+
+        let len = 1;
+        let arraybuffer = new ArrayBuffer(len);
+        // 向远端发送数据。
+        connection.sendData(arraybuffer);
+      } catch (err) {
+        console.error(TAG + 'server on callback errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+        (err as BusinessError).message);
+      }
+    }
+    ```
+
 5. 断开连接并销毁Connection对象。
+
     ```ts
     // 断连接。
-    linkEnhanceDisconnect(connection: linkEnhance.Connection) {
+    function linkEnhanceDisconnect(connection: linkEnhance.Connection) {
       console.info(TAG + 'disconnect deviceId = ' + connection.getPeerDeviceId());
       try {
         connection.disconnect();
@@ -165,20 +236,22 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
+
 6. 停止服务并销毁server对象。
+
     ```ts
     // Server端停止服务
-    linkEnhanceStop(server: linkEnhance.Server) {
+    function linkEnhanceStop(server: linkEnhance.Server) {
       console.info(TAG + 'stop server');
       try {
         server.stop();
       } catch (err) {
-        console.info(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+        console.error(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
         (err as BusinessError).message);
       }
     }
     // Server端停止服务并取消所有的订阅事件
-    linkEnhanceClose(server: linkEnhance.Server) {
+    function linkEnhanceClose(server: linkEnhance.Server) {
       console.info(TAG + 'close server' );
       try {
         server.close();
@@ -192,11 +265,14 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 ### 客户端开发指导
 
 1. 导入所需的模块。
+
     ```ts
     import { linkEnhance } from '@kit.DistributedServiceKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
+
 2. 在module.json5配置文件中配置分布式数据同步权限ohos.permission.DISTRIBUTED_DATASYNC。
+
    ```ts
    {
      "module" : {
@@ -215,7 +291,11 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
      }
    }
    ```
+
 3. 创建connection对象，订阅连接结果通知变化的事件，连接服务端。
+
+   ArkTS-Dyn示例：
+
     ```ts
     const TAG = "testDemo";
     // client端主动连接时调用
@@ -234,11 +314,11 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
             connection.sendData(arraybuffer);
           }
         });
-        connection.on('disconnected', (reason: number)=> {
-          console.info(TAG + 'disconnected reason = ' + reason);
+        connection.on('disconnected', (number: number)=> {
+          console.info(TAG + 'disconnected reason = ' + number);
         });
         connection.on('dataReceived', (data: ArrayBuffer)=> {
-        console.info(TAG + 'dataReceived, dataLen=' + data.byteLength);
+          console.info(TAG + 'dataReceived, dataLen=' + data.byteLength);
         });
         // 发起连接
         connection.connect();
@@ -248,9 +328,46 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       }
     }
     ```
-4. 断开连接，销毁Connection对象。
+
+   ArkTS-Sta示例：
+
     ```ts
-    disconnect(connection: linkEnhance.Connection) {
+    const TAG = "testDemo";
+    // client端主动连接时调用
+    function linkEnhanceConnect(peerDeviceId: string) {
+      console.info(TAG + 'connection server deviceId = ' + peerDeviceId);
+      try {
+        // 使用peerDeviceId构造Connection后续的交互都需要使用该对象
+        let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+        // 订阅连接结果
+        connection.onConnectResult((data: linkEnhance.ConnectResult): void => {
+          console.info(TAG + 'clientConnectResultCallback result = ' + data.success);
+          if (data.success) {
+            // 向服务端发送数据
+            let len = 1;
+            let arraybuffer = new ArrayBuffer(len);
+            connection.sendData(arraybuffer);
+          }
+        });
+        connection.onDisconnected((reason: int)=> {
+          console.info(TAG + 'disconnected reason = ' + reason);
+        });
+        connection.onDataReceived((data: ArrayBuffer)=> {
+          console.info(TAG + 'dataReceived, dataLen=' + data.byteLength);
+        });
+        // 发起连接
+        connection.connect();
+      } catch (err) {
+        console.error(TAG + 'connect errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+        (err as BusinessError).message);
+      }
+    }
+    ```
+
+4. 断开连接，销毁Connection对象。
+
+    ```ts
+    function disconnect(connection: linkEnhance.Connection) {
       console.info(TAG + 'disconnect deviceId = ' + connection.getPeerDeviceId());
       try {
         connection.disconnect();
