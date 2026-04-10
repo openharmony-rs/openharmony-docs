@@ -103,6 +103,8 @@ type Modulo = Rounding | 9
 
 任意精度的Decimal类型。
 
+### 属性
+
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
