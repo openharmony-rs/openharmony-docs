@@ -154,6 +154,7 @@
 | [Camera_ErrorCode OH_CaptureSession_GetCurrentCustomOISBias(const Camera_CaptureSession* session, float* pitchBias, float* yawBias)](#oh_capturesession_getcurrentcustomoisbias) | - | 获取所有光学防抖轴当前的自定义偏移值。 |
 | [Camera_ErrorCode OH_CaptureSession_SetOISMode(const Camera_CaptureSession* session, OH_Camera_OISMode oisMode)](#oh_capturesession_setoismode) | - | 设置光学防抖（OIS）模式。 |
 | [Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession* session, float pitchBias, float yawBias)](#oh_capturesession_setoismodecustom) | - | 为对应轴设置自定义光学防抖偏移值。 |
+| [Camera_ErrorCode OH_CaptureSession_RegisterExposureStateChangeCallback(Camera_CaptureSession* session, void* context, OH_CaptureSession_OnExposureStateChange* callback)]() | - | 注册曝光状态变化的回调。 |
 
 ## 函数说明
 
@@ -3154,4 +3155,73 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
+### OH_CaptureSession_OnExposureStateChange()
 
+```c
+typedef void (*OH_CaptureSession_OnExposureStateChange)(void* context, Camera_ExposureState exposureState)
+```
+
+**描述**
+
+定义曝光状态变化时调用的回调函数。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| void* context | 指向自定义上下文的指针。 |
+| [Camera_ExposureState](capi-camera-h.md#oh_camera_exposurestate) exposureState | 当前曝光状态。 |
+
+### OH_CaptureSession_RegisterExposureStateChangeCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_RegisterExposureStateChangeCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnExposureStateChange callback)
+```
+
+**描述**
+
+注册曝光状态变化的回调。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| void* context | 指向自定义上下文的指针。 |
+| [OH_CaptureSession_OnExposureStateChange](#oh_capturesession_onexposurestatechange) callback | 注册回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>   CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
+
+### OH_CaptureSession_RegisterExposureStateChangeCallback()
+
+```c
+Camera_ErrorCode OH_CaptureSession_RegisterExposureStateChangeCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnExposureStateChange callback)
+```
+
+**描述**
+
+取消注册暴露状态更改的回调。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| void* context | 指向注册回调时指定的用户定义上下文的指针。 |
+| [OH_CaptureSession_OnExposureStateChange](#oh_capturesession_onexposurestatechange) callback | 注册回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>   CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
