@@ -802,7 +802,7 @@ Web组件进入全屏回调事件的详情。
 
 ## OnPdfScrollEvent<sup>20+</sup>
 
-定义PDF页面滚动到底时触发的函数。
+定义PDF页面滚动到底时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

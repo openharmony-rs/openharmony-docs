@@ -99,9 +99,9 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallback callback, void* userData)
 ```
 
-**描述**
+**描述：**
 
-设置组件滚动时的回调函数。
+注册组件滚动时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
