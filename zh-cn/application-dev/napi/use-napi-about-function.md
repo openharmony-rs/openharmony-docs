@@ -82,7 +82,7 @@ ArkTS 侧示例代码
 
 <!-- @[ark_napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
@@ -93,31 +93,45 @@ function summation(arr: Array<number>) {
   }
   return sum;
 }
+
 const str = 'message';
 const arr = [0, 1, 2, 3, 4, 5];
 const num = 526;
+
 class Student {
   name: string;
   age: number;
   score: number;
+
   constructor(name: string, age: number, score: number) {
     this.name = name;
     this.age = age;
     this.score = score;
   }
 }
-let student = new Student('Alice', 18, 100);
-// 获取参数
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get string arg:%{public}s', testNapi.getCbArgs(str));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get array arg:%{public}s ', testNapi.getCbArgs(arr).toString());
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get num arg:%{public}d ', testNapi.getCbArgs(num));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get undefined arg:%{public}s ', testNapi.getCbArgs(undefined));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get object arg:%{public}s ', JSON.stringify(testNapi.getCbArgs(student)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get function arg:%{public}d ', testNapi.getCbArgs(summation(arr)));
-// 获取参数个数
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get arg quantity:%{public}d ', testNapi.getCbArgQuantity(str, num));
-// 获取上下文
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{public}s ', testNapi.getCbContext().toString());
+
+// ...
+                  // napi_get_cb_info
+                  let student = new Student('Alice', 18, 100);
+                  // 获取参数
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get string arg:%{public}s',
+                    testNapi.getCbArgs(str));
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get array arg:%{public}s ',
+                    testNapi.getCbArgs(arr).toString());
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get num arg:%{public}d ',
+                    testNapi.getCbArgs(num));
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get undefined arg:%{public}s ',
+                    testNapi.getCbArgs(undefined));
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get object arg:%{public}s ',
+                    JSON.stringify(testNapi.getCbArgs(student)));
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get function arg:%{public}d ',
+                    testNapi.getCbArgs(summation(arr)));
+                  // 获取参数个数
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get arg quantity:%{public}d ',
+                    testNapi.getCbArgQuantity(str, num));
+                  // 获取上下文
+                  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{public}s ',
+                    testNapi.getCbContext().toString());
 ```
 
 ## napi_call_function
