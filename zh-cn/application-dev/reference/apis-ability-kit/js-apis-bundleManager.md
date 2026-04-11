@@ -2051,7 +2051,7 @@ ArkTS-Dyn: getApplicationLabel(bundleName: string, appIndex: number): Promise\<s
 
 ArkTS-Sta: getApplicationLabel(bundleName: string, appIndex: int): Promise\<string>
 
-获取指定远程设备上指定包名的应用版本信息。使用Promise异步回调。
+获取指定包名和分身索引的应用名称。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
