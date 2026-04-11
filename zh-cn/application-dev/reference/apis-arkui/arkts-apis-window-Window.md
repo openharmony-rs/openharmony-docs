@@ -2466,17 +2466,15 @@ export default class EntryAbility extends UIAbility {
 
 ## setPreferredOrientationWithResult<sup>26+</sup>
 
-setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
+setPreferredOrientation(orientation: Orientation): Promise&lt;OrientationResult&gt;
 
 设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅支持主窗口调用且生效，其他窗口类型调用后不生效。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，支持主窗口和WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口调用且生效，其他窗口类型调用后不生效。当系统窗口调用setPreferredOrientation接口时，若存在层级更高的窗口设置了显示方向，那么本次调用不会立即生效。此时，设置的显示方向会被记录，当不存在有更高层级且设置了显示方向的窗口时，将还原最后一次的方向请求。当WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口设置显示方向且生效时，会将前台应用退至后台。
+**系统能力：** SystemCapability.Window.SessionManager
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -2494,7 +2492,7 @@ setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;[OrientationResult](arkts-apis-window-i.md#orientationResult26)&gt; | Promise对象。返回设置窗口显示方向的结果 |
 
 **错误码：**
 
@@ -2502,8 +2500,9 @@ setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息                                                                                                              |
 |---------|-------------------------------------------------------------------------------------------------------------------|
-| 401     | Parameter error. Possible cause: Invalid parameter value range.                                                   |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300003  | This window manager service works abnormally.                |
 
 **示例：**
 
@@ -2525,11 +2524,11 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       windowClass = data;
-      let orientation = window.Orientation.AUTO_ROTATION;
+      let orientation = window.Orientation.LANDSCAPE;
       try {
         let promise = windowClass.setPreferredOrientationWithResult(orientation);
-        promise.then(() => {
-          console.info('Succeeded in setting the window orientation.');
+        promise.then((result: window.OrientationResult) => {
+          console.info(`Succeeded in setting the window orientation. Result: ${JSON.stringify(result)}`);
         }).catch((err: BusinessError) => {
           console.error(`Failed to set the window orientation. Cause code: ${err.code}, message: ${err.message}`);
         });

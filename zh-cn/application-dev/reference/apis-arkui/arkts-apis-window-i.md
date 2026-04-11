@@ -513,6 +513,18 @@
 | rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。 |
 | windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
 
+## OrientationResult<sup>26+</sup>
+
+设置窗口显示方向的结果。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读  | 可选 | 说明                    |
+| ------ | ---- | ----- | ---- | ----------------------- |
+| executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationExecutionResult26) | 否 | 否 | 设置窗口显示方向的执行结果 |
+
 ## SubWindowOptions<sup>11+</sup>
 
 子窗口创建参数。

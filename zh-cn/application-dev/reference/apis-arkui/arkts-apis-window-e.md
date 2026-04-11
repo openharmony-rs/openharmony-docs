@@ -224,6 +224,20 @@
 | WINDOW_WILL_ROTATE| 0 | 窗口即将旋转。 |
 | WINDOW_DID_ROTATE | 1 | 窗口旋转结束。 |
 
+## OrientationExecutionResult<sup>26+</sup>
+
+窗口设置显示方向策略执行结果的类型。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：**  SystemCapability.Window.SessionManager
+
+| 名称   |  值 | 说明                   |
+| ------ | ---- | --------------------- |
+| ORIENTATION_APPLIED | 0 | 设置的方向已生效。 |
+| ORIENTATION_IGNORED | 1 | 设置的方向被忽略。 |
+| ORIENTATION_PENDING | 2 | 设置的方向被挂起，将很快生效。 |
+
 ## RectType<sup>19+</sup>
 
 窗口矩形区域坐标系类型。
@@ -326,6 +340,18 @@ WindowStage生命周期的状态类型枚举。
 | SCROLL_SHOT_ABORT | 4 | 滚动截屏中止。 |
 
 ## RotationInfoType<sup>23+</sup>
+
+旋转信息类型枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 值     | 说明       |
+| ---------- | ------ | ---------- |
+| WINDOW_ORIENTATION  | 0      | 窗口所在屏幕的显示方向，以窗口模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)中的orientation参数。 |
+| DISPLAY_ORIENTATION | 1      | 屏幕显示方向，以屏幕模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的orientation属性。 |
+| DISPLAY_ROTATION    | 2      | 设备的屏幕顺时针旋转角度。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的rotation属性。 |
+
+## RotationInfoType<sup>26+</sup>
 
 旋转信息类型枚举。
 
