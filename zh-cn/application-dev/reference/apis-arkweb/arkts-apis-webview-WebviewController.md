@@ -4685,7 +4685,6 @@ struct WebComponent {
 支持开发者基于默认的User-Agent去定制User-Agent。
 
 ArkTS-Dyn示例：
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -10097,6 +10096,7 @@ struct WebComponent {
 isAdsBlockEnabledForCurPage() : boolean
 
 查询当前网页是否开启广告过滤功能。
+
 当Web组件使能广告过滤功能后，默认所有页面都是开启广告过滤的，支持通过[addAdsBlockDisallowedList](./arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)指定域名禁用广告过滤。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -12843,7 +12843,7 @@ ArkTS-Dyn示例：
 
    async function readRawFile(path: string, context: UIContext) {
      try {
-       return await context.getHostContext()!.resourceManager.getRawFileContent(path);;
+       return await context.getHostContext()!.resourceManager.getRawFileContent(path);
      } catch (err) {
        return new Uint8Array(0);
      }
@@ -13118,6 +13118,7 @@ struct WebComponent {
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
 注册回调函数，开启[应用接管网页媒体播放功能](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)后，当网页中有播放媒体时，触发注册的回调函数。
+
 如果应用接管网页媒体播放功能未开启，则注册的回调函数不会被触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -16897,8 +16898,11 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 > - 如果发现快照相似度（即[BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20)中的similarity）极低，请确认key值是否传递正确。
 > - 调用本接口后，将启用页面加载快照检测及生成过渡帧计算，会产生一定的资源开销。
 > - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加约12*w*h B，页面打开后内存回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w*h/10 B，缓存位于应用缓存的位置。
+> - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**设备行为差异：** 该接口在Phone中可正常调用，在其他设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -17580,6 +17584,7 @@ Scroll Test
 </body>
 </html>
 ```
+
 ## setActiveWebEngineVersion<sup>20+</sup>
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
@@ -18198,6 +18203,7 @@ resumeMicrophone(): void
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -18956,6 +18962,80 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  urltrustList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"trust.example.com\", \"path\":\"test\"}]}"
+  urlWildcardList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"*.example.com\", \"path\":\"*\"]}]}"
+
+  build() {
+    Column() {
+      Button('Setting trustlist')
+        .onClick(() => {
+          try {
+            // 设置白名单，只允许访问trust网页
+            this.controller.setUrlTrustList(this.urltrustList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Setting wildcardlist')
+        .onClick(() => {
+          try {
+            // 设置通配符白名单，所有url都可以允许访问
+            this.controller.setUrlTrustList(this.urlWildcardList, true, true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Cancel trustlist.')
+        .onClick(() => {
+          try {
+            // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+            this.controller.setUrlTrustList("");
+          } catcharing (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access trust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，可以访问trust网页
+            this.controller.loadUrl('http://trust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access untrust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，此时不可以访问untrust网页，并弹出错误页
+            this.controller.loadUrl('http://untrust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
+        try {
+          // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+          this.controller.setUrlTrustList(this.urltrustList);
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+    }
+  }
+}
+```
+
 ## enableAdvancedSecurityMode
 
 static enableAdvancedSecurityMode(securityParams: SecurityParams): void
@@ -19042,80 +19122,6 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: "https://www.example.com", controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-'use static'
-import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  urltrustList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"trust.example.com\", \"path\":\"test\"}]}"
-  urlWildcardList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"*.example.com\", \"path\":\"*\"]}]}"
-
-  build() {
-    Column() {
-      Button('Setting trustlist')
-        .onClick(() => {
-          try {
-            // 设置白名单，只允许访问trust网页
-            this.controller.setUrlTrustList(this.urltrustList);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Button('Setting wildcardlist')
-        .onClick(() => {
-          try {
-            // 设置通配符白名单，所有url都可以允许访问
-            this.controller.setUrlTrustList(this.urlWildcardList, true, true);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Button('Cancel trustlist.')
-        .onClick(() => {
-          try {
-            // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
-            this.controller.setUrlTrustList("");
-          } catcharing (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Button('Access trust web')
-        .onClick(() => {
-          try {
-            // 白名单生效，可以访问trust网页
-            this.controller.loadUrl('http://trust.example.com/test');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Button('Access untrust web')
-        .onClick(() => {
-          try {
-            // 白名单生效，此时不可以访问untrust网页，并弹出错误页
-            this.controller.loadUrl('http://untrust.example.com/test');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
-        try {
-          // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
-          this.controller.setUrlTrustList(this.urltrustList);
-        } catch (error) {
-          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-      })
     }
   }
 }
