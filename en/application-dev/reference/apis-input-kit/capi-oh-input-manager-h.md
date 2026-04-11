@@ -823,11 +823,13 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 Injects a key event.
 
-This API does not take effect if the event injection permission is not granted.
+This API does not take effect if the event injection permission is not granted and the caller does not hold the **ohos.permission.CONTROL_DEVICE** permission.
 
-Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Since API version 22, if the key press event (**KEY_ACTION_DOWN**) of a modifier key (**KEYCODE_META_LEFT**, **KEYCODE_META_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CAPS_LOCK**, **KEYCODE_SCROLL_LOCK**, or **KEYCODE_NUM_LOCK**) is injected, the release event (**KEY_ACTION_UP**) of the key needs to be injected in a timely manner to avoid the key being pressed for a long time.
+Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Starting from API version 26.0.0, callers that hold the **ohos.permission.CONTROL_DEVICE** permission can also use this API directly.<br>Since API version 22, if the key press event (**KEY_ACTION_DOWN**) of a modifier key (**KEYCODE_META_LEFT**, **KEYCODE_META_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CAPS_LOCK**, **KEYCODE_SCROLL_LOCK**, or **KEYCODE_NUM_LOCK**) is injected, the release event (**KEY_ACTION_UP**) of the key needs to be injected in a timely manner to avoid the key being pressed for a long time.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
+
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 12
 
@@ -1993,6 +1995,8 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 Requests the permission for [OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent), [OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent), and [OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent).
 
+Starting from API version 26.0.0, once the **ohos.permission.CONTROL_DEVICE** permission is granted, injection authorization is no longer required. The behavior of this API is independent of the **ohos.permission.CONTROL_DEVICE** permission.
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If this API is called on other devices, error code 801 is returned.
@@ -2021,6 +2025,8 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 **Description**
 
 Queries the injection permission authorization status of the current application.
+
+Starting from API version 26.0.0, this API returns only the dialog authorization status. It does not indicate whether the caller has injection capability due to holding the **ohos.permission.CONTROL_DEVICE** permission.
 
 **Since**: 20
 
@@ -3807,11 +3813,13 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 Injects a touch event by using coordinates in the relative coordinate system with the upper-left corner of the specified screen as the origin.
 
-This API does not take effect if the event injection permission is not granted.
+This API does not take effect if the event injection permission is not granted and the caller does not hold the **ohos.permission.CONTROL_DEVICE** permission.
 
-Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.
+Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Starting from API version 26.0.0, callers that hold the **ohos.permission.CONTROL_DEVICE** permission can also use this API directly.
 
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices, but has no effect on other devices.
+
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 12
 
@@ -3838,11 +3846,13 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 Injects a mouse event by using coordinates in the relative coordinate system with the upper-left corner of the specified screen as the origin.
 
-This API does not take effect if the event injection permission is not granted.
+This API does not take effect if the event injection permission is not granted and the caller does not hold the **ohos.permission.CONTROL_DEVICE** permission.
 
-Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.
+Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Starting from API version 26.0.0, callers that hold the **ohos.permission.CONTROL_DEVICE** permission can also use this API directly.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
+
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 12
 
@@ -3919,9 +3929,11 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 Injects a mouse event by using coordinates in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
-This API does not take effect if the event injection permission is not granted.
+This API does not take effect if the event injection permission is not granted and the caller does not hold the **ohos.permission.CONTROL_DEVICE** permission.
 
-You are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.
+Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Starting from API version 26.0.0, callers that hold the **ohos.permission.CONTROL_DEVICE** permission can also use this API directly.
+
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 20
 
@@ -4032,9 +4044,11 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 Injects a touch event by using coordinates in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
-This API does not take effect if the event injection permission is not granted.
+This API does not take effect if the event injection permission is not granted and the caller does not hold the **ohos.permission.CONTROL_DEVICE** permission.
 
-You are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.
+Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Starting from API version 26.0.0, callers that hold the **ohos.permission.CONTROL_DEVICE** permission can also use this API directly.
+
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 20
 
