@@ -727,8 +727,8 @@ enum OH_Camera_ExposureState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_EXPOSURE_STATE_SCAN = 0      | 表示曝光处于扫描状态。 |
-| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 表示曝光已经收敛。     |
+| OH_CAMERA_EXPOSURE_STATE_SCAN = 0      | 曝光处于扫描状态。 |
+| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 曝光已经收敛。     |
 
 ## 函数说明
 

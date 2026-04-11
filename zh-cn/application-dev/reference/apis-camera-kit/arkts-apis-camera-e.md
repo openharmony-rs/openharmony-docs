@@ -508,5 +508,5 @@
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
-| EXPOSURE_STATE_SCAN       | 0    | 曝光调整中。     |
-| EXPOSURE_STATE_CONVERGED  | 1    | 曝光已稳定。     |
+| EXPOSURE_STATE_SCAN       | 0    | 曝光处于扫描状态。     |
+| EXPOSURE_STATE_CONVERGED  | 1    | 曝光已经收敛。     |
