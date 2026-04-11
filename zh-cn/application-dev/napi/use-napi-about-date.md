@@ -59,9 +59,8 @@ static napi_value CreateDate(napi_env env, napi_callback_info info)
 
 <!-- @[napi_create_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
-```ts
-// index.d.ts
-export const createDate: () => Date;
+``` TypeScript
+export const createDate: () => Date; // napi_create_date
 ```
 
 ArkTS侧示例代码
