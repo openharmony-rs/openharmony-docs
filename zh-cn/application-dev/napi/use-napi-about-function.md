@@ -241,9 +241,8 @@ static napi_value CalculateArea(napi_env env, napi_callback_info info)
 
 <!-- @[napi_create_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
-```ts
-// index.d.ts
-export const calculateArea: (width: number, height: number) => number;
+``` TypeScript
+export const calculateArea: (width: number, height: number) => number; // napi_create_function
 ```
 
 ArkTS 侧示例代码
