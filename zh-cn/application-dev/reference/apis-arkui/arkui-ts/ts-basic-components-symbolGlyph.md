@@ -60,7 +60,33 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | SymbolGlyph组件颜色。<br/> 默认值：不同渲染策略下默认值不同。 |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | SymbolGlyph组件颜色。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
+
+### fontColor
+
+fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
+
+设置SymbolGlyph组件的颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数。
+
+> **说明：**
+>
+> 该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ### fontSize
 
@@ -941,3 +967,54 @@ struct Index {
 }
 ```
 ![symbol](figures/SymbolGlyph_Example3.jpeg)
+
+### 示例4（设置SymbolGlyph颜色）
+
+该示例通过[fontColor](#fontcolor-1)属性传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数，设置SymbolGlyph组件的颜色。
+
+从API版本26.0.0开始，新增支持[fontColor](#fontcolor-1)。
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  blueColor: ColorMetrics[] = [ColorMetrics.resourceColor(Color.Blue)];
+  greenColor: ColorMetrics[] = [ColorMetrics.numeric(0x00FF00)];
+  blackColor: ColorMetrics[] = [ColorMetrics.rgba(0, 0, 0, 1.0)];
+
+  build() {
+    Column() {
+      Row({ space: 20 }) {
+        Column() {
+          Text('resourceColor蓝色')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.blueColor)
+        }
+
+        Column() {
+          Text('numeric绿色')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.greenColor)
+        }
+
+        Column() {
+          Text('rgba黑色')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.blackColor)
+        }
+      }.width('100%')
+    }.width('100%')
+  }
+}
+```
+
+![symbol](figures/SymbolGlyph_Example4.jpeg)
