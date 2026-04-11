@@ -181,9 +181,9 @@ static napi_value ObjCallFunction(napi_env env, napi_callback_info info)
 
 <!-- @[napi_call_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
-```ts
-// index.d.ts
-export const callFunction: (func: Function) => number;
+``` TypeScript
+export const callFunction: (func: Function) => number; // napi_call_function
+
 export const objCallFunction: (obj: Object, func: Function) => number;
 ```
 
