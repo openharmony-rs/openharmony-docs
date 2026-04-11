@@ -244,7 +244,7 @@ export default class MyAbility extends UIAbility {
 import { UIAbility, StartOptions, Want, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let want: Want = {
+let targetWant: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
@@ -255,7 +255,7 @@ let option: StartOptions = {
 // 确保从上下文获取到context
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    this.context.startAbility(want, option).then(() => {
+    this.context.startAbility(targetWant, option).then(() => {
       console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
