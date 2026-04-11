@@ -39,9 +39,11 @@ cpp部分代码
 
 <!-- @[napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
+#include <hilog/log.h>
 #include "napi/native_api.h"
 
+// napi_create_date
 static napi_value CreateDate(napi_env env, napi_callback_info info)
 {
     // 获取传入的Unix Time Stamp时间
