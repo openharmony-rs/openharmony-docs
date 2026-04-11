@@ -354,7 +354,7 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 type TextSelectionChangeCallback = (selectionText: string) => void
 
-onTextSelectionChange的回调函数，选区内容改变时触发。
+onTextSelectionChange的回调，选区内容改变时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
