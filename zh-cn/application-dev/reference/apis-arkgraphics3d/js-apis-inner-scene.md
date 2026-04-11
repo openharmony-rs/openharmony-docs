@@ -890,6 +890,27 @@ function registerResourcePath(): void {
 }
 ```
 
+## SoftShadowConfig<sup>26+</sup>
+
+几何类型定义抽象类，用于解释特定几何类型的属性。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowAlgorithmType | [ShadowAlgorithmType](#geometrytype18)| 是 | 否 | 阴影算法的枚举值。 |
+
+## PCFConfig<sup>26+</sup>
+
+PCF阴影设置，继承自[GeometryDefinition](#geometrydefinition18)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowSampleRadius | number | 否 | 是 | 采样半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
+| shadowSampleCount | number | 否 | 否 | 采样次数。 |
+
 ## RenderConfiguration<sup>23+</sup>
 
 渲染配置接口。
@@ -899,6 +920,7 @@ function registerResourcePath(): void {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | shadowResolution| [Vec2](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 表示全局阴影贴图分辨率，单位为像素（px）。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的值需要大于0才能正确生效。如果输入值为浮点数则自动截取整数部分；如果输入值小于或等于0则无视该输入，维持原有配置。 |
+| softShadowConfig| [SoftShadowConfig](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 用于控制软阴影算法类型的配置。 |
 
 ## RenderParameters<sup>15+</sup>
 

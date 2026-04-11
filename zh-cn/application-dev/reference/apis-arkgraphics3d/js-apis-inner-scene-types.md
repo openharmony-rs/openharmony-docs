@@ -150,6 +150,16 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | TRIANGLE_LIST | 0 | 由不相交的顶点集合构成不同的三角形。 |
 | TRIANGLE_STRIP | 1 | 每个顶点和前一个三角形的一条边构成新的三角形。 |
 
+## ShadowAlgorithmType<sup>26+</sup>
+
+阴影算法枚举值。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| PCF | 0 | 可变百分比近距离阴影过滤。按屏幕空间逐像素进行过滤。 |
+
 ## CustomGeometry<sup>18+</sup>
 
 自定义几何类型，继承自[GeometryDefinition](#geometrydefinition18)。
