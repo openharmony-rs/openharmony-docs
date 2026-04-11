@@ -249,11 +249,10 @@ ArkTS 侧示例代码
 
 <!-- @[ark_napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-hilog.info(0x0000, 'testTag', 'Test Node-API create_function:%{public}d ', testNapi.calculateArea(1.2, 4));
+``` TypeScript
+// napi_create_function
+hilog.info(0x0000, 'testTag', 'Test Node-API create_function:%{public}d ',
+  testNapi.calculateArea(1.2, 4));
 ```
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
