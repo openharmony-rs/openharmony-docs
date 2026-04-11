@@ -144,9 +144,8 @@ cpp部分代码
 
 <!-- @[napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
-#include "napi/native_api.h"
-
+``` C++
+// napi_call_function
 static napi_value CallFunction(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
