@@ -28,7 +28,13 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.PerfTest
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明     |
 | ---------- | ---- | -------- |
@@ -67,7 +73,13 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.PerfTest
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
@@ -89,7 +101,13 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.PerfTest
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
@@ -104,7 +122,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。
 
-### create
+### create<sup>20+</sup>
 
 static create(strategy: PerfTestStrategy): PerfTest
 
@@ -112,7 +130,13 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.PerfTest
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -166,7 +190,7 @@ async function demo() {
 }
 ```
 
-### run
+### run<sup>20+</sup>
 
 run(): Promise\<void>
 
@@ -174,7 +198,13 @@ run(): Promise\<void>
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.PerfTest
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -216,7 +246,7 @@ async function demo() {
 }
 ```
 
-### getMeasureResult
+### getMeasureResult<sup>20+</sup>
 
 getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
@@ -224,7 +254,13 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.PerfTest
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -273,7 +309,7 @@ async function demo() {
 }
 ```
 
-### destroy
+### destroy<sup>20+</sup>
 
 destroy(): void
 
@@ -281,7 +317,13 @@ destroy(): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
+
 **系统能力**：SystemCapability.Test.PerfTest
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
