@@ -363,7 +363,7 @@ enableInputMethodSafely();
 
 getCursorInfo(userId?: long): CursorInfo
 
-获取指定用户的光标信息。
+获取指定用户的光标信息。当编辑框未给输入法服务通知光标信息时，返回所有属性值都为0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
