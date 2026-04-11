@@ -119,16 +119,18 @@ ArkTS侧示例代码
 
 <!-- @[ark_napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
+``` TypeScript
+// napi_get_date_value
 try {
   const date = new Date();
   hilog.info(0x0000, 'testTag', 'Node-API: output the Unix Time Stamp: %{public}d', date.getTime());
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_date_value: %{public}d', testNapi.getDateValue(date));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_date_value: %{public}d',
+    testNapi.getDateValue(date));
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_date_value error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_date_value error: %{public}s',
+    error.message);
+  // ...
 }
 ```
 
