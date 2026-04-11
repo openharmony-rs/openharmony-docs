@@ -5612,6 +5612,7 @@ ArkTS-Sta: onInputmethodAttached(callback: OnInputmethodAttachedCallback | undef
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Column, Component, Entry, Web, $rawfile } from '@ohos.arkui.component';
   import { webview } from '@kit.ArkWeb';
   import { inputMethod } from '@kit.IMEKit';
