@@ -81,10 +81,8 @@ cpp部分代码
 
 <!-- @[napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
-#include <hilog/log.h>
-#include "napi/native_api.h"
-
+``` C++
+// napi_get_date_value
 static napi_value GetDateValue(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
