@@ -111,9 +111,8 @@ static napi_value GetDateValue(napi_env env, napi_callback_info info)
 
 <!-- @[napi_get_date_value_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
-```ts
-// index.d.ts
-export const getDateValue: (date: Date) => number | undefined;
+``` TypeScript
+export const getDateValue: (date: Date) => number | undefined; // napi_get_date_value
 ```
 
 ArkTS侧示例代码
