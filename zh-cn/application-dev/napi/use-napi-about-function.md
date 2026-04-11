@@ -69,11 +69,12 @@ static napi_value GetCbContext(napi_env env, napi_callback_info info)
 
 <!-- @[napi_get_cb_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
-```ts
-// index.d.ts
-export const getCbArgs: <T>(arg: T) => T;
+``` TypeScript
+export const getCbArgs: <T>(arg: T) => T; // napi_get_cb_info
+
 // getCbArgQuantity的入参由用户自定义，在此用例中，我们用两个入参，一个是string，一个是number
 export const getCbArgQuantity: (str: string, num: number) => number;
+
 export const getCbContext: () => Object;
 ```
 
