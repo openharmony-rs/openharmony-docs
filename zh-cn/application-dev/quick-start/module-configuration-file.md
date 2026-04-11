@@ -153,6 +153,8 @@ module.json5配置文件包含以下标签。
 | crossAppSharedConfig | 标识应用间共享配置的配置文件名。取值为不超过255字节的字符串。用于发布配置给其他应用读取，在应用安装时生效，应用卸载时失效。详细使用方式见[共享配置使用](../database/share-config.md#配置发布方)。<br/>**说明：**<br/>从API version 20开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | formWidgetModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，应用包需要配置该标签，用来关联卡片包。取值为卡片包的模块名称，对应卡片包module.json5中的name标签。具体使用方式请参考[FormExtensionAbility配置](../form/arkts-ui-widget-configuration.md#formextensionability配置)。<br/>**说明：**<br/> 1. 从API version 20开始，支持该标签。<br/> 2. 仅在独立卡片包的应用包中，该标签配置生效，且要求对应的卡片包模块必须配置formExtensionModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
+| uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
+| srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
 
 ## deviceTypes标签

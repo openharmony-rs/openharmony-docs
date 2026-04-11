@@ -70,7 +70,7 @@
 app.json5配置文件包含以下标签。
 
 
-  **表1** app.json5配置文件标签说明
+**表1** app.json5配置文件标签说明
 
 <!--Table: 15%; 60%; 10%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
@@ -99,18 +99,26 @@ app.json5配置文件包含以下标签。
 |targetBundleName|标识当前包所指定的目标应用，标签值的取值规则和范围与bundleName标签一致。配置该标签的应用为具有overlay特征的应用。|字符串|该标签可缺省，缺省值为空。|
 |targetPriority|标识当前应用的优先级，取值范围为1~100。配置targetBundleName标签之后，才支持配置该标签。|数值|该标签可缺省，缺省值为1。|
 |generateBuildHash |标识当前应用的所有HAP和HSP是否由打包工具生成哈希值。<br/>该标签配置为true时，该应用下的所有HAP和HSP都会由打包工具生成对应的哈希值。系统OTA升级时，若应用的versionCode保持不变，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：当前应用下所有HAP和HSP都会由打包工具生成对应的哈希值。<br/>-&nbsp;false：当前应用下所有HAP和HSP都不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该标签仅对预置应用生效。|布尔值|该标签可缺省，缺省值为false。|
+| 2in1 | 标识对PC/2in1设备做的特殊配置，可以配置的属性标签为minAPIVersion。<br/>如果使用该属性对PC/2in1设备做了特殊配置，则应用在PC/2in1设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时PC/2in1设备使用app.json5公共区域配置的属性值。 |
 | GWPAsanEnabled | 标识应用程序是否开启[GWP-asan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection#section2735718353)堆内存检测工具，用于对内存越界、内存释放后使用等内存破坏问题进行分析。<br/>-&nbsp;true：应用程序开启GWP-asan检测。<br/>-&nbsp;false：应用程序不开启GWP-asan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | [appEnvironments](#appenvironments标签) | 标识当前应用配置的应用环境变量。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | maxChildProcess | 标识当前应用自身可创建的子进程的最大个数，取值范围为0到512，0表示不限制，当应用有多个模块时，以entry模块的配置为准。 | 数值 | 该标签可缺省，缺省时使用系统配置的默认值<!--RP2-->1<!--RP2End-->。 |
 | [multiAppMode](#multiappmode标签) | 标识当前应用配置的多开模式。仅bundleType为app的应用的entry或feature模块配置有效，存在多个模块时，以entry模块的配置为准。 | 对象 | 该标签可缺省，缺省值为空。 |
 | hwasanEnabled | 标识应用程序是否开启[HWAsan检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hwasan)。HWAsan(HardWare-assisted AddressSanitizer)是利用Top-Byte-Ignore特性实现的增强版Asan，与Asan相比HWAsan的内存开销更低，检测到的内存错误范围更大。<br/>-&nbsp;true：当前工程开启HWAsan检测。<br/>-&nbsp;false：当前工程不开启HWAsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| ubsanEnabled | 标识应用程序是否开启UBsan检测。<br/>UBsan(Undefined Behavior Sanitizer)是一个用于运行时检测程序中未定义行为的工具，旨在帮助开发人员发现代码中潜在的错误和漏洞。<br/>-&nbsp;true：当前工程开启UBsan检测。<br/>-&nbsp;false：当前工程不开启UBsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| tsanEnabled | 标识应用程序是否开启使用TSan检测线程错误。<br/>[TSan（ThreadSanitizer）](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-tsan-detection)是一个检测数据竞争的工具。<br/>-&nbsp;true：当前工程开启TSan检测。<br/>-&nbsp;false：当前工程不开启TSan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| ubsanEnabled | 标识应用程序是否[使用UBSan检测未定义行为](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ubsan)。<br/>UBsan(Undefined Behavior Sanitizer)是一个用于运行时检测程序中未定义行为的工具，旨在帮助开发人员发现代码中潜在的错误和漏洞。<br/>-&nbsp;true：当前工程开启UBsan检测。<br/>-&nbsp;false：当前工程不开启UBsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | cloudFileSyncEnabled | 标识当前应用是否启用端云文件同步能力。 <br/>-&nbsp;true：当前应用启用端云文件同步能力。<br/>-&nbsp;false：当前应用不启用端云文件同步能力。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | cloudStructuredDataSyncEnabled | 标识当前应用是否启用端云结构化数据同步能力。 <br/>-&nbsp;true：当前应用启用端云结构化数据同步能力。<br/>-&nbsp;false：当前应用不启用端云结构化数据同步能力。<br/>**说明：** <br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | [configuration](#configuration标签) | 标识当前应用字体大小跟随系统配置的能力。<br/>该标签是一个profile文件资源，用于指定描述应用字体大小跟随系统变更的配置文件。| 字符串 | 该标签可缺省，缺省时configuration使用不跟随系统默认设定。 |
 | assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>该标签仅在应用主模块（即module.json5中的type字段配置为entry）下生效。<br/>从API version 18开始，支持该标签。| 字符串数组 | 该标签可缺省，缺省值为空。 |
 | appPreloadPhase | 配置[应用预加载](../application-models/preload-application.md)到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。<br/>**说明：** <br/>从API version 20开始，支持该标签。<br>仅在PC/2in1设备上生效。<br>仅在应用的entry模块配置有效。<br>该标签仅表示应用自身是否为预加载到所配置阶段做好了准备，最终能否预加载还需要由系统根据用户习惯等信息来决策。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该标签。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该标签仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
+| distributedNotificationEnabled<sup>(deprecated)</sup> | 标识应用是否开启分布式通知，当开启分布式通知时，同一分布式组网下的两个设备（A和B），当设备A收到一条消息时，设备B会收到一条分布式消息用于设备B的使用者去查看设备A的消息。<br/>-&nbsp;true：开启。<br/>-&nbsp;false：不开启。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| entityType<sup>(deprecated)</sup> | 标识应用的类别，包括：<br/>-&nbsp;game：游戏类。<br/>-&nbsp;media：影音类。<br/>-&nbsp;communication：社交通信类。<br/>-&nbsp;news：新闻类。<br/>-&nbsp;travel：出行类。<br/>-&nbsp;utility：工具类。<br/>-&nbsp;shopping：购物类。<br/>-&nbsp;education：教育类。<br/>-&nbsp;kids：少儿类。<br/>-&nbsp;business：商务类。<br/>-&nbsp;photography：拍摄类。<br/>-&nbsp;unspecified：其他，不属于上述类。<br/>**说明：** <br/>从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省为unspecified。 |
+| keepAlive<sup>(deprecated)</sup> | 标识应用程序是否保持活动状态。此属性仅在使用系统应用或特权应用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| removable<sup>(deprecated)</sup> | 标识应用是否可移除。此属性仅在系统应用或特权应用使用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为true。 |
+| singleton<sup>(deprecated)</sup> | 标识应用程序是否为单例模式。此属性仅在使用系统应用或特权应用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| userDataClearable<sup>(deprecated)</sup> | 标识是否允许应用程序清除用户数据。此属性仅在使用系统应用或特权应用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为true。 |
 
 ## appEnvironments标签
 
