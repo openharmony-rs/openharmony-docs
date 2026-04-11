@@ -1467,7 +1467,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 |-------------------------|---------|----|---------------------------------------------|
 | needGC         | boolean | 是  | 转储堆快照前是否需要GC。true：需要GC；false：不需要GC。 |
 | needClean      | boolean | 是  | 转储堆快照前是否需要清除nodeId。true：需要清除；false：不需要清除。|
-| processDump      | boolean | 是  | 是否转储当前线程所在进程的原始堆快照。true：转储当前线程所属进程的原始堆快照；false：转储当前线程的原始堆快照。|
+| processDump      | boolean | 是  | 是否转储当前线程所属进程的原始堆快照。true：转储当前线程所属进程的原始堆快照；false：转储当前线程的原始堆快照。|
 
 **返回值**：
 
