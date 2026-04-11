@@ -991,7 +991,7 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
-调用此函数以处理具有“文件”输入类型的HTML表单。如果不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。如果返回true，应用可以自定义“选择文件”的响应行为。
+调用此函数以处理具有“文件”输入类型的HTML表单。若不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。若返回true，应用可以自定义“选择文件”的响应行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2095,7 +2095,7 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
 onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
-长按特定元素（例如图片，链接）或鼠标右键，跳出菜单。
+长按特定元素（例如图片，链接）或鼠标右键，弹出菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2338,7 +2338,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当页面滑动到指定位置时触发。 |
+| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当页面滚动到指定位置时触发。 |
 
 **示例：**
 
@@ -2365,20 +2365,27 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 ## onGeolocationShow
 
-onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
+ArkTS-Dyn: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
+
+ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | undefined)
 
 通知用户收到地理位置信息获取请求，需配置"ohos.permission.LOCATION"、"ohos.permission.APPROXIMATELY_LOCATION"权限。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback      | Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\>  | 是 | 回调函数，请求显示地理位置权限时触发，返回地理位置信息请求对象。     |
+| callback      | ArkTS-Dyn: Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\> <br/>ArkTS-Sta: Callback\<[OnGeolocationShowEvent](./arkts-basic-components-web-i.md#ongeolocationshowevent12)\> \| undefined | 是 | 回调函数，请求显示地理位置权限时触发，返回地理位置信息请求对象。     |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2437,6 +2444,50 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
     }
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnGeolocationShowEvent } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    uiContext: UIContext = this.getUIContext();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .geolocationAccess(true)
+          .onGeolocationShow((event) => {
+            if (event) {
+              this.uiContext.showAlertDialog({
+                title: 'title',
+                message: 'text',
+                primaryButton: {
+                  value: 'cancel',
+                  action: () => {
+                    event.geolocation.invoke(event.origin, false, true);
+                  }
+                },
+                secondaryButton: {
+                  value: 'ok',
+                  action: () => {
+                    event.geolocation.invoke(event.origin, true, true);
+                  }
+                },
+                cancel: () => {
+                  event.geolocation.invoke(event.origin, false, true);
+                }
+              } as AlertDialogParamWithButtons)
+            }
+          })
+      }
+    }
+  }
+  ```
 
   加载的html文件。
   ```html
@@ -2463,20 +2514,27 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
 ## onGeolocationHide
 
-onGeolocationHide(callback: () => void)
+ArkTS-Dyn: onGeolocationHide(callback: () => void)
+
+ArkTS-Sta: onGeolocationHide(callback: (() => void) | undefined)
 
 通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | () => void | 是 | 地理位置信息获取请求已被取消的回调函数。 |
+| callback | ArkTS-Dyn: () => void <br/>ArkTS-Sta: (() => void) \| undefined | 是 | 地理位置信息获取请求已被取消的回调函数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2485,6 +2543,29 @@ onGeolocationHide(callback: () => void)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .geolocationAccess(true)
+          .onGeolocationHide(() => {
+            console.info("onGeolocationHide...");
+          })
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -5531,6 +5612,7 @@ ArkTS-Sta: onInputmethodAttached(callback: OnInputmethodAttachedCallback | undef
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Column, Component, Entry, Web, $rawfile } from '@ohos.arkui.component';
   import { webview } from '@kit.ArkWeb';
   import { inputMethod } from '@kit.IMEKit';
