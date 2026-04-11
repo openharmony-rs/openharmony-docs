@@ -33,16 +33,19 @@ cpp部分代码
 
 <!-- @[napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
-```cpp
+``` C++
 #include "napi/native_api.h"
+
+// napi_get_cb_info
 // 获取ArkTS侧入参的参数信息
 static napi_value GetCbArgs(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     return args[0];
 }
+
 // 获取ArkTS侧入参的参数个数
 static napi_value GetCbArgQuantity(napi_env env, napi_callback_info info)
 {
@@ -52,6 +55,7 @@ static napi_value GetCbArgQuantity(napi_env env, napi_callback_info info)
     napi_create_int32(env, argc, &result);
     return result;
 }
+
 // 获取ArkTS侧this参数
 static napi_value GetCbContext(napi_env env, napi_callback_info info)
 {
