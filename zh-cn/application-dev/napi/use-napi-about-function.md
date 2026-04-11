@@ -219,9 +219,8 @@ cpp部分代码
 
 <!-- @[napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
-#include "napi/native_api.h"
-
+``` C++
+// napi_create_function
 static napi_value CalculateArea(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传递的两个参数
@@ -236,15 +235,6 @@ static napi_value CalculateArea(napi_env env, napi_callback_info info)
     napi_create_double(env, width * height, &area);
     return area;
 }
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
-    napi_value fn = nullptr;
-    napi_create_function(env, nullptr, 0, CalculateArea, nullptr, &fn);
-    napi_set_named_property(env, exports, "calculateArea", fn);
-    return exports;
-}
-EXTERN_C_END
 ```
 
 接口声明
