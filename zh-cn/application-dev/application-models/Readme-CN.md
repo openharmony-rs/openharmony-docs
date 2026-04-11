@@ -71,7 +71,7 @@
       - [拉起快递类应用（startAbilityByType）](start-express-apps.md)
       - [拉起图片编辑类应用（startAbilityByType）](photoEditorExtensionAbility.md)
       - [拉起文件处理类应用（startAbility）](file-processing-apps-startup.md)
-    - [拉起系统应用](system-app-startup.md)
+    - [拉起系统应用](system-app-startup.md)<!--PR1--><!--PR1End-->
   - [进程模型](process-model-stage.md)
   - [线程模型](thread-model-stage.md)
   <!--Del-->
