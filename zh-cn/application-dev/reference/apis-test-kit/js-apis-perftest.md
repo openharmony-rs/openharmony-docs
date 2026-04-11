@@ -122,7 +122,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。
 
-### create<sup>20+</sup>
+### create
 
 static create(strategy: PerfTestStrategy): PerfTest
 
@@ -190,7 +190,7 @@ async function demo() {
 }
 ```
 
-### run<sup>20+</sup>
+### run
 
 run(): Promise\<void>
 
@@ -246,7 +246,7 @@ async function demo() {
 }
 ```
 
-### getMeasureResult<sup>20+</sup>
+### getMeasureResult
 
 getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
@@ -309,7 +309,7 @@ async function demo() {
 }
 ```
 
-### destroy<sup>20+</sup>
+### destroy
 
 destroy(): void
 
