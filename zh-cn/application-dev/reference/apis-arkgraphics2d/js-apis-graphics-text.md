@@ -1648,7 +1648,7 @@ struct RenderTest {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Component, Column} from '@ohos.arkui.component'
+import { Entry, Component, Column } from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D"
 
 let fontCollection: text.FontCollection = new text.FontCollection();
@@ -1783,7 +1783,7 @@ struct Index {
           fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
           try {
             fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
-          } catch (e: Error) {
+          } catch (e) {
             console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
           }
         })
@@ -1928,7 +1928,6 @@ struct Index {
   }
 }
 ```
-
 
 ### unloadFontSync<sup>20+</sup>
 unloadFontSync(name: string): void
@@ -2115,13 +2114,17 @@ struct UnloadFontTest {
         .fontFamily("custom")
       Button("load font")
         .onClick(() => {
-          await this.fc.loadFont("custom", "file:///system/fonts/NotoSansCJK-Regular.ttc")
-          this.content = "自定义字体"
+          (async () => {
+            await this.fc.loadFont("custom", "file:///system/fonts/NotoSansCJK-Regular.ttc");
+            this.content = "自定义字体";
+          })();
         })
       Button("unload font")
         .onClick(() => {
-          await this.fc.unloadFont("custom")
-          this.content = "默认字体"
+          (async () => {
+            await this.fc.unloadFont("custom");
+            this.content = "默认字体";
+          })();
         })
     }.width("100%")
     .height("100%")
