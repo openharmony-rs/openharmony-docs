@@ -191,21 +191,24 @@ ArkTS 侧示例代码
 
 <!-- @[ark_napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
+``` TypeScript
 function returnNumber() {
   return 10;
 }
+
 class Person {
   age(): number {
     return 11;
   }
 }
-const person = new Person();
-hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d', testNapi.callFunction(returnNumber));
-hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d', testNapi.objCallFunction(person,person.age));
+
+// ...
+                  // napi_call_function
+                  const person = new Person();
+                  hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
+                    testNapi.callFunction(returnNumber));
+                  hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
+                    testNapi.objCallFunction(person, person.age));
 ```
 
 ## napi_create_function
