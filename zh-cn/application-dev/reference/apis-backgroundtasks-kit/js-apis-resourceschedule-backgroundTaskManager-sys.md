@@ -11,6 +11,8 @@
 
 >  **说明：**
 > 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](js-apis-resourceschedule-backgroundTaskManager.md)。
@@ -28,6 +30,10 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 申请能效资源。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统API**: 此接口为系统接口。
 
@@ -55,23 +61,23 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
 **示例**：
 
-```js
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
-    resourceTypes: backgroundTaskManager.ResourceType.CPU,
-    isApply: true,
-    timeOut: 0,
-    reason: "apply",
-    isPersist: true,
-    isProcess: false,
-    cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU // 运行在小核，从API version 23开始支持。
+  resourceTypes: backgroundTaskManager.ResourceType.CPU,
+  isApply: true,
+  timeOut: 0,
+  reason: "apply",
+  isPersist: true,
+  isProcess: false,
 };
 try {
-    backgroundTaskManager.applyEfficiencyResources(request);
-    console.info("applyEfficiencyResources success. ");
+  backgroundTaskManager.applyEfficiencyResources(request);
+  console.info("applyEfficiencyResources success. ");
 } catch (error) {
-    console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -82,6 +88,10 @@ resetAllEfficiencyResources(): void
 释放已申请的全部能效资源。
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统API**: 此接口为系统接口。
 
@@ -102,13 +112,14 @@ resetAllEfficiencyResources(): void
 
 **示例**：
 
-```js
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 try {
-    backgroundTaskManager.resetAllEfficiencyResources();
+  backgroundTaskManager.resetAllEfficiencyResources();
 } catch (error) {
-    console.error(`resetAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`resetAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -119,6 +130,10 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 获取已申请的所有能效资源信息，如能效资源类型等，使用Promise异步回调。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **系统API**: 此接口为系统接口。
 
@@ -141,18 +156,18 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 **示例**：
 
-```js
+```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    backgroundTaskManager.getAllEfficiencyResources().then((res: backgroundTaskManager.EfficiencyResourcesInfo[]) => {
-        console.info(`Operation getAllEfficiencyResources succeeded. data: ` + JSON.stringify(res));
-    }).catch((error : BusinessError) => {
-        console.error(`Operation getAllEfficiencyResources failed. code is ${error.code} message is ${error.message}`);
-    });
+  backgroundTaskManager.getAllEfficiencyResources().then((res: backgroundTaskManager.EfficiencyResourcesInfo[]) => {
+    console.info(`Operation getAllEfficiencyResources succeeded. data: ` + JSON.stringify(res));
+  }).catch((error: BusinessError) => {
+    console.error(`Operation getAllEfficiencyResources failed. code is ${error.code} message is ${error.message}`);
+  });
 } catch (error) {
-    console.error(`Operation getAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation getAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -167,6 +182,10 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 **需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
 
 **系统API**: 此接口为系统接口。
 
@@ -194,17 +213,17 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    // 请开发者根据实际情况更新参数
-    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
-        userId: 100,
-        bundleName: 'com.example.continuoustask',
-        appIndex: 0,
-        authResult: backgroundTaskManager.UserAuthResult.DENIED
-    };
-    backgroundTaskManager.setBackgroundTaskState(backgroundTaskStateInfo);
-    console.info('Operation setBackgroundTaskState succeeded.');
+  // 请开发者根据实际情况更新参数
+  let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+    userId: 100,
+    bundleName: 'com.example.continuoustask',
+    appIndex: 0,
+    authResult: backgroundTaskManager.UserAuthResult.DENIED
+  };
+  backgroundTaskManager.setBackgroundTaskState(backgroundTaskStateInfo);
+  console.info('Operation setBackgroundTaskState succeeded.');
 } catch (error) {
-    console.error(`Operation setBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation setBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -219,6 +238,10 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 **需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
 
 **系统API**: 此接口为系统接口。
 
@@ -252,16 +275,16 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    // 请开发者根据实际情况更新参数
-    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
-        userId: 100,
-        bundleName: 'com.example.continuoustask',
-        appIndex: 0
-    };
-    let auth = backgroundTaskManager.getBackgroundTaskState(backgroundTaskStateInfo);
-    console.info('Operation getBackgroundTaskState succeeded. data: ' + JSON.stringify(auth));
+  // 请开发者根据实际情况更新参数
+  let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+    userId: 100,
+    bundleName: 'com.example.continuoustask',
+    appIndex: 0
+  };
+  let auth = backgroundTaskManager.getBackgroundTaskState(backgroundTaskStateInfo);
+  console.info('Operation getBackgroundTaskState succeeded. data: ' + JSON.stringify(auth));
 } catch (error) {
-    console.error(`Operation getBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation getBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -276,6 +299,10 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 **需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 **系统API**: 此接口为系统接口。
 
@@ -302,14 +329,14 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    // 如果当前没有申请长时任务，则获取到一个空数组
-    backgroundTaskManager.obtainAllContinuousTasks().then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
-        console.info(`Operation obtainAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
-    }).catch((error: BusinessError) => {
-        console.error(`Operation obtainAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
-    });
+  // 如果当前没有申请长时任务，则获取到一个空数组
+  backgroundTaskManager.obtainAllContinuousTasks().then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
+    console.info(`Operation obtainAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
+  }).catch((error: BusinessError) => {
+    console.error(`Operation obtainAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+  });
 } catch (error) {
-    console.error(`Operation obtainAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation obtainAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -325,6 +352,10 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -346,27 +377,55 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
-    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-    }
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
 }
 
 try {
-    backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
-    console.info('Operation subscribeContinuousTaskState succeeded');
+  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  console.info('Operation subscribeContinuousTaskState succeeded');
 } catch (error) {
-    console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+} as backgroundTaskManager.BackgroundTaskSubscriber
+
+try {
+  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  console.info('Operation subscribeContinuousTaskState succeeded');
+} catch (error) {
+  console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -382,6 +441,10 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -403,35 +466,68 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
-    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-    }
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
 }
 
 try {
-    backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
-    console.info('Operation unsubscribeContinuousTaskState succeeded');
+  backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  console.info('Operation unsubscribeContinuousTaskState succeeded');
 } catch (error) {
-    console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+} as backgroundTaskManager.BackgroundTaskSubscriber
+
+try {
+  backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  console.info('Operation unsubscribeContinuousTaskState succeeded');
+} catch (error) {
+  console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
 
 ## BackgroundMode
 
 长时任务模式。
 
 **系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -447,13 +543,13 @@ try {
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| resourceTypes   | number  | 否    | 否    | 申请的资源类型。                               |
-| isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。 |
-| timeOut         | number  | 否    | 否    | 资源使用时间，单位为毫秒。                |
-| isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。|
-| isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请。<br>- false表示应用申请。         |
-| reason          | string  | 否    | 否    | 申请资源原因。                |
-| cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23) | 否    | 是    | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。 |
+| resourceTypes   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 申请的资源类型。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                                |
+| isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| timeOut         | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 资源使用时间，单位为毫秒。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
+| isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请。<br>- false表示应用申请。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23          |
+| reason          | string  | 否    | 否    | 申请资源原因。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
+| cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23) | 否    | 是    | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23  |
 
 ## ResourceType
 
@@ -465,15 +561,15 @@ try {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| CPU                     | 1    | CPU资源，申请后应用进程不被挂起。             |
-| COMMON_EVENT            | 2    | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件。 |
-| TIMER                   | 4    | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用。 |
-| WORK_SCHEDULER          | 8    | 延迟任务资源，申请后延迟任务管控变宽松。 |
-| BLUETOOTH               | 16   | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用。 |
-| GPS                     | 32   | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。 |
-| AUDIO                   | 64   | 音频资源，有音频播放时对应的应用进程不被挂起。 |
-| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会代理RUNNING_BACKGROUND锁。 |
-| SENSOR<sup>10+</sup> | 256 | 申请后不拦截Sensor回调。 |
+| CPU                     | 1    | CPU资源，申请后应用进程不被挂起。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
+| COMMON_EVENT            | 2    | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| TIMER                   | 4    | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| WORK_SCHEDULER          | 8    | 延迟任务资源，申请后延迟任务管控变宽松。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| BLUETOOTH               | 16   | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| GPS                     | 32   | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| AUDIO                   | 64   | 音频资源，有音频播放时对应的应用进程不被挂起。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会代理RUNNING_BACKGROUND锁。**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23  |
+| SENSOR<sup>10+</sup> | 256 | 申请后不拦截Sensor回调。 **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## EfficiencyResourcesInfo<sup>20+</sup>
 
@@ -485,20 +581,24 @@ try {
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|
-| [resourceTypes](#resourcetype) | number  | 否    | 否    | 能效资源类型。     |
-| timeout                        | number  | 否    | 否    | 超时时间，单位：ms。 |
-| isPersistent                   | boolean | 否    | 否    | 是否永久持有资源，默认为false。取值为true表示永久持有。取值为false表示有限时间内持有。      |
-| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请。取值为false表示应用申请。   |
-| reason                         | string  | 否    | 否    | 申请资源原因。       |
-| uid                            | number  | 否    | 否    | 应用的UID。     |
-| pid                            | number  | 否    | 否    | 应用进程的PID。   |
-| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | 否    | 是    |  指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。 |
+| [resourceTypes](#resourcetype) | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 能效资源类型。  **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23    |
+| timeout                        | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 超时时间，单位：ms。 **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| isPersistent                   | boolean | 否    | 否    | 是否永久持有资源，默认为false。取值为true表示永久持有。取值为false表示有限时间内持有。**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23      |
+| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请。取值为false表示应用申请。**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23   |
+| reason                         | string  | 否    | 否    | 申请资源原因。**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23       |
+| uid                            | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 应用的UID。 **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23    |
+| pid                            | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 应用进程的PID。 **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23  |
+| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | 否    | 是    |  指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## EfficiencyResourcesCpuLevel<sup>23+</sup>
 
 能效资源CPU级别。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -514,6 +614,10 @@ try {
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
 **系统API**: 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
@@ -528,13 +632,17 @@ try {
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 **系统API**: 此接口为系统接口。
 
 | 名称 | 类型                                  | 只读   | 可选 | 说明      |
 |--|-------------------------------------| ---- |----|---------|
-| userId | number                              | 否    | 否  | 用户ID。   |
+| userId | ArkTS-Dyn: number <br> ArkTS-Sta: int                               | 否    | 否  | 用户ID。   |
 | bundleName | string                              | 否    | 否  | 应用包名。   |
-| appIndex | number                              | 否    | 否  | 应用分身ID。 |
+| appIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int                               | 否    | 否  | 应用分身ID。 |
 | authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果。   |
 
 ## BackgroundTaskSubscriber<sup>23+</sup>
@@ -544,6 +652,10 @@ try {
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 **系统API**: 此接口为系统接口。
 
@@ -557,6 +669,10 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -567,20 +683,40 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
-    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-    }
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+} as backgroundTaskManager.BackgroundTaskSubscriber
 ```
 
 ### onContinuousTaskUpdate<sup>23+</sup>
@@ -593,6 +729,10 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -603,20 +743,40 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
-    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-    }
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+} as backgroundTaskManager.BackgroundTaskSubscriber
 ```
 
 ### onContinuousTaskStop<sup>23+</sup>
@@ -629,6 +789,10 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -639,18 +803,38 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
-    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-    },
-    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-    }
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+} as backgroundTaskManager.BackgroundTaskSubscriber
 ```
