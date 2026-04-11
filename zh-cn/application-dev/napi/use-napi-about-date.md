@@ -142,9 +142,8 @@ cpp部分代码
 
 <!-- @[napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
-#include "napi/native_api.h"
-
+``` C++
+// napi_is_date
 static napi_value IsDate(napi_env env, napi_callback_info info)
 {
     // 接受一个入参
