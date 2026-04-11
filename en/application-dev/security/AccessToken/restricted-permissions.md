@@ -1203,3 +1203,17 @@ Allows an application to use float views.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets 
 
 **Since**: 26.0.0
+
+## ohos.permission.GET_CALL_TRANSFER_INFO_STATE
+
+Allows an application to get call transfer info, such as CFU,CFB,CFNR,CFNRY.
+
+<!--RP79--><!--RP79End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0

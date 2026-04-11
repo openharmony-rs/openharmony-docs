@@ -1203,3 +1203,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.GET_CALL_TRANSFER_INFO_STATE
+
+允许应用查询呼叫转移状态，如无条件前转，遇忙呼转，无应答前转，不可及前转。
+
+<!--RP79--><!--RP79End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
