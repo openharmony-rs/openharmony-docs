@@ -2526,14 +2526,14 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| ----- | ---- | ---- | ---- |
+| - | - | - | - |
 | glyphRange | [Range](#range) | 是 | 字形范围。 |
-| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16编码单元范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16编码单元范围。 |
 
 **返回值：**
 
 | 类型 | 说明 |
-| ---- | ---- |
+| - | - |
 | Array\<[Range](#range)\> | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。|
 
 **错误码：**
@@ -2546,10 +2546,75 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-let glyphRange: text.Range = { start: 0, end: 5 };
-let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-let ranges = paragraph.getCharacterRangeForGlyphRange(glyphRange, encoding);
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character range")
+        .onClick(() => {
+          let glyphRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let ranges = paragraph.getCharacterRangeForGlyphRange(glyphRange, encoding);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button } from '@ohos.arkui.component';
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character range")
+        .onClick(() => {
+          let glyphRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let ranges = paragraph.getCharacterRangeForGlyphRange(glyphRange, encoding);
+        })
+    }
+  }
+}
 ```
 
 ### getGlyphRangeForCharacterRange<sup>24+</sup>
@@ -2571,14 +2636,14 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| ----- | ---- | ---- | ---- |
+| - | - | - | - |
 | characterRange | [Range](#range) | 是 | 字符范围。 |
-| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的实际字符范围表示字节范围。对于UTF-16编码，返回的实际字符范围表示UTF-16编码单元范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的实际字符范围表示字节范围。对于UTF-16编码，返回的实际字符范围表示UTF-16编码单元范围。 |
 
 **返回值：**
 
 | 类型 | 说明 |
-| ---- | ---- |
+| - | - |
 | Array\<[Range](#range)\> | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
 
 **错误码：**
@@ -2591,10 +2656,75 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-let characterRange: text.Range = { start: 0, end: 5 };
-let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-let ranges = paragraph.getGlyphRangeForCharacterRange(characterRange, encoding);
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get glyph range")
+        .onClick(() => {
+          let characterRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let ranges = paragraph.getGlyphRangeForCharacterRange(characterRange, encoding);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button } from '@ohos.arkui.component';
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get glyph range")
+        .onClick(() => {
+          let characterRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let ranges = paragraph.getGlyphRangeForCharacterRange(characterRange, encoding);
+        })
+    }
+  }
+}
 ```
 
 ### getCharacterPositionAtCoordinate<sup>24+</sup>
@@ -2616,7 +2746,7 @@ getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEnc
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| ----- | ---- | ---- | ---- |
+| - | - | - | - |
 | x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 文本排版区域内的水平坐标，单位为物理像素（px）。相对于文本排版区域左上角的x偏移量，向右为正方向。支持浮点数，可取负值（表示在文本区域左侧）。坐标超出文本区域范围时，将返回最近的字符位置。可通过触摸事件或点击事件获取。 |
 | y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 文本排版区域内的垂直坐标，单位为物理像素（px）。相对于文本排版区域左上角的y偏移量，向下为正方向。支持浮点数，可取负值（表示在文本区域上方）。坐标超出文本区域范围时，将返回最近的字符位置。可通过触摸事件或点击事件获取。 |
 | encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符位置表示字节偏移量。对于UTF-16编码，返回的字符位置表示UTF-16编码单元偏移量。 |
@@ -2624,7 +2754,7 @@ getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEnc
 **返回值：**
 
 | 类型 | 说明 |
-| ---- | ---- |
+| - | - |
 | [PositionWithAffinity](#positionwithaffinity) | 字符位置信息。 |
 
 **错误码：**
@@ -2637,9 +2767,77 @@ getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEnc
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-let position = paragraph.getCharacterPositionAtCoordinate(10, 5, encoding);
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character position")
+        .onClick(() => {
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let x = 10;
+          let y = 5;
+          let position = paragraph.getCharacterPositionAtCoordinate(x, y, encoding);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button } from '@ohos.arkui.component';
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character position")
+        .onClick(() => {
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let x = 10;
+          let y = 5;
+          let position = paragraph.getCharacterPositionAtCoordinate(x, y, encoding);
+        })
+    }
+  }
+}
 ```
 
 ## LineTypeset<sup>18+</sup>
@@ -3797,18 +3995,30 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!--code_no_check-->
+
 ```ts
 import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
 import { image } from '@kit.ImageKit';
 
 function textFunc(pixelmap?: image.PixelMap) {
   if (pixelmap) {
     let canvas = new drawing.Canvas(pixelmap);
+    let textStyle: text.TextStyle = {
+      color: { alpha: 255, red: 255, green: 0, blue: 0 },
+      fontSize: 33,
+    };
+    let paragraphStyle: text.ParagraphStyle = {
+      textStyle: textStyle,
+      align: text.TextAlign.END,
+    };
+    let fontCollection = new text.FontCollection();
+    let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+    paragraphBuilder.addText("Hello World");
+    let paragraph = paragraphBuilder.build();
+    let lines = paragraph.getTextLines();
     lines[0].paint(canvas, 0, 0);
   }
 }
@@ -3902,7 +4112,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!--code_no_check-->
+
 ```ts
 import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
@@ -3912,8 +4122,23 @@ import { image } from '@kit.ImageKit';
 function textFunc(pixelmap?: image.PixelMap) {
   if (pixelmap) {
     let canvas = new drawing.Canvas(pixelmap);
+    let textStyle: text.TextStyle = {
+      color: { alpha: 255, red: 255, green: 0, blue: 0 },
+      fontSize: 33,
+    };
+    let paragraphStyle: text.ParagraphStyle = {
+      textStyle: textStyle,
+      align: text.TextAlign.END,
+    };
+    let fontCollection = new text.FontCollection();
+    let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+    paragraphBuilder.addText("Hello World");
+    let paragraph = paragraphBuilder.build();
+    let lines = paragraph.getTextLines();
     let truncatedTextLine = lines[0].createTruncatedLine(100, text.EllipsisMode.START, "...");
-    truncatedTextLine.paint(canvas, 0, 100);
+    if (truncatedTextLine != undefined) {
+      truncatedTextLine.paint(canvas, 0, 100);
+    }
   }
 }
 
@@ -4133,6 +4358,7 @@ enumerateCaretOffsets(callback: CaretOffsetsCallback): void
 **示例：**
 
 ArkTS-Dyn示例：
+
 ```ts
 function callback(offset: number, index: number, leadingEdge: boolean): boolean {
   console.info('textLine: offset: ' + offset + ', index: ' + index + ', leadingEdge: ' + leadingEdge);
@@ -4140,7 +4366,9 @@ function callback(offset: number, index: number, leadingEdge: boolean): boolean 
 }
 lines[0].enumerateCaretOffsets(callback);
 ```
+
 ArkTS-Sta示例：
+
 ```ts
 function callback(offset: double, index: int, leadingEdge: boolean): boolean {
   console.info('textLine: offset: ' + offset + ', index: ' + index + ', leadingEdge: ' + leadingEdge);
@@ -4307,22 +4535,36 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!--code_no_check-->
 ```ts
-import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { Entry, Component, Column, Button, ClickEvent } from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D"
 
 function textFunc() {
-  let glyphs = runs[0].getGlyphs({start:0, end:0}); // 获取渲染块全部字形序号
-  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形序号
-  glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1是非法参数，将返回undefined
-  glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10是非法参数，将返回undefined
+  let textStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let paragraphStyle: text.ParagraphStyle = {
+    textStyle: textStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+  paragraphBuilder.addText("Hello World");
+  let paragraph = paragraphBuilder.build();
+  let lines = paragraph.getTextLines();
+  let runs = lines[0].getGlyphRuns();
+  let glyphs = runs[0].getGlyphs({ start: 0, end: 0 }); // 获取渲染块全部字形序号
+  let glyphsRange = runs[0].getGlyphs({ start: 1, end: 2 }); // 获取渲染块从起始位置1开始, 长度为2范围内的字形序号
+  glyphsRange = runs[0].getGlyphs({ start: -1, end: 2 }); // -1是非法参数，将返回undefined
+  glyphsRange = runs[0].getGlyphs({ start: 0, end: -10 }); // -10是非法参数，将返回undefined
 }
 
 @Entry
 @Component
 struct Index {
   fun: () => void = textFunc;
+
   build() {
     Column() {
       Button("Click").onClick((e: ClickEvent) => {
@@ -4425,10 +4667,24 @@ import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.compone
 import { text } from "@kit.ArkGraphics2D";
 
 function textFunc() {
-  let positions = runs[0].getPositions({start:0, end:0}); // 获取渲染块全部字形位置
-  let positionsRange = runs[0].getPositions({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形位置
-  positionsRange = runs[0].getPositions({start:-1, end:2}); // -1是非法参数，将返回undefined
-  positionsRange = runs[0].getPositions({start:0, end:-10}); // -10是非法参数，将返回undefined
+  let textStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let paragraphStyle: text.ParagraphStyle = {
+    textStyle: textStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+  paragraphBuilder.addText("Hello World");
+  let paragraph = paragraphBuilder.build();
+  let lines = paragraph.getTextLines();
+  let runs = lines[0].getGlyphRuns();
+  let positions = runs[0].getPositions({ start: 0, end: 0 }); // 获取渲染块全部字形位置
+  let positionsRange = runs[0].getPositions({ start: 1, end: 2 }); // 获取渲染块从起始位置1开始, 长度为2范围内的字形位置
+  positionsRange = runs[0].getPositions({ start: -1, end: 2 }); // -1是非法参数，将返回undefined
+  positionsRange = runs[0].getPositions({ start: 0, end: -10 }); // -10是非法参数，将返回undefined
 }
 
 
@@ -4436,6 +4692,7 @@ function textFunc() {
 @Component
 struct Index {
   fun: () => void = textFunc;
+
   build() {
     Column() {
       Button("Click").onClick((e: ClickEvent) => {
@@ -4568,12 +4825,25 @@ import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.
 import { State } from '@ohos.arkui.stateManagement'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from "@kit.ArkGraphics2D"
-import { common2D } from "@kit.ArkGraphics2D"
 import { image } from '@kit.ImageKit';
 
 function textFunc(pixelmap?: image.PixelMap) {
   if (pixelmap) {
     let canvas = new drawing.Canvas(pixelmap);
+    let textStyle: text.TextStyle = {
+      color: { alpha: 255, red: 255, green: 0, blue: 0 },
+      fontSize: 33,
+    };
+    let paragraphStyle: text.ParagraphStyle = {
+      textStyle: textStyle,
+      align: text.TextAlign.END,
+    };
+    let fontCollection = new text.FontCollection();
+    let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+    paragraphBuilder.addText("Hello World");
+    let paragraph = paragraphBuilder.build();
+    let lines = paragraph.getTextLines();
+    let runs = lines[0].getGlyphRuns();
     runs[0].paint(canvas, 0, 0);
   }
 }
@@ -4697,6 +4967,20 @@ import { State } from '@ohos.arkui.stateManagement'
 import { text } from "@kit.ArkGraphics2D";
 
 function textFunc() {
+  let textStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let paragraphStyle: text.ParagraphStyle = {
+    textStyle: textStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+  paragraphBuilder.addText("Hello World");
+  let paragraph = paragraphBuilder.build();
+  let lines = paragraph.getTextLines();
+  let runs = lines[0].getGlyphRuns();
   let indices = runs[0].getStringIndices({start:0, end:0}); // 获取渲染块全部字符索引
   let indicesRange = runs[0].getStringIndices({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字符索引
   indicesRange = runs[0].getStringIndices({start:-1, end:2}); // -1是非法参数，将返回undefined
