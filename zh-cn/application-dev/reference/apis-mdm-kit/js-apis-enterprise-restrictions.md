@@ -734,7 +734,7 @@ setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow:
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#%E8%A7%84%E5%88%991%E4%BB%8E%E4%B8%A5%E7%AE%A1%E6%8E%A7)。
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
