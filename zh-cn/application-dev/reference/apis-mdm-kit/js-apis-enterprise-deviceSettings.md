@@ -385,6 +385,8 @@ addHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 
 添加设置项至当前用户下的隐藏设置项列表。添加至隐藏设置项列表的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到。如果通过某种方式搜索到该设置项，点击后也无法打开。调用接口后即刻生效，无需重启设置应用。
 
+若已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictions.setDisallowedPolicyForAccount)接口禁用了当前用户下的中转站，并通过[addHiddenSettingsMenu](#addhiddensettingsmenu)接口隐藏了当前用户的系统-中转站设置项，再通过本接口取消隐藏当前用户的系统-中转站设置项，会报策略冲突，抛出9200010错误码。可以通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictions.setDisallowedPolicyForAccount)接口解除禁用当前用户下的中转站来解冲突。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -468,8 +470,9 @@ removeHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed.  |
-| 9200016  | Service timeout. |
+| 9200010  | A conflict policy has been configured.                       |
+| 9200012  | Parameter verification failed.                               |
+| 9200016  | Service timeout.                                             |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
