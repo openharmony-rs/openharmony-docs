@@ -600,7 +600,7 @@ function finish(): void {
 | height | number | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
 
 ## ImageStream
-图片流类型，继承自[Image](#image)。
+ImageStream资源，继承自[Image](#image)。
 
 **起始版本**：26.0.0
 
@@ -610,7 +610,7 @@ function finish(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| surfaceId | string | 是 | 否 | 图片流唯一标识符，取值范围大于0。 |
+| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
 
 ## Effect<sup>21+</sup>
 

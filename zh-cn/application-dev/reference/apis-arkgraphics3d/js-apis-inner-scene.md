@@ -185,7 +185,7 @@ function createImageResource(): Promise<Image> {
 ### createImageStream
 createImageStream(params: SceneResourceParameters): Promise\<ImageStream>
 
-根据指定场景名称参数创建一个图像流资源，使用Promise异步回调。
+根据指定场景名称参数创建image stream，使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -196,12 +196,12 @@ createImageStream(params: SceneResourceParameters): Promise\<ImageStream>
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| params | [SceneResourceParameters](#sceneresourceparameters) | 是 | 创建图像的参数。 |
+| params | [SceneResourceParameters](#sceneresourceparameters) | 是 | 创建流图片的参数。 |
 
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise\<[ImageStream](js-apis-inner-scene-resources.md#imagestream)> | Promise对象，返回创建的图像流对象。 |
+| Promise\<[ImageStream](js-apis-inner-scene-resources.md#imagestream)> | Promise对象，返回创建的流图片。 |
 
 **示例：**
 ```ts
