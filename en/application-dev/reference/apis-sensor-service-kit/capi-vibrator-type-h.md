@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines the structs for the vibrator attribute and vibrator file description and provides the enums for error codes and vibration scenarios.
+Declares the APIs for starting or stopping vibration.
 
 **Reference file**: <sensors/vibrator_type.h>
 

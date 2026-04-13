@@ -24,7 +24,7 @@ import { policy } from '@kit.NetworkKit';
 
 type NetBearType = connection.NetBearType
 
-Network type.
+Defines the network type.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -36,7 +36,7 @@ Network type.
 
 showAppNetPolicySettings(context: Context): Promise\<void>
 
-This API is used to set whether the current application can connect to the Wi-Fi or cellular network. You can call this API to open the network connection settings screen of the current app and set the network connection permission of the application. This API uses a promise to return the result.
+Sets whether the current application can connect to the Wi-Fi or cellular network. You can call this API to open the network access settings page of the current application and set the network access permission of the application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -49,13 +49,13 @@ This API is used to set whether the current application can connect to the Wi-Fi
 
 | **Name**| Type  | **Mandatory**| Description          |
 | ------ | ------ | ---- | -------------- |
-| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context of the stage model. (Only UIAbilityContext and ExtensionContext are supported.)|
+| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Application context of the stage model. (Only **UIAbilityContext** and **ExtensionContext** are supported.)|
 
 **Return value**
 
 | Type                                                   | Description                         |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<void>  |Promise used to return the result. Promise that returns no value.|
+| Promise\<void>  |Promise that returns no value.|
 
 **Example:**
 
@@ -76,3 +76,49 @@ policy.showAppNetPolicySettings(context).then(() => {
     }
 )
 ```
+
+## policy.getNetAccessPolicy
+
+getNetAccessPolicy(): Promise\<NetAccessPolicy>
+
+Queries the network access policy of an application (whether cellular or Wi-Fi network access is allowed). You can check the policy by choosing **Settings** > **Mobile network** > **Manage data usage** > **Network access**. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                                                   | Description                         |
+| ------------------------------------------------------- | ----------------------------- |
+| Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise used to return the network access policy of the application.|
+
+**Example:**
+```ts
+import { policy } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy.getNetAccessPolicy().then((policyInfo: policy.NetAccessPolicy) => {
+  console.info(`getNetAccessPolicy success. WiFi: ${policyInfo.allowWiFi}, Cellular: ${policyInfo.allowCellular}`);
+}).catch((err: BusinessError) => {
+  console.error(`getNetAccessPolicy fail. error info: ${err.code} - ${err.message}`);
+});
+```
+
+
+## NetAccessPolicy
+
+Defines the network access policy information.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Type  | Read-Only| Optional| Description|
+| ------ | ------ | --- |---|------------------------- |
+| allowWiFi    | boolean | No| No|Whether to allow Internet access over Wi-Fi.<br>**true**: yes;<br>**false**: no.|
+| allowCellular  | boolean | No| No|Whether to allow Internet access over the cellular network.<br>**true**: yes.<br>**false**: no.|

@@ -39,7 +39,7 @@ A constructor used to create a **GallerySync** instance.
 let gallerySync = new cloudSync.GallerySync()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -56,7 +56,7 @@ Registers a listener for the device-cloud sync progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | evt | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | (pg: SyncProgress) => void | Yes  | Callback of the sync progress event. The input parameter is [SyncProgress](./js-apis-file-cloudsync.md#syncprogress12), and the return value is void.|
+| callback | (pg: SyncProgress) => void | Yes  | Callback used to return the sync progress. The input parameter is [SyncProgress](./js-apis-file-cloudsync.md#syncprogress12), and the return value is **void**.|
 
 **Error codes**
 
@@ -79,7 +79,7 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -96,7 +96,7 @@ Removes the specified callback from the device-cloud sync progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | evt | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | (pg: SyncProgress) => void | Yes  | Callback of the sync progress event. The input parameter is [SyncProgress](./js-apis-file-cloudsync.md#syncprogress12), and the return value is void.|
+| callback | (pg: SyncProgress) => void | Yes  | Callback used to return the sync progress. The input parameter is [SyncProgress](./js-apis-file-cloudsync.md#syncprogress12), and the return value is **void**.|
 
 **Error codes**
 
@@ -123,7 +123,7 @@ gallerySync.on('progress', callback);
 gallerySync.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
@@ -180,7 +180,7 @@ Starts device-cloud sync. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -229,7 +229,7 @@ Starts device-cloud sync. This API uses an asynchronous callback to return the r
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to start device-cloud sync.|
 
 **Error codes**
 
@@ -280,7 +280,7 @@ Stops device-cloud sync. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -326,7 +326,7 @@ Stops device-cloud sync. This API uses an asynchronous callback to return the re
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to stop device-cloud sync.|
 
 **Error codes**
 
@@ -374,7 +374,7 @@ A constructor used to create a **Download** instance.
 let download = new cloudSync.Download()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -414,7 +414,7 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -458,7 +458,7 @@ download.on('progress', callback);
 download.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
@@ -503,7 +503,7 @@ download.off('progress');
 
 start(uri: string): Promise&lt;void&gt;
 
-Starts to download a cloud file. This API uses a promise to return the result.
+Starts downloading a cloud file. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -521,7 +521,7 @@ Starts to download a cloud file. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -558,7 +558,7 @@ download.start(uri).then(() => {
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Starts to download a cloud file. This API uses an asynchronous callback to return the result.
+Starts downloading a cloud file. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.CLOUDFILE_SYNC
 
@@ -571,7 +571,7 @@ Starts to download a cloud file. This API uses an asynchronous callback to retur
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  | URI of the target file.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to start downloading a cloud file.|
 
 **Error codes**
 
@@ -628,7 +628,7 @@ Stops downloading a cloud file. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -676,7 +676,7 @@ Stops downloading a cloud file. This API uses an asynchronous callback to return
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  | URI of the target file.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to stop downloading a cloud file.|
 
 **Error codes**
 
@@ -1015,7 +1015,7 @@ cloudSync.optimizeStorage().then(() => {
 
 startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callback\<OptimizeSpaceProgress>): Promise&lt;void&gt;
 
-Optimizes local resources that have been synced to the cloud and optimizes local images and videos that have not been accessed before the aging period expires. This API uses a promise to return the result.
+Optimizes local resources that have been synced to the cloud and optimizes local images and videos that have not been accessed before the aging period expires. This API uses a promise to return the result. The callback returns the optimization progress.
 
 **startOptimizeSpace** is used together with **stopOptimizeSpace**. If **startOptimizeSpace** is called repeatedly, the error code 22400006 will be returned, indicating that other tasks are being executed.
 
@@ -1030,7 +1030,7 @@ Optimizes local resources that have been synced to the cloud and optimizes local
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | optimizePara | [OptimizeSpaceParam](#optimizespaceparam17) | Yes  | Optimizes parameters.|
-| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | No  | Callback used to return the optimization progress. By default, error 401 is returned and the clearing task is not executed.|
+| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | No  | Callback used to return the optimization progress. By default, error code 401 is returned and no clearing task is executed.|
 
 **Return value**
 

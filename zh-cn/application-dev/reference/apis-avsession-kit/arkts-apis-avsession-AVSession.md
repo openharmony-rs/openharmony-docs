@@ -72,7 +72,7 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let metadata: avSession.AVMetadata = {
   assetId: "121278",
@@ -96,9 +96,7 @@ let metadata: avSession.AVMetadata = {
   nextAssetId: "121279"
 };
 currentAVSession.setAVMetadata(metadata).then(() => {
-  console.info('SetAVMetadata successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in setting AVMetadata.');
 });
 ```
 
@@ -130,7 +128,7 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let metadata: avSession.AVMetadata = {
   assetId: "121278",
@@ -153,12 +151,8 @@ let metadata: avSession.AVMetadata = {
   previousAssetId: "121277",
   nextAssetId: "121279"
 };
-currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
-  if (err) {
-    console.error(`SetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SetAVMetadata successfully');
-  }
+currentAVSession.setAVMetadata(metadata, () => {
+  console.info('Succeeded in setting AVMetadata.');
 });
 ```
 
@@ -197,7 +191,7 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 ```ts
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -228,13 +222,7 @@ class CallManager {
         avatar: imagePixel
       };
       await this.currentAVSession?.setCallMetadata(calldata);
-      console.info('setCallMetadata successfully');
-    } catch (err) {
-      if (err) {
-        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.error(`setCallMetadata Error: ${err}`)
-      }
+      console.info('Succeeded in setting call metadata.');
     }
   }
 }
@@ -270,7 +258,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 ```ts
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -300,15 +288,9 @@ class CallManager {
         phoneNumber: "111xxxxxxxx",
         avatar: imagePixel
       };
-      this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
-        if (err) {
-          console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-        } else {
-          console.info("setCallMetadata successfully");
-        }
+      this.currentAVSession?.setCallMetadata(calldata, () => {
+        console.info('Succeeded in setting call metadata.');
       });
-    }catch (syncErr) {
-      console.error('Synchronous operation failed: ${syncErr}');
     }
   }
 }
@@ -347,16 +329,14 @@ setAVCallState(state: AVCallState): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let calldata: avSession.AVCallState = {
   state: avSession.CallState.CALL_STATE_ACTIVE,
   muted: false
 };
 currentAVSession.setAVCallState(calldata).then(() => {
-  console.info('setAVCallState successfully');
-}).catch((err: BusinessError) => {
-  console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in setting AVCallState.');
 });
 ```
 
@@ -388,18 +368,14 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let avcalldata: avSession.AVCallState = {
   state: avSession.CallState.CALL_STATE_ACTIVE,
   muted: false
 };
-currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
-  if (err) {
-    console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('setAVCallState successfully');
-  }
+currentAVSession.setAVCallState(avcalldata, () => {
+  console.info('Succeeded in setting AVCallState.');
 });
 ```
 
@@ -438,7 +414,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let playbackState: avSession.AVPlaybackState = {
   state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
@@ -449,9 +425,7 @@ let playbackState: avSession.AVPlaybackState = {
   isFavorite:true
 };
 currentAVSession.setAVPlaybackState(playbackState).then(() => {
-  console.info('SetAVPlaybackState successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
 
@@ -483,7 +457,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let PlaybackState: avSession.AVPlaybackState = {
   state:avSession.PlaybackState.PLAYBACK_STATE_PLAY,
@@ -493,12 +467,8 @@ let PlaybackState: avSession.AVPlaybackState = {
   loopMode:avSession.LoopMode.LOOP_MODE_SINGLE,
   isFavorite:true
 };
-currentAVSession.setAVPlaybackState(PlaybackState, (err: BusinessError) => {
-  if (err) {
-    console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SetAVPlaybackState successfully');
-  }
+currentAVSession.setAVPlaybackState(PlaybackState, () => {
+  console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
 
@@ -538,7 +508,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 ```ts
 import { wantAgent } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 // WantAgentInfo对象。
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -570,9 +540,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 
 wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
   currentAVSession.setLaunchAbility(agent).then(() => {
-    console.info('SetLaunchAbility successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`SetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
+    console.info('Succeeded in setting launch ability.');
   });
 });
 ```
@@ -606,7 +574,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 ```ts
 import { wantAgent } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 // WantAgentInfo对象。
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -637,12 +605,8 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 }
 
 wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
-  currentAVSession.setLaunchAbility(agent, (err: BusinessError) => {
-    if (err) {
-      console.error(`SetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('SetLaunchAbility successfully');
-    }
+  currentAVSession.setLaunchAbility(agent, () => {
+    console.info('Succeeded in setting launch ability.');
   });
 });
 ```
@@ -686,7 +650,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -702,19 +666,13 @@ struct Index {
             let tag = "createNewSession";
             let context: Context = this.getUIContext().getHostContext() as Context;
 
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-              } else {
-                currentAVSession = data;
-                let eventName = "dynamic_lyric";
-                if (currentAVSession !== undefined) {
-                  (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
-                    console.info('dispatchSessionEvent successfully');
-                  }).catch((err: BusinessError) => {
-                    console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-                  })
-                }
+            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+              currentAVSession = data;
+              let eventName = "dynamic_lyric";
+              if (currentAVSession !== undefined) {
+                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
+                  console.info('Succeeded in dispatching session event.');
+                })
               }
             });
           })
@@ -758,7 +716,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -773,19 +731,13 @@ struct Index {
             let tag = "createNewSession";
             let context: Context = this.getUIContext().getHostContext() as Context;
 
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-              } else {
-                currentAVSession = data;
-                let eventName: string = "dynamic_lyric";
-                if (currentAVSession !== undefined) {
-                  (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
-                    if (err) {
-                      console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-                    }
-                  })
-                }
+            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+              currentAVSession = data;
+              let eventName: string = "dynamic_lyric";
+              if (currentAVSession !== undefined) {
+                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, () => {
+                  console.info('Succeeded in dispatching session event.');
+                })
               }
             });
           })
@@ -833,7 +785,7 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 ```ts
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 interface ExtrasType {
   extras: string;
@@ -881,14 +833,8 @@ async function setAVQueueItems() {
     } as avSession.AVQueueItem;
     let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
     currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
-      console.info('SetAVQueueItems successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+      console.info('Succeeded in setting AVQueueItems.');
     });
-  } catch (err) {
-    if (err) {
-      console.error(`ImageSource or PixelMap create Error: code: ${err.code}, message: ${err.message}`);
-    }
   }
 }
 ```
@@ -923,7 +869,7 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 ```ts
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit'
 
 interface ExtrasType {
@@ -971,17 +917,9 @@ async function setAVQueueItems() {
       description: queueItemDescription_2
     };
     let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-    currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
-      if (err) {
-        console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('SetAVQueueItems successfully');
-      }
+    currentAVSession.setAVQueueItems(queueItemsArray, () => {
+      console.info('Succeeded in setting AVQueueItems.');
     });
-  } catch (err) {
-    if (err) {
-      console.error(`ImageSource or PixelMap create Error: code: ${err.code}, message: ${err.message}`);
-    }
   }
 }
 ```
@@ -1021,13 +959,11 @@ setAVQueueTitle(title: string): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let queueTitle = 'QUEUE_TITLE';
 currentAVSession.setAVQueueTitle(queueTitle).then(() => {
-  console.info('SetAVQueueTitle successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in setting AVQueueTitle.');
 });
 ```
 
@@ -1059,15 +995,11 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let queueTitle = 'QUEUE_TITLE';
-currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
-  if (err) {
-    console.error(`SetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SetAVQueueTitle successfully');
-  }
+currentAVSession.setAVQueueTitle(queueTitle, () => {
+  console.info('Succeeded in setting AVQueueTitle.');
 });
 ```
 
@@ -1106,7 +1038,7 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -1121,18 +1053,12 @@ struct Index {
             let tag = "createNewSession";
             let context: Context = this.getUIContext().getHostContext() as Context;
 
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-              } else {
-                currentAVSession = data;
-                if (currentAVSession !== undefined) {
-                  (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
-                      console.info('setExtras successfully');
-                  }).catch((err: BusinessError) => {
-                      console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-                  })
-                }
+            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+              currentAVSession = data;
+              if (currentAVSession !== undefined) {
+(currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
+                  console.info('Succeeded in setting extras.');
+                })
               }
             });
           })
@@ -1171,7 +1097,7 @@ setExtras(extras:{[key: string]: Object}, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -1186,18 +1112,12 @@ struct Index {
             let tag = "createNewSession";
             let context: Context = this.getUIContext().getHostContext() as Context;
 
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-              } else {
-                currentAVSession = data;
-                if (currentAVSession !== undefined) {
-                  (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
-                    if (err) {
-                      console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-                    }
-                  })
-                }
+            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+              currentAVSession = data;
+              if (currentAVSession !== undefined) {
+                (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, () => {
+                  console.info('Succeeded in setting extras.');
+                })
               }
             });
           })
@@ -1243,7 +1163,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -1258,18 +1178,12 @@ struct Index {
             let tag = "createNewSession";
             let context: Context = this.getUIContext().getHostContext() as Context;
 
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-                currentAVSession = data;
-            }
+            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
             });
             if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
-                console.info('sendCustomData successfully');
-            }).catch((err: BusinessError) => {
-                console.error(`sendCustomData BusinessError: code: ${err.code}, message: ${err.message}`);
+                console.info('Succeeded in sending custom data.');
             })
             }
           })
@@ -1314,7 +1228,7 @@ enableDesktopLyric(enable: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1330,18 +1244,12 @@ struct Index {
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
 
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).enableDesktopLyric(true).then(() => {
-              console.info('enableDesktopLyric successfully');
-            }).catch((err: BusinessError) => {
-              console.error(`enableDesktopLyric BusinessError: code: ${err.code}, message: ${err.message}`);
+              console.info('Succeeded in enabling desktop lyric.');
             })
           }
         })
@@ -1388,7 +1296,7 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1404,18 +1312,12 @@ struct Index {
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
 
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).setDesktopLyricVisible(true).then(() => {
-              console.info('setDesktopLyricVisible successfully');
-            }).catch((err: BusinessError) => {
-              console.error(`setDesktopLyricVisible BusinessError: code: ${err.code}, message: ${err.message}`);
+              console.info('Succeeded in setting desktop lyric visible.');
             })
           }
         })
@@ -1455,7 +1357,7 @@ isDesktopLyricVisible(): Promise\<boolean>
 
 **示例：**
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1470,18 +1372,12 @@ struct Index {
           let currentAVSession: avSession.AVSession | undefined = undefined;
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).isDesktopLyricVisible().then((visible: boolean) => {
               console.info(`isDesktopLyricVisible: ${visible}`);
-            }).catch((err: BusinessError) => {
-              console.error(`isDesktopLyricVisible BusinessError: code: ${err.code}, message: ${err.message}`);
             })
           }
         })
@@ -1519,7 +1415,7 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 
 **示例：**
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1534,21 +1430,13 @@ struct Index {
           let currentAVSession: avSession.AVSession | undefined = undefined;
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
-                console.info(`desktop lyric visible state: ${visible}`);
-              });
-            } catch (err) {
-              console.error(`onDesktopLyricVisibilityChanged BusinessError: code: ${err.code}, message: ${err.message}`);
-            }
+            (currentAVSession as avSession.AVSession).onDesktopLyricVisibilityChanged((visible: boolean) => {
+              console.info(`desktop lyric visible state: ${visible}`);
+            });
           }
         })
     }
@@ -1585,7 +1473,7 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 
 **示例：**
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1600,19 +1488,11 @@ struct Index {
           let currentAVSession: avSession.AVSession | undefined = undefined;
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
-            } catch (err) {
-              console.error(`offDesktopLyricVisibilityChanged BusinessError: code: ${err.code}, message: ${err.message}`);
-            }
+            (currentAVSession as avSession.AVSession).offDesktopLyricVisibilityChanged();
           }
         })
     }
@@ -1658,7 +1538,7 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1674,21 +1554,15 @@ struct Index {
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
 
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
             let state: avSession.DesktopLyricState = {
               isLocked: true,
             };
             (currentAVSession as avSession.AVSession).setDesktopLyricState(state).then(() => {
-              console.info('setDesktopLyricState successfully');
-            }).catch((err: BusinessError) => {
-              console.error(`setDesktopLyricState BusinessError: code: ${err.code}, message: ${err.message}`);
+              console.info('Succeeded in setting desktop lyric state.');
             })
           }
         })
@@ -1729,7 +1603,7 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1745,20 +1619,13 @@ struct Index {
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
 
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).getDesktopLyricState()
               .then((state: avSession.DesktopLyricState) => {
                 console.info(`getDesktopLyricState: ${state.isLocked}`);
-              })
-              .catch((err: BusinessError) => {
-                console.error(`setDesktopLyricState BusinessError: code: ${err.code}, message: ${err.message}`);
               })
           }
         })
@@ -1796,7 +1663,7 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 
 **示例：**
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1812,21 +1679,13 @@ struct Index {
           let tag = "createNewSession";
           let context: Context = this.getUIContext().getHostContext() as Context;
 
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
           });
           if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-                console.info(`desktop lyric isLocked : ${state.isLocked}`);
-              })
-            } catch (err) {
-              console.error(`onDesktopLyricStateChanged BusinessError: code: ${err.code}, message: ${err.message}`);
-            }
+            (currentAVSession as avSession.AVSession).onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+              console.info(`desktop lyric isLocked : ${state.isLocked}`);
+            })
           }
         })
     }
@@ -1863,6 +1722,70 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 
 **示例：**
 ```ts
+
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(() => {
+          let currentAVSession: avSession.AVSession | undefined = undefined;
+          let tag = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+            currentAVSession = data;
+          });
+          if (currentAVSession !== undefined) {
+            (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setBackgroundPlayMode<sup>24+</sup>
+
+setBackgroundPlayMode(mode: BackgroundPlayMode): Promise\<void>
+
+设置后台播放模式。使用promise异步回调。
+
+建议与应用内"是否支持后台播放开关"关联。如未设置，'audio'类型会话默认值为ENABLE_BACKGROUND_PLAY；'video'类型会话默认值为DISABLE_BACKGROUND_PLAY。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| mode   | [BackgroundPlayMode](./arkts-apis-avsession-e.md#backgroundplaymode24) | 是   | 后台播放模式。 |
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ----------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
@@ -1887,9 +1810,9 @@ struct Index {
           });
           if (currentAVSession !== undefined) {
             try {
-              (currentAVSession as avSession.AVSession).offDesktopLyricStateChanged();
+              (currentAVSession as avSession.AVSession).setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
             } catch (err) {
-              console.error(`offDesktopLyricStateChanged BusinessError: code: ${err.code}, message: ${err.message}`);
+              console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
             }
           }
         })
@@ -1899,7 +1822,6 @@ struct Index {
   }
 }
 ```
-
 
 ## getController<sup>10+</sup>
 
@@ -1929,7 +1851,7 @@ getController(): Promise\<AVSessionController>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1940,21 +1862,13 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(async ()=>{
-          try {
-            let context: Context = this.getUIContext().getHostContext() as Context;
-            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-            let avSessionController: avSession.AVSessionController;
-            currentAVSession.getController().then((avController: avSession.AVSessionController) => {
-              avSessionController = avController;
-              console.info(`GetController : SUCCESS : sessionid : ${avSessionController.sessionId}`);
-            }).catch((err: BusinessError) => {
-              console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
-            });
-          } catch (err) {
-            if (err) {
-              console.error(`AVSession create Error: ${JSON.stringify(err)}`);
-            }
-          }
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+          let avSessionController: avSession.AVSessionController;
+          currentAVSession.getController().then((avController: avSession.AVSessionController) => {
+            avSessionController = avController;
+            console.info(`Succeeded in getting controller, sessionid: ${avSessionController.sessionId}`);
+          });
         })
     }
     .width('100%')
@@ -1990,7 +1904,7 @@ getController(callback: AsyncCallback\<AVSessionController>): void
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 @Entry
 @Component
@@ -2001,23 +1915,13 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(async () => {
-          try {
-            let context: Context = this.getUIContext().getHostContext() as Context;
-            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-            let avsessionController: avSession.AVSessionController;
-            currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSessionController) => {
-              if (err) {
-                console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
-              } else {
-                avsessionController = avcontroller;
-                console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
-              }
-            });
-          } catch (err) {
-            if (err) {
-              console.error(`AVSession create Error: code: ${err.code}, message: ${err.message}`);
-            }
-          }
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+          let avsessionController: avSession.AVSessionController;
+          currentAVSession.getController((avcontroller: avSession.AVSessionController) => {
+            avsessionController = avcontroller;
+            console.info(`Succeeded in getting controller, sessionid: ${avsessionController.sessionId}`);
+          });
         })
     }
     .width('100%')
@@ -2054,14 +1958,12 @@ getAVCastController(): Promise\<AVCastController>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let aVCastController: avSession.AVCastController;
+
+let avCastController: avSession.AVCastController;
 currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastController) => {
-  aVCastController = avcontroller;
-  console.info('getAVCastController : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+  avCastController = avcontroller;
+  console.info('Succeeded in getting AV cast controller.');
 });
 ```
 
@@ -2091,16 +1993,10 @@ getAVCastController(callback: AsyncCallback\<AVCastController>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let aVCastController: avSession.AVCastController;
-currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
-  if (err) {
-    console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    aVCastController = avcontroller;
-    console.info('getAVCastController : SUCCESS');
-  }
+let avCastController: avSession.AVCastController;
+currentAVSession.getAVCastController((avcontroller: avSession.AVCastController) => {
+  avCastController = avcontroller;
+  console.info('Succeeded in getting AV cast controller.');
 });
 ```
 
@@ -2132,12 +2028,10 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 currentAVSession.getOutputDevice().then((outputDeviceInfo: avSession.OutputDeviceInfo) => {
-  console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
-}).catch((err: BusinessError) => {
-  console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
 })
 ```
 
@@ -2167,14 +2061,8 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSession.OutputDeviceInfo) => {
-  if (err) {
-    console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
-  }
+currentAVSession.getOutputDevice((outputDeviceInfo: avSession.OutputDeviceInfo) => {
+  console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
 });
 ```
 
@@ -2206,12 +2094,10 @@ activate(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 currentAVSession.activate().then(() => {
-  console.info('Activate : SUCCESS ');
-}).catch((err: BusinessError) => {
-  console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in activating.');
 });
 ```
 
@@ -2241,14 +2127,10 @@ activate(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-currentAVSession.activate((err: BusinessError) => {
-  if (err) {
-    console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Activate : SUCCESS ');
-  }
+
+currentAVSession.activate(() => {
+  console.info('Succeeded in activating.');
 });
 ```
 
@@ -2280,12 +2162,10 @@ deactivate(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 currentAVSession.deactivate().then(() => {
-  console.info('Deactivate : SUCCESS ');
-}).catch((err: BusinessError) => {
-  console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in deactivating.');
 });
 ```
 
@@ -2317,14 +2197,10 @@ deactivate(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-currentAVSession.deactivate((err: BusinessError) => {
-  if (err) {
-    console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Deactivate : SUCCESS ');
-  }
+
+currentAVSession.deactivate(() => {
+  console.info('Succeeded in deactivating.');
 });
 ```
 
@@ -2356,12 +2232,10 @@ destroy(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 currentAVSession.destroy().then(() => {
-  console.info('Destroy : SUCCESS ');
-}).catch((err: BusinessError) => {
-  console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in destroying.');
 });
 ```
 
@@ -2391,14 +2265,10 @@ destroy(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-currentAVSession.destroy((err: BusinessError) => {
-  if (err) {
-    console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Destroy : SUCCESS ');
-  }
+
+currentAVSession.destroy(() => {
+  console.info('Succeeded in destroying.');
 });
 ```
 
@@ -3227,7 +3097,7 @@ on(type: 'commonCommand', callback: (command :string, args:{[key: string]: Objec
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -3242,16 +3112,12 @@ struct Index {
             let tag = "createNewSession";
             let context: Context = this.getUIContext().getHostContext() as Context;
 
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-              } else {
-                currentAVSession = data;
-                if (currentAVSession !== undefined) {
-                  (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
-                      console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
-                  });
-                }
+            avSession.createAVSession(context, tag, "audio", (data: avSession.AVSession) => {
+              currentAVSession = data;
+              if (currentAVSession !== undefined) {
+                (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
+                    console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+                });
               }
             });
           })
@@ -4255,14 +4121,8 @@ stopCasting(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-currentAVSession.stopCasting((err: BusinessError) => {
-  if (err) {
-    console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('stopCasting successfully');
-  }
+currentAVSession.stopCasting(() => {
+  console.info('Succeeded in stopping casting.');
 });
 ```
 
@@ -4293,12 +4153,10 @@ stopCasting(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 currentAVSession.stopCasting().then(() => {
-  console.info('stopCasting successfully');
-}).catch((err: BusinessError) => {
-  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in stopping casting.');
 });
 ```
 
@@ -4330,14 +4188,9 @@ getOutputDeviceSync(): OutputDeviceInfo
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let currentOutputDevice: avSession.OutputDeviceInfo = currentAVSession.getOutputDeviceSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getOutputDeviceSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+
+let currentOutputDevice: avSession.OutputDeviceInfo = currentAVSession.getOutputDeviceSync();
 ```
 
 ## getAllCastDisplays<sup>12+</sup>
@@ -4368,16 +4221,14 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+
 
 let castDisplay: avSession.CastDisplayInfo;
 currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayInfo >) => {
     if (data.length >= 1) {
        castDisplay = data[0];
      }
-   }).catch((err: BusinessError) => {
-     console.error(`Failed to getAllCastDisplay. Code: ${err.code}, message: ${err.message}`);
-   });
+    });
 ```
 
 ## on('playFromAssetId')<sup>(deprecated)</sup>

@@ -12,10 +12,10 @@ typedef struct ArkUI_RoundRectShape ArkUI_RoundRectShapeOption
 
 ## Overview
 
-Defines a struct for the rounded rectangle shape configuration.
+Defines a rounded rectangle shape option.
 
 **Since**: 20
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)

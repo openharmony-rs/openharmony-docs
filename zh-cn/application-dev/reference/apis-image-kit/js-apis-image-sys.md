@@ -117,7 +117,7 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-## ImageSource<sup>6+</sup>
+## ImageSource
 
 ImageSource类，用于获取图片相关信息。
 

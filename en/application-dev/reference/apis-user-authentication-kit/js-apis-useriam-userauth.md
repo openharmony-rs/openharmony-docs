@@ -101,7 +101,7 @@ Represents information about the authentication result reuse.
 | Name        | Type  | Read-Only| Optional| Description                |
 | ------------ | ---------- | ---- | ---- | -------------------- |
 | reuseMode        | [ReuseMode](#reusemode12) | No| No  | Authentication result reuse mode.      |
-| reuseDuration    | number | No| No| Period for which the authentication result can be reused. The value must be greater than 0 and less than [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
+| reuseDuration    | number | No| No| Reuse duration of the authentication result, in milliseconds. The value must be greater than 0 and the maximum value is [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
 
 ## userAuth.getAuthLockState<sup>22+</sup>
 
@@ -1920,7 +1920,7 @@ Represents the authentication result object.
 | ------------ | ---------- | ---- | ---- | -------------------|
 | token        | Uint8Array | No| Yes| Authentication token information.|
 | remainTimes  | number     | No| Yes| Number of remaining authentication operations.|
-| freezingTime | number     | No| Yes| Time for which the authentication operation is frozen.|
+| freezingTime | number     | No| Yes| Time for which the authentication operation is frozen. The unit is milliseconds.|
 
 ## ResultCode<sup>(deprecated)</sup>
 

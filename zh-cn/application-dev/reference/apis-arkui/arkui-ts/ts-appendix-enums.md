@@ -180,6 +180,23 @@
 | HORIZONTAL_AXIS  | 1    | 水平滚动轴。 |
 | PINCH_AXIS | 2    | 捏合轴。 |
 
+## RawInputEventType
+
+原始输入事件类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称   | 值  | 说明       |
+| ------ | --- | ---------- |
+| TOUCH  | 0   | 触摸事件。 |
+| MOUSE  | 1   | 鼠标事件。 |
+
 ## BarState
 
 用于设置滚动条的状态。
@@ -1322,6 +1339,21 @@ type Nullable\<T> = T | undefined
 | Insert | 1 | 指定当前的Transition动效在组件的插入显示场景中生效。 |
 | Delete | 2 | 指定当前的Transition动效在组件的删除隐藏场景中生效。 |
 
+## CompetitionStrategy<sup>24+</sup>
+
+定义分发的事件是否为竞争手势，竞争场景手势原始节点和目标节点只有一个节点会响应手势，非竞争场景可以同时响应。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                | 值  | 说明                         |
+| ------------------- | --- | ---------------------------- |
+| DEFAULT | 0   | 表示分发的事件为非竞争手势。 |
+| COMPETITION | 1   | 表示分发的事件为竞争手势。 |
+
 ## TextAlign
 
 文本段落在水平方向的对齐方式。
@@ -1334,7 +1366,7 @@ type Nullable\<T> = T | undefined
 | Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## TextOverflow

@@ -1115,6 +1115,7 @@ struct Index {
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | id                   | number                                 | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔，设备ID可能会发生变化。 |

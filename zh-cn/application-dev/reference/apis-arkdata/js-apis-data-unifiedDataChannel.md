@@ -100,6 +100,46 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | null | 表示null。 |
 | undefined | 表示undefined。 |
 
+## UriPermission
+
+拖拽场景下的URI授权策略。
+
+>**说明：**
+>
+>此授权策略仅在拖拽场景下生效，其他场景不生效。
+
+支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：
+- 仅使用NONE：不做任何文件授权。
+- 仅使用READ：仅做单次只读授权。
+- 仅使用WRITE：做单次读、写授权（写授权包含读授权）。
+- READ+WRITE：做单次读、写授权，与仅写授权等同。
+- READ+PERSIST：做持久化读授权。
+- WRITE+PERSIST：做持久化读写授权。
+- READ+WRITE+PERSIST：做持久化读写授权。
+
+拖拽授权策略应用规则（按优先级从高到低）：
+- 单个数据级别：FileUri、HTML两个UDS以及File、Image、Video、Audio、Folder、HTML六个UDC数据结构支持配置授权策略参数，仅对单个record单次生效，优先级最高。
+- UnifiedData级别：UnifiedDataProperties中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。
+- 默认级别：若单个数据和UnifiedDataProperties均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：
+
+    - FileUri类型数据（FileUri UDS或File、Image、Video、Audio、Folder五个UDC类型）：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。
+    - HTML类型数据，仅针对HTML文本中img标签下的uri做读授权。
+
+**起始版本**：26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+| 名称 | 值 | 说明 |
+| ------------ | --- | ------------------------------------------- |
+| NONE | 0 | 表示未授予任何权限。 |
+| READ | 1 | 表示读取或查看数据的权限。 |
+| WRITE | 2 | 表示修改数据的权限（包含READ）。 |
+| PERSIST | 3 | 表示持久化文件的权限。 |
+
 ## UnifiedDataProperties<sup>12+</sup>
 
 定义统一数据对象中所有数据记录的属性，包含时间戳、标签、粘贴范围以及一些附加数据等。
@@ -115,6 +155,7 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。 |
 | shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。 |
 | getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -130,6 +171,10 @@ properties.extras = {
 };
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+// 从API 26.0.0版本开始，支持uri授权策略
+properties.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 properties.getDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
     let plainTextDetails : Record<string, string> = {
@@ -924,6 +969,7 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 | -------- | -------- | -------- | -------- | -------- |
 | htmlContent  | string | 否 | 否 | html格式内容。             |
 | plainContent | string | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -931,6 +977,10 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 let html = new unifiedDataChannel.HTML();
 html.htmlContent = '<div><p>标题</p></div>';
 html.plainContent = 'This is plainContent';
+// 从API 26.0.0版本开始，支持uri授权策略
+html.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 ```
 
 ## File
@@ -944,7 +994,8 @@ File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | details | Record<string, string> | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。 |
-| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。                                                                                                                                            |
+| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权），只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -965,6 +1016,10 @@ export default class EntryAbility extends UIAbility {
     };
     let filePath = pathDir + '/test.txt';
     file.uri = fileUri.getUriFromPath(filePath);
+    // 从API 26.0.0版本开始，支持uri授权策略
+    file.uriAuthorizationPolicies = [
+      unifiedDataChannel.UriPermission.WRITE
+    ];
   }
 }
 ```

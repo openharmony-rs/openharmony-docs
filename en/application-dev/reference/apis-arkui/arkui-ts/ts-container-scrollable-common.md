@@ -118,7 +118,7 @@ Sets the effect used when the scroll boundary is reached.
 | Name               | Type                                             | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | [EdgeEffect](ts-appendix-enums.md#edgeeffect)     | Yes  | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.None** for the **Grid**, **Scroll**, and **WaterFlow** components and **EdgeEffect.Spring** for the **List** component|
-| options | [EdgeEffectOptions](#edgeeffectoptions11) | No  | Whether edge effects are enabled when content is smaller than component size, and effective edges. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value:<br>**List**, **Grid**, and **WaterFlow** components: { alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END }, **Scroll** component: { alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END }.|
+| options | [EdgeEffectOptions](#edgeeffectoptions11) | No  | Whether edge effects are enabled when content is smaller than component size, and effective edges. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value:<br>For the **List**, **Grid**, and **WaterFlow** components, the default value is **{ alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END}**. For the **Scroll** component, the default value is **{ alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END}**.|
 
 **Return value**
 
@@ -232,7 +232,7 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 
 > **NOTE**
 > 
-> The **fadingEdge** effect is implemented by configuring the [overlay](ts-universal-attributes-overlay.md#overlay) and [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attributes (parameter values: **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When **fadingEdge** is enabled, it overrides the **overlay()** and **blendMode()** attributes of the original component.
+> The **fadingEdge** effect is implemented by configuring the [overlay](ts-universal-attributes-overlay.md#overlay) and [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attributes (parameter values: **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When the **fadingEdge** effect takes effect, the **.overlay()** and **.blendMode()** attributes of the original component are overwritten. As a result, the screenshot APIs of the current component and its child components cannot capture the correct image. APIs that require screen capture: [blur](ts-universal-attributes-image-effect.md#blur), [linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12), [brightness](ts-universal-attributes-image-effect.md#brightness), [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect), [grayscale](ts-universal-attributes-image-effect.md#grayscale), [saturate](ts-universal-attributes-image-effect.md#saturate), [contrast](ts-universal-attributes-image-effect.md#contrast), [invert](ts-universal-attributes-image-effect.md#invert), [sepia](ts-universal-attributes-image-effect.md#sepia), [hueRotate](ts-universal-attributes-image-effect.md#huerotate), [colorBlend](ts-universal-attributes-image-effect.md#colorblend), [lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12), [pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12), [blendMode](ts-universal-attributes-image-effect.md#blendmode11) and [backgroundBrightness](ts-universal-attributes-background.md#backgroundbrightness12).
 >
 > When **fadingEdge** is enabled, avoid setting [background](ts-universal-attributes-background.md#background10)-related attributes on the component with **fadingEdge**, as this may interfere with the fade effect.
 >
@@ -269,7 +269,7 @@ Sets the content clipping area for this scrollable component.
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| clip | [ContentClipMode](#contentclipmode14)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)   | Yes  | Clipping to apply, which is effective only for the content (that is, child components) of the scrollable component, not the background. When a custom rectangular area is passed through **RectShape**, only width, height, and [offset](../js-apis-arkui-shape.md#offset) relative to the component's upper left corner are supported, and rounded corners are not supported.<br></div>Default value: The default value for **Grid** and **Scroll** is **ContentClipMode.BOUNDARY**, and the default value for **List** and **WaterFlow** is **ContentClipMode.CONTENT_ONLY**.|
+| clip | [ContentClipMode](#contentclipmode14)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)  | Yes  | Clipping to apply, which is effective only for the content (that is, child components) of the scrollable component, not the background. When a custom rectangular area is passed through **RectShape**, only width, height, and [offset](../js-apis-arkui-shape.md#offset) relative to the component's upper left corner are supported, and rounded corners are not supported.<br></div>Default value: The default value for **Grid** and **Scroll** is **ContentClipMode.BOUNDARY**, and the default value for **List** and **WaterFlow** is **ContentClipMode.CONTENT_ONLY**.|
 
 **Return value**
 
@@ -828,7 +828,7 @@ Triggered when the scrollable component is about to scroll.
 
 | Type                         | Description                                 |
 | ----------------------------- | ------------------------------------ |
-| void \| [ScrollResult](#scrollresult12) |  Returns a **ScrollResult** object if the scrollable component scrolls by the developer-specified offset relative to the previous frame; returns no **ScrollResult** object if the component scrolls by the offset specified by **scrollOffset** in the callback.<br>Value range: (-∞, +∞)|
+| void \| [ScrollResult](#scrollresult12)|  Returns a **ScrollResult** object if the scrollable component scrolls by the developer-specified offset relative to the previous frame; returns no **ScrollResult** object if the component scrolls by the offset specified by **scrollOffset** in the callback.<br>Value range: (-∞, +∞)|
 
 ## OnScrollCallback<sup>12+</sup>
 

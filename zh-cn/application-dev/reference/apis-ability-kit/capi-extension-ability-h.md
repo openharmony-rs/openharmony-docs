@@ -28,7 +28,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [AbilityRuntime_ExtensionInstance](capi-abilityruntime-extensioninstance.md) | - | 定义AbilityRuntime_ExtensionInstance结构体类型。 |
-| [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md) | AbilityRuntime_ExtensionInstanceHandle | 定义指向AbilityRuntime_ExtensionInstance的指针。 |
+| [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md) | AbilityRuntime_ExtensionInstanceHandle | 定义AbilityRuntime_ExtensionInstance对象指针。 |
 
 ### 函数
 

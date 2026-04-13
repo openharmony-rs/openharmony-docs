@@ -145,7 +145,7 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 }
 ```
 
-### onStartPrintJob
+### onStartPrintJob<sup>24+</sup>
 
 onStartPrintJob(jobInfo: print.PrintJob): void
 
@@ -172,7 +172,7 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 }
 ```
 
-### onCancelPrintJob
+### onCancelPrintJob<sup>24+</sup>
 
 onCancelPrintJob(jobInfo: print.PrintJob): void
 
@@ -199,7 +199,7 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 }
 ```
 
-### onRequestPrinterCapability
+### onRequestPrinterCapability<sup>24+</sup>
 
 onRequestPrinterCapability(printerId: number): print.PrinterCapability
 

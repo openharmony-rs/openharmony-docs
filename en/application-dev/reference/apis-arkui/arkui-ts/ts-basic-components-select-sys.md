@@ -32,7 +32,7 @@ Sets the system material of the drop-down menu. Different system materials corre
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| material | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | Yes| Sets the system material of the drop-down menu. If the material is set to an invalid value or **undefined**, no system material is set.|
+| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | Yes| Sets the system material of the drop-down menu. If the material is set to an invalid value or **undefined**, no system material is set.|
 
 ## Examples
 ### Example 1 Setting System Material for the Select Component and Drop-down Menu

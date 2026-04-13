@@ -29,7 +29,7 @@
    ```ts
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
     import { buffer, util } from '@kit.ArkTS'
-    import { fileIo as fs } from '@kit.CoreFileKit';
+    import { fileIo } from '@kit.CoreFileKit';
    ```
 
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，可在onCreate、onForeground等生命周期接口中添加系统事件的订阅（结合业务需求，在合适的位置添加订阅方法），示例代码如下：
@@ -85,7 +85,7 @@
             } else if (path.endsWith(".trace")) {
               targetPath= "/data/storage/el2/base/mainThreadJank.trace";
             }
-            fs.copyFileSync(path.toString(), targetPath.toString());
+            fileIo.copyFileSync(path.toString(), targetPath.toString());
           }
         }
       }

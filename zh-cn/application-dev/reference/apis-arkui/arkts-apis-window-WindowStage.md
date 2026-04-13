@@ -1921,6 +1921,166 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### setImageForRecent
+
+setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+
+设置应用在多任务中和Dock栏悬停时显示的图片，使用Promise异步回调。
+
+> **说明：**
+>
+> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                                                         |
+| ----------- | ------- | ---- | ------------------------------------------------------------ |
+| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源，可传入资源id或PixelMap位图。传入资源id时，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。|
+| value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let pixelMap: image.PixelMap;
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
+      }
+      image.createPixelMap(color, {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      }).then((data) => {
+        pixelMap = data;
+        console.info(`Succeeded in creating pixelMap`);
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info(`Succeeded in setting image for recent`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to set image for recent.`);
+        }
+      })
+
+      let imgResourceId = $r("app.media.startIcon").id
+      try {
+        let promise2 = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
+        promise2.then(() => {
+          console.info(`Succeeded in setting image for recent`);
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to set image for recent.`);
+      }
+    });
+  }
+};
+```
+
+### removeImageForRecent
+
+removeImageForRecent(): Promise&lt;void&gt;
+
+移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    try {
+      let promise = windowStage.removeImageForRecent();
+      promise.then(() => {
+        console.info(`Succeeded in removing image for recent`);
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to remove image for recent.`);
+    }
+  }
+};
+```
+
 ## setSupportedWindowModes<sup>15+</sup>
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;

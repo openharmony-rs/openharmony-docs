@@ -607,7 +607,7 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | -- | -- | -- | -- | -- |
 | range | [TextRange](#textrange12) | 否 | 否 | 即将被替换的属性字符串子串在原字符串中的范围。 |
 | replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 否 | 用于替换的属性字符串。 |
-| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览样式字符串。 |
+| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览内容属性字符串。<br/> 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。|
 
 ## AutoCapitalizationMode<sup>20+</sup>枚举说明
 
@@ -662,7 +662,7 @@ selectionStart和selectionEnd均为-1时表示全选。
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | 是    | 选中开始位置。<br/>取值小于0时，按0处理。 |
 | selectionEnd   | number | 是    | 选中结束位置。<br/>取值大于文本长度时，按当前文本长度处理。 |
-| options   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 |
+| options   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 默认值继承[SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明)。|
 
 ### closeSelectionMenu<sup>12+</sup>
 
@@ -1206,7 +1206,7 @@ constructor(options?: NumericTextTransitionOptions)
 
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
-| options | [NumericTextTransitionOptions](#numerictexttransitionoptions20对象说明) | 否    | 设置数字翻牌动效。 |
+| options | [NumericTextTransitionOptions](#numerictexttransitionoptions20对象说明) | 否    | 设置数字翻牌动效。 默认值继承[NumericTextTransitionOptions](#numerictexttransitionoptions20对象说明)。|
 
 ## NumericTextTransitionOptions<sup>20+</sup>对象说明
 

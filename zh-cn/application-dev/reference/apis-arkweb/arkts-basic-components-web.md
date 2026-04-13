@@ -1,8 +1,8 @@
 # 组件描述
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -58,7 +58,7 @@ Web(value: WebOptions)
 >
 > 不支持转场动画。
 >
-> 同一页面的多个Web组件，必须绑定不同的WebviewController。
+> 为了保证各Web组件间的独立性和性能隔离，同一页面内的多个Web组件应分别绑定不同的WebviewController实例。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -66,7 +66,7 @@ Web(value: WebOptions)
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | 定义Web选项。 |
+| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
 
 **示例：**
 

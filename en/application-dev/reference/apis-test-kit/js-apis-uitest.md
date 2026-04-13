@@ -1148,7 +1148,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1186,7 +1186,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1224,7 +1224,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1262,7 +1262,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1304,7 +1304,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1342,7 +1342,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1380,7 +1380,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1418,7 +1418,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1456,7 +1456,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1469,9 +1469,9 @@ async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   if (await button.isClickable()) {
-    console.info('This button can be Clicked');
+    console.info('This button can be clicked');
   } else {
-    console.info('This button can not be Clicked');
+    console.info('This button can not be clicked');
   }
 }
 ```
@@ -1498,7 +1498,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1511,9 +1511,9 @@ async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   if (await button.isLongClickable()) {
-    console.info('This button can longClick');
+    console.info('This button supports long click');
   } else {
-    console.info('This button can not longClick');
+    console.info('This button can not support long click');
   }
 }
 ```
@@ -1540,7 +1540,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1582,7 +1582,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1624,7 +1624,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1667,7 +1667,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1709,7 +1709,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1751,7 +1751,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1799,7 +1799,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -1845,7 +1845,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
@@ -1884,7 +1884,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -1928,7 +1928,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -1975,7 +1975,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2020,7 +2020,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
@@ -2065,7 +2065,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed.|
 
@@ -2112,7 +2112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2158,7 +2158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2203,7 +2203,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2242,7 +2242,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000004 | The window or component is invisible or destroyed.                  |
 
 **Example**
@@ -2279,7 +2279,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -2316,7 +2316,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -2354,7 +2354,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -2374,7 +2374,7 @@ async function demo() {
 
 The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 
-All APIs provided by this class, except **Driver.create()**, use a promise to return the result and must be invoked using **await**.
+All methods provided by this class, except Driver.create() and Driver.createUIEventObserver(), are asynchronous methods using the Promise mode and must be invoked in await mode.
 
 ### create<sup>9+</sup>
 
@@ -2439,7 +2439,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2482,7 +2482,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2525,7 +2525,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2568,7 +2568,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2612,7 +2612,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2655,7 +2655,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | Assertion failed.   |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -2693,7 +2693,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -2735,7 +2735,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -2778,7 +2778,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2823,7 +2823,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2869,7 +2869,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2915,7 +2915,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -2959,7 +2959,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3002,7 +3002,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3046,7 +3046,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3089,7 +3089,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3133,7 +3133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3177,7 +3177,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3224,7 +3224,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3269,7 +3269,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3318,7 +3318,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3366,7 +3366,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 | Parameter verification failed. |
 
 **Example**
@@ -3409,7 +3409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3453,7 +3453,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3498,7 +3498,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3535,7 +3535,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3577,7 +3577,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3622,7 +3622,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3659,7 +3659,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3701,7 +3701,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3738,7 +3738,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3780,7 +3780,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3817,7 +3817,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3855,7 +3855,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -3899,7 +3899,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -3943,7 +3943,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -3989,7 +3989,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4033,7 +4033,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4088,7 +4088,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4133,7 +4133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4177,7 +4177,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4228,7 +4228,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4275,7 +4275,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4318,7 +4318,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4355,7 +4355,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 
 **Example**
 
@@ -4402,7 +4402,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4448,7 +4448,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4494,7 +4494,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4541,7 +4541,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4586,7 +4586,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4633,7 +4633,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4681,7 +4681,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4725,7 +4725,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4772,7 +4772,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not support, function can not work correctly due to limited device capabilities.|
 
@@ -4830,7 +4830,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.        |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
@@ -4879,7 +4879,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.        |
 | 17000007 | Parameter verification failed.     |
 
@@ -4923,7 +4923,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -4967,7 +4967,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5011,7 +5011,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5057,7 +5057,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5103,7 +5103,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
@@ -5153,7 +5153,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 | 801 | Capability not support, function can not work correctly due to limited device capabilities. |
 
@@ -5207,7 +5207,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.             |
 | 17000007 |  Parameter verification failed. |
 
@@ -5260,7 +5260,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000005 | This operation is not supported.             |
 | 17000007 |  Parameter verification failed. |
 
@@ -5314,7 +5314,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -5361,7 +5361,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -5407,7 +5407,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 17000002 | The async function is not called with await.             |
+| 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
 
 **Example**
@@ -5543,7 +5543,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5581,7 +5581,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5619,7 +5619,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5657,7 +5657,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 
 **Example**
@@ -5695,7 +5695,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5735,7 +5735,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5773,7 +5773,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -5820,7 +5820,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
@@ -5868,14 +5868,12 @@ Resizes a window based on the specified width, height, and direction. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
-| ID| Error Message                              |
-| -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls.                   |
 | 17000004 | The window or component is invisible or destroyed.           |
-| 17000005 | This operation is not supported.         |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-
-**Example**
+| 17000005 | This operation is not supported.                             |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ```ts
 // xxx.test.ets
@@ -5912,7 +5910,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 | 17000005 | This operation is not supported.         |
 
@@ -5953,7 +5951,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
@@ -5994,7 +5992,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
@@ -6035,7 +6033,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.          |
 | 17000005 | This operation is not supported.         |
 
@@ -6076,7 +6074,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 17000005 | This operation is not supported.         |
 
@@ -6115,7 +6113,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.         |
 
 **Example**
@@ -6153,7 +6151,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 
 **Example**
@@ -6360,9 +6358,9 @@ async function demo() {
     console.info(UIElementInfo.windowId?.toString());
     console.info(UIElementInfo.componentId);
     console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
-    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.top.toString());
+    console.info(UIElementInfo.componentRect?.right.toString());
+    console.info(UIElementInfo.componentRect?.bottom.toString());
   };
   observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
 }
@@ -7412,7 +7410,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 | ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
 | 401      | if the input parameters are invalid.             |
-| 17000002 | if the async function was not called with await. |
+| 17000002 | The API does not support concurrent calls. |
 | 17000003 | if the assertion failed.                         |
 
 **Example**
