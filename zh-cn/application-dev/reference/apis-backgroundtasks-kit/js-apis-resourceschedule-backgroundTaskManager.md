@@ -2264,6 +2264,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 <!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -2436,6 +2440,10 @@ export default class EntryAbility extends UIAbility {
 ### 属性
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
@@ -2682,6 +2690,10 @@ export default class EntryAbility extends UIAbility {
 用户授权结果。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
 
 <!--Table: 30%; 10%; 60%-->
 | 名称           | 值 | 说明     |
