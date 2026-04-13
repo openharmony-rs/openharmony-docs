@@ -5755,6 +5755,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_AOD
+
+允许应用触发进入或退出熄屏显示（AOD），并管理熄屏显示状态
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 允许应用和服务接入端侧模型部署态管理。
