@@ -23,7 +23,7 @@
 
 ``` TypeScript
 /*
- * 以下以HKDF256密钥的Promise操作使用为例
+ * 以下以DH密钥的Promise操作使用为例
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 
