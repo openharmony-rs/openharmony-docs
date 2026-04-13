@@ -14262,24 +14262,6 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    }
    ```
 
-      build() {
-         Column() {
-         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
-         Button("加载页面")
-            .onClick(() => {
-               this.businessNode = createNode(businessWebview, new BuilderData(
-               "https://www.example.com/business.html",
-               this.businessController,
-               this.getUIContext()
-               ));
-            })
-         // 用于业务的Web组件。
-         NodeContainer(this.businessNode!);
-         }
-      }
-   }
-   ```
-
 7. 加载的HTML网页示例。
 
    ```HTML

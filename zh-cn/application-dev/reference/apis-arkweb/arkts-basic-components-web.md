@@ -432,51 +432,51 @@ ArkTS-Sta示例：
    ```
 
    ArkTS-Dyn示例：
-      ```ts
-      // xxx.ets
-      import { webview } from '@kit.ArkWeb';
-      import { GlobalContext } from '../GlobalContext';
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { GlobalContext } from '../GlobalContext';
 
-      let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
+   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
 
-      @Entry
-      @Component
-      struct WebComponent {
-        controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-        build() {
-          Column() {
-            // 加载沙箱路径文件。
-            Web({ src: url, controller: this.controller })
-            .fileAccess(true)
-          }
-        }
-      }
-      ```
+     build() {
+       Column() {
+         // 加载沙箱路径文件。
+         Web({ src: url, controller: this.controller })
+         .fileAccess(true)
+       }
+     }
+   }
+   ```
 
    ArkTS-Sta示例：
-      ```ts
-      // xxx.ets
-      import { Web, Column, Component, Entry } from '@kit.ArkUI';
-      import { webview } from '@kit.ArkWeb';
-      import { GlobalContext } from '../GlobalContext';
+   ```ts
+   // xxx.ets
+   import { Web, Column, Component, Entry } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   import { GlobalContext } from '../GlobalContext';
 
-      let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
+   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
 
-      @Entry
-      @Component
-      struct WebComponent {
-        controller: webview.WebviewController = new webview.WebviewController(undefined);
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-        build() {
-          Column() {
-            // 加载沙箱路径文件。
-            Web({ src: url, controller: this.controller })
-            .fileAccess(true)
-          }
-        }
-      }
-      ```
+     build() {
+       Column() {
+         // 加载沙箱路径文件。
+         Web({ src: url, controller: this.controller })
+         .fileAccess(true)
+       }
+     }
+   }
+   ```
 
 2. 修改EntryAbility.ets。
 
