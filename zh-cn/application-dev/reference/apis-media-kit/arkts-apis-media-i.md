@@ -512,7 +512,7 @@ async function setupPlayer() {
 
 ## AVTimedMetaData<sup>26+</sup>
 
-描述指标事件的信息。
+描述时间基元数据的信息。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
