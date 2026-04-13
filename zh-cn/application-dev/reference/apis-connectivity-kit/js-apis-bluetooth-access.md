@@ -556,6 +556,41 @@ try {
 }
 ```
 
+## access.isBluetoothSupported<sup>26+</sup>
+
+isBluetoothSupported(): boolean;
+
+获取蓝牙芯片在位状态。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**返回值：**
+
+| 类型                              | 说明              |
+| --------------------------------- | ---------------- |
+| boolean | 蓝牙芯片的在位状态。true表示蓝牙芯片在位，false表示蓝牙芯片不在位。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|2900099 | Check whether Bluetooth is avaiable failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let isSupported: boolean = access.isBluetoothSupported();
+    console.info("isSupported: " + isSupported);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## BluetoothState
 
 枚举，蓝牙开关状态。
