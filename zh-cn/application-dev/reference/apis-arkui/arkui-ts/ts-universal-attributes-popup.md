@@ -93,6 +93,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | borderLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 是  | 设置Popup组件内描边线性渐变的颜色。<br />**说明：** <br />1. borderLinearGradient不设置或者设置为null、undefined时，内描边没有线性渐变效果。<br />2. borderLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | avoidTarget<sup>20+</sup>          | [AvoidanceMode](ts-basic-components-select.md#avoidancemode19枚举说明) | 否   | 是  | 设置Popup避让时是否覆盖指向组件。<br/>默认值：AvoidanceMode.COVER_TARGET <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | placementOnTop<sup>(deprecated)</sup> | boolean                                                      | 否   | 是 | 是否在组件上方显示，默认值为false。取值为true：气泡显示到绑定组件的上方，取值false：气泡显示到绑定组件的下方。<br />**说明：**<br />从API version 7开始支持，从API version 10开始废弃，建议使用`placement`替代。 |
+| colorMode | [AnchoredColorMode](#anchoredcolormode) | 否 | 是 | 设置气泡深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br />3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。<br />**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupMessageOptions<sup>10+</sup>类型说明
 
@@ -172,6 +173,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | outlineLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 是  | 设置Popup组件外描边线性渐变的颜色。<br />**说明：** <br />1. outlineLinearGradient不设置或者设置为null、undefined时，外描边没有线性渐变效果。<br />2. outlineLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | borderLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 是  | 设置Popup组件内描边线性渐变的颜色。<br />**说明：** <br />1. borderLinearGradient不设置或者设置为null、undefined时，内描边没有线性渐变效果。<br />2. borderLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | avoidTarget<sup>20+</sup>          | [AvoidanceMode](ts-basic-components-select.md#avoidancemode19枚举说明) | 否   | 是  | 设置Popup避让时是否覆盖指向组件。<br />**说明：** <br />设置avoidTarget为AvoidanceMode.AVOID_AROUND_TARGET时，气泡在剩余显示空间不足的情况下会进行压缩，此时气泡内容需结合Scroll使用，否则气泡内容会出现遮挡。<br/>默认值：AvoidanceMode.COVER_TARGET <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| colorMode | [AnchoredColorMode](#anchoredcolormode) | 否 | 是 | 设置气泡深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br /><br />**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupCommonOptions<sup>18+</sup>类型说明
 
@@ -208,6 +210,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 | outlineLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 是  | 设置Popup组件外描边线性渐变的颜色。<br />**说明：** <br />1. outlineLinearGradient不设置或者设置为null、undefined时，外描边没有线性渐变效果。<br />2. outlineLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | borderLinearGradient<sup>20+</sup>| [PopupBorderLinearGradient](#popupborderlineargradient20类型说明)  | 否   | 是  | 设置Popup组件内描边线性渐变的颜色。<br />**说明：** <br />1. borderLinearGradient不设置或者设置为null、undefined时，内描边没有线性渐变效果。<br />2. borderLinearGradient设置时，direction默认值是：GradientDirection.Bottom。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | avoidTarget<sup>20+</sup>          | [AvoidanceMode](ts-basic-components-select.md#avoidancemode19枚举说明) | 否   | 是  | 设置Popup避让时是否覆盖指向组件。<br />**说明：** <br />设置avoidTarget为AvoidanceMode.AVOID_AROUND_TARGET时，气泡在剩余显示空间不足的情况下会进行压缩，此时气泡内容需结合Scroll使用，否则气泡内容会出现遮挡。<br/>默认值：AvoidanceMode.COVER_TARGET <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| colorMode | [AnchoredColorMode](#anchoredcolormode) | 否 | 是 | 设置气泡深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br /><br />**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupStateChangeParam<sup>18+</sup>类型说明
 
@@ -274,6 +277,25 @@ type PopupStateChangeCallback = (event: PopupStateChangeParam) => void;
 | ------- | ---- | ------------------------------------------------ |
 | DEFAULT | 0    | 默认避让软键盘并在到达极限高度之后进行高度压缩。 |
 | NONE    | 1    | 不避让软键盘。                                   |
+
+## AnchoredColorMode
+
+配置组件主题跟随的颜色模式。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称  | 值 | 说明                                   |
+| ----- | -  | --------------------------------------|
+| FOLLOW_SYSTEM  | 0 | 跟随系统深浅色模式。 |
+| FOLLOW_TARGET  | 1 | 跟随绑定组件深浅色模式。 |
 
 ## 示例
 
