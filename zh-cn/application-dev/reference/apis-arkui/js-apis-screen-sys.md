@@ -399,7 +399,7 @@ screen.offConnect(callback);
 screen.offConnect();
 ```
 
-## screen.offDisconnect<sup>22+</sup>
+## screen.offDisconnect<sup>23+</sup>
 
 offDisconnect(callback?: Callback&lt;long&gt;): void
 
