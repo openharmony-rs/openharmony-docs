@@ -1310,7 +1310,7 @@ cloudSync.unregisterChange(uri);
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | 否   | 否   | 文件内容修改时间，时间戳，单位：ms。 |
+| editedTime | number | 否   | 否   | 文件内容修改的时间戳，单位：ms。 |
 | fileSize | number | 否   | 否   | 文件大小，单位：Byte。 |
 | versionId | string | 否   | 否   | 文件版本号。 |
 | originalFileName | string | 否   | 否   | 当前版本对应的文件名。 |
