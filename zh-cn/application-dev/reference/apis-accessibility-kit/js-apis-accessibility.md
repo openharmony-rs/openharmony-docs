@@ -419,7 +419,7 @@ struct Index {
 | type             | [EventType](#eventtype)               | 否   | 否   | 无障碍事件类型，不可缺省。         |
 | windowUpdateType | [WindowUpdateType](#windowupdatetype) | 否   | 是   | 窗口变化类型。               |
 | bundleName       | string                                | 否   | 否   | 目标应用名；不可缺省。           |
-| componentType    | string                                | 否   | 是   | 应与事件源组件类型对应，如：按钮Button类型->'Button'、图片Image类型->'Image'，默认值为空。       |
+| componentType    | string                                | 否   | 是   | 应与事件源组件类型对应，默认值为空。<br>例如：<br>- 按钮Button类型->'Button'。<br>- 图片Image类型->'Image'。   |
 | pageId           | number                                | 否   | 是   | 事件源的页面ID，默认值为0。            |
 | description      | string                                | 否   | 是   | 事件描述，根据实际场景设置，无特殊限制，默认值为空。        |
 | triggerAction    | [Action](#action)                     | 否   | 否   | 触发事件的Action，不可缺省。    |
