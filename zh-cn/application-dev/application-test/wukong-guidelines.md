@@ -352,6 +352,47 @@ C:\Users\xxx>hdc file recv /data/local/tmp/wukong/report/20170805_170053/wukong.
 FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 ```
 
+### 测试报告解析
+
+包含基本信息、事件注入统计、Ability统计、故障统计。
+
+1. 基本信息（Base Info）
+
+    | 字段                      | 描述               | 说明               |
+    | -----------------        | ------------------ | ------------------ |
+    | task status              | 任务状态。           | success表示成功，fail表示失败。 |
+    | task time                | 任务执行时间。 | 单位：秒。|
+    | seed                     | 随机种子。     | |
+    | task count               | 事件注入总次数。       | |
+
+2. 事件注入统计（Input Message Statistics）
+
+    | 类型                            | 描述                               | 说明               |
+    | -------------------------------| ---------------------------------- | ------------------ |
+    | type                           | 事件操作或控件操作的类型。 | 事件操作类型范围请参考[随机测试命令参数](#随机测试)，控件操作类型范围请参考[ArkTS组件](../reference/apis-arkui/Readme-CN.md)|
+    | execTimes                      | 事件或者控件操作执行次数。  |
+    | proportion                     | 当前事件操作在事件执行总次数里的占比。|
+    | inputedTimes                   | 遍历的控件类型个数。       |
+    | expectInputTimes               | 应用控件类型总数。       |
+    | coverage                       | 控件遍历覆盖率。       |
+
+3. Ability统计（ability Statistics）
+
+    | 字段                     | 描述               |
+    | -----------------       | ------------------ |
+    | bundleName              | 应用的bundleName。 |
+    | inputedAbilityCount     | 遍历的Ability数量。 |
+    | abilitiesCount          | 应用的Ability总数。|
+    | coverage                | Ability遍历覆盖率。|
+
+4. 故障统计（Exception Message Statistics）
+    | 字段               | 描述               | 说明               |
+    | ----------------- | ------------------ | ------------------ |
+    | type              | 故障类型。 | 故障类型包含：CppCrash，jsCrash，SysFreeze，AppFreeze等。
+    | times             | 故障次数。 |
+    | proportion        | 当前故障在故障总数里的占比。|
+
+
 ## 常见问题
 ### failed to connect to AAMS
  **错误描述** 
