@@ -25,6 +25,7 @@
       - [UIAbility备份恢复](ability-recover-guideline.md)
     - [ExtensionAbility组件](extensionability-overview.md)
       <!--Del-->
+      - [使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）](agent-manager-sys.md)
       - [ServiceExtensionAbility（仅对系统应用开放）](serviceextensionability-sys.md)
       - [UIServiceExtension（仅对系统应用开放）](uiserviceextension-sys.md)
       - [UIExtensionAbility（仅对系统应用开放）](uiextensionability-sys.md)
@@ -33,6 +34,7 @@
       <!--DelEnd-->
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
       - [使用AppServiceExtensionAbility组件实现后台服务](app-service-extension-ability.md)
+      - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
     - [AbilityStage组件管理器](abilitystage.md)
     - [应用上下文Context](application-context-stage.md)
     - 信息传递载体Want<!--want-->
@@ -71,7 +73,7 @@
       - [拉起快递类应用（startAbilityByType）](start-express-apps.md)
       - [拉起图片编辑类应用（startAbilityByType）](photoEditorExtensionAbility.md)
       - [拉起文件处理类应用（startAbility）](file-processing-apps-startup.md)
-    - [拉起系统应用](system-app-startup.md)
+    - [拉起系统应用](system-app-startup.md)<!--PR1--><!--PR1End-->
   - [进程模型](process-model-stage.md)
   - [线程模型](thread-model-stage.md)
   <!--Del-->

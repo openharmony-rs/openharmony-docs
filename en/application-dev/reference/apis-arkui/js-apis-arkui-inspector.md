@@ -129,7 +129,7 @@ Unregisters the drawing completion callback through this handle.
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
-Registers a child component drawing completion callback through [ComponentObserver](#componentobserver). When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered.
+Registers a child component drawing completion callback through [ComponentObserver](#componentobserver). When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **drawChildren** callbacks will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -165,7 +165,7 @@ onLayoutChildren(callback: Callback\<void\>): void
 
 Registers a callback used to listen for the **layoutChildren** event using [ComponentObserver](#componentobserver). This API uses an asynchronous callback to return the result.
 
-When the node that is currently listened is used as the root node and the nodes in the subtree are laid out, this callback is triggered. When multiple **layoutChildren** callbacks exist in the component tree, only the topmost callback will be triggered.
+When the node that is currently listened is used as the root node and the nodes in the subtree are laid out, this callback is triggered. When multiple **layoutChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **layoutChildren** callbacks will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -205,7 +205,7 @@ onDrawChildren(callback: Callback\<number[]\>): void
 
 Registers a callback used to listen for the **drawChildren** event using [ComponentObserver](#componentobserver). This API uses an asynchronous callback to return the result.
 
-When the node that is currently listened is used as the root node, the callback will be triggered after the child components of the component complete drawing. When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered.
+When the node that is currently listened is used as the root node, the callback will be triggered after the child components of the component complete drawing. When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **drawChildren** callbacks will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -302,14 +302,15 @@ struct ImageExample {
     let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
       // The onDrawChildren API is added since API version 24. After the DrawChildren event is received, you can customize the implementation logic.
     }
-  }
+
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
     this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
-    // Unregister callbacks through the handle. You should decide when to call these APIs.
-    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
-    // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
   }
+
+  // Unregister callbacks through the handle. You should decide when to call these APIs.
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+  // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
 }
 ```

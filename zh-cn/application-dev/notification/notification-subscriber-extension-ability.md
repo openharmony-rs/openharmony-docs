@@ -1,4 +1,4 @@
-#  NotificationSubscriberExtensionAbility (开发概述)
+#  通知订阅扩展能力概述
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @cheerful_ricky-->
@@ -27,4 +27,4 @@
 4. 三方穿戴应用需申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，权限为system_basic级别。
 
 ## 运作机制
-<img src="figures/notification_subscription_extension_ability.png" width="70%">
+![notification_subscription_extension_ability](figures/notification_subscription_extension_ability.png)

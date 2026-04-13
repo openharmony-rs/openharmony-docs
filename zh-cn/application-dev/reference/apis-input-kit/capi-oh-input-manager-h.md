@@ -9,7 +9,7 @@
 
 ## 概述
 
-提供事件注入和关键状态查询等功能。
+提供输入事件注入、按键状态查询、设备热插拔监听、事件拦截、快捷键管理、鼠标光标管理、输入设备信息查询、注入权限管理等功能。
 
 **引用文件：** <multimodalinput/oh_input_manager.h>
 
@@ -67,8 +67,8 @@
 | [typedef void (\*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)](#input_mouseeventcallback) | Input_MouseEventCallback | 鼠标事件的回调函数，mouseEvent的生命周期为回调函数内。 |
 | [typedef void (\*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)](#input_toucheventcallback) | Input_TouchEventCallback | 触屏输入事件的回调函数，touchEvent的生命周期为回调函数内。 |
 | [typedef void (\*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)](#input_axiseventcallback) | Input_AxisEventCallback | 轴事件的回调函数，axisEvent的生命周期为回调函数内。 |
-| [typedef void (\*Input_DeviceAddedCallback)(int32_t deviceId)](#input_deviceaddedcallback) | Input_DeviceAddedCallback | 回调函数，用于回调输入设备的热插事件。 |
-| [typedef void (\*Input_DeviceRemovedCallback)(int32_t deviceId)](#input_deviceremovedcallback) | Input_DeviceRemovedCallback | 回调函数，用于回调输入设备的热拔事件。 |
+| [typedef void (\*Input_DeviceAddedCallback)(int32_t deviceId)](#input_deviceaddedcallback) | Input_DeviceAddedCallback | 回调函数，用于接收输入设备的热插事件。 |
+| [typedef void (\*Input_DeviceRemovedCallback)(int32_t deviceId)](#input_deviceremovedcallback) | Input_DeviceRemovedCallback | 回调函数，用于接收输入设备的热拔事件。 |
 | [typedef void (\*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus)](#input_injectauthorizecallback) | Input_InjectAuthorizeCallback | 回调函数，用于获取注入权限状态。 |
 | [Input_Result OH_Input_GetKeyState(struct Input_KeyState* keyState)](#oh_input_getkeystate) | - | 查询按键状态的枚举对象。 |
 | [struct Input_KeyState* OH_Input_CreateKeyState()](#oh_input_createkeystate) | - | 创建按键状态的枚举对象。通过调用[OH_Input_DestroyKeyState](#oh_input_destroykeystate)销毁按键状态的枚举对象。 |
@@ -171,7 +171,7 @@
 | [Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, int32_t *preKeyCount)](#oh_input_getprekeys) | - | 获取修饰键。 |
 | [void OH_Input_SetFinalKey(Input_Hotkey* hotkey, int32_t finalKey)](#oh_input_setfinalkey) | - | 设置被修饰键。 |
 | [Input_Result OH_Input_GetFinalKey(const Input_Hotkey* hotkey, int32_t *finalKeyCode)](#oh_input_getfinalkey) | - | 获取被修饰键。 |
-| [Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)](#oh_input_createallsystemhotkeys) | - | 创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。 |
+| [Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)](#oh_input_createallsystemhotkeys) | - | 创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)获取有效的count参数。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。 |
 | [void OH_Input_DestroyAllSystemHotkeys(Input_Hotkey **hotkeys, int32_t count)](#oh_input_destroyallsystemhotkeys) | - | 销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。 |
 | [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | 获取设置的所有快捷键。 |
 | [void OH_Input_SetRepeat(Input_Hotkey* hotkey, bool isRepeat)](#oh_input_setrepeat) | - | 设置是否上报重复key事件。 |
@@ -583,7 +583,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 
 **描述**
 
-回调函数，用于回调输入设备的热插事件。
+回调函数，用于接收输入设备的热插事件。
 
 **起始版本：** 13
 
@@ -602,7 +602,7 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 
 **描述**
 
-回调函数，用于回调输入设备的热拔事件。
+回调函数，用于接收输入设备的热拔事件。
 
 **起始版本：** 13
 
@@ -657,7 +657,7 @@ Input_Result OH_Input_GetKeyState(struct Input_KeyState* keyState)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 如果操作成功，@return返回[INPUT_SUCCESS](#input_result)； <br> 否则返回[Input_Result](#input_result)中定义的其他错误代码。 |
+| [Input_Result](#input_result) | 操作成功返回[INPUT_SUCCESS](#input_result)；否则返回[Input_Result](#input_result)中定义的其他错误代码。 |
 
 ### OH_Input_CreateKeyState()
 
@@ -677,7 +677,7 @@ struct Input_KeyState* OH_Input_CreateKeyState()
 
 | 类型 | 说明 |
 | -- | -- |
-| struct | 如果操作成功，@return返回一个[Input_KeyState](capi-input-input-keystate.md)指针对象；否则返回空指针。 |
+| struct [Input_KeyState](capi-input-input-keystate.md)* | 操作成功返回一个[Input_KeyState](capi-input-input-keystate.md)指针对象；否则返回空指针。 |
 
 ### OH_Input_DestroyKeyState()
 
@@ -896,7 +896,7 @@ struct Input_KeyEvent* OH_Input_CreateKeyEvent()
 
 | 类型 | 说明 |
 | -- | -- |
-| struct | 如果操作成功返回一个[Input_KeyEvent](capi-input-input-keyevent.md)指针对象，否则返回空指针。 |
+| struct [Input_KeyEvent](capi-input-input-keyevent.md)* | 如果操作成功返回一个[Input_KeyEvent](capi-input-input-keyevent.md)指针对象，否则返回空指针。 |
 
 ### OH_Input_DestroyKeyEvent()
 
@@ -1182,7 +1182,7 @@ struct Input_MouseEvent* OH_Input_CreateMouseEvent()
 
 | 类型 | 说明 |
 | -- | -- |
-| struct | 如果操作成功返回一个[Input_MouseEvent](capi-input-input-mouseevent.md)指针对象，否则返回空指针。 |
+| struct [Input_MouseEvent](capi-input-input-mouseevent.md)* | 如果操作成功返回一个[Input_MouseEvent](capi-input-input-mouseevent.md)指针对象，否则返回空指针。 |
 
 ### OH_Input_DestroyMouseEvent()
 
@@ -1540,7 +1540,7 @@ int64_t OH_Input_GetMouseEventActionTime(const struct Input_MouseEvent* mouseEve
 
 | 参数项 | 描述 |
 | -- | -- |
-| mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
+| const struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
 
 **返回：**
 
@@ -1637,7 +1637,7 @@ struct Input_TouchEvent* OH_Input_CreateTouchEvent()
 
 | 类型 | 说明 |
 | -- | -- |
-| struct | 如果操作成功返回一个[Input_TouchEvent](capi-input-input-touchevent.md)指针对象，否则返回空指针。 |
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* | 如果操作成功返回一个[Input_TouchEvent](capi-input-input-touchevent.md)指针对象，否则返回空指针。 |
 
 ### OH_Input_DestroyTouchEvent()
 
@@ -1875,7 +1875,7 @@ void OH_Input_SetTouchEventActionTime(struct Input_TouchEvent* touchEvent, int64
 
 | 参数项 | 描述 |
 | -- | -- |
-| touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
 | int64_t actionTime | 触屏输入事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
 
 ### OH_Input_GetTouchEventActionTime()
@@ -1897,7 +1897,7 @@ int64_t OH_Input_GetTouchEventActionTime(const struct Input_TouchEvent* touchEve
 
 | 参数项 | 描述 |
 | -- | -- |
-| touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
 
 **返回：**
 
@@ -3228,7 +3228,7 @@ Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)
 
 **描述**
 
-创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。
+创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)获取有效的count参数。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3365,7 +3365,7 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 >
 > 订阅快捷键事件时，对于preKeys和finalKey有以下约束：
 > 1. preKeys：修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 4]，无顺序要求。例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。
-> 2. finalKey：被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[按键设备的键值](capi-oh-key-code-h.md)。例如，Ctrl+Shift+Esc中，Esc称为被修饰键。
+> 2. finalKey：被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[Input_KeyCode](capi-oh-key-code-h.md#input_keycode)。例如，Ctrl+Shift+Esc中，Esc称为被修饰键。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3897,7 +3897,7 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectMouseEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_GetMouseEventDisplayId()
 

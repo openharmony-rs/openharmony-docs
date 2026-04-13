@@ -184,6 +184,10 @@ ChipGroup的尾部图标选项类型。
 
 ## IconGroupSuffix
 
+```typescript
+IconGroupSuffix({items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItemOptions>})
+```
+
 **装饰器类型：**@Component
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。

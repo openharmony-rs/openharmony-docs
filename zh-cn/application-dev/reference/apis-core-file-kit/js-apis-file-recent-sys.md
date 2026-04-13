@@ -139,5 +139,5 @@ listFile(): Array\<FileInfo>
 | fileName | string | 是 | 否 | 文件名。 |
 | mode | number | 是 | 否 | [文件权限信息](js-apis-file-fs.md#stat)。 |
 | size | number | 是 | 否 |  文件的大小（单位：字节）。 |
-| mtime | number | 是 | 否 |  文件的修改时间。 |
-| ctime | number | 是 | 否 |  文件的创建时间。 |
+| mtime | number | 是 | 否 |  文件的修改时间。自1970年1月1日起至目标时间的毫秒数。 |
+| ctime | number | 是 | 否 |  文件的创建时间。自1970年1月1日起至目标时间的秒数。|

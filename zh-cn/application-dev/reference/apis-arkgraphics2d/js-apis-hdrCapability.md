@@ -35,4 +35,4 @@ HDR格式枚举。
 | IMAGE_HDR_VIVID_SINGLE       | 5      | 支持图片的HDR_VIVID格式，以single HEIF格式存储。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | IMAGE_HDR_ISO_DUAL           | 6      | 支持图片的HDR_ISO格式，以dual JPEG格式存储。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | IMAGE_HDR_ISO_SINGLE         | 7      | 支持图片的HDR_ISO格式，以single HEIF格式存储。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| VIDEO_AIHDR<sup>24+</sup>     | 8      | 支持视频的AIHDR格式。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| VIDEO_AIHDR<sup>24+</sup>     | 8      | 支持视频的AIHDR格式。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **模型约束**：此接口仅可在Stage模型下使用。 |

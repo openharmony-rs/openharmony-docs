@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Flash 继承自 [FlashQuery](arkts-apis-camera-FlashQuery.md)。
+Flash继承自[FlashQuery](arkts-apis-camera-FlashQuery.md)。
 
 闪光灯类，对设备闪光灯操作。
 
@@ -105,5 +105,59 @@ function getFlashMode(photoSession: camera.PhotoSession): camera.FlashMode | und
     console.error(`The getFlashMode call failed.error code: ${err.code}`);
   }
   return flashMode;
+}
+```
+
+## onFlashStateChange<sup>24+</sup>
+
+onFlashStateChange(callback: Callback\<FlashState\>): void
+
+订阅闪光灯状态变化事件回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[FlashState](arkts-apis-camera-e.md#flashstate24)\> | 是   | 回调函数，用于获取闪光灯状态变化信息。 |
+
+**示例：**
+
+```ts
+function onFlashStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.onFlashStateChange((flashState: camera.FlashState) => {
+    console.info(`Flash state changed: ${flashState}`);
+  });
+}
+```
+
+## offFlashStateChange<sup>24+</sup>
+
+offFlashStateChange(callback?: Callback\<FlashState\>): void
+
+取消订阅闪光灯状态变化事件回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[FlashState](arkts-apis-camera-e.md#flashstate24)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function offFlashStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.offFlashStateChange();
 }
 ```

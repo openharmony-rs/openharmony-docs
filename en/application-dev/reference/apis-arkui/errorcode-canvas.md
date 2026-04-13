@@ -36,7 +36,7 @@ The drawingContext is not bound to a canvas component.
 
 **Description**
 
-The current drawing context is not bound to any **Canvas** component.
+This error code is reported when the current drawing context is not bound to any **Canvas** component.
 
 **Possible Causes**
 
@@ -54,7 +54,7 @@ OffscreenCanvas object is detached.
 
 **Description**
 
-[OffscreenCanvas](./arkui-ts/ts-components-offscreencanvas.md) has been detached from the tree.
+This error code is reported when [OffscreenCanvas](./arkui-ts/ts-components-offscreencanvas.md) is detached from the tree.
 
 **Possible Causes**
 

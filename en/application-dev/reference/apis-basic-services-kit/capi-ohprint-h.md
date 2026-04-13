@@ -901,7 +901,7 @@ Starts a print job with the callback to be invoked when the print job state chan
 | ---------------------------------------------------- | -----------------------|---------------------------------------- |
 | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) | 0 | Operation is successful.|
 | [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) | 201 | The [ohos.permission.PRINT](../../security/AccessToken/permissions-for-all.md#ohospermissionprint) permission is required.|
-| [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode) | 401 | One of the parameter is null or the key list is empty.|
+| [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode) | 401 | One of the parameters is null or the key list is empty.|
 | [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300001 | The callback function cannot be copied.|
 | [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300002 | Failed to connect to the print service.|
 | [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300003 | The print job struct cannot be created in the print service.|

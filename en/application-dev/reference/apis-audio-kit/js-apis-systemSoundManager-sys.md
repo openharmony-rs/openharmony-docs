@@ -1911,7 +1911,7 @@ Adds a custom tone with a given FD to the tone library. This API uses a promise 
 |-----|-----------|----|------------------------------------------------------------------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes | Application context.                                                             |
 | toneAttr | [ToneAttrs](#toneattrs12) | Yes | Attributes of the tone.                                                                 |
-| fd  | number    | Yes | File descriptor, which is obtained by calling [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).|
+| fd  | number    | Yes | File descriptor, which can be obtained using [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).|
 | offset | number    | No | Offset from which the data is read, in bytes. The default value is **0**.                                             |
 | length | number    | No | Length of the data to read, in bytes. By default, the length is the total number of remaining bytes after the offset.                                |
 
@@ -2432,7 +2432,7 @@ systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: sys
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
 type RingtonePlayer = _RingtonePlayer
 
@@ -2460,7 +2460,7 @@ Defines a system tone player.
 |-----------------|-----------|
 | [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | System tone player.|
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
 type RingtoneOptions = _RingtoneOptions
 

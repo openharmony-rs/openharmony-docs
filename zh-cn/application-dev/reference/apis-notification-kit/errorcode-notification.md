@@ -214,7 +214,7 @@ Failed to read the template configuration.
 请检查系统中模板配置文件是否存在，配置文件路径：/system/etc/notification_template/external.json。
 <!--DelEnd-->
 
-## 1600012 内存空间不够
+## 1600012 内存空间不足
 
 **错误信息**
 
@@ -222,9 +222,11 @@ No memory space.
 
 **错误描述**
 
-内存申请出现错误，方法将返回该错误码。
+内存申请可能因内存空间不足出现错误，方法将返回该错误码。
 
 **可能原因**
+
+内存空间不足。
 
 内存申请出现错误。
 

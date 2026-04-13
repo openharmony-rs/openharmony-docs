@@ -319,7 +319,7 @@ let options: AnimatorOptions = {
 let optionsNew: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200)
   .duration(2000)
   .iterations(3)
-  .delay(1000)
+  .delay(1000);
 let animatorResult: AnimatorResult = animator.create(options);
 animatorResult.reset(optionsNew);
 ```
@@ -998,7 +998,7 @@ struct AnimatorTest {
 
   aboutToDisappear() {
     // 自定义组件消失时调用finish使未完成的动画结束，避免动画继续运行。
-    // 由于backAnimator在onframe中引用了this, this中保存了backAnimator，
+    // 由于backAnimator在onFrame中引用了this, this中保存了backAnimator，
     // 在自定义组件消失时应该将保存在组件中的backAnimator置空，避免内存泄漏
     this.backAnimator?.finish();
     this.backAnimator = undefined;
@@ -1139,18 +1139,18 @@ struct AnimatorTest {
     this.backAnimator = this.getUIContext()?.createAnimator(
       new SimpleAnimatorOptions(0, 100)
     )
-    this.backAnimator.onFinish = ()=> {
+    this.backAnimator.onFinish = () => {
       this.flag = true
       console.info(this.TAG, 'backAnimator onFinish')
     }
-    this.backAnimator.onFrame = (value:number)=> {
+    this.backAnimator.onFrame = (value:number) => {
       this.translate_ = value
     }
   }
 
   aboutToDisappear() {
     // 自定义组件消失时调用finish使未完成的动画结束，避免动画继续运行。
-    // 由于backAnimator在onframe中引用了this, this中保存了backAnimator，
+    // 由于backAnimator在onFrame中引用了this, this中保存了backAnimator，
     // 在自定义组件消失时应该将保存在组件中的backAnimator置空，避免内存泄漏
     this.backAnimator?.finish();
     this.backAnimator = undefined;

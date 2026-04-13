@@ -78,7 +78,7 @@ prepareCooperate(): Promise&lt;void&gt;;
 
 **返回值：**
 
-| 参数                | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -121,6 +121,8 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**参数**：
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -168,7 +170,7 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 **返回值：**
 
-| 参数                | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -269,7 +271,7 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;vo
 
 **返回值：**
 
-| 参数名              | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -367,7 +369,7 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 
 **返回值：**
 
-| 参数名              | 说明                      |
+| 类型               | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -462,7 +464,7 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 **返回值**：
 
-| 参数                   | 说明                                                         |
+| 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
 | Promise&lt;boolean&gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
 
@@ -737,7 +739,7 @@ activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, coo
 
 **返回值：**
 
-| 参数                | 说明                      |
+| 类型                | 说明                      |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -883,7 +885,7 @@ prepare(): Promise&lt;void&gt;;
 
 **返回值**：
 
-| 参数                 | 说明                     |
+| 类型                 | 说明                     |
 | ------------------- | ------------------------------- |
 | Promise&lt;void&gt;      | 无返回结果的Promise对象。 |
 
@@ -925,6 +927,8 @@ unprepare(callback: AsyncCallback&lt;void&gt;): void;
 > 从API version 10开始不再维护。建议使用[cooperate.unprepareCooperate](#cooperateunpreparecooperate11)替代
 
 **系统能力**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**参数**：
 
 | 参数名   | 类型                      | 必填 | 说明                                       |
 | -------- | ------------------------- | ---- | ------------------------------------------ |
@@ -971,7 +975,7 @@ unprepare(): Promise&lt;void&gt;;
 
 **返回值**：
 
-| 参数                | 说明                                          |
+| 类型                | 说明                                          |
 | ------------------- | --------------------------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -1075,7 +1079,7 @@ activate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
 
 **返回值**：
 
-| 参数名                  | 说明                             |
+| 类型                  | 说明                             |
 | ---------------------- | ------------------------------- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
@@ -1177,7 +1181,7 @@ deactivate(isUnchained: boolean): Promise&lt;void&gt;;
 
 **返回值**：
 
-| 参数名                | 说明                            |
+| 类型                | 说明                            |
 | --------             | ----------------------------   |
 | Promise&lt;void&gt; |  无返回结果的Promise对象。|
 
@@ -1283,7 +1287,7 @@ getCrossingSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 **返回值**：
 
-| 参数                        | 说明                     |
+| 类型                       | 说明                     |
 | -------------------        | ------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
 

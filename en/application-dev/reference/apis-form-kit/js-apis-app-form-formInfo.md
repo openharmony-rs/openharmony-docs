@@ -129,11 +129,12 @@ Enumerates the widget parameters.
 | PARAM_FORM_CUSTOMIZE_KEY<sup>10+</sup>    | 'ohos.extra.param.key.form_customize'   | Custom data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | FORM_RENDERING_MODE_KEY<sup>11+</sup>    | 'ohos.extra.param.key.form_rendering_mode'   | Widget rendering mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | HOST_BG_INVERSE_COLOR_KEY<sup>12+</sup>    | 'ohos.extra.param.key.host_bg_inverse_color'   | Inverse background color of the widget client.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| FORM_LOCATION_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_location'   | Widget location.<br>OTHER                         -1    (other locations)<br>DESKTOP                       0     (home screen)<br>FORM_CENTER                   1     (widget center of the home screen)<br>FORM_MANAGER                  2     (widget manager of the home screen)<br>NEGATIVE_SCREEN               3     (HUAWEI Assistant·TODAY)<br>FORM_CENTER_NEGATIVE_SCREEN   4     (widget center of HUAWEI Assistant·TODAY)<br>FORM_MANAGER_NEGATIVE_SCREEN  5     (widget manager of HUAWEI Assistant·TODAY)<br>SCREEN_LOCK                   6     (screen lock)<br>AI_SUGGESTION                 7     (AI Suggestions)<br>STANDBY                       8     (<!--RP2-->landscape standby screen<!--RP2End-->)|
+| FORM_LOCATION_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_location'   | Widget location.<br>OTHER                         -1    (other locations)<br>DESKTOP                       0     (home screen)<br>FORM_CENTER                   1     (widget center of the home screen)<br>FORM_MANAGER                  2     (widget manager of the home screen)<br>NEGATIVE_SCREEN               3     (HUAWEI Assistant·TODAY)<br>FORM_CENTER_NEGATIVE_SCREEN   4     (widget center of HUAWEI Assistant·TODAY)<br>FORM_MANAGER_NEGATIVE_SCREEN  5     (widget manager of HUAWEI Assistant·TODAY)<br>SCREEN_LOCK                   6     (screen lock)<br>AI_SUGGESTION                 7     (AI Suggestions)<br>STANDBY                       8     (standby screen saver)|
 | FORM_PERMISSION_NAME_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_name' | Name of the permission.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | FORM_PERMISSION_GRANTED_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_granted' | Whether the permission is granted.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | ORIGINAL_FORM_KEY<sup>20+</sup> | 'ohos.extra.param.key.original_form_id' | Original widget ID. When a group of widgets associated by **groupId** is resized, new-sized widgets are created before old-sized widgets are deleted. When a new-sized widget is created, the old-sized widget ID is passed through this key in the **want** parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | EDIT_FORM_KEY<sup>22+</sup> | 'ohos.extra.param.key.edit_form_id' | ID of the edited widget. In the widget editing of the semi-modal page, this key is passed through the **onAddForm** callback to indicate the ID of the edited widget, ensuring that the preview widget and the edited widget are synchronized. If the **onAddForm** callback of the widget carries this key, the widget is a preview widget in the semi-modal page, and the content of the preview widget needs to be filtered based on the edited widget.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| UPDATE_FORM_REASON_KEY<sup>24+</sup> | 'ohos.extra.param.key.update_form_reason' | [Wideget update reason](#formupdatereason24).<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## FormDimension
 
@@ -206,6 +207,21 @@ Enumerates the reasons for creating a widget.
 | FORM_DEFAULT | 1   | The widget is created by default.|
 | FORM_SHARE   | 2   | The widget is created for sharing.|
 | FORM_SIZE_CHANGE<sup>20+<sup>    | 3   | The widget is created due to dimension changes.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+
+## FormUpdateReason<sup>24+</sup> 
+
+Enumerates widget update reasons.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+| Name       | Value  | Description        |
+| ----------- | ---- | ------------ |
+| UNKNOWN        | -1 | The widget is updated for an unknown reason.|
+| FORM_NODE_REUSE      | 0   | The widget is updated for node reuse.|
 
 ## OverflowInfo<sup>20+</sup>
 

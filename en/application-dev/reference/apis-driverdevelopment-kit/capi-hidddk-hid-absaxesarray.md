@@ -27,4 +27,4 @@ Defines an array of absolute coordinates.
 | Name| Description|
 | -- | -- |
 | Hid_AbsAxes* hidAbsAxes | Array of absolute coordinates.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|
