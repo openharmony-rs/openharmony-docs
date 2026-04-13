@@ -539,7 +539,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
   });
 });
 ```
-结合connection.on接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
+结合[on("netvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
 
 **示例：**
 
@@ -658,7 +658,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-结合connection.on接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
+结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
 
 **示例：**
 
