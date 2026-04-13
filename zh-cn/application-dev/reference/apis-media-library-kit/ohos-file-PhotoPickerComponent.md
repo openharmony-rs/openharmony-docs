@@ -1287,17 +1287,17 @@ struct Drawer {
   // 当前拖拽的偏移量。
   private currentOffset: number = 0;
   // 自定义抽屉高度在整个屏幕的占比。
-  private drawerRation: number = 0.8;
+  private drawerRatio: number = 0.8;
   // 初始化为收缩态。
   private drawerState: DrawerState = DrawerState.Collapsing;
   // 手势响应阈值，判断手势是否是向下。
-  private pulligDownThreshold: number = -5;
+  private pullingDownThreshold: number = -5;
 
   aboutToAppear(): void {
     // 获取屏幕高度。
     this.screenHeight = px2vp(display.getDefaultDisplaySync().height);
     // 获取抽屉高度。
-    this.drawerHeight = this.screenHeight * this.drawerRation;
+    this.drawerHeight = this.screenHeight * this.drawerRatio;
     // 初始时抽屉在底部（隐藏高度）。
     this.offsetY = this.drawerHeight * 0.8;
     // 初始化时picker不支持滚动。
@@ -1451,7 +1451,7 @@ struct Drawer {
             // 计算移动距离。
             const deltaY = event.fingerList[0].globalY - this.startY || 0;
             // 展开态且向下滑动，那么屏蔽宫格的滑动且状态置为滚动态。
-            if (this.drawerState === DrawerState.Expanding && deltaY < this.pulligDownThreshold) {
+            if (this.drawerState === DrawerState.Expanding && deltaY < this.pullingDownThreshold) {
               this.pickerController.updatePickerOptions({
                 isSlidingSupported: true
               })
