@@ -1259,7 +1259,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。    |
-| surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface。 |
+| surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 
 **返回值：**
 
@@ -1769,6 +1769,7 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed, non-system application uses system API. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
