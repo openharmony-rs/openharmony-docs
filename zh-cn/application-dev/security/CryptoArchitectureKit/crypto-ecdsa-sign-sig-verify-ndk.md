@@ -144,7 +144,7 @@ bool DoTestEcdsaSignature()
     }
     OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(keyPair);
     // verify
-    ret = OH_CryptoVerify_Create((const char *)"ECC|SHA256", &verify);
+    ret = OH_CryptoVerify_Create((const char *)"ECC256|SHA256", &verify);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoVerify_Destroy(verify);
         OH_CryptoAsymKeyGenerator_Destroy(keyCtx);

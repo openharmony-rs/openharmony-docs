@@ -77,6 +77,7 @@
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
+  
   // 解密消息。
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20');
@@ -84,6 +85,7 @@
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
@@ -91,6 +93,7 @@
     console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
