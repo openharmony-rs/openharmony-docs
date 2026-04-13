@@ -69,13 +69,13 @@ configs/config.example.json -> configs/config.json
 在仓库根目录执行：
 
 ```bat
-.\scripts\deps\bootstrap.cmd --tool all --verify
+.\src\scripts\deps\bootstrap.cmd --tool all --verify
 ```
 
 如需临时指定镜像源和依赖目录，可以这样执行：
 
 ```bat
-.\scripts\deps\bootstrap.cmd --tool all --verify ^
+.\src\scripts\deps\bootstrap.cmd --tool all --verify ^
   --npm-registry https://<your-npm-mirror>/ ^
   --pip-index-url https://<your-pypi-mirror>/simple/ ^
   --deps-root C:\OH\.amv-deps\migration_visualizer
@@ -85,7 +85,7 @@ configs/config.example.json -> configs/config.json
 
 - `bootstrap.cmd`默认读取`configs/config.json`中的`deps_root`。
 - 也可以通过`--deps-root`临时覆盖，并且命令行参数优先级高于配置文件。
-- `bootstrap.cmd`、`run_all.py`和`scripts/collect/perf_runner.py`都支持`--deps-root`。
+- `bootstrap.cmd`和`run_all.py`都支持`--deps-root`。
 - 如果希望整个流程都使用同一套临时依赖目录，需要在后续命令中继续传入相同的`--deps-root`。
 
 ## 一键运行
@@ -95,19 +95,19 @@ configs/config.example.json -> configs/config.json
 执行全部testcase：
 
 ```bat
-python run_all.py -t ".*"
+python src\run_all.py -t ".*"
 ```
 
 指定testcase：
 
 ```bat
-python run_all.py -t ".*FrameAndPropertyAnimation_0010"
+python src\run_all.py -t ".*testcase"
 ```
 
 临时覆盖依赖目录：
 
 ```bat
-python run_all.py -t ".*" --deps-root C:\OH\.amv-deps\migration_visualizer
+python src\run_all.py -t ".*" --deps-root C:\OH\.amv-deps\migration_visualizer
 ```
 
 命令执行后会依次完成以下步骤：
@@ -127,13 +127,7 @@ python run_all.py -t ".*" --deps-root C:\OH\.amv-deps\migration_visualizer
 如果不想执行固定testcase，而是希望在设备上手动操作目标应用，可以使用手动监听模式：
 
 ```bat
-python run_all.py --manual-package com.example.xxx --manual-duration 60
-```
-
-必要时也可以显式指定启动ability：
-
-```bat
-python run_all.py --manual-package com.example.xxx --manual-ability EntryAbility --manual-duration 60
+python src\run_all.py --manual-package com.example.xxx --manual-duration 60
 ```
 
 手动监听模式的特点如下：
@@ -141,64 +135,6 @@ python run_all.py --manual-package com.example.xxx --manual-ability EntryAbility
 - 仍然走`Homecheck + Hapray`的完整采集链路。
 - 当应用启动且控制台出现`Starting manual workload collection`日志后，即可在设备上手动操作目标应用。
 - 采集结束后同样会生成相同的四份输入文件。
-
-## 分步使用
-
-### 仅执行采集
-
-自动化testcase模式：
-
-```bat
-python scripts/collect/perf_runner.py ".*"
-```
-
-手动监听模式：
-
-```bat
-python scripts/collect/perf_runner.py --manual-package com.example.xxx --manual-duration 60
-```
-
-显式指定ability：
-
-```bat
-python scripts/collect/perf_runner.py --manual-package com.example.xxx --manual-ability EntryAbility --manual-duration 60
-```
-
-临时覆盖依赖目录：
-
-```bat
-python scripts/collect/perf_runner.py ".*" --deps-root C:\OH\.amv-deps\migration_visualizer
-```
-
-采集完成后，会在`artifacts/test_run_YYYYMMDD_HHMMSS/`目录下生成：
-
-```text
-fileDepGraph.json
-moduleDepGraph.json
-hapray_report.json
-component_timings.json
-```
-
-### 汇总可视化数据
-
-```bat
-python scripts/build/integrate_dep.py artifacts\test_run_YYYYMMDD_HHMMSS --output web\hierarchical_integrated_data.json
-```
-
-默认情况下，还会在输入目录下额外生成一组调试用JSON文件；如果不需要这些调试文件，可以追加`--no-debug`。
-
-### 启动依赖关系可视化页面
-
-```bat
-cd web
-python -m http.server 8000
-```
-
-浏览器访问：
-
-```text
-http://localhost:8000/
-```
 
 ## `run_all.py`常用参数
 
@@ -217,9 +153,9 @@ http://localhost:8000/
 示例：
 
 ```bat
-python run_all.py --skip-collect
-python run_all.py --skip-collect --run-dir artifacts\test_run_20260406_124328
-python run_all.py -t ".*FrameAndPropertyAnimation_0010" --port 8010
+python src\run_all.py --skip-collect
+python src\run_all.py --skip-collect --run-dir artifacts\test_run_YYYYMMDD_HHMMSS
+python src\run_all.py -t ".*testcase" --port 8010
 ```
 
 ## 依赖关系可视化页面说明
@@ -232,5 +168,5 @@ python run_all.py -t ".*FrameAndPropertyAnimation_0010" --port 8010
 - 点击HAR节点可进入文件依赖图。
 - 点击空白处或按`Esc`可清除当前固定详情。
 - 详情面板会显示节点名称、完整路径和耗时。
-- `Non-zero only`会隐藏零耗时节点，并在隐藏后自动重连路径。
+- `Non-zero`会隐藏零耗时节点，并在隐藏后自动重连路径。
 - 排行榜支持点击跳转并高亮对应节点。
