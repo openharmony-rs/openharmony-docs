@@ -585,7 +585,7 @@ try {
     let isSupported: boolean = access.isBluetoothSupported();
     console.info("isSupported: " + isSupported);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
