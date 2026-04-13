@@ -355,7 +355,7 @@ getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;n
 
 根据字体文件路径获取字体unicode数组。使用Promise异步回调。
 
-如果字体文件未找到、字体文件路径格式不正确或不存在、字体文件无权限或者文件非字体格式，返回空数组。
+如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -906,7 +906,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 ## StrutStyle
 
-支柱样式，用于控制绘制文本的行间距、基线对齐方式以及行高、行间距比例等与行高相关的属性，默认不开启。
+支柱样式，用于控制绘制文本的行间距、基线对齐方式以及其他与行高相关的属性，默认不开启。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1565,7 +1565,7 @@ struct Index {
 
 ## Range
 
-描述一个区间，包含起始值但不包含结束值（数学表示为[a, b)）。
+描述左闭右开区间。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2714,7 +2714,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## PositionWithAffinity
 
-文本位置及其与相邻字符的亲和关系。
+位置和亲和度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2727,7 +2727,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## RectWidthStyle
 
-矩形区域宽度计算方式的枚举。
+矩形区域宽度规格枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2740,7 +2740,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## RectHeightStyle
 
-矩形区域高度计算方式的枚举类型。
+矩形区域高度规格枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
