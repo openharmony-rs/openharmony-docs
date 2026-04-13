@@ -76,7 +76,7 @@ function createFile(context: common.UIAbilityContext): void {
     console.info('The length of str is: ' + writeLen);
     // 创建一个大小为1024字节的ArrayBuffer对象，用于存储从文件中读取的数据
     let arrayBuffer = new ArrayBuffer(1024);
-    // 设置读取的偏移量和长度
+    // 设置读取的偏移量和长度，单位为Byte
     let readOptions: ReadOptions = {
       offset: 0,
       length: arrayBuffer.byteLength
@@ -85,9 +85,9 @@ function createFile(context: common.UIAbilityContext): void {
     let readLen = fileIo.readSync(file.fd, arrayBuffer, readOptions);
     // 将ArrayBuffer对象转换为Buffer对象，并转换为字符串输出
     let buf = buffer.from(arrayBuffer, 0, readLen);
-    console.info('the content of file: ' + buf.toString());
+    console.info('Succeeded in creating file, the content of file: ' + buf.toString());
   } catch (err) {
-    console.error(`Failed to createFile. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to create file. Code: ${err.code}, message: ${err.message}`);
   } finally {
     if (file) {
       try {
@@ -128,9 +128,9 @@ function readWriteFile(context: common.UIAbilityContext): void {
     // 创建缓冲区
     let bufSize = 4096;
     let buf = new ArrayBuffer(bufSize);
-    // 配置期望读取位置，及读取数据的长度
     let readOffset = 0;
     let readLength = 128;
+    // 设置读取的偏移量和长度，单位为Byte
     let readOptions: ReadOptions = {
       offset: readOffset,
       length: readLength
@@ -148,9 +148,9 @@ function readWriteFile(context: common.UIAbilityContext): void {
       readOptions.offset = readOffset;
       readLen = fileIo.readSync(srcFile.fd, buf, readOptions);
     }
-    console.info(`Read and write file success.`);
+    console.info(`Succeeded in reading and writing file.`);
   } catch (err) {
-    console.error(`Failed to readWriteFile. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to read and write File. Code: ${err.code}, message: ${err.message}`);
   } finally {
     try {
       if (srcFile) {
@@ -199,6 +199,7 @@ async function readWriteFileWithStream(context: common.UIAbilityContext): Promis
     let bufSize = 4096;
     let readSize = 0;
     let buf = new ArrayBuffer(bufSize);
+    // 设置读取的偏移量和长度，单位为Byte
     let readOptions: ReadOptions = {
       offset: readSize,
       length: bufSize
@@ -213,18 +214,16 @@ async function readWriteFileWithStream(context: common.UIAbilityContext): Promis
       readLen = await inputStream.read(buf, readOptions);
       readSize += readLen;
     }
-    console.info(`readWriteFileWithStream with stream success.`);
+    console.info(`Succeeded in reading and writing file with stream.`);
   } catch (err) {
-    console.error(`Failed to readWriteFileWithStream. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to read and write file with stream. Code: ${err.code}, message: ${err.message}`);
   } finally {
     try {
       if (inputStream) {
         inputStream.closeSync();
-        console.info(`readWriteFileWithStream inputStream closeSync.`);
       }
       if (outputStream) {
         outputStream.closeSync();
-        console.info(`readWriteFileWithStream outputStream closeSync.`);
       }
     } catch (closeErr) {
       console.error(`Failed to close stream`);
@@ -269,11 +268,10 @@ function getListFile(context: common.UIAbilityContext): void {
   try {
     let files = fileIo.listFileSync(filesDir, listFileOption);
     for (let i = 0; i < files.length; i++) {
-      console.info(`The name of file: ${files[i]}`);
+      console.info(`Succeeded in listing file, The name of file: ${files[i]}`);
     }
-    console.info(`List file success.`);
   } catch (err) {
-    console.error(`Failed to List file. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -313,7 +311,7 @@ function copyFileWithReadable(context: common.UIAbilityContext): void {
 
     rs.on('end', () => {
       ws.end();
-      console.info(`copyFileWithReadable success.`);
+      console.info(`Succeeded in copying file with read stream.`);
     });
 
     // 捕获异常
@@ -322,7 +320,7 @@ function copyFileWithReadable(context: common.UIAbilityContext): void {
       ws.close();
     });
   } catch (err) {
-    console.error(`Failed to copyFileWithReadable: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to copy file with read stream. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -352,7 +350,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
 
     rs.on('end', () => {
       ws.end();
-      console.info(`copyFileWithData success.`);
+      console.info(`Succeeded in copying file with data.`);
     });
 
     // 捕获异常
@@ -361,7 +359,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
       ws.close();
     });
   } catch (err) {
-    console.error(`Failed to copyFileWithData: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to copy file with data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -400,10 +398,10 @@ function hashFileWithStream(context: common.UIAbilityContext) {
     rs.on('end', async () => {
       const hashResult = hs.digest();
       const fileHash = await hash.hash(filePath, 'sha256');
-      console.info(`hashFileWithStream success, hashResult: ${hashResult}, fileHash: ${fileHash}`);
+      console.info(`Succeeded in hashing file with stream success, hash result: ${hashResult}, file hash: ${fileHash}`);
     });
   } catch (err) {
-    console.error(`Failed to hashFileWithStream: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to hash file with stream. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
