@@ -2221,6 +2221,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 30%; 10%; 60%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23       |
@@ -2263,10 +2264,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL             | 1    | 用户取消。                  |
@@ -2406,6 +2404,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 25%; 15%; 8%; 8%; 44%-->
 | 名称          | 类型       | 只读   | 可选   | 说明                    |
 |-------------|----------| ---- | ---- |-----------------------|
 | abilityName | string   | 否    | 否    | UIAbility名称。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23           |
@@ -2438,10 +2437,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 21
-
-**ArkTS-Sta起始版本：** 24
-
+<!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**说明：** 主类型与子类型必须匹配。     |
@@ -2631,6 +2627,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
 | MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** <br/>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                  |
@@ -2650,6 +2647,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。 <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24        |
@@ -2685,10 +2683,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 22
-
-**ArkTS-Sta起始版本：** 24
-
+<!--Table: 30%; 10%; 60%-->
 | 名称           | 值 | 说明     |
 | ------------ |---|--------|
 | NOT_SUPPORTED | 0 | 不支持。例如：申请的长时任务主类型非MODE_SPECIAL_SCENARIO_PROCESSING时，不支持申请用户授权是否能在后台长时间运行。 |
