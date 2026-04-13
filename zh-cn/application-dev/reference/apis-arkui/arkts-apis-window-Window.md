@@ -7245,7 +7245,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -7254,6 +7253,10 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7275,6 +7278,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try {
   let enabled = false;
@@ -7290,6 +7294,23 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+try {
+  let enabled = false;
+  windowClass.setResizeByDragEnabled(enabled, (err) => {
+    if (err?.code) {
+      console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info(`Succeeded in setting the function of disabling the resize by drag window.`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
@@ -7298,6 +7319,10 @@ setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7324,6 +7349,7 @@ setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7340,6 +7366,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enabled = false;
+  let promise = windowClass.setResizeByDragEnabled(enabled);
+  promise.then(() => {
+    console.info(`Succeeded in setting the function of disabling the resize by drag window.`);
+  }).catch((err: Error) => {
+    console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## recover<sup>11+</sup>
 
 recover(): Promise&lt;void&gt;
@@ -7351,6 +7395,10 @@ recover(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7370,6 +7418,7 @@ recover(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -7399,6 +7448,36 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      if (!windowClass) {
+        console.error('Failed to get main window.');
+        return;
+      }
+      let promise = windowClass.recover();
+      promise.then(() => {
+        console.info('Succeeded in recovering the window.');
+      }).catch((err: Error) => {
+        console.error(`Failed to recover the window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to recover the window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## restore<sup>14+</sup>
 
 restore(): Promise&lt;void&gt;
@@ -7410,6 +7489,10 @@ restore(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7430,6 +7513,7 @@ restore(): Promise&lt;void&gt;
 
 **示例**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -7459,6 +7543,35 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      let windowClass: window.Window = windowStage.getMainWindowSync();
+      // 调用minimize, 使主窗最小化
+      windowClass.minimize();
+      // 设置延时函数延时5秒钟后对主窗进行恢复。
+      setTimeout(()=>{
+        // 调用restore()函数对主窗进行恢复。
+        let promise = windowClass.restore();
+        promise.then(() => {
+          console.info('Succeeded in restoring the window.');
+        }).catch((err: Error) => {
+          console.error(`Failed to restore the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      }, 5000);
+    } catch (err: Error) {
+      console.error(`Failed to restore the window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## restoreMainWindow<sup>23+</sup>
 
 restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
@@ -7468,6 +7581,12 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -7610,6 +7729,10 @@ getWindowLimits(): WindowLimits
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                          | 说明           |
@@ -7627,11 +7750,22 @@ getWindowLimits(): WindowLimits
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try {
   let windowLimits = windowClass.getWindowLimits();
 } catch (exception) {
   console.error(`Failed to obtain the window limits of window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+try {
+  let windowLimits = windowClass.getWindowLimits();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to obtain the window limits of window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -7644,6 +7778,10 @@ getWindowLimitsVP(): WindowLimits
 对于系统窗口和全局悬浮窗，默认窗口宽高的系统限制最小值为1px，通过此接口获取到的1vp，是计算取整后的值。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7661,6 +7799,18 @@ getWindowLimitsVP(): WindowLimits
 | 1300002  | This window state is abnormal. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
+} catch (exception) {
+  console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -7683,6 +7833,10 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7710,6 +7864,7 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
@@ -7727,6 +7882,28 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let windowLimits: window.WindowLimits = {
+    maxWidth: 1500,
+    maxHeight: 1000,
+    minWidth: 500,
+    minHeight: 400
+  };
+  let promise = windowClass.setWindowLimits(windowLimits);
+    promise.then((data : window.WindowLimits) => {
+    console.info(`Succeeded in changing the window limits: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -7751,6 +7928,10 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备调用返回801错误码。主窗在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7779,6 +7960,7 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
@@ -7799,9 +7981,33 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let windowLimits: window.WindowLimits = {
+    maxWidth: 1500,
+    maxHeight: 1000,
+    minWidth: 100,
+    minHeight: 100
+  };
+  let promise = windowClass.setWindowLimits(windowLimits, true);
+  promise.then((data : window.WindowLimits) => {
+    console.info(`Succeeded in changing the window limits: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setWindowMask<sup>12+</sup>
 
-setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
+ArkTS-Dyn: setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
+
+ArkTS-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
@@ -7813,11 +8019,15 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowMask | Array&lt;Array&lt;number&gt;&gt; | 是   | 异形窗口的掩码，该参数仅支持宽高为窗口宽高、取值为整数0和整数1的二维数组输入，整数0代表所在像素透明，整数1代表所在像素不透明，宽高不符合的二维数组或二维数组取值不为整数0和整数1的二维数组为非法参数。 |
+| windowMask | ArkTS-Dyn: Array&lt;Array&lt;number&gt;&gt;</br>ArkTS-Sta: Array&lt;Array&lt;long&gt;&gt; | 是   | 异形窗口的掩码，该参数仅支持宽高为窗口宽高、取值为整数0和整数1的二维数组输入，整数0代表所在像素透明，整数1代表所在像素不透明，宽高不符合的二维数组或二维数组取值不为整数0和整数1的二维数组为非法参数。 |
 
 **返回值：**
 
@@ -7838,6 +8048,8 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 | 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7862,6 +8074,39 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let rows = windowClass.getWindowProperties().windowRect.width;
+  let rows = windowClass.getWindowProperties().windowRect.height;
+  let windowMask: Array<Array<long>> = [];
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      windowMask[i][j] = 1;
+    }
+  }
+  for (let i = 0; i < rows / 2; i++) {
+    for (let j = 0; j < cols / 2; j++) {
+      windowMask[i][j] = 0;
+    }
+  }
+
+  let promise = windowClass.setWindowMask(windowMask);
+  promise.then(() => {
+    console.info('Succeeded in setting the window mask.');
+  }).catch((err) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## clearWindowMask<sup>24+</sup>
 
 clearWindowMask(): Promise&lt;void&gt;
@@ -7871,6 +8116,10 @@ clearWindowMask(): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -7890,6 +8139,8 @@ clearWindowMask(): Promise&lt;void&gt;
 | 1300004  | Unauthorized operation.  Possible cause: Invalid window type. Only subwindows and float windows are supported.                       |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7920,6 +8171,37 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = Array<Array<Long>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<Long>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
+  let promise = windowClass.setWindowMask(windowMask);
+  promise.then(() => {
+    console.info('Succeeded in setting the window mask.');
+    promise = windowClass.clearWindowMask();
+    promise.then(() => {
+      console.info('Succeeded in clearing the window mask.');
+    }).catch((err) => {
+      console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }).catch((err) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## keepKeyboardOnFocus<sup>11+</sup>
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
@@ -7929,6 +8211,10 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7949,11 +8235,24 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 try {
   windowClass.keepKeyboardOnFocus(true);
 } catch (exception) {
   console.error(`Failed to keep keyboard onFocus. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  windowClass.keepKeyboardOnFocus(true);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to keep keyboard onFocus. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -7968,6 +8267,10 @@ setWindowDecorVisible(isVisible: boolean): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7986,6 +8289,8 @@ setWindowDecorVisible(isVisible: boolean): void
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8008,6 +8313,37 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  let storage: LocalStorage = new LocalStorage();
+  storage.setOrCreate('storageSimpleProp', 121);
+  windowStage.loadContent("pages/Index", storage, (err: BusinessError | null) => {
+    let errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in loading the content.');
+    let isVisible = false;
+    // 调用setWindowDecorVisible接口
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass?.setWindowDecorVisible(isVisible);
+      console.info(`Succeeded in setting the window decor visible: ${isVisible}`);
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to set the visibility of window decor. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  });
+}
+```
+
+
 ## getWindowDecorVisible<sup>18+</sup>
 
 getWindowDecorVisible(): boolean
@@ -8019,6 +8355,10 @@ getWindowDecorVisible(): boolean
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -8037,6 +8377,8 @@ getWindowDecorVisible(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let isVisible: boolean | undefined = undefined;
 windowClass.setUIContent('pages/WindowPage').then(() => {
@@ -8044,6 +8386,21 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
     isVisible = windowClass?.getWindowDecorVisible();
   } catch (exception) {
     console.error(`Failed to get the window decor visibility. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let isVisible: boolean | undefined = undefined;
+windowClass.setUIContent('pages/Index').then(() => {
+  try {
+    isVisible = windowClass?.getWindowDecorVisible();
+    console.info(`Succeeded in getting the window decor visible: ${isVisible}`);
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to get the window decor visibility. Cause code: ${err.code}, message: ${err.message}`);
   }
 })
 ```
@@ -8059,6 +8416,10 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8084,6 +8445,8 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -8099,6 +8462,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let title = "title";
+  windowClass.setWindowTitle(title).then(() => {
+    console.info('Succeeded in setting the window title.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window title. Cause code: ${err.code}, message: ${err.message}`);
+}
+
+```
+
 ## setWindowTitleMoveEnabled<sup>14+</sup>
 
 setWindowTitleMoveEnabled(enabled: boolean): void
@@ -8110,6 +8492,10 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8129,6 +8515,8 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 | 1300004  | Unauthorized operation.        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -8151,6 +8539,24 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  try {
+    windowStage.loadContent("pages/Index").then(() =>{
+      let windowClass = windowStage.getMainWindowSync();
+      let enabled = false;
+      windowClass.setWindowTitleMoveEnabled(enabled);
+      console.info(`Succeeded in setting the the window title move enabled: ${enabled}`);
+    });
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to set the window title move enabled. Cause code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ## setSubWindowModal<sup>12+</sup>
 
 setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
@@ -8165,12 +8571,15 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
 | isModal | boolean | 是   | 设置子窗口模态属性是否启用，true为启用，false为不启用。 |
-
 
 **返回值：**
 
@@ -8191,6 +8600,8 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 | 1300004  | Unauthorized operation.        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -8226,6 +8637,38 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    // 创建子窗
+    try {
+      let subWindow = windowStage.createSubWindow("testSubWindow");
+      subWindow.then((data: window.Window) => {
+        windowClass = data;
+        let promise = windowClass?.setSubWindowModal(true);
+        promise?.then(() => {
+          console.info('Succeeded in setting subwindow modal');
+        }).catch((err: Error) => {
+          console.error(`Failed to set subwindow modal. Cause code: ${err?.code}, message: ${err?.message}`);
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## setSubWindowModal<sup>14+</sup>
 
 setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void&gt;
@@ -8243,6 +8686,10 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8270,6 +8717,8 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 | 1300004  | Unauthorized operation.        |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -8305,9 +8754,44 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    // 创建子窗
+    try {
+      let subWindow = windowStage.createSubWindow("testSubWindow");
+      subWindow.then((data: window.Window) => {
+        windowClass = data;
+        let promise = windowClass?.setSubWindowModal(true, window.ModalityType.WINDOW_MODALITY);
+        promise?.then(() => {
+          console.info('Succeeded in setting subwindow modal');
+        }).catch((err: Error) => {
+          console.error(`Failed to set subwindow modal. Cause code: ${err?.code}, message: ${err?.message}`);
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## setWindowDecorHeight<sup>11+</sup>
 
-setWindowDecorHeight(height: number): void
+ArkTS-Dyn: setWindowDecorHeight(height: number): void
+
+ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 设置窗口的标题栏高度，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
@@ -8321,11 +8805,15 @@ setWindowDecorHeight(height: number): void
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| height | number | 是   |设置的窗口标题栏高度，仅支持具有窗口标题栏的窗口。该参数为整数，浮点数输入将向下取整，取值范围为[37,112]，范围外为非法参数，单位为vp。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |设置的窗口标题栏高度，仅支持具有窗口标题栏的窗口。该参数为整数，浮点数输入将向下取整，取值范围为[37,112]，范围外为非法参数，单位为vp。 |
 
 **错误码：**
 
@@ -8339,6 +8827,8 @@ setWindowDecorHeight(height: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 windowClass.setUIContent('pages/WindowPage').then(() => {
   let height: number = 50;
@@ -8346,6 +8836,21 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
     windowClass?.setWindowDecorHeight(height);
     console.info(`Succeeded in setting the height of window decor: ${height}`);
   } catch (exception) {
+    console.error(`Failed to set the height of window decor. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+windowClass.setUIContent('pages/Index').then(() => {
+  let height: int = 50;
+  try {
+    windowClass?.setWindowDecorHeight(height);
+    console.info(`Succeeded in setting the height of window decor: ${height}`);
+  } catch (exception) {
+    let err = exception as BusinessError;
     console.error(`Failed to set the height of window decor. Cause code: ${exception.code}, message: ${exception.message}`);
   }
 })
@@ -8367,6 +8872,10 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
@@ -8385,6 +8894,8 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 | 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -8411,6 +8922,38 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to set the style of button. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { ConfigurationConstant } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      windowStage.loadContent("pages/Index").then(() =>{
+        let windowClass = windowStage.getMainWindowSync();
+        let colorMode : ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
+        let style: window.DecorButtonStyle = {
+          colorMode: colorMode,
+          buttonBackgroundSize: 28,
+          spacingBetweenButtons: 12,
+          closeButtonRightMargin: 20,
+          buttonIconSize: 20,
+          buttonBackgroundCornerRadius: 4
+        };
+        windowClass.setDecorButtonStyle(style);
+        console.info(`Succeeded in setting the style of button. Data: ${JSON.stringify(style)}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to set the style of button. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
