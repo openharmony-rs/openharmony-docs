@@ -12660,17 +12660,17 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
    const localStorage: LocalStorage = new LocalStorage('uiContext');
 
    export default class EntryAbility extends UIAbility {
-      storage: LocalStorage = localStorage;
+     storage: LocalStorage = localStorage;
 
-      onWindowStageCreate(windowStage: window.WindowStage) {
-         windowStage.loadContent('pages/Index', this.storage, (err, data) => {
+     onWindowStageCreate(windowStage: window.WindowStage) {
+       windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
-            return;
+           return;
          }
 
          this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
-         });
-      }
+       });
+     }
    }
    ```
 
@@ -12706,48 +12706,48 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
    export interface BuilderData {
-      url: string;
-      controller: WebviewController;
-      context: UIContext;
+     url: string;
+     controller: WebviewController;
+     context: UIContext;
    }
 
    let storage : LocalStorage | undefined = undefined;
 
    export class NodeControllerImpl extends NodeController {
-      private rootNode: BuilderNode<BuilderData[]> | null = null;
-      private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
+     private rootNode: BuilderNode<BuilderData[]> | null = null;
+     private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
 
-      constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
-         storage = context.getSharedLocalStorage();
-         super();
-         this.wrappedBuilder = wrappedBuilder;
-      }
+     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
+       storage = context.getSharedLocalStorage();
+       super();
+       this.wrappedBuilder = wrappedBuilder;
+     }
 
-      makeNode(): FrameNode | null {
-         if (this.rootNode != null) {
+     makeNode(): FrameNode | null {
+       if (this.rootNode != null) {
          return this.rootNode.getFrameNode();
-         }
-         return null;
-      }
+       }
+       return null;
+     }
 
-      initWeb(url: string, controller: WebviewController) {
-         if(this.rootNode != null) {
+     initWeb(url: string, controller: WebviewController) {
+       if(this.rootNode != null) {
          return;
-         }
+       }
 
-         const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
-         if (!uiContext) {
+       const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+       if (!uiContext) {
          return;
-         }
-         this.rootNode = new BuilderNode(uiContext);
-         this.rootNode.build(this.wrappedBuilder, { url: url, controller: controller });
-      }
+       }
+       this.rootNode = new BuilderNode(uiContext);
+       this.rootNode.build(this.wrappedBuilder, { url: url, controller: controller });
+     }
    }
 
    export const createNode = (wrappedBuilder: WrappedBuilder<BuilderData[]>, data: BuilderData) => {
-      const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
-      baseNode.initWeb(data.url, data.controller);
-      return baseNode;
+     const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
+     baseNode.initWeb(data.url, data.controller);
+     return baseNode;
    }
    ```
 
@@ -12826,38 +12826,38 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
    @Builder
    function WebBuilder(data: BuilderData) {
-      Web({ src: data.url, controller: data.controller })
-         .onControllerAttached(() => {
+     Web({ src: data.url, controller: data.controller })
+       .onControllerAttached(() => {
          precompile(data.controller, configs, data.context);
-         })
-         .fileAccess(true)
+       })
+       .fileAccess(true)
    }
 
    export const precompileWebview = wrapBuilder<BuilderData[]>(WebBuilder);
 
    export const precompile = async (controller: WebviewController, configs: Array<Config>, context: UIContext) => {
-      for (const config of configs) {
-         let content = await readRawFile(config.localPath, context);
+     for (const config of configs) {
+       let content = await readRawFile(config.localPath, context);
 
-         try {
+       try {
          controller.precompileJavaScript(config.url, content, config.options)
-            .then(errCode => {
-               console.error("precompile successfully! " + errCode);
-            }).catch((errCode: number) => {
-               console.error("precompile failed. " + errCode);
+           .then(errCode => {
+             console.error("precompile successfully! " + errCode);
+           }).catch((errCode: number) => {
+             console.error("precompile failed. " + errCode);
          });
-         } catch (err) {
+       } catch (err) {
          console.error("precompile failed. " + err.code + " " + err.message);
-         }
-      }
+       }
+     }
    }
 
    async function readRawFile(path: string, context: UIContext) {
-      try {
-         return await context.getHostContext()!.resourceManager.getRawFileContent(path);
-      } catch (err) {
-         return new Uint8Array(0);
-      }
+     try {
+       return await context.getHostContext()!.resourceManager.getRawFileContent(path);
+     } catch (err) {
+       return new Uint8Array(0);
+     }
    }
    ```
 
@@ -12920,9 +12920,9 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
    @Builder
    function WebBuilder(data: BuilderData) {
-      // 此处组件可根据业务需要自行扩展
-      Web({ src: data.url, controller: data.controller })
-         .cacheMode(CacheMode.Default)
+     // 此处组件可根据业务需要自行扩展
+     Web({ src: data.url, controller: data.controller })
+       .cacheMode(CacheMode.Default)
    }
 
    export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
@@ -12953,22 +12953,22 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
    import { webview } from '@kit.ArkWeb'
 
    export interface Config {
-      url:  string,
-      localPath: string, // 本地资源路径
-      options: webview.CacheOptions
+     url:  string,
+     localPath: string, // 本地资源路径
+     options: webview.CacheOptions
    }
 
    export let configs: Array<Config> = [
-      {
-         url: "https://www.example.com/example.js",
-         localPath: "example.js",
-         options: {
+     {
+       url: "https://www.example.com/example.js",
+       localPath: "example.js",
+       options: {
          responseHeaders: [
-            { headerKey: "E-Tag", headerValue: "aWO42N9P9dG/5xqYQCxsx+vDOoU="},
-            { headerKey: "Last-Modified", headerValue: "Wed, 21 Mar 2024 10:38:41 GMT"}
+           { headerKey: "E-Tag", headerValue: "aWO42N9P9dG/5xqYQCxsx+vDOoU="},
+           { headerKey: "Last-Modified", headerValue: "Wed, 21 Mar 2024 10:38:41 GMT"}
          ]
-         }
-      }
+       }
+     }
    ]
    ```
 
@@ -13013,33 +13013,33 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
    @Entry
    @Component
    struct Index {
-      @State precompileNode: NodeController | undefined = undefined;
-      precompileController: webview.WebviewController = new webview.WebviewController();
+     @State precompileNode: NodeController | undefined = undefined;
+     precompileController: webview.WebviewController = new webview.WebviewController();
 
-      @State businessNode: NodeController | undefined = undefined;
-      businessController: webview.WebviewController = new webview.WebviewController();
+     @State businessNode: NodeController | undefined = undefined;
+     businessController: webview.WebviewController = new webview.WebviewController();
 
-      aboutToAppear(): void {
-         // 初始化用于注入本地资源的Web组件
-         this.precompileNode = createNode(precompileWebview,
+     aboutToAppear(): void {
+       // 初始化用于注入本地资源的Web组件
+       this.precompileNode = createNode(precompileWebview,
          { url: "https://www.example.com/empty.html", controller: this.precompileController, context: this.getUIContext()});
-      }
+     }
 
-      build() {
-         Column() {
+     build() {
+       Column() {
          // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
          Button("加载页面")
-            .onClick(() => {
-               this.businessNode = createNode(businessWebview, {
+           .onClick(() => {
+             this.businessNode = createNode(businessWebview, {
                url:  "https://www.example.com/business.html",
                controller: this.businessController,
                context: this.getUIContext()
-               });
-            })
+             });
+           })
          // 用于业务的Web组件
          NodeContainer(this.businessNode);
-         }
-      }
+       }
+     }
    }
    ```
 
@@ -13786,17 +13786,17 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    const localStorage: LocalStorage = new LocalStorage('uiContext');
 
    export default class EntryAbility extends UIAbility {
-      storage: LocalStorage = localStorage;
+     storage: LocalStorage = localStorage;
 
-      onWindowStageCreate(windowStage: window.WindowStage) {
-         windowStage.loadContent('pages/Index', this.storage, (err, data) => {
+     onWindowStageCreate(windowStage: window.WindowStage) {
+       windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
-            return;
+           return;
          }
 
          this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
-         });
-      }
+       });
+     }
    }
    ```
 
@@ -13833,48 +13833,48 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
    export interface BuilderData {
-      url: string;
-      controller: WebviewController;
-      context: UIContext;
+     url: string;
+     controller: WebviewController;
+     context: UIContext;
    }
 
    let storage : LocalStorage | undefined = undefined;
 
    export class NodeControllerImpl extends NodeController {
-      private rootNode: BuilderNode<BuilderData[]> | null = null;
-      private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
+     private rootNode: BuilderNode<BuilderData[]> | null = null;
+     private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
 
-      constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
-         storage = context.getSharedLocalStorage();
-         super();
-         this.wrappedBuilder = wrappedBuilder;
-      }
+     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
+       storage = context.getSharedLocalStorage();
+       super();
+       this.wrappedBuilder = wrappedBuilder;
+     }
 
-      makeNode(): FrameNode | null {
-         if (this.rootNode != null) {
+     makeNode(): FrameNode | null {
+       if (this.rootNode != null) {
          return this.rootNode.getFrameNode();
-         }
-         return null;
-      }
+       }
+       return null;
+     }
 
-      initWeb(url: string, controller: WebviewController) {
-         if(this.rootNode != null) {
+     initWeb(url: string, controller: WebviewController) {
+       if(this.rootNode != null) {
          return;
-         }
+       }
 
-         const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
-         if (!uiContext) {
+       const uiContext: UIContext = storage!.get<UIContext>("uiContext") as UIContext;
+       if (!uiContext) {
          return;
-         }
-         this.rootNode = new BuilderNode(uiContext);
-         this.rootNode.build(this.wrappedBuilder, { url: url, controller: controller });
-      }
+       }
+       this.rootNode = new BuilderNode(uiContext);
+       this.rootNode.build(this.wrappedBuilder, { url: url, controller: controller });
+     }
    }
 
    export const createNode = (wrappedBuilder: WrappedBuilder<BuilderData[]>, data: BuilderData) => {
-      const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
-      baseNode.initWeb(data.url, data.controller);
-      return baseNode;
+     const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
+     baseNode.initWeb(data.url, data.controller);
+     return baseNode;
    }
    ```
 
@@ -13954,46 +13954,46 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
    @Builder
    function WebBuilder(data: BuilderData) {
-      Web({ src: data.url, controller: data.controller })
-         .onControllerAttached(async () => {
+     Web({ src: data.url, controller: data.controller })
+       .onControllerAttached(async () => {
          try {
-            data.controller.injectOfflineResources(await getData (data.context));
+           data.controller.injectOfflineResources(await getData (data.context));
          } catch (err) {
-            console.error("error: " + err.code + " " + err.message);
+           console.error("error: " + err.code + " " + err.message);
          }
-         })
-         .fileAccess(true)
+       })
+       .fileAccess(true)
    }
 
    export const injectWebview = wrapBuilder<BuilderData[]>(WebBuilder);
 
    export async function getData(context: UIContext) {
-      const resourceMapArr: Array<webview.OfflineResourceMap> = [];
+     const resourceMapArr: Array<webview.OfflineResourceMap> = [];
 
-      // 读取配置，从rawfile目录中读取文件内容
-      for (let config of resourceConfigs) {
-         let buf: Uint8Array = new Uint8Array(0);
-         if (config.localPath) {
+     // 读取配置，从rawfile目录中读取文件内容
+     for (let config of resourceConfigs) {
+       let buf: Uint8Array = new Uint8Array(0);
+       if (config.localPath) {
          buf = await readRawFile(config.localPath, context);
-         }
+       }
 
-         resourceMapArr.push({
+       resourceMapArr.push({
          urlList: config.urlList,
          resource: buf,
          responseHeaders: config.responseHeaders,
          type: config.type,
-         })
-      }
+       })
+     }
 
-      return resourceMapArr;
+     return resourceMapArr;
    }
 
    export async function readRawFile(url: string, context: UIContext) {
-      try {
-         return await context.getHostContext()!.resourceManager.getRawFileContent(url);
-      } catch (err) {
-         return new Uint8Array(0);
-      }
+     try {
+       return await context.getHostContext()!.resourceManager.getRawFileContent(url);
+     } catch (err) {
+       return new Uint8Array(0);
+     }
    }
    ```
 
@@ -14066,9 +14066,9 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
    @Builder
    function WebBuilder(data: BuilderData) {
-      // 此处组件可根据业务需要自行扩展
-      Web({ src: data.url, controller: data.controller })
-         .cacheMode(CacheMode.Default)
+     // 此处组件可根据业务需要自行扩展
+     Web({ src: data.url, controller: data.controller })
+       .cacheMode(CacheMode.Default)
    }
 
    export const businessWebview = wrapBuilder<BuilderData[]>(WebBuilder);
@@ -14098,37 +14098,37 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { webview } from '@kit.ArkWeb';
 
    export interface ResourceConfig {
-      urlList: Array<string>,
-      type: webview.OfflineResourceType,
-      responseHeaders: Array<Header>,
-      localPath: string, // 本地资源存放在rawfile目录下的路径
+     urlList: Array<string>,
+     type: webview.OfflineResourceType,
+     responseHeaders: Array<Header>,
+     localPath: string, // 本地资源存放在rawfile目录下的路径
    }
 
    export const resourceConfigs: Array<ResourceConfig> = [
-      {
-         localPath: "example.png",
-         urlList: [
+     {
+       localPath: "example.png",
+       urlList: [
          "https://www.example.com/",
          "https://www.example.com/path1/example.png",
          "https://www.example.com/path2/example.png",
-         ],
-         type: webview.OfflineResourceType.IMAGE,
-         responseHeaders: [
+       ],
+       type: webview.OfflineResourceType.IMAGE,
+       responseHeaders: [
          { headerKey: "Cache-Control", headerValue: "max-age=1000" },
          { headerKey: "Content-Type", headerValue: "image/png" },
-         ]
-      },
-      {
-         localPath: "example.js",
-         urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址
+       ]
+     },
+     {
+       localPath: "example.js",
+       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址
          "https://www.example.com/example.js",
-         ],
-         type: webview.OfflineResourceType.CLASSIC_JS,
-         responseHeaders: [
+       ],
+       type: webview.OfflineResourceType.CLASSIC_JS,
+       responseHeaders: [
          // 以<script crossorigin="anonymous" />方式使用，提供额外的响应头
          { headerKey: "Cross-Origin", headerValue:"anonymous" }
-         ]
-      },
+       ]
+     },
    ];
    ```
 
@@ -14188,33 +14188,33 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    @Entry
    @Component
    struct Index {
-      @State injectNode: NodeController | undefined = undefined;
-      injectController: webview.WebviewController = new webview.WebviewController();
+     @State injectNode: NodeController | undefined = undefined;
+     injectController: webview.WebviewController = new webview.WebviewController();
 
-      @State businessNode: NodeController | undefined = undefined;
-      businessController: webview.WebviewController = new webview.WebviewController();
+     @State businessNode: NodeController | undefined = undefined;
+     businessController: webview.WebviewController = new webview.WebviewController();
 
-      aboutToAppear(): void {
-         // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可
-         this.injectNode = createNode(injectWebview,
-            { url: "https://www.example.com/empty.html", controller: this.injectController, context: this.getUIContext()});
-      }
+     aboutToAppear(): void {
+       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可
+       this.injectNode = createNode(injectWebview,
+           { url: "https://www.example.com/empty.html", controller: this.injectController, context: this.getUIContext()});
+     }
 
-      build() {
-         Column() {
+     build() {
+       Column() {
          // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
          Button("加载页面")
-            .onClick(() => {
-               this.businessNode = createNode(businessWebview, {
+           .onClick(() => {
+             this.businessNode = createNode(businessWebview, {
                url: "https://www.example.com/business.html",
                controller: this.businessController,
                context: this.getUIContext()
-               });
-            })
+             });
+           })
          // 用于业务的Web组件
          NodeContainer(this.businessNode);
-         }
-      }
+       }
+     }
    }
    ```
 
@@ -14269,9 +14269,9 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    <html lang="en">
    <head></head>
    <body>
-      <img src="https://www.example.com/path1/request.png" />
-      <img src="https://www.example.com/path2/request.png" />
-      <script src="https://www.example.com/example.js" crossorigin="anonymous"></script>
+     <img src="https://www.example.com/path1/request.png" />
+     <img src="https://www.example.com/path2/request.png" />
+     <script src="https://www.example.com/example.js" crossorigin="anonymous"></script>
    </body>
    </html>
    ```
