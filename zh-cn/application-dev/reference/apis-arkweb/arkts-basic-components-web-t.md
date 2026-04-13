@@ -268,7 +268,7 @@ onOverrideErrorPage的回调函数，网页加载失败时触发。
 | ------- | ------------------------ |
 | string | 返回以Base64编码的HTML文本内容。 |
 
-## MouseInfoCallback<sup>20+<sup>
+## MouseInfoCallback<sup>20+</sup>
 
 type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
@@ -286,7 +286,7 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 完整示例代码参考[onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20)。
 
-## OnNativeEmbedObjectParamChangeCallback<sup>21+<sup>
+## OnNativeEmbedObjectParamChangeCallback<sup>21+</sup>
 
 type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void
 
@@ -304,7 +304,7 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 
 完整示例代码参考[onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)。
 
-## OnDetectBlankScreenCallback<sup>22+<sup>
+## OnDetectBlankScreenCallback<sup>22+</sup>
 
 type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
 
@@ -354,7 +354,7 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 type TextSelectionChangeCallback = (selectionText: string) => void
 
-onTextSelectionChange的回调函数，选区内容改变时触发。
+onTextSelectionChange的回调，选区内容改变时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -368,7 +368,7 @@ onTextSelectionChange的回调函数，选区内容改变时触发。
 
 完整示例代码参考[onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23)。
 
-## OnFirstScreenPaintCallback<sup>23+<sup>
+## OnFirstScreenPaintCallback<sup>23+</sup>
 
 type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
@@ -385,3 +385,21 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 **示例：**
 
 完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23)。
+
+## OnInputmethodAttachedCallback
+
+type OnInputmethodAttachedCallback = () => void;
+
+当检测到输入法绑定成功时，会触发此回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**示例：**
+
+完整示例代码参考[onInputmethodAttached](./arkts-basic-components-web-events.md#oninputmethodattached)。

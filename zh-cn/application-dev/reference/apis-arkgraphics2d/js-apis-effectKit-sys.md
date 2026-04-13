@@ -16,6 +16,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 页面仅包含本模块的系统接口，其他公开接口参见[ohos.effectKit (图像效果)](js-apis-effectKit.md)。
 
@@ -31,6 +32,10 @@ import { effectKit } from "@kit.ArkGraphics2D";
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 | 名称                   | 值   | 说明                           |
@@ -45,6 +50,10 @@ import { effectKit } from "@kit.ArkGraphics2D";
 图片颜色深浅度的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -64,26 +73,32 @@ import { effectKit } from "@kit.ArkGraphics2D";
 
 ### getTopProportionColorsAndPercentage<sup>22+</sup>
 
-getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, number | null>
+ArkTS-Dyn: getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, number | null>
+
+ArkTS-Sta: getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>
 
 读取图像占比靠前的颜色值以及对应比例，个数由`colorCount`指定，结果写入Color与其对应比例的字典中，使用同步方式返回。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名      | 类型   | 必填 | 说明              |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | 是   | 需要取主色及对应比例的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
+| colorCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 需要取主色及对应比例的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
 
 **返回值：**
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| Map<Color \| null, number \| null> | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。<br>- 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`Map()`。 |
+| ArkTS-Dyn: Map<Color \| null, number \| null><br>ArkTS-Sta: Map<Color \| null, double  \| null> | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。<br>- 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`Map()`。 |
 
 **错误码：**
 
@@ -130,9 +145,13 @@ getShadeDegree(): PictureShadeDegree
 
 获取图像颜色深浅度。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -184,9 +203,13 @@ getComplexityDegree(): PictureComplexityDegree
 
 获取图像内容复杂度。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -234,13 +257,19 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### getAlphaZeroTransparentProportion<sup>23+</sup>
 
-getAlphaZeroTransparentProportion(): number
+ArkTS-Dyn: getAlphaZeroTransparentProportion(): number
+
+ArkTS-Sta: getAlphaZeroTransparentProportion(): double
 
 获取图像中完全透明的像素占比。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本:** 23
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -248,7 +277,7 @@ getAlphaZeroTransparentProportion(): number
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| number | 完全透明的像素占比，比例的取值范围为[0,1]。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 完全透明的像素占比，比例的取值范围为[0,1]。 |
 
 **错误码：**
 
@@ -294,7 +323,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### ellipticalGradientBlur<sup>23+</sup>
 
-ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRadius: EllipticalMaskRadius, fractionStops: FractionStop[]): Filter
+ArkTS-Dyn: ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRadius: EllipticalMaskRadius, fractionStops: FractionStop[]): Filter
+
+ArkTS-Sta: ellipticalGradientBlur(blurRadius: double, center: EllipticalMaskCenter, maskRadius: EllipticalMaskRadius, fractionStops: FractionStop[]): Filter
 
 将带有椭圆形遮罩的渐变模糊效果添加到效果链表中，返回链表的头节点。
 
@@ -304,6 +335,10 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本:** 23
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -312,7 +347,7 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  blurRadius   | number | 是   | 模糊半径，取正整数，单位是px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
+|  blurRadius   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 模糊半径，取正整数，单位是px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
 |  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 设置椭圆的中心点，[0, 0]表示组件的左上角，[1, 1]表示组件的右下角。 |
 |  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 第一个值表示椭圆x方向轴半径，第二个值表示椭圆y方向轴半径，两个轴半径的数值1均对应于组件的高度，取值范围均大于0。 |
 |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1。 模糊程度0表示无模糊，模糊程度1表示输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增，二元数组个数不能小于2，最大为12。 |
@@ -326,17 +361,17 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 **示例：**
 
 ``` ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-	  let blurRadius:number = 25;
-	  let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
-	  let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
-	  let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
+    let blurRadius:number = 25;
+    let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
+    let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
+    let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
     imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -391,31 +426,44 @@ struct Index {
 
 ## EllipticalMaskRadius<sup>23+</sup>
 
-type EllipticalMaskRadius = [ number, number ]
+ArkTS-Dyn: type EllipticalMaskRadius = [ number, number ]
+
+ArkTS-Sta: type EllipticalMaskRadius = [ double, double ]
 
 定义椭圆形遮罩的半径。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本:** 23
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 椭圆形遮罩的半径。|
+| ArkTS-Dyn: [ number, number ]<br>ArkTS-Sta: [ double, double ] | 椭圆形遮罩的半径。|
 
 ## EllipticalMaskCenter<sup>23+</sup>
+
 type EllipticalMaskCenter = [ number, number ]
+
+type EllipticalMaskCenter = [ double, double ]
 
 定义椭圆形遮罩的中心点。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本:** 23
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 椭圆形遮罩的中心点。|
+| ArkTS-Dyn: [ number, number ]<br>ArkTS-Sta: [ double, double ] | 椭圆形遮罩的中心点。|

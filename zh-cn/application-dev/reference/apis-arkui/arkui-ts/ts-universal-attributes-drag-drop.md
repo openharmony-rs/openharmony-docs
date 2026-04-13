@@ -953,7 +953,7 @@ struct LiftingExampleDemo {
             onlyForLifting: true,
             delayCreating: true
           })
-      }.width("%")
+      }.width("100%")
 
       Column() {
         Text("仅用于浮起效果")

@@ -75,16 +75,7 @@ getPixelMap(): image.PixelMap
 
 **示例：**
 
-```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
-import { image } from '@kit.ImageKit'
-
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-// $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
-let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-  .id)) as DrawableDescriptor; // 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。
-let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
-```
+示例请参考[LayeredDrawableDescriptor](#layereddrawabledescriptor)中的示例代码。
 
 ### loadSync<sup>21+</sup>
 
@@ -589,6 +580,7 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称      | 类型    | 只读 | 可选  | 说明                                    |
 | :--------- | :----- | :----| :----| :-------------------------------------- |
 | duration   | number | 否   | 是  | 设置图片数组播放总时间。<br/>PixelMap数组的默认值是每张图片播放1秒。本地图片或者应用资源的默认值是图片资源中携带的播放时延。<br/>单位：毫秒<br/> 取值范围：[0, +∞)<br>设置负数取默认值。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

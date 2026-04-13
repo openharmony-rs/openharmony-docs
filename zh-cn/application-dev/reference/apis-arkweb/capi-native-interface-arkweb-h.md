@@ -325,7 +325,7 @@ NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* we
 
 | 类型 | 说明 |
 | -- | -- |
-| [NativeArkWeb_OnDestroyCallback](#nativearkweb_ondestroycallback) | return 已注册的组件销毁时的回调函数。如果未设置由参数webTag指定的销毁回调函数，则将返回空指针。 |
+| [NativeArkWeb_OnDestroyCallback](#nativearkweb_ondestroycallback) | 返回已注册的组件销毁时的回调函数。如果未设置由参数webTag指定的销毁回调函数，则将返回空指针。 |
 
 ### OH_NativeArkWeb_LoadData()
 

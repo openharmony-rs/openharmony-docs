@@ -140,7 +140,7 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array\<Sp
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | start | number | 是   | 指定范围属性字符串的下标。 |
 | length | number | 是   | 指定范围属性字符串的长度。 |
-| styledKey | [StyledStringKey](#styledstringkey枚举说明) | 否   | 指定范围属性字符串样式的枚举值。 |
+| styledKey | [StyledStringKey](#styledstringkey枚举说明) | 否   | 指定范围属性字符串样式的枚举值。<br/>**说明：** <br/>当不传入该参数时默认获取开发者设置的[StyledStringKey](#styledstringkey枚举说明)所有枚举值样式。 |
 
 **返回值：**
 
@@ -1114,6 +1114,9 @@ invalidate(): void
 除首个段落外，后续段落按'\n'划分。
 
 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。
+
+在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](#customspan)或[ImageAttachment](#imageattachment)时，设置在该段落上的段落样式不生效。从API版本26.0.0开始，设置段落样式生效。
+
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

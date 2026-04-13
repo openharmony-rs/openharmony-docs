@@ -505,7 +505,7 @@ addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): void
 
 向路径添加一段圆弧。
 
-当startAngle和sweepAngle同时满足以下两种情况时，添加整个椭圆而不是圆弧:
+当startAngle和sweepAngle同时满足以下两种情况时，添加整个椭圆而不是圆弧：
 
 1.startAngle对90取余接近于0；
 
@@ -821,6 +821,40 @@ console.info('isEmpty:', isEmpty);
 path.setLastPoint(50, 50);
 isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
+```
+
+## getLastPoint
+
+ArkTS-Dyn: getLastPoint(): common2D.Point
+
+ArkTS-Sta: getLastPoint(): common2D.Point | undefined
+
+获取路径的最后一个点的坐标。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型                                               | 说明                   |
+| -------------------------------------------------- | ---------------------- |
+| ArkTS-Dyn: [common2D.Point](js-apis-graphics-common2D.md#point12)<br/>ArkTS-Sta: [common2D.Point](js-apis-graphics-common2D.md#point12) \| undefined | 路径的最后一个点坐标。如果路径为空，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+const path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+let lastPoint = path.getLastPoint();
+console.info('lastPoint.x:', lastPoint?.x);
+console.info('lastPoint.y:', lastPoint?.y);
 ```
 
 ## setFillType<sup>12+</sup>
@@ -1693,6 +1727,50 @@ if (path.isInterpolate(other)) {
   console.info('isInterpolate return true');
 } else {
   console.info('isInterpolate return false');
+}
+```
+
+## isEqual
+
+isEqual(path: Path): boolean
+
+判断当前路径与另一条路径是否相等。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                            |
+| -------- | -------------------------------------------- | ---- | ------------------------------- |
+| path | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 另一条路径对象。 |
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前路径与另一条路径是否相等的结果。true表示路径相等，false表示路径不相等。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+let other: drawing.Path = new drawing.Path();
+other.moveTo(0, 0);
+other.lineTo(100, 100);
+if (path.isEqual(other)) {
+  console.info('isEqual return true');
+} else {
+  console.info('isEqual return false');
 }
 ```
 

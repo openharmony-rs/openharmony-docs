@@ -711,7 +711,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | password | string \| Uint8Array | 否   | 否   | 用户输入的原始密码。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
 | iterations | number | 否   | 否   | 迭代次数，需要为正整数。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
 
 > **说明：**
 >
@@ -730,7 +730,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
 | info | Uint8Array | 否   | 否   | 拓展信息。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
 
 > **说明：**
 >
@@ -755,8 +755,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | n | number | 否   | 否   | 迭代次数，需要为正整数。 |
 | p | number | 否   | 否   | 并行化参数，需要为正整数。 |
 | r | number | 否   | 否   | 块大小参数，需要为正整数。 |
-| maxMemory | number | 否   | 否   | 最大内存限制参数，需要为正整数。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+| maxMemory | number | 否   | 否   | 最大内存限制参数，需要为正整数，单位为bytes。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -774,7 +774,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | info | Uint8Array | 否   | 否   | 附加信息。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -1080,7 +1080,7 @@ getEncodedDer(format: string): DataBlob
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式，取值仅支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。 |
+| format  | string | 是   | 用于指定当前密钥格式。<br>在API版本12-24，取值仅支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。<br>从API版本26.0.0开始，RSA公钥格式取值支持"PKCS1"和"X509"。 |
 
 **返回值：**
 
@@ -1275,12 +1275,16 @@ async function testgetAsyKeySpec() {
 
 getEncodedDer(format: string): DataBlob
 
-支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。当前仅支持获取PKCS8格式的ecc私钥数据。
+支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。
+
+在API版本12-24，仅支持获取PKCS8格式的ECC私钥数据。
+
+从API版本26.0.0开始，增加支持获取PKCS1和PKCS8格式的RSA私钥数据。
 
 > **说明：**
 >
 > 本接口和[Key.getEncoded()](#getencoded)的区别是：<br/>
-> 1. 本接口可根据入参决定数据的输出格式，当前支持获取PKCS8格式的ecc私钥数据。
+> 1. 本接口可根据入参决定数据的输出格式，当前支持获取PKCS8格式的ECC私钥数据。
 > 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1291,7 +1295,7 @@ getEncodedDer(format: string): DataBlob
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式，取值当前仅支持"PKCS8"。 |
+| format  | string | 是   | 用于指定当前密钥格式。<br>在API版本12-24，取值仅支持"PKCS8"。<br>从API版本26.0.0开始，RSA私钥格式支持"PKCS1"和"PKCS8"。 |
 
 **返回值：**
 
@@ -1747,7 +1751,7 @@ generateSymKey(callback: AsyncCallback\<SymKey>): void
 
 > **说明：**
 >
-> 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如“HMAC|SHA256”），则会随机生成与哈希长度一致的二进制密钥数据（如256位的密钥数据）。如果未指定具体哈希算法，如仅指定“HMAC”，则不支持随机生成对称密钥数据，可通过[convertKey](#convertkey)方式生成对称密钥数据。
+> 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥数据（如256位的密钥数据）。如果未指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过[convertKey](#convertkey)方式生成对称密钥数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1837,7 +1841,7 @@ generateSymKeySync(): SymKey
 
 > **说明：**
 >
-> 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定“HMAC|SHA256”），则会随机生成与哈希长度一致的二进制密钥数据（如指定“HMAC|SHA256”会随机生成256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定“HMAC”，则不支持随机生成对称密钥数据，可通过[convertKeySync](#convertkeysync12)方式生成对称密钥数据。
+> 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥数据（如指定"HMAC|SHA256"会随机生成256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过[convertKeySync](#convertkeysync12)方式生成对称密钥数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1882,7 +1886,7 @@ convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
 > **说明：**
 >
-> 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定“HMAC|SHA256”），则需要传入与哈希长度一致的二进制密钥数据（如传入SHA256对应256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定“HMAC”，则支持传入长度在[1,4096]范围内（单位为byte）的任意二进制密钥数据。
+> 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则需要传入与哈希长度一致的二进制密钥数据（如传入SHA256对应256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定"HMAC"，则支持传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2000,7 +2004,7 @@ convertKeySync(key: DataBlob): SymKey
 
 > **说明：**
 >
-> 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如“HMAC|SHA256”），则需要传入与哈希长度一致的二进制密钥数据（如SHA256对应的256位密钥数据）。如果在创建对称密钥生成器时未指定具体哈希算法，如仅指定“HMAC”，则支持传入长度在1到4096字节范围内的任意二进制密钥数据。
+> 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则需要传入与哈希长度一致的二进制密钥数据（如SHA256对应的256位密钥数据）。如果在创建对称密钥生成器时未指定具体哈希算法，如仅指定"HMAC"，则支持传入长度在1到4096字节范围内的任意二进制密钥数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6760,7 +6764,7 @@ init(key: SymKey, callback: AsyncCallback\<void>): void
 
   > **说明：**
   >
-  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为byte）的任意二进制密钥数据生成密钥。
+  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7212,7 +7216,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型   | 只读 | 可选 | 说明                 |
 | ------- | ------ | ---- | ---- | -------------------- |
-| algName<sup>10+</sup> | string | 是   | 否   | 代表当前使用的随机数生成算法，目前只支持“CTR_DRBG"。 |
+| algName<sup>10+</sup> | string | 是   | 否   | 代表当前使用的随机数生成算法，目前只支持"CTR_DRBG"。 |
 
 ### generateRandom
 
@@ -7232,7 +7236,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- | -------------------- |
-| len      | number                   | 是   | 表示生成随机数的长度，单位为byte，范围在[1, INT_MAX]。 |
+| len      | number                   | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取DataBlob数据。 |
 
 **错误码：**
@@ -7278,7 +7282,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| len    | number | 是   | 表示生成随机数的长度，单位为byte，范围在[1, INT_MAX]。 |
+| len    | number | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 
@@ -7327,7 +7331,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| len    | number | 是   | 表示生成随机数的长度，单位为byte，范围在[1, INT_MAX]。 |
+| len    | number | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 

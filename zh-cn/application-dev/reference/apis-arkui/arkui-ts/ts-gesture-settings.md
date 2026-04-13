@@ -107,9 +107,9 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 名称 | 值 | 说明 |
 | ---- | --- | -------- |
-| Unknown | - | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Mouse | - | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| TouchScreen | - | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Mouse | 1 | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TouchScreen | 2 | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | KEY<sup>22+</sup> | 4 | 按键。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | JOYSTICK<sup>22+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
@@ -203,7 +203,7 @@ struct PanGestureWithFingerCount {
   @State offsetY: number = 0
   @State positionX: number = 0
   @State positionY: number = 0
-  @State fingerCount: number = 0 //用于记录参与手势的触点数量
+  @State fingerCount: number = 0 // 用于记录参与手势的触点数量
   private panOption: PanGestureOptions = new PanGestureOptions({
     direction: PanDirection.All,
     fingers: 1
@@ -236,7 +236,7 @@ struct PanGestureWithFingerCount {
               console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`)
               this.offsetX = this.positionX + event.offsetX
               this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量,记录下参与当前手势的有效触点的数量
+              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量，记录下参与当前手势的有效触点的数量
             }
           })
           .onActionEnd((event: GestureEvent) => {

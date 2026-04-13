@@ -76,6 +76,19 @@ symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机
 ### fdsan功能
 [fdsan使用指导](./fdsan.md)可以帮助检测文件的重复关闭和关闭后使用问题。
 
+### 网络使用
+由于route netlink类型创建的socket通过send、sendto、sendmsg、getifaddrs、if_nameindex接口调用RTM_GETLINK（网络接口信息的核心消息类型）功能存在安全风险，因此不推荐使用。推荐使用C库ioctl接口，使用对应的cmd查询网络接口信息。
+
+鸿蒙内部ioctl接口cmd含义如下：
+| 名称      | 备注             |
+|-----------|-----------------|
+| SIOCGIFINDEX    |  获取网络接口索引    |
+| SIOCGIFFLAGS   |  获取网络接口的标志（状态）    |
+| SIOCGIFADDR    |  获取网络接口的地址    |
+| SIOCGIFBRDADDR    |  获取网络接口的广播地址    |
+| SIOCGIFNAME    |  通过索引获取网络接口名称   |
+| SIOCGIFCONF    |  获取所有网络接口的列表    |
+
 ## 信号使用
 为避免与系统保留信号冲突，开发者在使用信号时需遵循以下规则：
 - 信号编号 1～34：为系统内部保留信号，禁止使用；

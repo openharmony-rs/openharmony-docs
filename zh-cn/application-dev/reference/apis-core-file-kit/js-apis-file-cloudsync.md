@@ -42,7 +42,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。
 - 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；
-- 触发同步时，非充电场景下，若电量低于10%，则不允许同步，start接口返回对应错误。
+- 触发同步时，非充电场景下，若电量低于10%，则不允许同步
 - 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -129,7 +129,7 @@ constructor()
 let fileSync = new cloudSync.FileSync()
 ```
 
-### on<sup>12+</sup>
+### on('progress')<sup>12+</sup>
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
@@ -164,7 +164,7 @@ let callback = (pg: cloudSync.SyncProgress) => {
 fileSync.on('progress', callback);
 ```
 
-### off<sup>12+</sup>
+### off('progress')<sup>12+</sup>
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
@@ -477,7 +477,7 @@ constructor()
 let fileCache = new cloudSync.CloudFileCache();
 ```
 
-### on<sup>11+</sup>
+### on('progress')<sup>11+</sup>
 
 on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
@@ -519,7 +519,7 @@ try {
 }
 ```
 
-### on<sup>20+</sup>
+### on('batchDownload')<sup>20+</sup>
 
 on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): void
 
@@ -566,7 +566,7 @@ try {
 }
 ```
 
-### off<sup>11+</sup>
+### off('progress')<sup>11+</sup>
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
@@ -610,11 +610,11 @@ try {
 }
 ```
 
-### off<sup>20+</sup>
+### off('batchDownload')<sup>20+</sup>
 
 off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
-云盘文件缓存对象移除由[on](#on20)接口添加的云文件批量缓存过程事件的监听。
+云盘文件缓存对象移除由[on](#onbatchdownload20)接口添加的云文件批量缓存过程事件的监听。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1310,7 +1310,7 @@ cloudSync.unregisterChange(uri);
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | 否   | 否   | 文件内容修改时间。 |
+| editedTime | number | 否   | 否   | 文件内容修改的时间戳，单位：ms。 |
 | fileSize | number | 否   | 否   | 文件大小，单位：Byte。 |
 | versionId | string | 否   | 否   | 文件版本号。 |
 | originalFileName | string | 否   | 否   | 当前版本对应的文件名。 |
@@ -1342,7 +1342,7 @@ cloudSync.unregisterChange(uri);
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | 否   | 否   | 所选版本云文件的下载状态。 |
-| progress | number | 否   | 否   | 下载进度。 |
+| progress | number | 否   | 否   | 下载进度，单位：百分比。 |
 | errType | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 若出现下载失败，失败的错误类型。 |
 
 ## FileVersion<sup>20+</sup>

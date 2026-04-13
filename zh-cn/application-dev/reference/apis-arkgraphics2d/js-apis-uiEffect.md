@@ -14,7 +14,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -28,6 +30,10 @@ createFilter(): Filter
 创建Filter实例用于给组件添加多种filter效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -48,6 +54,10 @@ createEffect(): VisualEffect
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                          | 说明                       |
@@ -64,16 +74,23 @@ let visualEffect : uiEffect.VisualEffect = uiEffect.createEffect()
 Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](#uieffectcreatefilter)创建一个Filter实例。
 
 ### blur
-blur(blurRadius: number): Filter
+
+ArkTS-Dyn: blur(blurRadius: number): Filter
+
+ArkTS-Sta: blur(blurRadius: double): Filter
 
 将模糊效果添加至组件上。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名       | 类型   | 必填 | 说明       |
 | ----------- | -------| ---- | --------- |
-| blurRadius  | number | 是   | 模糊半径。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
+| blurRadius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 模糊半径。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
 
 **返回值：**
 
@@ -109,9 +126,13 @@ struct UIEffectFilterExample {
     }
 }
 ```
+![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
 
 ### hdrBrightnessRatio<sup>24+</sup>
-hdrBrightnessRatio(ratio: number): Filter
+
+ArkTS-Dyn: hdrBrightnessRatio(ratio: number): Filter
+
+ArkTS-Sta: hdrBrightnessRatio(ratio: double): Filter
 
 为组件内容添加HDR（高动态范围成像）提亮效果。不建议嵌套使用，强行嵌套使用可能造成过曝现象。
 
@@ -128,10 +149,14 @@ hdrBrightnessRatio(ratio: number): Filter
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| ratio  | number         | 是   | 提亮倍数，取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，不做任何处理；当值大于1.0时，会尝试触发HDR渲染管线，设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。|
+| ratio  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 提亮倍数，取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，不做任何处理；当值大于1.0时，会尝试触发HDR渲染管线，设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。|
 
 **返回值：**
 
