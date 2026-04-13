@@ -607,7 +607,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 >**说明：**
 >
-> 注意：当指定网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 注意：当指定网络不可用时，需要解除 App 和指定网络的绑定关系，以免导致应用无法上网。
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
