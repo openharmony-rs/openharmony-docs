@@ -2368,6 +2368,8 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -2407,6 +2409,8 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 **系统能力：** SystemCapability.Ability.Form
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
