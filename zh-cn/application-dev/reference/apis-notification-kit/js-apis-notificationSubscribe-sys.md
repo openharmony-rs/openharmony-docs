@@ -30,7 +30,7 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 **废弃版本**：26.0.0
 
-**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification)
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -158,7 +158,7 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 **废弃版本**：26.0.0
 
-**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification)
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
 
