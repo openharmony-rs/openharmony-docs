@@ -1776,7 +1776,7 @@ try {
 
 ArkTS-Dyn: getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
 
-ArkTS-Sta:getInstalledBundleList(bundleFlags: int): Promise<Array\<BundleInfo>>
+ArkTS-Sta: getInstalledBundleList(bundleFlags: int): Promise<Array\<BundleInfo>>
 
 根据给定的bundleFlags获取系统中所有的BundleInfo。使用Promise异步回调。
 
