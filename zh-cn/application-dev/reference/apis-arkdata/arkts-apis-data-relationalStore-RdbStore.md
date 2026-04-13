@@ -5182,7 +5182,7 @@ if (store != undefined) {
 
 cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行端云同步,根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现[云服务](js-apis-data-cloudExtension-sys.md)功能。
+手动执行端云同步，根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现[云服务](js-apis-data-cloudExtension-sys.md)功能。
 
 > **说明：**
 >
