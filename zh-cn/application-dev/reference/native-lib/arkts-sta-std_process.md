@@ -78,6 +78,24 @@ is64Bit(): boolean
 let result = StdProcess.is64Bit();
 ```
 
+## StdProcess.isIsolatedProcess
+
+isIsolatedProcess(): boolean
+
+判断当前进程是否为隔离进程。
+
+**返回值：**
+
+| 类型    | 说明                                                     |
+| ------- | ------------------------------------------------------- |
+| boolean | 返回判断结果。如果当前进程是隔离进程则返回true，否则返回false。 |
+
+**示例：**
+
+```js
+let result = StdProcess.isIsolatedProcess();
+```
+
 ## StdProcess.getStartRealtime
 
 getStartRealtime(): long
@@ -154,6 +172,11 @@ on(type: string, listener: EventListener): void
 
 事件触发时会抛出错误信息，建议使用try-catch逻辑进行处理。
 
+> **说明：**
+>
+> - `unhandledPromiseRejection`：支持多个监听器同时注册，触发时会遍历调用所有已注册的监听器。
+> - `uncaughtError`：单回调模式，不支持多个监听器同时注册，后注册的监听器会覆盖先注册的。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
@@ -180,6 +203,60 @@ try {
 } catch (e) {
     console.info("caught exception:", (e as Error).message);
 }
+```
+
+## StdProcess.off
+
+off(type: string, listener?: RejectedObjectListener): boolean
+
+移除之前注册的标准进程事件监听器。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明      |
+| ------ | ------ | ---- | ------- |
+| type     | string | 是   | 事件类型，支持取值及对应含义如下所示：<br> 'unhandledPromiseRejection': 移除未处理Promise拒绝的监听器。<br> 'uncaughtError': 重置为默认未捕获异常的监听器。|
+| listener | [RejectedObjectListener](#rejectedobjectlistener) | 否 | 要移除的特定监听器回调函数。<br> - 当 type 为 'unhandledPromiseRejection' 时：如果提供，则移除指定的监听器；如果未提供，则移除该类型的所有监听器。<br> - 当 type 为 'uncaughtError' 时：无论是否提供，效果均为恢复默认的uncaught error行为。|
+
+**返回值：**
+
+| 类型    | 说明                                                      |
+| ------- | -------------------------------------------------------- |
+| boolean | 移除是否成功。如果移除成功则返回true，否则返回false。 |
+
+**示例：**
+
+```ts
+// unhandledPromiseRejection 示例：多监听器模式
+let l1: StdProcess.RejectedObjectListener = (reason: Error, target: Object) => {
+    console.info("l1 handled");
+}
+
+let l2: StdProcess.RejectedObjectListener = (reason: Error, target: Object) => {
+    console.info("l2 handled");
+}
+
+StdProcess.on("unhandledPromiseRejection", l1);
+StdProcess.on("unhandledPromiseRejection", l2);
+// 触发时 l1 和 l2 都会被调用
+
+// 移除特定监听器
+StdProcess.off("unhandledPromiseRejection", l1);
+// 移除所有未处理Promise拒绝的监听器
+StdProcess.off("unhandledPromiseRejection");
+
+// uncaughtError 示例：单回调模式
+StdProcess.on("uncaughtError", (err: Object) => {
+    console.info("first handler");
+});
+
+StdProcess.on("uncaughtError", (err: Object) => {
+    console.info("second handler");
+});
+// 最终生效的是第二个回调
+
+// 重置未捕获异常处理器为默认处理器
+StdProcess.off("uncaughtError");
 ```
 
 ## EventListener
@@ -415,4 +492,30 @@ kill(signal: int, pid: int): boolean
 let processManager = new StdProcess.ProcessManager();
 let pres = StdProcess.pid();
 let result = processManager.kill(28, pres);
+```
+
+### isAppUid
+
+isAppUid(uid: int): boolean
+
+判断指定用户标识符是否属于当前应用程序。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明      |
+| ------ | ------ | ---- | ------- |
+| uid     | int | 是   | 要判断的用户标识符。 |
+
+**返回值：**
+
+| 类型    | 说明                                                      |
+| ------- | -------------------------------------------------------- |
+| boolean | 判断结果。如果用户标识符属于当前应用程序则返回true，否则返回false。 |
+
+**示例：**
+
+```js
+let processManager = new StdProcess.ProcessManager();
+let uid = StdProcess.uid();
+let isApp = processManager.isAppUid(uid);
 ```

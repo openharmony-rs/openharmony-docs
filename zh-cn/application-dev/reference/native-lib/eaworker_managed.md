@@ -297,6 +297,39 @@ static current(): EAWorker | undefined
 let currentWorker = EAWorker.current();
 ```
 
+## postToMain
+static postToMain\<R>(coroFun: Function, ...args: FixedArray\<Any>): Job\<R>
+
+向主线程提交任务。
+
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
+
+**参数：**
+|参数名|类型|必填|说明|
+|-----|----|--|----|
+|coroFun|Function|是|要执行的任务函数。|
+|args|FixedArray\<Any>|否|任务函数的参数列表。|
+
+**返回值：**
+| 类型       | 说明                 |
+| -------- | ------------------ |
+| Job\<R\>   | 任务执行句柄，可通过[Await](./job.md#await)获取异步结果。 |
+
+**示例：**
+```ts
+let worker = new EAWorker();
+worker.start();
+worker.run<void>(() => {
+    let job = EAWorker.postToMain<int>((x: int, y: int) => {
+        console.info("Task executed on main thread");
+        return x + y;
+    }, 5, 10);
+    let result = job.Await();
+    console.info("Result:", result); // Result: 15
+});
+worker.join().Await();
+```
+
 ## postTask
 postTask(callback: ()=>void): void
 
@@ -391,7 +424,8 @@ join(): Job<void\>
 
 > **说明：**
 > 
-> 开发者调用join之后，EAWorker实例不会立即被回收，线程资源释放是异步过程。若需要确保释放完成，请对返回的Job调用[Await](./job.md#await)。调用join后不应继续使用EAWorker实例提交任务。
+> - 开发者调用join之后，EAWorker实例不会立即被回收，线程资源释放是异步过程。若需要确保释放完成，请对返回的Job调用[Await](./job.md#await)。调用join后不应继续使用EAWorker实例提交任务。
+> - 该方法会等待当前正在执行的任务完成后进行销毁，但不会等待未开始执行或者处于挂起的任务执行完。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
@@ -412,10 +446,12 @@ job.Await();
 
 |名称|值|说明|
 |-|-|-|
-|PRIORITY_IDLE|0|线程优先级为后台任务。|
-|PRIORITY_LOW|1|线程优先级低。|
-|PRIORITY_DEFAULT|2|线程优先级中。|
-|PRIORITY_HIGH|3|线程优先级高。|
+|PRIORITY_IDLE|0|适用于数据同步等用户不可见的后台任务，任务完成需要几分钟甚至几小时。对应QOS_BACKGROUND。|
+|PRIORITY_LOW|1|适用于下载等不需要立即看到响应效果的任务，任务完成需要几秒到几分钟。对应QOS_UTILITY。|
+|PRIORITY_DEFAULT|2|默认的QoS等级，任务完成需要几秒钟。对应QOS_DEFAULT。|
+|PRIORITY_HIGH|3|适用于打开文档等用户触发并且可以看到进展的任务，任务在几秒钟之内完成。对应QOS_USER_INITIATED。|
+|PRIORITY_DEADLINE_REQUEST|4|适用于页面加载等越快越好的关键任务，任务几乎是瞬间完成的。对应QOS_DEADLINE_REQUEST。|
+|PRIORITY_USER_INTERACTION|5|适用于UI线程、动画渲染等用户交互任务，任务是即时的。对应QOS_USER_INTERACTIVE。|
 
 ## FAQ
 ### 如何进行异常处理

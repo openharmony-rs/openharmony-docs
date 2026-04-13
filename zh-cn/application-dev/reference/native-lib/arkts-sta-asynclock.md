@@ -121,8 +121,29 @@ let states: AsyncLockState[] = AsyncLock.queryAll();
 if (states.length === 0) {
   throw new Error("测试失败：期望至少有1个状态，但得到的是 " + states.length);
 }
-console.info(JSON.stringify(states));
-// 运行结果 [{"held":[],"pending":[]}]
+console.info(JSON.stringify(states)); // 运行结果 [{"held":[],"pending":[]}]
+```
+
+### query
+
+query(): AsyncLockState
+
+查询当前异步锁实例的信息。该方法用于获取当前锁的详细信息。
+
+**返回值：**
+
+| 类型                               | 说明                            |
+| --------------------------------- | ------------------------------- |
+| [AsyncLockState](#asynclockstate) | 一个包含状态描述的异步锁状态实例。 |
+
+**示例：**
+
+```ts
+let lock = new AsyncLock();
+let state: AsyncLockState = lock.query();
+let pending: AsyncLockInfo[] = state.pending;
+let held: AsyncLockInfo[] = state.held;
+console.info(JSON.stringify(state)); // 运行结果 {"held":[],"pending":[]}
 ```
 
 ### lockAsync
