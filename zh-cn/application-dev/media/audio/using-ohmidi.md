@@ -430,7 +430,7 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
     uint32_t portIndex = 0;
     napi_get_value_uint32(env, args[1], &portIndex);
 
-    int32_t protocol = static_cast<int32_t>(MIDI_PROTOCOL_1_0); // 默认使用MIDI 1.0协议。
+    int32_t protocol = static_cast<int32_t>(MIDI_PROTOCOL_1_0); // Default to MIDI 1.0
     napi_get_value_int32(env, args[MIDI_ARG_INDEX_2], &protocol);
 
     OH_LOG_INFO(LOG_APP, "[OpenOutputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u, protocol=%{public}d",
