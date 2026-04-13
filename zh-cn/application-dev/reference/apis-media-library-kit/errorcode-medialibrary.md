@@ -60,7 +60,7 @@ MediaLibrary inner fail.
 
 9. 返回数据初始化失败（Failed to initialize data field）。
 
-10. 返回error信息初始化失败（Failed to initialize error field）。
+10. 返回错误信息初始化失败（Failed to initialize error field）。
 
 11. 获取参数类型失败（Failed to get argument type）。
 
