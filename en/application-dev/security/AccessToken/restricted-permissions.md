@@ -1206,7 +1206,7 @@ Allows an application to use float views.
 
 ## ohos.permission.GET_CALL_TRANSFER_INFO
 
-Allows an application to get call transfer info, such as CFU,CFB,CFNR,CFNRY.
+Allows an application to get call transfer info, such as CFU,CFB,CFNR,CFNRy.
 
 <!--RP79--><!--RP79End-->
 
