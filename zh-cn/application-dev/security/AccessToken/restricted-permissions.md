@@ -1204,7 +1204,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
-## ohos.permission.GET_CALL_TRANSFER_INFO_STATE
+## ohos.permission.GET_CALL_TRANSFER_INFO
 
 允许应用查询呼叫转移状态，如无条件前转，遇忙呼转，无应答前转，不可及前转。
 

@@ -1204,7 +1204,7 @@ Allows an application to use float views.
 
 **Since**: 26.0.0
 
-## ohos.permission.GET_CALL_TRANSFER_INFO_STATE
+## ohos.permission.GET_CALL_TRANSFER_INFO
 
 Allows an application to get call transfer info, such as CFU,CFB,CFNR,CFNRY.
 
