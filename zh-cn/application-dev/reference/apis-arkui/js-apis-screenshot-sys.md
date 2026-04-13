@@ -32,12 +32,12 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
 | ---------------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
-| screenRect             | [Rect](js-apis-screenshot.md#rect) | 否  | 是 | 表示截取图像的区域，不传值默认返回displayId所在逻辑屏的区域。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22      |
-| imageSize              | [Size](#size) | 否 | 是  | 表示截取图像的大小，不传值默认为displayId所在逻辑屏的大小。若screenRect小于imageSize，图像会拉伸至imageSize，反之则压缩至imageSize的大小。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22        |
-| rotation               | ArkTs-Dyn: number <br> ArkTs-Sta: int        | 否  | 是 | 表示截取图像后要旋转的角度，当前仅支持输入值为0，默认值为0。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 22 |
-| displayId<sup>8+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 否 | 是  | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。 <br/> **ArkTS-Dyn起始版本：** 8   <br/>  **ArkTS-Sta起始版本：** 22|
-| isNotificationNeeded<sup>14+</sup>| boolean        | 否  | 是 | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。  <br/> **ArkTS-Dyn起始版本：** 14   <br/>  **ArkTS-Sta起始版本：** 22 |
-| isCaptureFullOfScreen<sup>20+</sup> | boolean        | 否  | 是 | 表示是否截取当前Screen上的所有display。对于一个Screen上有多个display的场景，为true表示截取整个Screen，false则只截取displayId所在逻辑屏的区域，默认值为false。 <br/> **ArkTS-Dyn起始版本：** 20   <br/>  **ArkTS-Sta起始版本：** 22|
+| screenRect             | [Rect](js-apis-screenshot.md#rect) | 否  | 是 | 表示截取图像的区域，不传值默认返回displayId所在逻辑屏的区域。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23      |
+| imageSize              | [Size](#size) | 否 | 是  | 表示截取图像的大小，不传值默认为displayId所在逻辑屏的大小。若screenRect小于imageSize，图像会拉伸至imageSize，反之则压缩至imageSize的大小。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23        |
+| rotation               | ArkTs-Dyn: number <br> ArkTs-Sta: int        | 否  | 是 | 表示截取图像后要旋转的角度，当前仅支持输入值为0，默认值为0。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23 |
+| displayId<sup>8+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 否 | 是  | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。 <br/> **ArkTS-Dyn起始版本：** 8   <br/>  **ArkTS-Sta起始版本：** 23|
+| isNotificationNeeded<sup>14+</sup>| boolean        | 否  | 是 | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。  <br/> **ArkTS-Dyn起始版本：** 14   <br/>  **ArkTS-Sta起始版本：** 23 |
+| isCaptureFullOfScreen<sup>20+</sup> | boolean        | 否  | 是 | 表示是否截取当前Screen上的所有display。对于一个Screen上有多个display的场景，为true表示截取整个Screen，false则只截取displayId所在逻辑屏的区域，默认值为false。 <br/> **ArkTS-Dyn起始版本：** 20   <br/>  **ArkTS-Sta起始版本：** 23|
 
 ## HdrScreenshotOptions<sup>20+</sup>
 
@@ -49,7 +49,7 @@ import { screenshot } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
@@ -68,7 +68,7 @@ import { screenshot } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -87,7 +87,7 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
@@ -183,7 +183,7 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
@@ -252,7 +252,7 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 
@@ -277,6 +277,7 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
+| 1400001 | Invalid display or screen. |
 
 **示例：**
 
@@ -364,7 +365,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：API version 22前，需申请ohos.permission.CAPTURE_SCREEN权限；从API version 22开始，需要申请ohos.permission.CAPTURE_SCREEN权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。仅系统应用可用。
 

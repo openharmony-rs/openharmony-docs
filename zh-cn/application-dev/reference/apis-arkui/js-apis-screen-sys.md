@@ -36,7 +36,7 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,7 +106,7 @@ getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：** 
 
@@ -214,7 +214,7 @@ onConnect(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -253,7 +253,7 @@ onDisconnect(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -292,7 +292,7 @@ onChange(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -373,7 +373,7 @@ offConnect(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -413,7 +413,7 @@ offDisconnect(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -453,7 +453,7 @@ offChange(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -493,7 +493,7 @@ ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;, callback:
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -563,7 +563,7 @@ ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;): Promise&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -632,7 +632,7 @@ ArkTS-Sta: stopMirror(mirrorScreen:Array&lt;long&gt;, callback: AsyncCallback&lt
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -699,7 +699,7 @@ ArkTS-Sta: stopMirror(mirrorScreen:Array&lt;long&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -763,7 +763,7 @@ ArkTS-Sta: makeUnique(uniqueScreen: Array&lt;long&gt;): Promise&lt;Array&lt;long
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效不报错。
 
@@ -835,7 +835,7 @@ createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback&lt;Scre
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -925,7 +925,7 @@ createVirtualScreen(options:VirtualScreenOption): Promise&lt;Screen&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1018,7 +1018,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long, callback: AsyncCallback&lt;void&g
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1085,7 +1085,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1153,7 +1153,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string, callback: A
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1250,7 +1250,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1344,7 +1344,7 @@ ArkTS-Sta: setScreenPrivacyMaskImage(screenId:long, image?: image.PixelMap): Pro
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1427,7 +1427,7 @@ isScreenRotationLocked(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1481,7 +1481,7 @@ isScreenRotationLocked(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1541,7 +1541,7 @@ setScreenRotationLocked(isLocked: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 仅在支持跟随sensor旋转的设备中生效，其他设备调用不生效不报错。
 
@@ -1606,7 +1606,7 @@ setScreenRotationLocked(isLocked: boolean, callback: AsyncCallback&lt;void&gt;):
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 仅在支持跟随sensor旋转的设备中生效，其他设备调用不生效不报错。
 
@@ -1674,7 +1674,7 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1744,7 +1744,7 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1881,7 +1881,7 @@ ArkTS-Sta: makeMirrorWithRegion(mainScreen:long, mirrorScreen:Array&lt;long&gt;,
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2183,7 +2183,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型 | 只读 | 可选 | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
@@ -2201,7 +2201,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值  | 说明                            |
 | ------------------ | ---- | -------------------------------- |
@@ -2218,7 +2218,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型     | 只读 | 可选  | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
@@ -2236,7 +2236,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
@@ -2263,14 +2263,14 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
-| id                | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕的ID，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22      |
-| rsId<sup>21+</sup> |ArkTs-Dyn: number <br> ArkTs-Sta: long | 是 | 否 | 屏幕端口的id，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 21   <br/>  **ArkTS-Sta起始版本：** 22|
-| parent            | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。 <br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22     |
-| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22 |
-| activeModeIndex   | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22 |
-| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 22 |
-| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 22     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 22 |       
+| id                | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕的ID，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23      |
+| rsId<sup>21+</sup> |ArkTs-Dyn: number <br> ArkTs-Sta: long | 是 | 否 | 屏幕端口的id，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 21   <br/>  **ArkTS-Sta起始版本：** 23|
+| parent            | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。 <br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23     |
+| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
+| activeModeIndex   | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
+| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
+| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 23     |
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 23 |       
 
 ### setOrientation
 
@@ -2284,7 +2284,7 @@ setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2385,7 +2385,7 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2489,7 +2489,7 @@ ArkTS-Sta: setScreenActiveMode(modeIndex: long, callback: AsyncCallback&lt;void&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2595,7 +2595,7 @@ ArkTS-Sta: setScreenActiveMode(modeIndex: long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2701,7 +2701,7 @@ ArkTS-Sta: setDensityDpi(densityDpi: double, callback: AsyncCallback&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2807,7 +2807,7 @@ ArkTS-Sta: setDensityDpi(densityDpi: double): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2906,7 +2906,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值   | 说明                             |
 | ------------------ | ---- | -------------------------------- |
@@ -2926,7 +2926,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值   | 说明                             |
 | ------------------ | ---- | -------------------------------- |
@@ -2945,7 +2945,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
@@ -2964,7 +2964,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |

@@ -36,7 +36,7 @@ ArkTS-Sta: hasPrivateWindow(displayId: long): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -181,7 +181,7 @@ onPrivateModeChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -269,7 +269,7 @@ offPrivateModeChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -307,7 +307,7 @@ setFoldDisplayMode(mode: FoldDisplayMode): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
 
@@ -367,7 +367,7 @@ setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
 
@@ -427,7 +427,7 @@ setFoldStatusLocked(locked: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -487,7 +487,7 @@ ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -573,7 +573,7 @@ ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -676,7 +676,7 @@ hasImmersiveWindow(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -744,7 +744,7 @@ hasImmersiveWindow(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

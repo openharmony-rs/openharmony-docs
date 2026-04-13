@@ -2255,6 +2255,7 @@ class VirtualScreenConfig {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let config : VirtualScreenConfig = {
@@ -2282,7 +2283,8 @@ let config : display.VirtualScreenConfig = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 display.createVirtualScreen(config).then((screenId: long) => {
@@ -3027,6 +3029,8 @@ promise.then((data: display.CutoutInfo) => {
 getAvailableArea(): Promise&lt;Rect&gt;
 
 获取当前设备屏幕的可用区域，使用Promise异步回调。
+
+可用区域是扣除系统UI（如状态栏、Dock栏）后，可供应用程序自由使用的区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
