@@ -423,7 +423,7 @@ struct Index {
 | pageId           | number                                | 否   | 是   | 事件源的页面ID，默认值为0。            |
 | description      | string                                | 否   | 是   | 事件描述，根据实际场景设置，无特殊限制，默认值为空。        |
 | triggerAction    | [Action](#action)                     | 否   | 否   | 触发事件的Action，不可缺省。    |
-| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | 否   | 是   | 文本移动粒度，默认值为'char'。      |
+| textMoveUnit     | [TextMoveUnit](#textmoveunit)         | 否   | 是   | 文本移动粒度，默认值为char。      |
 | contents         | Array&lt;string&gt;                   | 否   | 是   | 内容列表，根据实际场景设置，无特殊限制，默认值为空。                 |
 | lastContent      | string                                | 否   | 是   | 最新内容，根据实际场景设置，无特殊限制，默认值为空。                 |
 | beginIndex       | number                                | 否   | 是   | 画面显示条目的开始序号，默认值为0。 |
