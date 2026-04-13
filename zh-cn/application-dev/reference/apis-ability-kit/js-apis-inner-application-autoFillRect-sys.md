@@ -21,7 +21,7 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                     |
 | ------ | ----- | ---- | ---- | ---------------------------------------- |
-| left   | number | 否   | 否   | AutoFill表单或页面节点与页面左边界的距离。|
-| top    | number | 否   | 否   | AutoFill表单或页面节点与页面上边界的距离。|
-| height | number | 否   | 否   | AutoFill表单或页面节点的高度。            |
-| width  | number | 否   | 否   | AutoFill表单或页面节点的宽度。            |
+| left   | number | 否   | 否   | AutoFill表单或页面节点与页面左边界的距离，单位是px。|
+| top    | number | 否   | 否   | AutoFill表单或页面节点与页面上边界的距离，单位是px。|
+| height | number | 否   | 否   | AutoFill表单或页面节点的高度，单位是px。            |
+| width  | number | 否   | 否   | AutoFill表单或页面节点的宽度，单位是px。            |
