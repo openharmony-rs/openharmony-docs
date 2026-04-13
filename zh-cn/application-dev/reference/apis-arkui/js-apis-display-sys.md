@@ -128,7 +128,7 @@ on(type: 'privateModeChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onPrivateModeChange](#displayonprivatemodechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.onPrivateModeChange](#displayonprivatemodechange23)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -167,7 +167,7 @@ try {
 }
 ```
 
-## display.onPrivateModeChange<sup>22+</sup>
+## display.onPrivateModeChange<sup>23+</sup>
 
 onPrivateModeChange(callback: Callback&lt;boolean&gt;): void
 
@@ -221,7 +221,7 @@ off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offPrivateModeChange](#displayoffprivatemodechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[display.offPrivateModeChange](#displayoffprivatemodechange23)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -255,7 +255,7 @@ try {
 }
 ```
 
-## display.offPrivateModeChange<sup>22+</sup>
+## display.offPrivateModeChange<sup>23+</sup>
 
 offPrivateModeChange(callback?: Callback&lt;boolean&gt;): void
 

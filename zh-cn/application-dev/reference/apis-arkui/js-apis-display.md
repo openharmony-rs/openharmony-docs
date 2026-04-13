@@ -275,9 +275,10 @@ import { display } from '@kit.ArkUI';
 | sdrNits                     | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
-监听屏幕亮度信息时使用的回调函数类型。
 
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
+
+监听屏幕亮度信息时使用的回调函数类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -654,7 +655,6 @@ let displayClass: display.Display | null = null;
 
 displayClass = display.getPrimaryDisplaySync();
 ```
-
 
 ## display.getAllDisplays<sup>9+</sup>
 
@@ -1597,7 +1597,7 @@ offBrightnessInfoChange(callback?: BrightnessCallback&lt;long, BrightnessInfo>):
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('brightnessInfoChange')](#displayoffbrightnessinfochange22)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2072,7 +2072,7 @@ onFoldDisplayModeChange(callback: Callback&lt;FoldDisplayMode&gt;): void
 
 两者存在差异，时序上物理折叠状态变化在前，底层会根据物理折叠状态匹配屏幕显示模式状态。
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('foldDisplayModeChange')](#displayonfolddisplaymodechange10)。
 
@@ -2165,7 +2165,7 @@ offFoldDisplayModeChange(callback?: Callback&lt;FoldDisplayMode&gt;): void
 
 关闭折叠设备屏幕显示模式变化的监听。
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('foldDisplayModeChange')](#displayofffolddisplaymodechange10)。
 
@@ -2263,7 +2263,7 @@ let config : VirtualScreenConfig = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: '',	 
+  surfaceId: '',
   supportsFocus: false
 };
 
@@ -2409,7 +2409,7 @@ ArkTS-Dyn示例：
 
 ```ts
 // Index.ets
-import display from '@ohos.display'
+import { display } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2554,7 +2554,7 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 
 **错误码：**
 
-以下错误码的详细介绍请参见[屏幕错误码](errorcode-display.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[屏幕错误码](errorcode-display.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |

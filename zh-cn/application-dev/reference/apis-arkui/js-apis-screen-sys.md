@@ -53,7 +53,7 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 1400001 | Invalid display or screen. |
 
-示例：
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -200,7 +200,7 @@ let callback: Callback<number> = (data: number) => {
 screen.on('connect', callback);
 ```
 
-## screen.onConnect<sup>22+</sup>
+## screen.onConnect<sup>23+</sup>
 
 onConnect(callback: Callback&lt;long&gt;): void
 
@@ -239,7 +239,7 @@ let callback: Callback<long> = (data: long) => {
 screen.onConnect(callback);
 ```
 
-## screen.onDisconnect<sup>22+</sup>
+## screen.onDisconnect<sup>23+</sup>
 
 onDisconnect(callback: Callback&lt;long&gt;): void
 
