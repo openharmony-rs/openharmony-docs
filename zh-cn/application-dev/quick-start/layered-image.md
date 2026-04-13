@@ -24,13 +24,21 @@
 
 * HAP中包含UIAbility
 
-  * 入口UIAbility：[module.json5配置文件](module-configuration-file.md)的abilities标签中配置了icon和label，且该对应的ability中skills标签下面的entities中包含"entity.system.home"、并且actions中包含"ohos.want.action.home"。
+  1. 入口UIAbility：skills标签中entities中包含"entity.system.home"、并且actions中包含"ohos.want.action.home"。
+  
+  2. 在module.json5配置了多个入口UIAbility：
 
-  * 多HAP包的工程中，如果entry类型存在，以entry类型的HAP中module.json5配置文件为准，如果无entry类型，全都是feature类型的HAP，此时所有包的模块名称按照ASCII字典序取最后一个feature包的配置文件为准。
-  * 多HAP包的工程中，如果entry类型存在，以entry类型的HAP中module.json5配置文件为准，如果没有entry类型，全都是feature类型的HAP，此时所有包的模块名称按照ASCII字典序取最后一个feature包的配置文件为准。
-  * 如果在module.json5配置了多个入口UIAbility，优先返回module.json5中mainElement对应的入口UIAbility配置的icon和label，如果mainElement未配置或者配置的UIAbility中skills标签不对，则取配置文件module.json5中配置的第一个入口UIAbility，返回对应的icon和label。
-  * 如果在module.json5配置了多个入口UIAbility，优先返回module.json5中mainElement对应的入口UIAbility配置的icon和label，如果mainElement未配置或者配置的UIAbility中skills标签不正确，则取配置文件module.json5中配置的第一个入口UIAbility，返回对应的icon和label。
-  * 如果在module.json5配置文件中mainElement对应的abilities标签中未设置icon和label或者module.json5配置文件中第一个skills标签下面的entities中包含"entity.system.home"、并且actions中包含"ohos.want.action.home"的abilities标签中未设置icon和label，系统将返回[app.json5](app-configuration-file.md)中的icon和label。
+      * 如果module.json5中mainElement配置的为入口UIAbility，则返回mainElement对应的入口UIAbility配置的icon和label。
+
+      * 如果module.json5中mainElement未配置或者配置的不为入口UIAbility，则返回module.json5中配置的第一个入口UIAbility对应的icon和label。
+
+  3. 在module.json5配置文件中，出现以下任一情况时，系统将返回app.json5中的icon或label：
+
+      * mainElement配置的为入口UIAbility，但是入口UIAbility未设置icon或label。
+
+      * mainElement未配置或者配置的不为入口UIAbility，且module.json5配置文件中第一个入口UIAblity未设置icon或label。
+
+  多HAP包的工程中，如果entry类型存在，以entry类型的HAP中module.json5配置文件为准。如果没有entry类型，此时用所有hap的moduleName以ASCII字典序排序，最终以排序为最后一个的feature包的module.json5配置文件为准。
 
 * HAP中不包含UIAbility，系统将返回app.json5中的icon和label。
 
