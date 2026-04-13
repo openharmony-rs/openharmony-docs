@@ -1379,7 +1379,7 @@ try {
 
 static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
 
-同步数据到云端，使用Promise异步回调。
+对指定应用的数据进行端云同步，入参中config中的downloadOnly[relationalStore.CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig)为true时，端云同步仅把云侧数据下行到端侧，无其他操作，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
