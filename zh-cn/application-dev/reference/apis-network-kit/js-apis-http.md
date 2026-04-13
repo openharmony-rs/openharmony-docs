@@ -767,16 +767,16 @@ requestSync(url: string, options?: HttpRequestOptions): HttpResponse
 
 根据URL地址、相关配置项（可选），发起HTTP网络请求，同步返回响应结果。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 > **说明：**
 >
  >(1) 此接口仅支持接收50MB以内的数据，如果需要接收超过50MB的数据，则需主动在[HttpRequestOptions](#httprequestoptions)的maxLimit中进行设置。<br>
  >(2) 如需传入cookies，请开发者自行在参数options中添加。<br>
  >(3) 若URL包含中文或其他语言，需先调用encodeURL(URL)编码，再发起请求。<br>
  >(4) 此接口为同步接口，会阻塞当前线程直到返回HTTP请求响应结果或错误码。
+ 
+ **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.INTERNET
 
