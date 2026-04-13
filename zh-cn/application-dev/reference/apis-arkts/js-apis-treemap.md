@@ -81,7 +81,7 @@ comparator的参数说明：
 **示例：**
 
 ```ts
-//默认构造
+// 默认构造
 let treeMap = new TreeMap<number, number>();
 ```
 
@@ -105,7 +105,7 @@ for (let item of treeMap) {
 ```
 
 ```ts
-//当插入自定义类型时，则必须要提供比较函数。
+// 当插入自定义类型时，则必须要提供比较函数。
 class TestEntry{
   public id: number = 0;
 }
