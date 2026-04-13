@@ -312,10 +312,10 @@ deque.forEach((value: number, index: number): void => {
 });
 /*
 输出结果：value:1 index:0
-        value:2 index:1
-        value:3 index:2
-        value:4 index:3
-*/
+         value:2 index:1
+         value:3 index:2
+         value:4 index:3
+ */
 ```
 
 ### getFirst
@@ -432,7 +432,7 @@ value:4
 value:5
 value:4
 value:2
-*/
+ */
 
 // 使用方法二：
 let iter = deque[Symbol.iterator]();
@@ -447,5 +447,5 @@ value:4
 value:5
 value:4
 value:2
-*/
+ */
 ```
