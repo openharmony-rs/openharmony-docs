@@ -34,26 +34,7 @@ Context is invalid.
 
 **错误信息**
 
-MediaLibrary inner fail. Possible causes: 
-1. Failed to create reference. 
-2. Failed to create instance.
-3. Failed to get undefined value.
-4. Failed to get callback info.
-5. Failed to bind native object to JavaScript object.
-6. Failed to unwrap native object.
-7. Failed to create Boolean value.
-8. Failed to get int32 value.
-9. Failed to initialize data field.
-10. Failed to initialize error field.
-11. Failed to get argument type.
-12. Failed to check argument type.
-13. Failed to create PhotoAlbumNapi.
-14. Failed to add property.
-15. Failed to get fetch option.
-16. Invalid fetch columns.
-17. Failed to check array type.
-18. Failed to get array length.
-19. Failed to get array element.
+MediaLibrary inner fail.
 
 **错误描述**
 
@@ -61,49 +42,43 @@ MediaLibrary inner fail. Possible causes:
 
 **可能原因**
 
-1. 数据库异常。
+1. 创建构造函数引用失败（Failed to create reference）。
 
-2. 文件系统异常。
+2. 实例创建失败（Failed to create instance）。
 
-3. IPC消息超时。
+3. 无法获取undefined值（Failed to get undefined value）。
 
-4. 创建构造函数引用失败（Failed to create reference）。
+4. 回调信息获取失败（Failed to get callback info）。
 
-5. 实例创建失败（Failed to create instance）。
+5. 无法将原生对象绑定到JS对象（Failed to bind native object to JavaScript object）。
 
-6. 无法获取undefined值（Failed to get undefined value）。
+6. 原生对象解包失败（Failed to unwrap native object）。
 
-7. 回调信息获取失败（Failed to get callback info）。
+7. 布尔值创建失败（Failed to create Boolean value）。
 
-8. 无法将原生对象绑定到JS对象（Failed to bind native object to JavaScript object）。
+8. int32值获取失败（Failed to get int32 value）。
 
-9. 原生对象解包失败（Failed to unwrap native object）。
+9. 返回数据初始化失败（Failed to initialize data field）。
 
-10. 布尔值创建失败（Failed to create Boolean value）。
+10. 返回error信息初始化失败（Failed to initialize error field）。
 
-11. int32值获取失败（Failed to get int32 value）。
+11. 获取参数类型失败（Failed to get argument type）。
 
-12. 返回数据初始化失败（Failed to initialize data field）。
+12. 参数类型校验失败（Failed to check argument type）。
 
-13. 返回error信息初始化失败（Failed to initialize error field）。
+13. 创建PhotoAlbumNapi失败（Failed to create PhotoAlbumNapi）。
 
-14. 获取参数类型失败（Failed to get argument type）。
+14. JS对象添加属性失败（Failed to add property）。
 
-15. 参数类型校验失败（Failed to check argument type）。
+15. 无法获取提取选项（Failed to get fetch option）。
 
-16. 创建PhotoAlbumNapi失败（Failed to create PhotoAlbumNapi）。
+16. 无效的相册列（Invalid fetch columns）。
 
-17. JS对象添加属性失败（Failed to add property）。
+17. 数组类型校验失败（Failed to check array type）。
 
-18. 无法获取提取选项（Failed to get fetch option）。
+18. 获取数组长度失败（Failed to get array length）。
 
-19. 无效的相册列（Invalid fetch columns）。
-
-20. 数组类型校验失败（Failed to check array type）。
-
-21. 获取数组长度失败（Failed to get array length）。
-
-22. 获取数组元素失败（Failed to get array element）。
+19. 获取数组元素失败（Failed to get array element）。
 
 **处理步骤**
 
