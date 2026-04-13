@@ -205,7 +205,7 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
 | 参数名      | 类型                      | 必填   | 说明                                      |
 | -------- | ----------------------- | ---- | --------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘enableChange’，即字幕配置启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在启用状态变化时将状态通过此函数进行通知。true表示字幕配置开启，false表示字幕配置关闭。              |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在启用状态变化时将状态通过此函数进行通知。返回true表示字幕配置开启，返回false表示字幕配置关闭。              |
 
 **错误码：**
 
@@ -907,7 +907,7 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                  | 是   | 监听的事件名，固定为‘accessibilityStateChange’，即辅助应用启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在辅助应用启用状态变化时将状态通过此函数进行通知。此状态为全局辅助应用启用状态。true表示已启用辅助应用，false表示已禁用辅助应用。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数，在辅助应用启用状态变化时将状态通过此函数进行通知。此状态为全局辅助应用启用状态。返回true表示已启用辅助应用，返回false表示已禁用辅助应用。 |
 
 **错误码：**
 
@@ -946,7 +946,7 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名      | 类型                      | 必填   | 说明                                       |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘touchGuideStateChange’，即触摸浏览启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在触摸浏览启用状态变化时将状态通过此函数进行通知。true表示触摸浏览功能已开启，false表示触摸浏览功能已关闭。           |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在触摸浏览启用状态变化时将状态通过此函数进行通知。返回true表示触摸浏览功能已开启，返回false表示触摸浏览功能已关闭。           |
 
 **错误码：**
 
@@ -982,7 +982,7 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 | 参数名      | 类型                      | 必填   | 说明                                       |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | type     | string                  | 是    | 监听的事件名，固定为‘screenReaderStateChange’，即屏幕朗读启用状态变化事件。 |
-| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在屏幕朗读启用状态变化时将状态通过此函数进行通知。true表示屏幕朗读功能已开启，false表示屏幕朗读功能已关闭。           |
+| callback | Callback&lt;boolean&gt; | 是    | 回调函数，在屏幕朗读启用状态变化时将状态通过此函数进行通知。返回true表示屏幕朗读功能已开启，返回false表示屏幕朗读功能已关闭。           |
 
 **错误码：**
 
