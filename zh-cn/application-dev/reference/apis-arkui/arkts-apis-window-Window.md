@@ -13126,18 +13126,17 @@ try {
     }
     return array;
   });
-  let promise = windowClass.setWindowMask(windowMask);
-  promise.then(() => {
-    console.info('Succeeded in setting the window mask.');
-    promise = windowClass.clearWindowMask();
-    promise.then(() => {
+  windowClass.setWindowMask(windowMask)
+    .then(() => {
+      console.info('Succeeded in setting the window mask.');
+      return windowClass?.clearWindowMask();
+    })
+    .then(() => {
       console.info('Succeeded in clearing the window mask.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`Failed to operate window mask. Cause code: ${err.code}, message: ${err.message}`);
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
-  });
 } catch (exception) {
   console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -13157,18 +13156,17 @@ try {
     }
     return array;
   });
-  let promise = windowClass.setWindowMask(windowMask);
-  promise.then(() => {
-    console.info('Succeeded in setting the window mask.');
-    promise = windowClass.clearWindowMask();
-    promise.then(() => {
+  windowClass.setWindowMask(windowMask)
+    .then(() => {
+      console.info('Succeeded in setting the window mask.');
+      return windowClass?.clearWindowMask();
+    })
+    .then(() => {
       console.info('Succeeded in clearing the window mask.');
-    }).catch((err) => {
-      console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+    })
+    .catch((err) => {
+      console.error(`Failed to operate window mask. Cause code: ${err.code}, message: ${err.message}`);
     });
-  }).catch((err) => {
-    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
-  });
 } catch (exception) {
   console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
 }
