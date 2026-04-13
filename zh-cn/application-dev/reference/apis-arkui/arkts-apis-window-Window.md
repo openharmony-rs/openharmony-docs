@@ -10834,6 +10834,19 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003  | This window manager service works abnormally.        |
 
+> **说明：**
+>
+> 示意图和表格展示了直板机窗口方向、屏幕方向和屏幕角度的关系。
+>
+>  ![orientationAndRotation](figures/orientationAndRotation.PNG)
+>
+> | 屏幕角度 | 屏幕方向 | 窗口方向 |
+> | -------  | ------- | ------- |
+> | 0        | PORTRAIT  | PORTRAIT   |
+> | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
+> | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
+> | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
+
 **示例：**
 
 ```ts
