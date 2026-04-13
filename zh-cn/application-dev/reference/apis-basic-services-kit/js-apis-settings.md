@@ -1312,7 +1312,7 @@ try {
 }
 ```
 
-## settings.openAppDetailSettings
+## settings.openAppDetailSettingsPage
 
 openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
 
