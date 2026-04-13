@@ -135,6 +135,10 @@ import { distributedKVStore } from '@kit.ArkData';
 
 数据变更时通知的对象，包括插入的数据、更新的数据、删除的数据和设备ID。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 | 名称          | 类型          | 只读 | 可选       | 说明                     |
@@ -4622,6 +4626,38 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
+const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT,  (err: BusinessError|null) => {
+        console.info('Succeeded in putting data');
+        const deviceid = 'no_exist_device_id';
+        if (kvStore != null) {
+            kvStore.removeDeviceData(deviceid,  (err: BusinessError|null) => {
+                if (err == null) {
+                    console.info('succeeded in removing device data');
+                } else {
+                    console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
+                    if (kvStore != null) {
+                        kvStore.get(KEY_TEST_STRING_ELEMENT,  (err: BusinessError|null, data: boolean | string | long | double | Uint8Array |undefined) => {
+                            console.info('Succeeded in getting data');
+                        });
+                    }
+                }
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`)
+}
+```
+
 ### removeDeviceData
 
 removeDeviceData(deviceId: string): Promise&lt;void&gt;
@@ -8699,7 +8735,7 @@ try {
         console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
         return;
       }
-      console.info(`Succeeded in getting data.data=${data}`);
+      console.info(`Succeeded in getting data. Data=${data}`);
     });
   });
 } catch (error: BusinessError) {
@@ -8804,7 +8840,7 @@ ArkTS-Dyn: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean
 
 ArkTS-Sta: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
 
-获取与指定设备ID和Key匹配的string值，使用callback异步回调。
+获取与指定设备ID和Key匹配的值，使用callback异步回调。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
