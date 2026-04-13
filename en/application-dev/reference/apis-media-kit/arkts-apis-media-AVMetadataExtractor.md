@@ -42,7 +42,7 @@ Sets the data source for a network on-demand resource. Only network metadata ([f
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| url | string       | Yes  | URL of the media resource.<br>1. The video formats MP4, MPEG-TS, and MKV are supported.<br>2. The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported.<br>**Example of supported URLs**:<br>1. HTTP: http\://xx<br>2. HTTPS: https\://xx<br>Note: HLS/DASH and live streaming resources cannot be set.|
+| url | string       | Yes  | URL of the media resource.<br>1. The video formats MP4, MPEG-TS, and MKV are supported.<br>2. The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported.<br>**Example of supported URLs**:<br>1. HTTP: http://xx<br>2. HTTPS: https://xx<br>Note: HLS/DASH and live streaming resources are not supported.|
 | headers | Record\<string, string> | No  | Custom HTTP headers for accessing the network resource. The default value is empty.|
 
 **Example**

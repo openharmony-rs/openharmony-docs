@@ -14,7 +14,8 @@ Once embedded, users can directly select images or videos within the **PhotoPick
 
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component does not support [same-layer rendering](../../../application-dev/web/web-same-layer.md).
 
 ## Modules to Import
 
@@ -542,7 +543,7 @@ This capability can be configured since API version 20. If this capability is se
 
 ## SelectMode
 
-Enumerates the select modes.
+Enumerates the selection modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
