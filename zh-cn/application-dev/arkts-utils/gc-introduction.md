@@ -219,23 +219,45 @@ heap中生成两个Semi Space，供copying使用。
 
 **Young GC**
 
-- **触发机制**：年轻代GC触发阈值在2MB-16MB，根据分配速度和存活率变化。
-- **功能描述**：主要回收semi Space新分配的年轻代对象。
-- **场景**：前台场景。
+- **触发机制**：
+  - 年轻代空间（Semi Space）达到容量限制时触发
+  - 触发阈值范围：2MB-16MB，根据堆总大小动态调整
+  - 在对象分配过程中，当Semi Space无法扩展且达到容量限制时自动触发
+- **功能描述**：
+  - 主要回收Semi Space新分配的年轻代对象
+  - 采用复制算法，将存活对象复制到To Space或晋升到老年代
+  - 单次耗时较短，通常在几毫秒内完成
+- **场景**：前台场景，对象分配频繁时触发
 - **日志关键词**：`[ HPP YoungGC ]`
 
 **Old GC**
 
-- **触发机制**：老年代GC触发阈值在20MB到300MB之间变化。通常，第一次Old GC的阈值约为20MB，之后会根据对象存活率和内存占用情况进行调整。
-- **功能描述**：对年轻代和部分老年代空间做整理压缩，其他空间做sweep清理。触发频率比年轻代GC低很多，由于会做全量mark，因此GC时间会比年轻代GC长，单次耗时约5ms~10ms。
-- **场景**：前台场景。
+- **触发机制**：
+  - 老年代空间达到容量限制或超过全局分配限制时触发
+  - Native内存绑定大小达到阈值时触发
+  - 触发阈值范围：首次约20MB，后续根据对象存活率和内存占用情况动态调整，范围在20MB到300MB之间
+- **功能描述**：
+  - 对年轻代和部分老年代空间（CSet）做整理压缩
+  - 对其他老年代空间做sweep清理
+  - 采用启发式CSet选择算法，优先回收存活率低的Region
+  - 触发频率比Young GC低，由于需要做全量标记，GC时间较长，单次耗时约5ms~10ms
+- **场景**：前台场景，老年代对象积累到一定程度时触发
 - **日志关键词**：`[ HPP OldGC ]`
 
 **Full GC**
 
-- **触发机制**：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2MB，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
-- **功能描述**：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
-- **场景**：后台场景。
+- **触发机制**：
+  - 不会由内存阈值直接触发
+  - 应用切换到后台时触发：
+  - 应用空闲时（Idle GC）触发：
+  - 通过`ArkTools.hintGC()`接口或Native接口主动触发
+  - DumpHeapSnapshot和AllocationTracker工具使用时触发
+  - 内存压力较大时，通过HintGC机制触发
+- **功能描述**：
+  - 对年轻代和老年代做全量压缩
+  - 主要用于性能不敏感场景，最大限度回收内存
+  - 会暂停所有应用线程（STW），耗时较长
+- **场景**：后台场景、应用空闲时、内存压力大、工具触发
 - **日志关键词**：`[ CompressGC ]`
 
 此后，Smart GC或IDLE GC会从上述三种GC中选择。
@@ -260,6 +282,21 @@ heap中生成两个Semi Space，供copying使用。
 - 函数方法：`ChangeGCParams`
 - 策略描述：切换到后台场景后主动触发一次Full GC。
 - 典型日志：`app is inBackground` 和 `app is not inBackground`。GC日志中可区分GCReason::SWITCH_BACKGROUND。
+
+**空闲时触发GC（Idle GC）**
+
+- 函数方法：`NotifyLooperIdleStart`、`TryTriggerIdleGC`
+- 触发条件：
+  - Young GC：年轻代对象分配量超过预期，且空间使用率达到阈值
+  - Old GC：老年代对象增长超过预期，满足以下任一条件：
+    - Native绑定内存增长超过阈值
+    - 老年代空间使用率达到空闲限制阈值
+    - 全局分配限制达到空闲限制阈值
+  - Full GC：满足以下任一条件：
+    - 堆对象大小超过预期
+    - 碎片大小超过预期
+- 策略描述：应用空闲时，根据内存使用情况选择合适的GC类型进行回收，避免在性能敏感场景触发GC影响用户体验。
+- 典型日志：`IdleGCTrigger: trigger full gc`、`IdleGCTrigger: trigger young gc`。GC日志中可区分GCReason::IDLE。
 
 ### 执行策略
 
@@ -305,9 +342,71 @@ heap中生成两个Semi Space，供copying使用。
 - SharedOldSpace：共享老年代空间（不区分年轻代老年代），存放一般的共享对象。
 - SharedHugeObjectSpace：共享大对象空间，使用单独的Region存放一个大对象的空间。
 - SharedReadOnlySpace：共享只读空间，存放运行期间的只读数据。
-- SharedNonMovableSpace：共享不可移动空间，存放不可移动的对象。
+- SharedNonMovableSpace：共享不可移动空间，存放不可移动的共享对象。
+- SharedAppSpawnSpace：共享AppSpawn空间，用于应用孵化时的共享对象存储。
 
-注：SharedHeap用于线程间共享对象，提高效率并节省内存。共享堆不单独属于任何线程，保存具有共享价值的对象，提高对象的存活率，去除了SemiSpace类型。
+> **说明：**
+>
+> 1. SharedHeap用于线程间共享对象，提高效率并节省内存。共享堆不单独属于任何线程，保存具有共享价值的对象，提高对象的存活率。
+> 2. SharedHeap去除了SemiSpace类型，因为共享对象通常生命周期较长，不需要年轻代的复制算法。
+> 3. 每个空间由一个或多个Region进行分区域管理。Region是空间向内存分配器申请的单位。
+
+### 相关参数
+
+> **注意：**
+>
+> 以下参数未提示可配置的均为不可配置项，由系统自行设定。
+
+根据系统分配堆空间总大小64MB-128MB/128MB-256MB/大于256MB的三个范围，以下参数系统会设置不同的大小。如果表格内范围仅有一个值，则表示该参数值不随堆空间总大小变化。手机设备SharedHeap空间总大小默认为778MB，最大可配置为2048MB。
+
+开发者可以查阅[hidebug接口文档](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)，使用相关接口查询内存信息。
+
+**堆大小相关参数**
+
+| 参数名                    | 范围                       | 作用                                           |
+| -------------------- | ------------------------ | -------------------------------------------- |
+| SharedHeapSize       | 778MB                    | SharedHeap默认堆空间总大小，最大可配置为2048MB。             |
+| sharedHeapLimitGrowingFactor | 2/2/4          | SharedHeap增长因子，用于计算全局分配限制。                   |
+| sharedHeapLimitGrowingStep | 10MB/40MB/80MB      | SharedHeap增长步长，用于调整全局分配限制。                  |
+
+**SharedOldSpace**
+
+| 参数名                            | 范围                       | 作用                                   |
+| ------------------------------ | ------------------------ | ------------------------------------ |
+| oldSpaceCapacity               | 动态计算                     | SharedOldSpace空间容量，根据堆总大小动态计算。       |
+
+**SharedNonMovableSpace**
+
+| 参数名                            | 范围                       | 作用                                   |
+| ------------------------------ | ------------------------ | ------------------------------------ |
+| nonmovableSpaceCapacity        | 6MB/6MB/64MB             | SharedNonMovableSpace空间容量。           |
+
+**SharedReadOnlySpace**
+
+| 参数名                            | 范围                       | 作用                                   |
+| ------------------------------ | ------------------------ | ------------------------------------ |
+| readOnlySpaceCapacity          | 256KB                    | SharedReadOnlySpace空间容量。             |
+
+**SharedHugeObjectSpace**
+
+| 参数名                            | 范围                       | 作用                                   |
+| ------------------------------ | ------------------------ | ------------------------------------ |
+| hugeObjectSpaceCapacity        | 动态计算                     | SharedHugeObjectSpace空间容量，根据堆总大小动态计算。 |
+
+**Native内存相关参数**
+
+| 参数名                            | 范围                       | 作用                                   |
+| ------------------------------ | ------------------------ | ------------------------------------ |
+| stepNativeSizeInc              | 128MB/256MB/300MB        | 触发SharedGC的Native内存增量阈值。             |
+| maxNativeSizeInc               | 768MB/768MB/1GB          | 触发Shared并发标记的Native内存增量阈值。           |
+| nativeSizeOvershoot            | 80MB/80MB/100MB          | Native内存过冲大小。                        |
+
+**其他参数**
+
+| 参数名                      | 值            | 作用                                                                      |
+| ------------------------ | ------------ | ----------------------------------------------------------------------- |
+| defaultGlobalAllocLimit  | 10MB/20MB/20MB | SharedHeap默认全局分配限制。                                                   |
+| fragmentationLimitForSharedFullGC | 5MB   | 触发SharedFullGC的碎片限制阈值。当碎片大小超过该值时，会触发SharedFullGC进行压缩整理。               |
 
 ## 特性
 
@@ -471,7 +570,7 @@ GC稳定性问题主要由两种异常引起：一是非法多线程操作导致
 
 0xffff000000000048 是对象的异常偏移地址。
 
-``` text
+```text
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0xffff000000000048 
 Fault thread info:
 Tid:6490, Name:OS_GC_Thread
@@ -490,7 +589,7 @@ Tid:6490, Name:OS_GC_Thread
 
 0x000056c2fffc0008 指针出现异常，指针映射出错。
 
-``` text
+```text
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x000056c2fffc0008 
 Fault thread info:
 Tid:2936, Name:OS_GC_Thread
