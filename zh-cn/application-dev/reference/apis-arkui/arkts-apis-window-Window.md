@@ -13126,17 +13126,16 @@ try {
     }
     return array;
   });
-  windowClass.setWindowMask(windowMask)
-    .then(() => {
-      console.info('Succeeded in setting the window mask.');
-      return windowClass?.clearWindowMask();
-    })
-    .then(() => {
+  windowClass.setWindowMask(windowMask).then(() => {
+    console.info('Succeeded in setting the window mask.');
+    windowClass?.clearWindowMask().then(() => {
       console.info('Succeeded in clearing the window mask.');
-    })
-    .catch((err: BusinessError) => {
-      console.error(`Failed to operate window mask. Cause code: ${err.code}, message: ${err.message}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clear window mask. Cause code: ${err.code}, message: ${err.message}`);
     });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
 } catch (exception) {
   console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -13156,17 +13155,16 @@ try {
     }
     return array;
   });
-  windowClass.setWindowMask(windowMask)
-    .then(() => {
-      console.info('Succeeded in setting the window mask.');
-      return windowClass?.clearWindowMask();
-    })
-    .then(() => {
+  windowClass.setWindowMask(windowMask).then(() => {
+    console.info('Succeeded in setting the window mask.');
+    windowClass?.clearWindowMask().then(() => {
       console.info('Succeeded in clearing the window mask.');
-    })
-    .catch((err) => {
-      console.error(`Failed to operate window mask. Cause code: ${err.code}, message: ${err.message}`);
+    }).catch((err) => {
+      console.error(`Failed to clear window mask. Cause code: ${err.code}, message: ${err.message}`);
     });
+  }).catch((err) => {
+    console.error(`Failed to set window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
 } catch (exception) {
   console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
 }
