@@ -2551,6 +2551,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -2585,15 +2590,15 @@ struct WebComponent {
                     }
                   }
                   catch (resError) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
                   }
                 }
               });
             if (e) {
               console.info('url: ', e.url);
             }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          } catch (resError) {
+            console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
           }
         })
     }
@@ -2730,6 +2735,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -2764,12 +2774,12 @@ struct WebComponent {
                     }
                   }
                   catch (resError) {
-                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
                   }
                 }
               });
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          } catch (resError) {
+            console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
@@ -3501,7 +3511,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  @State factor: number = 1;
+  @State factor: number = 2;
 
   build() {
     Column() {
@@ -5575,7 +5585,7 @@ struct WebComponent {
       Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -6588,7 +6598,7 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
 }
@@ -6705,7 +6715,7 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
 }
@@ -8496,7 +8506,7 @@ ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSo
 
 ArkTS-Dyn示例：
 ```ts
-// xxx.ets
+// EntryAbility.ets
 import { webview } from '@kit.ArkWeb';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
@@ -13673,7 +13683,7 @@ struct WebComponent {
               }
               if (result) {
                 console.info(`return value is:${result}`);
-                //开发者可以根据需要处理返回结果
+                // 开发者可以根据需要处理返回结果
               }
             });
           } catch (error) {
@@ -13711,7 +13721,7 @@ struct WebComponent {
               }
               if (result) {
                 console.info(`return value is:${result}`);
-                //开发者可以根据需要处理返回结果
+                // 开发者可以根据需要处理返回结果
               }
             });
           } catch (error) {
@@ -15493,7 +15503,7 @@ struct WebComponent {
         Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
       }
       .margin({ top: 10, bottom: 10 })
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
         .key("web_01")
         .overScrollMode(this.mode)
         .onTouch(() => {
@@ -17922,6 +17932,7 @@ struct WebComponent {
       Button('getSiteIsolationMode')
         .onClick(() => {
           let mode = webview.WebviewController.getSiteIsolationMode();
+          console.info("getSiteIsolationMode: " + mode);
         })
       Web({ src: 'www.example.com', controller: this.controller })
     }
@@ -18277,7 +18288,7 @@ struct WebComponent {
           }
         })
         .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
-          console.info("Microphone from ", event.originalState, " to ", event.newState);
+          console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
         })
     }
   }
@@ -18526,8 +18537,8 @@ struct WebComponent {
             let versionList = metadata.getBrandVersionList();
             for(let i = 0; i < versionList.length; i++) {
               console.info("Brand:" + versionList[i].getBrand());
-              console.info("MajorVersion:" + versionList[i].getMajorVersion());
-              console.info("FullVersion:" + versionList[i].getFullVersion());
+              console.info("MajorVersion " + versionList[i].getMajorVersion());
+              console.info("FullVersion " + versionList[i].getFullVersion());
             }
             let FormFactors = metadata.getFormFactors();
             for(let j = 0; j < FormFactors.length; j++) {
