@@ -509,3 +509,21 @@ async function setupPlayer() {
 | uri                                 | string                                       | 否   | 否   | 音频输出URI：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/zh-cn_image_url.png) <br/>文件需要由调用者创建，并赋予适当的权限。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderConfig](#avrecorderconfig9)中的url替代。 |
 | audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 容器编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioCodec替代。 |
 | fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 是   | 音频编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的fileFormat替代。 |
+
+## AVTimedMetaData<sup>26+</sup>
+
+描述指标事件的信息。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| id  | string | 否   | 是   | 定义时间基元数据的唯一标记。<br>该标记在视频源的其他时间基元数据中须保持唯一。 |
+| classify | string | 否   | 是   | 该时间基元数据的分类标签。 |
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 定义该时间基元信息相对整个媒体起始时间的偏移值。<br>取值限定为整数。<br>单位：毫秒。 |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 该时间基元信息的持续时长。<br>取值限定为整数。<br>单位：毫秒。 |
+| contents | Record<string, object> | 否   | 否   | 时间基元信息对应的键值对集合。 |

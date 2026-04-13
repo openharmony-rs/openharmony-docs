@@ -3818,3 +3818,61 @@ async function test(){
   avPlayer.offMetricsEvent();
 }
 ```
+## onTimedMetaData<sup>26+</sup>
+
+ArkTS-Dyn: onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
+
+ArkTS-Sta: onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
+
+注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息。使用callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmatadata26)> | 是   | 上报的基于时间的元数据。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onTimedMetaData((data: media.AVTimedMetaData) => {
+  });
+}
+```
+
+## offTimedMetaData<sup>26+</sup>
+
+ArkTS-Dyn: offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
+
+ArkTS-Sta: offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
+
+取消注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息。使用callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmatadata26)> | 否   | 上报的基于时间的元数据。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offTimedMetaData();
+}
+```
