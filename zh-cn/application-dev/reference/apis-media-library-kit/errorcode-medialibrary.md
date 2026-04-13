@@ -51,7 +51,7 @@ MediaLibrary inner fail.
 4. 回调信息获取失败（Failed to get callback info）。
 
 5. 无法将原生对象绑定到JS对象（Failed to bind native object to JavaScript object）。
-10. 返回错误信息初始化失败（Failed to initialize error field）。
+
 6. 原生对象解包失败（Failed to unwrap native object）。
 
 7. 布尔值创建失败（Failed to create Boolean value）。
