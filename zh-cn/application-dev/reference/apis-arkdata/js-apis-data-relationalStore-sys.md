@@ -39,7 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。<br/> |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 12开始，支持此可选参数。<br/> |
-| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/> |
+| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用cleanDeviceDirtyData进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -1292,7 +1292,7 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
 
 cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
-对端设备删除的数据同步到本端后，本端清理未自动清理的数据。使用Promise异步回调。
+本端手动清理对端删除后同步过来的数据。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1306,8 +1306,8 @@ cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
 | 参数名   | 类型                                                  | 必填 | 说明                                               |
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
-| table     | string           | 是   | 表示当前数据库的表的名称。需遵循数据库表名规则。           |
-| cursor    | number           | 否   | 整数类型，取值应大于等于0，表示数据游标，不大于此游标的脏数据将被清理。当此参数不填或传入值为0时，清理当前表的所有脏数据。 |
+| table     | string           | 是   | 表示需要清理数据库表的名称。数据库表名只能由字母、数字和下划线组成，不能包含其他字符，长度为[1, 256]。           |
+| cursor    | number           | 否   | 整数类型，取值大于0，表示数据游标，不大于此游标的脏数据将被清理。当此参数不填时，清理当前表的所有脏数据。 |
 
 **返回值：**
 
@@ -1336,11 +1336,11 @@ cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  try{
+  try {
     await store.cleanDeviceDirtyData('test_table', 100);
-    console.info('clean device dirty data succeeded');
+    console.info('Succeeded in cleaning device dirty data.');
   } catch (err) {
-    console.error(`clean device dirty data failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
   };
 }
 ```
@@ -1482,10 +1482,10 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
-| ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
-| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
-| CURSOR_FIELD      | '#_cursor'     | 用于分布式数据库表对应log表cursor查找的字段名。<br/>**起始版本：** 26.0.0<br/> |
-| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段，表示对端删除的数据，同步到本端后数据是否清理。返回的结果集中，该字段对应的value为1表示数据未清理，0表示数据已清理。<br/>**起始版本：** 26.0.0<br/> |
+| ORIGIN      | '#_origin'     | 用于查找或更新时指定数据来源的字段名。    |
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
+| CURSOR_FIELD      | '#_cursor'     | 用于cursor查找的字段名。<br/>**起始版本：** 26.0.0<br/> |
+| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段。true表示对端删除的数据，同步到本端。false表示对端写入或更新的数据，同步到本端；或者本端写入或更新的数据。<br/>**起始版本：** 26.0.0<br/> |
 
 ## DistributedInfo<sup>24+</sup>
 
