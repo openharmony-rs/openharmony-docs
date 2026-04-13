@@ -156,6 +156,8 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -164,6 +166,23 @@ try {
   backgroundTaskManager.getAllEfficiencyResources().then((res: backgroundTaskManager.EfficiencyResourcesInfo[]) => {
     console.info(`Operation getAllEfficiencyResources succeeded. data: ` + JSON.stringify(res));
   }).catch((error: BusinessError) => {
+    console.error(`Operation getAllEfficiencyResources failed. code is ${error.code} message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`Operation getAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  backgroundTaskManager.getAllEfficiencyResources().then((res: backgroundTaskManager.EfficiencyResourcesInfo[]) => {
+    console.info(`Operation getAllEfficiencyResources succeeded. data: ` + JSON.stringify(res));
+  }).catch((error) => {
     console.error(`Operation getAllEfficiencyResources failed. code is ${error.code} message is ${error.message}`);
   });
 } catch (error) {
@@ -324,6 +343,8 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -333,6 +354,23 @@ try {
   backgroundTaskManager.obtainAllContinuousTasks().then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
     console.info(`Operation obtainAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
   }).catch((error: BusinessError) => {
+    console.error(`Operation obtainAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`Operation obtainAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 如果当前没有申请长时任务，则获取到一个空数组
+  backgroundTaskManager.obtainAllContinuousTasks().then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
+    console.info(`Operation obtainAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
+  }).catch((error) => {
     console.error(`Operation obtainAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
   });
 } catch (error) {
