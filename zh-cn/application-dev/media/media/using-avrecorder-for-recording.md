@@ -32,6 +32,7 @@
 - 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务开发指导](../../task-management/continuous-task.md)。
 - 录制需要在前台启动，启动后可以退后台。在后台启动录制将会失败。
 - 应用录制音频时需要使用合适的录制流类型，请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)。
+- 应用录制音频时需要切换输入设备路由，请参考[实现音频输入设备路由切换](../audio/audio-input-device-switcher.md)。
 
 ## 开发步骤及注意事项
 
