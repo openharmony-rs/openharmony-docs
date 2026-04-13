@@ -359,7 +359,7 @@ screen.off('connect', callback);
 screen.off('connect');
 ```
 
-## screen.offConnect<sup>22+</sup>
+## screen.offConnect<sup>23+</sup>
 
 offConnect(callback?: Callback&lt;long&gt;): void
 
