@@ -167,11 +167,11 @@ let installParam: bundleInstall.InstallParam = {
 };
 
 bundleInstall.getBundleInstaller().then(installer => {
-  installer.uninstall(bundleName, installParam, err => {
+  installer.recover(bundleName, installParam, err => {
     if (err) {
-      console.error('uninstall failed:' + JSON.stringify(err));
+      console.error('recover failed:' + JSON.stringify(err));
     } else {
-      console.info('uninstall successfully.');
+      console.info('recover successfully.');
     }
   });
 }).catch((error: BusinessError) => {
