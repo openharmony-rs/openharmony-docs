@@ -244,7 +244,7 @@ html页面代码
 | 仅包含图片类型              | 设置为"environment"或"user" | 直接拉起相机拍照模式。                             |
 | 仅包含图片类型               | 不设置                      | 先拉起弹窗，用户选择拍照后拉起相机拍照模式。       |
 | 仅包含视频类型              | 设置为"environment"或"user" | 直接拉起相机录像模式。                             |
-| 仅包含视频类型               | 不设置                      | 先拉起弹窗，用户选择拍照后拉起相机录像模式。       |
+| 仅包含视频类型               | 不设置                      | 先拉起弹窗，用户选择录像后拉起相机录像模式。       |
 | 包含图片和视频类型          | 设置为"environment"或"user" | 直接拉起相机拍照模式，可录像。                     |
 | 包含图片和视频类型            | 不设置                      | 先拉起弹窗，用户选择拍照后拉起相机拍照模式，可录像。 |
 | 不设置图片或视频类型        | 设置为"environment"或"user" | 直接拉起相机拍照模式，可录像。                     |
@@ -454,12 +454,12 @@ struct WebComponent {
           const documentViewPicker = new picker.DocumentViewPicker();
           documentViewPicker.save(documentSaveOptions).then((documentSelectResult) => {
             uri = documentSelectResult[0];
-            console.info('documentViewPicker.select to file succeed and uri is:' + uri);
+            console.info('documentViewPicker.save to file succeed and uri is:' + uri);
             if (event) {
               event.result.handleFileList([uri]);
             }
           }).catch((err: BusinessError) => {
-            console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
           })
           return true;
         })

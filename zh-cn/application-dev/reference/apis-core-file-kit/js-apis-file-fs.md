@@ -968,7 +968,7 @@ dup(fd: number): File
 
 connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
-业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](#onstatus12)通知应用。
+业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](#onstatus12)通知应用。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1018,7 +1018,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
 
-业务调用disconnectDfs接口，传入networkId参数，触发断链。
+业务调用disconnectDfs接口，传入networkId参数，触发断链。可参考[跨设备文件共享和访问](../../file-management/file-access-across-devices.md)文档进行开发。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2203,7 +2203,7 @@ readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;Reader
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 文件的应用沙箱路径。                                   |
 | options | [Options](#options11) | 否   | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。|
-| callback | AsyncCallback&lt;[ReaderIterator](#readeriterator11)&gt; | 是   | 逐行读取文件文本内容回调。                                   |
+| callback | AsyncCallback&lt;[ReaderIterator](#readeriterator11)&gt; | 是   | 逐行读取文件文本内容回调。返回文件读取迭代器。                                   |
 
 **错误码：**
 
@@ -2452,7 +2452,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
 
 lstat(path: string): Promise&lt;Stat&gt;
 
-获取链接文件信息，使用promise异步回调。
+获取符号链接文件信息，使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2488,7 +2488,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
 lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
-获取链接文件信息，使用callback异步回调。
+获取符号链接文件信息，使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2521,7 +2521,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 lstatSync(path: string): Stat
 
-以同步方法获取链接文件信息。
+以同步方法获取符号链接文件信息。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-WebNativeMessagingExtensionContext是Web原生消息扩展的上下文, 继承自ExtensionContext。它提供了与WebNativeMessagingExtension通信消息的交互能力。
+WebNativeMessagingExtensionContext是Web原生消息扩展的上下文，继承自ExtensionContext。它提供了与WebNativeMessagingExtension通信消息的交互能力。
 
 > **说明:**
 >

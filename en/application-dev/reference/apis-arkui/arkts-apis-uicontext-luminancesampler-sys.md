@@ -64,7 +64,7 @@ The background luminance is divided into three ranges based on the luminance thr
 
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
-| samplingCallback | Callback&lt;number&gt; | Yes| Callback used to return the current background luminance.|
+| samplingCallback | Callback&lt;number&gt; | Yes| Callback used to return the current background luminance.<br>Note: [offBackgroundLuminanceChange](#offbackgroundluminancechange23) cannot be called in the listening callback.|
 
 **Example**
 
@@ -180,5 +180,3 @@ struct PagePicker {
 ```
 
 ![](figures/StatusBarLuminance100.gif)
-
-<!--no_check-->

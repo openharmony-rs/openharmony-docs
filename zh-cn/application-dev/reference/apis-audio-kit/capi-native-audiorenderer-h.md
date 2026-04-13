@@ -41,7 +41,7 @@
 | [OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)](#oh_audiorenderer_getencodingtype) | - | 查询当前输出音频流编码类型。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)](#oh_audiorenderer_getframeswritten) | - | 查询自创建流以来已写入的帧数。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - | 获取输出音频流时间戳和位置信息。<br> 该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时候的时间戳（timestamp），时间戳单位为纳秒。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，频繁调用可能会带来功耗问题，调用时间间隔建议不要小于200ms，可以每分钟调用一次。因此在能保证音画同步效果的情况下，请避免频繁查询时间戳。 |
-| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | 获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。<br> 注意，当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。当调用Flush接口时实际播放位置也会被重置。<br> 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。<br> |
+| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | 获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)](#oh_audiorenderer_getframesizeincallback) | - | 在回调中查询帧大小，它是一个固定的长度，每次回调都要填充流。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)](#oh_audiorenderer_getspeed) | - | 获取音频渲染速率。 |
 | [OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)](#oh_audiorenderer_setspeed) | - | 设置音频渲染速率。 |
@@ -62,7 +62,7 @@
 | [typedef void (\*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)](#oh_audiorenderer_onerrorcallback) | OH_AudioRenderer_OnErrorCallback | 音频流错误事件回调函数。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer, OH_AudioStream_FastStatus* status)](#oh_audiorenderer_getfaststatus) | - | 获取音频播放过程中的运行状态，是否在低时延状态下工作。 |
 | [typedef void (\*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status)](#oh_audiorenderer_onfaststatuschange) | OH_AudioRenderer_OnFastStatusChange | 音频播放过程中低时延状态改变事件的回调函数。 |
-| [OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)](#oh_audiorenderer_setloudnessgain) | - | 设置音频播放的响度值。默认的响度值是0.0dB。音频流播放类型必须是音乐[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> 电影或视频[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> 有声读物（包括听书、相声、评书）、听新闻、播客等[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频流的时延模式必须是普通时延[OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 本接口不支持通过高清通路播放的音频流设置响度。<br> 由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。<br> 建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。 |
+| [OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)](#oh_audiorenderer_setloudnessgain) | - | 设置音频播放的响度值。默认的响度值是0.0dB。音频流播放类型必须是音乐[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> 电影或视频[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE，<br> 有声读物（包括听书、相声、评书）、听新闻、播客等[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频流的时延模式必须是普通时延[OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 本接口不支持通过高清通路播放的音频流设置响度。<br> 由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。<br> 建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)](#oh_audiorenderer_getloudnessgain) | - | 获取音频流的响度值。 |
 | [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | 该函数指针将指向用于写入音频数据的回调函数。不同于OH_AudioRenderer_OnWriteDataCallback，此函数允许应用填充[0, audioDataSize]长度的数据。<br> 其中audioDataSize为回调buffer的长度。调用方通过返回值告知系统写入的数据长度。<br> 如果返回0，回调线程将会sleep一段时间。<br> 否则，系统可能会立刻进行下一次回调。 |
 | [OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)](#oh_audiorenderer_getlatency) | - | 获取当前音频路由的估算时延（单位：毫秒）。无线连接的音频设备，时延估算可能存在误差，结果仅供参考。<br> 由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。<br> 当音频数据输出到硬件后，建议使用[OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)进行音视频同步。 |
@@ -422,7 +422,12 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **描述**
 
-获取输出音频流时间戳和位置信息。<br> 该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时候的时间戳（timestamp），时间戳单位为纳秒。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，建议频率不要太频繁，可以每分钟一次，最好不要低200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁的查询时间戳。
+获取输出音频流时间戳和位置信息。<br> 该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时候的时间戳（timestamp），时间戳单位为纳秒。<br> 当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。<br> 该接口一般用来实现音画同步，建议频率不要太频繁，可以每分钟一次，最好不要低于200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁地查询时间戳。
+
+> **说明：**
+>
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。
+> - 当调用Flush接口时实际播放位置也会被重置。
 
 **起始版本：** 10
 
@@ -433,7 +438,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | clockid_t clockId | 时钟标识符，使用CLOCK_MONOTONIC。 |
 | int64_t* framePosition | 指向要接收位置的变量的指针。 |
-| int64_t* timestamp | 指向接收时间戳的变量的指针。 |
+| int64_t* timestamp | 指向接收时间戳的变量的指针，单位为纳秒。 |
 
 **返回：**
 
@@ -449,7 +454,14 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 **描述**
 
-获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。<br> 注意，当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。当调用Flush接口时实际播放位置也会被重置。<br> 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。<br>
+获取输出音频流时间戳和位置信息，适配倍速接口。<br> 获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。
+
+> **说明：**
+>
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。
+> - 当调用Flush接口时实际播放位置也会被重置。
+> - 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
+
 
 **起始版本：** 15
 
@@ -459,7 +471,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | int64_t* framePosition | 指向要接收位置的变量的指针。 |
-| int64_t* timestamp | 指向接收时间戳的变量的指针。 |
+| int64_t* timestamp | 指向接收时间戳的变量的指针，单位为纳秒。 |
 
 **返回：**
 
@@ -966,7 +978,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 
 **描述**
 
-设置音频播放的响度值。默认的响度值是0.0dB。音频流播放类型必须是音乐[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> 电影或视频[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> 有声读物（包括听书、相声、评书）、听新闻、播客等[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频流的时延模式必须是普通时延[OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 本接口不支持通过高清通路播放的音频流设置响度。<br> 由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。<br> 建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。
+设置音频播放的响度值。默认的响度值是0.0dB。音频流播放类型必须是音乐[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br> 电影或视频[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE，<br> 有声读物（包括听书、相声、评书）、听新闻、播客等[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。<br> 音频流的时延模式必须是普通时延[OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。<br> 本接口不支持通过高清通路播放的音频流设置响度。<br> 由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。<br> 建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。
 
 **起始版本：** 20
 
@@ -1000,7 +1012,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* rendere
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| float* loudnessGain | 指向接收播放响度值的变量的指针。 |
+| float* loudnessGain | 指向接收播放响度值的变量的指针，单位为分贝。 |
 
 **返回：**
 

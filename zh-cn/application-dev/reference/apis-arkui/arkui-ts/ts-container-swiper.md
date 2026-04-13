@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
- 滑块视图容器，提供子组件滑动轮播显示的能力。 
+滑块视图容器，提供子组件滑动轮播显示的能力。 
 
 > **说明：**
 >
@@ -1970,7 +1970,9 @@ finishTransition(): void
 
 ### 示例1（设置导航点交互及翻页动效）
 
-该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效模式，实现了Swiper组件翻页至指定页面。
+该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效以跳转指定页面，并使用[onScrollStateChanged](#onscrollstatechanged20)回调监听滑动状态的变化。
+
+从API version 20开始，新增onScrollStateChanged事件。
 
 ```ts
 // xxx.ets
@@ -2890,7 +2892,7 @@ struct SwiperExample {
 
 该示例展示了Swiper组件基于断点配置显示个数的效果。
 
-从API version 22开始，新增[displaycount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
+从API version 22开始，新增[displayCount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
 
 ```ts
 class MyDataSource implements IDataSource {

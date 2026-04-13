@@ -24,6 +24,9 @@ In the FA model, you can perform the following operations during application win
 
 - Experiencing the immersive window feature
 
+ 
+
+
 ## Available APIs
 
 The table below lists the common APIs used for application window development. For details about more APIs, see [Window](../reference/apis-arkui/arkts-apis-window.md).
@@ -48,8 +51,7 @@ The table below lists the common APIs used for application window development. F
 
 You can create a child window, such as a dialog box, and set its properties.
 
-> **NOTE**
->
+> **NOTE** 
 > In the following scenarios, you are not advised to use child windows. Instead, consider using the [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability of components first. 
 > - On mobile devices (tablets in non-freeform mode and phones), child windows cannot extend beyond the boundaries of the main window when it is in floating or split-screen mode, just like components. 
 > - In split-screen or freeform window mode, components, when compared with child windows, offer better real-time adaptability to changes in the main window's position and size. 
@@ -64,7 +66,7 @@ You can create a child window, such as a dialog box, and set its properties.
      In non-[freeform window](../windowmanager/window-terminology.md#freeform-window) mode, the child window created uses an [immersive layout](../windowmanager/window-terminology.md#immersive-layout) by default.
 
      In freeform window mode, the child window created uses an immersive layout when [decorEnabled](../reference/apis-arkui/arkts-apis-window-i.md#configuration9) is set to **false**, and it uses a non-immersive layout when this parameter is set to **true**.
-
+     
    - Call **window.findWindow** to find an available child window.
 
    ```ts

@@ -17,6 +17,8 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 > - FrameNode节点暂不支持拖拽。
 >
 > - FrameNode对象不支持使用JSON序列化。
+>
+> - 在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](#framenode-1)对象的接口时，建议使用[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)接口明确UI上下文，参考[执行绑定UI实例的闭包](../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
 
 ## 导入模块
 

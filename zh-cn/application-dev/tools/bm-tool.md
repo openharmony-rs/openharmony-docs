@@ -1699,6 +1699,8 @@ error: device type is not supported.
 
 1. 如需要适配当前设备，请在应用设备类型配置中增加当前设备类型。应用deviceTypes配置包含phone（手机）、tablet（平板）、2in1（2合1设备）、tv（智慧屏）、wearable（智能手表）和car（车机）。
 
+<!--RP12--><!--RP12End-->
+
 
 ### 9568308 应用包类型不一致
 **错误信息**

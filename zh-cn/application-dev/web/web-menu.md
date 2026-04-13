@@ -577,7 +577,7 @@ html示例
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { systemDateTime } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -599,21 +599,21 @@ struct WebComponent {
     try {
       let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
       let dstPath = this.context.filesDir + '/' + newFileName;
-      let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+      let dest: fileIo.File = fileIo.openSync(dstPath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
       let bufsize = 4096;
       let buf = new ArrayBuffer(bufsize);
       let off = 0;
       let len = 0;
       let readedLen = 0;
-      while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
+      while ((len = fileIo.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
         readedLen += len;
-        fs.writeSync(dest.fd, buf, { offset: off, length: len });
+        fileIo.writeSync(dest.fd, buf, { offset: off, length: len });
         off = off + len;
         if ((srcFileDes.length - readedLen) < bufsize) {
           bufsize = srcFileDes.length - readedLen;
         }
       }
-      fs.close(dest.fd);
+      fileIo.close(dest.fd);
       return dest.path;
     } catch (err) {
       console.error(`copyLocalPicToDir failed with error: ${err.code}, ${err.message}`);
@@ -628,8 +628,8 @@ struct WebComponent {
       let data: http.HttpResponse = await (httpRequest.request(picUrl) as Promise<http.HttpResponse>);
       if (data?.responseCode == http.ResponseCode.OK) {
         let dstPath = this.context.filesDir + '/' + newFileName;
-        let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-        let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
+        let dest: fileIo.File = fileIo.openSync(dstPath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+        let writeLen: number = fileIo.writeSync(dest.fd, data.result as ArrayBuffer);
         uri = dest.path;
       }
     } catch (err) {
@@ -723,7 +723,7 @@ struct WebComponent {
 ## Web菜单获取选中文本
 Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口中没有提供获取选中文本的方式。开发者可通过[javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)获取到JavaScript的选中文本，实现自定义菜单的逻辑。
 1. 创建SelectClass类，通过[javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)将SelectClass对象注册到Web组件中。
-2. 在Html侧注册选区变更监听器，在选区变更时通过SelectClass对象将选区设置到ArkTS侧。
+2. 在HTML侧注册选区变更监听器，在选区变更时通过SelectClass对象将选区设置到ArkTS侧。
 
 <!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
 
@@ -876,7 +876,7 @@ struct WebComponent {
 ![emptyEditMenuOption](./figures/emptyEditMenuOption.gif)
 
 ### 出现选区时手柄菜单不显示
-可排查是否通过JS的[selection-api](https://www.w3.org/TR/selection-api/)对选区进行了操作，目前通过这种方式改变选区会导致手柄菜单不显示。
+可排查是否通过JavaScript的[selection-api](https://www.w3.org/TR/selection-api/)对选区进行了操作，目前通过这种方式改变选区会导致手柄菜单不显示。
 
 ### 如何修改文本选中菜单的样式
 从API version 21开始，应用可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)接口，实现自定义文本菜单。

@@ -1129,7 +1129,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，参数id传入null或undefined时，可能会导致callback无法得到执行，建议使用[createWindow()](#windowcreatewindow9)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
