@@ -720,3 +720,19 @@ try {
   console.error(`Failed to destroy. Cause code: ${exception.code}, message: ${exception.message}`);
 };
 ```
+
+## getWindowProperties接口返回中WindowProperties的type字段不符合预期
+
+**问题现象**
+
+当使用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取应用窗口属性时，主窗场景下窗口类型（type字段）返回了TYPE_SYSTEM_ALERT而不是TYPE_MAIN。
+
+**产生原因**
+
+因为历史问题，主窗场景调用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)的[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)返回了非TYPE_MAIN。
+
+**解决措施**
+
+系统的后续API版本中将提供新的字段修正。
+
+应用内创建窗口时需要指明窗口类型，开发者可以直接感知窗口类型，不必要通过此接口主动获取。
