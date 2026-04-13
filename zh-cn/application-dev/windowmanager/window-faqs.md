@@ -721,15 +721,15 @@ try {
 };
 ```
 
-## getWindowProperties接口返回中WindowProperties的type字段不符合预期
+## getWindowProperties接口返回值中的窗口类型（type字段）不符合预期
 
 **问题现象**
 
-当使用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取应用窗口属性时，主窗场景下窗口类型（type字段）返回了TYPE_SYSTEM_ALERT而不是TYPE_MAIN。
+当使用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取应用窗口属性时，主窗场景下窗口类型（type字段）不是TYPE_MAIN。
 
 **产生原因**
 
-因为历史问题，主窗场景调用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)的[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)返回了非TYPE_MAIN。
+因为历史问题，主窗场景调用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)的[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)返回了TYPE_SYSTEM_ALERT而不是TYPE_MAIN。
 
 **解决措施**
 
