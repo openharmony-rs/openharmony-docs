@@ -61,9 +61,9 @@
 
 2. **修改生成的媒体路径**。
 
-   2.1 更改路径中的displayName。例如将'A.jpg'替换为'B.xxx'，得到“/data/storage/el2/media/Photo/111/IMG_1234567890_123/B.xxx”。这是一个非法的媒体库路径，不能表示在“原目录”下创建新文件'B.xxx'。
+   2.1 更改路径中的displayName。例如将“A.jpg”替换为“B.xxx”，得到“/data/storage/el2/media/Photo/111/IMG_1234567890_123/B.xxx”。这是一个非法的媒体库路径，不能表示在“原目录”下创建新文件“B.xxx”。
 
-   2.2 更改路径中的ID。例如将路径中的ID从111替换为1111，得到“/data/storage/el2/media/Photo/1111/IMG_1234567890_123/A.jpg”。这也是一个非法的媒体库路径，不能作为将ID=111的'A.jpg'映射到另一个ID=1111的实现方式。
+   2.2 更改路径中的ID。例如将路径中的ID从111替换为1111，得到“/data/storage/el2/media/Photo/1111/IMG_1234567890_123/A.jpg”。这也是一个非法的媒体库路径，不能作为将ID=111的“A.jpg”映射到另一个ID=1111的实现方式。
 
    2.3 更改路径中的其他目录层级。
 
