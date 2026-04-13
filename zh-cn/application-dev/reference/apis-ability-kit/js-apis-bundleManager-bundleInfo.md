@@ -22,6 +22,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | name                              | string                                                       | 是   | 否   | 应用包的名称，对应[app.json5](../../quick-start/app-configuration-file.md)中配置的bundleName字段。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
