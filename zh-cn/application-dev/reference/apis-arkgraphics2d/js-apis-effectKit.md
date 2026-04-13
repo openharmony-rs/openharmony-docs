@@ -373,6 +373,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
+![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
 
 ### getMainColorSync
 
@@ -489,7 +490,7 @@ getTopProportionColors(colorCount: number): Array<Color | null>
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
- | Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。 |
+| Array<[Color](#color) \| null> | Color数组，即图像占比前`colorCount`的颜色值数组，按占比排序。<br>- 当实际读取的特征色个数小于`colorCount`时，数组大小为实际特征色个数。<br>- 取色失败或取色个数小于1返回`[null]`。 |
 
 **示例：**
 
@@ -1027,6 +1028,7 @@ struct Index {
   }
 }
 ```
+![zh-ch_image_Set_ColorMatrix.png](figures/zh-ch_image_Set_ColorMatrix.png)
 
 ### brightness
 

@@ -535,7 +535,7 @@ linearGradientBlur(value: number, options: LinearGradientBlurOptions): T
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | number                                                       | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000] |
-| options | [LinearGradientBlurOptions](#lineargradientbluroptions12对象) | 是   | 设置线性渐变模糊效果。  <br/>线性梯度模糊包含[fractionStops](#lineargradientbluroptions12对象)和[direction](#lineargradientbluroptions12对象)。                                     |
+| options | [LinearGradientBlurOptions](#lineargradientbluroptions12) | 是   | 设置线性渐变模糊效果。  <br/>线性梯度模糊包含[fractionStops](#lineargradientbluroptions12)和[direction](#lineargradientbluroptions12)。                                     |
 
 **返回值：**
 
@@ -558,7 +558,7 @@ linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradi
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | blurRadius   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当blurRadius的值为undefined时，恢复为渐变模糊为0的效果。 |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientBlurOptions](#lineargradientbluroptions12对象)> | 是   | 设置线性渐变模糊效果。<br/>当options的值为undefined时，恢复为渐变模糊为0的效果。<br/>线性梯度模糊包含[fractionStops](#lineargradientbluroptions12对象)和[direction](#lineargradientbluroptions12对象)。  |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientBlurOptions](#lineargradientbluroptions12)> | 是   | 设置线性渐变模糊效果。<br/>当options的值为undefined时，恢复为渐变模糊为0的效果。<br/>线性梯度模糊包含[fractionStops](#lineargradientbluroptions12)和[direction](#lineargradientbluroptions12)。  |
 
 **返回值：**
 
@@ -855,6 +855,7 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 **参数：** 
 
+<!--Table: 10%; auto; 10%; auto-->
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PixelStretchEffectOptions](#pixelstretcheffectoptions10)> | 是   | 设置组件的图像边缘像素扩展距离。<br/>参数`options`包括上下左右四个方向的边缘像素扩展距离。<br/>**说明：**<br/>1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。<br/>2. 如果距离为负值，表示内缩，但是最终图像大小不变。<br/>内缩方式：<br/>图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。<br/>图像用边缘像素扩展到原来大小。<br/>3. 对`options`的输入约束：<br/>上下左右四个方向的扩展统一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。<br/>所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。<br/>所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。<br/>当options的值为undefined时，恢复为无像素扩展效果。 |
@@ -989,7 +990,7 @@ systemBarEffect(): T
 | COLOR           | 28 |  保留源像素的饱和度和色调，但会使用目标像素的亮度来替换源像素的亮度。                                   |
 | LUMINOSITY      | 29 |  保留目标像素的色调和饱和度，但会用源像素的亮度替换目标像素的亮度。                                     |
 
-## LinearGradientBlurOptions<sup>12+</sup>对象
+## LinearGradientBlurOptions<sup>12+</sup>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -174,7 +174,7 @@ getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: Async
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | 是   | 指定返回的BundleResourceInfo所包含的信息。 |
-| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
+| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -280,7 +280,7 @@ getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callba
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | 是   | 指定返回的LauncherAbilityResourceInfo所包含的信息。 |
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的LauncherAbilityResourceInfo数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -530,6 +530,7 @@ getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundle
 ```ts
 import { bundleManager, bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = "com.example.myapplication";
 let extensionAbilityType = bundleManager.ExtensionAbilityType.INPUT_METHOD;
@@ -537,11 +538,12 @@ let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
   let resourceInfo =
     bundleResourceManager.getExtensionAbilityResourceInfo(bundleName, extensionAbilityType, resourceFlag);
-  console.info('getExtensionAbilityResourceInfo successfully. Data label: ' + JSON.stringify(resourceInfo[0].label));
+  hilog.info(0x0000, 'testTag', 'getExtensionAbilityResourceInfo successfully. Data label: %{public}s',
+    JSON.stringify(resourceInfo[0].label));
 } catch (err) {
   let message = (err as BusinessError).message;
   let code = (err as BusinessError).code;
-  console.error(`getExtensionAbilityResourceInfo failed, err code:${code}, err msg: ${message}`);
+  hilog.error(0x0000, 'testTag', 'getExtensionAbilityResourceInfo failed: %{public}d %{public}s', code, message);
 }
 ```
 

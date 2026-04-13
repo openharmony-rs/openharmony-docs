@@ -143,8 +143,6 @@ import { bundleManager } from '@kit.AbilityKit';
 
 标识该Ability的显示模式。仅适用于FA模型的[PageAbility](../../application-models/pageability-overview.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 | 名称                               |值 |说明 |
@@ -159,7 +157,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | AUTO_ROTATION_LANDSCAPE            |7 |表示传感器在旋转到横向时，页面会自动旋转。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | AUTO_ROTATION_PORTRAIT             |8 |表示传感器在旋转到竖向时，页面会自动旋转。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | AUTO_ROTATION_RESTRICTED           |9 |表示受开关控制的自动旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表述受开关控制的自动横向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表示受开关控制的自动横向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | AUTO_ROTATION_PORTRAIT_RESTRICTED  |11|表示受开关控制的自动竖向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | LOCKED                             |12|表示锁定模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | AUTO_ROTATION_UNSPECIFIED<sup>12+</sup> |13|受开关控制和由系统判定的自动旋转模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -302,7 +300,7 @@ getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>):
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -358,7 +356,7 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 | moduleName   | string                        | 是   | 表示Module名称。                                     |
 | abilityName  | string                        | 是   | 表示UIAbility组件的名称。                                    |
 | metadataName | string                        | 是   | 表示UIAbility组件的[元信息名称](../../quick-start/module-configuration-file.md#metadata标签)，即module.json5配置文件中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。                                  |
-| callback     | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<string>；否则为错误对象。 |
+| callback     | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
@@ -577,7 +575,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 | moduleName           | string                        | 是   | 表示Module名称。                                   |
 | extensionAbilityName | string                        | 是   | 表示ExtensionAbility组件的名称。                         |
 | metadataName         | string                        | 是   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。                                 |
-| callback             | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的Array\<string>；否则为错误对象。 |
+| callback             | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
@@ -913,7 +911,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
 | userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的bundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1000,7 +998,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -1261,7 +1259,7 @@ getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | uid      | number                 | 是   | 表示应用程序的UID。                                            |
-| callback | AsyncCallback\<string> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的BundleName；否则为错误对象。 |
+| callback | AsyncCallback\<string> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
 
 **错误码：**
 
@@ -1548,20 +1546,21 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_WITH_APPLICATION;
 let uri = "https://www.example.com";
 
 try {
   bundleManager.getAbilityInfo(uri, abilityFlags).then((data) => {
-    console.info('getAbilityInfo successfully. Data: ' + JSON.stringify(data));
+    hilog.info(0x0000, 'testTag', 'getAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
     let message = (err as BusinessError).message;
-    console.error('getAbilityInfo failed. Cause: ' + message);
+    hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
-  console.error('getAbilityInfo failed. Cause: ' + message);
+  hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1579,15 +1578,16 @@ cleanBundleCacheFilesForSelf(): Promise\<void>
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 bundleManager.cleanBundleCacheFilesForSelf().then(() => {
-  console.info('cleanBundleCacheFilesForSelf complete.');
+  hilog.info(0x0000, 'testTag', 'cleanBundleCacheFilesForSelf complete.');
 });
 ```
 
@@ -1749,7 +1749,7 @@ getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
 | 错误码ID |    错误信息                   |
 |----------|-------------------------|
 | 201 | Permission denied. |
-| 17700001 | The specified bundleName is not found. |
+| 17700001 | The specified bundle is not found. |
 | 17700061 | The specified app index is invalid. |
 
 **示例：**
@@ -1757,17 +1757,18 @@ getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
-    console.info('getApplicationLabel succeed:' + data);
+    hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
   }).catch((err: BusinessError) => {
-    console.error('getApplicationLabel failed: error code is ' + err.code + ' and error msg is ' + err.message);
+    hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
   });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error('getApplicationLabel failed: error code is ' + code + ' and error msg is ' + message);
+  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
 

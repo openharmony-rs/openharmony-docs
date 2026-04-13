@@ -941,7 +941,7 @@ getBufferSize(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。 |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
 **示例：**
 
@@ -972,7 +972,7 @@ getBufferSize(): Promise\<number>
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise对象，返回缓冲区大小。 |
+| Promise\<number> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
@@ -1001,7 +1001,7 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| number | 返回缓冲区大小。 |
+| number | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 
@@ -1031,7 +1031,7 @@ setSpeed(speed: number): void
 
 | 参数名 | 类型                                     | 必填 | 说明                   |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | 是   | 设置播放的倍速值（倍速范围：[0.25, 4.0]）。 |
+| speed | number | 是   | 设置播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **错误码：**
 
@@ -1060,7 +1060,7 @@ getSpeed(): number
 
 | 类型                                              | 说明        |
 | ------------------------------------------------- |-----------|
-| number | 返回播放的倍速值。 |
+| number | 返回播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **示例：**
 
@@ -1267,7 +1267,7 @@ getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
+|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1294,7 +1294,7 @@ getMinStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最小音量（音量范围[0, 1]）。|
+| Promise&lt;number&gt;| Promise对象，返回音频流最小音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1320,7 +1320,7 @@ getMinStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最小音量（音量范围[0, 1]）。|
+| number| 返回音频流最小音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1348,7 +1348,7 @@ getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量（音量范围[0, 1]）；否则为错误对象。|
+|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1375,7 +1375,7 @@ getMaxStreamVolume(): Promise&lt;number&gt;
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最大音量（音量范围[0, 1]）。|
+| Promise&lt;number&gt;| Promise对象，返回音频流最大音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1401,7 +1401,7 @@ getMaxStreamVolumeSync(): number
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最大音量（音量范围[0, 1]）。|
+| number| 返回音频流最大音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -2735,10 +2735,50 @@ getLoudnessGain(): number
 
 | 类型    | 说明             |
 |------- |-----------------  |
-| number | 返回播放的响度值。 |
+| number | 返回播放的响度值，单位为分贝。 |
 
 **示例：**
 
 ```ts
 let loudnessGain = audioRenderer.getLoudnessGain();
+```
+
+## setIndependentAudioSessionStrategy<sup>24+</sup>
+
+setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+设置独立的音频会话策略和行为参数。
+
+> **说明：**
+>
+> 当音频渲染器在运行状态时调用此接口后，必须重新调用接口[start](./arkts-apis-audio-AudioRenderer.md#start8)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名       | 类型    | 必填 | 说明                                      |
+| ------------ | -------| ---- |------------------------------------------ |
+| strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | 是   | 音频会话策略。 |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at current state. |
+
+**示例：**
+
+```ts
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```

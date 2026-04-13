@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的pin码认证用户处理功能对象。示例代码参考[onVerifyPin](./arkts-basic-components-web-events.md#onverifypin22)。
+Web组件返回的PIN码认证用户处理功能对象。示例代码参考[onVerifyPin](./arkts-basic-components-web-events.md#onverifypin22)。
 
 > **说明：**
 >

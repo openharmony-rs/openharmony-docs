@@ -1064,6 +1064,7 @@ enum OH_BitrateMode
 | BITRATE_MODE_VBR = 1 | 可变比特率模式。 |
 | BITRATE_MODE_CQ = 2 | 恒定质量模式。 |
 | BITRATE_MODE_SQR = 3 | 质量稳定模式，仅支持H265（HEVC）。<br>**起始版本：** 20 |
+| BITRATE_MODE_CBR_HIGH_QUALITY = 4 | 高质量恒定比特率模式，仅支持H265（HEVC）。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

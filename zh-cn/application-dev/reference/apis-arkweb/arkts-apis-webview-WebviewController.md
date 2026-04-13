@@ -6304,6 +6304,10 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                  |
@@ -6327,6 +6331,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -6344,6 +6349,55 @@ struct WebComponent {
           try {
             let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
             print.print('example_jobid', webPrintDocadapter, null, this.getUIContext().getHostContext());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import print from '@ohos.print';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+const myPrintAttributes: print.PrintAttributes = {
+  copyNumber: 1 as int,
+  pageRange: {
+    startPage: 1 as int,
+    endPage: 1 as int,
+    pages: [1] as Array<int>
+  },
+  pageSize: {
+    id: 'PAGE_ISO_A4',
+    name: 'A4',
+    width: 210 as int,
+    height: 297 as int
+  },
+  directionMode: print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT,
+  colorMode: print.PrintColorMode.COLOR_MODE_COLOR,
+  duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('createWebPrintDocumentAdapter')
+        .onClick(() => {
+          try {
+            let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
+            print.print('example_jobid', webPrintDocadapter, myPrintAttributes, this.getUIContext().getHostContext() as common.UIAbilityContext);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -6561,6 +6615,10 @@ setPrintBackground(enable: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -6578,6 +6636,7 @@ setPrintBackground(enable: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6603,6 +6662,34 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setPrintBackground')
+        .onClick(() => {
+          try {
+            this.controller.setPrintBackground(false);
+          } catch (error) {
+            console.error(`ErrorCode:${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getPrintBackground<sup>12+</sup>
 
 getPrintBackground(): boolean
@@ -6610,6 +6697,10 @@ getPrintBackground(): boolean
 查询webview是否打印网页背景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6627,6 +6718,7 @@ getPrintBackground(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6635,6 +6727,35 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setPrintBackground')
+        .onClick(() => {
+          try {
+            let enable = this.controller.getPrintBackground();
+            console.info("getPrintBackground: " + enable);
+          } catch (error) {
+            console.error(`ErrorCode:${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -8894,6 +9015,10 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                                    | 必填 | 说明                    |
@@ -8912,6 +9037,7 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **示例**:
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -8964,6 +9090,62 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import fileIo from '@ohos.file.fs';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  pdfConfig: webview.PdfConfiguration = {
+    width: 8.27,
+    height: 11.69,
+    marginTop: 0,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    shouldPrintBackground: true
+  } as webview.PdfConfiguration
+
+  build() {
+    Column() {
+      Button('SavePDF')
+        .onClick(() => {
+          this.controller.createPdf(
+            this.pdfConfig,
+            (error, result: webview.PdfData | undefined) => {
+              try {
+                // 获取组件上下文
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                // 获取沙箱路径，设置pdf文件名
+                let filePath = context.filesDir + "/test.pdf";
+                let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                let arrayBuffer: Uint8Array = result?.pdfArrayBuffer() as Uint8Array;
+                fileIo.write(file.fd, arrayBuffer.buffer).then((writeLen: long) => {
+                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                }).catch((err: Error) => {
+                  console.error("createPDF write data to file failed with error message: " + err.message +
+                    ", error code: " + err.code);
+                }).finally(() => {
+                  fileIo.closeSync(file);
+                });
+              } catch (resError) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            });
+        })
+      Web({ src: "www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
 ## createPdf<sup>14+</sup>
 
 createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
@@ -8971,6 +9153,10 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 以Promise方式异步获取指定网页的数据流。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8995,6 +9181,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 **示例**:
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
@@ -9030,6 +9217,60 @@ struct Index {
                 fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
                   console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
+                  console.error("createPDF write data to file failed with error message: " + err.message +
+                    ", error code: " + err.code);
+                }).finally(() => {
+                  fs.closeSync(file);
+                });
+              } catch (resError) {
+                console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+              }
+            })
+        })
+      Web({ src: "www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import fileIo from '@ohos.file.fs';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  pdfConfig: webview.PdfConfiguration = {
+    width: 8.27,
+    height: 11.69,
+    marginTop: 0,
+    marginBottom: 0,
+    marginRight: 0,
+    marginLeft: 0,
+    shouldPrintBackground: true
+  } as webview.PdfConfiguration
+
+  build() {
+    Column() {
+      Button('SavePDF')
+        .onClick(() => {
+          this.controller.createPdf(this.pdfConfig)
+            .then((result: webview.PdfData) => {
+              try {
+                // 获取组件上下文
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                // 获取沙箱路径，设置pdf文件名
+                let filePath = context.filesDir + "/test.pdf";
+                let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: long) => {
+                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                }).catch((err: Error) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
                 }).finally(() => {
@@ -11148,6 +11389,96 @@ struct WebComponent {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
+    }
+  }
+}
+```
+
+## enableAdvancedSecurityMode
+
+static enableAdvancedSecurityMode(securityParams: SecurityParams): void
+
+通过配置安全特性选项禁用特定的Web引擎能力，以降低攻击面。
+
+> **说明：**
+>
+> - 该接口为全局静态API，在整个APP生命周期中调用一次即可，不需要重复调用。
+> - 必须在[initializeWebEngine()](#initializewebengine)之前调用，否则设置无效。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明        |
+| -------- | ------- | ---- | -------- |
+| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 否 | 安全特性选项配置。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear() {
+    webview.WebviewController.enableAdvancedSecurityMode({
+      disableJITCompilation: true,
+      disableWebAssembly: true,
+      disableWebGL: true,
+      disablePDFViewer: true,
+      disableMathML: true,
+      disableServiceWorker: true,
+      disableNonProxyUDP: true
+    });
+    webview.WebviewController.initializeWebEngine();
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Column, Component, Entry, Web, } from '@ohos.arkui.component';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  aboutToAppear() {
+    webview.WebviewController.enableAdvancedSecurityMode({
+      disableJITCompilation: true,
+      disableWebAssembly: true,
+      disableWebGL: true,
+      disablePDFViewer: true,
+      disableMathML: true,
+      disableServiceWorker: true,
+      disableNonProxyUDP: true
+    });
+    webview.WebviewController.initializeWebEngine();
+  }
+
+  build() {
+    Column() {
+      Web({ src: "https://www.example.com", controller: this.controller })
     }
   }
 }

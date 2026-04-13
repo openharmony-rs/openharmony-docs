@@ -339,6 +339,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
+// 参考InputMethodSubtype参数说明
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -408,6 +409,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
+// 参考InputMethodSubtype参数说明
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -935,7 +937,7 @@ let messageHandler: inputMethod.MessageHandler = {
     console.info('OnTerminated.');
   },
   onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-    console.info('recv message.');
+    console.info(`recv message, msg: ${msgId}, msgParam: ${JSON.stringify(msgParam)}`);
   }
 };
 inputMethodController.recvMessage(messageHandler);
@@ -965,7 +967,7 @@ let messageHandler: inputMethod.MessageHandler = {
     console.info('OnTerminated.');
   },
   onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-    console.info('recv message.');
+    console.info(`recv message, msg: ${msgId}, msgParam: ${JSON.stringify(msgParam)}`);
   }
 };
 inputMethodController.recvMessage(messageHandler);
@@ -3670,7 +3672,7 @@ getAllInputMethods(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&g
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3980,7 +3982,7 @@ getInputMethodState(): Promise&lt;EnabledState&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
