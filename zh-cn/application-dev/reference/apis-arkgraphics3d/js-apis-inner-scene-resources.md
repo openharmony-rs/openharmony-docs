@@ -600,7 +600,7 @@ function finish(): void {
 | height | number | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
 
 ## ImageStream
-ImageStream资源，继承自[Image](#image)。
+流图片类型，继承自[Image](#image)。
 
 **起始版本**：26.0.0
 
