@@ -104,7 +104,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
   import { contact } from '@kit.ContactsKit';
-  
+
   // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
