@@ -3242,9 +3242,15 @@ on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 
 开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardHeightChange](#onkeyboardheightchange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3275,15 +3281,58 @@ try {
 }
 ```
 
+## onKeyboardHeightChange<sup>23+</sup>
+
+onKeyboardHeightChange(callback: Callback&lt;int&gt;): void
+
+开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardHeightChange')](#onkeyboardheightchange7)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                        |
+| -------- | ------------------- | ---- |-------------------------------------------|
+| callback | Callback&lt;int&gt; | 是   | 回调函数。返回当前的键盘高度。返回值为整数，单位为px。     |
+
+**错误码：**
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    windowClass.onKeyboardHeightChange((data) => {
+    console.info(`Succeeded in enabling the listener for keyboard height changes. Data: ${JSON.stringify(data)}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for keyboard height changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('keyboardHeightChange')<sup>7+</sup>
 
 off(type: 'keyboardHeightChange', callback?: Callback&lt;number&gt;): void
 
 关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardHeightChange](#offkeyboardheightchange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3319,6 +3368,48 @@ try {
 }
 ```
 
+## offKeyboardHeightChange<sup>23+</sup>
+
+offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
+
+关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardHeightChange')](#offkeyboardheightchange7)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;int&gt; | 否   | 回调函数。返回当前的键盘高度，返回值为整数，单位为px。若传入参数，则关闭该监听；未传入参数，则关闭所有固定态软键盘高度变化的监听。                               |
+
+**错误码：**
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (height: int) => {
+  // ...
+}
+try {
+  windowClass.onKeyboardHeightChange(callback);
+
+  windowClass.offKeyboardHeightChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offKeyboardHeightChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to disable the listener for keyboard height changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('keyboardWillShow')<sup>20+</sup>
 
 on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
@@ -3327,9 +3418,15 @@ on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillShow](#onkeyboardwillshow23)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3363,15 +3460,69 @@ try {
 }
 ```
 
+## onKeyboardWillShow<sup>23+</sup>
+
+onKeyboardWillShow(callback: Callback&lt;KeyboardInfo&gt;): void
+
+开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发。
+
+改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardWillShow')](#onkeyboardwillshow20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                        |
+| -------- | ------------------- | ---- |-------------------------------------------|
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 是   | 回调函数。返回软键盘窗口信息。                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillShow can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillShow(callback);
+  console.info(`Register keyboard will show animation success`);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('keyboardWillShow')<sup>20+</sup>
 
 off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘即将开始显示的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillShow](#offkeyboardwillshow23)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3408,6 +3559,55 @@ try {
 }
 ```
 
+## offKeyboardWillShow<sup>23+</sup>
+
+offKeyboardWillShow(callback?: Callback&lt;KeyboardInfo&gt;): void
+
+关闭固定态软键盘即将开始显示的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardWillShow')](#offkeyboardwillshow20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   | 回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始显示的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillShow can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillShow(callback);
+  windowClass.offKeyboardWillShow(callback);
+  // 如果通过onKeyboardWillShow开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offKeyboardWillShow();
+  console.info(`Unregister keyboard will show animation success`);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('keyboardWillHide')<sup>20+</sup>
 
 on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
@@ -3416,9 +3616,15 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillHide](#onkeyboardwillhide23)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3452,15 +3658,69 @@ try {
 }
 ```
 
+## onKeyboardWillHide<sup>23+</sup>
+
+onKeyboardWillHide(callback: Callback&lt;KeyboardInfo&gt;): void
+
+开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发。
+
+改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardWillHide')](#onkeyboardwillhide20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                        |
+| -------- | ------------------- | ---- |-------------------------------------------|
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 是   | 回调函数。返回软键盘窗口信息。                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillHide can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillHide(callback);
+  console.info(`Register keyboard will hide animation success`);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('keyboardWillHide')<sup>20+</sup>
 
 off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘即将开始隐藏的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillHide](#offkeyboardwillhide23)。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3497,6 +3757,55 @@ try {
 }
 ```
 
+## offKeyboardWillHide<sup>23+</sup>
+
+offKeyboardWillHide(callback?: Callback&lt;KeyboardInfo&gt;): void
+
+关闭固定态软键盘即将开始隐藏的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardWillHide')](#offkeyboardwillhide20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   | 回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘即将开始隐藏的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardWillHide can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
+}
+try {
+  windowClass.onKeyboardWillHide(callback);
+  windowClass.offKeyboardWillHide(callback);
+  // 如果通过onKeyboardWillHide开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offKeyboardWillHide();
+  console.info(`Unregister keyboard will hide animation success`);
+} catch (exception) {
+    let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('keyboardDidShow')<sup>18+</sup>
 
 on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
@@ -3505,9 +3814,15 @@ on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardDidShow](#onkeyboarddidshow23)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3539,15 +3854,65 @@ try {
 }
 ```
 
+## onKeyboardDidShow<sup>23+</sup>
+
+onKeyboardDidShow(callback: Callback&lt;KeyboardInfo&gt;): void
+
+开启固定态软键盘显示动画完成的监听。此监听在固定态软键盘显示动画完成或软键盘由悬浮态切换至固定态时触发。
+
+改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardDidShow')](#onkeyboarddidshow18)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                        |
+| -------- | ------------------- | ---- |-------------------------------------------|
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 是   | 回调函数。返回软键盘窗口信息。                    |
+
+**错误码：**
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardDidShow can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.onKeyboardDidShow((keyboardInfo) => {
+    console.info(`keyboard show animation completion. keyboardInfo: ${JSON.stringify(keyboardInfo)}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('keyboardDidShow')<sup>18+</sup>
 
 off(type: 'keyboardDidShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘显示动画完成的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardDidShow](#offkeyboarddidshow23)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3583,6 +3948,51 @@ try {
 }
 ```
 
+## offKeyboardDidShow<sup>23+</sup>
+
+offKeyboardDidShow(callback?: Callback&lt;KeyboardInfo&gt;): void
+
+关闭固定态软键盘显示动画完成的监听。改变输入法窗口为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardDidShow')](#offkeyboarddidshow18)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   |  回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘显示动画完成的监听。                               |
+
+**错误码：**
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardDidShow can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  // ...
+}
+try {
+  windowClass.onKeyboardDidShow(callback);
+  windowClass.offKeyboardDidShow(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offKeyboardDidShow();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('keyboardDidHide')<sup>18+</sup>
 
 on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
@@ -3591,9 +4001,16 @@ on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardDidHide](#onkeyboarddidhide23)。
+
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3625,15 +4042,65 @@ try {
 }
 ```
 
+## onKeyboardDidHide<sup>23+</sup>
+
+onKeyboardDidHide(callback: Callback&lt;KeyboardInfo&gt;): void
+
+开启固定态软键盘隐藏动画完成的监听。此监听在固定态软键盘隐藏动画完成或软键盘由固定态切换至悬浮态时触发。
+
+改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keyboardDidHide')](#onkeyboarddidhide18)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                        |
+| -------- | ------------------- | ---- |-------------------------------------------|
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 是   | 回调函数。返回软键盘窗口信息。                    |
+
+**错误码：**
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardDidHide can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.onKeyboardDidHide((keyboardInfo) => {
+    console.info(`keyboard hide animationD completion. keyboardInfo: ${JSON.stringify(keyboardInfo)}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('keyboardDidHide')<sup>18+</sup>
 
 off(type: 'keyboardDidHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 关闭固定态软键盘隐藏动画完成的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardDidHide](#offkeyboarddidhide23)。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3669,13 +4136,64 @@ try {
 }
 ```
 
+## offKeyboardDidHide<sup>23+</sup>
+
+offKeyboardDidHide(callback?: Callback&lt;KeyboardInfo&gt;): void
+
+关闭固定态软键盘隐藏动画完成的监听。改变输入法窗口为固定态切换至悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keyboardDidHide')](#offkeyboarddidhide18)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[KeyboardInfo](arkts-apis-window-i.md#keyboardinfo18)&gt; | 否   |  回调函数。返回软键盘窗口信息。若传入参数，则关闭该监听。如果未传入参数，则关闭所有固定态软键盘隐藏动画完成的监听。                               |
+
+**错误码：**
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function keyboardDidHide can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = (keyboardInfo: window.KeyboardInfo) => {
+  // ...
+}
+try {
+  windowClass.onKeyboardDidHide(callback);
+  windowClass.offKeyboardDidHide(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offKeyboardDidHide();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('touchOutside')<sup>11+</sup>
 
 on(type: 'touchOutside', callback: Callback&lt;void&gt;): void
 
 开启本窗口区域范围外的点击事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchOutside](#ontouchoutside23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3706,13 +4224,54 @@ try {
 }
 ```
 
+## onTouchOutside<sup>23+</sup>
+
+onTouchOutside(callback: Callback&lt;void&gt;): void
+
+开启本窗口区域范围外的点击事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('touchOutside')](#ontouchoutside11)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击事件发生在本窗口范围之外的回调。                               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.onTouchOutside(() => {
+    console.info('touch outside');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('touchOutside')<sup>11+</sup>
 
 off(type: 'touchOutside', callback?: Callback&lt;void&gt;): void
 
 关闭本窗口区域范围外的点击事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchOutside](#offtouchoutside23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3747,6 +4306,45 @@ try {
 }
 ```
 
+## offTouchOutside<sup>23+</sup>
+
+offTouchOutside(callback?: Callback&lt;void&gt;): void
+
+关闭本窗口区域范围外的点击事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('touchOutside')](#offtouchoutside11)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                   |
+| -------- |----------------------| ---- |--------------------------------------|
+| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击事件发生在本窗口范围之外的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口区域范围外的点击事件的监听。            |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = () => {
+  // ...
+}
+try {
+  windowClass.onTouchOutside(callback);
+  windowClass.offTouchOutside(callback);
+  // 如果通过onTouchOutside开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offTouchOutside();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('screenshot')<sup>9+</sup>
 
 on(type: 'screenshot', callback: Callback&lt;void&gt;): void
@@ -3755,7 +4353,13 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshot](#onscreenshot23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -3784,6 +4388,39 @@ try {
 }
 ```
 
+## onScreenshot<sup>23+</sup>
+
+onScreenshot(callback: Callback&lt;void&gt;): void
+
+开启截屏事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('screenshot')](#onscreenshot9)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。发生截屏事件时的回调。                               |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onScreenshot(() => {
+    console.info('screenshot happened');
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('screenshot')<sup>9+</sup>
 
 off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
@@ -3792,7 +4429,13 @@ off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshot](#offscreenshot23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -3825,13 +4468,56 @@ try {
 }
 ```
 
+## offScreenshot<sup>23+</sup>
+
+offScreenshot(callback?: Callback&lt;void&gt;): void
+
+关闭截屏事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('screenshot')](#offscreenshot9)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。发生截屏事件时的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有截屏事件的监听。 |
+
+**示例：**
+
+```ts
+let callback = () => {
+  console.info('screenshot happened');
+};
+try {
+  windowClass.onScreenshot(callback);
+  windowClass.offScreenshot(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offScreenshot();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('screenshotAppEvent')<sup>20+</sup>
 
 on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): void
 
 开启屏幕截屏事件类型的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshotAppEvent](#onscreenshotappevent23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3862,13 +4548,62 @@ try {
 }
 ```
 
+## onScreenshotAppEvent<sup>23+</sup>
+
+onScreenshotAppEvent(callback: Callback&lt;ScreenshotEventType&gt;): void
+
+开启屏幕截屏事件类型的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('screenshotAppEvent')](#onscreenshotappevent20)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 是   | 回调函数。返回触发的截屏事件类型。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (eventType: window.ScreenshotEventType) => {
+  console.info(`screenshotAppEvent happened. Event: ${eventType}`);
+}
+try {
+  windowClass.onScreenshotAppEvent(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('screenshotAppEvent')<sup>20+</sup>
 
 off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;): void
 
 关闭屏幕截屏事件类型的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshotAppEvent](#offscreenshotappevent23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3904,6 +4639,54 @@ try {
 }
 ```
 
+## offScreenshotAppEvent<sup>23+</sup>
+
+offScreenshotAppEvent(callback?: Callback&lt;ScreenshotEventType&gt;): void
+
+关闭屏幕截屏事件类型的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('screenshotAppEvent')](#offscreenshotappevent20)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口截图事件的监听。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (eventType: window.ScreenshotEventType) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onScreenshotAppEvent(callback);
+  // 关闭指定callback的监听
+  windowClass.offScreenshotAppEvent(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offScreenshotAppEvent();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('dialogTargetTouch')<sup>10+</sup>
 
 on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
@@ -3912,7 +4695,13 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDialogTargetTouch](#ondialogtargettouch23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3941,6 +4730,41 @@ try {
 }
 ```
 
+## onDialogTargetTouch<sup>23+</sup>
+
+onDialogTargetTouch(callback: Callback&lt;void&gt;): void
+
+开启模态窗口所遮盖窗口的点击或触摸事件的监听，除模态窗口以外其他窗口调用此接口不生效。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('dialogTargetTouch')](#ondialogtargettouch10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                          |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在模态窗口所遮盖窗口的回调。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.onDialogTargetTouch(() => {
+    console.info('touch dialog target');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('dialogTargetTouch')<sup>10+</sup>
 
 off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
@@ -3949,7 +4773,13 @@ off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDialogTargetTouch](#offdialogtargettouch23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3982,15 +4812,60 @@ try {
 }
 ```
 
+## offDialogTargetTouch<sup>23+</sup>
+
+offDialogTargetTouch(callback?: Callback&lt;void&gt;): void
+
+关闭模态窗口目标窗口的点击事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('dialogTargetTouch')](#offdialogtargettouch10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                          |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击事件发生在模态窗口目标窗口的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有模态窗口目标窗口的点击事件的监听。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = () => {
+  // ...
+}
+try {
+  windowClass.onDialogTargetTouch(callback);
+  windowClass.offDialogTargetTouch(callback);
+  // 如果通过onDialogTargetTouch开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offDialogTargetTouch();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('windowEvent')<sup>10+</sup>
 
 on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
 开启窗口生命周期变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowEvent](#onwindowevent23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4019,15 +4894,53 @@ try {
 }
 ```
 
+## onWindowEvent<sup>23+</sup>
+
+onWindowEvent(callback: Callback&lt;WindowEventType&gt;): void
+
+开启窗口生命周期变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowEvent')](#onwindowevent10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                       | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 是   | 回调函数。返回当前的窗口生命周期状态。                 |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowEvent((data) => {
+    console.info('Window event happened. Event:' + JSON.stringify(data));
+  });
+} catch (err: Error) {
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowEvent')<sup>10+</sup>
 
 off(type: 'windowEvent', callback?: Callback&lt;WindowEventType&gt;): void
 
 关闭窗口生命周期变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowEvent](#offwindowevent23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4062,6 +4975,44 @@ try {
 }
 ```
 
+## offWindowEvent<sup>23+</sup>
+
+offWindowEvent(callback?: Callback&lt;WindowEventType&gt;): void
+
+关闭窗口生命周期变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowEvent')](#offwindowevent10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                       | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 否   | 回调函数。返回当前的窗口生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口生命周期变化的监听。                 |
+
+**示例：**
+
+```ts
+const callback = (windowEventType: window.WindowEventType) => {
+  // ...
+}
+try {
+  // 通过onWindowEvent接口开启监听
+  windowClass.onWindowEvent(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowEvent(callback);
+  // 如果通过onWindowEvent开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowEvent());
+} catch (err: Error) {
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('displayIdChange')<sup>14+</sup>
 
 on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
@@ -4070,7 +5021,13 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDisplayIdChange](#ondisplayidchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -4100,6 +5057,49 @@ try {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+## onDisplayIdChange<sup>23+</sup>
+
+onDisplayIdChange(callback: Callback&lt;long&gt;): void
+
+开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('displayIdChange')](#ondisplayidchange14)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;long&gt;   | 是   | 回调函数。当本窗口所处屏幕发生变化后的回调。回调函数返回long类型参数，表示窗口所处屏幕的displayId。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onDisplayIdChange((data) => {
+    console.info('Window displayId changed, displayId=' + JSON.stringify(data));
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('displayIdChange')<sup>14+</sup>
 
 off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
@@ -4108,7 +5108,13 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDisplayIdChange](#offdisplayidchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -4145,6 +5151,54 @@ try {
 }
 ```
 
+## offDisplayIdChange<sup>23+</sup>
+
+offDisplayIdChange(callback?: Callback&lt;long&gt;): void
+
+关闭本窗口所处屏幕变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('displayIdChange')](#offdisplayidchange14)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                   |
+| -------- |----------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;long&gt;    | 否   | 回调函数。当本窗口所处屏幕发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口所处屏幕变化事件的回调。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+const callback = (displayId: long) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onDisplayIdChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offDisplayIdChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offDisplayIdChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('windowVisibilityChange')<sup>11+</sup>
 
 on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
@@ -4156,7 +5210,13 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowVisibilityChange](#onwindowvisibilitychange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4188,6 +5248,52 @@ try {
 }
 ```
 
+## onWindowVisibilityChange<sup>23+</sup>
+
+onWindowVisibilityChange(callback: Callback&lt;boolean&gt;): void
+
+开启本窗口可见状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
+- 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowVisibilityChange')](#onwindowvisibilitychange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt;   | 是   | 回调函数。当本窗口可见状态发生变化后的回调。回调函数返回boolean类型参数，当返回参数为true时表示窗口可见，否则表示窗口不可见。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowVisibilityChange((data: boolean) => {
+    console.info('Window visibility changed, isVisible=' + data);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('windowVisibilityChange')<sup>11+</sup>
 
 off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
@@ -4196,7 +5302,13 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowVisibilityChange](#offwindowvisibilitychange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4234,6 +5346,55 @@ try {
 }
 ```
 
+## offWindowVisibilityChange<sup>23+</sup>
+
+offWindowVisibilityChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭本窗口可见状态变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowVisibilityChange')](#offwindowvisibilitychange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                   |
+| -------- |----------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;boolean&gt;    | 否   | 回调函数。当本窗口可见状态发生变化时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口可见状态变化事件的回调。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onWindowVisibilityChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowVisibilityChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowVisibilityChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('occlusionStateChanged')<sup>22+</sup>
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
@@ -4243,7 +5404,13 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
 - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onOcclusionStateChanged](#onocclusionstatechanged23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -4275,13 +5442,66 @@ try {
 }
 ```
 
+## onOcclusionStateChanged()<sup>23+</sup>
+
+onOcclusionStateChanged(callback: Callback&lt;OcclusionState&gt;): void
+
+开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
+- 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onOcclusionStateChanged](#onocclusionstatechanged22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。详情见[可见性状态](arkts-apis-window-e.md#occlusionstate22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  windowClass.on('occlusionStateChanged', callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('occlusionStateChanged')<sup>22+</sup>
 
 off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): void
 
 关闭窗口可见性状态变化事件的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOcclusionStateChanged](#offocclusionstatechanged23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -4318,6 +5538,55 @@ try {
 }
 ```
 
+## offOcclusionStateChanged<sup>23+</sup>
+
+offOcclusionStateChanged(callback?: Callback&lt;OcclusionState&gt;): void
+
+关闭窗口可见性状态变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("occlusionStateChanged")](#offocclusionstatechanged22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 否   | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口可见性变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  // 通过on接口开启监听
+  windowClass.onOcclusionStateChanged(callback);
+  // 关闭指定callback的监听
+  windowClass.offOcclusionStateChanged(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offOcclusionStateChanged();
+} catch (exception) {
+  let error = exception as window.Error;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('frameMetricsMeasured')<sup>22+</sup>
 
 on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
@@ -4326,7 +5595,13 @@ on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
 
 应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)、[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)、[displaySync.on('frame')](../apis-arkgraphics2d/js-apis-graphics-displaySync.md#onframe)中的任意一个时，即使无UI内容重绘，也可能触发回调。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameMetricsMeasured](#onframemetricsmeasured23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -4357,13 +5632,64 @@ try {
 }
 ```
 
+## onFrameMetricsMeasured<sup>23+</sup>
+
+onFrameMetricsMeasured(callback: Callback&lt;FrameMetrics&gt;): void
+
+开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)、[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)、[displaySync.on('frame')](../apis-arkgraphics2d/js-apis-graphics-displaySync.md#onframe)中的任意一个时，即使无UI内容重绘，也可能触发回调。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameMetricsMeasured')](#onframemetricsmeasured22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 是  | 窗口帧率指标变化时的回调函数。详情见[帧率指标](arkts-apis-window-i.md#framemetrics22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  windowClass.onFrameMetricsMeasured(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('frameMetricsMeasured')<sup>22+</sup>
 
 off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
 
 关闭窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameMetricsMeasured](#offFrameMetricsMeasured23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -4399,6 +5725,54 @@ try {
 }
 ```
 
+## offFrameMetricsMeasured<sup>23+</sup>
+
+offFrameMetricsMeasured(callback?: Callback&lt;FrameMetrics&gt;): void
+
+关闭窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameMetricsMeasured')](#offframemetricsmeasured22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 否  | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口帧率指标变化的监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  // 通过on接口开启监听
+  windowClass.onFrameMetricsMeasured(callback);
+  // 关闭指定callback的监听
+  windowClass.offFrameMetricsMeasured(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offFrameMetricsMeasured();
+} catch (exception) {
+  let error = exception as BusinessError
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('systemDensityChange')<sup>15+</sup>
 
 on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
@@ -4409,7 +5783,13 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -4444,6 +5824,51 @@ try {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+## onSystemDensityChange<sup>23+</sup>
+
+onSystemDensityChange(callback: Callback&lt;double&gt;): void
+
+开启本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。比如，当调整窗口所处屏幕的显示大小缩放系数时，可以从此接口监听到这个行为。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('systemDensityChange')](#onsystemdensitychange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;double&gt;   | 是   | 回调函数。当本窗口所处屏幕的系统显示大小缩放系数发生变化后的回调。回调函数返回double类型参数，表示当前窗口所处屏幕的系统显示大小缩放系数。                               |
+
+**错误码：**
+
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+const callback = (density: double) => {
+  console.info('System density changed, density=' + JSON.stringify(density));
+}
+try {
+  windowClass.onSystemDensityChange(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('systemDensityChange')<sup>15+</sup>
 
 off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
@@ -4454,7 +5879,13 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -4491,6 +5922,54 @@ try {
 }
 ```
 
+## offSystemDensityChange<sup>23+</sup>
+
+offSystemDensityChange(callback?: Callback&lt;double&gt;): void
+
+关闭本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('systemDensityChange')](#offsystemdensitychange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                   |
+| -------- |----------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;double&gt;    | 否   | 回调函数。当本窗口所处屏幕的系统显示大小缩放系数发生变化后的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口所处屏幕的系统显示大小缩放系数变化事件的回调。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+
+**示例：**
+
+```ts
+const callback = (density: double) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onSystemDensityChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offSystemDensityChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offSystemDensityChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('noInteractionDetected')<sup>12+</sup>
 
 on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt;): void
@@ -4499,7 +5978,13 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onNoInteractionDetected](#onnointeractiondetected23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4532,6 +6017,52 @@ try {
 }
 ```
 
+## onNoInteractionDetected()<sup>23+</sup>
+
+onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void
+
+开启本窗口在指定超时时间内无交互事件的监听，交互事件支持物理键盘输入事件和屏幕触控点击事件，不支持软键盘输入事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('noInteractionDetected')](#onnointeractiondetected12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                         |
+| -------- | --------------------------| ---- | ------------------------------------------------------------ |
+| timeout     | long                    | 是   | 指定本窗口在多长时间内无交互即回调，单位为秒(s)。该参数仅支持整数输入，负数和小数为非法参数。 |
+| callback | Callback&lt;void&gt;      | 是   | 回调函数。当本窗口在指定超时时间内无交互事件时的回调。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.onNoInteractionDetected(60, () => {
+    console.info('no interaction in 60s');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('noInteractionDetected')<sup>12+</sup>
 
 off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
@@ -4540,7 +6071,13 @@ off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offNoInteractionDetected](#offnointeractiondetected23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4576,6 +6113,55 @@ try {
 }
 ```
 
+## offNoInteractionDetected()<sup>23+</sup>
+
+offNoInteractionDetected(callback?: Callback&lt;void&gt;): void
+
+关闭本窗口在指定超时时间内无交互事件的监听，交互事件支持物理键盘输入事件和屏幕触控点击事件，不支持软键盘输入事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('noInteractionDetected')](#offnointeractiondetected12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                   |
+| -------- |----------------------------| ---- |--------------------------------------|
+| callback | Callback&lt;void&gt;    | 否   | 回调函数，当本窗口在指定超时时间内无交互事件时的回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口在指定超时时间内无交互事件的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const callback = () => {
+  // ...
+}
+try {
+  windowClass.onNoInteractionDetected(60, callback);
+  windowClass.offNoInteractionDetected(callback);
+  // 如果通过onNoInteractionDetected开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offNoInteractionDetected();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('windowStatusChange')<sup>11+</sup>
 
 on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): void
@@ -4588,9 +6174,15 @@ on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): voi
 >
 > 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的[targetAPIVersion](../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::MAXIMIZE。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStatusChange](#onwindowstatuschange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4620,15 +6212,62 @@ try {
 }
 ```
 
+## onWindowStatusChange<sup>23+</sup>
+
+onWindowStatusChange(callback: Callback&lt;WindowStatusType&gt;): void
+
+开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新）。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowStatusChange')](#onwindowstatuschange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 是   | 回调函数。返回当前的窗口模式。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+try {
+    windowClass.onWindowStatusChange((WindowStatusType) => {
+        console.info('Succeeded in enabling the listener for window status changes. Data: ' + JSON.stringify(WindowStatusType));
+    });
+} catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowStatusChange')<sup>11+</sup>
 
 off(type: 'windowStatusChange', callback?: Callback&lt;WindowStatusType&gt;): void
 
 关闭窗口模式变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStatusChange](#offwindowstatuschange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4662,13 +6301,64 @@ try {
 }
 ```
 
+## offWindowStatusChange<sup>23+</sup>
+
+offWindowStatusChange(callback?: Callback&lt;WindowStatusType&gt;): void
+
+关闭窗口模式变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowStatusChange')](#offwindowstatuschange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                     |
+| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 否   | 回调函数。返回当前的窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有窗口模式变化的监听。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+const callback = (windowStatusType: window.WindowStatusType) => {
+    // ...
+}
+try {
+    windowClass.onWindowStatusChange(callback);
+    windowClass.offWindowStatusChange(callback);
+    // 如果通过onWindowStatusChange开启多个callback进行监听，同时关闭所有监听：
+    windowClass.offWindowStatusChange();
+} catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('windowStatusDidChange')<sup>20+</sup>
 
 on(type: 'windowStatusDidChange', callback: Callback&lt;WindowStatusType&gt;): void
 
 开启窗口模式变化的监听，当窗口windowStatus发生变化后进行通知（此时窗口[Rect](arkts-apis-window-i.md#rect7)属性已经完成更新）。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStatusDidChange](#onwindowstatusdidchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -4698,13 +6388,62 @@ try {
 }
 ```
 
+## onWindowStatusDidChange<sup>23+</sup>
+
+onWindowStatusDidChange(callback: Callback&lt;WindowStatusType&gt;): void
+
+开启窗口模式变化的监听，当窗口windowStatus发生变化后进行通知（此时窗口[Rect](arkts-apis-window-i.md#rect7)属性已经完成更新）。
+
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowStatusDidChange')](#onwindowstatusdidchange20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 是   | 回调函数。返回当前的窗口模式。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowStatusDidChange((WindowStatusType) => {
+      console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowStatusDidChange')<sup>20+</sup>
 
 off(type: 'windowStatusDidChange', callback?: Callback&lt;WindowStatusType&gt;): void
 
 关闭窗口模式变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStatusDidChange](#offwindowstatusdidchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -4738,13 +6477,65 @@ try {
 }
 ```
 
+## offWindowStatusDidChange<sup>23+</sup>
+
+offWindowStatusDidChange(callback?: Callback&lt;WindowStatusType&gt;): void
+
+关闭窗口模式变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowStatusDidChange')](#offwindowstatusdidchange20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                     |
+| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 否   | 回调函数。返回当前的窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有窗口模式变化的监听。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+const callback = (windowStatusType: window.WindowStatusType) => {
+    // ...
+}
+try {
+  windowClass.onWindowStatusDidChange(callback);
+  windowClass.offWindowStatusDidChange(callback);
+  // 如果通过onWindowStatusDidChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowStatusDidChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setWindowGrayScale<sup>12+</sup>
 
-setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
+ArkTS-Dyn: setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setWindowGrayScale(grayScale: double): Promise&lt;void&gt;
 
 设置窗口灰阶，使用Promise异步回调。该接口需要在调用[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)使窗口加载页面内容后调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本** 12
+
+**ArkTS-Sta起始版本** 23
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -4752,7 +6543,7 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | --------- | ------ | -- | ---------------------------------------- |
-| grayScale | number | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
+| grayScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
 
 **返回值：**
 
@@ -4773,6 +6564,7 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4798,15 +6590,46 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass?.setUIContent('pages/Index', (error: BusinessError<void> | null) => {
+  if (error?.code) {
+    console.error(`Failed to set the content. Cause: ${error}`);
+    return;
+  }
+  console.info('Succeeded in setting the content.');
+  let grayScale: double = 0.5;
+  try {
+    let promise = windowClass?.setWindowGrayScale(grayScale);
+    promise?.then(() => {
+      console.info('Succeeded in setting the grayScale.');
+    }).catch((err: Error) => {
+      console.error(`Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (exception) {
+    let error = exception as BusinessError;
+    console.error(`Failed to set the grayScale. Cause code: ${error.code}, message: ${error.message}`);
+  } 
+});
+```
+
 ## on('windowTitleButtonRectChange')<sup>11+</sup>
 
 on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt;): void
 
 开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4839,15 +6662,66 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
+## onWindowTitleButtonRectChange<sup>23+</sup>
+
+onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
+
+开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowTitleButtonRectChange')](#onwindowtitlebuttonrectchange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[TitleButtonRect](arkts-apis-window-i.md#titlebuttonrect11)&gt; | 是   | 回调函数。返回当前标题栏上的最小化、最大化、关闭按钮矩形区域。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. |
+
+**示例：**
+
+```ts
+windowClass?.setUIContent('pages/WindowPage').then(() => {
+  try {
+    windowClass?.onWindowTitleButtonRectChange((titleButtonRect: window.TitleButtonRect) => {
+      console.info('Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
+    });
+    console.info('Succeeded in enabling the listener for window title buttons area changes');
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to enable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
+  }
+})
+```
+
 ## off('windowTitleButtonRectChange')<sup>11+</sup>
 
 off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&gt;): void
 
 关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -4886,15 +6760,72 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
+## offWindowTitleButtonRectChange<sup>23+</sup>
+
+offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
+
+关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowTitleButtonRectChange')](#offwindowtitlebuttonrectchange11)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[TitleButtonRect](arkts-apis-window-i.md#titlebuttonrect11)&gt; | 否   | 回调函数。返回当前标题栏上的最小化、最大化、关闭按钮矩形区域。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                       |
+| -------- | ------------------------------ |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. |
+
+**示例：**
+
+```ts
+windowClass?.setUIContent('pages/WindowPage').then(() => {
+  const callback = (titleButtonRect: window.TitleButtonRect) => {
+    // ...
+  }
+  try {
+    // 通过on接口开启监听
+    windowClass?.onWindowTitleButtonRectChange(callback);
+    // 关闭指定callback的监听
+    windowClass?.offWindowTitleButtonRectChange(callback);
+    // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+    windowClass?.offWindowTitleButtonRectChange();
+    console.info('Succeeded in disabling the listener for window title buttons area changes');
+  } catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to disable the listener for window title buttons area changes. Cause code: ${err.code}, message: ${err.message}`);
+  }
+})
+```
+
 ## on('windowRectChange')<sup>12+</sup>
 
 on(type:  'windowRectChange', callback: Callback&lt;RectChangeOptions&gt;): void
 
 开启窗口矩形（窗口位置及窗口大小）变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowRectChange](#onwindowrectchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4926,15 +6857,64 @@ try {
 }
 ```
 
+## onWindowRectChange<sup>23+</sup>
+
+onWindowRectChange(callback: Callback&lt;RectChangeOptions&gt;): void
+
+开启窗口矩形（窗口位置及窗口大小）变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowRectChange')](#onwindowrectchange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 是   | 回调函数。返回当前窗口矩形变化值及变化原因。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onWindowRectChange((data: window.RectChangeOptions) => {
+      console.info(`Succeeded window rect changes. Data: ` + JSON.stringify(data));
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to disable the listener for window rect changes. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowRectChange')<sup>12+</sup>
 
 off(type: 'windowRectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 关闭窗口矩形（窗口位置及窗口大小）变化的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowRectChange](#offwindowrectchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4971,13 +6951,67 @@ try {
 }
 ```
 
+## offWindowRectChange<sup>23+</sup>
+
+offWindowRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
+
+关闭窗口矩形（窗口位置及窗口大小）变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowRectChange')](#offwindowrectchange12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 否   | 回调函数。返回当前的窗口矩形及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有窗口矩形变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (rectChangeOptions: window.RectChangeOptions) => {
+  // ...
+}
+
+try {
+  windowClass.onWindowRectChange(callback);
+  windowClass.offWindowRectChange(callback);
+  // 如果通过onWindowRectChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowRectChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to disable the listener for window rect changes. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('rectChangeInGlobalDisplay')<sup>20+</sup>
 
 on(type: 'rectChangeInGlobalDisplay', callback: Callback&lt;RectChangeOptions&gt;): void
 
 开启[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRectChangeInGlobalDisplay](#onrectchangeinglobaldisplay23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -5010,13 +7044,65 @@ try {
 }
 ```
 
+## onRectChangeInGlobalDisplay<sup>23+</sup>
+
+onRectChangeInGlobalDisplay(callback: Callback&lt;RectChangeOptions&gt;): void
+
+开启[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('rectChangeInGlobalDisplay')](#onrectchangeinglobaldisplay20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 是   | 回调函数。返回当前窗口矩形变化值及变化原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (rectChangeOptions: window.RectChangeOptions) => {
+  console.info(`Succeeded in enabling the listener for window rect changes in global display. Data: ${JSON.stringify(rectChangeOptions)}`);
+}
+
+try {
+  windowClass.onRectChangeInGlobalDisplay(callback);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to enable the listener for window rect changes in global display. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('rectChangeInGlobalDisplay')<sup>20+</sup>
 
 off(type: 'rectChangeInGlobalDisplay', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 关闭[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRectChangeInGlobalDisplay](#offrectchangeinglobaldisplay23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -5052,6 +7138,54 @@ try {
 }
 ```
 
+## offRectChangeInGlobalDisplay<sup>23+</sup>
+
+offRectChangeInGlobalDisplay(callback?: Callback&lt;RectChangeOptions&gt;): void
+
+关闭全局坐标系（扩展屏场景下，以主屏左上角为原点）下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rectChangeInGlobalDisplay')](#offrectchangeinglobaldisplay20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 否   | 回调函数。返回当前的窗口矩形及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有全局坐标系下窗口矩形变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (rectChangeOptions: window.RectChangeOptions) => {
+  // ...
+}
+
+try {
+  windowClass.onRectChangeInGlobalDisplay(callback);
+  windowClass.offRectChangeInGlobalDisplay(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offRectChangeInGlobalDisplay();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to disable the listener for window rect changes in global display. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('subWindowClose')<sup>12+</sup>
 
 on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
@@ -5064,7 +7198,13 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 
 如果存在[on('windowWillClose')](#onwindowwillclose15)监听事件，只响应[on('windowWillClose')](#onwindowwillclose15)接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubWindowClose](#onsubwindowclose23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5100,13 +7240,69 @@ try {
 }
 ```
 
+## onSubWindowClose<sup>23+</sup>
+
+onSubWindowClose(callback: Callback&lt;void&gt;): void
+
+开启子窗口关闭事件的监听。此监听仅在点击系统提供的右上角关闭按钮关闭子窗时触发，其余关闭方式不触发回调。
+
+当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
+
+该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[onWindowWillClose](#onwindowwillclose23)方法。
+
+如果存在[onWindowWillClose](#onwindowwillclose23)监听事件，只响应[onWindowWillClose](#onwindowwillclose23)接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('subWindowClose')](#onsubwindowclose12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+const callback = () => {
+  // ...
+  console.info('Sub Window Close happened');
+}
+try {
+  windowClass.onSubWindowClose(callback);
+} catch (err: Error) {
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('subWindowClose')<sup>12+</sup>
 
 off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 
 关闭子窗口关闭事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSubWindowClose](#offsubwindowclose23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5145,6 +7341,52 @@ try {
 }
 ```
 
+## offSubWindowClose<sup>23+</sup>
+
+offSubWindowClose(callback?: Callback&lt;void&gt;): void
+
+关闭子窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('subWindowClose')](#offsubwindowclose12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有子窗口关闭的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+const callback = () => {
+  // ...
+}
+try {
+  windowClass.onSubWindowClose(callback);
+  windowClass.offSubWindowClose(callback);
+  // 如果通过onSubWindowClose开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offSubWindowClose();
+} catch (err: Error) {
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('windowWillClose')<sup>15+</sup>
 
 on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
@@ -5152,6 +7394,10 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。
 
 该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[on('subWindowClose')](#onsubwindowclose12)方法。主窗口的同步关闭事件监听参考[on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14)方法。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -5162,6 +7408,8 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -5210,11 +7458,81 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## onWindowWillClose<sup>23+</sup>
+
+onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
+
+开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。
+
+该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[onSubWindowClose](#onsubwindowclose22)方法。主窗口的同步关闭事件监听参考[onWindowStageClose](arkts-apis-window-WindowStage.md#onwindowstageclose22)方法。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowWillClose')](#onwindowwillclose15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    const callback = () => {
+      // ...
+      return new Promise<boolean>((resolve, reject) => {
+        // 是否关闭该窗口
+        let result: boolean = true;
+        resolve(result);
+      });
+    }
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      console.info('Succeeded in on the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## off('windowWillClose')<sup>15+</sup>
 
 off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 用于关闭主窗口或子窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -5225,6 +7543,8 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -5276,13 +7596,86 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## offWindowWillClose<sup>23+</sup>
+
+offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
+
+用于关闭主窗口或子窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowwillclose15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+      const callback = () => {
+        // ...
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      windowClass.offWindowWillClose(callback);
+      // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+      windowClass.offWindowWillClose();
+      console.info('Succeeded in off the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## on('windowHighlightChange')<sup>15+</sup>
 
 on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;): void
 
 开启窗口激活态变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowHighlightChange](#onwindowhighlightchange23)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 15
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5316,13 +7709,64 @@ try {
 }
 ```
 
+## onWindowHighlightChange<sup>23+</sup>
+
+onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
+
+开启窗口激活态变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowHighlightChange')](#onwindowhighlightchange15)。
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。当本窗口的激活态发生变化时的回调。回调函数返回boolean类型参数。当返回参数为true表示激活态；false表示非激活态。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.onWindowHighlightChange((data: boolean) => {
+    console.info(`Window highlight Change: ${data}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowHighlightChange')<sup>15+</sup>
 
 off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭窗口激活态变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowHighlightChange](#offWindowHighlightChange23)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 15
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5362,6 +7806,55 @@ try {
 }
 ```
 
+## offWindowHighlightChange<sup>23+</sup>
+
+offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭窗口激活态变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowHighlightChange22)。
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。当本窗口的激活态发生变化时的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口激活态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onWindowHighlightChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowHighlightChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowHighlightChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('rotationChange')<sup>19+</sup>
 
 on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | void&gt;): void
@@ -5372,7 +7865,13 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRotationChange](#onrotationchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
 
 **设备行为差异：**
 
@@ -5473,6 +7972,92 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## onRotationChange()<sup>23+</sup>
+
+onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | undefined&gt;): void
+
+开启窗口旋转变化的监听。[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)中窗口旋转事件类型为窗口即将旋转时，必须返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。窗口旋转事件类型为窗口旋转结束时返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)不生效。
+
+该函数只允许在主线程注册。同一个窗口多次注册同类型回调函数，只生效最新注册的同类型回调函数返回值。系统提供了超时保护机制，若20ms内窗口未返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)，系统不处理该返回值。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('rotationChange')](#onrotationchange19)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：**
+
+针对PC/2in1设备：可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@Kit.BasicServicesKit';
+
+const calculateRect = (info: window.RotationChangeInfo): window.Rect => {
+    // calculate result with info
+    let rect : window.Rect = {
+      left: 0,
+      top: 0,
+      width: 500,
+      height: 600,
+    }
+    return rect;
+}
+
+const callback = (info: window.RotationChangeInfo): window.RotationChangeResult | undefined => {
+  let result: window.RotationChangeResult = {
+    rectType: window.RectType.RELATIVE_TO_SCREEN,
+    windowRect: {
+      left: 0,
+      top: 0,
+      width: 0,
+      height: 0,
+    }
+  };
+  if (info.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+      result.rectType = window.RectType.RELATIVE_TO_SCREEN;
+      result.windowRect = calculateRect(info);
+      return result;
+  } else {
+      // do something after rotate
+      return undefined;
+  }
+}
+
+try {
+  windowClass?.onRotationChange(callback);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('rotationChange')<sup>19+</sup>
 
 off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | void&gt;): void
@@ -5481,7 +8066,13 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRotationChange](#offrotationchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
 
 **设备行为差异：**
 
@@ -5526,6 +8117,65 @@ try {
 }
 ```
 
+## offRotationChange<sup>23+</sup>
+
+offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | undefined&gt;): void
+
+关闭窗口旋转变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rotationChange')](#offrotationchange19)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：**
+
+针对PC/2in1设备：可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@Kit.BasicServicesKit';
+
+const callback = (info: window.RotationChangeInfo): window.RotationChangeResult | undefined => {
+  // ...
+  return undefined;
+}
+try {
+  windowClass?.offRotationChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听。
+  windowClass?.offRotationChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('uiExtensionSecureLimitChange')<sup>20+</sup>
 
 on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;): void
@@ -5534,7 +8184,13 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onUiExtensionSecureLimitChange](#onuiextensionsecurelimitchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -5565,6 +8221,49 @@ try {
 }
 ```
 
+## onUiExtensionSecureLimitChange<sup>23+</sup>
+
+onUiExtensionSecureLimitChange(callback: Callback&lt;boolean&gt;): void
+
+开启窗口内uiExtension安全限制变化事件的监听, 建议在窗口创建后立即监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('uiExtensionSecureLimitChange')](#onuiextensionsecurelimitchange20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。当窗口内uiExtension安全限制变化时触发回调。当返回参数为true表示窗口内uiExtension开启了隐藏不安全窗口；当返回参数为false表示窗口内uiExtension关闭了隐藏不安全窗口。若窗口内存在多个uiExtension，当返回参数为true表示窗口内至少一个uiExtension开启了隐藏不安全窗口；当返回参数为false表示窗口内所有uiExtension关闭了隐藏不安全窗口。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported.Function on('uiExtensionSecureLimitChange') can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onUiExtensionSecureLimitChange((data: boolean) => {
+    console.info(`Window secure limit Change: ${data}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('uiExtensionSecureLimitChange')<sup>20+</sup>
 
 off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt;): void
@@ -5573,7 +8272,13 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offUiExtensionSecureLimitChange](#offuiextensionsecurelimitchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -5610,6 +8315,55 @@ try {
 }
 ```
 
+## offUiExtensionSecureLimitChange<sup>23+</sup>
+
+offUiExtensionSecureLimitChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭窗口内uiextension安全限制变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('uiExtensionSecureLimitChange')](#offuiextensionsecurelimitchange20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口安全限制变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported.Function off('uiExtensionSecureLimitChange') can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onUiExtensionSecureLimitChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offUiExtensionSecureLimitChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offUiExtensionSecureLimitChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isWindowSupportWideGamut<sup>9+</sup>
 
 isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
@@ -5617,6 +8371,10 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 判断当前窗口是否支持广色域模式，使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5636,6 +8394,8 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5643,6 +8403,21 @@ windowClass.isWindowSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether the window support WideGamut Data: ${data}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.isWindowSupportWideGamut((err: BusinessError<void> | null, data) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to check whether the window support WideGamut. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info(`Succeeded in checking whether the window support WideGamut Data: ${data}`);
@@ -5658,6 +8433,10 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5675,6 +8454,8 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5682,6 +8463,19 @@ let promise = windowClass.isWindowSupportWideGamut();
 promise.then((data) => {
   console.info(`Succeeded in checking whether the window support WideGamut. Data: ${data}`);
 }).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.isWindowSupportWideGamut();
+promise.then((data) => {
+  console.info(`Succeeded in checking whether the window support WideGamut. Data: ${data}`);
+}).catch((err: Error) => {
   console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -5695,6 +8489,10 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5714,6 +8512,8 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5731,6 +8531,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError<void> | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set window colorspace. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting window colorspace.');
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set window colorspace. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## setWindowColorSpace<sup>9+</sup>
 
 setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
@@ -5740,6 +8560,10 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5764,6 +8588,8 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5779,6 +8605,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT);
+  promise.then(() => {
+    console.info('Succeeded in setting window colorspace.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set window colorspace. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set window colorspace. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
 ## getWindowColorSpace<sup>9+</sup>
 
 getWindowColorSpace(): ColorSpace
@@ -5788,6 +8633,10 @@ getWindowColorSpace(): ColorSpace
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5805,6 +8654,8 @@ getWindowColorSpace(): ColorSpace
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5813,6 +8664,20 @@ try {
   console.info(`Succeeded in getting the window color space. ColorSpace: ${colorSpace}`);
 } catch (exception) {
   console.error(`Failed to get the window color space. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let colorSpace = windowClass.getWindowColorSpace();
+  console.info(`Succeeded in getting the window color space. ColorSpace: ${colorSpace}`);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get the window color space. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
