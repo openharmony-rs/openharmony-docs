@@ -2696,7 +2696,7 @@ abstract class C {
 
 <!-- @[annotation_source_retention_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/SourceRetentionAnnotation.ets) -->
 
-```ts
+``` TypeScript
 import { Retention, RetentionPolicy } from '@kit.ArkTS';
 
 // 构造用户自定义源码态注解
