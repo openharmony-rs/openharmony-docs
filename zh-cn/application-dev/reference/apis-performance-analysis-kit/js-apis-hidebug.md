@@ -1448,7 +1448,7 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 
 dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise&lt;Array&lt;string&gt;&gt;
 
-为当前线程或其所属进程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转化为heapsnapshot格式文件进行解析。
+为当前线程或其所属进程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转换为heapsnapshot格式文件进行解析。
 > **注意**：
 >
 > 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
