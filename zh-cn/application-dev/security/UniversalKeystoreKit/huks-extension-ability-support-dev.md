@@ -437,12 +437,129 @@
        result.certs = res.certs
      } catch (error) {
        // 场景：导出所有证书失败
-       result.resultCode = res.resultCode
-       console.error(`promise: onEnumCertificates failed`);
-     }
-     return Promise.resolve(result);
-   }
-   ```
+result.resultCode = res.resultCode
+        console.error(`promise: onEnumCertificates failed`);
+      }
+      return Promise.resolve(result);
+    }
+    ```
+
+    （12）onGetResourceId<sup>26+</sup>用于获取密钥扩展能力的资源ID。资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag26)参数携带，格式和内容由厂商自定义。当调用成功时，返回值中的resultCode成员设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。
+
+    ```ts
+    onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
+      let result: HuksCryptoExtensionResult = {
+        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+      };
+      
+      try {
+        let resourceInfo: Uint8Array | undefined = params.find((param =>
+          param.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO))?.value as Uint8Array;
+        
+        let resourceId: string = "";
+        result.resultCode = 0;
+        result.resourceId = resourceId;
+      } catch (error) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        result.errInfo = { errno: 1, errorDesc: "Failed to parse resource info" };
+        console.error(`promise: onGetResourceId failed`);
+      }
+      return Promise.resolve(result);
+    }
+    ```
+
+    （13）onImportCertificate<sup>26+</sup>用于导入证书到扩展设备。certInfo包含待导入的证书信息，包括证书用途、资源ID和证书数据。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。
+
+    ```ts
+    onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
+      let result: HuksCryptoExtensionResult = {
+        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+      };
+      
+      try {
+        let driver: YourUKeyDriver = YourDriverInstance;
+        result = driver.YourDriver_onImportCertificate(handle, certInfo, params);
+        result.resultCode = 0;
+      } catch (error) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        result.errInfo = { errno: 1, errorDesc: "Failed to import certificate" };
+        console.error(`promise: onImportCertificate failed`);
+      }
+      return Promise.resolve(result);
+    }
+    ```
+
+    （14）onGenerateKeyItem<sup>26+</sup>用于在扩展设备内生成密钥对。
+
+    > **说明：**
+    > 该接口复用HUKS原有接口定义。在外部密钥管理扩展场景下，密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
+
+    ```ts
+    onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
+      let result: HuksCryptoExtensionResult = {
+        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+      };
+      
+      try {
+        let driver: YourUKeyDriver = YourDriverInstance;
+        result = driver.YourDriver_onGenerateKeyItem(handle, params);
+        result.resultCode = 0;
+      } catch (error) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        console.error(`promise: onGenerateKeyItem failed`);
+      }
+      return Promise.resolve(result);
+    }
+    ```
+
+    （15）onExportKeyItem<sup>26+</sup>用于导出指定密钥的公钥。
+
+    > **说明：**
+    > 该接口复用HUKS原有接口定义。在外部密钥管理扩展场景下，密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
+
+    ```ts
+    onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
+      let result: HuksCryptoExtensionResult = {
+        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+      };
+      
+      try {
+        let driver: YourUKeyDriver = YourDriverInstance;
+        let pubKey: Uint8Array = driver.YourDriver_onExportKeyItem(handle, params);
+        result.resultCode = 0;
+        result.outData = pubKey;
+      } catch (error) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        result.errInfo = { errno: 1, errorDesc: "Failed to export public key" };
+        console.error(`promise: onExportKeyItem failed`);
+      }
+      return Promise.resolve(result);
+    }
+    ```
+
+    （16）onImportWrappedKeyItem<sup>26+</sup>用于导入加密封装的密钥对。
+
+    > **说明：**
+    > 该接口复用HUKS原有接口定义。在外部密钥管理扩展场景下，密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
+
+    ```ts
+    onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
+      let result: HuksCryptoExtensionResult = {
+        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
+      };
+      
+      try {
+        let driver: YourUKeyDriver = YourDriverInstance;
+        result = driver.YourDriver_onImportWrappedKeyItem(handle, wrappedHandle, params, wrappedKey);
+        result.resultCode = 0;
+      } catch (error) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        result.errInfo = { errno: 1, errorDesc: "Failed to import wrapped key" };
+        console.error(`promise: onImportWrappedKeyItem failed`);
+      }
+      return Promise.resolve(result);
+    }
+    ```
 
 ## 驱动应用注册、解注册CryptoExtensionAbility适配
 
