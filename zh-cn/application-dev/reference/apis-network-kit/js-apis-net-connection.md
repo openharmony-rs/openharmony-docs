@@ -490,6 +490,7 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 >**说明：**
 >
+> 注意：当指定网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 
 ```ts
@@ -538,6 +539,55 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
   });
 });
 ```
+结合connection.on接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
+
+**示例：**
+
+```ts
+
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络可用事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+```
 
 ## connection.setAppNet<sup>9+</sup>
 
@@ -557,17 +607,16 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 >**说明：**
 >
+> 注意：当指定网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
-  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
-    if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
 });
 ```
 
@@ -607,6 +656,52 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.error(JSON.stringify(error));
   })
 });
+```
+
+结合connection.on接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
+
+**示例：**
+
+```ts
+
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络可用事件。
+netCon.unregister((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
+
 ```
 
 ## connection.getAllNets
