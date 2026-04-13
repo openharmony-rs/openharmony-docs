@@ -979,7 +979,7 @@ let option : VirtualScreenOption = {
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   screenClass = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-}).catch((err: Error) => {
+}).catch((err: BusinessError) => {
   console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
 });
 ```
@@ -1035,6 +1035,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long, callback: AsyncCallback&lt;void&g
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **示例：**
@@ -1107,6 +1108,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **示例：**
@@ -1160,7 +1162,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string, callback: A
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
-| surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface。 |
+| surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
