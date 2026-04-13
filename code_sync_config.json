@@ -42066,6 +42066,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/SourceRetentionAnnotation.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"annotation_source_retention_annotation",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
