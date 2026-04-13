@@ -233,7 +233,7 @@ OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *windo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_OPERATE_NOT_PERMIT：本接口仅支持在Surface模式下调用, 如果在Buffer模式调用, 则返回此错误码。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. window为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_OPERATE_NOT_PERMIT：本接口仅支持在Surface模式下调用, 如果在Buffer模式调用, 则返回此错误码。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. window为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。 |
 
 ### OH_VideoDecoder_Configure()
 
@@ -299,7 +299,7 @@ OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：1. 内部执行错误；2. 配置了色彩空间转换功能，但解码器处于Buffer模式。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：1. 内部执行错误；2. 配置了色彩空间转换功能，但解码器处于Buffer模式。 |
 
 ### OH_VideoDecoder_Start()
 
@@ -325,7 +325,7 @@ OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：1. 内部执行错误；2. 视频色彩空间转换功能已配置，但是没有调用OH_VideoDecoder_Prepare接口。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：1. 内部执行错误；2. 视频色彩空间转换功能已配置，但是没有调用OH_VideoDecoder_Prepare接口。 |
 
 ### OH_VideoDecoder_Stop()
 
@@ -351,7 +351,7 @@ OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_Flush()
 
@@ -377,7 +377,7 @@ OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_Reset()
 
@@ -456,7 +456,7 @@ OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. 输入format参数不支持。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. 输入format参数不支持。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_PushInputData()
 
@@ -488,7 +488,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_RenderOutputData()
 
@@ -519,7 +519,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_FreeOutputData()
 
@@ -550,7 +550,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_PushInputBuffer()
 
@@ -577,7 +577,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 <br>         AV_ERR_DRM_DECRYPT_FAILED：受DRM保护的视频缓冲区解密失败，建议查看日志。|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 <br>         AV_ERR_DRM_DECRYPT_FAILED：受DRM保护的视频缓冲区解密失败，建议查看日志。|
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
@@ -604,7 +604,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t inde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_RenderOutputBufferAtTime()
 
@@ -632,7 +632,7 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_FreeOutputBuffer()
 
@@ -659,7 +659,7 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. index非法或者连续给同一个index，该错误不影响后续解码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非解码器实例，或者为空指针；2. index非法或者连续给同一个index，该错误不影响后续解码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：内部执行错误。 |
 
 ### OH_VideoDecoder_IsValid()
 
@@ -742,7 +742,7 @@ OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
 
 ### OH_VideoDecoder_GetInputBuffer()
 
@@ -797,7 +797,7 @@ OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：解码器状态不支持调用本接口时调用。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_STREAM_CHANGED：流格式已变更，可以通过调用[OH_VideoDecoder_GetOutputDescription](#oh_videodecoder_getoutputdescription)接口获取新的流信息。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的解码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非解码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前解码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_STREAM_CHANGED：流格式已变更，可以通过调用[OH_VideoDecoder_GetOutputDescription](#oh_videodecoder_getoutputdescription)接口获取新的流信息。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
 
 ### OH_VideoDecoder_GetOutputBuffer()
 
