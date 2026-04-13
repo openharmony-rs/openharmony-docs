@@ -581,8 +581,6 @@ isBluetoothSupported(): boolean;
 **示例：**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try {
     let isSupported: boolean = access.isBluetoothSupported();
     console.info("isSupported: " + isSupported);
