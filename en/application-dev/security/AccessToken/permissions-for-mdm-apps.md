@@ -712,7 +712,7 @@ Allows an activated MDM application to deactivate itself.
 
 ## ohos.permission.ENTERPRISE_ACTIVATE_DEVICE_ADMIN
 
-Allows an enterprise MDM application to activate itself。
+Allows an enterprise MDM application to activate itself.
 
 **Permission level**: system_basic
 
