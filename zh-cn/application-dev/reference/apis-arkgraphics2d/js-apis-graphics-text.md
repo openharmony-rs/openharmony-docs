@@ -21,7 +21,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -44,6 +45,10 @@ setTextHighContrast(action: TextHighContrast): void
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -74,6 +79,10 @@ setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -95,6 +104,10 @@ matchFontDescriptors(desc: FontDescriptor): Promise&lt;Array&lt;FontDescriptor&g
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -118,6 +131,8 @@ matchFontDescriptors(desc: FontDescriptor): Promise&lt;Array&lt;FontDescriptor&g
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
 import { BusinessError } from '@kit.BasicServicesKit'
@@ -138,10 +153,49 @@ struct Index {
             let promise = text.matchFontDescriptors({
               weight: text.FontWeight.W400,
             })
+            promise.then((data: Array<text.FontDescriptor>) => {
+              console.info(`Font descriptor array size: ${data.length}`);
+              for (let i = 0; i < data.length; i++) {
+                console.info(`Font descriptor result: ${JSON.stringify(data[i])}`)
+              }
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to match the font descriptor, error: ${JSON.stringify(error)}`);
+            });
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Row, FontWeight} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Button("font descriptor")
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .width(300)
+          .height(80)
+          .onClick(() => {
+            console.info(`Get font descriptor start`)
+            let promise = text.matchFontDescriptors({
+              weight: text.FontWeight.W400,
+            })
             promise.then((data) => {
               console.info(`Font descriptor array size: ${data.length}`);
               console.info(`Font descriptor result: ${JSON.stringify(data)}`)
-            }).catch((error: BusinessError) => {
+            }).catch((error: Error) => {
               console.error(`Failed to match the font descriptor, error: ${JSON.stringify(error)}`);
             });
           })
@@ -162,6 +216,10 @@ getSystemFontFullNamesByType(fontType: SystemFontType): Promise&lt;Array&lt;stri
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -184,6 +242,8 @@ getSystemFontFullNamesByType(fontType: SystemFontType): Promise&lt;Array&lt;stri
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -220,6 +280,43 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Row, FontWeight} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Button("get font list")
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .width(300)
+          .height(80)
+          .onClick(() => {
+            let fontType:text.SystemFontType = text.SystemFontType.GENERIC
+            let promise = text.getSystemFontFullNamesByType(fontType)
+            promise.then((data) => {
+              console.info(`then font list size: ${data.length}`)
+              data.forEach((fontItem) => {
+                console.info(fontItem)
+              })
+            }).catch((error: Error) => {
+              console.error(`Failed to get font fullNames by type, error: ${JSON.stringify(error)}`);
+            });
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## text.getFontDescriptorByFullName<sup>14+</sup>
 
 getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise&lt;FontDescriptor&gt;
@@ -231,6 +328,10 @@ getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -254,6 +355,8 @@ getFontDescriptorByFullName(fullName: string, fontType: SystemFontType): Promise
 | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -287,6 +390,40 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Row, FontWeight} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Button("get fontDescriptor")
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .width(300)
+          .height(80)
+          .onClick(() => {
+            let fontType:text.SystemFontType = text.SystemFontType.GENERIC
+            let promise = text.getFontDescriptorByFullName("HarmonyOS Sans", fontType)
+            promise.then((fontdecriptor: text.FontDescriptor) => {
+              console.info(`desc: ${JSON.stringify(fontdecriptor)}`)
+            }).catch((error: Error) => {
+              console.error(`Failed to get fontDescriptor by fullName, error: ${JSON.stringify(error)}`);
+            });
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## text.getFontDescriptorsFromPath<sup>22+</sup>
 getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDescriptor&gt;&gt;   
 
@@ -303,6 +440,10 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -316,6 +457,8 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 | Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。如果找不到字体文件、路径无效、无权限或非字体文件，则返回空数组。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -350,8 +493,46 @@ struct GetFontDescriptorsFromPathTest {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent, FlexAlign } from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontDescriptorsFromPathTest {
+  build() {
+    Column() {
+      Button("get fontDescriptors")
+        .onClick((e: ClickEvent) => {
+          let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
+          promise.then((fontFullDescriptors: Array<text.FontDescriptor>) => {
+            for (let index = 0; index < fontFullDescriptors.length; index++) {
+              console.info("Path:" + fontFullDescriptors[index].path +
+                          "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
+                          "\nfullName:" + fontFullDescriptors[index].fullName +
+                          "\nfamilyName:" + fontFullDescriptors[index].fontFamily +
+                          "\nfontSubName:" + fontFullDescriptors[index].fontSubfamily +
+                          "\nweight:" + fontFullDescriptors[index].weight +
+                          "\nwidth:" + fontFullDescriptors[index].width +
+                          "\nitalic:" + fontFullDescriptors[index].italic +
+                          "\nmonoSpace:" + fontFullDescriptors[index].monoSpace +
+                          "\nsymbolic:" + fontFullDescriptors[index].symbolic)
+            }
+          })
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## text.getFontUnicodeSet<sup>23+</sup>
-getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn: getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta: getFontUnicodeSet(path: string | Resource, index: int): Promise&lt;Array&lt;int&gt;&gt;
 
 根据字体文件路径获取字体unicode数组。使用Promise异步回调。
 
@@ -361,20 +542,26 @@ getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;n
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
 | -----  | ------------------ | ---- | --------------------------------- |
 |  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
-|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
+|  index  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -400,8 +587,35 @@ struct GetFontUnicodeSetTest {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontUnicodeSetTest {
+  build() {
+    Column() {
+      Button("get fontUnicode").onClick(() => {
+        text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0).then((unicodeSet:Array<int>) => {
+          for (let index = 0; index < unicodeSet.length; index++) {
+            console.info(unicodeSet[index].toString())
+          }
+        }).catch((error: Error) => {
+          console.error(`Failed to get font unicode, error: ${JSON.stringify(error)}`)
+        });
+      })
+    }
+  }
+}
+```
+
 ## text.getFontCount<sup>23+</sup>
-getFontCount(path: string | Resource): number
+ArkTS-Dyn: getFontCount(path: string | Resource): number
+
+ArkTS-Sta: getFontCount(path: string | Resource): int
 
 根据字体文件路径获取包含的字体文件数。
 
@@ -410,6 +624,10 @@ getFontCount(path: string | Resource): number
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -423,9 +641,11 @@ getFontCount(path: string | Resource): number
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| number | 包含字体数量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 包含字体数量。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -435,6 +655,29 @@ import { text } from '@kit.ArkGraphics2D'
 struct GetFontCountTest {
   build() {
     Column({ space: 10 }) {
+      Button("get fontCount")
+        .onClick(() => {
+          let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
+          console.info("file count: " + fontCount)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, FlexAlign } from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontCountTest {
+  build() {
+    Column() {
       Button("get fontCount")
         .onClick(() => {
           let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
@@ -457,6 +700,10 @@ getFontPathsByType(fontType: SystemFontType): Array\<string\>
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -471,6 +718,8 @@ getFontPathsByType(fontType: SystemFontType): Array\<string\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ``` ts
 import { text } from '@kit.ArkGraphics2D'
 
@@ -479,6 +728,31 @@ import { text } from '@kit.ArkGraphics2D'
 struct GetFontPathsByTypeTest {
   build() {
     Column({ space: 10 }) {
+      Button("get font path")
+        .onClick(() => {
+          let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
+          console.info("file count: " + fontList.length)
+          for (let index = 0; index < fontList.length; index++) {
+            console.info("file path: " + fontList[index])
+          }
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+``` ts
+import {Entry, Component, Column, Button, FlexAlign} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontPathsByTypeTest {
+  build() {
+    Column() {
       Button("get font path")
         .onClick(() => {
           let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
@@ -504,6 +778,10 @@ isFontSupported(fontURL: string | Resource): boolean
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -517,6 +795,8 @@ isFontSupported(fontURL: string | Resource): boolean
 | boolean | 系统是否支持指定的字体文件。返回true表示支持，返回false表示不支持。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ``` ts
 import { text } from '@kit.ArkGraphics2D'
@@ -539,6 +819,29 @@ struct isFontSupportedTest {
 }
 ```
 
+ArkTS-Sta示例：
+
+``` ts
+import {Entry, Component, Column, Button, FlexAlign} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct isFontSupportedTest {
+  build() {
+    Column() {
+      Button("is font supported")
+        .onClick(() => {
+          let filePath = "file:///system/fonts/NotoSansCJK-Regular.ttc"
+          let isSupported = text.isFontSupported(filePath)
+          console.info("is font supported: " + isSupported)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
 ## TextHighContrast<sup>20+</sup>
 
@@ -547,6 +850,10 @@ struct isFontSupportedTest {
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                               | 值   | 说明                                            |
 | ---------------------------------- | ---- | ---------------------------------------------- |
@@ -562,10 +869,59 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值   | 说明                                 |
 | -------------- | ---- | ------------------------------------ |
 | USE_DEFAULT    | 0    | 使用字体的内部.notdef字形。遵循字体的内部.notdef字形设计，可以是空框、空格或自定义符号。|
 | USE_TOFU       | 1    | 总是用显式的豆腐块替换未定义的字形，覆盖字体的默认行为。用于调试缺失字符或强制一致的缺失符号显示。|
+
+## TextProcessState
+
+文本处理状态的枚举。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称               | 值   | 说明                                 |
+| ------------------ | ---- | ------------------------------------ |
+| INIT               | 0    | 初始状态，文本处理尚未开始。           |
+| INDEXED            | 1    | 已生成索引状态，文本索引已生成。           |
+| SHAPED             | 2    | 已塑形状态，文本已完成塑形。           |
+| LINE_BROKEN        | 3    | 已换行状态，文本已换行。               |
+| FORMATTED          | 4    | 已格式化状态，文本已完成格式化。       |
+| PAINT              | 5    | 已绘制状态，文本已完成绘制。           |
+| UPDATE_ATTRIBUTE   | 6    | 已更新属性状态，文本属性已更新。       |
+
+## TextDisplayState
+
+文本显示状态的枚举。表示文本排版后的原生结果，与外部画布裁切、溢出屏幕等外部显示因素无关。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称      | 值 | 说明                                |
+|---------|---|-----------------------------------|
+| UNKNOWN | 0 | 未知显示状态，默认状态。                      |
+| ALL     | 1 | 完整显示状态，文本无截断、无省略，全部内容正常显示。        |
+| CLIP    | 2 | 裁剪显示状态，文本超出排版区域的部分被直接裁剪隐藏。        |
+| OMITTED | 3 | 省略显示状态，文本超出排版区域后，部分内容以指定字符（如省略号 '...'）替代展示。 |
 
 ## TextAlign
 
@@ -574,6 +930,10 @@ struct isFontSupportedTest {
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值   | 说明                                          |
 | --------- | ---- | ---------------------------------------------- |
@@ -592,6 +952,10 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值   | 说明                                          |
 | --------- | ---- | ---------------------------------------------- |
 | BASELINE | 0    | 文本基线对齐。                                  |
@@ -607,6 +971,10 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值   | 说明              |
 | -------- | ---- | ---------------- |
 | RTL      | 0    | 文本从右到左排版。 |
@@ -619,6 +987,10 @@ struct isFontSupportedTest {
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值   | 说明                                            |
 | ------------- | ---- | ---------------------------------------------- |
@@ -636,10 +1008,10 @@ struct isFontSupportedTest {
 
 | 名称                          | 值   | 说明                                                                                                                  |
 |-----------------------------| ---- | -------------------------------------------------------------------------------------------------------------------- |
-| NORMAL                      | 0    | 默认的换行规则。依据各自语言的规则，允许在字间发生换行。                                                                  |
-| BREAK_ALL                   | 1    | 对于Non-CJK（非中文，日文，韩文）文本允许在任意字符内发生换行。该值适合包含一些非亚洲文本的亚洲文本，比如使连续的英文字符断行。|
-| BREAK_WORD                  | 2    | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点时，则在任意2个字符间断行。对于CJK与NORMAL效果一致。|
-| BREAK_HYPHEN<sup>18+</sup>  | 3    | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。<br/>使用此断词策略时，需与[TextStyle](#textstyle)中`locale`属性配合使用，通过locale定义语言环境共同作用影响断词效果。                        |
+| NORMAL                      | 0    | 默认的换行规则。依据各自语言的规则，允许在字间发生换行。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                                                                  |
+| BREAK_ALL                   | 1    | 对于Non-CJK（非中文，日文，韩文）文本允许在任意字符内发生换行。该值适合包含一些非亚洲文本的亚洲文本，比如使连续的英文字符断行。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| BREAK_WORD                  | 2    | 对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点时，则在任意2个字符间断行。对于CJK与NORMAL效果一致。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| BREAK_HYPHEN<sup>18+</sup>  | 3    | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟`BREAK_WORD`保持一致。<br/>使用此断词策略时，需与[TextStyle](#textstyle)中`locale`属性配合使用，通过locale定义语言环境共同作用影响断词效果。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23                        |
 
 ## Decoration
 
@@ -649,12 +1021,16 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                      | 类型                                                  | 只读 | 可选 | 说明                                         |
 | ------------------------- | --------------------------------------------------- | ---- | ---- | -------------------------------------------- |
 | textDecoration            | [TextDecorationType](#textdecorationtype)           | 否   | 是   | 装饰线类型，默认为NONE。                       |
 | color                     | [common2D.Color](js-apis-graphics-common2D.md#color)| 否   | 是   | 装饰线颜色，默认为跟随文本颜色。                       |
 | decorationStyle           | [TextDecorationStyle](#textdecorationstyle)         | 否   | 是   | 装饰线样式，默认为SOLID。                      |
-| decorationThicknessScale  | number                                              | 否   | 是   | 装饰线粗细系数，浮点数，默认为1.0。如果设置的值小于等于0，则不会绘制装饰线。|
+| decorationThicknessScale  | ArkTS-Dyn: number<br>ArkTS-Sta: double                                              | 否   | 是   | 装饰线粗细系数，浮点数，默认为1.0。如果设置的值小于等于0，则不会绘制装饰线。|
 
 ## TextDecorationType
 
@@ -663,6 +1039,10 @@ struct isFontSupportedTest {
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值 | 说明        |
 | -------------- | - | ----------- |
@@ -679,6 +1059,10 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明   |
 | ------ | - | ------ |
 | SOLID  | 0 | 实线。  |
@@ -694,6 +1078,10 @@ struct isFontSupportedTest {
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明   |
 | ----- | - | ------- |
@@ -715,6 +1103,10 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 值 | 说明       |
 | ---------------- | - | ---------- |
 | ULTRA_CONDENSED  | 1 | 超窄字宽。  |
@@ -735,6 +1127,10 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值 | 说明                                                 |
 | ------- | - | ---------------------------------------------------- |
 | NORMAL  | 0 | 常规样式。                                            |
@@ -748,6 +1144,10 @@ struct isFontSupportedTest {
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  |  值 | 说明                                                  |
 | --------------------- | --- | ---------------------------------------------------- |
@@ -764,6 +1164,10 @@ struct isFontSupportedTest {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值 | 说明 |
 | ----------- | - | ---- |
 | ALPHABETIC  | 0 | 用于拉丁字母的文本基线对齐。|
@@ -779,11 +1183,11 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
-| START  | 0 | 开头省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
-| MIDDLE | 1 | 中间省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
-| END    | 2 | 末尾省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
-| MULTILINE_START<sup>24+</sup> | 3 | 开头省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
-| MULTILINE_MIDDLE<sup>24+</sup> | 4 | 中间省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
+| START  | 0 | 开头省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| MIDDLE | 1 | 中间省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| END    | 2 | 末尾省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| MULTILINE_START<sup>24+</sup> | 3 | 开头省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| MULTILINE_MIDDLE<sup>24+</sup> | 4 | 中间省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 
 ## TextShadow
 
@@ -793,11 +1197,15 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                                                 | 只读 | 可选 | 说明                               |
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 字体阴影的颜色，默认为黑色Color(255, 0, 0, 0)。        |
 | point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零。    |
-| blurRadius    | number                                               | 否  |  是   | 模糊半径，浮点数，默认为0.0px。       |
+| blurRadius    | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  是   | 模糊半径，浮点数，默认为0.0px。       |
 
 ## RectStyle
 
@@ -807,13 +1215,17 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型                                                 | 只读 | 可选 | 说明                                      |
 | -----------------  | ---------------------------------------------------- | --  | ---  | ---------------------------------------- |
 | color              | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  否   | 矩形框的颜色。                 |
-| leftTopRadius      | number                                               | 否  |  否   | 矩形框的左上半径。       |
-| rightTopRadius     | number                                               | 否  |  否   | 矩形框的右上半径。       |
-| rightBottomRadius  | number                                               | 否  |  否   | 矩形框的右下半径。       |
-| leftBottomRadius   | number                                               | 否  |  否   | 矩形框的左下半径。       |
+| leftTopRadius      | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  否   | 矩形框的左上半径。       |
+| rightTopRadius     | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  否   | 矩形框的右上半径。       |
+| rightBottomRadius  | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  否   | 矩形框的右下半径。       |
+| leftBottomRadius   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  否   | 矩形框的左下半径。       |
 
 ## FontFeature
 
@@ -823,10 +1235,14 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
 | name      | string                                               | 否  |  否   | 字体特征键值对中的关键字标识的字符串。       |
-| value     | number                                               | 否  |  否   | 字体特征键值对的值。                        |
+| value     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                               | 否  |  否   | 字体特征键值对的值。                        |
 
 ## FontVariation
 
@@ -836,10 +1252,9 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
-| axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。       |
-| value     | number                                               | 否  |  否   | 可变字体属性键值对的值。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                        |
-| isNormalized<sup>24+</sup>     | boolean                         | 否  |  是   | 是否归一化。值为true时，value字段取值范围为-1~1，映射字体文件中配置的最小值到最大值范围，0表示字体文件中配置的默认值；值为false时，value字段取值范围为字体文件本身支持调节的范围；默认为false。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。  |
-
+| axis      | string      | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| value     | ArkTS-Dyn: number<br>ArkTS-Sta: double       | 否  |  否   | 可变字体属性键值对的值。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| isNormalized<sup>24+</sup>    | boolean  | 否  |  是   | 是否归一化。值为true时，value字段取值范围为-1~1，映射字体文件中配置的最小值到最大值范围，0表示字体文件中配置的默认值；值为false时，value字段取值范围为字体文件本身支持调节的范围；默认为false。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24  |
 ## TextBadgeType<sup>20+</sup>
 
 文本上下标枚举。
@@ -847,6 +1262,10 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
@@ -861,6 +1280,10 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
@@ -877,32 +1300,32 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 | 名称                      | 类型                                     | 只读 | 可选 | 说明                                                   |
 | ------------- | ---------------------------------------------------- | -- | -- | --------------------------------------------------------- |
-| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。             |
-| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。                         |
-| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold（即W600）时字体粗细无变化，当设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。                         |
-| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。                          |
-| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。                          |
-| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
-| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。                    |
-| fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为px。  |
-| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。|
-| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为px。                 |
-| heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。              |
-| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。|
-| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。|
-| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。       |
-| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。                       |
-| locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。 |
-| baselineShift | number                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，默认为0.0px。                 |
-| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。|
-| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。|
-| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。|
-| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。|
-| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。|
-| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。 |
-| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。 |
-| lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。 |
-| fontEdging<sup>24+</sup> | [drawing.FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) | 否 | 是 | 绘制文本的边缘处理方式，默认值为ANTI_ALIAS。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold（即W600）时字体粗细无变化，当设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                | 否 | 是 | 字体宽度，默认为NORMAL。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23|
+| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontSize      | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| letterSpacing | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| wordSpacing   | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                 |
+| heightScale   | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23              |
+| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| baselineShift | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 文本下划线的偏移距离，浮点数，默认为0.0px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| lineHeightMaximum<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 行高上限。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| lineHeightMinimum<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 行高下限。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| fontEdging<sup>24+</sup> | [drawing.FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) | 否 | 是 | 绘制文本的边缘处理方式，默认值为ANTI_ALIAS。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24|
 
 ## StrutStyle
 
@@ -912,15 +1335,19 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                      | 类型                                       | 只读 | 可选 | 说明                                                                 |
 | -------------  | ---------------------------------------------------- | ---- | -- | --------------------------------------------------------------------- |
 | fontFamilies   | Array\<string>                                       | 否   | 是 | 字体家族名称列表，默认为空，匹配系统字体。                                               |
 | fontStyle      | [FontStyle](#fontstyle)                              | 否   | 是 | 字体样式，默认为常规样式。                                               |
 | fontWidth      | [FontWidth](#fontwidth)                              | 否   | 是 | 字体宽度，默认为NORMAL。                                                |
 | fontWeight     | [FontWeight](#fontweight)                            | 否   | 是 | 字重，默认为W400。系统默认字体支持字重调节，其他字体设置字重值小于W600时无变化，大于等于W600时可能触发伪加粗效果。                             |
-| fontSize       | number                                               | 否   | 是 | 字体大小，浮点数，默认14.0，单位物理像素px。                             |
-| height         | number                                               | 否   | 是 | 行高缩放倍数，浮点数，默认为1.0。                                         |
-| leading        | number                                               | 否   | 是 | 以自定义行距应用于支柱的行距，浮点数，默认为-1.0。                          |
+| fontSize       | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否   | 是 | 字体大小，浮点数，默认14.0，单位物理像素px。                             |
+| height         | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否   | 是 | 行高缩放倍数，浮点数，默认为1.0。                                         |
+| leading        | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否   | 是 | 以自定义行距应用于支柱的行距，浮点数，默认为-1.0。                          |
 | forceHeight    | boolean                                              | 否   | 是 | 是否所有行都将使用支柱的高度，true表示使用，false表示不使用，默认为false。     |
 | enabled        | boolean                                              | 否   | 是 | 是否启用支柱样式，true表示使用，false表示不使用，默认为false。              |
 | heightOverride | boolean                                              | 否   | 是 | 是否覆盖高度，true表示覆盖，false表示不覆盖，默认为false。                  |
@@ -934,28 +1361,28 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | -  | - | - |
-| path | string | 否 | 是 | 字体绝对路径，可取遵循系统限制的任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| postScriptName | string | 否 | 是 | 字体唯一标识名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| fullName | string | 否 | 是 | 字体名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| italic | number | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| localPostscriptName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体唯一标识，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| localFullName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体全名，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| localFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| localSubFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取子字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| version<sup>23+</sup> | string | 否 | 是 | 字体版本，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| manufacture<sup>23+</sup> | string | 否 | 是 | 字体制造商信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| copyright<sup>23+</sup> | string | 否 | 是 | 字体版权信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| trademark<sup>23+</sup> | string | 否 | 是 | 字体商标信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| license<sup>23+</sup> | string | 否 | 是 | 字体许可证信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| variationAxisRecords<sup>24+</sup> | Array<[FontVariationAxis](#fontvariationaxis24)> | 否 | 是 | 字体可变轴记录数组，用于描述字体支持的可变轴信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
-| variationInstanceRecords<sup>24+</sup> | Array<[FontVariationInstance](#fontvariationinstance24)> | 否 | 是 | 字体可变实例记录数组，用于描述字体支持的可变实例信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
-| index<sup>23+</sup> | number | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| path | string | 否 | 是 | 字体绝对路径，可取遵循系统限制的任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| postScriptName | string | 否 | 是 | 字体唯一标识名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| fullName | string | 否 | 是 | 字体名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| italic | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| localPostscriptName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体唯一标识，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| localFullName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体全名，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| localFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| localSubFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取子字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| version<sup>23+</sup> | string | 否 | 是 | 字体版本，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| manufacture<sup>23+</sup> | string | 否 | 是 | 字体制造商信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| copyright<sup>23+</sup> | string | 否 | 是 | 字体版权信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| trademark<sup>23+</sup> | string | 否 | 是 | 字体商标信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| license<sup>23+</sup> | string | 否 | 是 | 字体许可证信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| variationAxisRecords<sup>24+</sup> | Array<[FontVariationAxis](#fontvariationaxis24)> | 否 | 是 | 字体可变轴记录数组，用于描述字体支持的可变轴信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| variationInstanceRecords<sup>24+</sup> | Array<[FontVariationInstance](#fontvariationinstance24)> | 否 | 是 | 字体可变实例记录数组，用于描述字体支持的可变实例信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| index<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## FontVariationAxis<sup>24+</sup>
 
@@ -965,13 +1392,17 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
 | key | string | 否 | 否 | 字体可变轴的关键字标识。 |
-| minValue | number | 否 | 否 | 字体可变轴的最小值。 |
-| maxValue | number | 否 | 否 | 字体可变轴的最大值。 |
-| defaultValue | number | 否 | 否 | 字体可变轴的默认值。 |
-| flags | number | 否 | 否 | 字体可变轴的标志位，用于标记某个可变轴是否应该对用户隐藏，值为0或1。值为0时表示该轴对用户可见，值为1时表示该轴应隐藏。 |
+| minValue | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 字体可变轴的最小值。 |
+| maxValue | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 字体可变轴的最大值。 |
+| defaultValue | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 字体可变轴的默认值。 |
+| flags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 字体可变轴的标志位，用于标记某个可变轴是否应该对用户隐藏，值为0或1。值为0时表示该轴对用户可见，值为1时表示该轴应隐藏。 |
 | name | string | 否 | 否 | 字体可变轴的英文名称。 |
 | localName | string | 否 | 否 | 字体可变轴的本地化名称，可以为空。 |
 
@@ -982,6 +1413,10 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
@@ -1003,6 +1438,10 @@ static getGlobalInstance(): FontCollection
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                |
@@ -1010,6 +1449,8 @@ static getGlobalInstance(): FontCollection
 | [FontCollection](#fontcollection) | FontCollection对象。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -1024,7 +1465,31 @@ struct Index {
   fun: Function = textFunc;
   build() {
     Column() {
-      Button().onClick(() => {
+      Button("Click").onClick(() => {
+        this.fun();
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+function textFunc() {
+  let fontCollection = text.FontCollection.getGlobalInstance();
+}
+
+@Entry
+@Component
+struct Index {
+  fun: () => void = textFunc;
+  build() {
+    Column() {
+      Button("Click").onClick(() => {
         this.fun();
       })
     }
@@ -1043,6 +1508,10 @@ static getLocalInstance(): FontCollection
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1069,6 +1538,10 @@ loadFontSync(name: string, path: string | Resource): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -1078,8 +1551,47 @@ loadFontSync(name: string, path: string | Resource): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { text } from '@kit.ArkGraphics2D'
+
+let fontCollection: text.FontCollection = new text.FontCollection();
+
+@Entry
+@Component
+struct RenderTest {
+  LoadFontSyncTest() {
+    fontCollection.loadFontSync('Clock_01', 'file:///system/fonts/HarmonyClock_01.ttf')
+    let fontFamilies: Array<string> = ["Clock_01"]
+    let myTextStyle: text.TextStyle = {
+      fontFamilies: fontFamilies
+    };
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+    }
+    let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+
+    let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
+    paragraphBuilder.addText(textData);
+    let paragraph: text.Paragraph = paragraphBuilder.build();
+    paragraph.layoutSync(600);
+  }
+
+  aboutToAppear() {
+    this.LoadFontSyncTest();
+  }
+
+  build() {
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
 
 let fontCollection: text.FontCollection = new text.FontCollection();
 
@@ -1124,6 +1636,10 @@ loadFont(name: string, path: string | Resource): Promise\<void>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名 | 类型               | 必填 | 说明                              |
@@ -1146,6 +1662,8 @@ loadFont(name: string, path: string | Resource): Promise\<void>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -1172,9 +1690,39 @@ struct RenderTest {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column } from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+let fontCollection: text.FontCollection = new text.FontCollection();
+
+@Entry
+@Component
+struct RenderTest {
+  async loadFontPromise() {
+    fontCollection.loadFont('testName', 'file:///system/fonts/a.ttf').then(() => {
+      console.info(`Succeeded in doing loadFont`);
+    }).catch((error: Error) => {
+      console.error(`Failed to do loadFont, error: ${JSON.stringify(error)} message: ${error.message}`);
+    });
+  }
+
+  aboutToAppear() {
+    this.loadFontPromise();
+  }
+
+  build() {
+  }
+}
+```
+
 ### loadFontSyncWithCheck<sup>23+</sup>
 
-loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
+ArkTS-Dyn: loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
+
+ArkTS-Sta: loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void
 
 同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
 
@@ -1184,13 +1732,17 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
 | ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
 | name  | string             | 是   | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
 | path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
-|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+|   index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
 
 **错误码：**
 
@@ -1208,6 +1760,8 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 | 25900008 | Corrupt file. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -1245,9 +1799,51 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { 
+  Entry, Component, RelativeContainer, Text, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign
+} from '@ohos.arkui.component';
+import { text } from '@kit.ArkGraphics2D';
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
+          try {
+            fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
+          } catch (e) {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### loadFontWithCheck<sup>23+</sup>
 
-loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise\<void>
+ArkTS-Dyn: loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise\<void>
+
+ArkTS-Sta: loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise\<void>
 
 加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
 
@@ -1257,13 +1853,17 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名 | 类型               | 必填 | 说明                              |
 |   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
 |   name   | string             | 是   | 加载字体成功后，该字体对应的名称，可填写任意字符串，可使用该名称指定并使用该字体。 |
 |   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要加载的字体文件的路径，支持两种格式： "file:// + 字体文件绝对路径" 或 $rawfile("字体文件路径")。 |
-|   index  | number | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
+|   index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 字体文件格式为ttc时，指定加载的字体索引。默认为0：表示加载ttc的第一个字体。<br>非ttc格式文件索引值无意义，若指定索引，只能为0。 |
 
 **返回值：**
 
@@ -1287,6 +1887,8 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 | 25900008 | Corrupt file. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -1328,6 +1930,50 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { 
+  Entry, Component, RelativeContainer, Text, FontWeight, AlignRuleOption, VerticalAlign, HorizontalAlign
+} from '@ohos.arkui.component';
+import { text } from '@kit.ArkGraphics2D';
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+        .onClick(() => {
+          fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+          fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### unloadFontSync<sup>20+</sup>
 unloadFontSync(name: string): void
 
@@ -1347,6 +1993,10 @@ unloadFontSync(name: string): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名 | 类型               | 必填 | 说明                              |
@@ -1354,6 +2004,8 @@ unloadFontSync(name: string): void
 |   name   | string             | 是   | 需要取消注册的字体别名，与加载字体时使用的别名相同。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ``` ts
 import { text } from '@kit.ArkGraphics2D'
@@ -1366,6 +2018,40 @@ struct UnloadFontSyncTest {
 
   build() {
     Column({ space: 10 }) {
+      Text(this.content)
+        .fontFamily("custom")
+      Button("load font")
+        .onClick(() => {
+          this.fc.loadFontSync("custom", "file:///system/fonts/NotoSansCJK-Regular.ttc")
+          this.content = "自定义字体"
+        })
+      Button("unload font")
+        .onClick(() => {
+          this.fc.unloadFontSync("custom")
+          this.content = "默认字体"
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Component, Column, Text, Button, FlexAlign} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { text } from "@kit.ArkGraphics2D"
+
+@Entry
+@Component
+struct UnloadFontSyncTest {
+  private fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+  @State content: string = "默认字体"
+
+  build() {
+    Column() {
       Text(this.content)
         .fontFamily("custom")
       Button("load font")
@@ -1404,6 +2090,10 @@ unloadFont(name: string): Promise\<void>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型               | 必填 | 说明                              |
@@ -1417,6 +2107,8 @@ unloadFont(name: string): Promise\<void>
 | Promise\<void> | 无返回结果的Promise对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -1448,6 +2140,44 @@ struct UnloadFontTest {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Text, Button, FlexAlign} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { text } from "@kit.ArkGraphics2D"
+
+@Entry
+@Component
+struct UnloadFontTest {
+  private fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+  @State content: string = "默认字体"
+
+  build() {
+    Column() {
+      Text(this.content)
+        .fontFamily("custom")
+      Button("load font")
+        .onClick(() => {
+          (async () => {
+            await this.fc.loadFont("custom", "file:///system/fonts/NotoSansCJK-Regular.ttc");
+            this.content = "自定义字体";
+          })();
+        })
+      Button("unload font")
+        .onClick(() => {
+          (async () => {
+            await this.fc.unloadFont("custom");
+            this.content = "默认字体";
+          })();
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ### clearCaches
 
 clearCaches(): void
@@ -1460,7 +2190,13 @@ clearCaches(): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
@@ -1478,6 +2214,25 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        text.FontCollection.getGlobalInstance().clearCaches();
+      })
+    }
+  }
+}
+```
+
 ## ParagraphStyle
 
 段落样式。
@@ -1486,23 +2241,23 @@ struct Index {
 
 | 名称                 | 类型                                        | 只读 | 可选 | 说明                                          |
 | -------------------- | ------------------------------------------ | ---- | ---- | -------------------------------------------- |
-| textStyle            | [TextStyle](#textstyle)                    | 否   | 是   | 作用于整个段落的文本样式，默认为初始的文本样式。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| textDirection        | [TextDirection](#textdirection)            | 否   | 是   | 文本方向，默认为LTR。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                         |
-| align                | [TextAlign](#textalign)                    | 否   | 是   | 文本对齐方式，默认为START。若同时配置tab属性，制表符对齐方式将失效。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| wordBreak            | [WordBreak](#wordbreak)                    | 否   | 是   | 断词类型，默认为BREAK_WORD。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                    |
-| maxLines             | number                                     | 否   | 是   | 最大行数限制，整数，默认为1e9。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                  |
-| breakStrategy        | [BreakStrategy](#breakstrategy)            | 否   | 是   | 断行策略，默认为GREEDY。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                        |
-| strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。               |
-| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                              |
-| tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| orphanCharOptimization | boolean | 否 | 是 | 设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak)为非BREAK_ALL并且待排版文本首个[TextStyle](#textstyle)的[locale](#textstyle)为“zh-Hans”或“zh-Hant”时生效。true表示使能孤字优化，false表示不使能孤字优化，默认值为false。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| textStyle            | [TextStyle](#textstyle)                    | 否   | 是   | 作用于整个段落的文本样式，默认为初始的文本样式。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| textDirection        | [TextDirection](#textdirection)            | 否   | 是   | 文本方向，默认为LTR。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                          |
+| align                | [TextAlign](#textalign)                    | 否   | 是   | 文本对齐方式，默认为START。若同时配置tab属性，制表符对齐方式将失效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| wordBreak            | [WordBreak](#wordbreak)                    | 否   | 是   | 断词类型，默认为BREAK_WORD。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                    |
+| maxLines             | ArkTS-Dyn: number<br>ArkTS-Sta: int        | 否   | 是   | 最大行数限制，整数，默认为1e9。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                  |
+| breakStrategy        | [BreakStrategy](#breakstrategy)            | 否   | 是   | 断行策略，默认为GREEDY。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                        |
+| strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23               |
+| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                              |
+| tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| lineSpacing<sup>21+</sup>   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| orphanCharOptimization | boolean | 否 | 是 | 设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak)为非BREAK_ALL并且待排版文本首个[TextStyle](#textstyle)的[locale](#textstyle)为“zh-Hans”或“zh-Hant”时生效。true表示使能孤字优化，false表示不使能孤字优化，默认值为false。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |
@@ -1520,7 +2275,6 @@ struct Index {
 | ［ | U+FF3B | FULLWIDTH LEFT SQUARE BRACKET |
 | ｛ | U+FF5B | FULLWIDTH LEFT CURLY BRACKET |
 
-
 ## PlaceholderAlignment
 
 占位符相对于周围文本的纵向对齐方式。
@@ -1531,13 +2285,13 @@ struct Index {
 
 | 名称                | 值 | 说明                   |
 | ------------------- | - | ---------------------- |
-| OFFSET_AT_BASELINE  | 0 | 基线与文本基线对齐。     |
-| ABOVE_BASELINE      | 1 | 底部与文本基线对齐。   |
-| BELOW_BASELINE      | 2 | 顶部与文本基线对齐。   |
-| TOP_OF_ROW_BOX      | 3 | 顶部与文本顶部对齐。   |
-| BOTTOM_OF_ROW_BOX   | 4 | 底部与文本底部对齐。   |
-| CENTER_OF_ROW_BOX   | 5 | 居中对齐。|
-| FOLLOW_PARAGRAPH<sup>20+</sup> | 6 | 跟随文本排版对齐。|
+| OFFSET_AT_BASELINE  | 0 | 基线与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23     |
+| ABOVE_BASELINE      | 1 | 底部与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| BELOW_BASELINE      | 2 | 顶部与文本基线对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| TOP_OF_ROW_BOX      | 3 | 顶部与文本顶部对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| BOTTOM_OF_ROW_BOX   | 4 | 底部与文本底部对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| CENTER_OF_ROW_BOX   | 5 | 居中对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| FOLLOW_PARAGRAPH<sup>20+</sup> | 6 | 跟随文本排版对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
 
 ![zh-ch_image_PlaceholderAlignment.png](figures/zh-ch_image_PlaceholderAlignment.png)
 
@@ -1555,13 +2309,17 @@ struct Index {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                                           | 只读 | 可选 | 说明                         |
 | -------------- | --------------------------------------------- | ---- | --- | --------------------------- |
-| width          | number                                        | 否   | 否   | 占位符的宽度，浮点数，单位为物理像素px。|
-| height         | number                                        | 否   | 否   | 占位符的高度，浮点数，单位为物理像素px。|
+| width          | ArkTS-Dyn: number<br>ArkTS-Sta: double                                        | 否   | 否   | 占位符的宽度，浮点数，单位为物理像素px。|
+| height         | ArkTS-Dyn: number<br>ArkTS-Sta: double                                        | 否   | 否   | 占位符的高度，浮点数，单位为物理像素px。|
 | align          | [PlaceholderAlignment](#placeholderalignment) | 否   | 否   | 相对于周围文本的纵向对齐方式。|
 | baseline       | [TextBaseline](#textbaseline)                 | 否   | 否   | 基线类型。                   |
-| baselineOffset | number                                        | 否   | 否   | 基线偏移量，浮点数，单位为物理像素px。  |
+| baselineOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double                                        | 否   | 否   | 基线偏移量，浮点数，单位为物理像素px。  |
 
 ## Range
 
@@ -1571,10 +2329,14 @@ struct Index {
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 只读 | 可选 | 说明            |
 | ----- | ------ | ---- | --- | --------------- |
-| start | number | 否   | 否   | 区间左侧端点索引，整数。|
-| end   | number | 否   | 否   | 区间右侧端点索引，整数。|
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 区间左侧端点索引，整数。|
+| end   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 区间右侧端点索引，整数。|
 
 ## TextRectSize<sup>24+</sup>
 
@@ -1584,12 +2346,16 @@ struct Index {
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称    | 类型   | 只读 | 可选 | 说明                       |
 | ----- | ------ | ---- | --- | -------------------------- |
-| width  | number | 否   | 否   | 文本矩形的宽度，浮点数，单位为px。|
-| height | number | 否   | 否   | 文本矩形的高度，浮点数，单位为px。|
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 文本矩形的宽度，浮点数，单位为px。|
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 文本矩形的高度，浮点数，单位为px。|
 
 ## TextLayoutResult<sup>24+</sup>
 
@@ -1598,6 +2364,10 @@ struct Index {
 **系统能力**：SystemCapability.Graphics.Drawing
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1614,7 +2384,9 @@ struct Index {
 
 ### layoutSync
 
-layoutSync(width: number): void
+ArkTS-Dyn: layoutSync(width: number): void
+
+ArkTS-Sta: layoutSync(width: double): void
 
 进行排版并计算所有字形位置。
 
@@ -1622,11 +2394,15 @@ layoutSync(width: number): void
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
-| width | number | 是   | 单行的最大宽度，浮点数，单位为物理像素px。|
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 单行的最大宽度，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1636,7 +2412,9 @@ paragraph.layoutSync(100);
 
 ### layout<sup>18+</sup>
 
-layout(width: number): Promise\<void>
+ArkTS-Dyn: layout(width: number): Promise\<void>
+
+ArkTS-Sta: layout(width: double): Promise\<void>
 
 进行排版并计算所有字形位置，使用Promise异步回调。
 
@@ -1644,11 +2422,15 @@ layout(width: number): Promise\<void>
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名   |    类型               | 必填 | 说明                                    |
 |   -----   |   ------------------  | ---- | --------------------------------------- |
-|   width   | number                | 是   | 单行的最大宽度，浮点数，单位为物理像素px。    |
+|   width   | ArkTS-Dyn: number<br>ArkTS-Sta: double                | 是   | 单行的最大宽度，浮点数，单位为物理像素px。    |
 
 **返回值：**
 
@@ -1665,6 +2447,8 @@ layout(width: number): Promise\<void>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, text } from '@kit.ArkGraphics2D'
@@ -1723,7 +2507,85 @@ struct Index {
         .height(50)
         .onClick(() => {
           const color: ArrayBuffer = new ArrayBuffer(160000);
-          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          if (this.pixelmap == undefined) {
+            // 构造图片对象
+            this.pixelmap = image.createPixelMapSync(color, opts);
+          }
+          // 进行绘制文字
+          this.fun(this.pixelmap);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Image, Button, ClickEvent} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { drawing, text } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit';
+
+let textStyle: text.TextStyle = {
+  color: {
+    alpha: 255,
+    red: 255,
+    green: 0,
+    blue: 0
+  },
+  fontSize: 30,
+};
+let paragraphStyle: text.ParagraphStyle = {
+  textStyle: textStyle,
+};
+let fontCollection: text.FontCollection = new text.FontCollection();
+let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+// 添加文本字符串
+paragraphBuilder.addText("test");
+// 生成排版对象
+let paragraph = paragraphBuilder.build();
+
+function textFunc(pixelmap?: image.PixelMap) {
+  if (pixelmap != undefined) {
+    // 通过图片对象构造画布
+    let canvas = new drawing.Canvas(pixelmap);
+    // 进行绘制文本字符串
+    paragraph.paint(canvas, 100, 10);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: image.PixelMap = undefined;
+  fun: (pixelmap?: image.PixelMap) => void = textFunc;
+
+  async prepareLayoutPromise() {
+    // 排版对象进行布局计算
+    paragraph.layout(200).then(() => {
+      console.info(`Succeeded in doing layout`);
+    }).catch((error: Error) => {
+      console.error(`Failed to do layout, error: ${JSON.stringify(error)} message: ${error.message}`);
+    });
+  }
+
+  aboutToAppear() {
+    this.prepareLayoutPromise();
+  }
+
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("layout")
+        .width(100)
+        .height(50)
+        .onClick((e: ClickEvent) => {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
           if (this.pixelmap == undefined) {
             // 构造图片对象
             this.pixelmap = image.createPixelMapSync(color, opts);
@@ -2573,6 +3435,289 @@ struct Index {
           let x = 10;
           let y = 5;
           let position = paragraph.getCharacterPositionAtCoordinate(x, y, encoding);
+        })
+    }
+  }
+}
+```
+
+### getProcessState
+
+getProcessState(): TextProcessState
+
+获取段落的文本处理状态。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [TextProcessState](#textprocessstate) | 段落的文本处理状态。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          let processState = paragraph.getProcessState(); // Now it is INIT
+          console.info("Print state: " + processState);
+          paragraph.layoutSync(200);
+          processState = paragraph.getProcessState(); // Now it is FORMATTED
+          console.info("Print state: " + processState);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D";
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          let processState = paragraph.getProcessState(); // Now it is INIT
+          console.info("Print state: " + processState);
+          paragraph.layoutSync(200);
+          processState = paragraph.getProcessState(); // Now it is FORMATTED
+          console.info("Print state: " + processState);
+        })
+    }
+  }
+}
+```
+
+### getTextDisplayState
+
+getTextDisplayState(): TextDisplayState
+
+获取段落的文本显示状态。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [TextDisplayState](#textdisplaystate) | 段落的文本显示状态。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          let displayState = paragraph.getTextDisplayState(); // Now it is UNKNOWN
+          console.info("Print state: " + displayState);
+          paragraph.layoutSync(200);
+          displayState = paragraph.getTextDisplayState(); // Now it is CLIP
+          console.info("Print state: " + displayState);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D";
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          let displayState = paragraph.getTextDisplayState(); // Now it is UNKNOWN
+          console.info("Print state: " + displayState);
+          paragraph.layoutSync(200);
+          displayState = paragraph.getTextDisplayState(); // Now it is CLIP
+          console.info("Print state: " + displayState);
+        })
+    }
+  }
+}
+```
+
+### getParagraphStyle
+
+getParagraphStyle(): ParagraphStyle
+
+获取段落的样式配置。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let paragraphStyle = paragraph.getParagraphStyle();
+          if (paragraphStyle.textStyle != undefined) {
+            console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D";
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let paragraphStyle = paragraph.getParagraphStyle();
+          console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
         })
     }
   }
