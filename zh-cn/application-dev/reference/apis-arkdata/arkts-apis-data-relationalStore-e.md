@@ -199,7 +199,7 @@ export default class EntryAbility extends UIAbility {
 | ASSET_DELETE | 4 | 表示资产需要在云端删除。 |
 | ASSET_ABNORMAL    | 5   | 表示资产状态异常。      |
 | ASSET_DOWNLOADING | 6   | 表示资产正在下载到本地设备。 |
-| ASSET_TO_DOWNLOAD | 7 | 表示资产待下载。<br/>**起始版本**：26.0.0<br/> <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ASSET_TO_DOWNLOAD | 7 | 表示资产待下载。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SyncMode
 
@@ -311,7 +311,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称 | 值 | 说明 |
 |------|---|--------------------|
-| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照数据同步模式执行。 |
+| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照[同步模式](arkts-apis-data-relationalStore-e.md#syncmode)执行。 |
 | CONFLICT_POLICY_TIME_FIRST | 1 | 基于时间优先的冲突策略。 |
 | CONFLICT_POLICY_TEMP_PATH | 2 | 基于临时路径的冲突策略。 |
 
@@ -343,7 +343,7 @@ export default class EntryAbility extends UIAbility {
 | RECORD_LIMIT_EXCEEDED | 5    | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。                             |
 | NO_SPACE_FOR_ASSET    | 6    | 表示云空间剩余空间小于待同步的资产大小。                                          |
 | BLOCKED_BY_NETWORK_STRATEGY<sup>12+</sup>    | 7    | 表示端云同步被网络策略限制。                                                |
-| STOP_CLOUD_SYNC    | 8    | 表示端云同步被停止。<br/>**起始版本**：26.0.0<br/> <br/>**模型约束：** 此接口仅可在Stage模型下使用。                                                    |
+| STOP_CLOUD_SYNC    | 8    | 表示端云同步被停止。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                                    |
 
 ## TransactionType<sup>14+</sup>
 
