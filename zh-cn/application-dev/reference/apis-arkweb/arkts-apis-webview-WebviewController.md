@@ -15352,60 +15352,6 @@ struct Index {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import fileIo from '@ohos.file.fs';
-import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  pdfConfig: webview.PdfConfiguration = {
-    width: 8.27,
-    height: 11.69,
-    marginTop: 0,
-    marginBottom: 0,
-    marginRight: 0,
-    marginLeft: 0,
-    shouldPrintBackground: true
-  } as webview.PdfConfiguration
-
-  build() {
-    Column() {
-      Button('SavePDF')
-        .onClick(() => {
-          this.controller.createPdf(this.pdfConfig)
-            .then((result: webview.PdfData) => {
-              try {
-                // 获取组件上下文
-                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                // 获取沙箱路径，设置pdf文件名
-                let filePath = context.filesDir + "/test.pdf";
-                let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-                fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: long) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
-                }).catch((err: Error) => {
-                  console.error("createPDF write data to file failed with error message: " + err.message +
-                    ", error code: " + err.code);
-                }).finally(() => {
-                  fileIo.closeSync(file);
-                });
-              } catch (resError) {
-                console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
-              }
-            })
-        })
-      Web({ src: "www.example.com", controller: this.controller })
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-'use static'
 import { fileIo } from '@kit.CoreFileKit';
 import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
