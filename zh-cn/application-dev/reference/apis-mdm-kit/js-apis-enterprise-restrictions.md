@@ -834,7 +834,7 @@ let wantTemp: Want = {
 try {
   // 参数需根据实际情况进行替换
   let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.SUPER_HUB, 100);
-  console.info(`Succeeded in querying whether the super hub is disabled : ${result}`);
+  console.info(`Succeeded in querying whether the super hub is disabled: ${result}`);
 } catch (err) {
   console.error(`Failed to get whether super hub is disabled. Code is ${err.code}, message is ${err.message}`);
 }
