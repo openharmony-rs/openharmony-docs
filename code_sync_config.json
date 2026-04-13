@@ -37984,7 +37984,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/specifyUncompressedPublicKey.cpp",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":61,
 						"name":"convert_ecc_uncompressed_pub_keypair",
 						"start_line":16
 					}
@@ -37999,7 +37999,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/CompressedPointData.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":29,
 						"name":"convert_ecc_uncompressed_point",
 						"start_line":16
 					}
@@ -38244,7 +38244,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":54,
 						"name":"generate_sm2_keypair",
 						"start_line":16
 					}
@@ -38499,7 +38499,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionAsync.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":81,
 						"name":"encrypt_decrypt_chacha20_async",
 						"start_line":16
 					}
@@ -38889,7 +38889,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":40,
 						"name":"specify_ecc_uncompressed_point_get_keypair",
 						"start_line":16
 					}
