@@ -174,7 +174,7 @@
 
    ```ts
    import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
