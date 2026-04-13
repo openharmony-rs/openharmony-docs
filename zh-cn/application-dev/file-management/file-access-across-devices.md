@@ -32,7 +32,7 @@
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
    try {
-     //以动态弹窗的方式向用户申请授权
+     // 以动态弹窗的方式向用户申请授权
      atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
        console.info(`request permission result: ${JSON.stringify(result)}`);
      }).catch((err: BusinessError) => {
