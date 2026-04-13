@@ -1578,7 +1578,7 @@ struct Index {
 
 ## TextRectSize<sup>24+</sup>
 
-文本完成排版计算后的矩形尺寸。值为浮点数，单位为物理像素px。
+文本矩形尺寸，用于描述文本的矩形宽高属性。值为浮点数，单位为物理像素px。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
