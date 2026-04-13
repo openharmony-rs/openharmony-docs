@@ -11,12 +11,19 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
-```js
+ArkTS-Dyn示例：
+```ts
 import {thermal} from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import thermal from '@ohos.thermal';
 ```
 
 ## thermal.registerThermalLevelCallback<sup>9+</sup>
@@ -26,6 +33,10 @@ registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 **方法介绍：** 订阅热档位变化时的回调提醒。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -43,7 +54,7 @@ registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
 **示例：**
 
-```js
+```ts
 try {
     thermal.registerThermalLevelCallback((level: thermal.ThermalLevel) => {
         console.info('thermal level is: ' + level);
@@ -62,6 +73,10 @@ unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                           |
@@ -78,7 +93,7 @@ unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
 **示例：**
 
-```js
+```ts
 try {
     thermal.unregisterThermalLevelCallback(() => {
         console.info('unsubscribe thermal level success.');
@@ -97,6 +112,9 @@ getLevel(): ThermalLevel
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -106,7 +124,7 @@ getLevel(): ThermalLevel
 
 **示例：**
 
-```js
+```ts
 let level = thermal.getLevel();
 console.info('thermal level is: ' + level);
 ```
@@ -129,7 +147,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 **示例：**
 
-```js
+```ts
 thermal.subscribeThermalLevel((err: Error, level: thermal.ThermalLevel) => {
     console.info('thermal level is: ' + level);
 });
@@ -153,7 +171,7 @@ unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
 **示例：**
 
-```js
+```ts
 thermal.unsubscribeThermalLevel(() => {
     console.info('unsubscribe thermal level success.');
 });
@@ -177,7 +195,7 @@ getThermalLevel(): ThermalLevel
 
 **示例：**
 
-```js
+```ts
 let level = thermal.getThermalLevel();
 console.info('thermal level is: ' + level);
 ```
@@ -190,11 +208,11 @@ console.info('thermal level is: ' + level);
 
 | 名称       | 值   | 说明                                                         |
 | ---------- | ---- | ------------------------------------------------------------ |
-| COOL       | 0    | 表明设备处于清凉状态，业务执行不受热控的限制。             |
-| NORMAL     | 1    | 表明设备温度正常，但邻近温热状态，无感知业务应降低规格和负载。 |
-| WARM       | 2    | 表明设备进入温热状态，无感知业务应暂停或延迟运行。 |
-| HOT        | 3    | 表明设备发热明显，无感知业务应停止，非关键业务应降低规格及负载。 |
-| OVERHEATED | 4    | 表明设备发热严重，无感知业务与非关键业务应停止，前台关键业务应降低规格及负载。 |
-| WARNING    | 5    | 表明设备过热即将进入紧急状态，整机资源供给大幅降低，停止所有非关键业务，前台关键业务应降低至最低规格。 |
-| EMERGENCY  | 6    | 表明设备已经进入过热紧急状态，整机资源供给降至最低，设备功能受限，仅保留基础功能可用。 |
-| ESCAPE<sup>11+</sup>     | 7    | 表明设备即将进入热逃生状态，所有业务将被强制停止，业务需做好逃生措施，例如保存重要数据等。 <br>**说明**: 从API version 11开始支持。|
+| COOL       | 0    | 表明设备处于清凉状态，业务执行不受热控的限制。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23             |
+| NORMAL     | 1    | 表明设备温度正常，但邻近温热状态，无感知业务应降低规格和负载。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
+| WARM       | 2    | 表明设备进入温热状态，无感知业务应暂停或延迟运行。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
+| HOT        | 3    | 表明设备发热明显，无感知业务应停止，非关键业务应降低规格及负载。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
+| OVERHEATED | 4    | 表明设备发热严重，无感知业务与非关键业务应停止，前台关键业务应降低规格及负载。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
+| WARNING    | 5    | 表明设备过热即将进入紧急状态，整机资源供给大幅降低，停止所有非关键业务，前台关键业务应降低至最低规格。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
+| EMERGENCY  | 6    | 表明设备已经进入过热紧急状态，整机资源供给降至最低，设备功能受限，仅保留基础功能可用。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
+| ESCAPE<sup>11+</sup>     | 7    | 表明设备即将进入热逃生状态，所有业务将被强制停止，业务需做好逃生措施，例如保存重要数据等。 <br>**说明**：从API version 11开始支持。<br/>**ArkTS-Dyn起始版本：**11<br/>**ArkTS-Sta起始版本：**23|
