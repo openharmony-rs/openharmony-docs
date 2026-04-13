@@ -10806,6 +10806,19 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 窗口方向指窗口所在屏幕的方向，以窗口模块对横竖屏的定义方式表示，窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其对横竖屏的定义与[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中对横竖屏的定义一致，如Orientation设置为LANDSCAPE时，窗口方向为横屏。
 
+> **说明：**
+>
+> 示意图和表格展示了直板机窗口方向、屏幕方向和屏幕角度的关系。
+>
+>  ![orientationAndRotation](figures/orientationAndRotation.PNG)
+>
+> | 屏幕角度 | 屏幕方向 | 窗口方向 |
+> | -------  | ------- | ------- |
+> | 0        | PORTRAIT  | PORTRAIT   |
+> | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
+> | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
+> | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在Phone和Tablet设备可正常调用，在其他设备中返回801错误码。
@@ -10833,19 +10846,6 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003  | This window manager service works abnormally.        |
-
-> **说明：**
->
-> 示意图和表格展示了直板机窗口方向、屏幕方向和屏幕角度的关系。
->
->  ![orientationAndRotation](figures/orientationAndRotation.PNG)
->
-> | 屏幕角度 | 屏幕方向 | 窗口方向 |
-> | -------  | ------- | ------- |
-> | 0        | PORTRAIT  | PORTRAIT   |
-> | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
-> | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
-> | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
 
 **示例：**
 
