@@ -1469,6 +1469,8 @@ pasteData.setProperty(prop);
 
 ArkTS-Dyn: getRecord(index: number): PasteDataRecord
 
+ArkTS-Sta: getRecord(index: int): PasteDataRecord
+
 获取剪贴板内容中指定下标的条目。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
