@@ -1394,7 +1394,7 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applicatio
 
 为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
 
-若已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount)接口禁用了某用户下的中转站，再通过本接口添加中转站为该用户的不可关停应用，会报策略冲突，抛出9200010错误码。可以通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount)接口解除禁用该用户下的中转站来解冲突。
+若已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount)接口禁用了某用户下的中转站，再通过本接口添加中转站为该用户的不可关停应用，会策略冲突，抛出9200010错误码。可以通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount)接口解除禁用该用户下的中转站来解决冲突。
 
 不可关停应用：用户不能在任务中心上划关闭应用；在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用。
 
