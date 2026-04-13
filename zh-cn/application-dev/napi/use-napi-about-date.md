@@ -109,7 +109,7 @@ static napi_value GetDateValue(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_date_value_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_date_value_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
 
 ``` TypeScript
 export const getDateValue: (date: Date) => number | undefined; // napi_get_date_value
