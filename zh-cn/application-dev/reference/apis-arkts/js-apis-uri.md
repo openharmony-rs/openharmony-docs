@@ -83,7 +83,7 @@ console.info(uriObj2.fragment); // fragment
 console.info(uriObj2.path); // /00/Weather/California/Los Angeles
 console.info(uriObj2.scheme); // gopher
 console.info(uriObj2.userInfo); // null
-console.info(uriObj2.port); //-1
+console.info(uriObj2.port); // -1
 console.info(uriObj2.query); // null
 
 const uriObj3 = new uri.URI("datashare:///com.samples.datasharetest.DataShare/DB00/TBL00");
