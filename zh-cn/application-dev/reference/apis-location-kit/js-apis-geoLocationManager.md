@@ -3130,3 +3130,57 @@ getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
     console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
+
+## geoLocationManager.findMatchingWlan<sup>26+</sup>
+
+findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean):Promise&lt;Array&lt;MachingWlanInfo&gt;&gt;
+
+检查WLAN扫描结果是否与WLAN BSSID列表匹配，成功匹配时返回已匹配的WLAN设备信息。使用Promise异步回调。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | wlanBssidArray | Array&lt;string&gt; | 是 | 请求匹配的BSSID列表。单个字符串的长度不超过64，数组的长度不超过1000。 |
+  | rssiThreshold | number | 是 | RSSI阈值。只匹配RSSI大于此阈值的BSSID，取值范围为-10000至10000（单位：dBm）。 |
+  | needStartScan | boolean | 是 | 是否需要发起WLAN扫描。需要发起WLAN扫描设置为true。不需要发起WLAN扫描，使用最近一次WLAN扫描结果进行匹配设置为false。 |
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;Array&lt;MachingWlanInfo&gt;&gt; | Promise对象, 返回匹配成功的WLAN设备信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.isWlanBssidMatched} due to limited device capabilities.          |
+|3301100 | The location switch is off.                                           |
+|3301800 | Failed to start WiFi scanning.                                        |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    let wlanBssidArray: Array<string> = ["02:1b:32:23:ea:91", "02:1b:32:23:ea:93"];
+    let rssiThreshold: number = -70;
+    let needStartScan: boolean = true;
+    geoLocationManager.findMatchingWlan(wlanBssidArray, rssiThreshold, needStartScan).then((res) => {
+      console.info("Wlan Bssid Matched Result:" + JSON.stringify(res));
+    })
+  } catch (error) {
+    console.error("findMatchingWlan: errCode" + error.code + ", errMessage" + error.message);
+  }
+  ```
