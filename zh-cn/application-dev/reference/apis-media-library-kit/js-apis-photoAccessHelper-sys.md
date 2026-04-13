@@ -12641,7 +12641,6 @@ async function example(context: Context) {
 | DOG<sup>23+</sup> |  14 | DOG表示狗照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | ARCHITECTURE<sup>23+</sup> |  15 | ARCHITECTURE表示建筑照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | LANDSCAPE<sup>23+</sup> |  16 | LANDSCAPE表示风景照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
-| GAUSSIAN_SPLAT_3D<sup>24+</sup> |  17 | GAUSSIAN_SPLAT_3D表示通过3D高斯技术生成的照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## RecommendationOptions<sup>11+</sup>
 
@@ -12652,7 +12651,6 @@ async function example(context: Context) {
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | recommendationTypeList<sup>23+</sup> | Array\<[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)>   | 否   | 是 | 如果需要根据枚举值同时推荐多个分类的图片，则配置此参数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
-| defaultRecommendationType<sup>24+</sup> | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 表示打开Picker直接显示的推荐标签。需要配置recommendationTypeList后，该配置才生效。<br>如果该标签存在，则默认显示该标签页。<br>如果该标签不存在，则默认显示“全部”标签页。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 
 ## ThumbnailChangeStatus<sup>20+</sup>
