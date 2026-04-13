@@ -1395,8 +1395,8 @@ static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| bundleInfo | BundleInfo | 是 | 应用包信息配置。BundleInfo的实例对象。 |
-| config | [relationalStore.CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。relationalStore.CloudSyncConfig的实例对象。 |
+| bundleInfo | [BundleInfo](#bundleinfo) | 是 | 应用包信息配置。BundleInfo的实例对象。 |
+| config | [relationalStore.CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。 |
 | progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
 
 **返回值：**
@@ -1468,7 +1468,7 @@ static stopCloudSync(bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| bundleInfos | Array&lt;BundleInfo&gt; | 是 | 应用包信息配置数组。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是 | 应用包信息配置数组。 |
 
 **返回值：**
 

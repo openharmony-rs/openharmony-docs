@@ -5132,7 +5132,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现[端云服务](js-apis-data-cloudData.md)功能。
+手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现[云服务](js-apis-data-cloudExtension-sys.md)功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5180,61 +5180,13 @@ if (store != undefined) {
 
 ## cloudSync
 
-cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
-
-同步数据到云端，使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-|--------|------|------|------|
-| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 是 | 数据库的同步模式。 |
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是 | 同步条件，通过RdbPredicates实例对象指定。 |
-| progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数，返回ProgressDetails实例对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-|------|------|
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                                 |
-|-----------| ------------------------------------------------------------ |
-| 801       | Capability not supported because the device does not support the device-cloud capability. |
-| 14800014  | The target instance is already closed. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-predicates.in("id", ["id1", "id2"]);
-
-if (store != undefined) {
-    (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-        console.info(`progress: ${progressDetail.schedule}`);
-    }).then(() => {
-        console.info('cloud sync succeeded');
-    }).catch((err: BusinessError) => {
-        console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
-    });
-};
-```
-
-## cloudSync
-
 cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-根据配置同步数据到云端，使用Promise异步回调。
+手动执行端云同步,根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现[云服务](js-apis-data-cloudExtension-sys.md)功能。
+
+> **说明：**
+>
+> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中谓词仅支持[equalTo](arkts-apis-data-relationalStore-RdbPredicates#equalto)、[notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)、[or](apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#or)、[and](arkts-apis-data-relationalStore-RdbPredicates.md#and)、[greaterThan](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthan)、[lessThan](arkts-apis-data-relationalStore-RdbPredicates.md#lessthan)、[greaterThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthanorequalto)、[lessThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#lessthanorequalto)、[in](arkts-apis-data-relationalStore-RdbPredicates.md#in)、[notIn](apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#notin)；类型仅支持number和string。
 
 **起始版本：** 26.0.0
 

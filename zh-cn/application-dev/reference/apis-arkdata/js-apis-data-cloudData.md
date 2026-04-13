@@ -117,11 +117,11 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 |------|------|------|------|------|
 | mode | [AutoSyncTriggerMode](#autosynctriggermode) | 否 | 否 | 自动同步触发模式。 |
 
-## onAutoSyncTrigger
+## cloudData.onAutoSyncTrigger
 
 onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-订阅自动同步触发事件，使用callback异步回调。
+在已打开端云同步，并且应用关闭自动同步条件下，注册自动同步触发事件通知，自动同步进行时调用回调。
 
 **起始版本：** 26.0.0
 
@@ -133,7 +133,7 @@ onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 是 | 自动同步触发拦截的回调函数。 |
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 是 | 自动同步触发的回调函数。 |
 
 **错误码：**
 
@@ -155,11 +155,11 @@ function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
 cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
 ```
 
-## offAutoSyncTrigger
+## cloudData.offAutoSyncTrigger
 
 offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-取消订阅自动同步触发事件，使用callback异步回调。
+取消订阅自动同步触发事件通知。
 
 **起始版本：** 26.0.0
 
@@ -171,7 +171,7 @@ offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 自动同步触发拦截的回调函数。如果不传参数，则取消所有已注册的回调。 |
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 自动同步触发的回调函数。如果不传参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
