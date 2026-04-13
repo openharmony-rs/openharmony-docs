@@ -4725,9 +4725,9 @@
 						"start_line":19
 					},
 					{
-						"end_line":61,
+						"end_line":65,
 						"name":"createGroup",
-						"start_line":43
+						"start_line":44
 					}
 				]
 			},
@@ -4735,14 +4735,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":118,
 						"name":"connectP2p",
-						"start_line":90
+						"start_line":100
 					},
 					{
-						"end_line":88,
+						"end_line":98,
 						"name":"discover_p2p_device",
-						"start_line":72
+						"start_line":79
 					}
 				]
 			}
