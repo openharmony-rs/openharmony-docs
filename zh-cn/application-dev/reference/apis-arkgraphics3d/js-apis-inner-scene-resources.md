@@ -606,8 +606,6 @@ function finish(): void {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统接口**：此接口为系统接口。
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
