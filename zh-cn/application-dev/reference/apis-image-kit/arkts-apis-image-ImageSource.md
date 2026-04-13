@@ -526,7 +526,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 
 读取图像源的元数据，使用propertyKeys指定元数据字段。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF、WEBP和DNG（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF、WEBP、DNG、GIF、TIFF、HEIFS和JFIF（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -538,7 +538,12 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 > - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
 > - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
 > - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
-> - 从API版本24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
+> - 从API version 24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
+> - 从API version 24开始，支持读取HEIFS元数据。要查询的属性的具体信息请参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
+> - 从API版本26.0.0开始，支持读取PNG元数据。要查询的属性的具体信息请参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
+> - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
+> - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
+> - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -649,13 +654,19 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 
 读取图像源的元数据，使用metadataTypes指定元数据类型。若未指定metadataTypes，则返回所有支持的元数据。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF、WEBP、DNG和HEIFS（不同硬件设备支持情况不同）文件。
+该接口仅支持JPEG、PNG、HEIF、WEBP、DNG、GIF、TIFF、HEIFS和JFIF（不同硬件设备支持情况不同）文件。
 
 > **说明：**
 >
 > - EXIF_METADATA元数据类型适用于JPEG、PNG、HEIF、WEBP和DNG格式图片。
 > - HEIFS_METADATA元数据类型适用于HEIFS格式图片。
 > - 当传入的MetadataType与图片格式无法匹配时，返回错误码7700102。
+> - 从API version 24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
+> - 从API version 24开始，支持读取HEIFS元数据。要查询的属性的具体信息请参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
+> - 从API版本26.0.0开始，支持读取PNG元数据。要查询的属性的具体信息请参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
+> - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
+> - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
+> - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

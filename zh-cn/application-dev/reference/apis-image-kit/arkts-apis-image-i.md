@@ -260,6 +260,10 @@ Gainmap图单个通道的数据内容，参考ISO 21496-1。
 | heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | 否   | 是   | HEIF序列图像元数据类，用于存储图像的元数据。 |
 | webPMetadata<sup>24+</sup> | [WebPMetadata](arkts-apis-image-WebPMetadata.md) | 否   | 是   | WebP图像元数据类，用于存储图像的元数据。 |
 | dngMetadata<sup>24+</sup> | [DngMetadata](#dngmetadata24) | 否   | 是   | DNG图像元数据。 |
+| gifMetadata | [GifMetadata](arkts-apis-image-GifMetadata.md) | 否   | 是   | GIF图像元数据。<br>**起始版本：** 26.0.0 |
+| tiffMetadata | [TiffMetadata](arkts-apis-image-TiffMetadata.md) | 否   | 是   | TIFF图像元数据。<br>**起始版本：** 26.0.0 |
+| jfifMetadata | [JfifMetadata](arkts-apis-image-JfifMetadata.md) | 否   | 是   | JFIF图像元数据。<br>**起始版本：** 26.0.0 |
+| pngMetadata | [PngMetadata](arkts-apis-image-PngMetadata.md) | 否   | 是   | PNG图像元数据。<br>**起始版本：** 26.0.0 |
 
 ## DngMetadata<sup>24+</sup>
 
