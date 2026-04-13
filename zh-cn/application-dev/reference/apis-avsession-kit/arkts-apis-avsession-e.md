@@ -270,3 +270,16 @@
 | SECONDS_10             | 10 | 时间为10秒。             |
 | SECONDS_15             | 15 | 时间为15秒。             |
 | SECONDS_30             | 30 | 时间为30秒。             |
+
+## BackgroundPlayMode<sup>24+</sup>
+
+表示session支持的后台播放模式的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称                      | 值 | 说明                    |
+| ------------------------- | - | ----------------------- |
+| ENABLE_BACKGROUND_PLAY    | 0 | 支持后台播放。            |
+| DISABLE_BACKGROUND_PLAY   | 1 | 不支持后台播放。          |

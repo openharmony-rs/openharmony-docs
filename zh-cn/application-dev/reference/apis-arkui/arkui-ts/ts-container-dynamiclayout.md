@@ -34,7 +34,7 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| algorithm | [LayoutAlgorithm](#layoutalgorithm) | 是 | 指定动态布局组件的布局算法。取非法值时，按照[堆叠布局算法](#stacklayoutalgorithm)布局子组件，子组件堆叠排列。|
+| algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | 是 | 指定动态布局组件的布局算法。取非法值时，按照[堆叠布局算法](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)布局子组件，子组件堆叠排列。|
 
 ## 属性
 
@@ -42,352 +42,21 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 
 > **说明：**
 >
-> - 当布局算法为[RowLayoutAlgorithm](#rowlayoutalgorithm)或[ColumnLayoutAlgorithm](#columnlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性生效。
+> - 当布局算法为[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)或[ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)时，子组件设置[Flex布局](ts-universal-attributes-flex-layout.md)属性生效。
 >
-> - 当布局算法为[StackLayoutAlgorithm](#stacklayoutalgorithm)时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效。
+> - 当布局算法为[StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)时，子组件设置[layoutGravity](ts-universal-attributes-location.md#layoutgravity20)属性生效。
 >
-> - 当布局算法为[CustomLayoutAlgorithm](#customlayoutalgorithm)时，DynamicLayout的大小通过[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法设置，[尺寸设置](ts-universal-attributes-size.md)和[边框](ts-universal-attributes-border.md)属性不影响DynamicLayout组件的大小，此时子组件设置[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性不生效，开发者可以自定义实现安全区延伸的效果。
+> - 当布局算法为[CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)时，DynamicLayout组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12)方法优先级高于[尺寸设置](ts-universal-attributes-size.md)和[边框](ts-universal-attributes-border.md)属性，子组件[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[measure](../js-apis-arkui-frameNode.md#measure12)和[layout](../js-apis-arkui-frameNode.md#layout12)方法优先级高于[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。
 
 ## 事件
 
 支持[通用事件](ts-component-general-events.md)。
 
-## LayoutAlgorithm
-
-动态布局容器的布局算法基础类型。
-
-> **说明：**
->
-> 该类型变量可以赋值具体的布局算法类对象，如[CustomLayoutAlgorithm](#customlayoutalgorithm)类对象、[RowLayoutAlgorithm](#rowlayoutalgorithm)类对象等。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CustomLayoutAlgorithm
-
-自定义布局算法类。
-
-> **说明：**
->
-> CustomLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm](#layoutalgorithm)类型变量，作为DynamicLayout组件的入参指定布局算法。
-
-**装饰器类型：** \@ObservedV2
-
-### onMeasure
-onMeasure(self: FrameNode, constraint: LayoutConstraint): void
-
-通过重写此函数，开发者可以自定义测量子组件的大小。ArkUI框架会在动态布局组件确定尺寸时，将该组件对应的FrameNode和布局约束通过onMeasure传递给开发者。不允许在onMeasure函数中改变状态变量。
-
-> **说明：**
->
-> 在此函数中，开发者可以调用[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[getChild()](../js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[measure()](../js-apis-arkui-frameNode.md#measure12)方法测量子组件大小，参考[示例1（自定义布局算法实现瀑布流布局）](#示例1自定义布局算法实现瀑布流布局)。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| self | [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) | 是 | 动态布局组件在组件树上的实体节点。|
-| constraint | [LayoutConstraint](../js-apis-arkui-frameNode.md#layoutconstraint12) | 是 | 动态布局组件进行测量时使用的布局约束。|
-
-### onLayout
-onLayout(self: FrameNode, position: Position): void
-
-通过重写此函数，开发者可以自定义排列子组件的位置。ArkUI框架会在动态布局组件确定位置时，将该组件对应的FrameNode和布局位置通过onLayout传递给开发者。不允许在onLayout函数中改变状态变量。
-
-> **说明：**
->
-> 在此函数中，开发者可以调用[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[getChild()](../js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](../js-apis-arkui-frameNode.md#framenode-1)的[layout()](../js-apis-arkui-frameNode.md#layout12)方法设置子组件位置，参考[示例1（自定义布局算法实现瀑布流布局）](#示例1自定义布局算法实现瀑布流布局)。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-  
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| self | [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) | 是 | 动态布局组件在组件树上的实体节点。|
-| position | [Position](../js-apis-arkui-graphics.md#position) | 是 | 动态布局组件进行布局时使用的位置信息。|
-
-## RowLayoutAlgorithm
-
-水平方向线性布局算法类。
-
-> **说明：**
->
-> RowLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm](#layoutalgorithm)类型变量，作为DynamicLayout组件的入参指定布局算法。
-
-**装饰器类型：** \@ObservedV2
-
-### 属性
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 横向布局元素水平方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| alignItems | [VerticalAlign](ts-appendix-enums.md#verticalalign) | 否 | 是 | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：VerticalAlign.Center <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-|isReverse| boolean | 否 | 是 | 子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性[direction](ts-universal-attributes-location.md#direction)影响，如果[direction](ts-universal-attributes-location.md#direction)属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。<br/>默认值：false <br> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-
-### constructor
-
-constructor(option?: RowLayoutAlgorithmOptions)
-
-水平方向线性布局算法类的构造函数。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| option | [RowLayoutAlgorithmOptions](#rowlayoutalgorithmoptions对象说明) | 否 | 水平方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
-
-## RowLayoutAlgorithmOptions对象说明
-
-设置水平方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 横向布局元素水平方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。|
-| alignItems | [VerticalAlign](ts-appendix-enums.md#verticalalign) | 否 | 是 | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：VerticalAlign.Center <br/> 非法值：按默认值处理。|
-| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。|
-| isReverse | boolean | 否 | 是 | 子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性[direction](ts-universal-attributes-location.md#direction)影响，如果[direction](ts-universal-attributes-location.md#direction)属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。<br/>默认值：false <br> 非法值：按默认值处理。|
-
-## ColumnLayoutAlgorithm
-
-垂直方向线性布局算法类。
-
-> **说明：**
->
-> ColumnLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm](#layoutalgorithm)类型变量，作为DynamicLayout组件的入参指定布局算法。
-
-**装饰器类型：** \@ObservedV2
-
-### 属性
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 纵向布局元素垂直方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| alignItems | [HorizontalAlign](ts-appendix-enums.md#horizontalalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：HorizontalAlign.Center <br/>  非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是 | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| isReverse | boolean | 否 | 是 | 子组件在垂直方向上的排列是否反转。取值为true表示子组件在垂直方向上反转排列。取值为false表示子组件在垂直方向上正序排列。<br/>默认值：false <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-
-### constructor 
-
-constructor(option?: ColumnLayoutAlgorithmOptions)
-
-垂直方向线性布局算法类的构造函数。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| option | [ColumnLayoutAlgorithmOptions](#columnlayoutalgorithmoptions对象说明) | 否 | 垂直方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
-
-## ColumnLayoutAlgorithmOptions对象说明
-
-设置垂直方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 纵向布局元素垂直方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。|
-| alignItems | [HorizontalAlign](ts-appendix-enums.md#horizontalalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：HorizontalAlign.Center <br/>  非法值：按默认值处理。|
-| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是  | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。|
-| isReverse | boolean | 否 | 是 | 子组件在垂直方向上的排列是否反转。取值为true表示子组件在垂直方向上反转排列。取值为false表示子组件在垂直方向上正序排列。<br/>默认值：false <br/> 非法值：按默认值处理。|
-
-## StackLayoutAlgorithm
-
-堆叠布局算法类。
-
-> **说明：**
->
-> StackLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm](#layoutalgorithm)类型变量，作为DynamicLayout组件的入参指定布局算法。
-
-
-**装饰器类型：** \@ObservedV2
-
-### 属性
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| alignContent | [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 否 | 是 | 设置子组件在堆叠布局算法中对齐格式。 <br/> 默认值：LocalizedAlignment.CENTER <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-
-### constructor
-
-constructor(option?: StackLayoutAlgorithmOptions)
-
-堆叠布局算法类的构造函数。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| option | [StackLayoutAlgorithmOptions](#stacklayoutalgorithmoptions对象说明) | 否 | 堆叠布局算法的构造入参，设置九宫格对齐格式。|
-
-## StackLayoutAlgorithmOptions对象说明
-
-设置堆叠布局算法的对齐方式。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| alignContent | [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 否 | 是 | 设置子组件在堆叠布局算法中对齐格式。<br/> 默认值：LocalizedAlignment.CENTER <br/> 非法值：按默认值处理。|
-
-## GridLayoutAlgorithm
-
-网格布局算法类。
-
-> **说明：**
->
-> GridLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm](#layoutalgorithm)类型变量，作为DynamicLayout组件的入参指定布局算法。
-
-**装饰器类型：** \@ObservedV2
-
-### 属性
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| columnsTemplate | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 否 | 是 | 设置当前网格布局的列数。<br/> 默认值：'1fr' <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| columnsGap | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 列与列之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| rowsGap | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 行与行之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-
-### constructor
-
-constructor(option?: GridLayoutAlgorithmOptions)
-
-网格布局算法类的构造函数。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| option | [GridLayoutAlgorithmOptions](#gridlayoutalgorithmoptions对象说明) | 否 | 网格布局算法的构造入参，设置网格布局的列数、列间距、行间距。|
-
-## GridLayoutAlgorithmOptions对象说明
-
-设置网格布局算法的列数模板、列间距、行间距。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| columnsTemplate | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 否 | 是 | 设置当前网格布局的列数。<br/> 默认值：'1fr' <br/> 非法值：按默认值处理。|
-| columnsGap | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 列与列之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。|
-| rowsGap | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 行与行之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。|
-
 ## 示例
 
 ### 示例1（自定义布局算法实现瀑布流布局）
 
-该示例展示如何重写[onMeasure](#onmeasure)、[onLayout](#onlayout)函数，实现瀑布流布局展示商品列表的功能。
+该示例展示如何重写[onMeasure](../js-apis-arkui-layoutAlgorithm.md#onmeasure)、[onLayout](../js-apis-arkui-layoutAlgorithm.md#onlayout)函数，实现瀑布流布局展示商品列表的功能。
 
 从API version 24开始，新增onMeasure、onLayout。
 
@@ -560,7 +229,7 @@ interface Product {
 
 ### 示例2（切换布局算法）
 
-该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的LayoutAlgorithm变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为[水平线性布局算法](#rowlayoutalgorithm)、[垂直线性布局算法](#columnlayoutalgorithm)、[堆叠布局算法](#stacklayoutalgorithm)和[网格布局算法](#gridlayoutalgorithm)。
+该示例通过改变[@Local](../../../ui/state-management/arkts-new-local.md)装饰的LayoutAlgorithm变量，实现动态切换DynamicLayout组件布局算法的功能。示例展示如何切换布局算法为[水平线性布局算法](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)、[垂直线性布局算法](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)、[堆叠布局算法](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)和[网格布局算法](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)。
 
 从API version 24开始，新增RowLayoutAlgorithm、ColumnLayoutAlgorithm、StackLayoutAlgorithm、GridLayoutAlgorithm。
 
@@ -676,7 +345,7 @@ struct LayoutSwitchExample {
 
 ### 示例3（修改布局算法属性）
 
-该示例通过修改[RowLayoutAlgorithm](#rowlayoutalgorithm)的space和justifyContent属性，实现DynamicLayout组件布局效果刷新的功能。
+该示例通过修改[RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)的space和justifyContent属性，实现DynamicLayout组件布局效果刷新的功能。
 
 从API version 24开始，新增space、justifyContent属性。
 

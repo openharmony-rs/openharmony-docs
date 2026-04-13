@@ -127,7 +127,7 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 > **说明：**
 >
-> javaScriptProxy接口需要和deleteJavaScriptRegister接口配合使用，防止内存泄漏。
+> javaScriptProxy接口需要和[deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
 > javaScriptProxy对象的所有参数不支持更新。
 > 注册javaScriptProxy对象时，同步与异步列表请至少选择一项不为空，可同时注册两类方法。
 > 此接口只支持注册一个对象，若需要注册多个对象请使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)。
@@ -2630,7 +2630,7 @@ Web组件自定义软件键盘避让模式。
 
 editMenuOptions(editMenu: EditMenuOptions)
 
-Web组件自定义文本选择菜单。
+设置Web组件自定义文本选择菜单。
 
 用户可以通过该属性设置自定义的文本菜单。
 
@@ -4246,7 +4246,7 @@ zoomControlAccess(zoomControlAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomControlAccess | boolean | 是    | 设置是否支持组合按键的默认缩放行为。true表示支持，false表示不支持。传入null或undefined时为false。|
+| zoomControlAccess | boolean | 是    | 设置是否允许通过组合按键进行缩放。true表示支持，false表示不支持。传入null或undefined时为false。|
 
 **示例：**
 

@@ -45,6 +45,7 @@ open(callback: AsyncCallback\<void\>): void
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
 | 7400201                |  Camera service fatal error.                                  |
+| 7400113 | Unsupported multi-camera combination. It is suggested to use [getCameraConcurrentInfos](arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to check the concurrent infos;               |
 
 **示例：**
 
@@ -54,7 +55,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to open the camera, error code: ${err.code}.`);
+      console.error(`Failed to open camera, error code: ${err.code}.`);
       return;
     }
     console.info('Callback returned with camera opened.');
@@ -88,6 +89,7 @@ open(): Promise\<void\>
 | 7400107 | Can not use camera cause of conflict.     |
 | 7400108 | Camera disabled cause of security reason. |
 | 7400201 | Camera service fatal error.               |
+| 7400113 | Unsupported multi-camera combination. It is suggested to use [getCameraConcurrentInfos](arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to check the concurrent infos;               |
 
 **示例：**
 
@@ -98,7 +100,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open().then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -134,6 +136,7 @@ open(isSecureEnabled: boolean): Promise\<bigint\>
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
 | 7400201                |  Camera service fatal error.                                  |
+| 7400113 | Unsupported multi-camera combination. It is suggested to use [getCameraConcurrentInfos](arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to check the concurrent infos;               |
 
 **示例：**
 
@@ -144,7 +147,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(true).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -191,7 +194,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(0).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```

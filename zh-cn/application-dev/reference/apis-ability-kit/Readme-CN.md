@@ -13,6 +13,7 @@
     - [@ohos.app.ability.abilityLifecycleCallback (UIAbility生命周期回调监听器)](js-apis-app-ability-abilityLifecycleCallback.md)
     - [@ohos.app.ability.AbilityStage (AbilityStage组件管理器)](js-apis-app-ability-abilityStage.md)
     - [@ohos.app.ability.ActionExtensionAbility (支持业务操作自定义的ExtensionAbility组件)](js-apis-app-ability-actionExtensionAbility.md)
+    - [@ohos.app.ability.AgentUIExtensionAbility (支持端侧Agent接入的ExtensionAbility组件)](js-apis-agent-agentUIExtensionAbility.md)
     - [@ohos.app.ability.application (应用工具类)](js-apis-app-ability-application.md)
     - [@ohos.app.ability.ApplicationStateChangeCallback (应用前后台状态变化监听器)](js-apis-app-ability-applicationStateChangeCallback.md)
     - [@ohos.app.ability.AppServiceExtensionAbility (应用后台服务扩展组件)](js-apis-app-ability-appServiceExtensionAbility.md)

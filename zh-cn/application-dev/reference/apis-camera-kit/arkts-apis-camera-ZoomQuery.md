@@ -60,3 +60,48 @@ function getZoomRatioRange(photoSession: camera.PhotoSession): Array<number> {
   return zoomRatioRange;
 }
 ```
+
+## getRAWCaptureZoomRatioRange<sup>24+</sup>
+
+getRAWCaptureZoomRatioRange(): Array\<number\>
+
+获取RAW拍摄期间支持的变焦比例范围。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ---------- | ----------------------------- |
+| Array\<number\>   | 变焦比例范围。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.            |
+| 7400103                |  Session not config.            |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getRAWCaptureZoomRatioRange(photoSession: camera.PhotoSession): Array<number> {
+  let zoomRatioRange: Array<number> = [];
+  try {
+    zoomRatioRange = photoSession.getRAWCaptureZoomRatioRange();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getRAWCaptureZoomRatioRange call failed. error code: ${err.code}`);
+  }
+  return zoomRatioRange;
+}
+```
