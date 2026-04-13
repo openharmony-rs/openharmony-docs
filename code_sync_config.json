@@ -31112,9 +31112,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":67,
 						"name":"distributed_Data_Permission",
-						"start_line":55
+						"start_line":54
 					},
 					{
 						"end_line":50,
@@ -31142,9 +31142,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":67,
 						"name":"distributed_Data_Permission",
-						"start_line":55
+						"start_line":54
 					},
 					{
 						"end_line":180,
