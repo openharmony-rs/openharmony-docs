@@ -177,7 +177,7 @@ This common event is sent when the system updates the device configuration direc
 
 Indicates that the roaming area of a device is updated.
 
-When the attributes such as network injection, persistent Connection, and GPS location of a device change, the system identifies the roaming area and updates the parameters if the roaming area changes. After the update is complete, this common event is sent.
+When the attributes such as network injection, persistent connection, and GPS location of a device change, the system identifies the roaming area and updates the parameters if the roaming area changes. After the update is complete, this common event is sent.
 
 **System API**: This is a system API.
 
@@ -240,7 +240,7 @@ The system API related to this common event is **removeOsAccount**. For details,
 
 ### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
 
-Indicates that the status of the domain account status changes.
+Indicates that the domain account status changes.
 
 When a domain user account is authenticated, deleted, or has the token updated, the common event service is triggered to publish this event carrying the system account ID, domain name, and account status.
 

@@ -49,7 +49,7 @@ Checks whether this domain account is supported. This API uses a promise to retu
 
 **System capability**: SystemCapability.Account.OsAccount
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -1102,7 +1102,7 @@ Obtains the local IDs of all non-system-level system accounts. Non-system-level 
 
 **System capability**: SystemCapability.Account.OsAccount
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -3350,7 +3350,7 @@ Represents the domain account information.
 | domain      | string | No| No | Domain name.    |
 | accountName | string | No| No | Domain account name.|
 | serverConfigId<sup>18+</sup> | string | No| Yes | Domain account configuration ID, which is an empty string by default.|
-| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
 
 
 ## DomainServerConfig<sup>18+</sup>
