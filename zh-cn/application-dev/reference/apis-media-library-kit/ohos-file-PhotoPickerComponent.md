@@ -882,7 +882,7 @@ Picker的颜色模式。
 | SQUARE_RATIO        | 0   | 1:1比例显示。    |
 | ORIGINAL_SIZE_RATIO | 1   | 原图宽高比显示。 |
 
-## 示例1（PhotoPickerComponent组件的使用）
+## 示例一（PhotoPickerComponent组件的使用）
 
 ```ts
 // xxx.ets
@@ -1103,7 +1103,7 @@ struct PickerDemo {
   }
 }
 ```
-## 示例2（抽屉组件）
+## 示例二（抽屉组件）
 可以通过[isSlidingSupported](#pickeroptions)属性、[onScrollStopAtStart](#scrollstopatstartcallback23)和[onScrollStopAtEnd](#scrollstopatendcallback23)回调来实现。
 ```ts
 // xxx.ets
