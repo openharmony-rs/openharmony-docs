@@ -15,21 +15,25 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>deprecated</sup>
 
 subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback\<void\>): void
 
 订阅通知并指定订阅信息。使用callback异步回调。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -105,21 +109,25 @@ let info: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>deprecated</sup>
 
 subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
 订阅当前用户下所有应用的通知。使用callback异步回调。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification)
 
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -185,21 +193,25 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>deprecated</sup>
 
 subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise\<void\>
 
 订阅通知并指定订阅信息。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
 
 **参数：**
 
