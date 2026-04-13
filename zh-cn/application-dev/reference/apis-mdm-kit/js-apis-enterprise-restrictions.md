@@ -724,9 +724,9 @@ try {
 
 setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number): void
 
-**起始版本：** 26.0.0
-
 设置禁用/启用指定用户的某特性。
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
