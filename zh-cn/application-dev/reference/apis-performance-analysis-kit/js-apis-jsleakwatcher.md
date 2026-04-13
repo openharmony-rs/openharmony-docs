@@ -200,6 +200,17 @@ enum MonitorObjectType {
   ABILITY = 1 << 4
 };
 
+interface LeakWatcherConfig {
+  monitorObjectTypes: MonitorObjectType;
+  objectUniqueIDs: Array<number>;
+  checkInterval: number;
+  fgLeakCountThreshold: number;
+  bgLeakCountThreshold: number;
+  maxStoredHeapDumps: number;
+  dumpHeapWaitTimeMs: number;
+  exclusionList: Array<string>;
+}
+
 // 监测ArkTS对象CustomComponent和Window的内存泄漏
 // 对象中类型传入空值或假值代表该属性设置为默认值
 let config: LeakWatcherConfig = {
@@ -212,7 +223,7 @@ let config: LeakWatcherConfig = {
     dumpHeapWaitTimeMs: 5000,
     exclusionList: []
 };
-jsLeakWatcher.enableLeakWatcher(true, config, (filepath : Array<string>) => {
+jsLeakWatcher.enableLeakWatcher(true, config, (filePath : Array<string>) => {
     console.info('JsLeakWatcher leaklistFileName:' + filePath[0]);
     console.info('JsLeakWatcher heapDumpFileName:' + filePath[1]);
 });
