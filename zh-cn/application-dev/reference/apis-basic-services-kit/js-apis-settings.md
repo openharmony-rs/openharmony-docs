@@ -1352,7 +1352,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 try {
-  settings.openAppDetailSettingsPage(context， 'com.example');
+  settings.openAppDetailSettingsPage(context, 'com.example');
 } catch (err) {
   console.error(`Failed to open the app detail settings page. code: ${err?.code}, message: ${err?.message}`);
 }
