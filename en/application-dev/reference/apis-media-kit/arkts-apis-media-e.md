@@ -230,7 +230,9 @@ Enumerates the video playback seek modes, which can be passed in the **seek** AP
 
 ## SwitchMode<sup>12+</sup>
 
-Enumerates the track switching modes for video playback. The mode can be passed in to **selectTrack**. Currently, this enum is valid only for DASH video tracks.
+Enumerates the **selectTrack** modes for video playback.
+
+**SwitchMode** can be passed as a parameter through the **selectTrack** method. Currently, both DASH and HLS video tracks support this extended parameter. (HLS video tracks support this extended parameter since API version 24.)
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
