@@ -3434,7 +3434,7 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
+| options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置TouchOptions中的speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
