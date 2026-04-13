@@ -104,3 +104,15 @@ enableOfflineCache(enable: boolean): void
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
 | enable | boolean | 是   | 是否在视频播放期间启用离线缓存。true表示启用，false表示不启用。 |
+
+## getID<sup>26+</sup>
+
+getID(): string
+
+获取媒体源的标识符。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
