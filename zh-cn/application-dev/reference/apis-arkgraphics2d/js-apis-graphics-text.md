@@ -796,7 +796,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | 名称          | 类型                                                 | 只读 | 可选 | 说明                               |
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 字体阴影的颜色，默认为黑色Color(255, 0, 0, 0)。        |
-| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零。    |
+| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零，单位为物理像素px。    |
 | blurRadius    | number                                               | 否  |  是   | 模糊半径，浮点数，单位为物理像素px，默认为0.0。       |
 
 ## RectStyle
@@ -1578,7 +1578,7 @@ struct Index {
 
 ## TextRectSize<sup>24+</sup>
 
-文本完成排版计算后的矩形尺寸。值为浮点数，单位为px。
+文本完成排版计算后的矩形尺寸。值为浮点数，单位为物理像素px。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -1758,7 +1758,7 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 
 | 参数名 | 类型                                      | 必填 | 说明                       |
 | ----- | ----------------------------------------- | ---- | -------------------------- |
-| size  | [TextRectSize](#textrectsize24) | 是   | 约束的高度和宽度，单位为px。|
+| size  | [TextRectSize](#textrectsize24) | 是   | 约束的高度和宽度，单位为物理像素px。|
 
 **返回值：**
 
@@ -2709,7 +2709,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
-| rect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 否   | 矩形区域信息。|
+| rect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 否   | 矩形区域信息，单位为物理像素px。|
 | direction | [TextDirection](#textdirection)                    | 否   | 否   | 文本方向。    |
 
 ## PositionWithAffinity
@@ -3468,7 +3468,7 @@ getImageBounds(): common2D.Rect
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 文本行的图像边界。|
+| [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 文本行的图像边界，单位为物理像素px。|
 
 **示例：**
 
@@ -3980,7 +3980,7 @@ getImageBounds(): common2D.Rect
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-|   [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 该排版单元的图像边界。|
+|   [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 该排版单元的图像边界，单位为物理像素px。|
 
 **示例：**
 
@@ -4062,7 +4062,7 @@ getAdvances(range: Range): Array<common2D.Point>
 
 | 类型                   | 说明                                   |
 | ---------------------- | ------------------------------------- |
-| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中，[common2D.Point](js-apis-graphics-common2D.md#point12)中的x值代表每个字形相对于水平方向的字形宽度，y值为保留字段，默认返回0。 |
+| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中，[common2D.Point](js-apis-graphics-common2D.md#point12)中的x值代表每个字形相对于水平方向的字形宽度，单位为物理像素px，y值为保留字段，默认返回0。 |
 
 **示例：**
 
