@@ -1774,11 +1774,15 @@ try {
 
 ## bundleManager.getInstalledBundleList
 
-getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
+ArkTS-Dyn: getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
+
+ArkTS-Sta:getInstalledBundleList(bundleFlags: int): Promise<Array\<BundleInfo>>
 
 根据给定的bundleFlags获取系统中所有的BundleInfo。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1790,7 +1794,7 @@ getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
 
 | 参数名     | 类型   | 必填 | 说明                                             |
 | ----------- | ------ | ---- | -------------------------------------------------- |
-| bundleFlags | number | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。                |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。                |
 
 **返回值：**
 
