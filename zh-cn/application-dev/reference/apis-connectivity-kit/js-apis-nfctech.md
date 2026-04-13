@@ -1746,7 +1746,7 @@ function nfcTechDemo() {
             console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}");
+        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2479,7 +2479,7 @@ getType(): [tag.MifareUltralightType](js-apis-nfcTag.md#mifareultralighttype9)
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
-let getType : tag.MifareUltralightType = mifareClassic.getType();
+let getType : tag.MifareUltralightType = mifareUltralight.getType();
 console.info("mifareUltralight getType: " + getType);
 ```
 
