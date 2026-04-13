@@ -3065,7 +3065,7 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
 | point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
+| options      | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置TouchOptions中的pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值继承[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
 
