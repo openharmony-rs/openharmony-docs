@@ -278,7 +278,7 @@ let callback: Callback<long> = (data: long) => {
 screen.onDisconnect(callback);
 ```
 
-## screen.onChange<sup>22+</sup>
+## screen.onChange<sup>23+</sup>
 
 onChange(callback: Callback&lt;long&gt;): void
 
