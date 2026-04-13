@@ -644,6 +644,9 @@ EventHandler和libuv的异步事件循环机制在执行异步任务时，任务
 
 ``` C++
 // napi_init.cpp C++侧示例代码
+#include "napi/native_api.h"
+#include "uv.h"
+
 static napi_value CreateObject(napi_env env, napi_callback_info info)
 {
     uv_loop_s* loop = nullptr;
@@ -673,6 +676,12 @@ static napi_value CreateObject(napi_env env, napi_callback_info info)
 }
 ```
 
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libuv.so
+```
+
 ``` TypeScript
 // index.d.ts 接口声明
 export const createObject: () => void;
@@ -691,6 +700,20 @@ try {
   hilog.info(0x0000, 'testTag', 'Test Node-API createObject success');
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API createObject failed error: %{public}s', error.message);
+}
+```
+
+**可能出现的问题：**
+
+如果之前内存泄漏的对象被继续使用，使用enableLocalHandleDetection接口后，系统会回收内存泄漏对象。继续使用该对象会导致内存泄漏问题转变为稳定性问题。
+
+``` C++
+napi_value global_js_object;
+napi_value dangerous_function(napi_env env, napi_callback_info info) {
+    napi_value js_obj;
+    napi_create_object(env, &js_obj);
+    global_js_object = js_obj; // 直接存储到全局变量，开启LocalHandle内存泄漏兜底机制后被释放
+    return nullptr;
 }
 ```
 
