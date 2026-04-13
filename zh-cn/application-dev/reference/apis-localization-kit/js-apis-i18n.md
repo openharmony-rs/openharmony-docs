@@ -2213,7 +2213,7 @@ static getTimezonesByLocation(longitude: number, latitude: number): Array&lt;Tim
 
 ### getZoneRules<sup>20+</sup>
 
-public getZoneRules(): ZoneRules
+getZoneRules(): ZoneRules
 
 获取时区跳变规则，时区的跳变逻辑参考[夏令时跳变](../../internationalization/i18n-dst-transition.md)。
 
@@ -2261,7 +2261,7 @@ let dateFormat: string =
 
 ### nextTransition<sup>20+</sup>
 
-public nextTransition(date?: number): ZoneOffsetTransition
+nextTransition(date?: number): ZoneOffsetTransition
 
 获取指定时间的下一个时区跳变对象。
 
@@ -2304,7 +2304,7 @@ let zoneOffsetTransition: i18n.ZoneOffsetTransition = zoneRules.nextTransition(d
 
 ### getMilliseconds<sup>20+</sup>
 
-public getMilliseconds(): number
+getMilliseconds(): number
 
 获取时区跳变点的时间戳。
 
@@ -2332,7 +2332,7 @@ zoneOffsetTransition.getMilliseconds(); // 跳变点的时间戳: 1762074000000
 
 ### getOffsetAfter<sup>20+</sup>
 
-public getOffsetAfter(): number
+getOffsetAfter(): number
 
 获取时区跳变后的偏移量。
 
@@ -2360,7 +2360,7 @@ zoneOffsetTransition.getOffsetAfter(); // 跳变后的偏移量: -28800000
 
 ### getOffsetBefore<sup>20+</sup>
 
-public getOffsetBefore(): number
+getOffsetBefore(): number
 
 获取时区跳变前的偏移量。
 
