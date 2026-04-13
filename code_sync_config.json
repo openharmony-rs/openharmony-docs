@@ -27329,7 +27329,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ClientServerExt.ets",
 				"functions":[
 					{
-						"end_line":102,
+						"end_line":108,
 						"name":"app_ext_service_five_start",
 						"start_line":15
 					}
@@ -27339,7 +27339,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitytwo/MyAppServiceExtAbility.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":62,
 						"name":"ability_app_service_three",
 						"start_line":15
 					}
