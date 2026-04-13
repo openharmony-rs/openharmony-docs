@@ -1300,7 +1300,7 @@ struct Drawer {
     this.drawerHeight = this.screenHeight * this.drawerRatio;
     // 初始时抽屉在底部（隐藏高度）。
     this.offsetY = this.drawerHeight * 0.8;
-    // 初始化时picker不支持滚动。
+    // 初始化时Picker不支持滚动。
     this.pickerOptions.isSlidingSupported = false;
     // 无边缘回弹。
     this.pickerOptions.edgeEffect = EdgeEffect.None;
@@ -1443,7 +1443,7 @@ struct Drawer {
             this.currentOffset = this.offsetY;
           })
           .onActionUpdate((event: GestureEvent) => {
-            // 如果是picker滑动状态，不改变抽屉的高度，直接返回。
+            // 如果是Picker滑动状态，不改变抽屉的高度，直接返回。
             if (this.drawerState === DrawerState.Sliding) {
               return;
             }
