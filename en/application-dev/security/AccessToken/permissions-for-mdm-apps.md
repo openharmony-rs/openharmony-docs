@@ -709,3 +709,18 @@ Allows an activated MDM application to deactivate itself.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 23
+
+## ohos.permission.ENTERPRISE_ACTIVATE_DEVICE_ADMIN
+
+Allows an enterprise MDM application to activate itself.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0

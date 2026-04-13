@@ -655,12 +655,11 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-
 **参数：**
 
 | 参数名  | 类型                                 | 必填 | 说明                                                  |
 | ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
-| fdSrc | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9) | 是 | 媒体文件描述。 |
+| fdSrc | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9) | 是 | 媒体文件描述符。 |
 
 **返回值：**
 
@@ -674,8 +673,8 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource
 import { common } from '@kit.AbilityKit';
 
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
-let mediaSource : media.MediaSource = media.createMediaSourceWithFd(fileDescriptor);
+let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
+let mediaSource : media.MediaSource = media.createMediaSourceWithFd(fdSrc);
 ```
 
 ## media.createMediaSourceWithDataSource<sup>26+</sup>
@@ -694,7 +693,7 @@ createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource
 
 | 参数名  | 类型                                 | 必填 | 说明                                                  |
 | ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
-| datasrc | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10) | 是 | 流式媒体资源描述。 |
+| dataSrc | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10) | 是 | 流式媒体资源描述符。 |
 
 **返回值：**
 
@@ -711,21 +710,21 @@ import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
 let file = fs.openSync("xxx.mp4");
-let datasrc: media.AVDataSrcDescriptor = {
+let dataSrc: media.AVDataSrcDescriptor = {
   fileSize: fileDescriptor.length,
   callback: (buf: ArrayBuffer, length: number, pos?: number) => {
     let readLen = 0;
     if (pos) {
       let option: ReadOptions = {
-        offset = pos,
-        length = length,
+        offset: pos,
+        length: length,
       };
-      readLen = fs.readSync(file.fd, arrayBuffer, option);
+      readLen = fs.readSync(file.fd, buf, option);
     }
     return readLen > 0 ? readLen : -1;
   }
 }
-let mediaSource : media.MediaSource = media.createMediaSourceWithDataSource(datasrc);
+let mediaSource : media.MediaSource = media.createMediaSourceWithDataSource(dataSrc);
 ```
 
 ## media.createAudioPlayer<sup>(deprecated)</sup>

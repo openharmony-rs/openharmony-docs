@@ -61,7 +61,7 @@ static removeProxyOverride(callback: OnProxyConfigChangeCallback): void
 
 | 参数名          | 类型     |  必填  | 说明           |
 | ---------------| ------- | ---- | ------------- |
-| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | 是   | 代理设置成功的回调。 |
+| callback     | [OnProxyConfigChangeCallback](./arkts-apis-webview-t.md#onproxyconfigchangecallback15)   | 是   | 代理配置变更的回调。 |
 
 **错误码：**
 
