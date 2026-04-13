@@ -20,14 +20,14 @@ ArkTS卡片开发支持V2装饰器语法(如[\@ObservedV2](../ui/state-managemen
 ## 导入particleAbility、audio、camera、media、backgroundTaskManager模块导致应用崩溃问题。
 
 ### 问题现象
-系统会报程序崩溃，FaultLog文件的报错指向particleAbility、audio、camera、media、backgroundTaskManager模块的调用行。<br>
+导入particleAbility、audio、camera、media、backgroundTaskManager后应用崩溃，FaultLog指向相关调用行。<br>
 ![CrashCode](figures/Crash代码行.png)<br>
 报错对应的代码行如下：<br>
 ![CrashMessage](figures/Crash信息.png)
 
-### 可能原因
-ArkTS卡片的FormExtensionAbility模块不支持加载particleAbility、audio、camera、media、backgroundTaskManager模块，参考[@ohos.app.form.FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)。强行加载得到的对象是undefined，使用到了就会产生JS crash。
+### 原因
+ArkTS 卡片的 FormExtensionAbility 不支持加载上述模块，参考[@ohos.app.form.FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)。强行加载得到的对象是undefined，使用到了就会产生JS crash。
 
 ### 解决措施
-排查FormExtensionAbility文件中的导入链条，把涉及到particleAbility、audio、camera、media、backgroundTaskManager模块的文件与ArkTS卡片需要使用的文件拆分开，避免会被FormExtensionAbility加载。
+检查 FormExtensionAbility 的导入链，将涉及上述模块的文件与 ArkTS 卡片使用的文件拆分，避免被 FormExtensionAbility 加载。
 
