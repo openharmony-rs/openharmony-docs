@@ -5768,3 +5768,17 @@
 **支持设备**：General
 
 **起始版本**：24
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+允许系统应用使用数字凭证服务的统一管理能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
