@@ -2169,7 +2169,7 @@ let eventInfo: accessibility.EventInfo = ({
 });
 
 accessibility.sendEvent(eventInfo).then(() => {
-  console.info(`succeeded in sending event,eventInfo is ${eventInfo}`);
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to sendEvent, Code is ${err.code}, message is ${err.message}`);
 });
