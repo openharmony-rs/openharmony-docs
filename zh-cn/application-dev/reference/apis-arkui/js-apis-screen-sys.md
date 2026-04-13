@@ -439,7 +439,7 @@ screen.offDisconnect(callback);
 screen.offDisconnect();
 ```
 
-## screen.offChange<sup>22+</sup>
+## screen.offChange<sup>23+</sup>
 
 offChange(callback?: Callback&lt;long&gt;): void
 
