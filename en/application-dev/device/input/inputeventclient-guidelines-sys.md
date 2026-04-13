@@ -27,6 +27,7 @@ The following table lists common APIs for event injection. For details, see [@oh
 | injectMouseEvent(mouseEvent: MouseEventData): void |Injects a mouse/touchpad event.|
 | injectTouchEvent(touchEvent: TouchEventData): void |Injects a touchscreen event.|
 
+
 ## How to Develop
 
 Assume that an application calls the Home key to return to the home screen. When the Home key is pressed, check whether [injectEvent](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md#inputeventclientinjectevent) is called to inject the Home key to determine if the Home key takes effect.
