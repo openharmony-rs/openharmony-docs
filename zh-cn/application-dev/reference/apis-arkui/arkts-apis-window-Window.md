@@ -2456,11 +2456,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setPreferredOrientationWithResult<sup>26+</sup>
+## setPreferredOrientationWithResult
 
 setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;OrientationResult&gt;
 
 设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
