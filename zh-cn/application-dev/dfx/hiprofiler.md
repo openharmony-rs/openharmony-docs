@@ -199,7 +199,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARKTS_HEAP_MASK | arkts内存分配栈。 | 23 |
 | RES_JS_HEAP_MASK | 龙雀虚拟机JSVM内存跟踪 | 23 |
 | RES_KMP_HEAP_MASK | kmp内存分配栈。 | 23 |
-| RES_SO_MASK | so内存分配栈。 | 23 |
+| RES_SO_MASK | SO内存分配栈。 | 23 |
 | RES_ASHMEM_MASK | ashmem内存分配栈。 | 23 |
 | RES_RN_HEAP_MASK | rn内存分配栈。 | 23 |
 | RES_DMABUF_MASK | dmabuf内存分配栈。 | 23 |
@@ -942,3 +942,13 @@ hiprofiler_cmd命令中config参数的调整方法如下：
  - 适当减小max_stack_depth和max_js_stack_depth参数的值，减少回栈深度，减少调用栈信息的采集。
  - 适当增大smb_pages参数的值，增大调优数据传输的共享内存大小。默认值为16384个页大小，即：16384*4096=67108864字节（64M）。可以调整到128M。
  - 适当增加sample_interval参数的值，增大采样线程栈的大小。默认值为256，可以调整到512。
+
+### 调优时使用FP回栈异常
+
+**现象描述**
+
+使用hiprofiler_cmd命令抓取应用进程的内存trace，对应的共享库（SO）无法进行基于FP的栈回溯。
+
+**可能原因&amp;解决方法**
+
+检查对应的共享库编译时是否开启了-fomit-frame-pointer编译选项，需保证该选项保持关闭状态。
