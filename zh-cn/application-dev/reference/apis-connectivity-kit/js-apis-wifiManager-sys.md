@@ -9,8 +9,12 @@
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)。
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)。
 
 ## 导入模块
 
@@ -141,7 +145,7 @@ getScanAlwaysAllowed(): boolean
   }
 ```
 
-## WifiDeviceConfig<sup>9+</sup>
+## WifiDeviceConfig
 
 WLAN配置信息。
 
@@ -162,7 +166,7 @@ WLAN配置信息。
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
 | isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。|
 | isRandomMacDisabled<sup>21+</sup> | boolean | 否 | 是 | 是否禁用随机MAC地址。false:未禁用随机MAC地址，true：禁用随机MAC地址。<br /> **系统接口：** 此接口为系统接口。|
-## IpType<sup>9+</sup>
+## IpType
 
 表示IP类型的枚举。
 
@@ -178,7 +182,7 @@ WLAN配置信息。
 | UNKNOWN | 2 | 未指定。 |
 
 
-## IpConfig<sup>9+</sup>
+## IpConfig
 
 IP配置信息。
 
@@ -275,7 +279,7 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
   }
 ```
 
-## wifiManager.connectToDevice<sup>9+</sup>
+## wifiManager.connectToDevice
 
 connectToDevice(config: WifiDeviceConfig): void
 
@@ -324,7 +328,7 @@ connectToDevice(config: WifiDeviceConfig): void
   }
 ```
 
-## WifiLinkedInfo<sup>9+</sup>
+## WifiLinkedInfo
 
 提供WLAN连接的相关信息。
 
@@ -340,7 +344,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 
 
-## SuppState<sup>9+</sup>
+## SuppState
 
 表示请求状态的枚举。
 
@@ -364,7 +368,7 @@ connectToDevice(config: WifiDeviceConfig): void
 | INVALID | 11 | 无效值。 |
 
 
-## wifiManager.getSupportedFeatures<sup>9+</sup>
+## wifiManager.getSupportedFeatures
 
 getSupportedFeatures(): number
 
@@ -483,7 +487,7 @@ try {
 | SEMI_ACTIVE | 5 | 已半关闭。 |
 
 
-## wifiManager.reassociate<sup>9+</sup>
+## wifiManager.reassociate
 
 reassociate(): void
 
@@ -518,7 +522,7 @@ try {
 }
 ```
 
-## wifiManager.reconnect<sup>9+</sup>
+## wifiManager.reconnect
 
 reconnect(): void
 
@@ -553,7 +557,7 @@ try {
 }
 ```
 
-## wifiManager.updateNetwork<sup>9+</sup>
+## wifiManager.updateNetwork
 
 updateNetwork(config: WifiDeviceConfig): number
 
@@ -607,7 +611,7 @@ try {
 }
 ```
 
-## wifiManager.disableNetwork<sup>9+</sup>
+## wifiManager.disableNetwork
 
 disableNetwork(netId: number): void
 
@@ -694,7 +698,7 @@ try {
 }
 ```
 
-## wifiManager.removeAllNetwork<sup>9+</sup>
+## wifiManager.removeAllNetwork
 
 removeAllNetwork(): void
 
@@ -981,7 +985,7 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-## wifiManager.enableHotspot<sup>9+</sup>
+## wifiManager.enableHotspot
 
 enableHotspot(): void
 
@@ -1015,7 +1019,7 @@ try {
 }
 ```
 
-## wifiManager.disableHotspot<sup>9+</sup>
+## wifiManager.disableHotspot
 
 disableHotspot(): void
 
@@ -1049,7 +1053,7 @@ try {
 }
 ```
 
-## wifiManager.isHotspotDualBandSupported<sup>9+</sup>
+## wifiManager.isHotspotDualBandSupported
 
 isHotspotDualBandSupported(): boolean
 
@@ -1131,7 +1135,7 @@ try {
 }
 ```
 
-## wifiManager.setHotspotConfig<sup>9+</sup>
+## wifiManager.setHotspotConfig
 
 setHotspotConfig(config: HotspotConfig): void
 
@@ -1181,7 +1185,7 @@ try {
 }
 ```
 
-## HotspotConfig<sup>9+</sup>
+## HotspotConfig
 
 热点配置信息。
 
@@ -1199,7 +1203,7 @@ try {
 | maxConn | number | 否 | 否 | 最大设备连接数。 |
 | ipAddress | string | 否 | 是 | DHCP服务器的IP地址。|
 
-## wifiManager.getHotspotConfig<sup>9+</sup>
+## wifiManager.getHotspotConfig
 
 getHotspotConfig(): HotspotConfig
 
@@ -1240,7 +1244,7 @@ try {
 }
 ```
 
-## wifiManager.getStations<sup>9+</sup>
+## wifiManager.getStations
 
 getStations(): &nbsp;Array&lt;StationInfo&gt;
 
@@ -1285,7 +1289,7 @@ try {
 }
 ```
 
-## StationInfo<sup>9+</sup>
+## StationInfo
 
 接入的设备信息。包含连接到WLAN网络的设备详细信息。
 
@@ -1438,7 +1442,7 @@ try {
 }
 ```
 
-## wifiManager.deletePersistentGroup<sup>9+</sup>
+## wifiManager.deletePersistentGroup
 
 deletePersistentGroup(netId: number): void
 
@@ -1484,7 +1488,7 @@ try {
 }
 ```
 
-## wifiManager.getP2pGroups<sup>9+</sup>
+## wifiManager.getP2pGroups
 
 getP2pGroups(): Promise&lt;Array&lt;WifiP2pGroupInfo&gt;&gt;
 
@@ -1537,7 +1541,7 @@ wifiManager.getP2pGroups().then(data => {
 ```
 
 
-## wifiManager.getP2pGroups<sup>9+</sup>
+## wifiManager.getP2pGroups
 
 getP2pGroups(callback: AsyncCallback&lt;Array&lt;WifiP2pGroupInfo&gt;&gt;): void
 
@@ -1571,7 +1575,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | 2801000  | Operation failed. |
 | 2801001  | Wi-Fi STA disabled. |
 
-## wifiManager.setDeviceName<sup>9+</sup>
+## wifiManager.setDeviceName
 
 setDeviceName(devName: string): void
 
@@ -1615,7 +1619,7 @@ try {
 ```
 
 
-## wifiManager.on('streamChange')<sup>9+</sup>
+## wifiManager.on('streamChange')
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
@@ -1646,7 +1650,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('streamChange')<sup>9+</sup>
+## wifiManager.off('streamChange')
 
 off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
@@ -1693,7 +1697,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
 
-## wifiManager.on('deviceConfigChange')<sup>9+</sup>
+## wifiManager.on('deviceConfigChange')
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
@@ -1724,7 +1728,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('deviceConfigChange')<sup>9+</sup>
+## wifiManager.off('deviceConfigChange')
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
@@ -1771,7 +1775,7 @@ wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 ```
 
-## wifiManager.on('hotspotStaJoin')<sup>9+</sup>
+## wifiManager.on('hotspotStaJoin')
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
@@ -1802,7 +1806,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
-## wifiManager.off('hotspotStaJoin')<sup>9+</sup>
+## wifiManager.off('hotspotStaJoin')
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
@@ -1849,7 +1853,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 ```
 
-## wifiManager.on('hotspotStaLeave')<sup>9+</sup>
+## wifiManager.on('hotspotStaLeave')
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
@@ -1880,7 +1884,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
-## wifiManager.off('hotspotStaLeave')<sup>9+</sup>
+## wifiManager.off('hotspotStaLeave')
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
@@ -1927,7 +1931,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ```
 
-## WifiScanInfo<sup>9+</sup>
+## WifiScanInfo
 
 提供WLAN连接的相关信息。
 
