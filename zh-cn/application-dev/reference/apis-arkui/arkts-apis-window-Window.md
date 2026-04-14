@@ -10812,12 +10812,12 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 >
 >  ![orientationAndRotation](figures/orientationAndRotation.PNG)
 >
-> | 屏幕角度 | 屏幕方向 | 窗口方向 |
-> | -------  | ------- | ------- |
-> | 0        | PORTRAIT  | PORTRAIT   |
-> | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
-> | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
-> | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
+  | 屏幕角度 | 屏幕方向 | 窗口方向 |
+  | -------  | ------- | ------- |
+  | 0        | PORTRAIT  | PORTRAIT   |
+  | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
+  | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
+  | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
 
 **系统能力：** SystemCapability.Window.SessionManager
 
