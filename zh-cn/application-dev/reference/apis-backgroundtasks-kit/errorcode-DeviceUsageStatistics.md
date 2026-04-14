@@ -144,7 +144,7 @@ Failed to get the system time.
 
 **错误信息**
 
-Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
+Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.
 
 **错误描述**
 
@@ -158,15 +158,15 @@ Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 
 
 1. 必选参数没有传入。
 
-2. 参数类型错误 (Type Error)。
+2. 参数类型错误 （Type Error）。
 
-3. 参数数量错误 (Argument Count Error)。
+3. 参数数量错误 （Argument Count Error）。
 
-4. 空参数错误 (Null Argument Error)。
+4. 空参数错误 （Null Argument Error）。
 
-5. 参数格式错误 (Format Error)。
+5. 参数格式错误 （Format Error）。
 
-6. 参数值范围错误 (Value Range Error)。
+6. 参数值范围错误 （Value Range Error）。
 
 **处理步骤**
 
