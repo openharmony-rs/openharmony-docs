@@ -1,4 +1,4 @@
-# 全球化子系统Changelog
+# 全球化子系统 Changelog
 
 ## cl.notofonts.1 notofonts三方件小语种字体升级变更
 
