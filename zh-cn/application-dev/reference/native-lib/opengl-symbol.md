@@ -5,7 +5,7 @@
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-## Native api中导出的OpenGL 3.0符号列表
+## Native API中导出的OpenGL 3.0符号列表
 
 |符号类型|符号名|
 | --- | --- |
@@ -234,7 +234,7 @@
 |FUNC|glVertexAttribPointer|
 |FUNC|glViewport|
 
-## Native api中导出的OpenGL 4.2符号列表
+## Native API中导出的OpenGL 4.2符号列表
 
 从API version 22开始，支持使用OpenGL 4.2中的以下接口。
 |符号类型|符号名|
