@@ -53,7 +53,7 @@ networkSecurity.certVerification(cert, caCert)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值    |      说明     |
 | ------------- | ----- | ------------- |
@@ -73,8 +73,8 @@ networkSecurity.certVerification(cert, caCert)
 
 | 名称  | 类型                   |  只读 | 可选    | 说明           |
 | ----- | --------------------- | -----|---- | -------------- |
-| type  | CertType              | 否 |  否      | 证书编码类型。  |
-| data  | string \| ArrayBuffer |  否 |  否    | 证书内容。      |
+| type  | CertType              | 否 |  是      | 证书编码类型。  |
+| data  | string \| ArrayBuffer |  否 |  是    | 证书内容。      |
 
 
 ## networkSecurity.certVerification
@@ -89,7 +89,7 @@ ArkTS-Sta: certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<int\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -206,7 +206,7 @@ ArkTS-Sta: certVerificationSync(cert: CertBlob, caCert?: CertBlob): int
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -329,7 +329,7 @@ isCleartextPermitted(): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -371,7 +371,7 @@ isCleartextPermittedByHostName(hostName: string): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
