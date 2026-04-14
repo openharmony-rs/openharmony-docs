@@ -98,7 +98,7 @@ import { display } from '@kit.ArkUI';
 | FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 12 | 表示双折轴设备折轴一折叠状态为折叠，折轴二折叠状态为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
 | FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 22 | 表示双折轴设备折轴一折叠状态为折叠，折轴二折叠状态为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
 | FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED<sup>15+</sup> | 13 | 表示双折轴设备折轴一折叠状态为半折叠，折轴二折叠状态为完全展开。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
-| FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | 表示双折轴设备折轴一和折轴二折叠状态均为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
+| FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED<sup>15+</sup> | 23 | 表示双折轴设备折轴一和折轴二的折叠状态均为半折叠。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23|
 
 >**说明：**<br>
 > 只有一个折轴的产品包含FOLD_STATUS_EXPANDED、FOLD_STATUS_FOLDED、FOLD_STATUS_HALF_FOLDED三种折叠状态。<br>
