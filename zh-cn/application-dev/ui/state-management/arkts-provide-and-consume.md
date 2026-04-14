@@ -988,14 +988,22 @@ class TextNodeController extends NodeController {
       this.builderNode.build(wrapBuilder(buildText), undefined,
         { enableProvideConsumeCrossing: true });
       // 将BuilderNode的根节点挂载到rootNode节点下
-      this.rootNode.appendChild(this.builderNode.getFrameNode());
+      try {
+        this.rootNode.appendChild(this.builderNode.getFrameNode());
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to appendChild', JSON.stringify(e) ?? '');
+      }
     }
   }
 
   removeBuilderNode(): void {
     if (this.rootNode && this.builderNode) {
       // 从rootNode节点下的BuildNode节点移除
-      this.rootNode.removeChild(this.builderNode.getFrameNode());
+      try {
+        this.rootNode.removeChild(this.builderNode.getFrameNode());
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to removeChild', JSON.stringify(e) ?? '');
+      }
     }
   }
 

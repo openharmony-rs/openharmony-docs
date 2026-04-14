@@ -711,8 +711,8 @@ struct Gallery {
 export struct TapImage {
   @StorageLink('tapIndex') @Watch('onTapIndexChange') tapIndex: number = -1;
   @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
@@ -830,8 +830,8 @@ struct Gallery {
 @Component
 export struct TapImage {
   @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
@@ -912,8 +912,8 @@ struct Gallery {
 @Component
 export struct TapImage {
   @StorageLink('tapIndex') tapIndex: number = -1;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
