@@ -517,13 +517,13 @@
 
 设置窗口显示方向的结果。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult26) | 否 | 否 | 设置窗口显示方向执行结果 |
+| executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult) | 否 | 否 | 设置窗口显示方向执行结果 。|
 
 ## SubWindowOptions<sup>11+</sup>
 

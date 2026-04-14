@@ -2464,7 +2464,7 @@ setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;Orientat
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -2482,7 +2482,7 @@ setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;Orientat
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[OrientationResult](arkts-apis-window-i.md#orientationresult26)&gt; | Promise对象。返回设置窗口显示方向的结果 |
+| Promise&lt;[OrientationResult](arkts-apis-window-i.md#orientationresult)&gt; | Promise对象。返回设置窗口显示方向的结果 |
 
 **错误码：**
 
