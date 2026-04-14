@@ -325,7 +325,7 @@ off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback&lt;numbe
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[screen.offConnect](#screenoffconnect22)，[screen.offDisconnect](#screenoffdisconnect22)，[screen.offChange](#screenoffchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[screen.offConnect](#screenoffconnect23)，[screen.offDisconnect](#screenoffdisconnect23)，[screen.offChange](#screenoffchange23)。
 
 **系统接口：** 此接口为系统接口。
 
