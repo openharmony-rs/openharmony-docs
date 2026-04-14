@@ -102,7 +102,7 @@
 7. 生成最终段落文本，使用自定义字体，以便实现最终的文本绘制和显示。
 
    <!-- @[custom_font_c_custom_font_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 设置其他文本样式
    OH_Drawing_SetTextStyleColor(textStyle , OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
