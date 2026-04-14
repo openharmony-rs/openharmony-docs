@@ -391,7 +391,7 @@ deleteContact(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| key    | string | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。 |
+| key    | string | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。 |
 
 **返回值：**
 
@@ -429,7 +429,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可以通过[queryKey](#contactqueryKey10)获取。                                         |
+| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
@@ -491,7 +491,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
-| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可以通过[queryKey](#contactqueryKey10)获取。                         |
+| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -537,7 +537,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | 参数名   | 类型                                    | 必填 | 说明                                                         |
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可以通过[queryKey](#contactqueryKey10)获取。                                         |
+| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                         |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
 
@@ -601,7 +601,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 
 | 参数名   | 类型                                    | 必填 | 说明                                 |
 | -------- | --------------------------------------- | ---- | ------------------------------------ |
-| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可以通过[queryKey](#contactqueryKey10)获取。                         |
+| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                   |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
@@ -649,7 +649,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可以通过[queryKey](#contactqueryKey10)获取。                                                 |
+| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                                                 |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                       |
 
 **返回值：**
@@ -714,7 +714,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
-| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可以通过[queryKey](#contactqueryKey10)获取。       |
+| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
@@ -1921,7 +1921,7 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
 | key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                     |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                     |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则默认使用系统联系人应用查询。                                     |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，当该参数为空时，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                         |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
@@ -1963,7 +1963,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | key     | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                       |
-| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。。       |
+| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传该参数，则默认查询所有联系人属性。           |
 
 **返回值：**
@@ -2023,8 +2023,8 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 
 | 参数名 | 类型                                    | 必填 | 说明                                   |
 | ------ | --------------------------------------- | ---- | -------------------------------------- |
-| key    | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。 |
-| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。。                |
+| key    | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过[queryKey](#contactqueryKey10)获取。 |
+| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数则默认使用系统联系人应用查询。                |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                    |
 
 **返回值：**
@@ -2434,7 +2434,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。       |
+| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，如果传入参数为空，默认使用系统联系人应用查询。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传该参数默认查询所有联系人属性。               |
 
 **返回值：**
@@ -2494,7 +2494,7 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
 
 | 参数名 | 类型                                    | 必填 | 说明                   |
 | ------ | --------------------------------------- | ---- | ---------------------- |
-| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。。 |
+| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。 |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
 **返回值：**
@@ -2810,7 +2810,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则默认使用系统联系人应用查询。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
@@ -2870,7 +2870,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则默认使用系统联系人应用查询。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果该参数为空，则查询联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
@@ -3156,7 +3156,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空默认使用系统联系人应用查询。                                        |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -4684,8 +4684,8 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 
 |       名称        |                   类型                  | 只读 | 可选 | 说明                                   |
 | ----------------- | --------------------------------------- | ---- | ---- | -------------------------------------- |
-| INVALID_CONTACT_ID | number                                  | 是   | 否   | 默认联系人的id，值为-1。                           |
-| id                | number                                  | 是   | 是   | 联系人的id，由系统自动生成。                           |
+| INVALID_CONTACT_ID | number                                 | 是   | 否    | 默认联系人的id，值为-1。                           |
+| id                | number                                  | 是   | 是    | 联系人的id，由系统自动生成。                           |
 | key               | string                                  | 是   | 是   | 联系人的key，由系统自动生成。               |
 | contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
@@ -4795,17 +4795,17 @@ let attributes = [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME, con
 
 | 名称        |   类型   | 只读 | 可选 | 说明             |
 | ----------- | -------- | ---- | ---- | ---------------- |
-| CUSTOM_LABEL     | number    | 是   | 否  |自定义邮箱类型，默认值为0。 |
-| EMAIL_HOME       | number    | 是   | 否  | 家庭邮箱类型，默认值为1。   |
-| EMAIL_WORK       | number    | 是   | 否  | 工作邮箱类型，默认值为2。   |
-| EMAIL_OTHER      | number    | 是   | 否  | 其它邮箱类型，默认值为3。   |
-| INVALID_LABEL_ID | number    | 是   | 否 | 无效邮箱类型，默认值为-1。   |
+| CUSTOM_LABEL     | number    | 是   | 否   |自定义邮箱类型，默认值为0。 |
+| EMAIL_HOME       | number    | 是   | 否   | 家庭邮箱类型，默认值为1。   |
+| EMAIL_WORK       | number    | 是   | 否   | 工作邮箱类型，默认值为2。   |
+| EMAIL_OTHER      | number    | 是   | 否   | 其它邮箱类型，默认值为3。   |
+| INVALID_LABEL_ID | number    | 是   | 否   | 无效邮箱类型，默认值为-1。   |
 | email       | string   | 否   | 否   | 邮箱地址。       |
 | labelName   | string   | 否   | 是   | 邮箱的类型名称。 |
 | displayName | string   | 否   | 是   | 邮箱的显示名称。 |
 | labelId     | number   | 否   | 是   | 邮箱的类型。     |
 
-**对象创建示例：**
+**示例：**
 
   使用JSON格式创建数据。
 
@@ -4860,11 +4860,11 @@ let holder: contact.Holder = {
 
 |    名称   |   类型   | 只读 | 可选 | 说明           |
 | --------- | -------- | ---- | ---- | -------------- |
-| CUSTOM_LABEL      | number   | 是   | 否 | 自定义事件类型，默认值为0。   |
-| EVENT_ANNIVERSARY | number   | 是   | 否 | 周年纪念事件类型，默认值为1。 |
-| EVENT_OTHER       | number   | 是   | 否 | 其它事件类型，默认值为2。     |
-| EVENT_BIRTHDAY    | number   | 是   | 否 | 生日事件类型，默认值为3。     |
-| INVALID_LABEL_ID  | number   | 是   | 否 | 无效事件类型，默认值为-1。     |
+| CUSTOM_LABEL      | number   | 是   | 否   | 自定义事件类型，默认值为0。   |
+| EVENT_ANNIVERSARY | number   | 是   | 否   | 周年纪念事件类型，默认值为1。 |
+| EVENT_OTHER       | number   | 是   | 否   | 其它事件类型，默认值为2。     |
+| EVENT_BIRTHDAY    | number   | 是   | 否   | 生日事件类型，默认值为3。     |
+| INVALID_LABEL_ID  | number   | 是   | 否   | 无效事件类型，默认值为-1。     |
 | eventDate | string   | 否   | 否   | 事件的日期。   |
 | labelName | string   | 否   | 是   | 事件类型名称。 |
 | labelId   | number   | 否   | 是   | 事件类型。     |
@@ -4922,15 +4922,15 @@ let group: contact.Group = {
 
 | 名称      |   类型   | 只读 | 可选 | 说明               |
 | --------- | -------- | ---- | ---- | ------------------ |
-| CUSTOM_LABEL     | number   | 是  | 否 | 自定义即时消息类型，默认值为-1。 |
-| IM_AIM           | number   | 是  | 否  | AIM即时消息类型，默认值为0。    |
-| IM_MSN           | number   | 是  | 否  | MSN即时消息类型，默认值为1。    |
-| IM_YAHOO         | number   | 是  | 否  | YAHOO即时消息类型，默认值为2。  |
-| IM_SKYPE         | number   | 是  | 否  | SKYPE即时消息类型，默认值为3。  |
-| IM_QQ            | number   | 是  | 否  | QQ即时消息类型，默认值为4。     |
-| IM_ICQ           | number   | 是  | 否  | ICQ即时消息类型，默认值为6。    |
-| IM_JABBER        | number   | 是  | 否  | JABBER即时消息类型，默认值为7。 |
-| INVALID_LABEL_ID | number   | 是  | 否 | 无效的即时消息类型，默认值为-2。 |
+| CUSTOM_LABEL     | number   | 是   | 否   | 自定义即时消息类型，默认值为-1。 |
+| IM_AIM           | number   | 是   | 否   | AIM即时消息类型，默认值为0。    |
+| IM_MSN           | number   | 是   | 否   | MSN即时消息类型，默认值为1。    |
+| IM_YAHOO         | number   | 是   | 否   | YAHOO即时消息类型，默认值为2。  |
+| IM_SKYPE         | number   | 是   | 否   | SKYPE即时消息类型，默认值为3。  |
+| IM_QQ            | number   | 是   | 否   | QQ即时消息类型，默认值为4。     |
+| IM_ICQ           | number   | 是   | 否   | ICQ即时消息类型，默认值为6。    |
+| IM_JABBER        | number   | 是   | 否   | JABBER即时消息类型，默认值为7。 |
+| INVALID_LABEL_ID | number   | 是   | 否   | 无效的即时消息类型，默认值为-2。 |
 | imAddress | string   | 否   | 否   | 即时消息地址。     |
 | labelName | string   | 否   | 是   | 即时消息类型名称。 |
 | labelId   | number   | 否   | 是   | 即时消息类型。     |
@@ -5000,7 +5000,7 @@ let name: contact.Name = {
 | -------- | -------- | ---- | ---- | -------------- |
 | nickName | string   | 否   | 否   | 联系人的昵称。 |
 
-**对象创建示例：**
+**示例：**
 
   使用JSON格式创建数据。
 
@@ -5069,30 +5069,30 @@ let organization: contact.Organization = {
 **系统能力**：SystemCapability.Applications.ContactsData
 
 
-| 名称             |  类型  | 只读  | 只选  | 说明                                             |
+| 名称             |  类型  | 只读  | 可选  | 说明                                             |
 | ---------------- | ---- | ---- | ---- | ------------------------------------------------ |
-| CUSTOM_LABEL     |  number  | 是  | 否  | 自定义电话类型，默认值是0。                                 |
-| NUM_HOME         |  number  | 是  | 否  | 家庭电话类型，默认值是1。                                   |
-| NUM_MOBILE       |  number  | 是  | 否  | 移动电话类型，默认值是2。                                   |
-| NUM_WORK         |  number  | 是  | 否  | 工作电话类型，默认值是3。                                   |
-| NUM_FAX_WORK     |  number  | 是  | 否  | 工作传真电话类型，默认值是4。                               |
-| NUM_FAX_HOME     |  number  | 是  | 否  | 家庭传真电话类型，默认值是5。                               |
-| NUM_PAGER        |  number  | 是  | 否  | 寻呼机电话类型，默认值是6。                                 |
-| NUM_OTHER        |  number  | 是  | 否  | 其它电话类型，默认值是7。                                   |
-| NUM_CALLBACK     |  number  | 是  | 否  | 回呼电话类型，默认值是8。                                   |
-| NUM_CAR          |  number  | 是  | 否  | 车机电话类型，默认值是9。                                   |
-| NUM_COMPANY_MAIN |  number  | 是  | 否 | 公司电话类型，默认值是10。                                   |
-| NUM_ISDN         |  number  | 是  | 否 | 综合业务数字网(ISDN)电话类型，默认值是11。                 |
-| NUM_MAIN         |  number  | 是  | 否 | 主电话类型，默认值是12。                                     |
-| NUM_OTHER_FAX    |  number  | 是  | 否 | 其它传真类型，默认值是13。                                   |
-| NUM_RADIO        |  number  | 是  | 否 | 无线电话类型，默认值是14。                                   |
-| NUM_TELEX        |  number  | 是  | 否 | 电传电话类型，默认值是15。                                   |
-| NUM_TTY_TDD      |  number  | 是  | 否 | 电传打字机(TTY)或测试驱动开发(TDD)电话类型，默认值是16。 |
-| NUM_WORK_MOBILE  |  number  | 是  | 否 | 工作移动电话类型，默认值是17。                               |
-| NUM_WORK_PAGER   |  number  | 是  | 否 | 工作寻呼机电话类型，默认值是18。                             |
-| NUM_ASSISTANT    |  number  | 是  | 否 | 助理电话类型，默认值是19。                                   |
-| NUM_MMS          |  number  | 是  | 否 | 彩信电话类型，默认值是20。                                   |
-| INVALID_LABEL_ID |  number  | 是  | 否 | 无效电话类型，默认值是-1。                                   |
+| CUSTOM_LABEL     |  number  | 是   | 否   | 自定义电话类型，默认值是0。                                 |
+| NUM_HOME         |  number  | 是   | 否   | 家庭电话类型，默认值是1。                                   |
+| NUM_MOBILE       |  number  | 是   | 否   | 移动电话类型，默认值是2。                                   |
+| NUM_WORK         |  number  | 是   | 否   | 工作电话类型，默认值是3。                                   |
+| NUM_FAX_WORK     |  number  | 是   | 否   | 工作传真电话类型，默认值是4。                               |
+| NUM_FAX_HOME     |  number  | 是   | 否   | 家庭传真电话类型，默认值是5。                               |
+| NUM_PAGER        |  number  | 是   | 否   | 寻呼机电话类型，默认值是6。                                 |
+| NUM_OTHER        |  number  | 是   | 否   | 其它电话类型，默认值是7。                                   |
+| NUM_CALLBACK     |  number  | 是   | 否   | 回呼电话类型，默认值是8。                                   |
+| NUM_CAR          |  number  | 是   | 否   | 车机电话类型，默认值是9。                                   |
+| NUM_COMPANY_MAIN |  number  | 是   | 否   | 公司电话类型，默认值是10。                                   |
+| NUM_ISDN         |  number  | 是   | 否   | 综合业务数字网(ISDN)电话类型，默认值是11。                 |
+| NUM_MAIN         |  number  | 是   | 否   | 主电话类型，默认值是12。                                     |
+| NUM_OTHER_FAX    |  number  | 是   | 否   | 其它传真类型，默认值是13。                                   |
+| NUM_RADIO        |  number  | 是   | 否   | 无线电话类型，默认值是14。                                   |
+| NUM_TELEX        |  number  | 是   | 否   | 电传电话类型，默认值是15。                                   |
+| NUM_TTY_TDD      |  number  | 是   | 否   | 电传打字机(TTY)或测试驱动开发(TDD)电话类型，默认值是16。 |
+| NUM_WORK_MOBILE  |  number  | 是   | 否   | 工作移动电话类型，默认值是17。                               |
+| NUM_WORK_PAGER   |  number  | 是   | 否   | 工作寻呼机电话类型，默认值是18。                             |
+| NUM_ASSISTANT    |  number  | 是   | 否   | 助理电话类型，默认值是19。                                   |
+| NUM_MMS          |  number  | 是   | 否   | 彩信电话类型，默认值是20。                                   |
+| INVALID_LABEL_ID |  number  | 是   | 否   | 无效电话类型，默认值是-1。                                   |
 | labelName   | string   | 否   | 是   | 电话号码类型名称。 |
 | phoneNumber | string   | 否   | 否   | 电话号码。         |
 | labelId     | number   | 否   | 是   | 电话号码类型。     |
@@ -5166,11 +5166,11 @@ async function SetPortraitPixelMap(photo: image.PixelMap) {
 
 | 名称          |   类型   | 只读 | 可选 | 说明                       |
 | ------------- | -------- | ---- | ---- | -------------------------- |
-| CUSTOM_LABEL     | number   | 是  | 否  | 自定义邮政地址类型，默认值为0。 |
-| ADDR_HOME        | number   | 是  | 否  | 家庭地址类型，默认值为1。       |
-| ADDR_WORK        | number   | 是  | 否  | 工作地址类型，默认值为2。       |
-| ADDR_OTHER       | number   | 是  | 否  | 其它地址类型，默认值为3。       |
-| INVALID_LABEL_ID | number   | 是  | 否 | 无效地址类型，默认值为-1。       |
+| CUSTOM_LABEL     | number   | 是   | 否   | 自定义邮政地址类型，默认值为0。 |
+| ADDR_HOME        | number   | 是   | 否   | 家庭地址类型，默认值为1。       |
+| ADDR_WORK        | number   | 是   | 否   | 工作地址类型，默认值为2。       |
+| ADDR_OTHER       | number   | 是   | 否   | 其它地址类型，默认值为3。       |
+| INVALID_LABEL_ID | number   | 是   | 否  | 无效地址类型，默认值为-1。       |
 | city          | string   | 否   | 是   | 联系人所在的城市。         |
 | country       | string   | 否   | 是   | 联系人所在的国家。         |
 | labelName     | string   | 否   | 是   | 邮政地址类型名称。         |
@@ -5268,11 +5268,11 @@ relation.labelId = contact.Relation.RELATION_ASSISTANT;
 
 | 名称       |   类型   | 只读 | 可选 | 说明                              |
 | ---------- | -------- | ---- | ---- | --------------------------------- |
-| CUSTOM_LABEL     | number   | 是   | 否    | 自定义会话发起协议(SIP)地址类型。 |
-| SIP_HOME         | number   | 是   | 否    | 家庭会话发起协议(SIP)地址类型。   |
-| SIP_WORK         | number   | 是   | 否    | 工作会话发起协议(SIP)地址类型。   |
-| SIP_OTHER        | number   | 是   | 否    | 其它会话发起协议(SIP)地址类型。   |
-| INVALID_LABEL_ID | number   | 是   | 否   | 无效会话发起协议(SIP)地址类型。   |
+| CUSTOM_LABEL     | number   | 是   | 否    | 自定义会话发起协议(SIP)地址类型，默认值为0。 |
+| SIP_HOME         | number   | 是   | 否    | 家庭会话发起协议(SIP)地址类型，默认值为1。   |
+| SIP_WORK         | number   | 是   | 否    | 工作会话发起协议(SIP)地址类型，默认值为2。   |
+| SIP_OTHER        | number   | 是   | 否    | 其它会话发起协议(SIP)地址类型，默认值为3。   |
+| INVALID_LABEL_ID | number   | 是   | 否    | 无效会话发起协议(SIP)地址类型，默认值为-1。   |
 | labelName  | string   | 否   | 是   | 会话发起协议(SIP)地址类型名称。 |
 | sipAddress | string   | 否   | 否   | 会话发起协议(SIP)地址。         |
 | labelId    | number   | 否   | 是   | 会话发起协议(SIP)地址类型。     |
