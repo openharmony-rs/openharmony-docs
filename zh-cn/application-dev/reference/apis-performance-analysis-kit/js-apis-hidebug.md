@@ -1444,20 +1444,22 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 })
 ```
 
-## hidebug.dumpJsRawHeapData<sup>26+</sup>
+## hidebug.dumpJsRawHeapData<sup>26</sup>
 
 dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise&lt;Array&lt;string&gt;&gt;
 
-为当前线程或其所属进程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转换为heapsnapshot格式文件进行解析。
+为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除 nodeId 缓存。生成的文件为rawheap格式，操作通过Promise异步完成。文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转换为heapsnapshot格式文件进行解析。
 > **注意**：
 >
 > 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 当设置的开发者选项开关打开并重启设备后，此功能有效。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
