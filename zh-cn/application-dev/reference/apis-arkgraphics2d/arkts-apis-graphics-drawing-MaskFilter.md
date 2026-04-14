@@ -38,7 +38,7 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 | 参数名     | 类型                   | 必填 | 说明                                 |
 | ---------- | --------------------- | ---- | ----------------------------------- |
 | blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型。                           |
-| sigma      | number                | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。 |
+| sigma      | number                | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。单位为物理像素px。 |
 
 **返回值：**
 
