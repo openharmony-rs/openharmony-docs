@@ -3822,7 +3822,7 @@ async function test(){
 
 onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
 
-注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如监听插播的元数据信息。使用callback异步回调。
+注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如监听插播的元数据信息。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -3836,7 +3836,7 @@ onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata26)> | 是   | 回调函数，返回上报基于时间的元数据。|
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 是   | 回调函数，返回上报基于时间的元数据。|
 
 **示例：**
 
@@ -3852,7 +3852,7 @@ async function test(){
 
 offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 
-取消注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的元数据信息。使用callback异步回调。
+取消注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的元数据信息。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -3866,7 +3866,7 @@ offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata26)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
 
 **示例：**
 
