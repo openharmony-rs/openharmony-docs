@@ -314,7 +314,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getMorandiShadowColor(): Color
 
-从图像主色获取莫兰迪阴影色，结果写入[Color](js-apis-effectKit.md#color)。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
+从图像的主色中获取莫兰迪阴影色，并将结果写入[Color](js-apis-effectKit.md#color)。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
 
 **起始版本：** 26.0.0
 
@@ -364,7 +364,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getDeepenImmersionColor(): Color
 
-生成与背景色融合且比背景色更深的强沉浸色，结果写入[Color](js-apis-effectKit.md#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
+生成与背景色融合且比背景色更深的强沉浸色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
 
 **起始版本：** 26.0.0
 
@@ -380,7 +380,7 @@ getDeepenImmersionColor(): Color
 
 | 类型     | 说明                                  |
 | :------- | :----------------------------------- |
-|[Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色色对应的颜色值，失败时返回null。 |
+|[Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色对应的颜色值，失败时返回null。 |
 
 **示例：**
 
@@ -414,7 +414,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getImmersiveBackgroundColor(): Color
 
-生成能够创造沉浸式视觉效果的沉浸式背景色，结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
+生成能够创造沉浸式视觉效果的沉浸式背景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
 
 **起始版本：** 26.0.0
 
@@ -453,8 +453,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let color = colorPicker.ImmersiveBackgroundColor();
-      console.info('get deepen background color =' + color);
+      let color = colorPicker.getImmersiveBackgroundColor();
+      console.info('get immersive background color =' + color);
     }
   })
 })
@@ -464,7 +464,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getImmersiveForegroundColor(): Color
 
-生成能够创造沉浸式视觉效果的沉浸式前景色，结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
+生成能够创造沉浸式视觉效果的沉浸式前景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
 
 **起始版本：** 26.0.0
 
@@ -504,7 +504,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
     } else {
       console.info('Succeeded in creating color picker.');
       let color = colorPicker.ImmersiveForegroundColor();
-      console.info('get deepen foreground color =' + color);
+      console.info('get immersive foreground color =' + color);
     }
   })
 })
@@ -514,7 +514,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 discriminatePictureLightDegree(): PictureLightDegree
 
-获取对图片的明亮程度。
+获取图片的明亮程度。
 
 **起始版本：** 26.0.0
 
@@ -530,7 +530,7 @@ discriminatePictureLightDegree(): PictureLightDegree
 
 | 类型                                     | 说明                                            |
 | :--------------------------------------- | :---------------------------------------------- |
-| [PictureLightDegree](#picturelightdegree26) | 图像颜色明亮程度。 |
+| [PictureLightDegree](#picturelightdegree) | 图像颜色明亮程度。 |
 
 **错误码：**
 
@@ -570,9 +570,9 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ### getReverseColor
 
-getReverseColor(): Color;
+getReverseColor(): Color
 
-基于图像亮度判别结果生成反向颜色，结果写入[Color](js-apis-effectKit.md#color)里。当图像亮度为极亮时返回黑色，其他情况返回白色，用于界面主题或对比度计算。
+基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。当图像亮度为极亮时返回黑色，其他情况返回白色，用于界面主题或对比度计算。
 
 **起始版本：** 26.0.0
 
