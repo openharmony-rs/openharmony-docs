@@ -91,6 +91,14 @@ appendChild(node: RenderNode): void
 | ------ | ------------------------- | ---- | ---------------------- |
 | node   | [RenderNode](#rendernode) | 是   | 需要添加的RenderNode。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted." |
+
 **示例：**
 
 ```ts
@@ -152,6 +160,14 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | ------- | ------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | child   | [RenderNode](#rendernode)                   | 是   | 需要添加的子节点。                                                           |
 | sibling | [RenderNode](#rendernode)&nbsp;\|&nbsp;null | 是   | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted." |
 
 **示例：**
 
@@ -1122,7 +1138,9 @@ struct Index {
 
 ### position
 
-set position(position: Position)
+ArkTS-Dyn: set position(position: Position)
+
+ArkTS-Sta: set position(position: NodePosition)
 
 设置当前RenderNode的位置。
 
@@ -1138,9 +1156,11 @@ set position(position: Position)
 
 | 参数名   | 类型                                             | 必填 | 说明                         |
 | -------- | ------------------------------------------------ | ---- | ---------------------------- |
-| position | [Position](./js-apis-arkui-graphics.md#position) | 是   | 将要设置的RenderNode的位置。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition) | 是   | 将要设置的RenderNode的位置。 |
 
-get position(): Position
+ArkTS-Dyn: get position(): Position
+
+ArkTS-Sta: get position(): NodePosition
 
 获取当前RenderNode的位置。
 
@@ -1156,7 +1176,7 @@ get position(): Position
 
 | 类型                                             | 说明                                                 |
 | ------------------------------------------------ | ---------------------------------------------------- |
-| [Position](./js-apis-arkui-graphics.md#position) | 获取当前RenderNode的位置，默认位置为{ x: 0, y: 0 }。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition) | 获取当前RenderNode的位置，默认位置为{ x: 0, y: 0 }。 |
 
 **示例：**
 ```ts
@@ -1793,7 +1813,9 @@ struct Index {
 
 ### shadowOffset
 
-set shadowOffset(offset: Offset)
+ArkTS-Dyn: set shadowOffset(offset: Offset)
+
+ArkTS-Sta: set shadowOffset(offset: NodeOffset)
 
 设置当前RenderNode的阴影偏移。
 
@@ -1809,9 +1831,11 @@ set shadowOffset(offset: Offset)
 
 | 参数名 | 类型                                         | 必填 | 说明                             |
 | ------ | -------------------------------------------- | ---- | -------------------------------- |
-| offset | [Offset](./js-apis-arkui-graphics.md#offset) | 是   | 将要设置的RenderNode的阴影偏移。 |
+| offset | ArkTS-Dyn: [Offset](./js-apis-arkui-graphics.md#offset)<br>ArkTS-Sta: [NodeOffset](./js-apis-arkui-graphics.md#nodeoffset) | 是   | 将要设置的RenderNode的阴影偏移。 |
 
-get shadowOffset(): Offset
+ArkTS-Dyn: get shadowOffset(): Offset
+
+ArkTS-Sta: get shadowOffset(): NodeOffset
 
 获取当前RenderNode的阴影偏移。
 
@@ -1827,7 +1851,7 @@ get shadowOffset(): Offset
 
 | 类型                                         | 说明                                               |
 | -------------------------------------------- | -------------------------------------------------- |
-| [Offset](./js-apis-arkui-graphics.md#offset) | 当前RenderNode的阴影偏移，默认值为{ x: 0, y: 0 }。 |
+| ArkTS-Dyn: [Offset](./js-apis-arkui-graphics.md#offset)<br>ArkTS-Sta: [NodeOffset](./js-apis-arkui-graphics.md#nodeoffset) | 当前RenderNode的阴影偏移，默认值为{ x: 0, y: 0 }。 |
 
 **示例：**
 
@@ -1880,7 +1904,7 @@ set label(label: string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1898,7 +1922,7 @@ get label(): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -2994,7 +3018,9 @@ struct Index {
 
 ### borderRadius<sup>12+</sup>
 
-set borderRadius(radius: BorderRadiuses)
+ArkTS-Dyn: set borderRadius(radius: BorderRadiuses)
+
+ArkTS-Sta: set borderRadius(radius: NodeBorderRadiuses)
 
 设置当前RenderNode的边框圆角。
 
@@ -3010,12 +3036,12 @@ set borderRadius(radius: BorderRadiuses)
 
 | 参数名 | 类型                                                         | 必填 | 说明                   |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------- |
-| radius | [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | 是   | RenderNode的边框圆角，单位为vp。 |
+| radius | ArkTS-Dyn: [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12)<br>ArkTS-Sta: [NodeBorderRadiuses](./js-apis-arkui-graphics.md#nodeborderradiuses20) | 是   | RenderNode的边框圆角，单位为vp。 |
 
 
 ArkTS-Dyn: get borderRadius(): BorderRadiuses
 
-ArkTS-Sta: get borderRadius(): BorderRadiuses | undefined
+ArkTS-Sta: get borderRadius(): NodeBorderRadiuses | undefined
 
 获取当前RenderNode的边框圆角。
 
@@ -3031,7 +3057,7 @@ ArkTS-Sta: get borderRadius(): BorderRadiuses | undefined
 
 | 类型                                                         | 说明                   |
 | ------------------------------------------------------------ | ---------------------- |
-| ArkTS-Dyn: [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) <br> ArkTS-Sta: [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) \| undefined | RenderNode的边框圆角，默认undefined。 |
+| ArkTS-Dyn: [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) <br> ArkTS-Sta: [NodeBorderRadiuses](./js-apis-arkui-graphics.md#nodeborderradiuses20) \| undefined | RenderNode的边框圆角，默认undefined。 |
 
 **示例：**
 
@@ -3141,6 +3167,8 @@ ArkTS-Dyn: get shapeMask(): ShapeMask
 ArkTS-Sta: get shapeMask(): ShapeMask | undefined
 
 获取当前RenderNode的遮罩。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3475,6 +3503,8 @@ get markNodeGroup(): boolean
 
 获取当前节点是否标记了优先绘制。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -3569,6 +3599,8 @@ get lengthMetricsUnit(): LengthMetricsUnit
 
 获取RenderNode各个属性使用的单位。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -3647,9 +3679,9 @@ isDisposed(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 20
 
 **返回值：**
 

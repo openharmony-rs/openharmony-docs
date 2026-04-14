@@ -32,7 +32,7 @@ import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@ohos.arku
 ### setDataSource
 ArkTs-Dyn：setDataSource(dataSource: IDataSourcePrefetching): void
 
-ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T\>): void
+ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T>): void
 
 设置支持预取的DataSource以绑定到Prefetcher。
 
@@ -48,7 +48,7 @@ ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T\>): void
 
 | 参数名        | 类型                                                | 必填 | 说明         |
 |------------|---------------------------------------------------|----|------------|
-| dataSource | ArkTS-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTS-Sta: [IDataSourcePrefetching\<T\>](#idatasourceprefetching) | 是  | 支持预取能力的数据源。 |
+| dataSource | ArkTS-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTS-Sta: [IDataSourcePrefetching\<T>](#idatasourceprefetching) | 是  | 支持预取能力的数据源。 |
 
 ArkTS-Dyn示例：
 ```typescript
@@ -146,7 +146,7 @@ BasicPrefetcher是IPrefetcher的基础实现。它提供了一种智能数据预
 ### constructor
 ArkTs-Dyn：constructor(dataSource?: IDataSourcePrefetching)
 
-ArkTs-Sta：constructor(dataSource?: IDataSourcePrefetching\<T\>)
+ArkTs-Sta：constructor(dataSource?: IDataSourcePrefetching\<T>)
 
 传入支持预取的DataSource以绑定到Prefetcher。
 
@@ -162,12 +162,12 @@ ArkTs-Sta：constructor(dataSource?: IDataSourcePrefetching\<T\>)
 
 | 参数名        | 类型                                                | 必填 | 说明         |
 |------------|---------------------------------------------------|----|------------|
-| dataSource | ArkTS-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTS-Sta: [IDataSourcePrefetching\<T\>](#idatasourceprefetching) | 否  | 支持预取能力的数据源。 |
+| dataSource | ArkTS-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTS-Sta: [IDataSourcePrefetching\<T>](#idatasourceprefetching) | 否  | 支持预取能力的数据源。 |
 
 ### setDataSource
 ArkTs-Dyn：setDataSource(dataSource: IDataSourcePrefetching): void
 
-ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T\>): void
+ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T>): void
 
 设置支持预取的DataSource以绑定到Prefetcher。
 
@@ -183,7 +183,7 @@ ArkTs-Sta：setDataSource(dataSource: IDataSourcePrefetching\<T\>): void
 
 | 参数名        | 类型                                                | 必填 | 说明         |
 |------------|---------------------------------------------------|----|------------|
-| dataSource | ArkTS-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTS-Sta: [IDataSourcePrefetching\<T\>](#idatasourceprefetching) | 是  | 支持预取能力的数据源。 |
+| dataSource | ArkTS-Dyn: [IDataSourcePrefetching](#idatasourceprefetching)</br>ArkTS-Sta: [IDataSourcePrefetching\<T>](#idatasourceprefetching) | 是  | 支持预取能力的数据源。 |
 
 ### visibleAreaChanged
 ArkTs-Dyn：visibleAreaChanged(minVisible: number, maxVisible: number): void
@@ -220,9 +220,9 @@ ArkTs-Sta：visibleAreaChanged(minVisible: int, maxVisible: int): void
 **ArkTS-Sta起始版本：** 23
 
 ### prefetch
-ArkTs-Dyn：prefetch(index: number): Promise\<void\> | void
+ArkTs-Dyn：prefetch(index: number): Promise\<void> | void
 
-ArkTs-Sta：prefetch(index: int): Promise\<void\> | undefined
+ArkTs-Sta：prefetch(index: int): Promise\<void> | undefined
 
 从数据集中预取指定的元素。该方法可以为同步，也可为异步。
 
@@ -244,12 +244,12 @@ ArkTs-Sta：prefetch(index: int): Promise\<void\> | undefined
 
 | 类型 | 说明 |
 | ----------------------- | -------- |
-| ArkTS-Dyn: Promise\<void\> \| void</br>ArkTS-Sta: Promise\<void\> \| undefined | ArkTS-Dyn: 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。</br>ArkTS-Sta: 异步执行时返回Promise对象，同步执行时返回undefined。Promise仅表示操作完成，无实际返回内容。 |
+| ArkTS-Dyn: Promise\<void> \| void</br>ArkTS-Sta: Promise\<void> \| undefined | ArkTS-Dyn: 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。</br>ArkTS-Sta: 异步执行时返回Promise对象，同步执行时返回undefined。Promise仅表示操作完成，无实际返回内容。 |
 
 ### cancel
-ArkTs-Dyn：cancel?(index: number): Promise\<void\> | void
+ArkTs-Dyn：cancel?(index: number): Promise\<void> | void
 
-ArkTs-Sta：cancel(index: int): Promise\<void\> | undefined
+ArkTs-Sta：cancel(index: int): Promise\<void> | undefined
 
 取消从数据集中预取指定的元素。该方法可以为同步，也可为异步。
 
@@ -271,7 +271,7 @@ ArkTs-Sta：cancel(index: int): Promise\<void\> | undefined
 
 | 类型 | 说明 |
 | ----------------------- | -------- |
-| ArkTS-Dyn: Promise\<void\> \| void</br>ArkTS-Sta: Promise\<void\> \| undefined | ArkTS-Dyn: 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。</br>ArkTS-Sta: 异步执行时返回Promise对象，同步执行时返回undefined。Promise仅表示操作完成，无实际返回内容。 |
+| ArkTS-Dyn: Promise\<void> \| void</br>ArkTS-Sta: Promise\<void> \| undefined | ArkTS-Dyn: 异步执行时返回Promise对象，同步执行时无返回值。Promise仅表示操作完成，无实际返回内容。</br>ArkTS-Sta: 异步执行时返回Promise对象，同步执行时返回undefined。Promise仅表示操作完成，无实际返回内容。 |
 
 列表内容移出屏幕时（比如列表快速滑动场景下），预取算法判断屏幕以外的Item可以被取消预取时，该方法即会被调用。例如，如果HTTP框架支持请求取消，则可以在此处取消在prefetch中发起的网络请求。
 
