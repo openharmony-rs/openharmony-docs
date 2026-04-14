@@ -40,7 +40,7 @@
 
    <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   ```C++
+   ``` C++
    #include <native_drawing/drawing_font_collection.h>
    #include <native_drawing/drawing_text_typography.h>
    #include <native_drawing/drawing_register_font.h>
@@ -54,7 +54,7 @@
 
    <!-- @[custom_font_c_custom_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   ```C++
+   ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
    ```
 
@@ -66,7 +66,7 @@
 
    <!-- @[custom_font_c_custom_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   ```C++
+   ``` C++
    // 后续使用自定义字体时，需使用到该字体家族名
    const char* fontFamily = "myFamilyName"; 
    // 该路径是待注册的自定义字体文件在应用设备下的路径，确保该自定义字体文件已正确放置在该路径下
@@ -83,7 +83,7 @@
 
    <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   ```C++
+   ``` C++
    // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
    int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
    ```
@@ -92,7 +92,7 @@
 
    <!-- @[custom_font_c_custom_font_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   ```C++
+   ``` C++
    // 如果已经注册成功自定义字体，填入自定义字体的字体家族名
    const char* myFontFamilies[] = {"myFamilyName"}; 
    // 加入可使用的自定义字体
@@ -103,7 +103,7 @@
 
    <!-- @[custom_font_c_custom_font_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   ```C++
+   ``` C++
    // 设置其他文本样式
    OH_Drawing_SetTextStyleColor(textStyle , OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
    // 设置字体大小为60.0
@@ -131,7 +131,7 @@
 
    <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   ```C++
+   ``` C++
    // 注销对应的自定义字体
    OH_Drawing_UnregisterFont(fontCollection, fontFamily);
    OH_Drawing_TypographyCreate* handler1 = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
