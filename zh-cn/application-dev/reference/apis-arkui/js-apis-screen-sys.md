@@ -2871,7 +2871,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-**ArkTS-Sta: 示例：**
+ArkTS-Sta:示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
