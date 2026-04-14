@@ -393,7 +393,7 @@ struct Index {
 
 type EllipticalMaskRadius = [ number, number ]
 
-定义椭圆形遮罩的半径。
+定义椭圆形遮罩的半径，取值为相对于组件宽和高的比例值。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -403,7 +403,7 @@ type EllipticalMaskRadius = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 椭圆形遮罩的半径。第一个值表示X轴方向的半径，第二个值表示Y轴方向的半径。<br>X轴半径以组件宽度为基准，Y轴半径以组件高度为基准，取值均需大于0。<br>例如[1, 1]表示半径等于组件宽和高。|
+| [ number, number ] | 椭圆形遮罩在X轴和Y轴方向上的半径，单位分别为相对于组件宽和高的比例，取值均需大于0。<br>例如：[0.5, 1]表示遮罩的X轴半径等于组件宽的一半，Y轴半径等于组件高。|
 
 ## EllipticalMaskCenter<sup>23+</sup>
 type EllipticalMaskCenter = [ number, number ]

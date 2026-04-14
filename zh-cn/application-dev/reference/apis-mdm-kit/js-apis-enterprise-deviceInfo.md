@@ -4,7 +4,7 @@
 <!--Owner: @huanleima-->
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供企业设备信息管理能力，包括获取设备序列号、设备名称等。
 
