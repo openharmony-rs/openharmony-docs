@@ -4,7 +4,7 @@
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
-<!--Tester: @yliupy-->
+<!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
 同样的内容在不同场景和语境中，翻译结果可能存在差异。提供待翻译的界面字符串时，应提供给译员完整的场景和足够的场景信息，避免造成翻译偏差。翻译场景信息通常包括如下两种类型：
