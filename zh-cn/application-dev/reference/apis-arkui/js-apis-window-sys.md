@@ -37,28 +37,28 @@ import { window } from '@kit.ArkUI';
 | 名称                                        | 值   | 说明                                                         |
 | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | TYPE_INPUT_METHOD<sup>(deprecated)</sup>    | 2    | 表示输入法窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 从API version 9开始支持，从API version 13开始废弃，无替代窗口类型，输入法相关控制都请调用[输入法框架侧接口](../../inputmethod/inputmethod-application-guide.md)执行。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 9 |
-| TYPE_STATUS_BAR<sup>9+</sup>                | 3    | 表示状态栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_PANEL<sup>9+</sup>                     | 4    | 表示通知栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_KEYGUARD<sup>9+</sup>                  | 5    | 表示锁屏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_VOLUME_OVERLAY<sup>9+</sup>            | 6    | 表示音量条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_NAVIGATION_BAR<sup>9+</sup>            | 7    | 表示导航栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_WALLPAPER<sup>9+</sup>                 | 9    | 表示壁纸。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_DESKTOP<sup>9+</sup>                   | 10   | 表示桌面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_LAUNCHER_RECENT<sup>9+</sup>           | 11   | 表示多任务中心。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| TYPE_LAUNCHER_DOCK<sup>9+</sup>             | 12   | 表示桌面Dock栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| TYPE_VOICE_INTERACTION<sup>9+</sup>         | 13   | 表示智慧语音。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_POINTER<sup>9+</sup>                   | 14   | 表示鼠标。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_FLOAT_CAMERA<sup>9+</sup>              | 15   | 表示相机类型悬浮窗。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_SCREENSHOT<sup>9+</sup>                | 17   | 表示截屏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_SYSTEM_TOAST<sup>11+</sup>             | 18   | 表示顶层提示窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_DIVIDER<sup>11+</sup>                  | 19   | 表示分屏条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_GLOBAL_SEARCH<sup>11+</sup>            | 20   | 表示全局搜索窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_HANDWRITE<sup>12+</sup>                | 21   | 表示手写笔窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_WALLET_SWIPE_CARD<sup>15+</sup>        | 22   | 表示钱包刷卡窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_SCREEN_CONTROL<sup>15+</sup>           | 23   | 表示锁定触控的顶层窗口，用于拦截屏幕触摸和点击事件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
-| TYPE_FLOAT_NAVIGATION<sup>17+</sup>         | 24   | 表示悬浮的三键导航窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 22 |
-| TYPE_DYNAMIC<sup>20+</sup>                  | 25   | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26   | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
+| TYPE_STATUS_BAR<sup>9+</sup>                | 3    | 表示状态栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_PANEL<sup>9+</sup>                     | 4    | 表示通知栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_KEYGUARD<sup>9+</sup>                  | 5    | 表示锁屏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_VOLUME_OVERLAY<sup>9+</sup>            | 6    | 表示音量条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_NAVIGATION_BAR<sup>9+</sup>            | 7    | 表示导航栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_WALLPAPER<sup>9+</sup>                 | 9    | 表示壁纸。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_DESKTOP<sup>9+</sup>                   | 10   | 表示桌面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_LAUNCHER_RECENT<sup>9+</sup>           | 11   | 表示多任务中心。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_LAUNCHER_DOCK<sup>9+</sup>             | 12   | 表示桌面Dock栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_VOICE_INTERACTION<sup>9+</sup>         | 13   | 表示智慧语音。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_POINTER<sup>9+</sup>                   | 14   | 表示鼠标。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_FLOAT_CAMERA<sup>9+</sup>              | 15   | 表示相机类型悬浮窗。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_SCREENSHOT<sup>9+</sup>                | 17   | 表示截屏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_SYSTEM_TOAST<sup>11+</sup>             | 18   | 表示顶层提示窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_DIVIDER<sup>11+</sup>                  | 19   | 表示分屏条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_GLOBAL_SEARCH<sup>11+</sup>            | 20   | 表示全局搜索窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_HANDWRITE<sup>12+</sup>                | 21   | 表示手写笔窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_WALLET_SWIPE_CARD<sup>15+</sup>        | 22   | 表示钱包刷卡窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_SCREEN_CONTROL<sup>15+</sup>           | 23   | 表示锁定触控的顶层窗口，用于拦截屏幕触摸和点击事件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_FLOAT_NAVIGATION<sup>17+</sup>         | 24   | 表示悬浮的三键导航窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_DYNAMIC<sup>20+</sup>                  | 25   | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26   | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## Configuration<sup>9+</sup>
 
@@ -81,7 +81,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
@@ -101,7 +101,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
@@ -119,7 +119,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
@@ -150,7 +150,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                  | 只读 | 可选 | 说明                                                         |
 | --------------- | ------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -170,7 +170,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                            | 只读 | 可选 | 说明                         |
 | ---------- | --------------------------------------------------- | ---- | ---- | ---------------------------- |
@@ -187,7 +187,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明                                         |
 | ------ | -------- | ---- | ---- | --------------------------------------------|
@@ -206,7 +206,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明                                          |
 | ------ | -------- | ---- |---- |---------------------------------------------|
@@ -226,7 +226,7 @@ import { window } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明                         |
 | ---- | -------- | ---- | ---- | ---------------------------- |
@@ -320,7 +320,7 @@ ArkTS-Sta: minimizeAll(id: long, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -413,7 +413,7 @@ ArkTS-Sta: minimizeAll(id: long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -628,7 +628,7 @@ setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -696,7 +696,7 @@ setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -812,7 +812,7 @@ onSystemBarTintChange(callback: Callback&lt;SystemBarTintState&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -904,7 +904,7 @@ offSystemBarTintChange(callback?: Callback&lt;SystemBarTintState &gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -998,7 +998,7 @@ onGestureNavigationEnabledChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1093,7 +1093,7 @@ offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1188,7 +1188,7 @@ onWaterMarkFlagChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1283,7 +1283,7 @@ offWaterMarkFlagChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1329,7 +1329,7 @@ setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1400,7 +1400,7 @@ setGestureNavigationEnabled(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1474,7 +1474,7 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, callback: AsyncCall
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1574,7 +1574,7 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean): Promise&lt;void&gt
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1678,7 +1678,7 @@ ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名   | 类型   | 必填  | 说明         |
@@ -1889,7 +1889,7 @@ ArkTS-Sta: setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): P
 | 202     | Permission verification failed, non-system application uses system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Possible cause: Invalid window type. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. |
 
 **示例：**
 
@@ -2094,7 +2094,7 @@ hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2157,7 +2157,7 @@ hideWithAnimation(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2214,7 +2214,7 @@ showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2277,7 +2277,7 @@ showWithAnimation(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2334,7 +2334,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2439,7 +2439,7 @@ setWindowMode(mode: WindowMode): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3038,7 +3038,7 @@ setWakeUpScreen(wakeUp: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3130,7 +3130,7 @@ setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&g
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3235,7 +3235,7 @@ setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3344,7 +3344,7 @@ ArkTS-Sta: opacity(opacity: double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3385,7 +3385,7 @@ scale(scaleOptions: ScaleOptions): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3432,7 +3432,7 @@ rotate(rotateOptions: RotateOptions): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3480,7 +3480,7 @@ translate(translateOptions: TranslateOptions): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3526,7 +3526,7 @@ getTransitionController(): TransitionController
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3564,7 +3564,7 @@ ArkTS-Sta: setBlur(radius: double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3609,7 +3609,7 @@ ArkTS-Sta: setBackdropBlur(radius: double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3651,7 +3651,7 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3694,7 +3694,7 @@ ArkTS-Sta: setShadow(radius: double, color?: string, offsetX?: double, offsetY?:
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3741,7 +3741,7 @@ ArkTS-Sta: setCornerRadius(cornerRadius: double): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3782,7 +3782,7 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3843,7 +3843,7 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3939,7 +3939,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4016,7 +4016,7 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4092,7 +4092,7 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4174,7 +4174,7 @@ ArkTS-Sta: raiseAboveTarget(windowId: int, callback: AsyncCallback&lt;void&gt;):
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4296,7 +4296,7 @@ ArkTS-Sta: raiseAboveTarget(windowId: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4425,7 +4425,7 @@ ArkTS-Sta: raiseMainWindowAboveTarget(windowId: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -4719,7 +4719,7 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4939,7 +4939,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
@@ -5398,7 +5398,7 @@ setTopmost(isTopmost: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：**
 
@@ -5492,7 +5492,7 @@ setSingleFrameComposerEnabled(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5568,7 +5568,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -5873,7 +5873,7 @@ requestFocus(isFocused: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5935,7 +5935,7 @@ promise.then(() => {
 
 | 名称      | 类型  | 只读 | 可选 | 说明         |
 | ---------- | ---- | ---- | ---- | ----------- |
-| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## WindowStage<sup>9+</sup>
 
@@ -5959,7 +5959,7 @@ disableWindowDecor(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -6001,7 +6001,7 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6290,7 +6290,7 @@ removeImageForRecent(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6377,7 +6377,7 @@ export default class EntryAbility extends UIAbility {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型          | 只读 | 可选 | 说明             |
 | --------------------- | ----------------- | ---- | ---- | ---------------- |
@@ -6395,7 +6395,7 @@ completeTransition(isCompleted: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6456,7 +6456,7 @@ type TransitionControllerCallback = (context: window.TransitionContext) => void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型      | 说明                          |
 | -----------| ---------------------------- |
@@ -6495,7 +6495,7 @@ promise.then((data) => {
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -6688,7 +6688,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值 | 说明         |
 | ---------- | ----- | ----------- |
@@ -6707,7 +6707,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                      | 只读  |可选 | 说明       |
 | ------ | ------------------------- | ---- | ---- |---------- |
@@ -6725,7 +6725,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                      | 只读  |可选 | 说明       |
 | ------ | ------------------------- | ---- | ---- |---------- |
