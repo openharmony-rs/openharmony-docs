@@ -572,7 +572,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getReverseColor(): Color
 
-基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。根据discriminatePictureLightDegree接口获取出来的图片深浅类型得到一个反色，仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
+基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。根据discriminatePictureLightDegree接口获取出来的图片明亮类型得到一个反色，仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
 
 **起始版本：** 26.0.0
 
