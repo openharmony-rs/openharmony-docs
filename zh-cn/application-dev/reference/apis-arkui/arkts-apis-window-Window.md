@@ -6037,6 +6037,7 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 > - 针对2in1设备：
 >   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
 >   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+> - 针对TV设备：当前接口不生效也不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
