@@ -65,7 +65,7 @@
    > 确保需注册的可用自定义字体文件已正确放置在应用设备的/system/fonts/NotoSerifTamil[wdth,wght].ttf路径下。
 
    <!-- @[custom_font_c_custom_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 后续使用自定义字体时，需使用到该字体家族名
    const char* fontFamily = "myFamilyName"; 
