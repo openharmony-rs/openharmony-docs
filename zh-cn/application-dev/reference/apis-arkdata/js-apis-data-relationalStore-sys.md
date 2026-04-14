@@ -148,6 +148,7 @@ ArkTS-Sta: update(table: string, values: ValuesBucket, predicates: dataSharePred
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { ValuesBucket } from '@kit.ArkData';
@@ -175,6 +176,36 @@ const valueBucket3: ValuesBucket = {
   "AGE": value2,
   "SALARY": value3,
   "CODES": value4,
+};
+
+let predicates = new dataSharePredicates.DataSharePredicates();
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates, (err, rows) => {
+    if (err) {
+      console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Updated row count: ${rows}`);
+  });
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { ValuesBucket } from '@kit.ArkData';
+
+let value1 = "Rose";
+let value2 = 22 as long;
+let value3 = 200.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4,
 };
 
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -252,6 +283,7 @@ ArkTS-Sta: update(table: string, values: ValuesBucket, predicates: dataSharePred
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { ValuesBucket } from '@kit.ArkData';
@@ -288,6 +320,35 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { ValuesBucket } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Rose";
+let value2 = 22 as long;
+let value3 = 200.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4,
+};
+
+let predicates = new dataSharePredicates.DataSharePredicates();
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: long) => {
+    console.info(`Updated row count: ${rows}`);
+  }).catch((err) => {
     console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   });
 }
@@ -433,10 +494,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates).then((rows: number) => {
+  (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates).then((rows) => {
     console.info(`Delete rows: ${rows}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
+  }).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`Delete failed, code is ${businessError.code}, message is ${businessError.message}`);
   });
 }
 ```
@@ -488,6 +550,10 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, (err, resultSet) => {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -553,6 +619,10 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err, resultSet) => {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -633,8 +703,9 @@ if (store != undefined) {
     }
     // 释放数据集的内存
     resultSet.close();
-  }).catch((err: BusinessError) => {
-    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  }).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`Query failed, code is ${businessError.code}, message is ${businessError.message}`);
   });
 }
 ```
@@ -681,6 +752,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
 
+ArkTS-Dyn示例:
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.in("id", ["id1", "id2"]);
@@ -697,6 +769,25 @@ if (store != undefined) {
   });
 };
 ```
+
+ArkTS-Sta示例:
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.inValues("id", ["id1", "id2"]);
+
+if (store != undefined) {
+  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
+    console.info(`progress: ${progressDetail.schedule}`);
+  }, (err) => {
+    if (err) {
+      console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info('Cloud sync succeeded');
+  });
+};
+```
+
 **示例2：指定资产下载**
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
@@ -771,6 +862,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -787,6 +879,25 @@ if (store != undefined) {
   });
 };
 ```
+
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.inValues("id", ["id1", "id2"]);
+
+if (store != undefined) {
+  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
+    console.info(`progress: ${progressDetail.schedule}`);
+  }).then(() => {
+    console.info('cloud sync succeeded');
+  }).catch((err) => {
+    console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
+  });
+};
+```
+
 **示例2：指定资产下载**
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -808,8 +919,9 @@ if (store != undefined) {
     console.info(`progress: ${progressDetail.schedule}`);
   }).then(() => {
     console.info('Cloud sync succeeded');
-  }).catch((err: BusinessError) => {
-    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
+  }).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`cloudSync failed, code is ${businessError.code}, message is ${businessError.message}`);
   });
 };
 ```
@@ -885,8 +997,9 @@ if (store != undefined) {
     const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
-  }).catch((err: BusinessError) => {
-    console.error(`query sharing resource failed, code is ${err.code}, message is ${err.message}`);
+  }).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`query sharing resource failed, code is ${businessError.code}, message is ${businessError.message}`);
   });
 }
 ```
@@ -1077,10 +1190,11 @@ ArkTS-Sta: lockCloudContainer(): Promise&lt;int&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).lockCloudContainer().then((time: number) => {
+  (store as relationalStore.RdbStore).lockCloudContainer().then((time) => {
     console.info('lockCloudContainer succeeded time:' + time);
-  }).catch((err: BusinessError) => {
-    console.error(`lockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
+  }).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`lockCloudContainer failed, code is ${businessError.code}, message is ${businessError.message}`);
   });
 }
 ```
@@ -1121,8 +1235,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 if (store != undefined) {
   (store as relationalStore.RdbStore).unlockCloudContainer().then(() => {
     console.info('unlockCloudContainer succeeded');
-  }).catch((err: BusinessError) => {
-    console.error(`unlockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
+  }).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`unlockCloudContainer failed, code is ${businessError.code}, message is ${businessError.message}`);
   });
 }
 ```
@@ -1183,8 +1298,9 @@ if (store != undefined) {
   let promiseRestore = (store as relationalStore.RdbStore).restore();
   promiseRestore.then(() => {
     console.info('Succeeded in restoring.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to restore, code is ${err.code}, message is ${err.message}`);
+  }).catch((err: Error) => {
+    let businessError = err as BusinessError;
+    console.error(`Failed to restore, code is ${businessError.code}, message is ${businessError.message}`);
   });
 }
 ```
@@ -1212,6 +1328,10 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1251,7 +1371,7 @@ async function retainDeviceData(store : relationalStore.RdbStore){
   const devices: string[] = [];
   deviceList.forEach(item => {
     if (item.networkId) {
-      devices.push(item.networkId);
+      devices.push(item.networkId!);
     }
   });
   console.info(`retainDeviceData, length is ${devices.length}`);
@@ -1270,7 +1390,9 @@ async function retainDeviceData(store : relationalStore.RdbStore){
 
 ### updateDistributedInfo<sup>24+</sup>
 
-updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
+ArkTS-Dyn: updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
+
+ArkTS-Sta: updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;long&gt;
 
 更新分布式信息，只支持单版本表模式，使用Promise异步回调。
 
@@ -1288,6 +1410,10 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名       | 类型                                                               | 必填 | 说明                                       |
@@ -1299,7 +1425,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
 
 **错误码：**
 
@@ -1326,7 +1452,7 @@ async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
   const devices: string[] = [];
   deviceList.forEach(item => {
     if (item.networkId) {
-      devices.push(item.networkId);
+      devices.push(item.networkId!);
     }
   });
   console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
@@ -1371,17 +1497,23 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
 
 ### getFloat32Array<sup>12+</sup>
 
-getFloat32Array(columnIndex: number): Float32Array
+ArkTS-Dyn: getFloat32Array(columnIndex: number): Float32Array
+
+ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 
 以浮点数组的形式获取当前行中指定列的值，仅可在向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -1430,7 +1562,9 @@ if (resultSet != undefined) {
 
 ### getFloat32Array<sup>23+</sup>
 
-getFloat32Array(columnIndex: number): Float32Array
+ArkTS-Dyn: getFloat32Array(columnIndex: number): Float32Array
+
+ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 
 以浮点数组的形式获取当前行中指定列的值。
 
@@ -1438,11 +1572,15 @@ getFloat32Array(columnIndex: number): Float32Array
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -1486,6 +1624,10 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
 | ORI_LOCAL       |  0  | 表示本地数据。      |
@@ -1500,6 +1642,10 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
 | ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
@@ -1512,6 +1658,10 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
