@@ -24,7 +24,7 @@
 
 **变更发生版本**
 
-从OpenHarmony SDK 7.0.0.21开始。
+从 OpenHarmony SDK 7.0.0.21 开始。
 
 **变更的接口/组件**
 
