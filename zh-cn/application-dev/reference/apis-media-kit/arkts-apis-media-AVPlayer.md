@@ -3826,17 +3826,17 @@ onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata26)> | 是   | 上报基于时间的元数据。|
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata26)> | 是   | 回调函数，返回上报基于时间的元数据。|
 
 **示例：**
 
@@ -3856,17 +3856,17 @@ offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata26)> | 否   | 上报基于时间的元数据，默认值为取消订阅该事件的所有回调函数。 |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata26)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
 
 **示例：**
 
