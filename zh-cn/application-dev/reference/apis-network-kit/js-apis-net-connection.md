@@ -552,20 +552,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netCon: connection.NetConnection = connection.createNetConnection();
 
 // 使用on接口订阅网络可用事件
-netCon.on('netAvailable', (data: connection.NetHandle) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
     if (error) {
       console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to setAppNet, netid: "" + JSON.stringify(netHandle.netId));
   });
 });
 
 // 使用on接口订阅网络丢失事件。
-netCon.on('netLost', (data: connection.NetHandle) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   // 网络丢失时，需要主动解除指定网络的绑定关系
   netHandle.netId = 0;
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
@@ -573,17 +573,12 @@ netCon.on('netLost', (data: connection.NetHandle) => {
       console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   });
 });
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络可用事件。
-netCon.unregister((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });
 
@@ -671,22 +666,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netCon: connection.NetConnection = connection.createNetConnection();
 
 // 使用on接口订阅网络可用事件
-netCon.on('netAvailable', (data: connection.NetHandle) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
 });
 
 // 使用on接口订阅网络丢失事件。
-netCon.on('netLost', (data: connection.NetHandle) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   // 网络丢失时，需要主动解除指定网络的绑定关系
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -694,12 +689,9 @@ netCon.on('netLost', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络可用事件。
-netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
 });
 
 ```
