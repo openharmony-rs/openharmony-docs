@@ -220,7 +220,6 @@ static napi_value CloseDevice(napi_env env, napi_callback_info info)
 
 BLE MIDI设备的打开是异步操作，使用[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口。
 
-获取BLE设备地址：
 BLE设备地址可通过以下方式获取：
 
 1. BLE扫描发现：使用蓝牙API扫描MIDI BLE设备。
@@ -766,8 +765,8 @@ OH_MIDI API提供客户端级别、BLE连接级别和端口连接级别三个层
 使用以下方法验证MIDI设备是否正确枚举：
 
 1. 检查日志输出：确认设备数量、设备名称、设备类型等信息正确显示。
-   2. 对比系统设备列表：与系统设置中显示的MIDI设备列表对比。
-   3. 测试热插拔：连接/断开设备，通过调试输出或日志确认OnDeviceChange回调在设备连接时触发一次，在设备断开时再触发一次。
+2. 对比系统设备列表：与系统设置中显示的MIDI设备列表对比。
+3. 测试热插拔：连接/断开设备，通过调试输出或日志确认OnDeviceChange回调在设备连接时触发一次，在设备断开时再触发一次。
 
 ### 调试UMP消息格式
 
@@ -785,7 +784,7 @@ OH_LOG_DEBUG(LOG_APP, "UMP Data: 0x%{public}08X", umpData[0]);
 
 ### 常用调试工具
 
-- 日志输出：使用OH_LOG系列宏输出详细调试信息。
+日志输出：使用OH_LOG系列宏输出详细调试信息。
 
 ### 日志记录建议
 
