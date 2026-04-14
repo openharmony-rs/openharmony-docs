@@ -4,7 +4,7 @@
 <!--Subsystem: Global-->
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
-<!--Tester: @yliupy-->
+<!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
 本模块提供rawfile文件所在hap的descriptor信息。

@@ -4,7 +4,7 @@
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
-<!--Tester: @yliupy-->
+<!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
 - [Localization Kit简介](i18n-l10n.md)
