@@ -1754,7 +1754,7 @@ HTTP 请求方法。
 | ENTITY_TOO_LARGE  | 413  | 由于请求的实体过大，服务器无法处理，因此拒绝请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
 | REQ_TOO_LONG      | 414  | 请求的URI过长(URI通常为网址)，服务器无法处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
 | UNSUPPORTED_TYPE  | 415  | 服务器无法处理请求的格式。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
-| RANGE_NOT_SATISFIABLE<sup>12+</sup> | 416  | 请求范围不符合要求。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 26 |
+| RANGE_NOT_SATISFIABLE<sup>12+</sup> | 416  | 请求范围不符合要求。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 26.0.0 |
 | INTERNAL_ERROR    | 500  | 服务器内部错误，无法完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
 | NOT_IMPLEMENTED   | 501  | 服务器不支持请求的功能，无法完成请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
 | BAD_GATEWAY       | 502  | 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23 |
