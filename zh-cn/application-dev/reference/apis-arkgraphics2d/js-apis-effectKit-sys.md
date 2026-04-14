@@ -58,13 +58,19 @@ import { effectKit } from "@kit.ArkGraphics2D";
 | DARK_PICTURE     | 5    | 图片颜色深浅度为较深。|
 | EXTREMELY_DARK_PICTURE     | 6    | 图片颜色深浅度为极深。|
 
-## PictureLightDegree<sup>26+</sup>
+## PictureLightDegree
 
 图片颜色明亮度的枚举。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
@@ -304,15 +310,21 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
-### getMorandiShadowColor<sup>26+</sup>
+### getMorandiShadowColor
 
 getMorandiShadowColor(): Color
 
 从图像主色获取莫兰迪阴影色，结果写入[Color](#color)里。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
 
-**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **返回值：**
 
@@ -348,15 +360,21 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
-### getDeepenImmersionColor<sup>26+</sup>
+### getDeepenImmersionColor
 
 getDeepenImmersionColor(): Color
 
 生成与背景色融合且比背景色更深的强沉浸色，结果写入[Color](#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
 
-**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **返回值：**
 
@@ -392,15 +410,21 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
-### getImmersiveBackgroundColor<sup>26+</sup>
+### getImmersiveBackgroundColor
 
 getImmersiveBackgroundColor(): Color
 
 生成能够创造沉浸式视觉效果的沉浸式背景色，结果写入[Color](#color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
 
-**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **返回值：**
 
@@ -436,15 +460,21 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
-### getImmersiveForegroundColor<sup>26+</sup>
+### getImmersiveForegroundColor
 
 getImmersiveForegroundColor(): Color
 
 生成能够创造沉浸式视觉效果的沉浸式前景色，结果写入[Color](#color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
 
-**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **返回值：**
 
@@ -480,17 +510,21 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
-### discriminatePictureLightDegree()<sup>26+</sup>
+### discriminatePictureLightDegree()
 
 discriminatePictureLightDegree(): PictureLightDegree
 
 获取对图片的明暗程度。
 
-**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**系统接口：** 此接口为系统接口。
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **返回值：**
 
@@ -534,15 +568,21 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
-### getReverseColor<sup>26+</sup>
+### getReverseColor
 
 getReverseColor(): Color;
 
 基于图像亮度判别结果生成反向颜色，结果写入[Color](#color)里。当图像亮度为极亮时返回黑色，其他情况返回白色，用于界面主题或对比度计算。
 
-**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **返回值：**
 
