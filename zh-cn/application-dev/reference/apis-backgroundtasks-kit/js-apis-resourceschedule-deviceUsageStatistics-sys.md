@@ -1093,7 +1093,7 @@ queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt
 
 **起始版本**：26.0.0
 
-**模型约束**：此接口仅可在Stagte模型下使用
+**模型约束**：此接口仅可在Stage模型下使用
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -1103,7 +1103,7 @@ queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt
 | ----- | ------ | ---- | ----- |
 | begin | number | 是    | 起始时间，单位：ms。 |
 | end   | number | 是    | 结束时间，单位：ms。 |
-| maxNum   | number | 是    | 返回的事件的条数，取值范围为[1，1000]。 |
+| maxNum   | number | 是    | 返回的事件的条数，取值范围为[1,1000]。 |
 
 **返回值**：
 
