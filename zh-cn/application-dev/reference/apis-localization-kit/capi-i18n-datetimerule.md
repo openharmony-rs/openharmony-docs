@@ -4,7 +4,7 @@
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
-<!--Tester: @lpw_work-->
+<!--Tester: @yliupy-->
 <!--Adviser: @ningningW-->
 
 ```c
