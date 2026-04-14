@@ -360,7 +360,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-将generateRandomUUID生成的string类型UUID转换为[util.generateRandomBinaryUUID<sup>9+</sup>](#utilgeneraterandombinaryuuid9)生成的UUID，符合RFC 4122版本规范。
+将generateRandomUUID生成的string类型UUID转换为[util.generateRandomBinaryUUID](#utilgeneraterandombinaryuuid9)生成的UUID，符合RFC 4122版本规范。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
