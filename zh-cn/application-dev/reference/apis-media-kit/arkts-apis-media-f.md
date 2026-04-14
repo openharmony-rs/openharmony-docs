@@ -643,13 +643,15 @@ streams.push({url: "http://xxx/1080p.flv", width: 1920, height: 1080, bitrate: 2
 let mediaSource : media.MediaSource = media.createMediaSourceWithStreamData(streams);
 ```
 
-## media.createMediaSourceWithFd<sup>26+</sup>
+## media.createMediaSourceWithFd
 
-createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource
+createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
 
-通过文件描述符创建媒体源
+通过文件描述符创建媒体源。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -665,7 +667,7 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource
 
 | 类型                          | 说明                |
 | ----------------------------- | ------------------- |
-| [MediaSource](arkts-apis-media-MediaSource.md) | 返回MediaSource，用于媒体资源设置。 |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
 
 **示例：**
 
@@ -677,13 +679,15 @@ let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
 let mediaSource : media.MediaSource = media.createMediaSourceWithFd(fdSrc);
 ```
 
-## media.createMediaSourceWithDataSource<sup>26+</sup>
+## media.createMediaSourceWithDataSource
 
-createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource
+createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | undefined
 
-通过自定义数据源创建媒体源
+通过自定义数据源创建媒体源。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -699,7 +703,7 @@ createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource
 
 | 类型                          | 说明                |
 | ----------------------------- | ------------------- |
-| [MediaSource](arkts-apis-media-MediaSource.md) | 返回MediaSource，用于媒体资源设置。 |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
 
 **示例：**
 
