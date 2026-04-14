@@ -230,7 +230,7 @@ The form can not support this operation.
 
 **处理步骤**
 
-检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。 
+检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
 
 ## 16501012 卡片尺寸错误
 
