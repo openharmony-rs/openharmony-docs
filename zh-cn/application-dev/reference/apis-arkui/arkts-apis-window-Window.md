@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+>  ![orientationAndRotation](figures/orientationAndRotation.PNG)
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
