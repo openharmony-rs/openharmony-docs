@@ -920,11 +920,15 @@ usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: A
 });
 ```
 
-## usageStatistics.queryBundleEvents<sup>26.0.0+<sup>
+## usageStatistics.queryBundleEvents
 
 queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
 
 通过指定起始时间、结束时间及最大返回条数，查询指定时间段内所有应用的事件集合。若条数大于maxNum，则按事件发生时间降序排列，返回前maxNum条，否则返回所有数据。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stagte模型下使用
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1081,11 +1085,15 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError,
 });
 ```
 
-## usageStatistics.queryCurrentBundleEvents<sup>26.0.0+<sup>
+## usageStatistics.queryCurrentBundleEvents
 
-queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
 
-通过指定起始和结束时间段内，查询当前应用的事件集合，使用Promise异步回调。
+通过指定起始时间、结束时间及最大返回条数，查询指定时间段内当前应用的事件集合。若条数大于maxNum，则按事件发生时间降序排列，返回前maxNum条，否则返回所有数据。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stagte模型下使用
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
