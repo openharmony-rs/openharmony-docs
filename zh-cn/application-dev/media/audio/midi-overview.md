@@ -1,4 +1,4 @@
-# OH_MIDI开发概述(C/C++)
+# OH_MIDI概述(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
@@ -10,7 +10,7 @@
 
 乐器数字接口（Musical Instrument Digital Interface）是一种用于电子乐器、计算机和其他设备之间进行通信的国际标准协议。同时定义了音符、控制信号等音乐数据的传输方式，广泛应用于音乐制作、舞台演出和游戏开发等领域。
 
-从API version 24开始，Audio Kit支持MIDI（Musical Instrument Digital Interface）功能。由于OH_MIDI采用UMP（Universal MIDI Packet）作为统一的数据交互格式，所以开发者无需关心底层协议差异，只需要以现代化的方式构建音乐创作、乐器控制和MIDI数据处理等应用。
+从API version 24开始，Audio Kit支持MIDI（Musical Instrument Digital Interface）功能，应用可通过OH_MIDI API与外接MIDI设备（如USB MIDI键盘、蓝牙MIDI设备）进行数据交互。由于OH_MIDI采用UMP（Universal MIDI Packet）作为统一的数据交互格式，所以开发者无需关心底层协议差异，只需要以现代化的方式构建音乐创作、乐器控制和MIDI数据处理等应用。
 
 ### MIDI协议版本
 

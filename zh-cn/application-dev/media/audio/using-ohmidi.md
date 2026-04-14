@@ -8,7 +8,14 @@
 
 ## 场景介绍
 
-OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++层实现MIDI应用开发。通过OH_MIDI，开发者可以实现以下功能：
+OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++层实现MIDI应用开发。当应用需要与外接MIDI设备（如USB MIDI键盘、蓝牙MIDI设备）进行数据交互时，可以使用OH_MIDI。典型使用场景包括：
+
+- **音乐创作应用**：连接MIDI键盘，实时接收弹奏的音符并触发音源播放。
+- **乐器学习/教学应用**：将MIDI键盘的弹奏数据接入应用，实现评分、伴奏等功能。
+- **MIDI控制器应用**：通过应用向外接MIDI设备发送控制指令（如切换音色、调节参数）。
+- **MIDI数据处理工具**：接收、解析和转发MIDI消息，用于音乐制作或设备调试。
+
+通过OH_MIDI，开发者可以实现以下功能：
 
 - 创建MIDI客户端并管理与MIDI服务的连接。
 - 枚举和管理MIDI设备。
@@ -832,7 +839,7 @@ if (result == OH_MIDI_STATUS_WOULD_BLOCK) {
 }
 ```
 
-### 处本模块从API version 24开始支持。后续版本如有新增内容，则采用上标版本标记。理设备热插拔
+### 设备热插拔
 
 正确的设备热插拔处理流程：
 1. 监听设备变化回调：在`OnDeviceChange`中处理连接和断开事件。
