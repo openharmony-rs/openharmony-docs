@@ -283,7 +283,7 @@ console.info(buf.toString('hex'));
 
 from(array: number[]): FastBuffer
 
-根据一个0-255范围内的字节数组创建一个新的FastBuffer对象。
+根据指定数组创建新的FastBuffer对象。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -293,7 +293,7 @@ from(array: number[]): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| array | number[] | 是 | 使用包含0-255范围内字节的数组。 |
+| array | number[] | 是 | 指定数组，数组内各元素的取值范围为[0, 255]。 |
 
 **返回值：**
 
