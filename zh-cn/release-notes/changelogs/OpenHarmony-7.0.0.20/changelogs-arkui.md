@@ -343,3 +343,53 @@ struct MouseEventExample {
   }
 }
 ```
+
+## cl.arkui.4 表单类组件触摸热区最小高度变更
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+[Button](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Button模式的Toggle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[Chip](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[ChipGroup](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)组件触摸热区当前最小高度28vp，点击范围小，不易操作。
+
+**变更影响**
+
+此变更为不兼容变更，涉及应用适配。
+
+- 变更前：组件默认触摸热区高度最小为28vp。
+
+- 变更后：组件默认触摸热区高度最小为32vp。
+
+![response.png](../../figures/response.png)
+
+**起始 API Level**
+
+Button：7<br>
+Toggle：8<br>
+Select：8<br>
+Chip：11<br>
+ChipGroup：12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.20开始。
+
+**变更的接口/组件**
+
+Button、Button模式的Toggle、Chip、ChipGroup和Select组件。
+
+**适配指导**
+
+默认行为变更，应注意变更后的行为是否对整体应用逻辑产生影响，如开发者期望恢复默认触摸热区，可使用如下方法重置组件的触摸热区，恢复为与组件实际大小一致。如果开发者自定义了组件高度或热区，触摸热区随自定义大小生效。
+
+```ts
+@Entry
+struct ButtonExample {
+  build() {
+    Button('xxxxx')
+      .responseRegion(undefined)
+  }
+}
+```
