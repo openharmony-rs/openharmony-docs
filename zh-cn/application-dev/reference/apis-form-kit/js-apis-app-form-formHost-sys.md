@@ -58,6 +58,8 @@ deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -65,6 +67,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.deleteForm(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('formHost deleteForm success');
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.deleteForm(formId, (error,data) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
@@ -120,6 +143,8 @@ deleteForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -129,7 +154,26 @@ try {
   formHost.deleteForm(formId).then(() => {
     console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
-    console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
+    console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.deleteForm(formId).then(() => {
+    console.info('formHost deleteForm success');
+  }).catch((error) => {
+    console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -174,6 +218,8 @@ releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -181,6 +227,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.releaseForm(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.releaseForm(formId, (error, data) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -229,6 +294,8 @@ releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -236,6 +303,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.releaseForm(formId, true, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.releaseForm(formId, true, (error, data) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -289,6 +375,8 @@ releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -298,6 +386,25 @@ try {
   formHost.releaseForm(formId, true).then(() => {
     console.info('formHost releaseForm success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.releaseForm(formId, true).then(() => {
+    console.info('formHost releaseForm success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -343,6 +450,8 @@ requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -350,6 +459,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.requestForm(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.requestForm(formId, (error, data) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -402,6 +530,8 @@ requestForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -411,6 +541,25 @@ try {
   formHost.requestForm(formId).then(() => {
     console.info('formHost requestForm success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.requestForm(formId).then(() => {
+    console.info('formHost requestForm success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -462,6 +611,8 @@ requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Prom
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -474,6 +625,28 @@ try {
   formHost.requestFormWithParams(formId, params).then(() => {
     console.info('formHost requestFormWithParams success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let params: Record<string, Object> = {
+    'ohos.extra.param.key.host_bg_inverse_color': '#ff000000' as Object
+  };
+  formHost.requestFormWithParams(formId, params).then(() => {
+    console.info('formHost requestFormWithParams success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -519,6 +692,8 @@ castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -526,6 +701,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.castToNormalForm(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.castToNormalForm(formId, (error, data) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -578,6 +772,8 @@ castToNormalForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -587,6 +783,25 @@ try {
   formHost.castToNormalForm(formId).then(() => {
     console.info('formHost castTempForm success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.castToNormalForm(formId).then(() => {
+    console.info('formHost castTempForm success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -630,6 +845,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -637,6 +854,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyVisibleForms(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyVisibleForms(formId, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -687,6 +923,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -696,6 +934,25 @@ try {
   formHost.notifyVisibleForms(formId).then(() => {
     console.info('formHost notifyVisibleForms success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyVisibleForms(formId).then(() => {
+    console.info('formHost notifyVisibleForms success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -739,6 +996,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -746,6 +1005,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyInvisibleForms(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyInvisibleForms(formId, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -796,6 +1074,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -805,6 +1085,25 @@ try {
   formHost.notifyInvisibleForms(formId).then(() => {
     console.info('formHost notifyInvisibleForms success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyInvisibleForms(formId).then(() => {
+    console.info('formHost notifyInvisibleForms success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -849,6 +1148,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -856,6 +1157,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.enableFormsUpdate(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.enableFormsUpdate(formId, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -907,6 +1227,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -916,6 +1238,25 @@ try {
   formHost.enableFormsUpdate(formId).then(() => {
     console.info('formHost enableFormsUpdate success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.enableFormsUpdate(formId).then(() => {
+    console.info('formHost enableFormsUpdate success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -961,6 +1302,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -968,6 +1311,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.disableFormsUpdate(formId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.disableFormsUpdate(formId, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -1020,6 +1382,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1029,6 +1393,25 @@ try {
   formHost.disableFormsUpdate(formId).then(() => {
     console.info('formHost disableFormsUpdate success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.disableFormsUpdate(formId).then(() => {
+    console.info('formHost disableFormsUpdate success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -1065,12 +1448,32 @@ isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.isSystemReady((error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.isSystemReady((error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -1108,6 +1511,8 @@ isSystemReady(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1116,6 +1521,24 @@ try {
   formHost.isSystemReady().then(() => {
     console.info('formHost isSystemReady success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.isSystemReady().then(() => {
+    console.info('formHost isSystemReady success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -1154,6 +1577,8 @@ getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1163,7 +1588,27 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getAllFormsInfo`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getAllFormsInfo((error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost getAllFormsInfo`);
     }
   });
 } catch(error) {
@@ -1201,14 +1646,34 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info(`formHost getAllFormsInfo`);
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getAllFormsInfo`);
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -1253,6 +1718,8 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1262,7 +1729,27 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost getFormsInfo`);
     }
   });
 } catch(error) {
@@ -1308,6 +1795,8 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1317,7 +1806,27 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost getFormsInfo`);
     }
   });
 } catch(error) {
@@ -1368,14 +1877,34 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo`);
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getFormsInfo`);
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -1425,6 +1954,8 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1436,8 +1967,31 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo`);
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  bundleName: 'ohos.samples.FormApplication',
+  moduleName: 'entry',
+  supportedDimensions: [formInfo.FormDimension.Dimension_1_2, formInfo.FormDimension.Dimension_2_2, formInfo.FormDimension.Dimension_2_4]
+};
+try {
+  formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getFormsInfo`);
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
 } catch (error) {
@@ -1506,16 +2060,17 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let formIds: string[] = new Array('12400633174999288', '12400633174999289');
-  formHost.deleteInvalidForms(formIds, (error: BusinessError, data: int) => {
+  let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+  formHost.deleteInvalidForms(formIds, (error, data) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+      console.info(`formHost deleteInvalidForms`);
     }
   });
 } catch(error) {
@@ -1587,14 +2142,15 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+  let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
   formHost.deleteInvalidForms(formIds).then((data: int) => {
     console.info(`formHost deleteInvalidForms, data: ${data}`);
-  }).catch((error: BusinessError) => {
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -1638,6 +2194,8 @@ acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&g
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -1658,7 +2216,38 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormState`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  'deviceId': '',
+  'bundleName': 'ohos.samples.FormApplication',
+  'abilityName': 'FormAbility',
+  'parameters': {
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.form_dimension': 2
+  }
+};
+try {
+  formHost.acquireFormState(want, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost acquireFormState`);
     }
   });
 } catch (error) {
@@ -1708,6 +2297,8 @@ acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -1725,8 +2316,37 @@ let want: Want = {
 };
 try {
   formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState`);
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  'deviceId': '',
+  'bundleName': 'ohos.samples.FormApplication',
+  'abilityName': 'FormAbility',
+  'parameters': {
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.form_dimension': 2
+  }
+};
+try {
+  formHost.acquireFormState(want).then((data) => {
+    console.info(`formHost acquireFormState`);
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -1748,7 +2368,7 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1790,7 +2410,7 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1856,6 +2476,8 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1863,6 +2485,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsVisible(formIds, true, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsVisible(formIds, true, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -1915,6 +2556,8 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1924,6 +2567,25 @@ try {
   formHost.notifyFormsVisible(formIds, true).then(() => {
     console.info('formHost notifyFormsVisible success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsVisible(formIds, true).then(() => {
+    console.info('formHost notifyFormsVisible success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -1969,6 +2631,8 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, c
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1976,6 +2640,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsEnableUpdate(formIds, true, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsEnableUpdate(formIds, true, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -2028,6 +2711,8 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2037,6 +2722,25 @@ try {
   formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
     console.info('formHost notifyFormsEnableUpdate success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
+    console.info('formHost notifyFormsEnableUpdate success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -2081,6 +2785,8 @@ shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2089,6 +2795,26 @@ let formId: string = '12400633174999288';
 let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
 try {
   formHost.shareForm(formId, deviceId, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
+try {
+  formHost.shareForm(formId, deviceId, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -2141,6 +2867,8 @@ shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2151,6 +2879,26 @@ try {
   formHost.shareForm(formId, deviceId).then(() => {
     console.info('formHost shareForm success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
+try {
+  formHost.shareForm(formId, deviceId).then(() => {
+    console.info('formHost shareForm success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -2195,6 +2943,8 @@ notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callb
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2202,6 +2952,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsPrivacyProtected(formIds, true, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsPrivacyProtected(formIds, true, (error) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     }
@@ -2251,6 +3020,10 @@ notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Pro
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred. |
 
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2260,6 +3033,25 @@ try {
   formHost.notifyFormsPrivacyProtected(formIds, true).then(() => {
     console.info('formHost notifyFormsPrivacyProtected success');
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsPrivacyProtected(formIds, true).then(() => {
+    console.info('formHost notifyFormsPrivacyProtected success');
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch(error) {
@@ -2305,6 +3097,8 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2315,7 +3109,28 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormData`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formHost.acquireFormData(formId, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost acquireFormData`);
     }
   });
 } catch(error) {
@@ -2366,6 +3181,8 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2375,6 +3192,25 @@ try {
   formHost.acquireFormData(formId).then((data) => {
     console.info('formHost acquireFormData success' + data);
   }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (e) {
+  console.error(`catch error, code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formHost.acquireFormData(formId).then((data) => {
+    console.info('formHost acquireFormData success' + data);
+  }).catch((error) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (e) {
@@ -2429,6 +3265,8 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callba
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common, Want } from '@kit.AbilityKit';
 import { formHost } from '@kit.FormKit';
@@ -2457,12 +3295,12 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.info(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info(`formHost recv router event`);
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
                 console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
@@ -2471,6 +3309,64 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@ohos.arkui.component'
+import { formHost, formInfo } from '@kit.FormKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct CardExample {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State formId: long = 0;
+  @State fwidth: number = 420;
+  @State fheight: number = 280;
+
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "widget",
+        bundle: "com.example.cardprovider",
+        ability: "EntryFormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      })
+        .allowUpdate(true)
+        .size({ width: this.fwidth, height: this.fheight })
+        .visibility(Visibility.Visible)
+        .onAcquired((form) => {
+          console.info(`testTag form info`);
+          this.formId = form.id;
+          try {
+            let formIds: Array<string> = [this.formId.toString()];
+            formHost.setRouterProxy(formIds, (want) => {
+              console.info(`formHost recv router event`);
+              // 卡片使用方自己处理跳转
+              this.context.startAbility(want, (error) => {
+                console.info(`formHost startAbility error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+              });
+            }).then(() => {
+              console.info('formHost set router proxy success');
+            }).catch((err) => {
+              console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
+            })
+          } catch (error) {
             console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
           }
         })
@@ -2530,6 +3426,8 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { common, Want } from '@kit.AbilityKit';
@@ -2558,12 +3456,12 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.info(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info(`formHost recv router event`);
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
                 console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
@@ -2574,6 +3472,64 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@ohos.arkui.component'
+import { formHost, formInfo } from '@kit.FormKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct CardExample {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State formId: long = 0;
+  @State fwidth: number = 420;
+  @State fheight: number = 280;
+
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "widget",
+        bundle: "com.example.cardprovider",
+        ability: "EntryFormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      })
+        .allowUpdate(true)
+        .size({ width: this.fwidth, height: this.fheight })
+        .visibility(Visibility.Visible)
+        .onAcquired((form) => {
+          console.info(`testTag form info`);
+          this.formId = form.id;
+          try {
+            let formIds: Array<string> = [this.formId.toString()];
+            formHost.setRouterProxy(formIds, (want) => {
+              console.info(`formHost recv router event`);
+              // 卡片使用方自己处理跳转
+              this.context.startAbility(want, (error) => {
+                console.info(`formHost startAbility error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+              });
+            }).then(() => {
+              console.info('formHost set router proxy success');
+            }).catch((err) => {
+              console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
+            })
+          } catch (error) {
             console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
           }
         })
@@ -2621,6 +3577,8 @@ clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2628,6 +3586,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.clearRouterProxy(formIds, (err: BusinessError) => {
+    if (err) {
+      console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.clearRouterProxy(formIds, (err) => {
     if (err) {
       console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
     }
@@ -2679,6 +3656,8 @@ clearRouterProxy(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2688,6 +3667,25 @@ try {
   formHost.clearRouterProxy(formIds).then(() => {
     console.info('formHost clear rourter proxy success');
   }).catch((err: BusinessError) => {
+    console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.clearRouterProxy(formIds).then(() => {
+    console.info('formHost clear rourter proxy success');
+  }).catch((err) => {
     console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
@@ -2732,6 +3730,8 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2739,6 +3739,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.setFormsRecyclable(formIds, (err: BusinessError) => {
+    if (err) {
+      console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.setFormsRecyclable(formIds, (err) => {
     if (err) {
       console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
     }
@@ -2791,6 +3810,8 @@ setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2800,6 +3821,25 @@ try {
   formHost.setFormsRecyclable(formIds).then(() => {
     console.info('setFormsRecyclable success');
   }).catch((err: BusinessError) => {
+    console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.setFormsRecyclable(formIds).then(() => {
+    console.info('setFormsRecyclable success');
+  }).catch((err) => {
     console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
@@ -2844,6 +3884,8 @@ recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2851,6 +3893,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds, (err: BusinessError) => {
+    if (err) {
+      console.error(`recoverForms error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.recoverForms(formIds, (err) => {
     if (err) {
       console.error(`recoverForms error, code: ${err.code}, message: ${err.message}`);
     }
@@ -2903,6 +3964,8 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2912,6 +3975,25 @@ try {
   formHost.recoverForms(formIds).then(() => {
     console.info('recover forms success');
   }).catch((err: BusinessError) => {
+    console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  console.info(`catch error, code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.recoverForms(formIds).then(() => {
+    console.info('recover forms success');
+  }).catch((err) => {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -2962,6 +4044,8 @@ recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2971,6 +4055,25 @@ try {
   formHost.recycleForms(formIds).then(() => {
     console.info('recycle forms success');
   }).catch((err: BusinessError) => {
+    console.error(`formHost recycle forms error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  console.error(`catch error, code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.recycleForms(formIds).then(() => {
+    console.info('recycle forms success');
+  }).catch((err) => {
     console.error(`formHost recycle forms error, code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -3017,7 +4120,24 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.updateFormLocation(formId, formInfo.FormLocation.SCREEN_LOCK);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3068,7 +4188,25 @@ setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let res: formInfo.PublishFormResult = {code: formInfo.PublishFormErrorCode.SUCCESS, message: ''};
+  formHost.setPublishFormResult(formId, res);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3128,6 +4266,8 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3142,7 +4282,25 @@ try {
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
+```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+let isLocked: boolean = true;
+
+try {
+  formHost.updateFormLockedState(this.formId, this.isLocked).then(() => {
+    console.info(`formHost updateFormLockedState success`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
 ```
 
 ## addForm<sup>12+</sup>
@@ -3225,12 +4383,9 @@ ArkTS-Sta示例：
 
 ```ts
 'use static'
-
-import { formInfo } from '@kit.FormKit';
-import formHost from '@ohos.app.form.formHost';
-import Want from '@ohos.app.ability.Want';
-import { RecordData } from '@ohos.base';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { formInfo, formHost } from '@kit.FormKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 try {
   let wantParams: Record<String, RecordData> = {
@@ -3249,10 +4404,10 @@ try {
   }
   formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
     console.info(`formHost addForm, formId: ${data.formId}`);
-  }).catch((error: Error) => {
+  }).catch((error) => {
     console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
   });
-} catch (error: Error) {
+} catch (error) {
   console.error(`catch error, ${error.code}, message: ${error.message}`);
 }
 ```
@@ -3868,7 +5023,26 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let newDimension = formInfo.FormDimension.Dimension_1_2;
+  let newRect: formInfo.Rect = {left: 1, top: 2, width: 100, height: 100};
+  formHost.updateFormSize(formId, newDimension, newRect);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3914,8 +5088,8 @@ on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): voi
 **示例：**
 
 ```ts
-import formHost from '@ohos.app.form.formHost';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formHost } from '@kit.FormKit';
 
 try {
   formHost.on('getLiveFormStatus', (): Record<string,string> => {
@@ -4102,7 +5276,7 @@ onFormUninstall(callback: Callback&lt;string&gt;): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
+import { formHost } from '@kit.FormKit';
 
 try {
   formHost.onFormUninstall((formId: string) => {
@@ -4151,7 +5325,7 @@ offFormUninstall(callback?: Callback&lt;string&gt;): void
 ```ts
 'use static'
 
-import formHost from '@ohos.app.form.formHost';
+import { formHost } from '@kit.FormKit';
 
 try {
   formHost.offFormUninstall();
