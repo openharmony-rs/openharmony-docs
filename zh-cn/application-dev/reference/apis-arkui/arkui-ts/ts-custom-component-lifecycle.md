@@ -4,6 +4,7 @@
 
 >**说明：**
 >
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >- 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >- 允许在生命周期函数中使用Promise和异步回调函数，比如网络资源获取，定时器设置等。
 
@@ -412,7 +413,9 @@ struct Child {
 
 ## aboutToReuse<sup>18+</sup>
 
-aboutToReuse?(): void
+ArkTS-Dyn: aboutToReuse?(): void
+
+ArkTS-Sta: aboutToReuse(): void
 
 当一个状态管理V2的可复用自定义组件从复用池被取出重新加入到节点树时，触发aboutToReuse生命周期回调。
 
@@ -497,7 +500,9 @@ struct ReusableV2Component {
 
 ## aboutToRecycle<sup>10+</sup>
 
-aboutToRecycle?(): void
+ArkTS-Dyn: aboutToRecycle?(): void
+
+ArkTS-Sta: aboutToRecycle(): void
 
 组件的生命周期回调，在可复用组件从组件树上被加入到复用缓存之前调用。
 
