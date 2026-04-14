@@ -167,7 +167,7 @@ on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[screen.onConnect](#screenonconnect22)，[screen.onDisconnect](#screenondisconnect22)，[screen.onChange](#screenonchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[screen.onConnect](#screenonconnect23)，[screen.onDisconnect](#screenondisconnect23)，[screen.onChange](#screenonchange23)。
 
 **系统接口：** 此接口为系统接口。
 
