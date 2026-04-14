@@ -358,9 +358,14 @@ FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
     | coverage                | Ability遍历覆盖率。|
 
 4. 故障统计（Exception Message Statistics）
+
+    > **说明**
+    >
+    > 故障日志路径：/data/log/faultlog/faultlogger/
+
     | 字段               | 描述               |
     | ----------------- | ------------------ |
-    | type              | 故障类型，故障类型包含：CPP_CRASH，JS_CRASH，SYS_FREEZE，APP_FREEZE等。|
+    | type              | 故障类型，故障类型包含：CPP_CRASH、JS_CRASH、SYS_FREEZE、APP_FREEZE等。|
     | times             | 故障次数。 |
     | proportion        | 当前故障在故障总数里的占比。|
 
