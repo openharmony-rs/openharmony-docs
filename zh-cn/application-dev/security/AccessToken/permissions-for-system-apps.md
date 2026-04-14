@@ -4801,7 +4801,7 @@
 
 **支持设备**：Phone | Tablet
 
-**起始版本**：23
+**起始版本**：26.0.0
 
 ## ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
