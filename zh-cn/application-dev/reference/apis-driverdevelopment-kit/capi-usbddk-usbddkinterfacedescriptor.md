@@ -12,7 +12,7 @@ typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
 
 ## 概述
 
-接口描述符。
+接口描述符，封装了标准接口描述符及其包含的端点描述符和未解析的额外描述符数据。
 
 **起始版本：** 10
 
@@ -26,8 +26,8 @@ typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
 
 | 名称 | 描述 |
 | -- | -- |
-| struct UsbInterfaceDescriptor interfaceDescriptor | 标准接口描述符。 |
-| struct UsbDdkEndpointDescriptor* endPoint | 该接口所包含的端点描述符。 |
+| [struct UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) interfaceDescriptor | 标准接口描述符。 |
+| [struct UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md)* endPoint | 该接口所包含的端点描述符。 |
 | const uint8_t* extra | 未做解析的描述符，包含特定于类或供应商的描述符。 |
 | uint32_t extraLength | 未做解析的描述符长度。 |
 

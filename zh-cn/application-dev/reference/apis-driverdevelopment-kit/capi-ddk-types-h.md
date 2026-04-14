@@ -26,7 +26,7 @@
 
 | 名称                                       | typedef关键字 | 描述 |
 |------------------------------------------| -- | -- |
-| [DDK_Ashmem](capi-baseddk-ddk-ashmem.md) | DDK_Ashmem | 定义通过接口<b>OH_DDK_CreateAshmem</b>创建的共享内存，共享内存的缓冲区提供更好的性能。 |
+| [DDK_Ashmem](capi-baseddk-ddk-ashmem.md) | DDK_Ashmem | 定义通过接口[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)创建的共享内存，共享内存的缓冲区提供更好的性能。 |
 
 ### 枚举
 
