@@ -3086,7 +3086,7 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 ```ts
 // xxx.test.ets
-import { Driver } from '@kit.TestKit';
+import { Driver, TouchOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
@@ -3455,7 +3455,7 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 ```ts
 // xxx.test.ets
-import { Driver } from '@kit.TestKit';
+import { Driver, TouchOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
@@ -3606,7 +3606,7 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 ```ts
 // xxx.test.ets
-import { Driver } from '@kit.TestKit';
+import { Driver, TouchOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
@@ -5024,7 +5024,7 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 
 ```ts
 // xxx.test.ets
-import { Driver } from '@kit.TestKit';
+import { Driver, TouchOptions, KeyOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
