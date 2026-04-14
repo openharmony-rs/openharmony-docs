@@ -9231,7 +9231,7 @@ Sets the color space in the screenshot options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
 | int32_t colorSpace | Color space used for screenshot.<br>If the target component's color space is known, specify it through **colorSpace** and set **isAuto** to **false** to achieve optimal snapshot quality.<br>The supported values are as follows: **3** (RGB color gamut of type Display P3), **4** (RGB color gamut of type sRGB), and **27** (RGB color gamut of type BT.2020).<br>Default value: **4**<br>This parameter takes effect only when **isAuto** is set to **false**.|
 | bool isAuto | Whether the system automatically determines the color space to be used.<br>**true**: The system automatically determines the color space to be used. If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used.<br>**false**: The color space type set through the **colorSpace** field is used for screenshot.<br>Default value: **false**.|
 
@@ -12304,7 +12304,7 @@ Sets the background style parameters. This API takes effect only when the type o
 | Name| Description|
 | -- | -- |
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | Pointer to the [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance.|
-| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | Pointer to the background.|
+| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | Pointer to the background style.|
 
 **Returns**
 
