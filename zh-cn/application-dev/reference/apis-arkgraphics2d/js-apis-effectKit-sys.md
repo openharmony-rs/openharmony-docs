@@ -58,6 +58,24 @@ import { effectKit } from "@kit.ArkGraphics2D";
 | DARK_PICTURE     | 5    | 图片颜色深浅度为较深。|
 | EXTREMELY_DARK_PICTURE     | 6    | 图片颜色深浅度为极深。|
 
+## PictureLightDegree<sup>26+</sup>
+
+图片颜色明亮度的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+| 名称                   | 值   | 说明                           |
+| ---------------------- | ---- | ------------------------------ |
+| UNKNOWN_LIGHT_COLOR_DEGREE_PICTURE | 0 | 未知亮度程度的图片 |
+| EXTREMELY_LIGHT_COLOR_PICTURE | 1 | 极亮色图片 |
+| LIGHT_COLOR_PICTURE | 2 | 亮色图片 |
+| DARK_COLOR_PICTURE | 3 | 暗色图片 |
+| EXTREMELY_DARK_COLOR_PICTURE | 4 | 极暗色图片 |
+| FLOWERY_PICTURE | 5 | 花色图片 |
+| EXTREMELY_FLOWERY_PICTURE | 6 | 极花色图片 |
+
 ## ColorPicker
 
 取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](js-apis-effectKit.md#effectkitcreatecolorpicker)创建一个ColorPicker实例。
@@ -281,6 +299,280 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('Succeeded in creating color picker.');
         let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
       console.info('Get proportion of fully transparent pixels: ' + percentage);
+    }
+  })
+})
+```
+
+### getMorandiShadowColor<sup>26+</sup>
+
+getMorandiShadowColor(): Color
+
+从图像主色获取莫兰迪阴影色，结果写入[Color](#color)里。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
+
+**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](#color)    | Color实例，即图像莫兰迪阴影色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getMorandiShadowColor();
+      console.info('get Morandi shadow color =' + color);
+    }
+  })
+})
+```
+
+### getDeepenImmersionColor<sup>26+</sup>
+
+getDeepenImmersionColor(): Color
+
+生成与背景色融合且比背景色更深的强沉浸色，结果写入[Color](#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
+
+**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](#color)    | Color实例，即图像强沉浸色色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getDeepenImmersionColor();
+      console.info('get deepen immersion color =' + color);
+    }
+  })
+})
+```
+
+### getImmersiveBackgroundColor<sup>26+</sup>
+
+getImmersiveBackgroundColor(): Color
+
+生成能够创造沉浸式视觉效果的沉浸式背景色，结果写入[Color](#color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
+
+**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](#color)    | Color实例，即图像沉浸式背景色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.ImmersiveBackgroundColor();
+      console.info('get deepen background color =' + color);
+    }
+  })
+})
+```
+
+### getImmersiveForegroundColor<sup>26+</sup>
+
+getImmersiveForegroundColor(): Color
+
+生成能够创造沉浸式视觉效果的沉浸式前景色，结果写入[Color](#color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
+
+**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](#color)    | Color实例，即图像沉浸式前景色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.ImmersiveForegroundColor();
+      console.info('get deepen foreground color =' + color);
+    }
+  })
+})
+```
+
+### discriminatePictureLightDegree()<sup>26+</sup>
+
+discriminatePictureLightDegree(): PictureLightDegree
+
+获取对图片的明暗程度。
+
+**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型                                     | 说明                                            |
+| :--------------------------------------- | :---------------------------------------------- |
+| [PictureLightDegree](#picturelightdegree26) | 图像颜色明暗程度。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```js
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let pictureLightDegree: effectKit.PictureLightDegree = colorPicker.discriminatePictureLightDegree();
+      console.info('The color light degree of the image is ' + pictureLightDegree);
+    }
+  })
+})
+```
+
+### getReverseColor<sup>26+</sup>
+
+getReverseColor(): Color;
+
+基于图像亮度判别结果生成反向颜色，结果写入[Color](#color)里。当图像亮度为极亮时返回黑色，其他情况返回白色，用于界面主题或对比度计算。
+
+**卡片能力：** 从API version 26开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](#color)    | Color实例，即图像反向颜色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getReverseColor();
+      console.info('get reverse color =' + color);
     }
   })
 })
