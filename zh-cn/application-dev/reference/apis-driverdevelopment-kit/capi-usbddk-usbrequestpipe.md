@@ -12,7 +12,7 @@ typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
 
 ## 概述
 
-请求管道。
+请求管道，用于指定USB数据传输的目标接口和端点，以及传输超时时间。
 
 **起始版本：** 10
 
