@@ -928,7 +928,9 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 
 **起始版本**：26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -938,14 +940,14 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，单位：ms。 |
-| end   | number | 是    | 结束时间，单位：ms。 |
-| maxNum   | number | 是    | 返回的事件的条数，取值范围为[1,1000]。 |
+| begin | number | 是    | 起始时间。<br/>单位：ms |
+| end   | number | 是    | 结束时间。<br/>单位：ms |
+| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1,1000]。 |
 **返回值**：
 
 | 类型                                       | 说明                                     |
 | ---------------------------------------- | -------------------------------------- |
-| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise对象。返回起始和结束时间段内，所有应用的事件集合。 |
+| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise对象，返回起始和结束时间段内，所有应用的事件集合。 |
 
 **错误码**：
 
@@ -1092,7 +1094,9 @@ queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt
 
 **起始版本**：26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -1100,9 +1104,9 @@ queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，单位：ms。 |
-| end   | number | 是    | 结束时间，单位：ms。 |
-| maxNum   | number | 是    | 返回的事件的条数，取值范围为[1,1000]。 |
+| begin | number | 是    | 起始时间。<br/>单位：ms |
+| end   | number | 是    | 结束时间。<br/>单位：ms |
+| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1,1000] |
 
 **返回值**：
 
