@@ -1068,10 +1068,14 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 });
 ```
 
-## window.setWaterMarkImage<sup>26+</sup>
+## window.setWaterMarkImage
 setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: number): Promise&lt;void&gt;
 
-设置屏幕水印图片显示状态。使用Promise异步回调。
+设置屏幕水印图片的显示状态。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1082,14 +1086,14 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: number): 
 | 参数名 | 类型                        | 必填  | 说明                 |
 | ------ | --------------------------- | ---- | -------------------- |
 | pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 水印图片。可通过[createPixelMap](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmap8)接口获取。|
-| enable   | boolean                  | 是   | 设置是否显示水印图片。true显示水印图片；false表示不显示水印图片。设置显示水印后需主动设置为false才能关闭水印图片显示。|
+| enable   | boolean                  | 是   | 设置是否显示水印图片。true表示显示水印图片；false表示不显示水印图片。设置显示水印后需主动设置为false才能关闭水印图片显示。|
 | priority   | number                  | 是   | 水印设置优先级。数值越小表示优先级越高，需大于等于0，小于0时返回1300016错误码。设置水印时，如果传入的优先级比上一次设置的低，则本次设置不会生效。|
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1099,7 +1103,7 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: number): 
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
 
@@ -1108,7 +1112,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(100);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
