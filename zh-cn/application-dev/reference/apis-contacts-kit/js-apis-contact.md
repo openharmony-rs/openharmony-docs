@@ -2023,7 +2023,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 
 | 参数名 | 类型                                    | 必填 | 说明                                   |
 | ------ | --------------------------------------- | ---- | -------------------------------------- |
-| key    | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过[queryKey](#contactqueryKey10)获取。 |
+| key    | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时自动生成的唯一标识，一个联系人对应一个key,可以通过[queryKey](#contactqueryKey10)获取。 |
 | holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数则默认使用系统联系人应用查询。                |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                    |
 
