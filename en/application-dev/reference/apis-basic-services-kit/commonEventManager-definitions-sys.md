@@ -728,3 +728,4 @@ When the device receives a WAP push message, the common event service is trigger
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
 **Value**: usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED
+<!--no_check-->
