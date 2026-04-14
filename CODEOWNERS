@@ -732,6 +732,7 @@ zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @gcw_K
 zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/pageswitch-log.md @buzhenwang @shenchenkai @liyang2235 @jinqiuheng
 
 [开发-IDL]
 zh-cn/application-dev/IDL/ @huipeizi @liveery @alien0208
