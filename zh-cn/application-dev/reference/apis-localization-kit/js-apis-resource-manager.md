@@ -4,8 +4,8 @@
 <!--Subsystem: Global-->
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
-<!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yliupy-->
+<!--Adviser: @ningningW-->
 
 本模块提供资源获取能力。根据当前的[Configuration](#configuration)配置，获取最匹配的应用资源或系统资源。具体匹配规则参考[资源匹配](../../quick-start/resource-categories-and-access.md#资源匹配)。
 

@@ -4,8 +4,8 @@
 <!--Subsystem: Global-->
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
-<!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yliupy-->
+<!--Adviser: @ningningW-->
 
 字体管理模块，提供给系统应用安装和卸载三方字体的能力。
 

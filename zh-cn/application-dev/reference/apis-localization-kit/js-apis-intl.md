@@ -4,8 +4,8 @@
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
-<!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yliupy-->
+<!--Adviser: @ningningW-->
 
 本模块提供基础的应用国际化能力，包括时间日期格式化、数字格式化、排序等，相关接口在ECMA 402标准中定义。
 

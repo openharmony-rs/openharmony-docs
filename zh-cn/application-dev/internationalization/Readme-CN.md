@@ -4,8 +4,8 @@
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
-<!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yliupy-->
+<!--Adviser: @ningningW-->
 
 - [Localization Kit简介](i18n-l10n.md)
 - 应用国际化<!--i18n-->
