@@ -145,7 +145,7 @@ Checks whether a new version is available. This API uses an asynchronous callbac
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -181,7 +181,7 @@ Checks whether a new version is available. This API uses a promise to return the
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
@@ -223,7 +223,7 @@ Obtains information about the new version. This API uses an asynchronous callbac
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -260,7 +260,7 @@ Obtains information about the new version. This API uses a promise to return the
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
@@ -299,7 +299,7 @@ Obtains the description file of the new version. This API uses an asynchronous c
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -351,7 +351,7 @@ Obtains the description file of the new version. This API uses a promise to retu
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -408,7 +408,7 @@ Obtains information about the current version. This API uses an asynchronous cal
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -446,7 +446,7 @@ Obtains information about the current version. This API uses a promise to return
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
@@ -486,7 +486,7 @@ Obtains the description file of the current version. This API uses an asynchrono
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -529,7 +529,7 @@ Obtains the description file of the current version. This API uses a promise to 
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -578,7 +578,7 @@ Obtains information about the update task. This API uses an asynchronous callbac
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -614,7 +614,7 @@ Obtains information about the update task. This API uses a promise to return the
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
@@ -652,7 +652,7 @@ Downloads the new version. This API uses an asynchronous callback to return the 
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -701,7 +701,7 @@ Downloads the new version. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -757,7 +757,7 @@ Resumes download of the new version. This API uses an asynchronous callback to r
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -805,7 +805,7 @@ Resumes download of the new version. This API uses a promise to return the resul
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -860,7 +860,7 @@ Pauses download of the new version. This API uses an asynchronous callback to re
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -908,7 +908,7 @@ Pauses download of the new version. This API uses a promise to return the result
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -963,7 +963,7 @@ Updates the version. This API uses an asynchronous callback to return the result
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1011,7 +1011,7 @@ Updates the version. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1066,7 +1066,7 @@ Clears errors. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1114,7 +1114,7 @@ Clears errors. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1169,7 +1169,7 @@ Obtains the update policy. This API uses an asynchronous callback to return the 
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1206,7 +1206,7 @@ Obtains the update policy. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
@@ -1245,7 +1245,7 @@ Sets the update policy. This API uses an asynchronous callback to return the res
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1287,7 +1287,7 @@ Sets the update policy. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1336,7 +1336,7 @@ Terminates the update. This API uses an asynchronous callback to return the resu
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1372,7 +1372,7 @@ Terminates the update. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
@@ -1482,7 +1482,7 @@ Restores a device to its factory settings. This API uses an asynchronous callbac
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.FACTORY_RESET
+**Required permissions**: ohos.permission.FACTORY_RESET
 
 **Parameters**
 
@@ -1516,7 +1516,7 @@ Restores a device to its factory settings. This API uses a promise to return the
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.FACTORY_RESET
+**Required permissions**: ohos.permission.FACTORY_RESET
 
 **Return value**
 
@@ -1594,7 +1594,7 @@ Verifies the update package. This API uses an asynchronous callback to return th
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1636,7 +1636,7 @@ Verifies the update package. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1685,13 +1685,13 @@ Installs the update package. This API uses an asynchronous callback to return th
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name        | Type                                | Mandatory  | Description                                     |
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFile | Array<[UpgradeFile](#upgradefile)> | Yes   | Update file.                                   |
+| upgradeFiles | Array<[UpgradeFile](#upgradefile)> | Yes   | Update file.                                   |
 | callback    | AsyncCallback\<void>               | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
 
 **Error codes**
@@ -1726,7 +1726,7 @@ Installs the update package. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**Required permissions**: ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 

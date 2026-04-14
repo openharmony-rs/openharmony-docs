@@ -10,7 +10,7 @@ The module provides common data types in 3D graphics.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -75,8 +75,8 @@ Axis aligned boundary box used to determine whether two objects in space are ove
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| aabbMin | [Vec3](#vec3) | No| No| Minimum bounds of the AABB.|
-| aabbMax | [Vec3](#vec3) | No| No| Maximum bounds of the AABB.|
+| aabbMin | [Vec3](#vec3) | No| No| Minimum point of the axis-aligned bounding box, in scene units of the world coordinate system (such as cm, m, km, etc.).|
+| aabbMax | [Vec3](#vec3) | No| No| Maximum point of the axis-aligned bounding box, in scene units of the world coordinate system (such as cm, m, km, etc.).|
 
 ## Color
 
@@ -99,10 +99,10 @@ Rectangle in a plane.
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | No| No| X coordinate of the lower-left corner of the rectangle, in the units of the coordinate system it belongs to. It can be any real number, with the specific range depending on the scene's coordinate system settings.|
-| y | number | No| No| Y coordinate of the lower-left corner of the rectangle, in the units of the coordinate system it belongs to. It can be any real number, with the specific range depending on the scene's coordinate system settings.|
-| width | number | No| No| Width of the rectangle, in the units of the coordinate system it belongs to. The value must be greater than 0.|
-| height | number | No| No| Height of the rectangle, in the units of the coordinate system it belongs to. The value must be greater than 0.|
+| x | number | No| No| X component of the rectangle's bottom-left corner, in scene units of the world coordinate system (such as cm, m, km, etc.). The value can be any real number, and the specific range depends on the scene coordinate system settings.|
+| y | number | No| No| Y component of the rectangle's bottom-left corner, in scene units of the world coordinate system (such as cm, m, km, etc.). The value can be any real number, and the specific range depends on the scene coordinate system settings.|
+| width | number | No| No| Rectangle width, in scene units of the world coordinate system (such as cm, m, km, etc.). The valid value range is greater than 0.|
+| height | number | No| No| Rectangle height, in scene units of the world coordinate system (such as cm, m, km, etc.). The valid value range is greater than 0.|
 
 ## RenderingPipelineType<sup>21+</sup>
 
@@ -173,7 +173,7 @@ A cube geometry type that inherits from [GeometryDefinition](#geometrydefinition
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Vec3](#vec3) | No| No| Width, height, and depth of the cube, defining its size.|
+| size | [Vec3](#vec3) | No| No| Width, height, and depth of the cube, indicating the size of the cube. The unit is the scene unit in the world coordinate system (such as cm, m, km, etc.).|
 
 ## PlaneGeometry<sup>18+</sup>
 
@@ -183,7 +183,7 @@ A plane geometry type that inherits from [GeometryDefinition](#geometrydefinitio
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Vec2](#vec2) | No| No| Width and height of the plane, defining its size.|
+| size | [Vec2](#vec2) | No| No| Width and height of the plane, indicating the size of the plane. The unit is the scene unit in the world coordinate system (such as cm, m, km, etc.).|
 
 ## SphereGeometry<sup>18+</sup>
 
@@ -194,7 +194,7 @@ A sphere geometry type that inherits from [GeometryDefinition](#geometrydefiniti
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | radius | number | No| No| Radius of the sphere, measured in the world coordinate system's units (for example, cm, m, or km). The value must be greater than 0.|
-| segmentCount | number | No| No| Number of segments dividing the sphere along latitude and longitude. The value must be greater than 0.|
+| segmentCount | number | No| No| Number of segments divided by longitude and latitude on the sphere. The value range is a positive integer greater than or equal to 3.|
 
 ## CylinderGeometry<sup>23+</sup>
 
@@ -204,8 +204,8 @@ A cylinder geometry type that inherits from [GeometryDefinition](#geometrydefini
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| radius | number | No| No| Base radius of the cylinder. The value must be greater than 0.|
-| height | number | No| No| Height of the cylinder. The value must be greater than 0.|
+| radius | number | No| No| Bottom radius of the cylinder, in scene units of the world coordinate system (such as cm, m, km, etc.). The value range is greater than 0.|
+| height | number | No| No| Height of the cylinder, in scene units of the world coordinate system (such as cm, m, km, etc.). The value range is greater than 0.|
 | segmentCount | number | No| No| Number of segments around the circumference of the cylinder. The value must be an integer greater than or equal to 3. If a floating-point number is provided, it is automatically rounded down. This value directly affects the smoothness of the curved surface. A higher number results in more polygons and a smoother appearance, whereas a lower number results in visible faceting. Note that a very high value can increase the time required to create the geometry and may cause thread blocking.|
 
 > **NOTE**
@@ -221,6 +221,7 @@ For example, with radius=0.5, height=1, and segmentCount=20, the mesh and UV lay
 A camera matrix, which is a mathematical tool for transforming 3D world coordinates into 2D image coordinates.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | x | [Vec4](#vec4) | No| No| The first column of the matrix, represented as a four-dimensional vector.|
@@ -238,7 +239,7 @@ Position of an object in 3D space. The value is of the [Vec3](#vec3) type.
 
 | Type | Description|
 | ---- | ---- |
-| [Vec3](#vec3) | Any 3D vector.|
+| [Vec3](#vec3) | The type is a three-dimensional vector. The unit is the scene unit in the world coordinate system (such as cm, m, and km). The value can be any value.|
 
 ## Rotation3
 
@@ -250,7 +251,7 @@ Rotation of an object in 3D space. The value is of the [Vec3](#vec3) type.
 
 | Type | Description|
 | ---- | ---- |
-| [Vec3](#vec3) | Any 3D vector.|
+| [Vec3](#vec3) | The type is a three-dimensional vector in the unit of radian (rad). The value can be any value.|
 
 ## Scale3
 

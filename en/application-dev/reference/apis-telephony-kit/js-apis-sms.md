@@ -157,7 +157,7 @@ let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: B
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
-    content: 'SMS message content';
+    content: 'SMS message content',
     destinationHost: '+861xxxxxxxxxx',
     serviceCenter: '+861xxxxxxxxxx',
     destinationPort: 1000,
@@ -211,7 +211,7 @@ let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: B
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
-    content: 'SMS message content';
+    content: 'SMS message content',
     destinationHost: '+861xxxxxxxxxx',
     serviceCenter: '+861xxxxxxxxxx',
     destinationPort: 1000,
@@ -272,7 +272,7 @@ let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: B
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
-    content: 'SMS message content';
+    content: 'SMS message content',
     destinationHost: '+861xxxxxxxxxx',
     serviceCenter: '+861xxxxxxxxxx',
     destinationPort: 1000,
@@ -419,7 +419,7 @@ Obtains the default ID of the SIM card used to send SMS messages. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -453,9 +453,9 @@ Defines an SMS message instance.
 
 |         Name            |                  Type                  | Read-Only | Optional| Description                                                        |
 | ------------------------ | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| hasReplyPath             | boolean                                 |  No |  No | Whether the received SMS contains **TP-Reply-Path**. The default value is **false**.<br>- **true**: The received SMS contains **TP-Reply-Path**.<br>- **false**: The received SMS does not contain **TP-Reply-Path**.<br>TP-Reply-Path: The device returns a response based on the SMSC that sends the SMS message. |
-| isReplaceMessage         | boolean                                 |  No |  No | Whether the received SMS message is a **replace short message**. The default value is **false**.<br>- **true**: The received SMS message is a **replace short message**.<br>- **false**: The received SMS message is not a **replace short message**.<br>For details, see [3GPP TS 23.040 9.2.3.9](https://www.3gpp.org/ftp/specs/archive/23_series/23.040).|
-| isSmsStatusReportMessage | boolean                                 |  No |  No | Whether the received SMS message is an SMS delivery report. The default value is **false**.<br>- **true**: The received SMS message is an SMS delivery report.<br>- **false**: The received SMS does not contain **TP-Reply-Path**.<br>SMS delivery report: a message sent from the SMSC to show the current status of the SMS message you delivered.|
+| hasReplyPath             | boolean                                 |  No |  No | Whether the received SMS contains **TP-Reply-Path**. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>**TP-Reply-Path**: The device returns a response based on the SMSC that sends the SMS message. |
+| isReplaceMessage         | boolean                                 |  No |  No | Whether the received SMS message is a **replace short message**. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>For details, see [3GPP TS 23.040 9.2.3.9](https://www.3gpp.org/ftp/specs/archive/23_series/23.040).|
+| isSmsStatusReportMessage | boolean                                 |  No |  No | Whether the received SMS message is an SMS delivery report. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>SMS delivery report: a message sent from the SMSC to show the current status of the SMS message you delivered.|
 | messageClass             | [ShortMessageClass](#shortmessageclass) |  No |  No | Enumerates SMS message types.                                                  |
 | pdu                      | Array&lt;number&gt;                     |  No |  No | PDU in the SMS message.                           |
 | protocolId               | number                                  |  No |  No | Protocol identifier used for delivering the SMS message.                                  |
@@ -507,7 +507,7 @@ Provides the callback for the SMS message sending result. It consists of three p
 
 |   Name    | Type                           | Read-Only| Optional|                                               Description                                        |
 | ---------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------- |
-| isLastPart | boolean                         | No  | No  | Whether this SMS message is the last part of a long SMS message. The default value is **false**.<br>- **true**: The SMS message is the last part of a long SMS message.<br>- **false**: The SMS message is not the last part of a long SMS message.<br>|
+| isLastPart | boolean                         | No  | No  | Whether this SMS message is the last part of a long SMS message. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>|
 | result     | [SendSmsResult](#sendsmsresult) | No  | No  | SMS message sending result.                                                                            |
 | url        | string                          | No  | No  | URI for storing the sent SMS message.                                                                       |
 

@@ -3350,6 +3350,8 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 | domain      | string | 否 | 否  | 域名。     |
 | accountName | string | 否 | 否  | 域账号名。 |
 | serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。 |
+| additionalInfo | Record<string, Object> | 否 | 是 | 域账号附加信息。<br>**起始版本**： 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+
 
 ## DomainServerConfig<sup>18+</sup>
 

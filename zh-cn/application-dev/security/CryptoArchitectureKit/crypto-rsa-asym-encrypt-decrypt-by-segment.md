@@ -84,14 +84,14 @@
   }
   
   async function rsaEncryptLongMessage() {
-    let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!';
+    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
     let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
     let keyPair = await asyKeyGenerator.generateKeyPair(); // 随机生成RSA密钥
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
@@ -156,14 +156,14 @@
   }
   
   function main() {
-    let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!';
+    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
     let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
     let keyPair = asyKeyGenerator.generateKeyPairSync(); // 随机生成RSA密钥
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };

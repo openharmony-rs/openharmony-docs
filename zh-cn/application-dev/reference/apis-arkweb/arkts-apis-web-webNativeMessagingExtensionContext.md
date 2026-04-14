@@ -245,7 +245,7 @@ stopNativeConnection(connectionId: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |-------|-------|-------|-------|
-| connectionId | number | 是 | 要停止的连接ID。|
+| connectionId | number | 是 | 要停止的连接ID。取值范围为正整数，必须是有效的连接ID。当connectionId值无效时，会对应返回错误码。 |
 
 **返回值:**
 

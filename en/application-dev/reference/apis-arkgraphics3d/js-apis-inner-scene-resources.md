@@ -10,7 +10,7 @@ The SceneResource module provides basic resource types in 3D graphics.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -29,9 +29,9 @@ Enumerates the scene resource types, which are used to classify resources in a s
 | Name| Value| Description|
 | ---- | ---- | ---- |
 | UNKNOWN | 0 | Unknown.|
-| NODE | 1 | Node resource.|
+| NODE | 1 | Node type.|
 | ENVIRONMENT | 2 | Environment resource.|
-| MATERIAL | 3 | Material resource.|
+| MATERIAL | 3 | Material type.|
 | MESH | 4 | Mesh resource.|
 | ANIMATION | 5 | Animation resource.|
 | SHADER | 6 | Shader resource.|
@@ -163,6 +163,7 @@ Enumerates the material types in a scene. The material type defines how material
 | SHADER | 1 | Shader-defined.|
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | Metallic-Roughness model based on Physically Based Rendering (PBR), simulating realistic material lighting effects through metallicity and roughness parameters.|
 | UNLIT<sup>23+</sup> | 3 | Material that is not affected by lighting.|
+| OCCLUSION<sup>23+</sup> | 4 | Occlusion material: occludes other objects in the scene but does not occlude the environment.|
 
 ## CullMode<sup>20+</sup>
 
@@ -217,7 +218,7 @@ Material resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| materialType | [MaterialType](#materialtype) | Yes| No| Type of the material.|
+| materialType | [MaterialType](#materialtype) | Yes| No| Material type.|
 | shadowReceiver<sup>20+</sup> | boolean | No| Yes| Whether the material receives shadows. **true** if the material receives shadows, **false** otherwise. The default is **false**.|
 | cullMode<sup>20+</sup> | [CullMode](#cullmode20) | No| Yes| Culling mode of the material, which can be used to determine whether to cull front or back faces. The default value is **BACK**.|
 | blend<sup>20+</sup> | [Blend](#blend20) | No| Yes| Whether the material is transparent. The default value is **false**.|
@@ -275,6 +276,12 @@ Material that is not affected by lighting. The shading value of the material is 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | baseColor | [MaterialProperty](#materialproperty20) | No| No| Base color property, which defines the base color information of the material.|
+
+## OcclusionMaterial<sup>23+</sup>
+
+Occlusion material: occludes other objects in the scene but does not occlude the environment. It is inherited from [Material](#material).
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## SamplerFilter<sup>20+</sup>
 
@@ -610,7 +617,7 @@ Enumerates the environment background types, which are used to define how the ba
 | BACKGROUND_NONE | 0 | No background.|
 | BACKGROUND_IMAGE | 1 | Image background.|
 | BACKGROUND_CUBEMAP | 2 | Cubemap background.|
-| BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular background.|
+| BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular projection background.|
 
 ## Environment
 
@@ -642,7 +649,9 @@ Image resource, which inherits from [SceneResource](#sceneresource-1).
 
 ## Effect<sup>21+</sup>
 
-Effect resource, which inherits from [SceneResource](#sceneresource-1).
+Effect resource, which inherits from [SceneResource](#sceneresource-1). It is obtained from the [createEffect](js-apis-inner-scene.md#createeffect21) API.
+
+### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -650,3 +659,88 @@ Effect resource, which inherits from [SceneResource](#sceneresource-1).
 | ---- | ---- | ---- | ---- | ---- |
 | enabled | boolean | No| No| Enabled status of the effect. **true** if enabled, **false** otherwise.|
 | effectId | string  | Yes| No| Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, **'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'**. It is used to create an effect.|
+
+### getPropertyValue<sup>23+</sup>
+
+getPropertyValue(propertyName: string): Object | null | undefined
+
+Obtains the value of the specified effect property.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| propertyName | string | Yes| Name of a specified effect property. Currently, the following strings are supported:<br>-'exposure': exposure level of an image.<br>-'vibrance': natural saturation of an image.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Object \| null \| undefined | Effect property value. If the value fails to be obtained, **null** is returned.|
+
+**Example**
+
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function getEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, 'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'.
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.getPropertyValue('exposure');
+  });
+}
+```
+
+### setPropertyValue<sup>23+</sup>
+
+setPropertyValue(propertyName: string, value: Object | undefined): boolean
+
+Sets the value of a specified effect property.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| propertyName | string | Yes| Name of a specified effect property. Currently, the following strings are supported:<br>-'exposure': exposure level of an image.<br>-'vibrance': natural saturation of an image.|
+| value | Object \| undefined | Yes| Value of the effect property to set.<br>-'exposure': The value is of the number type. The recommended value range is [-5, 5]. A larger value indicates a brighter image.<br>-'vibrance': The value is of the number type. The recommended value range is [-1, 1]. A larger value indicates more vivid image colors.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| boolean | Whether the operation of setting the effect property value is successful. **true** indicates that the setting is successful, and **false** indicates that the setting fails.|
+
+**Example**
+
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function setEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, 'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'.
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.setPropertyValue('exposure', 1);
+  });
+}
+```
