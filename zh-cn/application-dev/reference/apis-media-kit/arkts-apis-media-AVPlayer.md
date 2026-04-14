@@ -2467,9 +2467,9 @@ async function test(){
 
 ## setLoudnessGain<sup>21+</sup>
 
-setLoudnessGain(loudnessGain: number): void
+setLoudnessGain(loudnessGain: number): Promise\<void>
 
-设置播放器的响度。调用该接口后，响度增益立即生效。
+设置播放器的响度。调用该接口后，响度增益立即生效。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2477,6 +2477,7 @@ setLoudnessGain(loudnessGain: number): void
 > - 调用此接口时，需确保已设置音频渲染信息AVPlayer.audioRendererInfo，audioRendererInfo的usage参数必须是[STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)其中之一。
 > - 该接口不支持高清通路的响度设置。
 > - 音频流的时延模式必须是普通时延。
+> - 该接口错误信息通过[on('error')](#onerror9)回调
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2486,16 +2487,11 @@ setLoudnessGain(loudnessGain: number): void
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | loudnessGain | number | 是   |设置播放器的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。|
 
+**返回值：**
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                  |
-| -------- | ----------------------------------------- |
-| 5400102  | Operation not allowed. e.g. The function is called in an incorrect state, or the stream usage of audioRendererInfo is not one of [STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).|
-| 5400105  | Service died. |
-| 5400108  | Parameter check failed. |
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
