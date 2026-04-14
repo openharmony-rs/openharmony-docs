@@ -3822,7 +3822,7 @@ async function test(){
 
 onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
 
-注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如监听插播的数据信息。使用callback异步回调。
+注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如监听插播的元数据信息。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -3852,7 +3852,7 @@ async function test(){
 
 offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 
-取消注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的数据信息。使用callback异步回调。
+取消注册监听器以检测基于时间的元数据，目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的元数据信息。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
