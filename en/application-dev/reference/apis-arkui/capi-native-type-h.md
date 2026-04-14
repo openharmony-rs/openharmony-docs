@@ -2335,7 +2335,7 @@ Enumerates the component units.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | By default, the font unit is fp, and the non-font unit is vp.|
+| ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts.|
 | ARKUI_LENGTH_METRIC_UNIT_PX = 0 | The unit is px.|
 | ARKUI_LENGTH_METRIC_UNIT_VP = 1 | The unit is vp.|
 | ARKUI_LENGTH_METRIC_UNIT_FP = 2 | The unit is fp.|
