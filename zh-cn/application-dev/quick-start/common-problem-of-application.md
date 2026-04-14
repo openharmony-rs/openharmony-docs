@@ -132,43 +132,7 @@ bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 
 ## 应用的uid
 
-uid是鸿蒙系统中用于[应用沙箱](../security/AccessToken/access-token-overview.md#应用沙箱)隔离的唯一标识符，它分配给每个应用进程，确保应用在运行时相互隔离（如文件系统，内存空间等）。
+uid是系统中用于[应用沙箱](../security/AccessToken/access-token-overview.md#应用沙箱)隔离的唯一标识符，它分配给每个应用进程，确保应用在运行时相互隔离（如文件系统，内存空间等）。
 
-### uid的生成算法
+uid的生成算法为：uid = userId * 200000 + (bundleId % 200000)。其中%表示取模运算，计算bundleId除以200000的余数。userId表示应用需要安装的用户编号，可以通过[getOsAccountLocalId接口](../reference//apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 bundleId表示应用的唯一编号，取值范围为10000到65535的整数。
 
-* baseAppUid（起始uid）取值：
-
-  * 取值为系统参数`const.product.baseappid`的配置，可以通过命令获取。
-
-    ```shell
-    hdc shell param get const.product.baseappid
-    ```
-  * 如果系统没有配置`const.product.baseappid`，或者参数配置的值小于10000或者大于等于65535，baseAppUid（起始uid）为100000。
-
-* bundleIdMap，bundleId的缓存容器，记录着当前设备上bundleId的使用情况。设备重启的时候，会从安装数据中初始化。存储方式，键为bundleId，值为bundleName。
-
-* bundleId的生成规则：
-
-  * 第一个应用安装时，bundleIdMap记录为空，bundleId = baseAppUid，并记录到bundleIdMap中。
-
-  * 之后再安装新的应用时，会取当前bundleIdMap中最大的bundleId，新的bundleId = 最大的bundleId + 1，并记录到bundleIdMap中。
-
-  * 如果bundleMap中记录的最大的bundleId = 65535时，就开始编译，从baseAppUid，一直到65535，如果bundleMap中不存在，就把当前值分给新安装的应用，并记录到bundleIdMap中。
-
-  * 应用卸载的时候，会清理bundleIdMap中的bundleId信息。
-
-* uid的最终生成算法，userId表示应用需要安装的用户编号，可以通过[getOsAccountLocalId接口](../reference//apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。
-
-  uid = userId * 200000 + bundleId % 200000
-
-## 如何获取应用的uid
-
-* 通过[bm工具](../tools/bm-tool.md)获取。
-
-  ```shell
-  hdc shell
-  # 需将ohos.app.hap.myapplication替换为实际应用的包名
-  bm dump -n ohos.app.hap.myapplication |grep uid
-  ```
-
-* 可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，示例代码可以参考[如何获取应用信息中的appId](#如何获取应用信息中的appid)，取值方式为bundleInfo.appInfo.uid。
