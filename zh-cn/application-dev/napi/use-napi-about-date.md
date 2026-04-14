@@ -168,7 +168,7 @@ static napi_value IsDate(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_is_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
+<!-- @[napi_is_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
 
 ``` TypeScript
 export const isDate: <T>(date: T) => boolean | undefined; // napi_is_date
