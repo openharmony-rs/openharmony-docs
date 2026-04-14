@@ -16,7 +16,7 @@
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 >
-> - 本模块接口调用时建议在最外层通过try-catch捕获异常，避免底层抛出错误码导致应用崩溃。
+> - 本模块接口调用时建议在最外层通过try-catch捕获异常，避免底层抛出错误导致应用崩溃。
 
 ## 导入模块
 
