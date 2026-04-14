@@ -13,6 +13,7 @@
 **系统能力：** SystemCapability.Driver.USB.Extension
 
 **起始版本：** 10
+
 ## 文件汇总
 
 | 名称 | 描述 |

@@ -13,6 +13,7 @@
 **系统能力：** SystemCapability.Driver.HID.Extension
 
 **起始版本：** 11
+
 ## 文件汇总
 
 | 名称 | 描述 |

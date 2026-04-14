@@ -12,7 +12,7 @@ typedef struct Usb_DeviceArray {...} Usb_DeviceArray
 
 ## 概述
 
-设备ID清单，用于存放OH_Usb_GetDevices接口获取到的设备ID列表和设备数量。
+设备ID清单，用于存放[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)接口获取到的设备ID列表和设备数量。
 
 **起始版本：** 18
 

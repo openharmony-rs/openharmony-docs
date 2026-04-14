@@ -26,8 +26,8 @@ typedef struct Hid_EmitItem {...} Hid_EmitItem
 
 | 名称 | 描述 |
 | -- | -- |
-| uint16_t type | 事件类型 |
-| uint16_t code | 事件编码 |
-| uint32_t value | 事件值 |
+| uint16_t type | 事件类型，取值参考[Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype)。 |
+| uint16_t code | 事件编码，取值取决于type字段的值：当type为HID_EV_SYN时，取值参考[Hid_SynEvent](capi-hid-ddk-types-h.md#hid_synevent)；当type为HID_EV_KEY时，取值参考[Hid_KeyCode](capi-hid-ddk-types-h.md#hid_keycode)；当type为HID_EV_ABS时，取值参考[Hid_AbsAxes](capi-hid-ddk-types-h.md#hid_absaxes)；当type为HID_EV_REL时，取值参考[Hid_RelAxes](capi-hid-ddk-types-h.md#hid_relaxes)；当type为HID_EV_MSC时，取值参考[Hid_MscEvent](capi-hid-ddk-types-h.md#hid_mscevent)。 |
+| uint32_t value | 事件值，具体含义取决于事件类型和编码。 |
 
 

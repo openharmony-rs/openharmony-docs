@@ -27,6 +27,6 @@ USB接口，是特定接口下备用设置的集合。
 | 名称 | 描述 |
 | -- | -- |
 | uint8_t numAltsetting | 接口的备用设置数量。 |
-| struct UsbDdkInterfaceDescriptor* altsetting | 接口的备用设置。 |
+| [struct UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md)* altsetting | 接口的备用设置。 |
 
 
