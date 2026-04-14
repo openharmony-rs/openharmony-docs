@@ -23,6 +23,9 @@
   `({currentId}:{trackedId}:{trackedReason})][{bundleName}][{moduleName}][{thisInstanceId}]: window {status}`
 
   各字段含义为：
+
+  **表1** 实例状态更新日志字段含义
+
   | 字段名 | 类型 | 典型值 | 说明 |
   | ---- | ---- | ---- | ---- |
   |{currentId}| 整数 | -1 | 上下文实例ID，应用正常的情况下，该字段应该为负数。 |
@@ -54,6 +57,66 @@
     `(-2:100000:singleton)] [com.example.helloworld][entry][100000]: window destroy`
 
     表示ID为100000的UI实例已销毁，后续UI操作可能受其上下文影响。
+
+## 实例详细信息
+
+某些实例相关接口的报错信息会包含对应例的信息，仅有缓存列表中的实例会输出详细信息。
+
+> **说明：**
+>
+> - 缓存列表保存已销毁的实例的信息。
+> - 当前缓存列表大小为10，采用LRU（最近最少使用）机制进行淘汰。
+
+### 缓存命中
+
+异常实例命中缓存时，详细信息的输出格式如下：
+
+`DestroyedUIContextCacheInfo: instanceInfo: [instanceId:<instanceId_>, createTime:<createTime_>, destroyTime:<destroyTime_>], windowInfo: [windowId: <windowId_>, windowName: <windowName_>]`
+
+### 缓存未命中
+
+当请求的实例在缓存中不存在（从未被缓存、或已因超出缓存大小被移除）时，详细信息的输出格式如下：
+
+`InstanceId not found in destroyed cache.`
+
+### 完整消息示例
+
+被缓存的已销毁的示例详细信息按照如下格式进行输出，包括实例ID、创建时间、销毁时间、窗口ID、窗口名称字段：
+
+`UI execution context not found.InstanceId: 100001,`
+`Reason to get the instance: The instance is determined by the caller,`
+`DestroyedUIContextCacheInfo: instanceInfo: [instanceId:100001, createTime:2026-04-14 10:30:00.123, destroyTime:2026-04-14 10:35:22.456], windowInfo: [windowId: 1001, windowName: EntryAbility]`
+
+消息中各字段含义如下：
+
+- `instanceId:100001`：表示请求的是100001号实例。
+- `Reason to get the instance: The instance is determined by the caller`：表示由调用方显式指定了实例ID。
+- `createTime:2026-04-14 10:30:00.123`：表示该实例创建时间为2026-04-14 10:30。
+- `destroyTime:2026-04-14 10:35:22.456`：表示该实例销毁时间为2026-04-14 10:35，存活了约5分22秒。
+- `windowId: 1001`：表示该实例关联窗口ID为1001。
+- `windowName: EntryAbility`：表示该实例关联窗口名为EntryAbility。
+
+**表2** 完整消息字段含义说明
+
+| 属性                       | 说明                                          |
+| -------------------------- | --------------------------------------------- |
+| instanceId                 | 实例ID。由系统在创建实例时分配。              |
+| Reason to get the instance | 获得对应实例的原因，详见表3实例指定原因说明。 |
+| createTime                 | 实例创建的时刻。                              |
+| destroyTime                | 实例销毁的时刻。                              |
+| windowId                   | 实例对应的窗口的ID。                          |
+| windowName                 | 实例对应的窗口的名称。                        |
+
+**表3** 实例指定原因说明
+
+| 描述                                                                                    | 说明                                                                                                                     |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| The instance is determined by the caller.                                               | 在调用过程中显式指定了实例ID。应用侧通常是通过[UIContext](../reference/apis-arkui/arkts-apis-uicontext.md)接口进行指定。 |
+| No specific instance was specified, so the most recently active instance was retrieved. | 未显式指定实例ID，系统返回最近活跃的实例。                                                                               |
+| No specific instance was specified, return the foreground instance.                     | 未显式指定实例ID，系统返回前台实例。                                                                                     |
+| No specific instance was specified, return the only remaining instance.                 | 未显式指定实例ID，系统返回唯一的实例（仅存在一个UI实例时）。                                                             |
+| No specific instance was specified, using default.                                      | 未显式指定实例ID，使用默认实例（最后创建的实例）。                                                                       |
+| No valid instance exists.                                                               | 不存在有效的UI实例。                                                                                                     |
 
 ## 解决UIContext错误导致的显示异常问题
 
