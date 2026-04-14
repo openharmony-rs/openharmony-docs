@@ -130,7 +130,7 @@
 8. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
 
    <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 注销对应的自定义字体
    OH_Drawing_UnregisterFont(fontCollection, fontFamily);
