@@ -75,16 +75,7 @@ Obtains this **PixelMap** instance.
 
 **Example**
 
-```ts
-import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
-import { image } from '@kit.ImageKit'
-
-let resManager = this.getUIContext().getHostContext()?.resourceManager;
-// Replace $r('app.media.app_icon') with the image resource file you use.
-let pixmap: DrawableDescriptor = (resManager?.getDrawableDescriptor($r('app.media.icon')
-  .id)) as DrawableDescriptor; // When the passed resource ID or name is a regular image, a DrawableDescriptor object is generated.
-let pixmapNew: image.PixelMap | undefined = pixmap?.getPixelMap();
-```
+For details, see [LayeredDrawableDescriptor](#layereddrawabledescriptor).
 
 ### loadSync<sup>21+</sup>
 
@@ -516,6 +507,7 @@ Provides the configuration options for animation playback, including the playbac
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name     | Type   | Read-Only| Optional | Description                                   |
 | :--------- | :----- | :----| :----| :-------------------------------------- |
 | duration   | number | No  | Yes | Total playback duration for the image sequence.<br>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the duration is determined by the playback delay embedded in the image resource.<br>Unit: ms.<br> Value range: [0, +∞).<br>Negative values are treated as the default value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -584,7 +576,7 @@ Defines a descriptor object used to play animated content (for example, **PixelM
 
 constructor(pixelMaps: Array\<image.PixelMap>, options?: AnimationOptions)
 
-A constructor used to create an **AnimatedDrawableDescriptor** instance.
+A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -601,7 +593,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 constructor(src: ResourceStr | Array\<image.PixelMap>, options?: AnimationOptions)
 
-A constructor used to create an **AnimatedDrawableDescriptor** instance.
+A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -910,7 +902,7 @@ Obtains the current animation playback status.
 
 | Type            | Description                              |
 | ---------------- | -----------------------------------|
-| [AnimationStatus](./arkui-ts/ts-appendix-enums.md#animationstatus) | Current animation state:  initial, running, paused, or stopped.|
+| [AnimationStatus](./arkui-ts/ts-appendix-enums.md#animationstatus) | Current animation state: initial, running, paused, or stopped.|
 
 **Example**
 
