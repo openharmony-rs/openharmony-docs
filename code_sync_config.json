@@ -25183,7 +25183,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets",
 				"functions":[
 					{
-						"end_line":141,
+						"end_line":149,
 						"name":"provide_consume_Two_Way",
 						"start_line":15
 					}
@@ -26807,7 +26807,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":51,
 						"name":"Model_TaskListModel",
 						"start_line":18
 					}
@@ -30882,7 +30882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":68,
 						"name":"state_problem_unregister_state_callback",
 						"start_line":16
 					}
@@ -34421,7 +34421,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":51,
 						"name":"Model_TaskListModel",
 						"start_line":18
 					}
