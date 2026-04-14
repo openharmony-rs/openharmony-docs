@@ -503,7 +503,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let color = colorPicker.ImmersiveForegroundColor();
+      let color = colorPicker.getImmersiveForegroundColor();
       console.info('get immersive foreground color =' + color);
     }
   })
