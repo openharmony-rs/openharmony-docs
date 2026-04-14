@@ -205,8 +205,9 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
   store = rdbStore;
   console.info('Get RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -229,8 +230,9 @@ class EntryAbility extends UIAbility {
     relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
       store = rdbStore;
       console.info('Get RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -534,8 +536,9 @@ relationalStore.deleteRdbStore(context, "RdbTest.db").then(() => {
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -552,8 +555,9 @@ class EntryAbility extends UIAbility {
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -710,8 +714,9 @@ relationalStore.deleteRdbStore(context, STORE_CONFIG).then(() => {
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -732,8 +737,9 @@ class EntryAbility extends UIAbility {
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -873,10 +879,26 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
+  sex: "man",
+  desc: "asserter"
+};
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
+  "USER",
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  name: "Logitech",
+  age: 18 as long,
   sex: "man",
   desc: "asserter"
 };
@@ -924,10 +946,27 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
+  sex: "man",
+  desc: "asserter"
+};
+const predicates = new relationalStore.RdbPredicates("users");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(
+  predicates,
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  name: "Logitech",
+  age: 18 as long,
   sex: "man",
   desc: "asserter"
 };
@@ -974,10 +1013,19 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.equalTo("tableName", "a");
 predicates.notEqualTo("age", 18);
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.equalTo("tableName", "a");
+predicates.notEqualTo("age", 18 as long);
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
 ```
 
@@ -1017,9 +1065,18 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.notEqualTo("age", 18);
+predicates.equalTo("name", "zhangsan");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.notEqualTo("age", 18 as long);
 predicates.equalTo("name", "zhangsan");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
 ```
