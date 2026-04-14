@@ -121,6 +121,75 @@ type SystemUiMaterial = uiMaterial.Material
 | --------------------------------- | -------------- |
 | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象。 |
 
+## edgeLight<sup>26+</sup>
+   
+edgeLight(params: EdgeLightParams | undefined): T
+
+为组件添加边缘流光效果。边缘流光效果会在组件的边缘创建发光效果，从指定位置开始并沿边缘延伸，此效果可以增强组件的视觉吸引力并突出显示重要组件。
+
+> **说明：**
+>
+> - 仅设置edgeLight不会产生静态流光，需结合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)更改[EdgeLightPosition](#edgelightposition26枚举说明)状态达到流光效果。可参考[示例4（设置组件边缘流光）](#示例4设置组件边缘流光)。
+>
+> - 当EdgeLightPosition以对角线方式变更时，边缘流光将沿倾斜角45°的方式运行。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| params | [EdgeLightParams](#edgelightparams26对象说明) \| undefined | 是   | 定义边缘流光效果的位置、长度、强度、颜色和厚度。<br/>当params的值为undefined时，移除边缘流光效果。 |
+
+**返回值：**
+
+| 类型 | 说明                     |
+| ---- | ------------------------ |
+| T    | 返回当前组件。 |
+
+## EdgeLightParams<sup>26+</sup>对象说明
+
+定义边缘流光效果参数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 名称     | 类型                                                       | 只读 | 可选 | 说明                                                    |
+| -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------- |
+| position | [EdgeLightPosition](#edgelightposition26枚举说明)          | 否   | 否   | 边缘流光位置。                                           |
+| length   | [Length](ts-types.md#length)                              | 否   | 否   | 沿流动方向的边缘流光的投影长度（不支持百分比）。<br/>有效范围：[0, +∞)<br/>单位：vp<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
+| intensity | number                                                   | 否   | 是   | 边缘流光效果的发光强度。<br/>有效范围：[0, 1]<br/>默认值：1<br/>**说明：**<br/>值为0时，流光效果完全不可见。<br/>值为1时，流光效果达到最大亮度。<br/>设置大于1的值时，按值为1处理。<br/>设置小于0的值时，按值为0处理。 |
+| color    | [ResourceColor](ts-types.md#resourcecolor)                | 否   | 是   | 边缘流光颜色。<br/>默认值：#FFFFFF<br/> |
+| thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光线条厚度（不支持百分比）。<br/>有效范围：[0, +∞)<br/>单位：vp<br/>默认值：0vp<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
+
+## EdgeLightPosition<sup>26+</sup>枚举说明
+
+边缘流光位置。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 名称           | 值  | 说明                         |
+| -------------- | --- |---------------------------- |
+| TOP_LEFT       | 0   | 边缘流光在左上角。            |
+| TOP_RIGHT      | 1   | 边缘流光在右上角。            |
+| BOTTOM_LEFT    | 2   | 边缘流光在左下角。            |
+| BOTTOM_RIGHT   | 3   | 边缘流光在右下角。            |
+| TOP            | 4   | 边缘流光在顶部。              |
+| BOTTOM         | 5   | 边缘流光在底部。              |
+| LEFT           | 6   | 边缘流光在左边。              |
+| RIGHT          | 7   | 边缘流光在右边。              |
+
 ## 示例
 ### 示例1（设置组件提亮）
 
@@ -303,3 +372,47 @@ struct Index {
 ```
 
 ![advancedBlendMode2](figures/advancedBlendMode2.jpg)
+
+### 示例4（设置组件边缘流光）
+
+从API version 26开始，该示例主要演示如何通过edgeLight给组件添加边缘流光效果。
+
+```ts
+// xxx.ets
+import { curves } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  @State animate: boolean = false;
+  @State edgeLightPosition: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  build() {
+    Column() {
+      Column()
+        .height(300)
+        .width(300)
+        .backgroundColor(Color.Gray)
+        .borderRadius(20)
+        .edgeLight({
+          position: this.edgeLightPosition,
+          length: 90,
+          intensity: 1,
+          color: Color.White,
+          thickness: 2
+        })
+        .onClick(()=>{
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, ()=>{
+            this.animate = !this.animate;
+            this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
+          })
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .backgroundColor('#aaaaaa')
+  }
+}
+```
+
+![edgeLightDemo](figures/edgeLightDemo.gif)
