@@ -25,7 +25,7 @@ type NetHandle = connection.NetHandle
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
