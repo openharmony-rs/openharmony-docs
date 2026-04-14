@@ -72,7 +72,7 @@
 |FUNC|glDepthRange|
 |FUNC|glDepthRangef|
 |FUNC|glDetachShader|
-|FUNC|glDisablevertexAttribArray|
+|FUNC|glDisableVertexAttribArray|
 |FUNC|glDispatchCompute|
 |FUNC|glDrawArrays|
 |FUNC|glDrawArraysInstanced|
@@ -154,7 +154,7 @@
 |FUNC|glProgramParameteri|
 |FUNC|glPushDebugGroup|
 |FUNC|glReadBuffer|
-|FUNC|glReadpixels|
+|FUNC|glReadPixels|
 |FUNC|glReleaseShaderCompiler|
 |FUNC|glRenderbufferStorage|
 |FUNC|glRenderbufferStorageMultisample|
@@ -367,7 +367,6 @@
 |FUNC|glQueryCounter|
 |FUNC|glGetQueryObjecti64v|
 |FUNC|glGetQueryObjectui64v|
-|FUNC|glVertexAttribDivisor|
 |FUNC|glVertexAttribP1ui|
 |FUNC|glVertexAttribP1uiv|
 |FUNC|glVertexAttribP2ui|
@@ -498,7 +497,6 @@
 |FUNC|glTexStorage1D|
 |FUNC|glTexStorage2D|
 |FUNC|glTexStorage3D|
-|FUNC|glDispatchCompute|
 |FUNC|glDispatchComputeIndirect|
 |FUNC|glFramebufferParameteri|
 |FUNC|glGetFramebufferParameteriv|
