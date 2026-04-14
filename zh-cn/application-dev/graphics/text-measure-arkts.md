@@ -21,18 +21,38 @@
 
 - **字符间距**：测量单个字符之间的水平距离，通常与字形和字体设计有关。
 
+- **限制区域排版**：在限定宽高区域内排版文本，获取实际排版尺寸和适配的字符串范围。
+
+- **字符位置查询**：根据屏幕坐标获取对应的字符位置或字形位置，可用于文本选择、光标定位等交互场景。
+
+- **字形范围查询**：在字形范围与字符范围之间进行相互转换，用于文本编辑、选择高亮等场景中字形与字符索引的映射。
+
 
 ## 接口说明
 
 文本测量中常用接口如下表所示，详细接口说明参考[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)。
 
-| 接口名 | 描述 | 
+| 接口名 | 描述 |
 | -------- | -------- |
-| getLongestLine(): number | 获取当前段落最长行的宽度，建议实际使用时将返回值向上取整。 | 
-| getLongestLineWithIndent(): number | 获取当前段落最长行的宽度（该宽度包含当前行缩进的宽度），建议实际使用时将返回值向上取整。 | 
-| getTextLines(): Array&lt;TextLine&gt; | 获取当前段落文本行对象数组。 | 
-| getLineMetrics(): Array&lt;LineMetrics&gt; | 获取段落所有行的度量信息。包含行的高度、宽度、起始坐标等信息。 | 
-| getLineMetrics(lineNumber: number): LineMetrics \| undefined | 获取段落指定行的度量信息。包含行的高度、宽度、起始坐标等信息。超出当前段落排版后最大行数后返回undefined。 | 
+| getLongestLine(): number | 获取当前段落最长行的宽度，建议实际使用时将返回值向上取整。 |
+| getLongestLineWithIndent(): number | 获取当前段落最长行的宽度（该宽度包含当前行缩进的宽度），建议实际使用时将返回值向上取整。 |
+| getTextLines(): Array&lt;TextLine&gt; | 获取当前段落文本行对象数组。 |
+| getLineMetrics(): Array&lt;LineMetrics&gt; | 获取段落所有行的度量信息。包含行的高度、宽度、起始坐标等信息。 |
+| getLineMetrics(lineNumber: number): LineMetrics \| undefined | 获取段落指定行的度量信息。包含行的高度、宽度、起始坐标等信息。超出当前段落排版后最大行数后返回undefined。 |
+| layoutWithConstraints(constraint: TextRectSize): TextLayoutResult | 在限定宽高区域内排版文本，返回实际排版尺寸和适配的字符串范围。 |
+| getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity | 根据坐标获取最接近的字形位置及其亲和度。 |
+| getCharacterPositionAtCoordinate(x: number, y: number, encoding: TextEncoding): PositionWithAffinity | 根据坐标获取字符位置及其亲和度，支持指定文本编码类型。 |
+| getCharacterRangeForGlyphRange(glyphRange: Range, encoding: TextEncoding): Array&lt;Range&gt; | 根据字形范围获取对应的字符范围，返回数组包含字符范围和实际字形范围。 |
+| getGlyphRangeForCharacterRange(characterRange: Range, encoding: TextEncoding): Array&lt;Range&gt; | 根据字符范围获取对应的字形范围，返回数组包含字形范围和实际字符范围。 |
+
+**相关数据结构**
+
+| 数据结构 | 描述 |
+| -------- | -------- |
+| TextRectSize | 排版区域的尺寸信息，包含width（宽度）和height（高度），单位为px。 |
+| TextLayoutResult | 排版结果，包含fitStrRange（适配的字符串范围数组）和correctRect（实际排版尺寸）。 |
+| PositionWithAffinity | 字符位置信息，包含position（字符索引）和affinity（亲和度，表示偏向行首还是行尾）。 |
+| Affinity | 文本亲和度枚举，UPSTREAM表示偏向前一个字符，DOWNSTREAM表示偏向后一个字符。 | 
 
 
 ## 开发步骤
@@ -42,7 +62,7 @@
    <!-- @[ts_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { text } from '@kit.ArkGraphics2D';
+   import { text, drawing } from '@kit.ArkGraphics2D';
    ```
 
 2. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。
@@ -122,3 +142,69 @@
    let allLineMetrics = paragraph.getLineMetrics();
    console.info("MetricsMSG: 第1行 lineMetrics width: " + allLineMetrics[0].width);
    ```
+
+5. 在限定宽高区域内排版文本，获取排版结果。使用layoutWithConstraints接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（correctRect）和适配的字符串范围（fitStrRange）。
+
+   <!-- @[ts_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // case6: 在限定宽高区域内排版文本，获取排版结果
+   let constraint: text.TextRectSize = { width: 500, height: 200 };
+   let layoutResult: text.TextLayoutResult = paragraph.layoutWithConstraints(constraint);
+   // 获取排版后的实际尺寸
+   console.info("MetricsMSG: correctRect width: " + layoutResult.correctRect.width +
+     ", height: " + layoutResult.correctRect.height);
+   // 获取适配的字符串范围
+   for (let i = 0; i < layoutResult.fitStrRange.length; i++) {
+     console.info("MetricsMSG: fitStrRange[" + i + "] start: " + layoutResult.fitStrRange[i].start +
+       ", end: " + layoutResult.fitStrRange[i].end);
+   }
+   ```
+   <!-- -->
+
+6. 根据坐标获取字符位置信息。使用getGlyphPositionAtCoordinate获取最接近的字形位置，使用getCharacterPositionAtCoordinate获取指定编码类型下的字符位置。返回的PositionWithAffinity包含字符索引和亲和度信息。
+
+   <!-- @[ts_text_metrics_get_glyph_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // case7: 根据坐标获取字形位置
+   let glyphPos: text.PositionWithAffinity = paragraph.getGlyphPositionAtCoordinate(100, 50);
+   console.info("MetricsMSG: glyphPos position: " + glyphPos.position +
+     ", affinity: " + glyphPos.affinity);
+   ```
+   <!-- -->
+
+   <!-- @[ts_text_metrics_get_character_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // case8: 根据坐标获取字符位置（指定编码类型）
+   let charPos: text.PositionWithAffinity =
+     paragraph.getCharacterPositionAtCoordinate(100, 50, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   console.info("MetricsMSG: charPos position: " + charPos.position +
+     ", affinity: " + charPos.affinity);
+   ```
+   <!-- -->
+
+7. 字形范围与字符范围的相互转换。使用getCharacterRangeForGlyphRange根据字形范围获取对应的字符范围，使用getGlyphRangeForCharacterRange根据字符范围获取对应的字形范围。返回的数组包含两个元素，第一个是目标范围，第二个是实际范围。编码类型支持UTF-8和UTF-16。
+
+   <!-- @[ts_text_metrics_glyph_character_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // case9: 根据字形范围获取字符范围
+   let glyphRange: text.Range = { start: 0, end: 2 };
+   let charRanges: Array<text.Range> =
+     paragraph.getCharacterRangeForGlyphRange(glyphRange, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   for (let i = 0; i < charRanges.length; i++) {
+     console.info("MetricsMSG: charRange[" + i + "] start: " + charRanges[i].start +
+       ", end: " + charRanges[i].end);
+   }
+   // case10: 根据字符范围获取字形范围
+   let charRange: text.Range = { start: 0, end: 2 };
+   let glyphRanges: Array<text.Range> =
+     paragraph.getGlyphRangeForCharacterRange(charRange, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   for (let i = 0; i < glyphRanges.length; i++) {
+     console.info("MetricsMSG: glyphRange[" + i + "] start: " + glyphRanges[i].start +
+       ", end: " + glyphRanges[i].end);
+   }
+   ```
+   <!-- -->
