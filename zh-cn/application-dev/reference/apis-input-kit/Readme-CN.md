@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS API<!--input-arkts-->
   - [@ohos.multimodalInput.inputDevice (输入设备)](js-apis-inputdevice.md)
