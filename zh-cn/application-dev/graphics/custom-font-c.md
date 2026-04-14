@@ -82,7 +82,7 @@
    0表示注册成功，1表示文件不存在，2表示打开文件失败，3表示读取文件失败，4表示寻找文件失败，5表示获取大小失败，9表示文件损坏。
 
    <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 返回0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，9文件损坏
    int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
