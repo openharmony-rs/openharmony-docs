@@ -196,6 +196,8 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 **示例：**
 
 ```ts
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+
 async function getWifiPowerMode() {
   try {
     // 1. 使用 await 等待 Promise 解析完成
