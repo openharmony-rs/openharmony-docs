@@ -4789,6 +4789,20 @@
 
 **起始版本**：19
 
+## ohos.permission.MINORS_PROTECTION_UI
+
+允许系统应用访问未成年人模式页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：23
+
 ## ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 允许应用通过无障碍服务接口查询和操作界面上的组件。
