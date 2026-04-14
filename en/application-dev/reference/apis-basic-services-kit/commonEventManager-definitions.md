@@ -43,9 +43,9 @@ Indicates that the user has cleared the application package data.
 When the specified user clears the application package data on the device, the event notification service is triggered to publish this event.
 
 > **NOTE**
-> 
+>
 > <!--Del-->System applications can listen for the data clearance event of themselves and other applications.<!--DelEnd-->
-> 
+>
 > Third-party applications can only listen for the data clearance event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -62,9 +62,9 @@ Indicates the result of applying a quick fix to the application.
 When the specified user applies a quick fix to the application on the device, the event notification service is triggered to publish this event.
 
 > **NOTE**
-> 
+>
 > <!--Del-->System applications can listen for the quick fix event of themselves and other applications.<!--DelEnd-->
-> 
+>
 > Third-party applications can only listen for the quick fix event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -94,9 +94,9 @@ Indicates that a new application package has been installed on the device.
 When a new application is installed by a specified user on the device, the event notification service is triggered to publish this event.
 
 > **NOTE**
-> 
+>
 > <!--Del-->System applications can listen for the installation event of themselves and other applications.<!--DelEnd-->
-> 
+>
 > Third-party applications can only listen for the installation event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -113,9 +113,9 @@ Indicates that an installed application has been uninstalled from the device wit
 When a specified application package is removed by a specified user on the device, the event notification service is triggered to publish this event.
 
 > **NOTE**
-> 
+>
 > <!--Del-->System applications can listen for the uninstallation event of themselves and other applications.<!--DelEnd-->
-> 
+>
 > Third-party applications can only listen for the uninstallation event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -154,9 +154,9 @@ Indicates that an application package has been changed (for example, an ability 
 When an application package installed on the device is updated or an ability in the package is enabled or disabled, the event notification service is triggered to publish this event.
 
 > **NOTE**
-> 
+>
 > <!--Del-->System applications can listen for the change event of themselves and other applications.<!--DelEnd-->
-> 
+>
 > Third-party applications can only listen for the change event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -173,9 +173,9 @@ Indicates that the user cleared the application package cache.
 When the cache of an application package installed on the device is cleared, the event notification service is triggered to publish this event.
 
 > **NOTE**
-> 
+>
 > <!--Del-->System applications can listen for the cache clearance event of themselves and other applications.<!--DelEnd-->
-> 
+>
 > Third-party applications can only listen for the cache clearance event of themselves.
 
 **System capability**: SystemCapability.Notification.CommonEvent

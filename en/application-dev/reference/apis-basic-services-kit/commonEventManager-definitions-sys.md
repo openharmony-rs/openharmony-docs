@@ -84,7 +84,7 @@ This common event is sent when the default application for opening a file change
 
 Indicates that the application shortcut has changed.
 
-This common event is sent when the shortcut is changed (for example, when [setShortcutVisibleForSelf](../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself) of the shortcutManager module is successfully called).
+This common event is sent when the shortcut is changed (for example, when [shortcutManager.setShortcutVisibleForSelf](../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself) of the shortcutManager module is successfully called).
 
 **System API**: This is a system API.
 
@@ -210,7 +210,7 @@ Indicates that a user has been added to the system.
 
 When a system account is created, the common event service is triggered to publish this event carrying the system account ID.
 
-The system APIs related to this common event are **createOsAccount** and **createOsAccountForDomain**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system APIs related to this common event are **createOsAccount** and **createOsAccountForDomain**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -227,7 +227,7 @@ Indicates that a user has been removed from the system.
 
 When a system account is removed, the common event service is triggered to publish this event carrying the system account ID.
 
-The system API related to this common event is **removeOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system API related to this common event is **removeOsAccount**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -244,7 +244,7 @@ Indicates that the domain account status changes.
 
 When a domain user account is authenticated, deleted, or has the token updated, the common event service is triggered to publish this event carrying the system account ID, domain name, and account status.
 
-The system APIs related to this common event are **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system APIs related to this common event are **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -261,7 +261,7 @@ Indicates that a user switchover is complete.
 
 When a system account is switched, the common event service is triggered to publish this event carrying the system account ID.
 
-The system API related to this common event is **activateOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system API related to this common event is **activateOsAccount**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -300,7 +300,7 @@ After a user is locked, the common event service is triggered to publish this ev
 
 ## Core File Kit
 
-This topic lists the system common events provided by the file management subsystem to applications. For details about how to subscribe to system common events, see [@ohos.commonEventManager](../js-apis-commonEventManager.md).
+This topic lists the system common events provided by the file management subsystem to applications. For details about how to subscribe to system common events, see [@ohos.commonEventManager (Common Event)](../js-apis-commonEventManager.md).
 
 ### COMMON_EVENT_VOLUME_REMOVED
 
