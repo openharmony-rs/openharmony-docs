@@ -1827,7 +1827,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.onStreamChange<sup>22+</sup>
+## wifiManager.onStreamChange<sup>23+</sup>
 
 onStreamChange(callback: Callback&lt;int&gt;): void
 
@@ -1912,7 +1912,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
 
-## wifiManager.offStreamChange<sup>22+</sup>
+## wifiManager.offStreamChange<sup>23+</sup>
 
 offStreamChange(callback: Callback&lt;int&gt;): void
 
@@ -1980,7 +1980,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.onDeviceConfigChange<sup>22+</sup>
+## wifiManager.onDeviceConfigChange<sup>23+</sup>
 
 onDeviceConfigChange(callback: Callback&lt;number&gt;): void
 
@@ -2064,7 +2064,7 @@ wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 ```
 
-## wifiManager.offDeviceConfigChange<sup>22+</sup>
+## wifiManager.offDeviceConfigChange<sup>23+</sup>
 
 offDeviceConfigChange(callback?: Callback&lt;int&gt;): void
 
