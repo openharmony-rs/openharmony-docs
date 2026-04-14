@@ -1071,7 +1071,7 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 ## window.setWaterMarkImage
 setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: number): Promise&lt;void&gt;
 
-设置屏幕水印图片的显示状态。使用Promise异步回调。
+根据优先级设置屏幕水印图片的显示状态。使用Promise异步回调。当priority等于0时，当前接口与[setWaterMarkImage](#windowsetwatermarkimage10)等价。
 
 **起始版本：** 26.0.0
 
@@ -1122,8 +1122,7 @@ let initializationOptions: image.InitializationOptions = {
 image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in creating pixelmap.');
   try {
-    let promise = window.setWaterMarkImage(pixelMap, enable, 0);
-    promise.then(() => {
+    window.setWaterMarkImage(pixelMap, enable, 0).then(() => {
       console.info('Succeeded in showing watermark image.');
     }).catch((err: BusinessError) => {
       console.error(`Failed to show watermark image. Cause code: ${err.code}, message: ${err.message}`);
