@@ -928,7 +928,7 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 
 **起始版本**：26.0.0
 
-**模型约束**：此接口仅可在Stagte模型下使用
+**模型约束**：此接口仅可在Stage模型下使用
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -938,8 +938,8 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | number | 是    | 起始时间，单位：ms。 |
+| end   | number | 是    | 结束时间，单位：ms。 |
 | maxNum   | number | 是    | 返回的事件的条数，取值范围为[1,1000]。 |
 **返回值**：
 
@@ -955,7 +955,6 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
 | 10000003   | Failed to get system ability manager. |
