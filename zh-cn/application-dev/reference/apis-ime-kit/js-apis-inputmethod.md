@@ -25,7 +25,7 @@ import { inputMethod } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-| 参数名 | 类型 | 常量值 | 说明 |
+| 名称 | 类型 | 常量值 | 说明 |
 | -------- | -------- | -------- | -------- |
 | MAX_TYPE_NUM<sup>8+</sup> | number | 128 | 可支持的最大输入法个数。 |
 
