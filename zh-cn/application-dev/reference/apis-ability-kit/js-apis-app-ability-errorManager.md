@@ -781,11 +781,11 @@ import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
 
 let oldObserver: errorManager.ResourceUsageObserver;
-const resourceUsageObserver: errorManager.ResourceUsageObserver = (leakType, leakSize, detailInfo) => {
+const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType, resourceSize, detailInfo) => {
   // 自定义的resourceUsageObserver实现逻辑
   console.info('[Observer]  Uncaught exception observer invoked.');
   if (oldObserver) {
-    oldObserver(leakType, leakSize, detailInfo);
+    oldObserver(resourceType, resourceSize, detailInfo);
   } else {
     // 建议增加判空操作，如果为空采用同步退出方式
     const processManager = new process.ProcessManager();
@@ -910,7 +910,7 @@ type ErrorHandler = (errObject: Error) => void
 |--------| ------------- | ---- | --- |
 | errObject | Error   | 是   | 有关异常事件名字、消息、错误堆栈信息的对象。 |
 
-## ResourceUsageObserver <sup>24+</sup>
+## ResourceUsageObserver<sup>24+</sup>
 
 type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, detailInfo?: Record<string, number>) => void;
 
