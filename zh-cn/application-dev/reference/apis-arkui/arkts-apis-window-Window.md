@@ -15,6 +15,8 @@
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
+>
+> - 本模块接口被调用时，若出现参数校验失败、权限校验失败、系统状态异常等情况，会抛出错误。建议调用本模块接口时在最外层通过try-catch捕获错误，避免调用失败导致应用崩溃。
 
 ## 导入模块
 
