@@ -3311,7 +3311,7 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 ```ts
 // xxx.test.ets
-import { Driver } from '@kit.TestKit';
+import { Driver, TouchOptions } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
