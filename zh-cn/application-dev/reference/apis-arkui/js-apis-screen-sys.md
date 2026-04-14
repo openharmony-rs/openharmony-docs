@@ -2834,7 +2834,9 @@ ArkTS-Sta: setDensityDpi(densityDpi: double): Promise&lt;void&gt;
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 1400003 | This display manager service works abnormally. |
 
-**ArkTS-Dyn: 示例：**
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

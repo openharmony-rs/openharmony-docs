@@ -290,7 +290,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 | 参数名             | 类型 | 必填 | 说明               |
 | ----------------- | ---- | ---- | ------------------|
-| data1             | T1   | 是   | ArkTS-Dyn: 表示displayId，类型为number <br> ArkTS-Sta: 表示displayId，类型为long。      |
+| data1             | T1   | 是   | ArkTS-Dyn: 表示displayId，类型为number。 <br> ArkTS-Sta: 表示displayId，类型为long。      |
 | data2             | T2   | 是   | 表示brightnessInfo，类型为[BrightnessInfo](#brightnessinfo22)。           |
 
 ## ScreenShape<sup>18+</sup>
