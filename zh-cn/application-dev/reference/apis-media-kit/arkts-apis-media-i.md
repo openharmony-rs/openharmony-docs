@@ -512,7 +512,7 @@ async function setupPlayer() {
 
 ## AVTimedMetaData
 
-描述时间基元数据的信息。
+描述基于时间的元数据的信息。
 
 **起始版本：** 26.0.0
 
@@ -522,8 +522,8 @@ async function setupPlayer() {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| id  | string | 否   | 是   | 定义时间基元数据的唯一标记。<br>该标记在视频源的其他时间基元数据中须保持唯一。 |
-| classify | string | 否   | 是   | 该时间基元数据的分类标签。<br>例如，"com.apple.hls.interstitial"表示这是一个广告 |
-| start | number | 否   | 否   | 定义该时间基元信息相对整个媒体起始时间的偏移值。<br>取值限定为整数。<br>单位：毫秒。 |
-| duration | number | 否   | 否   | 该时间基元信息的持续时长。<br>取值限定为整数。<br>单位：毫秒。 |
-| contents | Record<string, object> | 否   | 否   | 时间基元信息对应的键值对集合。 |
+| id  | string | 否   | 是   | 该基于时间的元数据的唯一标记。<br>该标记在视频源的数据信息中须保持唯一。 |
+| classify | string | 否   | 是   | 该基于时间的元数据的分类标签。<br>例如，"com.apple.hls.interstitial"表示这是一个广告 |
+| start | number | 否   | 否   | 该基于时间的元数据相对整个媒体起始时间的偏移值。<br>取值限定为整数。<br>单位：毫秒。 |
+| duration | number | 否   | 否   | 该基于时间的元数据的持续时长。<br>取值限定为整数。<br>单位：毫秒。 |
+| contents | Record<string, object> | 否   | 否   | 该基于时间的元数据对应的键值对集合。 |
