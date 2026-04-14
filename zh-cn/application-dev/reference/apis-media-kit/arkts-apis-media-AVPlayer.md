@@ -3818,7 +3818,7 @@ async function test(){
   avPlayer.offMetricsEvent();
 }
 ```
-## onTimedMetaData<sup>26+</sup>
+## onTimedMetaData
 
 onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
 
@@ -3844,7 +3844,7 @@ async function test(){
 }
 ```
 
-## offTimedMetaData<sup>26+</sup>
+## offTimedMetaData
 
 offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 
