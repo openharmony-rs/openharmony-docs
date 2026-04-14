@@ -112,8 +112,8 @@ Inherited from [AlertDialogParam](#alertdialogparam).
 
 | Name            | Type               | Read-Only  | Optional  | Description                    |
 | --------------- | ---------------------- | ------------ | --------------------- | --------------------- |
-| primaryButton   | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18) | No| No| Information about the confirm button. When the dialog box has focus and focus has not been shifted using the **Tab** key, the button responds to the **Enter** key by default, and multiple dialog boxes can gain focus consecutively to respond automatically. The default response to the **Enter** key does not work when **defaultFocus** is set to **true**.|
-| secondaryButton | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18) | No| No| Information about the confirm button.|
+| primaryButton   | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18) | No| No| Information about the primary button, including the enabling status, default focus, button style, text content, text color, button background color, and click callback. When the dialog box has focus and focus has not been shifted using the **Tab** key, the button responds to the **Enter** key by default, and multiple dialog boxes can gain focus consecutively to respond automatically. The default response to the **Enter** key does not work when **defaultFocus** is set to **true**. For details, see [Example 7](#example-7-customizing-the-background-blur-effect).|
+| secondaryButton | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18) | No| No| Information about the secondary button, including the enabling status, default focus, button style, text content, text color, button background color, and click callback.|
 
 ## AlertDialogParamWithOptions<sup>10+</sup>
 

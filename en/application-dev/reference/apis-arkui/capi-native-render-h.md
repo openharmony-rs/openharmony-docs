@@ -49,6 +49,7 @@ Declares the APIs of **NativeRender**. For details, see [Building a Rendering No
 
 ### Functions
 
+<!--Table: 40%; 20%; 40%-->
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addrendernode) | - | Adds a child render node to the parent custom node.|
