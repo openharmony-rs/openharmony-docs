@@ -1317,6 +1317,10 @@ export default class EntryAbility extends UIAbility {
 ## window.moveMainWindowToTargetDisplay
 moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
 
+ArkTS-Dyn: moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int): Promise&lt;void&gt;
+
 将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
 - 对于[主屏](../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。
@@ -1324,20 +1328,22 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 
 <!--RP3--><!--RP3End-->
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 26.0.0
+ 	 
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| displayId | number | 是    | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.displayId获取；也可通过获取[Display](js-apis-display.md#display)对象的[id](js-apis-display.md#属性)属性获取此参数。 |
-| windowId | number | 是    | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
+| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.displayId获取；也可通过获取[Display](js-apis-display.md#display)对象的[id](js-apis-display.md#属性)属性获取此参数。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
 
 **返回值：**
 
@@ -1360,6 +1366,8 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1381,6 +1389,39 @@ export default class EntryAbility extends UIAbility {
         window.moveMainWindowToTargetDisplay(displayClass.id, mainWindow.getWindowProperties().id).then(() => {
           console.info(`Succeeded in moving window id: ${mainWindow.getWindowProperties().id} to target display id: ${mainWindow.getWindowProperties().displayId}`);
         }).catch((err: BusinessError) => {
+          console.error(`Failed to move window to target display. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to move window to target display. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError<void>|null) => {
+      if (err?.code) {
+        console.error(`Failed to load content for main window. Cause code: ${err?.code}, message: ${err?.message}`);
+      }
+      let displayClass: display.Display | null = null;
+      displayClass = display.getDefaultDisplaySync();
+      let mainWindow = windowStage.getMainWindowSync();
+      try {
+        window.moveMainWindowToTargetDisplay(displayClass.id, mainWindow.getWindowProperties().id).then(() => {
+          console.info(`Succeeded in moving window id: ${mainWindow.getWindowProperties().id} to target display id: ${mainWindow.getWindowProperties().displayId}`);
+        }).catch((err: Error) => {
           console.error(`Failed to move window to target display. Cause code: ${err.code}, message: ${err.message}`);
         });
       } catch (exception) {
