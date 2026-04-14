@@ -325,7 +325,7 @@ WindowStage生命周期的状态类型枚举。
 | SCROLL_SHOT_END | 3 | 滚动截屏结束。 |
 | SCROLL_SHOT_ABORT | 4 | 滚动截屏中止。 |
 
-## OrientationExecutionResult<sup>26+</sup>
+## OrientationExecutionResult
 
 窗口设置显示方向执行结果的类型。
 
