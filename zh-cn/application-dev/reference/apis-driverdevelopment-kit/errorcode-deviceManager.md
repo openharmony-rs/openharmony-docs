@@ -82,7 +82,7 @@ There is no binding relationship.
 
 **可能原因**
 
-在未调用或调用 `bindDriverWithDeviceId` 接口失败的情况下，调用 `unbindDriverWithDeviceId` 接口。
+在未调用或调用[bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)接口失败的情况下，调用[unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口。
 
 **处理步骤**
 

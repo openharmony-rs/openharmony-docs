@@ -30,6 +30,6 @@ SCSI inquiry 数据。
 | char idVendor[[SCSIPERIPHERAL_VENDOR_ID_LEN](capi-scsi-peripheral-types-h.md) + 1] | 制造商 id。 |
 | char idProduct[[SCSIPERIPHERAL_PRODUCT_ID_LEN](capi-scsi-peripheral-types-h.md) + 1] | 产品 id。 |
 | char revProduct[[SCSIPERIPHERAL_PRODUCT_REV_LEN](capi-scsi-peripheral-types-h.md) + 1] | 产品版本。 |
-| ScsiPeripheral_DeviceMemMap* data | 所有的查询数据。 |
+| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)* data | 所有的查询数据。 |
 
 

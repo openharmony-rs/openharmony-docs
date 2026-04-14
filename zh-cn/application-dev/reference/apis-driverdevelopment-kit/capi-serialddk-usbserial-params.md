@@ -12,7 +12,7 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 
 ## 概述
 
-定义USB Serial DDK使用的USB串口参数.
+定义USB Serial DDK使用的USB串口参数。
 
 **起始版本：** 18
 
