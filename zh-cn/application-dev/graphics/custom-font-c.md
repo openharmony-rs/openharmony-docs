@@ -53,7 +53,7 @@
    > 使用OH_Drawing_CreateFontCollection()和OH_Drawing_CreateSharedFontCollection()均可创建字体管理器OH_Drawing_FontCollection对象，但前者创建的字体集指针对象只能被一个段落生成器OH_Drawing_TypographyCreate对象使用，无法被多个段落生成器OH_Drawing_TypographyCreate对象共享使用。如需在多个段落生成器OH_Drawing_TypographyCreate对象间共享使用，请使用后者创建可共享的字体集对象。
 
    <!-- @[custom_font_c_custom_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
    ```
