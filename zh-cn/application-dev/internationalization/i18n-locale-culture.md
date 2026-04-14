@@ -4,8 +4,8 @@
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
-<!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yliupy-->
+<!--Adviser: @ningningW-->
 
 ## 功能介绍
 
