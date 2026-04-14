@@ -27,7 +27,7 @@ ArkTS-Sta: getIfaceRxBytes(nic: string, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -85,7 +85,7 @@ ArkTS-Sta: getIfaceRxBytes(nic: string): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -143,7 +143,7 @@ ArkTS-Sta: getIfaceTxBytes(nic: string, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -201,7 +201,7 @@ ArkTS-Sta: getIfaceTxBytes(nic: string): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -259,7 +259,7 @@ ArkTS-Sta: getCellularRxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -315,7 +315,7 @@ ArkTS-Sta: getCellularRxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -366,7 +366,7 @@ ArkTS-Sta: getCellularTxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -422,7 +422,7 @@ ArkTS-Sta: getCellularTxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -475,7 +475,7 @@ ArkTS-Sta: getAllRxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -532,7 +532,7 @@ ArkTS-Sta: getAllRxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -584,7 +584,7 @@ ArkTS-Sta: getAllTxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -641,7 +641,7 @@ ArkTS-Sta: getAllTxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -691,7 +691,7 @@ ArkTS-Sta: getUidRxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -748,7 +748,7 @@ ArkTS-Sta: getUidRxBytes(uid: int): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -805,7 +805,7 @@ ArkTS-Sta: getUidTxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -862,7 +862,7 @@ ArkTS-Sta: getUidTxBytes(uid: int): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -977,7 +977,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int): Promise\<long\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1043,7 +1043,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1101,7 +1101,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int): Promise\<long\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1226,7 +1226,7 @@ type NetBearType = connection.NetBearType
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -1244,9 +1244,9 @@ type NetBearType = connection.NetBearType
 
 | 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | -------------------|----------------------------------------- |
-| type      | [NetBearType](#netbeartype12) | 否  |否 |网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
-| startTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 | 开始时间戳(单位：秒)。 |
-| endTime   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 |结束时间戳(单位：秒)。 |
+| type      | [NetBearType](#netbeartype12) | 否  |是 |网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
+| startTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 | 开始时间戳(单位：秒)。 |
+| endTime   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 |结束时间戳(单位：秒)。 |
 | simId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 |SIM卡ID。默认值为uint32_t类型最大值。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
 
 
@@ -1262,7 +1262,7 @@ type NetBearType = connection.NetBearType
 
 | 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | --------|---------------------------------------------------- |
-| rxBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量下行数据(单位：字节)。 |
-| txBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行数据(单位：字节)。 |
-| rxPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long |否  | 否 |流量下行包个数。          |
-| txPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行包个数。          |
+| rxBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 是 |流量下行数据(单位：字节)。 |
+| txBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 是 |流量上行数据(单位：字节)。 |
+| rxPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long |否  | 是 |流量下行包个数。          |
+| txPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 是 |流量上行包个数。          |
