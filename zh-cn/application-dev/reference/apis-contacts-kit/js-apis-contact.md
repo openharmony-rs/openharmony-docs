@@ -2434,7 +2434,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，如果传入参数为空，默认使用系统联系人应用查询。       |
+| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，如果为空，默认使用系统联系人应用查询。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传该参数默认查询所有联系人属性。               |
 
 **返回值：**
