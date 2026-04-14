@@ -3095,7 +3095,7 @@ register(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3152,7 +3152,7 @@ unregister(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3207,7 +3207,7 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3276,7 +3276,7 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3347,7 +3347,7 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3416,7 +3416,7 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3487,7 +3487,7 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3558,7 +3558,7 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3627,13 +3627,13 @@ netCon.unregister((error: BusinessError|null) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | --- |-----|-------------------- |
-| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### bindSocket<sup>9+</sup>
 
@@ -3947,7 +3947,7 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4024,7 +4024,7 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4362,8 +4362,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                 |                          类型                        |  只读 | 可选 |         说明           |
 | -------------------- | ----------------------------------|----------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |数据网络句柄(netHandle)。|	
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接属性。           |
+| netHandle            | [NetHandle](#nethandle)                             | 否 | 是   |数据网络句柄(netHandle)。|	
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 是   |网络连接属性。           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -4379,8 +4379,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                 | 类型                                  |  只读 | 可选 |            说明            |
 | -------------------- | --------------------------|----------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 否 | 否  |数据网络句柄(netHandle)。   |	
-| blocked              | boolean                               |否 | 否   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| netHandle            | [NetHandle](#nethandle)               | 否 | 是  |数据网络句柄(netHandle)。   |	
+| blocked              | boolean                               |否 | 是   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
 
 ## ConnectionProperties
 
@@ -4415,10 +4415,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | -------------- | ---------------|------------ | --- |-------------- |
 | interface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|	
 | iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|	
-| destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|
+| destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
+| gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
+| hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
+| isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## LinkAddress
@@ -4433,8 +4433,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称         |           类型            | 只读 | 可选 |        说明         |
 | ------------ | -----------------|-------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |	
-| prefixLength | number                    | 否 | 否  |链路地址前缀的长度。  |
+| address      | [NetAddress](#netaddress) | 否 | 是  | 链路地址。           |	
+| prefixLength | number                    | 否 | 是  |链路地址前缀的长度。  |
 
 ## NetAddress
 
@@ -4446,11 +4446,11 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 |  名称   | 类型   | 只读 | 可选 |            说明              |
 | ------- | ------ | -- |--------|-------------------- |
-| address | string | 否 | 否 |地址。                       |	
+| address | string | 否 | 是 |地址。                       |	
 | family  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |IPv4 = 1，IPv6 = 2，默认IPv4。|	
 | port    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |端口，取值范围\[0, 65535]，默认值为0。  |
 
@@ -4464,6 +4464,8 @@ type HttpRequest = http.HttpRequest
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | http.HttpRequest | 定义HTTP请求任务。在调用HttpRequest提供的API之前。 |
@@ -4476,6 +4478,8 @@ type TCPSocket = socket.TCPSocket
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | socket.TCPSocket | 定义一个TCPSocket连接。     |
@@ -4487,6 +4491,8 @@ type UDPSocket = socket.UDPSocket
 定义一个UDPSocket对象，可以通过[socket.constructUDPSocketInstance](js-apis-socket.md#socketconstructudpsocketinstance)创建。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
