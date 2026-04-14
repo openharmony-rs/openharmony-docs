@@ -799,7 +799,7 @@ try {
 }
 ```
 
-## window.onSystemBarTintChange<sup>22+</sup>
+## window.onSystemBarTintChange<sup>23+</sup>
 
 onSystemBarTintChange(callback: Callback&lt;SystemBarTintState&gt;): void
 
@@ -891,7 +891,7 @@ try {
 }
 ```
 
-## window.offSystemBarTintChange<sup>22+</sup>
+## window.offSystemBarTintChange<sup>23+</sup>
 
 offSystemBarTintChange(callback?: Callback&lt;SystemBarTintState &gt;): void
 
@@ -985,7 +985,7 @@ try {
 }
 ```
 
-## window.onGestureNavigationEnabledChange<sup>22+</sup>
+## window.onGestureNavigationEnabledChange<sup>23+</sup>
 
 onGestureNavigationEnabledChange(callback: Callback&lt;boolean&gt;): void
 
@@ -1080,7 +1080,7 @@ try {
 }
 ```
 
-## window.offGestureNavigationEnabledChange<sup>22+</sup>
+## window.offGestureNavigationEnabledChange<sup>23+</sup>
 
 offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
@@ -1175,7 +1175,7 @@ try {
 }
 ```
 
-## window.onWaterMarkFlagChange<sup>22+</sup>
+## window.onWaterMarkFlagChange<sup>23+</sup>
 
 onWaterMarkFlagChange(callback: Callback&lt;boolean&gt;): void
 
@@ -1270,7 +1270,7 @@ try {
 }
 ```
 
-## window.offWaterMarkFlagChange<sup>22+</sup>
+## window.offWaterMarkFlagChange<sup>23+</sup>
 
 offWaterMarkFlagChange(callback?: Callback&lt;boolean&gt;): void
 
@@ -6443,7 +6443,7 @@ completeTransition(isCompleted: boolean): void
   console.info('complete transition end');
 };
 ```
-## TransitionControllerCallback<sup>22+</sup>
+## TransitionControllerCallback<sup>23+</sup>
 
 type TransitionControllerCallback = (context: window.TransitionContext) => void
 
@@ -6500,8 +6500,8 @@ promise.then((data) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| animationForShown<sup>22+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
-| animationForHidden<sup>22+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
+| animationForShown<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
+| animationForHidden<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
 
 ### animationForShown<sup>9+</sup>
 
