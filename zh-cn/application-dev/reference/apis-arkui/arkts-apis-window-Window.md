@@ -1743,6 +1743,120 @@ try {
 }
 ```
 
+## setFloatNavigationAvoidAreaEnabled
+
+setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
+
+设置当前窗口是否支持获取三键导航类型的避让区域。未调用此接口设置前，系统默认不支持获取三键导航类型的避让区域。使用Promise异步回调。
+
+调用该接口使能后才可以通过[getWindowAvoidArea()](#getwindowavoidarea9)获取到[TYPE_FLOAT_NAVIGATION](./arkts-apis-window-e.md#avoidareatype7)避让类型对应的避让区域或通过[on('avoidAreaChange')](#onavoidareachange9)监听TYPE_FLOAT_NAVIGATION避让类型对应的避让区域的变化。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                                                         |
+| ---------- | ------- | ---- | ------------------------------------------------------------ |
+| enabled    | boolean | 是   | 是否开启获取三键导航类型的避让区域。<br>true表示开启，false表示关闭。</br> |
+
+**返回值：**
+
+| 类型             | 说明              |
+| -------------- | --------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create JS value failed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let enabled = false;
+  windowClass.setFloatNavigationAvoidAreaEnabled(enabled);
+} catch (exception) {
+  console.error(`Failed to set the window float navigation avoid area enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let enabled = false;
+  windowClass.setFloatNavigationAvoidAreaEnabled(enabled);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the window float navigation avoid area enabled status. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isFloatNavigationAvoidAreaEnabled
+
+isFloatNavigationAvoidAreaEnabled(): boolean
+
+查询当前窗口是否开启获取三键导航类型的避让区域。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型             | 说明              |
+| -------------- | --------------- |
+| boolean | 是否开启获取三键导航类型的避让区域。<br>true表示开启，false表示关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create JS value failed. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let isEnabled = windowClass.isFloatNavigationAvoidAreaEnabled();
+} catch (exception) {
+  console.error(`Failed to check if the window is enabled float navigation avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let isEnabled = windowClass.isFloatNavigationAvoidAreaEnabled();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to check if the window is enabled float navigation avoid area. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isImmersiveLayout<sup>20+</sup>
 
 isImmersiveLayout(): boolean
@@ -1898,7 +2012,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。
 
-调用生效后返回并不表示状态栏和<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1975,7 +2089,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 设置主窗口状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏，使用Promise异步回调。
 
-调用生效后返回并不表示状态栏和<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10932,7 +11046,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏和<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -11778,7 +11892,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏和<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -11835,7 +11949,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏和<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
 
 > **说明：**
 >
