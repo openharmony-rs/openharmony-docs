@@ -110,7 +110,7 @@ export default {
 
 > **说明：**
 >
-> 仅当input类型为checkbox和radio时，当前组件选中的属性是checked才生效，默认值为false。
+> 仅当input类型为checkbox或radio时，当前组件选中的属性是checked才生效，默认值为false。
 
 
 ## 事件绑定
@@ -234,7 +234,7 @@ import promptAction from '@ohos.promptAction'
 
 > **说明：** 
 >
-> 该方法在input类型为text、email、date、time、number和password时生效。
+> showError方法仅在input类型为text、email、date、time、number和password时生效。
 
 
 ## 场景示例

@@ -409,7 +409,7 @@ audioManager.getAudioParameter('key_example').then((value: string) => {
 
 setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定流的音量。使用callback异步回调。
+设置指定流的音量等级。使用callback异步回调。
 
 > **说明：**
 > 
@@ -449,7 +449,7 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => 
 
 setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
-设置指定流的音量。使用Promise异步回调。
+设置指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
 >
@@ -488,7 +488,7 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
 
 getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定流的音量。使用callback异步回调。
+获取指定流的音量等级。使用callback异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolumedeprecated)替代；API version 20及以后，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
@@ -500,7 +500,7 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): v
 | 参数名     | 类型                                | 必填 | 说明               |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。       |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
+| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
 
 **示例：**
 
@@ -520,7 +520,7 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: 
 
 getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-获取指定流的音量。使用Promise异步回调。
+获取指定流的音量等级。使用Promise异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolumedeprecated)替代；API version 20及以后，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
@@ -537,7 +537,7 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolumedeprecated)和[getMaxVolume](#getmaxvolumedeprecated)获取。 |
 
 **示例：**
 
@@ -551,7 +551,7 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 
 getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定流的最小音量。使用callback异步回调。
+获取指定流的最小音量等级。使用callback异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)替代；API version 20及以后，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
@@ -563,7 +563,7 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 | 参数名     | 类型                                | 必填 | 说明               |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。       |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量；否则为错误对象。 |
+| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最小音量成功，err为undefined，data为获取到的指定流的最小音量等级；否则为错误对象。 |
 
 **示例：**
 
@@ -583,7 +583,7 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 
 getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-获取指定流的最小音量。使用Promise异步回调。
+获取指定流的最小音量等级。使用Promise异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated)替代；API version 20及以后，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
@@ -600,7 +600,7 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回最小音量。 |
+| Promise&lt;number&gt; | Promise对象，返回最小音量等级。 |
 
 **示例：**
 
@@ -614,7 +614,7 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 
 getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定流的最大音量。使用callback异步回调。
+获取指定流的最大音量等级。使用callback异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)替代；API version 20及以后，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
@@ -626,7 +626,7 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 | 参数名     | 类型                                | 必填 | 说明                   |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音频音量类型。           |
-| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量；否则为错误对象。 |
+| callback   | AsyncCallback&lt;number&gt;         | 是   | 回调函数。当获取指定流的最大音量成功，err为undefined，data为获取到的指定流的最大音量等级；否则为错误对象。 |
 
 **示例：**
 
@@ -646,7 +646,7 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 
 getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-获取指定流的最大音量。使用Promise异步回调。
+获取指定流的最大音量等级。使用Promise异步回调。
 
 > **说明：**
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用[getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated)替代；API version 20及以后，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
@@ -663,7 +663,7 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
 | 类型                  | 说明                          |
 | --------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回最大音量。 |
+| Promise&lt;number&gt; | Promise对象，返回最大音量等级。 |
 
 **示例：**
 

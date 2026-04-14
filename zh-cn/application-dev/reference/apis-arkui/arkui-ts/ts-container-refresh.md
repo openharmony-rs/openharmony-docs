@@ -185,7 +185,7 @@ onOffsetChange(callback: Callback\<number>)
 
 | 参数名 | 类型                                    | 必填 | 说明       |
 | ------ | --------------------------------------- | ---- | ---------- |
-| callback  | Callback\<number> | 是   | 下拉距离。<br/>单位：vp |
+| callback  | Callback\<number> | 是   | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。<br/>单位：vp |
 
 
 ## RefreshStatus枚举说明

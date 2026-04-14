@@ -169,7 +169,7 @@ Image($r('app.media.example'))
   .borderRadius('48px')
 // // 错误用例
 Image("../../resources/base/media/example.png")
-  .id('example')
+  .id('example1')
   .borderRadius('48px')
 ```
 
@@ -422,7 +422,6 @@ export function PageOneBuilder() {
   Library_Menu()
 }
 
-@Entry
 @Component
 export struct Library_Menu {
   @State message: string = 'Hello World';

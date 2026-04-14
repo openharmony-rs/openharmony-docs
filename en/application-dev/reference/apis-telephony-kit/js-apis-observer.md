@@ -517,7 +517,7 @@ Registers an observer for extended call status change events. This API uses an a
 
 | Name  | Type                                          | Mandatory| Description                                                       |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChange**.               |
+| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChangeEx**.               |
 | callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | Yes  | Callback used to return the result,<br>which is the **TelCallState** object.<br>|
 | options  | [ObserverOptions](#observeroptions11)                              | No| Event subscription parameters.               |
 
@@ -1100,7 +1100,7 @@ Defines information about the data connection status.
 | Name| Type                                  |  Read-Only| Optional| Description|
 | ----- |--------------------------------------| ----- | ---- | -----|
 |  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  No |  No | Data connection status.|
-| network | [RatType](js-apis-radio.md#radiotechnology)  |  No |  No | Network type.|
+| network | [RatType](#rattype)  |  No |  No | Network type.|
 
 ## ObserverOptions<sup>11+</sup>
 

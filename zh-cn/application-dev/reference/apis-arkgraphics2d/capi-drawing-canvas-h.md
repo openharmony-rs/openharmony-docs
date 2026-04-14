@@ -1108,8 +1108,8 @@ void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象的指针。 |
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见@{link OH_Drawing_CanvasClipOp}枚举。 |
-| bool doAntiAlias | 值为true则做抗锯齿处理，反之不做。 |
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见[OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop)枚举。 |
+| bool doAntiAlias | 值为true则做抗锯齿处理，值为false不做抗锯齿处理。 |
 
 ### OH_Drawing_CanvasClipRoundRect()
 

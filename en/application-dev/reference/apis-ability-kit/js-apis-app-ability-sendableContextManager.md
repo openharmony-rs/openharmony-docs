@@ -22,10 +22,10 @@ When the main thread transfers sendable data (data that complies with the [Senda
 - Conversion from Context to SendableContext for the main thread to transfer sendable data to the child thread.
 - Conversion from SendableContext to Context for the child thread to use the sendable data.
 
-The Context here is different from that created by [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12). The differences are as follows:
+The Context here is different from that created by [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext). The differences are as follows:
 - Context involved in the conversion: ArkTS concurrent instances hold different application-side Context instances that correspond to the same underlying Context object. When the Context properties and methods in an instance are modified, the Context properties and methods in the related instances are modified accordingly. The eventHub attribute in the Context instance is special. The eventHub objects in different instances are independent of each other and cannot be used across ArkTS instances. If you want to use [EventHub](./js-apis-inner-application-eventHub.md) to transfer data across instances, call [setEventHubMultithreadingEnabled](#sendablecontextmanagerseteventhubmultithreadingenabled20) to enable the cross-thread data transfer feature.
 
-- Context created using [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12): ArkTS concurrent instances hold different application-side Context objects that correspond to different underlying Context objects.
+- Context created using [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext): ArkTS concurrent instances hold different application-side Context instances that correspond to different underlying Context objects.
 
 ## Constraints
 
@@ -649,7 +649,7 @@ struct Index {
 }
 ```
 
-After receiving the [SendableContext](js-apis-inner-application-sendableContext.md) object in the [Worker](../apis-arkts/js-apis-worker.md) thread, convert it to a [Context](./js-apis-inner-application-context.md) object. Then, enable the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in the Context object in the Worker thread, and send a message back to the main thread using this feature.
+After receiving the [SendableContext](js-apis-inner-application-sendableContext.md) object on the [Worker](../apis-arkts/js-apis-worker.md) thread, convert it to a [Context](./js-apis-inner-application-context.md) object. Then, enable the cross-thread data transfer feature of [EventHub](./js-apis-inner-application-eventHub.md) in the Context object on the Worker thread, and send a message back to the main thread using this feature.
 
 ```ts
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';

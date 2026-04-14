@@ -439,7 +439,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, 
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 | clockid_t clockId | 时钟标识符，使用CLOCK_MONOTONIC。 |
 | int64_t* framePosition | 指向要接收位置的变量的指针。 |
-| int64_t* timestamp | 指向接收时间戳的变量的指针。 |
+| int64_t* timestamp | 指向接收时间戳的变量的指针，单位为纳秒。 |
 
 **返回：**
 
@@ -519,7 +519,7 @@ typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, 
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 |  void* userData | 指向应用自定义的数据存储区域，方便应用给自身传递数据。 |
 |  void* audioData | 指向录制数据存储区域，用于应用读取录制数据。 |
-| int32_t audioDataSize | 录制数据的长度。 |
+| int32_t audioDataSize | 录制数据的长度，单位为字节。 |
 
 ### OH_AudioCapturer_OnDeviceChangeCallback()
 

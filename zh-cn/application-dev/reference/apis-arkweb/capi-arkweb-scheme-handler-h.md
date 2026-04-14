@@ -194,6 +194,10 @@ typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,
 
 请求开始的回调，这将在IO线程上被调用。
 
+> **说明：**
+>
+> - 重定向后的URL无法单独拦截。如需拦截，必须同时对原始请求URL进行拦截。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
@@ -538,7 +542,7 @@ int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* r
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 请求的资源类型。如果resourceRequest无效，则为-1。 |
+| int32_t | 请求的资源类型。如果resourceRequest无效，则为-1，表示请求对象为空或已失效。其他值参考[ArkWeb_ResourceType](#arkweb_resourcetype)。 |
 
 ### OH_ArkWebResourceRequest_GetFrameUrl()
 
@@ -1190,7 +1194,7 @@ void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | 返回创建的ArkWeb_SchemeHandler。在不需要时使用OH_ArkWeb_DestroyschemeHandler销毁它。 |
+| [ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler.md)** schemeHandler | 返回创建的ArkWeb_SchemeHandler。在不需要时使用[OH_ArkWeb_DestroySchemeHandler](#oh_arkweb_destroyschemehandler)销毁它。 |
 
 ### OH_ArkWeb_DestroySchemeHandler()
 

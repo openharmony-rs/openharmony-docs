@@ -42,13 +42,15 @@ getVolumeGroupManager(groupId: number, callback: AsyncCallback<AudioVolumeGroupM
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
-audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
+audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
   if (err) {
     console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in getting volume group manager.');
+  audioVolumeGroupManager = value;
 });
 
 ```
@@ -80,9 +82,11 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
-audioVolumeManager.getVolumeGroupManager(groupId).then((audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
+audioVolumeManager.getVolumeGroupManager(groupId).then((value: audio.AudioVolumeGroupManager) => {
   console.info('Succeeded in getting volume group manager.');
+  audioVolumeGroupManager = value;
 }).catch((err: BusinessError) => {
   console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
 });
@@ -539,7 +543,7 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | 是   | 音频流。 |
-| volumeLevel     | number                                 | 是   | 音量值等级。 |
+| volumeLevel     | number                                 | 是   | 音量等级。 |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)                                 | 是   | 设备类型。 |
 
 **返回值：**

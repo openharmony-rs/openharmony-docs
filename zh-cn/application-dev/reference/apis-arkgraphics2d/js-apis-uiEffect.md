@@ -109,6 +109,7 @@ struct UIEffectFilterExample {
     }
 }
 ```
+![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
 
 ## VisualEffect
 VisualEffect效果类，用于将相应的效果添加到指定的组件上。在调用VisualEffect的方法前，需要先通过[createEffect](#uieffectcreateeffect)创建一个VisualEffect实例。
