@@ -1133,7 +1133,7 @@ void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | const [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象的指针。 |
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见@{link OH_Drawing_CanvasClipOp}枚举。 |
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见[OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop)枚举。 |
 | bool doAntiAlias | 表示是否需要做抗锯齿处理，值为true时为需要，为false时为不需要。 |
 
 ### OH_Drawing_CanvasClipPath()
@@ -1157,7 +1157,7 @@ void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象的指针。 |
 | const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象的指针。 |
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见@{link OH_Drawing_CanvasClipOp}枚举。 |
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 裁剪方式。支持可选的具体裁剪方式可见[OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop)枚举。 |
 | bool doAntiAlias | 真为抗锯齿，假则不做抗锯齿处理。 |
 
 ### OH_Drawing_CanvasClipRegion()
@@ -1181,7 +1181,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas* canvas, cons
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。 |
 | const [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | 指向区域对象[OH_Drawing_Region](capi-drawing-oh-drawing-region.md)的指针。 |
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 表示裁剪类型。支持可选的具体裁剪方式可见@{link OH_Drawing_CanvasClipOp}枚举。 |
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | 表示裁剪类型。支持可选的具体裁剪方式可见[OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop)枚举。 |
 
 **返回：**
 
