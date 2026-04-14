@@ -330,8 +330,8 @@ FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 
 1. 基本信息（Base Info）
 
-    | 字段                      | 描述              
-    | -----------------        | ------------------
+    | 字段                      | 描述              |
+    | ------------------------ | ------------------|
     | task status              | 任务状态。success表示成功，fail表示失败。|
     | task time                | 任务执行时间。单位：秒。|
     | seed                     | 随机种子。|
