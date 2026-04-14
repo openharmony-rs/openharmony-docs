@@ -140,6 +140,38 @@ Failed to get the system time.
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
 
+## 10000008 参数检查失败
+
+**错误信息**
+
+Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
+
+**错误描述**
+
+1. 必填参数为空。
+
+2. 参数类型不正确。
+
+3. 参数校验失败。无论是同步还是异步接口，此类异常大部分都通过同步的方式抛出。
+
+**可能原因**
+
+1. 必选参数没有传入。
+
+2. 参数类型错误 (Type Error)。
+
+3. 参数数量错误 (Argument Count Error)。
+
+4. 空参数错误 (Null Argument Error)。
+
+5. 参数格式错误 (Format Error)。
+
+6. 参数值范围错误 (Value Range Error)。
+
+**处理步骤**
+
+请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败，阅读参数规格约束，按照可能原因进行排查。
+
 ## 10100001 应用分组信息操作重复
 
 **错误信息**
