@@ -3323,7 +3323,7 @@ ArkTS-Sta示例：
 
 ```ts
 'use static'
-import { FormComponent, FormDimension, FormInfo, Visibility } from '@ohos.arkui.component'
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@kit.ArkUI';
 import { formHost, formInfo } from '@kit.FormKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3486,7 +3486,7 @@ ArkTS-Sta示例：
 
 ```ts
 'use static'
-import { FormComponent, FormDimension, FormInfo, Visibility } from '@ohos.arkui.component'
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@kit.ArkUI';
 import { formHost, formInfo } from '@kit.FormKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
