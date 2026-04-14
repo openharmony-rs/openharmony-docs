@@ -21,6 +21,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 > **说明：**
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/uitest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
@@ -37,8 +38,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 8
@@ -53,13 +52,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | ENDS_WITH             | 3 | 以给定值结束。 <br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | REG_EXP<sup>18+</sup> | 4 | 正则表达式匹配。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
 | REG_EXP_ICASE<sup>18+</sup>          | 5 | 正则表达式匹配，忽略大小写。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+
 ## ResizeDirection<sup>9+</sup>
 
 窗口调整大小的方向。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -84,8 +82,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -103,8 +99,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 控件的边框信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -126,8 +120,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -147,8 +139,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -167,8 +157,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 窗口的标志属性信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -191,8 +179,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 10
@@ -211,8 +197,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 模拟注入的鼠标按钮。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -233,8 +217,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 22
@@ -254,8 +236,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 支持监听的控件操作事件类型。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -279,8 +259,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 22
@@ -299,8 +277,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 22
@@ -317,8 +293,6 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 UI事件的相关信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -344,8 +318,6 @@ UI事件的相关信息。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 18
@@ -363,8 +335,6 @@ UI事件的相关信息。
 输入文本的方式。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -384,8 +354,6 @@ UI事件的相关信息。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 26.0.0
@@ -402,8 +370,6 @@ UI事件的相关信息。
 触摸操作通用选项。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -440,8 +406,6 @@ text(txt: string, pattern?: MatchPattern): On
 > 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，无法使用本接口指定目标控件的文本属性用于查找控件，可以使用[On.originalText()](#originaltext20)接口实现。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -487,8 +451,6 @@ id(id: string): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -531,8 +493,6 @@ id(id: string, pattern: MatchPattern): On
 指定目标控件id属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -578,8 +538,6 @@ type(tp: string): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -622,8 +580,6 @@ type(tp: string, pattern: MatchPattern): On
 指定目标控件的控件类型属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -669,8 +625,6 @@ clickable(b?: boolean): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -713,8 +667,6 @@ longClickable(b?: boolean): On
 指定目标控件的可长按点击状态属性，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -759,8 +711,6 @@ scrollable(b?: boolean): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -803,8 +753,6 @@ enabled(b?: boolean): On
 指定目标控件的使能状态属性，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -849,8 +797,6 @@ focused(b?: boolean): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -893,8 +839,6 @@ selected(b?: boolean): On
 指定目标控件的被选中状态属性，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -939,8 +883,6 @@ checked(b?: boolean): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -984,8 +926,6 @@ checkable(b?: boolean): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1028,8 +968,6 @@ isBefore(on: On): On
 指定目标控件位于给出的特征属性控件之前，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1075,8 +1013,6 @@ isAfter(on: On): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1120,8 +1056,6 @@ within(on: On): On
 指定目标控件位于给出的特征属性控件之内，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1167,8 +1101,6 @@ inWindow(bundleName: string): On
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 10
@@ -1211,8 +1143,6 @@ description(val: string, pattern?: MatchPattern): On
 指定目标控件的描述属性，支持多种匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1258,8 +1188,6 @@ hint(val: string, pattern?: MatchPattern): On
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 18
@@ -1303,8 +1231,6 @@ belongingDisplay(displayId: number): On
 获取指定屏幕内的控件对象，返回On对象自身。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1352,8 +1278,6 @@ originalText(text: string, pattern?: MatchPattern): On
 > 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口指定目标控件的文本属性用于查找控件，使用[On.text()](#text9)接口不生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1405,8 +1329,6 @@ click(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1450,8 +1372,6 @@ doubleClick(): Promise\<void>
 控件对象进行双击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1497,8 +1417,6 @@ longClick(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1542,8 +1460,6 @@ getId(): Promise\<string>
 获取控件对象的id值。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1593,8 +1509,6 @@ getText(): Promise\<string>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1638,8 +1552,6 @@ getType(): Promise\<string>
 获取控件对象的控件类型。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1685,8 +1597,6 @@ getBounds(): Promise\<Rect>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1731,8 +1641,6 @@ getBoundsCenter(): Promise\<Point>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1776,8 +1684,6 @@ isClickable(): Promise\<boolean>
 获取控件对象可点击属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1828,8 +1734,6 @@ isLongClickable(): Promise\<boolean>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1877,8 +1781,6 @@ isChecked(): Promise\<boolean>
 获取控件对象被勾选状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1929,8 +1831,6 @@ isCheckable(): Promise\<boolean>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -1978,8 +1878,6 @@ isScrollable(): Promise\<boolean>
 获取控件对象可滑动属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2030,8 +1928,6 @@ isEnabled(): Promise\<boolean>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -2079,8 +1975,6 @@ isFocused(): Promise\<boolean>
 判断控件对象获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2130,8 +2024,6 @@ isSelected(): Promise\<boolean>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -2179,8 +2071,6 @@ inputText(text: string): Promise\<void>
 清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2232,8 +2122,6 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2287,8 +2175,6 @@ clearText(): Promise\<void>
 清除控件的文本信息，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2441,8 +2327,6 @@ scrollToTop(speed?: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -2494,8 +2378,6 @@ scrollToBottom(speed?: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -2546,8 +2428,6 @@ dragTo(target: Component): Promise\<void>
 将控件拖拽至目标控件处。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2603,8 +2483,6 @@ pinchOut(scale: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -2655,8 +2533,6 @@ pinchIn(scale: number): Promise\<void>
 将控件按指定的比例进行捏合缩小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2709,8 +2585,6 @@ getDescription(): Promise\<string>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 11
@@ -2753,8 +2627,6 @@ getHint(): Promise\<string>
 获取控件对象的提示文本。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2799,8 +2671,6 @@ getDisplayId(): Promise\<number>
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 20
@@ -2844,8 +2714,6 @@ getOriginalText(): Promise\<string>
 获取控件对象的文本信息。使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2897,8 +2765,6 @@ static create(): Driver
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -2937,8 +2803,6 @@ delayMs(duration: number): Promise\<void>
 在给定的时间内延时。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -2986,8 +2850,6 @@ findComponent(on: On): Promise\<Component>
 根据给出的目标控件属性要求查找目标控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3326,8 +3188,6 @@ assertComponentExist(on: On): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -3376,8 +3236,6 @@ pressBack(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -3417,8 +3275,6 @@ pressBack(displayId: number): Promise\<void>
 对指定屏幕进行点击BACK键的操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3467,8 +3323,6 @@ triggerKey(keyCode: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -3516,8 +3370,6 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 在指定屏幕，传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3619,8 +3471,6 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **相关接口**：该接口对应的ArkTS-Dyn接口是[triggerCombineKeys(key0, key1, key2)](#triggercombinekeys9)。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -3673,8 +3523,6 @@ click(x: number, y: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -3723,8 +3571,6 @@ clickAt(point: Point): Promise\<void>
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 20
@@ -3771,8 +3617,6 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 在目标坐标点进行单击，支持指定触摸选项。使用Promise异步回调。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3826,8 +3670,6 @@ doubleClick(x: number, y: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -3876,8 +3718,6 @@ doubleClickAt(point: Point): Promise\<void>
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 20
@@ -3924,8 +3764,6 @@ longClick(x: number, y: number): Promise\<void>
 在目标坐标点长按。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3975,8 +3813,6 @@ longClickAt(point: Point, duration?: number): Promise\<void>
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 20
@@ -4024,8 +3860,6 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4080,8 +3914,6 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4133,8 +3965,6 @@ swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 20
@@ -4183,8 +4013,6 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 从起始坐标点滑向目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4240,8 +4068,6 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4295,8 +4121,6 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 20
@@ -4348,8 +4172,6 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 从起始坐标点拖拽至目标坐标点，支持指定触摸选项。使用Promise异步回调。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4408,8 +4230,6 @@ screenCap(savePath: string): Promise\<boolean>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4456,8 +4276,6 @@ screenCap(savePath: string, displayId: number): Promise\<boolean>
 捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4506,8 +4324,6 @@ dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 获取当前布局信息并保存为JSON格式的文件。使用Promise异步回调。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4558,8 +4374,6 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4609,8 +4423,6 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4650,8 +4462,6 @@ getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 获取当前设备指定屏幕的显示方向。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4699,8 +4509,6 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 启用/禁用设备旋转屏幕的功能。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4751,8 +4559,6 @@ getDisplaySize(): Promise\<Point>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4792,8 +4598,6 @@ getDisplaySize(displayId: number): Promise\<Point>
 获取当前设备指定屏幕的大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4842,8 +4646,6 @@ getDisplayDensity(): Promise\<Point>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4883,8 +4685,6 @@ getDisplayDensity(displayId: number): Promise\<Point>
 获取当前设备指定屏幕的分辨率。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4933,8 +4733,6 @@ wakeUpDisplay(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -4974,8 +4772,6 @@ pressHome(): Promise\<void>
 设备注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5018,8 +4814,6 @@ pressHome(displayId: number): Promise\<void>
 设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5070,8 +4864,6 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -5119,8 +4911,6 @@ fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5171,8 +4961,6 @@ injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<bool
 向设备注入多指操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5233,8 +5021,6 @@ fling(direction: UiDirection, speed: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 10
@@ -5282,8 +5068,6 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5333,8 +5117,6 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5388,8 +5170,6 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\
 在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5492,8 +5272,6 @@ mouseMoveTo(p: Point): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 10
@@ -5541,8 +5319,6 @@ createUIEventObserver(): UIEventObserver;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 10
@@ -5582,8 +5358,6 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, sp
 在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5636,8 +5410,6 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5741,8 +5513,6 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **相关接口**：该接口对应的ArkTS-Dyn接口是[mouseLongClick(p, btnId, key1, key2)](#mouselongclick)。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -5795,8 +5565,6 @@ mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 鼠标从起始坐标点滑向终点坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5900,8 +5668,6 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **相关接口**：该接口对应的ArkTS-Dyn接口是[mouseDrag(from, to, speed)](#mousedrag11)。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -5953,8 +5719,6 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。
 
 **原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6017,8 +5781,6 @@ inputText(p: Point, text: string): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 11
@@ -6069,8 +5831,6 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 在指定坐标点输入文本，支持指定文本输入方式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6135,8 +5895,6 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 18
@@ -6188,8 +5946,6 @@ touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?
 模拟触摸板双指滚动手势。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6244,8 +6000,6 @@ penClick(point: Point): Promise\<void>
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 18
@@ -6292,8 +6046,6 @@ penLongClick(point: Point, pressure?: number): Promise\<void>
 模拟手写笔长按操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6343,8 +6095,6 @@ penDoubleClick(point: Point): Promise\<void>
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 18
@@ -6392,8 +6142,6 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 模拟手写笔的滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6444,8 +6192,6 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 模拟手写笔多点连续注入操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6500,8 +6246,6 @@ crownRotate(d: number, speed?: number): Promise\<void>
 注入手表表冠旋转事件，可指定旋转速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6561,8 +6305,6 @@ knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 22
@@ -6619,8 +6361,6 @@ injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<vo
 > 若设备关闭了指关节手势<!--RP4--><!--RP4End-->，则调用本接口返回17000005错误码。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6681,8 +6421,6 @@ isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promis
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 22
@@ -6731,8 +6469,6 @@ isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, durat
 从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6784,8 +6520,6 @@ isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Pro
 从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6841,8 +6575,6 @@ static create(fingers: number, steps: number): PointerMatrix
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -6888,8 +6620,6 @@ setPoint(finger: number, step: number, point: Point): void
 设置PointerMatrix对象中指定手指和步骤对应动作的坐标点。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6948,8 +6678,6 @@ getBundleName(): Promise\<string>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -6993,8 +6721,6 @@ getBounds(): Promise\<Rect>
 获取窗口的边框信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7040,8 +6766,6 @@ getTitle(): Promise\<string>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -7086,8 +6810,6 @@ getWindowMode(): Promise\<WindowMode>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -7131,8 +6853,6 @@ isFocused(): Promise\<boolean>
 判断窗口是否处于获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7226,8 +6946,6 @@ focus(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -7271,8 +6989,6 @@ moveTo(x: number, y: number): Promise\<void>
 将窗口移动到目标点。使用Promise异步回调。适用于支持移动的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7329,8 +7045,6 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -7385,8 +7099,6 @@ split(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -7433,8 +7145,6 @@ maximize(): Promise\<void>
 将窗口最大化。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7483,8 +7193,6 @@ minimize(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -7531,8 +7239,6 @@ resume(): Promise\<void>
 将窗口恢复到之前的窗口模式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7581,8 +7287,6 @@ close(): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 9
@@ -7630,8 +7334,6 @@ isActive(): Promise\<boolean>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 11
@@ -7676,8 +7378,6 @@ getDisplayId(): Promise\<number>
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式**：该接口同时支持ArkTS-Dyn、ArkTS-Sta。
-
 **系统能力**：SystemCapability.Test.UiTest
 
 **ArkTS-Dyn起始版本：** 20
@@ -7718,7 +7418,7 @@ async function demo() {
 
 UI事件监听器。
 
-### once('toastShow')<sup>10+</sup>
+### once('toastShow')
 
 once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
@@ -7813,7 +7513,7 @@ async function demo() {
 }
 ```
 
-### once('dialogShow')<sup>10+</sup>
+### once('dialogShow')
 
 once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
