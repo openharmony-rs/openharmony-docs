@@ -4791,7 +4791,7 @@
 
 ## ohos.permission.MINORS_PROTECTION_UI
 
-允许系统应用访问未成年人模式页面。
+允许系统应用调用未成年人模式的ExtensionAbility。
 
 **权限级别**：system_basic
 
