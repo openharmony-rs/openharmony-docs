@@ -91,7 +91,7 @@
 6. 确保自定义字体注册成功后，使用OH_Drawing_CreateTextStyle()接口创建文本样式对象，并使用OH_Drawing_SetTextStyleFontFamilies()接口加入自定义字体。
 
    <!-- @[custom_font_c_custom_font_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 如果已经注册成功自定义字体，填入自定义字体的字体家族名
    const char* myFontFamilies[] = {"myFamilyName"}; 
