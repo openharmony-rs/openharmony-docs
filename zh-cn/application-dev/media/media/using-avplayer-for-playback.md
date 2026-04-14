@@ -28,7 +28,6 @@
 - 面对设备同时连接多个音频输出设备的情况，应用可以通过[on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11)监听音频输出设备的变化，做出相应处理。
 - 若要访问在线媒体资源，需要申请 ohos.permission.INTERNET 权限。
 - 若要切换听筒/扬声器，应用可以参考[音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
-- 在API version 23及之后版本中，播放音频时会跳过静音帧。
 
 ## 开发步骤及注意事项
 
@@ -139,6 +138,9 @@
     ```
 
 6. 音频播控：播放play()、暂停pause()、跳转seek()、停止stop() 等操作。
+   > **说明：**
+   >
+   > 在API version 23及之后版本中，播放音频时会跳过静音帧。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
