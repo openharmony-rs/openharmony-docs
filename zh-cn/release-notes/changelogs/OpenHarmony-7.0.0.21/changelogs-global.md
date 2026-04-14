@@ -14,9 +14,9 @@
 
 此变更涉及应用适配。
 
-变更前：蒙古语、天城体、缅甸语部分显示不正确。
+变更前：蒙古语（NotoSansMongolian-Regular.ttf）、天城体（NotoSansDevanagari[wdth,wght].ttf）、缅甸语（NotoSansMyanmar[wdth,wght].ttf）部分显示不正确。
 
-变更后：蒙古语、天城体、缅甸语显示正确，部分数学符号字体显示变大。
+变更后：蒙古语（NotoSansMongolian-Regular.ttf）、天城体（NotoSansDevanagari[wdth,wght].ttf）、缅甸语（NotoSansMyanmar[wdth,wght].ttf）显示正确，部分数学符号字体（NotoSansMath-Regular.ttf）显示变大。
 
 **起始 API Level**
 
