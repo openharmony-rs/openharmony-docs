@@ -74,7 +74,7 @@ import { effectKit } from "@kit.ArkGraphics2D";
 
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
-| UNKNOWN_LIGHT_COLOR_DEGREE_PICTURE | 0 | 未知明亮程度的图片。 |
+| UNKNOWN_LIGHT_COLOR_DEGREE_PICTURE | 0 | 未知明亮度的图片。 |
 | EXTREMELY_LIGHT_COLOR_PICTURE | 1 | 极亮色图片。 |
 | LIGHT_COLOR_PICTURE | 2 | 亮色图片。 |
 | DARK_COLOR_PICTURE | 3 | 暗色图片。 |
@@ -364,7 +364,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getDeepenImmersionColor(): Color
 
-生成与背景色融合且比背景色更深的强沉浸色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
+生成与背景色融合且比背景色更深的强沉浸感颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
 
 **起始版本：** 26.0.0
 
@@ -572,7 +572,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 getReverseColor(): Color
 
-基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。根据[discriminatePictureLightDegree](#discriminatepicturelightdegree)接口获取出来的图片明亮类型得到一个反色，仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
+基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。根据[discriminatePictureLightDegree](#discriminatepicturelightdegree)接口获取的图片明亮类型得到一个反色，仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
 
 **起始版本：** 26.0.0
 
