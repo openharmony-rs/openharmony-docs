@@ -1315,6 +1315,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ## window.moveMainWindowToTargetDisplay
+
 ArkTS-Dyn: moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
 
 ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int): Promise&lt;void&gt;
