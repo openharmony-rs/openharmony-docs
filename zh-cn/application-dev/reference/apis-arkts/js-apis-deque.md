@@ -416,6 +416,12 @@ deque.insertEnd(4);
 deque.forEach((value: number, index?: number | undefined, deque?: Deque<number> | undefined):void => {
   console.info("value:" + value, "index:" + index);
 });
+/*
+输出结果：value:1 index:0
+         value:2 index:1
+         value:3 index:2
+         value:4 index:3
+ */
 ```
 
 ### forEach<sup>23+</sup>
@@ -651,6 +657,13 @@ let nums: Array<number> = Array.from(deque);
 for (let item of nums) {
   console.info("value:" + item);
 }
+/*
+输出结果：
+value:4
+value:5
+value:4
+value:2
+ */
 
 // 使用方法二：
 let iter = deque[Symbol.iterator]();
@@ -659,6 +672,13 @@ while(!temp.done) {
   console.info("value:" + temp.value);
   temp = iter.next();
 }
+/*
+输出结果：
+value:4
+value:5
+value:4
+value:2
+ */
 ```
 
 ### $_iterator<sup>23+</sup>
