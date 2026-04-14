@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++层实现MIDI应用开发。通过OH_MIDI，开发者可以：
+OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++层实现MIDI应用开发。通过OH_MIDI，开发者可以实现以下功能：
 
 - 创建MIDI客户端并管理与MIDI服务的连接。
 - 枚举和管理MIDI设备。
@@ -104,7 +104,7 @@ static napi_value CreateMIDIClient(napi_env env, napi_callback_info info)
 
 当不再需要MIDI功能时，应销毁客户端以释放资源。销毁前需要先关闭所有已打开的设备。
 
-在C++层，通过调用[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)接口销毁MIDI客户端实例，释放所有关联资源。
+通过调用[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)接口销毁MIDI客户端实例，释放所有关联资源。
 
 <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -128,8 +128,10 @@ static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
 ### 枚举MIDI设备
 
 创建客户端后，可以枚举系统中当前可用的MIDI设备。枚举设备分为两步：
+
 1. 获取设备数量：调用[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取当前连接的设备数量。
-   2. 获取设备信息：分配足够大的缓冲区，调用[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口填充设备详细信息。
+
+2. 获取设备信息：分配足够大的缓冲区，调用[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口填充设备详细信息。
 
 > **注意：**
 >
@@ -220,9 +222,12 @@ BLE MIDI设备的打开是异步操作，使用[OH_MIDIClient_OpenBLEDevice](../
 
 获取BLE设备地址：
 BLE设备地址可通过以下方式获取：
+
 1. BLE扫描发现：使用蓝牙API扫描MIDI BLE设备。
-   2. 历史记录：从持久化存储加载之前连接过的设备地址。
-   3. 用户输入：让用户手动输入MAC地址。
+
+2. 历史记录：从持久化存储加载之前连接过的设备地址。
+
+3. 用户输入：让用户手动输入MAC地址。
 
 MIDI BLE设备可通过服务UUID `03B80E5A-EDE8-4B33-A751-6CE34EC4C700` 进行过滤识别。
 
@@ -312,7 +317,7 @@ static napi_value GetPortInfos(napi_env env, napi_callback_info info)
 
 ### MIDI端口管理
 
-#### 打开输入端口
+**打开输入端口**
 
 接收MIDI消息，需要打开输入端口并注册接收回调函数。当设备发送MIDI数据时，回调函数会被调用。
 
@@ -363,7 +368,7 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 }
 ```
 
-#### 关闭输入端口
+**关闭输入端口**
 
 使用[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)接口关闭已打开的输入端口。关闭端口后，该端口将不再接收MIDI消息，注册的回调函数也将不再被调用。
 
@@ -411,7 +416,7 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 }
 ```
 
-#### 打开输出端口
+**打开输出端口**
 
 通过[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口打开输出端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midiportdescriptor)结构配置端口参数和协议。
 
@@ -455,7 +460,7 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 }
 ```
 
-#### 关闭输出端口
+**关闭输出端口**
 
 使用[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)接口关闭已打开的输出端口。关闭端口后，将无法再通过该端口发送MIDI消息。
 
@@ -556,7 +561,6 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
 **发送Note On消息**
 
-> **说明：**
 以下示例使用MIDI 1.0协议格式，将传统的MIDI 1.0通道消息包装在UMP Type 2数据包中发送。MT=0x2表示MIDI 1.0通道语音消息。
 
 <!-- @[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
@@ -749,7 +753,7 @@ OH_MIDI API提供客户端级别、BLE连接级别和端口连接级别三个层
 
 11. 资源释放顺序：`OH_MIDIClient_Destroy()`会自动关闭所有已打开的设备和端口。但如果初始化过程中发生错误需要提前退出函数，应按以下顺序手动释放资源：
 
-    第一步：关闭已打开的端口（[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)/[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)）。详见[关闭输入端口](#关闭输入端口)和[关闭输出端口](#关闭输出端口)示例。
+    第一步：关闭已打开的端口（[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)/[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)）。详见[midi端口管理](#midi端口管理)中的关闭输入端口和关闭输出端口示例
 
     第二步：关闭已打开的设备（[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)）。详见[关闭MIDI设备](#关闭midi设备)示例。
 
@@ -807,8 +811,10 @@ MIDI_LOGD("UMP Data: 0x%{public}08X", umpData[0]);
 表示发送缓冲区已满，无法立即发送消息。原因和处理方法如下：
 
 1. 发送速度超过缓冲区处理能力：降低发送频率（通常在发送大量SysEx消息的场景）。
-   2. 缓冲区未及时处理：考虑使用[OH_MIDIDevice_FlushOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport)接口清空缓冲区。
-   3. 处理部分发送：检查`eventsWritten`参数，了解实际发送了多少事件。
+
+2. 缓冲区未及时处理：考虑使用[OH_MIDIDevice_FlushOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport)接口清空缓冲区。
+
+3. 处理部分发送：检查`eventsWritten`参数，了解实际发送了多少事件。
 
 示例处理代码：
 
