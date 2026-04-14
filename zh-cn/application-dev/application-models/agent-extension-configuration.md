@@ -8,7 +8,7 @@
 
 [AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)作为Agent的“名片”，主要用于描述Agent的能力。AgentCard的详细配置信息需要通过agent_config.json配置文件来承载。
 
-该配置文件由开发者手动创建，通常位于Module的`resources/base/profile/`目录下。AgentExtensionAbility可以在metadata配置项中引用该资源文件，来绑定对应的AgentCard。
+该配置文件由开发者手动创建，通常位于Module的`resources/base/profile/`目录下。AgentExtensionAbility可以在metadata配置项中引用该资源文件，来绑定对应的AgentCard。一个agent_config.json只能被一个AgentExtensionAbility引用。
 
 ## agent_config.json配置文件字段说明
 
@@ -33,7 +33,7 @@
 | defaultOutputModes | Agent在所有[skill](#skills标签)上支持的输出模式集，使用MIME类型格式定义支持的输出媒体类型，例如["text/plain"]表示纯文本输出，["application/html"]表示HTML格式输出，["application/json"]表示JSON数据输出。[skill](#skills标签)级别的outputModes会覆盖此默认设置，数组的每一个元素的最大长度为32字节。 | 字符串数组 | 否 |
 | [skills](#skills标签) | Agent提供的功能集合，描述Agent可以执行的特定功能或技能，每个技能定义了具体的用途、标签和使用示例，Agent必须至少包含一个技能。 | 对象数组 | 否 |
 | iconUrl | Agent图标的URL，提供Agent的可视化标识图标，用于在UI界面中展示，增强Agent的辨识度和用户体验，最大长度为512字节。 | 字符串 | 否 |
-| category | Agent的类别，用于对Agent进行分类管理，常见的类别包括：“productivity”（生产力）、“entertainment”（娱乐）、“education”（教育）、“finance”（金融）、“health”（健康）等，最大长度为64字节。 | 字符串 | 否 |
+| category | Agent的类别标签，用于Agent上架时的分类管理，类别值由各发行商自行定义。例如：“productivity”（生产力）、“entertainment”（娱乐）、“education”（教育）、“finance”（金融）、“health”（健康）等，最大长度为64字节。 | 字符串 | 否 |
 | extension | Agent的扩展配置项，用于存储自定义的扩展配置信息，如Agent开场白、版本协议号等，格式为JSON字符串，最大长度为5120字节。 | 字符串 | 可缺省，缺省为空。 |
 | [appInfo](#appinfo标签) | Agent所在的应用信息，包含Agent设备类型和可运行的最低版本号，用于定位和管理AgentExtensionAbility实例。 | 对象 | 可缺省，缺省值见[appInfo](#appinfo标签)。 |
 
@@ -79,7 +79,7 @@
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| deviceTypes | Agent支持的设备类型列表，取值范围参考[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)。 | 字符串数组 | 可缺省，缺省为应用的deviceTypes。 |
+| deviceTypes | Agent支持的设备类型列表，取值范围参考[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)。Agent配置的设备类型列表需要为所属Module设备类型列表的一个子集，如果配置了Module之外的设备类型，系统将会忽略掉。 | 字符串数组 | 可缺省，缺省为应用的deviceTypes。 |
 | minAppVersion | Agent运行的最低应用版本要求，使用语义化版本号格式（如“1.0.0”），指定运行该Agent所需的应用最低版本，低于此版本的应用将无法正确加载和运行该Agent，最大长度为32字节。 | 字符串 | 可缺省，缺省为空。 |
 
 ## agent_config.json配置文件示例
