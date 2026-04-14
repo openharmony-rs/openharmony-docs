@@ -4801,7 +4801,7 @@ Allows a system application to call ExtensionAbility in youth mode.
 
 **Supported devices**: phones | tablets
 
-**Valid since**: 23
+**Valid since**: 26.0.0
 
 ## ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
