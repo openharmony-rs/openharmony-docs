@@ -291,7 +291,7 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 是   | 设置安全控件Symbol图标粗细。<br/>number类型取值[100,900]，取值间隔为100，取值越大，字体越粗。<br/>支持string类型: 可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
+| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型: 可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
 
 ### symbolRenderingStrategy
 
