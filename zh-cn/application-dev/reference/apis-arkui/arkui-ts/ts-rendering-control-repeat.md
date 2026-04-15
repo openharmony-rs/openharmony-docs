@@ -1,7 +1,7 @@
 # Repeat
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -255,7 +255,7 @@ Repeat数据源参数联合类型。
 
 ## VirtualScrollOptions
 
-配置懒加载模式下期望加载的数据项总数、复用能力、数据精准懒加载能力。
+配置懒加载模式下期望加载的数据项总数、复用能力、数据精准懒加载能力。从API版本26.0.0开始，支持配置内存优化策略。
 
 ### 属性
 
@@ -267,6 +267,7 @@ Repeat数据源参数联合类型。
 | ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | totalCount | number | 否 | 是  | 期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。<br>取值范围：自然数。<br>totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。<br>totalCount = 0时，不加载数据。<br>0 < totalCount <= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。<br>totalCount > 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading19)实现数据懒加载。<br>除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount19)方法设置自定义方法，计算期望加载的数据项总数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | reusable<sup>18+</sup> | boolean | 否 | 是  | 是否开启复用功能。<br>true：开启复用。<br>false：关闭复用。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| memoryOptimizationStrategy | [RepeatMemOptStrategy](#repeatmemoptstrategy) | 否 | 是 | Repeat的内存优化策略。该参数在创建Repeat时设定，不支持动态修改。<br>默认值：[DEFAULT](#repeatmemoptstrategy)<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 **示例**
 
@@ -286,7 +287,7 @@ onTotalCount?(): number
 
 可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。
 
-[totalCount](#virtualscrolloptions)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
+[totalCount](#属性-1)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
 
 onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下：
 
@@ -405,3 +406,72 @@ type TemplateTypedFunc\<T\> = (item: T, index: number) => string
 | ------ | ------ | ---- | -------------------------------------------- |
 | item   | T      | 否   | arr中每一个数据项。T为开发者传入的数据类型。<br/>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
 | index  | number | 否   | 当前数据项对应的索引。<br/>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。|
+
+## RepeatMemOptStrategy
+
+Repeat内存优化策略枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| DEFAULT | 0 | 无内存优化策略。 |
+| ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | 自动内存优化策略，当Repeat子节点内存占用较高时，建议使用此策略以降低内存使用量。<br>当应用退后台时、Repeat所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为[Visible](./ts-appendix-enums.md#visibility)以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），释放[缓存池](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md#节点更新复用能力说明)内的所有节点。<br>当应用恢复前台时、Repeat所在组件恢复显示时，恢复缓存池内的节点。<br>在释放和恢复节点时，会触发[自定义组件生命周期](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。 |
+
+## 示例
+
+### 示例1（使用自动内存优化策略）
+
+以下示例中，通过[VirtualScrollOptions](#virtualscrolloptions)的memoryOptimizationStrategy属性使用了自动内存优化策略。点击Scroll按钮，使列表跳转，旧节点进入缓存池。应用退后台时，清理缓存。应用恢复前台时，恢复缓存。
+
+从API版本26.0.0开始，VirtualScrollOptions新增memoryOptimizationStrategy属性。
+
+```ts
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct MemoryOptimizeDemo {
+  @Local data: Array<number> = [];
+  private scroller: Scroller = new Scroller()
+  aboutToAppear() {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+  build() {
+    Column() {
+      Button('Scroll').onClick(() => { // 点击按钮触发列表跳转，旧组件进入缓存池
+        this.scroller.scrollToIndex(30)
+      })
+      List({ scroller: this.scroller }) {
+        Repeat<number>(this.data)
+          .each((obj: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll({ memoryOptimizationStrategy: RepeatMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION }) // 使用自动内存优化策略
+      }
+      .cachedCount(5)
+    }
+  }
+}
+```
