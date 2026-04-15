@@ -102,27 +102,3 @@ async function extensionGetResourceIdExample(): Promise<string> {
 > **说明：**
 >
 > 资源信息（resourceInfo）的格式和内容由Extension实现方定义。应用需要根据Extension厂商提供的说明构造相应的资源信息。
-
-## 错误码说明
-
-获取资源ID过程中可能返回的错误码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 12000002 | ability名称或bundle名称参数丢失 |
-| 12000005 | IPC通信失败 |
-| 12000011 | 提供者不存在 |
-| 12000012 | 设备环境或输入参数异常 |
-| 12000014 | 内存不足 |
-| 12000018 | 输入参数无效 |
-| 12000020 | 提供者操作失败，扩展内部处理错误 |
-| 12000024 | 提供者或UKey忙 |
-
-更多错误码说明请参考[huksExternalCrypto错误码](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#错误码)。
-
-## 相关文档
-
-- [密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)
-- [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
-- [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
-- [资源管理介绍及规格](huks-resource-management-overview.md)

@@ -96,29 +96,3 @@ async function extensionKeyExport(): Promise<Uint8Array> {
   }
 }
 ```
-
-## 错误码说明
-
-公钥导出过程中可能返回的错误码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 12000001 | 参数无效或丢失 |
-| 12000002 | 算法参数无效或丢失 |
-| 12000005 | IPC通信失败 |
-| 12000011 | 查询实体不存在 |
-| 12000012 | 设备环境或输入参数异常 |
-| 12000014 | 内存不足 |
-| 12000018 | 输入参数无效 |
-| 12000020 | 提供者操作失败，扩展内部处理错误 |
-| 12000024 | 提供者或UKey忙 |
-
-更多错误码说明请参考[HUKS错误码](../../reference/apis-universal-keystore-kit/js-apis-huks.md#错误码)。
-
-## 相关文档
-
-- [外部密钥管理扩展密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)
-- [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
-- [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
-- [获取资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)
-- [资源管理](huks-resource-management-overview.md)

@@ -37,32 +37,6 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
 }
 ```
 
-## 错误码说明
-
-清除PIN码认证状态过程中可能返回的错误码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 801 | API不支持 |
-| 12000005 | IPC通信失败 |
-| 12000006 | UKey驱动操作失败，请检查UKey连接和驱动状态 |
-| 12000011 | 缓存的资源ID未找到 |
-| 12000012 | 设备环境或输入参数异常 |
-| 12000014 | 内存不足 |
-| 12000018 | 输入参数无效，可能原因：resourceId长度无效 |
-| 12000020 | 提供者操作失败，扩展内部处理错误 |
-| 12000024 | 提供者或UKey忙 |
-
-更多错误码说明请参考[huksExternalCrypto错误码](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#错误码)。
-
-## 使用场景
-
-以下场景可能需要清除PIN码认证状态：
-
-- 密钥操作完成后，主动清除认证状态，避免认证状态残留
-- 应用退出或切换用户时，清除认证状态
-- 认证状态异常时，重置认证状态
-
 ## 完整示例
 
 ``` TypeScript
@@ -131,9 +105,3 @@ async function pinAuthStateManagementExample(): Promise<void> {
   }
 }
 ```
-
-## 相关文档
-
-- [Ukey PIN码认证](huks-ukey-pin-authentication-management-overview.md)
-- [打开资源/关闭资源(ArkTS)](huks-open-close-resource-arkts.md)
-- [资源管理介绍及规格](huks-resource-management-overview.md)
