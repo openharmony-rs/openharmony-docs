@@ -8,11 +8,13 @@
 
 升级范围：升级整个系统，包括内置资源和预置应用，不包括三方应用。
 
-升级类型：SD卡升级、在线升级。
+升级类型：SD卡升级、在线升级、恢复出厂升级。
 
 - SD卡升级依赖升级包和SD卡安装。
 
 - 在线升级依赖设备厂商部署的用于管理升级包的服务器。服务器由设备厂商部署，IP由调用者传入，请求的request接口是固定的，由设备厂商开发。
+
+- 恢复出厂升级依赖系统预置，硬件支持。
 
 > **说明：**
 >
@@ -168,9 +170,21 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
-      console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
-    });
+    console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
+});
 ```
 
 ### checkNewVersion
@@ -204,6 +218,18 @@ checkNewVersion(): Promise\<CheckResult>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.checkNewVersion()
       .then((result: update.CheckResult) => {
         console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
@@ -245,7 +271,18 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
       console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
       console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
@@ -282,7 +319,18 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
     console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
     console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
@@ -336,6 +384,18 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
   console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
   console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
@@ -392,7 +452,20 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
+updater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
+  .then((info: Array<update.ComponentDescription>)=> {
   console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
   console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
@@ -430,6 +503,18 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
   console.info(`info osVersion = ${info?.osVersion}`);
   console.info(`info deviceName = ${info?.deviceName}`);
@@ -467,7 +552,18 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
   console.info(`info osVersion = ${info.osVersion}`);
   console.info(`info deviceName = ${info.deviceName}`);
@@ -514,6 +610,18 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
   console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
   console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
@@ -562,6 +670,18 @@ const descriptionOptions: update.DescriptionOptions = {
   format: update.DescriptionFormat.STANDARD, // 标准格式
   language: "zh-cn" // 中文
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
   console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
@@ -600,6 +720,18 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
   console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
 });
@@ -636,6 +768,18 @@ getTaskInfo(): Promise\<TaskInfo>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getTaskInfo().then((info: update.TaskInfo) => {
   console.info(`getTaskInfo isexistTask= ${info.existTask}`);
 }).catch((err: BusinessError) => {
@@ -687,6 +831,18 @@ const downloadOptions: update.DownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
   order: update.Order.DOWNLOAD // 下载
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
   console.info(`download error ${JSON.stringify(err)}`);
 });
@@ -741,6 +897,18 @@ const downloadOptions: update.DownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
    order: update.Order.DOWNLOAD // 下载
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.download(versionDigestInfo, downloadOptions).then(() => {
   console.info(`download start`);
 }).catch((err: BusinessError) => {
@@ -791,6 +959,18 @@ const versionDigestInfo : update.VersionDigestInfo= {
 const resumeDownloadOptions : update.ResumeDownloadOptions= {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
   console.info(`resumeDownload error ${JSON.stringify(err)}`);
 });
@@ -844,6 +1024,18 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const resumeDownloadOptions: update.ResumeDownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
   console.info(`resumeDownload start`);
 }).catch((err: BusinessError) => {
@@ -894,6 +1086,18 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
   console.info(`pauseDownload error ${JSON.stringify(err)}`);
 });
@@ -947,6 +1151,18 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
   console.info(`pauseDownload`);
 }).catch((err: BusinessError)  => {
@@ -997,6 +1213,18 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
   console.info(`upgrade error ${JSON.stringify(err)}`);
 });
@@ -1050,6 +1278,18 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
   console.info(`upgrade start`);
 }).catch((err: BusinessError) => {
@@ -1061,7 +1301,7 @@ updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, callback: AsyncCallback\<void>): void
 
-清除异常状态。使用callback异步回调。
+清除异常状态，版本下载、安装异常的时候，清理升级包文件及升级状态。使用callback异步回调。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1100,6 +1340,18 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
   console.info(`clearError error ${JSON.stringify(err)}`);
 });
@@ -1109,7 +1361,7 @@ updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Promise\<void>
 
-清除异常状态。使用Promise异步回调。
+清除异常状态，版本下载、安装异常的时候，清理升级包文件及升级状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1153,6 +1405,18 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.clearError(versionDigestInfo, clearOptions).then(() => {
   console.info(`clearError success`);
 }).catch((err: BusinessError) => {
@@ -1190,7 +1454,18 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
   console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
   console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
@@ -1227,7 +1502,18 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
   console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
   console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
@@ -1273,6 +1559,18 @@ const policy: update.UpgradePolicy = {
   autoUpgradeStrategy: false,
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.setUpgradePolicy(policy, (err: BusinessError) => {
   console.info(`setUpgradePolicy result: ${err}`);
 });
@@ -1320,6 +1618,18 @@ const policy: update.UpgradePolicy = {
   autoUpgradeStrategy: false,
   autoUpgradePeriods: [ { start: 120, end: 240 } ] // 自动升级时间段，用分钟表示
 };
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.setUpgradePolicy(policy).then(() => {
   console.info(`setUpgradePolicy success`);
 }).catch((err: BusinessError) => {
@@ -1357,7 +1667,18 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.terminateUpgrade((err: BusinessError) => {
   console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
 });
@@ -1393,7 +1714,18 @@ terminateUpgrade(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.terminateUpgrade().then(() => {
   console.info(`terminateUpgrade success`);
 }).catch((err: BusinessError) => {
@@ -1430,7 +1762,18 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
   extraInfo: ""
 };
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
   console.info(`updater on ${JSON.stringify(eventInfo)}`);
 });
@@ -1465,7 +1808,18 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
   extraInfo: ""
 };
-
+try {
+      const upgradeInfo: update.UpgradeInfo = {
+        upgradeApp: "com.ohos.ota.updateclient",
+        businessType: {
+          vendor: update.BusinessVendor.PUBLIC,
+          subType: update.BusinessSubType.FIRMWARE
+        }
+      };
+      let updater = update.getOnlineUpdater(upgradeInfo);
+    } catch(error) {
+      console.error(`Fail to get updater error: ${error}`);
+    }
 updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
   console.info(`updater off ${JSON.stringify(eventInfo)}`);
 });
@@ -1502,6 +1856,11 @@ factoryReset(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+try {
+  let restorer = update.getRestorer();
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 restorer.factoryReset((err) => {
   console.info(`factoryReset error ${JSON.stringify(err)}`);
 });
@@ -1537,7 +1896,11 @@ factoryReset(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+  let restorer = update.getRestorer();
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 restorer.factoryReset().then(() => {
   console.info(`factoryReset success`);
 }).catch((err: BusinessError) => {
@@ -1575,7 +1938,11 @@ forceFactoryReset(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+  let restorer = update.getRestorer();
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 restorer.forceFactoryReset().then(() => {
   console.info(`forceFactoryReset success`);
 }).catch((err: BusinessError) => {
@@ -1621,7 +1988,11 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
+try {
+  let restorer = update.getRestorer();
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 let factoryResetStrategy: update.FactoryResetStrategy = {
   scope: update.FactoryResetScope.DATA,
   strategy: "deepFactoryReset test"
@@ -1675,6 +2046,11 @@ let factoryResetStrategy: update.FactoryResetStrategy = {
   scope: update.FactoryResetScope.DATA,
   strategy: "deepFactoryReset"
 };
+try {
+  let restorer = update.getRestorer();
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
   console.info(`getDeepFactoryResetInfo success`);
 }).catch((err: BusinessError) => {
@@ -1721,6 +2097,11 @@ const upgradeFile: update.UpgradeFile = {
   filePath: "path" // 本地升级包路径
 };
 
+try {
+  let localUpdater = update.getLocalUpdater();
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
   console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
 });
@@ -1769,6 +2150,12 @@ const upgradeFile: update.UpgradeFile = {
   fileType: update.ComponentType.OTA, // OTA包
   filePath: "path" // 本地升级包路径
 };
+
+try {
+  let localUpdater = update.getLocalUpdater();
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath").then(() => {
   console.info(`verifyUpgradePackage success`);
 }).catch((err: BusinessError) => {
@@ -1811,6 +2198,11 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
   filePath: "path" // 本地升级包路径
 }];
 
+try {
+  let localUpdater = update.getLocalUpdater();
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 localUpdater.applyNewVersion(upgradeFiles, (err) => {
   console.info(`applyNewVersion error ${JSON.stringify(err)}`);
 });
@@ -1852,6 +2244,12 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
   fileType: update.ComponentType.OTA, // OTA包
   filePath: "path" // 本地升级包路径
 }];
+
+try {
+  let localUpdater = update.getLocalUpdater();
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 localUpdater.applyNewVersion(upgradeFiles).then(() => {
   console.info(`applyNewVersion success`);
 }).catch((err: BusinessError) => {
@@ -1893,6 +2291,11 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
   console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
+try {
+  let localUpdater = update.getLocalUpdater();
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 localUpdater.on(eventClassifyInfo, onTaskUpdate);
 ```
 
@@ -1930,6 +2333,11 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
   console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
+try {
+  let localUpdater = update.getLocalUpdater();
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 localUpdater.off(eventClassifyInfo, onTaskUpdate);
 ```
 
