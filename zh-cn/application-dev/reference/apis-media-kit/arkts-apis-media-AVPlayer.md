@@ -1662,7 +1662,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| index | number | 是   | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](#gettrackdescription9-1)接口获取MD_KEY_TRACK_INDEX的值。 |
+| index | number | 是   | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](#gettrackdescription9-1)接口返回的音视频轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)中读取的key为MD_KEY_TRACK_INDEX所对应的值。<br>每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
 | mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换轨道的模式。<br>取值约束：该模式仅适用于视频轨道的切换。<br>默认值：SMOOTH模式，在片段末尾进行切换，以确保视频播放的连续性。**仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。 |
 
 **返回值：**
@@ -2193,9 +2193,9 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 
 **起始版本：** 26.0.0
 
-    console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-    console.error('Failed to getLoadedTimeRanges, error message is: ' + err.message);
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **返回值：**
 
@@ -2209,9 +2209,9 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded in calling getLoadedTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getLoadedTimeRanges, error message is:' + err.message);
+    console.error('Failed to getLoadedTimeRanges, error message is: ' + err.message);
   });
 }
 ```
@@ -2227,9 +2227,9 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。
 > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。
 
-    console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
+**起始版本：** 26.0.0
 
-    console.error('Failed to getSeekableTimeRanges, error message is: ' + err.message);
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2245,9 +2245,9 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded in calling getSeekableTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getSeekableTimeRanges, error message is:' + err.message);
+    console.error('Failed to getSeekableTimeRanges, error message is: ' + err.message);
   });
 }
 ```
@@ -2281,7 +2281,7 @@ async function test(){
     avPlayer.seekToDefaultPosition()
     console.info('Succeeded in calling seekToDefaultPosition.');
   } catch (err) {
-    console.error('Failed to seekToDefaultPosition, error message is:' + err.message);
+    console.error('Failed to seekToDefaultPosition, error message is: ' + err.message);
   }
 }
 ```

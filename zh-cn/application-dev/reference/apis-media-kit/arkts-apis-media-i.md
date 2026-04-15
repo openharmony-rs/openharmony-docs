@@ -483,19 +483,19 @@ async function setupPlayer() {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| maxVideoBitrate | number | 否   | 是   | 允许的视频最大比特率。<br>取值约束：该值必须为正整数。<br>单位为比特/秒。<br>默认值：如果未指定此参数，则视频最大比特率不受限制。 |
-| minVideoBitrate | number | 否   | 是   | 允许的视频最小比特率。<br>取值约束：该值必须为正整数。<br>单位为比特/秒。<br>默认值：如果未指定此参数，则视频最小比特率不受限制。 |
-| maxVideoFrameRate | number | 否   | 是   | 允许的视频最大帧率。<br>取值约束：该值必须为正整数。<br>单位为帧/秒。<br>默认值：如果未指定此参数，则视频最大帧率不受限制。 |
-| minVideoFrameRate | number | 否   | 是   | 允许的视频最小帧率。<br>取值约束：该值必须为正整数。<br>单位为帧/秒。<br>默认值：如果未指定此参数，则视频最小帧率不受限制。 |
-| maxVideoResolution | [VideoSize](#videosize) | 否   | 是   | 允许的视频最大分辨率。<br>默认值：如果未指定此参数，则视频最大分辨率不受限制。 |
-| minVideoResolution | [VideoSize](#videosize) | 否   | 是   | 允许的视频最小分辨率。<br>默认值：如果未指定此参数，则视频最小分辨率不受限制。 |
-| preferredVideoMimeTypes | Array\<string> | 否   | 是   | 视频轨道的首选MIME类型。多个MIME按数组顺序排列，优先级依次递减。<br>取值约束：格式为MIME字符串或HLS/DASH中的编解码器字符串。<br>默认值：如果未指定或设置为空数组，则MIME类型不受限制。 |
-| maxAudioBitrate | number | 否   | 是   | 允许的音频最大比特率。<br>取值约束：该值必须为正整数。<br>单位为比特/秒。<br>默认值：如果未指定此参数，则音频最大比特率不受限制。 |
-| minAudioBitrate | number | 否   | 是   | 允许的音频最小比特率。<br>取值约束：该值必须为正整数。<br>单位为比特/秒。<br>默认值：如果未指定此参数，则音频最小比特率不受限制。 |
-| maxAudioChannels | number | 否   | 是   | 允许的音频最大通道数。<br>取值约束：该值必须为正整数。<br>默认值：如果未指定此参数，则音频通道数不受限制。 |
-| preferredAudioMimeTypes | Array\<string> | 否   | 是   | 音频轨道的首选MIME类型。多个MIME按数组顺序排列，优先级依次递减。<br>取值约束：格式为MIME字符串或HLS/DASH中的编解码器字符串。<br>默认值：如果未指定此参数或设置为空数组，则音频的MIME类型不受限制。 |
-| preferredAudioLanguages | Array\<string> | 否   | 是   | 音频轨道的首选语言。多个语言按数组顺序排列，优先级依次递减。<br>取值约束：语言字符串符合IETF BCP 47标准定义。<br>默认值：如果未指定此参数或设置为空数组，则音频语言不受限制。 |
-| preferredSubtitleLanguages | Array\<string> | 否   | 是   | 字幕轨道的首选语言。多个语言按数组顺序排列，优先级依次递减。<br>取值约束：语言字符串符合IETF BCP 47标准定义。<br>默认值：如果未指定此参数或设置为空数组，则字幕语言不受限制。 |
+| maxVideoBitrate | number | 否   | 是   | 允许的视频最大比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则视频最大比特率不受限制。 |
+| minVideoBitrate | number | 否   | 是   | 允许的视频最小比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则视频最小比特率不受限制。 |
+| maxVideoFrameRate | number | 否   | 是   | 允许的视频最大帧率。<br>单位为帧/秒。<br>该值必须为正整数，如果未指定此参数，则视频最大帧率不受限制。 |
+| minVideoFrameRate | number | 否   | 是   | 允许的视频最小帧率。<br>单位为帧/秒。<br>该值必须为正整数，如果未指定此参数，则视频最小帧率不受限制。 |
+| maxVideoResolution | [VideoSize](#videosize) | 否   | 是   | 允许的视频最大分辨率。如果未指定此参数，则视频最大分辨率不受限制。 |
+| minVideoResolution | [VideoSize](#videosize) | 否   | 是   | 允许的视频最小分辨率。如果未指定此参数，则视频最小分辨率不受限制。 |
+| preferredVideoMimeTypes | Array\<string> | 否   | 是   | 视频轨道的首选MIME类型。多个MIME按数组顺序排列，优先级依次递减。<br>取值约束：格式为MIME字符串或HLS/DASH中的编解码器字符串。<br>如果未指定或设置为空数组，则MIME类型不受限制。 |
+| maxAudioBitrate | number | 否   | 是   | 允许的音频最大比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则音频最大比特率不受限制。 |
+| minAudioBitrate | number | 否   | 是   | 允许的音频最小比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则音频最小比特率不受限制。 |
+| maxAudioChannels | number | 否   | 是   | 允许的音频最大通道数。该值必须为正整数，如果未指定此参数，则音频通道数不受限制。 |
+| preferredAudioMimeTypes | Array\<string> | 否   | 是   | 音频轨道的首选MIME类型。多个MIME按数组顺序排列，优先级依次递减。<br>取值约束：格式为MIME字符串或HLS/DASH中的编解码器字符串。<br>如果未指定此参数或设置为空数组，则音频的MIME类型不受限制。 |
+| preferredAudioLanguages | Array\<string> | 否   | 是   | 音频轨道的首选语言。多个语言按数组顺序排列，优先级依次递减。<br>取值约束：语言字符串符合IETF BCP 47标准定义。<br>如果未指定此参数或设置为空数组，则音频语言不受限制。 |
+| preferredSubtitleLanguages | Array\<string> | 否   | 是   | 字幕轨道的首选语言。多个语言按数组顺序排列，优先级依次递减。<br>取值约束：语言字符串符合IETF BCP 47标准定义。<br>如果未指定此参数或设置为空数组，则字幕语言不受限制。 |
 
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
