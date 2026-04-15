@@ -979,7 +979,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -1044,7 +1044,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -1071,7 +1071,7 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 ## window.setWaterMarkImage
 setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: number): Promise&lt;void&gt;
 
-根据优先级设置屏幕水印图片的显示状态。使用Promise异步回调。当priority等于0时，当前接口与[setWaterMarkImage](#windowsetwatermarkimage10)等价。
+设置屏幕水印图片的显示状态，并设定水印的优先级。使用Promise异步回调。当priority等于0时，当前接口与[setWaterMarkImage](#windowsetwatermarkimage10)等价。
 
 **起始版本：** 26.0.0
 
@@ -1112,7 +1112,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(100);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,

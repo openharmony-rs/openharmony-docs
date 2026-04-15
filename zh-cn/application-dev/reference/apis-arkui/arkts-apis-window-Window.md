@@ -1210,9 +1210,9 @@ export default class EntryAbility extends UIAbility {
 
 setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
-设置主窗口容器在焦点态和非焦点态时的背景色。该接口需在调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)后使用。
+设置主窗口容器在焦点态和非焦点态时的背景色。该接口需在调用[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)后使用。
 
-窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](arkts-apis-window-Window.md#setwindowbackgroundcolor9)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
+窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](#setwindowbackgroundcolor9)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
 
 **起始版本：** 26.0.0
 
@@ -6031,13 +6031,13 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
-> - 针对非2in1设备：
->   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
->   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
-> - 针对2in1设备：
->   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
->   - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
-> - 针对TV设备：当前接口不生效也不报错。
+- 针对TV设备：当前接口不生效也不报错。
+- 针对非2in1设备：
+  - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
+  - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
+- 针对2in1设备：
+  - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6117,13 +6117,13 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
-> - 针对非2in1设备：
->   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
->   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
-> - 针对2in1设备：
->   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
->   - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
-> - 针对TV设备：当前接口不生效也不报错。
+- 针对TV设备：当前接口不生效也不报错。
+- 针对非2in1设备：
+  - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
+  - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
+- 针对2in1设备：
+  - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

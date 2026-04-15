@@ -725,7 +725,7 @@ try {
 
 getAllWindowLayoutInfo(displayId: number, option?: WindowInfoOptions): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
 
-获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。
+根据option指定的过滤条件获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。当未传入option或其中的字段都为默认值时，当前接口与[getAllWindowLayoutInfo](#windowgetallwindowlayoutinfo15)等价。
 
 **起始版本：** 26.0.0
 
