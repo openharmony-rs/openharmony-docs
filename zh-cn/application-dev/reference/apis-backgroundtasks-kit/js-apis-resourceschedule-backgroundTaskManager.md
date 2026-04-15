@@ -1962,6 +1962,8 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -2007,6 +2009,64 @@ export default class EntryAbility extends UIAbility {
             this.notificationId = res.notificationId;
             this.continuousTaskId = res.continuousTaskId;
           }).catch((error: BusinessError) => {
+            console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+          });
+        } catch (error) {
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  notificationId: int = 0; // 保存通知id
+  continuousTaskId: int | undefined = -1;
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 请开发者替换为实际被拉起应用的bundleName和abilityName
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // 设置点击通知后的动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 开发者自定义的请求码，用于标识将被执行的动作
+      requestCode: 0,
+      // 设置点击通知后的动作执行属性
+      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          // 如果要合并通知，主类型和子类型都必须相同，combinedTaskNotification为true，continuousTaskId必须存在且合法
+          // 申请主类型为MODE_LOCATION的长时任务
+          let modeList: Array<backgroundTaskManager.BackgroundTaskMode> = [backgroundTaskManager.BackgroundTaskMode.MODE_LOCATION];
+          let subModeList: Array<backgroundTaskManager.BackgroundTaskSubmode> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_NORMAL_NOTIFICATION];
+          let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+          continuousTaskRequest.backgroundTaskModes =  modeList;
+          continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+          continuousTaskRequest.wantAgent = wantAgentObj;
+          backgroundTaskManager.startBackgroundRunning(this.context, continuousTaskRequest).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
+            console.info(`Operation startBackgroundRunning succeeded. notificationId is ${res.notificationId} continuousTaskId is ${res.continuousTaskId}`);
+            this.notificationId = res.notificationId;
+            this.continuousTaskId = res.continuousTaskId;
+          }).catch((error) => {
             console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
           });
         } catch (error) {
@@ -2067,7 +2127,9 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 
 **示例：**
 
-```js
+ArkTS-Dyn示例：
+
+```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2123,6 +2185,63 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  notificationId: int = 0; // 保存通知id
+  continuousTaskId: int | undefined = -1; // 长时任务ID
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 添加需要被拉起应用的bundleName和abilityName, 请开发者替换为实际的bundleName和abilityName
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // 设置点击通知后的动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 开发者自定义的请求码，用于标识将被执行的动作
+      requestCode: 0,
+      // 设置点击通知后的动作执行属性
+      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          // 必须先执行startBackgroundRunning，才能调用updateBackgroundRunning，请开发者提前申请长时任务
+          let modeList: Array<backgroundTaskManager.BackgroundTaskMode> = [backgroundTaskManager.BackgroundTaskMode.MODE_LOCATION];
+          let subModeList: Array<backgroundTaskManager.BackgroundTaskSubmode> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_NORMAL_NOTIFICATION];
+          let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+          continuousTaskRequest.backgroundTaskModes = modeList;
+          continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+          continuousTaskRequest.wantAgent = wantAgentObj;
+          continuousTaskRequest.continuousTaskId = this.continuousTaskId; // 对于更新接口，长时任务ID必须要传且为存在的ID，否则更新失败
+          backgroundTaskManager.updateBackgroundRunning(this.context, continuousTaskRequest).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
+            console.info("Operation updateBackgroundRunning succeeded");
+            this.notificationId = res.notificationId;
+          }).catch((error) => {
+            console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+          });
+        } catch (error) {
+          console.error(`Operation updateBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 ## backgroundTaskManager.stopBackgroundRunning<sup>21+</sup>
 
 ArkTS-Dyn: stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt;
@@ -2164,7 +2283,9 @@ ArkTS-Sta: stopBackgroundRunning(context: Context, continuousTaskId: int): Promi
 
 **示例**：
 
-```js
+ArkTS-Dyn示例：
+
+```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -2176,6 +2297,29 @@ export default class EntryAbility extends UIAbility {
       backgroundTaskManager.stopBackgroundRunning(this.context, this.continuousTaskId).then(() => {
         console.info("Operation stopBackgroundRunning succeeded");
       }).catch((error: BusinessError) => {
+        console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  continuousTaskId: int = 0;
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      backgroundTaskManager.stopBackgroundRunning(this.context, this.continuousTaskId).then(() => {
+        console.info("Operation stopBackgroundRunning succeeded");
+      }).catch((error) => {
         console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
       });
     } catch (error) {
@@ -2484,7 +2628,10 @@ isModeSupported(): boolean
 | 9800005 | Continuous task verification failed. |
 
 **示例：**
-```js
+
+ArkTS-Dyn示例：
+
+```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2499,7 +2646,30 @@ export default class EntryAbility extends UIAbility {
       isModeSupported = continuousTaskRequest.isModeSupported();
       console.info(`Operation isModeSupported succeeded. isModeSupported is ${isModeSupported}`);
     } catch (error) {
-      console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      console.error(`Operation isModeSupported failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let isModeSupported: boolean = false; 
+    let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+    let modeList: Array<backgroundTaskManager.BackgroundTaskMode> = [backgroundTaskManager.BackgroundTaskMode.MODE_TASK_KEEPING];
+    continuousTaskRequest.backgroundTaskModes = modeList;
+    try {
+      isModeSupported = continuousTaskRequest.isModeSupported();
+      console.info(`Operation isModeSupported succeeded. isModeSupported is ${isModeSupported}`);
+    } catch (error) {
+      console.error(`Operation isModeSupported failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };
@@ -2541,7 +2711,10 @@ requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;):
 | 9800005 | Continuous task verification failed. |
 
 **示例：**
-```js
+
+ArkTS-Dyn示例：
+
+```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2566,6 +2739,35 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
+  console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+    let modeList: Array<backgroundTaskManager.BackgroundTaskMode> = [backgroundTaskManager.BackgroundTaskMode.MODE_SPECIAL_SCENARIO_PROCESSING];
+    continuousTaskRequest.backgroundTaskModes = modeList;
+    let subModeList: Array<backgroundTaskManager.BackgroundTaskSubmode> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
+    continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+    try {
+      continuousTaskRequest.requestAuthFromUser(this.context, callbackAuth);
+      console.info('Operation requestAuthFromUser succeeded.');
+    } catch (error) {
+      console.error(`Operation requestAuthFromUser failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 
 ### checkSpecialScenarioAuth<sup>22+</sup>
 
@@ -2608,7 +2810,10 @@ checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
 | 9800005 | Continuous task verification failed. |
 
 **示例：**
-```js
+
+ArkTS-Dyn示例：
+
+```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2620,6 +2825,29 @@ export default class EntryAbility extends UIAbility {
       continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
         console.info('Operation checkSpecialScenarioAuth succeeded. data: ' + JSON.stringify(res));
       }).catch((error: BusinessError) => {
+        console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation checkSpecialScenarioAuth failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+      continuousTaskRequest.checkSpecialScenarioAuth(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
+        console.info('Operation checkSpecialScenarioAuth succeeded. data: ' + JSON.stringify(res));
+      }).catch((error) => {
         console.error(`Operation checkSpecialScenarioAuth failed. code is ${error.code} message is ${error.message}`);
       });
     } catch (error) {
