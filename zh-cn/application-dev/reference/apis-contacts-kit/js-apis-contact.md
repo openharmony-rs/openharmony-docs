@@ -243,7 +243,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                    | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。            |
+| key      | string                    | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。            |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
@@ -297,7 +297,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
-| key      | string                    | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。 |
+| key      | string                    | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -336,7 +336,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
 | context | Context | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key     | string  | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                      |
+| key     | string  | 是   | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                      |
 
 **返回值：**
 
@@ -391,7 +391,7 @@ deleteContact(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| key    | string | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。 |
+| key    | string | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。 |
 
 **返回值：**
 
@@ -429,7 +429,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                                         |
+| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
@@ -491,7 +491,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
-| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                         |
+| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -537,7 +537,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | 参数名   | 类型                                    | 必填 | 说明                                                         |
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                                         |
+| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                         |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
 
@@ -601,7 +601,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 
 | 参数名   | 类型                                    | 必填 | 说明                                 |
 | -------- | --------------------------------------- | ---- | ------------------------------------ |
-| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                         |
+| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                   |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
@@ -649,7 +649,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。                                                 |
+| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                                 |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                       |
 
 **返回值：**
@@ -714,7 +714,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
-| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectContacts10-1)接口获取。       |
+| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
@@ -1586,7 +1586,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                       |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                       |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
 
 **错误码：**
@@ -1638,7 +1638,7 @@ queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                     |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                     |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -1672,7 +1672,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                      |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                      |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
 
@@ -1729,7 +1729,7 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                    |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                    |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                     |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
@@ -1768,7 +1768,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                       |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                       |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                       |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
 
@@ -1823,7 +1823,7 @@ queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                     |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                     |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                        |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
@@ -1860,7 +1860,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                       |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                       |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
@@ -1920,7 +1920,7 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                     |
+| key      | string                                   | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                     |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则默认使用系统联系人应用查询。                                     |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，当该参数为空时，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                         |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
@@ -1962,7 +1962,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key     | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactqueryKey10)获取。                       |
+| key     | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key，可以通过[queryKey](#contactquerykey10)获取。                       |
 | holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传该参数，则默认查询所有联系人属性。           |
 
@@ -2023,7 +2023,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 
 | 参数名 | 类型                                    | 必填 | 说明                                   |
 | ------ | --------------------------------------- | ---- | -------------------------------------- |
-| key    | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时自动生成的唯一标识，一个联系人对应一个key,可以通过[queryKey](#contactqueryKey10)获取。 |
+| key    | string                                  | 是   | 联系人的唯一查询键key，是新建联系人时自动生成的唯一标识，一个联系人对应一个key,可以通过[queryKey](#contactquerykey10)获取。 |
 | holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数则默认使用系统联系人应用查询。                |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                    |
 
