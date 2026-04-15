@@ -6461,7 +6461,7 @@ type TransitionControllerCallback = (context: window.TransitionContext) => void
 
 | 类型      | 说明                          |
 | -----------| ---------------------------- |
-| (context: window.TransitionContext) => void | 表示入参为[TransitionContext](#TransitionContext9)的函数类型。 |
+| (context: window.TransitionContext) => void | 表示入参为[TransitionContext](#transitioncontext9)的函数类型。 |
 
 ## TransitionController<sup>9+</sup>
 
@@ -6500,8 +6500,8 @@ promise.then((data) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| animationForShown<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback23) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
-| animationForHidden<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback23) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
+| animationForShown<sup>23+</sup> | [TransitionControllerCallback](#transitioncontrollercallback23) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
+| animationForHidden<sup>23+</sup> | [TransitionControllerCallback](#transitioncontrollercallback23) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
 
 ### animationForShown<sup>9+</sup>
 
