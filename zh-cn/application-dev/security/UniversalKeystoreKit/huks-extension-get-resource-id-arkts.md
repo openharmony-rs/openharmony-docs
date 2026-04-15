@@ -73,7 +73,6 @@ async function getResourceId(
   }
 }
 
-// 完整示例
 async function extensionGetResourceIdExample(): Promise<string> {
   try {
     // 获取资源ID

@@ -602,10 +602,9 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 
 onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCryptoExtensionResult>
 
-生成指定资源句柄的密钥对。使用Promise异步回调。
+用于在扩展设备内生成密钥对。使用Promise异步回调。
 
-> **说明：**
-> 该接口复用HUKS原有接口定义。在外部密钥管理扩展场景下，密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
+params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。参数包括算法类型（HUKS_TAG_ALGORITHM）、密钥长度（HUKS_TAG_KEY_SIZE）、密钥用途（HUKS_TAG_PURPOSE）等。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -614,7 +613,7 @@ onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCrypto
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 待生成密钥的资源句柄。 |
-| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 密钥生成操作的属性参数。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 密钥生成操作的属性参数。参数为可选，由Extension厂商定义支持范围。 |
 
 **返回值：**
 
@@ -629,6 +628,25 @@ import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.Un
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数
+    let algorithm: huks.HuksKeyAlg | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value as huks.HuksKeyAlg;
+    let keySize: huks.HuksKeySize | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value as huks.HuksKeySize;
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入参数，设置默认值
+    if (algorithm === undefined) {
+      algorithm = huks.HuksKeyAlg.HUKS_ALG_RSA; // 默认RSA算法
+    }
+    if (keySize === undefined) {
+      keySize = huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048; // 默认2048位
+    }
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN; // 默认签名用途
+    }
+
     const result: HuksCryptoExtensionResult = {
       resultCode: 0
     };
@@ -643,10 +661,9 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 
 onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCryptoExtensionResult>
 
-导出指定资源句柄的公钥。使用Promise异步回调。
+用于导出指定密钥的公钥。使用Promise异步回调。
 
-> **说明：**
-> 该接口复用HUKS原有接口定义。在外部密钥管理扩展场景下，密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
+params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -655,7 +672,7 @@ onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCryptoEx
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 待导出公钥的资源句柄。 |
-| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导出公钥操作的属性参数。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导出公钥操作的属性参数。参数为可选，由Extension厂商定义支持范围。推荐传入密钥用途参数。 |
 
 **返回值：**
 
@@ -670,6 +687,15 @@ import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.Un
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数，推荐传入密钥用途
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入用途参数，设置默认值（推荐默认签名用途）
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN;
+    }
+
     let pubKey: Uint8Array = new Uint8Array(1024);
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
@@ -686,10 +712,11 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 
 onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[], wrappedKey: Uint8Array): Promise\<HuksCryptoExtensionResult>
 
-导入加密封装的密钥对。使用Promise异步回调。
+用于导入加密封装的密钥对。使用Promise异步回调。
 
-> **说明：**
-> 该接口复用HUKS原有接口定义。在外部密钥管理扩展场景下，密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
+params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。参数包括算法类型（HUKS_TAG_ALGORITHM）、密钥长度（HUKS_TAG_KEY_SIZE）、密钥用途（HUKS_TAG_PURPOSE）等。
+
+关于handle和wrappedHandle参数：当handle有效时，以handle为主；当handle无效时，使用wrappedHandle。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -697,9 +724,9 @@ onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksP
 
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
-| handle | string | 是   | 待导入密钥的资源句柄。 |
-| wrappedHandle | string | 是   | 用于解封导入密钥的密钥资源句柄。 |
-| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导入封装密钥操作的属性参数。 |
+| handle | string | 是   | 待导入密钥的资源句柄。当handle有效时，以handle为主；当handle无效时，使用wrappedHandle。 |
+| wrappedHandle | string | 是   | 用于解封导入密钥的密钥资源句柄。当handle无效时作为备用句柄。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导入封装密钥操作的属性参数。参数为可选，由Extension厂商定义支持范围。 |
 | wrappedKey | Uint8Array | 是   | 封装密钥数据，格式由密钥扩展定义。 |
 
 **返回值：**
@@ -716,6 +743,31 @@ import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.Un
 export default class CryptoExtension extends CryptoExtensionAbility {
   onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[],
       wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
+    // 解析可选参数
+    let algorithm: huks.HuksKeyAlg | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_ALGORITHM)?.value as huks.HuksKeyAlg;
+    let keySize: huks.HuksKeySize | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_KEY_SIZE)?.value as huks.HuksKeySize;
+    let purpose: huks.HuksKeyPurpose | undefined = params.find(
+      param => param.tag === huks.HuksTag.HUKS_TAG_PURPOSE)?.value as huks.HuksKeyPurpose;
+
+    // 如未传入参数，设置默认值
+    if (algorithm === undefined) {
+      algorithm = huks.HuksKeyAlg.HUKS_ALG_RSA;
+    }
+    if (keySize === undefined) {
+      keySize = huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048;
+    }
+    if (purpose === undefined) {
+      purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT;
+    }
+
+    // handle优先规则：handle有效时以handle为主，否则使用wrappedHandle
+    let effectiveHandle: string = handle;
+    if (!handle || handle.length === 0) {
+      effectiveHandle = wrappedHandle;
+    }
+
     const result: HuksCryptoExtensionResult = {
       resultCode: 0
     };
