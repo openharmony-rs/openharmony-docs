@@ -71,7 +71,9 @@ import { effectKit } from "@kit.ArkGraphics2D";
 
 图片颜色明亮度的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -345,7 +347,9 @@ getMorandiShadowColor(): Color
 
 从图像的主色中获取莫兰迪阴影色，并将结果写入[Color](js-apis-effectKit.md#color)。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -395,7 +399,9 @@ getDeepenImmersionColor(): Color
 
 生成与背景色融合且比背景色更深的强沉浸感颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -445,7 +451,9 @@ getImmersiveBackgroundColor(): Color
 
 生成能够创造沉浸式视觉效果的沉浸式背景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -495,7 +503,9 @@ getImmersiveForegroundColor(): Color
 
 生成能够创造沉浸式视觉效果的沉浸式前景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -545,7 +555,9 @@ discriminatePictureLightDegree(): PictureLightDegree
 
 获取图片的明亮程度。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -603,7 +615,9 @@ getReverseColor(): Color
 
 基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。根据[discriminatePictureLightDegree](#discriminatepicturelightdegree)接口获取的图片明亮类型得到一个反色，仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
