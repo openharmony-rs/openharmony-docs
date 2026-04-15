@@ -270,7 +270,7 @@ struct RefreshExample {
         .scrollBar(BarState.Off)
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -333,7 +333,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(96)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -408,7 +408,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(64)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -502,7 +502,7 @@ struct RefreshExample {
         this.params.refreshStatus = refreshStatus;
         // 更新自定义组件内容。
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -587,7 +587,7 @@ struct RefreshExample {
         this.ratio = 1 - Math.pow((offset / this.maxRefreshingHeight), 3);
       })
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -741,7 +741,7 @@ struct RefreshExample {
       }
       .maxPullDownDistance(150)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus)
+        console.info('Refresh onStateChange state is ' + refreshStatus)
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value)
@@ -814,7 +814,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .pullDownRatio(this.ratio)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -876,7 +876,7 @@ struct RefreshExample {
         )
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -976,7 +976,7 @@ struct RefreshExample {
         this.refreshStatus = refreshStatus;
         this.params.refreshStatus = refreshStatus;
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
