@@ -184,8 +184,6 @@
 > 1. 当从无网络到有网络连接时会触发刷新。而网络间切换（例如：WiFi间切换，WiFi到流量，流量到WiFi），或从有网络连接到无网络连接时不会触发刷新。
 >
 > 2. 为减少卡片在频繁开关网络场景进程启动次数，无网判定需要网络连续断开十分钟后，才会认为无网，下次联网后触发网络刷新。
->
-> 3. 使用网络刷新需要申请[ohos.permission.GET_NETWORK_INFO](../security/AccessToken/permissions-for-all.md#ohospermissionget_network_info)权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 
   ```json
