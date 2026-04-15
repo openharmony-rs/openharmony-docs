@@ -25,7 +25,7 @@
    ```ts
    import { image } from '@kit.ImageKit';
    import { camera } from '@kit.CameraKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
