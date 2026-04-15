@@ -124,7 +124,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 **ArkTS-Sta示例：**
 
-<!-- @[sta_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[sta_import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
@@ -140,7 +140,7 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_deviceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[sta_deviceManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -190,7 +190,7 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_createSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[sta_createSession](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -317,7 +317,7 @@ function getRemoteDeviceId(): string | undefined {
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- @[sta_collab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
   ```ts
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -436,7 +436,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -530,7 +530,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_sendMessage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[sta_sendMessage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -564,7 +564,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_sendData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[sta_sendData](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -603,7 +603,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[sta_disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
