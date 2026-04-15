@@ -57,7 +57,7 @@ static JSVM_Value GetPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetPropertyNames(env, args[0], &result);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "Failed to get propertynames");
+        OH_JSVM_ThrowError(env, nullptr, "Failed to get property names");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetPropertyNames success");
@@ -700,7 +700,7 @@ static JSVM_Value GetAllPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
                                          JSVM_KeyFilter::JSVM_KEY_WRITABLE,
                                          JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "Failed to get allpropertynames");
+        OH_JSVM_ThrowError(env, nullptr, "Failed to get all property names");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetAllPropertyNames success");

@@ -212,7 +212,7 @@ static JSVM_Value GetValueBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueBigintUint64(env, args[0], &value, &lossLess);
     // 判断从JS侧获取bigint是否为无损转换，如果不是抛出异常
     if (!lossLess) {
-        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless converted");
+        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM GetValueBigintUint64 success");
@@ -307,7 +307,7 @@ static JSVM_Value GetBigintInt64(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueBigintInt64(env, args[0], &value, &lossLess);
     // 判断从JS侧获取bigint是否为无损转换，如果不是抛出异常
     if (!lossLess) {
-        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless converted");
+        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM GetBigintInt64 success");
