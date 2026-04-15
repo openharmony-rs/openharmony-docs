@@ -4446,7 +4446,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 |  名称   | 类型   | 只读 | 可选 |            说明              |
 | ------- | ------ | -- |--------|-------------------- |
