@@ -286,8 +286,8 @@ AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<
 | 枚举项 | 描述 |
 | -- | -- |
 | AAC_PROFILE_LC = 0 | AAC编码档次为Low Complexity级别。 |
-| AAC_PROFILE_HE = 3 | AAC编码档次为High Efficiency级别。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
-| AAC_PROFILE_HE_V2 = 4 | AAC编码档次为High Efficiency v2级别。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
+| AAC_PROFILE_HE = 3 | AAC编码档次为High Efficiency级别。包含音频对象类型：AAC LC, SBR。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
+| AAC_PROFILE_HE_V2 = 4 | AAC编码档次为High Efficiency v2级别。包含音频对象类型：AAC LC, SBR, PS。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
 
 ### OH_AVCProfile
 
