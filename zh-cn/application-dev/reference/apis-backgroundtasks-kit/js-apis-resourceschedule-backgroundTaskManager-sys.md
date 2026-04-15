@@ -581,13 +581,13 @@ try {
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| resourceTypes   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 申请的资源类型。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                                |
-| isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| timeOut         | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 资源使用时间，单位为毫秒。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
-| isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请。<br>- false表示应用申请。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23          |
-| reason          | string  | 否    | 否    | 申请资源原因。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
-| cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23) | 否    | 是    | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23  |
+| resourceTypes   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 申请的资源类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                                |
+| isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| timeOut         | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 资源使用时间，单位为毫秒。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
+| isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请。<br>- false表示应用申请。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23          |
+| reason          | string  | 否    | 否    | 申请资源原因。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
+| cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23) | 否    | 是    | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23  |
 
 ## ResourceType
 
@@ -599,15 +599,15 @@ try {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| CPU                     | 1    | CPU资源，申请后应用进程不被挂起。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
-| COMMON_EVENT            | 2    | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| TIMER                   | 4    | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| WORK_SCHEDULER          | 8    | 延迟任务资源，申请后延迟任务管控变宽松。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| BLUETOOTH               | 16   | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| GPS                     | 32   | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| AUDIO                   | 64   | 音频资源，有音频播放时对应的应用进程不被挂起。**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会代理RUNNING_BACKGROUND锁。**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23  |
-| SENSOR<sup>10+</sup> | 256 | 申请后不拦截Sensor回调。 **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| CPU                     | 1    | CPU资源，申请后应用进程不被挂起。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
+| COMMON_EVENT            | 2    | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| TIMER                   | 4    | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| WORK_SCHEDULER          | 8    | 延迟任务资源，申请后延迟任务管控变宽松。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| BLUETOOTH               | 16   | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| GPS                     | 32   | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| AUDIO                   | 64   | 音频资源，有音频播放时对应的应用进程不被挂起。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会代理RUNNING_BACKGROUND锁。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23  |
+| SENSOR<sup>10+</sup> | 256 | 申请后不拦截Sensor回调。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## EfficiencyResourcesInfo<sup>20+</sup>
 
@@ -619,14 +619,14 @@ try {
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|
-| [resourceTypes](#resourcetype) | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 能效资源类型。  **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23    |
-| timeout                        | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 超时时间，单位：ms。 **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
-| isPersistent                   | boolean | 否    | 否    | 是否永久持有资源，默认为false。取值为true表示永久持有。取值为false表示有限时间内持有。**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23      |
-| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请。取值为false表示应用申请。**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23   |
-| reason                         | string  | 否    | 否    | 申请资源原因。**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23       |
-| uid                            | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 应用的UID。 **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23    |
-| pid                            | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 应用进程的PID。 **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23  |
-| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | 否    | 是    |  指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
+| [resourceTypes](#resourcetype) | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 能效资源类型。  <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23    |
+| timeout                        | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 超时时间，单位：ms。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| isPersistent                   | boolean | 否    | 否    | 是否永久持有资源，默认为false。取值为true表示永久持有。取值为false表示有限时间内持有。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23      |
+| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请。取值为false表示应用申请。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23   |
+| reason                         | string  | 否    | 否    | 申请资源原因。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23       |
+| uid                            | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 应用的UID。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23    |
+| pid                            | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 应用进程的PID。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23  |
+| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | 否    | 是    |  指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## EfficiencyResourcesCpuLevel<sup>23+</sup>
 
