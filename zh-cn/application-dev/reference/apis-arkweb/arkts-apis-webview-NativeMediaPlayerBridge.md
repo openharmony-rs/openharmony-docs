@@ -270,10 +270,6 @@ suspendPlayer?(type: SuspendType): void
 |--------|------|------|------|
 | type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | 是 | 播放器挂起类型。|
 
-**示例：**
-
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
-
 ## UpdateRectFn<sup>23+</sup>
 
 type UpdateRectFn = (x: double, y: double, width: double, height: double) => void
@@ -295,11 +291,6 @@ type UpdateRectFn = (x: double, y: double, width: double, height: double) => voi
 | width  | double | 是 | surface 的宽度。<br>单位：px。 |
 | height | double | 是 | surface 的高度。<br>单位：px。 |
 
-
-**示例：**
-
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
-
 ## ZeroParamFn<sup>23+</sup>
 
 type ZeroParamFn<V=void> = () => V
@@ -311,10 +302,6 @@ type ZeroParamFn<V=void> = () => V
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Sta起始版本：** 23
-
-**示例：**
-
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
 ## OneParamFn<sup>23+</sup>
 
@@ -328,10 +315,6 @@ type OneParamFn<T,V=void> = (param: T) => V
 
 **ArkTS-Sta起始版本：** 23
 
-**示例：**
-
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
-
 ## ResumePlayerFn<sup>23+</sup>
 
 type ResumePlayerFn = () => void
@@ -343,10 +326,6 @@ type ResumePlayerFn = () => void
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Sta起始版本：** 23
-
-**示例：**
-
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
 ## SuspendPlayerFn<sup>23+</sup>
 
@@ -366,6 +345,3 @@ type SuspendPlayerFn = (type: SuspendType) => void
 |--------|------|------|------|
 | type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | 是 | 播放器挂起类型。|
 
-**示例：**
-
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
