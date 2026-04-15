@@ -2562,7 +2562,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 |  类型   | 说明                      |
 | ------  |------------------------- |
@@ -2661,7 +2661,7 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -2675,7 +2675,7 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------- | ------ | ---- | ---- | ----------------------------------------------------- |
@@ -2694,7 +2694,7 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ------ | ------ | ---- | --- | ----------------------- |
