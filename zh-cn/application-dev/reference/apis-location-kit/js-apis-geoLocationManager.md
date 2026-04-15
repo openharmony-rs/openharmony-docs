@@ -3084,6 +3084,111 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
   }
   ```
 
+## geoLocationManager.isGnssServiceSupported<sup>26+</sup>
+
+isGnssServiceSupported(): boolean
+
+判断是否支持GNSS功能。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持GNSS功能。<br/>false：不支持GNSS功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let locationEnabled = geoLocationManager.isGnssServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
+## geoLocationManager.isGnssFenceServiceSupported<sup>26+</sup>
+
+isGnssFenceServiceSupported(): boolean
+
+判断是否支持围栏功能。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持围栏功能。<br/>false：不支持围栏功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let locationEnabled = geoLocationManager.isGnssFenceServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
+## geoLocationManager.isCachedGnssServiceSupported<sup>26+</sup>
+
+isCachedGnssServiceSupported(): boolean
+
+判断是否支持GNSS batching功能。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持GNSS batching功能。<br/>false：不支持GNSS batching功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let locationEnabled = geoLocationManager.isCachedGnssServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
 ## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
 getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
