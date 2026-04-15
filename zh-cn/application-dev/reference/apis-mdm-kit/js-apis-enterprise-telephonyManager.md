@@ -512,7 +512,7 @@ try {
   telephonyManager.removeIncomingCallPolicyNumbers(wantTemp, policy, numbers);
   console.info('Succeeded in removing incoming call policy.');
 } catch (err) {
-  console.error(`Failed to add remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
