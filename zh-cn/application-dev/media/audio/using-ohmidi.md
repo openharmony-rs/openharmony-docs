@@ -38,7 +38,9 @@ OH_MIDI的主要接口包括：
 - 数据传输接口：[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)、[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)。
 - 回调接口：[OnDeviceChange](../../reference/apis-audio-kit/capi-native-midi-base-h.md)、[OnMIDIReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md)。
 
-## 使用入门
+## 开发准备
+
+在使用OH_MIDI API之前，需要完成以下准备工作：
 
 - 在CMake脚本中链接动态库。
 
@@ -87,9 +89,11 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 
 创建MIDI客户端是使用MIDI API的第一步。
 
-客户端是应用与MIDI系统服务的连接入口，负责管理与MIDI服务的所有交互。创建客户端前，需要先定义回调函数：
-- onDeviceChange：当MIDI设备连接或断开时由系统自动调用。
-- onError：当MIDI服务发生错误时调用。
+客户端是应用与MIDI系统服务的连接入口，负责管理与MIDI服务的所有交互。创建客户端前，需要先准备回调结构体：
+
+系统已定义[OH_MIDICallback](../../reference/apis-audio-kit/capi-native-midi-base-h.md)结构体，开发者需要实现其中的回调函数：
+- onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
+- onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑,如重新创建客户端。
 
 通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
 
@@ -166,9 +170,9 @@ static napi_value GetDeviceInfos(napi_env env, napi_callback_info info)
 
 ### 打开MIDI设备
 
-获得设备ID后，需要打开设备才能进行数据传输。
+需要打开设备才能进行数据传输。根据设备类型不同，打开方式有所区别：USB MIDI设备通过[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开，BLE MIDI设备通过[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口异步打开。
 
-**打开USB MIDI设备**
+**打开USB MIDI设备（同步）**
 
 通过[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开USB MIDI设备，传入设备ID获取设备句柄。
 
@@ -192,34 +196,6 @@ static napi_value OpenDevice(napi_env env, napi_callback_info info)
         OH_LOG_INFO(LOG_APP, "[OpenDevice] device stored, total opened devices=%{public}zu", g_openedDevices.size());
     }
     // ...
-}
-```
-
-### 关闭MIDI设备
-
-通过[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)接口关闭已打开的MIDI设备，释放设备资源。
-
-<!-- @[close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value CloseDevice(napi_env env, napi_callback_info info)
-{
-    // ...
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-    // ...
-    auto it = g_openedDevices.find(deviceId);
-    if (it != g_openedDevices.end()) {
-        // 清理该设备的所有InputPortContext
-        CleanupInputPortContextsForDevice(deviceId);
-        OH_MIDIStatusCode status = OH_MIDIClient_CloseDevice(g_midiClient, it->second);
-        g_openedDevices.erase(it);
-        // ...
-    } else {
-        // ...
-    }
-
-    // ...
-    return result;
 }
 ```
 
@@ -284,6 +260,34 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 > - 回调在非主线程执行，如需更新UI请使用线程安全机制。
 > - 连接成功后，后续的端口操作应在回调中进行。
 > - 使用`OH_MIDIClient_CloseDevice`关闭设备。
+
+### 关闭MIDI设备
+
+通过[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)接口关闭已打开的MIDI设备，释放设备资源。
+
+<!-- @[close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value CloseDevice(napi_env env, napi_callback_info info)
+{
+    // ...
+    std::lock_guard<std::mutex> lock(g_midiMutex);
+    // ...
+    auto it = g_openedDevices.find(deviceId);
+    if (it != g_openedDevices.end()) {
+        // 清理该设备的所有InputPortContext
+        CleanupInputPortContextsForDevice(deviceId);
+        OH_MIDIStatusCode status = OH_MIDIClient_CloseDevice(g_midiClient, it->second);
+        g_openedDevices.erase(it);
+        // ...
+    } else {
+        // ...
+    }
+
+    // ...
+    return result;
+}
+```
 
 ### 获取端口信息
 
@@ -563,34 +567,6 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
     napi_create_uint32(env, eventsWritten, &writtenValue);
     napi_set_named_property(env, result, "eventsWritten", writtenValue);
     return result;
-```
-
-**发送Note On消息**
-
-以下示例使用MIDI 1.0协议格式，将传统的MIDI 1.0通道消息包装在UMP Type 2数据包中发送。MT=0x2表示MIDI 1.0通道语音消息。
-
-<!-- @[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-// Send Note On message (helper function for testing)
-static napi_value SendNoteOn(napi_env env, napi_callback_info info)
-{
-    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
-    return SendNoteMessage(env, args, true);
-}
-```
-
-**发送Note Off消息**
-
-<!-- @[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-// Send Note Off message (helper function for testing)
-static napi_value SendNoteOff(napi_env env, napi_callback_info info)
-{
-    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
-    return SendNoteMessage(env, args, false);
-}
 ```
 
 **UMP格式说明**
