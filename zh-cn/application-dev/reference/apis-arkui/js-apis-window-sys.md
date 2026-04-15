@@ -765,7 +765,7 @@ on(type: 'systemBarTintChange', callback: Callback&lt;SystemBarTintState&gt;): v
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onSystemBarTintChange](#windowonsystembartintchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onSystemBarTintChange](#windowonsystembartintchange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -852,7 +852,7 @@ off(type: 'systemBarTintChange', callback?: Callback&lt;SystemBarTintState &gt;)
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offSystemBarTintChange](#windowoffsystembartintchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offSystemBarTintChange](#windowoffsystembartintchange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -949,7 +949,7 @@ on(type: 'gestureNavigationEnabledChange', callback: Callback&lt;boolean&gt;): v
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onGestureNavigationEnabledChange](#windowongesturenavigationenabledchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onGestureNavigationEnabledChange](#windowongesturenavigationenabledchange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1040,7 +1040,7 @@ off(type: 'gestureNavigationEnabledChange', callback?: Callback&lt;boolean&gt;):
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offGestureNavigationEnabledChange](#windowoffgesturenavigationenabledchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offGestureNavigationEnabledChange](#windowoffgesturenavigationenabledchange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1090,7 +1090,7 @@ offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange22)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1139,7 +1139,7 @@ on(type: 'waterMarkFlagChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onWaterMarkFlagChange](#windowonwatermarkflagchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onWaterMarkFlagChange](#windowonwatermarkflagchange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1230,7 +1230,7 @@ off(type: 'waterMarkFlagChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offWaterMarkFlagChange](#windowoffwatermarkflagchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offWaterMarkFlagChange](#windowoffwatermarkflagchange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6500,8 +6500,8 @@ promise.then((data) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| animationForShown<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
-| animationForHidden<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback22) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
+| animationForShown<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback23) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
+| animationForHidden<sup>23+</sup> | [TransitionControllerCallback](#TransitionControllerCallback23) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
 
 ### animationForShown<sup>9+</sup>
 
