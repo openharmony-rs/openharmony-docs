@@ -1334,7 +1334,7 @@ ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int): Promis
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 26.0.0
- 	 
+
 **ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
