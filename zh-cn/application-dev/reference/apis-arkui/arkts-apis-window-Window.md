@@ -6032,7 +6032,7 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
-- 针对非2in1设备：
+- 针对非2in1设备（不包含TV设备）：
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
@@ -6118,7 +6118,7 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
-- 针对非2in1设备：
+- 针对非2in1设备（不包含TV设备）：
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
