@@ -7,15 +7,15 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-清除指定资源ID的PIN码认证状态。该接口用于在密钥操作完成后或需要重置认证状态时调用。
-
-具体的场景介绍及规格，请参考[Ukey PIN码认证](huks-ukey-pin-authentication-management-overview.md)。
+从API 26开始，huksExternalCrypto提供清除PIN码认证状态功能接口。应用在密钥操作完成后或需要重置认证状态时，可以调用该接口清除指定资源的PIN码认证状态。具体的场景介绍及规格，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
 
 ## 开发步骤
 
-1. 获取资源ID。
+1. 获取资源ID。可通过[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid26)获取外部密钥管理扩展的资源ID。
 
 2. 调用[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoclearukeypinauthstate26)清除PIN码认证状态。
+
+## 开发案例
 
 <!-- @[clear_pin_auth_state_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ClearPinAuthState/entry/src/main/ets/pages/Index.ets) -->
 
@@ -33,75 +33,6 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
   } catch (error) {
     console.error('clearUkeyPinAuthState failed: ' + JSON.stringify(error));
     throw error;
-  }
-}
-```
-
-## 完整示例
-
-``` TypeScript
-import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-
-// 资源ID
-let resourceId: string = 'your_resource_id';
-
-// 打开资源
-async function openResource(resourceId: string): Promise<void> {
-  try {
-    await huksExternalCrypto.openResource(resourceId);
-    console.info('openResource success');
-  } catch (error) {
-    console.error('openResource failed: ' + JSON.stringify(error));
-    throw error;
-  }
-}
-
-// 清除PIN码认证状态
-async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
-  try {
-    await huksExternalCrypto.clearUkeyPinAuthState(resourceId);
-    console.info('clearUkeyPinAuthState success');
-  } catch (error) {
-    console.error('clearUkeyPinAuthState failed: ' + JSON.stringify(error));
-    throw error;
-  }
-}
-
-// 关闭资源
-async function closeResource(resourceId: string): Promise<void> {
-  try {
-    await huksExternalCrypto.closeResource(resourceId);
-    console.info('closeResource success');
-  } catch (error) {
-    console.error('closeResource failed: ' + JSON.stringify(error));
-    throw error;
-  }
-}
-
-// PIN码认证状态管理完整流程
-async function pinAuthStateManagementExample(): Promise<void> {
-  try {
-    // 1. 打开资源
-    await openResource(resourceId);
-    
-    // 2. 执行密钥操作（如签名等，可能需要PIN码认证）
-    // ...
-    
-    // 3. 清除PIN码认证状态
-    await clearUkeyPinAuthState(resourceId);
-    
-    // 4. 关闭资源
-    await closeResource(resourceId);
-    
-    console.info('pinAuthStateManagementExample completed successfully');
-  } catch (error) {
-    console.error('pinAuthStateManagementExample failed: ' + JSON.stringify(error));
-    // 出错时尝试关闭资源
-    try {
-      await closeResource(resourceId);
-    } catch (e) {
-      console.error('closeResource on error failed: ' + JSON.stringify(e));
-    }
   }
 }
 ```
