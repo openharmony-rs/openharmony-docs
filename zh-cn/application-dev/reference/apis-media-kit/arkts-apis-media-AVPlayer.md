@@ -2227,7 +2227,7 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。
 > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。
 
-**起始版本：** 26.0.0
+    console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
