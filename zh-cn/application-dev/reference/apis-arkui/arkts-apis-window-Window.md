@@ -5628,7 +5628,7 @@ off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowHighlightChange](#offWindowHighlightChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowHighlightChange](#offwindowhighlightchange23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
