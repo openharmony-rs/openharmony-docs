@@ -139,7 +139,7 @@ export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
 <!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import { getNWeb } from './common'
+import { getNWeb } from './Common'
 @Entry
 @Component
 struct Index {
@@ -468,7 +468,7 @@ export const getNWeb = (url: string): MyNodeController | undefined => {
 <!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import { getNWeb } from './common'
+import { getNWeb } from './Common'
 @Entry
 @Component
 struct Index {
