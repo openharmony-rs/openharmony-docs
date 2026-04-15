@@ -61,7 +61,7 @@
   - [音频编创开发概述(C/C++)](audio-suite.md)
   - [离线编辑(C/C++)](audio-suite-manual-rendering.md)
   - [实时渲染(C/C++)](audio-suite-real-time-rendering.md)
-- MIDI 开发指导<!--midi-->
+- MIDI开发指导<!--midi-->
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
 - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
