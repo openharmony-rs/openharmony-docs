@@ -5768,3 +5768,31 @@ Allows an application and a service to access the device-side model deployment m
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.ACCESS_SUPPORT_FEEDBACK
+
+Allows a system application to open the Feedback screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24
+
+## ohos.permission.ACCESS_SUPPORT_HELP
+
+Allows a system application to launch the intelligent customer service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24

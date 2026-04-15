@@ -5782,3 +5782,31 @@
 **支持设备**：General
 
 **起始版本**：24
+
+## ohos.permission.ACCESS_SUPPORT_FEEDBACK
+
+允许系统应用拉起问题反馈页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.ACCESS_SUPPORT_HELP
+
+允许系统应用拉起智能客服页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
