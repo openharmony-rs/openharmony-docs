@@ -1244,9 +1244,9 @@ type NetBearType = connection.NetBearType
 
 | 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | -------------------|----------------------------------------- |
-| type      | [NetBearType](#netbeartype12) | 否  |是 |网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
-| startTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 | 开始时间戳(单位：秒)。 |
-| endTime   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 |结束时间戳(单位：秒)。 |
+| type      | [NetBearType](#netbeartype12) | 否  |否 |网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
+| startTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 | 开始时间戳(单位：秒)。 |
+| endTime   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 |结束时间戳(单位：秒)。 |
 | simId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 |SIM卡ID。默认值为uint32_t类型最大值。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
 
 
@@ -1262,7 +1262,7 @@ type NetBearType = connection.NetBearType
 
 | 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | --------|---------------------------------------------------- |
-| rxBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 是 |流量下行数据(单位：字节)。 |
-| txBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 是 |流量上行数据(单位：字节)。 |
-| rxPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long |否  | 是 |流量下行包个数。          |
-| txPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 是 |流量上行包个数。          |
+| rxBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量下行数据(单位：字节)。 |
+| txBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行数据(单位：字节)。 |
+| rxPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long |否  | 否 |流量下行包个数。          |
+| txPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行包个数。          |
