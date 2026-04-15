@@ -327,7 +327,7 @@ WindowStage生命周期的状态类型枚举。
 
 ## OrientationExecutionResult
 
-窗口设置显示方向执行结果的类型。
+窗口显示方向的执行结果枚举。
 
 **起始版本：** 26.0.0
 
@@ -340,8 +340,8 @@ WindowStage生命周期的状态类型枚举。
 | 名称   |  值 | 说明                   |
 | ------ | ---- | --------------------- |
 | ORIENTATION_APPLIED | 0 | 设置的方向已生效。 |
-| ORIENTATION_IGNORED | 1 | 设置的方向被忽略。 |
-| ORIENTATION_PENDING | 2 | 设置的方向被挂起，将很快生效。 |
+| ORIENTATION_IGNORED | 1 | 设置的方向不生效。 |
+| ORIENTATION_PENDING | 2 | 设置的方向被挂起，等系统动画结束后，将生效。 |
 
 ## RotationInfoType<sup>23+</sup>
 

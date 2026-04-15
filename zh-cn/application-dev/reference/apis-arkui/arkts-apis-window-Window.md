@@ -2520,8 +2520,7 @@ export default class EntryAbility extends UIAbility {
       windowClass = data;
       let orientation = window.Orientation.LANDSCAPE;
       try {
-        let promise = windowClass.setPreferredOrientationWithResult(orientation);
-        promise.then((result: window.OrientationResult) => {
+        windowClass.setPreferredOrientationWithResult(orientation).then((result: window.OrientationResult) => {
           console.info(`Succeeded in setting the window orientation. Result: ${JSON.stringify(result)}`);
         }).catch((err: BusinessError) => {
           console.error(`Failed to set the window orientation. Cause code: ${err.code}, message: ${err.message}`);
