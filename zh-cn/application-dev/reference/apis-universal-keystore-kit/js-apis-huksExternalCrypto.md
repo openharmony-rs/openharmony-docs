@@ -44,6 +44,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose定义](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
 | HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO<sup>26+</sup> | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。 |
+| HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME<sup>26+</sup> | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。 |
 
 ## HuksExternalCryptoParam
 
