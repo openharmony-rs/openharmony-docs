@@ -3601,7 +3601,9 @@ ArkTS-Dyn: setBackdropBlur(radius: number): void
 ArkTS-Sta: setBackdropBlur(radius: double): void
 
 设置窗口背景模糊。
+
 窗口背景是指窗口覆盖的下层区域，与窗口大小相同。
+
 需要通过[setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)将窗口内容背景设置成透明，否则无法看到模糊效果。
 
 **系统接口：** 此接口为系统接口。
@@ -3801,7 +3803,7 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |                       |
+| 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
