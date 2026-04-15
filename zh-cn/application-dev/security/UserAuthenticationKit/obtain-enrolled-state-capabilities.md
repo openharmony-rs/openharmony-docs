@@ -31,7 +31,7 @@
 obtainingEnrolledCredentialInformation() {
   try {
     let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-    Logger.info(`get current enrolled state success, enrolledState: ${JSON.stringify(enrolledState)}`);
+    Logger.info('get current enrolled state successfully');
     return enrolledState.credentialDigest;
   } catch (error) {
     const err: BusinessError = error as BusinessError;
