@@ -2163,7 +2163,7 @@ try {
 ```
 
 ### applyNewVersion
-applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
+applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
 
 安装升级包。使用callback异步回调。
 
@@ -2175,7 +2175,7 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: Asyn
 
 | 参数名         | 类型                                 | 必填   | 说明                                      |
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFiles | Array<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
 | callback    | AsyncCallback\<void>               | 是    | 回调函数。当安装升级包执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -2209,7 +2209,7 @@ try {
 
 ### applyNewVersion
 
-applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void>
+applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<void>
 
 安装升级包。使用Promise异步回调。
 
@@ -2221,7 +2221,7 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void
 
 | 参数名         | 类型                                 | 必填   | 说明                                      |
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFiles | Array<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
 
 **返回值：**
 
