@@ -964,7 +964,7 @@ struct PickerDemo {
       return true; // 返回true则拉起系统相机，若应用需要自行处理则返回false。
     } else {
       if (clickType === ClickType.SELECTED) {
-        // 应用做自己的业务处理（注：非长耗时操作，例如opensync大文件）。
+        // 应用做自己的业务处理（注：非长耗时操作，例如openSync大文件）。
         if (uri) {
           this.selectUris.push(uri);
           this.pickerOptions.preselectedUris = [...this.selectUris];
