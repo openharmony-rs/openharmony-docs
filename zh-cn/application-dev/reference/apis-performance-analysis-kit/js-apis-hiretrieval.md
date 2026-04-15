@@ -28,9 +28,9 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ------ | -- | ---- | ------- |
@@ -48,9 +48,9 @@ init(): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 **示例：**
 
@@ -72,9 +72,9 @@ participate(config: HiRetrievalConfig): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
@@ -120,9 +120,9 @@ quit(): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 **错误码：**
 
@@ -156,9 +156,9 @@ isParticipant(): boolean
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -200,9 +200,9 @@ ArkTS-Sta: getLastParticipationTimestamp(): long
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
@@ -243,9 +243,9 @@ run(): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 **错误码：**
 
@@ -279,9 +279,9 @@ getCurrentConfig(): HiRetrievalConfig
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**ArkTS-Dyn起始版本：**26
+**ArkTS-Dyn起始版本：** 26
 
-**ArkTS-Sta起始版本：**26
+**ArkTS-Sta起始版本：** 26
 
 **返回值：**
 
