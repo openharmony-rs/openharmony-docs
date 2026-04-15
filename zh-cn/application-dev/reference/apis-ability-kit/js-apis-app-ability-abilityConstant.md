@@ -108,10 +108,10 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      console.info('The ability has exit last because the ability was not responding.');
+      console.info('The ability has exited last because the ability was not responding.');
     }
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-      console.info(`The ability has exit last because the rss control，the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
+      console.info(`The ability has exited last because the rss control, the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
     }
   }
 }
@@ -314,7 +314,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     if (reason === AbilityConstant.StateType.CONTINUATION) {
-      console.info('Save the ability data when the ability continuation.');
+      console.info('Save the ability data when the ability is continuing.');
     }
     return AbilityConstant.OnSaveResult.ALL_AGREE;
   }
