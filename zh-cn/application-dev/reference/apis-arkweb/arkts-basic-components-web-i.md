@@ -617,6 +617,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选    | 说明                                       |
 | -------------- | ---- | ---- | -------------|--------------------------- |
 | origin | string | 否 | 否 | 指定源的字符串索引。                       |
@@ -641,7 +645,7 @@ Web同层渲染的配置。
 
 | 名称                     | 类型   | 只读   | 可选 | 说明                                   |
 | ------------------------ | ---- | ---- | ---- | -------------------------------------- |
-| jsStack      | string | 否 | 否 | 网页的javaScript调用栈信息。       |
+| jsStack      | string | 否 | 否 | 网页的JavaScript调用栈信息。       |
 | pid | number | 否 | 否 | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 否 | 否 | 触发渲染进程无响应回调的原因。 |
 
@@ -845,7 +849,7 @@ Web组件进入全屏回调事件的详情。
 
 ## OnPdfScrollEvent<sup>20+</sup>
 
-定义PDF页面滚动到底时触发的函数。
+定义PDF页面滚动到底时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

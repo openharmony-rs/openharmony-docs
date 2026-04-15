@@ -27,7 +27,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 
 **系统能力：** SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API：** 此接口为系统接口
+**系统接口：** 此接口为系统接口
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -89,13 +89,13 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 
 ## metadataBinding.decodeImage
-function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
+decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 解析图片中携带的信息。使用promise异步回调。
 
 **系统能力：** SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API：** 此接口为系统接口
+**系统接口：** 此接口为系统接口
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -167,7 +167,7 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API：** 此接口为系统接口
+**系统接口：** 此接口为系统接口
 
 **ArkTS-Dyn起始版本：** 18
 

@@ -78,7 +78,7 @@ Web组件使用HTTPDNS的模式。
 
 ## WebMessageType<sup>10+</sup>
 
-[webMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。
+[WebMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -139,7 +139,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 | 名称         | 值 | 说明                              |
 | ------------ | -- |--------------------------------- |
-| EVENT  | 0 | 滚动事件，表示通过触摸屏，触摸板，鼠标滚轮生成的网页滚动。|
+| EVENT  | 0 | 滚动事件，表示通过触摸屏、触摸板、鼠标滚轮生成的网页滚动。|
 
 ## WebDownloadState<sup>11+</sup>
 

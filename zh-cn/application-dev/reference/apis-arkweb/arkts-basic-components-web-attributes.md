@@ -441,20 +441,27 @@ databaseAccess(databaseAccess: boolean)
 
 ## geolocationAccess
 
-geolocationAccess(geolocationAccess: boolean)
+ArkTS-Dyn: geolocationAccess(geolocationAccess: boolean)
+
+ArkTS-Sta: geolocationAccess(geolocationAccess: boolean | undefined)
 
 设置是否开启获取地理位置权限。当属性没有显式调用时，默认开启获取地理位置权限。具体使用方式参考[管理位置权限](../../web/web-geolocation-permission.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型    | 必填   | 说明            |
 | ----------------- | ------- | ---- | --------------- |
-| geolocationAccess | boolean | 是    | 设置是否开启获取地理位置权限。<br>true表示设置开启获取地理位置权限，false表示设置不开启获取地理位置权限。<br>传入undefined或null时为false。 |
+| geolocationAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启获取地理位置权限。<br>true表示设置开启获取地理位置权限，false表示设置不开启获取地理位置权限。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -463,6 +470,26 @@ geolocationAccess(geolocationAccess: boolean)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .geolocationAccess(true)
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -2725,7 +2752,7 @@ Web组件自定义软件键盘避让模式。
 
 editMenuOptions(editMenu: EditMenuOptions)
 
-Web组件自定义文本选择菜单。
+设置Web组件自定义文本选择菜单。
 
 用户可以通过该属性设置自定义的文本菜单。
 
@@ -4341,7 +4368,7 @@ zoomControlAccess(zoomControlAccess: boolean)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomControlAccess | boolean | 是    | 设置是否支持组合按键的默认缩放行为。true表示支持，false表示不支持。传入null或undefined时为false。|
+| zoomControlAccess | boolean | 是    | 设置是否允许通过组合按键进行缩放。true表示支持，false表示不支持。传入null或undefined时为false。|
 
 **示例：**
 
@@ -4399,6 +4426,7 @@ scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4418,6 +4446,54 @@ struct WebComponent {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { Web, Column, Component, Entry, $rawfile, ScrollbarLayoutPolicy } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 设置为SYSTEM表示跟随系统语言方向布局。设置为CONTENT表示沿用Web样式布局
+        .scrollbarLayoutPolicy(ScrollbarLayoutPolicy.SYSTEM)
+    }
+  }
+}
+```
+
+加载的html文件。
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+      body {
+        width:2560px;
+        height:2560px;
+        padding-right:170px;
+        padding-left:170px;
+        border:5px solid blueviolet;
+      }
+    </style>
+</head>
+<body>
+Scroll Test
+</body>
+</html>
 ```
 
 ## enableDrag

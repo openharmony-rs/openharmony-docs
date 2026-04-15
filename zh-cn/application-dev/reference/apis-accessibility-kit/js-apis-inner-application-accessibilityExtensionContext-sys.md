@@ -284,7 +284,7 @@ export default class AccessibilityManager {
     let elementId: number = 10;
 
     this.context.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
-      console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+      console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     });
@@ -360,7 +360,7 @@ export default class AccessibilityManager {
     let windowId: number = 10;
 
     this.context.getDefaultFocusedElementIds(windowId).then((data: number[]) => {
-      console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
+      console.info(`succeeded in getting default focus, ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
     });
@@ -768,7 +768,7 @@ export default class AccessibilityManager {
     }
 
     this.context.getAccessibilityFocusedElement().then((element: AccessibilityElement) => {
-      console.info(`Succeeded in get accessibility focused element, ${element.bundleName}`);
+      console.info(`succeeded in getting accessibility focused element, ${element.bundleName}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get accessibility focused element, Code is ${err.code}, message is ${err.message}`);
     });
@@ -845,7 +845,7 @@ export default class AccessibilityManager {
     let windowId: number = 0;
 
     this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
-      console.info(`Succeeded in get root inactive window element, ${element.bundleName}`);
+      console.info(`succeeded in getting root inactive window element, ${element.bundleName}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
     });
@@ -1123,11 +1123,11 @@ export default class AccessibilityManager {
       return;
     }
     this.context.getRootInActiveWindow().then((rootElement: AccessibilityElement) => {
-      console.info(`Succeeded in get root element of the window, ${JSON.stringify(rootElement)}`);
+      console.info(`succeeded in getting root element of the window, ${JSON.stringify(rootElement)}`);
       rootElement.enableScreenCurtain(true);
-      console.info(`Succeeded in enableScreenCurtain`);
+      console.info(`Succeeded in enabling screen curtain`);
     }).catch((err: BusinessError) => {
-      console.error(`failed to enableScreenCurtain, Code is ${err.code}, message is ${err.message}`);
+      console.error(`failed to enable screen curtain, Code is ${err.code}, message is ${err.message}`);
     });
   }
 }
@@ -1175,7 +1175,7 @@ let condition = 10;
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1223,7 +1223,7 @@ let condition = 'location';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1252,9 +1252,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例
 rootElement.getCursorPosition().then((data: number) => {
-  console.info(`Succeeded in getCursorPosition, ${data}`);
+  console.info(`succeeded in getting cursor position, ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to getCursorPosition, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1282,10 +1282,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement是AccessibilityElement的实例
 rootElement.getCursorPosition((err: BusinessError, data: number) => {
   if (err && err.code) {
-    console.error(`failed to getCursorPosition, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in getCursorPosition, ${data}`);
+  console.info(`succeeded in getting cursor position, ${data}`);
 });
 ```
 
@@ -1334,7 +1334,7 @@ import { AccessibilityAction } from '@kit.AccessibilityKit';
 // Action描述中无明确要求的，均为无参数Action
 try {
   await rootElement.executeAction(AccessibilityAction.CLICK);
-  console.info(`Succeeded in perform action CLICK`);
+  console.info(`succeeded in performing action CLICK`);
 }catch (error){
   console.error(`failed to perform action CLICK, Code is ${error?.code}, message is ${error?.message}`);
 }
@@ -1354,7 +1354,7 @@ try {
   // rootElement是AccessibilityElement的实例
   // setSelection示例代码
   rootElement.executeAction(AccessibilityAction.SET_SELECTION, p);
-  console.info(`Succeeded in perform action SET_SELECTION`);
+  console.info(`succeeded in performing action SET_SELECTION`);
 }catch (error){
   console.error(`failed to perform action SET_SELECTION, Code is ${error?.code}, message is ${error?.message}`);
 }
@@ -1370,7 +1370,7 @@ try {
   // rootElement是AccessibilityElement的实例
   // setCursorPosition示例代码
   rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, p);
-  console.info(`Succeeded in perform action SET_CURSOR_POSITION`);
+  console.info(`succeeded in performing action SET_CURSOR_POSITION`);
 }catch (error){
   console.error(`failed to perform action SET_CURSOR_POSITION, Code is ${error?.code}, message is ${error?.message}`);
 }

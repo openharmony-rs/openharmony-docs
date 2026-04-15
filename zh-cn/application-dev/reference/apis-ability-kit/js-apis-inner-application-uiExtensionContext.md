@@ -635,6 +635,8 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1527,7 +1529,7 @@ struct Page_UIServiceExtensionAbility {
         context.disconnectUIServiceExtensionAbility(this.uiServiceProxy).then(() => {
           console.info(`disconnectUIServiceExtensionAbility success.`);
         }).catch((error: BusinessError) => {
-          console.info(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+          console.error(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
         })
       })
     }

@@ -871,7 +871,7 @@ class MyXComponentController extends XComponentController {
   }
 
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
   }
 

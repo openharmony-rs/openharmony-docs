@@ -155,6 +155,8 @@ module.json5配置文件包含以下标签。
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | shareFiles | 标识应用沙箱中分享目录的配置文件路径，用于为应用文件提供有安全保障的开放范围，保护应用资产。只允许entry类型模块配置，取值为长度不超过255字节的字符串。具体使用方式请参考[应用共享目录配置](../file-management/share-app-file-configuration.md)。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径信息。<br/>**说明：** <br/>从API version 24开始，支持该标签。 | 对象数组 | 该标签可缺省，缺省值为空。 |
+| uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
+| srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
 
 ## deviceTypes标签
@@ -487,6 +489,7 @@ skills示例：
 | dataGroupIds | 标识当前ExtensionAbility组件的dataGroupId集合。如果当前ExtensionAbility组件所在的应用在应用市场申请的证书里groupIds也申请了某个dataGroupId，那么当前ExtensionAbility组件可以和应用共享这一个dataGroupId生成的目录，所以ExtensionAbility组件的dataGroupId需要是应用的签名证书中groupIds标签里配置的才能生效。 且该标签仅在当前ExtensionAbility组件存在独立的沙箱目录时生效。<!--RP8--><!--RP8End--> | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[进程模型定义](../application-models/process-model-stage.md#其他进程类型)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| skipAbilityStageLifecycle | 标识type为backup的ExtensionAbility组件是否跳过[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)生命周期回调。<br/>-&nbsp;true：跳过AbilityStage生命周期，不执行onCreate、onDestroy等回调。<br/>-&nbsp;false：不跳过AbilityStage生命周期，正常执行生命周期回调。<br/>**说明：**<br/>1. 该标签仅在ExtensionAbility的type为backup时配置生效。<br/>2. 从API version 26.0.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 
 extensionAbilities示例：
 
