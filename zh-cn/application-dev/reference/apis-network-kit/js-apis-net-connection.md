@@ -3095,7 +3095,7 @@ register(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3152,7 +3152,7 @@ unregister(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3207,7 +3207,7 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3276,7 +3276,7 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3347,7 +3347,7 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3416,7 +3416,7 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3487,7 +3487,7 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3558,7 +3558,7 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3627,7 +3627,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -3947,7 +3947,7 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4024,7 +4024,7 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4415,10 +4415,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | -------------- | ---------------|------------ | --- |-------------- |
 | interface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|	
 | iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|	
-| destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|
+| destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
+| gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
+| hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
+| isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
 | isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## LinkAddress
@@ -4464,6 +4464,8 @@ type HttpRequest = http.HttpRequest
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | http.HttpRequest | 定义HTTP请求任务。在调用HttpRequest提供的API之前。 |
@@ -4476,6 +4478,8 @@ type TCPSocket = socket.TCPSocket
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | socket.TCPSocket | 定义一个TCPSocket连接。     |
@@ -4487,6 +4491,8 @@ type UDPSocket = socket.UDPSocket
 定义一个UDPSocket对象，可以通过[socket.constructUDPSocketInstance](js-apis-socket.md#socketconstructudpsocketinstance)创建。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |

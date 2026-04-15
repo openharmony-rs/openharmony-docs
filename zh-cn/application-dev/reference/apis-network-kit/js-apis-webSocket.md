@@ -31,7 +31,7 @@ createWebSocket(): WebSocket
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1480,7 +1480,7 @@ createWebSocketServer(): WebSocketServer
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2526,7 +2526,7 @@ localServer.offWebSocketServerError();
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 |  只读  | 可选 | 说明                                                         |
 | ------ | ------ |------ | ---- | ------------------------------------------------------------ |
@@ -2545,7 +2545,7 @@ localServer.offWebSocketServerError();
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 |可选| 说明                |
 | ------ | ------ | ---- |---|----------------|
@@ -2562,7 +2562,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |  类型   | 说明                      |
 | ------  |------------------------- |
@@ -2580,7 +2580,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | ---------|--------------------------------------------------- |
@@ -2597,7 +2597,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | -----|------------------------------------------------------- |
@@ -2608,16 +2608,14 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 打开WebSocket连接时，订阅onOpen事件得到的打开结果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| status   | int | 是   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
-| message | string | 是   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
+| 名称 | 类型   | 只读 | 可选  | 说明                                                         |
+| ------ | ------ | ---- | -----| ------------------------------------------------------------ |
+| status   | int |  是 | 否   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
+| message | string |  是 | 否   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
 
 ## ResponseHeaders<sup>12+</sup>
 ArkTS-Dyn: type ResponseHeaders = {
@@ -2631,7 +2629,7 @@ ArkTS-Dyn: type ResponseHeaders = {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
@@ -2661,7 +2659,7 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
@@ -2675,7 +2673,7 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------- | ------ | ---- | ---- | ----------------------------------------------------- |
@@ -2694,7 +2692,7 @@ type HttpProxy = connection.HttpProxy
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ------ | ------ | ---- | --- | ----------------------- |

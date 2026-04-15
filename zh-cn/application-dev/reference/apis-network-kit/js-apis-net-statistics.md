@@ -27,7 +27,7 @@ ArkTS-Sta: getIfaceRxBytes(nic: string, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -85,7 +85,7 @@ ArkTS-Sta: getIfaceRxBytes(nic: string): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -143,7 +143,7 @@ ArkTS-Sta: getIfaceTxBytes(nic: string, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -201,7 +201,7 @@ ArkTS-Sta: getIfaceTxBytes(nic: string): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -259,7 +259,7 @@ ArkTS-Sta: getCellularRxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -315,7 +315,7 @@ ArkTS-Sta: getCellularRxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -366,7 +366,7 @@ ArkTS-Sta: getCellularTxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -422,7 +422,7 @@ ArkTS-Sta: getCellularTxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -475,7 +475,7 @@ ArkTS-Sta: getAllRxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -532,7 +532,7 @@ ArkTS-Sta: getAllRxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -584,7 +584,7 @@ ArkTS-Sta: getAllTxBytes(callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -641,7 +641,7 @@ ArkTS-Sta: getAllTxBytes(): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -691,7 +691,7 @@ ArkTS-Sta: getUidRxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -748,7 +748,7 @@ ArkTS-Sta: getUidRxBytes(uid: int): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -805,7 +805,7 @@ ArkTS-Sta: getUidTxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -862,7 +862,7 @@ ArkTS-Sta: getUidTxBytes(uid: int): Promise\<long>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -977,7 +977,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int): Promise\<long\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1043,7 +1043,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1101,7 +1101,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int): Promise\<long\>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1226,7 +1226,7 @@ type NetBearType = connection.NetBearType
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
