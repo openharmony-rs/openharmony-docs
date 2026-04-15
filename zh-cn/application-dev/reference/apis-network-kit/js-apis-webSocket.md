@@ -2549,8 +2549,8 @@ localServer.offWebSocketServerError();
 
 | 名称 | 类型   | 只读 |可选| 说明                |
 | ------ | ------ | ---- |---|----------------|
-| certPath   | string  | 否   |是 |证书路径。             |
-| keyPath | string | 否   |是| 证书密钥的路径。          |
+| certPath   | string  | 否   |否 |证书路径。             |
+| keyPath | string | 否   |否| 证书密钥的路径。          |
 | keyPassword | string | 否   |是| 证书密钥的密码。缺省为空字符串。 |
 
 ## ProxyConfiguration<sup>12+</sup>
@@ -2601,8 +2601,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 | 名称 | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | -----|------------------------------------------------------- |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是   | 错误码，订阅close事件得到的关闭连接的错误码。 |
-| reason | string |  否 | 是   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 否   | 错误码，订阅close事件得到的关闭连接的错误码。 |
+| reason | string |  否 | 否   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## OpenResult
 
@@ -2618,8 +2618,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 | 名称 | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | -----| ------------------------------------------------------------ |
-| status   | int |  否 | 是   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
-| message | string |  否 | 是   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
+| status   | int |  是 | 否   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
+| message | string |  是 | 否   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
 
 ## ResponseHeaders<sup>12+</sup>
 ArkTS-Dyn: type ResponseHeaders = {
