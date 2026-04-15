@@ -3633,7 +3633,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | --- |-----|-------------------- |
-| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### bindSocket<sup>9+</sup>
 
@@ -4362,8 +4362,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                 |                          类型                        |  只读 | 可选 |         说明           |
 | -------------------- | ----------------------------------|----------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 否 | 是   |数据网络句柄(netHandle)。|	
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 是   |网络连接属性。           |
+| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |数据网络句柄(netHandle)。|	
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接属性。           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -4379,8 +4379,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称                 | 类型                                  |  只读 | 可选 |            说明            |
 | -------------------- | --------------------------|----------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 否 | 是  |数据网络句柄(netHandle)。   |	
-| blocked              | boolean                               |否 | 是   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| netHandle            | [NetHandle](#nethandle)               | 否 | 否  |数据网络句柄(netHandle)。   |	
+| blocked              | boolean                               |否 | 否   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
 
 ## ConnectionProperties
 
@@ -4433,8 +4433,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称         |           类型            | 只读 | 可选 |        说明         |
 | ------------ | -----------------|-------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | 否 | 是  | 链路地址。           |	
-| prefixLength | number                    | 否 | 是  |链路地址前缀的长度。  |
+| address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |	
+| prefixLength | number                    | 否 | 否  |链路地址前缀的长度。  |
 
 ## NetAddress
 
@@ -4450,7 +4450,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 |  名称   | 类型   | 只读 | 可选 |            说明              |
 | ------- | ------ | -- |--------|-------------------- |
-| address | string | 否 | 是 |地址。                       |	
+| address | string | 否 | 否 |地址。                       |	
 | family  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |IPv4 = 1，IPv6 = 2，默认IPv4。|	
 | port    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |端口，取值范围\[0, 65535]，默认值为0。  |
 
