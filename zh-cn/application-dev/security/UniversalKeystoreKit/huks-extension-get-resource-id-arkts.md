@@ -13,9 +13,11 @@
 
 1. 准备提供者名称（providerName），该名称需要全局唯一，建议包含厂商信息。
 
-2. 构造资源信息参数，通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag26)携带资源信息。
+2. 构造必选参数：通过[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入CryptoExtensionAbility名称，通过[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)传入Bundle名称。
 
-3. 调用[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid26)获取资源ID。
+3. （可选）通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag26)携带厂商自定义的资源信息。
+
+4. 调用[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid26)获取资源ID。
 
 <!-- @[get_resource_id_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ExtensionGetResourceId/entry/src/main/ets/pages/Index.ets) -->
 
@@ -24,30 +26,32 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 // 提供者名称，需要全局唯一，建议包含厂商信息
 let providerName: string = 'vendor_ukey_provider';
+// Ability名称
+let abilityName: string = 'CryptoExtension';
+// Bundle名称
+let bundleName: string = 'com.example.ukeyapp';
 
-// 构造资源信息
-// 资源信息格式和内容由厂商自定义，例如包含UKey设备名、应用名、容器名等
-function buildResourceInfo(): Uint8Array {
-  // 示例：构造JSON格式的资源信息
-  let resourceInfo = {
-    deviceName: 'ukey_device_001',
-    appName: 'banking_app',
-    containerName: 'sign_container',
-    keyId: 'key_001'
-  };
-  
-  let jsonString = JSON.stringify(resourceInfo);
+// 字符串转Uint8Array
+function stringToUint8Array(str: string): Uint8Array {
   let encoder = new TextEncoder();
-  return encoder.encode(jsonString);
+  return encoder.encode(str);
 }
 
 // 获取资源ID
-async function getResourceId(providerName: string, resourceInfo: Uint8Array): Promise<string> {
-  // 构造参数
+async function getResourceId(
+  providerName: string,
+  abilityName: string,
+  bundleName: string
+): Promise<string> {
+  // 构造必选参数：providerName、abilityName、bundleName
   let params: huksExternalCrypto.HuksExternalCryptoParam[] = [
     {
-      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-      value: resourceInfo
+      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+      value: stringToUint8Array(abilityName)
+    },
+    {
+      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
+      value: stringToUint8Array(bundleName)
     }
   ];
   
@@ -64,11 +68,8 @@ async function getResourceId(providerName: string, resourceInfo: Uint8Array): Pr
 // 完整示例
 async function extensionGetResourceIdExample(): Promise<string> {
   try {
-    // 1. 构造资源信息
-    let resourceInfo = buildResourceInfo();
-    
-    // 2. 获取资源ID
-    let resourceId = await getResourceId(providerName, resourceInfo);
+    // 获取资源ID
+    let resourceId = await getResourceId(providerName, abilityName, bundleName);
     
     console.info('extensionGetResourceIdExample completed successfully');
     return resourceId;
@@ -79,20 +80,20 @@ async function extensionGetResourceIdExample(): Promise<string> {
 }
 ```
 
-## 资源信息格式说明
+## 参数说明
+
+获取资源ID时，需要传入以下参数：
+
+| 参数 | 传入方式 | 说明 | 是否必选 |
+| -------- | -------- | -------- | -------- |
+| providerName | getResourceId第一个参数 | 提供者名称，全局唯一 | 必选 |
+| abilityName | params中HUKS_EXT_CRYPTO_TAG_ABILITY_NAME | CryptoExtensionAbility名称 | 必选 |
+| bundleName | params中HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | 应用Bundle名称 | 必选 |
+| resourceInfo | params中HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | 厂商自定义资源信息 | 可选 |
 
 > **说明：**
 >
-> 资源信息（resourceInfo）的格式和内容由Extension实现方定义。应用需要根据Extension厂商提供的说明构造相应的资源信息。
-
-常见的资源信息字段可能包括：
-
-| 字段名 | 说明 | 是否必选 |
-| -------- | -------- | -------- |
-| deviceName | UKey设备名称 | 由厂商定义 |
-| appName | UKey应用名称 | 由厂商定义 |
-| containerName | UKey容器名称 | 由厂商定义 |
-| keyId | 密钥标识 | 由厂商定义 |
+> 如果Extension实现方需要额外的资源信息（如UKey设备名、容器名等），可通过HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO传入。具体格式由厂商定义，请参考Extension厂商提供的说明。
 
 ## 错误码说明
 
