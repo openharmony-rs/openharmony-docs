@@ -2024,7 +2024,7 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 | 类型                              | 说明                  |
 | ------------------------------- | ------------------- |
-| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回任务信息对象。 |
+| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回深度恢厂设置信息。 |
 
 **错误码**：
 
@@ -2216,6 +2216,12 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
+
+**参数：**
+
+| 参数名         | 类型                                 | 必填   | 说明                                      |
+| ----------- | ---------------------------------- | ---- | --------------------------------------- |
+| upgradeFiles | Array<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
 
 **返回值：**
 
