@@ -360,7 +360,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-将generateRandomUUID生成的string类型UUID转换为generateRandomBinaryUUID生成的UUID，符合RFC 4122版本规范。
+将generateRandomUUID生成的string类型UUID转换为[util.generateRandomBinaryUUID](#utilgeneraterandombinaryuuid9)生成的UUID，符合RFC 4122版本规范。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -837,7 +837,7 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| stream | boolean | 否 | 是 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
+| stream | boolean | 否 | 是 | 在随后的[decodeWithStream](#decodewithstreamdeprecated)调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
 
 ## Aspect<sup>11+</sup>
 
