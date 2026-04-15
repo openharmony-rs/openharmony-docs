@@ -1,4 +1,4 @@
-# 外部密钥管理扩展密钥生成(ArkTS)
+# 密钥生成(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -9,7 +9,7 @@
 
 在外部密钥管理扩展场景下，密钥生成能力支持在扩展设备内生成密钥对。密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
 
-具体的场景介绍及开发流程，请参考[外部密钥管理扩展密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
+具体的场景介绍及开发流程，请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
 
 ## 开发步骤
 

@@ -1,15 +1,15 @@
-# 外部密钥管理扩展密钥导入(ArkTS)
+# 密钥导入(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @wutiantian-gitee-->
+<!--Owner: @wutitian-gitee-->
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
 在外部密钥管理扩展场景下，密钥导入能力支持将加密封装的密钥对导入到扩展设备中。密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
 
-具体的场景介绍及开发流程，请参考[外部密钥管理扩展密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
+具体的场景介绍及开发流程，请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
 
 ## 开发步骤
 
