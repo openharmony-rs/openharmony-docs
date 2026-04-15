@@ -19,6 +19,20 @@
 import  { fileShare } from '@kit.CoreFileKit';
 ```
 
+## SharedDirectoryInfo<sup>26+</sup>
+
+应用向系统共享的目录信息。
+
+**系统接口：** 此接口为系统接口。  
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+| 名称  | 类型  | 只读 | 可选 | 说明                                                   |
+|------|-------|------|-----|------------------------------------------------------|
+| bundleName | string | 是   | 否 | 应用程序的包名。                                       |
+| path | string | 是   | 否 | 应用程序共享目录的路径 |
+| permissionMode | OperationMode | 是   | 否 | 应用程序共享目录的权限，例如 { OperationMode.READ_MODE } |
+
 ## fileShare.grantUriPermission
 
 grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, callback: AsyncCallback&lt;void&gt;): void
@@ -266,6 +280,142 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
     }
     catch (error) {
       console.info('grantUriPermission error, Code: ' + error.code + ', message: ' + error.message);
+    }
+  }
+  ```
+
+## fileShare.getSharedDirectoryInfo<sup>26+</sup>
+
+getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
+
+获取应用程序的共享沙箱目录
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**返回值：**
+
+|类型|说明|
+| ------ | ------ |
+| Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt; | Promise对象。返回SharedDirectoryInfo数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID    | 错误信息       |
+|----------| --------- |
+| 201      | Permission verification failed.|
+| 202      | The caller is not a system application.|
+| 801      | Capability not supported. |
+| 13900001      | Operation not permitted. |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileShare } from '@kit.CoreFileKit';
+  
+  async function getSharedDirectoryInfo() {
+    try {
+      
+    }
+    catch (error) {
+      
+    }
+  }
+  ```
+
+
+## fileShare.grantSharedDirectoryPermission<sup>26+</sup>
+
+grantSharedDirectoryPermission(): Promise&lt;void&gt;
+
+为应用共享目录提供权限授予功能
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**返回值：**
+
+|类型|说明|
+| ------ | ------ |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID    | 错误信息       |
+|----------| --------- |
+| 201      | Permission verification failed.|
+| 202      | The caller is not a system application.|
+| 801      | Capability not supported. |
+| 13900001      | Operation not permitted. |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileShare } from '@kit.CoreFileKit';
+  
+  async function grantSharedDirectoryPermission() {
+    try {
+      
+    }
+    catch (error) {
+      
+    }
+  }
+  ```
+
+## fileShare.revokeSharedDirectoryPermission<sup>26+</sup>
+
+grantSharedDirectoryPermission(): Promise&lt;void&gt;
+
+撤销应用共享目录的权限
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**返回值：**
+
+|类型|说明|
+| ------ | ------ |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID    | 错误信息       |
+|----------| --------- |
+| 201      | Permission verification failed.|
+| 202      | The caller is not a system application.|
+| 801      | Capability not supported. |
+| 13900001      | Operation not permitted. |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileShare } from '@kit.CoreFileKit';
+  
+  async function revokeSharedDirectoryPermission() {
+    try {
+      
+    }
+    catch (error) {
+      
     }
   }
   ```
