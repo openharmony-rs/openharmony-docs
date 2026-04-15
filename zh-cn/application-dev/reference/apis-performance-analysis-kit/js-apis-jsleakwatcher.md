@@ -96,7 +96,7 @@ dump(filePath: string): Array&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| filePath | string | 是 | 导出信息生成的文件存放的路径。 |
+| filePath | string | 是 | 导出信息生成的文件存放的路径。<br>**说明**：从API version 24开始，进程生命周期内，仅保留最新的一份快照信息。 |
 
 **返回值：**
 
@@ -245,7 +245,7 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 | bgLeakCountThreshold | number | 否 | 是 | 应用在后台泄漏个数达到设定值触发dump。<br>GC/Dump阶段，大于等于1时触发Dump。<br>阈值默认为1。 |
 | maxStoredHeapDumps | number | 否 | 是 | 最大dump保存个数，避免磁盘空间占满，超过则删除时间戳最小的rawheap、jsleaklist文件。<br>默认保存10个rawheap、10个jsleaklist文件。 |
 | dumpHeapWaitTimeMs | number | 否 | 是 | 延迟执行dump，保证GC能调度且执行完再执行dump，延迟间隔小于等于泄漏检测间隔时间，单位：ms。<br>设置延迟时长超过泄漏间隔时长则默认与泄漏间隔时长保持一致。<br>若无新增泄漏对象将不会触发dump。<br>GC结束后默认延迟5秒执行dump。 |
-| exclusionList | Array&lt;string&gt; | 否 | 是 | 过滤不想监测的对象类名。<br>只作用于自定义组件，不会影响其他组件类型的过滤。<br>存在混淆问题时无法进行过滤，只在开发态生效。<br>配置项冲突优先级：ID列表 > 白名单。<br>默认为空数组。 |
+| exclusionList | Array&lt;string&gt; | 否 | 是 | 过滤不想监测的对象类名。<br>作用于Window、CustomComponent和Ability组件，不会影响其他组件类型的过滤。<br>存在混淆问题时无法进行过滤，只在开发态生效。<br>配置项冲突优先级：ID列表 > 白名单。<br>默认为空数组。 |
 
 
 ## MonitorObjectType
