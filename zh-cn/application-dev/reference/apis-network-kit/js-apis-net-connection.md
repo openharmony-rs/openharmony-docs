@@ -490,7 +490,8 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 >**说明：**
 >
-> 注意：当指定网络不可用时，需要解除 App 和指定网络的绑定关系，以免导致应用无法上网。
+> 当指定网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 
 ```ts
@@ -520,36 +521,20 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
+以下示例以绑定蜂窝网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到蜂窝网络可用时绑定蜂窝网络，不可用时解绑，使用默认网络。
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+// 创建NetConnection对象。仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
+let timeout = 1000;
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
   }
-  // 表示APP使用当前默认网络访问网络
-  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
-    if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
-});
-```
-结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
-
-**示例：**
-
-```ts
-
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
+}, timeout);
 
 // 使用on接口订阅网络可用事件
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
@@ -602,7 +587,8 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 >**说明：**
 >
-> 注意：当指定网络不可用时，需要解除 App 和指定网络的绑定关系，以免导致应用无法上网。
+> 当指定网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
@@ -635,35 +621,20 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
+以下示例以绑定蜂窝网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到蜂窝网络可用时绑定蜂窝网络，不可用时解绑，使用默认网络。
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+// 创建NetConnection对象。仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
+let timeout = 1000;
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
   }
-
-  connection.setAppNet(netHandle).then(() => {
-    console.info("success");
-  }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  })
-});
-```
-
-结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当网络不可用时，主动解除和指定网络的绑定关系，示例代码如下：
-
-**示例：**
-
-```ts
-
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
+}, timeout);
 
 // 使用on接口订阅网络可用事件
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
