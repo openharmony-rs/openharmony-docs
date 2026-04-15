@@ -6,9 +6,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":540,
+						"end_line":539,
 						"name":"custom_authentication",
-						"start_line":457
+						"start_line":463
 					}
 				]
 			}
@@ -21,9 +21,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":395,
+						"end_line":401,
 						"name":"cancel_authentication",
-						"start_line":326
+						"start_line":332
 					}
 				]
 			}
@@ -36,9 +36,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":566,
+						"end_line":558,
 						"name":"obtain_enrolled_capabilities",
-						"start_line":553
+						"start_line":545
 					}
 				]
 			}
@@ -66,9 +66,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":455,
+						"end_line":461,
 						"name":"perceive-adjust-authentication-process",
-						"start_line":401
+						"start_line":407
 					}
 				]
 			}
@@ -81,24 +81,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":163,
+						"end_line":169,
 						"name":"authentication_example1",
-						"start_line":120
+						"start_line":126
 					},
 					{
-						"end_line":218,
+						"end_line":224,
 						"name":"authentication_example2",
-						"start_line":170
+						"start_line":176
 					},
 					{
-						"end_line":273,
+						"end_line":279,
 						"name":"authentication_example3",
-						"start_line":225
+						"start_line":231
 					},
 					{
-						"end_line":324,
+						"end_line":330,
 						"name":"authentication_example4",
-						"start_line":280
+						"start_line":286
 					}
 				]
 			}
@@ -32780,9 +32780,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":590,
+						"end_line":582,
 						"name":"obtain_auth_lock_state_capabilities",
-						"start_line":572
+						"start_line":564
 					}
 				]
 			}
