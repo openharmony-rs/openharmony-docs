@@ -559,7 +559,7 @@ netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
       console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to setAppNet, netid: "" + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   });
 });
 
