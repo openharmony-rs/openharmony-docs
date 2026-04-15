@@ -535,7 +535,7 @@ linearGradientBlur(value: number, options: LinearGradientBlurOptions): T
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | number                                                       | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000] |
-| options | [LinearGradientBlurOptions](#lineargradientbluroptions12) | 是   | 设置线性渐变模糊效果。  <br/>线性梯度模糊包含[fractionStops](#lineargradientbluroptions12)和[direction](#lineargradientbluroptions12)。                                     |
+| options | [LinearGradientBlurOptions](#lineargradientbluroptions12) | 是   | 设置线性渐变模糊效果。  <br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。|
 
 **返回值：**
 
@@ -558,7 +558,7 @@ linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradi
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | blurRadius   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当blurRadius的值为undefined时，恢复为渐变模糊为0的效果。 |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientBlurOptions](#lineargradientbluroptions12)> | 是   | 设置线性渐变模糊效果。<br/>当options的值为undefined时，恢复为渐变模糊为0的效果。<br/>线性梯度模糊包含[fractionStops](#lineargradientbluroptions12)和[direction](#lineargradientbluroptions12)。  |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientBlurOptions](#lineargradientbluroptions12)> | 是   | 设置线性渐变模糊效果。<br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。|
 
 **返回值：**
 
