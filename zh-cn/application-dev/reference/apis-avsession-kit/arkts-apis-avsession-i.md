@@ -47,7 +47,7 @@
 
 | 名称            | 类型                      | 只读 | 可选 | 说明               |
 | --------------- |-------------------------| ---- | ---- |---------------------------------------------------------------------|
-| assetId         | string                  | 否   | 否   | 媒体ID。歌曲的唯一标识，由应用自定义。<br>- 该属性发生变化则其他元数据属性都将被刷新。<br>- 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。<br>- 当该属性设为空值时，调用[setAVMetadata](../apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavmetadata10)方法将失败，返回错误码6600101。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
+| assetId         | string                  | 否   | 否   | 媒体ID。媒体信息的唯一标识，由应用自定义。<br>- 该属性发生变化则其他元数据属性都将被刷新。<br>- 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。<br>- 当该属性设为空值时，调用[setAVMetadata](../apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavmetadata10)方法将失败，返回错误码6600101。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
 | title           | string                  | 否   | 是   | 标题。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | artist          | string                  | 否   | 是   | 艺术家。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
 | author          | string                  | 否   | 是   | 专辑作者。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
@@ -78,7 +78,7 @@
 
 | 名称         | 类型                    | 只读  | 可选  | 说明                     |
 | ------------ | ----------------------- | ---- | ---- | ----------------------- |
-| assetId      | string                  | 否   | 否   | 播放列表媒体ID。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| assetId      | string                  | 否   | 否   | 播放列表媒体ID。媒体信息的唯一标识，由应用自定义。<br>在音视频投播场景下，当应用程序调用prepare和start接口，且assetId维持不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | title        | string                  | 否   | 是   | 播放列表媒体标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。<br>在使用了cast+协议的音频投播场景下，不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | description  | string                  | 否   | 是   | 播放列表媒体描述的文本。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
