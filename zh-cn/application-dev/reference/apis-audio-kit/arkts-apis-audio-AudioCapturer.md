@@ -1224,6 +1224,8 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 
 回调函数仅用来读取音频数据，请勿在回调函数中调用AudioCapturer相关接口。
 
+为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**

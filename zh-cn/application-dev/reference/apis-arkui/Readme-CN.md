@@ -93,6 +93,9 @@
       - [Content](js-apis-arkui-Content.md)
       - [NodeContent](js-apis-arkui-NodeContent.md)
       - [Resource](js-apis-arkui-resource.md)
+      <!--Del-->
+      - [Graphics (系统接口)](js-apis-arkui-graphics-sys.md)
+      <!--DelEnd-->
   - 窗口管理<!--window-manager-api-->
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)

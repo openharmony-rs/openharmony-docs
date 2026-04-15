@@ -978,7 +978,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
     // 示例1：仅指定maxCount
     if (resultSet != undefined) {
       let rows: Array<relationalStore.ValuesBucket>;
-      let maxCount: number = 50;
+      let maxCount = 50;
       // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
       // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，goToNextRow等接口移动
       while ((rows = await resultSet.getRows(maxCount)).length != 0) {
@@ -989,8 +989,8 @@ async function getRowsExample(store : relationalStore.RdbStore) {
     // 示例2：指定maxCount和起始的position
     if (resultSet != undefined) {
       let rows: Array<relationalStore.ValuesBucket>;
-      let maxCount: number = 50;
-      let position: number = 50;
+      let maxCount = 50;
+      let position = 50;
       while ((rows = await resultSet.getRows(maxCount, position)).length != 0) {
         console.info(JSON.stringify(rows[0]));
         position += rows.length;
@@ -1062,8 +1062,8 @@ async function getRowsDataExample(store : relationalStore.RdbStore) {
       let rowsData: relationalStore.RowsData;
       // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
       // getRowsData会自动移动结果集当前行到上次getRowsData获取结束位置的下一行，无需使用goToNextRow接口移动
-      let maxCount: number = 50;
-      let rowCount: number = 0;
+      let maxCount = 50;
+      let rowCount = 0;
       while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
         rowsData.forEach((rowData, index) => {
           // 第rowCount + index + 1行的查询结果
@@ -1076,8 +1076,8 @@ async function getRowsDataExample(store : relationalStore.RdbStore) {
     // 示例2：指定maxCount和起始的position
     if (resultSet != undefined) {
       let rowsData: relationalStore.RowsData;
-      let maxCount: number = 50;
-      let position: number = 50;
+      let maxCount = 50;
+      let position = 50;
       while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
         rowsData.forEach((rowData, index) => {
           // 第position + index + 1行的查询结果

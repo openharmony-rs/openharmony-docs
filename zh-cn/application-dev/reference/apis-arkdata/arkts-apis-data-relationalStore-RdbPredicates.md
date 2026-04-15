@@ -243,11 +243,23 @@ beginWrap(): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa")
   .beginWrap()
   .equalTo("AGE", 18)
+  .or()
+  .equalTo("SALARY", 200.5)
+  .endWrap();
+```
+
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa")
+  .beginWrap()
+  .equalTo("AGE", 18 as long)
   .or()
   .equalTo("SALARY", 200.5)
   .endWrap();
@@ -273,11 +285,23 @@ endWrap(): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa")
   .beginWrap()
   .equalTo("AGE", 18)
+  .or()
+  .equalTo("SALARY", 200.5)
+  .endWrap();
+```
+
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa")
+  .beginWrap()
+  .equalTo("AGE", 18 as long)
   .or()
   .equalTo("SALARY", 200.5)
   .endWrap();
@@ -658,10 +682,18 @@ between(field: string, low: ValueType, high: ValueType): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 匹配数据表的"AGE"列中大于等于10且小于等于50的值
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.between("AGE", 10, 50);
+```
+
+ArkTS-Sta示例：
+```ts
+// 匹配数据表的"AGE"列中大于等于10且小于等于50的值
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.between("AGE", 10 as long, 50 as long);
 ```
 
 ## notBetween
@@ -700,10 +732,18 @@ notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 匹配数据表的"AGE"列中小于10或大于50的值
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.notBetween("AGE", 10, 50);
+```
+
+ArkTS-Sta示例：
+```ts
+// 匹配数据表的"AGE"列中小于10或大于50的值
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.notBetween("AGE", 10 as long, 50 as long);
 ```
 
 ## greaterThan
@@ -741,10 +781,18 @@ greaterThan(field: string, value: ValueType): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 匹配数据表的"AGE"列中大于18的值
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.greaterThan("AGE", 18);
+```
+
+ArkTS-Sta示例：
+```ts
+// 匹配数据表的"AGE"列中大于18的值
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.greaterThan("AGE", 18 as long);
 ```
 
 ## lessThan
@@ -782,10 +830,18 @@ lessThan(field: string, value: ValueType): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 匹配数据表的"AGE"列中小于20的值
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.lessThan("AGE", 20);
+```
+
+ArkTS-Sta示例：
+```ts
+// 匹配数据表的"AGE"列中小于20的值
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.lessThan("AGE", 20 as long);
 ```
 
 ## greaterThanOrEqualTo
@@ -823,10 +879,18 @@ greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 匹配数据表的"AGE"列中大于等于18的值
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.greaterThanOrEqualTo("AGE", 18);
+```
+
+ArkTS-Sta示例：
+```ts
+// 匹配数据表的"AGE"列中大于等于18的值
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.greaterThanOrEqualTo("AGE", 18 as long);
 ```
 
 ## lessThanOrEqualTo
@@ -864,10 +928,18 @@ lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 匹配数据表的"AGE"列中小于等于20的值
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.lessThanOrEqualTo("AGE", 20);
+```
+
+ArkTS-Sta示例：
+```ts
+// 匹配数据表的"AGE"列中小于等于20的值
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.lessThanOrEqualTo("AGE", 20 as long);
 ```
 
 ## orderByAsc
