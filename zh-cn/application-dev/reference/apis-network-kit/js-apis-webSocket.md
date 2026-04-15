@@ -2608,8 +2608,6 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 打开WebSocket连接时，订阅onOpen事件得到的打开结果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetStack
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
