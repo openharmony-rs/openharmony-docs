@@ -40,9 +40,9 @@ SysCap的用途：
 
    每个SysCap所代表的开放能力API集合，对应操作系统中一个独立的功能特性。例如上述蓝牙SysCap标识的API集合，逻辑上均属于“蓝牙核心通信能力”。
 
-> 注意：
+> **注意**：
 > 
->同一设备类型下不同的产品型号，软硬件规格可能不一致，所以需要开发者通过canIUse和能力查询接口判断，以达到先查询后使用的目的。例如部分手机不支持POI功能，所以需要开发者先使用canIUse判断SystemCapability.Location.Location.Core在手机上是否可调用，接着还需使用[geoLocationManager.isPoiServiceSupported](apis-location-kit/js-apis-geoLocationManager.md)查询系统（即软件）是否支持POI服务，全部支持之后开发者才可正常使用POI相关接口。详情请参见[SysCap与应用开发](#syscap与应用开发)。
+> 同一设备类型下不同的产品型号，软硬件规格可能不一致，所以需要开发者通过canIUse和能力查询接口判断，以达到先查询后使用的目的。例如部分手机不支持POI功能，所以需要开发者先使用canIUse判断SystemCapability.Location.Location.Core在手机上是否可调用，接着还需使用[geoLocationManager.isPoiServiceSupported](apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerispoiservicesupported20)查询系统（即软件）是否支持POI服务，全部支持之后开发者才可正常使用POI相关接口。详情请参见[SysCap适配应用开发](#syscap适配应用开发)。
 
 ## SysCap与SDK和Kit的关系
 
@@ -50,9 +50,9 @@ SysCap与SDK、Kit形成结构化、层级化结构，如下图所示：
 
 ![Syscap-SDK](figures/Syscap-SDK.png) 
 
-1. SDK由多个功能独立的Kit组成。
+1. SDK由多个功能独立的Kit组成；
 
-2. 每个Kit包含一个或多个SysCap（注意：一个SysCap不允许对应多个Kit）。
+2. 每个Kit包含一个或多个SysCap，且每个SysCap仅属于一个 Kit；
 
 3. 每个SysCap标识/代表了一个或多个API接口。
 
@@ -65,7 +65,7 @@ SysCap与SDK、Kit形成结构化、层级化结构，如下图所示：
 
 ## SysCap与Device type的关系
 
-在SDK的“device-define”文件夹下，以json文件定义了各设备类型支持的SysCap集合，如下图所示。例如：tablet.json文件定义了Tablet设备支持SystemCapability.ArkUI.ArkUI.Full、SystemCapability.Communication.NFC.Core等SysCap。
+在SDK的“device-define”文件夹下，以json文件定义了各设备类型支持的SysCap集合。例如：tablet.json文件定义了Tablet设备支持SystemCapability.ArkUI.ArkUI.Full、SystemCapability.Communication.NFC.Core等SysCap。如下图所示：
 
 ![Syscap-DT](figures/Syscap-DT.png) 
 
@@ -77,17 +77,17 @@ SysCap与SDK、Kit形成结构化、层级化结构，如下图所示：
 
 ![Syscap-DTS](figures/Syscap-DTS.png) 
 
-DevEco Studio识别开发者项目中选择的设备类型，找到该设备类型在SDK “device-define”下定义的SysCap集合，进而获取该设备类型支持的API集合，用于智能提示、自动联想，以帮助开发者精准、高效地定位和调用所需接口。
+DevEco Studio自动识别项目中的设备类型，定位SDK“device-define”下对应的SysCap集合，进而提取该设备支持的API，用于智能提示与自动联想，助力开发者精准、高效地调用所需接口。
 
-> 注意：
+> **注意**：
 >
->当设备类型为多个时，此时DevEco Studio识别的SysCap集合是这几个设备类型的并集。
+> 当设备类型为多个时，此时DevEco Studio识别的SysCap集合是这几个设备类型的并集。
 
-## SysCap与应用开发
+## SysCap适配应用开发
 
 如前文所述，SysCap是隔离设备类型间开放能力差异的机制；但在实际应用开发中，完成SysCap层面的隔离判断后，还需要关注：
 
-1. 同一设备类型下的不同设备型号，可能因硬件配置差异等因素导致同一SysCap下的部分API调用异常。
+1. 同一设备类型下的不同设备型号，可能因硬件配置差异等因素导致同一SysCap下的部分API调用异常；
 
 2. 同一设备型号可能因硬件动态变更（可插拔等）导致同一SysCap下的部分API调用异常。
 
@@ -113,8 +113,8 @@ if (canIUse("SystemCapability.Location.Location.Core")) {
 **Native API使用示例**
 
 ```c++
-#include <stdio.h></stdio.h>
-#include <stdlib.h></stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "syscap_ndk.h"
 
 char syscap[] = "SystemCapability.ArkUI.ArkUI.Full";
@@ -128,7 +128,11 @@ if (result) {
 
 ### 使用能力查询接口判断API是否可用
 
-使用系统侧的isXXXAvailable()、isXXXSupported()、canMakeXXX()等接口判断API是否可用。（注意：并不是所有API都会有能力查询接口，若需要验证的API没有能力查询接口，可通过主动监听或错误码异常处理来判断API是否可用。）
+使用系统侧的isXXXAvailable()、isXXXSupported()、canMakeXXX()等接口判断API是否可用。
+
+> **说明**：
+>
+> 并不是所有API都会有能力查询接口，若需要验证的API没有能力查询接口，可通过主动监听或错误码异常处理来判断API是否可用。
 
 ```javascript
 import { geoLocationManager } from '@kit.LocationKit';
@@ -190,7 +194,7 @@ registerCameraStatus(cameraManager: camera.CameraManager): void {
        seReaders = seService.getReaders();
      } catch (error) {
       if(error.code=== 801) {
-       console.error('该设备不支持此能力');
+       console.error('This device does not support this capability');
       }
      }
    }
@@ -218,18 +222,18 @@ registerCameraStatus(cameraManager: camera.CameraManager): void {
 
 3.  使用全局捕获，在全局添加异常捕获监听，能够捕获未被try...catch的异常，添加后应用抛出异常后不会主动退出，详情可参考[errorManager.on('error')](apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)。
 
-### 单设备及多设备应用开发场景下的适配开发
+## 单设备及多设备应用开发场景下的适配开发
 
 应用开发可分为：
 
-1. 单设备应用开发：指应用工程的Device type只配置1个设备类型。
+1. 单设备应用开发：指应用工程的Device type只配置1个设备类型；
 
 2. 多设备应用开发：指应用工程的Device type配置多个设备类型。
 
 
 ### 单设备应用开发场景下的适配开发
 
-单设备应用开发时，DevEco Studio只识别到一种设备类型，适配开发过程如下图所示。
+单设备应用开发时，DevEco Studio只识别到一种设备类型，适配开发过程如下图所示：
 
 ![Syscap-ONE](figures/Syscap-ONE.png) 
 
@@ -240,7 +244,7 @@ registerCameraStatus(cameraManager: camera.CameraManager): void {
 
 ### 多设备应用开发场景下的适配开发
 
-多设备应用开发时，DevEco Studio需同时识别多种设备类型，适配开发过程如下图所示。
+多设备应用开发时，DevEco Studio需同时识别多种设备类型，适配开发过程如下图所示：
 
 ![Syscap-MORE](figures/Syscap-MORE.png) 
 
@@ -248,9 +252,8 @@ registerCameraStatus(cameraManager: camera.CameraManager): void {
 
    - canIUse仅适用于多设备应用开发，单设备应用开发可直接进行接口能力查询；
 
-   - 多设备应用开发场景下，当SysCap属于deviceTypes选择的设备类型和API支持的设备类型的并集中、但不在它们的交集中时，就需要对SysCap使用canIUse判断，例如，[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)选择设备类型为：Phone、Tablet，API支持设备类型为：Phone、2in1，这个时候API所属的SysCap就需要使用canIUse判断是否可用。
+   - 多设备应用开发场景下，当SysCap所属设备类型处于[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)选择范围与API支持范围的并集但不在其交集内时（如设备类型选Phone/Tablet，而API仅支持Phone/2in1），必须通过canIUse进行可用性校验。
 
 2. 如果API在同一设备类型下的不同设备型号存在能力不一致的情况，需使用能力查询接口判断接口能力可用性（注意：此处的能力查询机制并非canIUse）；
 
 3. 为了避免调用接口出现的异常情况，进行错误码异常处理。
-
