@@ -1067,7 +1067,7 @@ getPrimaryText(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 纯文本内容。剪贴板内容对象中没有纯文本内容时，默认返回为undefined。 |
+| string | 纯文本内容。剪贴板内容对象中没有纯文本内容时，ArkTS-Dyn默认返回为undefined， ArkTS-Sta默认返回空字符串。 |
 
 **示例：**
 
@@ -1100,7 +1100,7 @@ getPrimaryHtml(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | HTML内容。剪贴板内容对象中没有HTML内容时，默认返回为undefined。 |
+| string | HTML内容。剪贴板内容对象中没有HTML内容时，ArkTS-Dyn默认返回为undefined， ArkTS-Sta默认返回空字符串。。 |
 
 **示例：**
 
@@ -1133,7 +1133,7 @@ getPrimaryWant(): Want
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Want对象内容。剪贴板内容对象中没有Want内容时，默认返回为undefined。 |
+| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Want对象内容。不建议在在剪贴板内容对象中没有Want内容时使用，ArkTS-Dyn默认返回为undefined， ArkTS-Sta默认返回空对象。 |
 
 **示例：**
 
@@ -1167,7 +1167,7 @@ getPrimaryUri(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | URI内容。剪贴板内容对象中没有URI内容时，默认返回为undefined。 |
+| string | URI内容。剪贴板内容对象中没有URI内容时，默认返回为ArkTS-Dyn默认返回为undefined， ArkTS-Sta默认返回空字符串。 |
 
 **示例：**
 
@@ -1200,7 +1200,7 @@ getPrimaryPixelMap(): image.PixelMap
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | PixelMap内容。剪贴板内容对象中没有PixelMap内容时，默认返回为undefined。 |
+| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | PixelMap内容。不建议在剪贴板内容对象中没有PixelMap内容时使用，ArkTS-Dyn默认返回为undefined， ArkTS-Sta默认返回空对象。 |
 
 **示例：**
 
@@ -1315,7 +1315,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 getMimeTypes(): Array&lt;string&gt;
 
-获取剪贴板中[PasteDataProperty](#pastedataproperty7)的mimeTypes列表，接口调用异常时返回undefined。
+获取剪贴板中[PasteDataProperty](#pastedataproperty7)的mimeTypes列表，接口调用异常时返回空。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
