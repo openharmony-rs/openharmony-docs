@@ -29,7 +29,7 @@ The preceding system capability is available since API version 20. From API vers
 
 | Name| Description|
 | -- | -- |
-| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be freed by calling** OH_Huks_FreeParamSet**. To add parameters to a parameter set, you need to call **OH_Huks_AddParams** to add parameters and call **OH_Huks_BuildParamSet** to build the parameter set.|
+| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be released by using [OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset). To add parameters to a parameter set, you need to use [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) to add parameters and use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct the parameter set.|
 | [struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)](#oh_huks_addparams) | Adds parameters to a parameter set.|
 | [struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_buildparamset) | Builds a parameter set. After the parameter set is initialized and parameters are added, the parameter set is serialized and the data of the BLOB type is copied to the adjacent memory area at the end of the **paramSet** struct.|
 | [void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_freeparamset) | Frees a parameter set.|
@@ -51,7 +51,7 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 
 **Description**
 
-Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be freed by calling** OH_Huks_FreeParamSet**. To add parameters to a parameter set, you need to call **OH_Huks_AddParams** to add parameters and call **OH_Huks_BuildParamSet** to build the parameter set.
+Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be released by using [OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset). To add parameters to a parameter set, you need to use [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) to add parameters and use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct the parameter set.
 
 **Since**: 9
 
