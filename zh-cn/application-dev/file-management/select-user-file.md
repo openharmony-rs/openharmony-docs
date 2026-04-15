@@ -8,6 +8,17 @@
 
 用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[文件选择器（FilePicker）](../reference/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker选择文件或文件夹获取到的URI只具有**临时读写权限**，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 
+**约束限制**
+
+- 如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection接口时，可使用canIUse接口，确认设备是否具有该系统能力：
+
+```ts
+if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
+      console.error('this api is not supported on this device');
+      return;
+}
+```
+
 根据用户文件的常见类型，选择器（FilePicker）分别提供以下选项：
 
 - [PhotoViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated)：适用于图片或视频类型文件的选择与保存（该接口在后续版本不再演进）。请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)来选择图片文件。请使用[安全控件保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
