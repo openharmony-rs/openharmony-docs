@@ -2612,9 +2612,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 | 名称 | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | -----| ------------------------------------------------------------ |
