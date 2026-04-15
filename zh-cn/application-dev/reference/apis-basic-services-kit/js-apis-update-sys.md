@@ -179,12 +179,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
+  console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
+});
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
-  console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
-});
 ```
 
 ### checkNewVersion
@@ -227,16 +227,17 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion().then((result: update.CheckResult) => {
+    console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
+    // 版本摘要信息
+    console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
+    }).catch((err: BusinessError)=>{
+      console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
+    });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.checkNewVersion().then((result: update.CheckResult) => {
-  console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
-  // 版本摘要信息
-  console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
-}).catch((err: BusinessError)=>{
-  console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
-});
+
 ```
 
 ###  getNewVersionInfo
@@ -278,13 +279,13 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
-  console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-  console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
-});
 ```
 
 ### getNewVersionInfo
@@ -326,15 +327,15 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
-  console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-  console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  getNewVersionDescription
@@ -391,13 +392,13 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
+    console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
-  console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
-  console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
-});
 ```
 
 ### getNewVersionDescription
@@ -459,15 +460,15 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
+    .then((info: Array<update.ComponentDescription>)=> {
+    console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
-  .then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  getCurrentVersionInfo
@@ -510,14 +511,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info?.osVersion}`);
+    console.info(`info deviceName = ${info?.deviceName}`);
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
-  console.info(`info osVersion = ${info?.osVersion}`);
-  console.info(`info deviceName = ${info?.deviceName}`);
-  console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-});
 ```
 
 ### getCurrentVersionInfo
@@ -559,16 +560,16 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info.osVersion}`);
+    console.info(`info deviceName = ${info.deviceName}`);
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
-  console.info(`info osVersion = ${info.osVersion}`);
-  console.info(`info deviceName = ${info.deviceName}`);
-  console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  getCurrentVersionDescription
@@ -617,13 +618,13 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
+    console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
-  console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
-  console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
-});
 ```
 
 ### getCurrentVersionDescription
@@ -677,14 +678,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
+    console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
-  console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  getTaskInfo
@@ -727,12 +728,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
-  console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
-});
 ```
 
 ### getTaskInfo
@@ -775,14 +776,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo().then((info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info.existTask}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getTaskInfo().then((info: update.TaskInfo) => {
-  console.info(`getTaskInfo isexistTask= ${info.existTask}`);
-}).catch((err: BusinessError) => {
-  console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  download
@@ -838,12 +839,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
+    console.info(`download error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
-  console.info(`download error ${JSON.stringify(err)}`);
-});
 ```
 
 ### download
@@ -904,14 +905,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions).then(() => {
+    console.info(`download start`);
+  }).catch((err: BusinessError) => {
+    console.error(`download error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.download(versionDigestInfo, downloadOptions).then(() => {
-  console.info(`download start`);
-}).catch((err: BusinessError) => {
-  console.error(`download error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  resumeDownload
@@ -966,12 +967,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
+    console.info(`resumeDownload error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
-  console.info(`resumeDownload error ${JSON.stringify(err)}`);
-});
 ```
 
 ### resumeDownload
@@ -1031,14 +1032,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
+    console.info(`resumeDownload start`);
+  }).catch((err: BusinessError) => {
+    console.error(`resumeDownload error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
-  console.info(`resumeDownload start`);
-}).catch((err: BusinessError) => {
-  console.error(`resumeDownload error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  pauseDownload
@@ -1093,12 +1094,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
+    console.info(`pauseDownload error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
-  console.info(`pauseDownload error ${JSON.stringify(err)}`);
-});
 ```
 
 ### pauseDownload
@@ -1158,14 +1159,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
+    console.info(`pauseDownload`);
+  }).catch((err: BusinessError)  => {
+    console.error(`pauseDownload error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
-  console.info(`pauseDownload`);
-}).catch((err: BusinessError)  => {
-  console.error(`pauseDownload error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  upgrade
@@ -1220,12 +1221,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
+    console.info(`upgrade error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
-  console.info(`upgrade error ${JSON.stringify(err)}`);
-});
 ```
 
 ### upgrade
@@ -1285,14 +1286,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
+    console.info(`upgrade start`);
+  }).catch((err: BusinessError) => {
+    console.error(`upgrade error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
-  console.info(`upgrade start`);
-}).catch((err: BusinessError) => {
-  console.error(`upgrade error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  clearError
@@ -1347,12 +1348,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
+    console.info(`clearError error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
-  console.info(`clearError error ${JSON.stringify(err)}`);
-});
 ```
 
 ### clearError
@@ -1412,14 +1413,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions).then(() => {
+    console.info(`clearError success`);
+  }).catch((err: BusinessError) => {
+    console.error(`clearError error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.clearError(versionDigestInfo, clearOptions).then(() => {
-  console.info(`clearError success`);
-}).catch((err: BusinessError) => {
-  console.error(`clearError error ${JSON.stringify(err)}`);
-});
 ```
 
 ### getUpgradePolicy
@@ -1461,13 +1462,13 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
-  console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
-  console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
-});
 ```
 
 ### getUpgradePolicy
@@ -1509,15 +1510,15 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
+  }).catch((err: BusinessError)  => {
+    console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
-  console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
-  console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
-}).catch((err: BusinessError)  => {
-  console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ### setUpgradePolicy
@@ -1566,12 +1567,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy, (err: BusinessError) => {
+    console.info(`setUpgradePolicy result: ${err}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.setUpgradePolicy(policy, (err: BusinessError) => {
-  console.info(`setUpgradePolicy result: ${err}`);
-});
 ```
 
 ### setUpgradePolicy
@@ -1625,14 +1626,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy).then(() => {
+    console.info(`setUpgradePolicy success`);
+  }).catch((err: BusinessError) => {
+    console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.setUpgradePolicy(policy).then(() => {
-  console.info(`setUpgradePolicy success`);
-}).catch((err: BusinessError) => {
-  console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ###  terminateUpgrade
@@ -1674,12 +1675,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade((err: BusinessError) => {
+    console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.terminateUpgrade((err: BusinessError) => {
-  console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
-});
 ```
 
 ### terminateUpgrade
@@ -1721,14 +1722,14 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade().then(() => {
+    console.info(`terminateUpgrade success`);
+  }).catch((err: BusinessError) => {
+    console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.terminateUpgrade().then(() => {
-  console.info(`terminateUpgrade success`);
-}).catch((err: BusinessError) => {
-  console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
-});
 ```
 
 ### on
@@ -1769,12 +1770,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater on ${JSON.stringify(eventInfo)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info(`updater on ${JSON.stringify(eventInfo)}`);
-});
 ```
 
 ### off
@@ -1815,12 +1816,12 @@ try {
     }
   };
   let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater off ${JSON.stringify(eventInfo)}`);
+  });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info(`updater off ${JSON.stringify(eventInfo)}`);
-});
 ```
 
 ## Restorer
@@ -1856,12 +1857,12 @@ factoryReset(callback: AsyncCallback\<void>): void
 ```ts
 try {
   let restorer = update.getRestorer();
+  restorer.factoryReset((err) => {
+    console.info(`factoryReset error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get restorer: ${error}`);
 }
-restorer.factoryReset((err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
-});
 ```
 
 ### factoryReset
@@ -1896,14 +1897,14 @@ factoryReset(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let restorer = update.getRestorer();
+  restorer.factoryReset().then(() => {
+    console.info(`factoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`factoryReset error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get restorer: ${error}`);
 }
-restorer.factoryReset().then(() => {
-  console.info(`factoryReset success`);
-}).catch((err: BusinessError) => {
-  console.error(`factoryReset error ${JSON.stringify(err)}`);
-});
 ```
 
 ### forceFactoryReset<sup>23+</sup>
@@ -1938,14 +1939,14 @@ forceFactoryReset(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let restorer = update.getRestorer();
+  restorer.forceFactoryReset().then(() => {
+    console.info(`forceFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get restorer: ${error}`);
 }
-restorer.forceFactoryReset().then(() => {
-  console.info(`forceFactoryReset success`);
-}).catch((err: BusinessError) => {
-  console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
-});
 ```
 
 ### deepFactoryReset
@@ -1988,18 +1989,18 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let restorer = update.getRestorer();
+  let factoryResetStrategy: update.FactoryResetStrategy = {
+    scope: update.FactoryResetScope.DATA,
+    strategy: "deepFactoryReset test"
+  };
+  restorer.deepFactoryReset(factoryResetStrategy).then(() => {
+    console.info(`deepFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get restorer: ${error}`);
 }
-let factoryResetStrategy: update.FactoryResetStrategy = {
-  scope: update.FactoryResetScope.DATA,
-  strategy: "deepFactoryReset test"
-};
-restorer.deepFactoryReset(factoryResetStrategy).then(() => {
-  console.info(`deepFactoryReset success`);
-}).catch((err: BusinessError) => {
-  console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
-});
 ```
 ### getDeepFactoryResetInfo
 
@@ -2046,14 +2047,14 @@ let factoryResetStrategy: update.FactoryResetStrategy = {
 };
 try {
   let restorer = update.getRestorer();
+  restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
+    console.info(`getDeepFactoryResetInfo success`);
+  }).catch((err: BusinessError) => {
+    console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get restorer: ${error}`);
 }
-restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
-  console.info(`getDeepFactoryResetInfo success`);
-}).catch((err: BusinessError) => {
-  console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
-});
 ```
 
 ## LocalUpdater
@@ -2097,12 +2098,12 @@ const upgradeFile: update.UpgradeFile = {
 
 try {
   let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
+    console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get localUpdater error: ${error}`);
 }
-localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
-  console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
-});
 ```
 
 ### verifyUpgradePackage
@@ -2151,14 +2152,14 @@ const upgradeFile: update.UpgradeFile = {
 
 try {
   let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath").then(() => {
+    console.info(`verifyUpgradePackage success`);
+  }).catch((err: BusinessError) => {
+    console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get localUpdater error: ${error}`);
 }
-localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath").then(() => {
-  console.info(`verifyUpgradePackage success`);
-}).catch((err: BusinessError) => {
-  console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
-});
 ```
 
 ### applyNewVersion
@@ -2198,12 +2199,12 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
 
 try {
   let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles, (err) => {
+    console.info(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get localUpdater error: ${error}`);
 }
-localUpdater.applyNewVersion(upgradeFiles, (err) => {
-  console.info(`applyNewVersion error ${JSON.stringify(err)}`);
-});
 ```
 
 ### applyNewVersion
@@ -2245,14 +2246,14 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
 
 try {
   let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles).then(() => {
+    console.info(`applyNewVersion success`);
+  }).catch((err: BusinessError) => {
+    console.error(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
 } catch(error) {
   console.error(`Fail to get localUpdater error: ${error}`);
 }
-localUpdater.applyNewVersion(upgradeFiles).then(() => {
-  console.info(`applyNewVersion success`);
-}).catch((err: BusinessError) => {
-  console.error(`applyNewVersion error ${JSON.stringify(err)}`);
-});
 ```
 
 ### on
@@ -2291,10 +2292,10 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
 
 try {
   let localUpdater = update.getLocalUpdater();
+  localUpdater.on(eventClassifyInfo, onTaskUpdate);
 } catch(error) {
   console.error(`Fail to get localUpdater error: ${error}`);
 }
-localUpdater.on(eventClassifyInfo, onTaskUpdate);
 ```
 
 ### off
@@ -2333,10 +2334,10 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
 
 try {
   let localUpdater = update.getLocalUpdater();
+  localUpdater.off(eventClassifyInfo, onTaskUpdate);
 } catch(error) {
   console.error(`Fail to get localUpdater error: ${error}`);
 }
-localUpdater.off(eventClassifyInfo, onTaskUpdate);
 ```
 
 ## UpgradeInfo
