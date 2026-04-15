@@ -33,6 +33,9 @@
    | 属性名称 | 含义 | 数据类型 | 必填 |
    | -------- | -------- | -------- | -------- |
    | scopes | 允许共享的范围，详见scopes标签说明。 | 对象数组 | 否 |
+   | sharingOSPath | 允许分享目录给操作系统的路径。 | 字符串 | 否 |
+   | sharingOSSubpath | 允许分享目录给操作系统的子路径。 | 字符串 | 否 |
+   | sharingOSPermission | 允许分享目录给操作系统的路径授权类型。 | 字符串 | 否 |
 
    **scopes标签说明**
 
@@ -40,6 +43,14 @@
    | -------- | -------- | -------- | -------- |
    | path | 共享路径配置，当前仅支持[el2目录](share-app-file.md#应用可分享目录)，scopes中的path不可重复。支持的取值如下：<br/>- `/base/files`<br/>- `/base/preferences`<br/>- `/base/haps` | string | scopes存在时必填 |
    | permission | 共享路径权限。支持的取值如下：<br/>- `r`：只读。<br/>- `r+w`：读写。 | string | scopes存在时必填 |
+
+  **sharingOSPath等标签说明**
+
+  | 属性名称 | 含义 | 数据类型 | 必填 |
+   | -------- | -------- | -------- | -------- |
+   | sharingOSPath | 非必选，不填代表不分享目录给操作系统，这样在系统应用如文管/filePicker中将不可见，填写要求是上面scopes列表中一个对象的path值 | string | 应用捐献路径时必填 |
+   | sharingOSSubpath | 非必选，sharingOSPath有值时必填，长度不超过32，将"sharingOSPath"+"sharingOSSubpath"拼装后的路径，作为分享给操作系统的目录，""空串代表就是Scopes中的path，有字符则以/开头，不允许有'.'、'..'、'/0'字符。 | string | sharingOSPath存在时必填 |
+   | sharingOSPermission | 非必选，sharingOSPath有值时必填，单选["r"、"r+w"]；要求sharingOSPermission的权限是permission的子集。 | string | sharingOSPath存在时必填 |
 
 > **说明：**
 >
@@ -55,7 +66,10 @@
            "path": "/base/files",
            "permission": "r+w"
          }
-       ]
+       ],
+       "sharingOSPath" : "/base/files",
+       "sharingOSSubpath" : "/subdir",
+       "sharingOSPermission": "r"
      }
    }
    ```
