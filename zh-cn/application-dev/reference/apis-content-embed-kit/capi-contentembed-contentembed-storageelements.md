@@ -1,8 +1,9 @@
 # ContentEmbed_StorageElements
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
+<!--Owner: @wanxiaoguo-->
+<!--Designer: @zhuwei;@weiguoning-->
 <!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
@@ -12,7 +13,7 @@ typedef struct ContentEmbed_StorageElements ContentEmbed_StorageElements
 
 ## 概述
 
-声明ContentEmbed_StorageElements结构体类型。表示ContentEmbed_StorageElement的集合。
+声明ContentEmbed_StorageElements结构体类型。包含[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)集合信息。
 
 **起始版本：** 24
 

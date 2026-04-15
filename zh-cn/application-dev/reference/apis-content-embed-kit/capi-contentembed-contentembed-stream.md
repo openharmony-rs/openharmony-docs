@@ -1,8 +1,9 @@
 # ContentEmbed_Stream
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
+<!--Owner: @wanxiaoguo-->
+<!--Designer: @zhuwei;@weiguoning-->
 <!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
@@ -12,7 +13,7 @@ typedef struct ContentEmbed_Stream ContentEmbed_Stream
 
 ## 概述
 
-声明OE格式文件流结构体类型。表示复合文档中存储原始二进制数据的基本单元，类似普通文件系统里的文件。
+声明OE文档Stream结构体类型。类似于文件系统中的文件，可对其进行读取或写入，且Stream对象只能存在于Storage对象中。
 
 **起始版本：** 24
 

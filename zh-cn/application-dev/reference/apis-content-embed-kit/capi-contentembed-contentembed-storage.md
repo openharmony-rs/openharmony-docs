@@ -1,8 +1,9 @@
 # ContentEmbed_Storage
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
+<!--Owner: @wanxiaoguo-->
+<!--Designer: @zhuwei;@weiguoning-->
 <!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
@@ -12,7 +13,7 @@ typedef struct ContentEmbed_Storage ContentEmbed_Storage
 
 ## 概述
 
-声明OE格式文件目录结构体类型。表示复合文档中的层级容器，类似普通文件系统里的目录，用来组织和管理Stream或其他子Storage。
+声明OE文档Storage结构体类型。类似于文件系统中的目录，Storage对象的父对象必须是另一个Storage对象或根Storage对象。
 
 **起始版本：** 24
 
