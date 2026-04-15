@@ -2195,7 +2195,7 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 
     console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
 
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+    console.error('Failed to getLoadedTimeRanges, error message is: ' + err.message);
 
 **返回值：**
 
