@@ -1,8 +1,9 @@
 # ContentEmbed_Object
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
+<!--Owner: @wanxiaoguo-->
+<!--Designer: @zhuwei;@weiguoning-->
 <!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
@@ -12,7 +13,7 @@ typedef struct ContentEmbed_Object ContentEmbed_Object
 
 ## 概述
 
-声明ContentEmbed_Object结构体类型。表示一个OE文档对象在服务端封装的OE对象，用于与客户端OE对象交互。
+声明ContentEmbed_Object结构体类型。用于指向OE文档在服务端封装的文档嵌入和编辑的程序对象（简称服务端OE对象）。
 
 **起始版本：** 24
 

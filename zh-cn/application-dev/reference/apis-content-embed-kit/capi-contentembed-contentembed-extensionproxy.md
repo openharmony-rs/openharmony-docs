@@ -1,8 +1,9 @@
 # ContentEmbed_ExtensionProxy
+
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @weiguoning-->
-<!--Designer: @zhuwei-->
+<!--Owner: @wanxiaoguo-->
+<!--Designer: @zhuwei;@weiguoning-->
 <!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
@@ -12,7 +13,7 @@ typedef struct ContentEmbed_ExtensionProxy ContentEmbed_ExtensionProxy
 
 ## 概述
 
-声明OE对象结构体类型。作为客户端与OE Extension之间的通信代理，负责与服务端进行交互。每个 OE 文档在客户端中都会对应一个相应的 OE 对象，用于管理该文档的相关操作与状态。
+声明ContentEmbed_ExtensionProxy结构体类型。用于指向OE文档在客户端封装的文档嵌入和编辑的程序对象（简称客户端OE对象）。
 
 **起始版本：** 24
 
