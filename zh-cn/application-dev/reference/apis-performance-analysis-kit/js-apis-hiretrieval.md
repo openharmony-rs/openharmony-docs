@@ -15,7 +15,7 @@
 
 > **说明：**  
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
