@@ -2175,7 +2175,7 @@ applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: Asyn
 
 | 参数名         | 类型                                 | 必填   | 说明                                      |
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFile | Array<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
+| upgradeFiles | Array<[UpgradeFile](#upgradefile)> | 是    | 升级文件。                                    |
 | callback    | AsyncCallback\<void>               | 是    | 回调函数。当安装升级包执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
