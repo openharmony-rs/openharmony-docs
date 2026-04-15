@@ -2098,7 +2098,7 @@ const upgradeFile: update.UpgradeFile = {
 
 try {
   let localUpdater = update.getLocalUpdater();
-  localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
+  localUpdater.verifyUpgradePackage(upgradeFile, "certFilePath", (err) => {
     console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
   });
 } catch(error) {
