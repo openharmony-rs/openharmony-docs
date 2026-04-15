@@ -717,6 +717,8 @@ typedef enum {
 **描述：**
 用于运行事件循环的事件模式。
 
+**起始版本：** 12
+
 ### napi_queue_async_work_with_qos
 
 ```cpp
