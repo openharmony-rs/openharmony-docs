@@ -676,7 +676,7 @@ import { common } from '@kit.AbilityKit';
 
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
-let mediaSource : media.MediaSource = media.createMediaSourceWithFd(fdSrc);
+let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
 ```
 
 ## media.createMediaSourceWithDataSource
@@ -728,7 +728,7 @@ let dataSrc: media.AVDataSrcDescriptor = {
     return readLen > 0 ? readLen : -1;
   }
 }
-let mediaSource : media.MediaSource = media.createMediaSourceWithDataSource(dataSrc);
+let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithDataSource(dataSrc);
 ```
 
 ## media.createAudioPlayer<sup>(deprecated)</sup>
