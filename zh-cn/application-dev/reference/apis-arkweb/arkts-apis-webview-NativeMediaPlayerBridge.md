@@ -270,6 +270,10 @@ suspendPlayer?(type: SuspendType): void
 |--------|------|------|------|
 | type | [SuspendType](./arkts-apis-webview-e.md#suspendtype12) | 是 | 播放器挂起类型。|
 
+**示例：**
+
+完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
+
 ## UpdateRectFn<sup>23+</sup>
 
 type UpdateRectFn = (x: double, y: double, width: double, height: double) => void
