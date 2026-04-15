@@ -2486,7 +2486,7 @@ setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;Orientat
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[OrientationResult](arkts-apis-window-i.md#orientationresult)&gt; | Promise对象。返回设置窗口显示方向的结果 |
+| Promise&lt;[OrientationResult](arkts-apis-window-i.md#orientationresult)&gt; | Promise对象。返回设置窗口显示方向的结果。 |
 
 **错误码：**
 
