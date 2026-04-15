@@ -1,7 +1,7 @@
 # AppStorage：应用全局的UI状态存储
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
+<!--Owner: @jiyujia926-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
