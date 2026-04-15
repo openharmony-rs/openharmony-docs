@@ -287,7 +287,7 @@ struct Index {
 
 registerAgentCard(agentCard: AgentCard): Promise\<void>
 
-注册AgentCard到系统中，使系统能够识别和调用对应的AgentExtensionAbility。未指定agentCard.type时默认为agentConstant.AgentCardType.APP。
+注册AgentCard到系统中，使系统能够识别和调用对应的AgentExtensionAbility。
 
 系统会根据类型对appInfo进行校验：
 - APP、LOW_CODE类型：校验bundle和ability是否存在，并验证ability是否为agent类型。
