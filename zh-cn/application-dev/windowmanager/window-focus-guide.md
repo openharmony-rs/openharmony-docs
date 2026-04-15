@@ -35,7 +35,7 @@
 
 ### 窗口激活态管理
 
-****窗口激活态（Highlight State）** 表示当前窗口是否处于"视觉高亮"状态，"视觉高亮"是一种UI反馈机制，通过改变窗口的外观（如标题栏颜色、边框样式、透明度、阴影等）来向用户传达：这个窗口当前是活跃的、可交互的，或者正在 fanc被系统强调。
+**窗口激活态（Highlight State）** 表示当前窗口是否处于“视觉高亮”状态，“视觉高亮”是一种UI反馈机制，通过改变窗口的外观（如标题栏颜色、边框样式、透明度、阴影等）来向用户传达：这个窗口当前是活跃的、可交互的，或者正在被系统强调。
 
 - 窗口处于激活态不等于窗口获焦；但获焦窗口一定处于激活态。
 
@@ -65,11 +65,11 @@
 | 显示当前窗口 | 可用于显示主窗口、子窗口、全局悬浮窗及系统窗口。<br/>如果传入focusOnShow: false，窗口显示时不可获焦。 | [showWindow(options: ShowWindowOptions)](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow20) |
 
 > **说明：**
-> 
+>
 > - 针对监听类接口：请使用对应的off()接口在页面销毁时移除相关监听，以避免内存泄露。
-> 
+>
 > - 页面加载优于显示：在调用showWindow()显示窗口等接口时，请确保已使用loadContent()或setUIContent等接口完成页面的加载。
-> 
+>
 > - 合理使用窗口独占激活模式：避免滥用[setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#setexclusivelyhighlighted15)导致用户体验割裂。
-> 
+>
 > - 状态查询和监听接口的结合使用：首次进入页面可使用isWindowHighlighted()/isFocused()获取初始状态，再通过对应的on('windowHighlightChange')/on('windowEvent')接口监听后续变化以实现相关适配和操作。
