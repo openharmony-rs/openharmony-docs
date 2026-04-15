@@ -1,4 +1,4 @@
-# Native api中导出的OpenGL 3.0符号列表
+# Native API中导出的OpenGL 3.0符号列表
 
 |符号类型|符号名|
 | --- | --- |
@@ -65,7 +65,7 @@
 |FUNC|glDepthRange                         
 |FUNC|glDepthRangef                        
 |FUNC|glDetachShader                       
-|FUNC|glDisablevertexAttribArray           
+|FUNC|glDisableVertexAttribArray           
 |FUNC|glDispatchCompute                    
 |FUNC|glDrawArrays                         
 |FUNC|glDrawArraysInstanced                
@@ -147,7 +147,7 @@
 |FUNC|glProgramParameteri                  
 |FUNC|glPushDebugGroup                     
 |FUNC|glReadBuffer                         
-|FUNC|glReadpixels                         
+|FUNC|glReadPixels                         
 |FUNC|glReleaseShaderCompiler              
 |FUNC|glRenderbufferStorage                
 |FUNC|glRenderbufferStorageMultisample     
