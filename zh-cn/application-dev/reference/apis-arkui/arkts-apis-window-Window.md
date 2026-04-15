@@ -2460,7 +2460,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;OrientationResult&gt;
 
-设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
+设置主窗口的显示方向属性，通过Promise异步返回显示方向的执行结果。子窗口调用后不生效。
 
 **起始版本：** 26.0.0
 
@@ -2486,7 +2486,7 @@ setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;Orientat
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[OrientationResult](arkts-apis-window-i.md#orientationresult)&gt; | Promise对象。返回设置窗口显示方向的结果。 |
+| Promise&lt;[OrientationResult](arkts-apis-window-i.md#orientationresult)&gt; | Promise对象。设置窗口显示方向的执行结果。 |
 
 **错误码：**
 
