@@ -60,17 +60,17 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 ```ts
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ## update.getRestorer
@@ -171,19 +171,19 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
-    console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
+  console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
 });
 ```
 
@@ -219,26 +219,24 @@ checkNewVersion(): Promise\<CheckResult>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
-updater.checkNewVersion()
-      .then((result: update.CheckResult) => {
-        console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
-        // 版本摘要信息
-        console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
-      })
-      .catch((err: BusinessError)=>{
-        console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
-      });
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+updater.checkNewVersion().then((result: update.CheckResult) => {
+  console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
+  // 版本摘要信息
+  console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
+}).catch((err: BusinessError)=>{
+  console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
+});
 ```
 
 ###  getNewVersionInfo
@@ -272,20 +270,20 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
-      console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-      console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
+  console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+  console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
 });
 ```
 
@@ -320,22 +318,22 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
-    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-    console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
+  console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+  console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
 }).catch((err: BusinessError) => {
-    console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
+  console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -385,17 +383,17 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
   console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
   console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
@@ -453,17 +451,17 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
   .then((info: Array<update.ComponentDescription>)=> {
   console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
@@ -504,17 +502,17 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
   console.info(`info osVersion = ${info?.osVersion}`);
   console.info(`info deviceName = ${info?.deviceName}`);
@@ -553,17 +551,17 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
   console.info(`info osVersion = ${info.osVersion}`);
   console.info(`info deviceName = ${info.deviceName}`);
@@ -611,17 +609,17 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
   console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
   console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
@@ -671,17 +669,17 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
   console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
@@ -721,17 +719,17 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
   console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
 });
@@ -769,17 +767,17 @@ getTaskInfo(): Promise\<TaskInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getTaskInfo().then((info: update.TaskInfo) => {
   console.info(`getTaskInfo isexistTask= ${info.existTask}`);
 }).catch((err: BusinessError) => {
@@ -832,17 +830,17 @@ const downloadOptions: update.DownloadOptions = {
   order: update.Order.DOWNLOAD // 下载
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
   console.info(`download error ${JSON.stringify(err)}`);
 });
@@ -898,17 +896,17 @@ const downloadOptions: update.DownloadOptions = {
    order: update.Order.DOWNLOAD // 下载
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.download(versionDigestInfo, downloadOptions).then(() => {
   console.info(`download start`);
 }).catch((err: BusinessError) => {
@@ -960,17 +958,17 @@ const resumeDownloadOptions : update.ResumeDownloadOptions= {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
   console.info(`resumeDownload error ${JSON.stringify(err)}`);
 });
@@ -1025,17 +1023,17 @@ const resumeDownloadOptions: update.ResumeDownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
   console.info(`resumeDownload start`);
 }).catch((err: BusinessError) => {
@@ -1087,17 +1085,17 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
   console.info(`pauseDownload error ${JSON.stringify(err)}`);
 });
@@ -1152,17 +1150,17 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
   console.info(`pauseDownload`);
 }).catch((err: BusinessError)  => {
@@ -1214,17 +1212,17 @@ const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
   console.info(`upgrade error ${JSON.stringify(err)}`);
 });
@@ -1279,17 +1277,17 @@ const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
   console.info(`upgrade start`);
 }).catch((err: BusinessError) => {
@@ -1341,17 +1339,17 @@ const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
   console.info(`clearError error ${JSON.stringify(err)}`);
 });
@@ -1406,17 +1404,17 @@ const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.clearError(versionDigestInfo, clearOptions).then(() => {
   console.info(`clearError success`);
 }).catch((err: BusinessError) => {
@@ -1455,17 +1453,17 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
   console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
   console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
@@ -1503,17 +1501,17 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
   console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
   console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
@@ -1560,17 +1558,17 @@ const policy: update.UpgradePolicy = {
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.setUpgradePolicy(policy, (err: BusinessError) => {
   console.info(`setUpgradePolicy result: ${err}`);
 });
@@ -1619,17 +1617,17 @@ const policy: update.UpgradePolicy = {
   autoUpgradePeriods: [ { start: 120, end: 240 } ] // 自动升级时间段，用分钟表示
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.setUpgradePolicy(policy).then(() => {
   console.info(`setUpgradePolicy success`);
 }).catch((err: BusinessError) => {
@@ -1668,17 +1666,17 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.terminateUpgrade((err: BusinessError) => {
   console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
 });
@@ -1715,17 +1713,17 @@ terminateUpgrade(): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.terminateUpgrade().then(() => {
   console.info(`terminateUpgrade success`);
 }).catch((err: BusinessError) => {
@@ -1763,17 +1761,17 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   extraInfo: ""
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
   console.info(`updater on ${JSON.stringify(eventInfo)}`);
 });
@@ -1809,17 +1807,17 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   extraInfo: ""
 };
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
   console.info(`updater off ${JSON.stringify(eventInfo)}`);
 });
