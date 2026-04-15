@@ -252,7 +252,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     }
   });
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
@@ -324,7 +324,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
