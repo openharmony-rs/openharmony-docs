@@ -128,7 +128,7 @@ ArkTS-Sta: handleDurationChanged(duration: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞)  |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞) |
 
 **示例：**
 
