@@ -292,8 +292,8 @@ type UpdateRectFn = (x: double, y: double, width: double, height: double) => voi
 |--------|------|------|------|
 | x | double | 是 | surface 相对于 Web 组件的 x 坐标信息。 |
 | y | double | 是 | surface 相对于 Web 组件的 y 坐标信息。 |
-| width  | double | 是 | surface 的宽度。<br>单位：像素。 |
-| height | double | 是 | surface 的高度。<br>单位：像素。 |
+| width  | double | 是 | surface 的宽度。<br>单位：px。 |
+| height | double | 是 | surface 的高度。<br>单位：px。 |
 
 
 **示例：**
