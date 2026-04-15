@@ -580,3 +580,18 @@ With this permission, the application can update print status and printer inform
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 24
+
+## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
+
+Allows an enterprise common application to obtain the list of all installed applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0

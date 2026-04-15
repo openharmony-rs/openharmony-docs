@@ -63,7 +63,7 @@ Defines the parameters required when using the **PluginManager.Push** API.
 | want      | [Want](../apis-ability-kit/js-apis-application-want.md) | No| No   | Ability information of the component user.                         |
 | name      | string                              | No| No   | Component name.                                   |
 | data      | [KVObject](#kvobject)               | No| No   | Component data.                                  |
-| extraData | [KVObject](#kvobject)               | No| No   | Additional data.                                  |
+| extraData | [KVObject](#kvobject)               | No| No   | Extra data.                                  |
 | jsonPath  | string                              | No| Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path.|
 
 ### RequestParameters
@@ -93,7 +93,7 @@ Provides the result returned after the **PluginManager.Request** API is called.
 | ----------------- | ---------------------------------------- | ---- | ---- | ----- |
 | componentTemplate | [PluginComponentTemplate](#plugincomponenttemplate) | No| No   | Component template.|
 | data              | [KVObject](#kvobject)                    | No| No   | Component data.|
-| extraData         | [KVObject](#kvobject)                    | No| No   | Additional data.|
+| extraData         | [KVObject](#kvobject)                    | No| No   | Extra data.|
 
 ### RequestEventResult
 
@@ -277,7 +277,7 @@ pluginComponentManager.request(
 
 ### pluginComponentManager.on
 
-on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback ): void
+on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback): void
 
 Listens for events of the request type and returns the requested data, or listens for events of the push type and receives the data pushed by the provider.
 

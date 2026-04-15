@@ -137,7 +137,7 @@ typedef void (*OH_TextEditorProxy_DeleteForwardFunc)(InputMethod_TextEditorProxy
 
 | 参数项 | 描述 |
 | -- | -- |
-| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | 指向即将被设置的[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)实例的指针。in. |
+| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | 指向即将被设置的[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)实例的指针。 |
 |  int32_t length | 要删除字符的长度。 |
 
 ### OH_TextEditorProxy_DeleteBackwardFunc()
@@ -156,7 +156,7 @@ typedef void (*OH_TextEditorProxy_DeleteBackwardFunc)(InputMethod_TextEditorProx
 
 | 参数项 | 描述 |
 | -- | -- |
-| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | 指向即将被设置的[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)实例的指针。in. |
+| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | 指向即将被设置的[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)实例的指针。 |
 |  int32_t length | 要删除字符的长度。 |
 
 ### OH_TextEditorProxy_SendKeyboardStatusFunc()
@@ -1204,5 +1204,4 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_Tex
 | 类型 | 说明 |
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 执行结果。<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 配置成功。<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 当proxy为NULL时返回。 |
-
 

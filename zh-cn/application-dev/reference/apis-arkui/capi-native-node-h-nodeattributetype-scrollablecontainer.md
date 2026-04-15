@@ -1819,6 +1819,10 @@ NODE_WATER_FLOW_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING = 1010014
 设置当前WaterFlow组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
+> **说明：**
+>
+> 当通过[NODE_WATER_FLOW_SECTION_OPTION](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_section_option)设置了[ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)分组，或通过[NODE_WATER_FLOW_LAYOUT_MODE](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_layout_mode)设置为[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式时，设置0或1时空分支后的FlowItem都会显示。
+
 **起始版本：** 26.0.0
 
 

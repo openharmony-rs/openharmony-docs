@@ -118,13 +118,13 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
 表示功率模式的枚举。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SLEEPING | 0 | 睡眠模式。 |
-| GENERAL | 1 | 常规模式。 |
-| THROUGH_WALL | 2 | 穿墙模式。 |
+| SLEEPING | 0 | 睡眠模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| GENERAL | 1 | 常规模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| THROUGH_WALL | 2 | 穿墙模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
 
 
 ## wifiManagerExt.getSupportedPowerMode

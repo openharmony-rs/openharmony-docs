@@ -392,7 +392,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
         OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_MAX_BITRATE, maxBitRate);
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_SQR_FACTOR, sqrFactor);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR) ||
-               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR)){
+               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR) ||
+               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY)){
         OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_BITRATE, bitRate);
     }
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, rateMode);

@@ -50,12 +50,12 @@ ChipGroup({
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
 | items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | Yes  | @Require &nbsp;@Prop | Specific attributes of each chip. For details, see [ChipGroupItemOptions[]](#chipgroupitemoptions).<br>If the value is **undefined**, the **ChipGroup** component is empty by default.           |
 | itemStyle       | [ChipItemStyle](#chipitemstyle)                 | No  | @Prop | Style attributes of the chip, such as the color and size. For details, see [ChipItemStyle](#chipitemstyle).<br>Default value:<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>If the value is **undefined**, the default value is used.|
-| selectedIndexes | Array&lt;number&gt;                             | No  | @Prop | Index of the selected chip.<br>Default value: **[0]**.<br>If the value is **undefined**, the default value is used. |
-| multiple        | boolean                                         | No  | @Prop | Whether to select multiple chips.<br>**true**: Multiple chips can be selected. **false**: Only one chip can be selected.<br>Default value: **false**.<br>If the value is **undefined**, the default value is used.|
+| selectedIndexes | Array&lt;number&gt;                             | No  | @Prop | Index of the selected chip.<br>Default value: **[0]**<br>If the value is **undefined**, the default value is used. |
+| multiple        | boolean                                         | No  | @Prop | Whether to select multiple chips.<br>**true**: Multiple chips can be selected. **false**: Only one chip can be selected.<br>Default value: **false**<br>If the value is **undefined**, the default value is used.|
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | No  | @Prop | Left and right padding and spacing between chips. For details, see [ChipGroupSpaceOptions](#chipgroupspaceoptions).<br>Default value: { itemSpace: 8, startSpace: 16, endSpace: 16 }<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 | chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | No  | @Prop | Top and bottom padding, used to control the overall height. The type is [ChipGroupPaddingOptions](#chipgrouppaddingoptions).<br>Default value: { top: 14, bottom: 14 }<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 | onChange        | Callback\<Array\<number>>  | No  | -  | Callback invoked when the chip status changes.<br>If the value is **undefined**, the event is unbound.                                                             |
-| suffix          | Callback\<void\>                                        | No  | @BuilderParam | Callback used to customize a builder. To display custom content on the far right side of the component, configure the **suffix** property. Use of the **suffix** property requires referencing the [IconGroupSuffix](#icongroupsuffix) API.<br>By default, if this parameter is not passed, there is no suffix.<br>If the value is **undefined**, there is no suffix.|
+| suffix          | Callback\<void\>                                        | No  | @BuilderParam | Callback used to customize a builder. To display custom content on the rightmost side of the component, configure the **suffix** property. Use of the **suffix** property requires referencing the [IconGroupSuffix](#icongroupsuffix) API.<br>By default, if this parameter is not passed, there is no suffix.<br>If the value is **undefined**, there is no suffix.|
 
 > **NOTE**
 >
@@ -80,7 +80,7 @@ Defines the specific attributes of individual chips.
 | label        | [LabelOptions](#labeloptions) | No | No | Text of the chip.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                           |
 | suffixIcon<sup>(deprecated)</sup>   | [IconOptions](#iconoptions) | No | Yes| Suffix image icon of the chip.<br>Default value: no suffix image icon.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> Note: This API is supported since API version 12 and deprecated since API version 14. You are advised to use **suffixImageIcon** instead.|
 | suffixSymbol | [ChipSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsymbolglyphoptions12) | No | Yes| Suffix symbol glyph icon of the chip.<br>Default value: no suffix symbol glyph icon.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| allowClose   | boolean                       | No | Yes | Whether to show the delete icon.<br>**true** to show, **false** to hide.<br>Default value: **false**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| allowClose   | boolean                       | No | Yes | Whether to show the delete icon.<br>**true** to show, **false** to hide.<br>Default value: **false**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | suffixImageIcon<sup>14+</sup> | [SuffixImageIconOptions](#suffiximageiconoptions14) | No| Yes| Suffix image icon of the chip.<br>Default value: no suffix image icon.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsuffixsymbolglyphoptions14) | No| Yes| Suffix symbol icon of the chip.<br>Default value: The suffix symbol icon has no function.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | closeOptions<sup>14+</sup> | [CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14) | No| Yes| Accessibility options of the default close icon.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
@@ -104,10 +104,10 @@ Defines the common attributes shared by all chips.
 
 | Name                   | Type                                                        | Read-Only| Optional| Description                                                        |
 | ----------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| size                    | [ChipSize](ohos-arkui-advanced-Chip.md#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | No  | Yes  | Chip size. The ChipSize type needs to be imported from the Chip component.<br>Default value: ChipSize.NORMAL or { height: 0, width: 0 }<br> If the value is **undefined**, the default value is used.|
-| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Chip background color.<br>Default value: **$r('sys.color.ohos_id_color_button_normal').**<br>If this parameter is set to **undefined**, the default value is used.|
+| size                    | [ChipSize](ohos-arkui-advanced-Chip.md#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | No  | Yes  | Chip size. The ChipSize type needs to be imported from the Chip component.<br>Default value: **ChipSize.NORMAL** or **{ height: 0, width: 0 }**<br> If the value is **undefined**, the default value is used.|
+| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Chip background color.<br>Default value: **$r('sys.color.ohos_id_color_button_normal')**<br>If this parameter is set to **undefined**, the default value is used.|
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Chip text color.<br>Default value: **$r('sys.color.ohos_id_color_text_primary')**<br>If this parameter is set to **undefined**, the default value is used.|
-| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Text color of the chip when it is activated.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary').**<br>If this parameter is set to **undefined**, the default value is used.|
+| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Text color of the chip when it is activated.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**<br>If this parameter is set to **undefined**, the default value is used.|
 | selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Background color of the chip when it is activated.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>If this parameter is set to **undefined**, the default value is used.|
 
 > **NOTE**
@@ -126,7 +126,7 @@ Defines the left and right padding of the chip group, and the spacing between ch
 
 | Name      | Type           | Read-Only| Optional| Description                                            |
 | ---------- | -------------- | ---- | ------------------------------------------------ | ------------------------------------------------ |
-| itemSpace | string \| number  | No | Yes | Spacing between chips. Percentage values are not supported.<br>Value range:<br>Number type: a value greater than or equal to 0 (for example, **0**, **8**, **16**, or **24.5**)<br>String type: a string with units fp \|vp \|px \|lpx and a numeric part greater than or equal to 0, for example, **"8vp"**, **"16fp"**, **"12px"**, or **"10lpx"**.<br>Not supported: negative values, percentage units, and invalid string formats.<br>Default value: **8**<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
+| itemSpace | string \| number  | No | Yes | Spacing between chips. Percentage values are not supported.<br>Value range:<br>Number type: a value greater than or equal to 0 (for example, **0**, **8**, **16**, or **24.5**)<br>String type: a value greater than or equal to 0, with a unit of fp, vp, px, or lpx (for example, **"8vp"**, **"16fp"**, **"12px"**, or **"10lpx"**)<br>Not supported: negative values, percentage units, and invalid string formats.<br>Default value: **8**<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 | startSpace | [Length](ts-types.md#length)         | No | Yes | Left padding. Percentage values are not supported.<br>Default value: **16**<br>Unit: vp<br>If this parameter is set to **undefined**, the default value is used.          |
 | endSpace   | [Length](ts-types.md#length)         | No | Yes | Right padding. Percentage values are not supported.<br>Default value: **16**<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 
@@ -176,7 +176,7 @@ Suffix icon option type of ChipGroup.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | --- | ---- | ---- |
-| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| No| Settings of the trailing symbol item.|
+| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No| Settings of the trailing symbol item.|
 | action | [VoidCallback](ts-types.md#voidcallback12) | No| No| Action of the trailing symbol item.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the trailing symbol item. If a trailing symbol item does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which item is selected. To solve this problem, you can set accessibility text for trailing symbol items without text information. When such a trailing symbol item is selected, the screen reader announces the specified accessibility text, informing the user which item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
@@ -194,11 +194,11 @@ Suffix icon option type of ChipGroup.
 
 | Name    | Type                   | Mandatory| Decorator| Description                                                             |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Custom builder items.|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Custom builder items.|
 
 > **NOTE**
 >
-> With **SymbolGlyphModifier**, neither modifying the animation type with **symbolEffect** nor setting the effect strategy with **effectStrategy** is supported.
+> With **SymbolGlyphModifier**, neither modifying the animation type with **symbolEffect** nor setting the effect strategy with [effectStrategy](./ts-basic-components-symbolGlyph.md#effectstrategy) is supported.
 >
 
 ## IconItemOptions
@@ -211,11 +211,11 @@ Defines the configuration for the trailing builder, with constraints applied to 
 
 | Name    | Type                           | Read-Only| Optional| Description                                   |
 | -------- | --------------                 | ---- | ------------------------------           | ------------------------------           |
-| icon     | [IconOptions](#iconoptions)    | No | No | Custom builder icon.<br>When the chip size is **ChipSize.SMALL**, the suffix is at {width: 16, height: 16} by default.<br>When the chip size is **ChipSize.NORMAL**, the suffix is at {width: 24, height: 24} by default.<br> To dynamically change the size, you must use the [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) type when importing the [IconGroupSuffix](#icongroupsuffix) API.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| icon     | [IconOptions](#iconoptions)    | No | No | Custom builder icon.<br>When the chip size is **ChipSize.SMALL**, the suffix is at {width: 16, height: 16} by default.<br>When the chip size is **ChipSize.NORMAL**, the suffix is at {width: 24, height: 24} by default.<br> To dynamically change the size, you must use the [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) type when importing the [IconGroupSuffix](#icongroupsuffix) API.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | action   | Callback\<void>        | No | No | Callback of custom builder items.<br>If the value is **undefined**, the event is unbound.<br> **Atomic service API**: This API can be used in atomic services since API version 12.           |
 | accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the trailing symbol item. If a trailing symbol item does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which item is selected. To solve this problem, you can set accessibility text for trailing symbol items without text information. When such a trailing symbol item is selected, the screen reader announces the specified accessibility text, informing the user which item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the trailing symbol item. It determines whether the trailing symbol item can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The trailing symbol item can be recognized by accessibility services.<br>**"no"**: The trailing symbol item cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the trailing symbol item nor its child components can be recognized by accessibility services.<br>The default value is **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the trailing symbol item. It determines whether the trailing symbol item can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The trailing symbol item can be recognized by accessibility services.<br>**"no"**: The trailing symbol item cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the trailing symbol item nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## IconOptions
 
@@ -230,7 +230,7 @@ Defines the common attributes of icons.
 | Name| Type                                  | Read-Only| Optional| Description                                                        |
 | ---- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | src  | [ResourceStr](ts-types.md#resourcestr) | No  | No  | Icon source, which can be a specific image resource or an image address reference. For details, see [Image](ts-basic-components-image.md#image-1).|
-| size | [SizeOptions](ts-types.md#sizeoptions) | No  | Yes  | Icon size. This parameter cannot be set in percentage.<br>Default value: **undefined**.               |
+| size | [SizeOptions](ts-types.md#sizeoptions) | No  | Yes  | Icon size. This parameter cannot be set in percentage.<br>Default value: **undefined**               |
 
 ## LabelOptions
 
@@ -264,6 +264,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // Set the properties for each chip in the items.
         items: [
           {
             // Replace $r('app.media.icon') with the image resource file you use.
@@ -298,6 +299,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // Set the style of the chip.
         itemStyle: {
           size: ChipSize.SMALL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -336,6 +338,7 @@ struct Index {
 
   @LocalBuilder
   ChipGroupSuffix(): void {
+    // Reference IconGroupSuffix to implement the custom effect on the rightmost side of the component.
     IconGroupSuffix({
       items: [{
         icon: { src: $r('sys.media.ohos_ic_public_search_filled'), size: { width: 36, height: 36 } },
@@ -356,6 +359,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // Set the properties for each chip in the items.
         items: [
           {
             // Replace $r('app.media.icon') with the image resource file you use.
@@ -390,6 +394,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // Set the style of the chip.
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -404,6 +409,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // Customize the builder to display custom content on the rightmost side of the component.
         suffix: this.ChipGroupSuffix
       })
     }
@@ -433,6 +439,7 @@ struct Index {
 
   @LocalBuilder
   ChipGroupSuffix(): void {
+    // Reference IconGroupSuffix to implement the custom effect on the rightmost side of the component.
     IconGroupSuffix({
       items: [
         new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
@@ -452,6 +459,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // Set the properties for each chip in the items.
         items: [
           {
             prefixSymbol: { normal: this.prefixModifierNormal, activated: this.prefixModifierActivated },
@@ -485,6 +493,7 @@ struct Index {
             allowClose: true,
           },
         ],
+        // Set the style of the chip.
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -499,6 +508,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // Customize the builder to display custom content on the rightmost side of the component.
         suffix: this.ChipGroupSuffix
       })
     }
@@ -754,7 +764,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: 'More', // Read "More, button, new user notification."
+          accessibilityText: 'More', // Read "More, button, usage hints."
           accessibilityDescription: 'Usage hints',
           action: () => {
             this.getUIContext().getPromptAction().showToast({

@@ -4,7 +4,7 @@
 <!--Owner: @huanleima-->
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供应用管理能力，包括添加应用运行禁止名单、获取应用运行禁止名单、移除应用运行禁止名单等。
 
@@ -833,7 +833,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): void
 
-添加保活应用名单，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<!--RP7--><!--RP7End-->通过本接口添加至保活名单的应用，禁止用户在设备上手动取消保活<!--RP6--><!--RP6End-->，但可通过[removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14)接口将应用从保活名单中移除。如果将应用添加至应用禁止运行名单[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。
+添加保活应用名单，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<!--RP7--><!--RP7End--><br>通过本接口添加至保活名单的应用，禁止用户在设备上手动取消保活<!--RP6--><!--RP6End-->，但可通过[removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14)接口将应用从保活名单中移除。<br>如果将应用添加至应用禁止运行名单[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -893,7 +893,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, disallowModify: boolean): void
 
-添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<br>通过本接口、[addKeepAliveApps](#applicationmanageraddkeepaliveapps14)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。<br>如果通过[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。
+添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<br>通过本接口、[addKeepAliveApps](#applicationmanageraddkeepaliveapps14)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。<br>如果通过[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1330,7 +1330,11 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心、控制中心；从API version 24开始，新增支持设置能否进入最近任务栏、侧边DOCK栏。非Kiosk模式时，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
+设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心、控制中心。
+
+从API version 24开始，新增支持设置是否允许底部上滑进入最近任务栏，左滑或右滑悬停展示侧边DOCK栏。
+
+在非Kiosk模式下，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1347,7 +1351,7 @@ setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合（从API version 24开始，新增允许进入最近任务栏和禁止进入侧边DOCK栏）。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态。即：禁用通知中心、控制中心、最近任务栏等能力；允许使用侧边Dock栏。|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合（从API version 24开始，新增允许底部上滑进入最近任务栏、左滑悬停或右滑悬停展示侧边DOCK栏）。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态。即：禁用通知中心、控制中心、最近任务栏、侧边Dock栏等能力。|
 
 **错误码**：
 
@@ -2099,7 +2103,7 @@ Kiosk模式的特征。
 | ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心（通过单指左上方下滑进入）。 |
 | ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心（通过单指右上方下滑进入）。 |
 | ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | 允许进入最近任务栏（通过单指底部上滑停留进入）。 |
-| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 禁止进入侧边DOCK栏（通过单指边缘内滑停留进入）。 |
+| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 允许进入侧边DOCK栏（通过单指边缘内滑停留进入）。 |
 
 
 ## DockInfo<sup>24+</sup>

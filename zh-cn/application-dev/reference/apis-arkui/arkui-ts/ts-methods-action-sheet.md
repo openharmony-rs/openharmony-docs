@@ -57,6 +57,7 @@
 | levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的[节点UniqueID](../js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| systemMaterial  | SystemUiMaterial | 否 | 是 | 设置弹窗的系统材质。不同的材质具有不同的效果，可以影响弹窗的背景色、边框、阴影等视觉属性。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## SheetInfo对象说明
 
@@ -180,7 +181,7 @@ static show(value: ActionSheetOptions)
 
 ### 示例1（弹出列表选择弹窗）
 
-该示例通过点击按钮弹窗列表选择弹窗。
+该示例通过点击按钮弹出列表选择弹窗。
 
 ```ts
 // xxx.ets

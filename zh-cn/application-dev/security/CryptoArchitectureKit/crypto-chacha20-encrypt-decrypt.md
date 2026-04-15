@@ -74,16 +74,18 @@
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, ivSpec);
-    let encryptUpdata = await cipher.doFinal(plainText);
-    return encryptUpdata;
+    let encryptData = await cipher.doFinal(plainText);
+    return encryptData;
   }
+  
   // 解密消息。
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, ivSpec);
-    let decryptUpdata = await decoder.doFinal(cipherText);
-    return decryptUpdata;
+    let decryptData = await decoder.doFinal(cipherText);
+    return decryptData;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
@@ -91,6 +93,7 @@
     console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
@@ -143,16 +146,16 @@
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, ivSpec);
-    let encryptUpdata = cipher.doFinalSync(plainText);
-    return encryptUpdata;
+    let encryptData = cipher.doFinalSync(plainText);
+    return encryptData;
   }
   
   // 解密消息。
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, ivSpec);
-    let decryptdata = decoder.updateSync(cipherText);
-    return decryptdata;
+    let decryptData = decoder.updateSync(cipherText);
+    return decryptData;
   }
   
   function genSymKeyByData(symKeyData: Uint8Array) {

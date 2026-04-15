@@ -324,6 +324,7 @@ developer_only(`
     ```
     
 - 方式二：将拦截日志中的 "scontext tcontext tclass" 字符添加到`//base/security/selinux_adapter/sepolicy/`下白名单 `ioctl_xperm_whitelist.json` 中，修改该白名单需要评估合理性。
+
     拦截日志中 `user mode` 表示该策略是user和开发者模式共用的基线，另外 `developer mode` 则表示该策略仅作为开发者模式下的基线，相应添加到白名单列表中。
     ```text
     {
@@ -364,7 +365,9 @@ developer_only(`
 
 主要有两种修复方式：
 - 方式一：删除不必要的 permissive 定义。
+
 - 方式二：添加主体类型scontext到 `//base/security/selinux_adapter/sepolicy/` 下白名单 `permissive_whitelist.json` 中，修改该白名单需要评估合理性。
+
     拦截日志中 `user mode` 表示该策略是user和开发者模式共用的基线，另外 `developer mode` 则表示该策略仅作为开发者模式下的基线，相应添加到白名单文件。
     ```text
     {
@@ -841,7 +844,9 @@ Check security context of file failed. There are two solutions:
 ### 拦截原因
 
 上述报错是因为`/vendor/bin/hdf_devmgr`文件的安全上下文及其相关的类型定义在不符合要求。
+
 由于文件在`/vendor`、`/vendor/bin`下，`hdf_devmgr_exec`需要同时关联`vendor_file_attr`和`vendor_bin_file_attr`的属性。
+
 而`hdf_devmgr_exec`的定义不符合该路径下文件类型属性的要求。相关策略定义如下：
 
 ```text
@@ -1066,3 +1071,86 @@ Solution: add the above typeattribute to 'normal_hap_data_file'.
     ```text
     typeattribute normal_hap_data_file data_service_file_attr;
     ```
+
+## SELinux上下文长度检查
+
+### 检查说明
+
+SELinux安全上下文（Security Context）是用于标识进程和资源安全标签的字符串，格式为`user:role:type:level`。为了保证系统性能，合理使用系统资源，需要限制安全上下文的长度。此检查项主要检查以下contexts文件中的安全上下文长度是否超过最大值（默认48字符）：
+
+- file_contexts：文件的安全上下文。
+- service_contexts：系统服务的安全上下文。
+- hdf_service_contexts：HDF服务的安全上下文。
+- parameter_contexts：系统参数的安全上下文。
+- sehap_contexts：HAP应用的安全上下文。
+- virtfs_contexts：虚拟文件系统的安全上下文。
+
+### 编译拦截
+
+当contexts文件中的安全上下文长度超过最大值时，会触发编译报错。关键报错信息为`Check context length failed`，报错示例如下：
+
+```text
+Check context length failed.
+file_contexts context length exceeds 48:
+Please modify context or add to whitelist file: context_length_whitelist.json
+  Context: 'u:object_r:very_long_type_name_that_exceeds_maximum_length:s0' (length: 61)
+···
+```
+
+### 拦截原因
+
+报错原因是在file_contexts文件中配置的安全上下文长度超过了最大限制。相关策略定义如下：
+
+```text
+# file_contexts中的配置
+/data/test/file    u:object_r:very_long_type_name_that_exceeds_maximum_length:s0
+```
+
+### 修复方法
+
+主要有两种修复方式：
+
+- 方式一：修改过长的安全上下文，以满足长度要求。例如，将上述配置修改为：
+  ```text
+  # file_contexts中的配置
+  /data/test/file    u:object_r:test_file:s0
+  ```
+
+- 方式二：将超过长度限制的安全上下文添加到`//base/security/selinux_adapter/sepolicy/`下的白名单文件`context_length_whitelist.json`中。白名单文件形式如下：
+
+  **修改该白名单需要充分评估合理性，审慎修改。**
+
+  ```json
+  {
+      "whitelist": {
+          "file_contexts": [
+              "u:object_r:very_long_type_name_that_exceeds_maximum_length:s0"
+          ],
+          "service_contexts": [
+
+          ],
+          "hdf_service_contexts": [
+
+          ],
+          "parameter_contexts": [
+
+          ],
+          "virtfs_contexts": [
+
+          ],
+          "sehap_contexts": [
+
+          ]
+      }
+  }
+  ```
+
+### 删除冗余的白名单
+
+当整改了过长的安全上下文，但未同时删除白名单时，会触发编译报错。关键报错信息`Unused whitelist entries`，表示需要从白名单文件`context_length_whitelist.json`中删除`file_contexts`字段下`u:object_r:very_long_type_name_that_exceeds_maximum_length:s0`的数据。报错如下：
+
+```text
+Unused whitelist entries in file_contexts:
+Please check whitelist file: context_length_whitelist.json
+  Context: 'u:object_r:very_long_type_name_that_exceeds_maximum_length:s0' (length: 61)
+```

@@ -52,6 +52,14 @@
 | [int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)](#oh_ipcparcel_readint32) | - | 从OHIPCParcel对象中读取一个int32_t值。 |
 | [int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)](#oh_ipcparcel_writeint64) | - | 向OHIPCParcel对象写入一个int64_t值。 |
 | [int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)](#oh_ipcparcel_readint64) | - | 从OHIPCParcel对象中读取一个int64_t值。 |
+| [int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)](#oh_ipcparcel_writeuint8) | - | 向OHIPCParcel对象写入一个uint8_t值。 |
+| [int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)](#oh_ipcparcel_readuint8) | - | 从OHIPCParcel对象中读取一个uint8_t值。 |
+| [int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)](#oh_ipcparcel_writeuint16) | - | 向OHIPCParcel对象写入一个uint16_t值。 |
+| [int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)](#oh_ipcparcel_readuint16) | - | 从OHIPCParcel对象中读取一个uint16_t值。 |
+| [int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)](#oh_ipcparcel_writeuint32) | - | 向OHIPCParcel对象写入一个uint32_t值。 |
+| [int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)](#oh_ipcparcel_readuint32) | - | 从OHIPCParcel对象中读取一个uint32_t值。 |
+| [int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)](#oh_ipcparcel_writeuint64) | - | 向OHIPCParcel对象写入一个uint64_t值。 |
+| [int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)](#oh_ipcparcel_readuint64) | - | 从OHIPCParcel对象中读取一个uint64_t值。 |
 | [int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)](#oh_ipcparcel_writefloat) | - | 向OHIPCParcel对象写入一个float值。 |
 | [int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)](#oh_ipcparcel_readfloat) | - | 从OHIPCParcel对象中读取一个float值。 |
 | [int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)](#oh_ipcparcel_writedouble) | - | 向OHIPCParcel对象写入一个double值。 |
@@ -527,6 +535,222 @@ int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 | ------ | ---- |
 | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
 | int64_t *value | value 存储读取数据的指针，不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_WriteUint8()
+
+```C
+int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
+```
+
+**描述：**
+
+向OHIPCParcel对象写入uint8_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint8_t value | value 要写入的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_ReadUint8()
+
+```C
+int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
+```
+
+**描述：**
+
+从OHIPCParcel对象读取uint8_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint8_t *value | value 存储读取数据的指针，不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_WriteUint16()
+
+```C
+int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
+```
+
+**描述：**
+
+向OHIPCParcel对象写入uint16_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint16_t value | value 要写入的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_ReadUint16()
+
+```C
+int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
+```
+
+**描述：**
+
+从OHIPCParcel对象读取uint16_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint16_t *value | value 存储读取数据的指针，不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_WriteUint32()
+
+```C
+int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
+```
+
+**描述：**
+
+向OHIPCParcel对象写入uint32_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint32_t value | value 要写入的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_ReadUint32()
+
+```C
+int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
+```
+
+**描述：**
+
+从OHIPCParcel对象读取uint32_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint32_t *value | value 存储读取数据的指针，不能为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_WriteUint64()
+
+```C
+int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
+```
+
+**描述：**
+
+向OHIPCParcel对象写入uint64_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint64_t value | value 要写入的值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
+
+### OH_IPCParcel_ReadUint64()
+
+```C
+int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
+```
+
+**描述：**
+
+从OHIPCParcel对象读取uint64_t值。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | parcel OHIPCParcel对象的指针，不能为空。 |
+| uint64_t *value | value 存储读取数据的指针，不能为空。 |
 
 **返回：**
 

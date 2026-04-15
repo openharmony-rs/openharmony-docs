@@ -400,6 +400,21 @@ async function updateSession(handle: number, huksOptions: huks.HuksOptions) {
   }
 }
 
+/* 查询密钥是否存在 */
+async function isKeyItemExist(keyAlias: string, huksOptions: huks.HuksOptions) {
+  console.info('promise: enter isKeyItemExist');
+  try {
+    await huks.isKeyItemExist(keyAlias, huksOptions)
+      .then((data) => {
+        console.info(`isKeyItemExist success`);
+      }).catch((error: BusinessError) => {
+        console.error(`isKeyItemExist failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      })
+  } catch (error) {
+    console.error(`isKeyItemExist input arg invalid`);
+  }
+}
+
 /* 结束密钥会话并进行相应的密钥操作，输出处理数据 */
 async function finishSession(handle: number, huksOptions: huks.HuksOptions) {
   console.info('promise: enter finishSession');

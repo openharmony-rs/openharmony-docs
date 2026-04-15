@@ -4,7 +4,7 @@
 <!--Owner: @huanleima-->
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - [MDM Kit简介](mdm-kit-intro.md)
 - [MDM Kit开发指南](mdm-kit-guide.md)

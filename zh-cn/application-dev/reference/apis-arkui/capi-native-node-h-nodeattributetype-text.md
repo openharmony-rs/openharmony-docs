@@ -1151,6 +1151,30 @@ NODE_TEXT_TEXT_SELECTION = 1046
 | .value[1].i32 | 文本选择的结束位置。 |
 | .object | 选择选项。参数类型为[ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)。 |
 
+## NODE_TEXT_ORPHAN_CHAR_OPTIMIZATION
+
+```c
+NODE_TEXT_ORPHAN_CHAR_OPTIMIZATION = 1047
+```
+
+设置Text文本排版时是否使能孤字优化，设置后通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak)属性为非ARKUI_WORD_BREAK_BREAK_ALL时生效。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否使能，true表示使能，false表示不使能。默认值false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否使能孤字优化。 |
+
 ## NODE_TEXT_COMPRESS_LEADING_PUNCTUATION
 
 ```c

@@ -1,8 +1,8 @@
 # 组件描述
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -66,7 +66,7 @@ Web(value: WebOptions)
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | 定义Web选项。 |
+| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
 
 **示例：**
 

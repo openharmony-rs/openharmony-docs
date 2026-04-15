@@ -1,8 +1,8 @@
 # Interfaces (其他)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -21,8 +21,8 @@
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ---- |
 | origin | string | 否  | 否 | 指定源的字符串索引。 |
-| usage  | number | 否  | 否 | 指定源的存储量。     |
-| quota  | number | 否  | 否 | 指定源的存储配额。   |
+| usage  | number | 否  | 否 | 指定源的存储量。<br>单位：byte。     |
+| quota  | number | 否  | 否 | 指定源的存储配额。<br>单位：byte。   |
 
 ## WebHeader
 

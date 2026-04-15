@@ -39,7 +39,7 @@ constructor()
 let gallerySync = new cloudSync.GallerySync()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -79,7 +79,7 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -123,7 +123,7 @@ gallerySync.on('progress', callback);
 gallerySync.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
@@ -374,7 +374,7 @@ constructor()
 let download = new cloudSync.Download()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -414,7 +414,7 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -458,7 +458,7 @@ download.on('progress', callback);
 download.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
@@ -1139,7 +1139,7 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [OptimizeState](#optimizestate17) | 否   | 否   | 枚举值，优化空间状态。|
-| progress | number | 否   | 否   | 优化进度百分比，范围[0,100]。|
+| progress | number | 否   | 否   | 优化进度百分比，范围[0,100]，单位：百分比。|
 
 ## OptimizeSpaceParam<sup>17+</sup>
 
@@ -1152,4 +1152,4 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | totalSize | number | 否   | 否   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
-| agingDays | number | 否   | 否   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频。|
+| agingDays | number | 否   | 否   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频，单位：天。|

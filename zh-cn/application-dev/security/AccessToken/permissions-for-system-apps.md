@@ -5527,6 +5527,20 @@
 
 **起始版本**：23
 
+## ohos.permission.POWER_CONFIG
+
+允许应用读写电源配置相关的文件节点。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.MANAGE_STANDBY
 
 允许应用管理页面的Standby状态，如进入、退出Standby状态等。
@@ -5699,6 +5713,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
+
+允许应用获取和设置车机情景模式。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ENCRYPT_VOLUME_MANAGER
 
 允许应用调用storage_manager服务中管理卷加密的接口。
@@ -5740,3 +5768,17 @@
 **支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.DCAS_OTA_PERMISSION
+
+允许应用和服务接入端侧模型部署态管理。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
