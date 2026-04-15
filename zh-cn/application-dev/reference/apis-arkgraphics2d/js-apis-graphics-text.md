@@ -2417,6 +2417,44 @@ paragraph.updateDecoration({
 });
 ```
 
+### getVisibleTextRanges
+
+getVisibleTextRanges(): Array\<Range\>
+
+获取段落中在屏幕上可见的文本范围。不包含因最大行数（[ParagraphStyle](#paragraphstyle)的maxLines属性）截断或省略号模式（[EllipsisMode](#ellipsismode)）替换而未显示的文本。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                          | 说明          |
+| ----------------------------- | -------------- |
+| Array\<[Range](#range)\> | 段落可见文本范围数组，范围为UTF-16编码单元索引。|
+
+返回的范围取决于段落的具体截断情况（如是否设置最大行数或省略号等）：
+
+| 场景 | 说明 |
+| - | - |
+| 文本未被截断 | 范围包含全部已排版文本 |
+| 仅设置maxLines截断（未设置省略号） | 范围为实际显示的文本，即第一行至第maxLines行末尾的文本。 |
+| 尾部省略（[EllipsisMode.END](#ellipsismode)） | 范围为省略号之前的文本。 |
+| 头部省略（[EllipsisMode.START](#ellipsismode)） | 范围为省略号之后的文本。 |
+| 中部省略（[EllipsisMode.MIDDLE](#ellipsismode)） | 第一个范围为省略号之前的文本，第二个范围为省略号之后的文本。 |
+| 多行头部省略（[EllipsisMode.MULTILINE_START](#ellipsismode)） | 同中部省略，返回省略号前后的文本范围。 |
+| 多行中部省略（[EllipsisMode.MULTILINE_MIDDLE](#ellipsismode)） | 同中部省略，返回省略号前后的文本范围。 |
+
+**示例：**
+
+```ts
+let visibleRanges = paragraph.getVisibleTextRanges();
+```
+
 ### getCharacterRangeForGlyphRange<sup>24+</sup>
 
 getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding): Array\<Range\>
