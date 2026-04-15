@@ -1,4 +1,4 @@
-# 获取外部密钥管理扩展资源ID(ArkTS)
+# 获取资源ID(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -113,7 +113,7 @@ async function extensionGetResourceIdExample(): Promise<string> {
 
 ## 相关文档
 
-- [外部密钥管理扩展密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)
+- [密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)
 - [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
 - [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
-- [资源管理](huks-resource-management-overview.md)
+- [资源管理介绍及规格](huks-resource-management-overview.md)

@@ -1,15 +1,15 @@
-# 外部密钥管理扩展公钥导出(ArkTS)
+# 公钥导出(ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @wutiantian-gitee-->
+<!--Owner: @wutitian-gitee-->
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
 在外部密钥管理扩展场景下，公钥导出能力支持从扩展设备导出指定密钥的公钥。导出的公钥可用于证书申请、密钥协商等场景。
 
-具体的场景介绍及接口说明，请参考[外部密钥管理扩展密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
+具体的场景介绍及接口说明，请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
 
 ## 开发步骤
 
