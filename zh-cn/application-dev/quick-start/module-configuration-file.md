@@ -456,6 +456,7 @@ skills示例：
           // ...
         ],
         // ...
+      }
     ],
     // ...
 }
@@ -670,6 +671,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -687,6 +689,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -798,10 +801,11 @@ wants标签示例：
       "metadata": [
         {
           "name": "ohos.module.distribution",
-          "resource": "$profile:distributionFilter_config",
+          "resource": "$profile:distributionFilter_config"
         }
       ],
       // ...
+    }
   }
   ```
 
@@ -860,7 +864,7 @@ atomicService标签示例：
 ``` JSON5
 {
   "module": {
-  // ···
+    // ...
     "atomicService": {
       "preloads":[
         {
@@ -869,7 +873,8 @@ atomicService标签示例：
       ],
       "resizeable": true
     },
-  // ···
+    // ...
+  }
 }
 ```
 
