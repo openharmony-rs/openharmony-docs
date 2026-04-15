@@ -37937,10 +37937,14 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/CompressedPointData.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets",
 				"functions":[
 					{
-						"end_line":29,
-						"name":"convert_ecc_uncompressed_point",
+						"end_line":31,
+						"name":"convert_ecc_uncompressed_pub_keypair",
 						"start_line":16
 					}
 				]
@@ -38487,23 +38491,11 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets",
-				"functions":[
-					{
-						"end_line":50,
-						"name":"message_authentication_code_calculated_as_fragmented_hmac_async",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets",
-				"functions":[
-					{
-						"end_line":50,
-						"name":"message_authentication_code_calculated_as_fragmented_hmac_sync",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets",
@@ -38521,6 +38513,26 @@
 					{
 						"end_line":51,
 						"name":"message_authentication_code_calculation_cmac_segmentation_sync",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Async.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"message_authentication_code_calculation_cmac_single_time_async",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Sync.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"message_authentication_code_calculation_cmac_single_time_sync",
 						"start_line":15
 					}
 				]
@@ -38817,13 +38829,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets",
-				"functions":[
-					{
-						"end_line":31,
-						"name":"convert_ecc_uncompressed_pub_keypair",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets",
@@ -38831,6 +38837,16 @@
 					{
 						"end_line":40,
 						"name":"specify_ecc_uncompressed_point_get_keypair",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/CompressedPointData.ets",
+				"functions":[
+					{
+						"end_line":29,
+						"name":"convert_ecc_uncompressed_point",
 						"start_line":16
 					}
 				]
