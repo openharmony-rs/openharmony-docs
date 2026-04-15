@@ -703,3 +703,4 @@ Enumerates application start options.
 | Name|  Value| Description|
 |-------|-------|-------|
 | START_IN_BACKGROUND | 1 |Start of the peer application in the background.|
+<!--no_check-->
