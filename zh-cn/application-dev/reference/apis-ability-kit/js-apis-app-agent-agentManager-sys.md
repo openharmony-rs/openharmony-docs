@@ -337,12 +337,12 @@ struct Index {
                 .then(() => {
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`connectAgentExtensionAbility failed, err code: ${err.code}, errmsg: ${err.message}.`);
+                  console.error(`connectAgentExtensionAbility failed, error code: ${err.code}, error msg: ${err.message}.`);
                 });
             } catch (err) {
               let code = (err as BusinessError).code;
               let msg = (err as BusinessError).message;
-              console.error(`connectAgentExtensionAbility failed, err code: ${code}, err msg ${msg}.`);
+              console.error(`connectAgentExtensionAbility failed, error code: ${code}, error msg: ${msg}.`);
             }
           })
       }
