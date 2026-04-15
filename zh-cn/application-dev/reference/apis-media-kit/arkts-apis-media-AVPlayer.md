@@ -1853,7 +1853,7 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 
     console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+    console.error('Failed to getSeekableTimeRanges, error message is: ' + err.message);
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
