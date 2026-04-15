@@ -247,7 +247,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | readingState  | number | 是    | 否   | 表示是否允许读屏。<br>0：不允许读屏。<br>1：允许读屏。 |
-| readingCode   | number | 是    | 否   | 如果屏幕无法读取，将返回相应的状态码。 |
+| readingCode   | number | 是    | 是   | 如果屏幕无法读取，将返回相应的状态码。 |
 
 
 ## onScreen.getPageContent
