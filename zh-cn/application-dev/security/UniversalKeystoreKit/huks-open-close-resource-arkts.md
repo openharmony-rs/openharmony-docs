@@ -39,30 +39,9 @@ async function openResource(resourceId: string): Promise<void> {
 }
 ```
 
-### 错误码说明
-
-打开资源过程中可能返回的错误码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 12000005 | IPC通信失败 |
-| 12000006 | UKey驱动操作失败 |
-| 12000011 | 查询实体不存在 |
-| 12000012 | 设备环境或输入参数异常 |
-| 12000014 | 内存不足 |
-| 12000018 | 输入参数无效 |
-| 12000020 | 提供者操作失败 |
-| 12000024 | 提供者或UKey忙 |
-
-更多错误码说明请参考[huksExternalCrypto错误码](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#错误码)。
-
 ## 关闭资源
 
-### 开发步骤
-
-1. 获取资源ID。
-
-2. 调用[closeResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptocloseresource26)关闭资源。该接口会清理该资源关联的PIN认证状态和会话handle。
+调用[closeResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptocloseresource26)关闭资源。该接口会清理该资源关联的PIN认证状态和会话handle。
 
 ``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
@@ -81,23 +60,6 @@ async function closeResource(resourceId: string): Promise<void> {
   }
 }
 ```
-
-### 错误码说明
-
-关闭资源过程中可能返回的错误码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 12000005 | IPC通信失败 |
-| 12000006 | UKey驱动操作失败 |
-| 12000011 | 查询实体不存在 |
-| 12000012 | 设备环境或输入参数异常 |
-| 12000014 | 内存不足 |
-| 12000018 | 输入参数无效 |
-| 12000020 | 提供者操作失败 |
-| 12000024 | 提供者或UKey忙 |
-
-更多错误码说明请参考[huksExternalCrypto错误码](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#错误码)。
 
 ## 完整示例
 
@@ -153,9 +115,3 @@ async function resourceManagementExample(): Promise<void> {
   }
 }
 ```
-
-## 相关文档
-
-- [资源管理介绍及规格](huks-resource-management-overview.md)
-- [打开资源/关闭资源(C/C++)](huks-open-close-resource-ndk.md)
-- [获取资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)
