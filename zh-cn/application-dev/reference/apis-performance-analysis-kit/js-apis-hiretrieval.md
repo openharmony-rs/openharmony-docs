@@ -9,7 +9,10 @@
 
 本模块提供应用灰度故障维测能力，支持以下故障类型：RSS内存泄漏、ArkTS-OOM、FD内存泄漏、GPU内存泄漏。应用灰度特性是一种运维态功能，用于精准采集故障日志。开发者在端侧集成应用灰度功能后，可参与应用灰度活动。通过云端平台发布应用灰度任务，可圈选部分设备开启故障日志精准采集，帮助开发者快速定位故障。
 
-**起始版本：** 26.0.0
+> **说明：**  
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 26开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -21,11 +24,13 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 应用灰度活动配置。
 
-**起始版本：** 26.0.0
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
+
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ------ | -- | ---- | ------- |
@@ -39,11 +44,13 @@ init(): void
 
 初始化应用灰度模块。
 
-**起始版本：** 26.0.0
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
+
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
 
 **示例：**
 
@@ -61,11 +68,13 @@ participate(config: HiRetrievalConfig): void
 
 设置此设备参与应用灰度活动。调用后向服务器发送参与灰度消息和应用灰度活动配置，服务器标记此设备为可圈选并记录该应用灰度活动配置作为算法参数。多次调用将更新为最新的应用灰度活动配置。
 
-**起始版本：** 26.0.0
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
+
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
 
 **参数：**
 
@@ -106,11 +115,14 @@ quit(): void
 
 设置此设备退出应用灰度活动，退出后此设备将无法在云侧被圈选。
 
-**起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
+
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
 
 **错误码：**
 
@@ -140,11 +152,13 @@ isParticipant(): boolean
 
 查询此设备是否正在参与应用灰度活动。
 
-**起始版本：** 26.0.0
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
+
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
 
 **返回值：**
 
@@ -176,21 +190,25 @@ try {
 
 ## hiRetrieval.getLastParticipationTimestamp
 
-getLastParticipationTimestamp(): number
+ArkTS-Dyn: getLastParticipationTimestamp(): number
+
+ArkTS-Sta: getLastParticipationTimestamp(): long
 
 查询此设备上次参与应用灰度活动的UNIX时间戳，如果此设备从未参与则返回0。
-
-**起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
+
 **返回值：**
 
-| 类型                | 说明                                                         |
-| ------------------- | ------------------------------------------------------------ |
-| number | 上一次参与应用灰度活动的UNIX时间戳，单位为毫秒。 |
+| 类型                | 说明                                                              |
+| ------------------- | ----------------------------------------------------------------- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 上一次参与应用灰度活动的UNIX时间戳，单位为毫秒。 |
 
 **错误码：**
 
@@ -220,11 +238,14 @@ run(): void
 
 若此设备正在参与应用灰度活动，则应用灰度模块开始工作，否则调用该接口不会产生任何效果。
 
-**起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
+
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
 
 **错误码：**
 
@@ -254,11 +275,13 @@ getCurrentConfig(): HiRetrievalConfig
 
 获取当前应用灰度活动配置。
 
-**起始版本：** 26.0.0
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
+
+**ArkTS-Dyn起始版本：**26
+
+**ArkTS-Sta起始版本：**26
 
 **返回值：**
 
