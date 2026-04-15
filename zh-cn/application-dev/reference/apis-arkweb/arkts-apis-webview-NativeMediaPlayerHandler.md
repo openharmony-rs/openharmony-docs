@@ -152,7 +152,7 @@ ArkTS-Sta: handleTimeUpdate(currentPlayTime: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| currentPlayTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration]   |
+| currentPlayTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration]  |
 
 **示例：**
 
