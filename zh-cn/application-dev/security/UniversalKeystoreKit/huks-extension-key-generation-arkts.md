@@ -13,22 +13,24 @@
 
 ## 开发步骤
 
-1. 获取外部密钥管理扩展的资源ID。
+1. 获取外部密钥管理扩展的资源ID。具体请参考[获取外部密钥管理扩展资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)。
 
 2. 打开资源，获取资源句柄。
 
 3. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥对。
 
-4. （可选）调用[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)导出公钥。
+4. 关闭资源。
 
-5. 关闭资源。
+## 公钥导出
+
+密钥生成完成后，如需导出公钥用于证书申请等场景，可调用[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口。具体请参考[公钥导出(ArkTS)](huks-extension-key-export-arkts.md)。
 
 <!-- @[generate_key_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ExtensionKeyGeneration/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-// 资源ID，由getResourceId接口获取
+// 资源ID
 let resourceId: string = 'your_resource_id';
 // 密钥别名
 let keyAlias: string = 'extension_key';
@@ -112,11 +114,7 @@ async function extensionKeyGeneration(): Promise<void> {
     // 2. 生成密钥
     await generateKeyItem(keyAlias, huksOptions);
     
-    // 3. 导出公钥（可选）
-    let publicKey = await exportPublicKey(keyAlias, huksOptions);
-    console.info('public key length: ' + publicKey.length);
-    
-    // 4. 关闭资源
+    // 3. 关闭资源
     await closeResource(resourceId);
     
     console.info('extensionKeyGeneration completed successfully');
