@@ -350,17 +350,33 @@
 | defaultDensity | number   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 |
 | customDensity | number   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
 
+## WindowInfoOptions
+窗口布局信息过滤选项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| excludeSystemWindows | boolean | 否 | 是 | 是否排除系统窗口。true表示需要排除，false表示不排除，默认为false。|
+| foregroundAboveWindow | number  | 否 | 是 | 需要过滤掉的不高于此窗口层级的窗口的ID。表示只返回层级高于这个窗口的窗口信息。默认值是0，表示忽略本选项；如果值小于0，返回1300016错误码；如果指定的窗口不存在，则与设置为0等价。|
+| foregroundBelowWindow | number  | 否 | 是 | 需要过滤掉的不低于此窗口层级的窗口的ID。表示只返回层级低于这个窗口的窗口信息。默认值是0，表示忽略本选项；如果值小于0，返回1300016错误码；如果指定的窗口不存在，则与设置为0等价。若同时指定foregroundBelowWindow和foregroundAboveWindow，且两者都是有效的窗口ID，但foregroundBelowWindow指定的窗口的层级未高于foregroundAboveWindow指定的窗口，则返回空数组。|
+
 ## WindowLayoutInfo<sup>15+</sup>
 
 窗口布局信息。
-
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。 |
+| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。<br/> **原子化服务：** 从API版本15开始，该接口支持在原子化服务中使用。|
+| windowAlpha | number  | 否 | 是 | 窗口透明度。有效值范围为[0.0, 1.0]，0.0表示完全透明，1.0表示完全不透明。默认值是-1.0，表示未查询到窗口透明度或者查询失败。<br/>**起始版本**： 26.0.0<br/>**原子化服务：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## KeyboardInfo<sup>18+</sup>
 
