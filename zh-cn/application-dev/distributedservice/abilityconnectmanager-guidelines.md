@@ -127,8 +127,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 <!-- @[sta_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import abilityConnectionManager from '@ohos.abilityConnectionManager';
-import distributedDeviceManager from '@ohos.distributedDeviceManager';
+import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { util } from '@kit.ArkTS';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
@@ -143,7 +142,7 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
   <!-- @[sta_deviceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
-  import distributedDeviceManager from '@ohos.distributedDeviceManager';
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let dmInstance: distributedDeviceManager.DeviceManager | null = null;
@@ -193,7 +192,7 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
   <!-- @[sta_createSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   function createSession(): void {
@@ -322,7 +321,7 @@ function getRemoteDeviceId(): string | undefined {
   ```ts
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { AppStorage } from '@kit.ArkUI';
 
   const TAG: string = 'CollabSample_EntryAbility';
@@ -439,7 +438,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
   <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { AppStorage } from '@kit.ArkUI';
 
@@ -533,7 +532,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
   <!-- @[sta_sendMessage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
@@ -567,7 +566,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
   <!-- @[sta_sendData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
 
@@ -606,7 +605,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
   <!-- @[sta_disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');

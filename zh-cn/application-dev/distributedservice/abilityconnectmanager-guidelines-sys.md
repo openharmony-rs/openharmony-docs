@@ -319,8 +319,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **ArkTS-Sta示例：**
 
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
@@ -353,8 +353,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **ArkTS-Sta示例：**
 
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
 
   let textEncoder = util.TextEncoder.create("utf-8");
@@ -411,8 +411,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **ArkTS-Sta示例：**
 
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
   import { fileIo } from '@kit.CoreFileKit';
@@ -472,8 +472,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **ArkTS-Sta示例：**
 
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'startStream');
   abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
@@ -513,10 +513,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **ArkTS-Sta示例：**
 
   ```ts
-  import abilityConnectionManager from '@ohos.abilityConnectionManager';
-  import hilog from '@ohos.hilog';
-
-  hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   if (this.sessionId == -1) {
     hilog.info(0x0000, 'testTag', 'Invalid session ID.');
   return;
