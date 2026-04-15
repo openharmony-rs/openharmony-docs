@@ -4426,6 +4426,7 @@ scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -4445,6 +4446,54 @@ struct WebComponent {
     }
   }
 }
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { Web, Column, Component, Entry, $rawfile, ScrollbarLayoutPolicy } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 设置为SYSTEM表示跟随系统语言方向布局。设置为CONTENT表示沿用Web样式布局
+        .scrollbarLayoutPolicy(ScrollbarLayoutPolicy.SYSTEM)
+    }
+  }
+}
+```
+
+加载的html文件。
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+      body {
+        width:2560px;
+        height:2560px;
+        padding-right:170px;
+        padding-left:170px;
+        border:5px solid blueviolet;
+      }
+    </style>
+</head>
+<body>
+Scroll Test
+</body>
+</html>
 ```
 
 ## enableDrag
