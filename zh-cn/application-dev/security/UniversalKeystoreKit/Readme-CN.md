@@ -92,7 +92,7 @@
     - [获取资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)
     - [打开资源/关闭资源(ArkTS)](huks-open-close-resource-arkts.md)
     - [打开资源/关闭资源(C/C++)](huks-open-close-resource-ndk.md)
-  - 密钥管理<!--huks-extension-key-generation-import-->
+  - 密钥管理<!--huks-extension-key-management-->
     - [密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)
     - [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
     - [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
