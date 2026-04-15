@@ -86,11 +86,13 @@ pointLight(value: PointLightStyle)
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
 | value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | 是   | 点光源样式。 |
 
-### unionMode<sup>26+</sup>
+### unionMode
 
 unionMode(mode: UnionMode)
 
 设置融合效果模式。
+
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -102,11 +104,13 @@ unionMode(mode: UnionMode)
 
 | 参数名 | 类型                                                         | 必填 | 说明         |
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
-| mode  | [UnionMode](#unionmode26枚举说明) | 是   | 融合效果枚举。 |
+| mode  | [UnionMode](#unionmode枚举说明) | 是   | 融合效果模式。 |
 
-### UnionMode<sup>26+</sup>枚举说明
+## UnionMode枚举说明
 
 融合效果枚举。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -117,11 +121,11 @@ unionMode(mode: UnionMode)
 | 名称           | 值  | 说明                         |
 | -------------- | --- |---------------------------- |
 | SMOOTH_UNION       | 0   | 平滑的融合形变效果。            |
-| GRAVITY_UNION      | 1   | 引力作用下的融合形变效果。<br/>**说明：**<br/>设置该类型时，需要结合[useUnionEffect](./ts-universal-attributes-use-union-effect-sys.md#useunioneffect26)并设置[GravityCenterOptions](./ts-universal-attributes-use-union-effect-sys.md#gravitycenteroptions26对象说明)的gravityCenter为true才能生效。            |
+| GRAVITY_UNION      | 1   | 引力作用下的融合形变效果。<br/>**说明：**<br/>设置该类型时，需要结合[useUnionEffect](./ts-universal-attributes-use-union-effect-sys.md#useunioneffect-1)并设置[GravityCenterOptions](./ts-universal-attributes-use-union-effect-sys.md#gravitycenteroptions)的gravityCenter为true才能生效。            |
 
 ## 示例
 
-### 示例1（设置产生融合形变效果）
+### 示例1（设置融合形变效果）
 
 该示例主要演示如何使用[UnionEffectContainer](#unioneffectcontainer)组件，通过改变spacing值或后代组件的距离，产生融合形变效果。
 
@@ -235,12 +239,14 @@ struct UnionEffectContainerPage {
 
 ![unionEffectContainerDemo](figures/unionEffectContainerDemo.gif)
 
-### 示例2（使用unionMode产生不同类型的融合形变效果）
+### 示例2（设置不同类型的融合形变效果）
 
-该示例主要演示如何使用[unionMode](#unionmode26)接口，通过设置不同的融合类型，产生不同的融合形变效果。
+该示例主要演示如何使用[unionMode](#unionmode)接口，通过设置不同的融合类型，产生不同的融合形变效果。
+
+从API版本26.0.0开始，新增unionMode接口。
 
 ```ts
-//UnionEffectContainerPage.ets
+// UnionEffectContainerPage.ets
 @Entry
 @Component
 struct UnionEffectContainerPage {
@@ -258,7 +264,7 @@ struct UnionEffectContainerPage {
               .height(100)
               .margin({ top: 10 })
               .borderRadius(50)
-              .useUnionEffect(true)//设置useUnionEffect属性，使用融合效果
+              .useUnionEffect(true)// 设置useUnionEffect属性，使用融合效果
               .translate({ y: this.translateY1 })
 
             Column()
@@ -278,13 +284,13 @@ struct UnionEffectContainerPage {
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.translateY1 += 10; // 改变后代组件的距离
+                this.translateY1 += 10; // 改变相邻组件的距离
               });
             })
           Button('-10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.translateY1 -= 10; // 改变后代组件的距离
+                this.translateY1 -= 10; // 改变相邻组件的距离
               });
             })
         }
@@ -304,7 +310,7 @@ struct UnionEffectContainerPage {
               .height(40)
               .margin({ top: 10 })
               .borderRadius(20)
-              .useUnionEffect(true, {gravityCenter: true, gravityIntensity: 60})//设置useUnionEffect属性，使用融合效果
+              .useUnionEffect(true, {gravityCenter: true, gravityIntensity: 60})// 设置useUnionEffect属性，使用融合效果
               .translate({ y: this.translateY2 })
 
             Column()
@@ -324,13 +330,13 @@ struct UnionEffectContainerPage {
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.translateY2 += 10; // 改变后代组件的距离
+                this.translateY2 += 10; // 改变相邻组件的距离
               });
             })
           Button('-10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.translateY2 -= 10; // 改变后代组件的距离
+                this.translateY2 -= 10; // 改变相邻组件的距离
               });
             })
         }
