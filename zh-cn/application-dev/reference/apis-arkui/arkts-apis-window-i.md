@@ -53,15 +53,13 @@
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
 
 | 名称                                   | 类型 |  只读 |   可选  | 说明 |
 | ------------------------------------- | -------- | ---- | ---- | ------- |
-| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。 <br> **系统能力：** SystemCapability.Window.SessionManager |
+| contentColor     | string   |  否  |  否   | 状态栏文字颜色，固定为ARGB格式，如：`#E5FFFFFF`。 <br> **系统能力：** SystemCapability.Window.SessionManager|
 
 ## SystemBarStyle<sup>12+</sup>
 
