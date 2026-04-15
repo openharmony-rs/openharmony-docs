@@ -2123,9 +2123,9 @@ onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)方法。
+触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowillclose23)方法。
 
-如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)接口。
+如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowillclose23)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowillclose23)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
