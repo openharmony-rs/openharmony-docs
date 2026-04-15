@@ -5330,7 +5330,7 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。
 
-该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[onSubWindowClose](#onsubwindowclose22)方法。主窗口的同步关闭事件监听参考[onWindowStageClose](arkts-apis-window-WindowStage.md#onwindowstageclose22)方法。
+该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[onSubWindowClose](#onsubwindowclose23)方法。主窗口的同步关闭事件监听参考[onWindowStageClose](arkts-apis-window-WindowStage.md#onwindowstageclose14)方法。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
