@@ -1124,6 +1124,64 @@ let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance(
 
 MulticastSocket连接。在调用MulticastSocket的方法前，需要先通过[socket.constructMulticastSocketInstance](#socketconstructmulticastsocketinstance11)创建MulticastSocket对象。
 
+### setReuseAddress<sup>26+</sup>
+
+setReuseAddress(reuse: boolean): void
+
+设置多播Socket是否支持地址复用。使用同步方式调用。
+
+> **说明：**
+> 用于控制多播Socket绑定端口时是否开启地址复用能力。
+> 如需绑定已被占用的端口，确保占用方开启了地址复用能力，同时本业务也需在调用[bind](#bind)前调用本接口以开启地址复用能力。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名         | 类型    | 必填 | 说明                         |
+| ------------- | ------- | ---- | ---------------------------- |
+| reuse         | boolean |  是  | 是否开启地址复用。true表示开启，false表示关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                 |
+| ------- | ----------------------- |
+| 401     | Parameter error.        |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+let bindAddr: socket.NetAddress = {
+  // 0.0.0.0 表示绑定本机所有IPv4网络接口上的 8080 端口，常用于多播场景接收该端口的数据。
+  address: '0.0.0.0',
+  port: 8080
+}
+
+try {
+  multicast.setReuseAddress(true);
+  multicast.bind(bindAddr).then(() => {
+    console.info('setReuseAddress success');
+  }).catch((err: BusinessError) => {
+    console.error(`bind failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setReuseAddress failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
 ### addMembership<sup>11+</sup>
 
 addMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): void
