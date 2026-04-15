@@ -219,7 +219,7 @@ pauseRecording(): Promise\<void>
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
-| 错误码ID| 错误信息                        |
+| 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
 | 5400102  | Operation not be permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
@@ -277,7 +277,7 @@ resumeRecording(): Promise\<void>
 
 以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
-| 错误码ID| 错误信息                        |
+| 错误码ID | 错误信息                        |
 | -------- | -------------------------------- |
 | 5400102  | Operation not be permitted. Return by promise. |
 | 5400103  | IO error. Return by promise.     |
