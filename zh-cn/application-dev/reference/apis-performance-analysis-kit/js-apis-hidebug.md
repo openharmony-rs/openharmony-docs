@@ -1622,7 +1622,7 @@ setProcDumpInSharedOOM(enable: boolean): void
 
 **参数**：
 
-| 名称         | 类型  | 必填 | 说明 |
+| 参数名         | 类型  | 必填 | 说明 |
 |--------------|------|------|------|
 | enable | boolean | 是 | 当进程发生SharedHeap OOM时，系统将依据该进程在其生命周期中最后一次调用该接口所记录的信息，转储相应级别的堆快照。<br/>true：进程级。<br/>false：线程级。<br/> 默认值：false。 |
 
