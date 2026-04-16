@@ -145,6 +145,12 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 检查新版本信息。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -192,6 +198,12 @@ try {
 checkNewVersion(): Promise\<CheckResult>
 
 检查新版本信息。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -246,6 +258,12 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 获取新版本信息。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -293,6 +311,12 @@ try {
 getNewVersionInfo(): Promise\<NewVersionInfo>
 
 获取新版本信息。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -343,6 +367,12 @@ try {
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
 获取新版本描述文件。使用callback异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -406,6 +436,12 @@ try {
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
 获取新版本描述文件。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -477,6 +513,12 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 获取当前版本信息。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -526,6 +568,12 @@ try {
 getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 获取当前版本信息。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -577,6 +625,12 @@ try {
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
 获取当前版本描述文件。使用callback异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -632,6 +686,12 @@ try {
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
 获取当前版本描述文件。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -694,6 +754,12 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 获取升级任务信息。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -741,6 +807,12 @@ try {
 getTaskInfo(): Promise\<TaskInfo>
 
 获取升级任务信息。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -791,6 +863,12 @@ try {
 download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions, callback: AsyncCallback\<void>): void
 
 下载新版本。使用callback异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -852,6 +930,12 @@ try {
 download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions): Promise\<void>
 
 下载新版本。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -921,6 +1005,12 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 恢复下载新版本。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -980,6 +1070,12 @@ try {
 resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: ResumeDownloadOptions): Promise\<void>
 
 恢复下载新版本。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1048,6 +1144,12 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 暂停下载新版本。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -1107,6 +1209,12 @@ try {
 pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseDownloadOptions): Promise\<void>
 
 暂停下载新版本。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1175,6 +1283,12 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 升级新版本。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -1234,6 +1348,12 @@ try {
 upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): Promise\<void>
 
 升级新版本。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1302,6 +1422,12 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 
 清除异常状态，版本下载、安装异常时，清理升级包文件及升级状态。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -1361,6 +1487,12 @@ try {
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Promise\<void>
 
 清除异常状态，版本下载、安装异常时，清理升级包文件及升级状态。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1429,6 +1561,12 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 获取升级策略信息。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -1476,6 +1614,12 @@ try {
 getUpgradePolicy(): Promise\<UpgradePolicy>
 
 获取升级策略。通过promise方式作为异步方法。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1526,6 +1670,12 @@ try {
 setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 设置升级策略。使用callback异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1580,6 +1730,12 @@ try {
 setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 设置升级策略。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1642,6 +1798,12 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 终止升级。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -1688,6 +1850,12 @@ try {
 terminateUpgrade(): Promise\<void>
 
 终止升级。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1737,6 +1905,12 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 注册事件监听。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -1782,6 +1956,12 @@ try {
 off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): void
 
 取消注册事件监听。使用callback异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1832,6 +2012,12 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 恢复出厂设置。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.FACTORY_RESET
@@ -1870,6 +2056,12 @@ try {
 factoryReset(): Promise\<void>
 
 恢复出厂设置。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1912,6 +2104,12 @@ try {
 forceFactoryReset(): Promise\<void>
 
 强制恢复出厂设置。使用Promise异步回调。
+
+**起始版本：** 23
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1956,6 +2154,10 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 深度清理用户数据及操作系统。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2010,6 +2212,10 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 获取深度恢复出厂设置信息。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2066,6 +2272,12 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 校验升级包。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -2112,6 +2324,12 @@ try {
 verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void>
 
 校验升级包。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2168,6 +2386,12 @@ applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: Asy
 
 安装升级包。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
@@ -2213,6 +2437,12 @@ try {
 applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<void>
 
 安装升级包。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2268,6 +2498,12 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 注册事件监听。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -2310,6 +2546,12 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 取消注册事件监听。使用callback异步回调。
 
+**起始版本：** 9
+
+**模型约束**：此接口仅可在FA模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -2351,6 +2593,8 @@ try {
 
 升级信息。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                          | 只读 | 可选 | 说明     |
@@ -2361,6 +2605,8 @@ try {
 ## BusinessType
 
 升级业务类型。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2373,6 +2619,8 @@ try {
 
 搜包结果。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                | 类型                              | 只读 | 可选 | 说明     |
@@ -2383,6 +2631,8 @@ try {
 ## NewVersionInfo
 
 新版本数据。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2395,6 +2645,8 @@ try {
 
 版本摘要。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称            | 类型   | 只读 | 可选 | 说明   |
@@ -2404,6 +2656,8 @@ try {
 ## VersionComponent
 
 版本组件。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2423,6 +2677,8 @@ try {
 
 描述文件选项。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                                    | 只读 | 可选 | 说明     |
@@ -2433,6 +2689,8 @@ try {
 ## ComponentDescription
 
 组件描述文件。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2445,6 +2703,8 @@ try {
 
 版本描述文件信息。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
@@ -2455,6 +2715,8 @@ try {
 ## CurrentVersionInfo
 
 当前版本信息。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2468,6 +2730,8 @@ try {
 
 下载选项。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                | 只读 | 可选   | 说明   |
@@ -2479,6 +2743,8 @@ try {
 
 恢复下载选项。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                | 只读 | 可选 | 说明   |
@@ -2488,6 +2754,8 @@ try {
 ## PauseDownloadOptions
 
 暂停下载选项。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2499,6 +2767,8 @@ try {
 
 升级选项。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称    | 类型            | 只读 | 可选 | 说明   |
@@ -2509,6 +2779,8 @@ try {
 
 清除异常选项。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称     | 类型                            | 只读 | 可选 | 说明   |
@@ -2518,6 +2790,8 @@ try {
 ## UpgradePolicy
 
 升级策略。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2531,6 +2805,8 @@ try {
 
 升级时间段。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称    | 类型   | 只读 | 可选 | 说明 |
@@ -2541,6 +2817,8 @@ try {
 ## TaskInfo
 
 任务信息。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2553,6 +2831,8 @@ try {
 
 事件信息。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                  | 只读 | 可选 | 说明 |
@@ -2563,6 +2843,8 @@ try {
 ## TaskBody
 
 任务数据。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2580,6 +2862,8 @@ try {
 
 错误信息。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型   | 只读 | 可选  | 说明   |
@@ -2591,6 +2875,8 @@ try {
 
 事件信息。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称            | 类型                            | 只读 | 可选  | 说明   |
@@ -2601,6 +2887,8 @@ try {
 ## UpgradeFile
 
 升级文件。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2653,6 +2941,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件回调。
 
+**起始版本：** 23
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 类型                    | 必填   | 说明   |
@@ -2662,6 +2952,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## BusinessVendor
 
 设备厂家。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2673,6 +2965,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级类型。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称      | 值  | 说明   |
@@ -2683,6 +2977,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 组件类型。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称  | 值  | 说明   |
@@ -2692,6 +2988,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## UpgradeAction
 
 升级方式。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2704,6 +3002,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 生效模式。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 值  | 说明   |
@@ -2715,6 +3015,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## OtaMode<sup>20+</sup>
 
 升级模式。
+
+**起始版本：** 20
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2729,6 +3031,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件类型。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称     | 值  | 说明   |
@@ -2740,6 +3044,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件格式。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 值  | 说明   |
@@ -2750,6 +3056,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## NetType
 
 网络类型。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2765,6 +3073,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级指令。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                  | 值  | 说明    |
@@ -2778,6 +3088,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## UpgradeStatus
 
 升级状态。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2798,6 +3110,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件类型。
 
+**起始版本：** 9
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称   | 值        | 说明   |
@@ -2807,6 +3121,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## EventId
 
 事件ID。
+
+**起始版本：** 9
 
 **系统能力**：SystemCapability.Update.UpdateService
 
