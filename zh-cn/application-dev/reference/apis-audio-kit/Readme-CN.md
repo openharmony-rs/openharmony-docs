@@ -44,6 +44,7 @@
     - [OHAudio](capi-ohaudio.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
     - [AudioConverter](capi-audioconverter.md)
+    - [OHMIDI](capi-ohmidi.md)
   - 头文件<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
     - [native_audio_manager.h](capi-native-audio-manager-h.md)
@@ -95,6 +96,13 @@
     - [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)
     - [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)
     - [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md)
+    - [OH_MIDIEvent](capi-ohmidi-oh-midievent.md)
+    - [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md)
+    - [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md)
+    - [OH_MIDIPortDescriptor](capi-ohmidi-oh-midiportdescriptor.md)
+    - [OH_MIDICallbacks](capi-ohmidi-oh-midicallbacks.md)
+    - [OH_MIDIClientStruct](capi-ohmidi-oh-midiclientstruct.md)
+    - [OH_MIDIDeviceStruct](capi-ohmidi-oh-mididevicestruct.md)
 - 错误码<!--audio-arkts-errcode-->
   - [Audio错误码](errorcode-audio.md)
   <!--Del-->
