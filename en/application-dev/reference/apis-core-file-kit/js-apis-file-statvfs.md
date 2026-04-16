@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-This module provides APIs for obtaining file system information, including the total size and free size of a file system, in bytes.
+This module provides ArkTS APIs for obtaining file system information, including the total size and free space of a file system, in bytes.
 
 > **NOTE**
 >
