@@ -134,7 +134,7 @@ struct Test {
   build() {
     Column() {
       // 请在resources\base\element\string.json文件中配置name为'state_countvalue_text1' ，value为非空字符串的资源
-      Text(this.context.resourceManager.getStringByNameSync('state_countvalue_text1') + `${this.count}`)
+      Text(resource.resourceToString($r('app.string.state_countvalue_text1')) + `${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();

@@ -392,7 +392,7 @@ struct ForEachIndex {
 
   aboutToAppear(): void {
     for (let i = 0; i < this.planList.length; i++) {
-      this.planList[i] = this.context1!.resourceManager.getStringSync((this.planList[i] as Resource).id);
+      this.planList[i] = resource.resourceToString(this.planList[i] as Resource);
     };
   }
 
@@ -518,8 +518,7 @@ struct BuilderThingComponent {
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
         .onClick(() => {
-          // 请将$r('app.string.la_la')替换为实际资源文件，在本示例中该资源文件的value值为"啦"
-          this.thing += this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.la_la').id);
+          this.thing += 'lala';
         })
     }
     .height('8%')
@@ -542,7 +541,7 @@ struct BuilderIndex {
   aboutToAppear(): void {
     for (let i = 0; i < this.data.planList.length; i++) {
       this.data.planList[i] =
-        this.getUIContext().getHostContext()!.resourceManager.getStringSync((this.data.planList[i] as Resource).id);
+        resource.resourceToString(this.data.planList[i] as Resource);
     }
   }
 
@@ -913,8 +912,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     addSuffixes(): void {
-      // 请在resources\base\element\string.json文件中配置name为'la_la'，value为非空字符串的资源
-      this.thingName += this.context.resourceManager.getStringSync($r('app.string.la_la').id);
+      this.thingName += 'lala';
     }
   }
   ```

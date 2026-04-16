@@ -497,7 +497,7 @@ struct ParentFour {
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
-// ···
+// ...
 export default class EntryAbility extends UIAbility {
   para: Record<string, number> = {
     'PropA': 47
@@ -506,10 +506,12 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 当前用例需要开发者手动修改为windowStage.loadContent('pages/PageFiveShare', this.storage);
-    windowStage.loadContent('pages/Index', this.storage);
+    windowStage.loadContent('pages/Index', this.storage).catch(() => {
+      hilog.error(DOMAIN, 'testTag', '%{public}s', 'Ability onCreonWindowStageCreateate');
+    });
   }
 
-// ···
+  // ...
 }
 ```
 
