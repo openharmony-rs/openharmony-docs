@@ -1017,7 +1017,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 **描述**
 
-获取屏幕的位置信息。显示设备左上角相对于原点的横纵坐标x和y，原点为主屏左上角。对于坐标x或y，单位为px，参数为整数。仅当DisplaySourceMode为MAIN和EXTEND时返回实际值，其余默认不赋值。
+获取屏幕的位置信息，即相对于原点（主屏左上角）的x坐标和y坐标。仅当屏幕当前的显示模式为MAIN和EXTEND时返回实际值，其余默认返回默认值0。
 
 **起始版本：** 20
 
@@ -1027,8 +1027,8 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t displayId | 查询屏幕的id号，非负整数。 |
-| int32_t *x | 相对于主屏左上角的x方向坐标，此处作为出参返回。 |
-| int32_t *y | 相对于主屏左上角的y方向坐标，此处作为出参返回。 |
+| int32_t *x | 相对于主屏左上角的x方向坐标，单位为px，该参数应为整数，此处作为出参返回。 |
+| int32_t *y | 相对于主屏左上角的y方向坐标，单位为px，该参数应为整数，此处作为出参返回。 |
 
 **返回：**
 
