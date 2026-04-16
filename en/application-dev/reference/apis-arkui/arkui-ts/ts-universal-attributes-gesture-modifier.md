@@ -1,7 +1,7 @@
 # Gesture Modifier
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,7 +14,7 @@ With the gesture modifier, you can dynamically set gestures bound to components,
 
 ## gestureModifier
 
-gestureModifier(modifier: GestureModifier): T
+gestureModifier(modifier:&nbsp;GestureModifier): T
 
 Creates a gesture modifier.
 
@@ -75,7 +75,12 @@ class MyButtonModifier implements GestureModifier {
   applyGesture(event: UIGestureEvent): void {
     if (this.supportDoubleTap) {
       event.addGesture(
-        new TapGestureHandler({ count: 2, fingers: 1 })
+        new TapGestureHandler({
+          count: 2,
+          fingers: 1,
+          // The distanceThreshold attribute is added since API version 23.
+          distanceThreshold: 100
+        })
           .tag("aaa")
           .onAction((event: GestureEvent) => {
             console.info('Gesture Info is', JSON.stringify(event));

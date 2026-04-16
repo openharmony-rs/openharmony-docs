@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -44,7 +44,7 @@
 
 - **调度延迟**：系统会根据内存、功耗、设备温度、用户使用习惯等统一调度，如当系统内存资源不足或温度达到一定档位时，系统将延迟调度该任务。
 
-- **WorkSchedulerExtensionAbility接口调用限制**：为实现对WorkSchedulerExtensionAbility能力的管控，在WorkSchedulerExtensionAbility中限制以下接口的调用：
+- **WorkSchedulerExtensionAbility接口调用限制**：为保障系统安全性和稳定性，防止延迟任务滥用系统资源，对WorkSchedulerExtensionAbility能力进行管控，在WorkSchedulerExtensionAbility中限制以下接口的调用：
 
   [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
 
@@ -104,7 +104,7 @@
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
-   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ```ts
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
@@ -153,7 +153,7 @@
    ```
 
 2. 申请延迟任务。
-   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
    ``` TypeScript
    let workInfo: workScheduler.WorkInfo = {
@@ -174,7 +174,7 @@
    ```
 
 3. 取消延迟任务。
-   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
 
    ```ts
    // 创建workinfo
@@ -211,4 +211,4 @@
 
 针对延迟任务调度的开发，有以下相关示例可供参考：
 
-- [延迟任务调度（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/TaskManagement/WorkScheduler)
+- [延迟任务调度（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/WorkScheduler)

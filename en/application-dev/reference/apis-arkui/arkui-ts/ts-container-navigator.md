@@ -151,7 +151,23 @@ Sets the navigation type.
 ## Example
 
 ```ts
-// Navigator.ets
+// code.ets
+export interface NameObject {
+  name: string;
+}
+
+export class TextObject {
+  text: NameObject;
+
+  constructor(text: NameObject) {
+    this.text = text;
+  }
+}
+```
+
+```ts
+import { NameObject, TextObject } from '../../code';
+
 @Entry
 @Component
 struct NavigatorExample {
@@ -174,22 +190,11 @@ struct NavigatorExample {
     }.height(150).width(350).padding(35)
   }
 }
-
-interface NameObject {
-  name: string;
-}
-
-class TextObject {
-  text: NameObject;
-
-  constructor(text: NameObject) {
-    this.text = text;
-  }
-}
 ```
 
 ```ts
-// Detail.ets
+import { NameObject } from '../../code';
+
 @Entry
 @Component
 struct DetailExample {
@@ -208,10 +213,6 @@ struct DetailExample {
     }
     .width('100%').height(200).padding({ left: 35, right: 35, top: 35 })
   }
-}
-
-interface NameObject {
-  name: string;
 }
 ```
 

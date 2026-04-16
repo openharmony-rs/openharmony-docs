@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块提供屏幕亮度和模式的查询、调节接口。
 
@@ -45,10 +45,11 @@ getValue(options?: GetBrightnessOptions): void
 
 **示例：**
 
+ArkTS示例：
   ```js
   brightness.getValue({
       success: (data: BrightnessResponse) => {
-        console.log('success get brightness value:' + data.value);
+        console.info('success get brightness value:' + data.value);
       },
       fail: (data: string, code: number) => {
         console.error('get brightness fail, code: ' + code + ', data: ' + data);
@@ -56,6 +57,54 @@ getValue(options?: GetBrightnessOptions): void
   });
   ```
 
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Value" style="width: 240px; height: 50px; margin: 5px;" onclick="getValue"></input>
+    <text class="title">getValue: {{ value }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
+
+export default {
+    data: {
+        value: ''
+    },
+    getValue() {
+        let TAG = 'get_value_success_test';
+        brightness.getValue({
+            success: (brightnessResponse) => {
+                this.value = brightnessResponse.value;
+                console.info(`${TAG} brightnessResponse.value: ${brightnessResponse.value}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getValue complete`);
+            }
+        });
+    },
+}
+```
 
 ## brightness.setValue<sup>(deprecated)</sup>
 
@@ -73,11 +122,12 @@ setValue(options?: SetBrightnessOptions): void
 
 **示例：**
 
+ArkTS示例：
   ```js
   brightness.setValue({
       value: 100,
       success: () => {
-        console.log('handling set brightness success.');
+        console.info('handling set brightness success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set brightness value fail, code:' + code + ', data: ' + data);
@@ -85,6 +135,54 @@ setValue(options?: SetBrightnessOptions): void
   });
   ```
 
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Value" style="width: 240px; height: 50px; margin: 5px;" onclick="setValue"></input>
+    <text class="title">setValue: {{ value }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
+
+export default {
+    data: {
+        value: 100
+    },
+    setValue() {
+        let TAG = 'set_value_success_test';
+        brightness.setValue({
+            value: this.value,
+            success: () => {
+                console.info(`${TAG} setValue success!`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setValue complete`);
+            }
+        });
+    },
+}
+```
 
 ## brightness.getMode<sup>(deprecated)</sup>
 
@@ -102,10 +200,11 @@ getMode(options?: GetBrightnessModeOptions): void
 
 **示例：**
 
+ArkTS示例：
   ```js
   brightness.getMode({
       success: (data: BrightnessModeResponse) => {
-        console.log('success get mode:' + data.mode);
+        console.info('success get mode:' + data.mode);
       },
       fail: (data: string, code: number) => {
         console.error('handling get mode fail, code:' + code + ', data: ' + data);
@@ -113,6 +212,54 @@ getMode(options?: GetBrightnessModeOptions): void
   });
   ```
 
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="getMode"></input>
+    <text class="title">getMode: {{ mode }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
+
+export default {
+    data: {
+        mode: ''
+    },
+    getMode() {
+        let TAG = 'get_mode_success_test';
+        brightness.getMode({
+            success: (brightnessModeResponse) => {
+                this.mode = brightnessModeResponse.mode;
+                console.info(`${TAG} brightnessModeResponse mode: ${brightnessModeResponse.mode}`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} getMode complete`);
+            }
+        });
+    },
+}
+```
 
 ## brightness.setMode<sup>(deprecated)</sup>
 
@@ -129,11 +276,12 @@ setMode(options?: SetBrightnessModeOptions): void
 
 **示例：**
 
+ArkTS示例：
   ```js
   brightness.setMode({
       mode: 1,
       success: () => {
-        console.log('handling set mode success.');
+        console.info('handling set mode success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set mode fail, code:' + code + ', data: ' + data);
@@ -141,6 +289,54 @@ setMode(options?: SetBrightnessModeOptions): void
   });
   ```
 
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="setMode"></input>
+    <text class="title">setMode: {{ mode }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
+
+export default {
+    data: {
+        mode: 1
+    },
+    setMode() {
+        let TAG = 'set_mode_success_test';
+        brightness.setMode({
+            mode: this.mode,
+            success: () => {
+                console.info(`${TAG} setMode success`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setMode complete`);
+            }
+        });
+    },
+}
+```
 
 ## brightness.setKeepScreenOn<sup>(deprecated)</sup>
 
@@ -160,17 +356,68 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **示例：**
 
+ArkTS示例：
   ```js
   brightness.setKeepScreenOn({
       keepScreenOn: true,
       success: () => {
-        console.log('handling set keep screen on success.');
+        console.info('handling set keep screen on success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set keep screen on fail, code:' + code + ', data: ' + data);
       }
   });
   ```
+
+JS示例：
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="SetKeepScreenOn" style="width: 240px; height: 50px; margin: 5px;" onclick="setKeepScreenOn"></input>
+    <text class="title">setKeepScreenOn: {{ keepScreenOn }}</text>
+</div>
+```
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+```
+```js
+// xxx.js
+import brightness from '@system.brightness';
+
+export default {
+    data: {
+        keepScreenOn: true
+    },
+    setKeepScreenOn() {
+        let TAG = 'set_keep_screen_on_success_test';
+        brightness.setKeepScreenOn({
+            keepScreenOn: this.keepScreenOn,
+            success: () => {
+                console.info(`${TAG} setKeepScreenOn success`);
+            },
+            fail: (data, code) => {
+                console.error(`${TAG} fail data: ${data}, code: ${code}`);
+            },
+            complete: () => {
+                console.info(`${TAG} setKeepScreenOn complete`);
+            }
+        });
+    },
+}
+```
+
 ## GetBrightnessOptions<sup>(deprecated)</sup>
 
 获取屏幕亮度的参数对象。

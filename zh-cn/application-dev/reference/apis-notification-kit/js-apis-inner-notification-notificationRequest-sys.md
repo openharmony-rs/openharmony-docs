@@ -1,4 +1,4 @@
-# NotificationRequest(系统接口)
+# NotificationRequest (系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->
@@ -20,21 +20,22 @@
 
 | 名称                            | 类型                                                    |  只读 | 可选 | 说明                                                                    |
 |-------------------------------| -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
-| trigger<sup>23+</sup>          | [Trigger](#trigger23) |   否  | 是  | 条件对象。 <br>**系统接口**：此接口为系统接口。 |
-| overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标。图像像素的总字节数不超过192KB。<br>**系统接口**：此接口为系统接口。                                                 |
+| trigger<sup>23+</sup>          | [Trigger](#trigger23) |   否  | 是  | 条件对象。默认为空。 <br>**系统接口**：此接口为系统接口。 |
+| overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标，默认为空。图像像素的总字节数不超过192KB。<br>**系统接口**：此接口为系统接口。                                                 |
 | classification                | string                                                   |   否  | 是  | 通知分类。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。                               |
 | isRemoveAllowed<sup>8+</sup>   | boolean                                                  |   否  | 是  | 通知是否能被移除（点击通知下方删除按钮无法删除，左滑不出现删除按钮）。默认为true。<br> - true：是。<br> - false：否。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.SET_UNREMOVABLE_NOTIFICATION |
 | source<sup>8+</sup>            | number                                                   |   是  | 是  | 通知源。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。                                |
 | deviceId<sup>8+</sup>          | string                                                   |   是  | 是  | 通知源的deviceId。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。                       |
-| representativeBundle<sup>12+</sup> | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 是 | 被代理的包信息。<br>**系统接口**：此接口为系统接口。 |
-| notificationControlFlags<sup>12+</sup>       | number                                                   |   否  | 是  | 通知提醒方式管控。<br>可以通过此接口减少当前通知的提醒方式。与[NotificationControlFlagStatus](js-apis-notificationManager-sys.md#notificationcontrolflagstatus12)的枚举进行按位或运算得到该参数。<br>**系统接口**：此接口为系统接口。            |
-| unifiedGroupInfo<sup>12+</sup>       | [UnifiedGroupInfo](#unifiedgroupinfo12) |   否  | 是  |消息智能聚合信息字段。 <br>**系统接口**：此接口为系统接口。|
+| representativeBundle<sup>12+</sup> | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 是 | 被代理的包信息。默认为空。<br>**系统接口**：此接口为系统接口。 |
+| notificationControlFlags<sup>12+</sup>       | number                                                   |   否  | 是  | 通知提醒方式管控。默认值为0。<br>可以通过此接口减少当前通知的提醒方式。与[NotificationControlFlagStatus](js-apis-notificationManager-sys.md#notificationcontrolflagstatus12)的枚举进行按位或运算得到该参数。<br>**系统接口**：此接口为系统接口。            |
+| unifiedGroupInfo<sup>12+</sup>       | [UnifiedGroupInfo](#unifiedgroupinfo12) |   否  | 是  |消息智能聚合信息字段。默认为空。 <br>**系统接口**：此接口为系统接口。|
 | creatorInstanceKey<sup>(deprecated)</sup>      | number |   是  | 是  | 创建者实例键值。<br>从API version 12开始支持，从API version 15开始废弃，建议使用appInstanceKey替代。<br>**系统接口**：此接口为系统接口。|
-| agentBundle<sup>12+</sup>       | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) |   是  | 是  | 创建通知的代理包信息。 <br>**系统接口**：此接口为系统接口。|
-| appInstanceKey<sup>15+</sup>       | string |   是  | 是  | 应用实例键值。 <br>**系统接口**：此接口为系统接口。|
+| agentBundle<sup>12+</sup>       | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) |   是  | 是  | 创建通知的代理包信息。默认为空。 <br>**系统接口**：此接口为系统接口。|
+| appInstanceKey<sup>15+</sup>       | string |   是  | 是  | 应用实例键值。默认为空。 <br>**系统接口**：此接口为系统接口。|
 | notDistributed<sup>18+</sup> | boolean | 否 | 是 | 通知是否不进行全场景跨设备协同显示，默认为false。<br/>**说明**:<br/>该字段与forceDistributed字段互斥，当两者同时为true时，仅notDistributed字段生效。<br/>-&nbsp;设置为true时：通知仅在本设备上显示。<br/>-&nbsp;设置为false时：通知将在所有协同设备上显示。<br>**系统接口**: 此接口为系统接口。 |
 | forceDistributed<sup>18+</sup> | boolean | 否 | 是 | 通知是否强制进行全场景跨设备协同显示，默认为false。<br/>**说明**:<br/>仅当应用在跨设备协同管控名单中且notDistributed为false时，该字段才会生效。通过读取notification_config.json文件（文件配置路径见：[notification_config_parse.h](https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h) 中的NOTIFICATION_CONFIG_FILE属性）中的collaborationFilter字段，查看是否包含应用的UID或包名。如果包含，说明是在应用跨设备协同管控名单中。<br>-&nbsp;设置为true时：通知将在所有协同设备上显示。<br/>-&nbsp;设置为false时：通知将按照协同管控名单显示。<br>**系统接口**: 此接口为系统接口。 |
-| extendInfo<sup>20+</sup> | Record<string, Object> | 否 | 是 | 系统应用发布通知时的自定义扩展参数。<br>**系统接口**: 此接口为系统接口。 |
+| extendInfo<sup>20+</sup> | Record<string, Object> | 否 | 是 | 系统应用发布通知时的自定义扩展参数。默认为空。<br>**系统接口**: 此接口为系统接口。 |
+| groupInfo | [GroupInfo](#groupinfo) | 否 | 是 | 组通知定制信息。默认为空。<br>**模型约束**: 此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0<br>**系统接口**: 此接口为系统接口。 |
 
 ## DistributedOptions<sup>8+</sup>
 
@@ -159,4 +160,21 @@
 | -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
 | type | [TriggerType](#triggertype23) | 否 | 否 | 条件类型。 |
 | condition | [Geofence](#geofence23) | 否 | 否 | 条件具体描述。 |
-| displayTime | number | 否 | 是 | 条件触发实况的展示时间，单位秒，取值范围：[15, 1800]，默认值为900。 |
+| displayTime | number | 否 | 是 | 条件触发实况的展示时间，单位：秒，取值范围：[15, 1800]，默认值为900。 |
+
+## GroupInfo
+
+组通知信息。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 类型                 | 只读 | 可选 | 说明                                     |
+| -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
+| isGroupIcon | boolean | 否 | 是 | 是否使用该通知[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中的smallIcon字段作为通知成组后展示的组图标。当该通知是通知组中最新的一条通知，且开发者传入smallIcon时，是否使用smallIcon作为组图标。默认值为false。<br>- true：使用smallIcon作为组通知的图标。<br>- false：不使用smallIcon作为组通知的图标。|
+| groupTitle | string | 否 | 是 | 通知成组后展示的组标题。当该通知是通知组中最新的一条通知时，该字段生效。默认为空。 |

@@ -28,7 +28,7 @@
 
 ## Available APIs
 
-For details about the APIs, see [Certificate Management](../../reference/apis-device-certificate-kit/js-apis-certManager.md).
+For details about the APIs, see [@ohos.security.certManager (Certificate Management Module)](../../reference/apis-device-certificate-kit/js-apis-certManager.md).
 
 The following table describes the commonly used APIs.
 
@@ -42,14 +42,14 @@ The following table describes the commonly used APIs.
 | certificateManager        | uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>) : void  | Uninstalls an application certificate. This API uses an asynchronous callback to return the result.     |
 | certificateManager        | uninstallPrivateCertificate(keyUri: string) : Promise\<void> | Uninstalls an application certificate. This API uses a promise to return the result.|
 | certificateManager | init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>) : void | Initializes the signing or signature verification operation. This API uses an asynchronous callback to return the result.|
-| certificateManager | init(authUri: string, spec: CMSignatureSpec) : Promise\<CMHandle>  | Initializes the signing or signature verification operation. This API uses a promise to return the result.|
+| certificateManager | init(authUri: string, spec: CMSignatureSpec) : Promise\<CMHandle>  | Initializes signing or signature verification. This API uses a promise to return the result.|
 | certificateManager        | update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>) : void         | Updates the data to be signed or verified. This API uses an asynchronous callback to return the result.       |
 | certificateManager        | update(handle: Uint8Array, data: Uint8Array) : Promise\<void> | Updates the data to be signed or verified. This API uses a promise to return the result.|
 | certificateManager        | finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>) : void         | Finishes the signing operation. This API uses an asynchronous callback to return the result.       |
 | certificateManager        | finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>) : void     | Finishes the signing operation. This API uses an asynchronous callback to return the result.       |
-| certificateManager        | finish(handle: Uint8Array, signature?: Uint8Array) : Promise\<CMResult> | Finishes the signing or signature verification operation. This API uses a promise to return the result.|
-| certificateManager        | abort(handle: Uint8Array, callback: AsyncCallback\<void>) : void         | Aborts the signing or signature verification operation. This API uses an asynchronous callback to return the result.       |
-| certificateManager        | abort(handle: Uint8Array) : Promise\<void> | Aborts the signing or signature verification operation. This API uses a promise to return the result.|
+| certificateManager        | finish(handle: Uint8Array, signature?: Uint8Array) : Promise\<CMResult> | Finishes signing or signature verification. This API uses a promise to return the result.|
+| certificateManager        | abort(handle: Uint8Array, callback: AsyncCallback\<void>) : void         | Aborts signing or signature verification. This API uses a callback to return the result.       |
+| certificateManager        | abort(handle: Uint8Array) : Promise\<void> | Aborts signing or signature verification. This API uses a promise to return the result.|
 
 ## How to Develop
 

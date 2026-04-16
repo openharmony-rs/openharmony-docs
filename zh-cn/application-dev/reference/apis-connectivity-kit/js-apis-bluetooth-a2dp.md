@@ -37,7 +37,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createA2dpSrcProfile(): A2dpSourceProfile
 
-创建蓝牙媒体[A2DP Source](../../connectivity/terminology.md#a2dp-source)实例。通过该实例可使用本端作为A2DP Source设备的方法，如：获取和其他设备间的蓝牙媒体音频播放状态。
+创建蓝牙媒体[A2DP Source](../../connectivity/terminology.md#a2dp-source)实例。通过该实例可以使用本端作为A2DP Source设备的方法，如：获取和其他设备间的蓝牙媒体音频播放状态。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

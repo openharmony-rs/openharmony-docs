@@ -142,11 +142,11 @@ Failed to enable forwarding for network sharing.
 
 **可能原因**
 
-设置Iptables的规则失败，命令的拼接出错。
+设置iptables的规则失败，命令的拼接出错。
 
 **处理步骤**
 
-开启debug日志，检查Ip tables的命令是否拼接出现问题。
+开启debug日志，检查iptables的命令是否拼接出现问题。
 
 ## 2202011 无法获取网络共享配置
 

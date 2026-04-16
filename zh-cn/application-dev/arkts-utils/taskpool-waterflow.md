@@ -31,7 +31,7 @@
     }
     
     export function getImgFromDB() {
-      //此处模拟查询数据库，并返回数据
+      // 此处模拟查询数据库，并返回数据
       let task = new taskpool.Task(query);
       task.onReceiveData(fillImg);
       taskpool.execute(task);
@@ -94,7 +94,7 @@
        })
      }
    
-     //通知控制器数据批量修改
+     // 通知控制器数据批量修改
      notifyDatasetChange(operations: DataOperation[]): void {
        this.listeners.forEach(listener => {
          listener.onDatasetChange(operations);
@@ -179,7 +179,6 @@
    ``` TypeScript
    import { WaterFlowDataSource } from './WaterFlowDataSource';
    import { getImgFromDB } from './Mock';
-   import resource from '../util/resource';
    
    // 模拟图片数组
    let img = new Array<string>(33);
@@ -249,7 +248,7 @@
                  // 为了模拟图片加载，使用Text组件显示，正常加载jpg文件时，可以直接使用Image组件
                  // 参考 Image(this.img[item % 33]).objectFit(ImageFit.Contain).width('100%').layoutWeight(1)
                  if (img[item % 33] == null) {
-                   Text(resource.resourceToString($r('app.string.Image_loading')))
+                   Text($r('app.string.Image_loading')) // 加载资源，可根据项目实际资源自定义
                      .width('100%')
                      .layoutWeight(1);
                  }

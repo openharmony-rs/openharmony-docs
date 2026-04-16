@@ -10,7 +10,7 @@
 
 * 通过调用接口获取。
 
-可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息。
+可以调用[bundleManager.getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息，使用哈希算法SHA-256生成。
 
 <!-- @[get_fingerprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets) -->
 
@@ -33,7 +33,7 @@ try {
 ```
 
 
-* 通过[bm工具](../tools/bm-tool.md)获取指纹信息。
+* 通过[bm工具](../tools/bm-tool.md)获取指纹信息，使用哈希算法SHA-256生成。
 
 ```shell
 hdc shell
@@ -43,9 +43,9 @@ bm dump -n com.example.myapplication | grep fingerprint
 
 ![alt text](figures/get_fingerprint.png)
 
-* 通过.cer证书文件获取，可以参考[APP备案FAQ](https://developer.huawei.com/consumer/cn/doc/app/50130)中HarmonyOS应用/元服务如何获取公钥和签名信息。
+* 通过.cer证书文件获取，可以参考[APP备案FAQ](https://developer.huawei.com/consumer/cn/doc/app/50130)中HarmonyOS应用/元服务如何获取公钥和签名信息，指纹信息使用哈希算法SHA-1生成。
 
-* 通过keytool工具获取，详情参考[生成签名证书指纹](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-Guides/appgallerykit-preparation-game-0000001055356911#section147011294331)。
+* 通过keytool工具获取，详情参考[生成签名证书指纹](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-Guides/appgallerykit-preparation-game-0000001055356911#section147011294331)，使用哈希算法SHA-256生成。
 
 ## 什么是appIdentifier
 
@@ -125,7 +125,14 @@ try {
 
 ```shell
 hdc shell
-# 需将com.example.myapplication替换为实际应用的包名
+# 需将ohos.app.hap.myapplication替换为实际应用的包名
 bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
 ![alt text](figures/get_appId.png)
+
+## 应用的uid
+
+uid是系统中用于[应用沙箱](../security/AccessToken/access-token-overview.md#应用沙箱)隔离的唯一标识符，它分配给每个应用进程，确保应用在运行时相互隔离（如文件系统，内存空间等）。
+
+uid的生成算法为：uid = userId * 200000 + (bundleId % 200000)。其中%表示取模运算，计算bundleId除以200000的余数。userId表示应用需要安装的用户编号，可以通过[getOsAccountLocalId接口](../reference/apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。bundleId表示应用的唯一编号，取值范围为10000到65535的整数。
+

@@ -822,7 +822,7 @@ Task timed out.
 
 **可能原因**
 
-任务在被[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24)、[taskpool.execute(GenericsTask)](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-1)调用时，设置的超时时间较短，而任务执行时间超过了设置的超时时间。
+任务在被可以设置超时的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24)或可以设置超时的泛型接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-1)调用时，设置的超时时间较短，而任务执行时间超过了设置的超时时间。
 
 **处理步骤**
 
@@ -845,7 +845,7 @@ TaskGroup cannot be re-executed.
 
 **处理步骤**
 
-1. 设置过超时的任务组不要再次使用[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)进行执行。无法保证时，需要捕获异常。
+1. 设置过超时的任务组不要再次使用可以设置超时配置的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute24-2)进行执行。无法保证时，需要捕获异常。
 2. 设置过超时的任务组不要使用只能设置优先级的接口[taskpool.execute](../apis-arkts/js-apis-taskpool.md#taskpoolexecute10)进行执行。无法保证时，需要捕获异常。
 
 ## 10200060 超出精度限制

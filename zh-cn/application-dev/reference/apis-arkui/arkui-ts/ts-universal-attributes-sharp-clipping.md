@@ -198,7 +198,7 @@ type PathShape = PathShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [PathShape](../js-apis-arkui-shape.md#pathshape) | 接口路径。 |
+| [PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
 
 ## RectShape<sup>12+</sup>
 

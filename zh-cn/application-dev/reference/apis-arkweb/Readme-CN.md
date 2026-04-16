@@ -22,6 +22,7 @@
     - [Class (PrefetchOptions)](arkts-apis-webview-PrefetchOptions.md)
     - [Class (ProxyController)](arkts-apis-webview-ProxyController.md)
     - [Class (ProxyRule)](arkts-apis-webview-ProxyRule.md)
+    - [Class (SecurityParams)](arkts-apis-webview-SecurityParams.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
     - [Class (WebCookieManager)](arkts-apis-webview-WebCookieManager.md)
     - [Class (WebDataBase)](arkts-apis-webview-WebDataBase.md)
@@ -78,7 +79,7 @@
     - [Interfaces（其他）](arkts-basic-components-web-i.md)
     - [Enums](arkts-basic-components-web-e.md)
     - [Types](arkts-basic-components-web-t.md)
-    - [废弃的Class (WebController, deprecated)](arkts-basic-components-web-WebController.md)
+    - [Class (WebController)](arkts-basic-components-web-WebController.md)
 - C API<!--arkweb-c-->
   - 模块<!--arkweb-module-->
     - [Web](capi-web.md)

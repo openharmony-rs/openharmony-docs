@@ -97,6 +97,8 @@ Radio Frequency Communication，即无线电频率通信协议。用于模拟传
 ### RSSI
 Received Signal Strength Indicator，是无线通信中用于量化接收端信号强度的指标，单位是dBm。
 ## S
+### SCO
+Synchronous Connection-Oriented，即同步连接链路。主要用于传输对时间敏感的音频数据，如语音通话等场景。
 ### SDP
 Service Discovery Protocol，即服务发现协议。用于发现和识别其他蓝牙设备所提供的服务。
 ### Service

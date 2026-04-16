@@ -3,10 +3,10 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向云空间应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件等。
+该模块向云盘管理应用提供端云同步管理能力：包括全量下载的状态和停止原因，以及应用本地和云端文件数量信息。
 
 > **说明：**
 >
@@ -19,7 +19,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 ## DownloadStopReason<sup>20+</sup>
 
-降级下载停止原因的枚举，默认值为NO_STOP。
+全量下载停止原因的枚举，默认值为NO_STOP。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -35,7 +35,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 ## DownloadState<sup>20+</sup>
 
-降级下载任务状态的枚举。
+全量下载任务状态的枚举。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -47,7 +47,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 ## DownloadProgress<sup>20+</sup>
 
-降级下载任务的进度信息。
+全量下载任务的进度信息。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

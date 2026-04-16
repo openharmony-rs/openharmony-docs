@@ -372,7 +372,7 @@ int32_t OH_NativeWindow_NativeWindowRequestBuffer(OHNativeWindow *window,OHNativ
 
 **描述**
 
-通过OHNativeWindow对象申请一块OHNativeWindowBuffer，用以内容生产。<br>在调用本接口前，需要通过[SET_BUFFER_GEOMETRY](#nativewindowoperation)对OHNativeWindow设置宽高。<br>本接口需要与[OH_NativeWindow_NativeWindowFlushBuffer](#oh_nativewindow_nativewindowflushbuffer)接口配合使用，否则内存会耗尽。<br>当fenceFd使用完，用户需要将其close。<br>本接口为非线程安全类型接口。
+通过OHNativeWindow对象申请一块OHNativeWindowBuffer，用以内容生产。<br>在调用本接口前，需要通过[SET_BUFFER_GEOMETRY](#nativewindowoperation)对OHNativeWindow设置宽高。<br>未设置宽高将使用消费端设置的默认宽高。<br>本接口需要与[OH_NativeWindow_NativeWindowFlushBuffer](#oh_nativewindow_nativewindowflushbuffer)接口配合使用，否则内存会耗尽。<br>当fenceFd使用完，用户需要将其close。<br>本接口为非线程安全类型接口。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -415,7 +415,7 @@ int32_t OH_NativeWindow_NativeWindowFlushBuffer(OHNativeWindow *window, OHNative
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个OHNativeWindow的结构体实例的指针。 |
 | [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *buffer | 一个OHNativeWindowBuffer的结构体实例的指针。 |
 | int fenceFd | 一个文件描述符句柄，用以同步时序。不同取值及含义如下：<br>- -1：CPU渲染完成，无需同步时序。<br>- ≥0：从GPU同步对象转换（如EGL的eglDupNativeFenceFDANDROID），对端需要通过此fenceFd同步时序。 |
-| [Region](capi-nativewindow-region.md) region | 一个Region结构体，表示一块脏区域，该区域有内容更新。 |
+| [Region](capi-nativewindow-region.md) region | 一个Region结构体，表示一块脏区域，该区域有内容更新。<br>Region.rectNumber限制最大数量为1000，当rectNumber≤0或者rectNumber>1000时，使用整个buffer作为脏区。<br>Region.rect以buffer左下角为坐标原点。 |
 
 **返回：**
 
@@ -449,7 +449,7 @@ int32_t OH_NativeWindow_GetLastFlushedBuffer(OHNativeWindow *window, OHNativeWin
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个OHNativeWindow的结构体实例的指针。 |
 | [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) **buffer | 一个OHNativeWindowBuffer结构体指针的指针。 |
 | int *fenceFd | 一个文件描述符的指针。 |
-| matrix |  表示检索到的44变换矩阵。 |
+| matrix |  表示检索到的4\*4变换矩阵。 |
 
 **返回：**
 
@@ -653,7 +653,7 @@ int32_t OH_NativeWindow_NativeWindowSetScalingMode(OHNativeWindow *window, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_NativeWindowSetMetaData()
 
@@ -678,14 +678,14 @@ int32_t OH_NativeWindow_NativeWindowSetMetaData(OHNativeWindow *window, uint32_t
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个OHNativeWindow的结构体实例的指针。 |
 | uint32_t sequence | 生产缓冲区的序列。 |
-| int32_t size | OHHDRMetaData数组的大小。 |
+| int32_t size | OHHDRMetaData数组的大小，最大支持为3000，超出会返回NATIVE_ERROR_INVALID_ARGUMENTS。|
 | metaData |  指向OHHDRMetaData数组的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_NativeWindowSetMetaDataSet()
 
@@ -711,14 +711,14 @@ int32_t OH_NativeWindow_NativeWindowSetMetaDataSet(OHNativeWindow *window, uint3
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个OHNativeWindow的结构体实例的指针。 |
 | uint32_t sequence | 生产缓冲区的序列。 |
 | [OHHDRMetadataKey](#ohhdrmetadatakey) key | 枚举值OHHDRMetadataKey。 |
-| int32_t size | uint8_t向量的大小。 |
-| metaDate |  指向uint8_t向量的指针。 |
+| int32_t size | uint8_t向量的大小，最大支持为3000，超出会返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| metaData |  指向uint8_t向量的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_NativeWindowSetTunnelHandle()
 
@@ -748,7 +748,7 @@ int32_t OH_NativeWindow_NativeWindowSetTunnelHandle(OHNativeWindow *window, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_NativeWindowAttachBuffer()
 
@@ -912,7 +912,7 @@ int32_t OH_NativeWindow_GetLastFlushedBufferV2(OHNativeWindow *window, OHNativeW
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个OHNativeWindow的结构体实例的指针。 |
 | [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) **buffer | 一个OHNativeWindowBuffer结构体指针的指针。 |
 | int *fenceFd | 一个文件描述符的指针。 |
-| matrix |  表示检索到的44变换矩阵。 |
+| matrix |  表示检索到的4\*4变换矩阵。 |
 
 **返回：**
 
@@ -1081,7 +1081,7 @@ int32_t OH_NativeWindow_SetMetadataValue(OHNativeWindow *window, OH_NativeBuffer
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个指向[OHNativeWindow](capi-nativewindow-nativewindow.md)的结构体实例的指针。 |
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Window的元数据类型，其值从[OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey)获取。 |
 | int32_t size | uint8_t向量的大小，其取值范围见[OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。 |
-| metaDate |  指向uint8_t向量的指针。 |
+| metadata |  指向uint8_t向量的指针。 |
 
 **返回：**
 
@@ -1111,7 +1111,7 @@ int32_t OH_NativeWindow_GetMetadataValue(OHNativeWindow *window, OH_NativeBuffer
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个指向[OHNativeWindow](capi-nativewindow-nativewindow.md)的结构体实例的指针。 |
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Window的元数据类型，其值从[OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey)获取。 |
 | int32_t *size | uint8_t向量的大小，其取值范围见[OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。 |
-| metaDate |  指向uint8_t向量的二级指针。 |
+| metadata |  指向uint8_t向量的二级指针。 |
 
 **返回：**
 
@@ -1214,7 +1214,7 @@ int32_t OH_NativeWindow_LockBuffer(OHNativeWindow* window, Region region, OHNati
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window或buffer是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window或buffer是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_UnlockAndFlushBuffer()
 
@@ -1246,4 +1246,4 @@ int32_t OH_NativeWindow_UnlockAndFlushBuffer(OHNativeWindow* window)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |

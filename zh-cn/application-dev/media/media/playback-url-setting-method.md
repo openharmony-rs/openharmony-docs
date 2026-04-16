@@ -109,10 +109,10 @@
 
 **情况五：通过应用沙箱中的m3u8文件播放在线流媒体资源**
 
-当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过[fs.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)获取文件句柄，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
+当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)获取文件句柄，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
 ```ts
  import { media } from '@kit.MediaKit';
- import { fileIo as fs } from '@kit.CoreFileKit';
+ import { fileIo } from '@kit.CoreFileKit';
  import { common } from '@kit.AbilityKit';
  // 类成员定义avPlayer和context。
  private avPlayer: media.AVPlayer | null = null;
@@ -126,8 +126,8 @@
  // 通过UIAbilityContext获取沙箱地址filesDir，以Stage模型为例。
  let m3u8FileName = '';
  let filePath = `${this.context.filesDir}/${m3u8FileName}`; 
- // 通过fs.openSync获取文件句柄。
- let file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+ // 通过fileIo.openSync获取文件句柄。
+ let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
  let fd : string = file.fd.toString();
  // 用文件句柄构造本地m3u8的URL。
  let fdUrl : string = "fd://" + fd + "?offset=" + "0" + "&size=" + "0";
@@ -151,7 +151,7 @@
 **情况一：应用沙箱文件播放**
 ```ts
  import { media } from '@kit.MediaKit';
- import { fileIo as fs } from '@kit.CoreFileKit';
+ import { fileIo } from '@kit.CoreFileKit';
  import { common } from '@kit.AbilityKit';
  // 类成员定义avPlayer，context和fileName。
  private avPlayer: media.AVPlayer | null = null;
@@ -167,7 +167,7 @@
  // 通过UIAbilityContext获取沙箱地址filesDir，以Stage模型为例。
  let path = `${this.context?.filesDir}/${this.fileName}`;
  // 打开相应的资源文件地址获取fd，并为url赋值触发initialized状态机上报。
- let file = await fs.open(path);
+ let file = await fileIo.open(path);
  fdPath = fdPath + '' + file.fd;
  this.avPlayer.url = fdPath;
 ```
@@ -200,7 +200,7 @@
 
 ## 运行完整示例
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL)（也可直接运行），并将示例工程的以下资源复制到对应目录。
-    ```
+    ```txt
     AVPlayerArkTSURL
     entry/src/main/ets/
     └── pages
@@ -232,7 +232,7 @@
 3. 通过注释、解注释/entry/src/main/ets/pages/Index.ets中的上文示例的各种情况，编译并运行。
 
 4. 在安装应用后，可将示例工程的/entry/src/main/resources/rawfile/test.m3u8通过以下命令加入应用沙箱，从而运行应用沙箱相关示例:（```<FILESDIR>```为物理路径，以示例工程为例，可通过console.info打印"this.context.filesDir"得到应用沙箱路径，再根据[应用沙箱指南](../../file-management/app-sandbox-directory.md)的```应用沙箱路径和真实物理路径的对应关系表```找到物理路径）。
-    ```
+    ```txt
     hdc file send "[目录]\test.m3u8" <FILESDIR>
     hdc file send "[目录]\test_01.mp3" <FILESDIR>
     ```

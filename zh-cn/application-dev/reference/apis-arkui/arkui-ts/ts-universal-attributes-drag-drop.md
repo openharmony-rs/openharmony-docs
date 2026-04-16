@@ -229,7 +229,7 @@ type ImageModifier = ImageModifier
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [ImageModifier](ts-universal-attributes-attribute-modifier.md) | 图片组件modifier对象。|
+| [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 图片组件modifier对象。|
 
 ## 示例
 ### 示例1（允许拖拽和落入）
@@ -953,7 +953,7 @@ struct LiftingExampleDemo {
             onlyForLifting: true,
             delayCreating: true
           })
-      }.width("%")
+      }.width("100%")
 
       Column() {
         Text("仅用于浮起效果")

@@ -6,11 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+VideoPlayer is a class for video playback management. It provides APIs to manage and play videos. Before calling any API in VideoPlayer, you must use [createVideoPlayer()](arkts-apis-media-f.md#mediacreatevideoplayerdeprecated) to create a VideoPlayer instance.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer](arkts-apis-media-AVPlayer.md) instead.
 
-VideoPlayer is a class for video playback management. It provides APIs to manage and play videos. Before calling any API in VideoPlayer, you must use [createVideoPlayer()](arkts-apis-media-f.md#mediacreatevideoplayerdeprecated) to create a VideoPlayer instance.
 
 ## Modules to Import
 
@@ -41,11 +42,11 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 
 Sets a surface ID. This API uses an asynchronous callback to return the result.
 
-*Note: **SetDisplaySurface** must be called between the URL setting and the calling of **prepare**. A surface must be set for video streams without audio. Otherwise, the calling of **prepare** fails.
-
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#properties) instead.
+> - **SetDisplaySurface** must be called between the URL setting and the calling of **prepare**. A surface must be set for video streams without audio. Otherwise, the calling of **prepare** fails.
+>
+> - This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#properties) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -77,11 +78,13 @@ setDisplaySurface(surfaceId: string): Promise\<void>
 
 Sets a surface ID. This API uses a promise to return the result.
 
-*Note: **SetDisplaySurface** must be called between the URL setting and the calling of **prepare**. A surface must be set for video streams without audio. Otherwise, the calling of **prepare** fails.
+
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#properties) instead.
+> - **SetDisplaySurface** must be called between the URL setting and the calling of **prepare**. A surface must be set for video streams without audio. Otherwise, the calling of **prepare** fails.
+>
+> - This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.surfaceId](arkts-apis-media-AVPlayer.md#properties) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer
 
@@ -241,6 +244,7 @@ pause(callback: AsyncCallback\<void>): void
 Pauses video playback. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
+>
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.pause](arkts-apis-media-AVPlayer.md#pause9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer
@@ -851,7 +855,7 @@ if (videoPlayer) {
   (videoPlayer as media.VideoPlayer).setSpeed(speed).then((result: number) => {
     console.info('Succeeded in setting Speed');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to set Speed, error:${error}`);//todo:: error.
+    console.error(`Failed to set Speed, error:${error}`);// todo:: error.
   });
 }
 ```
@@ -945,6 +949,7 @@ on(type: 'videoSizeChanged', callback: (width: number, height: number) => void):
 Subscribes to the video width and height change event.
 
 > **NOTE**
+>
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AVPlayer.on('videoSizeChange')](arkts-apis-media-AVPlayer.md#onvideosizechange9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer

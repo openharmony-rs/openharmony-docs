@@ -25,7 +25,7 @@ Typical scenarios:
 
 ## Available APIs
 
-For details about the APIs, see [Certificate Management](../../reference/apis-device-certificate-kit/js-apis-certManager.md).
+For details about the APIs, see [@ohos.security.certManager (Certificate Management Module)](../../reference/apis-device-certificate-kit/js-apis-certManager.md).
 
 The following table describes the commonly used APIs.
 

@@ -96,6 +96,19 @@ Enumerates call states.
 | [call.CallState](js-apis-call.md#callstate) | Call state. (Only the **CALL_STATE_OFFHOOK** state is reported during an outgoing call.)|
 
 
+## CCallState<sup>23+</sup>
+
+type CCallState = call.CCallState
+
+Enumerates carrier call states.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+|       Type      |            Description            |
+| ---------------- | --------------------------- |
+| [call.CCallState](js-apis-call.md#ccallstate23) | Call state (of the carrier).|
+
+
 ## CardType
 
 type CardType = sim.CardType
@@ -517,7 +530,7 @@ Registers an observer for extended call status change events. This API uses an a
 
 | Name  | Type                                          | Mandatory| Description                                                       |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChange**.               |
+| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChangeEx**.               |
 | callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | Yes  | Callback used to return the result,<br>which is the **TelCallState** object.<br>|
 | options  | [ObserverOptions](#observeroptions11)                              | No| Event subscription parameters.               |
 
@@ -1056,8 +1069,8 @@ Registers an observer for SIM card activation state changes. This API uses an as
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number            | No   | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.   |
-|callback  | Callback&lt;boolean&gt;|No| This API uses a callback to return the result.<br>- **true**: activated.<br>- **false**: not activated.|
+| slotId   | number            | Yes   | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.   |
+|callback  | Callback&lt;boolean&gt;|Yes| This API uses a callback to return the result.<br>- **true**: activated.<br>- **false**: not activated.|
 
 **Error codes**
 
@@ -1132,11 +1145,13 @@ Subscribes to the carrier call state changes and obtains the call number. This m
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
+**Required permissions**: ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **Parameters**
 
 |     Name           |         Type     | Mandatory| Description                                   |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | Yes  | Callback used to return the result,<br>The application can obtain CCallState.<br>|
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | Yes  | Callback used to return the result,<br>The application can obtain CCallState.<br>|
 | options  | [ObserverOptions](#observeroptions11)                  | No| Event subscription parameters.               |
 
 **Error codes**
@@ -1146,17 +1161,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **Example**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 let options: observer.ObserverOptions = {
@@ -1169,17 +1184,19 @@ observer.onCCallStateChange(callback);
 
 ## observer.offCCallStateChange<sup>23+</sup>
 
-offCCallStateChange\(callback: Callback\<CCallStateInfo\>\): void
+offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 Cancels the listening on the carrier call status and obtaining of the call number by a third-party application. This method uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
+**Required permissions**: ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **Parameters**
 
 |     Name           |         Type     | Mandatory| Description                                   |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | Yes  | Callback used to return the result,<br>The application can obtain CCallState.<br>|
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | No  | Callback used to return the result.<br>The application can obtain CCallState.<br>|
 
 **Error codes**
 
@@ -1188,21 +1205,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **Example**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
-observer.off(callback);
+observer.offCCallStateChange(callback);
+observer.offCCallStateChange();
 ```
 
 ## LockReason<sup>8+</sup>
@@ -1253,6 +1271,18 @@ Defines information about the call status.
 | number              | string                                 | No  | No  | Phone number.|
 
 
+## CCallStateInfo<sup>23+</sup>
+
+Defines information about the call status.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+|     Name           |                 Type                   | Read-Only| Optional| Description    |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | No  | No  | Call type.|
+| teleNumber              | string                                 | No  | No  | Phone number.|
+
+
 ## DataConnectionStateInfo<sup>11+</sup>
 
 Defines information about the data connection status.
@@ -1263,7 +1293,7 @@ Defines information about the data connection status.
 | Name| Type                                  |  Read-Only| Optional| Description|
 | ----- |--------------------------------------| ----- | ---- | -----|
 |  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  No |  No | Data connection status.|
-| network | [RatType](js-apis-radio.md#radiotechnology)  |  No |  No | Network type.|
+| network | [RatType](#rattype)  |  No |  No | Network type.|
 
 ## ObserverOptions<sup>11+</sup>
 

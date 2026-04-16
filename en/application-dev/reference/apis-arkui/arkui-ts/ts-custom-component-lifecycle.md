@@ -11,7 +11,7 @@ The lifecycle callbacks of a custom component are used to notify users of the li
 >**NOTE**
 >
 >- The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->- Promise and asynchronous callback functions can be used in lifecycle functions, for example, network resource getters and timer setters.
+>- Promise and asynchronous callback functions can be used in lifecycle functions, for example, for obtaining network resources and setting timers.
 
 ## build
 
@@ -56,7 +56,7 @@ Invoked after the **build()** function of the custom component is executed. You 
 
 aboutToDisappear?(): void
 
-Invoked when this component is about to disappear. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
+Invoked when this component is about to disappear. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md). It is not recommended to trigger logic such as [the creation a custom dialog box](./ts-methods-custom-dialog-box.md#open) after the **aboutToDisappear** function is called. Otherwise, the application behavior may be abnormal due to component tree information loss. For example, [@Consume](../../../ui/state-management/arkts-provide-and-consume.md) may be unable to find the corresponding [@Provide](../../../ui/state-management/arkts-provide-and-consume.md), or a blank dialog box where components are not displayed may occur.
 
 > **NOTE**
 >
@@ -146,7 +146,7 @@ struct IndexComponent {
 
 onNewParam?(param: ESObject): void
 
-This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack. Invoked when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9).
+Invoked when a page in the routing stack is moved to the top of the stack in the singleton mode of [RouterMode](../js-apis-router.md#routermode9). This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -255,7 +255,7 @@ Invoked when a reusable custom component is re-added to the node tree from the r
 
 > **NOTE**
 >
-> * [Avoid repeatedly updating state variables that are automatically updated, such as @Link, @ObjectLink, and @Prop decorated variables, within aboutToReuse.](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section7441712174414).
+> * [Avoid repeatedly updating state variables that are automatically updated, such as @Link, @ObjectLink, and @Prop decorated variables, within aboutToReuse().](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse#section7441712174414).
 > * In scrolling scenarios where component reuse is implemented, this callback is typically required to update the component's state variables. As such, avoid performing time-consuming operations within this callback to prevent frame drops and UI stuttering during scrolling animations. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread: Component Reuse Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -340,7 +340,7 @@ struct Index {
   @Local condition: boolean = true;
   build() {
     Column() {
-      Button('Recycle/Reuse').onClick(()=>{this.condition=!this.condition;}) // Click to switch between the recycle and reuse states.
+      Button('Recycle/Reuse').onClick(()=>{this.condition=!this.condition;}) // Click to toggle the recycle/reuse state.
       if (this.condition) {
         ReusableV2Component()
       }
@@ -352,7 +352,7 @@ struct Index {
 struct ReusableV2Component {
   @Local message: string = 'Hello World';
   aboutToReuse() {
-    console.info('ReusableV2Component aboutToReuse'); // Called when a component is reused.
+    console.info('ReusableV2Component aboutToReuse'); // Called when the component is reused.
   }
   build() {
     Column() {

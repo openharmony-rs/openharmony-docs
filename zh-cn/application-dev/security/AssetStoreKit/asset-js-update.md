@@ -9,13 +9,13 @@
 
 ## 接口介绍
 
-可通过API文档查看更新关键资产的异步接口[update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate)、同步接口[updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12)的详细介绍。
+开发者可以查阅API文档，获取关键资产更新接口的详细说明：异步接口[update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate)、同步接口[updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12)。
 
 在更新关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
->**注意：**
+> **注意：**
 >
->下表中“ALIAS”和名称包含“DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
+> 下表中“ALIAS”和名称包含“DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
 
 - **query的参数列表：**
 
@@ -60,7 +60,7 @@
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[API文档](../../reference/apis-asset-store-kit/js-apis-asset.md)。
+> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)。
 >
 > 在指定群组中更新一条关键资产的使用示例详见[更新群组关键资产](asset-js-group-access-control.md#更新群组关键资产)。
 >

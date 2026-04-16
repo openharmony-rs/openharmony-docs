@@ -620,9 +620,9 @@ struct ModalTransitionExample {
 
 ![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_transition.gif)
 
-### 示例6（设置全模态适配安全区）
+### 示例6（设置全屏模态适配安全区）
 
-从API version 20开始，该示例主要演示通过设置enableSafeArea = true时，全模态适配安全区后，其内容效果。全模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
+从API version 20开始，该示例主要演示设置enableSafeArea为true后全屏模态适配安全区的内容效果。全屏模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
 
 ```ts
 // xxx.ets

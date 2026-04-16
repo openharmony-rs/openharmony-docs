@@ -24,7 +24,7 @@
 
 Button(options: ButtonOptions)
 
-创建可以包含单个子组件的按钮。
+创建可以包含单个子组件的按钮。未通过该接口设置时，则按照ButtonOptions中各参数的默认值配置。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -57,7 +57,7 @@ Button(label: ResourceStr, options?: ButtonOptions)
 | 参数名  | 类型                                    | 必填 | 说明                 |
 | ------- | --------------------------------------- | ---- | -------------------- |
 | label   | [ResourceStr](ts-types.md#resourcestr)  | 是   | 按钮文本内容。<br/>**说明：** 当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
-| options | [ButtonOptions](#buttonoptions对象说明) | 否   | 配置按钮的显示样式。 |
+| options | [ButtonOptions](#buttonoptions对象说明) | 否   | 配置按钮的显示样式。 <br/> 未设置时，则按照ButtonOptions中各参数的默认值配置。 |
 
 ### Button
 
@@ -311,7 +311,7 @@ contentModifier(modifier: ContentModifier\<ButtonConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ButtonConfiguration>](#buttonconfiguration12对象说明) | 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ButtonConfiguration](#buttonconfiguration12对象说明)> | 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### minFontScale<sup>18+</sup>
 

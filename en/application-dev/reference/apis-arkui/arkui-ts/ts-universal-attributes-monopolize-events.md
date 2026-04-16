@@ -1,7 +1,7 @@
 # Event Monopolization
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -27,7 +27,7 @@ Sets whether the component exclusively handles events.
 
 | Name  | Type| Mandatory| Description                 |
 | ----------- | -------- | ------------------------ | ------------------------ |
-| monopolize | boolean  | Yes| Whether the component exclusively handles events. **true**: The component exclusively handles events. **false**: The component does not exclusively handle events.<br>Default value: **false**.<br>**NOTE**<br>1. If a component is exclusively handling events after a finger is pressed on it, and another finger is pressed before the first finger is lifted, the component continues to exclusively handle events while interacting with the second finger. The same case applies to a third and more fingers.<br>2. If a component is bound through [parallelGesture](ts-gesture-settings.md) to a gesture, for example, [pan gesture](ts-basic-gestures-pangesture.md), that can also be triggered by its child component, and the child component has event monopolization and is the first to respond, then the parent will not respond to the gesture.|
+| monopolize | boolean  | Yes| Whether the component exclusively handles events. **true**: The component exclusively handles events. **false**: The component does not exclusively handle events.<br>Default value: **false**.<br>**NOTE**<br>1. If a component is exclusively handling events after a finger is pressed on it, and another finger is pressed before the first finger is lifted, the component continues to exclusively handle events while interacting with the second finger. The same case applies to a third and more fingers.<br>2. If a component is bound through [parallelGesture](ts-gesture-settings.md#parallelgesture) to a gesture, for example, [pan gesture](ts-basic-gestures-pangesture.md), that can also be triggered by its child component, and the child component has event monopolization and is the first to respond, then the parent will not respond to the gesture.|
 
 **Return value**
 
@@ -64,7 +64,7 @@ struct Index {
         .fontSize(22)
         .margin(10)
         // Change the value of the column's monopolizeEvents attribute through the button's click event.
-        .onClick(()=>{
+        .onClick(() => {
           this.messageOut = " "
           this.messageInner = " "
         })
@@ -72,7 +72,7 @@ struct Index {
         .fontSize(22)
         .margin(10)
         // Change the value of the column's monopolizeEvents attribute through the button's click event.
-        .onClick(()=>{
+        .onClick(() => {
           this.monopolize = !this.monopolize
           if (!this.monopolize) {
             this.message = "set monopolizeEvents false"
@@ -81,7 +81,8 @@ struct Index {
           }
         })
       Column() {
-        Column(){}
+        Column() {
+        }
         // When this.monopolize is true, clicking the inner column triggers only a touch event on it, but not on the outer column.
         // When this.monopolize is false, clicking the inner column triggers a touch event on it and the outer column.
         .monopolizeEvents(this.monopolize)
@@ -89,7 +90,7 @@ struct Index {
         .height('40%')
         .backgroundColor(Color.Blue)
         // Bind the inner column to the touch event.
-        .onTouch((event:TouchEvent)=>{
+        .onTouch((event: TouchEvent) => {
           if (event.type == TouchType.Down) {
             console.info("inner column touch down")
             this.messageInner = "inner column touch down"
@@ -100,7 +101,7 @@ struct Index {
       .height('100%')
       .width('100%')
       // Bind the outer column to the touch event.
-      .onTouch((event)=>{
+      .onTouch((event) => {
         if (event.type == TouchType.Down) {
           console.info("outside column touch down")
           this.messageOut = "outside column touch down"

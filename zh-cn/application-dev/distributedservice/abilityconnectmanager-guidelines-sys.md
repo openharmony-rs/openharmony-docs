@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 
 ## 简介
@@ -58,6 +58,9 @@
 - 业务协同完毕后需及时结束协同状态。为了系统的安全和资源合理利用考虑，未申请长时任务的应用，在锁屏或退至后台5秒以上，会被结束掉协同生命周期。
 
 - 分布式组件管理框架在协同过程中不会对传输内容进行审查。涉及隐私敏感数据时，建议业务通过弹框提醒等方式提醒用户。
+
+<!--RP1-->
+<!--RP1End-->
 
 
 ## 环境准备
@@ -339,7 +342,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -352,7 +355,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);

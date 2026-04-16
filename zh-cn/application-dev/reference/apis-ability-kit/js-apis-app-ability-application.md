@@ -34,11 +34,11 @@ import { application } from '@kit.AbilityKit';
 | TYPE_CREATE_WINDOW_STAGE     | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
 | TYPE_CREATE_BACKGROUND_ABILITY <sup>23+</sup>          | 4   |    进程最终预加载到[onBackground](./js-apis-app-ability-uiAbility.md#onbackground)执行完成阶段。      |
 
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。使用Promise异步回调。
 
 > **说明：**
 >

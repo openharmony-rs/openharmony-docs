@@ -1,7 +1,7 @@
 # @ohos.inputMethod (输入法框架) (系统接口)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -357,6 +357,99 @@ function enableInputMethodSafely() {
 }
 
 enableInputMethodSafely();
+```
+
+### getCursorInfo
+
+getCursorInfo(userId?: number): CursorInfo
+
+获取指定用户的光标信息。当编辑框未给输入法服务通知光标信息时，返回所有属性值都为0。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | userId |  number | 否 | 指定的用户ID。<br>如果调用者不是用户0应用，该值默认为调用者的用户ID。<br> 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [CursorInfo](js-apis-inputmethod.md#cursorinfo10) | 指定用户下的光标信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800003 | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo();
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getDefaultInputMethodAbility
+
+getDefaultInputMethodAbility(): InputMethodProperty
+
+获取默认输入法能力。为优化性能，返回的InputMethodProperty对象仅保证能够唯一标识输入法能力的`name`和`id`属性正确，其他属性可能为空。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 默认输入法属性，仅保证`name`和`id`属性正确，其他属性可能为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+```ts
+try {
+  const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility();
+  console.info('Succeeded in getting default input method ability, name: ' + defaultAbility.name + ', id: ' + defaultAbility.id);
+} catch (err) {
+  console.error(`Failed to getDefaultInputMethodAbility. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## InputMethodController

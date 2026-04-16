@@ -168,7 +168,7 @@
 
 关系型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见[SecurityLevel](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#securitylevel)枚举。此处以创建安全等级为S3的数据库为例。
 
-具体接口及功能，可见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+具体接口及功能，可见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 
 <!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  

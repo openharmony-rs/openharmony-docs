@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
@@ -27,6 +27,6 @@ typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 | 名称 | 描述 |
 | -- | -- |
 | Hid_RelAxes* hidRelAxes | 相对坐标属性编码 |
-| uint16_t length | 数组长度 |
+| uint16_t length | 数组的有效长度 |
 
 

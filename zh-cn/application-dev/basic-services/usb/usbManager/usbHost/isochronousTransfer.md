@@ -45,7 +45,7 @@
 | usbSubmitTransfer(transfer: UsbDataTransferParams): void                                                         | 异步传输接口（支持实时、批量、中断传输）。                                   |
 | usbCancelTransfer(transfer: UsbDataTransferParams): void                                                         | 取消已提交的异步传输。                                             |
 
-更多关于设备管理和传输模式的详细接口介绍，请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+更多关于设备管理和传输模式的详细接口介绍，请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
 ### 开发步骤
 
@@ -131,7 +131,7 @@
        ]
      }
    ]
-   */
+    */
    this.deviceList_ = deviceList;
    ```
 

@@ -69,7 +69,7 @@
 
     > **注意：**
     >
-    > release编译与debug编译的区别包含但不仅限于是否开启了混淆功能。若要明确应用行为差异是否由混淆引起，应通过开启或关闭混淆开关进行排查，而不是仅通过切换编译模式。
+    > release编译支持混淆，而debug编译不支持混淆。若要明确应用行为差异是否由混淆引起，应通过开启或关闭混淆开关进行排查，而不是仅通过切换编译模式。
 
 ### 三种混淆配置文件
 * `obfuscation-rules.txt`  
@@ -80,7 +80,7 @@
 
     对于HAR和HSP模块，在`build-profile.json5`中额外有一个`arkOptions.obfuscation.consumerFiles`字段，用于指定当本包被依赖时，期望在当前编译流程生效的混淆规则，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
-	build-profile.json5配置示例：
+  build-profile.json5配置示例：
     <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->    
     
     ``` JSON5
@@ -143,7 +143,7 @@
        console.info(obj002.dynamicPropertyName);// 使用点语法静态访问属性，需使用-keep-property-name dynamicPropertyName来保留该属性名
        ```
     2. 若代码中使用点语法访问未在ArkTS/TS/JS代码中定义的字段，比如访问native实现的so库，字段固定的json文件与数据库等场景：
-        1. 若在代码中引用so库的api，如```import testNapi from 'library.so';testNapi.foo();```需要使用`-keep-property-name` foo保留属性名称。
+        1. 若在代码中引用so库的api，如```import testNapi from 'library.so';testNapi.foo();```需要使用`-keep-property-name` foo保留属性名称，详见[选项说明](source-obfuscation.md#-keep-property-name)。
         2. 若在代码中使用json文件中的字段，需要使用`-keep-property-name`保留json文件中的字段名称。
         3. 若在代码中使用数据库相关的字段，需要使用`-keep-property-name`保留数据库中的字段名称。
     3. 若构建HAR模块并发布给其他模块使用的场景，要在HAR模块中的consumer-rules.txt文件中将不能被二次混淆的属性使用`-keep-property-name`保留。consumer-rules.txt文件在构建HAR时会生成obfuscation.txt文件。此HAR被其它模块依赖时，DevEco Studio会解析obfuscation.txt文件，读取文件中的白名单。

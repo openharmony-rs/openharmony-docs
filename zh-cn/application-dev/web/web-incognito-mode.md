@@ -7,7 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 
-开发者在创建Web组件时，可以将可选参数[incognitoMode](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions)设置为true，来开启Web组件的隐私模式。当使用隐私模式时，浏览网页时的Cookie、Cache Data等数据不会保存在本地的持久化文件，当隐私模式的Web组件被销毁时，Cookie、Cache Data等数据将不被记录下来。
+开发者在创建Web组件时，可以将可选参数[incognitoMode](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions)设置为true，来开启Web组件的隐私模式。使用隐私模式浏览网页时，Cookie、缓存等数据不会写入本地持久化存储；隐私模式的Web组件销毁后，这些数据将被清除，不会保留。
 
 - 创建隐私模式的[Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)。
   <!-- @[create_a_web_component_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_one.ets) -->
@@ -283,7 +283,7 @@
         Button('configCookieSync')
           .onClick(() => {
             try {
-              // configCookieSync第三个参数表示获取隐私模式（true）或非隐私模式（false）下，对应url的cookies。
+              // configCookieSync第三个参数表示设置隐私模式（true）或非隐私模式（false）下，对应url的cookies。
               webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', true);
             } catch (error) {
               console.error(

@@ -74,7 +74,7 @@ The current FrameNode and the target FrameNode do not have a common ancestor nod
 
 **Description**
 
-This error code is reported when the current node and the target node do not share a common parent node.
+This error code is reported when the current node and the target node do not share a common ancestor node.
 
 **Possible Causes**
 
@@ -158,6 +158,25 @@ The current node is not on the main node tree.
 **Solution**
 
 Mount the current node to the main node tree before performing the operation.
+
+## 100029 State Management V2 Does Not Support Component Reuse in the BuilderNode
+
+**Error Message**
+
+Reuse/Recycle not implemented for ViewV2, yet.
+
+**Description**
+
+In the BuilderNode, [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) does not support [component reuse](./js-apis-arkui-builderNode.md#reuse12).
+
+**Possible Causes**
+
+State management V2 does not support component reuse in the BuilderNode.
+
+**Solution**
+
+When using state management V2, do not use component reuse in the BuilderNode. Since API version 26.0.0, custom components in the BuilderNode support V2 component reuse.
+
 
 ## 106103 Operation Not Allowed on Nodes Created by ArkTS
 

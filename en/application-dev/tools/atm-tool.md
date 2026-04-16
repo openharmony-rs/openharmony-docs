@@ -41,7 +41,7 @@ atm perm [-h] [-g -i <token-id> -p <permission-name>] [-c -i <token-id> -p <perm
 | -------------------------------------------------- | ---------------------- | 
 | -h                                        | Displays help information. Commands supported by the **atm perm** command.|
 | -g&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | Grants a specified permission to an application based on the token ID of the application process. The **-g**, **-i**, and **-p** parameters are mandatory. The return value indicates whether the operation is successful.   | 
-| -c&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | Cancels a specified permission for an application based on the token ID of the application process. The **-c**, **-i**, and **-p** parameters are mandatory. The return value indicates whether the operation is successful.   | 
+| -c&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | Revokes a specified permission from an application based on the token ID of the application process. The **-c**, **-i**, and **-p** parameters are mandatory. The return value indicates whether the operation is successful.   | 
 
 Example:
 
@@ -116,26 +116,27 @@ atm toggle -u -o -i 0
 
 <!--RP1-->
 ```bash
-atm dump [-h] [-t [-i <token-id>] [-b <bundle-name>] [-n <process-name>]] [-r [-i <token-id>] [-p <permission-name>]] [-v [-i <token-id>] [-p <permission-name>]]
+atm dump [-h] [-t [-i <token-id>] [-b <bundle-name>] [-n <process-name>] [-p <permission-name>]] [-r [-i <token-id>] [-p <permission-name>]] [-v [-i <token-id>] [-p <permission-name>]]
 ```
 <!--RP1End-->
 
-In the following table, **-t**<!--Del-->, **-r**, or **-v**<!--DelEnd--> is mandatory, and **-i**, **-b**, **-n**, and **-p** are optional. <!--Del-->For the **atm dump -r** and **atm dump -v** commands, the **-i** and **-p** parameters can be used together.<!--DelEnd-->For the **atm dump -t** command, the **-i**, **-b**, and **-n** parameters can be used only separately.
+In the following table, **-t**<!--Del-->, **-r**, or **-v**<!--DelEnd--> is mandatory, and **-i**, **-b**, **-n**, and **-p** are optional. <!--Del-->For the **atm dump -r** and **atm dump -v** commands, the **-i** and **-p** parameters can be used together. <!--DelEnd-->For the **atm dump -t** command, the **-i**, **-b**, **-n**, and **-p** parameters can be used only separately.
 
 | Parameter                                         | Description                                                | 
 | ----------------------------------------------- | ---------------------------------------------------- | 
 | -d                                     | Queries all permission definitions in the system. This parameter is mandatory.                              | 
 | -d&nbsp;-p \<permission-name\>              | Queries the permission definition based on the permission name. This parameter is optional.                             | 
 | -h                                     | Displays help information.                             | 
-| -t                                     | Queries information about all application processes in the system. This parameter is mandatory.                            | 
-| -t&nbsp;-i \<token-id\>                     | Queries the basic information about an application and the corresponding [permission information](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) based on the token ID of the application process.            | 
+| -t                                     | Queries token IDs of all processes in the system. This parameter is mandatory.                            | 
+| -t&nbsp;-i \<token-id\>                     | Queries basic process information and the corresponding [permission information](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) based on the token ID of a process. This parameter is optional.            | 
 | -t&nbsp;-b \<bundle-name\>                  |  Queries the basic information about an application and the corresponding [permission information](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) based on the bundle name of the application process. This parameter is optional.    | 
-| -t&nbsp;-n \<process-name\>                 |  Queries the basic information about an application and the corresponding [permission information](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) based on the process name of the application process. This parameter is optional. |
+| -t&nbsp;-n \<process-name\>                 |  Queries basic process information and the corresponding [permission information](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) based on the process name. This parameter is optional. |
+| -t&nbsp;-p \<permission-name\>                 |  Queries the token ID of the application process that applies for a specified permission. This parameter is optional.<br>**Note**: This parameter is supported since version 26.0.0. |
 | <!--DelRow-->-r                        |  Queries all [permission usage records](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse) in the system. This parameter is mandatory.                          | 
 | <!--DelRow-->-r&nbsp;-i \<token-id\>        | Queries the [permission usage records](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse) of an application based on the token ID of the application process. This parameter is optional.       | 
 | <!--DelRow-->-r&nbsp;-p \<permission-name\> | Queries the [permission usage records](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse) based on the permission name. This parameter is optional.                       |
 | <!--DelRow-->-v                                     | Queries the permission usage types of all application processes in the system. This parameter is mandatory.                   | 
-| <!--DelRow-->-v&nbsp;-i \<token-id\>                     | Queries the permission usage types of an application based on the token ID of the application process. This parameter is optional.        | 
+| <!--DelRow-->-v&nbsp;-i \<token-id\>                     | Queries the permission usage type of an application based on the token ID of the application process. This parameter is optional.        | 
 | <!--DelRow-->-v&nbsp;-p \<permission-name\>              | Queries the usage types of a permission based on the specified permission name. This parameter is optional.                       | 
 
 Example:
@@ -160,14 +161,14 @@ atm dump -d -p *********
 #Display the help information about the atm dump command.
 atm dump -h
 
-#Query the token IDs and bundle names of all application processes in the system.
+#Query the token IDs of all processes in the system.
 atm dump -t
 
 #Query the permission information based on the token ID.
 atm dump -t -i *********
 # Command output:
 # {
-#   "tokenID": 672078897,
+#   "tokenId": 672078897,
 #   "processName": "samgr",
 #   "apl": 2,
 #   "permStateList": [
@@ -183,7 +184,7 @@ atm dump -t -i *********
 atm dump -t -b ohos.telephony.resources
 # Command output:
 # {
-#   "tokenID": 537280686,
+#   "tokenId": 537280686,
 #   "tokenAttr": 1,
 #   "ver": 1,
 #   "userId": 100,
@@ -200,6 +201,15 @@ atm dump -t -b ohos.telephony.resources
 #     }
 #   ]
 # }
+
+#Query the token IDs and bundle names of all application processes that apply for a specified permission.
+atm dump -t -p ohos.permission.CAMERA
+# Command output:
+# Permission: ohos.permission.CAMERA
+# Total Tokens: 1
+
+# 537538306: com.ohos.camera
+
 
 #Query the permission information based on the process name.
 atm dump -t -n *********

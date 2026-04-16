@@ -90,8 +90,8 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明    |
 | --------- | ------------------------------- | ---- | ---- |---------|
-| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。 |
-| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。 |
+| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。<br/>**说明：**<br>width的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
+| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。<br/>**说明：**<br>height的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
 
 ## ErrorInformation<sup>18+</sup>
 

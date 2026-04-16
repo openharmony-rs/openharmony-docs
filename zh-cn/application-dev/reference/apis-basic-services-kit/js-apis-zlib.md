@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供压缩解压缩文件的能力。
 
@@ -138,7 +138,7 @@ compressFile(inFile: string, outFile: string, options: Options, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | --------------------------------------|
@@ -205,7 +205,7 @@ compressFile(inFile: string, outFile: string, options: Options): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ------------------------------------- |
@@ -267,7 +267,7 @@ decompressFile(inFile: string, outFile: string, options: Options, callback: Asyn
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | --------------------------------------|
@@ -336,7 +336,7 @@ decompressFile(inFile: string, outFile: string, options?: Options): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | ------ | ------------------------------------- |
@@ -396,7 +396,7 @@ decompressFile(inFile: string, outFile: string, callback: AsyncCallback\<void\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | --------------------------------------|
@@ -453,7 +453,7 @@ getOriginalSize(compressedFile: string): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                               |
 | ------ | ------------------------------------- |
@@ -508,7 +508,7 @@ compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1107,7 +1107,7 @@ compress(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1162,7 +1162,7 @@ compress2(dest: ArrayBuffer, source: ArrayBuffer, level: CompressLevel, sourceLe
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1217,7 +1217,7 @@ uncompress(dest:ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1278,7 +1278,7 @@ uncompress2(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1390,7 +1390,7 @@ inflateValidate(strm: ZStream, check: number): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1449,7 +1449,7 @@ inflateSyncPoint(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1508,7 +1508,7 @@ inflateSync(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1600,7 +1600,7 @@ inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1660,7 +1660,7 @@ inflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1758,7 +1758,7 @@ inflateReset2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1817,7 +1817,7 @@ inflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1878,7 +1878,7 @@ inflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1996,7 +1996,7 @@ inflateInit2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2106,7 +2106,7 @@ inflateGetHeader(strm: ZStream, header: GzHeader): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2166,7 +2166,7 @@ inflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2225,7 +2225,7 @@ inflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2289,7 +2289,7 @@ inflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2409,7 +2409,7 @@ inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2444,7 +2444,7 @@ inflateBackInit()函数分配的所有内存都被释放。使用Promise异步�
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2483,7 +2483,7 @@ inflateBack(strm: ZStream, backIn: InflateBackInputCallback, inDesc: object, bac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2698,7 +2698,7 @@ inflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2785,7 +2785,7 @@ deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2849,7 +2849,7 @@ deflateInit2(strm: ZStream, level: CompressLevel, method: CompressMethod, window
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2910,7 +2910,7 @@ deflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2975,7 +2975,7 @@ deflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3109,7 +3109,7 @@ deflateSetHeader(strm: ZStream, head: GzHeader): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3174,7 +3174,7 @@ deflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3239,7 +3239,7 @@ deflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3304,7 +3304,7 @@ deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3377,7 +3377,7 @@ deflateTune(strm: ZStream, goodLength: number, maxLazy: number, niceLength: numb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3441,7 +3441,7 @@ deflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3505,7 +3505,7 @@ deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3569,7 +3569,7 @@ deflatePending(strm: ZStream): Promise&lt;DeflatePendingOutputInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3635,7 +3635,7 @@ deflateParams(strm: ZStream, level: CompressLevel, strategy: CompressStrategy): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3701,7 +3701,7 @@ deflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4033,7 +4033,7 @@ gzdopen(fd: number, mode: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4176,7 +4176,7 @@ gzopen(path: string, mode: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4359,7 +4359,7 @@ gzclose(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -4489,7 +4489,7 @@ gzerror(): Promise&lt;GzErrorOutputInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
@@ -4564,7 +4564,7 @@ gzgetc(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -4636,7 +4636,7 @@ gzflush(flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4708,7 +4708,7 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4785,7 +4785,7 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4858,7 +4858,7 @@ gzclosew(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -4921,7 +4921,7 @@ gzcloser(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
@@ -4992,7 +4992,7 @@ gzwrite(buf: ArrayBuffer, len: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5067,7 +5067,7 @@ gzungetc(c: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5134,7 +5134,7 @@ gztell(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -5204,7 +5204,7 @@ gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise&lt;Return
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5276,7 +5276,7 @@ gzseek(offset: number, whence: OffsetReferencePoint): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5340,7 +5340,7 @@ gzrewind(): Promise&lt;ReturnStatus&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -5411,7 +5411,7 @@ gzread(buf: ArrayBuffer): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5490,7 +5490,7 @@ gzputs(str: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5560,7 +5560,7 @@ gzputc(ch: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5631,7 +5631,7 @@ gzprintf(format: string, ...args: Array&lt;string | number&gt;): Promise&lt;numb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5696,7 +5696,7 @@ gzoffset(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
@@ -5765,7 +5765,7 @@ gzgets(buf: ArrayBuffer): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.zlib错误码](./errorcode-zlib.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[zlib子系统错误码](./errorcode-zlib.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

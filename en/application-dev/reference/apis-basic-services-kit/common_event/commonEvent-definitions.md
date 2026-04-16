@@ -25,10 +25,10 @@ Common event types are defined in [Support enumeration of the ohos.commonEvent m
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_LOCKED_BOOT_COMPLETED](commonEventManager-definitions.md#common_event_locked_boot_completed) instead.
 
   - Value: **usual.event.LOCKED_BOOT_COMPLETED**
-  - Required permissions: **ohos.permission.RECEIVER_STARTUP_COMPLETED** (for system applications only)
+  - Required permissions: none
 
 * **COMMON_EVENT_SHUTDOWN<sup>(deprecated)</sup>** indicates that the device is being shut down and will continue until it is finally shut down.
 

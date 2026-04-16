@@ -14,7 +14,7 @@
 >
 >  The hover capability is designed for and only works on <!--RP2-->dual-fold devices<!--RP2End-->.
 >
->  When the component's parent uses [if/else conditional rendering](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), the foldable hover feature is disabled.
+>  When the component's parent is an [if/else conditional render](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) node, the foldable hover feature is disabled.
 
 ## Child Components
 
@@ -50,7 +50,7 @@ FolderStack(options?: FolderStackOptions)
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| upperItems<sup>11+</sup> |    Array<string\>  | No| Yes | Array of IDs of child components that will be moved to the upper half screen in the hover state. On hover, child components with IDs in this array automatically shift away from the crease area and move to the upper half screen, while other components are stacked in the lower half screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| upperItems<sup>11+</sup> |    Array<string\>  | No| Yes | Array of IDs of child components that will be moved to the upper half screen in the hover state.<br>On hover, child components with IDs in this array automatically shift away from the crease area and move to the upper half screen, while other components are stacked in the lower half screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Attributes
 

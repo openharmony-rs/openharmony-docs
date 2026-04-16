@@ -25,7 +25,6 @@ prepare(config: AudioRecorderConfig): void
 Prepares for recording.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.prepare](arkts-apis-media-AVRecorder.md#prepare9) instead.
 
 **Required permissions:** ohos.permission.MICROPHONE
@@ -71,7 +70,6 @@ start(): void
 Starts audio recording. This API can be called only after the **'prepare'** event is triggered.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.start](arkts-apis-media-AVRecorder.md#start9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -92,7 +90,6 @@ pause():void
 Pauses audio recording. This API can be called only after the **'start'** event is triggered.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.pause](arkts-apis-media-AVRecorder.md#pause9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -113,7 +110,6 @@ resume():void
 Resumes audio recording. This API can be called only after the **'pause'** event is triggered.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.resume](arkts-apis-media-AVRecorder.md#resume9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -121,7 +117,7 @@ Resumes audio recording. This API can be called only after the **'pause'** event
 **Example**
 
 ```ts
-audioRecorder.on('resume', () => { // Set the 'resume' event callback.
+audioRecorder.on('resume', () => {    // Set the 'resume' event callback.
   console.info('audio recorder resume called');
 });
 audioRecorder.resume();
@@ -134,7 +130,6 @@ stop(): void
 Stops audio recording.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.stop](arkts-apis-media-AVRecorder.md#stop9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -155,7 +150,6 @@ release(): void
 Releases the audio recording resources.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.release](arkts-apis-media-AVRecorder.md#release9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -179,7 +173,6 @@ Resets audio recording.
 Before resetting audio recording, you must call **stop()** to stop recording. After audio recording is reset, you must call **prepare()** to set the recording configurations for another recording.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.reset](arkts-apis-media-AVRecorder.md#reset9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -200,7 +193,6 @@ on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset'
 Subscribes to the audio recording events.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.on('stateChange')](arkts-apis-media-AVRecorder.md#onstatechange9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -252,7 +244,7 @@ audioRecorder.on('release', () => {  // Set the 'release' event callback.
 audioRecorder.on('reset', () => {  // Set the 'reset' event callback.
   console.info('audio recorder reset called');
 });
-audioRecorder.prepare(audioRecorderConfig)  // // Set recording parameters and trigger the 'prepare' event callback.
+audioRecorder.prepare(audioRecorderConfig)  // Set recording parameters and trigger the 'prepare' event callback.
 ```
 
 ## on('error')<sup>(deprecated)</sup>
@@ -262,7 +254,6 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to audio recording error events. After an error event is reported, you must handle the event and exit the recording.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorder.on('error')](arkts-apis-media-AVRecorder.md#onerror9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder
@@ -291,5 +282,5 @@ let audioRecorderConfig: media.AudioRecorderConfig = {
 audioRecorder.on('error', (error: BusinessError) => {  // Set the 'error' event callback.
   console.error(`audio error called, error: ${error}`);
 });
-audioRecorder.prepare(audioRecorderConfig);  // // Do not set any parameter in prepare and trigger the 'error' event callback.
+audioRecorder.prepare(audioRecorderConfig);  // Do not set any parameter in prepare and trigger the 'error' event callback.
 ```

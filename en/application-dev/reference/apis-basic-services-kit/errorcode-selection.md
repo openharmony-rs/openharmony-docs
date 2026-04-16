@@ -41,7 +41,7 @@ This error code is reported when the word selection panel has been destroyed.
 
 **Possible Causes**
 
-1. The word selection panel object is invalid.
+1. The word selection panel has been destroyed.
 2. The word selection panel is not created.
 
 **Solution**
@@ -49,11 +49,11 @@ This error code is reported when the word selection panel has been destroyed.
 1. Ensure the word selection panel object is valid before operating the panel.
 2. Do not operate the destroyed word selection panel object.
 
-## 33600003 Invalid Application for Word Selection
+## 33600003 API Caller and Word Selection Application Mismatched
 
 **Error Message**
 
-Invalid operation. The selection app is not valid.
+The application calling the API does not match the application selected in the system settings.
 
 **Description**
 
@@ -65,7 +65,7 @@ An invalid application calls the word selection API.
 
 **Solution**
 
-Ensure the current application is valid for using word selection.
+Ensure the current application is valid for using the word selection.
 
 ## 33600004 The API Is Called Too Frequently
 
@@ -97,7 +97,7 @@ This error code is reported when the API is called at an incorrect time.
 
 **Possible Causes**
 
-The user may not have selected words.
+The API is called at a time when the user may not have selected words.
 
 **Solution**
 

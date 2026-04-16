@@ -8,7 +8,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用崩溃事件。详细使用说明请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用崩溃事件。详细使用说明请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 > **说明：**
 >
@@ -83,6 +83,7 @@
     // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
     #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
     #include "hiappevent/hiappevent.h"
+    #include "hiappevent/hiappevent_param.h"
     #include "hilog/log.h"
     
     #undef LOG_TAG
@@ -123,6 +124,8 @@
                           params["crash_type"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d",
                           params["foreground"].asBool());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
+                          params["app_running_unique_id"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
                           params["bundle_version"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s",
@@ -163,6 +166,32 @@
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcherR, OnReceiveCrashEvent);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcherR);
+
+          // 1. 创建配置对象
+          HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+
+          // 2. 设置各项配置参数
+          // 开启寄存器扩展内存打印
+          OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING, "true");
+
+          // 设置日志截断大小为 2MB
+          OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES, "2097152");
+
+          // 开启简化 VMA 映射信息打印
+          OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING, "true");
+
+          // 开启拼接应用日志
+          OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG, "true");
+
+          // 3. 应用配置到 EVENT_APP_CRASH 事件
+          int ret = OH_HiAppEvent_SetEventConfig(EVENT_APP_CRASH, config);
+          if (ret == HIAPPEVENT_SUCCESS) {
+              OH_LOG_INFO(LogType::LOG_APP, "Successfully set APP_CRASH event configurations.");
+          }
+
+          // 4. 销毁配置对象
+          OH_HiAppEvent_DestroyConfig(config);
+
           return {};
       }
       ```
@@ -196,6 +225,8 @@
                           eventInfo["crash_type"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d",
                           eventInfo["foreground"].asBool());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
+                          eventInfo["app_running_unique_id"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
                           eventInfo["bundle_version"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s",
@@ -294,6 +325,8 @@
 
 8. 在"Index.ets"文件中，新增按钮触发崩溃事件。
 
+    - 构造JsError类型崩溃
+
     <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -311,7 +344,45 @@
       })
     ```
 
-9. 点击运行按钮，启动应用工程。在应用界面中点击“JsError”按钮，触发崩溃事件。系统生成相应的崩溃日志并进行回调。
+    - 构造MergeLogNativeCrash拼接应用日志类型崩溃
+
+      编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，导入依赖模块。示例代码如下：
+
+      <!-- @[Native_CrashEvent_Log_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+      ``` TypeScript
+      import { fileIo } from '@kit.CoreFileKit';
+      ```
+
+      编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
+
+      <!-- @[Native_CrashEvent_Log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+      ``` TypeScript
+      Button('MergeLogNativeCrash')
+      .type(ButtonType.Capsule)
+      .margin({
+        top: 20
+      })
+      .backgroundColor('#0D9FFB')
+      .width('80%')
+      .height('5%')
+      .onClick(() => {
+        // 模拟创建 applog，假设应用包名为 com.samples.eventsub
+        let filePath : string = "/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log";
+        let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+        let str: string = "only test for merge app log!";
+
+        let writeLen = fileIo.writeSync(file.fd, str);
+        console.info("hiappevent write data to file succeed and size is:" + writeLen);
+        fileIo.closeSync(file);
+
+        // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
+        testNapi.testNullptr();
+      })
+       ```
+
+9. 点击运行按钮启动应用工程。在应用界面中单击“JsError”或“MergeLogNativeCrash”按钮触发崩溃事件。系统生成崩溃日志并回调。
 
 > **说明：**
 >
@@ -346,6 +417,7 @@ HiAppEvent eventInfo.eventType=1
 HiAppEvent eventInfo.params.time=1503045716054
 HiAppEvent eventInfo.params.crash_type=JsError
 HiAppEvent eventInfo.params.foreground=1
+HiAppEvent eventInfo.params.app_running_unique_id=365426736245712514
 HiAppEvent eventInfo.params.bundle_version=1.0.0
 HiAppEvent eventInfo.params.bundle_name=com.samples.eventsub
 HiAppEvent eventInfo.params.pid=2610

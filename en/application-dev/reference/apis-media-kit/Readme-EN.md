@@ -95,6 +95,7 @@
     - [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md)
     - [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md)
     - [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md)
+    - [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)
     - [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md)
     - [OH_Rect](capi-avscreencapture-oh-rect.md)
     - [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md)
@@ -122,5 +123,6 @@
     - [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md)
     - [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)
     - [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md)
+    - [OH_MultiDisplayCapability](capi-avscreencapture-oh-multidisplaycapability.md)
 - Error Codes<!--media-arkts-errcode-->
   - [Media Error Codes](errorcode-media.md)

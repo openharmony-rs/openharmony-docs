@@ -90,9 +90,9 @@ If the current thread's TLS already contains a valid HiTrace ID, this function d
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| name  | string | Yes| Traced service name.|
+| Name| Type| Mandatory| Description                                            |
+| -------- | -------- | -------- |------------------------------------------------|
+| name  | string | Yes| Traced service name.<br>It is recommended that the length of this parameter be less than or equal to 63 bytes. The excess part will be truncated.   |
 | flags | number | No| Trace flag combination. For details, see [HiTraceFlag](#hitraceflag). The default value is **0**.|
 
 **Return value**
@@ -264,7 +264,7 @@ The trace points for **CS** and **CR** types must be used as a pair; likewise, t
 | mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | Yes| Communication mode for the trace point.|
 | type | [HiTraceTracepointType](#hitracetracepointtype)| Yes| Trace point type.|
 | id   | [HiTraceId](#hitraceid) | Yes| **HiTraceId** instance for trace point triggering.|
-| msg  | string | No| Trace description information passed by the HiTraceMeter logging.|
+| msg  | string | No| Trace description information passed by the HiTraceMeter logging. The default value is "".|
 
 **Example**
 
@@ -272,7 +272,7 @@ The trace points for **CS** and **CR** types must be used as a pair; likewise, t
 // Start tracing. The trace flag is the union of INCLUDE_ASYNC and DONOT_CREATE_SPAN.
 let traceId = hiTraceChain.begin("business", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC | hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
 // Trigger the trace point after the service logic is executed for several times.
-hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just a example");
+hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just an example");
 // Stop tracing after the service is complete.
 hiTraceChain.end(traceId);
 ```
@@ -323,7 +323,7 @@ Checks whether the trace flag is enabled for **HiTraceId**. This API returns the
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| id  | [HiTraceId](#hitraceid) | Yes| **HiTraceId** instance to be check.|
+| id  | [HiTraceId](#hitraceid) | Yes| **HiTraceId** instance to be checked.|
 | flag | [HiTraceFlag](#hitraceflag) | Yes| Specified trace flag.|
 
 **Return value**

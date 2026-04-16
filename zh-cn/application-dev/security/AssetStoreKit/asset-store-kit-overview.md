@@ -72,6 +72,8 @@ Asset Store Kit（关键资产存储服务，简称ASSET）包含了一系列开
   - 系统子用户删除时，清除该用户下ASSET中所有数据。
   - 设备恢复出厂设置时，清除ASSET中所有数据。
 
+<!--RP1--><!--RP1End-->
+
 ## 与相关Kit的关系
 
 关键资产存储服务仅提供短敏感数据（不超过1KB）的安全存储能力，如业务希望对超长的数据提供保护时，请考虑使用[通用密钥库系统](../UniversalKeystoreKit/huks-overview.md)或[加解密算法库框架](../CryptoArchitectureKit/crypto-architecture-kit-intro.md)保护您的数据。

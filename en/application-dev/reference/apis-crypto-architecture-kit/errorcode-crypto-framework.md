@@ -48,6 +48,24 @@ An unexpected error occurs.
 
 Check whether the system is running properly.
 
+## 17620004 Invalid Function Call
+
+**Error Message**
+
+invalid function call. 
+
+**Description**
+
+Invalid function call.
+
+**Possible Causes**
+
+This operation is not supported by the current function.
+
+**Solution**
+
+Check whether the function is properly called.
+
 ## 17630001 Crypto Operation Error
 
 **Error Message**

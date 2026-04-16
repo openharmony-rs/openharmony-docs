@@ -218,14 +218,14 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::SEQUENTIAL_GROUP);
 
     // 创建长按手势
-    auto longPressGesture = gestureApi->createLongPressGesture(GINGERS_NUM, true, DURATION_NUM);
+    auto longPressGesture = gestureApi->createLongPressGesture(FINGERS_NUM, true, DURATION_NUM);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(longPressGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_GestureSampleLog longPressGesture,"
                      "ArkUI_GestureRecognizerType%{public}d", type);
     }
-    // 给长按手势定回调
+    // 给长按手势绑定回调
     auto onActionCallBackPanLongPress = [](ArkUI_GestureEvent *event, void *extraParam) {
         ArkUI_GestureEventActionType actionType = OH_ArkUI_GestureEvent_GetActionType(event);
 
@@ -376,13 +376,13 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::PARALLEL_GROUP);
 
     // 创建长按手势
-    auto longPressGesture = gestureApi->createLongPressGesture(GINGERS_NUM, true, DURATION_NUM_500);
+    auto longPressGesture = gestureApi->createLongPressGesture(FINGERS_NUM, true, DURATION_NUM_500);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(longPressGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_GestureSampleLog,ArkUI_GestureRecognizerType%{public}d", type);
     }
-    // 给长按手势定回调
+    // 给长按手势绑定回调
     auto onActionCallBackPanLongPress = [](ArkUI_GestureEvent *event, void *extraParam) {
         ArkUI_GestureEventActionType actionType = OH_ArkUI_GestureEvent_GetActionType(event);
 
@@ -421,7 +421,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
                      "NdkAddInteractionEvent_GestureSampleLog, addChildGesture longPressGesture");
     }
     // 创建快滑手势 swipe
-    auto swipeGesture = gestureApi->createSwipeGesture(GINGERS_NUM, GESTURE_DIRECTION_ALL, DURATION_NUM_100);
+    auto swipeGesture = gestureApi->createSwipeGesture(FINGERS_NUM, GESTURE_DIRECTION_ALL, DURATION_NUM_100);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(swipeGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
@@ -536,7 +536,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
     auto groupGesture = gestureApi->createGroupGesture(ArkUI_GroupGestureMode::EXCLUSIVE_GROUP);
 
     // 创建滑动手势
-    auto panGesture = gestureApi->createPanGesture(GINGERS_NUM, GESTURE_DIRECTION_VERTICAL, DURATION_NUM);
+    auto panGesture = gestureApi->createPanGesture(FINGERS_NUM, GESTURE_DIRECTION_VERTICAL, DURATION_NUM);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(panGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
@@ -735,7 +735,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
                    "NdkAddInteractionEvent_eventInfoOfCommonEvent eventInfo = %{public}s", eventInfo.c_str());
   };
   // 创建一个单指点击手势
-  auto TapGesture = gestureApi->createTapGesture(COUNT_NUM_1, GINGERS_NUM_1);
+  auto TapGesture = gestureApi->createTapGesture(COUNT_NUM_1, FINGERS_NUM_1);
   // 将事件回调绑定到TapGesture上，触发手势后，通过回调函数处理手势事件
   gestureApi->setGestureEventTarget(TapGesture,
                                     GESTURE_EVENT_ACTION_ACCEPT | GESTURE_EVENT_ACTION_UPDATE |

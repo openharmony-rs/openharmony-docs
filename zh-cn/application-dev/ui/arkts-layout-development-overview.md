@@ -37,9 +37,9 @@
 
   **图2** 布局元素组成图
 
-![layout-element-omposition](figures/layout-element-omposition.png)
+![layout-element-composition](figures/layout-element-omposition.png)
 
-- 组件区域（蓝区方块）：组件区域表示组件的大小，[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)属性用于设置组件区域的大小。
+- 组件区域（蓝色方块）：组件区域表示组件的大小，[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)属性用于设置组件区域的大小。
 
 - 组件内容区（黄色方块）：组件内容区大小为组件区域大小减去组件的[border](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#border)值，组件内容区大小会作为组件内容（或者子组件）进行大小测算时的布局测算限制。
 
@@ -52,6 +52,7 @@
 
 声明式UI提供了以下几种常见布局，开发者可根据实际应用场景选择合适的布局进行页面开发。
 
+<!--Table: 30%; 70%-->
 | 布局                                                         | 应用场景                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [线性布局](arkts-layout-development-linear.md)（Row、Column） | 如果布局内子元素超过1个时，且能够以某种方式线性排列时优先考虑此布局。 |

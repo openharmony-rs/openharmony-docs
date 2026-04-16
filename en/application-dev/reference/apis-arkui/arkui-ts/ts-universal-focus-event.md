@@ -18,7 +18,7 @@ A focus event is triggered when the page focus moves between components. It can 
 >  
 > - Container components that can gain focus, such as [Stack](ts-container-stack.md) and [Row](ts-container-row.md), are not focusable if they do not have any focusable child components. When configured with an **onClick** event or a single-finger tap gesture, the component implicitly becomes focusable if the **focusable** attribute is not explicitly set.
 > 
-> - For details about focus development and component focusability, see [Focus Event](../../../ui/arkts-common-events-focus-event.md).
+> - For details about focus development and component focusability, see [Implementing Focus Support](../../../ui/arkts-common-events-focus-event.md).
 
 ## onFocus
 

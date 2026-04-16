@@ -13,7 +13,7 @@
 - [VisualEffect](#visualeffect)：用于添加指定VisualEffect效果到组件上。
 
 > **说明：**
-> 
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -73,7 +73,7 @@ blur(blurRadius: number): Filter
 **参数：**
 | 参数名       | 类型   | 必填 | 说明       |
 | ----------- | -------| ---- | --------- |
-| blurRadius  | number | 是   | 模糊半径。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
+| blurRadius  | number | 是   | 模糊半径，单位为px。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
 
 **返回值：**
 
@@ -108,6 +108,50 @@ struct UIEffectFilterExample {
         .width('100%')
     }
 }
+```
+![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
+
+### hdrBrightnessRatio<sup>24+</sup>
+hdrBrightnessRatio(ratio: number): Filter
+
+为组件内容添加HDR（高动态范围成像）提亮效果。不建议嵌套使用，强行嵌套使用可能造成过曝现象。
+
+提亮效果需要开启HDR渲染管线才能生效，某些场景下即使尝试触发HDR渲染管线也无法开启HDR，例如：设备硬件规格不支持HDR。
+
+设备当前支持最大提亮倍数为设备当前的最大亮度除以设备SDR参考白亮度得到的值。
+
+>  **说明：**
+>
+> 使用HDR提亮效果会带来一定的性能功耗开销，建议在已有HDR图片或视频的场景使用。
+
+**需要权限：** ohos.permission.HDR_BRIGHTNESS
+<!--Del-->系统应用无需申请此权限。<!--DelEnd-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+| 参数名         | 类型                  | 必填 | 说明                       |
+| ------------- | --------------------- | ---- | ------------------------- |
+| ratio  | number         | 是   | 提亮倍数，取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，不做任何处理；当值大于1.0时，会尝试触发HDR渲染管线，设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。|
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | --------------------------------- |
+| [Filter](#filter) | 返回挂载了HDR提亮效果的Filter。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+filter.hdrBrightnessRatio(2.0)
 ```
 
 ## VisualEffect

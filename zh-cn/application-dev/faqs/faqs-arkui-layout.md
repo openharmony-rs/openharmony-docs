@@ -66,7 +66,7 @@
 
 **参考链接**
 
-[图文混排](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)
+[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)
 
 ## 如何实现协调布局的效果(API 10)
 
@@ -118,7 +118,7 @@ MyGlobalBuilderFunction()
 
 **参考链接**
 
-1. [自定义弹窗（CustomDialog）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+1. [自定义弹窗 (CustomDialog)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
 2. [Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
 3. [@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
 

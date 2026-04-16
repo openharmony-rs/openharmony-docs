@@ -8,7 +8,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 > **说明：**
 >
@@ -46,7 +46,7 @@
     ``` TypeScript
     // 构建崩溃事件的自定义参数
     let crashParams: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100, //test_data为自定义数据，开发者可根据实际需求自定义params参数。
+      "test_data": 100, // test_data为自定义数据，开发者可根据实际需求自定义params参数。
     };
     // 开发者可以设置崩溃事件的自定义参数
     hiAppEvent.setEventParam(crashParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -69,11 +69,26 @@
         hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
       });
     }
+    
+    if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
+      // 配置页面切换日志
+      let switchLogPolicy : hiAppEvent.EventPolicy = {
+        "appCrashPolicy": {
+          "pageSwitchLogEnable": true
+        }
+      };
+      // 开发者可以设置崩溃日志配置参数
+      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
     ```
 
 3. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在 `onCreate` 函数中订阅系统事件。示例代码如下：
 
-    <!-- @[CrashEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[CrashEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
     
     ``` TypeScript
     // 添加崩溃事件观察者
@@ -104,6 +119,12 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.crash_type=${eventInfo.params['crash_type']}`);
             // 开发者可以获取到崩溃应用的前后台状态
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
+            // 开发者可以获取到崩溃应用类型
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.release_type=${eventInfo.params['release_type']}`);
+            // 开发者可以获取到崩溃应用的二进制接口类型
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.cpu_abi=${eventInfo.params['cpu_abi']}`);
+            // 开发者可以获取到崩溃事件发生的应用运行时唯一关联id
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
             // 开发者可以获取到崩溃应用的版本信息
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
             // 开发者可以获取到崩溃应用的包名
@@ -123,6 +144,8 @@
             // 开发者可以获取到崩溃事件发生时的崩溃日志文件
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+            // 开发者可以获取到崩溃事件的页面切换日志
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
             // 开发者可以获取到崩溃事件的自定义数据test_data
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
           }
@@ -249,6 +272,7 @@ HiAppEvent eventInfo.eventType=1
 HiAppEvent eventInfo.params.time=1503045716054
 HiAppEvent eventInfo.params.crash_type=JsError
 HiAppEvent eventInfo.params.foreground=true
+HiAppEvent eventInfo.params.app_running_unique_id=216365426236541722
 HiAppEvent eventInfo.params.bundle_version=1.0.0
 HiAppEvent eventInfo.params.bundle_name=com.samples.eventsub
 HiAppEvent eventInfo.params.pid=2610

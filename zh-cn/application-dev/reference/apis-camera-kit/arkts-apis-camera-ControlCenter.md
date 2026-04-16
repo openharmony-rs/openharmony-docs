@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-ControlCenter 继承自 [ControlCenterQuery](arkts-apis-camera-ControlCenterQuery.md)。
+ControlCenter继承自[ControlCenterQuery](arkts-apis-camera-ControlCenterQuery.md)。
 
 控制中心类，用于使能相机控制器。
 

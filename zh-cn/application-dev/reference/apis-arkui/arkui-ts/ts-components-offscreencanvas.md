@@ -355,7 +355,7 @@ struct OffscreenCanvasExamplePage {
 Worker线程在onmessage中接收到主线程postMessage发送的OffscreenCanvas，并进行绘制。
 
 ```ts
-// entry/ets/workers/Worker.ets
+// entry/src/main/ets/workers/Worker.ets
 import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 import { image } from '@kit.ImageKit';
 

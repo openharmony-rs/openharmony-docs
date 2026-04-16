@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -277,7 +277,7 @@ Requests a continuous task of a specific type. This API uses an asynchronous cal
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | Context                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context   | Context                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | bgMode    | [BackgroundMode](#backgroundmode) | Yes   | Type of the continuous task.                          |
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.          |
 | callback  | AsyncCallback&lt;void&gt;          | Yes   | Callback used to return the result. If the continuous task is requested, **err** is **undefined**. Otherwise, **err** is an error object.   |
@@ -368,7 +368,7 @@ Requests a continuous task of a specific type. This API uses a promise to return
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | Context                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context   | Context                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | bgMode    | [BackgroundMode](#backgroundmode) | Yes   | Type of the continuous task.                         |
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.                |
 
@@ -458,7 +458,7 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 
 | Name     | Type                       | Mandatory  | Description                                      |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| context  | Context                   | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context  | Context                   | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the continuous task is canceled, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -516,7 +516,7 @@ Cancels all continuous tasks in the current UIAbility (ServiceAbility in the FA 
 
 | Name    | Type     | Mandatory  | Description                                      |
 | ------- | ------- | ---- | ---------------------------------------- |
-| context | Context | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context | Context | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 
 **Return value**
 
@@ -577,8 +577,8 @@ Requests continuous tasks of multiple types. This API uses a promise to return t
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
-| bgModes    | string[] | Yes   | Types of continuous tasks. For details about the available options, see [Item](../../task-management/continuous-task.md#use-cases).<br>Note: One or more types can be passed.|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| bgModes    | string[] | Yes   | Types of continuous tasks. For details about the available options, see [Item](../../task-management/continuous-task.md#use-cases).<br> Note: One or more types can be passed.|
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.                |
 
 **Return value**
@@ -660,7 +660,7 @@ export default class EntryAbility extends UIAbility {
   updateProcess(process: number) {
     // Define the notification type. The notification type of the progress update must be live view.
     let downLoadTemplate: notificationManager.NotificationTemplate = {
-      name: 'downloadTemplate', // Currently, only downloadTemplate is supported. Remain the value unchanged.
+      name: 'downloadTemplate', // Currently, only downloadTemplate is supported. Retain the value.
       data: {
         title: 'File download: music.mp4', // Mandatory.
         fileName: 'senTemplate', // Mandatory.
@@ -711,8 +711,8 @@ Updates continuous tasks of multiple types. This API uses a promise to return th
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
-| bgModes    | string[] | Yes   | Types of continuous tasks after the update. For details about the available options, see [Item](../../task-management/continuous-task.md#use-cases).<br>Note: One or more types can be passed.|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| bgModes    | string[] | Yes   | Types of continuous tasks after the update. For details about the available options, see [Item](../../task-management/continuous-task.md#use-cases).<br> Note: One or more types can be passed.|
 
 **Return value**
 
@@ -774,7 +774,7 @@ Obtains all continuous task information, including the task ID and type. This AP
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 
 **Return value**
 
@@ -830,7 +830,7 @@ Obtains all continuous task information, including the task ID and type. It supp
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | includeSuspended   | boolean                            | Yes   | Whether to obtain the information about the suspended continuous task. The value **true** means to obtain the information, and the value **false** means the opposite.|
 
 **Return value**
@@ -1177,7 +1177,7 @@ Requests a continuous task. This API allows a UIAbility (ServiceAbility in the F
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | request   | [ContinuousTaskRequest](#continuoustaskrequest21) | Yes   | Request information of a continuous task, including the main type and subtype.|
 
 **Return value**
@@ -1278,7 +1278,7 @@ The following restrictions apply when updating a continuous task:
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | request   | [ContinuousTaskRequest](#continuoustaskrequest21) | Yes   | Continuous task request information, including the ID of the continuous task to be updated.|
 
 **Return value**
@@ -1370,7 +1370,7 @@ Cancels a continuous task with the specified ID. This API uses a promise to retu
 
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
-| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | continuousTaskId   | number | Yes   | Continuous task ID.<br>Note: You can obtain the ID of the current continuous task through the return value of the [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) API, or obtain information about all continuous tasks through the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API. |
 
 **Return value**
@@ -1423,7 +1423,7 @@ Defines the information about the transient task.
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | requestId       | number | No   | No   | Request ID of the transient task.                              |
-| actualDelayTime | number | No   | No   | Actual duration of the transient task requested by the application, in milliseconds.<br>Note: The maximum duration is 3 minutes in normal cases. In the case of a [low battery](../apis-basic-services-kit/js-apis-battery-info.md), the maximum duration is decreased to 1 minute.|
+| actualDelayTime | number | No   | No   | Actual duration of the transient task requested by the application, in milliseconds.<br> Note: The maximum duration of a transient task is 3 minutes in normal cases. In the case of a low battery ([BatteryCapacityLevel](../apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9) set to **LEVEL_LOW**), the maximum duration is decreased to 1 minute.|
 
 ## TransientTaskInfo<sup>20+</sup>
 
@@ -1589,7 +1589,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 4. Notifications that have been combined cannot be canceled. If notifications have been combined, they cannot be updated to uncombined.
 5. After notifications are combined, tapping the notification will redirect to the UIAbility corresponding to the first requested continuous task. If the update API is called, the redirection will target the UIAbility corresponding to the last updated continuous task.
 6. When the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API is called to update a continuous task, the input **continuousTaskId** must exist. Otherwise, the update fails.
-7. [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) is supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
+7. Continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type are supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
 
 ### Properties
 
@@ -1654,7 +1654,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a banner notification with a sound is sent. This API applies only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type.
+Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a banner notification with a sound is sent. This API is applicable only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1668,7 +1668,7 @@ Requests user authorization to run tasks continuously in the background. This AP
 
 | Name     | Type                                                 | Mandatory  | Description          |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | Yes   | Callback used to return the user authorization result.|
 
 **Error codes**
@@ -1726,7 +1726,7 @@ Checks whether the user has authorized tasks to run continuously in the backgrou
 
 | Name     | Type                                                 | Mandatory  | Description          |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br>Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
 
 **Return value**
 
@@ -1768,7 +1768,7 @@ export default class EntryAbility extends UIAbility {
 
 ## BackgroundTaskMode<sup>21+</sup>
 
-Main type of a continuous task. It is usually used together with the subtype [BackgroundTaskSubmode](#backgroundtasksubmode21). For details, see the mapping table. The two types are newly added in API version 21 for [requesting](#backgroundtaskmanagerstartbackgroundrunning21) and [updating](#backgroundtaskmanagerupdatebackgroundrunning21) continuous tasks.
+Main type of a continuous task. It is usually used together with the subtype [BackgroundTaskSubmode](#backgroundtasksubmode21). For details, see the mapping table. The two types are newly added in API version 21 for [requesting](#backgroundtaskmanagerstartbackgroundrunning21) and [updating](#backgroundtaskmanagerupdatebackgroundrunning21) continuous tasks.<br>When the main type of the continuous task is **MODE_SPECIAL_SCENARIO_PROCESSING**, or that of a non-PC/2-in-1 device is **MODE_TASK_KEEPING**, you need to request the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) before calling APIs related to continuous tasks. In other scenarios, this permission is not required.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

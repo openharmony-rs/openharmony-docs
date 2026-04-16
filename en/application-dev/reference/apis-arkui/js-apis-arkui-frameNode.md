@@ -1,20 +1,24 @@
 # FrameNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> **FrameNode** is not available in DevEco Studio Previewer.
+> - **FrameNode** is not available in DevEco Studio Previewer.
 >
-> FrameNodes cannot be dragged.
+> - FrameNodes cannot be dragged.
+>
+> - FrameNode objects do not support JSON serialization.
+>
+> - When the API of the [FrameNode](#framenode-1) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 
 ## Modules to Import
 
@@ -70,6 +74,7 @@ Describes the binding state of interaction events on components. When querying r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 26%; 10%; 8%; 8%; 48%-->
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | baseEventRegistered  | boolean |  No  | No  | Whether the event is bound declaratively.<br>**true** means that the event is bound declaratively, and **false** means the opposite.|
@@ -183,7 +188,7 @@ struct Index {
 
 isModifiable(): boolean
 
-Checks whether the current FrameNode is modifiable.
+Checks whether this FrameNode is modifiable.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -193,7 +198,7 @@ Checks whether the current FrameNode is modifiable.
 
 | Type   | Description                                                                                                                                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | Whether the current FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
+| boolean | Whether this FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
 
 **Example**
 
@@ -1186,7 +1191,7 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getId(): string
 
-Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).
+Obtains the node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1196,7 +1201,7 @@ Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| string | Node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).|
+| string | Node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).|
 
 **Example**
 
@@ -1782,6 +1787,8 @@ Adds component content. The current node must be modifiable, which means the ret
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
@@ -2050,6 +2057,8 @@ Sets the cross-language access options for this FrameNode. This API allows you t
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                         |
 | -------- | -------------------------------- |
 | 100022   | The FrameNode cannot be set whether to support cross-language common attribute setting. |
@@ -2146,7 +2155,7 @@ Adds the polymorphic style states supported by the component.
 
 | Name  | Type                     | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                                      |
+| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                                      |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | Yes  | Callback invoked when the state changes.                                          |
 | excludeInner  | boolean | No  | Whether to disable the default state style processing. Default value: **false**.<br> **true**: Disable default state style processing. **false**: Enable default state style processing.|
 
@@ -2168,7 +2177,7 @@ Removes the state processing registration from the component.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                         |
+| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                         |
 
 **Example**
 
@@ -2186,6 +2195,7 @@ Creates a property animation for the FrameNode.
 
 **Parameters**
 
+<!--Table: 12%; 20%; 8%; 60%-->
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | property  | [AnimationPropertyType](./arkui-ts/ts-appendix-enums.md#animationpropertytype20) | Yes  | Animation property type.|
@@ -2195,6 +2205,7 @@ Creates a property animation for the FrameNode.
 
 **Return value**
 
+<!--Table: 10%; 90%-->
 | Type              | Description              |
 | ------------------ | ------------------ |
 | boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>&nbsp;4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
@@ -2407,7 +2418,7 @@ See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes a previously adopted node.
+Removes a previously-adopted affiliated node.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -3234,6 +3245,232 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 **Example**
 
 For details, see [Example of Converting Between Local Coordinates and Window Coordinates](#example-of-converting-between-local-coordinates-and-window-coordinates).
+
+### createFrameNodes
+
+static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]
+
+Creates a specified number of FrameNodes in batches and returns a FrameNode array.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context for node creation.|
+| count | number | Yes  | Number of nodes to be created. The value is an integer greater than 0. If the value is less than or equal to 0 or is not an integer, an empty array is returned.|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [FrameNode](#framenode-1)[] | Array of created FrameNodes.|
+
+**Example**
+
+```ts
+import { NodeController, FrameNode } from '@kit.ArkUI';
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    // Create 20 FrameNodes and add them to the root node.
+    const children: FrameNode[] = FrameNode.createFrameNodes(uiContext, 20);
+    for (let i = 0; i < children.length; i++) {
+      this.rootNode.appendChild(children[i]);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .borderWidth(1)
+        .width(300)
+        .height(300)
+    }.width("100%")
+  }
+}
+```
+
+### getFrameNodeById
+
+getFrameNodeById(id: string): FrameNode | null
+
+Searches for all child nodes layer by layer from the current node (which is used as the root node) and returns the first node that matches the specified ID. The search sequence is as follows: Search for direct child nodes first, then level-2 child nodes, and so on. The search stops as soon as a matching node is found.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| id | string | Yes  | ID of the child node to be queried, which is the same as the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [FrameNode](#framenode-1) \| null | First node that matches the specified ID, which is returned by searching for all child nodes layer by layer from the current node (which is used as the root node). If no child node of the current node matches the specified ID, a null is returned.|
+
+**Example**
+
+```ts
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+  private id: string = 'text';
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    // Create a Column node.
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    this.rootNode.appendChild(col);
+
+    // Create a Text component and add it to the Column node.
+    let text = typeNode.createNode(uiContext, 'Text');
+    text.initialize('Hello').id(this.id);
+    col.appendChild(text);
+
+    // Create another Text component with the same ID and add it to the Column node.
+    let text1 = typeNode.createNode(uiContext, 'Text');
+    text1.initialize('World').id(this.id);
+    col.appendChild(text1);
+    this.update();
+    return this.rootNode;
+  }
+
+  update() {
+    if (this.rootNode) {
+      // Query and return the first component whose ID is text, and set the backgroundColor attribute.
+      let node = this.rootNode.getFrameNodeById(this.id);
+      node?.commonAttribute.backgroundColor('rgb(39,135,217)');
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .borderWidth(1)
+        .width(300)
+        .height(300)
+    }.width("100%")
+  }
+}
+```
+
+### getFrameNodeByUniqueId
+
+getFrameNodeByUniqueId(id: number): FrameNode | null
+
+Searches for and returns the child node with the specified unique ID (which can be obtained using the [getUniqueId](#getuniqueid12) API) under the current node (which is used as the root node).
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type| Mandatory| Description                                                    |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| id | number | Yes  | Unique ID of the child node to be queried.|
+
+**Return value**
+
+| Type              | Description              |
+| ------------------ | ------------------ |
+| [FrameNode](#framenode-1) \| null | Child node with the unique ID, which is found from the current node (which is used as the root node). If the child node with the unique ID cannot be found under the current node, a null is returned.|
+
+**Example**
+
+```ts
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  public rootNode: FrameNode | null = null;
+  private uniqueId: number = 0;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    // Create a Column node.
+    let col = typeNode.createNode(uiContext, 'Column');
+    col.initialize({ space: 5 });
+    this.rootNode.appendChild(col);
+
+    // Create a Text component and add it to the Column node.
+    let text = typeNode.createNode(uiContext, 'Text');
+    text.initialize('Hello');
+    col.appendChild(text);
+
+    // Create another Text component and add it to the Column node.
+    let text1 = typeNode.createNode(uiContext, 'Text');
+    text1.initialize('World');
+    this.uniqueId = text1.getUniqueId();
+    col.appendChild(text1);
+    this.update();
+    return this.rootNode;
+  }
+
+  update() {
+    if (this.rootNode) {
+      // Query and return the component with the unique ID, and set the backgroundColor attribute.
+      let node = this.rootNode.getFrameNodeByUniqueId(this.uniqueId);
+      node?.commonAttribute.backgroundColor('rgb(39,135,217)');
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+        .borderWidth(1)
+        .width(300)
+        .height(300)
+    }.width("100%")
+  }
+}
+```
 
 ## TypedFrameNode<sup>12+</sup>
 
@@ -4612,7 +4849,7 @@ See [Scroll Event Example](#scroll-event-example).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 
-Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#scroll12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5447,7 +5684,7 @@ See the example for [createNode('List')](#createnodelist12).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [List](#list12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -6116,7 +6353,7 @@ See the example for [createNode('WaterFlow')](#createnodewaterflow12).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [WaterFlow](#waterflow12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [WaterFlow](#waterflow12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -6697,7 +6934,7 @@ See the example for [createNode('Grid')](#createnodegrid14).
 
 bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 
-Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [Scroller](arkui-ts/ts-container-scroll.md#scroller) instance to the [Grid](#grid14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -9506,7 +9743,7 @@ export struct TrackNode {
     // Build the virtual tree of the tracking point and obtain the root node (Row in this example) of the current page.
     let uid = this.getUniqueId()
     let node: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(uid);
-    console.info(`Track onDidBuild node:${node?.getNodeType()}`))
+    console.info(`Track onDidBuild node:${node?.getNodeType()}`);
     if (node === null) {
       return
     }

@@ -312,7 +312,7 @@ try {
 
 ### napi_get_value_bigint_words
 
-用于从ArkTS对象中获取其符号位和底层64位无符号整数字数组表示。
+用于从ArkTS对象中获取其符号位和底层64位无符号整数数组表示。
 
 cpp部分代码
 

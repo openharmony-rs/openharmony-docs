@@ -196,7 +196,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx', // Peer IP address
+  address: '192.168.xx.xxx',  // Peer IP address
   port: 8080
 }
 let sendOptions: socket.UDPSendOptions = {
@@ -231,7 +231,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx', // Peer IP address
+  address: '192.168.xx.xxx',  // Peer IP address
   port: 8080
 }
 let socks5Server: socket.NetAddress = {
@@ -2640,7 +2640,8 @@ tcp.connect(tcpconnectoptions, () => {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
     reuseAddress: true,
-    socketTimeout: 3000
+    socketTimeout: 3000,
+    tcpFastOpen: false
   }
   tcp.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
     if (err) {
@@ -2717,7 +2718,8 @@ tcp.connect(tcpconnectoptions, () => {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
     reuseAddress: true,
-    socketTimeout: 3000
+    socketTimeout: 3000,
+    tcpFastOpen: false
   }
   tcp.setExtraOptions(tcpExtraOptions).then(() => {
     console.info('setExtraOptions success');
@@ -3006,12 +3008,13 @@ Defines other properties of the **TCPSocket** object. This object is inherited f
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name  | Type                                          | Read-Only| Optional|Description                   |
-| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| keepAlive         | boolean | No  | Yes  | Whether to keep the connection alive. The default value is **false**. The value **true** means to keep the connection alive, and the value **false** indicates the opposite.                                 |
-| OOBInline         | boolean | No  | Yes  | Whether to enable OOBInline. The default value is **false**. The value **true** means to enable OOBInline, and the value **false** indicates the opposite.                                |
-| TCPNoDelay        | boolean | No  | Yes  | Whether to enable no-delay on the TCP socket connection. The default value is **false**. The value **true** means to enable no-delay on the TCP socket connection, and the value **false** indicates the opposite.                      |
-| socketLinger      | \{on:boolean, linger:number\}  | No  | Yes  | Socket linger.<br>- **on**: whether to enable socket linger. The value true means to enable socket linger and false means the opposite.<br>- **linger**: linger time, in ms. The value ranges from **0** to **65535**.<br>Specify this parameter only when **on** is set to **true**.|
+| Name  | Type                                          | Read-Only| Optional| Description                                                                                                                                                         |
+| -------- | ---------------------------------------------- | ---- | --- |-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| keepAlive         | boolean | No  | Yes  | Whether to keep the connection alive. The default value is **false**. The value **true** means to keep the connection alive, and the value **false** indicates the opposite.                                                                                                                      |
+| OOBInline         | boolean | No  | Yes  | Whether to enable OOBInline. The default value is **false**. The value **true** means to enable OOBInline, and the value **false** indicates the opposite.                                                                                                               |
+| TCPNoDelay        | boolean | No  | Yes  | Whether to enable no-delay on the TCP socket connection. The default value is **false**. The value **true** means to enable no-delay on the TCP socket connection, and the value **false** indicates the opposite.                                                                                                              |
+| socketLinger      | \{on:boolean, linger:number\}  | No  | Yes  | Socket linger.<br>- **on**: whether to enable socket linger. The value true means to enable socket linger and false means the opposite.<br>- **linger**: linger time, in ms. The value ranges from **0** to **65535**.<br>Specify this parameter only when **on** is set to **true**.                                       |
+| tcpFastOpen<sup>24+</sup> | boolean                        | No | Yes | Whether to enable TCP Fast Open (TFO) in the TCP socket connection. This function allows the client to carry data during the first handshake, reducing the connection setup delay and improving the performance in high-frequency short connection scenarios. The default value is **false**. **true**: yes; **false**: no.<br>Currently, this parameter can be configured only on the client.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## socket.constructTCPSocketServerInstance<sup>10+</sup>
 
@@ -6746,7 +6749,8 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   receiveBufferSize: 8192,
   sendBufferSize: 8192,
   reuseAddress: true,
-  socketTimeout: 3000
+  socketTimeout: 3000,
+  tcpFastOpen: false
 }
 tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
   if (err) {
@@ -6819,7 +6823,8 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   receiveBufferSize: 8192,
   sendBufferSize: 8192,
   reuseAddress: true,
-  socketTimeout: 3000
+  socketTimeout: 3000,
+  tcpFastOpen: false
 }
 tls.setExtraOptions(tcpExtraOptions).then(() => {
   console.info('setExtraOptions success');

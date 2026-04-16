@@ -97,7 +97,7 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | 801 | Device not supported. |
 | 34400003 | IPC communication failed. |
 | 34400014  | Temporary failure, Retry is recommended (e.g., network issues). |
-| 34400015  | Cloud disk not allowed on this device.|
+| 34400015  | Cloud disk is not allowed on this device.|
 
 **Example**
 

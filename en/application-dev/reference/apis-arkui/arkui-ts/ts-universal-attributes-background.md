@@ -20,7 +20,7 @@ Sets the background of the component. Since API version 20, this API supports th
 
 >**NOTE**
 >
-> - Events related to node mounting and unmounting, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisappear](./ts-universal-events-show-hide.md#ondisappear), are not supported.
+> - Events related to node mounting and unmounting, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisAppear](./ts-universal-events-show-hide.md#ondisappear), are not supported.
 >
 > - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20 only if the input parameter type of **content** is ResourceColor.
 
@@ -184,6 +184,7 @@ Sets the background image of the component. Compared with [backgroundImage](#bac
 
 **Parameters**
 
+<!--Table: 10%; auto; 10%; auto-->
 | Name| Type                                           | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | Yes  | Image address. In API version 22 and earlier versions, the value can be network image resource addresses, local image resource addresses, Base64 strings, or PixelMap resources, but cannot be addresses of SVG images, or animated images such as GIF and WebP. In API version 23 and later versions, animated images of the WebP and GIF types are supported. Only the first frame of the animated image is displayed. Other types of animated images are not supported.|
@@ -275,6 +276,7 @@ Provides parameters for system adaptive adjustments. By default, the system perf
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | Name       |   Type  |   Read-Only |  Optional | Description                       |
 | ----        |  ----   |   ---- |  ---- | --------------------------  |
 | disableSystemAdaptation   |  boolean   |   No  |  Yes |  Whether to disable system adaptive adjustment. Whenever possible, do not include this parameter. This parameter only affects low-computing-power devices, the definition of which is determined by the device manufacturer. On low-computing-power devices, the system automatically decides whether to adjust effects (such as blur) to lower-computing-power alternatives based on conditions including computing power and load. To disable this feature, set this parameter to **true**.<br>Default value: **false**|
@@ -524,6 +526,7 @@ Describes the background effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | Name       |   Type        |   Read-Only |  Optional |  Description                       |
 | ----         |  ----         |   ---- |  ---- | --------------------------  |
 | radius       | number        |   No  |   No  |   Blur radius.<br>Value range: [0, +∞)<br>Default value: **0**<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -569,6 +572,7 @@ Inherits from [BlurStyleOptions](ts-universal-attributes-foreground-blur-style.m
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name| Type                                                        | Read-Only| Optional| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---- |---------------------------------------------------- |
 | policy<sup>14+</sup>  | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | No| Yes  | Blur activation policy.<br> Default value: **BlurStyleActivePolicy.ALWAYS_ACTIVE**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
@@ -662,7 +666,6 @@ This example shows how to configure basic background styles by setting **backgro
 @Entry
 @Component
 struct BackgroundExample {
-
   build() {
     Column({ space: 5 }) {
       Text('background color').fontSize(9).width('90%').fontColor(0xCCCCCC)
@@ -670,7 +673,7 @@ struct BackgroundExample {
 
       Text('background image repeat along X').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        // Replace $r('app.media.image') with the image resource file you use.
+      // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.X)
         .backgroundImageSize({ width: '250px', height: '140px' })
         .width('90%')
@@ -679,7 +682,7 @@ struct BackgroundExample {
 
       Text('background image repeat along Y').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        // Replace $r('app.media.image') with the image resource file you use.
+      // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.Y)
         .backgroundImageSize({ width: '500px', height: '120px' })
         .width('90%')
@@ -688,7 +691,8 @@ struct BackgroundExample {
 
       Text('background image size').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
-        .width('90%').height(150)
+        .width('90%')
+        .height(150)
         // Replace $r('app.media.image') with the image resource file you use.
         .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
         .backgroundImageSize({ width: 1000, height: 500 })
@@ -729,7 +733,7 @@ struct BackgroundExample {
 }
 ```
 
-![en-us_image_0000001211898502](figures/en-us_image_0000001211898502.png)
+![en-us_image_0000001219982703](figures/en-us_image_0000001219982703.png)
 
 ### Example 2: Setting the Background Blur Style
 
@@ -771,9 +775,10 @@ This example shows how to set the component background using **background**.
 @Entry
 @Component
 struct BackgroundExample {
-  @Builder renderBackground() {
+  @Builder
+  renderBackground() {
     Column() {
-      Progress({value : 50})
+      Progress({ value: 50 })
     }
   }
 
@@ -783,7 +788,7 @@ struct BackgroundExample {
         .width(100)
         .height(40)
         .fontColor("#FFF")
-        .position({x:50, y:80})
+        .position({ x: 50, y: 80 })
         .textAlign(TextAlign.Center)
         .backgroundColor(Color.Green)
     }

@@ -24,7 +24,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -36,7 +36,7 @@ getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
+| type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | userId  | number | 否    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                        |
 
 **返回值：**
@@ -47,7 +47,7 @@ getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -95,7 +95,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -107,13 +107,13 @@ getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<Bun
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
+| type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的应用信息；否则为错误对象。                    |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -162,7 +162,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -174,12 +174,12 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的应用信息；否则为错误对象。                    |
+| type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -226,7 +226,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplicationSync(type: string, userId?: number): BundleInfo
 
-以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用BundleInfo返回结果。
+以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息，使用BundleInfo返回结果。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -238,7 +238,7 @@ getDefaultApplicationSync(type: string, userId?: number): BundleInfo
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | -------| ------ | ---- | --------------------------------------- |
-| type   | string | 是   | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。|
+| type   | string | 是   | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
 | userId | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。         |
 
 **返回值：**
@@ -249,7 +249,7 @@ getDefaultApplicationSync(type: string, userId?: number): BundleInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -293,7 +293,7 @@ try {
 
 setDefaultApplication(type: string, elementName: ElementName, userId?: number): Promise\<void>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -305,7 +305,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId?: number): 
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
+| type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
 | userId  | number | 否    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
@@ -313,11 +313,11 @@ setDefaultApplication(type: string, elementName: ElementName, userId?: number): 
 
 | 类型           | 说明                               |
 | -------------- | ---------------------------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -382,7 +382,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -394,14 +394,14 @@ setDefaultApplication(type: string, elementName: ElementName, userId: number, ca
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
+| type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
 | userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                   |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -462,7 +462,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -474,13 +474,13 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
+| type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                    |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -539,7 +539,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplicationSync(type: string, elementName: ElementName, userId?: number): void
 
-以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。
+以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -551,13 +551,13 @@ setDefaultApplicationSync(type: string, elementName: ElementName, userId?: numbe
 
 | 参数名      | 类型   | 必填 | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type        | string | 是   | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。|
+| type        | string | 是   | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
 | elementName | [ElementName](js-apis-bundle-ElementName.md) | 是 | 要设置为默认应用的组件信息。                           |
 | userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -625,7 +625,7 @@ try {
 
 resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -637,18 +637,18 @@ resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
+| type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | userId  | number | 否    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
 **返回值：**
 
 | 类型           | 说明                               |
 | -------------- | ---------------------------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -696,7 +696,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -708,13 +708,13 @@ resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<v
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
+| type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                          |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                   |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -764,7 +764,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -776,12 +776,12 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
-| type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。       |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                   |
+| type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -827,7 +827,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 resetDefaultApplicationSync(type: string, userId?: number): void
 
-以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。
+以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -839,12 +839,12 @@ resetDefaultApplicationSync(type: string, userId?: number): void
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
-| type   | string | 是   | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型。|
+| type   | string | 是   | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
 | userId | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |

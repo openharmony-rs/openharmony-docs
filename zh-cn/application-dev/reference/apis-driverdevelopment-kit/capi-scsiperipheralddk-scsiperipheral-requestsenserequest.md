@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSenseRequest
@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSe
 
 ## 概述
 
-SCSI命令（request sense）的请求结构体。
+SCSI命令（Request Sense）的请求结构体。
 
 **起始版本：** 18
 

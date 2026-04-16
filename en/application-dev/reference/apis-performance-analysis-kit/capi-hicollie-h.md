@@ -36,6 +36,7 @@ HiCollie provides APIs for checking service thread stuck and jank events and rep
 | -- | -- | -- |
 | [HiCollie_ErrorCode](#hicollie_errorcode) | HiCollie_ErrorCode | Enumerates the error codes used in the HiCollie module.|
 | [HiCollie_Flag](#hicollie_flag) | HiCollie_Flag | Enumerates the actions to be performed when a function times out.|
+| [OH_HiCollie_Freeze_Type](#oh_hicollie_freeze_type) | OH_HiCollie_Freeze_Type | Enumerates the freeze types returned by **FreezeCallback**.|
 
 ### Functions
 
@@ -47,10 +48,14 @@ HiCollie provides APIs for checking service thread stuck and jank events and rep
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)](#oh_hicollie_init_stuckdetection) | - | Registers a callback used to periodically detect service thread stuck events.  <br> By default, the **BUSSINESS_THREAD_BLOCK_3S** event is reported when the thread is blocked for 3s and the **BUSSINESS_THREAD_BLOCK_6S** event is reported when the thread is blocked for 6s.<br>Note: Use this API in non-main threads.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task task, uint32_t stuckTimeout)](#oh_hicollie_init_stuckdetectionwithtimeout) | - | Registers a callback used to periodically detect service thread stuck events.  <br> You can set the interval for the stuck event detection. The value range is [3, 15], in seconds.<br>Note: Use this API in non-main threads.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)](#oh_hicollie_init_jankdetection) | - | Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  <br>Note: Use this API in non-main threads.|
-| [HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)](#oh_hicollie_report) | - | Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.<br>Note: Use this API in non-main threads.|
+| [HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)](#oh_hicollie_report) | - | Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.<br>Note:<br>- Use this API in non-main threads.<br>- This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)|
+| [HiCollie_ErrorCode OH_HiCollie_ReportInputBlock()](#oh_hicollie_reportinputblock) | - | Reports an application input unresponsive event and generates logs to help locate application freeze issues. On a PC or tablet, a dialog box is displayed, prompting the user to wait or close the application. On other devices, no dialog box is displayed. You are advised to use this API in either of the following ways:<br>Method 1 (recommended): Use this API together with **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout**. The service thread periodically checks whether it is frozen through the preceding APIs. When the service thread is frozen and an input event (such as screen tapping, mouse clicking, or keyboard input) occurs, the service thread calls **OH_HiCollie_ReportInputBlock**.<br>Method 2: If the service thread can detect its own freeze without using the **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout** API, the application calls the **OH_HiCollie_ReportInputBlock** API based on the service thread freeze and input event.<br>Note:<br>- This API can be used in the main thread. For example, an input event needs to be processed by the main thread before being encapsulated and passed to the service thread for processing. When the service thread freezes, a status flag is maintained. The main thread calls this API based on the status flag of the service thread and the input event.<br>- This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)|
 | [typedef void (\*OH_HiCollie_Callback)(void*)](#oh_hicollie_callback) | OH_HiCollie_Callback | Triggered when [OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer) is not called within the custom task timeout period after [OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer) is called.|
 | [HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)](#oh_hicollie_settimer) | - | Registers a timer to check whether the execution time of a function or code block exceeds the custom time.<br> This API is used together with the **OH_HiCollie_CancelTimer** API.|
 | [void OH_HiCollie_CancelTimer(int id)](#oh_hicollie_canceltimer) | - | Cancels a timer based on the ID.<br> This API is used together with the **OH_HiCollie_SetTimer** API. It must be used after the function or code block is executed.<br> If a timer is not canceled within the custom time, a callback function is executed to generate fault logs for the specified timeout event.|
+| [typedef size_t (\*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)](#oh_hicollie_freezecallback) | OH_HiCollie_FreezeCallback | Triggered for freeze events.|
+| [void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)](#oh_hicollie_setfreezecallback) | - | Sets the freeze event callback in the system. The system calls this function when a freeze event occurs.|
+| [HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)](#oh_hicollie_associateprocessreport) | - | Reports a freeze event of a process. In this case, a **HiAppEvent** event of the **APP_HICOLLIE** type is generated.|
 
 ## Enum Description
 
@@ -76,6 +81,7 @@ Enumerates the error codes used in the HiCollie module.
 | HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | The function execution timeout value is invalid.<br>**Since**: 18                 |
 | HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | The process to be accessed is incorrect.<br>**Since**: 18                |
 | HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | The pointer used to save the returned timer ID is null.<br>**Since**: 18        |
+| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | The reporting frequency exceeds the limit.<br>**Since**: 24        |
 
 ### HiCollie_Flag
 
@@ -95,6 +101,29 @@ Enumerates the actions to be performed when a function times out.
 | HICOLLIE_FLAG_NOOP = (0) | Executes only the callback.|
 | HICOLLIE_FLAG_LOG = (1 << 0) | Generates logs.|
 | HICOLLIE_FLAG_RECOVERY = (1 << 1) | Recovers the function.|
+
+### OH_HiCollie_Freeze_Type
+
+```c
+enum OH_HiCollie_Freeze_Type
+```
+
+**Description**
+
+Enumerates the freeze event types returned by **FreezeCallback**.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_THREAD_BLOCK_3S | The main thread times out for one period.<br>**Since**: 24|
+| OH_THREAD_BLOCK_6S | The main thread times out for two periods.<br>**Since**: 24|
+| OH_LIFECYCLE_HALF_TIMEOUT | The ability lifecycle times out for one period.<br>**Since**: 24|
+| OH_LIFECYCLE_TIMEOUT | The ability lifecycle times out for two periods.<br>**Since**: 24|
+| OH_APP_INPUT_BLOCK | The input event times out.<br>**Since**: 24|
+| OH_BUSINESS_THREAD_BLOCK_3S | A 3s freeze event is reported through [OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report).<br>**Since**: 24|
+| OH_BUSINESS_THREAD_BLOCK_6S | A 6s freeze event is reported through [OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report).<br>**Since**: 24|
+| OH_BUSINESS_INPUT_BLOCK | A freeze event is reported through [OH_HiCollie_ReportInputBlock](capi-hicollie-h.md#oh_hicollie_reportinputblock).<br>**Since**: 24|
 
 
 ## Function Description
@@ -157,6 +186,10 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)
 
 Registers a callback used to periodically detect service thread stuck events.  <br> By default, the **BUSSINESS_THREAD_BLOCK_3S** event is reported when the thread is blocked for 3s and the **BUSSINESS_THREAD_BLOCK_6S** event is reported when the thread is blocked for 6s.
 
+> **NOTE**
+> 
+> - Use this API in non-main threads.
+
 **Since**: 12
 
 **Parameters**
@@ -180,6 +213,10 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task t
 **Description**
 
 Registers a callback used to periodically detect service thread stuck events.  <br> You can set the interval for the stuck event detection. The value range is [3, 15], in seconds.
+
+> **NOTE**
+> 
+> - Use this API in non-main threads.
 
 **Since**: 18
 
@@ -205,6 +242,10 @@ HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFu
 **Description**
 
 Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  
+
+> **NOTE**
+> 
+> - Use this API in non-main threads.
 
 **Since**: 12
 
@@ -232,6 +273,11 @@ HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)
 
 Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.
 
+> **NOTE**
+> 
+> - Use this API in non-main threads.
+> - This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)
+
 **Since**: 12
 
 **Parameters**
@@ -245,6 +291,29 @@ Reports a service thread stuck event and generates logs to help locate applicati
 | Type| Description|
 | -- | -- |
 | [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br>   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - The begin and end functions are not both set or both unset; they must either both have valid values or both be empty.<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>         [HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - Remote call error. The IPC remote service fails to be called.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
+
+### OH_HiCollie_ReportInputBlock()
+
+```c
+HiCollie_ErrorCode OH_HiCollie_ReportInputBlock()
+```
+
+**Description**
+
+Reports an application input unresponsive event and generates logs to help locate application freeze issues. On a PC or tablet, a dialog box is displayed, prompting the user to wait or close the application. On other devices, no dialog box is displayed. You are advised to use this API in either of the following ways:<br> Method 1 (recommended): Use this API together with **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout**. The service thread periodically checks whether it is frozen through the preceding APIs. When the service thread is frozen and an input event (such as screen tapping, mouse clicking, or keyboard input) occurs, the service thread calls **OH_HiCollie_ReportInputBlock**.<br> Method 2: If the service thread can detect its own freeze without using the **OH_HiCollie_Report**, **OH_HiCollie_Init_StuckDetection**, or **OH_HiCollie_Init_StuckDetectionWithTimeout** API, the application calls the **OH_HiCollie_ReportInputBlock** API based on the service thread freeze and input event.
+
+> **NOTE**
+> 
+> - This API can be used in the main thread. For example, an input event needs to be processed by the main thread before being encapsulated and passed to the service thread for processing. When the service thread freezes, a status flag is maintained. The main thread calls this API based on the status flag of the service thread and the input event.
+> - This API takes effect only for [applications of the release version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version)
+
+**Since**: 24
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br>         [HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - Remote call error. The IPC remote service fails to be called.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
 
 ### OH_HiCollie_Callback()
 
@@ -300,3 +369,90 @@ Cancels a timer based on the ID.<br> This API is used together with the **OH_HiC
 | Name| Description|
 | -- | -- |
 | int id | Timer ID updated after the [OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer) function is executed.|
+
+### OH_HiCollie_FreezeCallback()
+
+```c
+typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)
+```
+
+**Description**
+
+Triggered for freeze events. This callback is set by [OH_HiCollie_SetFreezeCallback](capi-hicollie-h.md#oh_hicollie_setfreezecallback).
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| OH_HiCollie_Freeze_Type type | Type of the freeze event.|
+| void\* buffer | Log buffer provided by the system, whose content will be migrated to the **APP_FREEZE** or **APP_HICOLLIE** event.|
+| size_t size | Available buffer size. The maximum value is 64 KB. If the upper limit is exceeded, the application may crash.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| size_t | Size of the used buffer, in bytes.|
+
+> **NOTE**
+>
+> If the return value exceeds 64 KB, the log content may be empty.
+
+### OH_HiCollie_SetFreezeCallback()
+
+```c
+void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)
+```
+
+**Description**
+
+Sets the freeze event callback in the system. The system calls this function when a freeze event occurs.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_HiCollie_FreezeCallback](capi-hicollie-h.md#oh_hicollie_freezecallback) callback | Callback function.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| void* | Callback function passed last time in the current process.|
+
+### OH_HiCollie_AssociateProcessReport()
+
+```c
+HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
+```
+
+**Description**
+
+Reports a freeze event of a process. In this case, a **HiAppEvent** event of the **APP_HICOLLIE** type is generated.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| bool isFreezeEvent | Type of the reported event. **true**: A 6s freeze event. **false**: A 3s freeze event.|
+
+
+> Note:
+>
+> **BUSINESS_THREAD_BLOCK_3S** and **BUSINESS_THREAD_BLOCK_6S** are equivalent to **BUSSINESS_THREAD_BLOCK_3S** and **BUSSINESS_THREAD_BLOCK_6S**, respectively.
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | **HICOLLIE_SUCCESS**: 0 - The operation is successful.<br> **OH_HICOLLIE_REACH_REPORT_LIMIT**: 29800007 - The reporting frequency is too high.|
+
+> Note:
+>
+> The event can be reported only once within 1 minute.

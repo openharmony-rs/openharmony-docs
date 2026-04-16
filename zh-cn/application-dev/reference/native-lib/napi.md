@@ -711,8 +711,8 @@ libace_napi.z.so
 |FUNC|napi_create_sendable_array_with_length | 创建一个指定长度的Sendable数组。|12|
 |FUNC|napi_create_sendable_arraybuffer | 创建一个Sendable ArrayBuffer。|12|
 |FUNC|napi_create_sendable_typedarray | 创建一个Sendable TypedArray。|12|
-|FUNC|napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。|12|
-|FUNC|napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。|12|
+|FUNC|napi_wrap_sendable | 封装一个native实例到ArkTS对象中。|12|
+|FUNC|napi_wrap_sendable_with_size | 封装一个native实例到ArkTS对象中并指定大小。|12|
 |FUNC|napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。|12|
 |FUNC|napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。|12|
 |FUNC|napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。|18|
@@ -731,6 +731,10 @@ libace_napi.z.so
 |FUNC|napi_delete_strong_sendable_reference|删除Sendable强引用。|22|
 |FUNC|napi_get_strong_sendable_reference_value|根据Sendable强引用获取其关联的ArkTS对象值。|22|
 |FUNC|napi_throw_business_error|抛出一个带文本信息的ArkTS Error, 其错误对象的code属性类型为number类型。|23|
+|FUNC|napi_create_callsite_info|创建调用点信息句柄，用于缓存属性访问信息。|24|
+|FUNC|napi_delete_callsite_info|删除调用点信息句柄，释放关联的缓存资源。|24|
+|FUNC|napi_get_property_with_callsite_info|使用调用点信息快速获取对象属性值。|24|
+|FUNC|napi_set_property_with_callsite_info|使用调用点信息快速设置对象属性值。|24|
 
 > 说明：
 >
@@ -1331,7 +1335,7 @@ napi_status napi_wrap_sendable(napi_env env,
 
 **描述：**
 
-包裹一个native实例到ArkTS对象中。
+封装一个native实例到ArkTS对象中。
 
 **参数：**
 
@@ -1362,7 +1366,7 @@ napi_status napi_wrap_sendable_with_size(napi_env env,
 
 **描述：**
 
-包装一个native实例到ArkTS对象中并指定大小。
+封装一个native实例到ArkTS对象中并指定大小。
 
 **参数：**
 
@@ -1390,7 +1394,7 @@ napi_status napi_unwrap_sendable(napi_env env, napi_value js_object, void** resu
 
 **描述：**
 
-获取ArkTS对象包装的native实例。
+获取ArkTS对象封装的native实例。
 
 **参数：**
 
@@ -1412,7 +1416,7 @@ napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void**
 
 **描述：**
 
-移除并获取ArkTS对象包装的native实例，移除后回调将不再触发，需手动delete释放内存。
+移除并获取ArkTS对象封装的native实例，移除后回调将不再触发，需手动delete释放内存。
 
 **参数：**
 
@@ -1897,6 +1901,112 @@ napi_status napi_throw_business_error(napi_env env,
 - [in] errorCode：int32_t类型的错误码，用于设置在错误对象上。
 
 - [in] msg：表示要与错误关联的文本的C字符串。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_create_callsite_info
+
+```cpp
+napi_status napi_create_callsite_info(napi_env env, napi_callsite_info* result);
+```
+
+**描述：**
+
+创建调用点信息句柄，用于缓存属性访问信息。每个不同的调用点应创建独立的句柄，同一句柄可跨多次调用复用，但不可跨线程使用。当不再需要时，必须调用napi_delete_callsite_info释放。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] result：指向napi_callsite_info的指针，用于接收创建的调用点信息句柄。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_delete_callsite_info
+
+```cpp
+napi_status napi_delete_callsite_info(napi_env env, napi_callsite_info info);
+```
+
+**描述：**
+
+删除调用点信息句柄，释放关联的缓存资源。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] info：要删除的调用点信息句柄。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_property_with_callsite_info
+
+```cpp
+napi_status napi_get_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_callsite_info info,
+                                                 napi_value* result,
+                                                 bool* hit);
+```
+
+**描述：**
+
+使用调用点信息快速获取对象属性值。info参数可以传入NULL，此时行为等同于napi_get_property。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] object：要获取属性的对象。
+
+- [in] key：要获取的属性的键名。
+
+- [in] info：调用点信息句柄。可以为NULL。
+
+- [out] result：指向napi_value的指针，用于接收属性值。
+
+- [out] hit：写入缓存是否命中：true表示命中（快速路径），false表示未命中。可以传入nullptr。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_set_property_with_callsite_info
+
+```cpp
+napi_status napi_set_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_value value,
+                                                 napi_callsite_info info,
+                                                 bool* hit);
+```
+
+**描述：**
+
+使用调用点信息快速设置对象属性值。info参数可以传入NULL，此时行为等同于napi_set_property。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] object：要设置属性的对象。
+
+- [in] key：要设置的属性的键名。
+
+- [in] value：要设置的属性值。
+
+- [in] info：调用点信息句柄。可以为NULL。
+
+- [out] hit：写入缓存是否命中：true表示命中（快速路径），false表示未命中。可以传入nullptr。
 
 **返回：**
 

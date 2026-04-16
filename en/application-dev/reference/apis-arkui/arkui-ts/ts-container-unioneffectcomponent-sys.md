@@ -6,19 +6,19 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
  	 
-A shape fusion container, which collects the shapes of all descendant components that use the ancestor fusion effect (ts-universal-attributes-use-union-effect-sys.md#useunioneffect) in the container and applies the collected shapes to the container as the drawing shape of the container.
+**UnionEffectContainer** collects shapes of all descendant components [using the ancestor union effect](ts-universal-attributes-use-union-effect-sys.md#useunioneffect) within the container, and applies the shapes to the container as its drawing shape.
  	 
->  **NOTE:**
+>  **NOTE**
 >
 > - This component is supported since API version 23. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs provided by this module are system APIs.
 > 
-> - Animations can be added to the shape fusion process.
+> - You can add animations to the shape union process.
  	 
-## Sub-components.
+## Child Components
 
-This component can contain child components.
+Child components are supported.
 
 ## APIs
 
@@ -26,7 +26,7 @@ This component can contain child components.
 
 UnionEffectContainer(options?: UnionEffectContainerOptions)
 
-Creates a shape fusion container component.
+Creates a **UnionEffectContainer** component.
 
 **System API**: This is a system API.
 
@@ -38,11 +38,11 @@ Creates a shape fusion container component.
 
 | Name           | Type       | Mandatory  | Description                                    |
 | -------------- | ---------------------------------------- | ---- |  ---------------------------------------- |
-| options      | [UnionEffectContainerOptions](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)| No   |  UnionEffectContainer constructor parameter, which is used to determine the degree of fusion of the collected shapes of descendant components.<br>Default value: **{spacing:0}**              |
+| options      | [UnionEffectContainerOptions](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)| No   |  Construction options of **UnionEffectContainer**, which is used to determine the union degree of the collected descendant component shapes.<br>Default value: **{spacing:0}**              |
 
-## UnionEffectContainerOptions object description
+## UnionEffectContainerOptions
 
-Sets the constructor parameters of UnionEffectContainer.
+Sets the construction options of **UnionEffectContainer**.
 
 **System API**: This is a system API.
 
@@ -52,21 +52,21 @@ Sets the constructor parameters of UnionEffectContainer.
 
 | Name       | Type                                   | Read-Only| Optional| Description                                                    |
 | ----------- | --------------------------------------- | ---- | ---------- | ---------------------------------------------- |
-| spacing | number | No| Yes | spacing indicates a degree to which a descendant component is fused and deformed. It does not represent the actual spacing. Fusion occurs only when the descendant component that uses the UnionEffectContainer fusion effect of the ancestor component is set and the descendant component is close to a certain extent.<br>**NOTE:**<br>If the spacing is greater than 0 and the descendant components for which the ancestor component UnionEffectContainer fusion effect is set are close to each other to a certain extent, these descendant components start to be fused and deformed with each other, and the fusion and deformation effect is stronger as the distance becomes closer. A larger value indicates that when descendants are close to each other, their fusion starts earlier and is more likely to deform.<br>Default value: 0. In this case, the shapes of the subcomponents are fused together, but there is no deformation effect.<br>Value range: [0, +∞). If the value is less than 0, the value 0 is used.|
+| spacing | number | No| Yes | Degree of union deformation of the descendant component. This parameter does not represent the actual spacing. Union occurs only when the descendant components use the union effect of the ancestor component **UnionEffectContainer** and they come close to a certain extent.<br>**NOTE**<br>If **spacing** is greater than 0 and the descendant components that use the union effect of the ancestor component **UnionEffectContainer** come close to a certain extent, the descendant components start to deform due to union. The closer the descendant components are, the stronger the deformation effect. A larger value indicates that the union of descendant components starts earlier and is more likely to occur when the descendant components come close to each other.<br>Default value: **0**. In this case, union of the child component shapes occurs, but no deformation effect is generated.<br>Value range: [0, +∞). If the value is less than 0, **0** is used.|
 
-## Event
+## Events
 
-The universal events are supported.
+Universal events are supported.
 
-## Properties
+## Attributes
 
-Common attributes are supported, and the width and height can be set.
+Universal attributes are supported. The width and height can be set.
 
-> **NOTE:**
+> **NOTE**
 >
-> - During the fusion, the container becomes the non-linear deformation effect of stitching, and the border becomes the stitching effect after fusion. Therefore, the capabilities related to the border are affected. Currently, the following border-related attributes support the fusion deformation effect: border [border](ts-universal-attributes-border.md#border), outer border [outline](ts-universal-attributes-outline.md#outline), shadow [shadow](ts-universal-attributes-image-effect.md#shadow), background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), and point light source [pointLight](#pointlight). The preceding effect is drawn on the fused shape, which belongs to the drawing part of UnionEffectContainer.
+> - During the union, the container exhibit a sticky non-linear deformation effect, and its border will show a sticky effect after union. Therefore, border-related capabilities will be affected. Currently, the following border-related attributes support the union deformation effect: [border](ts-universal-attributes-border.md#border), [outline](ts-universal-attributes-outline.md#outline), [shadow](ts-universal-attributes-image-effect.md#shadow), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), and [pointLight](#pointlight). The above effects are drawn on the shape after union, which is the drawing part of **UnionEffectContainer**.
 >
-> - Set the preceding border-related attributes that support the fusion deformation effect on this component. If the same attribute is set for a descendant component, the settings of the two attributes are independent of each other. The drawing is performed twice, once during the drawing of the UnionEffectContainer control, once in the property drawing of the descendant component itself. Generally, you do not need to set the same attribute that supports the fusion deformation effect in the descendant component that uses the fusion effect of the ancestor component UnionEffectContainer to avoid deterioration of the fusion effect.
+> - If the attributes related to the border and supporting the union deformation effect are set on the component, the drawing is displayed on the component. If the same attribute is set on the descendant component, the two attributes are set independently. The drawing is performed twice, once in the drawing of the **UnionEffectContainer** component and once in the drawing of the descendant component. Generally, you do not need to set the same attribute that supports the union deformation effect on the descendant component that uses the union effect of the ancestor component **UnionEffectContainer**. This prevents the deterioration of the union effect.
 
 ### pointLight
 
@@ -90,7 +90,7 @@ Sets the point light style.
 
 ### Example 1: Setting the Union Effect
 
-This example demonstrates how to use the [UnionEffectContainer](#unioneffectcontainer) component to generate a union deformation effect by changing the spacing value or the distance between child components.
+This example demonstrates how to use the [UnionEffectContainer](#unioneffectcontainer) component to generate a union deformation effect by changing the **spacing** value or the spacing between descendant components.
 
 ```ts
 //UnionEffectContainerPage.ets
@@ -110,7 +110,7 @@ struct UnionEffectContainerPage {
               .height(100)
               .margin({ top: 10 })
               .borderRadius(50)
-              .useUnionEffect(true)// Set the useUnionEffect attribute to use the blending effect.
+              .useUnionEffect(true)// Set the useUnionEffect attribute to use the union effect.
               .translate({ y: this.translateY })
 
             Column()
@@ -122,20 +122,20 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('80%')
-        .backgroundColor("#2787d9") // Set the attributes supported by the blending effect, such as the background color.
+        .backgroundColor("#2787d9") // Set the attributes supported by the union effect, such as the background color.
 
         Row({ space: 30 }) {
           Text("translate:")
           Button('+10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.translateY += 10; // Change the distance between child components.
+                this.translateY += 10; // Change the spacing between the descendant components.
               });
             })
           Button('-10')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.translateY -= 10; // Change the distance of the child component.
+                this.translateY -= 10; // Change the spacing between the descendant components.
               });
             })
         }
@@ -154,7 +154,7 @@ struct UnionEffectContainerPage {
               .height(100)
               .margin({ top: 10 })
               .borderRadius(50)
-              .useUnionEffect(true) // Set the useUnionEffect attribute to use the blending effect.
+              .useUnionEffect(true) // Set the useUnionEffect attribute to use the union effect.
 
             Column()
               .width(200)
@@ -165,14 +165,14 @@ struct UnionEffectContainerPage {
         }
         .width('100%')
         .height('80%')
-        .backgroundColor("#2787d9") // Set the attributes supported by the blending effect, such as the background color.
+        .backgroundColor("#2787d9") // Set the attributes supported by the union effect, such as the background color.
 
         Row({ space: 30 }) {
           Text("spacing:")
           Button('+20')
             .onClick(() => {
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.spacing += 20; // Change the spacing of the child component.
+                this.spacing += 20; // Change the spacing of the descendant components.
               });
             })
           Button('-20')
@@ -181,7 +181,7 @@ struct UnionEffectContainerPage {
                 return;
               }
               this.getUIContext().animateTo({ duration: 200 }, () => {
-                this.spacing -= 20; // Change the distance of the child component.
+                this.spacing -= 20; // Change the spacing of the descendant components.
                 if (this.spacing < 0) {
                   this.spacing = 0;
                 }

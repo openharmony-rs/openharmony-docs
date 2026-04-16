@@ -154,9 +154,9 @@ Sets the alignment mode of a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  int32_t alignment | Alignment mode. The parameter type is **ArkUI_Alignment**.|
-|  float offsetX | Horizontal offset of the custom dialog box. The value is a floating point number.|
-|  float offsetY | Vertical offset of the custom dialog box. The value is a floating point number.|
+|  int32_t alignment | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
+|  float offsetX | Horizontal offset of the dialog box. The value is a floating point number, in vp.|
+|  float offsetY | Vertical offset of the dialog box. The value is a floating point number, in vp.|
 
 **Returns**
 
@@ -172,7 +172,7 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 **Description**
 
-Resets the alignment mode of a custom dialog box to its default settings.
+Resets the alignment mode of a custom dialog box to its default settings. The default value is **ARKUI_ALIGNMENT_TOP_START**. For details, see [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).
 
 > **NOTE**
 >
@@ -318,10 +318,10 @@ Sets the background corner radius for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  float topLeft | Radius of the upper left corner of the custom dialog box background.|
-|  float topRight | Radius of the upper right corner of the custom dialog box background.|
-| float bottomLeft | Radius of the lower left corner of the custom dialog box background.|
-|  float bottomRight | Radius of the lower right corner of the custom dialog box background.|
+|  float topLeft | Radius of the upper left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+|  float topRight | Radius of the upper right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+| float bottomLeft | Radius of the lower left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+|  float bottomRight | Radius of the lower right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
 
 **Returns**
 
@@ -348,7 +348,7 @@ Sets the number of grid columns occupied by a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  int32_t gridCount | Number of grid columns occupied by the dialog box. The default value is subject to the window size, and the maximum value is the maximum number of columns supported by the system.|
+|  int32_t gridCount | Number of grids. The default value is subject to the window size, and the maximum value is the [maximum number of columns supported by the system](../../ui/arkts-layout-development-grid-layout.md#columns).<br>The value is an integer greater than or equal to 0.|
 
 **Returns**
 

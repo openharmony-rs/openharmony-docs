@@ -32,10 +32,11 @@
 - 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务开发指导](../../task-management/continuous-task.md)。
 - 录制需要在前台启动，启动后可以退后台。在后台启动录制将会失败。
 - 应用录制音频时需要使用合适的录制流类型，请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)。
+- 应用录制音频时需要切换输入设备路由，请参考[实现音频输入设备路由切换](../audio/audio-input-device-switcher.md)。
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)。
+详细的API说明请参考[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)。
 
 1. 创建AVRecorder实例，实例创建完成进入idle状态。
 
@@ -89,12 +90,12 @@
    >   如果只需要录制音频，请不要设置视频相关配置参数；如果需要录制视频，可以参考[视频录制开发指导](video-recording.md)进行开发。直接设置视频相关参数会导致后续步骤报错。
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，具体录制参数需严格契合既定的[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
-   > - 示例中配置的audioCodec音频编码格式、aacProfile音频编码扩展格式、fileFormat封装格式请参考[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
+   > - 示例中配置的audioCodec音频编码格式、aacProfile音频编码扩展格式、fileFormat封装格式请参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
 
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import fileIo from '@ohos.file.fs';
 
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
@@ -107,7 +108,7 @@
    
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
    let filePath: string = context.filesDir + '/example.mp3';
-   let audioFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+   let audioFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    let fileFd: number = audioFile.fd; // 获取文件fd。
     
    let avConfig: media.AVRecorderConfig = {
@@ -177,7 +178,7 @@
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import fileIo from '@ohos.file.fs';
 
 async function audioRecording(context: common.Context): Promise<void> {
   // 创建avRecorder对象。
@@ -220,10 +221,10 @@ async function audioRecording(context: common.Context): Promise<void> {
   };
 
   // 创建文件以及设置avConfig.url。
-  let audioFile: fs.File | undefined = undefined;
+  let audioFile: fileIo.File | undefined = undefined;
   try {
     let path: string = context.filesDir + '/example.mp3'; // 文件沙箱路径，文件后缀名应与封装格式对应。
-    audioFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE); // 打开文件。
+    audioFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // 打开文件。
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to open file, error code: ${err.code}, message: ${err.message}`);
@@ -302,7 +303,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   // 关闭录制文件fd。
   try {
     if (audioFile !== undefined) {
-      await fs.close(audioFile.fd);
+      await fileIo.close(audioFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;

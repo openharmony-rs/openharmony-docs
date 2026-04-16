@@ -754,7 +754,7 @@ Obtains custom data of the specified MIME type from **PasteDataRecord**.
 
 | Type                                     | Description                                                                                                                  |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| Promise&lt;[ValueType](#valuetype9)&gt; | Promise used to return the custom data of the specified MIME type.<br>If **PasteDataRecord** contains data of multiple MIME types, the non-**PasteDataRecord** data of the default MIME type can be obtained only through this API.|
+| Promise&lt;[ValueType](#valuetype9)&gt; | Promise used to return the custom data of the specified MIME type in **PasteDataRecord**.<br>If **PasteDataRecord** contains data of multiple MIME types, the non-**PasteDataRecord** data of the default MIME type can be obtained only through this API.|
 
 **Error codes**
 
@@ -1303,7 +1303,7 @@ let tag: string = pasteData.getTag();
 
 hasType(mimeType: string): boolean
 
-Checks whether the pasteboard contains data of the specified type.
+Checks whether the pasteboard contains data of the specified MIME type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1313,7 +1313,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in Constants(#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type.|
+| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type.|
 
 **Return value**
 
@@ -2018,7 +2018,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 
 hasRemoteData(): boolean
 
-Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to check whether the pasteboard data contains custom data types or read the pasteboard data.
+Checks whether the pasteboard data is on a remote device. Transferring data across devices takes time. If the pasteboard data is on a remote device, do not check for custom data types or read the pasteboard data on the UI thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -2919,6 +2919,8 @@ Describes the modes supported by the pasteboard.
 | URL                              | 0   | URL.                                                             |
 | NUMBER                        | 1   | Number.                                                   |
 | EMAIL_ADDRESS | 2   | Email address.|
+| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.|
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.|
 
 ### detectPatterns<sup>13+</sup>
 

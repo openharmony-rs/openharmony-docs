@@ -81,7 +81,7 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型               | 必填 | 说明                            |
 | -------- | ----------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自Unix纪元以来经过的时间。         |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自Unix纪元以来经过的时间（ms）。         |
 
 **错误码：**
 
@@ -221,7 +221,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明    |
 | -------- | -------------- | ---- | --------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，不包括深度睡眠时间。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间（ms），不包括深度睡眠时间。 |
 
 **错误码：**
 
@@ -361,7 +361,7 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明      |
 | -------- | --------- | ---- | --------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。   |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间（ms），包括深度睡眠时间。   |
 
 **错误码：**
 
@@ -654,7 +654,7 @@ let time = 1611081385000;
 try {
   systemTime.setTime(time, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting time`);
@@ -710,7 +710,7 @@ try {
   systemTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -756,7 +756,7 @@ let date = new Date();
 try {
   systemTime.setDate(date, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting date.`);
@@ -811,7 +811,7 @@ try {
   systemTime.setDate(date).then(() => {
     console.info(`Succeeded in setting date.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -856,7 +856,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemTime.setTimezone('Asia/Shanghai', (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting timezone.`);
@@ -910,7 +910,7 @@ try {
   systemTime.setTimezone('Asia/Shanghai').then(() => {
     console.info(`Succeeded in setting timezone.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;

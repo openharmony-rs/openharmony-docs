@@ -40,7 +40,7 @@
 | SOURCE_TYPE_MIC | 适用于普通录音。|
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup> | 适用于语音识别。 |
 | SOURCE_TYPE_PLAYBACK_CAPTURE | （API12已废弃）适用于录制其他应用送到系统中播放的原始音频数据。<br>AudioKit不再提供内录接口，请通过[录屏接口AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture.md)进行内录。 |
-| SOURCE_TYPE_VOICE_COMMUNICATION | 适用于VoIP语音通话。 |
+| SOURCE_TYPE_VOICE_COMMUNICATION | 适用于VoIP语音通话，能够增强人声录制，同时抑制环境音等其他非人声。 |
 | SOURCE_TYPE_VOICE_MESSAGE | 适用于录制语音短消息。 |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup> | 适用于相机录像。 |
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup> | 适用于获取麦克风采集到的纯净音频数据（系统不做任何算法处理）。 |
@@ -67,7 +67,7 @@
 
 音频流类型在音频焦点管理中扮演着关键角色，不同类型的音频流具有不同的默认优先级和处理方式。
 
-当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点和音频会话介绍](audio-playback-concurrency.md)。
+当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点介绍](audio-playback-concurrency.md)。
 
 此处仅说明常见的音频流类型影响音频焦点的表现，其他类型可参考[系统默认焦点策略表](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-audio-focus-management#section17923135513547)。
 

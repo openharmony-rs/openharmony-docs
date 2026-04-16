@@ -12,7 +12,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，导入方法如下。
 

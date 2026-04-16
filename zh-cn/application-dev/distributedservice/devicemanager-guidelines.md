@@ -36,6 +36,9 @@
 
   设备信息属于用户敏感数据，所以即使用户已连接同一局域网或者蓝牙开关已开启，应用在获取设备位置前仍需向用户申请数据同步权限。在用户确认允许后，系统才会向应用提供设备管理能力。
 
+<!--RP1-->
+<!--RP1End-->
+
 ## 申请分布式数据同步权限开发指导
 
 ### 场景概述
@@ -124,7 +127,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
-   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    async createDeviceManager(): Promise<void> {

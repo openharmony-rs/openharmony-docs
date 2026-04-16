@@ -1,7 +1,7 @@
 # 输入法框架错误码
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -434,3 +434,29 @@ Invalid displayId.
 **处理步骤**
 
 开发者可以通过接口[getDisplayId](js-apis-inputmethodengine.md#getdisplayid15)获取当前窗口的所在id。
+<!--Del-->
+## 12800026 输入法系统面板错误
+
+**错误信息**
+
+Input method system panel error. Possible causes: 
+1. system panel not connected.
+2. ipc failed due to large amount of data transferred or other reasons.
+3. the caller is not system panel.
+
+**错误描述**
+
+输入法系统面板操作失败。
+
+**可能原因**
+
+1. 系统面板未连接。
+2. 传输的数据量过大等原因，导致IPC失败。
+3. 调用者不是系统面板。
+
+**处理步骤**
+
+1. 确保已调用[connectSystemChannel](./js-apis-inputmethod-system-panel-manager-sys.md#inputmethodsystempanelmanagerconnectsystemchannel)接口连接系统通道。
+2. 根据[IPC的约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)，调整传输数据量。
+3. 确保调用者为系统面板。
+<!--DelEnd-->

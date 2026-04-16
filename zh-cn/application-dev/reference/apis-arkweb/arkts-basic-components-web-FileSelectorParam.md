@@ -78,7 +78,7 @@ isCapture(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否调用多媒体能力。<br>true表示返回调用多媒体能力，false表示返回未调用多媒体能力。 |
+| boolean | 返回是否调用多媒体能力。<br>true表示调用多媒体能力，false表示未调用多媒体能力。 |
 
 ## getMimeTypes<sup>18+</sup>
 
@@ -106,7 +106,7 @@ getSuggestedName(): string
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| string | 返回建议文件名。 |
+| string | 返回建议选择的文件名。 |
 
 ## getDefaultPath<sup>23+</sup>
 
@@ -120,13 +120,13 @@ getDefaultPath(): string
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| string | 返回默认路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为鸿蒙系统下的`download`和`images`。 |
+| string | 返回默认起始路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为OpenHarmony系统下的`download`和`images`，请参考[获取并使用公共目录](../../file-management/request-dir-permission.md)。 |
 
 ## getDescriptions<sup>23+</sup>
 
 getDescriptions(): Array\<string\>
 
-获取各组文件类型的描述。为允许的文件类型类别的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
+获取允许的各组文件类型的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -140,7 +140,7 @@ getDescriptions(): Array\<string\>
 
 isAcceptAllOptionExcluded(): boolean
 
-获取文件选择器是否支持选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
+获取文件选择器是否包含选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -154,7 +154,7 @@ isAcceptAllOptionExcluded(): boolean
 
 getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
 
-获取文件types信息。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。
+获取文件类型信息。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -162,4 +162,4 @@ getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
 
 | 类型              | 说明        |
 | --------------- | --------- |
-| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件types信息。 |
+| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件类型信息。 |

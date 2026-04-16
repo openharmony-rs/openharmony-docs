@@ -14,19 +14,20 @@
 
    计算器业务模块定义如下：
 
-   ```ts
-   // sdk/Calculator.ets
+   <!-- @[define_calculator_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/Calculator.ets) -->
+   
+   ``` TypeScript
    import { collections } from '@kit.ArkTS';
    
    @Sendable
    export class Calculator {
-     history?: collections.Array<collections.Array<string>>;
-     totalCount: number = 0;
+     public history?: collections.Array<collections.Array<string>>;
+     public totalCount: number = 0;
    
      static init(): Calculator {
        let calc = new Calculator();
        calc.totalCount = 0;
-       calc.history = collections.Array.create(calc.totalCount, collections.Array.create(2, ""));
+       calc.history = collections.Array.create(calc.totalCount, collections.Array.create(2, ''));
        return calc;
      }
    
@@ -70,12 +71,12 @@
      }
    }
    ```
-   <!-- @[define_calculator_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/Calculator.ets) -->
 
    定时器业务模块的定义如下：
 
-   ```ts
-   // sdk/TimerSdk.ets
+   <!-- @[define_timer_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/TimerSdk.ets) -->
+   
+   ``` TypeScript
    @Sendable
    export class TimerSdk {
      static init(): TimerSdk {
@@ -83,21 +84,21 @@
        return timer;
      }
    
-     async countDown(time: number) {
+     async Countdown(time: number) {
        return new Promise((resolve: (value: boolean) => void) => {
          setTimeout(() => {
            resolve(true);
          }, time);
-       })
+       });
      }
    }
    ```
-   <!-- @[define_timer_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/TimerSdk.ets) -->
 
 2. 在UI主线程触发各业务模块分发到子线程，加载完成后在UI主线程使用，示例如下：
 
-   ```ts
-   // Index.ets
+   <!-- @[distribute_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ConcurrentLoadingModulesGuide.ets) -->
+   
+   ``` TypeScript
    import { Calculator } from '../sdk/Calculator';
    import { TimerSdk } from '../sdk/TimerSdk';
    import { taskpool } from '@kit.ArkTS';
@@ -115,8 +116,11 @@
    @Entry
    @Component
    struct Index {
-     calc?: Calculator
-     timer?: TimerSdk
+     @State calculateAdd: string = 'calculate add';
+     @State showHistory: string = 'show history';
+     @State countdown: string = 'countdown';
+     calc?: Calculator;
+     timer?: TimerSdk;
    
      aboutToAppear(): void {
        taskpool.execute(initCalculator).then((ret) => {
@@ -130,7 +134,7 @@
      build() {
        Row() {
          Column() {
-           Text("calculate add")
+           Text(this.calculateAdd)
              .id('add')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
@@ -139,10 +143,11 @@
                middle: { anchor: '__container__', align: HorizontalAlign.Center }
              })
              .onClick(async () => {
-               let result = this.calc?.add(1, 2);
-               console.info(`Result is ${result}`);
+               let result = this.calc?.add(1, 2)
+               console.info(`Result is ${result}`)
+               this.calculateAdd = 'success';
              })
-           Text("show history")
+           Text(this.showHistory)
              .id('show')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
@@ -152,8 +157,9 @@
              })
              .onClick(async () => {
                this.calc?.showHistory();
+               this.showHistory = 'success';
              })
-           Text("countdown")
+           Text(this.countdown)
              .id('get')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
@@ -163,8 +169,9 @@
              })
              .onClick(async () => {
                console.info(`Timer start`);
-               await this.timer?.countDown(1000);
+               await this.timer?.Countdown(1000);
                console.info(`Timer end`);
+               this.countdown = 'success';
              })
          }
          .width('100%')
@@ -173,4 +180,3 @@
      }
    }
    ```
-   <!-- @[distribute_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ConcurrentLoadingModulesGuide.ets) -->

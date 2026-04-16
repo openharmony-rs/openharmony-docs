@@ -4,11 +4,11 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
-提供BASE DDK接口，包括创建共享内存，映射共享内存，取消映射共享内存，以及摧毁共享内存。
+提供BASE DDK接口，包括创建共享内存，映射共享内存，取消映射共享内存，以及销毁共享内存。
 
 **起始版本：** 12
 ## 文件汇总

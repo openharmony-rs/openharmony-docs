@@ -4,7 +4,8 @@
 <!--Owner: @wangJE-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -97,7 +98,7 @@ The number of connection exceeds the limit.
 
 **处理步骤**
 
-应用已申请的Connection资源数量过多，需要调用close()方法释放这些资源。
+应用已申请的Connection资源数量超过最大允许数量(10个)，需要调用close()方法释放这些资源。
 
 ## 32390205 连接状态不可用
 
@@ -111,7 +112,7 @@ Connection is not ready.
 
 **可能原因**
 
-客户端或服务端应用正在使用已断开的连接。
+客户端或服务端应用正在使用已断开的连接，例如连接建立后因异常中断导致的连接状态改变。
 
 **处理步骤**
 

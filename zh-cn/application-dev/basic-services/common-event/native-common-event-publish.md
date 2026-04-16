@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-详细的API说明请参考[CommonEvent API参考](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
+详细的API说明请参考[oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |

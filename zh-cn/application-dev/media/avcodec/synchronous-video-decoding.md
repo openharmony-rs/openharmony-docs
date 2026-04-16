@@ -26,10 +26,6 @@
 
 详细的API说明请参考[VideoDecoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md)。
 
-- 虚线表示可选。
-
-- 实线表示必选。
-
 ![Invoking relationship of video decode stream](figures/synchronous-video-decode.png)
 
 ### 在CMake脚本中链接动态库

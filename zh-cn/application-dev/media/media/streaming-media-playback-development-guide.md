@@ -55,7 +55,7 @@
 
 5. 准备播放：调用prepare()，使AVPlayer进入prepared状态，此时可获取duration，设置缩放模式、音量等。
 
-6. 进行视频播控：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
+6. 进行视频播放控制：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
 
 7. （可选）更换资源：调用reset()重置资源，使AVPlayer重新进入idle状态，允许更换资源url。
 

@@ -57,7 +57,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
@@ -115,7 +115,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info(`formProvider setFormNextRefreshTime success`);
@@ -168,7 +168,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 try {
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -233,7 +233,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 let param: Record<string, string> = {
   'temperature': '22c',
   'time': '22:00'
@@ -484,7 +484,7 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md#801-该设备不支持此api)和[卡片错误码](errorcode-form.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
 
 | 错误码ID    | 错误信息 |
 |----------| -------- |
@@ -736,7 +736,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 let overflowInfo: formInfo.OverflowInfo = {
   area: {
     left: -10,
@@ -802,7 +802,7 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 
 try {
   formProvider.cancelOverflow(formId).then(() => {
@@ -857,7 +857,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
 
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {

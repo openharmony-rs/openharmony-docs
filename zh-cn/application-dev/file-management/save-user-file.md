@@ -11,7 +11,7 @@
 **权限说明**
 
 - 通过Picker获取的URI默认只具备**临时读写权限**，临时授权在应用退出后台自动失效。
-- 如果设置[autoCreateEmptyFile参数为false](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
+- 如果设置[autoCreateEmptyFile](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)参数为false，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
 - 获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 - 使用Picker对音频、图片、视频、文档类文件的保存操作**无需申请权限**。
 
@@ -32,27 +32,27 @@
 
    ```ts
    import { picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 配置保存选项。
+2. 根据实际业务需求配置[文件保存选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅例举各选项的配置参考。
 
    ```ts
    // 创建文件管理器选项实例。
    const documentSaveOptions = new picker.DocumentSaveOptions();
    // 保存文件名（可选）。 默认为空。
    documentSaveOptions.newFileNames = ["DocumentViewPicker01.txt"];
-   //指定保存的文件或者目录的URI（可选）。
+   // 指定保存的文件或者目录的URI（可选）。
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
    // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（最多限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
    documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf'];
    // 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。
-   documentSaveOptions.autoCreateEmptyFile = false; 
+   documentSaveOptions.autoCreateEmptyFile = false;
    ```
 
-3. 创建[文件选择器DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
+3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
@@ -70,32 +70,29 @@
    ```
 
    > **注意**：
-   >
-   > 1. URI存储建议：
-   > 	- Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[基础文件API](../reference/apis-core-file-kit/js-apis-file-fs.md)进行文件读写操作。
-   > 	- 避免在Picker回调中直接操作URI。
-   > 	- 建议使用全局变量保存URI以供后续使用。
-   >
-   > 2. 快捷保存：
-   > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   > - 避免在Picker回调中直接操作URI。
+   > - 建议使用全局变量保存URI以供后续使用。
+   > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
+
+4. 待界面从FilePicker返回后，使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      // 这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
-      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
    ```
 
-5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
-   let writeLen: number = fs.writeSync(file.fd, 'hello, world');
+   let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fs.closeSync(file);
+   fileIo.closeSync(file);
    ```
 
 ## 保存音频类文件
@@ -104,7 +101,7 @@
 
    ```ts
    import { picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -135,32 +132,29 @@
    ```
 
    > **注意**：
-   >
-   > 1. URI存储建议：
-   > 	- Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[基础文件API](../reference/apis-core-file-kit/js-apis-file-fs.md)进行文件读写操作。
-   > 	- 避免在Picker回调中直接操作URI。
-   > 	- 建议使用全局变量保存URI以供后续使用。
-   >
-   > 2. 快捷保存：
-   > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，可以使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   > - 避免在Picker回调中直接操作URI。
+   > - 建议使用全局变量保存URI以供后续使用。
+   > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
+
+4. 待界面从FilePicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
       // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
-      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
    ```
 
-5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
-   let writeLen = fs.writeSync(file.fd, 'hello, world');
+   let writeLen = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fs.closeSync(file);
+   fileIo.closeSync(file);
  
    ```
 
@@ -180,7 +174,7 @@
 
    ```ts
    import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -206,9 +200,9 @@
      uri = documentSaveResult[0];
      console.info('documentViewPicker.save succeed and uri is:' + uri);
      const testFilePath = new fileUri.FileUri(uri + '/test.txt').path;
-     const file = fs.openSync(testFilePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-     fs.writeSync(file.fd, 'Hello World!');
-     fs.closeSync(file.fd);
+     const file = fileIo.openSync(testFilePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+     fileIo.writeSync(file.fd, 'Hello World!');
+     fileIo.closeSync(file.fd);
    }).catch((err: BusinessError) => {
      console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
    })

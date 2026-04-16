@@ -12,7 +12,7 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVImageGenerator API参考](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)。
+详细的API说明请参考[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)。
 
 1. 使用[createAVImageGenerator()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavimagegenerator12-1)创建实例。
 

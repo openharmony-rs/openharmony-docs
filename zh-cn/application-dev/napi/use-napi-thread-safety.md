@@ -66,7 +66,9 @@
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
        std::promise<std::string> promise;
        auto future = promise.get_future();
+       napi_acquire_threadsafe_function(callbackData->tsfn);
        napi_call_threadsafe_function(callbackData->tsfn, &promise, napi_tsfn_nonblocking);
+       napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
        try {
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
@@ -130,6 +132,7 @@
        napi_delete_async_work(env, callbackData->work);
        callbackData->tsfn = nullptr;
        callbackData->work = nullptr;
+       delete callbackData;
    }
    
    static napi_value StartThread(napi_env env, napi_callback_info info)

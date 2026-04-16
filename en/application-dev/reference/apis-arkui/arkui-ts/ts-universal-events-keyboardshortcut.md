@@ -1,7 +1,7 @@
 # Component Keyboard Shortcut Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -56,7 +56,7 @@ Keyboard shortcuts, as system keys, take precedence over the common key event **
 | Character key case sensitivity in the **value** parameter of the **keyboardShortcut** API           | The response is case-insensitive.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
 | Response to keyboard shortcuts                                  | The component responds to a keyboard shortcut when the keys specified by **keys** are pressed and the key specified by **value** triggers a down event. (Long-pressing leads to continuous response.)             | –                                       |
 | Hidden components<br>                              | The component still responds to keyboard shortcuts.                             | –                                       |
-| [Disabled](ts-universal-attributes-enable.md) components                             | Disabled components do not respond to keyboard shortcuts.                            | –                                       |
+| Disabled components ([enabled](ts-universal-attributes-enable.md#enabled) set to **false**)                             | Disabled components do not respond to keyboard shortcuts.                            | –                                       |
 | 1. Duplicate system shortcuts (including those same as predefined ones)<br>2. Multiple character keys in **value**<br>3. Duplicate modifier keys in **keys**| In these cases, the keyboard shortcut is not added, and the previously added keyboard shortcuts still work.         | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br>Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br>Button('button3').keyboardShortcut('ab',[ModifierKey.CTRL,ModifierKey.CTRL]) |
 
 ### System-Defined Keyboard Shortcuts That Cannot Be Bound
@@ -101,7 +101,7 @@ struct Index {
           this.message = "I clicked Button 1";
           console.info("I clicked 1");
         }).keyboardShortcut('.', [ModifierKey.SHIFT, ModifierKey.CTRL, ModifierKey.ALT])
-          .onKeyEvent((event: KeyEvent)=>{
+          .onKeyEvent((event: KeyEvent) => {
             console.info("event.keyCode: " + JSON.stringify(event));
           })
         Button("Test short cut 2").onClick((event: ClickEvent) => {

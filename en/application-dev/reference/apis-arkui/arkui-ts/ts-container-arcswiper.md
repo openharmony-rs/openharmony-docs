@@ -17,8 +17,8 @@ The **ArcSwiper** component is designed for circular screens to display child co
 > **NOTE**
 >
 > - **ArcSwiperAttribute** is essential for configuring the **ArcSwiper** component. In API version 21 and earlier, you must manually import **ArcSwiperAttribute** after importing the **ArcSwiper** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcSwiperAttribute** when it detects the **ArcSwiper** component, so manual import is no longer necessary.
->
 > - If you manually import **ArcSwiperAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
 API version 21 and earlier:
 

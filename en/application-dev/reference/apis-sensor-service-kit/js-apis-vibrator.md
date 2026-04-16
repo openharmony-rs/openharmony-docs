@@ -1114,7 +1114,7 @@ Defines the vibrator status change event.
 
 | Name              | Type     | Read-Only| Optional| Description                              |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | No | No | Event timestamp.                       |
+| timestamp        | number  | No | No | Timestamp when the event is reported, in milliseconds.                       |
 | deviceId         | number  | No | No | Device ID.                          |
 | vibratorCount    | number  | No | No | Number of vibrators on the device.                      |
 | isVibratorOnline | boolean | No | No | Vibrator status. The value **true** indicates that the device is online, and the value **false** indicates the opposite.|
@@ -1466,7 +1466,7 @@ Represents a custom vibration pattern. It is supported only by certain devices. 
 
 ## HapticFileDescriptor<sup>10+</sup>
 
-Describes the FD of a custom vibration configuration file. Ensure that the file is available, and the parameters in it can be obtained from the sandbox path through the [file management API](../apis-core-file-kit/js-apis-file-fs.md#fsopen) or from the HAP resource through the [resource management API](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9). The application scenario is as follows: The vibration sequence is stored in a file and vibration needs to be triggered based on the offset and length. For details about the storage format of the vibration sequence, see [Vibration Effect Description](../../device/sensor/vibrator-guidelines.md#vibration-effect-description).
+Describes the FD of a custom vibration configuration file. Ensure that the file is available, and the parameters in it can be obtained from the sandbox path through the [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen) API or from the HAP resource through the [getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9) API. The application scenario is as follows: The vibration sequence is stored in a file and vibration needs to be triggered based on the offset and length. For details about the storage format of the vibration sequence, see [Vibration Effect Description](../../device/sensor/vibrator-guidelines.md#vibration-effect-description).
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1495,7 +1495,7 @@ Defines the gain relative to the vibration intensity.
 
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| time      | number | No  | No  | Start time offset.                                              |
+| time      | number | No  | No  | Start time offset, in milliseconds.                                              |
 | intensity | number | No  | Yes  | Gain relative to the vibration intensity. This parameter is optional. The value range is [0,100%]. If this parameter is left empty, the default value is **1**.|
 | frequency | number | No  | Yes  | Change relative to the vibration frequency. This parameter is optional. The value range is [-100,100]. If this parameter is left empty, the default value is **0**.|
 
@@ -1509,7 +1509,7 @@ Vibration event.
 | --------- | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | eventType | VibratorEventType               | No  | No  | Vibration event type.                                              |
 | time      | number                          | No  | No  | Vibration start time, in ms. The value range is [0,1800000].   |
-| duration  | number                          | No  | Yes  | Vibration duration. This parameter is optional. The value range is (0,5000]. The default value is **48** for short vibration and **1000** for long vibration.|
+| duration  | number                          | No  | Yes  | Vibration duration, in ms. This parameter is optional. The value is an integer in the range (0, 5000]. The default value is **48** for short vibration and **1000** for long vibration.|
 | intensity | number                          | No  | Yes  | Vibration intensity. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **100**.|
 | frequency | number                          | No  | Yes  | Vibration frequency. This parameter is optional. The value range is [0,100]. If this parameter is left empty, the default value is **50**.|
 | index     | number                          | No  | Yes  | Channel number. This parameter is optional. The value range is [0,2]. If this parameter is left empty, the default value is **0**.       |
@@ -1523,7 +1523,7 @@ Defines the vibration sequence.
 
 | Name  | Type                      | Read-Only| Optional| Description                                                |
 | ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
-| time   | number                     | No  | No  | Absolute vibration start time.                                  |
+| time   | number                     | No  | No  | Absolute start time of the vibration, in milliseconds.                                  |
 | events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | No  | No  | Vibration event array, which is the **VibratorPattern** object returned by **build() **.|
 
 ## ContinuousParam<sup>18+</sup>

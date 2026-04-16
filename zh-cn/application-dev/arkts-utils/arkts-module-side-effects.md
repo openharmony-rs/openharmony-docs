@@ -18,14 +18,20 @@
 
 模块在被导入时，整个模块文件中的顶层代码会立即执行，而不仅仅是导出的部分。这意味着，即使只想使用模块中的某些导出内容，任何在顶层作用域中执行的代码也会运行，从而产生副作用。
 
-```typescript
-// module.ets
-console.info("Module loaded!"); // 这段代码在导入时会立即执行，可能会导致副作用。
-export const data = 1;
+<!-- @[export_modulePartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartOne.ets) -->
 
-// main.ets
-import { data } from './module' // 导入时，module.ets中的console.info会执行，产生输出。
-console.info("data is ", data);
+``` TypeScript
+// ModulePartOne.ets
+console.info('Module loaded!'); // 这段代码在导入时会立即执行，可能会导致副作用。
+export const data = 1;
+```
+
+<!-- @[import_modulePartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageOne.ets) -->
+
+``` TypeScript
+// PageOne.ets
+import { data } from './ModulePartOne'; // 导入时，ModulePartOne.ets中的console.info会执行，产生输出。
+console.info('data is ', data);
 ```
 
 输出内容：
@@ -43,13 +49,19 @@ data is  1
 
 优化方式1：去除顶层代码，只导出需要的内容，避免不必要的代码执行。
 
-```typescript
-// module.ets
-export const data = 1;
+<!-- @[export_modulePartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartTwo.ets) -->
 
-// main.ets
-import { data } from './module'
-console.info("data is ", data);
+``` TypeScript
+// ModulePartTwo.ets
+export const data = 1;
+```
+
+<!-- @[import_modulePartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwo.ets) -->
+
+``` TypeScript
+// PageTwo.ets
+import { data } from './ModulePartTwo';
+console.info('data is ', data);
 ```
 
 输出内容：
@@ -60,16 +72,22 @@ data is  1
 
 优化方式2：将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-```typescript
-// module.ets
+<!-- @[export_modulePartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartThree.ets) -->
+
+``` TypeScript
+// ModulePartThree.ets
 export function initialize() {
-    console.info("Module loaded!");
+  console.info('Module loaded!');
 }
 export const data = 1;
+```
 
-// main.ets
-import { data } from './module'
-console.info("data is ", data);
+<!-- @[import_modulePartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageThree.ets) -->
+
+``` TypeScript
+// PageThree.ets
+import { data } from './ModulePartThree';
+console.info('data is ', data);
 ```
 
 输出内容：
@@ -84,31 +102,45 @@ data is  1
 
 顶层代码或导入的模块可能会直接**操作全局变量**，改变全局状态，引发副作用。
 
-```typescript
-// module.ets
-export let data1 = "data from module"
+<!-- @[export_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartFour.ets) -->
+
+``` TypeScript
+// ModulePartFour.ets
+export let data1 = 'data from module';
 globalThis.someGlobalVar = 100; // 改变了全局状态
+```
 
-// sideEffectModule.ets
-export let data2 = "data from side effect module"
+<!-- @[export_sideEffectModuleFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/SideEffectModuleFour.ets) -->
+
+``` TypeScript
+// SideEffectModuleFour.ets
+export let data2 = 'data from side effect module';
 globalThis.someGlobalVar = 200; // 也改变了全局状态
+```
 
-// moduleUseGlobalVar.ets
-import { data1 } from './module' // 此时可能预期全局变量someGlobalVar的值为100
+<!-- @[export_moduleUseGlobalVarFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFour.ets) -->
+
+``` TypeScript
+// ModuleUseGlobalVarFour.ets
+import { data1 } from './ModulePartFour'; // 此时可能预期全局变量someGlobalVar的值为100
 export function useGlobalVar() {
-    console.info("data1 is ", data1);
-    console.info("globalThis.someGlobalVar is ", globalThis.someGlobalVar); // 此时由于main.ets中加载了sideEffectModule模块，someGlobalVar的值已经被改为200
+  console.info('data1 is ', data1);
+  console.info('globalThis.someGlobalVar is ', globalThis.someGlobalVar); // 此时由于PageFour.ets中加载了SideEffectModuleFour模块，someGlobalVar的值已经被改为200
 }
+```
 
-// main.ets（执行入口）
-import { data1 } from "./module" // 将全局变量someGlobalVar的值改为100
-import { data2 } from "./sideEffectModule" // 又将全局变量someGlobalVar的值改为200
-import { useGlobalVar } from './moduleUseGlobalVar'
+<!-- @[import_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFour.ets) -->
+
+``` TypeScript
+// PageFour.ets（执行入口）
+import { data1 } from './ModulePartFour'; // 将全局变量someGlobalVar的值改为100
+import { data2 } from './SideEffectModuleFour'; // 又将全局变量someGlobalVar的值改为200
+import { useGlobalVar } from './ModuleUseGlobalVarFour';
 
 useGlobalVar();
 function maybeNotCalledAtAll() {
-    console.info("data1 is ", data1);
-    console.info("data2 is ", data2);
+  console.info('data1 is ', data1);
+  console.info('data2 is ', data2);
 }
 ```
 
@@ -127,36 +159,50 @@ globalThis.someGlobalVar is  200
 
 将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-```typescript
-// module.ets
-export let data1 = "data from module"
-export function changeGlobalVar() {
-    globalThis.someGlobalVar = 100;
-}
+<!-- @[export_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartFive.ets) -->
 
-// sideEffectModule.ets
-export let data2 = "data from side effect module"
+``` TypeScript
+// ModulePartFive.ets
+export let data1 = 'data from module';
 export function changeGlobalVar() {
-    globalThis.someGlobalVar = 200;
+  globalThis.someGlobalVar = 100;
 }
+```
 
-// moduleUseGlobalVar.ets
-import { data1, changeGlobalVar } from './module'
+<!-- @[export_sideEffectModuleFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/SideEffectModuleFive.ets) -->
+
+``` TypeScript
+// SideEffectModuleFive.ets
+export let data2 = 'data from side effect module';
+export function changeGlobalVar() {
+  globalThis.someGlobalVar = 200;
+}
+```
+
+<!-- @[export_moduleUseGlobalVarFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFive.ets) -->
+
+``` TypeScript
+// ModuleUseGlobalVarFive.ets
+import { data1, changeGlobalVar } from './ModulePartFive';
 export function useGlobalVar() {
-    console.info("data1 is ", data1);
-    changeGlobalVar(); // 在需要的时候执行代码，而不是模块加载时执行。
-    console.info("globalThis.someGlobalVar is ", globalThis.someGlobalVar);
+  console.info('data1 is ', data1);
+  changeGlobalVar(); // 在需要的时候执行代码，而不是模块加载时执行。
+  console.info('globalThis.someGlobalVar is ', globalThis.someGlobalVar);
 }
+```
 
-// main.ets（执行入口）
-import { data1 } from "./module"
-import { data2 } from "./sideEffectModule"
-import { useGlobalVar } from './moduleUseGlobalVar'
+<!-- @[import_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFive.ets) -->
+
+``` TypeScript
+// PageFive.ets（执行入口）
+import { data1 } from './ModulePartFive';
+import { data2 } from './SideEffectModuleFive';
+import { useGlobalVar } from './ModuleUseGlobalVarFive';
 
 useGlobalVar();
 function maybeNotCalledAtAll() {
-    console.info("data1 is ", data1);
-    console.info("data2 is ", data2);
+  console.info('data1 is ', data1);
+  console.info('data2 is ', data2);
 }
 ```
 
@@ -173,32 +219,38 @@ globalThis.someGlobalVar is  100
 
 顶层代码或导入的模块可能会直接**修改应用级ArkUI组件的状态变量信息**，改变全局状态，引发副作用。
 
-```typescript
-// module.ets
-export let data = "data from module"
-AppStorage.setOrCreate("SomeAppStorageVar", 200); // 修改应用全局的UI状态
+<!-- @[export_modulePartSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartSix.ets) -->
 
-// Index.ets
-import { data } from "./module" // 将AppStorage中的SomeAppStorageVar改为200
+``` TypeScript
+// ModulePartSix.ets
+export let data = 'data from module';
+AppStorage.setOrCreate('SomeAppStorageVar', 200); // 修改应用全局的UI状态
+```
+
+<!-- @[import_modulePartSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageSix.ets) -->
+
+``` TypeScript
+// PageSix.ets
+import { data } from './ModulePartSix'; // 将AppStorage中的SomeAppStorageVar改为200
 
 @Entry
 @Component
 struct Index {
-    // 开发者可能预期该值为100，但是由于module模块导入，该值已经被修改为200，但开发者可能并不知道值已经被修改
-    @StorageLink("SomeAppStorageVar") message: number = 100;
-    build() {
-        Row() {
-            Column() {
-                Text("test" + this.message)
-                    .fontSize(50)
-            }
-            .width("100%")
-        }
-        .height("100%")
+  // 开发者可能预期该值为100，但是由于ModulePartSix模块导入，该值已经被修改为200，但开发者可能并不知道值已经被修改
+  @StorageLink('SomeAppStorageVar') message: number = 100;
+  build() {
+    Row() {
+      Column() {
+        Text('test' + this.message)
+          .fontSize(50)
+      }
+      .width('100%')
     }
+    .height('100%')
+  }
 }
 function maybeNotCalledAtAll() {
-    console.info("data is ", data);
+  console.info('data is ', data);
 }
 ```
 
@@ -218,33 +270,39 @@ ArkUI组件的状态变量信息可以通过一些应用级接口修改，详见
 
 将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-```typescript
-// module.ets
-export let data = "data from module"
-export function initialize() {
-    AppStorage.setOrCreate("SomeAppStorageVar", 200);
-}
+<!-- @[export_modulePartSeven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartSeven.ets) -->
 
-// Index.ets
-import { data } from "./module"
+``` TypeScript
+// ModulePartSeven.ets
+export let data = 'data from module';
+export function initialize() {
+  AppStorage.setOrCreate('SomeAppStorageVar', 200);
+}
+```
+
+<!-- @[import_modulePartSeven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageSeven.ets) -->
+
+``` TypeScript
+// PageSeven.ets
+import { data } from './ModulePartSeven';
 
 @Entry
 @Component
 struct Index {
-    @StorageLink("SomeAppStorageVar") message: number = 100;
-    build() {
-        Row() {
-            Column() {
-                Text("test" + this.message)
-                    .fontSize(50)
-            }
-            .width("100%")
-        }
-        .height("100%")
+  @StorageLink('SomeAppStorageVar') message: number = 100;
+  build() {
+    Row() {
+      Column() {
+        Text('test' + this.message)
+          .fontSize(50)
+      }
+      .width('100%')
     }
+    .height('100%')
+  }
 }
 function maybeNotCalledAtAll() {
-    console.info("data is ", data);
+  console.info('data is ', data);
 }
 ```
 
@@ -260,19 +318,25 @@ test100
 
 为使现代JavaScript特性能够在旧版浏览器或运行环境中运行，第三方库或框架可能会修改内置的全局对象或原型链，从而影响其他代码的执行。
 
-```typescript
-// modifyPrototype.ts
-export let data = "data from modifyPrototype"
-Array.prototype.includes = function (value) {
-    return this.indexOf(value) !== -1;
-};
+<!-- @[export_modifyPrototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModifyPrototype.ts) -->
 
-// main.ets
-import { data } from "./modifyPrototype" // 此时修改了Array的原型链
+``` TypeScript
+// ModifyPrototype.ts
+export let data = 'data from modifyPrototype';
+Array.prototype.includes = function (value) {
+  return this.indexOf(value) !== -1;
+};
+```
+
+<!-- @[import_modulePartEight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEight.ets) -->
+
+``` TypeScript
+// PageEight.ets
+import { data } from './ModifyPrototype'; // 此时修改了Array的原型链
 let arr = [1, 2, 3, 4];
-console.info("arr.includes(1) = " + arr.includes(1)); // 此时调用的是modifyPrototype.ts中的Array.prototype.includes方法
+console.info('arr.includes(1) = ' + arr.includes(1)); // 此时调用的是ModifyPrototype.ts中的Array.prototype.includes方法
 function maybeNotCalledAtAll() {
-    console.info("data is ", data);
+  console.info('data is ', data);
 }
 ```
 
@@ -290,14 +354,20 @@ function maybeNotCalledAtAll() {
 
 ArkTS模块化支持循环依赖，即模块A依赖模块B，同时模块B又依赖模块A。在这种情况下，某些导入的模块可能尚未完全加载，从而导致部分代码在执行时行为异常，产生意外的副作用。
 
-```typescript
-// a.ets
-import { b } from "./b"
+<!-- @[export_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ExportA.ets) -->
+
+``` TypeScript
+// ExportA.ets
+import { b } from './ExportB';
 console.info('Module A: ', b);
 export const a = 'A';
+```
 
-// b.ets
-import { a } from "./a"
+<!-- @[export_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ExportB.ets) -->
+
+``` TypeScript
+// ExportB.ets
+import { a } from './ExportA';
 console.info('Module B: ', a);
 export const b = 'B';
 ```
@@ -324,15 +394,21 @@ Stacktrace:
 
 [延迟加载](arkts-lazy-import.md)特性可使待加载模块在冷启动阶段不被加载，直至应用程序实际运行过程中需要用到这些模块时，才按需同步加载相关模块，从而缩短应用冷启动耗时。但这也同时会改变模块的执行顺序。
 
-```typescript
-// module.ets
-export let data = "data from module"
-globalThis.someGlobalVar = 100;
+<!-- @[export_modulePartNine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartNine.ets) -->
 
-// moduleUseGlobalVar.ets
-import lazy { data } from "./module"
-console.info("globalThis.someGlobalVar", globalThis.someGlobalVar); // 此时由于lazy特性，module模块还未执行，someGlobalVar的值为undefined
-console.info("data is ", data); // 使用到module模块的变量，此时module模块执行，someGlobalVar的值变为100
+``` TypeScript
+// ModulePartNine.ets
+export let data = 'data from module';
+globalThis.someGlobalVar = 100;
+```
+
+<!-- @[import_moduleUseGlobalVarNine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarNine.ets) -->
+
+``` TypeScript
+// ModuleUseGlobalVarNine.ets
+import lazy { data } from './ModulePartNine';
+console.info('globalThis.someGlobalVar', globalThis.someGlobalVar); // 此时由于lazy特性，ModulePartNine模块还未执行，someGlobalVar的值为undefined
+console.info('data is ', data); // 使用到ModulePartNine模块的变量，此时ModulePartNine模块执行，someGlobalVar的值变为100
 ```
 
 输出内容：
@@ -350,18 +426,24 @@ data is  data from module
 
 将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-```typescript
-// module.ets
-export let data = "data from module"
-export function initialize() {
-    globalThis.someGlobalVar = 100; // 延迟到函数调用时执行
-}
+<!-- @[export_modulePartTen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartTen.ets) -->
 
-// moduleUseGlobalVar.ets
-import lazy { data, initialize } from "./module"
+``` TypeScript
+// ModulePartTen.ets
+export let data = 'data from module';
+export function initialize() {
+  globalThis.someGlobalVar = 100; // 延迟到函数调用时执行
+}
+```
+
+<!-- @[import_moduleUseGlobalVarTen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarTen.ets) -->
+
+``` TypeScript
+// ModuleUseGlobalVarTen.ets
+import lazy { data, initialize } from './ModulePartTen';
 initialize(); // 执行初始化函数，初始化someGlobalVar
-console.info("globalThis.someGlobalVar is ", globalThis.someGlobalVar); // 此时someGlobalVar一定为预期的值
-console.info("data is ", data);
+console.info('globalThis.someGlobalVar is ', globalThis.someGlobalVar); // 此时someGlobalVar一定为预期的值
+console.info('data is ', data);
 ```
 
 输出内容：
@@ -395,10 +477,14 @@ export * from "./OtherModule3"
 export * from "./OtherModule4"
 export * from "./NumberString"
 console.info("har Utils.ets execute.");
+```
 
+<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
+
+``` TypeScript
 // har/src/main/ets/NumberString.ets
-export const One: string = "1";
-console.info("har NumberString.ets execute.");
+export const One: string = '1';
+console.info('har NumberString.ets execute.');
 ```
 
 1. 如果main.ets只需要依赖har中的NumberString模块，import xxx from "har"的写法会导致har整条链路上的模块被解析、执行，**导致模块解析及执行耗时增加**。上述例子中的har/Index、OtherModule1、OtherModule2、Utils、OtherModule3、OtherModule4、NumberString模块均会被解析、执行。
@@ -409,14 +495,20 @@ console.info("har NumberString.ets execute.");
 
 优化方式：改为如下的代码写法，跳过中间的依赖路径，直接依赖变量对应的模块。
 
-```typescript
-// main.ets
-import { One } from "har/src/main/ets/NumberString"
-console.info("One is ", One);
+<!-- @[import_modulePartEleven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEleven.ets) -->
 
+``` TypeScript
+// PageEleven.ets
+import { One } from 'staticlibrary/src/main/ets/components/NumberString';
+console.info('One is ', One);
+```
+
+<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
+
+``` TypeScript
 // har/src/main/ets/NumberString.ets
-export const One: string = "1";
-console.info("har NumberString.ets execute.");
+export const One: string = '1';
+console.info('har NumberString.ets execute.');
 ```
 
 ### 副作用
@@ -425,32 +517,41 @@ console.info("har NumberString.ets execute.");
 
 由于import路径展开会跳过中间模块的执行，若业务依赖模块的执行顺序，修改后可能会导致业务异常。
 
-```typescript
-// main.ets
-import { serviceManager } from "har"
+<!-- @[import_modulePartTwelve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwelve.ets) -->
+
+``` TypeScript
+// PageTwelve.ets
+import { serviceManager } from 'staticlibrary';
 
 serviceManager.print();
+```
 
-// har/Index.ets
-import { serviceManager } from "./src/main/ets/ServiceManager"
+<!-- @[import_serviceManagerOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/Index.ets) -->
+
+``` TypeScript
+import { serviceManager } from './src/main/ets/ServiceManagerPartOne';
 
 serviceManager.init();
 export { serviceManager }
+```
 
-// har/src/main/ets/ServiceManager.ets
+<!-- @[export_serviceManagerPartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartOne.ets) -->
+
+``` TypeScript
+// har/src/main/ets/ServiceManagerPartOne.ets
 class ServiceManager {
-    public inited: boolean = false;
-    
-    public init() {
-        this.inited = true;
+  public inited: boolean = false;
+
+  public init() {
+    this.inited = true;
+  }
+  public print() {
+    if (this.inited) {
+      console.info('ServiceManager is inited.');
+    } else {
+      console.error('ServiceManager is not inited.');
     }
-    public print() {
-        if (this.inited) {
-            console.info("ServiceManager is inited.");
-        } else {
-            console.error("ServiceManager is not inited.");
-        }
-    }
+  }
 }
 export let serviceManager: ServiceManager = new ServiceManager();
 ```
@@ -463,26 +564,32 @@ ServiceManager is inited.
 
 如果进行import路径展开，展开后的代码为：
 
-```typescript
-// main.ets
-import { serviceManager } from "har/src/main/ets/ServiceManager"
+<!-- @[import_modulePartThirteen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageThirteen.ets) -->
+
+``` TypeScript
+// PageThirteen.ets
+import { serviceManager } from 'staticlibrary/src/main/ets/ServiceManagerPartTwo';
 
 serviceManager.print();
+```
 
-// har/src/main/ets/ServiceManager.ets
+<!-- @[export_serviceManagerPartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartTwo.ets) -->
+
+``` TypeScript
+// har/src/main/ets/ServiceManagerPartTwo.ets
 class ServiceManager {
-    public inited: boolean = false;
+  public inited: boolean = false;
 
-    public init() {
-        this.inited = true;
+  public init() {
+    this.inited = true;
+  }
+  public print() {
+    if (this.inited) {
+      console.info('ServiceManager is inited.');
+    } else {
+      console.error('ServiceManager is not inited.');
     }
-    public print() {
-        if (this.inited) {
-            console.info("ServiceManager is inited.");
-        } else {
-            console.error("ServiceManager is not inited.");
-        }
-    }
+  }
 }
 export let serviceManager: ServiceManager = new ServiceManager();
 ```
@@ -503,26 +610,32 @@ ServiceManager is not inited.
 
 对于上文的示例，可以进行如下修改：
 
-```typescript
-// main.ets
-import { serviceManager } from "har/src/main/ets/ServiceManager"
+<!-- @[import_modulePartFourteen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFourteen.ets) -->
+
+``` TypeScript
+// PageFourteen.ets
+import { serviceManager } from 'staticlibrary/src/main/ets/ServiceManagerPartThree';
 
 serviceManager.print();
+```
 
-// har/src/main/ets/ServiceManager.ets
+<!-- @[export_serviceManagerPartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartThree.ets) -->
+
+``` TypeScript
+// har/src/main/ets/ServiceManagerPartThree.ets
 class ServiceManager {
-    public inited: boolean = false;
+  public inited: boolean = false;
 
-    public init() {
-        this.inited = true;
+  public init() {
+    this.inited = true;
+  }
+  public print() {
+    if (this.inited) {
+      console.info('ServiceManager is inited.');
+    } else {
+      console.error('ServiceManager is not inited.');
     }
-    public print() {
-        if (this.inited) {
-            console.info("ServiceManager is inited.");
-        } else {
-            console.error("ServiceManager is not inited.");
-        }
-    }
+  }
 }
 export let serviceManager: ServiceManager = new ServiceManager();
 // 在导出的模块执行对应的逻辑。

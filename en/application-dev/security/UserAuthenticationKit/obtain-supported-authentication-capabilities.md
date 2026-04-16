@@ -30,19 +30,18 @@ Example: Check whether the device supports facial authentication of ATL3 or high
 <!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  obtainingSupported() {
-    try {
-      // Check whether the specified authentication capabilities are supported.
-      userAuth.getAvailableStatus(userAuth.UserAuthType.PIN, userAuth.AuthTrustLevel.ATL1);
-      Logger.info('current auth trust level is supported');
-      return true;
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`current auth trust level is not supported, code is ${err?.code}, message is ${err?.message}`);
-      return false;
-    }
+obtainingSupported() {
+  try {
+    // Check whether the specified authentication capabilities are supported.
+    userAuth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL3);
+    Logger.info('current auth trust level is supported');
+    return true;
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`current auth trust level is not supported, code is ${err?.code}, message is ${err?.message}`);
+    return false;
   }
-
+}
 ```
 
 

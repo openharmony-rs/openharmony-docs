@@ -7,7 +7,7 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-The osAccount module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling a system account.
+The **osAccount** module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling a system account.
 
 > **NOTE**
 >
@@ -38,6 +38,49 @@ Obtains an **AccountManager** instance.
   ```ts
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   ```
+
+## osAccount.isDomainAccountSupported
+
+isDomainAccountSupported(): Promise&lt;boolean&gt;
+
+Checks whether this domain account is supported. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                  | Description                                     |
+| :--------------------- | :----------------------------------------- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this domain account is supported; the value **false** means the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
+
+| ID| Error Message            |
+| -------- | ------------------- |
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  osAccount.isDomainAccountSupported().then((isSupported: boolean) => {
+    console.info('isDomainAccountSupported successfully, isSupported: ' + isSupported);
+  }).catch((err: BusinessError) => {
+    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is: ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`isDomainAccountSupported exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## OsAccountType
 
@@ -507,7 +550,7 @@ Checks whether this system account is unlocked. This API uses a promise to retur
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account is unlocked; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -539,7 +582,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether this system account is unlocked. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -597,7 +640,7 @@ Checks whether this system account has been verified. This API uses a promise to
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this system account has been verified; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -1046,6 +1089,53 @@ For details about the error codes, see [Account Management Error Codes](errorcod
     console.error(`getOsAccountLocalIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### getOsAccountLocalIds
+
+getOsAccountLocalIds(): Promise&lt;number[]&gt;
+
+Obtains the local IDs of all non-system-level system accounts. Non-system-level system accounts are visible to users and are usually used for operations such as login. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                 | Description                                   |
+| :------------------- | :------------------------------------- |
+| Promise&lt;number[]&gt; | Promise used to return the local IDs of all non-system-level system accounts.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message            |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountLocalIds().then((localIds: number[]) => {
+    console.info('getOsAccountLocalIds localIds: ' + localIds);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### getOsAccountLocalIdForDomain<sup>9+</sup>
 
@@ -3017,6 +3107,61 @@ For details about the error codes, see [Account Management Error Codes](errorcod
   }
   ```
 
+### getOsAccountNameByLocalId
+
+getOsAccountNameByLocalId(localId: number): Promise&lt;string&gt;
+
+Obtains the name of a system account based on its local ID. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                    |
+| -------- | ------ | ---- | ----------------------- |
+| localId  | number | Yes  | Local ID of the target system account.|
+
+**Return value**
+
+| Type               | Description                    |
+| ------------------- | ----------------------- |
+| Promise&lt;string&gt; | Promise used to return the name of the target system account.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                    |
+| -------- | --------------------------- |
+| 201 | Permission denied. |
+| 12300001 | The system service works abnormally. |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountNameByLocalId(100).then((name: string) => {
+    console.info('getOsAccountNameByLocalId, name: ' + name);
+  }).catch((err: BusinessError) => {
+    console.error('getOsAccountNameByLocalId err: ' + err);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountNameByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### getForegroundOsAccountLocalId<sup>15+</sup>
 
 getForegroundOsAccountLocalId(): Promise&lt;number&gt;
@@ -3029,7 +3174,7 @@ Obtains the ID of the foreground system account. This API uses a promise to retu
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the ID of the foreground system account.|
 
 **Error codes**
 
@@ -3077,7 +3222,7 @@ Obtains the domain account information associated with a specified system accoun
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the result.|
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the domain account information obtained.|
 
 **Error codes**
 
@@ -3185,8 +3330,8 @@ Represents information about a system account.
 | isVerified<sup>(deprecated)</sup> | boolean                                                   | No| No | Whether the account has been verified. The value **true** means the specified account has been verified; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isUnlocked** instead.          |
 | isUnlocked<sup>11+</sup>      | boolean                                                       | No| No | Whether the account is unlocked (whether the **el2/** directory is decrypted). The value **true** means the specified account is unlocked; the value **false** means the opposite.                     |
 | photo<sup>8+</sup>             | string                                                       | No| No | Avatar of the system account. By default, no value is passed in.                     |
-| createTime<sup>8+</sup>        | number                                                       | No| No | Time when the system account was created.                 |
-| lastLoginTime<sup>8+</sup>     | number                                                       | No| No | Last login time of the system account. By default, no value is passed in.         |
+| createTime<sup>8+</sup>        | number                                                       | No| No | System account creation time. The value is a Unix timestamp (in seconds).                 |
+| lastLoginTime<sup>8+</sup>     | number                                                       | No| No | Last login time of the system account. The value is a Unix timestamp (in seconds).         |
 | serialNumber<sup>8+</sup>      | number                                                       | No| No | SN of the system account.                     |
 | isActived<sup>(deprecated)</sup>         | boolean                                            | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isActivated** instead.                 |
 | isActivated<sup>11+</sup>         | boolean                                                   | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.                 |
@@ -3205,6 +3350,8 @@ Represents the domain account information.
 | domain      | string | No| No | Domain name.    |
 | accountName | string | No| No | Domain account name.|
 | serverConfigId<sup>18+</sup> | string | No| Yes | Domain account configuration ID, which is an empty string by default.|
+| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
+
 
 ## DomainServerConfig<sup>18+</sup>
 
@@ -3608,3 +3755,4 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | constraint.screen.timeout.set | Disallow setting of the screen-off timeout.|
 | constraint.print | Disallow printing.|
 | constraint.private.dns.set | Disallow setting of the private domain name server (DNS).|
+<!--no_check-->

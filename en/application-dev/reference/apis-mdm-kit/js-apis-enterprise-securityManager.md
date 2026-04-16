@@ -10,11 +10,11 @@ The **securityManager** module provides device security management capabilities,
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -330,7 +330,7 @@ try {
 
 setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
-Sets the device password policy.
+Sets the device screen lock password policy. During screen lock password setting, if the current screen lock password does not meet the requirements, a security message will be displayed, prompting the user to reset the screen lock password.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -345,7 +345,7 @@ Sets the device password policy.
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                 |
-| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device password policy.|
+| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device screen lock password policy.|
 
 **Error codes**
 
@@ -387,7 +387,7 @@ try {
 
 getPasswordPolicy(admin: Want): PasswordPolicy
 
-Obtains the device password policy.
+Obtains the device screen lock password policy.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -405,7 +405,7 @@ Obtains the device password policy.
 
 | Type                  | Description                     |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](#passwordpolicy) | Device password policy obtained.|
+| [PasswordPolicy](#passwordpolicy) | Device screen lock password policy.|
 
 **Error codes**
 
@@ -1021,70 +1021,6 @@ try {
 }
 ```
 
-## CertBlob
-
-Represents the certificate information.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-| Name  | Type      | Read-Only| Optional| Description              |
-| ------ | ---------- | ---- | ---- | ------------------ |
-| inData | Uint8Array | No  | No|Binary content of the certificate.|
-| alias  | string     | No  | No|Certificate alias.        |
-
-## PasswordPolicy
-
-Represents a device password policy.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-| Name        | Type    | Read-Only| Optional| Description                           |
-| ----------- | --------| ---- | ---- | --------------------------- |
-| complexityRegex | string | No| Yes| Regular expression for password complexity.|
-| validityPeriod | number | No| Yes| Password validity period, in ms.|
-| additionalDescription | string | No| Yes| Description of the device password.|
-
-## ClipboardPolicy
-
-Represents a device clipboard policy.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-| Name        | Value| Description                           |
-| ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | Default policy, which indicates no policy.|
-| IN_APP | 1  | Allow the clipboard to be used in the same application.|
-| LOCAL_DEVICE | 2  | Allow the clipboard to be used on the same device.|
-| CROSS_DEVICE | 3  | Allow the clipboard to be used across devices.|
-
-## ApplicationInstance<sup>20+</sup>
-
-Application instance
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Name        | Type    | Read-Only| Optional| Description                           |
-| ----------- | --------| ---- | ---- | --------------------------- |
-| appIdentifier | string | No| No| The [unique identifier](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) of an application. If an application does not have **appIdentifier**, **appId** can be used instead. Both **bundleInfo.signatureInfo.appIdentifier** and **bundleInfo.signatureInfo.appId** can be obtained via the [bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) API.|
-| accountId  | number     | No| No| User ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.        |
-| appIndex  | number     | No| No| Index of the application clone. The default value is **0**.<br> If **appIndex** is set to **0**, the main application is used. If **appIndex** is set to a value greater than 0, the application clone with the specified index is used.       |
-
-## PermissionManagedState<sup>20+</sup>
-
-Represents the management status of application permissions.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Name        | Value| Description                           |
-| ----------- | -------- | ------------------------------- |
-| DEFAULT | 1  | The permission is granted by the user by default.|
-| GRANTED | 0  | This permission is granted silently.|
-| DENIED | -1  | This permission is denied silently.|
-
 ## securityManager.installEnterpriseReSignatureCertificate<sup>24+</sup>
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
@@ -1136,7 +1072,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import fs from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -1217,3 +1153,67 @@ try {
     Code: ${err.code}, message: ${err.message}`);
 };
 ```
+
+## CertBlob
+
+Represents the certificate information.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name  | Type      | Read-Only| Optional| Description              |
+| ------ | ---------- | ---- | ---- | ------------------ |
+| inData | Uint8Array | No  | No|Binary content of the certificate.|
+| alias  | string     | No  | No|Certificate alias. The value length must be less than 40 characters.        |
+
+## PasswordPolicy
+
+Represents a device screen lock password policy.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name        | Type    | Read-Only| Optional| Description                           |
+| ----------- | --------| ---- | ---- | --------------------------- |
+| complexityRegex | string | No| Yes| Regular expression for password complexity.|
+| validityPeriod | number | No| Yes| Password validity period, in ms.|
+| additionalDescription | string | No| Yes| Password complexity description, for example, "The password must contain 8 to 30 characters consisting of letters, digits, and special characters".|
+
+## ClipboardPolicy
+
+Represents a device clipboard policy.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name        | Value| Description                           |
+| ----------- | -------- | ------------------------------- |
+| DEFAULT | 0  | Default policy, which indicates no policy.|
+| IN_APP | 1  | Allow the clipboard to be used in the same application.|
+| LOCAL_DEVICE | 2  | Allow the clipboard to be used on the same device.|
+| CROSS_DEVICE | 3  | Allow the clipboard to be used across devices.|
+
+## ApplicationInstance<sup>20+</sup>
+
+Application instance
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name        | Type    | Read-Only| Optional| Description                           |
+| ----------- | --------| ---- | ---- | --------------------------- |
+| appIdentifier | string | No| No| The [unique identifier](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) of an application. If an application does not have **appIdentifier**, **appId** can be used instead. Both **bundleInfo.signatureInfo.appIdentifier** and **bundleInfo.signatureInfo.appId** can be obtained via the [bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) API.|
+| accountId  | number     | No| No| User ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.        |
+| appIndex  | number     | No| No| Index of the application clone. The default value is **0**.<br> If **appIndex** is set to **0**, the main application is used. If **appIndex** is set to a value greater than 0, the application clone with the specified index is used.       |
+
+## PermissionManagedState<sup>20+</sup>
+
+Represents the management status of application permissions.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name        | Value| Description                           |
+| ----------- | -------- | ------------------------------- |
+| DEFAULT | 1  | The permission is granted by the user by default.|
+| GRANTED | 0  | This permission is granted silently.|
+| DENIED | -1  | This permission is denied silently.|

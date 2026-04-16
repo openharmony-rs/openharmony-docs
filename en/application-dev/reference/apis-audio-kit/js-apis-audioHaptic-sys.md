@@ -12,6 +12,8 @@ Audio-haptic enables users to get rhythmic auditory and haptic feedback while ha
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+**Device behavior difference**: For a device without a vibration component, no vibration effect is generated.
+
 ## Module to Import
 
 ```ts
@@ -141,7 +143,7 @@ Sets the intensity of haptic feedback for this audio-haptic player. This API use
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise that returns no value.|
+| Promise<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -193,7 +195,7 @@ Sets the haptic ramp for this audio-haptic player. This API uses a promise to re
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise that returns no value.|
+| Promise<void\> | Promise that returns no value.|
 
 **Error codes**
 

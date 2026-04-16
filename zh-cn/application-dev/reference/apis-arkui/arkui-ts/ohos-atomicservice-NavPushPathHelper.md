@@ -73,7 +73,7 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -107,7 +107,7 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -140,7 +140,7 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -174,7 +174,7 @@ pushPathByName(moduleName: string, name: string, param: Object, onPop: Callback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -355,7 +355,7 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -389,7 +389,7 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
@@ -422,7 +422,7 @@ replacePathByName(moduleName: string, name: string, param: Object, animated?: bo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.router(页面路由)](../errorcode-router.md)错误码。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |

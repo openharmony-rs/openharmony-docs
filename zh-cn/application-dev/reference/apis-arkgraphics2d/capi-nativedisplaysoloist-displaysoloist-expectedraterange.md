@@ -31,32 +31,3 @@ typedef struct {...} DisplaySoloist_ExpectedRateRange
 | int32_t expected | 期望帧率，取值范围为[0,120]。 |
 
 
-### 成员函数
-
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [typedef void (\*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)](#oh_displaysoloist_framecallback) | OH_DisplaySoloist_FrameCallback() | OH_DisplaySoloist回调函数类型。<br>**起始版本：** 12 |
-
-## 成员函数说明
-
-### OH_DisplaySoloist_FrameCallback()
-
-```c
-typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)
-```
-
-**描述**
-
-OH_DisplaySoloist回调函数类型。
-
-**起始版本：** 12
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| long long timestamp | 当前帧VSync时间戳。 |
-|  long long targetTimestamp | 预期的下一帧VSync时间戳。 |
-|  void* data | 用户自定义数据。 |
-
-

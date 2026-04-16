@@ -12,7 +12,7 @@ The **stationary** module provides APIs to report the device status, including a
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module does not support x86 emulators.
+> This module cannot run on the x86 platform.
 
 ## Modules to Import
 
@@ -51,9 +51,9 @@ Enumerates the device status events.
 
 | Name                            | Value   | Description                                      |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | Event indicating entering device status.  |
-| EXIT | 2   | Event indicating exiting device status.|
-| ENTER_EXIT | 3   | Event indicating entering and exiting device status.|
+| ENTER         | 1    | Enter event.  |
+| EXIT | 2   | Exit event.|
+| ENTER_EXIT | 3   | Enter and exit events.|
 
 ## ActivityState
 
@@ -63,10 +63,10 @@ Enumerates the device statuses.
 
 | Name                            | Value   | Description                                      |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | Event indicating entering device status.  |
-| EXIT | 2   | Event indicating exiting device status.|
+| ENTER         | 1    | Enter state.  |
+| EXIT | 2   | Exit state.|
 
-## stationary.on('still' | 'relativeStill')
+## stationary.on
 
 on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callback: Callback&lt;ActivityResponse&gt;): void
 
@@ -80,7 +80,7 @@ Subscribes to the device status.
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
 | activity  | [ActivityType](#activitytype)  | Yes  | Device status type.             |
 | event  | [ActivityEvent](#activityevent)  | Yes  | Event type.             |
-| reportLatencyNs  | number  | Yes  | Report delay, in ns. The value ranges from **1000000000** to **3000000000**.             |
+| reportLatencyNs  | number  | Yes  | Report latency, in nanoseconds. The value range is [1000000000, 3000000000].             |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | Yes  | Callback used to receive reported data.   |
 
 **Example**
@@ -92,7 +92,7 @@ stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) =
 })
 ```
 
-## stationary.once('still' | 'relativeStill')
+## stationary.once
 
 once(activity: ActivityType, callback: Callback&lt;ActivityResponse&gt;): void
 
@@ -115,7 +115,7 @@ stationary.once('still', (data) => {
 })
 ```
 
-## stationary.off('still' | 'relativeStill')
+## stationary.off
 
 off(activity: ActivityType, event: ActivityEvent, callback?: Callback&lt;ActivityResponse&gt;): void
 

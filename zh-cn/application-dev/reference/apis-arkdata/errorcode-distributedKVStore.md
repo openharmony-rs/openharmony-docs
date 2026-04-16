@@ -10,6 +10,24 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
+## 15100000 无效的参数
+
+**错误信息**
+
+Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
+
+**错误描述**
+
+无效的参数。
+
+**可能原因**
+
+入参不符合接口要求，如取值范围、长度、格式等。
+
+**处理步骤**
+
+参考接口参数说明修改参数符合要求。
+
 ## 15100001 超过最大订阅数量
 
 **错误信息**

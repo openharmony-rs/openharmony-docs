@@ -24,20 +24,20 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
 @Entry
 @Component
 struct CanvasExample1 {
-  //用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿，true表明开启抗锯齿。
+  // 用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿，true表明开启抗锯齿。
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
-  //用来创建CanvasRenderingContext2D对象，通过在canvas中调用CanvasRenderingContext2D对象来绘制。
+  // 用来创建CanvasRenderingContext2D对象，通过在canvas中调用CanvasRenderingContext2D对象来绘制。
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      //在canvas中调用CanvasRenderingContext2D对象。
+      // 在canvas中调用CanvasRenderingContext2D对象。
       Canvas(this.context)
         .width('100%')
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          //可以在这里绘制内容。
+          // 可以在这里绘制内容。
           this.context.strokeRect(50, 50, 200, 150);
         })
     }
@@ -63,10 +63,10 @@ struct CanvasExample1 {
 @Entry
 @Component
 struct CanvasExample2 {
-  //用来配置CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。true表明开启抗锯齿
+  // 用来配置CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。true表明开启抗锯齿
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  //用来创建OffscreenCanvas对象，width为离屏画布的宽度，height为离屏画布的高度。通过在canvas中调用OffscreenCanvasRenderingContext2D对象来绘制。
+  // 用来创建OffscreenCanvas对象，width为离屏画布的宽度，height为离屏画布的高度。通过在canvas中调用OffscreenCanvasRenderingContext2D对象来绘制。
   private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
 
   build() {
@@ -77,9 +77,9 @@ struct CanvasExample2 {
         .backgroundColor('#F5DC62')
         .onReady(() => {
           let offContext = this.offCanvas.getContext('2d', this.settings);
-          //可以在这里绘制内容
+          // 可以在这里绘制内容
           offContext.strokeRect(50, 50, 200, 150);
-          //将离屏绘制渲染的图像在普通画布上显示
+          // 将离屏绘制渲染的图像在普通画布上显示
           let image = this.offCanvas.transferToImageBitmap();
           this.context.transferFromImageBitmap(image);
         })
@@ -134,7 +134,7 @@ Canvas(this.context)
 
 ## 画布组件绘制方式
 
-在Canvas组件生命周期接口onReady()调用之后，开发者可以直接使用canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2d对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
+在Canvas组件的事件回调onReady()被调用之后，开发者可以直接使用Canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2D对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
 
 - 通过CanvasRenderingContext2D对象直接调用相关API进行绘制。
 
@@ -157,7 +157,7 @@ Canvas(this.context)
 
   ![2023022793719(1)](figures/2023022793719.jpg)
 
-- 先单独定义path2d对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的stroke接口或者fill接口进行绘制，具体使用可以参考[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象。
+- 先单独定义path2D对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的stroke接口或者fill接口进行绘制，具体使用可以参考[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象。
 
 
 <!-- @[definePath2d_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -195,15 +195,15 @@ Canvas(this.context)
   .height('100%')
   .backgroundColor('#F5DC62')
   .onReady(() => {
-    //绘制矩形
+    // 绘制矩形
     this.context.beginPath();
     this.context.rect(100, 50, 100, 100);
     this.context.stroke();
-    //绘制圆形
+    // 绘制圆形
     this.context.beginPath();
     this.context.arc(150, 250, 50, 0, 6.28);
     this.context.stroke();
-    //绘制椭圆
+    // 绘制椭圆
     this.context.beginPath();
     this.context.ellipse(150, 450, 50, 100, Math.PI * 0.25, Math.PI * 0, Math.PI * 2);
     this.context.stroke();
@@ -311,7 +311,7 @@ struct CustomFont {
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          //加载自定义字体
+          // 加载自定义字体
           let fontCollection = text.FontCollection.getGlobalInstance();
           fontCollection.loadFontSync('customFont', $rawfile('customFont.ttf'));
           this.context.font = '30vp customFont';
@@ -386,13 +386,13 @@ Canvas(this.context)
   .height('100%')
   .backgroundColor('#F5DC62')
   .onReady(() => {
-    //创建一个径向渐变色的CanvasGradient对象
+    // 创建一个径向渐变色的CanvasGradient对象
     let grad = this.context.createRadialGradient(200, 200, 50, 200, 200, 200);
-    //为CanvasGradient对象设置渐变断点值，包括偏移和颜色
+    // 为CanvasGradient对象设置渐变断点值，包括偏移和颜色
     grad.addColorStop(0.0, '#E87361');
     grad.addColorStop(0.5, '#FFFFF0');
     grad.addColorStop(1.0, '#BDDB69');
-    //用CanvasGradient对象填充矩形
+    // 用CanvasGradient对象填充矩形
     this.context.fillStyle = grad;
     this.context.fillRect(0, 0, 400, 400);
   })

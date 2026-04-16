@@ -26,7 +26,7 @@ ArkWeb图片上传可参考：[使用Web组件上传文件](../../../web/web-fil
 
 ### 上传HEIF图片时提示：“不支持的格式”
 
-可以使用[ImageSource](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)的supportedFormats属性和[ImagePacker](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)的supportedFormats属性，来查看系统支持编解码的图片格式。只要查询到的结果中包含"image/heic"，即代表该设备支持HEIF图片编解码。
+可以使用ImageSource[属性](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)中的supportedFormats和ImagePacker[属性](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)中的supportedFormats，来查看系统支持编解码的图片格式。只要查询到的结果中包含"image/heic"，即代表该设备支持HEIF图片编解码。
 
 系统侧不会拦截HEIF图片上传，若HEIF图片上传不成功，可能的原因是：应用对后缀名为.heic、.heif、.HEIC、.HEIF的图片文件做了过滤限制。
 
@@ -60,7 +60,7 @@ import { PromptAction } from '@kit.ArkUI';
 
 const promptAction = new PromptAction();
 
-export async function reEncoding(context : Context, fd : number) {
+export async function reEncoding(context : Context, fd : number | undefined) {
   // 首先获取图片文件的fd，创建ImageSource。
   const imageSource : image.ImageSource = image.createImageSource(fd);
   // 创建ImagePacker，以便调用图片编码接口。
@@ -72,16 +72,20 @@ export async function reEncoding(context : Context, fd : number) {
   let packOpts : image.PackingOption = { format:'image/jpeg', quality:80, needsPackProperties:false };
   // 指定图片编码文件的存放路径。
   const filePath : string = context.cacheDir + '/result.jpg';
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  imagePackerApi.packToFile(imageSource, file.fd, packOpts).then(() => {
-    promptAction.showToast({ message: `Succeed to pack the image.`});
-    console.info('Succeed to pack the image.');
-  }).catch((error : BusinessError) => {
-    promptAction.showToast({ message: 'Failed to pack the image. And the error is: ' + error});
+  try {
+    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    imagePackerApi.packToFile(imageSource, file.fd, packOpts).then(() => {
+      promptAction.showToast({ message: `Succeed to pack the image.`});
+      console.info('Succeed to pack the image.');
+    }).catch((error : BusinessError) => {
+      promptAction.showToast({ message: 'Failed to pack the image. And the error is: ' + error});
+      console.error('Failed to pack the image. And the error is: ' + error);
+    }).finally(()=>{
+      fs.closeSync(file.fd);
+    })
+  } catch (error) {
     console.error('Failed to pack the image. And the error is: ' + error);
-  }).finally(()=>{
-    fs.closeSync(file.fd);
-  })
+  }
 }
 ```
 

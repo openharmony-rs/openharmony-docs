@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct DDK_Ashmem {...} DDK_Ashmem
@@ -31,6 +31,6 @@ typedef struct DDK_Ashmem {...} DDK_Ashmem
 | const uint32_t size | 缓存区大小。 |
 | uint32_t offset | 已使用缓冲区的偏移量。默认值为0，表示没有偏移，缓冲区从指定地址开始。 |
 | uint32_t bufferLength | 使用的缓冲区长度。默认情况下，该值等于size，表示使用整个缓冲区。 |
-| uint32_t transferredLength | 传输数据的长度。 |
+| uint32_t transferredLength | 已传输数据的长度。 |
 
 

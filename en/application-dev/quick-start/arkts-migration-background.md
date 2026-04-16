@@ -29,65 +29,61 @@ class Person {
   }
   
   getName(): string {
-  // Return type "string" hides the fact that name can be undefined.
+  // Return type "string" hides the fact that name can be "undefined".
   // The most correct action would be to write the return type as "string | undefined". By doing so, we could tell the users of our API about the type of all possible return values.
     return this.name;
   }
 }
 
 let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
+// Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
 buddy.getName().length; // Runtime exception: name is undefined.
 ```
 
 ArkTS requires explicit initialization. The code is as follows:
 
-```typescript
+<!-- @[def_person](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 class Person {
-  name: string = '';
-  
+  name: string = ''; // undefined
+
   setName(n: string): void {
     this.name = n;
   }
-  
+
   // The type is string in all cases; null and undefined are impossible.
   getName(): string {
     return this.name;
   }
 }
-
-let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
-buddy.getName().length; // 0, no runtime error
+// ...
+  let buddy = new Person()
+  // Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
+  let len = buddy.getName().length; // 0. No runtime error.
 ```
 
 If **name** can be **undefined**, its type must be accurately annotated in the code.
 
-```typescript
-class Person {
-    name?: string; // The field may be undefined.
+<!-- @[def_personFix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
 
-    setName(n: string): void {
-        this.name = n;
-    }
+``` TypeScript
+class Person1 {
+  name?: string; // The field may be undefined.
 
-    // Compile-time error: name can be "undefined", so the return type of this API cannot be marked as "string".
-    getNameWrong(): string {
-        return this.name;
-    }
+  setName(n: string): void {
+    this.name = n;
+  }
 
-    getName(): string | undefined { // Return type matches the type of name.
-        return this.name;
-    }
+  getName(): string | undefined { // Return type matches the type of name.
+    return this.name;
+  }
 }
+// ...
+  let buddy = new Person1()
+  // Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
 
-let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
-
-// Compile-time error: The compiler detects that the next line may access something undefined and will not build the code:
-buddy.getName().length;  // The code will not build and run.
-
-buddy.getName()?.length; // Successful build and no runtime error.
+  let len = buddy.getName()?.length; // Compilation succeeded. No runtime error.
 ```
 
 ## Program Performance
@@ -97,12 +93,15 @@ To ensure program correctness, dynamically typed languages have to check object 
 
 **Null Safety**
 
-```typescript
+<!-- @[def_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 function notify(who: string, what: string) {
   console.info(`Dear ${who}, a message for you: ${what}`);
 }
 
-notify('Jack', 'You look great today');
+// ...
+  notify('Jack', 'You look great today');
 ```
 
 In most cases, the **notify** function will take two **string** variables as an input and produces a new string. However, what if we pass some "special" values to the function, for example **notify(null, undefined)**?
@@ -181,15 +180,24 @@ The OpenHarmony SDK of API version 11 uses TypeScript 4.9.5, with the **target**
 5. Prohibit circular dependency.
 
     Example of circular dependency:
-    ```typescript
+    
+    <!-- @[import_v](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/bar.ets) -->  
+    
+    ``` TypeScript
     // bar.ets
     import {v} from './foo'; // bar.ets depends on foo.ets.
     export let u = 0;
+    console.info(`v: ${v}`);
+    ```
 
+    <!-- @[import_u](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/foo.ets) -->  
+    
+    ``` TypeScript
     // foo.ets
     import {u} from './bar'; // foo.ets depends on bar.ets reversely.
     export let v = 0;
-
+    console.info(`u: ${u}`);
+    
     // Application loading fails.
     ```
 

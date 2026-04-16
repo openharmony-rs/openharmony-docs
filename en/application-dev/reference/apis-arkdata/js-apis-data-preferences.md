@@ -1242,7 +1242,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses an 
 
 | Name  | Type                                        | Mandatory| Description              |
 | -------- | -------------------------------------------- | ---- |---------------------------|
-| key      | string                                       | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).  |
+| key      | string                                       | Yes  | Key to be obtained. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).  |
 | defValue | [ValueType](#valuetype)                      | Yes  | Default value to be returned.|
 | callback | AsyncCallback&lt;[ValueType](#valuetype)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the value obtained. Otherwise, **err** is an error object.  |
 
@@ -1283,7 +1283,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses a p
 
 | Name  | Type                   | Mandatory| Description |
 | -------- | ----------------------- | ---- |--------|
-| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [ValueType](#valuetype) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -1328,7 +1328,7 @@ Obtains the value of a key from this **Preferences** instance. This API returns 
 
 | Name  | Type                   | Mandatory| Description           |
 | -------- | ----------------------- | ---- |---------------------|
-| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [ValueType](#valuetype) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -1507,7 +1507,7 @@ Writes data to this **Preferences** instance. This API uses an asynchronous call
 
 | Name  | Type                     | Mandatory| Description                      |
 | -------- | ------------------------- | ---- |-------------------------|
-| key      | string                    | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key      | string                    | Yes  | Key to be modified. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
 | value    | [ValueType](#valuetype)   | Yes  | Value to write.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
@@ -1555,7 +1555,7 @@ Writes data to this **Preferences** instance. This API uses a promise to return 
 
 | Name| Type                   | Mandatory| Description                        |
 | ------ | ----------------------- | ---- |--------------------------|
-| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants). |
 | value  | [ValueType](#valuetype) | Yes  | Value to write.|
 
 **Return value**
@@ -1607,7 +1607,7 @@ Writes data to this **Preferences** instance. This API returns the result synchr
 
 | Name| Type                   | Mandatory| Description                                                        |
 | ------ | ----------------------- | ---- | ------------------------ |
-| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
 | value  | [ValueType](#valuetype) | Yes  | Value to write.|
 
 **Error codes**
@@ -1640,7 +1640,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name  | Type                        | Mandatory| Description                                                        |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                             |
+| key      | string                       | Yes  | Key to be checked. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).                             |
 | callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. If the **Preferences** instance contains the KV pair, **true** will be returned. Otherwise, **false** will be returned.|
 
 **Error codes**
@@ -1685,7 +1685,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be checked. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1734,7 +1734,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be checked. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1777,7 +1777,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses an asynchron
 
 | Name  | Type                     | Mandatory| Description                                                |
 | -------- | ------------------------- | ---- | ---------------------------------------------------- |
-| key      | string                    | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                     |
+| key      | string                    | Yes  | Key to be deleted. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).                     |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1818,7 +1818,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses a promise to
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1863,7 +1863,7 @@ Deletes a KV pair from this **Preferences** instance. This API returns the resul
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
 
 **Error codes**
 

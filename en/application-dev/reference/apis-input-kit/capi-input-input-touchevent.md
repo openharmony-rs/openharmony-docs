@@ -25,5 +25,5 @@ Defines a touch event.
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CreateTouchEvent](capi-oh-input-manager-h.md#oh_input_createtouchevent) | Creates a touch event object.|
+| [OH_Input_CreateTouchEvent](capi-oh-input-manager-h.md#oh_input_createtouchevent) | Creates a touch event object. You can call [OH_Input_DestroyTouchEvent](capi-oh-input-manager-h.md#oh_input_destroytouchevent) to destroy a touch event object.|
 | [OH_Input_DestroyTouchEvent](capi-oh-input-manager-h.md#oh_input_destroytouchevent) | Destroys a touch event object.|

@@ -68,40 +68,6 @@ UIContext的bindTabsToScrollable、bindTabsToNestedScrollable接口
 
 默认行为变更，无需适配。
 
-## cl.arkui.3 页面退出场景自定义组件删除前移
-
-**访问级别**
-
-公开接口
-
-**变更原因**
-
-在页面退出动画的过程中，UI处于空闲状态。动画结束后，由于释放大量组件导致页面卡顿。可以将页面中自定义组件的释放提前，显著减轻卡顿并优化性能。
-
-**变更影响**
-
-此变更涉及应用适配，仅针对Router和Navigation页面默认的退出动画场景需要适配。
-
-- 变更前：页面退出动画结束后，依次执行自定义组件生命周期aboutToDisappear、onDisappear。
-  
-- 变更后：页面退出动画过程中，执行自定义组件生命周期aboutToDisappear。退出动画执行结束后，执行生命周期onDisappear。
-
-**起始API Level**
-
-7
-
-**变更发生版本**
-
-从OpenHarmony SDK 5.1.0.52开始。
-
-**变更的接口/组件**
-
-自定义组件的onDisappear生命周期回调。
-
-**适配指导**
-
-在全局复用场景中，当复用的自定义组件的aboutToDisappear生命周期回调中涉及节点移除操作时，应将节点移除操作安排在页面退出完成后，例如onDetach生命周期。
-
 ## cl.arkui.4 修复fromHtml接口解析颜色rgb顺序错误的问题
 
 **访问级别**
@@ -165,6 +131,7 @@ UIContext的bindTabsToScrollable、bindTabsToNestedScrollable接口
 **适配指导**
 
 当应用程序通过native_interface_xcomponent.h中的OH_NativeXComponent_RegisterUIInputEventCallback接口来接收和处理轴事件时，如果回调函数中已使用ToolType类型进行了判断，则无需进一步适配。但如果仅通过UNKNOWN类型处理业务，则需适配，以确保通过具体的目标类型进行区分。
+
 例如以下示例：
 ```cpp
 if (toolType != UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN) {
@@ -344,6 +311,7 @@ struct Demo {
 **适配指导**
 
 TextInput/TextArea使用attributeModifier修改borderWidth属性，top、bottom、left、right会赋值给对应的位置，需要修改之前错误的赋值顺序。
+
 例如如下代码：
 ```ts
 @State myModifier: TextInputModifier = new TextInputModifier().borderWidth({

@@ -728,43 +728,6 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
   }
   ```
 
-### restoreLocalDeivceName<sup>18+</sup>
-
-restoreLocalDeivceName(): void
-
-系统重置还原网络设置时，还原本机设备名。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 11600102 | Failed to obtain the service.                                 |
-
-**示例：**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.restoreLocalDeivceName();
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
 ### getDeviceNetworkIdList<sup>18+</sup>
 
 getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt;string&gt;&gt;
@@ -855,10 +818,10 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 | 错误码ID    | 错误信息                                                                                                              |
 |----------|-------------------------------------------------------------------------------------------------------------------|
-| 201      | Permission verification failed. The application does not have the permission required to call the API.            |
-| 202      | Permission verification failed. A non-system application calls a system API.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
-| 11600101 | Failed to execute the function.                                                                                   |
+| 201      | User permission verify failed.            |
+| 202      | The caller is not a system application.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
+| 11600101 | Failed to execute the function.                                                                        |
 
 **示例：**
 
@@ -884,5 +847,83 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
         }
       }
     }
+  }
+  ```
+
+### restoreLocalDeviceName<sup>24+</sup>
+
+restoreLocalDeviceName(): void
+
+系统重置还原网络设置时，还原本机设备名。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**系统API**： 此接口为系统接口。
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeviceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+
+### restoreLocalDeivceName<sup>(deprecated)</sup>
+
+restoreLocalDeivceName(): void
+
+系统重置还原网络设置时，还原本机设备名。
+
+> **说明：**
+>
+> 从API version 18开始支持，从API version 24开始废弃，建议使用[restoreLocalDeviceName](#restorelocaldevicename24)替代。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**系统API**： 此接口为系统接口。
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeivceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
   }
   ```

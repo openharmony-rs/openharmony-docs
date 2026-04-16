@@ -18,7 +18,7 @@ IPC connection error.
 
 **错误描述**
 
-系统内为执行当前请求进行必要进程间通信时出错，系统会报此错误码。
+系统内为执行当前请求时进行必要的进程间通信出错，系统会报此错误码。
 
 **可能原因**
 
@@ -230,7 +230,7 @@ The form can not support this operation.
 
 **处理步骤**
 
-检查当前卡片对应[互动卡片配置项sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
+检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
 
 ## 16501012 卡片尺寸错误
 
@@ -267,6 +267,60 @@ The system does not support the current operation.
 **处理步骤**
 
 重启设备，系统重新注册监听模板卡片信息的回调。
+
+## 16501014 半模态卡片编辑页不在前台
+
+**错误信息**
+
+The form edit page is not in the foreground. The current operation is not supported.
+
+**错误描述**
+
+半模态卡片编辑页不在前台，当前操作不支持。
+
+**可能原因**
+
+半模态卡片编辑页未打开。
+
+**处理步骤**
+
+检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability-overview.md#半模态卡片编辑)是否已打开。
+
+## 16501015 不能关闭其他应用的半模态卡片编辑页
+
+**错误信息**
+
+Cannot close the widget editing page opened by other apps.
+
+**错误描述**
+
+不能关闭其他应用的半模态卡片编辑页。
+
+**可能原因**
+
+当前打开的半模态卡片编辑页不属于请求关闭的应用。
+
+**处理步骤**
+
+确认打开的半模态编辑页是否属于请求关闭的应用。
+
+## 16501016 卡片位置信息无效
+
+**错误信息**
+
+The location of the widget is invalid.
+
+**错误描述**
+
+卡片位置信息是无效的。
+
+**可能原因**
+
+指定卡片位置信息不在系统定义范围内。
+
+**处理步骤**
+
+检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
 
 ## 2293761 内部服务错误
 

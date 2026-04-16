@@ -1,8 +1,8 @@
 # 仅MDM应用可用权限
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -161,7 +161,7 @@
 
 允许设备管理应用订阅管理事件。
 
-比如锁屏事件，有可能软件版本更新事件，订阅成功，事件会通知MDM应用。
+比如应用安装事件、应用卸载事件和系统更新事件等。订阅成功后，事件触发时会通知MDM应用。
 
 **权限级别**：system_basic
 
@@ -709,3 +709,18 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：23
+
+## ohos.permission.ENTERPRISE_ACTIVATE_DEVICE_ADMIN
+
+允许企业MDM应用自行完成激活操作。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0

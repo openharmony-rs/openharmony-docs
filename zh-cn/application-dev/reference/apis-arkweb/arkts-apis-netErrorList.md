@@ -136,7 +136,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_AUTHORITY_INVALID | -202 | 未信任的证书签发机构。这可能意味着：1.攻击者用真实证书代替了包含其公钥并由其表亲签名的证书。2.服务器操作员拥有来自本端不知道但应该信任的CA的合法证书。3.服务器提供了一个自签名证书，无法抵御主动攻击者。 |
 |ERR_CERT_CONTAINS_ERRORS | -203 | 证书中包含错误。 |
 |ERR_CERT_NO_REVOCATION_MECHANISM | -204 |证书无撤销机制，实际上，此证书不能被吊销。|
-|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | 此网站的安全证书的吊销信息不可用。这可能意味着：1。一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。2.证书未被吊销，但吊销服务器正忙或不可用。|
+|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | 此网站的安全证书的吊销信息不可用。这可能意味着：1.一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。2.证书未被吊销，但吊销服务器正忙或不可用。|
 |ERR_CERT_REVOKED | -206 | 证书已撤销。本端有能力忽略这个错误，但这可能不是本端应该做的事情。|
 |ERR_CERT_INVALID | -207 |  证书非法。  |
 |ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | 服务器以使用弱签名算法签名的证书作为响应。|
@@ -149,7 +149,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_KNOWN_INTERCEPTION_BLOCKED | -217 | 已知该证书被设备所有者以外的实体用于拦截。|
 |ERR_SSL_OBSOLETE_VERSION_OR_CIPHER | -218 | 连接使用过时版本的 SSL/TLS 或密码。|
 |ERR_CERT_END | -219 | 紧跟在上一个证书错误代码之后的值。|
-|ERR_INVALID_URL | -300 | 非法 url。 |
+|ERR_INVALID_URL | -300 | 非法URL。 |
 |ERR_DISALLOWED_URL_SCHEME | -301 |  不允许使用的URL scheme。 |
 |ERR_UNKNOWN_URL_SCHEME | -302 | 未知 scheme。 |
 |ERR_INVALID_REDIRECT | -303 | 试图加载URL导致重定向到无效的URL。|

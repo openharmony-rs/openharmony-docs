@@ -275,7 +275,7 @@ let pres = process.getUidForName("tool");
 
 getThreadPriority(v: number): number
 
-根据指定的tid获取线程优先级。
+根据指定的tid获取线程优先级，优先级顺序取决于当前操作系统。
 
 > **说明：**
 >
@@ -399,9 +399,9 @@ let pres = process.getEnvironmentVar("PATH");
 
 ## ProcessManager<sup>9+</sup>
 
-提供用于新增进程的抛异常接口。
+提供进程管理相关接口，包括进程UID判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。
 
-构造ProcessManager对象。
+通过`new process.ProcessManager()`构造ProcessManager对象。
 
 ### isAppUid<sup>9+</sup>
 
@@ -566,10 +566,6 @@ getEnvironmentVar(name: string): string
 
 获取环境变量对应的值。
 
-> **说明：**
->
-> 获取环境变量对应的值。如果环境变量不存在，返回undefined。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -584,7 +580,7 @@ getEnvironmentVar(name: string): string
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| string | 返回环境变量名对应的值。 |
+| string | 返回指定环境变量名对应的值。如果环境变量不存在，返回undefined。 |
 
 **错误码：**
 

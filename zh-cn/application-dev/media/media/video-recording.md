@@ -40,7 +40,7 @@
 > 关于文件的创建与存储操作，请参考[应用文件访问与管理](../../file-management/app-file-access.md)，默认存储在应用的沙箱路径之下，如需存储至图库，请使用[安全控件保存媒体资源](../medialibrary/photoAccessHelper-savebutton.md)对沙箱内文件进行存储。
 
 
-AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)。
+详细API说明请参考[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)。
 
 1. 创建AVRecorder实例，实例创建完成进入idle状态。
 
@@ -97,7 +97,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import fileIo from '@ohos.file.fs';
 
    let avProfile: media.AVRecorderProfile = {
      fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式。
@@ -114,7 +114,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
    let filePath: string = context.filesDir + '/example.mp4';
-   let videoFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+   let videoFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    let fileFd: number = videoFile.fd; // 获取文件fd。
   
    let avConfig: media.AVRecorderConfig = {
@@ -174,7 +174,8 @@ import { common } from '@kit.AbilityKit';
 import { camera } from '@kit.CameraKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs, fileUri } from '@kit.CoreFileKit';
+import { fileUri } from '@kit.CoreFileKit';
+import fileIo from '@ohos.file.fs';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function videoRecording(context: common.Context): Promise<void> {
@@ -224,10 +225,10 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // 创建文件以及设置avConfig.url。
   let filePath: string = ''; // 文件路径。
-  let videoFile: fs.File | undefined = undefined;
+  let videoFile: fileIo.File | undefined = undefined;
   try {
     filePath = context.filesDir + '/example.mp4'; // 文件沙箱路径，文件后缀名应与封装格式对应。
-    videoFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE); // 打开文件。
+    videoFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // 打开文件。
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to open file, error code: ${err.code}, message: ${err.message}`);
@@ -315,7 +316,7 @@ async function videoRecording(context: common.Context): Promise<void> {
   // 关闭录制文件fd。
   try {
     if (videoFile !== undefined) {
-      await fs.close(videoFile.fd);
+      await fileIo.close(videoFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;

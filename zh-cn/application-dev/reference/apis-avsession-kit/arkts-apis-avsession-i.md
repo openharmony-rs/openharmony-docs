@@ -47,7 +47,7 @@
 
 | 名称            | 类型                      | 只读 | 可选 | 说明               |
 | --------------- |-------------------------| ---- | ---- |---------------------------------------------------------------------|
-| assetId         | string                  | 否   | 否   | 媒体ID。歌曲的唯一标识，由应用自定义。该属性发生变化则其他元数据属性都将被刷新。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
+| assetId         | string                  | 否   | 否   | 媒体ID。歌曲的唯一标识，由应用自定义。<br>- 该属性发生变化则其他元数据属性都将被刷新。<br>- 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。<br>- 当该属性设为空值时，调用[setAVMetadata](../apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavmetadata10)方法将失败，返回错误码6600101。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
 | title           | string                  | 否   | 是   | 标题。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | artist          | string                  | 否   | 是   | 艺术家。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
 | author          | string                  | 否   | 是   | 专辑作者。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
@@ -71,6 +71,8 @@
 | drmSchemes<sup>12+</sup>        | Array\<string>         | 否   | 是   | 当前session支持的DRM方案，取值为DRM方案uuid。|
 | skipIntervals<sup>11+</sup>  | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进快退支持的时间间隔。默认为SECONDS_15，即15秒。                            |
 |displayTags<sup>11+</sup>     | number                           | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。      |
+| rewindSkipIntervals | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快退支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快退操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快退操作的时间间隔仍会沿用skipIntervals的值。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0|
+| fastForwardSkipIntervals</sup> | [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)        | 否   | 是   | 快进支持的时间间隔。默认为SECONDS_15，即15秒。<br>系统会使用此值作为快进操作的时间间隔，而非skipIntervals的值。<br>若未设置此参数，快进操作的时间间隔仍会沿用skipIntervals的值。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0|
 
 ## AVMediaDescription<sup>10+</sup>
 
@@ -80,10 +82,10 @@
 | ------------ | ----------------------- | ---- | ---- | ----------------------- |
 | assetId      | string                  | 否   | 否   | 播放列表媒体ID。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | title        | string                  | 否   | 是   | 播放列表媒体标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。<br>在使用了cast+协议的音频投播场景下，不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | description  | string                  | 否   | 是   | 播放列表媒体描述的文本。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 设置播放列表媒体图片像素数据。<br>当入参为string类型时：<br>- 只支持使用网络URI设置封面，不支持本地URI。<br>- 其作用与albumCoverUri属性功能相同，且优先级高于albumCoverUri。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| extras       |  {[key: string]: Object;}    | 否   | 是   | 播放列表媒体额外字段。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| mediaImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| string  | 否   | 是   | 设置播放列表媒体图片像素数据。<br>在使用了cast+协议的音视频投播场景下，该字段用于给对端设备设置媒体专辑封面。<br>当入参为string类型时：<br>- 只支持使用网络URI设置封面，不支持本地URI。<br>- 其作用与albumCoverUri属性功能相同，且优先级高于albumCoverUri。<br>从API version 23开始，支持入参为image.PixelMap类型给对端设备设置媒体信息。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| extras       |  {[key: string]: Object;}    | 否   | 是   | 播放列表媒体额外字段。<br>从API版本26.0.0开始，DLNA投播场景下支持将[ExtraKey](arkts-apis-avsession-e.md#extrakey)中的键值对传递对端设备，键值对的值需传入符合XML格式的字符串。<br>- 非DLNA投播场景不生效。<br>- 非字符串类型不生效。<br>- 非XML格式会触发[on('castControlIoError')](arkts-apis-avsession-AVCastController.md#oncastcontrolioerror13)回调并返回错误码6612000。错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。<br>- 通过extras字段，在[ExtraKey](arkts-apis-avsession-e.md#extrakey)中各键传入的字符串总长度需小于40960字节。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | mediaUri     | string                  | 否   | 是   | 播放列表媒体URI。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaType     | string                  | 否   | 是   | 播放列表媒体类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mediaSize     | number                  | 否   | 是   | 播放列表媒体的大小。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -100,7 +102,7 @@
 | startPosition     | number                  | 否   | 是   | 播放列表媒体起始播放位置。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | creditsPosition     | number                  | 否   | 是   | 播放列表媒体的片尾播放位置。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | appName     | string                  | 否   | 是   | 播放列表提供的应用的名字。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-|displayTags<sup>11+</sup>     | number | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。在使用了cast+协议的音频投播场景下，暂不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+|displayTags<sup>11+</sup>     | number | 否   | 是   | 媒体资源的金标类型，取值参考[DisplayTag](arkts-apis-avsession-e.md#displaytag11)。<br>在使用了cast+协议的音频投播场景下，不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 |launchClientData<sup>20+</sup> | string | 否 | 是 | 投播过程中应用程序向接收方发送的自定义数据。<br/>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## AVQueueItem<sup>10+</sup>
@@ -188,7 +190,7 @@
 | castCategory   | [AVCastCategory](arkts-apis-avsession-e.md#avcastcategory10)        | 否 | 否   | 投播的类别。  <br> **系统能力：** SystemCapability.Multimedia.AVSession.Core  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceId   | string | 否 | 否   | 播放设备的ID。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceName | string | 否  | 否   | 播放设备的名称。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| deviceType | DeviceType | 否 | 否   | 播放设备的类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| deviceType | [DeviceType](arkts-apis-avsession-e.md#devicetype10) | 否 | 否   | 播放设备的类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | supportedProtocols<sup>11+</sup> | number | 否 | 是  | 播放设备支持的协议。<br>默认为TYPE_LOCAL,具体取值来自[ProtocolType](arkts-apis-avsession-e.md#protocoltype11)，可以是protocolType中的某个协议或者多个协议的组合。<br>设备仅支持一种协议，返回对应枚举值；设备支持多种协议，返回对应枚举值之和。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | supportedDrmCapabilities<sup>12+</sup> | Array\<string> | 否 | 是 | 播放设备支持的DRM能力。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | manufacturer<sup>13+</sup> | string | 否 | 是  | 播放设备生产厂家。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|
