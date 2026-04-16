@@ -94,7 +94,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-注册系统规避区变化的监听。
+注册系统避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
