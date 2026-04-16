@@ -65,7 +65,7 @@ try {
             console.log("Failed to create KVManager: "  + JSON.stringify(err));
             return;
         }
-        console.log("Created KVManager successfully");
+        console.log("Succeeded in creating KVManager");
         kvManager = manager;
     });
 } catch (e) {
@@ -105,7 +105,7 @@ try {
     }
   }
   distributedData.createKVManager(kvManagerConfig).then((manager) => {
-    console.log("Created KVManager successfully");
+    console.log("Succeeded in creating KVManager");
     kvManager = manager;
   }).catch((err) => {
     console.error("Failed to create KVManager: " + JSON.stringify(err));
@@ -1189,7 +1189,7 @@ Provides APIs to create a **Query** object, which defines different data query c
 
 constructor() 
 
-A constructor used to create a **Schema** instance.
+Defines a constructor used to create a **Query** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
