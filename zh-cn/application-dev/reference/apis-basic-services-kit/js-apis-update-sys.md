@@ -1300,7 +1300,7 @@ try {
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, callback: AsyncCallback\<void>): void
 
-清除异常状态，版本下载、安装异常的时候，清理升级包文件及升级状态。使用callback异步回调。
+清除异常状态，版本下载、安装异常时，清理升级包文件及升级状态。使用callback异步回调。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -1360,7 +1360,7 @@ try {
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Promise\<void>
 
-清除异常状态，版本下载、安装异常的时候，清理升级包文件及升级状态。使用Promise异步回调。
+清除异常状态，版本下载、安装异常时，清理升级包文件及升级状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2024,7 +2024,7 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 | 类型                              | 说明                  |
 | ------------------------------- | ------------------- |
-| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回深度恢厂设置信息。 |
+| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回深度恢复出厂设置信息。 |
 
 **错误码**：
 
