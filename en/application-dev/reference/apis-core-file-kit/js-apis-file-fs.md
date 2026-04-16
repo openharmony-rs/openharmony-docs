@@ -6109,7 +6109,7 @@ Defines the constants of the **mode** parameter used in **open()**. It specifies
 | DIR | number | 0o200000    | If **path** does not point to a directory, throw an exception.|
 | NOFOLLOW | number | 0o400000    | If **path** points to a symbolic link, throw an exception.|
 | SYNC | number | 0o4010000    | Open the file in synchronous I/O mode.|
-| UNCACHE | number | 0o10000000000    | Disable the page cache for reading and writing a file.<br> **Since**: 26.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| UNCACHE | number | 0o10000000000    | Disable the page cache for reading and writing a file.<br> **Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## Filter<sup>10+</sup>
 
