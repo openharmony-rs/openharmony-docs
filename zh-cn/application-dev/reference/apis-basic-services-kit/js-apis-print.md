@@ -5,7 +5,7 @@
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
-<!--Adviser: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 该模块为基本打印的操作API，提供调用基础打印功能的接口。
 
@@ -728,7 +728,7 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。打印侧会通过[onStartLayoutWrite](#onstartlayoutwrite11)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印文件。 |
+| jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。当前仅支持".pdf"文件类型。打印侧会通过[onStartLayoutWrite](#onstartlayoutwrite11)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印文件。 |
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | 是 | 表示三方应用实现的[PrintDocumentAdapter](#printdocumentadapter11)接口实例。 |
 | printAttributes | [PrintAttributes](#printattributes11) | 是 | 表示打印参数。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
@@ -2200,7 +2200,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 添加打印机到系统中，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINTER_DRIVER
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

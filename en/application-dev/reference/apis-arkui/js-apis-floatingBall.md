@@ -578,6 +578,7 @@ Describes the parameters for starting and updating the floating ball.
 | content | string | No| Yes| Content of the floating ball. It cannot exceed 64 bytes. The default value is an empty string, and no content is displayed on the floating ball.|
 | backgroundColor | string | No| Yes| Background color of the floating ball, in hexadecimal format without opacity (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the default background color of the system (light or dark mode) is used.|
 | icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| Yes| Icon of the floating ball. The total number of bytes of the icon pixels cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended size is 128 px * 128 px. Actual display may vary based on the device capability and floating ball UI style.|
+| textUpdateAnimationType | [FloatingBallTextUpdateAnimationType](#floatingballtextupdateanimationtype) | No| Yes| Animation type used when the floating ball text is updated. The default value is **FloatingBallTextUpdateAnimationType.ANIMATION_NONE**.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
 
 ## FloatingBallState
 
@@ -612,3 +613,18 @@ Describes the floating ball window information.
 | Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | windowId | number | Yes| No| ID of the floating ball window.|
+
+## FloatingBallTextUpdateAnimationType
+
+Enumerates the animation types used when the floating ball text is updated.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Since**: 26.0.0
+
+| Name| Value| Description|
+|------------|------------|------------|
+| ANIMATION_NONE | 0 | No animation.|
+| ANIMATION_OPACITY | 1 | Fade-in and fade-out animation.|

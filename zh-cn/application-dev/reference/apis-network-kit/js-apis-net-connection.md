@@ -2541,7 +2541,7 @@ console.info(result);  // 预期结果：www.example.com
 
 getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 
-获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPV4和IPV6。  
+获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPv4和IPv6。  
 
 > **说明：**
 >
@@ -2685,7 +2685,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
-| duration | number | 是 | 探测持续时间，单位为秒，传入值需为正整数。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。 |
+| duration | number | 是 | 探测持续时间，单位为秒，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
 
 **返回值：**
 
@@ -3575,17 +3575,17 @@ TCP状态。
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
-| ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
-| SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
-| SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
-| FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
-| FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
-| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
-| CLOSE       | 7  | 初始/关闭状态，无连接。 |
-| CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
-| LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
-| LISTEN      | 10 | 服务端监听，等待客户端连接。 |
-| CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
+| TCP_ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
+| TCP_SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
+| TCP_SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
+| TCP_FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
+| TCP_FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
+| TCP_TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
+| TCP_CLOSE       | 7  | 初始/关闭状态，无连接。 |
+| TCP_CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
+| TCP_LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
+| TCP_LISTEN      | 10 | 服务端监听，等待客户端连接。 |
+| TCP_CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
   
   ## PacketsType
 
@@ -3840,12 +3840,12 @@ TCP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
-| tcpLocalPort  | number | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
-| tcpRemotePort | number | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpUid        | number | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
-| tcpPid        | number | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
-| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
+| tcpLocalPort  | number | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]。 |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址。  |
+| tcpRemotePort | number | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]。 |
+| tcpUid        | number | 否 | 否 |监听该TCP端口的用户UID。 |
+| tcpPid        | number | 否 | 否 |监听该TCP端口的进程PID。 |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 否 |TCP网络状态。  |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -3859,9 +3859,9 @@ UDP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
-| udpLocalPort  | number | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| udpUid        | number | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
-| udpPid        | number | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
+| udpLocalPort  | number | 否 | 否 |UDP网络本地端口，取值范围\[0, 65535]。 |
+| udpUid        | number | 否 | 否 |监听该UDP端口的用户UID。 |
+| udpPid        | number | 否 | 否 |监听该UDP端口的进程PID。 |
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -3874,8 +3874,8 @@ UDP端口状态信息。
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的UDP信息。   |
   
  
 ## TraceRouteOptions
@@ -3890,7 +3890,7 @@ UDP端口状态信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| maxJumpNumber | number | 否 | 是 | 最大跳数，最大值为30，默认值为30。 |
+| maxJumpNumber | number | 否 | 是 | 最大跳数，取值范围\[1, 30\]，默认值为30。 |
 | packetsType | [PacketsType](#packetstype) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
   
 
@@ -3923,5 +3923,5 @@ UDP端口状态信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| lossRate | number | 否 | 否 | 丢包率，取值范围0-100。例如，100表示100%丢包，50表示50%丢包。 |
+| lossRate | number | 否 | 否 | 丢包率，取值范围\[0, 100\]。例如，100表示100%丢包，50表示50%丢包。 |
 | rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |

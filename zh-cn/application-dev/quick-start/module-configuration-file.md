@@ -456,6 +456,7 @@ skills示例：
           // ...
         ],
         // ...
+      }
     ],
     // ...
 }
@@ -489,6 +490,7 @@ skills示例：
 | dataGroupIds | 标识当前ExtensionAbility组件的dataGroupId集合。如果当前ExtensionAbility组件所在的应用在应用市场申请的证书里groupIds也申请了某个dataGroupId，那么当前ExtensionAbility组件可以和应用共享这一个dataGroupId生成的目录，所以ExtensionAbility组件的dataGroupId需要是应用的签名证书中groupIds标签里配置的才能生效。 且该标签仅在当前ExtensionAbility组件存在独立的沙箱目录时生效。<!--RP8--><!--RP8End--> | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[进程模型定义](../application-models/process-model-stage.md#其他进程类型)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| skipAbilityStageLifecycle | 标识type为backup的ExtensionAbility组件是否跳过[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)生命周期回调。<br/>-&nbsp;true：跳过AbilityStage生命周期，不执行onCreate、onDestroy等回调。<br/>-&nbsp;false：不跳过AbilityStage生命周期，正常执行生命周期回调。<br/>**说明：**<br/>1. 该标签仅在ExtensionAbility的type为backup时配置生效。<br/>2. 从API version 26.0.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 
 extensionAbilities示例：
 
@@ -670,6 +672,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -687,6 +690,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -798,10 +802,11 @@ wants标签示例：
       "metadata": [
         {
           "name": "ohos.module.distribution",
-          "resource": "$profile:distributionFilter_config",
+          "resource": "$profile:distributionFilter_config"
         }
       ],
       // ...
+    }
   }
   ```
 
@@ -860,7 +865,7 @@ atomicService标签示例：
 ``` JSON5
 {
   "module": {
-  // ···
+    // ...
     "atomicService": {
       "preloads":[
         {
@@ -869,7 +874,8 @@ atomicService标签示例：
       ],
       "resizeable": true
     },
-  // ···
+    // ...
+  }
 }
 ```
 

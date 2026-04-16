@@ -681,3 +681,27 @@ NODE_TEXT_EDITOR_ORPHAN_CHAR_OPTIMIZATION = 22028
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 是否使能孤字优化。 |
+
+## NODE_TEXT_EDITOR_HORIZONTAL_SCROLLING
+
+```c
+NODE_TEXT_EDITOR_HORIZONTAL_SCROLLING = 22029
+```
+
+设置TextEditor组件在文本宽度超过内容区宽度时是否启用水平滚动，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用水平滚动。1表示启用水平滚动，0表示不启用水平滚动。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用水平滚动。 |

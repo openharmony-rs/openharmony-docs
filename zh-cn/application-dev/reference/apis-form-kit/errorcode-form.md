@@ -18,7 +18,7 @@ IPC connection error.
 
 **错误描述**
 
-系统内为执行当前请求进行必要进程间通信时出错，系统会报此错误码。
+系统内为执行当前请求时进行必要的进程间通信出错，系统会报此错误码。
 
 **可能原因**
 
@@ -230,7 +230,7 @@ The form can not support this operation.
 
 **处理步骤**
 
-检查当前卡片对应[互动卡片配置项sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
+检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
 
 ## 16501012 卡片尺寸错误
 

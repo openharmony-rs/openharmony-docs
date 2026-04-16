@@ -978,6 +978,7 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 否   | 否   | 权限名称。 |
 | grantStatus    | [GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus) | 否   | 否   | 权限授权状态。 |
 | grantFlags     | number                    | 否   | 否   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+| grantTimestamp     | number                    | 否   | 是   | 授权状态变化的时间戳，单位：ms。 |
 
 ## PermissionRequestToggleStatus<sup>12+</sup>
 

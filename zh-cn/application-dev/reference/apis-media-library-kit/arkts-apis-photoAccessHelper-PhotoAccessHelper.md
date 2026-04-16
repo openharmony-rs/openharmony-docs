@@ -2255,3 +2255,108 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+
+## onMediaLibraryAvailability
+
+onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): void
+
+注册媒体库可用性状态，返回媒体库当前可用状态和不可用原因。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback  | Callback&lt;[MediaLibraryAvailability](arkts-apis-photoAccessHelper-i.md#medialibraryavailability)&gt; | 是   | 回调函数，返回媒体库可用性信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The input parameter is null or undefined. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+private handleMediaLibraryChange?: (
+  changeData: photoAccessHelper.MedialibraryAvailability
+) => void;
+
+onMedialibraryAvailability = async () => {
+  try {
+    this.handleMediaLibraryChange = (
+      changeData: photoAccessHelper.MedialibraryAvailability
+    ) => {
+      const availabilityStatus = changeData.availabilityStatus;
+      const unavailabilityReason = changeData.unavailabilityReason;
+      console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
+    };
+    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
+    console.info('媒体库监听注册成功');
+  } catch (err) {
+    console.error(`onMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  }
+};
+```
+
+## offMediaLibraryAvailability
+
+offMediaLibraryAvailability(callback?: Callback&lt;MediaLibraryAvailability&gt;): void
+
+取消注册媒体库可用性状态。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明      |
+|-----------|-------------------------|-----------|-----------------|
+| callback | Callback&lt;[MediaLibraryAvailability](arkts-apis-photoAccessHelper-i.md#medialibraryavailability)&gt; | 否   | 回调函数，返回取消[onMediaLibraryAvailability](#onmedialibraryavailability)注册时指定的callback监听。不填时，则取消对媒体库可用性变化的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+private handleMediaLibraryChange?: (
+  changeData: photoAccessHelper.MedialibraryAvailability
+) => void;
+
+offMedialibraryAvailability1 = async () => {
+  try {
+    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
+    await this.helper.offMedialibraryAvailability(this.handleMediaLibraryChange);
+    console.info('媒体库监听解除成功');
+  } catch (err) {
+    console.error(`offMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  }
+};
+```

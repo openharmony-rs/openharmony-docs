@@ -5,7 +5,7 @@
 <!--Owner: @YingCong-->
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供访问设置数据项的能力。
 
@@ -1265,5 +1265,95 @@ try {
   settings.openNfcSettingsPage(context);
 } catch (err) {
   console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openAboutDeviceSettingsPage
+
+openAboutDeviceSettingsPage(context: Context): void
+
+打开关于本机设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openAboutDeviceSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the about device settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openAppDetailSettingsPage
+
+openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
+
+打开应用详情设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| bundleName  | string | 是 | 应用包名 |
+| appIndex  | int | 否 | 应用分身的索引 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openAppDetailSettingsPage(context, 'com.example');
+} catch (err) {
+  console.error(`Failed to open the app detail settings page. code: ${err?.code}, message: ${err?.message}`);
 }
 ```

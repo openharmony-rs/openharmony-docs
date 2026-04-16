@@ -698,7 +698,7 @@ Automatic scrolling is not supported when a grid item is dragged to the edge of 
 
 | Name   | Type                                 | Mandatory| Description                  |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | Yes  | Callback triggered when the dragging of a grid element starts.<br>In API version 22 and earlier versions, the parameter type is (event: ItemDragInfo, itemIndex: number) => (() => any) \| void. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23).|
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | Yes  | Callback triggered when the dragging of a grid element starts.<br>In API version 22 and earlier versions, the parameter type is **(event: ItemDragInfo, itemIndex: number) => (() => any) \| void**. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23).|
 
 ### onItemDragEnter<sup>8+</sup>
 
@@ -1131,13 +1131,20 @@ export class GridDataSource implements IDataSource {
       listener.onDataMove(from, to);
     })
   }
+  
+  // Reload all data.
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
 
   // Exchange element positions.
   public swapItem(from: number, to: number): void {
     let temp: string = this.list[from];
     this.list[from] = this.list[to];
     this.list[to] = temp;
-    this.notifyDataMove(from, to);
+    this.notifyDataReload()
   }
 }
 ```
@@ -2869,7 +2876,7 @@ struct Example {
             console.info('drop:' + item + '' + extraParams + JSON.stringify(event!));
             this.changeIndex(parseInt(JSON.parse(extraParams!).extraInfo), index);
           })
-        }, (item: string) => item)
+        }, (item: string, index: number) => item + '+' + index)
       }
       .columnsGap(5)
       .rowsGap(5)
@@ -2989,7 +2996,7 @@ struct GridExample {
               this.contentHeight = this.scroller.contentSize().height;
             } catch (error) {
               let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
             }
           })
         // Display the obtained content size.
