@@ -43,6 +43,7 @@
   - 模块<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
     - [OHAudioSuite](capi-ohaudiosuite.md)
+    - [AudioConverter](capi-audioconverter.md)
   - 头文件<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
     - [native_audio_manager.h](capi-native-audio-manager-h.md)
@@ -52,6 +53,7 @@
     - [native_audio_volume_manager.h](capi-native-audio-volume-manager-h.md)
     - [native_audiorenderer.h](capi-native-audiorenderer-h.md)
     - [native_audio_common.h](capi-native-audio-common-h.md)
+    - [native_audio_converter.h](capi-native-audio-converter-h.md)
     - [native_audio_device_base.h](capi-native-audio-device-base-h.md)
     - [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
     - [native_audiostream_base.h](capi-native-audiostream-base-h.md)
@@ -89,6 +91,8 @@
     - [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)
     - [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)
     - [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)
+    - [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)
+    - [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md)
 - 错误码<!--audio-arkts-errcode-->
   - [Audio错误码](errorcode-audio.md)
   <!--Del-->

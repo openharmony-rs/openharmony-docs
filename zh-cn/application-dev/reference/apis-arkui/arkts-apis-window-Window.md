@@ -512,6 +512,8 @@ ArkTS-Sta: moveWindowTo(x: int, y: int, callback: AsyncCallback&lt;void&gt;): vo
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -594,6 +596,8 @@ ArkTS-Sta: moveWindowTo(x: int, y: int): Promise&lt;void&gt;
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -678,6 +682,10 @@ ArkTS-Sta: moveWindowToAsync(x: int, y: int): Promise&lt;void&gt;
 | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
 | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
 | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
+
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -768,6 +776,9 @@ ArkTS-Sta: moveWindowToAsync(x: int, y: int, moveConfiguration?: MoveConfigurati
 | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
 | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -862,6 +873,8 @@ ArkTS-Sta: moveWindowToGlobal(x: int, y: int): Promise&lt;void&gt;
 > **说明：**
 >
 > - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -947,6 +960,8 @@ ArkTS-Sta: moveWindowToGlobal(x: int, y: int, moveConfiguration?: MoveConfigurat
 > **说明：**
 >
 > - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1041,6 +1056,10 @@ ArkTS-Sta: moveWindowToGlobalDisplay(x: int, y: int): Promise&lt;void&gt;
 > **说明：**
 >
 > - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> 
+> - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2622,12 +2641,63 @@ try {
 }
 ```
 
+## isFloatNavigationAvoidAreaEnabled
+
+isFloatNavigationAvoidAreaEnabled(): boolean
+
+查询当前窗口是否开启获取三键导航类型的避让区域。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型             | 说明              |
+| -------------- | --------------- |
+| boolean | 是否开启获取三键导航类型的避让区域。<br>true表示开启，false表示关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create JS value failed. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let isEnabled = windowClass.isFloatNavigationAvoidAreaEnabled();
+} catch (exception) {
+  console.error(`Failed to check if the window is enabled float navigation avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let isEnabled = windowClass.isFloatNavigationAvoidAreaEnabled();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to check if the window is enabled float navigation avoid area. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isImmersiveLayout<sup>20+</sup>
 
 isImmersiveLayout(): boolean
 
 查询当前窗口是否处于沉浸式布局状态。
-l
+
 **系统能力**：SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 20
@@ -9310,6 +9380,12 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
 
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize9)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
+>
+> - 非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束，其他类型窗口仍受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -9369,6 +9445,12 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 
 未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
+
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize9)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
+>
+> - 非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束，其他类型窗口仍受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
