@@ -43,3 +43,4 @@ import { bundleManager } from '@kit.AbilityKit';
 | moduleName | string         | 是   | 否   | 应用包的模块名，返回entry模块的moduleName。若不存在entry模块则返回feature模块的moduleName。            |
 | iconId | number         | 是   | 否   | 应用图标Id。            |
 | labelId | number         | 是   | 否   | 应用标签Id。            |
+| descriptionId<sup>24+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long         | 是   | 是   | 应用描述Id。<br>**模型约束：** 此接口仅可在Stage模型下使用。            |

@@ -14,20 +14,32 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 页面仅包含本模块的系统接口，其他公开接口参见[ohos.graphics.uiEffect (效果级联)](js-apis-uiEffect.md)。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { uiEffect } from "@kit.ArkGraphics2D";
 ```
+
+ArkTS-Sta示例：
+```ts
+import uiEffect from '@ohos.graphics.uiEffect';
+```
+
 ## uiEffect.createBrightnessBlender
 createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 
 创建BrightnessBlender实例用于给组件添加提亮效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -44,10 +56,39 @@ createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let blender : uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
     positiveCoefficient:[2.3, 4.5, 2.0], negativeCoefficient:[0.5, 2.0, 0.5], fraction:0.0})
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Context, Column, Color, Stack, State, Row, Text, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+import { BrightnessBlenderParam } from '@ohos.graphics.uiEffect'
+import type common2D from '@ohos.graphics.common2D'
+
+@Entry
+@Component
+struct BackgroundColorBlender {
+  @State bgOptions: uiEffect.Blender = uiEffect.createBrightnessBlender({
+    cubicRate: 0.5, quadraticRate: 0.5, linearRate: 0.5, degree: 0.5, saturation: 0.5,
+    positiveCoefficient: [1.0, 1.0, 1.0] as [double, double, double],
+    negativeCoefficient: [1.0, 1.0, 1.0] as [double, double ,double],
+    fraction: 0.5
+  } as BrightnessBlenderParam)
+
+  build() {
+    Stack() {
+      Column() {
+        Text("BrightnessBlender").fontSize(50).fontColor(Color.Red)
+      }.backgroundColor(Color.Blue)
+      .visualEffect(uiEffect.createEffect().backgroundColorBlender(this.bgOptions))
+    }
+  }
+}
 ```
 
 ## uiEffect.createHdrBrightnessBlender<sup>20+</sup>
@@ -56,6 +97,10 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 创建[HdrBrightnessBlender](#hdrbrightnessblender20)实例用于给组件添加支持HDR的提亮效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -105,18 +150,24 @@ struct example {
 Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
 
 ### pixelStretch
-pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
+ArkTS-Dyn: pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
+
+ArkTS-Sta: pixelStretch(stretchSizes: Array\<double\>, tileMode: TileMode): Filter
 
 将边缘像素扩展效果添加至组件上。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| stretchSizes  | Array\<number\>         | 是   | 上下左右四个方向边缘像素扩展的百分比比例，取值范围为[-1, 1]。<br/>正值表示向外扩展，上下左右四个方向分别用指定原图比例的边缘像素填充。负值表示内缩，但是最终图像大小不变。<br/>注意四个方向对应的参数需统一为非正值或非负值。|
+| stretchSizes  | ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\>         | 是   | 上下左右四个方向边缘像素扩展的百分比比例，取值范围为[-1, 1]。<br/>正值表示向外扩展，上下左右四个方向分别用指定原图比例的边缘像素填充。负值表示内缩，但是最终图像大小不变。<br/>注意四个方向对应的参数需统一为非正值或非负值。|
 | tileMode      | [TileMode](#tilemode) | 是   | 边缘像素扩展的像素填充模式。 |
 
 
@@ -128,26 +179,51 @@ pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 filter.pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP)
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack, Image, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+
+@Entry
+@Component
+struct PixelStretch {
+  build() {
+    Stack() {
+      Image($r('app.media.startIcon')).width(300).height(300)
+      Column().width(300).height(300)
+        .compositingFilter(uiEffect.createFilter().pixelStretch([-0.2, -0.2, -0.2, -0.2], uiEffect.TileMode.MIRROR))
+    }
+  }
+}
+```
+
 ### waterRipple
-waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMode: WaterRippleMode): Filter
+ArkTS-Dyn: waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMode: WaterRippleMode): Filter
+
+ArkTS-Sta: waterRipple(progress: double, waveCount: int, x: double, y: double, rippleMode: WaterRippleMode): Filter
 
 将水波纹效果添加至组件上。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| progress  | number         | 是   | 表示水波纹的进度，取值范围为[0, 1]。<br/>水波纹进度越趋向于1，水波纹展示越完全。<br/>超出取值范围水波纹不会出现效果。|
-| waveCount      | number | 是   | 水波纹波动时波纹的个数，取值范围为[1, 3]。<br/>水波纹的个数只能取整数，如果为浮点数或超出取值范围，水波纹不会出现效果。 |
-| x      | number | 是   | 水波纹中心在屏幕中第一次出现的x轴位置。<br/>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），右上角坐标为（1, 0）。<br/>当x取值为负值时，代表在屏幕左侧。|
-| y      | number | 是   | 水波纹中心在屏幕中第一次出现的y轴位置。<br/>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），左下角坐标为（0, 1）。<br/>当y取值为负值时，代表在屏幕上方。 |
+| progress  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 表示水波纹的进度，取值范围为[0, 1]。<br/>水波纹进度越趋向于1，水波纹展示越完全。<br/>超出取值范围水波纹不会出现效果。|
+| waveCount      |ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是   | 水波纹波动时波纹的个数，取值范围为[1, 3]。<br/>水波纹的个数只能取整数，如果为浮点数或超出取值范围，水波纹不会出现效果。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 水波纹中心在屏幕中第一次出现的x轴位置。<br/>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），右上角坐标为（1, 0）。<br/>当x取值为负值时，代表在屏幕左侧。|
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 水波纹中心在屏幕中第一次出现的y轴位置。<br/>水波纹对屏幕进行归一化处理，左上角的坐标为（0, 0），左下角坐标为（0, 1）。<br/>当y取值为负值时，代表在屏幕上方。 |
 | rippleMode      | [WaterRippleMode](#waterripplemode) | 是   | 水波纹的场景模式。|
 
 
@@ -167,23 +243,52 @@ waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMod
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 filter.waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL)
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack, Image, Row, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+
+@Entry
+@Component
+struct WaterRipple {
+  build() {
+    Stack() {
+      Row() {}
+        .width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().
+          waterRipple(0.6, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2MEDIUM_RECV))
+        .opacity(1)
+    }
+    .width("100%").height("100%")
+    .backgroundImage($r('app.media.1'))
+  }
+}
+```
+
 ### flyInFlyOutEffect
-flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
+ArkTS-Dyn: flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
+
+ArkTS-Sta: flyInFlyOutEffect(degree: double, flyMode: FlyMode): Filter
 
 将飞入飞出形变效果添加至组件上。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| degree  | number         | 是   | 表示控制飞入飞出形变的程度，取值范围为[0, 1]。<br/>越靠近1，变形程度越明显。<br/>超出取值范围形变不会出现效果。|
+| degree  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 表示控制飞入飞出形变的程度，取值范围为[0, 1]。<br/>越靠近1，变形程度越明显。<br/>超出取值范围形变不会出现效果。|
 | flyMode      | [FlyMode](#flymode) | 是   | 飞入飞出的场景模式。<br/>BOTTOM表示从设备底部飞入飞出形变场景。<br/>TOP表示从设备顶部飞入飞出形变场景。 |
 
 
@@ -203,23 +308,47 @@ flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 filter.flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP)
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack, Image, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+
+@Entry
+@Component
+struct FlyInFlyOutEffect {
+  build() {
+    Stack() {
+      Image($r('app.media.man'))
+        .foregroundFilter(uiEffect.createFilter().flyInFlyOutEffect(0.5, uiEffect.FlyMode.TOP))
+    }
+  }
+}
+```
+
 ### distort<sup>13+</sup>
-distort(distortionK: number): Filter
+ArkTS-Dyn: distort(distortionK: number): Filter
+
+ArkTS-Sta: distort(distortionK: double): Filter
 
 将透镜畸变效果添加至组件上。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 13
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| distortionK  | number         | 是   | 畸变系数，表示透镜畸变的程度，取值范围为[-1, 1]。畸变系数设置小于-1的值时，按值为-1处理；设置大于1的值时，按值为1处理。|
+| distortionK  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 畸变系数，表示透镜畸变的程度，取值范围为[-1, 1]。畸变系数设置小于-1的值时，按值为-1处理；设置大于1的值时，按值为1处理。|
 
 ![zh-ch_image_Add_Distort.png](./figures/zh-ch_image_Add_Distort.png)
 
@@ -241,25 +370,48 @@ distort(distortionK: number): Filter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 filter.distort(-0.5)
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack, Image, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+
+@Entry
+@Component
+struct Distort {
+  build() {
+    Stack() {
+      Image($r('app.media.man'))
+        .foregroundFilter(uiEffect.createFilter().distort(-0.5))
+    }
+  }
+}
+```
 
 ### radiusGradientBlur<sup>19+</sup>
-radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
+ArkTS-Dyn: radiusGradientBlur(radius: number, gradientParam: LinearGradientBlurOptions): Filter
+
+ArkTS-Sta: radiusGradientBlur(radius: double, gradientParam: LinearGradientBlurOptions): Filter
 
 为组件内容添加半径线性渐变模糊效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 19
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | number         | 是   | 模糊半径，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12对象)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| value  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -277,6 +429,7 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { uiEffect } from "@kit.ArkGraphics2D"
 
@@ -297,12 +450,43 @@ struct RadiusGradientBlurExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Image, Stack, State, Row, $r, LinearGradientBlurOptions, GradientDirection, FractionStop } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+import type common2D from '@ohos.graphics.common2D'
+
+@Entry
+@Component
+struct RadiusGradientBlur {
+  @State filter: uiEffect.Filter = uiEffect.createFilter()
+
+  build() {
+    Column() {
+      Image($r('app.media.man'))
+        .compositingFilter(this.filter)
+        .onAppear(() => {
+          let blurOptions: LinearGradientBlurOptions = {
+            fractionStops: [[0.0, 0.0] as FractionStop, [1.0, 1.0] as FractionStop] as Array<FractionStop>,
+            direction: GradientDirection.Bottom
+          } as LinearGradientBlurOptions
+          this.filter = uiEffect.createFilter().radiusGradientBlur(64, blurOptions)
+        })
+    }
+  }
+}
+```
+
 ### bezierWarp<sup>20+</sup>
 bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
 将贝塞尔曲线变形的效果添加至组件上。该效果通过在图层边界上创建封闭的贝塞尔曲线，实现对图像的精准扭曲和形状调整。贝塞尔曲线共有四段，首尾顺次相连，每段包含一个顶点和两个切点。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -327,6 +511,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
@@ -348,12 +533,51 @@ struct BezierWarpExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import {
+  $r,
+  Column,
+  Component,
+  Entry,
+  Image,
+  State
+} from '@kit.ArkUI';
+
+import uiEffect from '@ohos.graphics.uiEffect'
+import {common2D} from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct BezierWarpExample {
+  @State valueBezier: Array<common2D.Point> = [
+    {x: 0, y: 0} as common2D.Point, {x: 1/3, y: 0} as common2D.Point, {x: 2/3, y: 0} as common2D.Point,     // top edge
+    {x: 0.5, y: 0} as common2D.Point, {x: 0.5, y: 1/3} as common2D.Point, {x: 1, y: 2/3} as common2D.Point, // right edge
+    {x: 1, y: 1} as common2D.Point, {x: 2/3, y: 1} as common2D.Point, {x: 1/3, y: 1} as common2D.Point,     // bottom edge
+    {x: 0, y: 1} as common2D.Point, {x: 0, y: 2/3} as common2D.Point, {x: 0, y: 1/3} as common2D.Point]     // left edge
+
+  build() {
+    Column() {
+      Image('test.jpg')
+        .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier.map((v:common2D.Point)=>v)))
+        .height('1000px')
+    }
+  }
+}
+```
+
 ### colorGradient<sup>20+</sup>
-colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<number>, alphaMask?: Mask): Filter
+ArkTS-Dyn: colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<number>, alphaMask?: Mask): Filter
+
+ArkTS-Sta: colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<double>, alphaMask?: Mask): Filter
 
 为组件内容添加颜色渐变效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -362,7 +586,7 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 | ------------- | --------------------- | ---- | ------------------------- |
 | colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，多个颜色的渐变。数组长度取值范围[0, 12], 每一个颜色值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
 | positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的分布位置。数组长度取值范围[0, 12]。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
-| strengths  | Array\<number>         | 是   | 强度数组，颜色对应的扩散强度。数组长度取值范围[0, 12], 每一个强度值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
+| strengths  | ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\>         | 是   | 强度数组，颜色对应的扩散强度。数组长度取值范围[0, 12], 每一个强度值取值范围为大于等于0。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
 | alphaMask  | [Mask](#mask20)         | 否   | 遮罩alpha，颜色对应的alpha显示遮罩。不设置时，默认组件内容全部有颜色渐变效果。|
 
 **返回值：**
@@ -381,6 +605,7 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common2D, uiEffect } from "@kit.ArkGraphics2D"
 
@@ -409,12 +634,46 @@ struct ColorGradientExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack, State, Row, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+import type common2D from '@ohos.graphics.common2D'
+
+@Entry
+@Component
+struct ColorGradient {
+  @State colors: Array<uiEffect.Color> = [
+    {red: 1.0, green: 0.8, blue: 0.5, alpha: 0.8} as uiEffect.Color,
+    {red: 1.0, green: 1.5, blue: 0.5, alpha: 1.0} as uiEffect.Color
+  ]
+  @State positions: Array<common2D.Point> = [
+    {x: 0.2, y: 0.2} as common2D.Point,
+    {x: 0.8, y: 0.6} as common2D.Point]
+  @State strengths: Array<double> = [0.3, 0.3]
+
+  build() {
+    Column() {
+      Row().width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().colorGradient(this.colors.map((v: uiEffect.Color) => v),
+          this.positions.map((v: common2D.Point) => v), this.strengths.map((v: double) => v)))
+    }
+  }
+}
+```
+
 ### contentLight<sup>20+</sup>
-contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: number, displacementMap?: Mask): Filter
+ArkTS-Dyn: contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: number, displacementMap?: Mask): Filter
+
+ArkTS-Sta: contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double, displacementMap?: Mask): Filter
 
 为组件内容添加3D光照效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -423,7 +682,7 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 | ------------- | --------------------- | ---- | ------------------------- |
 | lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大光源离组件平面越远，可照射区域越大。<br/> x分量取值范围[-10, 10]，y分量取值范围[-10, 10]，z分量取值范围[0, 10]，超出范围会自动截断。 |
 | lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，各元素取值范围为[0, 1]，超出范围会自动截断。 |
-| lightIntensity | number | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
+| lightIntensity | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
 | displacementMap | [Mask](#mask20) | 否 | 该参数暂不生效。 |
 
 **返回值：**
@@ -442,6 +701,7 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
@@ -479,19 +739,69 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  Stack,
+  Image,
+  $r,
+  FlexAlign
+} from '@kit.ArkUI';
+
+import uiEffect from '@ohos.graphics.uiEffect'
+import {common2D} from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  @State lightIntensity2:double = 1
+
+  build() {
+    Column() {
+      Stack() {
+        Image($r('app.media.man'))
+          .width('646px')
+          .height('900px')
+          .borderRadius(10)
+          .foregroundFilter(uiEffect.createFilter().contentLight(
+            { x:0.0, y:0.0, z:2.0 } as common2D.Point3d,
+            { red:255, blue:255, green:255, alpha:255 } as common2D.Color,
+            this.lightIntensity2))
+      }
+      .width('100%')
+      .height('55%')
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor('#555')
+  }
+}
+```
+
 ### edgeLight<sup>20+</sup>
-edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
+ArkTS-Dyn: edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
+
+ArkTS-Sta: edgeLight(alpha: double, color?: Color, mask?: Mask, bloom?: boolean): Filter
 
 为组件内容检测边缘，并添加边缘高亮效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| alpha  | number         | 是   | 指定描边高光透明度，越大描边越明显。取值范围为[0, 1]。设置为0时无描边；设置小于0的值时，按值为0处理；设置大于1的值时，按值为1处理。|
+| alpha  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 指定描边高光透明度，越大描边越明显。取值范围为[0, 1]。设置为0时无描边；设置小于0的值时，按值为0处理；设置大于1的值时，按值为1处理。|
 | color  | [Color](#color20) | 否   | 指定描边高光颜色，不设置时，将默认使用组件内容的原始颜色。如果有值，使用指定颜色。设置不为null时，Color中的alpha不发挥作用，仅使用rgb。|
 | mask  | [Mask](#mask20) | 否   | 指定描边高光强度。不设置时，默认组件内容全部有描边高光效果。|
 | bloom  | boolean | 否   | 指定描边是否发光。设置为true时，有描边和发光效果；设置为false时，只有描边效果无发光效果；不设置时，默认为true。小于16*16的图片默认只有描边效果，无发光效果，此参数失去作用。 |
@@ -512,6 +822,7 @@ edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { uiEffect } from "@kit.ArkGraphics2D"
 
@@ -519,13 +830,13 @@ import { uiEffect } from "@kit.ArkGraphics2D"
 @Component
 struct EdgeLightExample {
   @State colorExample: uiEffect.Color = {red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0}
-  
+
   @State maskExample: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.5, 0.5)
-  
+
   build() {
     Stack() {
       Image($rawfile('test.png'))
-      Row()  
+      Row()
         .width("100%")
         .height("100%")
         .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, this.colorExample, this.maskExample, false))
@@ -534,12 +845,42 @@ struct EdgeLightExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Stack, State, Image, RelativeContainer, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+import type common2D from '@ohos.graphics.common2D'
+
+@Entry
+@Component
+struct EdgeLight {
+  @State gradient: Array<[double, double]> = [[1,0] as [double, double], [1, 1] as [double, double]]
+
+  build() {
+    RelativeContainer() {
+      Image($r('app.media.man'))
+      Stack().width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, { red: 1, blue: 1, green: 1, alpha: 1},
+          uiEffect.Mask.createRadialGradientMask({ x: 0.5, y: 0.5 } as common2D.Point,
+          0.5, 0.5, this.gradient.map<[double, double]>((v) => [v[0], v[1]] as [double, double])),
+          false))
+    }
+  }
+}
+```
+
 ### displacementDistort<sup>20+</sup>
-displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
+ArkTS-Dyn: displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
+
+ArkTS-Sta: displacementDistort(displacementMap: Mask, factor?: [double, double]): Filter
 
 为组件内容添加扭曲效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -547,7 +888,7 @@ displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | displacementMap | [Mask](#mask20) | 是   | 指定扭曲程度。与factor相乘后共同决定扭曲程度。|
-| factor  | [number, number] | 否   | 指定水平、竖直方向扭曲程度系数，系数的绝对值越大，扭曲程度越明显，建议取值范围为[-10.0, 10.0]。不设置时，默认值为1.0。设置为0时，无扭曲效果。与mask相乘后共同决定扭曲程度。 |
+| factor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double] | 否   | 指定水平、竖直方向扭曲程度系数，系数的绝对值越大，扭曲程度越明显，建议取值范围为[-10.0, 10.0]。不设置时，默认值为1.0。设置为0时，无扭曲效果。与mask相乘后共同决定扭曲程度。 |
 
 **返回值：**
 
@@ -565,6 +906,7 @@ displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { uiEffect } from "@kit.ArkGraphics2D"
 
@@ -572,11 +914,11 @@ import { uiEffect } from "@kit.ArkGraphics2D"
 @Component
 struct DisplacementDistortExample {
   @State maskExample: uiEffect.Mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 0.5}, 0.2, 0.3, 0.0)
-  
+
   build() {
     Stack() {
       Image($rawfile('test.png'))
-      Row()  
+      Row()
         .width("100%")
         .height("100%")
         .backgroundFilter(uiEffect.createFilter().displacementDistort(this.maskExample, [5.0, 5.0]))
@@ -585,12 +927,41 @@ struct DisplacementDistortExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Stack, State, Image, Row, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+
+@Entry
+@Component
+struct DisplacementDistort {
+  @State dfx: double = 20.0
+  @State dfy: double = 20.0
+
+  build() {
+    Stack() {
+      Image($r('app.media.man'))
+      Row().width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().displacementDistort(
+          uiEffect.Mask.createRippleMask({ x: 0.5, y: 0.5 }, 0.2, 0.3, 0.0),
+          [this.dfx, this.dfy] as [double, double]))
+    }
+  }
+}
+```
+
 ### maskDispersion<sup>20+</sup>
-maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
+ArkTS-Dyn: maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
+
+ArkTS-Sta: maskDispersion(dispersionMask: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double], bFactor?: [double, double]): Filter
 
 为组件内容添加由置换贴图控制的色散效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -598,10 +969,10 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
-| alpha  | number         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
-| rFactor  | [number, number]         | 否   | X/Y方向上R通道的色散基础偏移，偏移越大红色色散效果越明显。每个方向上的取值范围为[-1.0, 1.0]。偏移设置小于-1.0的值时，按值为-1.0处理；设置大于1.0的值时，按值为1.0处理。|
-| gFactor  | [number, number]         | 否   | X/Y方向上G通道的色散基础偏移，偏移越大绿色色散效果越明显。取值范围同rFactor。|
-| bFactor  | [number, number]         | 否   | X/Y方向上B通道的色散基础偏移，偏移越大蓝色色散效果越明显。取值范围同rFactor。|
+| alpha  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
+| rFactor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double]         | 否   | X/Y方向上R通道的色散基础偏移，偏移越大红色色散效果越明显。每个方向上的取值范围为[-1.0, 1.0]。偏移设置小于-1.0的值时，按值为-1.0处理；设置大于1.0的值时，按值为1.0处理。|
+| gFactor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double]         | 否   | X/Y方向上G通道的色散基础偏移，偏移越大绿色色散效果越明显。取值范围同rFactor。|
+| bFactor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double]         | 否   | X/Y方向上B通道的色散基础偏移，偏移越大蓝色色散效果越明显。取值范围同rFactor。|
 
 **返回值：**
 
@@ -619,6 +990,7 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import {image} from '@kit.ImageKit'
 import {common2D, uiEffect} from '@kit.ArkGraphics2D'
@@ -642,11 +1014,11 @@ struct MaskDispersion {
       })
     })
   }
-  
+
   build() {
     Stack() {
       Image($rawfile('test.png'))
-      Row()  
+      Row()
         .width("100%")
         .height("100%")
         .backgroundFilter(uiEffect.createFilter().maskDispersion(
@@ -660,8 +1032,38 @@ struct MaskDispersion {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Stack, State, Image, RelativeContainer, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+
+@Entry
+@Component
+struct MaskDispersion {
+  @State centerX: double = 0.5
+  @State centerY: double = 0.5
+  @State radius: double = 0.5
+  @State rf: [double, double] = [0.3, -0.3] as [double, double]
+  @State gf: [double, double] = [0, 0] as [double, double]
+  @State bf: [double, double] = [-0.3, 0.3] as [double, double]
+
+  build() {
+    RelativeContainer() {
+      Image($r('app.media.man'))
+      Stack().width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().maskDispersion(
+          uiEffect.Mask.createRippleMask({ x: this.centerX, y: this.centerY }, this.radius, 0.3, 0.0),
+          1.0, this.rf, this.gf, this.bf))
+    }
+  }
+}
+```
+
 ### maskTransition<sup>20+</sup>
-maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
+
+ArkTS-Dyn: maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
+
+ArkTS-Sta: maskTransition(alphaMask: Mask, factor?: double, inverse?: boolean): Filter
 
 为组件内容提供基于[Mask](#mask20)的转场效果。
 
@@ -669,13 +1071,17 @@ maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | alphaMask     | [Mask](#mask20)       | 是   | 通过遮罩指定转场效果的作用区域。|
-| factor        | number                | 否   | 转场过渡系数，取值范围为[0.0, 1.0]，默认值为1.0。factor值越大画面越接近转场后页面，超出范围自动截断到[0.0, 1.0]。 |
+| factor        | ArkTS-Dyn: number<br>ArkTS-Sta: double                | 否   | 转场过渡系数，取值范围为[0.0, 1.0]，默认值为1.0。factor值越大画面越接近转场后页面，超出范围自动截断到[0.0, 1.0]。 |
 | inverse       | boolean               | 否   | 是否启用反向转场，true表示启用，false表示不启用，默认值为false。 |
  
 **返回值：**
@@ -738,11 +1144,18 @@ struct Index {
 ```
 
 ### directionLight<sup>20+</sup>
-directionLight(direction: common2D.Point3d, color: Color, intensity: number, mask?: Mask, factor?: number): Filter
+
+ArkTS-Dyn: directionLight(direction: common2D.Point3d, color: Color, intensity: number, mask?: Mask, factor?: number): Filter
+
+ArkTS-Sta: directionLight(direction: common2D.Point3d, color: Color, intensity: double, mask?: Mask, factor?: double): Filter
 
 为组件内容提供基于[Mask](#mask20)和平行光的光照效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -751,9 +1164,9 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: number, mas
 | ------------- | --------------------- | ---- | ------------------------- |
 | direction  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12)         | 是   | 方向光的入射方向。|
 | color  | [Color](#color20)         | 是   | 光照颜色。|
-| intensity  | number         | 是   | 光照强度，非负数。|
+| intensity  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 光照强度，非负数。|
 | mask  | [Mask](#mask20)         | 否   | 置换贴图，用于描述二维图像表面的三维细节，通过法线或高度图增强局部细节和光照反射效果，若输入为高度图，须与factor参数配合使用。默认为空，表现为全局无细节的平面光照效果。|
-| factor  | number         | 否   | 采样缩放系数。默认值为null，mask作为法线图采样；非默认值时，mask作为高度图采样，实际高度值为mask的采样值与factor的乘积。|
+| factor  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 否   | 采样缩放系数。默认值为null，mask作为法线图采样；非默认值时，mask作为高度图采样，实际高度值为mask的采样值与factor的乘积。|
 
 **返回值：**
 
@@ -807,18 +1220,25 @@ struct Index {
 ```
 
 ### variableRadiusBlur<sup>20+</sup>
-variableRadiusBlur(radius: number, radiusMap: Mask): Filter
+
+ArkTS-Dyn: variableRadiusBlur(radius: number, radiusMap: Mask): Filter
+
+ArkTS-Sta: variableRadiusBlur(radius: double, radiusMap: Mask): Filter
 
 为组件内容提供基于[Mask](#mask20)的渐变模糊效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| radius  | number         | 是   | 最大模糊半径，该值越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 最大模糊半径，该值越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
 | radiusMap  |  [Mask](#mask20)    | 是   | 代表模糊程度的Mask对象。|
 
 **返回值：**
@@ -862,6 +1282,10 @@ struct VariableRadiusBlurExample {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 | 名称   | 值 | 说明 |
@@ -880,15 +1304,19 @@ struct VariableRadiusBlurExample {
 
 | 名称   | 值 | 说明 |
 | ------ | - | ---- |
-| SMALL2MEDIUM_RECV  | 0 | 手机碰2in1设备（接收端）。 |
-| SMALL2MEDIUM_SEND  | 1 | 手机碰2in1设备（发送端）。 |
-| SMALL2SMALL | 2 | 手机碰手机。 |
-| MINI_RECV<sup>17+</sup> | 3 | 2in1设备与其它设备共享（键鼠共享场景）。 |
+| SMALL2MEDIUM_RECV  | 0 | 手机碰2in1设备（接收端）。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23  |
+| SMALL2MEDIUM_SEND  | 1 | 手机碰2in1设备（发送端）。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23|
+| SMALL2SMALL | 2 | 手机碰手机。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23|
+| MINI_RECV<sup>17+</sup> | 3 | 2in1设备与其它设备共享（键鼠共享场景）。 <br>**ArkTS-Dyn起始版本**: 17<br>**ArkTS-Sta起始版本**: 23|
 
 ## FlyMode
 飞入飞出形变场景模式枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -907,6 +1335,10 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -922,6 +1354,7 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let blender : uiEffect.BrightnessBlender =
   uiEffect.createBrightnessBlender({cubicRate:1.0, quadraticRate:1.0, linearRate:1.0, degree:1.0, saturation:1.0,
@@ -929,12 +1362,46 @@ let blender : uiEffect.BrightnessBlender =
 visualEffect.backgroundColorBlender(blender)
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Context, Column, Color, Stack, State, Row, Text, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+import { BrightnessBlenderParam } from '@ohos.graphics.uiEffect'
+import type common2D from '@ohos.graphics.common2D'
+
+@Entry
+@Component
+struct BackgroundColorBlender {
+  @State bgOptions: uiEffect.Blender = uiEffect.createBrightnessBlender({
+    cubicRate: 0.5, quadraticRate: 0.5, linearRate: 0.5, degree: 0.5, saturation: 0.5,
+    positiveCoefficient: [1.0, 1.0, 1.0] as [double, double, double],
+    negativeCoefficient: [1.0, 1.0, 1.0] as [double, double ,double],
+    fraction: 0.5
+  } as BrightnessBlenderParam)
+
+  build() {
+    Stack() {
+      Column() {
+        Text("BrightnessBlender").fontSize(50).fontColor(Color.Red)
+      }.backgroundColor(Color.Blue)
+      .visualEffect(uiEffect.createEffect().backgroundColorBlender(this.bgOptions))
+    }
+  }
+}
+```
+
 ### borderLight<sup>20+</sup>
-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: number, borderWidth: number): VisualEffect
+ArkTS-Dyn: borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: number, borderWidth: number): VisualEffect
+
+ArkTS-Sta: borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double, borderWidth: double): VisualEffect
 
 为圆角矩形组件边框添加3D光照效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -943,8 +1410,8 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 | ------------- | --------------------- | ---- | ------------------------- |
 | lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的3D位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大，光源离组件平面越远，可照射区域越大。<br/> x轴分量取值范围[-10, 10]，y轴分量取值范围[-10, 10]，z轴分量取值范围[0, 10]，超出范围会自动截断。 |
 | lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，各元素取值范围为[0, 1]，超出范围会自动截断。 |
-| lightIntensity | number | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
-| borderWidth | number | 是 | 组件边框的受光宽度，取值范围为[0.0, 30.0]，超出范围会自动截断。设置为0.0时，组件边框无光照效果，数值越大，光可照亮的区域越宽。 |
+| lightIntensity | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
+| borderWidth | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 组件边框的受光宽度，取值范围为[0.0, 30.0]，超出范围会自动截断。设置为0.0时，组件边框无光照效果，数值越大，光可照亮的区域越宽。 |
 
 **返回值：**
 
@@ -961,6 +1428,8 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 ```ts
 import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
@@ -1001,12 +1470,67 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  Stack,
+  Image,
+  $r,
+  FlexAlign
+} from '@kit.ArkUI';
+
+import uiEffect from '@ohos.graphics.uiEffect'
+import {common2D} from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  @State lightIntensity1:double = 1
+  @State borderWidth_:double = 20
+
+  build() {
+    Column() {
+      Stack() {
+        Image($r('app.media.man'))
+          .width('646px')
+          .height('900px')
+          .borderRadius(10)
+        Column()
+          .width('646px')
+          .height('900px')
+          .borderRadius(10)
+          .visualEffect(uiEffect.createEffect().borderLight(
+            { x:0.0, y:0.0, z:2.0 } as common2D.Point3d,
+            { red:255, blue:255, green:255, alpha:255 } as common2D.Color,
+            this.lightIntensity1, this.borderWidth_))
+      }
+      .width('100%')
+      .height('55%')
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor('#555')
+  }
+}
+```
+
 ### colorGradient<sup>20+</sup>
-colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<number>, alphaMask?: Mask): VisualEffect
+ArkTS-Dyn: colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<number>, alphaMask?: Mask): VisualEffect
+
+ArkTS-Sta: colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strengths: Array\<double>, alphaMask?: Mask): VisualEffect
 
 此方法为组件添加颜色渐变效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1015,7 +1539,7 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 | ------------- | --------------------- | ---- | ------------------------- |
 | colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，用于实现多颜色渐变。数组长度范围0到12，每个颜色值大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
 | positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的位置。数组长度范围为0到12。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
-| strengths  | Array\<number>         | 是   | 强度数组，表示颜色对应的强度。数组长度范围为0到12，每一个强度值大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。|
+| strengths  | ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\>         | 是   | 强度数组，表示颜色对应的强度。数组长度范围为0到12，每一个强度值大于等于0。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。|
 | alphaMask  | [Mask](#mask20)         | 否   | 遮罩alpha，颜色对应的alpha遮罩。不设置时，颜色渐变效果的透明度完全由colors参数决定。|
 
 **返回值：**
@@ -1033,6 +1557,8 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 ```ts
 import { common2D, uiEffect } from "@kit.ArkGraphics2D"
 
@@ -1069,6 +1595,34 @@ struct ColorGradientExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack, State, Row, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+import type common2D from '@ohos.graphics.common2D'
+
+@Entry
+@Component
+struct ColorGradient {
+  @State colors: Array<uiEffect.Color> = [
+    {red: 1.0, green: 0.8, blue: 0.5, alpha: 0.8} as uiEffect.Color,
+    {red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0} as uiEffect.Color
+  ]
+  @State positions: Array<common2D.Point> = [
+    {x: 0.2, y: 0.2} as common2D.Point,
+    {x: 0.8, y: 0.6} as common2D.Point]
+  @State strengths: Array<double> = [0.3, 0.3]
+
+  build() {
+    Column() {
+      Row().width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().colorGradient(this.colors.map((v: uiEffect.Color) => v),
+          this.positions.map((v: common2D.Point) => v), this.strengths.map((v: double) => v)))
+    }
+  }
+}
+```
+
 ### liquidMaterial<sup>22+</sup>
 
 liquidMaterial(param: LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask, brightnessParam?: BrightnessParam): VisualEffect
@@ -1076,6 +1630,10 @@ liquidMaterial(param: LiquidMaterialEffectParam, useEffectMask: Mask, distortMas
 此方法为组件添加材质效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1171,26 +1729,30 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 
 | 类型                          | 说明                                               |
 | ----------------------------- | ------------------------------------------------- |
-| [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
-| [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
+| [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23 |
+| [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。<br>**ArkTS-Dyn起始版本**: 20<br>**ArkTS-Sta起始版本**: 23 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
-| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
-| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
-| degree              | number                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
-| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
-| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
+| quadraticRate       | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
+| linearRate          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
+| degree              | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
+| saturation          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
+| positiveCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
+| negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
+| fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
 
 ## HdrBrightnessBlender<sup>20+</sup>
 支持HDR的提亮混合器（继承自[BrightnessBlender](#brightnessblender)），用于将提亮效果添加到指定的组件上。在调用HdrBrightnessBlender前，需要先通过[createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20)创建一个HdrBrightnessBlender实例。
@@ -1198,6 +1760,10 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 该混合器参数可参考[BrightnessBlender](#brightnessblender)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1207,12 +1773,16 @@ RGBA格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
+
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| red   | number | 是   | 是   | 颜色的R分量（红色）。值大于等于0，当值小于0时无效。 |
-| green | number | 是   | 是   | 颜色的G分量（绿色）。值大于等于0，当值小于0时无效。|
-| blue  | number | 是   | 是   | 颜色的B分量（蓝色）。值大于等于0，当值小于0时无效。 |
-| alpha | number | 是   | 是   | 颜色的A分量（透明度）。值大于等于0，当值小于0时无效。 |
+| red   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 颜色的R分量（红色）。值大于等于0，当值小于0时无效。 |
+| green | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 颜色的G分量（绿色）。值大于等于0，当值小于0时无效。|
+| blue  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 颜色的B分量（蓝色）。值大于等于0，当值小于0时无效。 |
+| alpha | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 颜色的A分量（透明度）。值大于等于0，当值小于0时无效。 |
 
 ## LiquidMaterialEffectParam<sup>22+</sup>
 
@@ -1220,17 +1790,21 @@ RGBA格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
+
 | 名称             | 类型                             | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | enable           | boolean                          | 否   | 否   | 是否开启材质效果。 true表示开启材质效果，false表示关闭材质效果。 |
-| distortProgress  | number                           | 否   | 否   | 扰动效果进度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。0表示开始扰动，1表示结束扰动。 |
-| distortFactor    | number                           | 否   | 否   | 扰动效果系数。值大于等于0，值小于0时表示无扰动效果。         |
-| rippleProgress   | number                           | 否   | 否   | 水波效果进度。值大于等于0，值小于0时表示无水波效果。         |
-| ripplePosition   | Array<[number, number]>          | 否   | 是   | 水波效果作用的位置。数组中每个位置包含x和y两个维度，最多支持10个位置坐标传入。传入超出10个位置坐标则整体无效。 |
-| refractionFactor | number                           | 否   | 否   | 折射效果系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无折射效果，值越大折射强度越高。 |
-| reflectionFactor | number                           | 否   | 否   | 反射系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无反射效果，值越大反射强度越高。 |
-| materialFactor   | number                           | 否   | 否   | 材质系数。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。值为0表示无材质效果，使用叠加颜色填充，值越大材质效果越明显。 |
-| tintColor        | [number, number, number, number] | 否   | 否   | 材质叠加的颜色，四个变量分别对应RGBA。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。 |
+| distortProgress  | ArkTS-Dyn: number<br>ArkTS-Sta: double                           | 否   | 否   | 扰动效果进度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。0表示开始扰动，1表示结束扰动。 |
+| distortFactor    | ArkTS-Dyn: number<br>ArkTS-Sta: double                           | 否   | 否   | 扰动效果系数。值大于等于0，值小于0时表示无扰动效果。         |
+| rippleProgress   | ArkTS-Dyn: number<br>ArkTS-Sta: double                           | 否   | 否   | 水波效果进度。值大于等于0，值小于0时表示无水波效果。         |
+| ripplePosition   | ArkTS-Dyn: Array\<[number, number]><br>ArkTS-Sta: Array\<[double, double]>          | 否   | 是   | 水波效果作用的位置。数组中每个位置包含x和y两个维度，最多支持10个位置坐标传入。传入超出10个位置坐标则整体无效。 |
+| refractionFactor | ArkTS-Dyn: number<br>ArkTS-Sta: double                           | 否   | 否   | 折射效果系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无折射效果，值越大折射强度越高。 |
+| reflectionFactor | ArkTS-Dyn: number<br>ArkTS-Sta: double                           | 否   | 否   | 反射系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无反射效果，值越大反射强度越高。 |
+| materialFactor   | ArkTS-Dyn: number<br>ArkTS-Sta: double                           | 否   | 否   | 材质系数。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。值为0表示无材质效果，使用叠加颜色填充，值越大材质效果越明显。 |
+| tintColor        | ArkTS-Dyn: [number, number, number, number]<br>ArkTS-Sta: [double, double, double, double] | 否   | 否   | 材质叠加的颜色，四个变量分别对应RGBA。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。 |
 
 ## BrightnessParam<sup>22+</sup>
 
@@ -1238,27 +1812,37 @@ RGBA格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
+
 | 名称          | 类型                     | 只读 | 可选 | 说明                                                         |
 | ------------- | ------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| rate          | number                   | 否   | 否   | 灰度调整线性系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| lightUpDegree | number                   | 否   | 否   | 灰度调整比例。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| cubicCoeff    | number                   | 否   | 否   | 灰度调整三阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| quadCoeff     | number                   | 否   | 否   | 灰度调整二阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| saturation    | number                   | 否   | 否   | 提亮基准饱和度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大基准饱和度越高。 |
-| posRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
-| negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
-| fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
+| rate          | ArkTS-Dyn: number<br>ArkTS-Sta: double                   | 否   | 否   | 灰度调整线性系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| lightUpDegree | ArkTS-Dyn: number<br>ArkTS-Sta: double                   | 否   | 否   | 灰度调整比例。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| cubicCoeff    | ArkTS-Dyn: number<br>ArkTS-Sta: double                   | 否   | 否   | 灰度调整三阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| quadCoeff     | ArkTS-Dyn: number<br>ArkTS-Sta: double                   | 否   | 否   | 灰度调整二阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| saturation    | ArkTS-Dyn: number<br>ArkTS-Sta: double                   | 否   | 否   | 提亮基准饱和度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大基准饱和度越高。 |
+| posRgb        | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
+| negRgb        | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
+| fraction      | ArkTS-Dyn: number<br>ArkTS-Sta: double                   | 否   | 否   | 提亮效果混合比例。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
 
 
 ## Mask<sup>20+</sup>
 Mask效果类，作为[Filter](#filter)以及[VisualEffect](#visualeffect)的输入使用。
 
 ### createRippleMask<sup>20+</sup>
-static createRippleMask(center: common2D.Point, radius: number, width: number, offset?: number): Mask
+ArkTS-Dyn: static createRippleMask(center: common2D.Point, radius: number, width: number, offset?: number): Mask
+
+ArkTS-Sta: static createRippleMask(center: common2D.Point, radius: double, width: double, offset?: double): Mask
 
 通过输入波环圆心的位置、半径和宽度创建波环遮罩效果Mask实例，具体的效果由输入的参数决定。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1266,9 +1850,9 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
 | center | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是 | 设置波环圆心在组件上的位置，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br/>取值范围[-10, 10]，超出边界会在实现时自动截断。 |
-| radius | number | 是 | 设置波环的半径，半径为1等于组件的高度。<br/>取值范围[0, 10]，超出边界会在实现时自动截断。 |
-| width | number | 是 | 设置波环的宽度。<br/>取值范围[0, 10]，超出边界会在实现时自动截断。 |
-| offset | number | 否 | 设置波峰位置的偏移。<br/>默认值为0，表示波峰在波环的正中心；<br/>-1.0表示波峰在波环的最内侧；<br/>1.0表示波峰在波环的最外侧。<br/>取值范围[-1, 1]，超出边界会在实现时自动截断。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 设置波环的半径，半径为1等于组件的高度。<br/>取值范围[0, 10]，超出边界会在实现时自动截断。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 设置波环的宽度。<br/>取值范围[0, 10]，超出边界会在实现时自动截断。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 设置波峰位置的偏移。<br/>默认值为0，表示波峰在波环的正中心；<br/>-1.0表示波峰在波环的最内侧；<br/>1.0表示波峰在波环的最外侧。<br/>取值范围[-1, 1]，超出边界会在实现时自动截断。 |
 
 **返回值：**
 
@@ -1286,8 +1870,36 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
   let mask = uiEffect.Mask.createRippleMask({x:0.5, y:1.0}, 0.5, 0.3, 0.0);
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Stack, State, Image, RelativeContainer, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+
+@Entry
+@Component
+struct CreateRippleMask {
+  @State centerX: double = 0.5
+  @State centerY: double = 0.5
+  @State radius: double = 0.5
+  @State rf: [double, double] = [0.3, -0.3] as [double, double]
+  @State gf: [double, double] = [0, 0] as [double, double]
+  @State bf: [double, double] = [-0.3, 0.3] as [double, double]
+
+  build() {
+    RelativeContainer() {
+      Image($r('app.media.man'))
+      Stack().width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().maskDispersion(
+          uiEffect.Mask.createRippleMask({ x: this.centerX, y: this.centerY }, this.radius, 0.3, 0.0),
+          1.0, this.rf, this.gf, this.bf))
+    }
+  }
+}
 ```
 
 ### createPixelMapMask<sup>20+</sup>
@@ -1296,6 +1908,10 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 通过输入的[pixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)pixelMap的待绘制区域、挂载节点的绘制区域和绘制区域外填充的颜色创建具有缩放效果的Mask实例，具体的效果由输入的参数决定。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1369,6 +1985,10 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 通过输入的pixelMap创建[Mask](#mask20)实例。该接口不会对传入的pixelMap进行缩放处理。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1472,11 +2092,17 @@ struct Index {
 ```
 
 ### createRadialGradientMask<sup>20+</sup>
-static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
+ArkTS-Dyn: static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
+
+ArkTS-Sta: static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double, values: Array<[double, double]>): Mask
 
 通过输入椭圆中心点的位置、长短轴和形状参数创建椭圆遮罩效果[Mask](#mask20)实例，具体的效果由输入的参数决定。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1484,9 +2110,9 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
 | center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br/>取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| radiusX | number  | 是 | 设置椭圆的长轴，半径为1等于组件的高度。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| radiusY | number  | 是 | 设置椭圆的短轴，半径为1等于组件的高度。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| values | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br/>位置参数值须严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+| radiusX | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是 | 设置椭圆的长轴，半径为1等于组件的高度。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| radiusY | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是 | 设置椭圆的短轴，半径为1等于组件的高度。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| values | ArkTS-Dyn: Array<[number, number]><br>ArkTS-Sta: Array<[double, double]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br/>位置参数值须严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
 
 **返回值：**
 
@@ -1504,6 +2130,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
@@ -1523,12 +2150,48 @@ struct RadialGradientMaskExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Stack, State, Image, RelativeContainer, $r } from '@kit.ArkUI'
+import uiEffect from '@ohos.graphics.uiEffect'
+import type common2D from '@ohos.graphics.common2D'
+
+@Entry
+@Component
+struct RadialGradientMask {
+  @State centerX: double = 0.5
+  @State centerY: double = 0.5
+  @State radiusX: double = 0.5
+  @State radiusY: double = 0.5
+  @State gradient: Array<[double, double]> = [[1,0] as [double, double], [1, 1] as [double, double]]
+
+  build() {
+    RelativeContainer() {
+      Image($r('app.media.man'))
+      Stack().width("100%").height("100%")
+        .backgroundFilter(uiEffect.createFilter().edgeLight(1.0, { red: 1, blue: 1, green: 1, alpha: 1},
+          uiEffect.Mask.createRadialGradientMask({ x: this.centerX, y: this.centerY } as common2D.Point,
+          this.radiusX, this.radiusY, this.gradient.map<[double, double]>((v) => [v[0], v[1]] as [double, double])),
+          false))
+    }
+  }
+}
+```
+
 ### createWaveGradientMask<sup>20+</sup>
-static createWaveGradientMask(center: common2D.Point, width: number, propagationRadius: number, blurRadius: number, turbulenceStrength?: number): Mask
+
+ArkTS-Dyn: static createWaveGradientMask(center: common2D.Point, width: number, propagationRadius: number, blurRadius: number, turbulenceStrength?: number): Mask
+
+ArkTS-Sta: static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double, blurRadius: double, turbulenceStrength?: double): Mask
 
 输入波源中心位置、单波参数创建单波遮罩效果[Mask](#mask20)实例。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 20
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1536,10 +2199,10 @@ static createWaveGradientMask(center: common2D.Point, width: number, propagation
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
 | center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置单波波源的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br/>取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| width | number  | 是 | 设置单波圆环的宽度。<br/>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
-| propagationRadius | number  | 是 | 设置单波圆环的扩散外径。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| blurRadius | number  | 是 | 设置单波圆环的模糊外径，模糊半径为0则是实边圆环，否则是虚边圆环。<br/>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
-| turbulenceStrength | number  | 否 | 设置单波圆环的湍流强度，默认值为0，强度为0则是规则圆环，否则圆环边缘会湍流扭曲。<br/>取值范围[-1, 1]，可取浮点数，超出边界会在实现时自动截断。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是 | 设置单波圆环的宽度。<br/>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
+| propagationRadius | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是 | 设置单波圆环的扩散外径。<br/>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| blurRadius | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是 | 设置单波圆环的模糊外径，模糊半径为0则是实边圆环，否则是虚边圆环。<br/>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
+| turbulenceStrength | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否 | 设置单波圆环的湍流强度，默认值为0，强度为0则是规则圆环，否则圆环边缘会湍流扭曲。<br/>取值范围[-1, 1]，可取浮点数，超出边界会在实现时自动截断。 |
 
 **返回值：**
 
@@ -1583,6 +2246,10 @@ static createUseEffectMask(useEffect: boolean): Mask
 创建并设置[Mask](#mask20)实例是否使用模糊缓存。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 22
+
+**ArkTS-Sta起始版本:** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -1669,15 +2336,19 @@ BrightnessBlender参数列表。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本:** 12
+
+**ArkTS-Sta起始版本:** 23
+
 **系统接口：** 此接口为系统接口。
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
-| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
-| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
-| degree              | number                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
-| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
-| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
+| quadraticRate       | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
+| linearRate          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
+| degree              | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
+| saturation          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
+| positiveCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
+| negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
+| fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
