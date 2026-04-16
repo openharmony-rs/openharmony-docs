@@ -1,7 +1,7 @@
 # @ohos.inputMethod (输入法框架)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -25,7 +25,7 @@ import { inputMethod } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-| 参数名 | 类型 | 常量值 | 说明 |
+| 名称 | 类型 | 常量值 | 说明 |
 | -------- | -------- | -------- | -------- |
 | MAX_TYPE_NUM<sup>8+</sup> | number | 128 | 可支持的最大输入法个数。 |
 
@@ -831,7 +831,8 @@ Enter键的功能类型。
 | left  | number | 否 | 否 | 光标的横坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
 | top  | number | 否 | 否 | 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
 | width  | number | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
-| height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度|
+| height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
+| displayId  | number | 否 | 是 | 光标所在显示器的ID。<br>**起始版本：** 26.0.0|
 
 ## Range<sup>10+</sup>
 

@@ -83,7 +83,7 @@ console.info(uriObj2.fragment); // fragment
 console.info(uriObj2.path); // /00/Weather/California/Los Angeles
 console.info(uriObj2.scheme); // gopher
 console.info(uriObj2.userInfo); // null
-console.info(uriObj2.port); //-1
+console.info(uriObj2.port); // -1
 console.info(uriObj2.query); // null
 
 const uriObj3 = new uri.URI("datashare:///com.samples.datasharetest.DataShare/DB00/TBL00");
@@ -375,7 +375,7 @@ console.info(`${uriInstance1.checkHierarchical()}`); // false
 
 ### getQueryValue<sup>12+</sup>
 
-getQueryValue(key:string): string
+getQueryValue(key: string): string
 
 根据给定的查询关键词，从URI查询参数部分中提取出该关键词对应的第一个值，若查询参数中存在已编码过的内容，需将对应Key进行解码后获取Value。
 
@@ -417,7 +417,7 @@ console.info(uriInstance1.getQueryValue('abc')) // null
 
 ### addQueryValue<sup>12+</sup>
 
-addQueryValue(key:string, value:string): URI
+addQueryValue(key: string, value: string): URI
 
 在当前URI对象上添加查询参数后返回新的URI对象，保持原有URI对象不变。
 
@@ -456,7 +456,7 @@ console.info(newRoute.toString()); // https://www.test.com?param1=hello%20world
 
 ### addSegment<sup>12+</sup>
 
-addSegment(pathSegment:string): URI
+addSegment(pathSegment: string): URI
 
 对指定字段进行编码，并将其追加到当前URI对象的path中，创建并返回新的URI对象，保持原有URI对象不变。
 
@@ -494,7 +494,7 @@ console.info(newRoute.toString()); // http://www.test.com/my%20image.jpg
 
 ### addEncodedSegment<sup>12+</sup>
 
-addEncodedSegment(pathSegment:string): URI
+addEncodedSegment(pathSegment: string): URI
 
 将已编码的字段追加到当前URI的path字段中，创建新URI对象并返回，保持原有URI对象不变。
 
@@ -556,7 +556,7 @@ console.info(paramNames.toString()); // param1,param2
 
 ### getQueryValues<sup>12+</sup>
 
-getQueryValues(key:string): string[]
+getQueryValues(key: string): string[]
 
 获取URI中查询参数指定键的所有值。如果查询参数已编码，需先解码键再获取值。
 
@@ -596,7 +596,7 @@ console.info(JSON.stringify(uriInstance.getQueryValues("abc"))); // []
 
 ### getBooleanQueryValue<sup>12+</sup>
 
-getBooleanQueryValue(key:string,defaultValue:boolean): boolean
+getBooleanQueryValue(key: string, defaultValue: boolean): boolean
 
 根据指定键名，搜索此URI查询字符串并返回其对应的布尔类型值。
 

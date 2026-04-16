@@ -224,7 +224,7 @@ Web同层渲染的配置。
 
 ## OnHttpErrorReceiveEvent<sup>12+</sup>
 
-定义网页收到加载资源加载HTTP错误时触发。
+定义网页收到资源加载HTTP错误时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

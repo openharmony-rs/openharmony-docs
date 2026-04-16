@@ -4,7 +4,7 @@
 <!--Owner: @baiheng-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 系统根据当前温度、负载以及是否处于高负载场景等信息决策出系统负载融合档位，并在档位变化时通知已注册的应用。
 
@@ -14,7 +14,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { systemLoad } from '@kit.BasicServicesKit';
 ```
 

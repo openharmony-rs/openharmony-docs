@@ -16,6 +16,7 @@
   - [@ohos.hiviewdfx.FaultLogExtensionAbility (故障延迟通知)](js-apis-hiviewdfx-FaultLogExtensionAbility.md)
   - [@ohos.hiviewdfx.FaultLogExtensionContext (故障延迟通知上下文)](js-apis-hiviewdfx-FaultLogExtensionContext.md)
   - [@ohos.hiviewdfx.hiAppEvent (应用事件打点)](js-apis-hiviewdfx-hiappevent.md)
+  - [@ohos.hiviewdfx.hiRetrieval (应用灰度)](js-apis-hiretrieval.md)
   - [@ohos.hiviewdfx.jsLeakWatcher (js泄露检测)](js-apis-jsleakwatcher.md)
   <!--Del-->
   - [@ohos.hiSysEvent (系统事件打点)(系统接口)](js-apis-hisysevent-sys.md)
@@ -55,6 +56,7 @@
     - [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md)
     - [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md)
     - [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md)
+    - [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md)
     - [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md)
     - [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md)
     - [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)
@@ -71,6 +73,7 @@
   - [HiDebug Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)
   - [HiCollie错误码](errorcode-hiviewdfx-hicollie.md)
   - [JsLeakWatcher错误码](errorcode-jsleakwatcher.md)
+  - [应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)
     <!--Del-->
   - [系统事件错误码](errorcode-hisysevent-sys.md)
   - [维测日志错误码](errorcode-loglibrary-sys.md)

@@ -25,7 +25,7 @@
    ```ts
    import { image } from '@kit.ImageKit';
    import { camera } from '@kit.CameraKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
@@ -201,7 +201,7 @@
 > **注意：**
 >
 > 仅单段式拍照支持设置画质优先策略。若在分段式拍照中设置画质优先策略，该设置将无效。 
- 	
+
 
 ### 画质优先策略
 
@@ -212,15 +212,15 @@
 
 ### 如何正确设置画质优先策略
 
-为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口： 
+为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口：
 
 - [isPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#isphotoqualityprioritizationsupported21)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
 - [setPhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#setphotoqualityprioritization21)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。
 
 ### 开发步骤
- 	 
+
 高性能拍照相关接口需要在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中进行调用。  
- 	 
+
 具体调用时机如下：  
 
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)结束之后进行调用。 
