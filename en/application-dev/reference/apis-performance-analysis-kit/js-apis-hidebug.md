@@ -39,6 +39,7 @@ Obtains the total number of bytes occupied by the total space (**uordblks** + **
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
+console.info(`nativeHeapSize = ${nativeHeapSize}`);
 ```
 
 ## hidebug.getNativeHeapAllocatedSize
@@ -61,6 +62,7 @@ Obtains the total number of bytes occupied by the total allocated space (**uordb
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
+console.info(`nativeHeapAllocatedSize = ${nativeHeapAllocatedSize}`);
 ```
 
 ## hidebug.getNativeHeapFreeSize
@@ -82,6 +84,7 @@ Obtains the total number of bytes occupied by the total free space (**fordblks**
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapFreeSize: bigint = hidebug.getNativeHeapFreeSize();
+console.info(`nativeHeapFreeSize = ${nativeHeapFreeSize}`);
 ```
 
 ## hidebug.getPss
@@ -107,6 +110,7 @@ Obtains the size of the physical memory actually used by the application process
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let pss: bigint = hidebug.getPss();
+console.info(`pss = ${pss}`);
 ```
 
 ## hidebug.getVss<sup>11+</sup>
@@ -129,6 +133,7 @@ Obtains the virtual set size used by the application process. This API is implem
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let vss: bigint = hidebug.getVss();
+console.info(`vss = ${vss}`);
 ```
 
 ## hidebug.getSharedDirty
@@ -155,6 +160,7 @@ Obtains the size of the shared dirty memory of a process. This API is implemente
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let sharedDirty: bigint = hidebug.getSharedDirty();
+console.info(`sharedDirty = ${sharedDirty}`);
 ```
 
 ## hidebug.getPrivateDirty<sup>9+</sup>
@@ -180,6 +186,7 @@ Obtains the size of the private dirty memory of a process. This API is implement
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let privateDirty: bigint = hidebug.getPrivateDirty();
+console.info(`privateDirty = ${privateDirty}`);
 ```
 
 ## hidebug.getCpuUsage<sup>9+</sup>
@@ -206,6 +213,7 @@ Obtains the CPU usage of a process.
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let cpuUsage: number = hidebug.getCpuUsage();
+console.info(`cpuUsage = ${cpuUsage}`);
 ```
 
 ## hidebug.getServiceDump<sup>9+</sup>
@@ -224,7 +232,7 @@ Obtains system service information.
 | -------- | ------ | ---- |----------------------------|
 | serviceid | number | Yes  | Service ID used to obtain system service information.|
 | fd | number | Yes  | File descriptor to which data is written by the API.        |
-| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service. The maximum length of a string is 254.|
+| args | Array&lt;string&gt; | Yes  | Parameter list of the **Dump** API of the system service. The maximum length of a string is 254. The excess part will be truncated.|
 
 **Error codes**
 
@@ -572,6 +580,7 @@ let limitSize: number = 1024 * 1024;
 
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
@@ -611,6 +620,7 @@ let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
 let limitSize: number = 1024 * 1024;
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
@@ -640,6 +650,8 @@ Obtains the memory limit of an application process.
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appMemoryLimit:hidebug.MemoryLimit = hidebug.getAppMemoryLimit();
+console.info(`rssLimit: ${appMemoryLimit.rssLimit}, vssLimit: ${appMemoryLimit.vssLimit},` +
+  `vmHeapLimit: ${appMemoryLimit.vmHeapLimit}, vmTotalHeapSize: ${appMemoryLimit.vmTotalHeapSize}`);
 ```
 
 ## hidebug.getSystemCpuUsage<sup>12+</sup>
@@ -690,7 +702,7 @@ This API is used to construct a memory leak. For details, see [Subscribing to Re
 
 > **NOTE**
 >
-> This API is valid only when the **Developer options** is enabled.
+> Enable **System resource leak log** in **Developer options** and restart the device for the API to take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -701,7 +713,7 @@ This API is used to construct a memory leak. For details, see [Subscribing to Re
 | Name  | Type  | Mandatory| Description                                                                                                                                                                     |
 | -------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | type | string |  Yes | Types of leak resources:<br>- pss_memory (native memory)<br>- js_heap (JavaScript heap memory)<br>- fd (file descriptor)<br>- thread (thread)                                                                           |
-| value | number |  Yes | Value range of the maximum values of the leak resource types:<br>- pss_memory: **[1024, 4 × 1024 × 1024]** (Unit: KB)<br>- js_heap: **[85, 95]** (85% to 95% of the upper size limit of the JS heap memory)<br>- fd: **[10, 10000]**<br>- thread: **[1, 1000]**|
+| value | number |  Yes | Value range of the maximum values of the leak resource types:<br>- pss_memory: **[1024, 4 × 1024 × 1024]** (Unit: KB)<br>- js_heap: **[85, 95]** (85% to 95% of the upper size limit of the JS heap memory)<br>- fd: **[10, 10000]**<br>- thread: **[1, 1000]**. If the value is out of range, the feature becomes invalid.|
 | enableDebugLog | boolean |  Yes | Whether to enable external debugging logs. Enable external debugging logs only in the grayscale version (test version released to a small number of users before the official version is released). Collecting debugging logs occupies a large number of CPU and memory resources, which may cause application smoothness problems.<br>The value **true** means to enable external debugging logs, and false means the opposite.<br>                                     |
 
 **Error codes**
@@ -790,7 +802,7 @@ Obtains the memory information of the application process. This API uses the cac
 
 > **NOTE**
 >
-> Reading **/proc/{pid}/smaps_rollup** is time-consuming. Therefore, you are advised not to use this API in the main thread. You can use @ohos.taskpool or @ohos.worker to enable asynchronous threads to avoid application freezing.
+> Reading **/proc/{pid}/smaps_rollup** is time-consuming. Therefore, you are advised not to use this API in the main thread. You can use [@ohos.taskpool](../apis-arkts/js-apis-taskpool.md) or [@ohos.worker](../apis-arkts/js-apis-worker.md) to enable asynchronous threads to avoid application frame freezing.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -950,6 +962,8 @@ Describes the CPU usage of a thread.
 
 ## hidebug.tags<sup>12+</sup>
 
+### Constants
+
 Enumerates the tags used in trace collection. You can use the [HiTrace](../../dfx/hitrace.md) commands to capture the trace data of a specified tag.
 
 > **NOTE**
@@ -1057,7 +1071,7 @@ You are advised to use **TRIM_LEVEL_1** to ensure application stability and use 
 | Name        | Value  | Description                                                        |
 | ------------ | ---- | ------------------------------------------------------------ |
 | TRIM_LEVEL_1 | 0    | Level 1 trimming, mainly used for strings.                      |
-| TRIM_LEVEL_2 | 1    | Level 2 trimming, which reduces the size of the object address identifier from 8 bytes to 4 bytes.|
+| TRIM_LEVEL_2 | 1    | Level 2 trimming, which reduces the size of the object address identifier from 8 bytes to 4 bytes based on **TRIM_LEVEL_1**.|
 
 ## hidebug.isDebugState<sup>12+</sup>
 
@@ -1108,7 +1122,7 @@ For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx
 **Example**:
 
 ```ts
-import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 hidebug.getGraphicsMemory().then((ret: number) => {

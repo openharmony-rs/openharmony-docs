@@ -26,6 +26,7 @@ The file declares the APIs used to create an OH_AVScreenCapture instance.
 
 ### Functions
 
+<!--Table: 50%; 50% -->
 | Name| Description|
 | -- | -- |
 | [struct OH_AVScreenCapture *OH_AVScreenCapture_Create(void)](#oh_avscreencapture_create) | Creates an OH_AVScreenCapture instance.<br> You can release the instance by calling [OH_AVScreenCapture_Release](#oh_avscreencapture_release).|
