@@ -70,7 +70,7 @@
        AppStorage.setOrCreate('subtypeChange', 1);
      }
    });
-   ``
+   ```
 
 
 ## 输入法子类型相关信息的获取
