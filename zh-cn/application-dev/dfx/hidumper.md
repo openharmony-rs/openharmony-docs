@@ -457,7 +457,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
   $ hidumper --mem-jsheap 64949 --clean  -> 64949 为目标应用进程号
   ```
 
-- 可使用hidumper --mem-jsheap pid --raw --single命令获取指定进程的虚拟机堆内存，此进程下所有线程的内存数据生成在一个.rawheap文件中，文件命名为<!--RP7-->jsheap-进程号-时间戳<!--RP7End-->.rawheap。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
+- 可使用hidumper --mem-jsheap pid --raw --single命令获取指定进程的虚拟机堆内存，此进程下所有线程的内存数据生成在一个.rawheap文件中，文件命名为<!--RP8-->jsheap-进程号-时间戳<!--RP8End-->.rawheap。rawheap的解析转换可参考使用：[rawheap-translator工具](../tools/rawheap-translator.md)。
 
   使用样例：
 
