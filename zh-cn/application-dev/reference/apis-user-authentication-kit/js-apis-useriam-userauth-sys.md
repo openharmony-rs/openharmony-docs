@@ -124,10 +124,10 @@ try {
   const jsonEventData = JSON.stringify(eventData);
   let noticeType = userAuth.NoticeType.WIDGET_NOTICE;
   userAuth.sendNotice(noticeType, jsonEventData);
-  console.info('sendNotice success');
+  console.info('sendNotice successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`sendNotice catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`sendNotice failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -170,16 +170,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('subscribe authentication event success');
+  console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -218,16 +218,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.off('command', {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('cancel subscribe authentication event success');
+  console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -279,10 +279,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -315,16 +315,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
-  console.info('get userAuthWidgetMgr instance success');
+  console.info('get userAuthWidgetMgr instance successfully.');
   userAuthWidgetMgr.on('command', {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
   })
-  console.info('subscribe authentication event success');
+  console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -361,19 +361,19 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -435,10 +435,10 @@ try {
     reuseUnlockResult: reuseUnlockResult,
   };
   let authToken = userAuth.queryReusableAuthResult(authParam);
-  console.info('query reuse auth result success');
+  console.info('query reuse auth result successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`query reuse auth result catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`query reuse auth result failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
