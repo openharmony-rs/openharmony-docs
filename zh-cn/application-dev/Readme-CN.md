@@ -20,12 +20,12 @@
     - [ArkUI（方舟UI框架）](ui/Readme-CN.md)
     - [ArkWeb（方舟Web）](web/Readme-CN.md)
     - [Background Tasks Kit（后台任务开发服务）](task-management/Readme-CN.md)
+    - [Content Embed Kit（内容嵌入服务）](content-embed/Readme-CN.md)
     - [Core File Kit（文件基础服务）](file-management/Readme-CN.md)
     - [Form Kit（卡片开发服务）](form/Readme-CN.md)
     - [IME Kit（输入法开发服务）](inputmethod/Readme-CN.md)
     - [IPC Kit（进程间通信服务）](ipc/Readme-CN.md)
     - [Localization Kit（本地化开发服务）](internationalization/Readme-CN.md)
-    - [Content Embed Kit（内容嵌入服务）](content-embed/Readme-CN.md)
   - 系统<!--system-->
     - 安全<!--system-security-->
       - [程序访问控制](security/AccessToken/Readme-CN.md)

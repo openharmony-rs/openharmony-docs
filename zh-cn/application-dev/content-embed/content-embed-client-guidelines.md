@@ -10,7 +10,7 @@
 
 [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md)内容嵌入模块提供对象编辑框架与技术，支持应用间文档嵌入与协同编辑。
 
-OE客户端应用：指作为被嵌入文档的宿主、面向终端用户的应用。通过调用[OE框架层接口](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md)实现业务逻辑，如嵌入外部文档、展示文档快照，以及按需拉起OE服务端应用以触发文档编辑操作。
+OE客户端应用：指面向终端用户且被嵌入文档的应用。通过调用[OE框架层接口](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md)实现业务逻辑，如嵌入外部文档、展示文档快照，以及按需拉起OE服务端应用以触发文档编辑操作。
 
 典型应用场景包括：
 - 在CAD文档中嵌入Excel表格，通过点击嵌入对象拉起Excel应用进行编辑。
@@ -29,25 +29,22 @@ OE客户端应用：指作为被嵌入文档的宿主、面向终端用户的应
 
 | 接口名称 | 功能描述 |
 | ------- | ---- |
-| OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建OE文档 |
-| OH_ContentEmbed_CreateDocumentByOEId | 通过OEID创建OE文档 |
-| OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的OE格式文件加载OE文档 |
-| OH_ContentEmbed_CreateExtensionProxy | 创建客户端OE对象 |
-| OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源 |
-| OH_ContentEmbed_Proxy_RegisterOnUpdateFunc | 向客户端OE对象注册OE文档更新时的回调函数 |
-| OH_ContentEmbed_Proxy_RegisterOnErrorFunc | 向客户端OE对象注册OE文档触发错误时回调函数 |
-| OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc | 向客户端OE对象注册OE文档编辑完成时的回调函数 |
-| OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc | 向客户端OE对象注册OE Extension停止时的回调函数 |
-| OH_ContentEmbed_Proxy_StartWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，拉起OE Extension组件，并创建服务端OE对象 |
-| OH_ContentEmbed_Proxy_StopWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，销毁服务端OE对象，释放资源 |
-| OH_ContentEmbed_Proxy_GetSnapshot | 从客户端OE对象获取当前OE文档的快照图像，用于预览或缩略图显示 |
-| OH_ContentEmbed_Proxy_DoEdit | 客户端通过客户端OE对象与OE Extension组件跨进程通信，通知服务端拉起UIAbility编辑OE文档 |
-| OH_ContentEmbed_Proxy_GetDocument | 从客户端OE对象获取其关联的OE文档对象 |
-| OH_ContentEmbed_Document_Read | 从OE文档中读取OE格式文件数据，存入buffer |
-| OH_ContentEmbed_Document_GetNativeFilePath | 从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径 |
-| OH_ContentEmbed_Document_GetRootStorage | 从OE文档中获取OE格式文件根目录 |
-| OH_ContentEmbed_Document_Flush | 将OE文档中数据落盘至OE格式文件 |
-| OH_ContentEmbed_DestroyDocument | 销毁OE文档对象，释放资源 |
+| OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](./content-embed-kit-terminology.md#OE文档)。|
+| OH_ContentEmbed_CreateDocumentByOEId | 通过OEID创建OE文档。|
+| OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](./content-embed-kit-terminology.md#OE格式文件)加载OE文档。|
+| OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](./content-embed-kit-terminology.md#客户端OE对象)。|
+| OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源。|
+| OH_ContentEmbed_Proxy_RegisterOnUpdateFunc | 向客户端OE对象注册OE文档更新时的回调函数。|
+| OH_ContentEmbed_Proxy_RegisterOnErrorFunc | 向客户端OE对象注册OE文档触发错误时回调函数。|
+| OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc | 向客户端OE对象注册OE文档编辑完成时的回调函数。|
+| OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc | 向客户端OE对象注册OE Extension停止时的回调函数。|
+| OH_ContentEmbed_Proxy_StartWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，拉起OE Extension组件，并创建服务端OE对象。|
+| OH_ContentEmbed_Proxy_StopWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，销毁服务端OE对象，释放资源。|
+| OH_ContentEmbed_Proxy_GetSnapshot | 从客户端OE对象获取当前OE文档的快照图像，用于预览或缩略图显示。|
+| OH_ContentEmbed_Proxy_DoEdit | 客户端通过客户端OE对象与OE Extension组件跨进程通信，通知服务端拉起UIAbility编辑OE文档。|
+| OH_ContentEmbed_Proxy_GetDocument | 从客户端OE对象获取其关联的OE文档对象。|
+| OH_ContentEmbed_Document_Read | 从OE文档中读取OE格式文件数据，存入buffer。|
+| OH_ContentEmbed_DestroyDocument | 销毁OE文档对象，释放资源。|
 
 ## 开发步骤
 
@@ -170,7 +167,7 @@ bool ContentEmbedManager::QueryFormatByOEId(const std::string &oeid, const std::
 
 ### 创建OE文档
 
-1. 基于OEID对象创建OE文档
+1. 基于OEID创建OE文档
 
 ```cpp
 ContentEmbed_Document* oeDocument;
@@ -191,26 +188,35 @@ std::string GetFileFromPicker()
 std::string filePath = GetFileFromPicker();
 // 基于文件创建OE文档
 ContentEmbed_Document *ceDocument;
-ContentEmbed_ErrorCode ret = OH_ContentEmbed_CreateDocumentByFile(filePath.c_str(), filePath.size(), false, &ceDocument);
+// 是否以链接形式创建OE文档，当isLinking为true时，表示以链接方式创建OE文档；当isLinking为false时，表示以嵌入方式创建OE文档。
+bool isLinking = false;
+ContentEmbed_ErrorCode ret = OH_ContentEmbed_CreateDocumentByFile(filePath.c_str(), filePath.size(), isLinking, &ceDocument);
 ```
 
-3. 基于OE格式文件加载OE文档
+3. 基于[OE格式文件](./content-embed-kit-terminology.md#OE格式文件)加载OE文档，当OE格式文件为数据流存储时需先落盘至本地再使用此接口。
 
 ```cpp
-// OE 文件格式路径
+// OE格式文件路径
 std::string filePath;
 ContentEmbed_Document *ceDocument;
 ContentEmbed_ErrorCode ret = OH_ContentEmbed_LoadDocumentFromFile(filePath.c_str(), filePath.size(), &ceDocument);
 ```
 
-### 创建客户端OE对象
+### 创建[客户端OE对象](./content-embed-kit-terminology.md#客户端OE对象)
 
-基于OE文档和当前上下文实例创建客户端OE对象
+基于OE文档和当前上下文实例创建客户端OE对象，实现OE文档与客户端OE对象的关联。并用于与服务端通信。
 
 ```cpp
+// 注册回调：注册文档更新、错误、编辑结束等回调函数。
 void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 {
     OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnUpdateFunc");
+    //
+    ContentEmbed_Document *oeDocument = nullptr;
+    ContentEmbed_ErrorCode errCode = OH_ContentEmbed_Proxy_GetDocument(proxy, &oeDocument)
+
+    
+
 }
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
@@ -221,6 +227,7 @@ void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed
 void ClientCallback_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)
 {
     OH_LOG_INFO(LOG_APP, "Enter ClientCallback_OnEditingFinishedFunc, dataModified: %{public}d", dataModified);
+    // 建议
 }
 
 void ClientCallback_OnExtensionStoppedFunc(ContentEmbed_ExtensionProxy *proxy)
@@ -233,7 +240,7 @@ void ClientCallback_OnExtensionStoppedFunc(ContentEmbed_ExtensionProxy *proxy)
 void ContentEmbedManager::CreateProxy(void* contextPtr, ContentEmbed_Document *oeDocument)
 {
     ContentEmbed_ExtensionProxy* proxy;
-    // 创建Proxy对象
+    // 创建客户端OE对象
     ContentEmbed_ErrorCode errCode = OH_ContentEmbed_CreateExtensionProxy(oeDocument, &proxy, contextPtr);
     // 注册OE文档更新回调
     errCode = OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(proxy, ClientCallBack_OnUpdateFunc);
@@ -246,7 +253,7 @@ void ContentEmbedManager::CreateProxy(void* contextPtr, ContentEmbed_Document *o
 }
 ```
 
-### OE对象和OE Extension交互
+### 客户端OE对象和OE Extension交互
 
 ```cpp
 void ContentEmbedManager::HandleProxy(ContentEmbed_ExtensionProxy* proxy)
