@@ -713,7 +713,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 ArkTS-Dyn示例：
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
