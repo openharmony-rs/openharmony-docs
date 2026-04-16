@@ -3450,7 +3450,7 @@ try {
 };
 ```
 
-### setAppShareOptions<sup>12+</sup>
+### setAppShareOptions<sup>14+</sup>
 
 setAppShareOptions(shareOptions: ShareOption): void
 
@@ -3460,7 +3460,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
 
