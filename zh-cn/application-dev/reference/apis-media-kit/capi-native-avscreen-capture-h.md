@@ -541,7 +541,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 > **说明：**
 >
-> 在hopper 5.0版本上不支持录屏屏幕数据旋转功能。
+> 从API20开始支持折叠2in1设备。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
