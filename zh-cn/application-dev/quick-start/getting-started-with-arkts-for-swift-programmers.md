@@ -90,7 +90,7 @@ const multiply = (a: number, b: number): number => a * b;
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
 
    ```typescript
-   function foo(name?: string){}  /*  name为可选参数。  */
+   function foo(name?: string){}  // name为可选参数。
 
    foo('hello');     // OK，传入name参数。
    foo();     // OK，不传name参数。
