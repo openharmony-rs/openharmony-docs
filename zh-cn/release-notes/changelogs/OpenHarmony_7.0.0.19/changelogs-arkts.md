@@ -8,15 +8,15 @@
 
 **变更原因**
 
-ConvertXML的fastConvertToJSObject接口在解析XML时，当元素包含同级文本节点和子元素时，会丢失同级文本节点内容。
+ConvertXML的[fastConvertToJSObject](../../../application-dev/reference/apis-arkts/js-apis-convertxml.md#fastconverttojsobject14)接口在解析XML时，若XML内容包含子元素、与子元素同级的文本节点，会丢失与子元素同级的文本节点。
 
 **变更影响**
 
 此变更涉及应用适配。
 
-变更前：fastConvertToJSObject接口在解析包含同级文本节点和子元素的XML时，会丢失同级文本节点。例如解析 `<root>text1<child/>text2</root>` 时，"text1"和"text2"文本节点会丢失。
+变更前：fastConvertToJSObject接口在解析XML时，若XML内容包含子元素、与子元素同级的文本节点，会丢失与子元素同级的文本节点。例如解析 `<root>text1<child>子元素</child>text2</root>` 时，与子元素同级的文本节点"text1"和"text2"会丢失。
 
-变更后：fastConvertToJSObject接口在解析包含同级文本节点和子元素的XML时，会正确保留同级文本节点。
+变更后：fastConvertToJSObject接口在解析内容包含子元素、同级文本节点的XML时，会正确保留同级文本节点。
 
 **起始 API Level**
 
