@@ -620,7 +620,7 @@ refresh()
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须在页面加载完成后调用[refresh](#refreshdeprecated)接口生效，否则window对象中无法访问注入的对象。
 
 > **说明：**
 >

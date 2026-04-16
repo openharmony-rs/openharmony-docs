@@ -25,7 +25,7 @@
 - [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md)：设置前进后退缓存配置所支持的特性。
 - [GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md)：地理位置权限配置。
 - [JsMessageExt](./arkts-apis-webview-JsMessageExt.md)：执行JavaScript脚本的结果。
-- [MediaSourceInfo](./arkts-apis-webview-MediaSourceInfo.md)：媒体源信息配置。
+- [MediaSourceInfo](./arkts-apis-webview-MediaSourceInfo.md)：媒体源信息。
 - [NativeMediaPlayerSurfaceInfo](./arkts-apis-webview-NativeMediaPlayerSurfaceInfo.md)：应用接管媒体播放时渲染信息。
 - [PdfData](./arkts-apis-webview-PdfData.md)：生成的PDF输出数据。
 - [ProxyConfig](./arkts-apis-webview-ProxyConfig.md)：网络代理配置。
