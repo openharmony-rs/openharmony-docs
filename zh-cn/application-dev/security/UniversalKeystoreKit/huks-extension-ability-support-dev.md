@@ -444,7 +444,7 @@
    }
    ```
 
-   （12）onGetResourceId<sup>26+</sup>用于获取密钥扩展能力的资源ID。资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag26)参数携带，格式和内容由厂商自定义。当调用成功时，返回值中的resultCode成员设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
+   （12）onGetResourceId<sup>26+</sup>用于获取密钥扩展能力的资源ID。资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，格式和内容由厂商自定义。当调用成功时，返回值中的resultCode成员设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {

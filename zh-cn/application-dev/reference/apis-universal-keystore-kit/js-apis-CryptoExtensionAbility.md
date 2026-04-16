@@ -530,7 +530,7 @@ onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]):Promise\<H
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | --------- | ---- | -------- |
-| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 是   | 获取资源ID所需的属性参数，资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](js-apis-huksExternalCrypto.md#huksexternalcryptotag26)参数携带。 |
+| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 是   | 获取资源ID所需的属性参数，资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
