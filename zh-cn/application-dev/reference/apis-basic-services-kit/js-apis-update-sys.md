@@ -34,6 +34,8 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 获取在线升级对象。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **参数：**
@@ -79,6 +81,8 @@ getRestorer(): Restorer
 
 获取恢复出厂设置对象。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **返回值：**
@@ -110,6 +114,8 @@ try {
 getLocalUpdater(): LocalUpdater
 
 获取本地升级对象。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2021,6 +2027,10 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 深度清理用户数据及操作系统。使用 Promise 异步回调。
 
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
@@ -2076,6 +2086,8 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 获取深度恢复出厂设置信息。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2695,6 +2707,10 @@ try {
 
 **起始版本：** 26.0.0
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
@@ -2708,6 +2724,10 @@ try {
 
 **起始版本：** 26.0.0
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
@@ -2719,6 +2739,10 @@ try {
 恢复出厂设置范围。
 
 **起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
