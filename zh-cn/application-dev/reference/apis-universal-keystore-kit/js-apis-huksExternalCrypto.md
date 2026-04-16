@@ -393,7 +393,7 @@ huksExternalCrypto.clearUkeyPinAuthState(testResourceId)
 
 ## huksExternalCrypto.getResourceId<sup>26+</sup>
 
-getResourceId(params: Array\<HuksExternalCryptoParam>): Promise\<string>
+getResourceId(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<string>
 
 获取密钥扩展能力的资源ID。使用Promise异步回调。
 
@@ -405,7 +405,8 @@ getResourceId(params: Array\<HuksExternalCryptoParam>): Promise\<string>
 
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
-| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是   | 获取资源ID所需的属性参数，资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag)参数携带。 |
+| providerName | string | 是   | 提供者名称，建议包含厂商信息，全局唯一，长度最大为128字节。 |
+| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是   | 获取资源ID所需的属性参数。必选TAG包括：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag)。 |
 
 **返回值：**
 
@@ -441,6 +442,13 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
+// 提供者名称，建议包含厂商信息，全局唯一
+const providerName = "testProviderName";
+// Ability名称
+const abilityName = "CryptoExtension";
+// Bundle名称
+const bundleName = "com.example.cryptoapplication";
+// 资源信息，格式和内容由厂商自定义
 const resourceInfo = JSON.stringify({
   deviceName: "testDevice",
   appName: "testApp",
@@ -449,12 +457,20 @@ const resourceInfo = JSON.stringify({
 
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+    value: StringToUint8Array(abilityName)
+  },
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
+    value: StringToUint8Array(bundleName)
+  },
+  {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
     value: StringToUint8Array(resourceInfo)
   }
 ];
 
-huksExternalCrypto.getResourceId(extProperties)
+huksExternalCrypto.getResourceId(providerName, extProperties)
     .then((resourceId) => {
       console.info(`promise: getResourceId success, resourceId: ${resourceId}`);
     });
