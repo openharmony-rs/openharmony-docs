@@ -21,7 +21,7 @@
 
 4. 关闭资源。
 
-<!-- @[export_key_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ExtensionKeyExport/entry/src/main/ets/pages/Index.ets) -->
+## 开发案例
 
 ``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';

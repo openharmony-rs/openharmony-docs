@@ -21,11 +21,7 @@
 
 4. 关闭资源。
 
-## 公钥导出
-
-密钥生成完成后，如需导出公钥用于证书申请等场景，可调用[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口。具体请参考[公钥导出(ArkTS)](huks-extension-key-export-arkts.md)。
-
-<!-- @[generate_key_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ExtensionKeyGeneration/entry/src/main/ets/pages/Index.ets) -->
+## 开发案例
 
 ``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
