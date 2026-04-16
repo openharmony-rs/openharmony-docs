@@ -269,6 +269,7 @@ Sets the size information of the child components of the **ArcList** component a
 
 **Parameters**
 
+<!--Table: 10%; auto; 10%; auto-->
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | size   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12)&gt;| Yes  | Precise size information for all child components along the main axis. This ensures accurate scrolling positions in scenarios where child components have varying sizes, are added or removed, or when APIs like [scrollToIndex](ts-container-scroll.md#scrolltoindex) are used. It guarantees that [scrollTo](ts-container-scroll.md#scrollto) can accurately navigate to the specified position, [currentOffset](ts-container-scroll.md#currentoffset) or [offset](ts-container-scroll.md#offset23) can accurately reflect the current scrolling position, and the built-in scrollbar can move smoothly without any jumps or abrupt changes. The **offset** API is added from API version 23.<br> **NOTE**<br>The provided sizes must match the actual sizes of the child components. Any changes to the sizes, or any additions or removals of child components, must be notified to the **ArcList** component through the **ChildrenMainSize** object.|

@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行debug操作
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -92,7 +92,7 @@ static int32_t TestJSVM()
 
 hilog中有以下结果输出：
 
-```
+```txt
 ADD_VAL_TO_SCOPE_CHECK in function: NewString
 CHECK_SCOPE in function: OH_JSVM_CompileScript
 ADD_VAL_TO_SCOPE_CHECK in function: OH_JSVM_GetCbInfo
@@ -160,7 +160,7 @@ static int32_t TestJSVM()
 **执行结果**
 
 程序崩溃，有cppcrash日志生成，在hilog中可以检索到类似以下的信息：
-```
+```txt
 JSVM Fatal Error Position : "../../../../../../../arkcompiler/jsvm/src/js_native_api_v8.cpp":4537
 JSVM Fatal Error Message : "Run in wrong HandleScope"
 ```
