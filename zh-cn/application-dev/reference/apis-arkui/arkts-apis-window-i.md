@@ -525,6 +525,10 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
 | executionResult | [OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult) | 否 | 否 | 窗口显示方向的执行结果枚举。|

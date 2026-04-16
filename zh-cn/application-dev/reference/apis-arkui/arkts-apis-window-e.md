@@ -338,6 +338,10 @@ WindowStage生命周期的状态类型枚举。
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
 | 名称   |  值 | 说明                   |
 | ------ | ---- | --------------------- |
 | ORIENTATION_APPLIED | 0 | 设置的方向已生效。 |
