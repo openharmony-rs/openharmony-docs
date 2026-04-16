@@ -1206,7 +1206,7 @@ Allows an application to use float views.
 
 ## ohos.permission.GET_CALL_TRANSFER_INFO
 
-Allows an application to get call transfer info.
+Allows an application to get call forwarding status.
 
 <!--RP80--><!--RP80End-->
 
