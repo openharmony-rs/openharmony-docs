@@ -1450,7 +1450,7 @@ Wraps a native instance of the specified size into an ArkTS object. During runti
 
 - **native_object**: pointer to the native instance to be wrapped in the ArkTS object.
 
-- **finalize_cb**: (optional) callback to be called when the ArkTS object is destroyed. For details, see [napi_finalize](#napi_finalize-description).
+- **finalize_cb**: (optional) callback to be called when the ArkTS object is destroyed. For details, see [napi_finalize](#napi_finalize).
 
 - **async_finalizer**: a Boolean value used to indicate whether to execute the **finalize_cb** callback asynchronously. The value **true** means to execute the callback asynchronously. In this case, thread safety must be ensured. The value **false** means to execute the callback synchronously.
 
