@@ -2002,6 +2002,7 @@ try {
   console.error(`Fail to get restorer: ${error}`);
 }
 ```
+
 ### getDeepFactoryResetInfo
 
 getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<FactoryResetInfo>
