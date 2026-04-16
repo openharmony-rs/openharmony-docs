@@ -5831,7 +5831,7 @@ off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameMetricsMeasured](#offFrameMetricsMeasured23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameMetricsMeasured](#offframemetricsmeasured23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
