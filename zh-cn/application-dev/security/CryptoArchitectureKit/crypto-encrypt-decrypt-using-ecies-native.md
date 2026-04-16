@@ -40,7 +40,9 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 7. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取authTag。
 
    > **注意：**
-   > 在GCM模式下，final会返回authTag，作为解密操作时初始化的认证信息，需要保存。
+   >
+   > 在GCM模式下，final会返回authTag，作为解密操作时初始化的认证信息，需要手动保存。
+   >
    > 在GCM模式下，算法库当前只支持16字节的authTag，作为解密操作时初始化的认证信息。
 
 ### 解密
