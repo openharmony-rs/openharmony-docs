@@ -40,7 +40,7 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| origin | string | 是   |指定源的字符串。<br>origin格式必须遵循RFC 6454中定义的格式。 |
+| origin | string | 是   | 指定源的字符串。<br>origin格式必须遵循RFC 6454中定义的格式。 |
 | incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下允许指定源使用地理位置，false表示正常非隐私模式下允许指定源使用地理位置。<br>默认值：false。<br>传入null或undefined时为false。 |
 
 **错误码：**
@@ -49,7 +49,7 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow the format defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
@@ -102,7 +102,7 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow the format defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
@@ -156,7 +156,7 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow the format defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
@@ -221,7 +221,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow the format defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
