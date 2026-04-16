@@ -47,6 +47,8 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+
 **ArkTS-Dyn起始版本**：16
 
 **ArkTS-Sta起始版本**：23
@@ -208,6 +210,8 @@ onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions
 订阅应用快捷键。获取满足条件的组合按键输入事件，使用Callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
