@@ -1,16 +1,10 @@
 # BuilderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
 
 The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. For details, see [BuilderNode Development](../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
 
@@ -20,15 +14,15 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> - If the root node of the provided Builder is a syntax node ([Ifelse](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)...), [Span](./arkui-ts/ts-basic-components-span.md), [ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md), [SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md), or a custom component, an additional [FrameNode](./js-apis-arkui-frameNode.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
+> - If the root node of the provided Builder is a syntax node ([if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)...), [Span](./arkui-ts/ts-basic-components-span.md), [ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md), [SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md), or a custom component, an additional [FrameNode](./js-apis-arkui-frameNode.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
 >
-> - If you encounter display issues when reusing a **BuilderNode** across pages, see [Cross-Page Reuse Considerations](../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations) for guidance.
+> - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations) for guidance.
 >
 > - **BuilderNode** is not available in DevEco Studio Previewer.
 >
 > - Custom components under **BuilderNode** can use the [@Prop](../../ui/state-management/arkts-prop.md) decorator. The [@Link](../../ui/state-management/arkts-link.md) decorator cannot be used to synchronize external data and status across **BuilderNode** boundaries.
 >
-> - If a **BuilderNode** contains custom components as child nodes, these custom components cannot use the [@Reusable](../../ui/state-management/arkts-reusable.md) decorator. For details, see [Using the @Reusable Decorator with BuilderNode Child Components](../../ui/arkts-user-defined-arktsNode-builderNode.md#using-the-reusable-decorator-with-buildernode-child-components).
+> - If a BuilderNode contains custom components as child nodes, these custom components cannot use the [@Reusable](../../ui/state-management/arkts-reusable.md) decorator. For details, see [Using the @Reusable Decorator with BuilderNode Child Components](../../ui/arkts-user-defined-arktsNode-builderNode.md#using-the-reusable-decorator-with-buildernode-child-components).
 >
 > - Since API version 12, custom components can receive [LocalStorage](../../ui/state-management/arkts-localstorage.md) instances. You can use LocalStorage related decorators such as [@LocalStorageProp](../../ui/state-management/arkts-localstorage.md#localstorageprop) and [@LocalStorageLink](../../ui/state-management/arkts-localstorage.md#localstoragelink) by [passing LocalStorage instances](../../ui/state-management/arkts-localstorage.md#providing-a-custom-component-with-access-to-a-localstorage-instance).
 >
@@ -38,7 +32,7 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 >
 > - [Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md) can be used only in custom components.
 >
-> - BuilderNode objects do not support JSON serialization.
+> - **BuilderNode** objects do not support JSON serialization.
 
 ## Modules to Import
 
@@ -65,7 +59,7 @@ Enumerates the node rendering types.
 >
 > - The following custom components currently support texture export as root nodes in [BuilderNode](#buildernode-1) scenarios: [Badge](arkui-ts/ts-container-badge.md), [Blank](arkui-ts/ts-basic-components-blank.md), [Button](arkui-ts/ts-basic-components-button.md), [CanvasGradient](arkui-ts/ts-components-canvas-canvasgradient.md), [CanvasPattern](arkui-ts/ts-components-canvas-canvaspattern.md), [CanvasRenderingContext2D](arkui-ts/ts-canvasrenderingcontext2d.md), [Canvas](arkui-ts/ts-components-canvas-canvas.md), [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md), [Checkbox](arkui-ts/ts-basic-components-checkbox.md), [Circle](arkui-ts/ts-drawing-components-circle.md), [ColumnSplit](arkui-ts/ts-container-columnsplit.md), [Column](arkui-ts/ts-container-column.md), [ContainerSpan](arkui-ts/ts-basic-components-containerspan.md), [Counter](arkui-ts/ts-container-counter.md), [DataPanel](arkui-ts/ts-basic-components-datapanel.md), [Divider](arkui-ts/ts-basic-components-divider.md), [Ellipse](arkui-ts/ts-drawing-components-ellipse.md), [Flex](arkui-ts/ts-container-flex.md), [Gauge](arkui-ts/ts-basic-components-gauge.md), [Hyperlink](arkui-ts/ts-container-hyperlink.md), [ImageBitmap](arkui-ts/ts-components-canvas-imagebitmap.md), [ImageData](arkui-ts/ts-components-canvas-imagedata.md), [Image](arkui-ts/ts-basic-components-image.md), [Line](arkui-ts/ts-drawing-components-line.md), [LoadingProgress](arkui-ts/ts-basic-components-loadingprogress.md), [Marquee](arkui-ts/ts-basic-components-marquee.md), [Matrix2D](arkui-ts/ts-components-canvas-matrix2d.md), [OffscreenCanvasRenderingContext2D](arkui-ts/ts-offscreencanvasrenderingcontext2d.md), [OffscreenCanvas](arkui-ts/ts-components-offscreencanvas.md), [Path2D](arkui-ts/ts-components-canvas-path2d.md), [Path](arkui-ts/ts-drawing-components-path.md), [PatternLock](arkui-ts/ts-basic-components-patternlock.md), [Polygon](arkui-ts/ts-drawing-components-polygon.md), [Polyline](arkui-ts/ts-drawing-components-polyline.md), [Progress](arkui-ts/ts-basic-components-progress.md), [QRCode](arkui-ts/ts-basic-components-qrcode.md), [Radio](arkui-ts/ts-basic-components-radio.md), [Rating](arkui-ts/ts-basic-components-rating.md), [Rect](arkui-ts/ts-drawing-components-rect.md), [RelativeContainer](arkui-ts/ts-container-relativecontainer.md), [RowSplit](arkui-ts/ts-container-rowsplit.md), [Row](arkui-ts/ts-container-row.md), [Shape](arkui-ts/ts-drawing-components-shape.md), [Slider](arkui-ts/ts-basic-components-slider.md), [Span](arkui-ts/ts-basic-components-span.md), [Stack](arkui-ts/ts-container-stack.md), [TextArea](arkui-ts/ts-basic-components-textarea.md), [TextClock](arkui-ts/ts-basic-components-textclock.md), [TextInput](arkui-ts/ts-basic-components-textinput.md), [TextTimer](arkui-ts/ts-basic-components-texttimer.md), [Text](arkui-ts/ts-basic-components-text.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), [Video](arkui-ts/ts-media-components-video.md) (excluding full-screen playback), [Web](../apis-arkweb/arkts-basic-components-web.md), [XComponent](arkui-ts/ts-basic-components-xcomponent.md).
 >
-> - Since API version 12, the following components also support texture export: [DatePicker](arkui-ts/ts-basic-components-datepicker.md), [ForEach](arkui-ts/ts-rendering-control-foreach.md), [Grid](arkui-ts/ts-container-grid.md), [IfElse](../../ui/rendering-control/arkts-rendering-control-ifelse.md), [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md), [List](arkui-ts/ts-container-list.md), [Scroll](arkui-ts/ts-container-scroll.md), [Swiper](arkui-ts/ts-container-swiper.md), [TimePicker](arkui-ts/ts-basic-components-timepicker.md), custom components decorated with [@Component](../../ui/state-management/arkts-create-custom-components.md#component), [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md), and [FrameNode](./js-apis-arkui-frameNode.md) and [RenderNode](./js-apis-arkui-renderNode.md) mounted to [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md).
+> - Since API version 12, the following components also support texture export: [DatePicker](arkui-ts/ts-basic-components-datepicker.md), [ForEach](arkui-ts/ts-rendering-control-foreach.md), [Grid](arkui-ts/ts-container-grid.md), [if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md), [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md), [List](arkui-ts/ts-container-list.md), [Scroll](arkui-ts/ts-container-scroll.md), [Swiper](arkui-ts/ts-container-swiper.md), [TimePicker](arkui-ts/ts-basic-components-timepicker.md), custom components decorated with [@Component](../../ui/state-management/arkts-create-custom-components.md#component), [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md), and [FrameNode](./js-apis-arkui-frameNode.md) and [RenderNode](./js-apis-arkui-renderNode.md) mounted to [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md).
 >
 > - For details, see [Rendering and Drawing Video and Button Components at the Same Layer](../../web/web-same-layer.md).
 
@@ -1351,13 +1345,13 @@ Dispatches the specified input event to the target node.
 >
 > - Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because the **SourceType** remains unchanged during event conversion. For details, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
 >
-> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md). This is because axis events do not include rotation axis information.
+> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
 >
 > - A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 >
 > - For developer-constructed events, mandatory fields must be assigned values, such as the **touches** field for touch events and the **scrollStep** field for axis events Ensure the completeness of the event, for example, both **DOWN** and **UP** [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) states must be included for a touch event to prevent undefined behavior.
 >
-> - [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched delivered.
+> - [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched.
 >
 > - The **postTouchEvent** API needs to provide the gesture coordinates relative to the local coordinates of the target component, and the **postInputEvent** API needs to provide the gesture coordinates relative to the window coordinates of the target component.
 >
@@ -1607,7 +1601,7 @@ struct TextBuilder {
 
 ## ReactiveBuilderNode<sup>22+</sup>
 
-**ReactiveBuilderNode** uses the stateless UI method [@Builder](../../ui/state-management/arkts-builder.md) to generate a component tree and holds the root node of the component tree. A **ReactiveBuilderNode** cannot be defined as a state variable. [FrameNode](js-apis-arkui-frameNode.md) held in **ReactiveBuilderNode** is used only to mount the **ReactiveBuilderNode** as a child node to another **FrameNode**. Undefined behavior may occur if you set attributes or perform operations on subnodes of the FrameNode held by the ReactiveBuilderNode. Therefore, after you have obtained a RenderNode through the [getFrameNode](#getframenode) method of the ReactiveBuilderNode and the [getRenderNode](js-apis-arkui-frameNode.md#getrendernode) method of the [FrameNode](js-apis-arkui-frameNode.md), avoid setting the attributes or operating the subnodes through APIs of [RenderNode](js-apis-arkui-renderNode.md).
+**ReactiveBuilderNode** uses the stateless UI method [@Builder](../../ui/state-management/arkts-builder.md) to generate a component tree and holds the root node of the component tree. A ReactiveBuilderNode cannot be defined as a state variable. [FrameNode](js-apis-arkui-frameNode.md) held in **ReactiveBuilderNode** is used only to mount the ReactiveBuilderNode as a child node to another FrameNode. Undefined behavior may occur if you set attributes or perform operations on subnodes of the FrameNode held by the ReactiveBuilderNode. Therefore, after you have obtained a RenderNode through the [getFrameNode](#getframenode) method of the ReactiveBuilderNode and the [getRenderNode](js-apis-arkui-frameNode.md#getrendernode) method of the [FrameNode](js-apis-arkui-frameNode.md), avoid setting the attributes or operating the subnodes through APIs of [RenderNode](js-apis-arkui-renderNode.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1719,7 +1713,7 @@ struct Index {
 
 getFrameNode(): FrameNode | null
 
-Obtains the [FrameNode](js-apis-arkui-frameNode.md) from the **ReactiveBuilderNode**. The FrameNode is generated only after the ReactiveBuilderNode executes the build operation.
+Obtains the [FrameNode](js-apis-arkui-frameNode.md) from the ReactiveBuilderNode. The FrameNode is generated only after the ReactiveBuilderNode executes the build operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1831,7 +1825,7 @@ struct Index {
 
 postTouchEvent(event: TouchEvent): boolean
 
-Posts a raw touch event to the **FrameNode** created by a **ReactiveBuilderNode**.
+Posts a raw touch event to the FrameNode created by a ReactiveBuilderNode.
 
 **postTouchEvent** dispatches the event from a middle node in the component tree downwards. To ensure the event is dispatched correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
@@ -2590,13 +2584,13 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 >
 > Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because the **SourceType** remains unchanged during event conversion. For details, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
 >
-> When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md). This is because axis events do not include rotation axis information.
+> When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
 >
 > A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 >
 > For the event you construct, the mandatory fields must be assigned values, for example, the **touches** field of the touch event and the **scrollStep** field of the axis event. In addition, ensure the completeness of the event, for example, both **DOWN** and **UP** in [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of the touch event must be included to prevent undefined behavior.
 >
-> [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched delivered.
+> [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched.
 >
 > The **postTouchEvent** API needs to provide the gesture coordinates relative to the local coordinates of the target component, and the **postInputEvent** API needs to provide the gesture coordinates relative to the window coordinates of the target component.
 >
@@ -2622,7 +2616,7 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 **Example**
 
-For details, see [Example 13: Handling Mouse Events in ReactiveBuilderNode)](#example-13-handling-mouse-events-in-reactivebuildernode), [Example 14: Handling Touch Events in ReactiveBuilderNode](#example-14-handling-touch-events-in-reactivebuildernode), and [Example 15: Handling Axis Events)](#example-15-handling-axis-events-in-reactivebuildernode).
+For details, see [Example 13: Handling Mouse Events in ReactiveBuilderNode)](#example-13-handling-mouse-events-in-reactivebuildernode), [Example 14: Handling Touch Events in ReactiveBuilderNode](#example-14-handling-touch-events-in-reactivebuildernode), and [Example 15: Handling Axis Events in ReactiveBuilderNode)](#example-15-handling-axis-events-in-reactivebuildernode).
 
 ### inheritFreezeOptions<sup>22+</sup>
 
@@ -3517,7 +3511,7 @@ struct Index {
 >
 > Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
-Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the **BuilderNode** to **true** to support two-way synchronization between the @Consumer decorated state variable of the custom component inside the **BuilderNode** and the @Provider decorated state variable outside the **BuilderNode**.
+Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the BuilderNode to **true** to support two-way synchronization between the @Consumer decorated state variable of the custom component inside the BuilderNode and the @Provider decorated state variable outside the BuilderNode.
 
 ```ts
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -4463,7 +4457,7 @@ struct defaultConsumer {
 
 The functionality demonstrated in this example is supported starting from API version 22.
 
-This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the local X and Y coordinates through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained by **FrameNode.**[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)**()**, and updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). Finally, the component uses **rootNode.**[postInputEvent](#postinputevent20) to post the converted mouse event to the child node for handling.
+This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the local X and Y coordinates through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained by FrameNode.[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)**()**, and updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). Finally, the component uses rootNode.[postInputEvent](#postinputevent20) to post the converted mouse event to the child node for handling.
 
 ```ts
 import { NodeController, ReactiveBuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
@@ -4605,7 +4599,7 @@ struct MyComponent {
 
 The functionality demonstrated in this example is supported starting from API version 22.
 
-This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, iterate through the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**/**windowY** and **displayX**/**displayY**. Finally, **rootNode.**[postInputEvent](#postinputevent20) is used to post the converted touch event to the child node for handling.
+This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, iterate through the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**/**windowY** and **displayX**/**displayY**. Finally, rootNode.[postInputEvent](#postinputevent20) is used to post the converted touch event to the child node for handling.
 
 ```ts
 import { NodeController, ReactiveBuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';

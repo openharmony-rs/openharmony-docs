@@ -8,7 +8,7 @@
 
 ## Overview
 
-Declares the USB DDK APIs used by the USB host to access USB devices.
+Claims the USB DDK APIs used by the USB host to access USB devices.
 
 **File to include**: <usb/usb_ddk_api.h>
 
@@ -32,7 +32,7 @@ Declares the USB DDK APIs used by the USB host to access USB devices.
 | [int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor *desc)](#oh_usb_getdevicedescriptor) | Obtains the device descriptor.|
 | [int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struct UsbDdkConfigDescriptor ** const config)](#oh_usb_getconfigdescriptor) | Obtains the configuration descriptor. To avoid memory leakage, use [OH_Usb_FreeConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_freeconfigdescriptor) to release a descriptor after use.|
 | [void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)](#oh_usb_freeconfigdescriptor) | Releases a configuration descriptor after use to prevent memory leakage.|
-| [int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle)](#oh_usb_claiminterface) | Declares a USB interface.|
+| [int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle)](#oh_usb_claiminterface) | Claims a USB interface.|
 | [int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)](#oh_usb_releaseinterface) | Releases a USB interface.|
 | [int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex)](#oh_usb_selectinterfacesetting) | Activates the alternate setting of a USB interface.|
 | [int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *settingIndex)](#oh_usb_getcurrentinterfacesetting) | Obtains the activated alternate setting of a USB interface.|
@@ -186,7 +186,7 @@ int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_
 
 **Description**
 
-Declares a USB interface.
+Claims a USB interface.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB
 

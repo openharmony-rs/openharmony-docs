@@ -44,6 +44,7 @@ Search初始化参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | 名称      | 类型         | 只读 | 可选 | 说明        |
 | ----------- | ------------- | ---- | ---- | ------------- |
 | value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | 否   | 是 | 设置当前显示的搜索文本内容。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>从API version 20开始，支持Resource类型。|
@@ -922,6 +923,7 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 30%; 10%; 60%-->
 | 名称                 | 值            | 说明          |
 | ------------------ | ------ | ------------- |
 | NORMAL   | 0 | 基本输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

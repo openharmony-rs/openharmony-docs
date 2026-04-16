@@ -43,7 +43,7 @@
 | [OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, clockid_t clockId,int64_t* framePosition, int64_t* timestamp)](#oh_audiocapturer_gettimestamp) | - | 获取输入音频流时间戳和当前数据帧位置信息。<br> 该接口可以获取到音频通道实际录制位置（framePosition）以及录制到该位置时候的时间戳（timestamp），时间戳单位为纳秒。 |
 | [OH_AudioStream_Result OH_AudioCapturer_GetFramesRead(OH_AudioCapturer* capturer, int64_t* frames)](#oh_audiocapturer_getframesread) | - | 查询自创建流以来已读取的帧数。 |
 | [OH_AudioStream_Result OH_AudioCapturer_GetOverflowCount(OH_AudioCapturer* capturer, uint32_t* count)](#oh_audiocapturer_getoverflowcount) | - | 查询当前录制音频流过载数。 |
-| [typedef void (\*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiocapturer_onreaddatacallback) | OH_AudioCapturer_OnReadDataCallback | 读取音频数据的回调函数。 |
+| [typedef void (\*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiocapturer_onreaddatacallback) | OH_AudioCapturer_OnReadDataCallback | 读取音频数据的回调函数。为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。 |
 | [typedef void (\*OH_AudioCapturer_OnDeviceChangeCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioDeviceDescriptorArray* deviceArray)](#oh_audiocapturer_ondevicechangecallback) | OH_AudioCapturer_OnDeviceChangeCallback | 音频录制流的设备变化事件回调函数。 |
 | [typedef void (\*OH_AudioCapturer_OnInterruptCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)](#oh_audiocapturer_oninterruptcallback) | OH_AudioCapturer_OnInterruptCallback | 音频录制流的中断事件回调函数。 |
 | [typedef void (\*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error)](#oh_audiocapturer_onerrorcallback) | OH_AudioCapturer_OnErrorCallback | 音频录制流的错误事件回调函数。 |
@@ -441,7 +441,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, 
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 | clockid_t clockId | 时钟标识符，使用CLOCK_MONOTONIC。 |
 | int64_t* framePosition | 指向要接收位置的变量的指针。 |
-| int64_t* timestamp | 指向接收时间戳的变量的指针。 |
+| int64_t* timestamp | 指向接收时间戳的变量的指针，单位为纳秒。 |
 
 **返回：**
 
@@ -509,7 +509,7 @@ typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, 
 
 **描述**
 
-读取音频数据的回调函数。
+读取音频数据的回调函数。为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。
 
 **起始版本：** 20
 
@@ -521,7 +521,7 @@ typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, 
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 |  void* userData | 指向应用自定义的数据存储区域，方便应用给自身传递数据。 |
 |  void* audioData | 指向录制数据存储区域，用于应用读取录制数据。 |
-| int32_t audioDataSize | 录制数据的长度。 |
+| int32_t audioDataSize | 录制数据的长度，单位为字节。 |
 
 ### OH_AudioCapturer_OnDeviceChangeCallback()
 

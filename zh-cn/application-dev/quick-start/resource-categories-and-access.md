@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## 功能介绍
 
@@ -100,6 +100,7 @@ resources
 
 表5 限定词取值要求
 
+<!--Table: 20%; 80%-->
 | 限定词类型       | 含义与取值说明                                  |
 | ----------- | ---------------------------------------- |
 | 移动国家码和移动网络码 | 移动国家码（MCC）和移动网络码（MNC）的值取自设备注册的网络。<br/>MCC可与MNC合并使用，使用下划线（_）连接，也可以单独使用。例如：mcc460表示中国，mcc460_mnc00表示中国_中国移动。<br/>详细取值范围，请查阅[**ITU-T&nbsp;E.212**](https://www.itu.int/rec/T-REC-E.212)（国际电联相关标准）。 |
@@ -293,7 +294,9 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
    > **说明：**
    >
-   > rawfile的native的访问方式请参考[Rawfile开发指导](../napi/rawfile-guidelines.md)。
+   > - 针对同一个资源，$r获取的资源信息Resource对象中的资源ID在应用重新编译时会发生变化，并非固定值，不建议缓存资源ID。如果确实需要缓存资源ID，需要对资源ID进行固定，具体请参考[固定资源ID](../tools/restool.md#固定资源id)。
+   >
+   > - rawfile的native的访问方式请参考[Rawfile开发指导](../napi/rawfile-guidelines.md)。
 
   [资源文件示例](#资源文件示例)中显示了.json文件内容，包含color.json、string.json和plural.json，访问应用资源时需先了解.json文件的使用规范。<br/>资源的具体使用方法如下：
 

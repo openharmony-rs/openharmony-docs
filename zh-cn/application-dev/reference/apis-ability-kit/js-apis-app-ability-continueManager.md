@@ -79,8 +79,8 @@ export default class MigrationAbility extends UIAbility {
             } catch (e) {
               console.error('register failed, cause: ' + JSON.stringify(e));
             }
-            //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-            //可处理应用自定义跳转、时序等问题
+            // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+            // 可处理应用自定义跳转、时序等问题
             // ...
         }
     }
@@ -104,7 +104,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 **参数**：
 
 | 参数名 | 类型                                 | 必填 | 说明                                   |
-  | -------- |------------------------------------| -------- |--------------------------------------|
+| -------- |------------------------------------| -------- |--------------------------------------|
 | type | string                             | 是 | 固定值：prepareContinue。                 |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                            | 是 | Ability的Context。                     |
 | callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获回调函数注销结果。否则为错误对象。 |
@@ -146,8 +146,8 @@ export default class MigrationAbility extends UIAbility {
             } catch (e) {
               console.error('unregister failed, cause: ' + JSON.stringify(e));
             }
-            //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-            //可处理应用自定义跳转、时序等问题
+            // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+            // 可处理应用自定义跳转、时序等问题
             // ...
         }
     }
