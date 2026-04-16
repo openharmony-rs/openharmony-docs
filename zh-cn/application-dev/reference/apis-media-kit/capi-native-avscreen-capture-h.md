@@ -545,7 +545,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 > **说明：**
 >
-> 从API20开始支持折叠2in1设备。
+> 从 API20 开始，支持折叠PC2/in1设备。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
