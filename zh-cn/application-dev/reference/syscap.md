@@ -1,4 +1,4 @@
-# SystemCapability（SysCap）使用指南
+# 系统能力SystemCapability使用指南
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
