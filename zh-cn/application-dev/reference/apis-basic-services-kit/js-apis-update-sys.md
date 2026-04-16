@@ -2443,6 +2443,8 @@ try {
 
 升级信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                          | 只读 | 可选 | 说明     |
@@ -2453,6 +2455,8 @@ try {
 ## BusinessType
 
 升级业务类型。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2465,6 +2469,8 @@ try {
 
 搜包结果。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                | 类型                              | 只读 | 可选 | 说明     |
@@ -2475,6 +2481,8 @@ try {
 ## NewVersionInfo
 
 新版本数据。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2487,6 +2495,8 @@ try {
 
 版本摘要。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称            | 类型   | 只读 | 可选 | 说明   |
@@ -2496,6 +2506,8 @@ try {
 ## VersionComponent
 
 版本组件。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2515,6 +2527,8 @@ try {
 
 描述文件选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                                    | 只读 | 可选 | 说明     |
@@ -2525,6 +2539,8 @@ try {
 ## ComponentDescription
 
 组件描述文件。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2537,6 +2553,8 @@ try {
 
 版本描述文件信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
@@ -2547,6 +2565,8 @@ try {
 ## CurrentVersionInfo
 
 当前版本信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2560,6 +2580,8 @@ try {
 
 下载选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                | 只读 | 可选   | 说明   |
@@ -2571,6 +2593,8 @@ try {
 
 恢复下载选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型                | 只读 | 可选 | 说明   |
@@ -2580,6 +2604,8 @@ try {
 ## PauseDownloadOptions
 
 暂停下载选项。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2591,6 +2617,8 @@ try {
 
 升级选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称    | 类型            | 只读 | 可选 | 说明   |
@@ -2601,6 +2629,8 @@ try {
 
 清除异常选项。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称     | 类型                            | 只读 | 可选 | 说明   |
@@ -2610,6 +2640,8 @@ try {
 ## UpgradePolicy
 
 升级策略。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2623,6 +2655,8 @@ try {
 
 升级时间段。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称    | 类型   | 只读 | 可选 | 说明 |
@@ -2633,6 +2667,8 @@ try {
 ## TaskInfo
 
 任务信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2645,6 +2681,8 @@ try {
 
 事件信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                  | 只读 | 可选 | 说明 |
@@ -2655,6 +2693,8 @@ try {
 ## TaskBody
 
 任务数据。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2672,6 +2712,8 @@ try {
 
 错误信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 类型   | 只读 | 可选  | 说明   |
@@ -2683,6 +2725,8 @@ try {
 
 事件信息。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称            | 类型                            | 只读 | 可选  | 说明   |
@@ -2693,6 +2737,8 @@ try {
 ## UpgradeFile
 
 升级文件。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2757,6 +2803,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 类型                    | 必填   | 说明   |
@@ -2766,6 +2814,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## BusinessVendor
 
 设备厂家。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2777,6 +2827,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称      | 值  | 说明   |
@@ -2787,6 +2839,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 组件类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称  | 值  | 说明   |
@@ -2796,6 +2850,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## UpgradeAction
 
 升级方式。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2808,6 +2864,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 生效模式。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 值  | 说明   |
@@ -2819,6 +2877,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## OtaMode<sup>20+</sup>
 
 升级模式。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2833,6 +2893,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称     | 值  | 说明   |
@@ -2844,6 +2906,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件格式。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 值  | 说明   |
@@ -2854,6 +2918,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## NetType
 
 网络类型。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2869,6 +2935,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级指令。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                  | 值  | 说明    |
@@ -2882,6 +2950,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## UpgradeStatus
 
 升级状态。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
@@ -2902,6 +2972,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件类型。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称   | 值        | 说明   |
@@ -2911,6 +2983,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 ## EventId
 
 事件ID。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
