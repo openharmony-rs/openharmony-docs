@@ -400,6 +400,21 @@ async function updateSession(handle: number, huksOptions: huks.HuksOptions) {
   }
 }
 
+/* 查询密钥是否存在 */
+async function isKeyItemExist(keyAlias: string, huksOptions: huks.HuksOptions) {
+  console.info('promise: enter isKeyItemExist');
+  try {
+    await huks.isKeyItemExist(keyAlias, huksOptions)
+      .then((data) => {
+        console.info(`isKeyItemExist success`);
+      }).catch((error: BusinessError) => {
+        console.error(`isKeyItemExist failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      })
+  } catch (error) {
+    console.error(`isKeyItemExist input arg invalid`);
+  }
+}
+
 /* 结束密钥会话并进行相应的密钥操作，输出处理数据 */
 async function finishSession(handle: number, huksOptions: huks.HuksOptions) {
   console.info('promise: enter finishSession');
@@ -494,13 +509,13 @@ async function huksDhAgreeInHuks(keyAlias: string, peerPubKey: Uint8Array,
     properties: [...dhAgree, ...onlyUsedInHuks],
     inData: peerPubKey
   };
-  await huks.updateSession(handle, dhAgreeUpdatePubKey);
-  const dhAgreeAliceFinnish: huks.HuksOptions = {
+  await updateSession(handle, dhAgreeUpdatePubKey);
+  const dhAgreeAliceFinish: huks.HuksOptions = {
     properties: [...dhAgreeFinishParams, {
       tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS, value: stringToUint8Array(aliasAgreedKey)
     }], inData: new Uint8Array([])
   };
-  await finishSession(handle, dhAgreeAliceFinnish);
+  await finishSession(handle, dhAgreeAliceFinish);
 }
 
 async function huksDhAgreeInHuksTest(
@@ -509,11 +524,11 @@ async function huksDhAgreeInHuksTest(
   aliasAgreedKeyFromA: string, aliasAgreedKeyFromB: string) {
 
   await huksDhAgreeInHuks(aliasA, pubKeyB, aliasAgreedKeyFromA);
-  const aliceAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
+  const aliceAgreedExist = await isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
   console.info(`ok! aliceAgreedExist in huks is ${aliceAgreedExist}`);
 
   await huksDhAgreeInHuks(aliasB, pubKeyA, aliasAgreedKeyFromB);
-  const bobAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
+  const bobAgreedExist = await isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
   console.info(`ok! bobAgreedExist in huks is ${bobAgreedExist}`);
 
   await deleteKeyItem(aliasAgreedKeyFromA, emptyOptions);
