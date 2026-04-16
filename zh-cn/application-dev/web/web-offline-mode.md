@@ -292,6 +292,29 @@ export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
 <!--  -->
 <!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// index.ets
+import { webview } from '@kit.ArkWeb';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index1 {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('Jump to web page').onClick(()=> {
+        this.getUIContext().getRouter().pushUrl({ url: 'pages/Index2' }).catch((error: BusinessError) => {
+          hilog.info(0x0000, 'testTag', 'pushUrl error, %{public}s', error);
+        })
+      }).width('100%').height('100%')
+    }
+  }
+}
+```
+
 <!--  -->
 <!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index2.ets) --> 
 
