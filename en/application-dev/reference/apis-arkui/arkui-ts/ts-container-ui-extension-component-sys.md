@@ -661,7 +661,7 @@ Scrolling inside the component: scrolling within the component using touch gestu
 
 Scrolling outside the component: scrolling of the outer container using the scrollbar
 
-Before running, ensure that an ability whose **bundleName** is **UIExtensionProvider** and **abilityName** as **UIExtensionProvider** is installed on the device.
+Before running, ensure that an ability whose **bundleName** is **com.example.newdemo** and **abilityName** as **UIExtensionProvider** is installed on the device.
 
 The entry point file **UIExtensionProvider.ets** and the module configuration file** UIExtensionProvider.ets** are identical to those in [Example 1](#example-1-loading-a-uiextension).
 
