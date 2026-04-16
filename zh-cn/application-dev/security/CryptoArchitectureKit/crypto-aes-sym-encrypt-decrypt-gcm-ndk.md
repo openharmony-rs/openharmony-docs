@@ -61,12 +61,15 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 - AES GCM模式加解密示例如下：
 
-```c++
+<!-- @[gcm_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_gcm_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestAesGcm()
+OH_Crypto_ErrCode doTestAesGcm()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -74,12 +77,12 @@ static OH_Crypto_ErrCode doTestAesGcm()
     OH_CryptoSymKey *keyCtx = nullptr;
     OH_CryptoSymCipherParams *params = nullptr;
 
-    Crypto_DataBlob encData = {.data = nullptr, .len = 0};
-    Crypto_DataBlob decData = {.data = nullptr, .len = 0};
+    Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
 
     uint8_t aad[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     uint8_t tag[16] = {0};
-    uint8_t iv[12] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4}; // iv使用安全随机数生成。
+    uint8_t iv[12] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4}; // iv使用安全随机数生成
     Crypto_DataBlob ivData = {.data = iv, .len = sizeof(iv)};
     Crypto_DataBlob aadData = {.data = aad, .len = sizeof(aad)};
     Crypto_DataBlob tagData = {.data = tag, .len = sizeof(tag)};
@@ -87,9 +90,8 @@ static OH_Crypto_ErrCode doTestAesGcm()
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
 
-    // 生成对称密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
+    // 生成对称密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -98,7 +100,7 @@ static OH_Crypto_ErrCode doTestAesGcm()
         goto end;
     }
 
-    // 设置参数。
+    // 设置参数
     ret = OH_CryptoSymCipherParams_Create(&params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -116,7 +118,7 @@ static OH_Crypto_ErrCode doTestAesGcm()
         goto end;
     }
 
-    // 加密。
+    // 加密
     ret = OH_CryptoSymCipher_Create("AES128|GCM|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -125,7 +127,7 @@ static OH_Crypto_ErrCode doTestAesGcm()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Update(encCtx, &msgBlob, &encData);
+    ret = OH_CryptoSymCipher_Update(encCtx, &msgBlob, &outUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -134,7 +136,7 @@ static OH_Crypto_ErrCode doTestAesGcm()
         goto end;
     }
 
-    // 解密。
+    // 解密
     ret = OH_CryptoSymCipher_Create("AES128|GCM|PKCS7", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -147,11 +149,7 @@ static OH_Crypto_ErrCode doTestAesGcm()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Update(decCtx, &encData, &decData);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Final(decCtx, nullptr, &decData);
+    ret = OH_CryptoSymCipher_Final(decCtx, &outUpdate, &decUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -162,8 +160,8 @@ end:
     OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    OH_Crypto_FreeDataBlob(&encData);
-    OH_Crypto_FreeDataBlob(&decData);
+    OH_Crypto_FreeDataBlob(&outUpdate);
+    OH_Crypto_FreeDataBlob(&decUpdate);
     OH_Crypto_FreeDataBlob(&tagOutPut);
     return ret;
 }
