@@ -2325,7 +2325,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。子窗口调用后不生效。
+设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。非主窗口调用后不生效不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2394,7 +2394,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
+设置主窗口的显示方向属性，使用Promise异步回调。非主窗口调用后不生效不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
