@@ -444,19 +444,24 @@
    }
    ```
 
-   （12）onGetResourceId<sup>26+</sup>用于获取密钥扩展能力的资源ID。资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，格式和内容由厂商自定义。当调用成功时，返回值中的resultCode成员设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
+（12）onGetResourceId<sup>26+</sup>用于获取密钥扩展能力的资源ID。params中需携带以下必选参数：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示Ability名称、[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示Bundle名称、[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示厂商自定义的资源信息。当调用成功时，返回值中的resultCode成员设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
      let result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
      };
-     
+
+     // 获取必选参数：资源信息
+     let resourceInfo: Uint8Array | undefined = params.find((param =>
+       param.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO))?.value as Uint8Array;
+     if (resourceInfo === undefined) {
+       return Promise.resolve(result);
+     }
+      
      try {
-       let resourceInfo: Uint8Array | undefined = params.find((param =>
-         param.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO))?.value as Uint8Array;
-       
-       let resourceId: string = "";
+       let driver: YourUKeyDriver = YourDriverInstance;
+       let resourceId: string = driver.YourDriver_onGetResourceId(abilityName, bundleName, resourceInfo);
        result.resultCode = 0;
        result.resourceId = resourceId;
      } catch (error) {

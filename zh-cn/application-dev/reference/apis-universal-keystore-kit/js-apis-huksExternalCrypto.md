@@ -442,18 +442,11 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-// 提供者名称，建议包含厂商信息，全局唯一
 const providerName = "testProviderName";
-// Ability名称
 const abilityName = "CryptoExtension";
-// Bundle名称
 const bundleName = "com.example.cryptoapplication";
 // 资源信息，格式和内容由厂商自定义
-const resourceInfo = JSON.stringify({
-  deviceName: "testDevice",
-  appName: "testApp",
-  containerName: "testContainer"
-});
+const resourceInfo = "vendor_defined_resource_info";
 
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {

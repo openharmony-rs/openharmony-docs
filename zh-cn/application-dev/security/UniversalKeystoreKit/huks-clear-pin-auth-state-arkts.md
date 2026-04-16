@@ -17,8 +17,6 @@
 
 ## 开发案例
 
-<!-- @[clear_pin_auth_state_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ClearPinAuthState/entry/src/main/ets/pages/Index.ets) -->
-
 ``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
