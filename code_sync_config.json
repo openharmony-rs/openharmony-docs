@@ -11638,9 +11638,9 @@
 						"start_line":107
 					},
 					{
-						"end_line":217,
+						"end_line":223,
 						"name":"CrashEvent_ArkTS_Add_Watcher",
-						"start_line":156
+						"start_line":160
 					},
 					{
 						"end_line":26,
@@ -11703,14 +11703,14 @@
 						"start_line":24
 					},
 					{
-						"end_line":554,
+						"end_line":561,
 						"name":"Sys_Crash_Crash_OnReceive",
-						"start_line":459
+						"start_line":464
 					},
 					{
-						"end_line":596,
+						"end_line":643,
 						"name":"Sys_Crash_Event_OnTrigger",
-						"start_line":518
+						"start_line":563
 					},
 					{
 						"end_line":1413,
@@ -29825,9 +29825,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":72,
 						"name":"AppEvent_Crash_ArkTS_Add_Watcher",
-						"start_line":34
+						"start_line":40
 					},
 					{
 						"end_line":94,
