@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 10开始支持。
@@ -25,6 +27,10 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -167,6 +173,10 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): voi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -241,6 +251,10 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -328,6 +342,10 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明         |
@@ -411,6 +429,10 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明        |
@@ -485,6 +507,10 @@ replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -555,6 +581,10 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -638,6 +668,10 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明         |
@@ -717,6 +751,10 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明        |
@@ -795,6 +833,10 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -868,6 +910,10 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Pro
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -954,6 +1000,10 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明         |
@@ -1037,6 +1087,10 @@ replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明        |
@@ -1111,6 +1165,10 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -1181,6 +1239,10 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1265,6 +1327,10 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, c
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明         |
@@ -1344,6 +1410,10 @@ back(options?: router.RouterOptions ): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明                                       |
@@ -1364,7 +1434,9 @@ router.back({url:'pages/detail'});
 
 ## back<sup>12+</sup>
 
-back(index: number, params?: Object): void
+ArkTS-Dyn: back(index: number, params?: Object): void
+
+ArkTS-Sta: back(index: int, params?: Object): void
 
 返回指定的页面。
 
@@ -1372,11 +1444,15 @@ back(index: number, params?: Object): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index | number | 是    | 跳转目标页面的索引值。 <br/> 取值范围：[0, +∞) |
+| index | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 跳转目标页面的索引值。 <br/> 取值范围：[0, +∞) |
 | params    | Object      | 否    | 页面返回时携带的参数。 |
 
 **示例：**
@@ -1412,6 +1488,10 @@ clear(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 完整示例请参考[PushUrl](#pushurl)中的示例。
@@ -1439,6 +1519,10 @@ getLength(): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **返回值：**
 
 | 类型     | 说明                 |
@@ -1461,7 +1545,9 @@ console.info('pages stack size = ' + size);
 
 ## getStackSize<sup>23+</sup>
 
-getStackSize(): number
+ArkTS-Dyn: getStackSize(): number
+
+ArkTS-Sta: getStackSize(): int
 
 获取当前页面栈内的页面数量。
 
@@ -1471,11 +1557,15 @@ getStackSize(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| number | 页面数量，页面栈支持最大数值是32。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 页面数量，页面栈支持最大数值是32。 |
 
 **示例：**
 
@@ -1513,6 +1603,10 @@ getState(): router.RouterState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                       | 说明      |
@@ -1539,7 +1633,9 @@ if (page != undefined) {
 
 ## getStateByIndex<sup>12+</sup>
 
-getStateByIndex(index: number): router.RouterState | undefined
+ArkTS-Dyn: getStateByIndex(index: number): router.RouterState | undefined
+
+ArkTS-Sta: getStateByIndex(index: int): router.RouterState | undefined
 
 通过索引值获取对应页面的状态信息。
 
@@ -1547,11 +1643,15 @@ getStateByIndex(index: number): router.RouterState | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[1, +∞) |
+| index    | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 表示要获取的页面索引。 <br/> 取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -1586,6 +1686,10 @@ getStateByUrl(url: string): Array<router.[RouterState](js-apis-router.md#routers
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1626,6 +1730,10 @@ showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1674,6 +1782,10 @@ hideAlertBeforeBackPage(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 完整示例请参考[PushUrl](#pushurl)中的示例。
@@ -1696,6 +1808,10 @@ getParams(): Object
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
