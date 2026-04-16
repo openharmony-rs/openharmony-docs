@@ -404,7 +404,7 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**订阅者所需权限：** ohos.permission.RESTORE_END_NOTIFICATION
+**订阅者所需权限：** ohos.permission.RESTORE_END_NOTIFICATION（该权限仅系统应用可申请）
 
 **取值：** "usual.event.RESTORE_END"
 
