@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -58,7 +58,7 @@ System service operation failed.
 
 **错误描述**
 
-客户端进程请求服务进程时，获取系统服务操作失败。
+客户端进程请求服务进程时，请求系统服务操作失败。
 
 **可能原因**
 

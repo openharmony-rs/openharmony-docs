@@ -12,7 +12,7 @@ typedef struct OH_PackingOptions OH_PackingOptions
 
 ## Overview
 
-The struct describes the image packing options encapsulated at the native layer. The struct cannot be directly operated. Instead, functions must be called to create and release the struct and operate the fields in the struct.
+OH_PackingOptions is an image encoding option struct encapsulated at the native layer. It cannot be manipulated directly; instead, functions shall be called to create and release the struct, and operate on its specific fields.
 
 To create an OH_PackingOptions object, call [OH_PackingOptions_Create](capi-image-packer-native-h.md#oh_packingoptions_create).
 

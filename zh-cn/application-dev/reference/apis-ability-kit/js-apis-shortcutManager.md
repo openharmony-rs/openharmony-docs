@@ -37,7 +37,7 @@ setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
 | 类型             | 说明              |
 | -------------- | --------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -94,7 +94,7 @@ shortcutManager.getAllShortcutInfoForSelf()
 
 isShortcutSupported(): boolean
 
-当前设备是否支持快捷方式。
+查询当前设备是否支持快捷方式。
 
 **起始版本：** 26.0.0
 

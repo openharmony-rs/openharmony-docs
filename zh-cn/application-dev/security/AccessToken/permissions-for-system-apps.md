@@ -5527,6 +5527,20 @@
 
 **起始版本**：23
 
+## ohos.permission.POWER_CONFIG
+
+允许应用读写电源配置相关的文件节点。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.MANAGE_STANDBY
 
 允许应用管理页面的Standby状态，如进入、退出Standby状态等。
@@ -5671,6 +5685,48 @@
 
 **起始版本**：24
 
+### ohos.permission.MODIFY_AGENT_CARD
+
+允许系统应用更新和删除AgentCard。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+### ohos.permission.START_ABILITY_TO_PAGE
+
+允许系统应用启动其他应用到指定页面栈。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
+
+允许应用获取和设置车机情景模式。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ENCRYPT_VOLUME_MANAGER
 
 允许应用调用storage_manager服务中管理卷加密的接口。
@@ -5699,9 +5755,37 @@
 
 **起始版本**：24
 
+## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+允许应用订阅通知服务。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ASSET_CACHE_MANAGER
  	 
 允许应用通过资产缓存服务管理接口下发、控制、查询任务。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.DCAS_OTA_PERMISSION
+
+允许应用和服务接入端侧模型部署态管理。
 
 **权限级别**：system_basic
 
@@ -5709,6 +5793,6 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：General
 
 **起始版本**：24

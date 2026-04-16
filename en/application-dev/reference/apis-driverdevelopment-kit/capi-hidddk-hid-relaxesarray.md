@@ -27,4 +27,4 @@ Defines an array of relative coordinates.
 | Name| Description|
 | -- | -- |
 | Hid_RelAxes* hidRelAxes | Array of relative coordinates.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|

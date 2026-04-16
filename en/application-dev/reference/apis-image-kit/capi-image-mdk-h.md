@@ -84,7 +84,7 @@ Enumerates the image color channel types.
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_Y = 1 | Luminance component.|
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_U = 2 | Chrominance component - blue projection.|
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | Chrominance component - red projection.|
-| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG format.|
+| OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG.|
 
 
 ## Function Description

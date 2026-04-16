@@ -39,7 +39,7 @@ The following table lists the common APIs. For more API description, see [OH_Dis
 
 ## Linking the Dynamic Library in the CMake Script
 
-```
+``` text
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 target_link_libraries(entry PUBLIC libnative_display_manager.so )
 ```
@@ -341,7 +341,7 @@ private callGetCutoutInfo(): void {
 }
 
 private callDealListenCallback(): void {
-  this.promptAction.openToast({ message: 'Call registerDisplayChange' }).catch((error: Error) => {
+  this.promptAction.openToast({ message: 'Call register change' }).catch((error: Error) => {
     console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
   }).then(() => {
     let registerIndex = displayNapi.registerDisplayChange();

@@ -508,7 +508,71 @@ struct SnapshotExample {
 }
 ```
 
-![componentget](figures/componentget.gif) 
+![componentget](figures/componentget.gif)
+
+## componentSnapshot.getSizeLimitation
+
+getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
+
+Obtains the size limit of a component screenshot.
+
+> **NOTE**
+>
+> Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                          | Description            |
+| ------------------------------------------------------------ | -------------- |
+| componentSnapshot.[SnapshotSizeLimitation](#snapshotsizelimitation) | Size limit of a component screenshot.|
+
+**Example**
+
+```ts
+import { ComponentUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button ("Obtain Screenshot Size Limit")
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## SnapshotSizeLimitation
+
+Defines the size limit of a component screenshot.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name       | Type    | Read-Only| Optional| Description                  |
+| --------- | ------ | ---- | ---- | -------------------- |
+| maxWidth  | number | Yes  | No  | Maximum width of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
+| maxHeight | number | Yes  | No  | Maximum height of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
 
 ## SnapshotOptions<sup>12+</sup>
 

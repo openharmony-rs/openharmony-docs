@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--driver-development-arkts-->
   - [@ohos.app.ability.DriverExtensionAbility (驱动程序扩展能力)](js-apis-app-ability-driverExtensionAbility.md)
@@ -69,6 +69,7 @@
     - [UsbRequestPipe](capi-usbddk-usbrequestpipe.md)
     - [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md)
     - [Usb_DeviceArray](capi-usbddk-usb-devicearray.md)
+    - [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md)
     - [UsbSerial_Params](capi-serialddk-usbserial-params.md)
     - [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md)
 - 错误码<!--driver-development-errcode-->

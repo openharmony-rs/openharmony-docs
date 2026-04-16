@@ -25,5 +25,5 @@ Defines the custom mouse pointer configuration.
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CursorConfig_Create](capi-oh-input-manager-h.md#oh_input_cursorconfig_create) | Creates a custom mouse pointer configuration object.|
+| [OH_Input_CursorConfig_Create](capi-oh-input-manager-h.md#oh_input_cursorconfig_create) | Creates a custom mouse pointer configuration object. You can call [OH_Input_CursorConfig_Destroy](capi-oh-input-manager-h.md#oh_input_cursorconfig_destroy) to destroy a custom mouse pointer configuration object.|
 | [OH_Input_CursorConfig_Destroy](capi-oh-input-manager-h.md#oh_input_cursorconfig_destroy) | Destroys a custom mouse pointer configuration object.|

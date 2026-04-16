@@ -132,6 +132,9 @@ USB证书凭据授权请求信息。
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | 否   | 否   | 表示证书类型的列表。 |
 | certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。<br>若certTypes参数中存在CertificateType.CREDENTIAL_UKEY类型，则certPurpose参数生效。 |
+| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA。<br>若 keyAlgIDs包含不支持的算法，则该筛选器无效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
+| issuers |  Array\<Uint8Array>  | 否   | 是   | 表示以DER格式编码的证书颁发者，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。<br>如果issuers数组中存在长度为0的元素，则issuers筛选器不会生效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
+| uri | string  | 否   | 是   | 表示应用请求使用凭据用于验证服务器的地址，此uri显示在凭据授权对话框中。<br>**起始版本：** 26.0.0 |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
@@ -251,7 +254,7 @@ let caCert: Uint8Array = new Uint8Array([
 ]);
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
-    console.info('Succeeded opening install certificate');
+    console.info('Succeeded in opening install certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -317,7 +320,7 @@ let certificateType: certificateManagerDialog.CertificateType = certificateManag
 let certUri: string = "test";
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
-    console.info('Succeeded opening uninstall certificate');
+    console.info('Succeeded in opening uninstall certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -439,7 +442,7 @@ import { UIContext } from '@kit.ArkUI';
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
     certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Success to authorize certificate, uri: ${uri}`)
+        console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
     });
@@ -507,7 +510,7 @@ let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: c
 try {
     certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
       let reference = certReference;
-      console.info(`Success to open authorize dialog.`)
+      console.info(`Succeeded in opening authorize dialog.`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -570,7 +573,7 @@ let keyUri: string = "test"
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
 try {
     certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Success to open ukey authorization dialog`)
+        console.info(`Succeeded in opening ukey authorization dialog`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -613,7 +616,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
-  console.info(`Success to check whether the device supports CA dialog.`)
+  console.info(`Succeeded in checking whether the device supports CA dialog.`)
 } catch (err) {
     let error = err as BusinessError;
     console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);

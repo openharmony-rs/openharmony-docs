@@ -109,7 +109,7 @@ getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<Bun
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的应用信息；否则为错误对象。                    |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
 
 **错误码：**
 
@@ -175,7 +175,7 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为null，data为获取到的应用信息；否则为错误对象。                    |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
 
 **错误码：**
 
@@ -313,7 +313,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId?: number): 
 
 | 类型           | 说明                               |
 | -------------- | ---------------------------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -397,7 +397,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId: number, ca
 | type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
 | userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                   |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
@@ -476,7 +476,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                    |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                    |
 
 **错误码：**
 
@@ -644,7 +644,7 @@ resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
 | 类型           | 说明                               |
 | -------------- | ---------------------------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -710,7 +710,7 @@ resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<v
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                          |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                   |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
@@ -777,7 +777,7 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回null。否则回调函数返回具体错误对象。                   |
+| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 

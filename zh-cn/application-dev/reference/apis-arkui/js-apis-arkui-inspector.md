@@ -223,7 +223,7 @@ onDrawChildren(callback: Callback\<number[]\>): void
 
 offDrawChildren(callback?: Callback\<number[]\>): void
 
-取消注册offDrawChildren事件回调。使用callback异步回调。
+取消注册drawChildren事件回调。使用callback异步回调。
 
 要实现在子组件布局完成后停止触发特定回调，只需通过其句柄，在对应的查询条件上取消注册该回调即可。
 
@@ -302,14 +302,15 @@ struct ImageExample {
     let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
       // 从API version 24开始，新增onDrawChildren接口。监听到DrawChildren事件后，用户可以自定义实现逻辑。
     }
-  }
+
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
     this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
-    // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
   }
+
+  // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+  // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
 }
 ```

@@ -14,14 +14,14 @@ You can configure the component transition animations through the **transition**
 >
 >  There are two ways to trigger a component's transition:
 >  1. When a component is inserted or removed (for example, when there are changes in **if** conditions, or when components are added or removed in a **ForEach** loop), the transition effects of all newly inserted/removed components are triggered recursively.
->  2. When the [visibility](ts-universal-attributes-visibility.md#visibility) attribute of a component changes between visible and invisible, only the transition effect of that component is triggered.
+>  2. When the [visibility](ts-universal-attributes-visibility.md#visibility) attribute of a component changes between visible and invisible (both **Visibility.Hidden** and **Visibility.None** are regarded as invisible), only the transition effect of the component is triggered. When switching between **Visibility.Visible** and **Visibility.None**, if the attribute is directly set to **Visibility.None**, the component layout size becomes 0, and no transition effect is observed. If the visibility attribute is changed to **Visibility.None** in the animation, the component layout size is 0 and the animation is applied. In this case, the transition effect and the layout animation are superimposed, resulting in a composite dual-animation effect.
 
 
 ## transition
 
 transition(value: TransitionOptions | TransitionEffect): T
 
-Sets the transition effects for when the component is inserted to show and removed to hide.
+Sets the transition effects used when a component is inserted or removed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,7 +33,7 @@ Sets the transition effects for when the component is inserted to show and remov
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- |  ---- | -------- |
-| value | [TransitionOptions](#transitionoptionsdeprecated)<sup>(deprecated)</sup> \| [TransitionEffect](#transitioneffect10)  | Yes| Transition effects for when the component is inserted to show and removed to hide.<br>**NOTE**<br>For details, see [TransitionOptions](#transitionoptionsdeprecated) and [TransitionEffect](#transitioneffect10).|
+| value | [TransitionOptions](#transitionoptionsdeprecated)<sup>(deprecated)</sup> \| [TransitionEffect](#transitioneffect10) | Yes| Transition effects used when a component is inserted or removed.<br>**NOTE**<br>For details, see [TransitionOptions](#transitionoptionsdeprecated) and [TransitionEffect](#transitioneffect10).|
 
 **Return value**
 
@@ -45,7 +45,7 @@ Sets the transition effects for when the component is inserted to show and remov
 
 transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallback&gt;): T
 
-Transition effects for when the component is inserted to show and removed to hide. Compared with [transition](#transition), this API provides the callback when the transition animation ends.
+Sets the transition effects used when a component is inserted or removed. Compared with [transition](#transition), this API provides the callback when the transition animation ends.
 
 >**NOTE**
 >
@@ -61,7 +61,7 @@ Transition effects for when the component is inserted to show and removed to hid
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- |  ---- | -------- |
-| effect | [TransitionEffect](#transitioneffect10)  | Yes| Transition effects for when the component is inserted to show and removed to hide.|
+| effect | [TransitionEffect](#transitioneffect10)  | Yes| Transition effects used when a component is inserted or removed.|
 | onFinish | Optional&lt;[TransitionFinishCallback](#transitionfinishcallback12)&gt; | Yes| Callback when the transition animation ends.|
 
 **Return value**
@@ -103,7 +103,7 @@ Defines the transition effect by using the provided APIs, as listed below.
 | -------- | ---------- | -------- | -------- | -------- |
 | IDENTITY | [TransitionEffect](#transitioneffect10)\<"identity"> | Yes| No| Disables the transition effect.|
 | OPACITY | [TransitionEffect](#transitioneffect10)\<"opacity"> | Yes| No| Applies a transition effect with the opacity changing from 0 to 1 when the component appears and from 1 to 0 when the component disappears. This is equivalent to **TransitionEffect.opacity(0)**.|
-| SLIDE | [TransitionEffect](#transitioneffect10)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; }> | Yes| No| This is equivalent to **TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))**. Applies a transition effect of sliding in from the start edge when the component appears and sliding out from the end edge when the component disappears. This means sliding in from the left edge and sliding out from the right edge for left-to-right scripts, and sliding in from the right edge and sliding out from the left edge for right-to-left scripts.|
+| SLIDE | [TransitionEffect](#transitioneffect10)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; }> | Yes| No| Applies a transition effect of sliding in from the start edge when the component appears and sliding out from the end edge when the component disappears. This means sliding in from the left edge and sliding out from the right edge for left-to-right scripts, and sliding in from the right edge and sliding out from the left edge for right-to-left scripts. This is equivalent to **TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))**. |
 | SLIDE_SWITCH | [TransitionEffect](#transitioneffect10)\<"slideSwitch"> | Yes| No| Applies a transition effect of sliding in from the right with first scaling down and then scaling up when the component appears and sliding out from the left with first scaling down and then scaling up when the component disappears. This transition effect comes with its own animation parameters, which can also be overridden. The default animation duration is 600 milliseconds, with a specified animation curve of cubicBezierCurve(0.24, 0.0, 0.50, 1.0) and a minimum scale factor of 0.8.|
 
 >  **NOTE**
@@ -366,7 +366,7 @@ Defines the transition effect by setting parameters in the struct.
 | type | [TransitionType](ts-appendix-enums.md#transitiontype)  | No| Yes| Transition type.<br>Default value: **TransitionType.All**<br>**NOTE**<br>If **type** is not specified, the default value **TransitionType.All** is used, which means that the transition effect works for both component addition and deletion.|
 | opacity | number | No| Yes| Opacity of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>Value range: [0, 1]<br>**NOTE**<br>If the value specified is less than 0, the value **0** is used. If the value specified is greater than 1, the value **1** is used.|
 | translate |   [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions)  | No| Yes | Translation of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>-**x**: distance to translate along the x-axis.<br>-**y**: distance to translate along the y-axis.<br>-**z**: distance to translate along the z-axis.|
-| scale |  [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions) | No| Yes| Scaling of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>- **z**: scale factor along the z-axis (not effective for the current 2D graphics).<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
+| scale |  [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)| No| Yes| Scaling of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>- **z**: scale factor along the z-axis (not effective for the current 2D graphics).<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
 | rotate |  [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions)| No| Yes| Rotation of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>- **x**: X-component of the rotation vector.<br>- **y**: Y-component of the rotation vector.<br>- **z**: Z-component of the rotation vector.<br>- **centerX** and **centerY**: rotation center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.|
 
 >  **NOTE**

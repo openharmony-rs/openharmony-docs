@@ -29,7 +29,7 @@ The browser extension connects to WebNativeMessagingExtensionAbility through the
 
 ### Device Constraints
 
-The WebNativeMessagingExtensionAbility component takes effect only on 2-in-1 devices.
+For API versions 21-23, the WebNativeMessagingExtensionAbility component takes effect only on 2in1 devices; starting from API version 24, this component is available on tablets.
 
 ### Specifications
 

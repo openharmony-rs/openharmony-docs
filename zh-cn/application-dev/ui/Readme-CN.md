@@ -275,11 +275,11 @@
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)
+  - [添加事件监听](ndk-add-component-events.md)
   - 添加交互事件<!--arkts-add-event-->
-    - [监听组件事件](ndk-listen-to-component-events.md)
+    - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
-    - [拖拽事件](ndk-drag-event.md)
-    - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
+    - [绑定拖拽事件](ndk-drag-event.md)
   - 使用动画<!--arkts-use-animation-ndk-->
     - [动画概述](ndk-use-animation.md)
     - [使用动画开发指导](ndk-use-animation-scene.md)
@@ -397,6 +397,7 @@
     - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
+    - [弹窗组件常见问题](arkts-popup-component-faq.md)
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)

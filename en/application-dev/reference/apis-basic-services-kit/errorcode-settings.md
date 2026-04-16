@@ -59,7 +59,7 @@ Parameter error.
 
 **Description**
 
-The type or format of the parameter is incorrect.
+This error code is reported when the type or format of the parameter is incorrect.
 
 **Possible Causes**
 
@@ -70,3 +70,21 @@ The type or format of the parameter is incorrect.
 **Solution**
 
 Make sure all the mandatory parameters are passed. If parameter verification fails, read the parameter specifications and locate the fault based on the possible causes.
+
+## 16900020 Failed to Open the Settings Page
+
+**Error Message**
+
+Failed to open the settings page via redirection.
+
+**Description**
+
+This error code is reported when the settings page fails to be opened.
+
+**Possible Causes**
+
+An internal error occurs.
+
+**Solution**
+
+Restart the application or device and try again.

@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 设备上报的手势事件。
 
@@ -83,7 +83,7 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 
 | 名称        | 值  | 说明             |
 | ----------- | --- | --------------- |
-| CANCEL      | 0   | 取消。             |
+| CANCEL      | 0   | 手势取消。             |
 | BEGIN       | 1   | 手势开始。         |
 | UPDATE      | 2   | 手势更新。         |
 | END         | 3   | 手势结束。         |

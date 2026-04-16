@@ -27,7 +27,7 @@ Child components can be dynamically generated using rendering control types [if/
 >  **NOTE**
 >
 >  When the **visibility** attribute of a child component of **WaterFlow** is set to **None**, this child component is not displayed in the container, but its **columnsGap**, **rowsGap**, and **margin** settings are still effective.
->  If there are a large number of child components,you are advised to adopt methods such as lazy loading, data caching, component reuse, fixed dimensions, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
+>  If there are a large number of child components, you are advised to adopt methods such as lazy loading, data caching, component reuse, fixed dimensions, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
 >
 > In vertical layout mode, **WaterFlow** calculates the cumulative height of child components in each column and places new child components in the column with the smallest cumulative height to maintain a compact overall layout.
 >
@@ -61,10 +61,10 @@ Provides parameters of the **WaterFlow** component.
 
 | Name    | Type                                       | Read-Only| Optional| Description                                    |
 | ---------- | ----------------------------------------------- | ------ | -- | -------------------------------------------- |
-| footer |  [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes| Footer of the **WaterFlow** component.<br>**NOTE**<br>For details, see [Example 1](#example-1-using-a-basic-waterflow-component).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| footer |  [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes| Footer component of the **WaterFlow** component, which is used to display custom content (such as loading prompts and bottom icons) at the end of the waterfall. If this parameter is not set, no footer component is displayed.<br>**NOTE**<br>For details, see [Example 1](#example-1-using-a-basic-waterflow-component).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No| Yes| Footer of the **WaterFlow** component.<br>This parameter has a higher priority than **footer**. If both **footer** and **footerContent** are set, the component set by **footerContent** will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | scroller | [Scroller](ts-container-scroll.md#scroller) | No  | Yes| Controller of the scrollable component, bound to the scrollable component.<br>**NOTE**<br>It cannot be bound to the same scrolling control object as other scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | No  | Yes| Water flow item sections, used to implement mixed layouts with different column counts for each section within the same **WaterFlow** component.<br>**NOTE**<br>1. When the mixed layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored.<br>2. When **sections** is used, the footer cannot be set separately. The last section can function as the footer.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | No  | Yes| Water flow item sections, used to implement mixed layouts with different column counts for each section within the same **WaterFlow** component. This is applicable to scenarios where different numbers of columns are required in different areas. If this parameter is not set, the layout with the same number of columns is used.<br>**NOTE**<br>1. When the mixed layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored.<br>2. When **sections** is used, the footer cannot be set separately. The last section can function as the footer.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12)| No| Yes| Layout mode of the **WaterFlow** component.<br>**NOTE**<br>Default value: [ALWAYS_TOP_DOWN](#waterflowlayoutmode12)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 
@@ -336,6 +336,7 @@ Sets the size constraints of the child components during layout. For details abo
 
 **Parameters**
 
+<!--Table: 10%; auto; 10%; auto-->
 | Name| Type                                                      | Mandatory| Description      |
 | ------ | ---------------------------------------------------------- | ---- | ---------- |
 | value  | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes  | Size constraints of the child components during layout. If the value specified is less than **0**, this parameter does not take effect.<br>**NOTE**<br>1. If both **itemConstraintSize** and the [constraintSize](ts-universal-attributes-size.md#constraintsize) attribute of the **FlowItem** are set, the **minWidth** (or **minHeight**) will be the larger of the two values, and the **maxWidth** (or **maxHeight**) will be the smaller of the two values. The resulting values will then be used as the **constraintSize** for the **FlowItem**.<br>2. When only **itemConstraintSize** is set, it effectively applies a uniform size constraint to all child components in the **WaterFlow**.<br>3. The **itemConstraintSize** attribute, once converted to the **constraintSize** attribute of the **FlowItem** through the two methods mentioned above, follows the same rules for taking effect as the universal attribute [constraintSize](./ts-universal-attributes-size.md#constraintsize).|
@@ -354,7 +355,7 @@ Sets the gap between columns.
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞).|
+| value  | [Length](ts-types.md#length) | Yes  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.|
 
 ### rowsGap
 
@@ -370,7 +371,7 @@ Sets the gap between rows.
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Gap between rows.<br>Default value: **0**<br>Value range: [0, +∞).|
+| value  | [Length](ts-types.md#length) | Yes  | Gap between rows.<br>Default value: **0**<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.|
 
 ### layoutDirection
 
@@ -508,6 +509,30 @@ Sets whether to synchronously load all child components in the **WaterFlow** com
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enable   | boolean | Yes  | Whether to synchronously load all child components in the **WaterFlow** component.<br>**true**: synchronous loading; false: asynchronous loading<br>Default value: **true**<br>**NOTE**<br>When this parameter is set to **false**, in the first display or [scrollToIndex](ts-container-scroll.md#scrolltoindex) jumps without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the **WaterFlow** component are delayed to the next frame for layout.|
+
+### supportEmptyBranchInLazyLoading
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+Defines whether the **WaterFlow** component supports the generation of empty branch nodes that do not contain any child components using the **if/else** rendering control syntax in **LazyForEach** or **Repeat**. If this attribute is not set, empty branch nodes are not supported. This attribute cannot be updated after being set. Therefore, you cannot switch between the behavior of supporting empty branches and the behavior of not supporting empty branches after setting this attribute.
+
+> **NOTE**
+>
+> When [WaterFlowSections](#waterflowsections12) is set using the [sections](#waterflowoptions) parameter, or when the [SLIDING_WINDOW](#waterflowlayoutmode12) layout mode is set using the [layoutMode](#waterflowoptions) parameter, the **FlowItem** after the empty branch is displayed regardless of the **supportEmptyBranchInLazyLoading** setting.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                              |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | Yes  | Whether the current **WaterFlow** component supports the use of the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) rendering syntax in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to generate an empty branch node that contains no child component.<br>**true** indicates that the **FlowItem** after the empty branch is displayed; **false** indicates the opposite.<br>If the value is **undefined**, it is processed as **false**.|
 
 ## Events
 
@@ -934,7 +959,7 @@ struct WaterFlowDemo {
           .backgroundColor(this.colors[item % this.colors.length])
         }, (item: string) => item)
       }
-      .columnsTemplate('1fr 1fr') // Set the layout of two columns with equal width.
+      .columnsTemplate('1fr 1fr')    // Set the layout of two columns with equal width.
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -1144,7 +1169,7 @@ struct WaterFlowDemo {
     }
   };
 
-  // Calculate the  height for FlowItem.
+  // Calculate the height for FlowItem.
   getSize() {
     let ret = Math.floor(Math.random() * this.maxSize);
     return (ret > this.minSize ? ret : this.minSize);
@@ -1428,7 +1453,7 @@ struct WaterFlowDemo {
           }, (item: string) => item)
         }
         .id('waterflow') // Set the ID for capturing snapshots.
-        .columnsTemplate('1fr '.repeat(this.columns)) // Dynamically generate a column template. For example, '1fr 1fr 1fr' indicates three columns with the same width.
+        .columnsTemplate('1fr '.repeat(this.columns))  // Dynamically generate a column template. For example, '1fr 1fr 1fr' indicates three columns with the same width.
         .backgroundColor(0xFAEEE0)
         .width('100%')
         .height('100%')
@@ -1690,7 +1715,7 @@ function buildText(params: Params) {
 @Entry
 @Component
 struct Index {
-  @State message1: string = 'You have reached the bottom.';
+  @State message1: string = 'End';
   @State message2: string = 'Load more';
   @State colors: number[] = [0xD5D5D5, 0x7F7F7F, 0xF7F7F7];
   @State minSize: number = 80;
@@ -1860,7 +1885,7 @@ struct WaterFlowDemo {
 
 ![waterFlow_refresh](figures/waterFlow_refresh.gif)
 
-### Example 9: Configuring the Number of Columns in the WaterFlow Component Based on Breakpoints)
+### Example 9: Configuring the Number of Columns in the WaterFlow Component Based on Breakpoints
 
 In API version 22 and later versions, this example shows how to configure the number of columns in the **WaterFlow** component based on breakpoints.
 
@@ -2049,7 +2074,7 @@ struct WaterFlowContentSizeDemo {
 
 ### Example 11: Setting a Scrolling Event
 
-This example obtains a [UIWaterFlowEvent](#uiwaterflowevent19) instance via [getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19) on a FrameNode and sets scroll event callbacks for a **WaterFlow** component. This approach is intended for scenarios where the page code cannot be directly modified to use declarative callbacks.
+This example obtains a [UIWaterFlowEvent](#uiwaterflowevent19) instance via [getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19) on a **FrameNode** and sets scroll event callbacks for a **WaterFlow** component. This approach is intended for scenarios where the page code cannot be directly modified to use declarative callbacks.
 
 The **UIWaterFlowEvent** API is added since API version 19.
 

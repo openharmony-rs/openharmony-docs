@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
@@ -39,7 +39,7 @@ constructor()
 let gallerySync = new cloudSync.GallerySync()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -56,7 +56,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | (pg: SyncProgress) => void | 是   | 同步过程事件回调，回调入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
 
 **错误码：**
 
@@ -75,11 +75,11 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-  console.info("syncState：" + pg.state);
+  console.info("syncState: " + pg.state);
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -96,7 +96,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | (pg: SyncProgress) => void | 是   | 同步过程事件回调，回调入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
 
 **错误码：**
 
@@ -115,7 +115,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 let gallerySync = new cloudSync.GallerySync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("gallery sync state：" + pg.state + "error type:" + pg.error);
+  console.info("gallery sync state: " + pg.state + "error type: " + pg.error);
 }
 
 gallerySync.on('progress', callback);
@@ -123,7 +123,7 @@ gallerySync.on('progress', callback);
 gallerySync.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
@@ -158,7 +158,7 @@ off(evt: 'progress'): void
 let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-    console.info("syncState：" + pg.state);
+    console.info("syncState: " + pg.state);
 });
 
 gallerySync.off('progress');
@@ -168,7 +168,7 @@ gallerySync.off('progress');
 
 start(): Promise&lt;void&gt;
 
-异步方法启动端云同步。使用Promise异步回调。
+启动端云同步。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -180,7 +180,7 @@ start(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回启动端云同步的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -203,7 +203,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-  console.info("syncState：" + pg.state);
+  console.info("syncState: " + pg.state);
 });
 
 gallerySync.start().then(() => {
@@ -229,7 +229,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
@@ -280,7 +280,7 @@ stop(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止端云同步的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -326,7 +326,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 
@@ -374,7 +374,7 @@ constructor()
 let download = new cloudSync.Download()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -391,7 +391,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 订阅的事件类型，取值为'progress'（下载过程事件）。|
-| callback | (pg: DownloadProgress) => void | 是   | 云文件下载过程事件回调，回调入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
+| callback | (pg: DownloadProgress) => void | 是   | 回调函数。云文件下载过程事件，入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
 
 **错误码：**
 
@@ -410,11 +410,11 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 let download = new cloudSync.Download();
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -431,7 +431,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | (pg: DownloadProgress) => void | 是   | 云文件下载过程事件回调，回调入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
+| callback | (pg: DownloadProgress) => void | 是   | 回调函数。云文件下载过程事件，入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
 
 **错误码：**
 
@@ -450,7 +450,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 let download = new cloudSync.Download();
 
 let callback = (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 }
 
 download.on('progress', callback);
@@ -458,7 +458,7 @@ download.on('progress', callback);
 download.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
@@ -493,7 +493,7 @@ off(evt: 'progress'): void
 let download = new cloudSync.Download();
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state:" + pg.state);
+    console.info("download state: " + pg.state);
 });
 
 download.off('progress');
@@ -521,7 +521,7 @@ start(uri: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回启动云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -544,7 +544,7 @@ let download = new cloudSync.Download();
 let uri: string = "file:///media/Photo/1";
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-  console.info("download state:" + pg.state);
+  console.info("download state: " + pg.state);
 });
 
 download.start(uri).then(() => {
@@ -571,7 +571,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
@@ -628,7 +628,7 @@ stop(uri: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -676,7 +676,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 
@@ -818,7 +818,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;Array&lt;FileSyncState&gt;&gt; | 使用Promise形式返回文件同步状态的结果。 |
+| Promise&lt;Array&lt;FileSyncState&gt;&gt; | Promise对象，返回文件同步状态的结果。 |
 
 **错误码：**
 
@@ -866,7 +866,7 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | Array&lt;string&gt; | 是   | 待获取同步状态的uri。 |
-| callback | AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt; | 是   | 异步获取文件状态的回调。|
+| callback | AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt; | 是   | 回调函数。异步获取文件状态。|
 
 **错误码：**
 
@@ -948,7 +948,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error:" + JSON.stringify(error));
+  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
 }
 ```
 
@@ -986,7 +986,7 @@ optimizeStorage(): Promise&lt;void&gt;
 
   | 类型                  | 说明                           |
   | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1015,7 +1015,7 @@ cloudSync.optimizeStorage().then(() => {
 
 startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callback\<OptimizeSpaceProgress>): Promise&lt;void&gt;
 
-优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。
+优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。
 
 startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。
 
@@ -1030,13 +1030,13 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | optimizePara | [OptimizeSpaceParam](#optimizespaceparam17) | 是   | 优化参数。 |
-| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | 否   | 返回优化进度。缺省情况下返回401错误，不执行清理任务 |
+| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | 否   | 回调函数。返回优化进度，缺省情况下返回401错误，不执行清理任务 |
 
 **返回值：**
 
   | 类型                  | 说明                           |
   | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1063,7 +1063,7 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-    console.info("optimize space progress:" + data.progress);
+    console.info("optimize space progress: " + data.progress);
   }
 }
 cloudSync.startOptimizeSpace(para, callback).then(() => {
@@ -1106,7 +1106,7 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
     console.info("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-    console.info("optimize space progress:" + data.progress);
+    console.info("optimize space progress: " + data.progress);
   }
 }
 cloudSync.startOptimizeSpace(para, callback);
@@ -1139,7 +1139,7 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [OptimizeState](#optimizestate17) | 否   | 否   | 枚举值，优化空间状态。|
-| progress | number | 否   | 否   | 优化进度百分比，范围[0,100]。|
+| progress | number | 否   | 否   | 优化进度百分比，范围[0,100]，单位：百分比。|
 
 ## OptimizeSpaceParam<sup>17+</sup>
 
@@ -1152,4 +1152,4 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | totalSize | number | 否   | 否   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
-| agingDays | number | 否   | 否   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频。|
+| agingDays | number | 否   | 否   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频，单位：天。|

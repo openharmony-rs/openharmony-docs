@@ -49,7 +49,7 @@ Defines the options of the **AlphabetIndexer** component.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
 | arrayValue<sup>7+</sup> | Array&lt;string&gt; | No| No| Array of index items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected<sup>7+</sup>   | number              | No| No   | Index of the initial selected item. If the value is out of range, the default value **0** is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected<sup>7+</sup>   | number              | No| No   | Index of the initial selected item. If the value is out of range, the default value **0** is used. When this parameter and the [selected](#selected8) property are set at the same time, the **selected** property has a higher priority.<br>Value range: [0, arrayValue.length-1]<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -254,7 +254,7 @@ Since API version 10, this parameter supports two-way binding through [$$](../..
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | number | Yes  | Index of the selected item.<br>Default value: **0**|
+| index  | number | Yes  | Index of the selected item.<br>Value range: [0, [arrayValue](#alphabetindexeroptions18).length – 1]<br>Default value: **0**|
 
 ### popupPosition<sup>8+</sup>
 
@@ -334,7 +334,7 @@ Sets the background color for the secondary index item in the pop-up window.
 
 | Name| Type                    | Mandatory| Description                                           |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the secondary index item in the pop-up window.<br>Default value:<br>API version 11 and earlier: **#FFFFFFFF**, which is white.<br>Since API version 12: **#00000000**, which is black.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the secondary index item in the pop-up window.<br>Default value:<br>API version 11 and earlier: **#FFFFFFFF**, which is white.<br>API version 12 and later: **#00000000**, which is transparent.|
 
 ### autoCollapse<sup>11+</sup>   
 
@@ -771,15 +771,15 @@ struct AlphabetIndexerSample {
               .itemSize(28) // Size of an item in the alphabetic index bar.
               .alignStyle(IndexerAlign.Right) // The pop-up window is displayed on the left of the indexer.
               .popupTitleBackground("#D2B48C") // Background color of the primary index item in the pop-up window.
-              .popupSelectedColor(0x00FF00) // Text color of the unselected secondary index items in the pop-up window.
-              .popupUnselectedColor(0x0000FF) // Text color of the selected secondary index item in the pop-up window.
+              .popupSelectedColor(0x00FF00) // Text color of the selected secondary index items in the pop-up window.
+              .popupUnselectedColor(0x0000FF) // Text color of the unselected secondary index item in the pop-up window.
               .popupItemFont({ size: 30, style: FontStyle.Normal }) // Text style of the secondary index item in the pop-up window.
               .popupItemBackgroundColor(0xCCCCCC) // Background color of the secondary index item in the pop-up window.
               .onSelect((index: number) => {
                 console.info(this.value[index] + ' Selected!');
               })
               .onRequestPopupData((index: number) => {
-                // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or L will display their respective arrays.
+                // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or J will display their respective arrays.
                 // For other index items, the pop-up window will only show the primary index item.
                 if (this.value[index] == 'A') {
                   return this.arrayA;

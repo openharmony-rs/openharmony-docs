@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The CommonEvent module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
+The **CommonEvent** module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
 
 > **NOTE**
 > The APIs provided by this module are no longer maintained since API version 9. You are advised to use [@ohos.commonEventManager](js-apis-commonEventManager.md).
@@ -39,7 +39,7 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -81,7 +81,7 @@ Publishes a common event with given properties to a specific user. This API uses
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -119,71 +119,4 @@ let userId = 100;
 
 // Publish a common event.
 commonEvent.publishAsUser("event", userId, options, publishCB);
-```
-
-
-unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>): void
-
-Unsubscribes from common events. This API uses an asynchronous callback to return the result.
-
-> **NOTE**<br>
->This API is supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.unsubscribe](js-apis-commonEventManager.md#commoneventmanagerunsubscribe) instead.
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Parameters**
-
-| Name      | Type                                            | Mandatory| Description                    |
-| ---------- | ----------------------------------------------- | ---- | ------------------------ |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md) | Yes  | Subscriber object.        |
-| callback   | AsyncCallback\<void>                            | No  | Callback used to return the result.|
-
-**Example**
-
-```ts
-import Base from '@ohos.base';
-import CommonEventManager from '@ohos.commonEventManager';
-
-let subscriber:CommonEventManager.CommonEventSubscriber;    // Used to save the created subscriber object for subsequent subscription and unsubscription.
-
-// Subscriber information.
-let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
-    events: ["event"]
-};
-
-// Callback for common event subscription.
-function subscribeCB(err:Base.BusinessError, data:CommonEventManager.CommonEventData) {
-    if (err.code) {
-        console.error(`subscribe failed, code is ${err.code}`);
-    } else {
-        console.info("subscribe " + JSON.stringify(data));
-    }
-}
-
-// Callback for subscriber creation.
-function createCB(err:Base.BusinessError, commonEventSubscriber:CommonEventManager.CommonEventSubscriber) {
-    if (err.code) {
-        console.error(`createSubscriber failed, code is ${err.code}`);
-    } else {
-        console.info("createSubscriber");
-        subscriber = commonEventSubscriber;
-        // Subscribe to a common event.
-        commonEvent.subscribe(subscriber, subscribeCB);
-    }
-}
-
-// Callback for common event unsubscription.
-function unsubscribeCB(err:Base.BusinessError) {
-    if (err.code) {
-        console.error(`unsubscribe failed, code is ${err.code}`);
-    } else {
-        console.info("unsubscribe");
-    }
-}
-
-// Create a subscriber.
-commonEvent.createSubscriber(subscribeInfo, createCB);
-
-// Unsubscribe from the common event.
-commonEvent.unsubscribe(subscriber, unsubscribeCB);
 ```

@@ -2723,7 +2723,7 @@ error: check syscap filed and device type is not supported.
 
 **错误描述**
 
-应用配置的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)不支持安装。
+<!--RP12-->应用配置的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)不支持安装。
 
 **可能原因**
 
@@ -2731,7 +2731,7 @@ error: check syscap filed and device type is not supported.
 
 **处理步骤**
 
-调整正确的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)。
+调整正确的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)。<!--RP12End-->
 
 ### 9568415 禁止安装签名证书为debug或者配置文件debug为true的加密应用
 **错误信息**
