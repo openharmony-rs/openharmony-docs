@@ -395,7 +395,7 @@
 **取值：** usual.event.CLOUD_DISK_STATE_CHANGED
 
 ### COMMON_EVENT_RESTORE_END<sup>23+<sup>
- 	 
+
 表示某个应用结束恢复的公共事件。
 
 当数据迁移相关应用拉起备份恢复框架进行恢复任务，某个应用恢复结束后会发送此公共事件。
