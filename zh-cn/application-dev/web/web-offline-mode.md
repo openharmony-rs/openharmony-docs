@@ -318,6 +318,28 @@ struct Index1 {
 <!--  -->
 <!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index2.ets) --> 
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index2 {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Row() {
+      Column() {
+        Web({src: $r('app.string.ExampleUrl'), controller: this.webviewController})
+          .width('100%')
+          .height('100%')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 <!--  -->
 ## 预渲染Web页面
 
