@@ -2317,7 +2317,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。子窗口调用后不生效。
+设置窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。非主窗口调用后不生效不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2387,7 +2387,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-设置主窗口的显示方向属性，使用Promise异步回调。子窗口调用后不生效。
+设置主窗口的显示方向属性，使用Promise异步回调。非主窗口调用后不生效不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2460,7 +2460,7 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;OrientationResult&gt;
 
-设置主窗口的显示方向属性，通过Promise异步返回显示方向的执行结果。子窗口调用后不生效。
+设置主窗口的显示方向属性，通过Promise异步返回显示方向的执行结果。非主窗口调用后不生效，OrientationResult返回window.[OrientationExecutionResult](arkts-apis-window-e.md#orientationexecutionresult).ORIENTATION_IGNORED。
 
 **起始版本：** 26.0.0
 
@@ -2474,7 +2474,7 @@ setPreferredOrientationWithResult(orientation: Orientation): Promise&lt;Orientat
 
 - 设备支持sensor旋转且未处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：立即生效。
 - 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：调用不生效，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。
-- 其他情况：不生效。
+- 其他情况：不生效不报错。
 
 **参数：**
 
