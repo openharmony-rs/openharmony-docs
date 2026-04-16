@@ -22706,9 +22706,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets",
 				"functions":[
 					{
-						"end_line":143,
+						"end_line":144,
 						"name":"foreach_update_refresh",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -22718,7 +22718,7 @@
 					{
 						"end_line":155,
 						"name":"builder_source_update_refresh",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -22796,7 +22796,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":39,
 						"name":"thing_view_model",
 						"start_line":16
 					}
@@ -26482,7 +26482,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":71,
 						"name":"localstorage_export_one",
 						"start_line":17
 					}
@@ -26747,7 +26747,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":50,
 						"name":"Model_TaskListModel",
 						"start_line":18
 					}
@@ -30824,7 +30824,7 @@
 					{
 						"end_line":68,
 						"name":"state_problem_unregister_state_callback",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
@@ -34361,7 +34361,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":50,
 						"name":"Model_TaskListModel",
 						"start_line":18
 					}
