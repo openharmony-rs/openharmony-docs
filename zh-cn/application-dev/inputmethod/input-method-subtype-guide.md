@@ -1,7 +1,7 @@
 # 输入法子类型开发指南
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -70,7 +70,7 @@
        AppStorage.setOrCreate('subtypeChange', 1);
      }
    });
-   ``
+   ```
 
 
 ## 输入法子类型相关信息的获取
