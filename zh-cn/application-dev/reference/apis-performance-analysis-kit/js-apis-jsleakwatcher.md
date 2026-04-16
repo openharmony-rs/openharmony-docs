@@ -1,4 +1,4 @@
-# @ohos.hiviewdfx.jsLeakWatcher (js泄漏检测)
+# @ohos.hiviewdfx.jsLeakWatcher (ArkTS泄漏检测)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
