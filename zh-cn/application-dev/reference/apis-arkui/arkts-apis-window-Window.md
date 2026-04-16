@@ -5680,7 +5680,7 @@ offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowhighlightchange23)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowhighlightchange15)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
