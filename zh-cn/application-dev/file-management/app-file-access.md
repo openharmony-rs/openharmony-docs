@@ -400,10 +400,10 @@ function hashFileWithStream(context: common.UIAbilityContext) {
     rs.on('end', async () => {
       const hashResult = hs.digest();
       const fileHash = await hash.hash(filePath, 'sha256');
-      console.info(`hashFileWithStream success, hashResult: ${hashResult}, fileHash: ${fileHash}`);
+      console.info(`Succeeded in hashing file with stream, hash result: ${hashResult}, file hash: ${fileHash}`);
     });
   } catch (err) {
-    console.error(`Failed to hashFileWithStream: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to hash file with stream. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```

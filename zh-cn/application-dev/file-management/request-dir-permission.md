@@ -179,10 +179,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *downloadPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, download path=%{public}s", downloadPath);
            free(downloadPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
    }
    ```
@@ -204,9 +204,9 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *downloadPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in scanning user download directory, path=%{public}s", downloadPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
            return;
        }
        // 查看文件夹下的文件
@@ -214,12 +214,12 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        int num = scandir(downloadPath, &namelist, nullptr, nullptr);
        if (num < 0) {
            free(downloadPath);
-           OH_LOG_ERROR(LOG_APP, "Failed to scan dir");
+           OH_LOG_ERROR(LOG_APP, "Failed to scan directory");
            return;
        }
    
        for (int i = 0; i < num; i++) {
-           OH_LOG_INFO(LOG_APP, "%{public}s", namelist[i]->d_name);
+           OH_LOG_INFO(LOG_APP, "Succeeded in scanning directory, file name is %{public}s", namelist[i]->d_name);
        }
        free(downloadPath);
        for (int i = 0; i < num; i++) {
@@ -245,9 +245,9 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *downloadPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, path=%{public}s", downloadPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
            return;
        }
        // 保存文件到 download 目录下
