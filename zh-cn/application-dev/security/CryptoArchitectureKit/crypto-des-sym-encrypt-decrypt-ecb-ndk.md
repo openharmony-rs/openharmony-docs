@@ -61,12 +61,15 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 调用[OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)、[OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy)、[OH_CryptoSymKey_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy)、[OH_Crypto_FreeDataBlob](../../reference/apis-crypto-architecture-kit/capi-crypto-common-h.md#oh_crypto_freedatablob)释放申请的内存，销毁对象。
 
-```c++
+<!-- @[des_crypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/cpp/types/project/des_ecb_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestDesEcb()
+OH_Crypto_ErrCode doTestDesEcb()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -78,8 +81,7 @@ static OH_Crypto_ErrCode doTestDesEcb()
     Crypto_DataBlob decData = {.data = nullptr, .len = 0};
 
     // 随机生成对称密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("DES64", &genCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("DES64", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -115,7 +117,6 @@ static OH_Crypto_ErrCode doTestDesEcb()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
 end:
     OH_CryptoSymCipher_Destroy(encCtx);
     OH_CryptoSymCipher_Destroy(decCtx);

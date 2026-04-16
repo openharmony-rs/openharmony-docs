@@ -16,10 +16,12 @@ ECC的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-a
 1. 指定uint8_t类型的ECC非压缩点数据，调用[OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create)，构造[OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md)对象，用于生成点数据。
 2. 调用[OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode)，获取压缩点数据。
 
-```C++
+<!-- @[convert_ecc_uncompressed_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/compressedPointData.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
+OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
 {
     uint8_t pk[] = {
         4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111,
@@ -44,15 +46,18 @@ static OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
 }
 ```
 
+
 ## 指定压缩点数据获取密钥对象
 
 1. 指定uint8_t类型的ECC压缩点数据，调用[OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create)，构造[OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md)对象，用于生成点数据。
 2. 调用[OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode)，获取非压缩点数据。
 
-```C++
+<!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/getKeyObject.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestEccPointCompressedToPoint()
+OH_Crypto_ErrCode doTestEccPointCompressedToPoint()
 {
     uint8_t pk[] = {
         2, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111,

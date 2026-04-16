@@ -48,12 +48,15 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密后的数据。
 
-```c++
+<!-- @[crypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_cbc_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+// ...
 
-static OH_Crypto_ErrCode doTestSm4Cbc()
+OH_Crypto_ErrCode doTestSm4Cbc()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -65,11 +68,10 @@ static OH_Crypto_ErrCode doTestSm4Cbc()
 
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    uint8_t iv[16] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4, 3, 1, 0, 10}; // iv使用安全随机数生成。
+    uint8_t iv[16] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4, 3, 1, 0, 10}; // iv使用安全随机数生成
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
-    // 生成对称密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
+    // 生成对称密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -78,7 +80,7 @@ static OH_Crypto_ErrCode doTestSm4Cbc()
         goto end;
     }
 
-    // 设置参数。
+    // 设置参数
     ret = OH_CryptoSymCipherParams_Create(&params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -88,7 +90,7 @@ static OH_Crypto_ErrCode doTestSm4Cbc()
         goto end;
     }
 
-    // 加密。
+    // 加密
     ret = OH_CryptoSymCipher_Create("SM4_128|CBC|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -102,7 +104,7 @@ static OH_Crypto_ErrCode doTestSm4Cbc()
         goto end;
     }
 
-    // 解密。
+    // 解密
     ret = OH_CryptoSymCipher_Create("SM4_128|CBC|PKCS7", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -116,7 +118,7 @@ static OH_Crypto_ErrCode doTestSm4Cbc()
         goto end;
     }
 
-    // 资源释放。
+    // 资源释放
 end:
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
