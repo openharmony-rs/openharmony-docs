@@ -152,14 +152,14 @@ let authLockState : userAuth.AuthLockState = {
   lockoutDuration : 0
 }
 
-userAuth.getAuthLockState(queryType)	 
-   .then((result : userAuth.AuthLockState) => {	 
-     authLockState = result;	 
-     console.info('get auth lock state successfully.');
-   }) 
-   .catch((err : BusinessError) => { 
-     console.info(`get auth lock state failed, err code is : ${err?.code}, err message is : ${err?.message}`); 
-   })
+userAuth.getAuthLockState(queryType)
+  .then((result: userAuth.AuthLockState) => {
+    authLockState = result;
+    console.info('get auth lock state successfully.');
+  })
+  .catch((err: BusinessError) => {
+    console.info(`get auth lock state failed, err code is : ${err?.code}, err message is : ${err?.message}`);
+  })
 ```
 
 ## userAuth.getEnrolledState<sup>12+</sup>
