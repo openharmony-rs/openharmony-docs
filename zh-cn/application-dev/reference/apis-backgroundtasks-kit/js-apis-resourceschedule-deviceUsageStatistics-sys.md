@@ -942,7 +942,8 @@ queryBundleEvents(begin: number, end: number, maxNum: number): Promise&lt;Array&
 | ----- | ------ | ---- | ----- |
 | begin | number | 是    | 起始时间。<br/>单位：ms |
 | end   | number | 是    | 结束时间。<br/>单位：ms |
-| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1,1000]。 |
+| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1, 1000]。 |
+
 **返回值**：
 
 | 类型                                       | 说明                                     |
@@ -1106,13 +1107,13 @@ queryCurrentBundleEvents(begin: number, end: number, maxNum: number): Promise&lt
 | ----- | ------ | ---- | ----- |
 | begin | number | 是    | 起始时间。<br/>单位：ms |
 | end   | number | 是    | 结束时间。<br/>单位：ms |
-| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1,1000] |
+| maxNum   | number | 是    | 返回的事件的条数。<br/>取值范围：[1, 1000] |
 
 **返回值**：
 
 | 类型                                       | 说明                                     |
 | ---------------------------------------- | -------------------------------------- |
-| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise对象。返回指定起始和结束时间段内，当前应用的事件集合。 |
+| Promise&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | Promise对象，返回指定起始和结束时间段内，当前应用的事件集合。 |
 
 **错误码**：
 
