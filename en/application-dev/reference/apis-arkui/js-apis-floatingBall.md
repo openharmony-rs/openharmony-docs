@@ -495,7 +495,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
-| 1300026 | Failed to restore the main window. Possiable causes: <br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.<br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
+| 1300026 | Failed to restore the main window. Possible causes: <br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.<br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
 
 **Example**
 
