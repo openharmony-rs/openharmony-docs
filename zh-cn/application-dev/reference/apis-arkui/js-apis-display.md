@@ -916,8 +916,6 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 **示例：**
 
 ```ts
-import { Callback } from '@kit.BasicServicesKit';
-
 let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
@@ -958,8 +956,6 @@ off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, Brigh
 **示例：**
 
 ```ts
-import { Callback } from '@kit.BasicServicesKit';
-
 let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
   console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
 };
