@@ -2414,7 +2414,7 @@ try {
 | upgradeAction   | [UpgradeAction](#upgradeaction)     | 否 | 否 | 升级方式。     |
 | displayVersion  | string                              | 否 | 否 | 显示版本号。    |
 | innerVersion    | string                              | 否 | 否 | 版本号。      |
-| size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
+| size            | int                              | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
 | otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | 否 | 是 | 升级模式。     |
@@ -2535,8 +2535,8 @@ try {
 
 | 名称    | 类型   | 只读 | 可选 | 说明 |
 | ----- | ------ | ---- | ---- | ---- |
-| start | number | 否 | 否 | 开始时间。 |
-| end   | number | 否 | 否 | 结束时间。 |
+| start | int | 否 | 否 | 开始时间。 |
+| end   | int | 否 | 否 | 结束时间。 |
 
 ## TaskInfo
 
@@ -2570,9 +2570,9 @@ try {
 | ----------------- | ---------------------------------------- | ---- | ---- | ---- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 |  否    | 版本摘要。 |
 | status            | [UpgradeStatus](#upgradestatus)          | 否 |  否    | 升级状态。 |
-| subStatus         | number                                   | 否 |  否    | 子状态。  |
-| progress          | number                                   | 否 |  否    | 进度。   |
-| installMode       | number                                   | 否 |  否    | 安装模式。 |
+| subStatus         | int                                   | 否 |  否    | 子状态。  |
+| progress          | int                                   | 否 |  否    | 进度。   |
+| installMode       | int                                   | 否 |  否    | 安装模式。 |
 | errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 |  否    | 错误信息。 |
 | versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否    | 版本组件。 |
 
@@ -2584,7 +2584,7 @@ try {
 
 | 名称           | 类型   | 只读 | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ---- |
-| errorCode    | number | 否 | 否  | 错误码。  |
+| errorCode    | int | 否 | 否  | 错误码。  |
 | errorMessage | string | 否 | 否  | 错误描述。 |
 
 ## EventClassifyInfo
