@@ -62,6 +62,7 @@
     - [@ohos.app.ability.autoFillManager (autoFillManager)(系统接口)](js-apis-app-ability-autoFillManager-sys.md)
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)(系统接口)](js-apis-app-ability-autoStartupManager-sys.md)
     - [@ohos.app.ability.common (Ability公共模块)(系统接口)](js-apis-app-ability-common-sys.md)
+     - [@ohos.app.ability.contextConstant (Context相关常量)(系统接口)](js-apis-app-ability-contextConstant-sys.md)
     - [@ohos.app.ability.dialogSession (dialogSession)(系统接口)](js-apis-app-ability-dialogSession-sys.md)
     - [@ohos.app.ability.insightIntent (意图框架基础定义)(系统接口)](js-apis-app-ability-insightIntent-sys.md)
     - [@ohos.app.ability.insightIntentDriver (执行意图调用)(系统接口)](js-apis-app-ability-insightIntentDriver-sys.md)
