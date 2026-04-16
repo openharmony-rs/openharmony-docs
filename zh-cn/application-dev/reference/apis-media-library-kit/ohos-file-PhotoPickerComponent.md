@@ -226,7 +226,7 @@ type ScrollStopAtEndCallback = () => void
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## PhotoBrowserChangeStartCallback<sup>23+</sup>
- 	 
+
 type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
 用户在Picker组件中打开/关闭动态效果时的回调事件。
@@ -278,7 +278,7 @@ PhotoPickerComponent产生错误时的回调。
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | pickerError  | [PickerError](#pickererror23) | 是 | 产生的错误的基本信息。 |
- 	 
+
 ## PickerController
 
 应用可通过PickerController向picker组件发送数据。
@@ -677,7 +677,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
  ## PickerError<sup>23+</sup>
- 	 
+
 使用PhotoPickerComponent组件发生错误时返回的错误的接口名称、错误码和错误描述。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
