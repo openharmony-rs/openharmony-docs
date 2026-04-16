@@ -78,12 +78,12 @@ const multiply = (a: number, b: number): number => a * b;
    **ArkTS示例：** ArkTS函数重载
    
    ```typescript
-   function foo(x: number): void;            /*  第一个函数定义。  */
-   function foo(x: string): void;            /*  第二个函数定义。  */
-   function foo(x: number | string): void {  /*  函数实现。       */
+   function foo(x: number): void;            // 第一个函数定义。
+   function foo(x: string): void;            // 第二个函数定义。
+   function foo(x: number | string): void {  // 函数实现。
    }
 
-   foo(123);     //  OK，使用第一个定义。
+   foo(123);     // OK，使用第一个定义。
    foo('aa'); // OK，使用第二个定义。
    ```
 
@@ -92,8 +92,8 @@ const multiply = (a: number, b: number): number => a * b;
    ```typescript
    function foo(name?: string){}  /*  name为可选参数。  */
 
-   foo('hello');     //  OK，传入name参数。
-   foo();     //  OK，不传name参数。
+   foo('hello');     // OK，传入name参数。
+   foo();     // OK，不传name参数。
    ```
 
 ### 基础类库
