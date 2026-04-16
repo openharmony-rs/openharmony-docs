@@ -970,7 +970,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
-Triggers connection. If the peer device is abnormal, [onStatus](#onstatus12) in **DfsListeners** will be called to notify the application.
+Triggers connection. If the peer device is abnormal, [onStatus](#onstatus12) in **DfsListeners** will be called to notify the application. For details, see the [Sharing and Accessing Files Across Devices](../../file-management/file-access-across-devices.md) document.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1021,7 +1021,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
 
-Triggers disconnection.
+Triggers disconnection. For details, see the [Sharing and Accessing Files Across Devices](../../file-management/file-access-across-devices.md) document.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5313,7 +5313,7 @@ Reads data from a stream file. This API uses an asynchronous callback to return 
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | Yes   | Buffer used to store the file read.                             |
   | options  | [ReadOptions](#readoptions11)                                   | No   | The options are as follows:<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length.<br>- **offset** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.|
-  | callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the data read, in bytes.|
+  | callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. The callback returns the data read, in bytes.|
 
 **Error codes**
 
