@@ -336,7 +336,7 @@
     - [AbilityRuntime_ExtensionInstance](capi-abilityruntime-extensioninstance.md)
     - [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md)
     - [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)
-    - [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)
+    - [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md)
 - 错误码<!--ability-arkts-errcode-->
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)
