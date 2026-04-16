@@ -417,7 +417,7 @@ getResourceId(params: Array\<HuksExternalCryptoParam>): Promise\<string>
 
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
-| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是   | 获取资源ID所需的属性参数，资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag26)参数携带。 |
+| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是   | 获取资源ID所需的属性参数，资源信息通过[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
