@@ -46,7 +46,7 @@ context.setMissionIcon(pixelMap, (err: BusinessError) => {
   if (err.code) {
     hilog.error(DOMAIN_NUMBER, TAG, `Failed to set mission icon. Code is ${err.code}, message is ${err.message}`);
   } else {
-    hilog.info(DOMAIN_NUMBER, TAG, `Success to set mission icon.`);
+    hilog.info(DOMAIN_NUMBER, TAG, `Succeeded to set mission icon.`);
   }
 })
 ```

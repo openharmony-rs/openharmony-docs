@@ -14,8 +14,8 @@ This component is implemented based on [state management V2](../../../ui/state-m
 > **NOTE**
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
-> 
-> - This component is not supported on wearables.
+>
+> - This component can be used only in the stage model.
 >
 > - If the **DialogV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **DialogV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **DialogV2** component.
 
@@ -199,7 +199,7 @@ Displays a popover dialog box that is positioned relative to the target componen
 
 | Name           | Type                                                               | Mandatory| Decorator              | Description                                                |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
-| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**false**: The popover dialog box is hidden.<br>**false**: The popover dialog box is hidden.                                        |
+| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed.<br>**false**: The popover dialog box is hidden.                                        |
 | \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | No | @Event              | Callback invoked when the visibility of the dialog box changes. Use the **!!** syntax for two-way binding with **visible**.<br>By default, there is no event.|
 | popover       | [PopoverDialogV2Options](#popoverdialogv2options)                 | Yes | @Param<br>@Require | Options of the popover dialog box.                                        |
 | targetBuilder | [CustomBuilder](ts-types.md#custombuilder8)                       | Yes | @BuilderParam       | Target component relative to which the popover dialog box is positioned.                                     |
@@ -282,7 +282,7 @@ Provides options used to initialize an **AdvancedDialogV2Button** object.
 | Name          | Type                                                                    | Read-Only| Optional| Description                                                                         |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
 | content      | [ResourceStr](ts-types.md#resourcestr)                                 | No | No | Content of the button.                                                                     |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Action triggered when the button is clicked.<br>By default, there is no action.                                                       |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Action triggered when the button is clicked.<br>By default, there is no event.                                                       |
 | background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Background of the button.<br> The setting follows **buttonStyle** by default.                                             |
 | fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Font color of the button.<br>The setting follows **buttonStyle** by default.                                            |
 | buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No | Yes | Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices|
@@ -625,7 +625,7 @@ struct Index {
   dialogBuilder(): void {
     WithTheme({ theme: new CustomThemeImpl(new CustomThemeColors()) }) {
       LoadingDialogV2({
-        content: 'Text text text text text text',
+        content: 'This is where content is displayed.',
       })
     }
   }
