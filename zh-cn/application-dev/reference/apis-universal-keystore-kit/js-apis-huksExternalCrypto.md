@@ -69,18 +69,6 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED | 1 | Ukey PIN认证成功。 |
 | HUKS_EXT_CRYPTO_PIN_LOCKED  | 2 | Ukey PIN已锁定。 |
 
-## HuksExternalErrorInfo<sup>26+</sup>
-
-表示详细错误信息的类型。
-
-**系统能力：** SystemCapability.Security.Huks.CryptoExtension
-
-| 名称 | 类型        | 只读 | 可选 | 说明         |
-| ------ | ----------------------------------- | ---- | ---- | ------------ |
-| errno    | number  | 否   | 否   | 详细错误码。 |
-| errorDesc  | string | 否   | 否   | 详细错误描述。 |
-
-
 ## huksExternalCrypto.registerProvider
 
 registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<void>
