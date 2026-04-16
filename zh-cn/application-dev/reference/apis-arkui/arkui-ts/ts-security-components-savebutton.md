@@ -279,7 +279,7 @@ ArkTS-Sta: symbolIconColor(color: Array&lt;ResourceColor&gt; | undefined)
 
 ArkTS-Dyn: symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
-ArkTS-Sta: symbolFontWeight(fontWeight: number | FontWeight | string | Resource | undefined)
+ArkTS-Sta: symbolFontWeight(fontWeight: int | FontWeight | string | Resource | undefined)
 
 设置安全控件Symbol图标粗细。
 
@@ -299,7 +299,7 @@ ArkTS-Sta: symbolFontWeight(fontWeight: number | FontWeight | string | Resource 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| fontWeight  | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string <br> ArkTS-Sta: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| undefined | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型: 可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
+| fontWeight  | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| undefined \| [Resource](ts-types.md#resource) | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
 
 ### symbolRenderingStrategy
 
