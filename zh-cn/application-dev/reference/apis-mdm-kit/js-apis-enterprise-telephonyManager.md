@@ -624,3 +624,229 @@ try {
   console.error(`Failed to hang up calling. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## telephonyManager.activeSim
+activeSim(admin: Want, slotId: number): void
+
+激活指定卡槽的SIM卡。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| slotId | number                     | 是   | 卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。 |
+
+**错误码**：
+
+请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201017  | SIM card activation or deactivation failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let slotId: number = 0;
+try {
+  telephonyManager.activeSim(wantTemp, slotId);
+  console.info(`success to active SIM`);
+} catch (err) {
+  console.error(`Failed to active SIM. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## telephonyManager.deactiveSim
+deactiveSim(admin: Want, slotId: number): void
+
+去激活指定卡槽SIM卡。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| slotId | number                     | 是   | 卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。 |
+
+**错误码**：
+
+请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201017  | SIM card activation or deactivation failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let slotId: number = 0;
+try {
+  telephonyManager.deactiveSim(wantTemp, slotId);
+  console.info(`success to deactive SIM`);
+} catch (err) {
+  console.error(`Failed to deactive SIM. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## telephonyManager.setDefaultData
+setDefaultData(admin: Want, slotId: number): void
+
+设置指定卡槽的SIM卡为默认数据流量卡。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| slotId | number                     | 是   | 卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。 |
+
+**错误码**：
+
+请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let slotId: number = 0;
+try {
+  telephonyManager.setDefaultData(wantTemp, slotId);
+  console.info(`success to set default data SIM ID`);
+} catch (err) {
+  console.error(`Failed to set default data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## telephonyManager.getDefaultData
+getDefaultData(admin: Want): number
+
+获取当前默认数据流量卡槽ID。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+
+**返回值：**
+
+| 类型                               | 说明                      |
+| ---------------------------------- | ------------------------- |
+| number | 卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。|
+
+**错误码**：
+
+请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { telephonyManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let slotId: number = telephonyManager.getDefaultData(wantTemp);
+  console.info(`success to get default data SIM ID, current is ${slotId}`);
+} catch (err) {
+  console.error(`Failed to get default data. Code: ${err.code}, message: ${err.message}`);
+}
+```
