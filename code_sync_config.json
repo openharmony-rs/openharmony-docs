@@ -18253,9 +18253,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":118,
 						"name":"build_a_office_services_meeting",
-						"start_line":58
+						"start_line":75
 					},
 					{
 						"end_line":155,
