@@ -38,7 +38,7 @@
 
 | 名称  | 描述   |
 |--------------|-----------|
-| [OH_DISPLAY_NAME_LENGTH](#oh_display_name_length)  32 | 屏幕名称的最大长度。 |
+| [OH_DISPLAY_NAME_LENGTH 32](#oh_display_name_length)| 屏幕名称的最大长度。 |
 
 ### 枚举
 
