@@ -749,6 +749,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChan
 
 **起始版本：** 20
 
+**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -775,6 +776,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaCh
 
 **起始版本：** 20
 
+**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -989,7 +991,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint
 
 **描述**
 
-获取屏幕的显示模式。
+获取屏幕的显示模式，默认值为DisplaySourceMode.None。
 
 **起始版本：** 20
 
@@ -1015,7 +1017,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 **描述**
 
-获取屏幕的位置信息。
+获取屏幕的位置信息。显示设备左上角相对于原点的横纵坐标x和y，原点为主屏左上角。对于坐标x或y，单位为px，参数为整数。仅当DisplaySourceMode为MAIN和EXTEND时返回实际值，其余默认不赋值。
 
 **起始版本：** 20
 
