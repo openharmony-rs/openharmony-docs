@@ -1679,7 +1679,7 @@ Obtains the ArkTS object value associated with a strong reference. Note the foll
 
 **napi_ok** if the operation is successful.
 
-### **napi_finalize** Description
+### napi_finalize
 
 ```cpp
 typedef void (*napi_finalize)(napi_env env,
@@ -1703,7 +1703,7 @@ Called when the lifecycle of a Node-API object ends.
 
 - **void**: no return value.
 
-### **napi_finalize_callback** Description
+### napi_finalize_callback
 
 ```cpp
 typedef void (*napi_finalize_callback)(void* finalize_data,
