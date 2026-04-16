@@ -924,7 +924,7 @@ type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, 
 |--------| ------------- | ---- | --- |
 | resourceType | [ResourceType](#resourcetype24)   | 是   | 表示应用资源超基线的类型。 |
 | resourceSize | number   | 是   | 表示应用资源超基线的资源使用量。 |
-| detailInfo | Record<string, number>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key 为小写内存类型，value 为对应细分项资源大小；<br>细分析的key包含 arkts、native、ion、gpu、ashmem、other 。 |
+| detailInfo | Record<string, number>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key 为小写内存类型，value 为对应细分项资源大小；<br>细分项的key包含 arkts、native、ion、gpu、ashmem、other。 |
 
 ## ResourceType<sup>24+</sup>
 
