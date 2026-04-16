@@ -1039,6 +1039,7 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | reminderType | [ReminderType](#remindertype) | 否 | 否 | 指明代理提醒类型。 |
