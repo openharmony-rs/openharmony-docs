@@ -27,7 +27,7 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| previewImages<sup>18+</sup> | Array&lt;number&gt; | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| previewImages<sup>18+</sup> | Array&lt;number&gt; | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**说明：** 值为正整数的数组。|
 | enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。|
 | resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。 |

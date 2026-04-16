@@ -31,9 +31,9 @@ import { formInfo } from '@kit.FormKit';
 | abilityName | string               | 否    | 否     | 卡片所属的Ability名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | name        | string               | 否    | 否     | 卡片名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | displayName<sup>11+</sup> | string               | 否    | 否     | 卡片展示名称。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayNameId<sup>11+</sup> | number               | 否    | 否     | 卡片预览时标识卡片名称的ID。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| displayNameId<sup>11+</sup> | number               | 否    | 否     | 卡片预览时标识卡片名称的ID。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为非负整数。 |
 | description | string               | 否    | 否     | 卡片描述。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| descriptionId<sup>10+</sup>      | number               | 否    | 否     | 卡片描述id。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| descriptionId<sup>10+</sup>      | number               | 否    | 否     | 卡片描述id。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为非负整数。 |
 | type        | [FormType](#formtype)             | 否    | 否     | 卡片类型。当前支持JS卡片、ArkTS卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | jsComponentName      | string               | 否    | 否     | js卡片的组件名。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | colorMode<sup>(deprecated)</sup>  | [ColorMode](#colormodedeprecated) | 否    | 否     | 卡片颜色模式。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **说明：** <br> 从API version 9开始支持，从API version 20开始废弃。应用卡片需要支持深浅色两种显示模式，无替代接口。 |
@@ -42,13 +42,13 @@ import { formInfo } from '@kit.FormKit';
 | formVisibleNotify  | boolean        | 否    | 否     | 卡片是否使能可见通知。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | scheduledUpdateTime        | string               | 否    | 否     | 卡片更新时间。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | formConfigAbility | string               | 否    | 否     | 卡片配置ability。指定长按卡片弹出的选择框内，编辑选项所对应的ability。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| updateDuration        | number       | 否    | 否     | 卡片更新周期。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| defaultDimension  | number | 否    | 否     | 卡片规格  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| supportDimensions    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的规格。具体可选规格参考[FormDimension](#formdimension) <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| updateDuration        | number       | 否    | 否     | 卡片更新周期。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为正整数。 |
+| defaultDimension  | number | 否    | 否     | 卡片规格  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[1, 9]的整数。 |
+| supportDimensions    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的规格。具体可选规格参考[FormDimension](#formdimension) <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 最大长度为9数值为整数的数组 |
 | customizeData    | Record\<string, string>      | 否    | 否     | 卡片用户数据。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isDynamic<sup>10+</sup>      | boolean               | 否    | 否     | 卡片是否为动态卡片。<br/>仅ArkTS卡片区分动静态卡片，JS卡片均为动态卡片。<br/>-&nbsp;true：为动态卡片。<br/>-&nbsp;false：为静态卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | transparencyEnabled<sup>11+</sup>      | boolean               | 否    | 否     | 卡片是否支持设置背景透明度。<br/>ArkTS卡片由用户配置决定是否支持，JS卡片均不支持。<br/>-&nbsp;true：表示是透明卡片。<br/>-&nbsp;false：表示不是透明卡片。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| supportedShapes<sup>12+</sup>    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](#formshape12) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| supportedShapes<sup>12+</sup>    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](#formshape12) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**说明：** 1代表方形，2代表圆形。 |
 
 ## FormType
 
@@ -281,5 +281,5 @@ import { formInfo } from '@kit.FormKit';
 | moduleName  | string               | 是    | 否     | 卡片所属模块的名称。                      |
 | abilityName | string               | 是    | 否     | 卡片所属的Ability名称。                       |
 | formName        | string               | 是    | 否     | 卡片名称。                                 |
-| dimension | number               | 是    | 否     | 卡片尺寸，取值及其对应含义请参考[FormDimension](#formdimension)。   |
+| dimension | number               | 是    | 否     | 卡片尺寸，取值及其对应含义请参考[FormDimension](#formdimension)。<br>**说明：**取值范围[1,9]的整数   |
 | formLocation | [FormLocation](#formlocation20)| 是    | 否     | 卡片位置信息。   |
