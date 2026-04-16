@@ -33,17 +33,17 @@
    - **设置可见性：** 调用[setDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricvisible23)接口，切换歌词窗口的可见性状态。
    - **设置锁定状态：** 调用[setDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricstate23)接口，设置歌词窗口的锁定状态，从而限制歌词窗口的拖动或关闭操作。
 
-3. 应用监听系统侧发出的桌面歌词状态变更通知，响应桌面歌词组件的控制并同步刷新应用内UI。
+3.  应用监听系统侧发出的桌面歌词状态变更通知，响应桌面歌词组件的控制并同步刷新应用内UI。
 
-   应用需监听系统侧发出的桌面歌词状态变更通知（如用户在系统设置中关闭了歌词），以便同步刷新应用内的开关状态。
+    应用需监听系统侧发出的桌面歌词状态变更通知（如用户在系统设置中关闭了歌词），以便同步刷新应用内的开关状态。
 
    > **说明：**
    > 
    > - 必须响应[onDesktopLyricEnabled](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#ondesktoplyricenabled23)和[offDesktopLyricEnabled](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#offdesktoplyricenabled23)回调，根据回调值更新UI，确保应用内UI与系统实际状态一致。
 
-4. 当应用退出时，必须销毁当前会话。
+4.  当应用退出时，必须销毁当前会话。
 
-   当应用退出或不再需要播放媒体时，必须主动销毁AVSession。销毁操作将导致关联的桌面歌词组件自动跟随退出。再次启动时，需重新初始化AVSession以恢复会话。
+    当应用退出或不再需要播放媒体时，必须主动销毁AVSession。销毁操作将导致关联的桌面歌词组件自动跟随退出。再次启动时，需重新初始化AVSession以恢复会话。
 
    > **说明：**
    >
