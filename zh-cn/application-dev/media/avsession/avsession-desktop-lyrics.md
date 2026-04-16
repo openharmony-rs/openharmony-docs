@@ -50,3 +50,81 @@
    > - 确保AVSession对象在后台播放期间不被系统回收，否则会导致歌词中断。
 
    <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DesktopLyric.ets) -->
+   
+   ``` TypeScript
+   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'hello world';
+     // ...
+   
+     build() {
+       Column() {
+         // ...
+         Text(this.message)
+           .onClick(async () => {
+             let context = this.getUIContext().getHostContext() as Context;
+             // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+             let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+   
+             // 系统是否支持桌面歌词。
+             let isDesktopLyricSupported: boolean = false;
+             try {
+               isDesktopLyricSupported = await AVSessionManager.isDesktopLyricSupported();
+             } catch (err) {
+               console.error(`Failed to get isDesktopLyricSupported. Code: ${err.code}, message: ${err.message}`);
+             }
+             if (!isDesktopLyricSupported) {
+               return;
+             }
+   
+             try {
+               // 监听桌面歌词是否开启。
+               session.onDesktopLyricVisibilityChanged((isVisible: boolean) => {
+                 console.info(`onDesktopLyricVisibilityChanged changed: ${isVisible}`)
+               });
+             } catch (err) {
+               console.error(`onDesktopLyricVisibilityChanged err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 监听桌面歌词锁定状态。
+               session.onDesktopLyricStateChanged((state) => {
+                 console.info(`onDesktopLyricStateChanged changed: ${state.isLocked}`)
+               });
+             } catch (err) {
+               console.error(`onDesktopLyricStateChanged err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 使能桌面歌词。
+               session.enableDesktopLyric(true);
+             } catch (err) {
+               console.error(`enableDesktopLyric err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 开启或关闭桌面歌词。
+               await session.setDesktopLyricVisible(true);
+             } catch (err) {
+               console.error(`setDesktopLyricVisible err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 桌面歌词锁定状态。
+               await session.setDesktopLyricState({isLocked: true});
+             } catch (err) {
+               console.error(`setDesktopLyricState err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
