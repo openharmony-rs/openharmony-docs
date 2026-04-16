@@ -675,9 +675,9 @@ let wantTemp: Want = {
 let slotId: number = 0;
 try {
   telephonyManager.activeSim(wantTemp, slotId);
-  console.info(`success to activeSim sim`);
+  console.info(`success to active SIM`);
 } catch (err) {
-  console.error(`Failed to active sim. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to active SIM. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -731,9 +731,9 @@ let wantTemp: Want = {
 let slotId: number = 0;
 try {
   telephonyManager.deactiveSim(wantTemp, slotId);
-  console.info(`success to deactiveSim sim`);
+  console.info(`success to deactive SIM`);
 } catch (err) {
-  console.error(`Failed to deactive sim. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to deactive SIM. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -786,7 +786,7 @@ let wantTemp: Want = {
 let slotId: number = 0;
 try {
   telephonyManager.setDefaultData(wantTemp, slotId);
-  console.info(`success to set default data sim id`);
+  console.info(`success to set default data SIM ID`);
 } catch (err) {
   console.error(`Failed to set default data. Code: ${err.code}, message: ${err.message}`);
 }
@@ -845,7 +845,7 @@ let wantTemp: Want = {
 
 try {
   let slotId: number = telephonyManager.getDefaultData(wantTemp);
-  console.info(`success to get default data sim id, current is ${slotId}`);
+  console.info(`success to get default data SIM ID, current is ${slotId}`);
 } catch (err) {
   console.error(`Failed to get default data. Code: ${err.code}, message: ${err.message}`);
 }
