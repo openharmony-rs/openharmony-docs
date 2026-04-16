@@ -1105,7 +1105,7 @@ struct PickerDemo {
 ```
 
 ## 示例二（抽屉组件）
-可以通过[isSlidingSupported](#pickeroptions)属性、[onScrollStopAtStart](#scrollstopatstartcallback23)和[onScrollStopAtEnd](#scrollstopatendcallback23)回调来实现。
+可以通过[isSlidingSupported](#pickeroptions)属性、[onScrollStopAtStart](#scrollstopatstartcallback23)和[onScrollStopAtEnd](#scrollstopatendcallback23)回调来实现抽屉效果。
 
 ```ts
 // xxx.ets
