@@ -30,7 +30,7 @@ UIExtension宿主窗代理。
 
 hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 
-设置是否隐藏不安全窗口。
+设置是否隐藏不安全窗口，使用Promise异步回调。
 
 > **说明：**
 >
@@ -44,7 +44,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 
 **ArkTS-Sta起始版本：** 22
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -139,7 +139,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 22
 
-**系统接口**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -157,9 +157,9 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------- |
-| 1300002 | This window state is abnormal.                 |
+| 1300002 | The UIExtension window proxy is abnormal.                 |
 | 1300003 | This window manager service works abnormally.  |
-| 1300008 | The operation is on invalid display. |
+| 1300008 | The display device is abnormal. |
 
 **示例** 
 
