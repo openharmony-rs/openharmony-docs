@@ -27,7 +27,7 @@ UIExtension宿主窗代理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用
 
 | 名称                                 | 类型                  | 只读 | 可选 | 说明                                                                                                     |
 | ------------------------------------| -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------ |
@@ -41,7 +41,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -88,7 +88,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -131,7 +131,7 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -171,7 +171,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -214,7 +214,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -254,7 +254,7 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
@@ -301,7 +301,7 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
@@ -344,7 +344,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -510,7 +510,7 @@ occupyEvents(eventFlags: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -569,7 +569,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 | 名称                        | 值              | 说明            |
 |-----------------------------| --------------- |----------------|
@@ -587,7 +587,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | 名称 | 类型                 | 只读 | 可选 | 说明        |
 | ------ | -------------------- | ----- | ---- | ------------------ |
@@ -600,7 +600,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 | 名称                         | 类型        | 只读 | 可选 | 说明                             |
 | ------------------------------ | ----------- | ----- | ---- | -------------------------------- |
@@ -612,7 +612,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 | 名称                    | 值     | 说明                                                         |
 | ----------------------- | ------ | ------------------------------------------------------------ |
@@ -624,7 +624,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
