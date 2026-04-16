@@ -36,6 +36,6 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 
 | 参数名    | 类型    | 必填  | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| origin | string  | 是   | 指定源的字符串索引。                               |
+| origin | string  | 是   | 指定源的字符串。                               |
 | allow  | boolean | 是   | 设置的地理位置权限状态。<br>true表示开启地理位置权限，false表示不开启地理位置权限。                             |
 | retain | boolean | 是   | 是否允许将地理位置权限状态保存到系统中。可通过[GeolocationPermissions<sup>9+</sup>](./arkts-apis-webview-GeolocationPermissions.md)接口管理保存到系统的地理位置权限。<br>true表示允许将地理位置权限状态保存到系统中，false表示不允许将地理位置权限状态保存到系统中。 |

@@ -40,7 +40,7 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| origin | string | 是   |指定源的字符串索引。<br>origin格式必须遵循RFC 6454中定义的格式。 |
+| origin | string | 是   |指定源的字符串。<br>origin格式必须遵循RFC 6454中定义的格式。 |
 | incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下允许指定源使用地理位置，false表示正常非隐私模式下允许指定源使用地理位置。<br>默认值：false。<br>传入null或undefined时为false。 |
 
 **错误码：**
@@ -93,7 +93,7 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| origin | string | 是   | 指定源的字符串索引。<br>origin格式必须遵循RFC 6454中定义的格式。 |
+| origin | string | 是   | 指定源的字符串。<br>origin格式必须遵循RFC 6454中定义的格式。 |
 | incognito<sup>11+</sup>   | boolean | 否   | true表示隐私模式下清除指定源的地理位置权限状态，false表示正常非隐私模式下清除指定源的地理位置权限状态。<br>默认值：false。<br>传入null或undefined时为false。 |
 
 **错误码：**
@@ -146,7 +146,7 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| origin   | string                 | 是   | 指定源的字符串索引。<br>origin格式必须遵循RFC 6454中定义的格式。 |
+| origin   | string                 | 是   | 指定源的字符串。<br>origin格式必须遵循RFC 6454中定义的格式。 |
 | callback | AsyncCallback\<boolean> | 是   | 返回指定源的地理位置权限状态。<br>获取成功，true表示已授权，false表示拒绝访问。<br>获取失败，表示不存在指定源的权限状态。 |
 | incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下以回调方式异步获取指定源的地理位置权限状态，false表示正常非隐私模式下以回调方式异步获取指定源的地理位置权限状态。<br>默认值：false。<br>传入null或undefined时会抛出异常错误码401。 |
 
@@ -206,7 +206,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 
 | 参数名 | 类型 | 必填 | 说明             |
 | ------ | -------- | ---- | -------------------- |
-| origin | string   | 是   | 指定源的字符串索引。<br>origin格式必须遵循RFC 6454中定义的格式。 |
+| origin | string   | 是   | 指定源的字符串。<br>origin格式必须遵循RFC 6454中定义的格式。 |
 | incognito<sup>11+</sup>    | boolean | 否   | true表示隐私模式下以Promise方式异步获取指定源的地理位置权限状态，false表示正常非隐私模式下以Promise方式异步获取指定源的地理位置权限状态。<br>默认值：false。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **返回值：**
