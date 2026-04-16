@@ -11,7 +11,7 @@
 由于微软OLE文档格式已成为事实规范，如果OE文档要与Windows的OLE数据上互通，则OE文档需采用和OLE一样的二进制文件格式。
 OE文档是采用了一种结构化存储的复合文件，结构化存储定义了如何将单个文件视为有两种类型对象（存储对象和流对象）组成的层次化集合，这两种对象分别表现为目录和文件，如下图所示：
 
-![OE文档存储结构](figures/oe_document_storage_structure.png)
+![OE文档存储结构](figures/document_storage_structure.png)
 
 - root storage对象：在复合文件中，这个特殊的存储对象扮演着“根节点”的角色。它不仅是storage对象和stream对象层级结构的**最顶层父对象**，在访问任何子存储对象或流对象之前，必须先访问它。
 - storage对象：复合文件中的一个对象，类似于文件系统中的目录。storage对象的父对象必须是另一个storage对象或root storage对象。
