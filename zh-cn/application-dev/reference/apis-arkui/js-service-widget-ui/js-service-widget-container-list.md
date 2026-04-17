@@ -69,7 +69,7 @@
 
 
 ```html
-<!-- index.hml -->
+<!-- index.html -->
 <div class="container">
   <list class="todo-wrapper">
     <list-item for="{{todolist}}" class="todo-item">
