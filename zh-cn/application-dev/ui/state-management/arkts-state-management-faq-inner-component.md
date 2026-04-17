@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -93,7 +93,7 @@ struct Index {
 >
 >需要在[aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
 
-<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) --> 
+<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -134,7 +134,7 @@ struct Test {
   build() {
     Column() {
       // 请在resources\base\element\string.json文件中配置name为'state_countvalue_text1' ，value为非空字符串的资源
-      Text(this.context.resourceManager.getStringByNameSync('state_countvalue_text1') + `${this.count}`)
+      Text(resource.resourceToString($r('app.string.state_countvalue_text1')) + `${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();

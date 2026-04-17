@@ -5768,3 +5768,17 @@ Allows an application and a service to access the device-side model deployment m
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+Allows a system application to use the unified management capabilities of the digital certificate service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
