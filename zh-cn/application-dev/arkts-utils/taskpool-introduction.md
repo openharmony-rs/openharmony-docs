@@ -105,7 +105,9 @@ function foo() {
 
 示例：
 
-```ts
+<!-- @[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
@@ -135,6 +137,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             concurrentFunc();
+            this.message = 'success';
           })
       }
       .width('100%')
@@ -143,7 +146,6 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets) -->
 
 ### 并发函数返回Promise
 
@@ -151,11 +153,20 @@ struct Index {
 
 示例：
 
-```ts
+<!-- @[concurrent_taskpool_promise_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/returnpromise.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
-function testPromise1(args1: number, args2: number): Promise<number> {
+function testPromise(args1: number, args2: number): Promise<number> {
+  return new Promise<number>((resolve, reject) => {
+    resolve(args1 + args2);
+  });
+}
+
+@Concurrent
+async function testPromise1(args1: number, args2: number): Promise<number> {
   return new Promise<number>((resolve, reject) => {
     resolve(args1 + args2);
   });
@@ -163,30 +174,23 @@ function testPromise1(args1: number, args2: number): Promise<number> {
 
 @Concurrent
 async function testPromise2(args1: number, args2: number): Promise<number> {
-  return new Promise<number>((resolve, reject) => {
-    resolve(args1 + args2);
-  });
-}
-
-@Concurrent
-async function testPromise3(args1: number, args2: number): Promise<number> {
   return await new Promise<number>((resolve, reject) => {
     resolve(args1 + args2);
   });
 }
 
 @Concurrent
-function testPromise4() {
+function testPromise3() {
   return Promise.resolve(1);
 }
 
 @Concurrent
-async function testPromise5(): Promise<number> {
+async function testPromise4(): Promise<number> {
   return 1;
 }
 
 @Concurrent
-async function testPromise6(): Promise<string> {
+async function testPromise5(): Promise<string> {
   return await new Promise((resolve) => {
     setTimeout(() => {
       resolve('Promise setTimeout after resolve');
@@ -195,12 +199,12 @@ async function testPromise6(): Promise<string> {
 }
 
 async function testConcurrentFunc() {
-  const task1: taskpool.Task = new taskpool.Task(testPromise1, 1, 2);
-  const task2: taskpool.Task = new taskpool.Task(testPromise2, 1, 2);
-  const task3: taskpool.Task = new taskpool.Task(testPromise3, 1, 2);
-  const task4: taskpool.Task = new taskpool.Task(testPromise4);
-  const task5: taskpool.Task = new taskpool.Task(testPromise5);
-  const task6: taskpool.Task = new taskpool.Task(testPromise6);
+  const task1: taskpool.Task = new taskpool.Task(testPromise, 1, 2);
+  const task2: taskpool.Task = new taskpool.Task(testPromise1, 1, 2);
+  const task3: taskpool.Task = new taskpool.Task(testPromise2, 1, 2);
+  const task4: taskpool.Task = new taskpool.Task(testPromise3);
+  const task5: taskpool.Task = new taskpool.Task(testPromise4);
+  const task6: taskpool.Task = new taskpool.Task(testPromise5);
 
   taskpool.execute(task1).then((d: object) => {
     console.info(`task1 res is: ${d}`); // 输出结果：task1 res is: 3
@@ -247,6 +251,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             testConcurrentFunc();
+            this.message = 'success';
           })
       }
       .width('100%')
@@ -255,7 +260,6 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_promise_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/returnpromise.ets) -->
 
 ### 并发函数中使用自定义类或函数
 
@@ -263,8 +267,9 @@ struct Index {
 
 示例：
 
-```ts
-// Index.ets
+<!-- @[concurrent_taskpool_custom_class_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/customclasses.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { testAdd, MyTestA, MyTestB } from './Test';
@@ -277,7 +282,6 @@ class TestA {
   constructor(name: string) {
     this.name = name;
   }
-
   name: string = 'ClassA';
 }
 
@@ -286,14 +290,17 @@ class TestB {
 }
 
 @Concurrent
-function TestFunc() {
+function testFunc() {
   // case1：在并发函数中直接调用同文件内定义的类或函数
 
-  // 直接调用同文件定义的函数add()，add飘红报错：Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
+  // 直接调用同文件定义的函数add()，add飘红报错：
+  // Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
   // add(1);
-  // 直接使用同文件定义的TestA构造，TestA飘红报错：Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
-  // const a = new TestA('aaa');
-  // 直接访问同文件定义的TestB的成员nameStr，TestB飘红报错：Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
+  // 直接使用同文件定义的TestA构造，TestA飘红报错：
+  // Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
+  // let a = new TestA('aaa');
+  // 直接访问同文件定义的TestB的成员nameStr，TestB飘红报错：
+  // Only imported variables and local variables can be used in @Concurrent decorated functions. <ArkTSCheck>
   // console.info(`TestB name is: ${TestB.nameStr}`);
 
   // case2：在并发函数中调用定义在Test.ets文件并导入当前文件的类或函数
@@ -324,12 +331,13 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          const task = new taskpool.Task(TestFunc);
+          const task = new taskpool.Task(testFunc);
           taskpool.execute(task).then(() => {
             console.info('taskpool: execute task success!');
-          }).catch((e: BusinessError) => {
+          }).catch((e:BusinessError) => {
             console.error(`taskpool: execute: Code: ${e.code}, message: ${e.message}`);
           })
+          this.message = 'success';
         })
     }
     .height('100%')
@@ -337,10 +345,10 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_custom_class_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/customclasses.ets) -->
 
-```ts
-// Test.ets
+<!-- @[concurrent_taskpool_test_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/Test.ets) -->
+
+``` TypeScript
 export function testAdd(arg: number) {
   return ++arg;
 }
@@ -357,7 +365,6 @@ export class MyTestB {
   static nameStr:string = 'MyTestB';
 }
 ```
-<!-- @[concurrent_taskpool_test_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/Test.ets) -->
 
 ### 并发异步函数中使用Promise
 
@@ -365,29 +372,31 @@ export class MyTestB {
 
 示例：
 
-```ts
+<!-- @[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 
 @Concurrent
 async function testPromiseError() {
   await new Promise<number>((resolve, reject) => {
     resolve(1);
-  }).then(() => {
-    throw new Error('testPromise error');
+  }).then(()=>{
+    throw new Error('testPromise Error');
   })
 }
 
 @Concurrent
 async function testPromiseError1() {
   await new Promise<string>((resolve, reject) => {
-    reject('testPromiseError1 error msg');
+    reject('testPromiseError1 Error msg');
   })
 }
 
 @Concurrent
 function testPromiseError2() {
   return new Promise<string>((resolve, reject) => {
-    reject('testPromiseError2 error msg');
+    reject('testPromiseError2 Error msg');
   })
 }
 
@@ -399,17 +408,17 @@ async function testConcurrentFunc() {
   taskpool.execute(task1).then((d: object) => {
     console.info(`task1 res is: ${d}`);
   }).catch((e: object) => {
-    console.error(`task1 catch e: ${e}`); // task1 catch e: Error: testPromise error
+    console.error(`task1 catch e: ${e}`); // task1 catch e: Error: testPromise Error
   })
   taskpool.execute(task2).then((d: object) => {
     console.info(`task2 res is: ${d}`);
   }).catch((e: object) => {
-    console.error(`task2 catch e: ${e}`); // task2 catch e: testPromiseError1 error msg
+    console.error(`task2 catch e: ${e}`); // task2 catch e: testPromiseError1 Error msg
   })
   taskpool.execute(task3).then((d: object) => {
     console.info(`task3 res is: ${d}`);
   }).catch((e: object) => {
-    console.error(`task3 catch e: ${e}`); // task3 catch e: testPromiseError2 error msg
+    console.error(`task3 catch e: ${e}`); // task3 catch e: testPromiseError2 Error msg
   })
 }
 
@@ -426,6 +435,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             testConcurrentFunc();
+            // ...
           })
       }
       .width('100%')
@@ -434,7 +444,6 @@ struct Index {
   }
 }
 ```
-<!-- @[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets) -->
 
 ## TaskPool扩缩容机制
 

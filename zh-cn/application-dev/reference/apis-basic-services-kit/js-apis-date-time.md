@@ -43,7 +43,7 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -93,7 +93,7 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -142,7 +142,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -195,7 +195,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -245,7 +245,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -294,7 +294,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -347,7 +347,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -397,7 +397,7 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -446,7 +446,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 

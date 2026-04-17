@@ -26,7 +26,7 @@
 
    ```ts
    import  { picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -88,8 +88,8 @@
    ```ts
    if (uris.length > 0) {
      let uri: string = uris[0];
-     // 这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
-     let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+     // 这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
+     let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
      console.info('file fd: ' + file.fd);
    }
    ```
@@ -98,10 +98,10 @@
 
    ```ts
    let buffer = new ArrayBuffer(4096);
-   let readLen = fs.readSync(file.fd, buffer);
+   let readLen = fileIo.readSync(file.fd, buffer);
    console.info('readSync data to file succeed and buffer size is:' + readLen);
    // 读取完成后关闭fd。
-   fs.closeSync(file);
+   fileIo.closeSync(file);
    ```
 
 ## 选择音频类文件
@@ -110,7 +110,7 @@
 
    ```ts
    import  { picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -156,8 +156,8 @@
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      // 这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
-      let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
       console.info('file fd: ' + file.fd);
    }
    ```
@@ -166,10 +166,10 @@
 
    ```ts
    let buffer = new ArrayBuffer(4096);
-   let readLen = fs.readSync(file.fd, buffer);
+   let readLen = fileIo.readSync(file.fd, buffer);
    console.info('readSync data to file succeed and buffer size is:' + readLen);
    // 读取完成后关闭fd。
-   fs.closeSync(file);
+   fileIo.closeSync(file);
    ```
 
 ## 相关实例

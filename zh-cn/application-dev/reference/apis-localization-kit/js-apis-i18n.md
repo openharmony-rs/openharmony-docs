@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 本模块提供系统相关的以及增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。接口中使用的名词定义如下：
 - 模式字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)和单引号包裹的自定义文本自由组合而成的字符串。
@@ -2277,6 +2277,97 @@ let dateFormat: string =
   dateTimeFormat.format(new Date(zoneOffsetTransition.getMilliseconds())); // November 2, 2025, 1:00:00 PST
 ```
 
+### setAppDefaultTimeZoneById
+
+static setAppDefaultTimeZoneById(zoneID: string): void
+
+设置当前应用的默认时区，在应用运行时生命周期内有效。
+
+> **说明：**
+>
+> 进行日期时间格式化时，若未指定时区，会优先使用应用设置的默认时区。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| zoneID | string | 是   | 应用设置默认的时区ID，如："Asia/Shanghai"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 8900001   | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let zoneID: string = 'Asia/Shanghai';
+  i18n.TimeZone.setAppDefaultTimeZoneById(zoneID);
+  console.info('setAppDefaultTimeZoneById success.');
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call TimeZone.setAppDefaultTimeZoneById failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### getAppDefaultTimeZone
+
+static getAppDefaultTimeZone(): TimeZone
+
+获取应用使用的默认时区对象。若调用[setAppDefaultTimeZoneById](#setappdefaulttimezonebyid)设置了默认时区，则返回设置的默认时区对象；否则，返回系统时区对象。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| TimeZone | 应用使用的默认时区对象。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let zoneID: string = 'Asia/Shanghai';
+  i18n.TimeZone.setAppDefaultTimeZoneById(zoneID);
+  console.info('setAppDefaultTimeZoneById success.');
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call TimeZone.setAppDefaultTimeZoneById failed, error code: ${err.code}, message: ${err.message}.`);
+}
+let timeZone: i18n.TimeZone = i18n.TimeZone.getAppDefaultTimeZone();
+let id: string = timeZone.getID();
+console.info(`getAppDefaultTimeZone success, time zone id: ${id}`);
+```
+
 ## ZoneRules<sup>20+</sup>
 
 提供查询时区跳变规则的能力。
@@ -3184,6 +3275,55 @@ try {
 } catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`call I18NUtil.getUnicodeWrappedFilePath failed, error code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+### setUnicodeWrappedBidiDirection
+
+static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): string
+
+设置整段文本中部分文本方向，包括RTL、LTR。
+
+> **说明：**
+>
+> 在强字符（指具有明确书写方向的字符）中不生效。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| text | string | 是   | 需要设置方向的文本。 |
+| direction | 'RTL' \| 'LTR' | 是   | 'RTL'表示从右到左，'LTR'表示从左到右。 |
+
+**返回值：**
+
+| 类型     | 说明                  |
+| ------ | ------------------- |
+| string | 设置方向后的文本。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { i18n } from '@kit.LocalizationKit';
+
+try {
+  let text: string = '(012) 345-6789';
+  let result: string = i18n.I18NUtil.setUnicodeWrappedBidiDirection(text, 'LTR');
+  console.info(`setUnicodeWrappedBidiDirection, result: ${result}`);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`call I18NUtil.setUnicodeWrappedBidiDirection failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
 

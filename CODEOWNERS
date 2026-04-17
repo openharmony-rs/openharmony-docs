@@ -732,6 +732,7 @@ zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @gcw_K
 zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/pageswitch-log.md @buzhenwang @shenchenkai @liyang2235 @jinqiuheng
 
 [开发-IDL]
 zh-cn/application-dev/IDL/ @huipeizi @liveery @alien0208
@@ -1287,7 +1288,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-video.md	@sunbees	@liuli042
 zh-cn/application-dev/reference/apis-arkui/errorcode-xcomponent.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-animator.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-AttributeUpdater.md	@sunbees	@khq	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-builderNode.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-builderNode.md	@sunbees	@khq	@Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-ComponentContent.md	@ZhangYu-Home	@khq	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-componentSnapshot.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-componentUtils.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
@@ -1298,6 +1299,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md	@
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-frameNode.md	@sunbees	@khq	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-graphics.md	@sunbees	@khq  	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-inspector.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md  @lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-node.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-NodeContent.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-nodeController.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
@@ -1574,8 +1576,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md	@sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-components-offscreencanvas.md	@sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ability-component-sys.md	@sunbees	@liuli0427	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arclist.md	@yylong	@rongShao-Z @huchuyun	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arclistitem.md	@yylong	@rongShao-Z @huchuyun	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arcswiper.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
@@ -1615,7 +1617,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-sidebarcontaine
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack-sys.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-swiper.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md	@jiangdayuan @gouyuanyuan	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md  @CCFFWW  @lxl007  @Brilliantry_Rui

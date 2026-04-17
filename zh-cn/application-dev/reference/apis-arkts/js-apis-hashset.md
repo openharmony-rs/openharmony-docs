@@ -8,7 +8,7 @@
 
 HashSet基于[HashMap](js-apis-hashmap.md)实现。在HashSet中，仅处理value对象。
 
-HashSet和[TreeSet](js-apis-treeset.md)相比，HashSet中的数据按Hash值排序，因此元素的插入顺序与遍历时的顺序可能不一致，而TreeSet则是按照元素的自然排序或者自定义比较器进行有序存储。它们集合中的元素都不允许重复，HashSet允许插入null值，TreeSet不建议插入null值，可能会影响排序。
+HashSet和[TreeSet](js-apis-treeset.md)相比，HashSet中的数据按Hash值排序，因此元素的插入顺序与遍历时的顺序可能不一致，而TreeSet则是按照元素的自然排序或者自定义比较器进行有序存储。它们集合中的元素都不允许重复，HashSet允许插入null值，TreeSet不建议插入null值，会影响排序结果。
 
 **推荐使用场景：** 可以利用HashSet不重复的特性，当需要不重复的集合或需要去重某个集合的时候使用。
 

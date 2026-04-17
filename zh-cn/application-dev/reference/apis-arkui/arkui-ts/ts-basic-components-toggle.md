@@ -30,7 +30,7 @@ Toggle(options: ToggleOptions)
 
 | 参数名 | 类型 | 必填   | 说明           |
 | ---- | ---------- | -----| -------------- |
-| options | [ToggleOptions](#toggleoptions18对象说明) | 是   | Toggle的信息。 |
+| options | [ToggleOptions](#toggleoptions18对象说明) | 是   | Toggle组件的配置选项，用于配置开关的样式类型和初始状态。 |
 
 ## ToggleOptions<sup>18+</sup>对象说明
 
