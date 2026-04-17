@@ -252,7 +252,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        // 保存文件到 download 目录下
        std::string filePath = std::string(downloadPath) + "/temp.txt";
        free(downloadPath);
-
+   
        std::ofstream outfile;
        outfile.open(filePath.c_str());
        if (!outfile) {
