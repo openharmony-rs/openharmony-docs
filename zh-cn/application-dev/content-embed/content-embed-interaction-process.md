@@ -7,8 +7,6 @@
 <!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
-## 应用间内容嵌入与协同编辑关键流程介绍
-
 对象编辑框架采用ExtensionAbility机制进行扩展，主要架构元素包括：[OE Extension](./content-embed-kit-terminology.md#OE-Extension)和[OE SA](./content-embed-kit-terminology.md#OE-SA)。
 
 以下是OE客户端应用嵌入OE对象，并拉起OE服务端应用编辑OE文档，编辑完成后结果更新至OE客户端宿主文档的关键流程：

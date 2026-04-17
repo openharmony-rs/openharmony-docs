@@ -30,7 +30,7 @@ OE客户端应用：指面向终端用户且被嵌入文档的应用。通过调
 | 接口名称 | 功能描述 |
 | ------- | ---- |
 | OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](./content-embed-kit-terminology.md#OE文档)。|
-| OH_ContentEmbed_CreateDocumentByOEId | 通过OEID创建OE文档。|
+| OH_ContentEmbed_CreateDocumentByOEId | 通过[OEID](./content-embed-kit-terminology.md#OEID)创建OE文档。|
 | OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](./content-embed-kit-terminology.md#OE格式文件)加载OE文档。|
 | OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](./content-embed-kit-terminology.md#客户端OE对象)。|
 | OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源。|
@@ -48,20 +48,12 @@ OE客户端应用：指面向终端用户且被嵌入文档的应用。通过调
 
 ## 开发步骤
 
-OE客户端开发的步骤包括：
-1. 创建OE文档：通过文件路径或OEID创建OE文档对象。
-2. 创建客户端OE对象：通过OE文档创建客户端OE对象，实现OE文档与客户端OE对象的关联。并用于与服务端通信。
-3. 注册回调：注册文档更新、错误、编辑结束等回调函数。
-4. 拉起OE Extension：启动OE Extension组件，获取文档快照。
-5. 编辑文档：通知OE服务端拉起UIAbility编辑文档。
-6. 资源释放：销毁OE文档和OE Extension代理，释放资源。
-
-以下演示使用 Native API 开发OE客户端应用的完整流程。
+以下演示使用Native API开发OE客户端应用的完整流程。
 
 ### 添加动态链接库
 CMakeLists.txt中添加以下lib。
 
-```sh
+```text
 # content embed
 libcontent_embed_ndk.so
 # hilog
@@ -111,7 +103,7 @@ bool ContentEmbedManager::QueryAllFormat(const std::string &locale)
         return;
     }
     for (int i = 0; i < count; i++) {
-        ContentEmbed_Format* ceFormat;
+        ContentEmbed_Format* ceFormat = nullptr;
         // 从ContentEmbedInfo对象获取索引为i的ContentEmbed_Format信息
         errCode = OH_ContentEmbed_GetFormatFromInfo(contentEmbedInfo, i, &ceFormat);
         if (errCode != CE_ERR_OK) {
@@ -139,7 +131,7 @@ bool ContentEmbedManager::QueryAllFormat(const std::string &locale)
 ```cpp
 bool ContentEmbedManager::QueryFormatByOEId(const std::string &oeid, const std::string &locale)
 {
-    ContentEmbed_Format* ceFormat;
+    ContentEmbed_Format* ceFormat = nullptr;
     // 创建ContentEmbed_Format
     ContentEmbed_ErrorCode = OH_ContentEmbed_CreateContentEmbedFormat(&ceFormat);
     if (errCode != CE_ERR_OK) {
@@ -202,21 +194,42 @@ ContentEmbed_Document *ceDocument;
 ContentEmbed_ErrorCode ret = OH_ContentEmbed_LoadDocumentFromFile(filePath.c_str(), filePath.size(), &ceDocument);
 ```
 
-### 创建[客户端OE对象](./content-embed-kit-terminology.md#客户端OE对象)
+### 创建客户端OE对象
 
-基于OE文档和当前上下文实例创建客户端OE对象，实现OE文档与客户端OE对象的关联。并用于与服务端通信。
+基于OE文档和当前上下文实例创建客户端OE对象，实现OE文档与客户端OE对象的关联，并用于与服务端通信。
 
 ```cpp
-// 注册回调：注册文档更新、错误、编辑结束等回调函数。
 void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 {
     OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnUpdateFunc");
-    //
-    ContentEmbed_Document *oeDocument = nullptr;
-    ContentEmbed_ErrorCode errCode = OH_ContentEmbed_Proxy_GetDocument(proxy, &oeDocument)
+    //将OE文档数据写入客户端应用文档
+    ContentEmbed_Document *document = nullptr;
+    ContentEmbed_ErrorCode errCode = OH_ContentEmbed_Proxy_GetDocument(proxy, &document);
+    bool isLinking = false;
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Document_IsLinking(document, &isLinking);
+    OH_LOG_INFO(LOG_APP, "ret: %{public}d, isLinking: %{public}d", ret, isLinking);
+    if (ret == CE_ERR_OK && isLinking) {
+        OH_LOG_INFO(LOG_APP, "liking document, No need to save to the sandbox");
+        return;
+    }
+    const size_t CHUNK_SIZE = 4096; // 分块大小
+    uint8_t *buffer = new (std::nothrow) uint8_t[CHUNK_SIZE + 1];
+    if (!buffer)
+        return;
+    size_t offset = 0;
+    size_t actualRead = 0;
+    do {
+        ret = OH_ContentEmbed_Document_Read(buffer, CHUNK_SIZE, document, offset, &actualRead);
 
-    
+        if (ret != CE_ERR_OK || actualRead == 0)
+            break;
 
+        // 自行处理buffer数据流
+        ...
+        offset += actualRead;
+    } while (true);
+
+    delete[] buffer;
 }
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
@@ -224,15 +237,20 @@ void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed
     OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
 }
 
-void ClientCallback_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)
+void ClientCallBack_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallback_OnEditingFinishedFunc, dataModified: %{public}d", dataModified);
-    // 建议
+    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnEditingFinishedFunc, dataModified: %{public}d", dataModified);
+    // 建议此时销毁OE文档和客户端OE对象，释放资源。
+    ContentEmbed_Document *document = nullptr;
+    ContentEmbed_ErrorCode errCode = OH_ContentEmbed_Proxy_GetDocument(proxy, &document);
+    OH_ContentEmbed_DestroyDocument(document);
+    OH_ContentEmbed_DestroyExtensionProxy(proxy);
+
 }
 
-void ClientCallback_OnExtensionStoppedFunc(ContentEmbed_ExtensionProxy *proxy)
+void ClientCallBack_OnExtensionStoppedFunc(ContentEmbed_ExtensionProxy *proxy)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallback_OnExtensionStoppedFunc");
+    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnExtensionStoppedFunc");
 }
 
 // contextPtr: 当前上下文实例
@@ -242,18 +260,25 @@ void ContentEmbedManager::CreateProxy(void* contextPtr, ContentEmbed_Document *o
     ContentEmbed_ExtensionProxy* proxy;
     // 创建客户端OE对象
     ContentEmbed_ErrorCode errCode = OH_ContentEmbed_CreateExtensionProxy(oeDocument, &proxy, contextPtr);
+    // 注册回调：注册文档更新、错误、编辑结束等回调函数，回调函数注册顺序无要求，但不能遗漏。
     // 注册OE文档更新回调
     errCode = OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(proxy, ClientCallBack_OnUpdateFunc);
     // 注册OE文档发生错误回调
     errCode = OH_ContentEmbed_Proxy_RegisterOnErrorFunc(proxy, ClientCallBack_OnErrorFunc);
     // 注册OE文档编辑结束回调
-    errCode = OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(proxy, ClientCallback_OnEditingFinishedFunc);
+    errCode = OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(proxy, ClientCallBack_OnEditingFinishedFunc);
     // 注册Extension实例关闭回调
-    errCode = OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(proxy, ClientCallback_OnExtensionStoppedFunc);
+    errCode = OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(proxy, ClientCallBack_OnExtensionStoppedFunc);
 }
 ```
 
 ### 客户端OE对象和OE Extension交互
+
+1. 拉起OE Extension：启动OE Extension组件。
+2. 查询OE Extension组件能力。
+3. 编辑文档：通知OE服务端拉起UIAbility编辑文档。
+4. 查询OE文档编辑状态。
+5. 获取OE文档快照
 
 ```cpp
 void ContentEmbedManager::HandleProxy(ContentEmbed_ExtensionProxy* proxy)
