@@ -101,7 +101,7 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 
 **示例代码**
 
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -113,25 +113,28 @@ struct Index {
 
   build() {
     Column() {
-      Web({ src: 'https://www.example.com', controller: this.controller })//需要手动替换为真实网站
+      Web({ src: 'https://www.example.com', controller: this.controller }) // 需要手动替换为真实网站
     }
   }
 
   onBackPress() {
-    // 当前页面是否可前进或者后退给定的step步(-1),正数代表前进，负数代表后退
-    if (this.controller.accessStep(-1)) {
-      this.controller.backward(); // 返回上一个web页
-      // 执行用户自定义返回逻辑
-      return true;
-    } else {
-      // 执行系统默认返回逻辑，返回上一个page页
-      return false;
+    try {
+      // 当前页面是否可前进或者后退给定的step步(-1),正数代表前进，负数代表后退
+      if (this.controller.accessStep(-1)) {
+        this.controller.backward(); // 返回上一个Web页面
+        // 执行用户自定义返回逻辑
+        return true;
+      }
+    } catch (err) {
+      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
     }
+    // 执行系统默认返回逻辑，返回上一个页面
+    return false;
   }
 }
 ```
 
-### 为什么Web加载后网页无法交互？
+### 为什么Web组件加载后网页无法交互？
 
 网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以在Web组件中设置自定义User-Agent，例如：
 

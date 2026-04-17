@@ -2958,7 +2958,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2.system running error.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. The IPC request timed out. 2.system running error.|
 
 **Example**
 
@@ -3272,7 +3272,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
  
@@ -3331,7 +3331,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -5398,7 +5398,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. | 
-| 14000011       | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 14000011       | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -5459,7 +5459,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
-| 23800301    | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301    | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **Example**
 
@@ -6260,7 +6260,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 setFavorite(favoriteState: boolean): void
 
-Favorites or unfavorites this file.
+Favorites or unfavorites this file asset.
 
 **System API**: This is a system API.
 
@@ -10622,7 +10622,7 @@ Unregisters a callback to monitor changes in the progress of a batch download fo
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callback are unregistered.|
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callbacks are unregistered.|
 
 
 **Error codes**

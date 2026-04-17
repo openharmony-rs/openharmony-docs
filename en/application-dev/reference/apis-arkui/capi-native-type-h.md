@@ -156,7 +156,7 @@ Defines the common types for the native module.
 | [ArkUI_TextOverflow](#arkui_textoverflow)                           | ArkUI_TextOverflow              | Enumerates the display modes when the text is too long.                    |
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | Enumerates the alignment mode of the image with the text.                   |
 | [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components-image.md) component.   |
-| [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | Enumerates the image interpolation effects.                        |
+| [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.                        |
 | [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.|
 | [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | Enumerates image rotation directions.                        |
 | [ArkUI_BlendMode](#arkui_blendmode)                                 | ArkUI_BlendMode                 | Enumerates the blend modes.                         |
@@ -245,7 +245,7 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | - | Obtains the array length for a water flow section configuration.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | Sets the number of items in a water flow section.|
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | Obtains the number of items in the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | Sets the gap between columns in the specified water flow section.|
 | [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | Obtains the gap between columns in the water flow section that matches the specified index.|
@@ -480,12 +480,12 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | - | Obtains the expected update interval for visible area changes.|
 | [bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) | - | Obtains the visible area calculation mode.|
 | [ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)](#oh_arkui_textpickerrangecontentarray_create) | - | Creates a **TextPickerRangeContent** array object.|
-| [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | - | Sets the icon data at the specified position in the **TextPickerRangeContent** array.|
-| [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | - | Sets the text data at the specified position in the **TextPickerRangeContent** array.|
+| [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | - | Configures the icon data at a specified position in the **TextPickerRangeContent** array.|
+| [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | - | Configures the text data at a specified position in the **TextPickerRangeContent** array.|
 | [void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)](#oh_arkui_textpickerrangecontentarray_destroy) | - | Destroys a **TextPickerRangeContent** array object.|
 | [ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)](#oh_arkui_textcascadepickerrangecontentarray_create) | - | Creates a **TextCascadePickerRangeContent** array object.|
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | - | Sets the text data at the specified position in the **TextCascadePickerRangeContent** array.|
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | - | Sets the child data at the specified position in the **TextCascadePickerRangeContent** array.|
+| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | - | Configures the text data at a specified position in the **TextCascadePickerRangeContent** array.|
+| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | - | Configures the child data at a specified position in the **TextCascadePickerRangeContent** array.|
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy (ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | - | Destroys a **TextCascadePickerRangeContent** array object.|
 | [ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()](#oh_arkui_embeddedcomponentoption_create) | - | Creates an **EmbeddedComponent** option object.|
 | [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | - | Disposes of an **EmbeddedComponent** option object.|
@@ -514,7 +514,7 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend) | - | Obtains the end edge pixel rounding policy from the **PixelRoundPolicy** object.|
 | [ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create) | - | Creates a **ContentTransitionEffect** attribute object.|
 | [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | - | Creates **Grid** layout options.|
-| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | - | Disposes of **Grid** layout options.|
+| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | - | Disposes of the **Grid** layout option.|
 | [int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)](#oh_arkui_gridlayoutoptions_setirregularindexes) | - | Sets the irregular grid item index array for the grid layout.|
 | [int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)](#oh_arkui_gridlayoutoptions_getirregularindexes) | - | Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.|
 | [void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize(\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | - | Registers a callback to obtain the row and column span for the grid item at the specified index.|
@@ -2336,9 +2336,9 @@ Enumerates the component units.
 | Value| Description|
 | -- | -- |
 | ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts.|
-| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | px.|
-| ARKUI_LENGTH_METRIC_UNIT_VP = 1 | vp.|
-| ARKUI_LENGTH_METRIC_UNIT_FP = 2 | fp.|
+| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | The unit is px.|
+| ARKUI_LENGTH_METRIC_UNIT_VP = 1 | The unit is vp.|
+| ARKUI_LENGTH_METRIC_UNIT_FP = 2 | The unit is fp.|
 
 ### ArkUI_TextInputContentType
 
@@ -7784,7 +7784,7 @@ Obtains the image width.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Image width, in PX. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Image width, in px. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetHeight()
 
@@ -7831,7 +7831,7 @@ Obtains the image height.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Image height, in PX. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Image height, in px. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetTop()
 
@@ -9340,7 +9340,7 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascad
 **Description**
 
 
-Sets the text data at the specified position in the **TextCascadePickerRangeContent** array.
+Configures the text data at a specified position in the **TextCascadePickerRangeContent** array.
 
 **Since**: 19
 
@@ -10299,7 +10299,7 @@ Obtains the title of a text menu item.
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the title information of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Returns**
 
@@ -10351,7 +10351,7 @@ Obtains the icon path of a text menu item.
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the icon path of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Returns**
 
@@ -10403,7 +10403,7 @@ Obtains the shortcut hint for a text menu item, for example, the shortcut hint f
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the shortcut hint of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Returns**
 

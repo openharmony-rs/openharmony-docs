@@ -62,7 +62,7 @@ PluginComponent(options: PluginComponentOptions)
 | 名称       | 类型  | 只读 | 可选 | 说明                        |
 | ---------- | ------ | ------ | ------ | --------------------------- |
 | source     | string | 否 | 否 | 组件模板名。                |
-| bundleName | string | 否 | 否 | 提供方Ability的bundleName。 |
+| bundleName | string | 否 | 否 | 提供方Ability的bundleName。使用绝对路径提供资源时不需要填写，使用相对路径或FA模型AbilityName方式时必须填写。 |
 
 ## 属性
 
@@ -228,7 +228,7 @@ onError(callback:&nbsp;PluginErrorCallback)
     }
   }
   ```
-- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.js文件中。
+- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.ets文件中。
 - 在module.json5配置文件中增加requestPermissions标签，允许使用方查询其他应用信息：
   ```json
   "requestPermissions": [
@@ -286,7 +286,7 @@ onError(callback:&nbsp;PluginErrorCallback)
     }
   }
   ```
-- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.js文件中。
+- 根据模型类型，将对应的[Plugin组件工具代码](#plugin组件工具)拷贝至项目的ets/pages/plugin_component.ets文件中。
 
 ### Plugin组件工具
 

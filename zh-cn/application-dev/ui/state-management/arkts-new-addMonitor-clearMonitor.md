@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -712,6 +712,7 @@ struct Page {
 和[\@Monitor异步构造](./arkts-new-monitor.md#类中monitor对变量监听的生效及失效时间)不同，addMonitor是同步构造的，所以在开发者调用完`UIUtils.addMonitor(this, 'message', this.onMessageChange);`后就完成了对`message`添加监听函数`this.onMessageChange`。在下面的例子中：
 - 拉起页面，构造`Info`的实例，回调`onMessageChange`监听函数。
 - 点击```Button('change message')```，回调`onMessageChange`监听函数。
+
 日志输出如下：
 ``` ts
 message change from not initialized to initialized

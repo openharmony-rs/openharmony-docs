@@ -640,7 +640,7 @@ statistics.getUidTxBytes(20010038).then((stats: number) => {
 ```
 
 
-## statistics.getSockfdRxBytes
+## statistics.getSockfdRxBytes<sup>11+</sup>
 
 getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 

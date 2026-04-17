@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @zsyztt; @Hermits; @reminder2352-->
 <!--Designer: @yunlanying-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @foryourself-->
 
 The **cloudSyncManager** module provides APIs for managing device-cloud sync for applications. You can use the APIs to manage the full download state, the reason why the full download stops, and number of local and cloud files.

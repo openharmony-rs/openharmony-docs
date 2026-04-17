@@ -24,8 +24,9 @@ ArrayBuffer可以用来表示图片等资源，在应用开发中，处理图片
 
 在ArkTS中，TaskPool传递ArrayBuffer数据时，默认采用转移方式。通过调用setTransferList()接口，可以指定部分数据的传递方式为转移方式，其他部分数据可以切换为拷贝方式。
 
-```ts
-// Index.ets
+<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -71,7 +72,8 @@ struct Index {
           let taskPoolGroup = new taskpool.TaskGroup();
           // 创建taskNum个Task
           for (let i: number = 0; i < taskNum; i++) {
-            let arrayBufferSlice: ArrayBuffer = arrayBuffer.slice(arrayBuffer.byteLength / taskNum * i, arrayBuffer.byteLength / taskNum * (i + 1));
+            let arrayBufferSlice: ArrayBuffer =
+              arrayBuffer.slice(arrayBuffer.byteLength / taskNum * i, arrayBuffer.byteLength / taskNum * (i + 1));
             // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false
             taskPoolGroup.addTask(createImageTask(arrayBufferSlice, false));
           }
@@ -81,6 +83,7 @@ struct Index {
           }).catch((e: BusinessError) => {
             console.error(e.message);
           })
+          // ...
         })
     }
     .height('100%')
@@ -88,7 +91,6 @@ struct Index {
   }
 }
 ```
-<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) -->
 
 ## ArrayBuffer转移传输方式
 

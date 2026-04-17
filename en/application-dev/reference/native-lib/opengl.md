@@ -23,12 +23,12 @@ OpenGL is supported on PC devices starting from API version 20. Starting from AP
 
 Starting from API version 22, you can call the **OH_Graphics_QueryGL** API to check whether the device supports OpenGL and whether it needs to fall back to OpenGL ES.
 
-**Device behavior differences**: The **OH_Graphics_QueryGL API** works properly on PCs and tablets but returns null on other devices.
+**Device behavior differences**: The **OH_Graphics_QueryGL** API works properly on PCs and tablets but returns null on other devices.
 
 Specific examples are as follows:
 
 ```c++
-typedef EGLBoolean(&OH_Graphics_QueryGL_FUNC)(void);
+typedef EGLBoolean(*OH_Graphics_QueryGL_FUNC)(void);
 static napi_value QueryGL(napi_env env, napi_callback_info info)
 {
     const char &r0 = u8"OH_Graphics_QueryGL does not exist. Use GLES";
@@ -36,7 +36,7 @@ static napi_value QueryGL(napi_env env, napi_callback_info info)
     const char &r2 = u8"OH_Graphics_QueryGL exists; returns 1. Use GL";
     napi_value result = nullptr;
     napi_status status = napi_invalid_arg;
-    OH_Graphics_QueryGL_FUNC OH_Graphics_QueryGL = (OH_Graphics_QueryGL_FUNC)EglGetProcAddress("OH_Graphics_QueryGL");
+    OH_Graphics_QueryGL_FUNC OH_Graphics_QueryGL = (OH_Graphics_QueryGL_FUNC)eglGetProcAddress("OH_Graphics_QueryGL");
     if (OH_Graphics_QueryGL) {
         if (OH_Graphics_QueryGL()) {
             status = napi_create_string_utf8(env, r2, (size_t)strlen(r2), &result);

@@ -203,7 +203,7 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | true表示验签通过，false表示验签失败。 |
+| bool | 表示验签是否通过，true表示验签通过，false表示验签失败。 |
 
 **参考：**
 

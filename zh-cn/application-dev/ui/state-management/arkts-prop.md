@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -26,6 +26,7 @@
 
 ## 装饰器使用规则说明
 
+<!--Table: 30%; 70%-->
 | \@Prop变量装饰器 | 说明                                       |
 | ----------- | ---------------------------------------- |
 | 装饰器参数       | 无。                                        |

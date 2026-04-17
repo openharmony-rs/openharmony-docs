@@ -12,13 +12,19 @@ IPC/RPC is used to implement object communication across processes (one-to-one m
 
 ## How to Develop
 
-<!--Del-->
 > **NOTE**
 >
-> - Currently, third-party applications cannot implement ServiceExtensionAbility. The UIAbility component of a third-party application can connect to the ServiceExtensionAbility provided by the system through [Context](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> - Before performing IPC & RPC inter-process communication, you need to obtain the proxy object of the server through Ability Kit.
 >
-> - Application scenario constraints: The client is a third-party or system application, and the server is a system application or service.
+> - Third-party applications do not support implementing inter-process communication on their own. A third-party application can only connect to the **ServiceExtensionAbility** provided by the system through [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability), and communicate with the [ServiceExtensionAbility](../application-models/extensionability-overview.md) through the returned proxy, thereby achieving communication between the third-party application and the system service.
+>
+> - Starting from API version 20, on 2-in-1 devices, you can use the **AppServiceExtensionAbility** component to provide background service capabilities for applications. Third-party applications can connect to **AppServiceExtensionAbility** through [connectAppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20), and communicate with [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) through the returned proxy object, thereby achieving communication between two third-party applications. For detailed development steps, see [AppServiceExtensionAbility](../application-models/app-service-extension-ability.md#connecting-to-a-background-service).
+>
+> - Third-party applications can also implement inter-process communication by [subscribing to common events in dynamic mode](../basic-services/common-event/common-event-subscription.md).
+>
+> - The complete IPC & RPC communication development process involves the implementation of the system **ServiceExtensionAbility**, so this guide only provides sample code for the client.
 
+<!--Del-->
 ### Creating ServiceExtensionAbility to Implement the Server
 
 Create a ServiceExtensionAbility as follows:
@@ -35,6 +41,10 @@ Create a ServiceExtensionAbility as follows:
     ```
 
 3. In the **ServiceExtAbility.ets** file, import the dependency package of the ServiceExtensionAbility. The custom class inherits the ServiceExtensionAbility and implements lifecycle callbacks. Define a stub class that inherits from [rpc.RemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#remoteobject) and implement the [onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9) method to process requests from the client. In the **onConnect** lifecycle callback, create the defined stub object and return it.
+
+> **NOTE**
+>
+> - The **ServiceExtensionAbility** module is only open to system applications. When using this module, you need to manually replace the SDK in the current project with the full SDK. To use the full SDK, you need to manually obtain it from the image site and replace it in DevEco Studio. For details, see [Switching to Full SDK](../faqs/full-sdk-switch-guide.md).
 
     ```ts
     import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -192,8 +202,7 @@ import { featureAbility } from '@kit.AbilityKit';
 let connectId = featureAbility.connectAbility(want, connect);
 ```
 
-In the stage model, the [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) API of **common.UIAbilityContext** is used to connect to an ability.
-  In the sample code provided in this topic, **this.getUIContext().getHostContext()** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+In the stage model, the [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) API of **common.UIAbilityContext** is used to connect to an ability. In the sample code provided in this topic, **this.getUIContext().getHostContext()** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -286,8 +295,7 @@ function disconnectCallback() {
 featureAbility.disconnectAbility(connectId, disconnectCallback);
 ```
 
-The **common.UIAbilityContext** provides the [disconnectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability-1) API to disconnect from the service. The **connectId** is saved when the service is connected.
-  In the sample code provided in this topic, **this.getUIContext().getHostContext()** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+The **common.UIAbilityContext** provides the [disconnectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability-1) API to disconnect from the service. The **connectId** is saved when the service is connected. In the sample code provided in this topic, **this.getUIContext().getHostContext()** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -299,6 +307,12 @@ context.disconnectServiceExtensionAbility(connectId);
 
 ## Sample
 
+> **NOTE**
+>
+> - The following complete examples involve **ServiceExtensionAbility** and requires the use of the full SDK. Before referencing an example, read the README of the example to complete the corresponding configuration before compiling.
+
 For the end-to-end complete example of IPC and RPC development, see the following:
 
 - [Complete IPC Example - Using Parcelable/ArrayBuffer](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/IPC/ObjectTransfer)
+- [Complete IPC Example - Passing Strings and Using Death Listener](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/IPC/IPC_sendMessage)
+- [Complete RPC Example - Passing Strings and Using Death Listener](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/IPC/RPC_sendMessage)

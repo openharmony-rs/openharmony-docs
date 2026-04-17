@@ -1,8 +1,8 @@
 # AppStorage：应用全局的UI状态存储
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -656,7 +656,7 @@ struct Page {
 
 使用该机制实现事件通知时，应确保AppStorage中的变量不直接被绑定到UI上，同时控制[@Watch](./arkts-watch.md)函数的复杂度。如果@Watch函数执行时间过长，会影响UI刷新效率。
 
-<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->
+<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -707,8 +707,8 @@ struct Gallery {
 export struct TapImage {
   @StorageLink('tapIndex') @Watch('onTapIndexChange') tapIndex: number = -1;
   @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
@@ -746,7 +746,7 @@ export struct TapImage {
 >
 > emit接口不支持在Previewer预览器中使用。
 
-<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) --> 
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
 
 ``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';
@@ -825,8 +825,8 @@ struct Gallery {
 @Component
 export struct TapImage {
   @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
@@ -860,7 +860,7 @@ export struct TapImage {
 
 以上通知事件逻辑简单，也可以简化成三元表达式。
 
-<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->
+<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->  
 
 ``` TypeScript
 
@@ -907,8 +907,8 @@ struct Gallery {
 @Component
 export struct TapImage {
   @StorageLink('tapIndex') tapIndex: number = -1;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',

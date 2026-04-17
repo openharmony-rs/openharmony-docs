@@ -41,8 +41,8 @@ Declares the structs for the C APIs of the radio module.
 
 | Name | Description|
 | --  | -- |
-| [TELEPHONY_MAX_OPERATOR_LEN 64](capi-telephony-radio-type-h.md)  | Maximum length of the carrier name.<br>**Since**: 13|
-| [TELEPHONY_MAX_PLMN_NUMERIC_LEN 6](capi-telephony-radio-type-h.md)  | Maximum length of the PLMN.<br>**Since**: 13 |
+| TELEPHONY_MAX_OPERATOR_LEN 64 | Maximum length of the carrier name.<br>**Since**: 13|
+| TELEPHONY_MAX_PLMN_NUMERIC_LEN 6  | Maximum length of the PLMN.<br>**Since**: 13 |
 
 ## Enum Description
 
@@ -105,7 +105,7 @@ RAT type of the device.
 | TEL_RADIO_TECHNOLOGY_1XRTT = 2 | Single-Carrier Radio Transmission Technology (1XRTT)|
 | TEL_RADIO_TECHNOLOGY_WCDMA = 3 | Wideband Code Division Multiple Access (WCDMA)|
 | TEL_RADIO_TECHNOLOGY_HSPA = 4 | High Speed Packet Access (HSPA)|
-| TEL_RADIO_TECHNOLOGY_HSPAP = 5 | High Speed Packet Access Plus (HSPA+)|
+| TEL_RADIO_TECHNOLOGY_HSPAP = 5 |  High Speed Packet Access Plus (HSPA+)|
 | TEL_RADIO_TECHNOLOGY_TD_SCDMA = 6 | Time Division-Synchronous Code Division Multiple Access (TD-SCDMA)|
 | TEL_RADIO_TECHNOLOGY_EVDO = 7 | Evolution-Data Optimized (EVDO)|
 | TEL_RADIO_TECHNOLOGY_EHRPD = 8 | Evolved High Rate Package Data (EHRPD)|

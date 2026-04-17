@@ -119,7 +119,7 @@ module.json5配置文件包含以下标签。
 | srcEntry | 标识AbilityStage组件的代码路径，详情参考[AbilityStage组件容器](../application-models/abilitystage.md)，取值为长度不超过127字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | description | 标识当前Module的描述信息，开发者可以通过该标签描述当前模块的功能与作用，取值为长度不超过255字节的字符串，可以采用字符串资源索引格式。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | <!--DelRow-->process | 标识当前Module的进程名，取值为长度不超过31字节的字符串。如果在HAP标签下配置了process，则该Module的所有UIAbility、DataShareExtensionAbility、ServiceExtensionAbility都运行在该进程中。<br/>**说明：**<br/>开启[多实例特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)生效，三方应用配置不生效。 | 字符串 | 该标签可缺省，缺省为app.json5文件下app标签下的bundleName。 |
-| mainElement | 标识当前Module的入口UIAbility名称，取值为长度不超过255字节的字符串。<br/>**说明：**<br/>如果在[abilities](#abilities标签)中配置了多个入口[UIAbility](../application-models/uiability-overview.md)，则桌面图标、名称和启动入口以该标签配置为准。如果该标签缺省或未匹配到，则按照ASCII字典序对UIAbility的name标签正序排序，返回第一个作为桌面图标、名称和启动入口。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| mainElement | 标识当前Module的入口UIAbility名称，取值为长度不超过255字节的字符串，详情请参考配置应用图标和名称中的[配置优先级和生成策略](./layered-image.md#配置优先级和生成策略)。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | [deviceTypes](#devicetypes标签) | 标识当前Module可以运行在哪类设备上。<br/>**说明：**<br/>当存在多个模块时，各模块的配置可以不同，但都必须包含将要安装的设备类型，以确保正常运行。 | 字符串数组 | 该标签不可缺省。 |
 | deliveryWithInstall | 标识当前Module是否在用户主动安装的时候安装，即该Module对应的HAP/HSP是否跟随应用一起安装。<br/>-&nbsp;true：跟随应用一起安装。<br/>-&nbsp;false：不跟随应用一起安装。<!--RP11--><!--RP11End--> | 布尔值 | 当前Module类型为HAP或HSP时，该标签不可缺省。 |
 | installationFree | 标识当前Module是否支持免安装特性。<br/>-&nbsp;true：表示支持免安装特性，且符合免安装约束。<br/>-&nbsp;false：表示不支持免安装特性。 | 布尔值 | 该标签可缺省。该标签在编译构建时自动生成，手动配置不生效。<br/>**说明：**<br/>当[bundleType](./app-configuration-file.md#配置文件标签)为原子化服务时，该标签自动配置为true。反之，该标签自动配置为false。 |
@@ -153,6 +153,8 @@ module.json5配置文件包含以下标签。
 | crossAppSharedConfig | 标识应用间共享配置的配置文件名。取值为不超过255字节的字符串。用于发布配置给其他应用读取，在应用安装时生效，应用卸载时失效。详细使用方式见[共享配置使用](../database/share-config.md#配置发布方)。<br/>**说明：**<br/>从API version 20开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | formWidgetModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，应用包需要配置该标签，用来关联卡片包。取值为卡片包的模块名称，对应卡片包module.json5中的name标签。具体使用方式请参考[FormExtensionAbility配置](../form/arkts-ui-widget-configuration.md#formextensionability配置)。<br/>**说明：**<br/> 1. 从API version 20开始，支持该标签。<br/> 2. 仅在独立卡片包的应用包中，该标签配置生效，且要求对应的卡片包模块必须配置formExtensionModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
+| uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
+| srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
 
 ## deviceTypes标签
@@ -450,6 +452,7 @@ skills示例：
           // ...
         ],
         // ...
+      }
     ],
     // ...
 }
@@ -664,6 +667,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -681,6 +685,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -792,10 +797,11 @@ wants标签示例：
       "metadata": [
         {
           "name": "ohos.module.distribution",
-          "resource": "$profile:distributionFilter_config",
+          "resource": "$profile:distributionFilter_config"
         }
       ],
       // ...
+    }
   }
   ```
 
@@ -854,7 +860,7 @@ atomicService标签示例：
 ``` JSON5
 {
   "module": {
-  // ···
+    // ...
     "atomicService": {
       "preloads":[
         {
@@ -863,7 +869,8 @@ atomicService标签示例：
       ],
       "resizeable": true
     },
-  // ···
+    // ...
+  }
 }
 ```
 
