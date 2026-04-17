@@ -8,6 +8,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## MessageLevel
@@ -16,23 +18,31 @@ ConsoleMessage的信息级别。
 
 > **说明：**
 >
-> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别都为MessageLevel.Info。
+> - 在html5侧，调用console.log或console.info对应ConsoleMessage的信息级别在ArkTS-Dyn中都为MessageLevel.Info，在ArkTS-Sta中都为MessageLevel.INFO。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
-| Debug | 1 | 调试级别。 |
-| Error | 4 | 错误级别。 |
-| Info  | 2 | 消息级别。 |
-| Log   | 5 | 日志级别。 |
-| Warn  | 3 | 警告级别。 |
+| ArkTS-Dyn: Debug <br>ArkTS-Sta: DEBUG| 0 | 调试级别。 |
+| ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 1 | 错误级别。 |
+| ArkTS-Dyn: Info  <br>ArkTS-Sta: INFO| 2 | 消息级别。 |
+| ArkTS-Dyn: Log  <br>ArkTS-Sta: LOG| 3 | 日志级别。 |
+| ArkTS-Dyn: Warn <br>ArkTS-Sta: WARN| 4 | 警告级别。 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 
 ConsoleMessage的日志来源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 值 | 说明    |
 | --------------- | -- | -------- |
@@ -56,17 +66,26 @@ ConsoleMessage的日志来源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+
 | 名称        | 值 | 说明                                 |
 | ---------- | -- | ---------------------------------- |
-| All        | 0 | 宽松模式：允许加载HTTP和HTTPS混合内容。所有不安全的内容都可以被加载。 |
-| Compatible | 1 | 兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。           |
-| None       | 2 | 严格模式：不允许加载HTTP和HTTPS混合内容。               |
+| ArkTS-Dyn: All <br>ArkTS-Sta: ALL| 0 | 宽松模式：允许加载HTTP和HTTPS混合内容。所有不安全的内容都可以被加载。 |
+| ArkTS-Dyn: Compatible <br>ArkTS-Sta: COMPATIBLE| 1 | 兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。           |
+| ArkTS-Dyn: None  <br>ArkTS-Sta: NONE| 2 | 严格模式：不允许加载HTTP和HTTPS混合内容。               |
 
 ## HitTestType<sup>(deprecated)</sup>
 
 点击事件检测结果类型。
 
  **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 > **说明：**
 >
@@ -91,17 +110,20 @@ ConsoleMessage的日志来源。
 
 | 名称      | 值 | 说明                                   |
 | ------- | -- | ------------------------------------ |
-| Default<sup>9+</sup> | 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。 |
-| None    | 1 | 优先使用cache（含过期）加载资源，无cache时从网络获取。     |
-| Online  | 2 | 强制从网络获取最新资源，不使用任何cache。               |
-| Only    | 3 | 仅使用本地cache加载资源。                        |
-
+| ArkTS-Dyn: Default<sup>9+</sup> <br>ArkTS-Sta: DEFAULT| 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23|
+| ArkTS-Dyn: None  <br> ArkTS-Sta: NONE| 1 | 优先使用cache（含过期）加载资源，无cache时从网络获取。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
+| ArkTS-Dyn: Online <br>ArkTS-Sta: ONLINE| 2 | 强制从网络获取最新资源，不使用任何cache。<br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
+| ArkTS-Dyn: Only <br>ArkTS-Sta: ONLY| 3 | 仅使用本地cache加载资源。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
 
 ## OverScrollMode<sup>11+</sup>
 
 设置Web的过滚动模式为关闭或开启。
 
  **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明          |
 | ------ | -- | ----------- |
@@ -113,6 +135,10 @@ ConsoleMessage的日志来源。
 设置手动收起软键盘时Web元素是否失焦。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -127,17 +153,25 @@ Web深色模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明           |
 | ---- | -- | ------------ |
-| Off  | 0 | Web深色模式关闭。   |
-| On   | 1 | Web深色模式开启。   |
-| Auto | 2 | Web深色模式跟随系统。 |
+| ArkTS-Dyn: Off <br>ArkTS-Sta: OFF| 0 | Web深色模式关闭。   |
+| ArkTS-Dyn: On  <br>ArkTS-Sta: ON| 1 | Web深色模式开启。   |
+| ArkTS-Dyn: Auto <br>ArkTS-Sta: AUTO| 2 | Web深色模式跟随系统。 |
 
 ## WebCaptureMode<sup>10+</sup>
 
 Web屏幕捕获模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明      |
 | ----------- | -- | ------- |
@@ -151,12 +185,12 @@ Web屏幕捕获模式。
 
 | 名称             | 值 | 说明                   |
 | ---------------- | -- | ----------------------|
-| THREAT_ILLEGAL  | 0 | 非法网站。              |
-| THREAT_FRAUD    | 1 | 欺诈网站。              |
-| THREAT_RISK     | 2 | 存在安全风险的网站。      |
-| THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 |
-| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 |
-| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 |
+| THREAT_ILLEGAL  | 0 | 非法网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_FRAUD    | 1 | 欺诈网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_RISK     | 2 | 存在安全风险的网站。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_WARNING  | 3 | 涉嫌包含不健康内容的网站。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_NONE<sup>21+</sup>      | 4 | 安全检查通过，未发现任何风险。 <br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23|
+| THREAT_UNPROCESSED<sup>21+</sup>  | 5 | 未进行安全检查。 <br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23|
 
 ## RenderExitReason<sup>9+</sup>
 
@@ -164,13 +198,17 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | 渲染进程异常退出，可能原因包括：渲染进程启动超时、达到进程数量上限导致系统回收旧渲染进程、多个页签同时关闭等。     |
-| ProcessWasKilled           | 1 | 收到SIGKILL，或被手动终止。 |
-| ProcessCrashed             | 2 | 渲染进程崩溃退出，如段错误。    |
-| ProcessOom                 | 3 | 程序内存不足。           |
-| ProcessExitUnknown         | 4 | 其他原因，比如渲染进程孵化失败。        |
+| ArkTS-Dyn: ProcessAbnormalTermination <br>ArkTS-Sta: PROCESS_ABNORMAL_TERMINATION | 0 | 渲染进程异常退出，可能原因包括：渲染进程启动超时、达到进程数量上限导致系统回收旧渲染进程、多个页签同时关闭等。     |
+| ArkTS-Dyn: ProcessWasKilled <br>ArkTS-Sta: PROCESS_WAS_KILLED | 1 | 收到SIGKILL，或被手动终止。 |
+| ArkTS-Dyn: ProcessCrashed <br>ArkTS-Sta: PROCESS_CRASHED | 2 | 渲染进程崩溃退出，如段错误。    |
+| ArkTS-Dyn: ProcessOom <br>ArkTS-Sta: PROCESS_OOM | 3 | 程序内存不足。           |
+| ArkTS-Dyn: ProcessExitUnknown <br>ArkTS-Sta: PROCESS_EXIT_UNKNOWN | 4 | 其他原因，比如渲染进程孵化失败。        |
 
 ## SslError<sup>9+</sup>
 
@@ -178,12 +216,16 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值 | 说明          |
 | ------------ | -- | ----------- |
-| Invalid      | 0 | 一般错误。       |
-| HostMismatch | 1 | 主机名不匹配。     |
-| DateInvalid  | 2 | 证书日期无效。     |
-| Untrusted    | 3 | 证书颁发机构不受信任。 |
+| ArkTS-Dyn: Invalid <br>ArkTS-Sta: INVALID| 0 | 一般错误。       |
+| ArkTS-Dyn: HostMismatch <br>ArkTS-Sta: HOST_MISMATCH| 1 | 主机名不匹配。     |
+| ArkTS-Dyn: DateInvalid <br>ArkTS-Sta: DATE_INVALID| 2 | 证书日期无效。     |
+| ArkTS-Dyn: Untrusted <br>ArkTS-Sta: UNTRUSTED| 3 | 证书颁发机构不受信任。 |
 
 ## FileSelectorMode<sup>9+</sup>
 
@@ -191,18 +233,26 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                   | 值 | 说明         |
 | -------------------- | -- | ---------- |
-| FileOpenMode         | 0 | 打开上传单个文件。  |
-| FileOpenMultipleMode | 1 | 打开上传多个文件。  |
-| FileOpenFolderMode   | 2 | 打开上传文件夹模式。 |
-| FileSaveMode         | 3 | 文件保存模式。    |
+| ArkTS-Dyn: FileOpenMode<br/>ArkTS-Sta: FILE_OPEN_MODE         | 0 | 打开上传单个文件。  |
+| ArkTS-Dyn: FileOpenMultipleMode<br/>ArkTS-Sta: FILE_OPEN_MULTIPLE_MODE | 1 | 打开上传多个文件。  |
+| ArkTS-Dyn: FileOpenFolderMode<br/>ArkTS-Sta: FILE_OPEN_FOLDER_MODE   | 2 | 打开上传文件夹模式。 |
+| ArkTS-Dyn: FileSaveMode<br/>ArkTS-Sta: FILE_SAVE_MODE          | 3 | 文件保存模式。    |
 
 ## WebLayoutMode<sup>11+</sup>
 
 Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
@@ -215,6 +265,9 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | INPUT_TIMEOUT                  | 0 | 发送给渲染进程的input事件响应超时。   |
@@ -226,10 +279,10 @@ Web布局模式的配置。
 
 | 名称                          | 值 | 说明            |    可申请的权限          |
 | --------------------------- | --------------- | ------------- |  ---------------------|
-| MidiSysex                   | TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。 | 暂不支持申请使用MIDI(Musical Instrument Digital Interface)设备相关权限。|
-| VIDEO_CAPTURE<sup>10+</sup> | TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。  | 相机权限：ohos.permission.CAMERA。|
-| AUDIO_CAPTURE<sup>10+</sup> | TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。 | 麦克风权限：ohos.permission.MICROPHONE。|
-| SENSOR<sup>12+</sup>        | TYPE_SENSOR | 传感器资源，例如加速度传感器。 | 加速度传感器权限：ohos.permission.ACCELEROMETER、 <br>陀螺仪传感器权限：ohos.permission.GYROSCOPE。 |
+| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23|暂不支持申请使用MIDI(Musical Instrument Digital Interface)设备相关权限。|
+| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|相机权限：ohos.permission.CAMERA。|
+| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|麦克风权限：ohos.permission.MICROPHONE。|
+| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|加速度传感器权限：ohos.permission.ACCELEROMETER、 <br>陀螺仪传感器权限：ohos.permission.GYROSCOPE。 |
 
 ## ContextMenuSourceType<sup>9+</sup>
 
@@ -237,11 +290,15 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值 | 说明         |
 | --------- | -- |------------ |
-| None      | 0 | 其他事件来源。 |
-| Mouse     | 1 | 鼠标事件。   |
-| LongPress | 2 | 长按事件。   |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE      | 0 | 其他事件来源。 |
+| ArkTS-Dyn: Mouse<br/>ArkTS-Sta: MOUSE     | 1 | 鼠标事件。   |
+| ArkTS-Dyn: LongPress<br/>ArkTS-Sta: LONG_PRESS| 2 | 长按事件。   |
 
 ## ContextMenuMediaType<sup>9+</sup>
 
@@ -249,15 +306,23 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值 | 说明            |
 | ----- | -- | ------------- |
-| None  | 0 | 其他非图片媒体类型。 |
-| Image | 1 | 图片类型。           |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE  | 0 | 其他非图片媒体类型。 |
+| ArkTS-Dyn: Image<br/>ArkTS-Sta: IMAGE | 1 | 图片类型。           |
 
 ## ContextMenuDataMediaType<sup>22+</sup>
 触发上下文菜单的网页元素类型（增强获取类型能力）。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值 | 说明            |
 | ----- | -- | ------------- |
@@ -273,14 +338,18 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值 | 说明                          |
 | --------- | -- | --------------------------- |
-| None      | 0 | 非输入框。                       |
-| PlainText | 1 | 纯文本类型，包括text、search、email等。 |
-| Password  | 2 | 密码类型。                       |
-| Number    | 3 | 数字类型。                       |
-| Telephone | 4 | 电话号码类型。                     |
-| Other     | 5 | 其他类型。                       |
+| ArkTS-Dyn: None<br/>ArkTS-Sta: NONE      | 0 | 非输入框。                       |
+| ArkTS-Dyn: PlainText<br/>ArkTS-Sta: PLAIN_TEXT | 1 | 纯文本类型，包括text、search、email等。 |
+| ArkTS-Dyn: Password<br/>ArkTS-Sta: PASSWORD  | 2 | 密码类型。                       |
+| ArkTS-Dyn: Number<br/>ArkTS-Sta: NUMBER_DATA    | 3 | 数字类型。                       |
+| ArkTS-Dyn: Telephone<br/>ArkTS-Sta: TELEPHONE | 4 | 电话号码类型。                     |
+| ArkTS-Dyn: Other<br/>ArkTS-Sta: OTHER     | 5 | 其他类型。                       |
 
 ## NativeEmbedStatus<sup>11+</sup>
 
@@ -290,17 +359,21 @@ Web布局模式的配置。
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
-| CREATE                        | 0 | 同层标签创建。   |
-| UPDATE                        | 1 | 同层标签更新。   |
-| DESTROY                       | 2 | 同层标签销毁。 |
-| ENTER_BFCACHE<sup>12+</sup>   | 3 | 同层标签进入BFCache。   |
-| LEAVE_BFCACHE<sup>12+</sup>   | 4 | 同层标签离开BFCache。 |
+| CREATE                        | 0 | 同层标签创建。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23   |
+| UPDATE                        | 1 | 同层标签更新。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23   |
+| DESTROY                       | 2 | 同层标签销毁。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| ENTER_BFCACHE<sup>12+</sup>   | 3 | 同层标签进入BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23   |
+| LEAVE_BFCACHE<sup>12+</sup>   | 4 | 同层标签离开BFCache。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 
 ## NativeEmbedParamStatus<sup>21+</sup>
 
 定义同层渲染object标签内嵌param元素的状态变化类型，当添加param元素时触发ADD，修改param元素属性触发UPDATE，删除param元素触发DELETE。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
@@ -313,6 +386,10 @@ Web布局模式的配置。
 支持以按位或的方式使用此枚举。例如，如果需要同时支持CAN_CUT、CAN_COPY和CAN_SELECT_ALL，可使用CAN_CUT | CAN_COPY | CAN_SELECT_ALL或11。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 值 | 说明     |
 | -------------- | -- | -------- |
@@ -327,6 +404,10 @@ Web布局模式的配置。
 定义navigation类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
@@ -344,6 +425,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的宽度最大规格不超过7,680 px（物理像素）。   |
@@ -354,6 +439,10 @@ Web布局模式的配置。
 网页meta中viewport-fit配置的视口类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
@@ -369,10 +458,10 @@ Web布局模式的配置。
 
 | 名称               | 值 | 说明           |
 | ------------------ | -- | ------------ |
-| RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
-| RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。 |
-| OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。   |
-| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
+| RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23   |
+| RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23   |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/arkts-apis-uicontext-e.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## WebElementType<sup>13+</sup>
 
@@ -384,9 +473,9 @@ Web布局模式的配置。
 
 | 名称       | 值 | 说明              |
 | --------- | -- | ----------------- |
-| IMAGE     | 1 | 网页元素为图像类型。 |
-| LINK<sup>20+</sup>     | 2 | 网页元素为超链接类型。 |
-| TEXT<sup>21+</sup>     | 3 | 网页元素为文本或可编辑区域类型。 |
+| IMAGE     | 1 | 网页元素为图像类型。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
+| LINK<sup>20+</sup>     | 2 | 网页元素为超链接类型。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
+| TEXT<sup>21+</sup>     | 3 | 网页元素为文本或可编辑区域类型。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## WebResponseType<sup>13+</sup>
 
@@ -398,14 +487,18 @@ Web布局模式的配置。
 
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
-| LONG_PRESS     | 1 | 通过长按触发菜单弹出。 |
-| RIGHT_CLICK<sup>21+</sup>    | 2 | 通过鼠标右键触发菜单弹出。 |
+| LONG_PRESS     | 1 | 通过长按触发菜单弹出。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
+| RIGHT_CLICK<sup>21+</sup>    | 2 | 通过鼠标右键触发菜单弹出。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## AudioSessionType<sup>20+</sup>
 
 应用中Web音频类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -419,6 +512,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                       | 值 | 说明           |
 | -------------------------- | -- | ------------- |
 | DEFAULT                    | 0 | 默认值，Web会在触摸按下屏幕时申请获焦，包括点击、长按、滑动、缩放等任何触摸屏幕的手势行为。 |
@@ -429,6 +526,10 @@ Web布局模式的配置。
 组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 值 | 说明           |
 | -------------------------- | -- | ------------- |
@@ -441,6 +542,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | 默认值，按vsync调度流程绘制。         |
@@ -451,6 +556,10 @@ Web布局模式的配置。
 定义PDF页面的加载结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值    | 说明                                       |
 | -------------- | ---- | ---------------------------------------- |
@@ -466,6 +575,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | NO_CONTENTFUL_NODES        | 0 | 没有命中任何有内容的节点。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN时可能触发。         |
@@ -477,6 +590,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
@@ -486,6 +603,10 @@ Web布局模式的配置。
 凭证类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
@@ -499,6 +620,10 @@ PIN码认证结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | PIN_VERIFICATION_SUCCESS        | 0 | 成功。         |
@@ -509,6 +634,10 @@ PIN码认证结果。
 定义摄像头使用状态的值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值   | 说明         |
 | ------ | ---- | ------------ |
@@ -522,6 +651,10 @@ PIN码认证结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值   | 说明         |
 | ------ | ---- | ------------ |
 | NONE   | 0    | 麦克风未工作。 |
@@ -533,6 +666,10 @@ PIN码认证结果。
 WebView中新窗口的打开方式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
