@@ -2167,13 +2167,68 @@ off(type: 'update', callback?: () =&gt;void): void
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
-
 ```ts
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 let listener = () => {
     console.info('The system pasteboard has changed.');
 };
 systemPasteboard.off('update', listener);
+```
+
+### onUpdate<sup>23+</sup>
+
+onUpdate(callback: UpdateCallback): void
+
+订阅系统剪贴板内容变化事件，当系统剪贴板中内容变化时触发用户程序的回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | function | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+
+**示例：**
+
+```ts
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The system pasteboard has changed.');
+};
+systemPasteboard.onUpdate(listener);
+```
+
+### offUpdate<sup>23+</sup>
+
+offUpdate(callback?: UpdateCallback): void
+
+取消订阅系统剪贴板内容变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- |-----|
+| callback | function | 否 | 剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有监听回调，否则表示清除指定监听回调。|
+
+**示例：**
+
+```ts
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The system pasteboard has changed.');
+};
+systemPasteboard.offUpdate(listener);
 ```
 
 ### clearData<sup>9+</sup>
