@@ -34,6 +34,7 @@
 | [skills](#skills标签) | Agent提供的功能集合，描述Agent可以执行的特定功能或技能，每个技能定义了具体的用途、标签和使用示例，Agent必须至少包含一个技能。 | 对象数组 | 否 |
 | iconUrl | Agent图标的URL，提供Agent的可视化标识图标，用于在UI界面中展示，增强Agent的辨识度和用户体验，最大长度为512字节。 | 字符串 | 否 |
 | category | Agent的类别，用于对Agent进行分类管理，常见的类别包括：“productivity”（生产力）、“entertainment”（娱乐）、“education”（教育）、“finance”（金融）、“health”（健康）等，最大长度为64字节。 | 字符串 | 否 |
+| type | Agent卡片的类型。支持数值枚举和字符串枚举名称：<br>- 0：表示应用型，取值也可采用APP。<br>- 1：表示原子化服务型，取值也可采用ATOMIC_SERVICE。<!--Del--><br>- 2：表示低代码型，取值也可采用LOW_CODE。该字段仅适用于系统应用。<!--DelEnd--> <br>如果未指定，默认为APP类型。<br>**说明**：从API版本26.0.0开始支持。 | 整数或字符串 | 可缺省，缺省为0（APP）。 |
 | extension | Agent的扩展配置项，用于存储自定义的扩展配置信息，如Agent开场白、版本协议号等，格式为JSON字符串，最大长度为5120字节。 | 字符串 | 可缺省，缺省为空。 |
 | [appInfo](#appinfo标签) | Agent所在的应用信息，包含Agent设备类型和可运行的最低版本号，用于定位和管理AgentExtensionAbility实例。 | 对象 | 可缺省，缺省值见[appInfo](#appinfo标签)。 |
 
@@ -84,7 +85,7 @@
 
 ## agent_config.json配置文件示例
 
-```json
+```json5
 {
   "agentCards": [
     {
@@ -136,6 +137,8 @@
       ],
       "iconUrl": "common/weather_icon.png",
       "category": "生活服务",
+      "type": "APP", // 字符串枚举类型
+      // "type": "0", // 数值枚举类型
       "extension": "",
       "appInfo": {
         "deviceTypes": ["phone", "tablet"],

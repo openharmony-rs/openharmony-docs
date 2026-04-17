@@ -32,6 +32,7 @@
 | [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md) | WindowManager_AvoidArea | 定义避让区域结构体。 |
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | 主窗口信息。 |
 | [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | 主窗口截图的配置项。 |
+| [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | 帧率指标数据对象。 |
 
 
 ### 枚举
@@ -41,6 +42,12 @@
 | [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | 窗口管理接口返回状态码枚举。 |
 | [WindowManager_AvoidAreaType](#windowmanager_avoidareatype) | WindowManager_AvoidAreaType | 避让区域枚举类型。 |
 | [WindowManager_WindowType](#windowmanager_windowtype) | WindowManager_WindowType | 窗口类型。 |
+
+### 函数
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
 
 ## 枚举类型说明
 
@@ -111,5 +118,19 @@ enum WindowManager_WindowType
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | 主窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 悬浮窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | 模态窗口。 |
+
+## 函数说明
+
+### OH_WindowManager_FrameMetricsMeasuredCallback()
+
+```c
+typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)
+```
+
+**描述**
+
+帧率指标回调类型。
+
+**起始版本：** 26.0.0
 
 
