@@ -26,10 +26,16 @@
 ``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-// 资源ID
-let resourceId: string = 'your_resource_id';
-// 密钥别名
-let keyAlias: string = 'extension_key';
+// 资源ID（keyAlias使用resourceId）
+let resourceId: string = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+let keyAlias: string = resourceId;
 
 // 密钥生成参数
 let properties: huks.HuksParam[] = [

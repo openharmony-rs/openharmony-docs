@@ -561,7 +561,7 @@
    }
    ```
 
-（16）onImportWrappedKeyItem<sup>26+</sup>用于导入加密封装的密钥对。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。关于handle和wrappedHandle参数：当handle有效时，以handle为主；当handle无效时，使用wrappedHandle。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
+（16）onImportWrappedKeyItem<sup>26+</sup>用于导入加密封装的密钥对。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
 
    ```ts
    onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
@@ -587,16 +587,10 @@
      if (purpose === undefined) {
        purpose = huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT;
      }
-
-     // handle优先规则：handle有效时以handle为主，否则使用wrappedHandle
-     let effectiveHandle: string = handle;
-     if (!handle || handle.length === 0) {
-       effectiveHandle = wrappedHandle;
-     }
       
      try {
        let driver: YourUKeyDriver = YourDriverInstance;
-       result = driver.YourDriver_onImportWrappedKeyItem(effectiveHandle, wrappedHandle, algorithm, keySize, purpose, wrappedKey);
+       result = driver.YourDriver_onImportWrappedKeyItem(handle, wrappedHandle, algorithm, keySize, purpose, wrappedKey);
        result.resultCode = 0;
      } catch (error) {
        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;

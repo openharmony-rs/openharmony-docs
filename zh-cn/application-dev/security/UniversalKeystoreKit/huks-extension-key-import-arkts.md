@@ -28,12 +28,18 @@
 ``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-// 资源ID
-let resourceId: string = 'your_resource_id';
-// 密钥别名（导入后的密钥）
-let keyAlias: string = 'extension_imported_key';
-// 解封密钥别名（用于解封导入的密钥）
-let wrappingKeyAlias: string = 'extension_wrapping_key';
+// 资源ID（keyAlias和wrappingKeyAlias使用resourceId）
+let resourceId: string = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+let keyAlias: string = resourceId;
+// wrappingKeyAlias可以是相同的resourceId或另一个已打开的资源ID
+let wrappingKeyAlias: string = resourceId;
 
 // 密钥导入参数
 let properties: huks.HuksParam[] = [
