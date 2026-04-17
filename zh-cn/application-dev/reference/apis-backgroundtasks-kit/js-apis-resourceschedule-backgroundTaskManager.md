@@ -168,6 +168,10 @@ ArkTS-Sta: getRemainingDelayTime(requestId: int): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明         |
@@ -1280,7 +1284,7 @@ on(type: 'continuousTaskCancel', callback: Callback&lt;ContinuousTaskCancelInfo&
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1389,7 +1393,7 @@ off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInf
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1498,7 +1502,7 @@ on(type: 'continuousTaskSuspend', callback: Callback&lt;ContinuousTaskSuspendInf
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1609,7 +1613,7 @@ off(type: 'continuousTaskSuspend', callback?: Callback&lt;ContinuousTaskSuspendI
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1720,7 +1724,7 @@ on(type: 'continuousTaskActive', callback: Callback&lt;ContinuousTaskActiveInfo&
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1827,7 +1831,7 @@ off(type: 'continuousTaskActive', callback?: Callback&lt;ContinuousTaskActiveInf
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2689,7 +2693,7 @@ requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;):
 
 **设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
 
-**ArkTS-Dyn起始版本：** 21
+**ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 24
 
