@@ -783,7 +783,7 @@ import { process } from '@kit.ArkTS';
 let oldObserver: errorManager.ResourceUsageObserver;
 const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType, resourceSize, detailInfo) => {
   // 自定义的resourceUsageObserver实现逻辑
-  console.info('[Observer]  Uncaught exception observer invoked.');
+  console.info('[Observer] Resource usage observer.');
   if (oldObserver) {
     oldObserver(resourceType, resourceSize, detailInfo);
   } else {
