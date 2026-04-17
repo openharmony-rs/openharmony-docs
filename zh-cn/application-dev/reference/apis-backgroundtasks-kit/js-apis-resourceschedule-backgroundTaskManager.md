@@ -1591,6 +1591,9 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_SUSPEND_USED_ILLEGALLY              | 11    | 使用非法类型的长时任务，如申请AUDIO_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。预留接口，暂未启用。        |
 | SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING         | 12    | 系统高负载暂停长时任务。预留接口，暂未启用。        |
 | SYSTEM_SUSPEND_VOIP_NOT_USED               | 13   | 申请VOIP类型长时任务，但是未检测到音频流或者录音流。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST    | 14   | 申请BLUETOOTH_INTERACTION类型长时任务，但是一段时间没有蓝牙数据流。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_POSITION_NOT_MOVED          | 15   | 申请LOCATION类型长时任务，但是一段时间内设备处于绝对静止状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE         | 16   | 申请AUDIO_PLAYBACK类型长时任务，但是一段时间内处于整机静音状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | 申请特殊类型长时任务，但是用户未授权。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ContinuousTaskActiveInfo<sup>20+</sup>
