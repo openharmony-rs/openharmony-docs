@@ -81,10 +81,9 @@ OH_MIDIStatusCode OH_MIDIClient_Destroy(OH_MIDIClient *client)
 
 销毁MIDI客户端并释放资源。
 
->**说明：** 
->在不再需要MIDI功能时（例如应用退出或MIDI模块停用时）调用此函数销毁客户端。
- * 销毁客户端时会自动关闭所有通过此客户端打开的设备和端口（安全回收机制），无需手动逐一关闭。
- * 建议在销毁前按逆序手动关闭资源以保证代码逻辑清晰（端口->设备->客户端），但这非强制要求。
+>**说明：**
+> 
+> 在不再需要MIDI功能时（例如应用退出或MIDI模块停用时）调用此函数销毁客户端。销毁客户端时会自动关闭所有通过此客户端打开的设备和端口（安全回收机制），无需手动逐一关闭。建议在销毁前按逆序手动关闭资源以保证代码逻辑清晰（端口->设备->客户端），但这非强制要求。
 
 **起始版本：** 24
 
@@ -135,11 +134,9 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_M
 
 获取连接的MIDI设备信息。将设备信息写入infos参数指定的缓冲区。缓冲区大小应基于[OH_MIDIClient_GetDeviceCount](capi-native-midi-h.md#oh_midiclient_getdevicecount)返回的数量进行分配。<br> 如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在返回的设备信息中。
 
->**说明：** 
->当实际连接的设备数量大于输入参数'infos'数组的容量时，输出'infos'数组将仅包含部分设备信息，
- * 输出'actualDeviceCount'将等于'capacity'，函数返回[OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode)。
- * 当实际数量小于或等于'capacity'时，所有可用设备信息将填入'infos'，
- * 输出'actualDeviceCount'反映实际设备数量。
+> **说明：** 
+> 
+> 当实际连接的设备数量大于输入参数'infos'数组的容量时，输出'infos'数组将仅包含部分设备信息，输出'actualDeviceCount'将等于'capacity'，函数返回[OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode)。当实际数量小于或等于'capacity'时，所有可用设备信息将填入'infos'，输出'actualDeviceCount'反映实际设备数量。
 
 **起始版本：** 24
 
@@ -168,8 +165,9 @@ OH_MIDIStatusCode OH_MIDIClient_OpenDevice(OH_MIDIClient *client, int64_t device
 
 打开指定ID的MIDI设备。
 
->**说明：** 
->使用[OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice)释放设备资源。
+> **说明：**
+>  
+> 使用[OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice)释放设备资源。
 
 **起始版本：** 24
 
@@ -197,9 +195,9 @@ OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice(OH_MIDIClient *client, const char 
 
 异步打开蓝牙低功耗（BLE）MIDI设备。此函数为异步操作，调用后立即返回状态码（表示请求是否成功发送），实际连接结果（成功或失败）将在BLE连接过程完成后通过提供的回调异步传递。
 
->**说明：** 
->如果蓝牙权限被拒绝，[OH_MIDIClient_OnDeviceOpened](capi-native-midi-base-h.md#oh_midiclient_ondeviceopened)回调将以opened参数为false、
- * device参数为null被调用。应用应检查opened参数后再尝试使用设备句柄。
+> **说明：**
+> 
+> 如果蓝牙权限被拒绝，[OH_MIDIClient_OnDeviceOpened](capi-native-midi-base-h.md#oh_midiclient_ondeviceopened)回调将以opened参数为false、device参数为null被调用。应用应检查opened参数后再尝试使用设备句柄。
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -230,9 +228,9 @@ OH_MIDIStatusCode OH_MIDIClient_CloseDevice(OH_MIDIClient *client, OH_MIDIDevice
 
 关闭MIDI设备。
 
->**说明：** 
->关闭设备时会同时关闭该设备上所有已打开的端口。
- * 该功能与[OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)配对使用。
+> **说明：** 
+>
+> 关闭设备时会同时关闭该设备上所有已打开的端口。该功能与[OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)配对使用。
 
 **起始版本：** 24
 
@@ -285,11 +283,9 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_
 
 获取指定MIDI设备的端口信息。将端口信息写入由调用者分配的缓冲区。
 
->**说明：** 
->当实际端口数量大于输入参数'infos'数组的容量时，输出'infos'数组将仅包含部分端口信息，
- * 输出'actualPortCount'将等于'capacity'，函数返回[OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode)。
- * 当实际数量小于或等于'capacity'时，所有可用端口信息将填入'infos'，
- * 输出'actualPortCount'反映实际端口数量。
+> **说明：** 
+> 
+> 当实际端口数量大于输入参数'infos'数组的容量时，输出'infos'数组将仅包含部分端口信息，输出'actualPortCount'将等于'capacity'，函数返回[OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode)。当实际数量小于或等于'capacity'时，所有可用端口信息将填入'infos'，输出'actualPortCount'反映实际端口数量。
 
 **起始版本：** 24
 
@@ -319,8 +315,9 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenInputPort(OH_MIDIDevice *device, OH_MIDIPort
 
 打开MIDI输入端口（接收数据）。注册回调函数以接收MIDI数据流。
 
->**说明：** 
->使用[OH_MIDIDevice_CloseInputPort](capi-native-midi-h.md#oh_mididevice_closeinputport)关闭输入端口。
+> **说明：** 
+> 
+> 使用[OH_MIDIDevice_CloseInputPort](capi-native-midi-h.md#oh_mididevice_closeinputport)关闭输入端口。
 
 **起始版本：** 24
 
@@ -349,8 +346,9 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenOutputPort(OH_MIDIDevice *device, OH_MIDIPor
 
 打开MIDI输出端口（发送数据）。
 
->**说明：** 
->使用[OH_MIDIDevice_CloseOutputPort](capi-native-midi-h.md#oh_mididevice_closeoutputport)关闭输出端口。
+> **说明：** 
+>
+> 使用[OH_MIDIDevice_CloseOutputPort](capi-native-midi-h.md#oh_mididevice_closeoutputport)关闭输出端口。
 
 **起始版本：** 24
 
@@ -377,8 +375,9 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseInputPort(OH_MIDIDevice *device, uint32_t p
 
 关闭MIDI输入端口。
 
->**说明：** 
->与[OH_MIDIDevice_OpenInputPort](capi-native-midi-h.md#oh_mididevice_openinputport)配对使用。
+> **说明：** 
+> 
+> 与[OH_MIDIDevice_OpenInputPort](capi-native-midi-h.md#oh_mididevice_openinputport)配对使用。
 
 **起始版本：** 24
 
@@ -405,8 +404,9 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseOutputPort(OH_MIDIDevice *device, uint32_t 
 
 关闭MIDI输出端口。
 
->**说明：** 
->与[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)配对使用。
+> **说明：** 
+> 
+> 与[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)配对使用。
 
 **起始版本：** 24
 
@@ -433,12 +433,11 @@ OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, 
 
 批量发送MIDI消息（非阻塞模式，每条消息具有原子性）。
 
->**说明：** 
->将MIDI事件数组写入共享内存缓冲区。
- * - 单条消息原子性：每条事件作为不可分割的单元处理，不会出现消息被截断的情况。
- * - 批量操作非原子性：整个数组不一定全部写入成功。如果缓冲区空间不足，
- * 已成功写入的事件不会被回滚。函数返回[OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode)，
- * 并通过eventsWritten参数返回已成功写入的事件数量，开发者可据此从断点处继续发送剩余事件。
+> **说明：**
+> 
+> 将MIDI事件数组写入共享内存缓冲区。
+> - 单条消息原子性：每条事件作为不可分割的单元处理，不会出现消息被截断的情况。
+> - 批量操作非原子性：整个数组不一定全部写入成功。如果缓冲区空间不足，已成功写入的事件不会被回滚。函数返回[OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode)，并通过eventsWritten参数返回已成功写入的事件数量，开发者可据此从断点处继续发送剩余事件。
 
 **起始版本：** 24
 
@@ -468,8 +467,9 @@ OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIn
 
 发送超过标准MIDI消息长度的SysEx（System Exclusive，系统专用）消息，自动处理拆包和阻塞等待。这是一个实用函数，适用于将SysEx作为原始字节流（MIDI 1.0风格，F0...F7）处理的应用。<br> 同时适用于[OH_MIDI_PROTOCOL_1_0](capi-native-midi-base-h.md#oh_midiprotocol)和[OH_MIDI_PROTOCOL_2_0](capi-native-midi-base-h.md#oh_midiprotocol)会话。<br> 操作系统MIDI服务会自动将数据转换为设备端口所需的格式。
 
->**说明：** 
->此函数为阻塞调用，执行循环写入，当缓冲区填满时将阻塞并重试，直至写入完整。
+> **说明：** 
+> 
+> 此函数为阻塞调用，执行循环写入，当缓冲区填满时将阻塞并重试，直至写入完整。
 
 **起始版本：** 24
 
@@ -498,8 +498,9 @@ OH_MIDIStatusCode OH_MIDIDevice_FlushOutputPort(OH_MIDIDevice *device, uint32_t 
 
 清空输出缓冲区中的待发送消息。立即丢弃指定端口输出缓冲区中等待的所有MIDI事件，包括用于未来时间戳的事件。
 
->**说明：** 
->此操作不发送"All Notes Off"消息，仅清空队列。
+> **说明：** 
+> 
+> 此操作不发送"All Notes Off"消息，仅清空队列。
 
 **起始版本：** 24
 
