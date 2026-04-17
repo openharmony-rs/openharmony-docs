@@ -796,7 +796,7 @@ Sets whether to display the default selection icon.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | boolean | Yes  | Whether to display the default selection icon.<br>true: The default icon is displayed. false: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**<br>When show is set to true and the background color of the selected option is set, the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set using selectedOptionBgColor, the background color is not highlighted and only the icon selected by default is displayed.|
+| show  | boolean | Yes  | Whether to display the default selection icon.<br>**true**: The default icon is displayed. **false**: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**<br>When **show** is set to **true** and the background color of the selected option is set, both the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set via **selectedOptionBgColor**, the background color is not highlighted and only the icon selected by default is displayed.|
 
 ### textModifier<sup>20+</sup>
 

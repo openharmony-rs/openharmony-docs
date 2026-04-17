@@ -1185,7 +1185,7 @@ Sets how menu display is triggered.
 | Name        | Description           |
 | ---------- | ------------- |
 | LongPress  | The menu is displayed when the component is long-pressed.  |
-| RightClick | Shows the shortcut menu by right-clicking the text.|
+| RightClick | The menu is displayed when the component is right-clicked.|
 
 ## RenderFit<sup>10+</sup>
 
@@ -1235,7 +1235,7 @@ Enumerates rendering strategies for drawing rounded corners.
 | Name                                | Value| Description                                      |
 | ---------------------------------- | --- | ---------------------------------------- |
 | FAST | 0 | Online rendering mode. The content to be rendered is clipped with rounded corners and directly rendered to the main canvas.<br> Note: Online rendering may cause display anomalies in certain scenarios. For example, when blur effects are applied within rounded corner components, background colors may interact and create gradient overlay effects. For detailed behavior, see [Example 3: Configuring Offscreen Rounded Corners](./ts-universal-attributes-border.md#example-3-configuring-offscreen-rounded-corners).|
-| OFFSCREEN | 1 | Offscreen rendering mode. The content to be rendered is first rendered to the offscreen canvas without rounded corners, and then clipped with rounded corners and rendered to the main canvas.<br> **NOTE**<br>1. Compared with online rendering, offscreen rendering requires additional performance overhead.<br>2. In offscreen rendering, the content is first rendered on an additional canvas, and then rendered on the main canvas.<br>3. Use offscreen rendering primarily for multi-layer components requiring rounded corners. For single components, it has effect only when the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, [background color](./ts-universal-attributes-background.md), or [foreground color](./ts-universal-attributes-foreground-color.md) is configured. |
+| OFFSCREEN | 1 | Offscreen rendering mode. The content to be rendered is first rendered to the offscreen canvas without rounded corners, and then clipped with rounded corners and rendered to the main canvas.<br> **NOTE**<br>1. Compared with online rendering, offscreen rendering requires additional performance overhead.<br>2. In offscreen rendering, the content is first rendered on an additional canvas, and then rendered on the main canvas.<br>3. Use offscreen rendering primarily for multi-layer components requiring rounded corners. For single components, it has effect only when the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, [background](./ts-universal-attributes-background.md), or [foreground color](./ts-universal-attributes-foreground-color.md) is configured. |
 
 ## ScrollSource<sup>12+</sup>
 
@@ -1476,8 +1476,8 @@ Defines the visibility and layout placeholder status of the component.
 
 | Name     | Value| Description              |
 | ------- | ---------------- | ---------------- |
-| Hidden  | 1 | The component is hidden, and a placeholder is used for it in the layout.   |
 | Visible | 0 | The component is visible.             |
+| Hidden  | 1 | The component is hidden, and a placeholder is used for it in the layout.   |
 | None    | 2 | The component is hidden. It is not involved in the layout, and no placeholder is used for it.|
 
 ## Week

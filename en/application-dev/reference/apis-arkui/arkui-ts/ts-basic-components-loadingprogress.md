@@ -125,7 +125,7 @@ Enumerates style types of **LoadingProgress**. This API is not recommended for u
 
 ## Example
 
-### Example 1 : Setting the Color of the Loading Progress Animation
+### Example 1: Setting the Color of the Loading Progress Animation
 
 This example demonstrates how to set the color of the loading progress animation using the [color](#color) attribute.
 

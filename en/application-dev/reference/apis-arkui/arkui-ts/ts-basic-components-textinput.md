@@ -2136,7 +2136,7 @@ struct TextInputExample {
         .showUnderline(true)
         .showCounter(true,
           { thresholdPercentage: 50, highlightBorder: true })// The character counter is in this format: Number of characters that have been entered/Maximum number of characters allowed, which is specified by maxLength().
-          // The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by 50% (threshold percentage).
+          // The character counter is displayed when the number of characters that have been entered is greater than or equal to the maximum number of characters multiplied by 50% (threshold percentage).
           // When highlightBorder is set to false, the text box border does not turn red when the input exceeds the maximum character limit. The default value is true.
         .onChange((value: string) => {
           this.text = value;
