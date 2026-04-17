@@ -174,19 +174,19 @@
    // entry/src/main/resources/zh_CN/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    },
-   	    {
-   	      "name": "update",
-   	      "value": "刷新"
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        },
+        {
+          "name": "update",
+          "value": "刷新"
+        }
       ]
    }
    ```
@@ -343,19 +343,19 @@
 
 5. 资源文件如下。
 
-   ```json5
+   ```json
    // entry/src/main/resources/base/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        }
       ]
    }
    ```
