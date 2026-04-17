@@ -179,7 +179,7 @@ onChangeFormVisibility(newStatus: Record\<string, number>): void
 
 | 参数名  | 类型   | 必填 | 说明                   |
 | ------- | ------ | ---- | ---------------------- |
-| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。 |
+| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。**说明：**number参数是取值范围[0,2]的整数，0是未知类型，1是可见状态，2是不可见状态。 |
 
 **示例：**
 
