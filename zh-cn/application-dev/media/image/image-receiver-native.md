@@ -172,8 +172,7 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OhosImageSize size;
    OH_Image_Receiver_GetSize(imgReceiver_c, &size);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Receiver_GetSize  width: %{public}d, height:%{public}d", size.width, size.height);
-   
-   int32_t ret;
+
    napi_value nextImage;
    // 或调用 OH_Image_Receiver_ReadNextImage(imgReceiver_c, &nextImage);
    OH_Image_Receiver_ReadLatestImage(imgReceiver_c, &nextImage);
