@@ -118,6 +118,48 @@ getDefaultInputMethod(): InputMethodProperty
 let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();
 ```
 
+## inputMethod.getDefaultInputMethod<sup>24+</sup>
+
+getDefaultInputMethod(userId?: number): InputMethodProperty
+
+获取指定用户的默认输入法。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodProperty](#inputmethodproperty8) | 返回默认输入法属性对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
+```
+
 ## inputMethod.getSystemInputMethodConfigAbility<sup>11+</sup>
 
 getSystemInputMethodConfigAbility(): ElementName
@@ -146,6 +188,50 @@ getSystemInputMethodConfigAbility(): ElementName
 import { bundleManager } from '@kit.AbilityKit';
 
 let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility();
+```
+
+## inputMethod.getSystemInputMethodConfigAbility<sup>24+</sup>
+
+getSystemInputMethodConfigAbility(userId?: number): ElementName
+
+获取指定用户的系统输入法设置界面Ability信息。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | 系统输入法设置界面Ability的ElementName。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+
+let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
 ```
 
 ## inputMethod.getSetting<sup>9+</sup>
@@ -282,6 +368,61 @@ inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
 >
 > 在 API11 中 ` 201 permissions check fails.` 这个错误码被移除。
 
+## inputMethod.switchInputMethodWithUserId<sup>24+</sup>
+
+switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
+
+切换输入法，使用promise异步回调。
+> **说明：**
+>
+>  - 在API version 24版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 目标输入法的包名。 |
+| subtypeId | string | 否 | 输入法子类型的id。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+  | 类型                                      | 说明                         |
+  | ----------------------------------------- | ---------------------------- |
+  | Promise\<boolean> | Promise对象。异步执行切换输入法操作，无返回值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | permissions check fails. |
+| 202 | not system application. |
+| 12800005 | configuration persistence error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbility', 100).then(() => {
+  console.info('Succeeded in switching input method.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## inputMethod.getCurrentInputMethod<sup>9+</sup>
 
 getCurrentInputMethod(): InputMethodProperty
@@ -300,6 +441,48 @@ getCurrentInputMethod(): InputMethodProperty
 
 ```ts
 let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+```
+
+## inputMethod.getCurrentInputMethod<sup>24+</sup>
+
+getCurrentInputMethod(userId?: number): InputMethodProperty
+
+获取指定用户的当前输入法。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodProperty](#inputmethodproperty8) | 返回当前输入法属性对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
 ```
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
@@ -455,6 +638,50 @@ getCurrentInputMethodSubtype(): InputMethodSubtype
 import { InputMethodSubtype } from '@kit.IMEKit';
 
 let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
+```
+
+## inputMethod.getCurrentInputMethodSubtype<sup>24+</sup>
+
+getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
+
+获取指定用户的当前输入法子类型。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 返回当前输入法子类型对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
 ```
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
@@ -869,6 +1096,7 @@ Enter键的功能类型。
 | width  | number | 否 | 否 | 输入法窗口的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
 | height  | number | 否 | 否 | 输入法窗口的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
 | displayId<sup>23+</sup> | number | 否 | 是 | 输入法软键盘窗口所在的屏幕ID。<br>**模型约束：** 该参数仅可在Stage模型下使用。|
+| userId<sup>24+</sup> | number | 否 | 是 | 显示输入法窗口的用户ID。<br>**模型约束：** 该参数仅可在Stage模型下使用。|
 
 ## EnabledState<sup>15+</sup>
 
@@ -988,6 +1216,26 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 | ------- | ----------------- | ---- | ----------------------------- |
 | text    | string            | 是   | 预览文本内容。                 |
 | range   | [Range](#range10) | 是   | 文本的选中范围。 |
+
+## ImeChangeWithUserIdCallback<sup>24+</sup>
+
+type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
+
+输入法变更事件回调，携带发生输入法变更的用户ID。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名                    | 类型                                                         | 必填 | 说明             |
+| ------------------------- | ------------------------------------------------------------ | ---- | ---------------- |
+| inputMethodProperty | [InputMethodProperty](#inputmethodproperty8) | 是   | 当前输入法的属性。 |
+| inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
+| userId | number | 是 | 输入法发生变化的用户ID。 |
 
 ## AttachFailureReason<sup>22+</sup>
 
@@ -3521,6 +3769,53 @@ inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethod
 
 ```
 
+### getInputMethodSubtypes<sup>24+</sup>
+
+getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMethodSubtype&gt;
+
+获取指定用户指定输入法的子类型列表。同步接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 指定输入法的包名。 |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                   |
+| ----------------------------------------------------------- | ---------------------- |
+| Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)> | 返回指定输入法的子类型列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800001 | bundle manager error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
+```
+
 ### getInputMethods<sup>9+</sup>
 
 getInputMethods(enable: boolean, callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt;): void
@@ -3657,6 +3952,56 @@ getInputMethodsSync(enable: boolean): Array&lt;InputMethodProperty&gt;
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true);
 ```
 
+### getInputMethodsSync<sup>24+</sup>
+
+getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
+
+获取指定用户已激活/未激活的输入法应用列表。同步接口。
+
+> **说明：**
+>
+> 已激活输入法为使能的输入法应用。默认输入法默认使能，其他输入法可被设置为使能或非使能。
+>
+> 已激活输入法列表包括默认输入法和已被设置为使能的输入法应用，未激活输入法列表包括除使能输入法以外的其他已安装的输入法。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                    |
+| ------ | ------- | ---- | ----------------------- |
+| enable | boolean | 是   |- true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                                 | 说明                          |
+| ---------------------------------------------------- | ----------------------------- |
+| Array\<[InputMethodProperty](#inputmethodproperty8)> | 返回已激活/未激活输入法列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800001 | bundle manager error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
+```
+
 ### getAllInputMethods<sup>11+</sup>
 
 getAllInputMethods(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt;): void
@@ -3756,6 +4101,49 @@ getAllInputMethodsSync(): Array&lt;InputMethodProperty&gt;
 
 ```ts
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync();
+```
+
+### getAllInputMethodsSync<sup>24+</sup>
+
+getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
+
+获取指定用户的所有输入法应用列表。同步接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                    |
+| ------ | ------- | ---- | ----------------------- |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                                 | 说明               |
+| ---------------------------------------------------- | ------------------ |
+| Array\<[InputMethodProperty](#inputmethodproperty8)> | 返回所有输入法列表 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800001 | bundle manager error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
 ```
 
 ### showOptionalInputMethods<sup>(deprecated)</sup>
@@ -4000,4 +4388,60 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 }).catch((err: BusinessError) => {
   console.error(`Failed to getInputMethodState, code: ${err.code}, message: ${err.message}`);
 })
+```
+
+### enableInputMethod<sup>24+</sup>
+
+enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
+
+修改指定用户输入法的启用状态。
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 输入法的包名。 |
+| extensionName | string | 是 | 输入法的扩展名。 |
+| enabledState | [EnabledState](#enabledstate15) | 是 | 要修改的启用状态。 |
+| userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | permissions check fails. |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800018 | input method is not found. |
+| 12800019 | current operation cannot be applied to the preconfigured default input method. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodExtAbility', inputMethod.EnabledState.FULL_EXPERIENCE_MODE, 100).then(() => {
+  console.info('Succeeded in enabling input method.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
+});
 ```
