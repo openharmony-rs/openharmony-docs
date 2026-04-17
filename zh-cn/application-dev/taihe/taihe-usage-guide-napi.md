@@ -10,7 +10,7 @@
 
 ## 数据类型映射表
 
-Taihe支持的基本数据类型包括数字、布尔值和[字符串](taihe-usage-guide-cpp.md#61-字符串string)等，以及更复杂的数据结构，如 [Map](taihe-usage-guide-cpp.md#65-映射map)、[Array](taihe-usage-guide-cpp.md#62-数组array)、[Optional](taihe-usage-guide-cpp.md#63-可选类型optional)、[callback](taihe-usage-guide-cpp.md#67-函数闭包callback)等，各种数据类型在ArkTS-Dyn、C++、Taihe之间的具体的映射关系详见下表。
+Taihe支持的基本数据类型包括数字、布尔值和[字符串](taihe-usage-guide-cpp.md#字符串string)等，以及更复杂的数据结构，如[Map](taihe-usage-guide-cpp.md#映射map)、[Array](taihe-usage-guide-cpp.md#数组array)、[Optional](taihe-usage-guide-cpp.md#可选类型optional)、[callback](taihe-usage-guide-cpp.md#函数闭包callback)等，各种数据类型在ArkTS-Dyn、C++、Taihe之间的具体的映射关系详见下表。
 
 | ArkTS-Dyn                | C++                                | Taihe                    |
 | ------------------------ | ---------------------------------- | ------------------------ |
@@ -47,15 +47,15 @@ Taihe支持的基本数据类型包括数字、布尔值和[字符串](taihe-usa
 | null                     | ::taihe::unit                      | @null unit               |
 | undefined                | ::taihe::unit                      | @undefined unit          |
 
-表格展示了不同编程语言（ArkTS-Dyn、C++ 和Taihe）中数据类型的对应关系。其中使用的T、K和V代表任意类型，可以在类型系统中进行灵活的定义和组合。
+表格展示了不同编程语言（ArkTS-Dyn、C++和Taihe）中数据类型的对应关系。其中使用的T、K和V代表任意类型，可以在类型系统中进行灵活的定义和组合。
 
-注意，ArkTS-Dyn的Map和Record在Taihe中本质上都是Map，所以在C++实现时可以参考Taihe [Map](taihe-usage-guide-cpp.md#65-映射map)的用法，ArkTS-Dyn的Array，bigint，arraybuffer和typedarray在Taihe中本质上都是Array，所以在C++实现时可以参考Taihe [Array](taihe-usage-guide-cpp.md#62-数组array)的用法。
+注意，ArkTS-Dyn的Map和Record在Taihe中本质上都是Map，所以在C++实现时可以参考Taihe [Map](taihe-usage-guide-cpp.md#映射map)的用法，ArkTS-Dyn的Array，bigint，arraybuffer和typedarray在Taihe中本质上都是Array，所以在C++实现时可以参考Taihe [Array](taihe-usage-guide-cpp.md#数组array)的用法。
 
 注意，由于NAPI只提供了针对int32_t，uint32_t，int64_t，double类型的接口，所以推荐用户在Taihe中使用i32，u32，i64，f64，如用户在C++实现中实际需要使用其他类型，建议在实现代码中手动进行类型转换。
 
-# 包
+## 包
 
-在Taihe原生的语言能力中，只有“[包](taihe-idl-reference.md#包)”的概念，包名和Taihe IDL文件名一一对应。以`foo.bar.baz.ohidl`为例，对应的C++命名空间为`::foo::bar::baz`，对应的声明文件为`foo.bar.baz.d.ts`。
+在Taihe原生的语言能力中，只有"包"的概念，包名和Taihe IDL文件名一一对应。以`foo.bar.baz.ohidl`为例，对应的C++命名空间为`::foo::bar::baz`，对应的声明文件为`foo.bar.baz.d.ts`。
 
 在Taihe中，使用`use`语法来导入外部声明，可以导入的声明类型包括[枚举](#枚举)，[标签联合](#标签联合)，[结构体](#结构体)，[接口](#接口)。Taihe有两种导入方式：
 
@@ -121,9 +121,9 @@ const lib_people = requireNapi('./people.so', RequireBaseDir.SCRIPT_DIR);
 const lib_building = requireNapi('./building.so', RequireBaseDir.SCRIPT_DIR);
 
 let g = lib_building.make_group();
-console.log(g.member.age, g.member.name, g.number);
+console.info(g.member.age, g.member.name, g.number);
 let p = lib_people.make_student();
-console.log(p.age, p.name);
+console.info(p.age, p.name);
 ```
 
 输出结果如下：
@@ -133,11 +133,11 @@ console.log(p.age, p.name);
 22 mike
 ```
 
-# 命名空间
+## 命名空间
 
 在Taihe中，使用注解`@!namespace`可以为生成的.d.ts代码添加一个命名空间。
 
-命名空间注解的语法为`@!namespace(<module_name>, <namespace_name>)`, 表示该文件下面的内容为`<module_name>`模块下，`<namespace_name>`命名空间中的内容。该注解作用于Taihe文件。
+命名空间注解的语法为`@!namespace(<module_name>, <namespace_name>)`,表示该文件下面的内容为`<module_name>`模块下，`<namespace_name>`命名空间中的内容。该注解作用于Taihe文件。
 
 推荐将Taihe文件命名为<module_name>.<namespace_name>.ohidl。
 
@@ -265,7 +265,7 @@ namespace: my_module_a.ns1.ns2.ns3.ns4.ns5, func: noo
 namespace: my_module_b.functiontest, func: bar
 ```
 
-# 全局函数
+## 全局函数
 
 下面的代码将展示如何书写Taihe文件，生成一个全局函数的NAPI桥接代码及对应的.d.ts声明。Taihe中的[全局函数](taihe-idl-reference.md#函数)参数和返回值可以是任意类型，注意，在使用Taihe工具进行NAPI桥接代码生成时不支持以`callback`类型做为函数返回值类型。
 
@@ -287,7 +287,7 @@ export function add(a: number, b: number): number;
 
 ### C++实现
 
-除了书写Taihe文件外，还需要[在C++侧实现函数](taihe-usage-guide-cpp.md#71-导出函数接口发布方)。
+除了书写Taihe文件外，还需要[在C++侧实现函数](taihe-usage-guide-cpp.md#导出函数接口发布方)。
 
 ```cpp
 ::taihe::expected<int32_t, ::taihe::error> add(int32_t a, int32_t b) {
@@ -300,7 +300,7 @@ TH_EXPORT_CPP_API_add(add);
 
 ```typescript
 let add_show = add(2, 3);
-console.log("function add:", add_show);
+console.info("function add:", add_show);
 ```
 
 输出结果如下：
@@ -354,7 +354,7 @@ function add: 5
   }
   ```
 
-3. 接下来，`package_name_add_NAPI0`函数会调用`package_name::add`函数，这个函数的调用会被自动转发到C++实现文件中，通过TH_EXPORT_CPP_API_add这个宏所导出的具体实现。
+- 接下来，`package_name_add_NAPI0`函数会调用`package_name::add`函数，这个函数的调用会被自动转发到C++实现文件中，通过TH_EXPORT_CPP_API_add这个宏所导出的具体实现。
 
    **.impl.cpp**
 
@@ -366,9 +366,9 @@ function add: 5
    TH_EXPORT_CPP_API_add(add);
    ```
 
-4. `package_name::add`函数执行完毕后，将返回第3步所示的函数，将获取到的返回值转换为ArkTS-Dyn类型，返回给ArkTS-Dyn侧函数。
+- `package_name::add`函数执行完毕后，将返回第3步所示的函数，将获取到的返回值转换为ArkTS-Dyn类型，返回给ArkTS-Dyn侧函数。
 
-# 枚举
+## 枚举
 
 进行枚举类型相关开发时，可以使用enum，表示有限的状态。进行常量相关开发时，可以在enum上使用@const注解。
 
@@ -407,7 +407,7 @@ export function nextEnum(color: Color): Color;
 
 ### C++实现
 
-Taihe中enum类型的C++使用方法可参考[枚举类](taihe-usage-guide-cpp.md#2-枚举类)。
+Taihe中enum类型的C++使用方法可参考[枚举类](taihe-usage-guide-cpp.md#枚举类)。
 
 ```cpp
 static constexpr std::size_t COLOR_COUNT = 3;
@@ -422,8 +422,8 @@ static constexpr std::size_t COLOR_COUNT = 3;
 ```typescript
 let color = Color.GREEN;
 let nextColor = nextEnum(color);
-console.log("nextColor:", nextColor);
-console.log("const value:", FLAG_F32_A, FLAG_F32_B);
+console.info("nextColor:", nextColor);
+console.info("const value:", FLAG_F32_A, FLAG_F32_B);
 ```
 
 输出结果如下：
@@ -433,7 +433,7 @@ nextColor: Blue
 const value: 1 3
 ```
 
-# 标签联合
+## 标签联合
 
 需要在同一内存位置存放不同类型的数据时，可以使用[union](taihe-idl-reference.md#标签联合)。注意，在使用Taihe工具进行NAPI桥接代码生成时，只支持union联合基础类型、String、Array、Map、undefined、null和Object，当存在Object类型时，必须设为union的最后一个元素，当存在undefined类型或null类型时需要定义在其他类型之前。
 
@@ -475,7 +475,7 @@ export type union_primitive =
 
 ### C++实现
 
-Taihe中union类型的C++使用方法可参考[联合体](taihe-usage-guide-cpp.md#4-联合体)。
+Taihe中union类型的C++使用方法可参考[联合体](taihe-usage-guide-cpp.md#联合体)。
 
 ```cpp
 ::taihe::expected<::taihe::string, ::taihe::error> printUnion(union_primitive const &data) {
@@ -547,8 +547,8 @@ Taihe中union类型的C++使用方法可参考[联合体](taihe-usage-guide-cpp.
 ### ArkTS-Dyn调用
 
 ```typescript
-console.log(printUnion(1));
-console.log(makeUnion("s"));
+console.info(printUnion(1));
+console.info(makeUnion("s"));
 ```
 
 输出结果如下：
@@ -559,7 +559,7 @@ number
 string
 ```
 
-# 结构体
+## 结构体
 
 进行纯数据类型的接口相关开发时，可以使用[struct](taihe-idl-reference.md#结构体)。struct是数据成员的组合，其成员可以是任意Taihe中的数据类型，包括[基础类型](#数据类型映射表)、[枚举类型](#枚举)、[接口类型](#接口)、[标签联合](#标签联合)和[结构体类型](#结构体)。
 
@@ -701,7 +701,7 @@ export function process_h(a: H): H;
 
 ### C++实现
 
-Taihe中struct类型的C++使用方法可参考[结构体](taihe-usage-guide-cpp.md#3-结构体)。
+Taihe中struct类型的C++使用方法可参考[结构体](taihe-usage-guide-cpp.md#结构体)。
 
 ```cpp
 // 实现入参为struct类型的函数，展示如何解析struct类型的入参
@@ -742,31 +742,31 @@ Taihe中struct类型的C++使用方法可参考[结构体](taihe-usage-guide-cpp
 // 初始化interface类型变量
 let rgb: RGB = { r: 1, g: 2, b: 3 };
 let my_rgb_i32 = from_rgb(rgb);
-console.log("from ts RGB to i32:", my_rgb_i32);
+console.info("from ts RGB to i32:", my_rgb_i32);
 
 let student: Student = { name: "Jack", age: 10 };
 let pro_student = process_student(student);
-console.log("process student:", pro_student.name, pro_student.age);
+console.info("process student:", pro_student.name, pro_student.age);
 
 // Test struct class constructor
 let cre_teacher = new Teacher();
-console.log("create teacher: ", cre_teacher.name, cre_teacher.age);
+console.info("create teacher: ", cre_teacher.name, cre_teacher.age);
 let pro_teacher = process_teacher(cre_teacher);
-console.log("process teacher: ", pro_teacher.name, pro_teacher.age);
+console.info("process teacher: ", pro_teacher.name, pro_teacher.age);
 
 // Test struct class static function
 let lesson = Teacher.give_lessons();
-console.log("teacher static function give lessons:", lesson);
+console.info("teacher static function give lessons:", lesson);
 
 // Test struct extend
 let g = { f: 0, g: 0 };
 let new_g = process_g(g);
-console.log("process g:", new_g.f, new_g.g);
+console.info("process g:", new_g.f, new_g.g);
 
 // Test struct extend
 let h = new H(0, 0, 0);
 let new_h = process_h(h);
-console.log("process h:", new_h.f, new_h.g, new_h.h);
+console.info("process h:", new_h.f, new_h.g, new_h.h);
 ```
 
 输出结果如下：
@@ -781,9 +781,9 @@ process g: 1 2
 process h: 1 2 3
 ```
 
-# 接口
+## 接口
 
-进行包含方法的接口相关开发时，可以使用[interface](taihe-usage-guide-cpp.md#5-接口)。
+进行包含方法的接口相关开发时，可以使用[interface](taihe-usage-guide-cpp.md#接口)。
 
 ## 使用示例
 
@@ -873,7 +873,7 @@ export class CTest {
 export function changeCTest(a: CTest): CTest;
 ```
 
-Taihe IDL语法支持[interface](taihe-idl-reference.md#接口)单继承和多继承，interface A: B, C {} 表示interface A继承了interface B和interface C。注意，Taihe只支持interface继承interface，@class interface继承interface。
+Taihe IDL语法支持[interface](taihe-idl-reference.md#接口)单继承和多继承，interface A: B, C {}表示interface A继承了interface B和interface C。注意，Taihe只支持interface继承interface，@class interface继承interface。
 
 **`.ohidl`**
 
@@ -914,7 +914,7 @@ export function makeIShape(id: string, a: number, b: number): IShape;
 
 ### C++实现
 
-Taihe中interface类型的C++ 使用方法可参考[接口](taihe-usage-guide-cpp.md#5-接口)。
+Taihe中interface类型的C++使用方法可参考[接口](taihe-usage-guide-cpp.md#接口)。
 
 ```cpp
 // 在C++中实现接口，即给出接口可能存在的构造函数、析构函数和在IDL中声明的所有方法
@@ -1123,58 +1123,58 @@ class BaseImpl implements IBase {
 
 // 创建父类接口
 let ibase_1 = makeIBase("abc");
-console.log("ibase_1 getId: ", ibase_1.getId());
+console.info("ibase_1 getId: ", ibase_1.getId());
 
 // 父类接口调用父类接口声明函数
 ibase_1.setId("xyz");
-console.log("ibase_1 setId: ", ibase_1.getId());
+console.info("ibase_1 setId: ", ibase_1.getId());
 
 let ibase_2 = makeIBase("test");
 copyIBase(ibase_1, ibase_2);
-console.log("copyIBase: ", ibase_1.getId(), ibase_2.getId());
+console.info("copyIBase: ", ibase_1.getId(), ibase_2.getId());
 
 // 创建子类接口
 let ishape_1 = makeIShape("shape", 3.14, 2.5);
 
 // 子类接口调用子类接口声明函数
-console.log("makeIShape: ", ishape_1.calculateArea());
+console.info("makeIShape: ", ishape_1.calculateArea());
 // 子类接口调用父类接口声明函数
-console.log("interface extends: ", ishape_1.getId());
+console.info("interface extends: ", ishape_1.getId());
 
 ishape_1.setId("aaaaa");
-console.log("interface extends set: ", ishape_1.getId());
+console.info("interface extends set: ", ishape_1.getId());
 
 let a: BaseImpl = new BaseImpl("A");
 let b: BaseImpl = new BaseImpl("B");
 copyIBase(b, a);
-console.log("impl interface: ", a.getId(), b.getId());
+console.info("impl interface: ", a.getId(), b.getId());
 
 // 子类接口实例赋值给父类接口参数
 copyIBase(ibase_1, ishape_1);
-console.log("interface extends: ", ibase_1.getId(), ishape_1.getId());
+console.info("interface extends: ", ibase_1.getId(), ishape_1.getId());
 
 // 创建interface class
 let ctest = new CTest(100);
-console.log("CTets: ", ctest.add(1, 2));
+console.info("CTets: ", ctest.add(1, 2));
 
 // 调用interface class声明方法
 let new_ctest = changeCTest(ctest);
-console.log("change CTets: ", new_ctest.add(5, 6));
+console.info("change CTets: ", new_ctest.add(5, 6));
 
 // 调用interface class声明的静态方法
 let value3 = CTest.multiply(7, 8);
-console.log("static function: ", value3);
+console.info("static function: ", value3);
 
 let color = makeIColor("my color");
-console.log("get attr: ", color.Id);
+console.info("get attr: ", color.Id);
 color.Id = "new my color";
-console.log("set attr: ", color.Id);
-console.log("color method: ", color.calculate(2, 3));
+console.info("set attr: ", color.Id);
+console.info("color method: ", color.calculate(2, 3));
 
 let d = new IDerived();
 d.call();
 // 子类接口调用父类声明方法
-console.log(d.getId());
+console.info(d.getId());
 ```
 
 输出结果如下：
@@ -1210,7 +1210,7 @@ del ctest 0x60e03ead10f0
 del Color 0x60e03ead0e40
 ```
 
-# 异步
+## 异步
 
 使用注解`@async`将声明的函数或方法转换为Async版，使用注解`@promise`将声明的函数或方法转换为Promise版。
 
@@ -1271,7 +1271,7 @@ export interface IShape {
 
 ### C++实现
 
-在C++侧函数正常书写同步实现即可，异步操作将在自动代码生成的NAPI层代码中完成，当函数中希望抛出异常时，可以构造出一个`taihe::expected`对象作为返回值，其中包含可能希望返回的错误信息与错误码等，具体使用方式请参考[异常和错误](taihe-usage-guide-cpp.md#8-异常和错误)。
+在C++侧函数正常书写同步实现即可，异步操作将在自动代码生成的NAPI层代码中完成，当函数中希望抛出异常时，可以构造出一个`taihe::expected`对象作为返回值，其中包含可能希望返回的错误信息与错误码等，具体使用方式请参考[异常和错误](taihe-usage-guide-cpp.md#异常和错误)。
 
 ```cpp
 ::taihe::expected<int32_t, ::taihe::error> addSync(int32_t a, int32_t b) {
@@ -1356,49 +1356,49 @@ TH_EXPORT_CPP_API_createIShape(createIShape);
 ### ArkTS-Dyn调用
 
 ```typescript
-console.log("before call function addRetPromise success");
+console.info("before call function addRetPromise success");
 // 调用返回promise版异步函数，且期待函数正常执行
 let p1 = addRetPromise(1, 2);
 p1.then((res) => {
-    console.log("success in addRetPromise", res);
+    console.info("success in addRetPromise", res);
 })
 .catch((ret) => {
-    console.log("failed in addRetPromise", ret);
+    console.info("failed in addRetPromise", ret);
 });
-console.log("after call function addRetPromise success");
+console.info("after call function addRetPromise success");
 
-console.log("before call function addRetPromise failed");
+console.info("before call function addRetPromise failed");
 // 调用返回promise版异步函数，且期待函数抛出异常
 let p2 = addRetPromise(0, 2);
 p2.then((res) => {
-    console.log("success in addRetPromise", res);
+    console.info("success in addRetPromise", res);
 })
 .catch((ret) => {
-    console.log("failed in addRetPromise", ret.message);
+    console.info("failed in addRetPromise", ret.message);
 });
-console.log("after call function addRetPromise failed");
+console.info("after call function addRetPromise failed");
 
-console.log("before call function addWithAsync success");
+console.info("before call function addWithAsync success");
 // 调用传入asynccallback版异步函数，且期待函数正常执行
 addWithAsync(1, 2, (error, result) => {
     if (error !== null) {
-        console.log("failed in addWithAsync", error.message);
+        console.info("failed in addWithAsync", error.message);
     } else {
-        console.log("success in addWithAsync", result!);
+        console.info("success in addWithAsync", result!);
     }
 })
-console.log("after call function addWithAsync success");
+console.info("after call function addWithAsync success");
 
-console.log("before call function addWithAsync failed");
+console.info("before call function addWithAsync failed");
 // 调用传入asynccallback版异步函数，且期待函数抛出异常
 addWithAsync(0, 2, (error: Error | null, result?: number) => {
     if (error !== null) {
-        console.log("failed in addWithAsync", error.message);
+        console.info("failed in addWithAsync", error.message);
     } else {
-        console.log("success in addWithAsync", result!);
+        console.info("success in addWithAsync", result!);
     }
 })
-console.log("after call function addWithAsync failed");
+console.info("after call function addWithAsync failed");
 
 let mybase = new IBase();
 mybase.makeSync();
@@ -1407,37 +1407,37 @@ mybase.makeRetPromise();
 // 调用类IBase内传入asynccallback版异步方法，且期待方法正常执行
 mybase.makeWithAsync((error: Error | null) => {
     if (error !== null) {
-        console.log("failed in make", error.message);
+        console.info("failed in make", error.message);
     } else {
-        console.log("success in make");
+        console.info("success in make");
     }
 });
 
 let myshape: lib.IShape = lib.createIShape();
 myshape.makeSync();
 
-console.log("before promise");
+console.info("before promise");
 // 调用接口IShape内返回promise版异步方法，且期待方法抛出异常
 let p_myshape = myshape.makeRetPromise();
 p_myshape.then((res) => {
-    console.log("success in p_myshape", res);
+    console.info("success in p_myshape", res);
 })
 .catch((ret) => {
-    console.log("failed in p_myshape", ret.code, ret.message);
+    console.info("failed in p_myshape", ret.code, ret.message);
 });
-console.log("after promise");
+console.info("after promise");
 
-console.log("before asynccallback");
+console.info("before asynccallback");
 // 调用接口IShape内传入asynccallback版异步方法，且期待方法抛出异常
 myshape.makeWithAsync((error: any) => {
-    console.log("in make shape callback");
+    console.info("in make shape callback");
     if (error !== null) {
-        console.log("failed in make shape", error.code, error.message);
+        console.info("failed in make shape", error.code, error.message);
     } else {
-        console.log("success in make shape");
+        console.info("success in make shape");
     }
 });
-console.log("after asynccallback");
+console.info("after asynccallback");
 ```
 
 输出结果如下：
@@ -1476,16 +1476,16 @@ failed in p_myshape 1 Error in makeRetPromise
 ```
 
 
-# 逃逸通道 - NAPI协同开发
+## 逃逸通道 - NAPI协同开发
 
-Taihe支持引入NAPI代码，从而在C++侧访问ArkTS-Dyn对象，可以使用`Opaque`类型，对应NAPI类型为`napi_value`，C++类型为指针。可以使用`@dts_type`注解指定`Opaque`在.d.ts文件中的类型，`@dts_type("<type_name>") Opaque`, `<type_name>` 为.d.ts中的类型名。
+Taihe支持引入NAPI代码，从而在C++侧访问ArkTS-Dyn对象，可以使用`Opaque`类型，对应NAPI类型为`napi_value`，C++类型为指针。可以使用`@dts_type`注解指定`Opaque`在.d.ts文件中的类型，`@dts_type("<type_name>") Opaque`, `<type_name>`为.d.ts中的类型名。
 
 可以引用`taihe/runtime.hpp`头文件，其中提供`get_env()`函数返回[`napi_env`指针](../napi/napi-data-types-interfaces.md#napi_env)。
 
 ```cpp
 // taihe/runtime.hpp
 napi_env get_env() {
-// 函数内部实现无需关注，如有需要可直接调用函数获取并使用返回的 env 指针即可
+// 函数内部实现无需关注，如有需要可直接调用函数获取并使用返回的env指针即可
 }
 ```
 
@@ -1572,20 +1572,20 @@ export interface Person {
 
 ```typescript
 // 验证C++侧解析ArkTS-Dyn对象
-console.log("test opaque param", is_string("test"));
-console.log("test opaque param", is_string(2));
+console.info("test opaque param", is_string("test"));
+console.info("test opaque param", is_string(2));
 
 // 验证C++侧构造ArkTS-Dyn对象
-console.log("test opaque return value", get_object());
+console.info("test opaque return value", get_object());
 
 // 验证C++侧构造ArkTS-Dyn对象
 let arr = get_objects();
-console.log("test opaque return array value", arr[0], arr[1]);
+console.info("test opaque return array value", arr[0], arr[1]);
 
 // 验证C++侧判断是否是ArkTS-Dyn Object类型对象
 let p: Person = { name: "Mary" };
-console.log("test opaque param union", is_opaque(p));
-console.log("test opaque param union", is_opaque("1"));
+console.info("test opaque param union", is_opaque(p));
+console.info("test opaque param union", is_opaque("1"));
 ```
 
 输出结果如下：
@@ -1599,7 +1599,7 @@ test opaque param union true
 test opaque param union false
 ```
 
-# 逃逸通道 - ArkTS-Dyn协同开发
+## 逃逸通道 - ArkTS-Dyn协同开发
 
 Taihe支持注入ArkTS-Dyn代码。
 
@@ -1635,7 +1635,7 @@ export namespace functiontest {
 
 特殊情况下（即使用`@!lib`注解时），Taihe会额外生成与.d.ts文件同名的.ts文件存储在`//generated/proxy`目录下，做为proxy层代理C++层已完成的实现，同时支持用户通过注解在.ts文件注入实现。
 
-注意，如果需要让当前Taihe文件对应的module生成.ts文件，或在当前Taihe文件中使用ts inject相关功能，必须提供`@!lib`注解。其语法为`@!lib("{so_file_name}")`，使用注解时需指定so文件，作用是为生成的.ts文件提供寻找C++ 层实现的途径。
+注意，如果需要让当前Taihe文件对应的module生成.ts文件，或在当前Taihe文件中使用ts inject相关功能，必须提供`@!lib`注解。其语法为`@!lib("{so_file_name}")`，使用注解时需指定so文件，作用是为生成的.ts文件提供寻找C++层实现的途径。
 
 此时，可以使用注解`@!ts_inject_into_module`将一段ArkTS-Dyn代码注入到当前Taihe文件所对应的.ts文件的namespace所在的module头部；可以使用注解`@!ts_inject`将一段ArkTS-Dyn代码注入到当前Taihe文件所对应的.ts文件的namespace中；可以使用注解`@!ts_inject_into_interface`将一段ArkTS-Dyn代码注入到当前interface中；可以使用注解`@!ts_inject_into_class`将一段ArkTS-Dyn代码注入到当前interface对应的class中。
 
@@ -2027,39 +2027,38 @@ class BaseImpl implements lib_a.ns1.IBase {
 
 // Test ts inject (overload)
 let res_n = lib_a.concat(1);
-console.log("ts overload concat number:", res_n);
+console.info("ts overload concat number:", res_n);
 let res_s = lib_a.concat("1");
-console.log("ts overload concat string:", res_s);
+console.info("ts overload concat string:", res_s);
 
 // Test ts inject into module
-console.log("ts inject into module:", lib_a.PI);
+console.info("ts inject into module:", lib_a.PI);
 
 // Test ts interface interface inject
 let baseimpl_a: BaseImpl = new BaseImpl("A");
-console.log("ts inject into interface interface:", baseimpl_a.add(2, 3));
+console.info("ts inject into interface interface:", baseimpl_a.add(2, 3));
 
 // Test ts interface class inject
 let ctest = new lib_a.ns1.CTest(100);
-console.log("ts inject into interface class:", ctest.mul(2, 3));
+console.info("ts inject into interface class:", ctest.mul(2, 3));
 
 // Test dts inject (overload)
 let res_n_dts = lib_b.functiontest.concat(1);
-console.log("dts overload concat number:", res_n_dts);
+console.info("dts overload concat number:", res_n_dts);
 let res_s_dts = lib_b.functiontest.concat("1");
-console.log("dts overload concat string:", res_s_dts);
+console.info("dts overload concat string:", res_s_dts);
 
 // Test dts inject into module
-console.log("inject into module dts:", lib_b.rate);
+console.info("inject into module dts:", lib_b.rate);
 
 // Test ts inject constructor overload
-console.log(
-  "struct class static method:",
+console.info("struct class static method:",
   lib_a.ns1.ns2.ns3.ns4.ns5.MyTest.sum(1, 2)
 );
 let new_mytest_num = new lib_a.ns1.ns2.ns3.ns4.ns5.MyTest(1);
 let new_mytest_arraynum = new lib_a.ns1.ns2.ns3.ns4.ns5.MyTest([1, 2]);
-console.log("ts inject overload number:", new_mytest_num.a);
-console.log("ts inject overload array number:", new_mytest_arraynum.a);
+console.info("ts inject overload number:", new_mytest_num.a);
+console.info("ts inject overload array number:", new_mytest_arraynum.a);
 ```
 
 输出结果如下：

@@ -17,7 +17,7 @@ Taihe支持struct继承struct，@class struct继承struct，@class struct继承@
 - @class struct继承struct：H继承G；
 - @class struct继承@class struct：I继承H。
 
-Taihe 相关代码示例
+Taihe相关代码示例
 
 ```rust
 struct F {
@@ -51,12 +51,12 @@ export interface F {
   f: int;
 }
 
-// struct 继承 struct 表现为 extends
+// struct继承struct表现为extends
 export interface G extends F {
   g: int;
 }
 
-// @class struct 继承 struct 表现为 implements
+// @class struct继承struct表现为implements
 export class H implements G {
   f: int;
   g: int;
@@ -68,7 +68,7 @@ export class H implements G {
   }
 }
 
-// @class struct 继承 @class struct 表现为 extends
+// @class struct继承@class struct表现为extends
 export class I extends H {
   i: int;
   constructor(f: int, g: int, h: int, i: int) {
@@ -80,7 +80,7 @@ export class I extends H {
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 struct F {
@@ -110,7 +110,7 @@ function process_h(a: H): H;
 function process_i(a: I): I;
 ```
 
-### C++ 实现
+### C++实现
 
 用户的native实现：
 
@@ -128,7 +128,7 @@ I process_i(I const& a) {
 }
 ```
 
-### ets 侧使用
+### ets侧使用
 
 ```typescript
 let g: G = { f: 0, g: 0 };
@@ -137,9 +137,9 @@ let h = new H(0, 0, 0);
 let new_h = process_h(h);
 let i = new I(0, 0, 0, 0);
 let new_i = process_i(i);
-console.log("process g:", new_g.f, new_g.g);
-console.log("process h:", new_h.f, new_h.g, new_h.h);
-console.log("process i:", new_i.f, new_i.g, new_i.h, new_i.i);
+console.info("process g:", new_g.f, new_g.g);
+console.info("process h:", new_h.f, new_h.g, new_h.h);
+console.info("process i:", new_i.f, new_i.g, new_i.h, new_i.i);
 ```
 
 Output：

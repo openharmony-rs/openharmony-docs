@@ -8,11 +8,11 @@
 
 ## 简介
 
-使用 Taihe 进行 undefined 和 null 相关开发时，可以使用 unit 类型。@null unit 类型对应 ets 中的 null 类型，@undefined unit 类型对应 ets 中的 undefined 类型。
+使用Taihe进行undefined和null相关开发时，可以使用unit类型。@null unit类型对应ets中的null类型，@undefined unit类型对应ets中的undefined类型。
 
 ## 基本概念
 
-Taihe 相关代码示例
+Taihe相关代码示例
 
 ```rust
 union NullableValue {
@@ -23,7 +23,7 @@ union NullableValue {
 }
 ```
 
-以下是对应的 ets 代码
+以下是对应的ets代码
 
 ```typescript
 export type NullableValue = undefined | string | int | null;
@@ -31,7 +31,7 @@ export type NullableValue = undefined | string | int | null;
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 union NullableValue {
@@ -44,7 +44,7 @@ union NullableValue {
 function makeNullableValue(tag: i32): NullableValue;
 ```
 
-### C++ 实现
+### C++实现
 
 ```cpp
 constexpr int32_t TAG_NULL = 0;
@@ -65,17 +65,17 @@ NullableValue makeNullableValue(int32_t tag) {
 }
 ```
 
-### ets 侧使用
+### ets侧使用
 
 ```typescript
 let nvalue = makeNullableValue(0);
-console.log("null: " + nvalue);
+console.info("null: " + nvalue);
 let svalue = makeNullableValue(1);
-console.log("string: " + svalue);
+console.info("string: " + svalue);
 let ivalue = makeNullableValue(2);
-console.log("int: " + ivalue);
+console.info("int: " + ivalue);
 let uvalue = makeNullableValue(10);
-console.log("undefined: " + uvalue);
+console.info("undefined: " + uvalue);
 ```
 
 Output：

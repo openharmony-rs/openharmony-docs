@@ -12,7 +12,7 @@ Taihe支持interface继承interface，@class interface继承interface，@class i
 
 ## 基本概念
 
-Taihe IDL 语法支持接口单继承和多继承，例如，interface A: B, C {} 表示 interface A 继承了 interface B 和 interface C。
+Taihe IDL语法支持接口单继承和多继承，例如，interface A: B, C {}表示interface A继承了interface B和interface C。
 
 以下述代码为例，其中包含：
 - interface继承interface：IShape继承IBase；
@@ -54,12 +54,12 @@ export interface IBase {
     setId(s: string): void;
 }
 
-// interface 继承 interface 表现为 extends
+// interface继承interface表现为extends
 export interface IShape extends IBase {
     calculateArea(): double;
 }
 
-// @class interface 继承 interface 表现为 implements
+// @class interface继承interface表现为implements
 export class IDerived implements IShape {
     // 拷贝构造函数
     constructor(other: IDerived) {
@@ -81,7 +81,7 @@ export class IDerived implements IShape {
     }
 }
 
-// @class interface 继承 @class interface 表现为 extends
+// @class interface继承@class interface表现为extends
 export class IFancy extends IDerived {
     // 拷贝构造函数
     constructor(other: IFancy) {
@@ -109,7 +109,7 @@ export class IFancy extends IDerived {
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 interface IBase {
@@ -146,7 +146,7 @@ function createIDerived(): IDerived;
 function createIFancy(): IFancy;
 ```
 
-### C++ 实现
+### C++实现
 
 用户的native实现：
 
@@ -278,7 +278,7 @@ IFancy createIFancy() {
 }
 ```
 
-### ets 侧使用
+### ets侧使用
 
 ```typescript
 class BaseImpl implements IBase {
@@ -298,44 +298,44 @@ class BaseImpl implements IBase {
 // 创建父类接口
 let ibase_1 = makeIBase("abc");
 // 调用父类声明方法
-console.log("ibase_1 getId: ", ibase_1.getId());
+console.info("ibase_1 getId: ", ibase_1.getId());
 
 ibase_1.setId("xyz");
-console.log("ibase_1 setId: ", ibase_1.getId());
+console.info("ibase_1 setId: ", ibase_1.getId());
 
 let ibase_2 = makeIBase("test");
 copyIBase(ibase_1, ibase_2);
-console.log("copyIBase: ", ibase_1.getId(), ibase_2.getId());
+console.info("copyIBase: ", ibase_1.getId(), ibase_2.getId());
 
 // 创建子类接口
 let ishape_1 = makeIShape("shape", 3.14, 2.5);
 // 子类接口调用子类声明方法
-console.log("makeIShape: ", ishape_1.calculateArea());
+console.info("makeIShape: ", ishape_1.calculateArea());
 // 子类接口调用父类声明方法
-console.log("interface extends: ", ishape_1.getId());
+console.info("interface extends: ", ishape_1.getId());
 
 ishape_1.setId("aaaaa");
-console.log("interface extends set: ", ishape_1.getId());
+console.info("interface extends set: ", ishape_1.getId());
 
 let a: BaseImpl = new BaseImpl("A");
 let b: BaseImpl = new BaseImpl("B");
 copyIBase(b, a);
-console.log("impl interface: ", a.getId(), b.getId());
+console.info("impl interface: ", a.getId(), b.getId());
 
 // 子类接口实例赋值给父类接口参数
 copyIBase(ibase_1, ishape_1);
-console.log("interface extends: ", ibase_1.getId(), ishape_1.getId());
+console.info("interface extends: ", ibase_1.getId(), ishape_1.getId());
 
 let d = new IDerived();
 d.call();
 // 子类接口调用父类声明方法
-console.log(d.getId());
+console.info(d.getId());
 
 let f = new IFancy();
 f.show();
 // 子类接口调用父类声明方法
 f.call();
-console.log(f.getId());
+console.info(f.getId());
 ```
 
 Output：

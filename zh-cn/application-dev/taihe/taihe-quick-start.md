@@ -50,7 +50,7 @@ taihec [taihe_files ...] [options ...]
 | `--generate <backend>` | `-G<backend>` | 指定要启用的代码生成后端，如`abi-header`、`abi-source`、`c-author`等 |
 | `--build <build-system>` | `-B<build-system>` | 指定构建系统类型，目前支持`cmake`（生成`CMakeLists.txt`）|
 | `--codegen <namespace>:<config>[=<value>]` | `-C<namespace>:<config>[=<value>]` | 额外的代码生成配置项，例如`sts:keep-name`、`arkts:module-prefix=prefix`等 |
-| `--version` | | 打印版本信息 |
+| `--version` | - | 打印版本信息 |
 | `--help` | `-h` | 帮助信息 |
 
 ### 代码生成后端

@@ -8,11 +8,11 @@
 
 ## 简介
 
-使用 Taihe 进行纯方法类型的接口相关开发时，可以使用 interface。当接口内既包含方法，又包含数据时，可以通过 @get 或 @set 注解来说明将特定方法声明为数据的 getter 或 setter。
+使用Taihe进行纯方法类型的接口相关开发时，可以使用interface。当接口内既包含方法，又包含数据时，可以通过@get或@set注解来说明将特定方法声明为数据的getter或setter。
 
 ## 基本概念
 
-Taihe 相关代码示例
+Taihe相关代码示例
 
 ```rust
 interface ICalculator {
@@ -23,7 +23,7 @@ interface ICalculator {
 }
 ```
 
-以下是对应的 ets 代码
+以下是对应的ets代码
 
 ```typescript
 export interface ICalculator {
@@ -34,9 +34,9 @@ export interface ICalculator {
 }
 ```
 
-使用 @get 或 @set 注解可以将一个函数设置为某个属性/变量的 getter 或 setter，只有 @get 无 @set 时会生成 readonly 属性。注解可以不包含参数，此时，该方法名必须以 `get` 或 `set` 起始，对应的数据成员名会取方法名中 `get` 或 `set` 后的部分。
+使用@get或@set注解可以将一个函数设置为某个属性/变量的getter或setter，只有@get无@set时会生成readonly属性。注解可以不包含参数，此时，该方法名必须以`get`或`set`起始，对应的数据成员名会取方法名中`get`或`set`后的部分。
 
-Taihe 相关代码示例
+Taihe相关代码示例
 
 ```rust
 interface Noo {
@@ -47,7 +47,7 @@ interface Noo {
 }
 ```
 
-以下是对应的 ets 代码
+以下是对应的ets代码
 
 ```typescript
 export interface Noo {
@@ -58,8 +58,9 @@ export interface Noo {
 }
 ```
 
-注解中也可以有参数，表示该 getter 或 setter 所对应的数据成员名，此时方法名无限制。
-Taihe 相关代码示例
+注解中也可以有参数，表示该getter或setter所对应的数据成员名，此时方法名无限制。
+
+Taihe相关代码示例
 
 ```rust
 interface Foo {
@@ -68,7 +69,7 @@ interface Foo {
 }
 ```
 
-以下是对应的 ets 代码
+以下是对应的ets代码
 
 ```typescript
 export interface Foo {
@@ -79,7 +80,7 @@ export interface Foo {
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 interface ICalculator {
@@ -94,9 +95,9 @@ function restartCalculator(a: ICalculator): void;
 
 interface Noo {
     bar(): void;
-    // 使用 @get 替代只读属性。
+    // 使用@get替代只读属性。
     @get getName(): String;
-    // 使用 @get 或 @set 来替代属性。
+    // 使用@get或@set来替代属性。
     @get getAge(): Optional<i32>;
     @set setAge(a: Optional<i32>): void;
 }
@@ -105,7 +106,7 @@ function GetNooIface(): Noo;
 function PrintNooName(noo: Noo): String;
 ```
 
-### C++ 实现
+### C++实现
 
 ```cpp
 class MyCalculator {
@@ -113,7 +114,7 @@ public:
     // 构造函数可以没有或有任意多个参数
     MyCalculator(int32_t init): lastResult(init){}
 
-    // 实现 interface 中声明的每个方法
+    // 实现interface中声明的每个方法
     int32_t add(int32_t a, int32_t b) {
         lastResult = a + b;
         return lastResult;
@@ -133,7 +134,7 @@ private:
 };
 
 ICalculator makeCalculator() {
-    // 使用 make_holder 将实现类和接口绑定，如有需要可传入实现类构造函数参数
+    // 使用make_holder将实现类和接口绑定，如有需要可传入实现类构造函数参数
     return make_holder<MyCalculator, ICalculator>(0);
 }
 void restartCalculator(weak::ICalculator a) {
@@ -175,28 +176,28 @@ string PrintNooName(weak::Noo noo) {
 }
 ```
 
-### ets 侧使用
+### ets侧使用
 
 ```typescript
 let cal = makeCalculator();
 let num1 = 1;
 let num2 = 2;
 let result1 = cal.add(num1, num2);
-console.log("num1 + num2 = " + result1);
+console.info("num1 + num2 = " + result1);
 let result2 = cal.sub(num1, num2);
-console.log("num1 - num2 = " + result2);
+console.info("num1 - num2 = " + result2);
 let result3 = cal.getLastResult();
-console.log("Last calculation result: " + result3);
-console.log("---restart_calculator---");
+console.info("Last calculation result: " + result3);
+console.info("---restart_calculator---");
 restartCalculator(cal);
 let result4 = cal.getLastResult();
-console.log("Last calculation result: " + result4);
+console.info("Last calculation result: " + result4);
 
 let noo = getNooIface();
 let name = printNooName(noo);
-console.log("noo name: ", noo.name);
-console.log("noo age: ", noo.age);
-console.log("print noo name: ", name);
+console.info("noo name: ", noo.name);
+console.info("noo age: ", noo.age);
+console.info("print noo name: ", name);
 ```
 
 Output：
@@ -212,8 +213,8 @@ noo age:  1
 print noo name:  noo
 ```
 
-## Interface C++ 使用方法
+## Interface C++使用方法
 
-- `make_holder<class, interface>` 是 taihe 提供的函数，用于将接口和实现绑定。接口的实例化可以通过 `taihe::make_holder<ImplClass, Interface>(Args&&... args)` 方法实现。其中 `Interface` 为 IDL 中定义的接口，`ImplClass` 为用户自定义的类，该类需要实现所有接口中定义的方法，`args` 为类构造函数所需参数。
+- `make_holder<class, interface>`是taihe提供的函数，用于将接口和实现绑定。接口的实例化可以通过`taihe::make_holder<ImplClass, Interface>(Args&&... args)`方法实现。其中`Interface`为IDL中定义的接口，`ImplClass`为用户自定义的类，该类需要实现所有接口中定义的方法，`args`为类构造函数所需参数。
 
-- 实现侧的 interface 调用方法需要使用 `->` 调用，如以上样例中的 a->reset()，不使用 `.` 调用。
+- 实现侧的interface调用方法需要使用`->`调用，如以上样例中的a->reset()，不使用`.`调用。

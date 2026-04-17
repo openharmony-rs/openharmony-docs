@@ -1,4 +1,4 @@
-# 深入解析Taihe生成的代码（ANI桥接层）
+# 深入解析Taihe生成的代码 (ANI桥接层)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanzixuan330-->
@@ -35,7 +35,7 @@ function processWithBar(bar: IBar, data: Data): Result;
 ```
 
 生成的代码目录结构如下：
-```
+```text
 test/xxx/generated/
 ├── include
 │   ├── my.package.*.abi.{0,1,2}.h
@@ -57,7 +57,7 @@ test/xxx/generated/
     └── my.package.impl.cpp
 ```
 
-其中，`*.abi.h`, `*.proj.hpp`, `*.user.hpp`, `*.impl.hpp`的说明可参考[Taihe ABI层及C++层生成代码解析](./taihe-generated-code-cpp.md)。
+其中，`*.abi.h`, `*.proj.hpp`, `*.user.hpp`, `*.impl.hpp`的说明可参考[深入解析Taihe生成的代码 (ABI层与C++层)](./taihe-generated-code-cpp.md)。
 
 ANI生成的相关文件说明如下：
 - `include/my.package.*.ani.{0,1}.hpp`：包含了所有`my.package.ohidl`中定义的结构体、枚举、接口等数据类型在C++和ANI间相互转换的函数。`*.ani.0.hpp`包含转换函数的前向声明，`*.ani.1.hpp`包含这些函数的具体实现。
@@ -99,7 +99,7 @@ function main() {
         a: 1,
         b: 2,
     };
-    // 调用 process 函数
+    // 调用process函数
     let res = MyPackage.process(param);
     ...
 }

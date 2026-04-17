@@ -8,11 +8,11 @@
 
 ## 简介
 
-使用 Taihe 进行纯数据类型的接口相关开发时，可以使用 struct。struct 是数据成员的组合，其成员可以是任意 Taihe 中的数据类型，包括[基础类型](./use-taihe-about-primitive-type-and-string.md)、[枚举类型](./use-taihe-about-enum-and-const.md)、[接口类型](./use-taihe-about-interface.md)、[标签联合](./use-taihe-about-union.md)和其他[结构体类型](./use-taihe-about-struct.md)等。
+使用Taihe进行纯数据类型的接口相关开发时，可以使用struct。struct是数据成员的组合，其成员可以是任意Taihe中的数据类型，包括[基础类型](./use-taihe-about-primitive-type-and-string.md)、[枚举类型](./use-taihe-about-enum-and-const.md)、[接口类型](./use-taihe-about-interface.md)、[标签联合](./use-taihe-about-union.md)和其他[结构体类型](./use-taihe-about-struct.md)等。
 
 ## 基本概念
 
-Taihe 相关代码示例
+Taihe相关代码示例
 
 ```rust
 struct Color{
@@ -22,7 +22,7 @@ struct Color{
 }
 ```
 
-以下是对应的 ets 代码
+以下是对应的ets代码
 
 ```typescript
 export interface Color {
@@ -32,9 +32,9 @@ export interface Color {
 }
 ```
 
-要设置 struct 中的只读属性，可以使用 @readonly 注解。
+要设置struct中的只读属性，可以使用@readonly注解。
 
-Taihe 相关代码示例
+Taihe相关代码示例
 
 ```rust
 struct Student {
@@ -43,7 +43,7 @@ struct Student {
 }
 ```
 
-以下是对应的 ets 代码
+以下是对应的ets代码
 
 ```typescript
 export interface Student {
@@ -54,7 +54,7 @@ export interface Student {
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 struct Color{
@@ -72,7 +72,7 @@ function create_student(): Student;
 function process_student(a: Student): Student;
 ```
 
-### C++ 实现
+### C++实现
 
 ```cpp
 Color convert_color(Color const &a) {
@@ -86,17 +86,17 @@ Student process_student(Student const &a) {
 }
 ```
 
-### ets 侧使用
+### ets侧使用
 
 ```typescript
 let Color1: Color = { R: 0, G: 255, B: 255 };
-console.log("Color1 is " + Color1.R + " " + Color1.G + " " + Color1.B);
+console.info("Color1 is " + Color1.R + " " + Color1.G + " " + Color1.B);
 let Color2 = convert_color(Color1);
-console.log("Color2 is " + Color2.R + " " + Color2.G + " " + Color2.B);
+console.info("Color2 is " + Color2.R + " " + Color2.G + " " + Color2.B);
 
 let student: Student = { name: "Jack", age: 10 };
 let pro_student = process_student(student);
-console.log("process student:", pro_student.name, pro_student.age);
+console.info("process student:", pro_student.name, pro_student.age);
 ```
 
 Output：
@@ -107,9 +107,9 @@ Color2 is 255 255 0
 process student: Jack student 20
 ```
 
-## Struct C++ 使用方法
+## Struct C++使用方法
 
-在 C++ 中创建和初始化结构体对象：
+在C++中创建和初始化结构体对象：
 
 ```cpp
 // 使用花括号语法

@@ -103,16 +103,16 @@ struct RGB {
 
 ```typescript
 let res1: string = moduleA.toplevelFunc("hello");
-console.log("toplevelFunc: " + res1);
+console.info("toplevelFunc: " + res1);
 let res2: int = moduleA.foo.foo(100);
-console.log("foo.foo: " + res2);
+console.info("foo.foo: " + res2);
 let structObj: moduleA.RGB = {
     color: "red",
     r: 255,
     g: 0,
     b: 0,
 };
-console.log(structObj.color + " " + structObj.r);
+console.info(structObj.color + " " + structObj.r);
 ```
 
 输出结果如下：

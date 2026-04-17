@@ -11,7 +11,7 @@
   - [Taihe IDL语言规范](taihe-idl-reference.md)
   - C++使用指南
     - [Taihe C++用户文档](taihe-usage-guide-cpp.md)
-    - [深入解析Taihe生成的代码（ABI层与C++层）](taihe-generated-code-cpp.md)
+    - [深入解析Taihe生成的代码 (ABI层与C++层)](taihe-generated-code-cpp.md)
   - NAPI使用指南
     - [Taihe NAPI用户文档](taihe-usage-guide-napi.md)
   - ANI使用指南
@@ -38,4 +38,4 @@
     - [使用Taihe进行import相关开发](use-taihe-about-import.md)
     - [使用Taihe进行ANI协同开发](use-taihe-about-devlop-with-ani.md)
     - [使用Taihe进行ets协同开发](use-taihe-about-devlop-with-ets.md)
-    - [深入解析Taihe生成的代码（ANI桥接层）](taihe-generated-code-ani.md)
+    - [深入解析Taihe生成的代码 (ANI桥接层)](taihe-generated-code-ani.md)

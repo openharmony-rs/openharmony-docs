@@ -8,7 +8,7 @@
 
 ## 简介
 
-在 Taihe 中，使用`@rename`注解来实现函数重载的功能。
+在Taihe中，使用`@rename`注解来实现函数重载的功能。
 
 ## 基本概念
 
@@ -16,7 +16,7 @@
 
 Taihe使用`@rename`来实现ArkTS的重载。该注解可以作用于**全局函数**和对象的**成员方法**。
 
-**Taihe 声明代码**
+**Taihe声明代码**
 ```rust
 @rename("add")
 function sum_two(a: i32, b: i32): i32;
@@ -40,7 +40,7 @@ export function add(a: Array<int>): int {
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 @rename("add")
@@ -49,7 +49,7 @@ function sum_two(a: i32, b: i32): i32;
 function sum_arr(a: Array<i32>): i32;
 ```
 
-### C++ 实现
+### C++实现
 
 ```cpp
 int32_t sum_two(int32_t a, int32_t b) {
@@ -65,14 +65,14 @@ int32_t sum_arr(array_view<int32_t> a) {
 }
 ```
 
-### ets 使用
+### ets使用
 
 ```typescript
 let a: int = 1
 let b: int = 2
 let numbers: int[] = [1, 2, 3, 4, 5];
-console.log("add_two: " + overload.add(a, b))
-console.log("add_arr: " + overload.add(numbers))
+console.info("add_two: " + overload.add(a, b))
+console.info("add_arr: " + overload.add(numbers))
 ```
 
 输出结果如下：

@@ -24,10 +24,10 @@
 
 ```rust
 function showOptionalString(@optional a: Optional<String>): Optional<String>;
-// 对应 .d.ts函数声明为
+//对应.d.ts函数声明为
 // function showOptionalString(a?: string): string | undefined;
 function showOptionalBool(a: Optional<bool>): Optional<bool>;
-// 对应 .d.ts函数声明为
+//对应.d.ts函数声明为
 // function showOptionalBool(a: boolean | undefined): boolean | undefined;
 ```
 
@@ -57,9 +57,9 @@ function showOptionalBool(a: Optional<bool>): Optional<bool>;
 let result1 = showOptionalString("my_opt_str");
 let result2 = showOptionalString();
 let result3 = showOptionalBool(undefined);
-console.log("show my optional string value: " + result1);
-console.log("show my optional string undefined: " + result2);
-console.log("show my optional string param undefined: " + result3);
+console.info("show my optional string value: " + result1);
+console.info("show my optional string undefined: " + result2);
+console.info("show my optional string param undefined: " + result3);
 ```
 
 Output：

@@ -42,8 +42,8 @@ taihe::expected<int32_t, taihe::error> sayHello(int32_t a);
 
 ```cpp
 // 创建错误对象
-taihe::error err("error message");                    // code 默认为 0
-taihe::error err_with_code("error message", 5);      // code 为 5
+taihe::error err("error message");                    // code默认为0
+taihe::error err_with_code("error message", 5);      // code为5
 
 // 访问错误属性
 string msg = err.message();                           // 获取错误消息
@@ -153,16 +153,16 @@ try {
     errorMsg = error.toString();
     error = error as BusinessError
     error_code = error.code
-    console.log("error code: ", error_code, "error message: ", errorMsg);
+    console.info("error code: ", error_code, "error message: ", errorMsg);
 }
 
 // noexcept全局函数
 let res: string = "";
 try {
     res = hello.concat("a", "b");
-    console.log("result: ", res);
+    console.info("result: ", res);
 } catch (error) {
-    console.log("Error in testConcat")
+    console.info("Error in testConcat")
 }
 
 let x = hello.createFoo();
@@ -176,16 +176,16 @@ try {
     errorMsg = error.toString();
     error = error as BusinessError
     error_code = error.code
-    console.log("error code: ", error_code, "error message: ", errorMsg);
+    console.info("error code: ", error_code, "error message: ", errorMsg);
 }
 
 // noexcept接口方法
 let result: string = "";
 try {
     result = x.bar_ss("call_foo_bar_string");
-    console.log("result: ", result);
+    console.info("result: ", result);
 } catch (error) {
-    console.log("Error in testFooBarWithString")
+    console.info("Error in testFooBarWithString")
 }
 
 // 普通回调
@@ -193,23 +193,23 @@ let error_code: number = 0;
 let errorMsg: string = "";
 try {
     hello.callcb(() => {
-        console.log("Callback called");
+        console.info("Callback called");
         throw new BusinessError(1001, new Error("Callback error"));
     });
 } catch (error) {
     errorMsg = error.toString();
     error = error as BusinessError
     error_code = error.code
-    console.log("error code: ", error_code, "error message: ", errorMsg);
+    console.info("error code: ", error_code, "error message: ", errorMsg);
 }
 
-// noexcept 回调
+// noexcept回调
 try {
     hello.test_cb_v(() => {
-        console.log("test_cb_v in ets");
+        console.info("test_cb_v in ets");
     });
 } catch (error) {
-    console.log("Error in testCallbackVoid")
+    console.info("Error in testCallbackVoid")
 }
 ```
 

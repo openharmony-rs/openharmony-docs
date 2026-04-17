@@ -26,9 +26,9 @@
 function addSync(a: i32, b: i32): i32;
 ```
 
-使用 `@async` 和 `@promise` 注解后，会在生成的 ets 代码中增加函数的异步版本。注解可应用于全局函数和对象成员方法。
+使用`@async`和`@promise`注解后，会在生成的ets代码中增加函数的异步版本。注解可应用于全局函数和对象成员方法。
 
-注：`@rename` 注解可参考[文档](./use-taihe-about-overload.md)
+注：`@rename`注解可参考[文档](./use-taihe-about-overload.md)
 
 **生成ets代码**
 ```typescript
@@ -69,7 +69,7 @@ type _taihe_AsyncCallback<T, E = void> =
 
 ## 使用示例
 
-### Taihe 声明
+### Taihe声明
 
 ```rust
 @rename("add")
@@ -81,7 +81,7 @@ type _taihe_AsyncCallback<T, E = void> =
 function addSync(a: i32, b: i32): i32;
 ```
 
-### C++ 实现
+### C++实现
 
 ```cpp
 int32_t addSync(int32_t a, int32_t b) {
@@ -93,24 +93,24 @@ TH_EXPORT_CPP_API_addPromise(addSync);
 TH_EXPORT_CPP_API_addSync(addSync);
 ```
 
-### ets 使用
+### ets使用
 ```typescript
 // 使用同步版本的函数
-console.log("addSync: ", async_test.addSync(1, 2))
+console.info("addSync: ", async_test.addSync(1, 2))
 
-// 使用 async 版本
+// 使用async版本
 async_test.add(10, 20, (error: BusinessError|null, data?: int) => {
     if (error !== null && error.code !== 0) {
-        console.log("async ERROR ", error);
+        console.info("async ERROR ", error);
     } else {
-        console.log("async success ", data);
+        console.info("async success ", data);
     }
 })
 
-// 使用 promise 版本
+// 使用promise版本
 try {
     let retPromise = await async_test.add(0, 2);
-    console.log("async promise success ")
+    console.info("async promise success ")
 } catch (error) {
     console.error("async promise ERROR ", error)
 }

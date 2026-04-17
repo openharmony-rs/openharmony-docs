@@ -1,4 +1,4 @@
-# 深入解析Taihe生成的代码（ABI层与C++层）
+# 深入解析Taihe生成的代码 (ABI层与C++层)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanzixuan330-->
@@ -36,7 +36,7 @@ function processWithBar(bar: IBar, data: Data): Result;
 当Taihe工具链处理`my.package.ohidl`这个文件后，会在指定的输出目录生成一系列文件。这些文件可以被清晰地划分为ABI层和C++层。
 
 以下是生成文件的结构树及其功能简介：
-```
+```text
 generated/
 ├── include/
 │   ├── my.package.Data.abi.{0,1,2}.h      // ABI层：结构体Data的分阶段定义

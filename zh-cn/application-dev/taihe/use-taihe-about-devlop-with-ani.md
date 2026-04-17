@@ -73,8 +73,6 @@ void processPerson(uintptr_t person) {
 }
 ```
 
-注：1. ANI相关开发参考[ANI文档](../ani/ani-usage-scenarios.md)。2. 注解`@sts_inject`参考[文档](./use-taihe-about-devlop-with-ets.md)。
-
 ## 使用示例
 
 ### 外部类型声明
@@ -128,8 +126,8 @@ void processPerson(uintptr_t person) {
 ### ets使用
 
 ```typescript
-    console.log(extobj.is_string("hello"));
-    console.log(extobj.is_string(123));
+    console.info(extobj.is_string("hello"));
+    console.info(extobj.is_string(123));
 
     let person: Person = {name: "John", age: 30};
     extobj.processPerson(person);
