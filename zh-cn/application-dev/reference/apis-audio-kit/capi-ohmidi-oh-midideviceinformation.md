@@ -12,7 +12,7 @@ typedef struct {...} OH_MIDIDeviceInformation
 
 ## 概述
 
-设备信息结构体。用于枚举和显示。
+设备信息结构体。储存设备ID等相关信息。
 
 **起始版本：** 24
 
