@@ -712,6 +712,7 @@ enum OH_Camera_OISAxes
 | OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。 |
 | OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
 
+
 ## 函数说明
 
 ### OH_Camera_GetCameraManager()
