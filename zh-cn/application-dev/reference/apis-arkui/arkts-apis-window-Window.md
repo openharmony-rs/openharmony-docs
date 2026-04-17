@@ -8069,7 +8069,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
-异性窗口蒙层设置不会影响窗口可见状态计算。即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+异性窗口蒙层设置不会影响窗口可见状态(可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)或[on('occlusionStateChanged')](arkts-apis-window-Window.md#onocclusionStateChanged22)监听）计算。即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
 
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。窗口被销毁场景下错误码返回401。
 
