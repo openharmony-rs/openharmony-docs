@@ -796,7 +796,7 @@ try {
 ## telephonyManager.getDefaultData
 getDefaultData(admin: Want): number
 
-获取设备当前默认使用的数据流量卡卡槽ID。
+获取设备当前默认使用的数据流量卡卡槽ID。未插卡或者飞行模式下会获取上一次使用的数据流量卡卡槽ID、设备从未设置过默认数据流量卡场景下，该接口返回默认值0。
 
 **起始版本：** 26.0.0
 
