@@ -1,7 +1,7 @@
 # @ohos.inputMethodEngine (Input Method Service)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -767,6 +767,8 @@ Obtains the current security mode of the input method.
 
 **Error codes**
 
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
+
 | ID| Error Message                      |
 | -------- | ------------------------------ |
 | 12800004 | not an input method application. |
@@ -801,6 +803,8 @@ Creates an input method panel. This API can be called only by the input method a
 
 **Error codes**
 
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -810,21 +814,28 @@ Creates an input method panel. This API can be called only by the input method a
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMethodEngine, InputMethodExtensionAbility } from '@kit.IMEKit';
+import { Want } from '@kit.AbilityKit';
 
 let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
-if (!this.context) {
-  inputMethodEngine.getInputMethodAbility()
-    .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
-      if (err) {
-        console.error(`Failed to createPanel. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Succeed in creating panel.');
-    })
+class InputMethodExt extends InputMethodExtensionAbility {
+    onCreate(want: Want): void {
+        console.info(`onCreate, want: ${want.abilityName}`);
+        if (!this.context) {
+            inputMethodEngine.getInputMethodAbility()
+            .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
+                if (err) {
+                console.error(`Failed to createPanel. Code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+                console.info('Succeed in creating panel.');
+            })
+        }
+    }
 }
 ```
 
@@ -855,6 +866,8 @@ Creates an input method panel. This API can be called only by the input method a
 
 **Error codes**
 
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -864,19 +877,26 @@ Creates an input method panel. This API can be called only by the input method a
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMethodEngine, InputMethodExtensionAbility } from '@kit.IMEKit';
+import { Want } from '@kit.AbilityKit';
 
 let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
-if (this.context) {
-  inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
-    .then((panel: inputMethodEngine.Panel) => {
-      console.info('Succeed in creating panel.');
-    }).catch((err: BusinessError) => {
-    console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
-  })
+class InputMethodExt extends InputMethodExtensionAbility {
+    onCreate(want: Want): void {
+        console.info(`onCreate, want: ${want.abilityName}`);
+        if (this.context) {
+            inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
+                .then((panel: inputMethodEngine.Panel) => {
+                console.info('Succeed in creating panel.');
+            }).catch((err: BusinessError) => {
+                console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
+            })
+        }
+    }
 }
 ```
 
@@ -1019,8 +1039,8 @@ Enables listening for a physical keyboard event. This API uses an asynchronous c
 
 ```ts
 inputMethodEngine.getKeyboardDelegate().on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
-  console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
-  console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
+  console.info(`inputMethodEngine keyCode.(keyUp): ${keyEvent.keyCode}`);
+  console.info(`inputMethodEngine keyAction.(keyUp): ${keyEvent.keyAction}`);
   return true;
 });
 inputMethodEngine.getKeyboardDelegate().on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
@@ -1820,7 +1840,7 @@ Adjusts the panel rectangle. After the API is called, the adjust request is subm
 
 **Error codes**
 
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
@@ -1846,7 +1866,9 @@ let portraitRect: window.Rect = {
   height: 300
 };
 
+// Target panel status type.
 let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// X-coordinate, Y-coordinate, width, and height of the target panel in both landscape and portrait orientations.
 let panelRect: inputMethodEngine.PanelRect = {
   landscapeRect: landscapeRect,
   portraitRect: portraitRect
@@ -1877,7 +1899,7 @@ Adjusts the panel rectangle, and customizes the avoid area and touch area.
 
 **Error codes**
 
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1905,8 +1927,9 @@ let portraitRect1: window.Rect = {
   height: 800
 }
 let portraitInputRegion: Array<window.Rect> = [portraitRect1];
-
+// Target panel status type.
 let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// Location, size, avoid area, and hot zone of the target panel in both landscape and portrait orientations.
 let panelRect: inputMethodEngine.EnhancedPanelRect = {
   landscapeAvoidY: 650,
   landscapeInputRegion: landscapeInputRegion,
@@ -2739,7 +2762,7 @@ inputMethodEngine.getInputMethodAbility()
           console.info('OnTerminated.');
         },
         onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info('recv message.');
+          console.info(`recv message, msgId is ${msgId}, msgParam is ${JSON.stringify(msgParam)}`);
         }
       }
       inputClient.recvMessage(messageHandler);
@@ -2773,7 +2796,7 @@ inputMethodEngine.getInputMethodAbility()
           console.info('OnTerminated.');
         },
         onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info('recv message.');
+          console.info(`recv message, msgId is ${msgId}, msgParam is ${JSON.stringify(msgParam)}`);
         }
       }
       inputClient.recvMessage(messageHandler);
@@ -4423,7 +4446,7 @@ Registers or unregisters MessageHandler.
 
 **Error codes**
 
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message        |
 | -------- | ---------------- |
@@ -4787,7 +4810,7 @@ Obtains the specific-length text before the cursor. This API uses a promise to r
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getForward](#getforward9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getForward](#getforward9-1) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

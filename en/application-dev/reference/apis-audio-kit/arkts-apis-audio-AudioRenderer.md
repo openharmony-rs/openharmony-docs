@@ -889,7 +889,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API uses a
 
 | Name  | Type                  | Mandatory| Description                |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.<br>The unit is bytes.|
 
 **Example**
 
@@ -920,7 +920,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API uses a
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise used to return the buffer size.|
+| Promise\<number> | Promise used to return the buffer size.<br>The unit is bytes.|
 
 **Example**
 
@@ -949,7 +949,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API return
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| number | Buffer size.|
+| number | Buffer size, in bytes.|
 
 **Example**
 
@@ -1008,7 +1008,7 @@ Obtains the playback speed.
 
 | Type                                             | Description       |
 | ------------------------------------------------- |-----------|
-| number | Playback speed.|
+| number | Playback rate, which ranges from 0.25 to 4.0.|
 
 **Example**
 
@@ -1215,7 +1215,7 @@ Obtains the minimum volume of the audio stream. This API uses an asynchronous ca
 
 | Name | Type      | Mandatory  | Description                |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum volume (range [0, 1]) obtained; otherwise, **err** is an error object.|
+|callback |AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum volume obtained; otherwise, **err** is an error object.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1242,7 +1242,7 @@ Obtains the minimum volume of the audio stream. This API uses a promise to retur
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise used to return the minimum volume, which is in the range [0, 1].|
+| Promise&lt;number&gt;| Promise used to return the minimum volume of the audio stream.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1268,7 +1268,7 @@ Obtains the minimum volume of the audio stream. This API returns the result sync
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| number| Minimum volume, which is in the range [0, 1].|
+| number| Minimum volume of the audio stream, which ranges from 0.0 to 1.0.|
 
 **Example**
 
@@ -1296,7 +1296,7 @@ Obtains the maximum volume of the audio stream. This API uses an asynchronous ca
 
 | Name | Type      | Mandatory  | Description                |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum volume (range [0, 1]) obtained; otherwise, **err** is an error object.|
+|callback | AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum volume obtained; otherwise, **err** is an error object.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1323,7 +1323,7 @@ Obtains the maximum volume of the audio stream. This API uses a promise to retur
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise used to return the maximum volume, which is in the range [0, 1].|
+| Promise&lt;number&gt;| Promise used to return the maximum volume of the audio stream.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1349,7 +1349,7 @@ Obtains the maximum volume of the audio stream. This API returns the result sync
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| number| Maximum volume, which is in the range [0, 1].|
+| number| Maximum volume of the audio stream, which ranges from 0.0 to 1.0.|
 
 **Example**
 
@@ -2681,7 +2681,7 @@ Obtains the playback loudness.
 
 | Type   | Description            |
 |------- |-----------------  |
-| number | Playback loudness.|
+| number | Playback loudness, in decibels.|
 
 **Example**
 

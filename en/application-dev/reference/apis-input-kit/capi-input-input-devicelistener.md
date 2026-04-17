@@ -5,7 +5,11 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct Input_DeviceListener {...} Input_DeviceListener
+```
 
 ## Overview
 
@@ -23,5 +27,5 @@ Defines a listener for device hot swap events.
 
 | Name| Description|
 | -- | -- |
-| Input_DeviceAddedCallback deviceAddedCallback | Defines a callback used to receive device insertion events.|
-| Input_DeviceRemovedCallback deviceRemovedCallback | Defines a callback used to receive device removal events.|
+| Input_DeviceAddedCallback deviceAddedCallback | Defines a callback for device hot-plug events.|
+| Input_DeviceRemovedCallback deviceRemovedCallback | Defines a callback for device hot-unplug events.|

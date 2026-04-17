@@ -171,7 +171,7 @@ The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query pa
 | OH_MD_KEY_TRACK_START_TIME | Start time of the track, measured in microseconds. The value type is int64_t. This key is optional.           |
 | OH_MD_KEY_TRACK_TYPE                | Track type in a media file. The value type is int32_t. For details, see [OH_MediaType](capi-native-avcodec-base-h.md#oh_mediatype). This key is optional.|
 | OH_MD_KEY_DURATION                    | Duration in a media file. The value type is int64_t. This key is optional.                 |
-| OH_MD_KEY_TITLE                          | Title of a media file . The value type is char *. This key is optional.              |
+| OH_MD_KEY_TITLE                          | Title of a media file. The value type is char *. This key is optional.              |
 | OH_MD_KEY_ARTIST                        | Artist. The value type is char *. This key is optional.            |
 | OH_MD_KEY_ALBUM                          | Album media file. The value type is char *. This key is optional.              |
 | OH_MD_KEY_ALBUM_ARTIST            | Album artist. The value type is char *. This key is optional.              |

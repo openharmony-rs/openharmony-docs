@@ -511,7 +511,7 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 
 | Type            | Description                         |
 | :--------------- | :---------------------------- |
-| Promise<number\> | Promise used to return the number of nanoseconds elapsed from the Unix epoch.|
+| Promise<number\> | Promise used to return a timestamp representing the number of nanoseconds elapsed since the Unix epoch (January 1, 1970).<br> |
 
 **Example**
 
@@ -637,7 +637,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API uses a
 
 | Name  | Type                  | Mandatory| Description                                |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<number\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.<br>The unit is bytes.|
 
 **Example**
 
@@ -665,7 +665,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API uses a
 
 | Type            | Description                               |
 | :--------------- | :---------------------------------- |
-| Promise<number\> | Promise used to return the buffer size.|
+| Promise<number\> | Promise used to return the buffer size.<br>The unit is bytes.|
 
 **Example**
 
@@ -691,7 +691,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API return
 
 | Type            | Description                               |
 | :--------------- | :---------------------------------- |
-| number | Buffer size.|
+| number | Buffer size, in bytes.|
 
 **Example**
 
@@ -1223,6 +1223,8 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 Subscribes to the audio data read event, which is triggered when audio stream data needs to be read. This API uses an asynchronous callback to return the result.
 
 The callback function is used only to read audio data. Do not call AudioCapturer APIs in it.
+
+To eliminate power-on noise caused by the microphone hardware design, the first 100 ms of data after recording starts is typically muted.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 

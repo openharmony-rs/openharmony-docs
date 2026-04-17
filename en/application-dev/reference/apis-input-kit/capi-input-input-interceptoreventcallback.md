@@ -5,7 +5,11 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+
+```c
+typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
+```
 
 ## Overview
 
@@ -36,14 +40,14 @@ Defines the structure of interceptor callback events, including mouse events, to
 | [typedef void (\*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)](#input_mouseeventcallback) | Input_MouseEventCallback() | Defines the lifecycle callback for **mouseEvent**. If the callback is triggered, **mouseEvent** will be destroyed.<br>**Since**: 12|
 | [typedef void (\*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)](#input_toucheventcallback) | Input_TouchEventCallback() | Defines the lifecycle callback for **touchEvent**. If the callback is triggered, **touchEvent** will be destroyed.<br>**Since**: 12|
 | [typedef void (\*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)](#input_axiseventcallback) | Input_AxisEventCallback() | Defines the lifecycle callback for **axisEvent**. If the callback is triggered, **axisEvent** will be destroyed.<br>**Since**: 12|
-| [typedef void (\*Input_DeviceAddedCallback)(int32_t deviceId)](#input_deviceaddedcallback) | Input_DeviceAddedCallback() | Defines the callback used to receive device insertion events.<br>**Since**: 13|
-| [typedef void (\*Input_DeviceRemovedCallback)(int32_t deviceId)](#input_deviceremovedcallback) | Input_DeviceRemovedCallback() | Defines the callback used to receive device removal events.<br>**Since**: 13|
+| [typedef void (\*Input_DeviceAddedCallback)(int32_t deviceId)](#input_deviceaddedcallback) | Input_DeviceAddedCallback() | Defines the callback used for input device hot-plug events.<br>**Since**: 13|
+| [typedef void (\*Input_DeviceRemovedCallback)(int32_t deviceId)](#input_deviceremovedcallback) | Input_DeviceRemovedCallback() | Defines the callback used for input device hot-unplug events.<br>**Since**: 13|
 
 ## Member Function Description
 
 ### Input_KeyEventCallback()
 
-```
+```c
 typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 ```
 
@@ -61,7 +65,7 @@ Defines the lifecycle callback for **keyEvent**. If the callback is triggered, *
 
 ### Input_MouseEventCallback()
 
-```
+```c
 typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 ```
 
@@ -79,7 +83,7 @@ Defines the lifecycle callback for **mouseEvent**. If the callback is triggered,
 
 ### Input_TouchEventCallback()
 
-```
+```c
 typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 ```
 
@@ -97,7 +101,7 @@ Defines the lifecycle callback for **touchEvent**. If the callback is triggered,
 
 ### Input_AxisEventCallback()
 
-```
+```c
 typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 ```
 
@@ -115,13 +119,13 @@ Defines the lifecycle callback for **axisEvent**. If the callback is triggered, 
 
 ### Input_DeviceAddedCallback()
 
-```
+```c
 typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 ```
 
 **Description**
 
-Defines the callback used to receive device insertion events.
+Defines the callback used for input device hot-plug events.
 
 **Since**: 13
 
@@ -129,17 +133,17 @@ Defines the callback used to receive device insertion events.
 
 | Name| Description|
 | -- | -- |
-| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly plugged and unplugged or restarted, its ID may change.|
 
 ### Input_DeviceRemovedCallback()
 
-```
+```c
 typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 ```
 
 **Description**
 
-Defines the callback used to receive device removal events.
+Defines the callback used for input device hot-unplug events.
 
 **Since**: 13
 
@@ -147,4 +151,4 @@ Defines the callback used to receive device removal events.
 
 | Name| Description|
 | -- | -- |
-| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly plugged and unplugged or restarted, its ID may change.|

@@ -22,11 +22,11 @@ This module contains the following classes:
 
 - [Metadata](arkts-apis-image-Metadata.md): used to store image metadata. For details about the supported metadata types, see [MetadataType](arkts-apis-image-e.md#metadatatype13). It includes Exif metadata and watermark cropping metadata, both stored in Key-Value pairs. The keys for Exif metadata can be found in [PropertyKey](arkts-apis-image-e.md#propertykey7), and the keys for watermark cropping metadata can be found in [FragmentPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13).
 
-- [ImageReceiver](arkts-apis-image-ImageReceiver.md): acts as a consumer of images, used for receiving and reading images from a surface.
+- [ImageReceiver](arkts-apis-image-ImageReceiver.md): acts as an image consumer to receive and read images from a surface.
 
-- [ImageCreator](arkts-apis-image-ImageCreator.md): acts as a producer of images, used for writing images into a surface.
+- [ImageCreator](arkts-apis-image-ImageCreator.md): acts as an image producer to write images into a surface.
 
-- [Image](arkts-apis-image-Image.md): used by ImageReceiver and ImageCreator for transferring image objects, with the actual content determined by the producer. For example, the Image object provided by a camera preview stream contains YUV data, whereas the Image object provided by a camera photo contains a JPEG file.
+- [Image](arkts-apis-image-Image.md): used by ImageReceiver and ImageCreator for transferring image objects, with the actual content determined by the producer. For example, the image object provided by a camera preview stream contains YUV data, whereas the image object provided by a camera photo contains a JPEG file.
 
 > **NOTE**
 >
