@@ -224,8 +224,7 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 > 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)代替。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或(ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))
-
-ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
+- ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -257,8 +256,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 > 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)代替。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 (ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))
-
-ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
+- ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
