@@ -204,6 +204,10 @@ type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
 | 'idle'     | 闲置状态。此时可以调用[AVRecorder.prepare()](arkts-apis-media-AVRecorder.md#prepare9)方法设置录制参数，进入prepared状态。AVRecorder刚被创建，或者在任何非released状态下调用[AVRecorder.reset()](arkts-apis-media-AVRecorder.md#reset9)方法，均进入idle状态。 |
@@ -223,6 +227,10 @@ type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChan
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
