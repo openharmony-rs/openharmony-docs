@@ -35,6 +35,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 快捷方式的配置信息。
 
+<!--Table: 20%; 21%; 8%; 8%; 43%-->
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 | 名称                | 类型                                       | 只读 | 可选 | 说明                         |

@@ -1,4 +1,4 @@
-# @ohos.commonEvent (公共事件模块)(系统应用)
+# @ohos.commonEvent (公共事件模块)(系统应用)(已废弃)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
@@ -10,9 +10,8 @@
 本模块提供了公共事件的能力，包括公共事件的权限列表，发布公共事件，订阅或取消订阅公共事件，获取或修改公共事件结果代码、结果数据等。
 
 > **说明：**
-> 从API Version 9开始，该接口不再维护，推荐使用新接口[@ohos.commonEventManager](js-apis-commonEventManager.md)。
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 从API version 7 开始支持，从API version 9 开始废弃，建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[CommonEvent](./js-apis-commonEvent.md)。
 
@@ -35,7 +34,8 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 以回调的形式向指定用户发布公共事件。
 
 > **说明：**
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser)替代。
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -77,7 +77,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 以回调形式向指定用户发布公共事件并指定发布信息。
 
 > **说明：**
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1)替代。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 

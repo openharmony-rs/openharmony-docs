@@ -366,13 +366,13 @@ getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;n
 | 参数名 | 类型               | 必填 | 说明                              |
 | -----  | ------------------ | ---- | --------------------------------- |
 |  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
-|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
+|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数为负数或超出字体文件实际索引范围，将返回空数组。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件对应的unicode码数组。 |
 
 **示例：**
 
@@ -566,6 +566,47 @@ struct isFontSupportedTest {
 | -------------- | ---- | ------------------------------------ |
 | USE_DEFAULT    | 0    | 使用字体的内部.notdef字形。遵循字体的内部.notdef字形设计，可以是空框、空格或自定义符号。|
 | USE_TOFU       | 1    | 总是用显式的豆腐块替换未定义的字形，覆盖字体的默认行为。用于调试缺失字符或强制一致的缺失符号显示。|
+
+## TextProcessState
+
+文本处理状态的枚举。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+| 名称               | 值   | 说明                                 |
+| ------------------ | ---- | ------------------------------------ |
+| INIT               | 0    | 初始状态，文本处理尚未开始。           |
+| INDEXED            | 1    | 已生成索引状态，文本索引已生成。           |
+| SHAPED             | 2    | 已塑形状态，文本已完成塑形。           |
+| LINE_BROKEN        | 3    | 已换行状态，文本已换行。               |
+| FORMATTED          | 4    | 已格式化状态，文本已完成格式化。       |
+| PAINT              | 5    | 已绘制状态，文本已完成绘制。           |
+| UPDATE_ATTRIBUTE   | 6    | 已更新属性状态，文本属性已更新。       |
+
+## TextDisplayState
+
+文本显示状态的枚举。表示文本排版后的原生结果，与外部画布裁切、溢出屏幕等外部显示因素无关。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+| 名称      | 值 | 说明                                |
+|---------|---|-----------------------------------|
+| UNKNOWN | 0 | 未知显示状态，默认状态。                      |
+| ALL     | 1 | 完整显示状态，文本无截断、无省略，全部内容正常显示。        |
+| CLIP    | 2 | 裁剪显示状态，文本超出排版区域的部分被直接裁剪隐藏。        |
+| OMITTED | 3 | 省略显示状态，文本超出排版区域后，部分内容以指定字符（如省略号 '...'）替代展示。 |
 
 ## TextAlign
 
@@ -796,8 +837,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | 名称          | 类型                                                 | 只读 | 可选 | 说明                               |
 | ------------- | ---------------------------------------------------- | --  | ---  | --------------------------------- |
 | color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 字体阴影的颜色，默认为黑色Color(255, 0, 0, 0)。        |
-| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零。    |
-| blurRadius    | number                                               | 否  |  是   | 模糊半径，浮点数，默认为0.0px。       |
+| point         | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否  |  是   | 字体阴影基于当前文本的偏移位置，横、纵坐标要大于等于零，单位为物理像素px。    |
+| blurRadius    | number                                               | 否  |  是   | 模糊半径，浮点数，单位为物理像素px，默认为0.0。       |
 
 ## RectStyle
 
@@ -810,10 +851,10 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | 名称               | 类型                                                 | 只读 | 可选 | 说明                                      |
 | -----------------  | ---------------------------------------------------- | --  | ---  | ---------------------------------------- |
 | color              | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  否   | 矩形框的颜色。                 |
-| leftTopRadius      | number                                               | 否  |  否   | 矩形框的左上半径。       |
-| rightTopRadius     | number                                               | 否  |  否   | 矩形框的右上半径。       |
-| rightBottomRadius  | number                                               | 否  |  否   | 矩形框的右下半径。       |
-| leftBottomRadius   | number                                               | 否  |  否   | 矩形框的左下半径。       |
+| leftTopRadius      | number                                               | 否  |  否   | 矩形框的左上半径，单位为物理像素px。       |
+| rightTopRadius     | number                                               | 否  |  否   | 矩形框的右上半径，单位为物理像素px。       |
+| rightBottomRadius  | number                                               | 否  |  否   | 矩形框的右下半径，单位为物理像素px。       |
+| leftBottomRadius   | number                                               | 否  |  否   | 矩形框的左下半径，单位为物理像素px。       |
 
 ## FontFeature
 
@@ -884,23 +925,23 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。                          |
 | baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
 | fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。                    |
-| fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为px。  |
-| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。|
-| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为px。                 |
+| fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为物理像素px。  |
+| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，如果为负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。|
+| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，单位为物理像素px，默认为0.0。                 |
 | heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。              |
 | heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距，默认为false。|
 | halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。|
 | ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。       |
 | ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。                       |
 | locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。 |
-| baselineShift | number                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，默认为0.0px。                 |
+| baselineShift | number                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，单位为物理像素px，默认为0.0。                 |
 | fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。|
 | fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。|
 | textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。|
 | backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。|
 | badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。|
-| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。 |
-| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。 |
+| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。 |
+| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。 |
 | lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。 |
 | fontEdging<sup>24+</sup> | [drawing.FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) | 否 | 是 | 绘制文本的边缘处理方式，默认值为ANTI_ALIAS。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
@@ -918,9 +959,9 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontStyle      | [FontStyle](#fontstyle)                              | 否   | 是 | 字体样式，默认为常规样式。                                               |
 | fontWidth      | [FontWidth](#fontwidth)                              | 否   | 是 | 字体宽度，默认为NORMAL。                                                |
 | fontWeight     | [FontWeight](#fontweight)                            | 否   | 是 | 字重，默认为W400。系统默认字体支持字重调节，其他字体设置字重值小于W600时无变化，大于等于W600时可能触发伪加粗效果。                             |
-| fontSize       | number                                               | 否   | 是 | 字体大小，浮点数，默认14.0，单位物理像素px。                             |
+| fontSize       | number                                               | 否   | 是 | 字体大小，浮点数，默认14.0，单位为物理像素px。                             |
 | height         | number                                               | 否   | 是 | 行高缩放倍数，浮点数，默认为1.0。                                         |
-| leading        | number                                               | 否   | 是 | 以自定义行距应用于支柱的行距，浮点数，默认为-1.0。                          |
+| leading        | number                                               | 否   | 是 | 自定义应用于支柱的行距，浮点数，单位为物理像素px，默认为-1.0。                          |
 | forceHeight    | boolean                                              | 否   | 是 | 是否所有行都将使用支柱的高度，true表示使用，false表示不使用，默认为false。     |
 | enabled        | boolean                                              | 否   | 是 | 是否启用支柱样式，true表示使用，false表示不使用，默认为false。              |
 | heightOverride | boolean                                              | 否   | 是 | 是否覆盖高度，true表示覆盖，false表示不覆盖，默认为false。                  |
@@ -1478,6 +1519,49 @@ struct Index {
 }
 ```
 
+### setParagraphCachesEnabled
+
+setParagraphCachesEnabled(enable: boolean): void
+
+设置是否启用排版段落缓存。排版段落缓存可以加速重复文本的排版速度，但会占用额外的内存。未调用此接口前，系统默认开启排版段落缓存。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                       |
+| ----- | ------- | ---- | ----------------------------------------- |
+| enable | boolean | 是   | 是否启用排版段落缓存。true表示启用，false表示禁用。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('启用段落缓存').onClick(() => {
+        text.FontCollection.getGlobalInstance().setParagraphCachesEnabled(true);
+      })
+      Button('禁用段落缓存').onClick(() => {
+        text.FontCollection.getGlobalInstance().setParagraphCachesEnabled(false);
+      })
+    }
+  }
+}
+```
+
+
+
 ## ParagraphStyle
 
 段落样式。
@@ -1495,14 +1579,17 @@ struct Index {
 | strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。               |
 | textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                              |
 | tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时是否考虑行尾空格的对齐影响。true表示忽略行尾空格的对齐影响，false表示考虑行尾空格的对齐影响，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，单位为物理像素px，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认保留行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | orphanCharOptimization | boolean | 否 | 是 | 设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak)为非BREAK_ALL并且待排版文本首个[TextStyle](#textstyle)的[locale](#textstyle)为“zh-Hans”或“zh-Hant”时生效。true表示使能孤字优化，false表示不使能孤字优化，默认值为false。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| firstLineHeadIndent | number | 否 | 是 | 设置段落首行缩进，缩进值需大于等于0，默认值为0。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| tailIndents | Array\<number> | 否 | 是 | 设置行尾缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| headIndents | Array\<number> | 否 | 是 | 设置行首缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |
@@ -1543,7 +1630,7 @@ struct Index {
 
 > **说明：**
 >
-> 示意图展示了后三种对齐方式，前三种对齐方式类似，比较位置是文本基线，即绿色线条部分。
+> 示意图展示了后三种对齐方式，前三种对齐方式在文本基线对齐方式上类似，比较位置是文本基线，即绿色线条部分。
 >
 >![zh-ch_image_Baseline.png](figures/zh-ch_image_Baseline.png)
 
@@ -1578,7 +1665,7 @@ struct Index {
 
 ## TextRectSize<sup>24+</sup>
 
-文本布局后的矩形尺寸。值为浮点数，单位为px。
+文本矩形尺寸，用于描述文本的矩形宽高属性。值为浮点数，单位为物理像素px。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -1588,8 +1675,8 @@ struct Index {
 
 | 名称    | 类型   | 只读 | 可选 | 说明                       |
 | ----- | ------ | ---- | --- | -------------------------- |
-| width  | number | 否   | 否   | 文本矩形的宽度，浮点数，单位为px。|
-| height | number | 否   | 否   | 文本矩形的高度，浮点数，单位为px。|
+| width  | number | 否   | 否   | 文本矩形的宽度，浮点数，单位为物理像素px。|
+| height | number | 否   | 否   | 文本矩形的高度，浮点数，单位为物理像素px。|
 
 ## TextLayoutResult<sup>24+</sup>
 
@@ -1603,7 +1690,7 @@ struct Index {
 
 | 名称        | 类型                      | 只读 | 可选 | 说明                                    |
 | ----------- | ------------------------- | ---- | --- | --------------------------------------- |
-| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 布局后可以容纳的字符范围数组。       |
+| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 文本布局计算完成后能够完整显示的字符范围数组。       |
 | correctRect  | [TextRectSize](#textrectsize24) | 否   | 否   | 布局后段落的矩形尺寸。 |
 
 ## Paragraph
@@ -1758,7 +1845,7 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 
 | 参数名 | 类型                                      | 必填 | 说明                       |
 | ----- | ----------------------------------------- | ---- | -------------------------- |
-| size  | [TextRectSize](#textrectsize24) | 是   | 约束的高度和宽度，单位为px。|
+| size  | [TextRectSize](#textrectsize24) | 是   | 约束的高度和宽度，单位为物理像素px。|
 
 **返回值：**
 
@@ -1792,8 +1879,8 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 | 参数名 | 类型                                                  | 必填 | 说明                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标画布。         |
-|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
-|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标，浮点数。|
+|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。|
+|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -1821,8 +1908,8 @@ paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: number, vOffset
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标画布。         |
 | path | [drawing.Path](arkts-apis-graphics-drawing-Path.md) | 是   | 确认文字位置的路径。         |
-|    hOffset   | number                                               | 是   | 沿路径方向偏置，从路径起点向前为正，向后为负。|
-|    vOffset   | number                                               | 是   | 沿路径垂直方向偏置，沿路径方向左侧为负，右侧为正。|
+|    hOffset   | number                                               | 是   | 沿路径方向偏置，从路径起点向前为正，向后为负，单位为物理像素px。|
+|    vOffset   | number                                               | 是   | 沿路径垂直方向偏置，沿路径方向左侧为负，右侧为正，单位为物理像素px。|
 
 **示例：**
 
@@ -2079,8 +2166,8 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 参数名 | 类型   | 必填 | 说明   |
 | ----- | ------ | ---- | ------ |
-| x     | number | 是   | 横坐标，浮点数。|
-| y     | number | 是   | 纵坐标，浮点数。|
+| x     | number | 是   | 横坐标，浮点数，单位为物理像素px。|
+| y     | number | 是   | 纵坐标，浮点数，单位为物理像素px。|
 
 **返回值：**
 
@@ -2164,7 +2251,7 @@ getLineHeight(line: number): number
 
 | 类型   | 说明  |
 | ------ | ---- |
-| number | 行高。|
+| number | 行高，单位为物理像素px。|
 
 **示例：**
 
@@ -2192,7 +2279,7 @@ getLineWidth(line: number): number
 
 | 类型   | 说明  |
 | ------ | ---- |
-| number | 行宽。|
+| number | 行宽，单位为物理像素px。|
 
 **示例：**
 
@@ -2371,6 +2458,44 @@ paragraph.updateDecoration({
   decorationStyle: text.TextDecorationStyle.WAVY,
   decorationThicknessScale: 2.0,
 });
+```
+
+### getVisibleTextRanges
+
+getVisibleTextRanges(): Array\<Range\>
+
+获取段落中在屏幕上可见的文本范围。不包含因最大行数（[ParagraphStyle](#paragraphstyle)的maxLines属性）截断或省略号模式（[EllipsisMode](#ellipsismode)）替换而未显示的文本。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                          | 说明          |
+| ----------------------------- | -------------- |
+| Array\<[Range](#range)\> | 段落可见文本范围数组，范围为UTF-16编码单元索引。|
+
+返回的范围取决于段落的具体截断情况（如是否设置最大行数或省略号等）：
+
+| 场景 | 说明 |
+| - | - |
+| 文本未被截断 | 范围包含全部已排版文本 |
+| 仅设置maxLines截断（未设置省略号） | 范围为实际显示的文本，即第一行至第maxLines行末尾的文本。 |
+| 尾部省略（[EllipsisMode.END](#ellipsismode)） | 范围为省略号之前的文本。 |
+| 头部省略（[EllipsisMode.START](#ellipsismode)） | 范围为省略号之后的文本。 |
+| 中部省略（[EllipsisMode.MIDDLE](#ellipsismode)） | 第一个范围为省略号之前的文本，第二个范围为省略号之后的文本。 |
+| 多行头部省略（[EllipsisMode.MULTILINE_START](#ellipsismode)） | 同中部省略，返回省略号前后的文本范围。 |
+| 多行中部省略（[EllipsisMode.MULTILINE_MIDDLE](#ellipsismode)） | 同中部省略，返回省略号前后的文本范围。 |
+
+**示例：**
+
+```ts
+let visibleRanges = paragraph.getVisibleTextRanges();
 ```
 
 ### getCharacterRangeForGlyphRange<sup>24+</sup>
@@ -2579,6 +2704,171 @@ struct Index {
 }
 ```
 
+### getProcessState
+
+getProcessState(): TextProcessState
+
+获取段落的文本处理状态。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [TextProcessState](#textprocessstate) | 段落的文本处理状态。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          let processState = paragraph.getProcessState(); // Now it is INIT
+          console.info("Print state: " + processState);
+          paragraph.layoutSync(200);
+          processState = paragraph.getProcessState(); // Now it is FORMATTED
+          console.info("Print state: " + processState);
+        })
+    }
+  }
+}
+```
+
+### getTextDisplayState
+
+getTextDisplayState(): TextDisplayState
+
+获取段落的文本显示状态。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [TextDisplayState](#textdisplaystate) | 段落的文本显示状态。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          let displayState = paragraph.getTextDisplayState(); // Now it is UNKNOWN
+          console.info("Print state: " + displayState);
+          paragraph.layoutSync(200);
+          displayState = paragraph.getTextDisplayState(); // Now it is CLIP
+          console.info("Print state: " + displayState);
+        })
+    }
+  }
+}
+```
+
+### getParagraphStyle
+
+getParagraphStyle(): ParagraphStyle
+
+获取段落的样式配置。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let paragraphStyle = paragraph.getParagraphStyle();
+          if (paragraphStyle.textStyle != undefined) {
+            console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+          }
+        })
+    }
+  }
+}
+```
+
 ## LineTypeset<sup>18+</sup>
 
 保存着文本内容以及样式的载体，可以用于计算单行排版信息。
@@ -2599,7 +2889,7 @@ getLineBreak(startIndex: number, width: number): number
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
-| startIndex | number | 是 | 开始计算排版的起始位置（包括起始位置）。取值范围需要为[0,文本字符总数）的整数，参数非法时抛出异常。|
+| startIndex | number | 是 | 开始计算排版的起始位置（包括起始位置）。取值范围需要为[0,文本字符总数）的整数，当参数超出范围时抛出异常。|
 | width | number | 是   | 可用于排版的宽度，大于0的浮点数，单位为物理像素px。|
 
 **返回值：**
@@ -2639,7 +2929,7 @@ createLine(startIndex: number, count: number): TextLine
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
 | startIndex | number | 是 | 开始计算排版的起始位置，整数，取值范围为[0, 文本字符总数)。|
-| count | number | 是   | 从指定起始位置开始进行排版的字符个数，取值为[0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本结尾]。可以先使用[getLineBreak](#getlinebreak18)获取合理的排版字符总数。|
+| count | number | 是   | 从指定起始位置开始进行排版的字符个数，取值为[0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本的最后一个字符位置]。可以先使用[getLineBreak](#getlinebreak18)获取合理的排版字符总数。|
 
 **返回值：**
 
@@ -2689,19 +2979,19 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
 | startIndex | number                                            | 否   | 否   | 文本缓冲区中该行开始的索引位置。|
 | endIndex   | number                                            | 否   | 否   | 文本缓冲区中该行结束的索引位置。|
-| ascent     | number                                            | 否   | 否   | 文字上升高度，即从基线到字符顶部的距离。|
-| descent    | number                                            | 否   | 否   | 文字下降高度，即从基线到字符底部的距离。|
-| height     | number                                            | 否   | 否   | 当前行的高度，计算方式为 `Math.round(ascent + descent)`|
-| width      | number                                            | 否   | 否   | 行的宽度。                      |
-| left       | number                        | 否   | 否   | 行的左边缘位置。右边缘可通过 `left+width` 计算得出。|
-| baseline   | number                        | 否   | 否   | 该行基线相对于段落顶部的 Y 坐标位置。|
+| ascent     | number                                            | 否   | 否   | 文字上升高度，即从基线到字符顶部的距离，单位为物理像素px。|
+| descent    | number                                            | 否   | 否   | 文字下降高度，即从基线到字符底部的距离，单位为物理像素px。|
+| height     | number                                            | 否   | 否   | 当前行的高度，单位为物理像素px，计算方式为 `Math.round(ascent + descent)`|
+| width      | number                                            | 否   | 否   | 行的宽度，单位为物理像素px。                      |
+| left       | number                        | 否   | 否   | 行的左边缘位置，单位为物理像素px。右边缘可通过 `left+width` 计算得出。|
+| baseline   | number                        | 否   | 否   | 该行基线相对于段落顶部的 Y 坐标位置，单位为物理像素px。|
 | lineNumber   | number                        | 否   | 否   | 行号，从0开始计数。|
-| topHeight   | number                        | 否   | 否   | 从顶部到当前行的高度。|
+| topHeight   | number                        | 否   | 否   | 从顶部到当前行的高度，单位为物理像素px。|
 | runMetrics   | Map<number, [RunMetrics](#runmetrics)>                        | 否   | 否   | 文本索引范围与关联的字体度量信息之间的映射。|
 
 ## TextBox
 
-文本矩形区域。
+文本矩形区域，表示文本在布局时所占用的矩形空间。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2709,7 +2999,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 | 名称      | 类型                                                | 只读 | 可选 | 说明        |
 | --------- | -------------------------------------------------- | ---- | ---- | ----------- |
-| rect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 否   | 矩形区域信息。|
+| rect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 否   | 矩形区域信息，单位为物理像素px。|
 | direction | [TextDirection](#textdirection)                    | 否   | 否   | 文本方向。    |
 
 ## PositionWithAffinity
@@ -3186,14 +3476,14 @@ struct Index {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | - | - | - |
-| ascent | number | 否 | 否 | 文本行的上升高度，浮点数。 |
-| descent | number | 否 | 否 | 文本行的下降高度，浮点数。 |
-| leading | number | 否 | 否 | 文本行的行间距，浮点数。 |
-| width | number | 否 | 否 | 排版边界的总宽度，浮点数。 |
+| ascent | number | 否 | 否 | 文本行的上升高度，浮点数，单位为物理像素px。 |
+| descent | number | 否 | 否 | 文本行的下降高度，浮点数，单位为物理像素px。 |
+| leading | number | 否 | 否 | 文本行的行间距，浮点数，单位为物理像素px。 |
+| width | number | 否 | 否 | 排版边界的总宽度，浮点数，单位为物理像素px。 |
 
 >**说明：**
 >
->示意图展示了ascent、descent、leading、top、baseline、bottom、next line top的含义。width为文本行排版包括左右空格的宽度。ascent为文本行上升高度最高点，descent为文本行下降高度最低点，leading为文本行间距，top为文本行的最高点，baseline为字符基线，bottom为文本行的最低点，next line top为下一个文本行的最高点。
+>示意图展示文本行排版参数：width（包含左右空格的文本行宽度）、ascent（上升高度最高点）、descent（下降高度最低点）、leading（行间距）、top（当前行最高点）、baseline（字符基线）、bottom（当前行最低点）、next line top（下一行最高点）。
 >
 >![zh-ch_image_Typographic.png](figures/zh-ch_image_Typographic.png)
 >
@@ -3218,7 +3508,7 @@ type CaretOffsetsCallback = (offset: number, index: number, leadingEdge: boolean
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | - | - | - | - |
-| offset | number | 是 | 文本行中每个字符的偏移量，浮点数。 |
+| offset | number | 是 | 文本行中每个字符的偏移量，浮点数，单位为物理像素px。 |
 | index | number | 是 | 文本行中每个字符的索引值，整数。 |
 | leadingEdge | boolean | 是 | 光标是否位于字符的前缘，true表示位于字符前缘，即偏移量不包含该字符宽度，false表示位于字符后缘，即偏移量包含该字符宽度。 |
 
@@ -3314,8 +3604,8 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 | 参数名 | 类型                                                  | 必填 | 说明                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标canvas。      |
-|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
-|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标，浮点数。|
+|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。|
+|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -3366,7 +3656,7 @@ createTruncatedLine(width: number, ellipsisMode: EllipsisMode, ellipsis: string)
 
 | 参数名 | 类型 | 必填 | 说明                            |
 | -| - | - |-------------------------------|
-| width | number | 是 | 截断后的行宽度，浮点数。                  |
+| width | number | 是 | 截断后的行宽度，浮点数，单位为物理像素px。                  |
 | ellipsisMode | [EllipsisMode](#ellipsismode) | 是 | 截断的类型，当前仅支持头部截断START和尾部截断END。 |
 | ellipsis | string | 是 | 截断的标记字符串。                     |
 
@@ -3468,7 +3758,7 @@ getImageBounds(): common2D.Rect
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 文本行的图像边界。|
+| [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 文本行的图像边界，单位为物理像素px。|
 
 **示例：**
 
@@ -3490,7 +3780,7 @@ getTrailingSpaceWidth(): number
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 文本行尾部空白字符的宽度，浮点数。|
+| number | 文本行尾部空白字符的宽度，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -3547,7 +3837,7 @@ getOffsetForStringIndex(index: number): number
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 给定字符串索引处的偏移量，浮点数。|
+| number | 给定字符串索引处的偏移量，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -3596,13 +3886,13 @@ getAlignmentOffset(alignmentFactor: number, alignmentWidth: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -| - | - | - |
 | alignmentFactor | number | 是 | 对齐因子，即对齐的程度，浮点数。小于等于0.0表示左对齐，大于0.0小于0.5表示偏左对齐，0.5表示居中对齐，大于0.5小于1.0表示偏右对齐，大于等于1.0表示右对齐。|
-| alignmentWidth | number | 是 | 对齐宽度，即文本行的宽度，浮点数。小于文本行的实际宽度时，返回0。|
+| alignmentWidth | number | 是 | 对齐宽度，即文本行的宽度，浮点数，单位为物理像素px。小于文本行的实际宽度时，返回0。|
 
 **返回值：**
 
 | 类型         | 说明                         |
 | ------------ | --------------------------- |
-| number | 计算得到的对齐所需偏移量，浮点数。|
+| number | 计算得到的对齐所需偏移量，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -3674,7 +3964,7 @@ getGlyphs(range: Range): Array\<number>
 
 | 参数名    | 类型    | 必填 | 说明                       |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | 是   | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。|
+| range    | [Range](#range)   | 是   | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，当range.end为0时表示从range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。|
 
 **返回值：**
 
@@ -3842,8 +4132,8 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 | 参数名 | 类型                                                  | 必填 | 说明                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------- |
 | canvas | [drawing.Canvas](arkts-apis-graphics-drawing-Canvas.md) | 是   | 绘制的目标 canvas。      |
-|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数。|
-|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标。浮点数。|
+|    x   | number                                               | 是   | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。|
+|    y   | number                                               | 是   | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -3980,7 +4270,7 @@ getImageBounds(): common2D.Rect
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-|   [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 该排版单元的图像边界。|
+|   [common2D.Rect](js-apis-graphics-common2D.md#rect)  | 该排版单元的图像边界，单位为物理像素px。|
 
 **示例：**
 
@@ -4062,7 +4352,7 @@ getAdvances(range: Range): Array<common2D.Point>
 
 | 类型                   | 说明                                   |
 | ---------------------- | ------------------------------------- |
-| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中，[common2D.Point](js-apis-graphics-common2D.md#point12)中的x值代表每个字形相对于水平方向的字形宽度，y值为保留字段，默认返回0。 |
+| Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>  | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中，[common2D.Point](js-apis-graphics-common2D.md#point12)中的x值代表每个字形相对于水平方向的字形宽度，单位为物理像素px，y值为保留字段，默认返回0。 |
 
 **示例：**
 
@@ -4083,7 +4373,7 @@ let advancesNull = runs[0].getAdvances(null); // null是非法参数，将返回
 
 | 名称               | 类型                    | 只读 | 可选 | 说明                                               |
 | -----------------  | ----------------------- | ---- | ---  | -------------------------------------------------- |
-| alignment          | [TextAlign](#textalign) | 否   |  否  | 段落中制表符之后的文本对齐方式，支持设置[TextAlign](#textalign)的LEFT左对齐、RIGHT右对齐和CENTER居中对齐方式，其他枚举值为左对齐，默认为左对齐。 |
+| alignment          | [TextAlign](#textalign) | 否   |  否  | 段落中制表符之后的文本对齐方式，支持设置[TextAlign](#textalign)的LEFT左对齐、RIGHT右对齐和CENTER居中对齐方式，未列出的枚举值将视为左对齐，默认为左对齐。 |
 | location           | number                  | 否   |  否  | 制表符之后的文本对齐位置，浮点数，单位为物理像素px，最小值为1.0，当该值小于1.0时，该制表符会被替换为一个空格。 |
 
 **示例：**
