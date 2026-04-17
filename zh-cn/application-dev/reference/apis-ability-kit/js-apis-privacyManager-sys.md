@@ -39,7 +39,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 应用权限名称。 |
 | successCount | number | 是   | 访问成功的次数。 |
 | failCount | number | 是   | 访问失败的次数。 |
@@ -73,7 +73,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0).then(() => {
   console.info('addPermissionUsedRecord success');
 }).catch((err: BusinessError) => {
@@ -109,7 +109,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 应用权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | successCount | number | 是   | 访问成功的次数。 |
 | failCount | number | 是   | 访问失败的次数。 |
@@ -137,7 +137,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, (err: BusinessError, data: void) => {
   if (err) {
     console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
@@ -377,7 +377,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;v
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 
 **返回值：**
@@ -408,7 +408,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;v
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success');
 }).catch((err: BusinessError) => {
@@ -432,7 +432,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number,
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | number | 否   | 调用方的进程pid，默认-1，-1表示不根据进程生命周期响应。|
 | usedType       | [PermissionUsedType](#permissionusedtype12) | 否 | 敏感权限访问方式，默认NORMAL_TYPE。 |
@@ -465,7 +465,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
@@ -515,7 +515,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number,
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | number | 否   | 调用方的进程pid。默认为-1，表示不根据进程生命周期响应。|
 | usedType       | [PermissionUsedType](#permissionusedtype12) | 否 | 敏感权限访问方式，默认NORMAL_TYPE。 |
@@ -548,7 +548,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedType.PICKER_TYPE;
 
@@ -600,7 +600,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, callback: Asy
 
 | 参数名          | 类型                  | 必填 | 说明                                  |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当开始使用权限成功，err为undefined，否则为错误对象。 |
 
@@ -626,7 +626,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, callback: Asy
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
     console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -652,7 +652,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;vo
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 
 **返回值：**
@@ -682,7 +682,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;vo
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
 }).catch((err: BusinessError) => {
@@ -708,7 +708,7 @@ pid需要与startUsingPermission传入的pid相同。
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | number | 否   | 与startUsingPermission传入的pid相同，默认-1。|
 
@@ -740,7 +740,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 
 // without pid
@@ -780,7 +780,7 @@ pid需要与[startUsingPermission](#privacymanagerstartusingpermission-1)传入�
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | -------------- | ------ | ---- | ------------------------------------ |
-| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | pid            | number | 否   | 调用方的进程pid。默认为-1，表示不根据进程生命周期响应。 |
 | options        | [PermissionUsingOptions](#permissionusingoptions)| 否 | 权限使用可选参数。 |
@@ -812,7 +812,7 @@ import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit'
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // 也可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let pid: number = rpc.IPCSkeleton.getCallingPid();
 
 // 不带pid参数
@@ -853,7 +853,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions, callback: Asyn
 
 | 参数名          | 类型                  | 必填 | 说明                                  |
 | -------------- | --------------------- | ---- | ------------------------------------ |
-| tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number                | 是   | 调用方的应用身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。|
 | permissionName | Permissions                | 是   | 需要使用的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | callback       | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止使用权限成功，err为undefined，否则为错误对象。 |
 
@@ -878,7 +878,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions, callback: Asyn
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // 可以通过getApplicationInfo获取accessTokenId。
+let tokenID: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
   if (err) {
     console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
@@ -1089,7 +1089,7 @@ getPermissionUsedTypeInfos(tokenId?: number | null, permissionName?: Permissions
 import { privacyManager, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenId: number = 0; // 可以通过bundleManager.getApplicationInfo获取accessTokenId。
+let tokenId: number = 0; // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
 let permissionName: Permissions = 'ohos.permission.CAMERA';
 // without any param
 privacyManager.getPermissionUsedTypeInfos().then(() => {
