@@ -138,8 +138,8 @@ MIDI设备类型枚举。定义MIDI设备的连接类型。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_MIDI_DEVICE_TYPE_USB = 0 | USB MIDI设备。<br>**起始版本：** 24 |
-| OH_MIDI_DEVICE_TYPE_BLE = 1 | BLE（蓝牙低功耗）MIDI设备。<br>**起始版本：** 24 |
+| OH_MIDI_DEVICE_TYPE_USB = 0 | USB MIDI设备。 |
+| OH_MIDI_DEVICE_TYPE_BLE = 1 | BLE（蓝牙低功耗）MIDI设备。 |
 
 ### OH_MIDIDeviceChangeAction
 
