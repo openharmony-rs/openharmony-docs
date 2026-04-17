@@ -34,7 +34,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -91,7 +91,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -145,7 +145,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -202,7 +202,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -256,7 +256,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise&lt;num
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS or ohos.permission.GRANT_SENSITIVE_PERMISSIONS or ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS or ohos.permission.GRANT_SENSITIVE_PERMISSIONS or ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -311,7 +311,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG。
+**需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -366,7 +366,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -459,7 +459,7 @@ getPermissionsStatus(tokenID: number, permissionList: Array&lt;Permissions&gt;):
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -516,7 +516,7 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -571,7 +571,7 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -669,7 +669,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -726,7 +726,7 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -858,10 +858,9 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
-
 
 **参数：**
 
@@ -915,7 +914,7 @@ queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;Perm
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -983,6 +982,8 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 ## PermissionRequestToggleStatus<sup>12+</sup>
 
 表示指定权限对应的弹窗开关状态的枚举。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
