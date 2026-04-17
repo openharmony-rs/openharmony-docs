@@ -43,3 +43,4 @@ This module contains the following classes:
 ```ts
 import { image } from '@kit.ImageKit';
 ```
+<!--no_check-->
