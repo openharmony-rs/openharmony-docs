@@ -8831,7 +8831,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 
 创建主窗口、子窗口或悬浮窗下的子窗口，使用Promise异步回调。
 
-独立子窗仅支持在主窗下创建，在其他类型窗口下接口调用返回1300004错误码。
+独立子窗仅支持在主窗下创建，在其他类型窗口创建返回1300004错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8898,7 +8898,7 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 
 如果该子窗口处于获焦状态，且新的父窗口的子窗口存在层级更高的模态子窗口，则焦点会转移给该模态子窗口。
 
-zLevelAboveParentLoosened为true的独立子窗仅支持迁移至主窗口下，迁移至其他类型窗口返回1300009错误码。
+独立子窗仅支持迁移至主窗口下，迁移至其他类型窗口返回1300009错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9004,7 +9004,7 @@ try {
 
 setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVisible: boolean, isCloseButtonVisible?: boolean): void
 
-设置标题栏上的最大化、最小化、关闭按钮是否可见。仅对主窗和zLevelAboveParentLoosened为true的子窗口生效。
+设置标题栏上的最大化、最小化、关闭按钮是否可见。仅对主窗和独立子窗生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -10439,7 +10439,7 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置子窗或模态窗口（即WindowType为TYPE_DIALOG的窗口）的布局信息（position和size）是否跟随主窗，使用Promise异步回调。
 
-1、只支持主窗的一级子窗或模态窗口使用该接口。独立子窗不支持调用，调用报1300004错误码。
+1、只支持主窗的一级子窗或模态窗口使用该接口。独立子窗不支持调用，接口调用返回1300004错误码。
 
 2、当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
 
