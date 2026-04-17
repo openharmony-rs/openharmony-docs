@@ -801,6 +801,10 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
@@ -1115,7 +1119,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 ```ts
 // pages/Index.ets -- UIAbility启动时加载此页面
 import { Want } from '@kit.AbilityKit';
@@ -1150,7 +1154,7 @@ struct Index {
 }
 ```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 ```ts
 // pages/Index.ets -- UIAbility启动时加载此页面
 import { Entry, Component, Column, Row, Text, EmbeddedComponent, EmbeddedType } from '@ohos.arkui.component';
@@ -1189,7 +1193,7 @@ struct Index {
 
 - EmbeddedComponent拉起的EmbeddedUIExtensionAbility在`ets/extensionAbility/ExampleEmbeddedAbility`文件中实现，内容如下：
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 ```ts
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -1223,7 +1227,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 ```ts
 import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbility';
@@ -1261,7 +1265,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 - EmbeddedUIExtensionAbility的入口页面文件`pages/extension.ets`内容如下：
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 ```ts
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { uiExtension, window } from '@kit.ArkUI';
@@ -1348,7 +1352,7 @@ struct Extension {
 }
 ```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 ```ts
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { Entry, Component, Column, Row, Text, Button, Margin } from '@ohos.arkui.component';
