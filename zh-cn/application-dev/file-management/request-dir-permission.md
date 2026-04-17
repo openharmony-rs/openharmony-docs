@@ -38,18 +38,18 @@
    import { Environment } from '@kit.CoreFileKit';
    
    ```
-   <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
    
    ``` TypeScript
    function getUserDirExample() {
      try {
        const downloadPath = Environment.getUserDownloadDir();
-       console.info(`success to getUserDownloadDir: ${downloadPath}`);
+       console.info(`Succeeded in getting user download dir: ${downloadPath}`);
        const documentsPath = Environment.getUserDocumentDir();
-       console.info(`success to getUserDocumentDir: ${documentsPath}`);
+       console.info(`Succeeded in getting user document dir: ${documentsPath}`);
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`failed to get user dir, Error code: ${err.code}, message: ${err.message}`);
+       console.error(`Failed to get user dir. Code: ${err.code}, message: ${err.message}`);
      }
    }
    ```
@@ -68,16 +68,15 @@
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    
    ```
-   <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
+   <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
    
    ``` TypeScript
    function readUserDownloadDirExample(context: common.UIAbilityContext) {
      try {
        // 获取 Download 目录
        const downloadPath = Environment.getUserDownloadDir();
-       console.info(`success to getUserDownloadDir: ${downloadPath}`);
+       console.info(`Succeeded in getting user download dir: ${downloadPath}`);
        const dirPath = context.filesDir;
-       console.info(`success to get filesDir: ${dirPath}`);
        // 查看 Download 目录下的文件并拷贝到沙箱目录中
        let fileList: string[] = fileIo.listFileSync(downloadPath);
        fileList.forEach((file, index) => {
@@ -89,11 +88,11 @@
        // 查看沙箱目录下对应的文件
        fileList = fileIo.listFileSync(dirPath);
        fileList.forEach((file, index) => {
-         console.info(`${dirPath} ${index}: ${file}`);
+         console.info(`Succeeded in listing file, ${dirPath} ${index}: ${file}`);
        });
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`Error code: ${err.code}, message: ${err.message}`);
+       console.error(`Failed to read user download dir. Code: ${err.code}, message: ${err.message}`);
      }
    }
    ```
@@ -107,7 +106,7 @@
    import { fileIo } from '@kit.CoreFileKit';
    
    ```
-   <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
+   <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
    
    ``` TypeScript
    function writeUserDownloadDirExample() {
@@ -115,14 +114,14 @@
      try {
        // 获取 Download 目录
        const downloadPath = Environment.getUserDownloadDir();
-       console.info(`success to getUserDownloadDir: ${downloadPath}`);
+       console.info(`Succeeded in getting user download dir: ${downloadPath}`);
        // 保存 temp.txt 到 Download 目录下
        const file = fileIo.openSync(`${downloadPath}/temp.txt`, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
        fileIo.writeSync(file.fd, 'write a message');
        fileIo.closeSync(file);
      } catch (error) {
        const err: BusinessError = error as BusinessError;
-       console.error(`Error code: ${err.code}, message: ${err.message}`);
+       console.error(`Failed to write user download dir. Code: ${err.code}, message: ${err.message}`);
      }
    }
    ```
@@ -171,7 +170,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <cstdlib>
    
    ```
-   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
    void GetUserDownloadDirExample()
@@ -179,10 +178,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *downloadPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, download path=%{public}s", downloadPath);
            free(downloadPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
    }
    ```
@@ -195,7 +194,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <dirent.h>
    
    ```
-   <!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
    void ScanUserDownloadDirPathExample()
@@ -204,9 +203,9 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *downloadPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in scanning user download directory, path=%{public}s", downloadPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
            return;
        }
        // 查看文件夹下的文件
@@ -214,12 +213,12 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        int num = scandir(downloadPath, &namelist, nullptr, nullptr);
        if (num < 0) {
            free(downloadPath);
-           OH_LOG_ERROR(LOG_APP, "Failed to scan dir");
+           OH_LOG_ERROR(LOG_APP, "Failed to scan directory");
            return;
        }
    
        for (int i = 0; i < num; i++) {
-           OH_LOG_INFO(LOG_APP, "%{public}s", namelist[i]->d_name);
+           OH_LOG_INFO(LOG_APP, "Succeeded in scanning directory, file name is %{public}s", namelist[i]->d_name);
        }
        free(downloadPath);
        for (int i = 0; i < num; i++) {
@@ -236,7 +235,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <fstream>
    
    ```
-   <!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
    void WriteUserDownloadDirPathExample()
@@ -245,9 +244,9 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        char *downloadPath = nullptr;
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
-           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, path=%{public}s", downloadPath);
        } else {
-           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+           OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
            return;
        }
        // 保存文件到 download 目录下
