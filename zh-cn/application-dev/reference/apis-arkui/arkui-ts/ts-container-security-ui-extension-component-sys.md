@@ -8,11 +8,10 @@
 
 SecurityUIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI，展示的内容在另一个进程中运行，本应用并不参与其中的布局和渲染。
 
-支持Caller身份转发能力，允许被拉起的Ability使用当前应用的Caller身份进行跨进程调用。
+支持Caller身份转发能力，允许被拉起的Ability使用当前应用（Caller方）的身份进行跨进程调用，从而实现权限的传递与共享。
 
 > **说明：**
 >
-> - 该组件从API version 26开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 本模块为系统接口。
 > - 本模块仅可在Stage模型下使用。
 
@@ -49,9 +48,9 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isTransferringCaller | boolean | 否 | 是 | 设置当前能力是否作为Caller使用。设置为true时，当前SecurityUIExtensionComponent的token将被设置为rootToken，用于跨进程身份转发；设置为false时，不进行Caller身份转发。默认值：false。 |
+| isTransferringCaller | boolean | 否 | 是 | 设置当前能力是否作为Caller使用。设置为true时，当前SecurityUIExtensionComponent的token（应用身份标识）将被设置为rootToken，用于跨进程身份转发；设置为false时，不进行Caller身份转发。默认值：false。 |
 | placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。 |
-| dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率（DPI，每英寸点数）跟随策略，用于控制组件内容在不同分辨率设备上的显示效果。默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI。 |
+| dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI。 |
 
 ## SecurityDpiFollowStrategy<sup>26+</sup>
 
@@ -134,7 +133,7 @@ ErrorCallback的参数说明：
 
 onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)\>)
 
-被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-ability-UIAbility.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-ability-UIAbility.md#terminateself)正常退出时触发此回调函数。
+当被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-ability-UIAbility.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-ability-UIAbility.md#terminateself)正常退出时，触发此回调函数。
 
 **系统接口：** 此接口为系统接口。
 
@@ -156,18 +155,18 @@ onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | 否 | 否 | 被拉起UIExtensionAbility退出时返回的结果码，0表示正常退出，非0表示异常退出。 |
+| code | number | 否 | 否 | 被拉起UIExtensionAbility退出时返回的结果码，0表示正常退出，非0表示异常退出。具体结果码含义由被拉起的UIExtensionAbility定义。 |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。 |
 
 ## SecurityUIExtensionProxy
 
-用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据、订阅和取消订阅的注册。
+用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据、订阅和取消订阅的注册。
 
 ### send
 
 send(data: Record\<string, Object\>): void
 
-用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据，提供异步发送能力。
+用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据，提供异步发送能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -183,7 +182,7 @@ send(data: Record\<string, Object\>): void
 
 sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
-用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据，提供同步发送能力。
+用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据，提供同步发送能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -212,7 +211,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 ### on('asyncReceiverRegister')
 
-on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
+on(type: 'asyncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>): void
 
 订阅被拉起的Ability发生异步注册的回调。
 
@@ -225,11 +224,11 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，代表订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<[UIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
+| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
 
 ### on('syncReceiverRegister')
 
-on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
+on(type: 'syncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>): void
 
 订阅被拉起的Ability发生同步注册的回调。
 
@@ -242,11 +241,11 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<[UIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
+| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
 
 ### off('asyncReceiverRegister')
 
-off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
+off(type: 'asyncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\>): void
 
 取消订阅被拉起的Ability发生异步注册的回调。
 
@@ -259,13 +258,13 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，取消订阅扩展Ability发生异步注册回调。 |
-| callback | Callback\<[UIExtensionProxy](#securityuiextensionproxy)\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。非空代表取消订阅异步对应回调。 |
+| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。非空代表取消订阅异步对应回调。 |
 
 ### off('syncReceiverRegister')
 
-off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
+off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\>): void
 
-取消订阅被拉起的Ability注册同步数据接收回调后触发的回调。
+取消订阅被拉起的Ability发生同步注册后触发的回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -276,4 +275,4 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，取消订阅扩展Ability发生同步注册回调。 |
-| callback | Callback\<[UIExtensionProxy](#securityuiextensionproxy)\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
+| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
