@@ -59,6 +59,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                                  | 类型                                                         | 只读 | 可选 | 说明                                                      |
 | ------------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | message                               | string                                                       | 否  | 否  | 气泡信息内容。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                               |
@@ -140,6 +141,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 20%; 8%; 8%; 39%-->
 | 名称                           | 类型                                       | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
 | builder                      | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 否   | 提示气泡内容的构造器。<br />**说明：**<br />1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。<br/>2. builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。<br/>3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者[build](ts-custom-component-lifecycle.md#build)方法里。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |

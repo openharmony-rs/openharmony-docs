@@ -40,6 +40,7 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme, CustomDarkColor
 
 <!--RP1--><!--RP1End-->
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                           | 类型                                                 | 只读 | 可选 | 说明               |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------------|
 | brand                         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 品牌色。</br>**影响组件：** [TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)        |
