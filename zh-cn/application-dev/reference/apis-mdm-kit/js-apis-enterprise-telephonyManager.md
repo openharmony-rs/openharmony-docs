@@ -628,7 +628,7 @@ try {
 ## telephonyManager.activeSim
 activeSim(admin: Want, slotId: number): void
 
-激活指定卡槽的SIM卡。
+激活指定卡槽的SIM卡。激活表示将卡片与你的身份、手机号和运营商网络进行绑定认证，允许接入运营商网络（打电话、发短信、上网）。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
 
 **起始版本：** 26.0.0
 
@@ -684,7 +684,7 @@ try {
 ## telephonyManager.deactiveSim
 deactiveSim(admin: Want, slotId: number): void
 
-去激活指定卡槽SIM卡。
+去激活指定卡槽SIM卡。去激活表示临时禁用该SIM卡的网络接入功能，但不注销账户、不删除用户数据并且可恢复，保留号码、余额等。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
 
 **起始版本：** 26.0.0
 
@@ -740,7 +740,7 @@ try {
 ## telephonyManager.setDefaultData
 setDefaultData(admin: Want, slotId: number): void
 
-设置指定卡槽的SIM卡为默认数据流量卡。
+设置指定卡槽的SIM卡为默认数据流量卡，设备将使用指定卡槽的SIM卡流量上网。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
 
 **起始版本：** 26.0.0
 
@@ -768,6 +768,7 @@ setDefaultData(admin: Want, slotId: number): void
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed. |
+| 9201020  | set default data sim failed. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -795,7 +796,7 @@ try {
 ## telephonyManager.getDefaultData
 getDefaultData(admin: Want): number
 
-获取当前默认数据流量卡槽ID。
+获取设备当前默认使用的数据流量卡卡槽ID。
 
 **起始版本：** 26.0.0
 
