@@ -4398,6 +4398,7 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 开启本窗口可见状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+- 上层窗口通过[SetWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异性窗口蒙层时，不会影响窗口可见状态，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
 - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
