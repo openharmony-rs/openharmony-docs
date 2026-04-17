@@ -403,7 +403,7 @@
 |-----------|---|---------|
 | BEAUTY    | 0 | 美颜。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 | PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| AUTO_FRAMING<sup>24+</sup> | 2 | 自动构图。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| AUTO_FRAMING<sup>24+</sup> | 2 | 自动对焦。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
