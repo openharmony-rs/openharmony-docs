@@ -564,7 +564,6 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 | -- | -- |
 | [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数capture为空指针。<br>         AV_SCREEN_CAPTURE_ERR_UNSUPPORT（API version 20新增）：设备不支持该操作。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作，设置录屏屏幕数据旋转失败。 |
 
-
 ### OH_AVScreenCapture_CreateContentFilter()
 
 ```c
