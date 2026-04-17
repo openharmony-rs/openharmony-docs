@@ -66,7 +66,7 @@
 | log_file_cutoff_sz_bytes | number | 否 | 单位为byte，取值范围为[0, 5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
 | simplify_vma_printing | boolean | 否 | true：只打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，进程地址空间中的区域）映射信息，即崩溃日志中Maps，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>缺省时默认为false。 |
 
-参数配置示例如下:
+参数配置示例如下：
 
 ```text
 let configParams: Record<string, hiAppEvent.ParamType> = {
@@ -149,7 +149,7 @@ import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
     appCrashPolicy: {
-      pageSwitchLogEnable: true // 启用页面切换日志
+      pageSwitchLogEnable: true, // 启用页面切换日志
       extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值
       logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB
       simplifyVmaPrinting: true // 使能精简打印maps
