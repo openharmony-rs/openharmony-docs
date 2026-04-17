@@ -176,7 +176,7 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    int32_t ret;
    napi_value nextImage;
    // 或调用 OH_Image_Receiver_ReadNextImage(imgReceiver_c, &nextImage);
-   ret = OH_Image_Receiver_ReadLatestImage(imgReceiver_c, &nextImage);
+   OH_Image_Receiver_ReadLatestImage(imgReceiver_c, &nextImage);
    
    ImageNative * nextImage_native = OH_Image_InitImageNative(env, nextImage);
 
@@ -185,12 +185,12 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Size  width: %{public}d, height:%{public}d", imageSize.width, imageSize.height);
 
    OhosImageComponent imgComponent;
-   ret = OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
+   OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
    
    uint8_t *img_buffer = imgComponent.byteBuffer;
    
-   ret = OH_Image_Release(nextImage_native);
-   ret = OH_Image_Receiver_Release(imgReceiver_c);
+   OH_Image_Release(nextImage_native);
+   OH_Image_Receiver_Release(imgReceiver_c);
    return nextImage;
 }
 ```
