@@ -36,7 +36,7 @@ showWindow(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API（仅ArkTs-Dyn）（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -116,7 +116,7 @@ showWindow(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API（仅ArkTs-Dyn）（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -197,7 +197,7 @@ showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API（仅ArkTs-Dyn）（仅ArkTs-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTs-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
