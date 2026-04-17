@@ -537,7 +537,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#`Record`类型的对象字面量)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
+| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#对象字面量)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | tag | string | 否 | 否 | 用户自定义标签， 默认为空。**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | timestamp | ArkTS-Dyn: number </br> ArkTS-Sta: long | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
