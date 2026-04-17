@@ -113,10 +113,11 @@ enum OH_MIDIProtocol
 
 MIDI协议版本枚举，用于指定端口使用的MIDI协议行为。
 
->**说明：** 
->SDK始终使用UMP（Universal MIDI Packet）格式进行数据传输，无论选择何种协议。
- * 此枚举定义连接的数据行为和语义，而不是数据结构。
- * MT（Message Type，消息类型）是UMP数据包的消息类型标识，不同MT值对应不同类型的MIDI消息。
+> **说明：**
+> 
+> SDK始终使用UMP（Universal MIDI Packet）格式进行数据传输，无论选择何种协议。
+> 此枚举定义连接的数据行为和语义，而不是数据结构。
+> MT（Message Type，消息类型）是UMP数据包的消息类型标识，不同MT值对应不同类型的MIDI消息。
 
 **起始版本：** 24
 
