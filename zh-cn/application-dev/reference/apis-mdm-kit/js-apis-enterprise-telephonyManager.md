@@ -684,7 +684,7 @@ try {
 ## telephonyManager.deactiveSim
 deactiveSim(admin: Want, slotId: number): void
 
-停用指定卡槽SIM卡。去激活表示临时禁用该SIM卡的网络接入功能，不影响账户状态、用户数据、号码归属及账户余额等。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
+停用指定卡槽SIM卡。临时停用该SIM卡的网络接入功能，不影响账户状态、用户数据、号码归属及账户余额等。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
 
 **起始版本：** 26.0.0
 
