@@ -940,6 +940,7 @@ ArkTS-Sta: removeCandidateConfig(networkId: int): Promise&lt;void&gt;
 ArkTS-Dyn: removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): void
 
 ArkTS-Sta: removeCandidateConfig(networkId: int, callback: AsyncCallback&lt;void&gt;): void
+
 移除指定的候选网络配置，使用callback异步回调。
 
 - 从系统中删除指定网络ID的WLAN候选配置，清理不再需要的WLAN候选配置，释放系统资源。
