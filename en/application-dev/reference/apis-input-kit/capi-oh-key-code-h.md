@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
@@ -334,7 +334,7 @@ Enumerates the key codes.
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | Keyboard Input-assisted Cancel key<br>**Since**: 22|
 | KEYCODE_MOUSE_ASSISTANT = 2732 | Mouse AI Assistant key<br>**Since**: 24|
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | Mouse Smart Selection key<br>**Since**: 24|
-| KEYCODE_AOD_SINGLE_CLICK = 2740 | Single tapping the smart phone's touch screen event, which is used when the Always On Display is enabled<br>**Since**: 26.0.0|
+| KEYCODE_AOD_SINGLE_CLICK = 2740 | Tapping the phone touchscreen, which is used in AOD mode<br>**Since**: 26.0.0|
 | KEYCODE_FRONT = 2800 | Front key, which is used to launch the windshield defogger<br>**Since**: 22|
 | KEYCODE_SETUP = 2801 | Setup key<br>**Since**: 22|
 | KEYCODE_WAKEUP = 2802 | Wakeup key<br>**Since**: 22|
@@ -396,3 +396,4 @@ Enumerates the key codes.
 | KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | Double tapping the smart watch's X-TAP sensor<br>**Since**: 22|
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | Long-pressing the smart watch's X-TAP sensor<br>**Since**: 22|
 | KEYCODE_DIV = 3220 | Left button of the smart watch<br>**Since**: 22|
+| KEYCODE_XKEY = 3232 | Custom Shortcut Keys<br>**Since**: 26.0.0|

@@ -1,0 +1,378 @@
+# Web Development
+
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yp99ustc; @aohui; @weixin_41848015-->
+<!--Designer: @ctqctq99; @yaomingliu; @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloCrease-->
+
+## How do HTML5 pages interact with ArkTS? (API version 10)
+
+**Symptom**
+
+Currently, **javaScriptProxy** supports only synchronous invoking. This means that no execution results can be obtained for asynchronous invoking.
+
+**Solution**
+
+Encapsulate **javaScriptProxy** and **runJavaScript** to implement the JSBridge communication scheme. This method is applicable to the scenario where HTML5 calls native functions. Use the **Web** component **javaScriptProxy** to inject the native API to the window object of HTML5 pages, use the **runJavaScript** API to execute the JS script on HTML5 pages, and obtain the script execution result from the callback. The following figure shows the invoking process.
+
+![image5](figures/image5.png)
+
+- Use the **javaScriptProxy** attribute of the **Web** component to register the **JSBridgeHandle** object with the HTML5 window as the native channel for HTML5 to call. When the HTML5 page starts to be loaded, the **initJSBridge()** method is called in the **onPageBegin** callback to initialize the JSBridge.
+  ```ts
+  // javaScriptProxy object
+  public get javaScriptProxy() {
+      return {
+          object: {
+              call: this.call
+          },
+          name: "JSBridgeHandle",
+          methodList: ['call'],
+          controller: this.controller,
+      }
+  }
+  ```
+
+  ```ts
+  // Use the <Web> component to load the HTML5 page.
+  @Component
+  struct JsProxy {
+    private controller: WebviewController = new WebView.WebviewController()
+    private jsBridge: JSBridge = new JSBridge(this.controller)
+    build() {
+      Column(){
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptProxy(this.jsBridge.javaScriptProxy)
+          .onPageBegin(() => {
+            this.jsBridge.initJSBridge()
+          })
+      }
+    }
+  }
+  ```
+
+- In the **initJSBridge** method, use **WebviewController.runJavaScript()** to inject the JSBridge initialization script into the HTML5 page for execution. When HTML5 is called, the **window.callID** is generated to identify the callback function, and then the callID and request parameters are transferred to the native side using **JSBridgeHandle.call**. Use **JSBridgeCallback** to receive the execution result from the native side, find the callback based on the ID and execute it, and then free the memory.
+  ```ts
+  // bridgeKey and bridgeMethod dynamically generate the entry for invoking on the HTML5 side.
+  bridgeKey: string = 'JSBridge'
+  bridgeMethod: string = 'call'
+  // Inject the initialization script to the HTML5 side.
+  public initJSBridge() {
+      try {
+          this.controller.runJavaScript(`
+              // Receive the result from the native side and execute callback.
+              function JSBridgeCallback(id, params){
+                  window.JSBridgeMap[id](params)
+              };
+              // Declare the invoking entry.
+              window.${this.bridgeKey} = {
+                  ${this.bridgeMethod}(method, params, callback){
+                      window.JSBridgeMap[id] = callback || (() => {});
+                      JSBridgeHandle.call(method, JSON.stringify(paramsObj));
+                  },
+              }`)
+      }
+  }
+  ```
+
+- **JSBridgeHandle.call()** is the unified entry for HTML5 to call native APIs. In this method, find the matching API to call based on the name of the method called by HTML5. After the call is complete, use the **this.callback()** method to return the result to HTML5. In the callback, use **WebviewController.runJavaScript()** to call **JSBridgeCallback** of HTML5 to return the **callID** and result.
+  ```ts
+  // The call method calls the native method and receives the result.
+  private call = (fun, params) => {
+      try {
+          const paramsObj = JSON.parse(params)
+          const events = this.exposeManage.methodMap.get(fun)
+          const results = []
+          events.forEach(callFun => {
+              results.push(callFun(paramsObj.data))
+          })
+          Promise.all(results.filter(i => !!i)).then(res => {
+              // Depends on results containing elements that are neither undefined nor null.
+              this.callback(paramsObj.callID, res.length > 1 ? res : res[0])
+          })
+      }
+  }
+  
+  // Use runJavaScript to call JSBridgeCallback to execute the callback.
+  private callback(id, data) {
+      this.controller.runJavaScript(`__JSBridgeCallback__("${id}", ${JSON.stringify(data)})`);
+  }
+  ```
+
+
+## How does the return result of onUrlLoadIntercept affect onInterceptRequest in the \<Web> component? (API version 9)
+
+**Solution**
+
+The operation that follows **onUrlLoadIntercept** is subject to its return result.
+
+- If **true** is returned, the URL request is intercepted.
+
+- If **false** is returned , the **onInterceptRequest** callback is performed.
+
+**Reference**
+
+[onUrlloadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onurlloadinterceptdeprecated)
+
+
+## What should I do if the onKeyEvent event of the \<Web> component is not triggered as expected? (API version 9)
+
+**Symptom**
+
+The **onKeyEvent** event is set for the **Web** component to listen for keyboard events. However, it is not triggered when a key is pressed or lifted.
+
+**Solution**
+
+Currently, the **Web** component does not support the **onKeyEvent** event. To listen for keyboard events for the **Web** component, you can use the **onInterceptKeyEvent** callback.
+
+**Reference**
+
+[onInterceptKeyEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyevent9)
+
+
+## What should I do if page loading fails when onInterceptRequest is called? (API version 9)
+
+**Symptom**
+
+The **onInterceptRequest** API intercepts URLs specified by **src** and returns the custom HTML file. However, the content in the **script** tag in the HTML file is not loaded.
+
+**Solution**
+
+If only **setResponseData** is set for the interceptor, the kernel cannot identify the HTML file. You must also set parameters such as **setResponseEncoding**, **setResponseMimeType**, and **setResponseHeader** for the kernel to identify the HTML file.
+
+**Code Example**
+
+```ts
+Web({ src: 'www.example.com', controller: this.controller })
+  .onInterceptRequest((event) => {
+    console.log('url:' + event.request.getRequestUrl())
+    this.responseweb = new WebResourceResponse();
+    var head1:Header = {
+      headerKey:"Connection",
+      headerValue:"keep-alive"
+    }
+    var length = this.heads.push(head1)
+    this.responseweb.setResponseHeader(this.heads)
+    this.responseweb.setResponseData(this.webdata)
+    this.responseweb.setResponseEncoding('utf-8')
+    this.responseweb.setResponseMimeType('text/html')
+    this.responseweb.setResponseCode(200)
+    this.responseweb.setReasonMessage('OK')
+    return this.responseweb
+})
+```
+
+**Reference**
+
+[WebResourceResponse](../reference/apis-arkweb/arkts-basic-components-web-WebResourceResponse.md)
+
+
+## How do I execute JS functions in HTML in ArkTS code? (API version 9)
+
+**Solution**
+
+Use the **runJavaScript** API in **WebviewController** to asynchronously execute JavaScript scripts and obtain the execution result in a callback.
+
+> **NOTE**
+> **runJavaScript** can be invoked only after **loadUrl** is executed. For example, it can be invoked in **onPageEnd**.
+
+**Reference**
+
+[runJavaScript](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascript)
+
+
+## How do I invoke an ArkTS method on a local web page? (API version 9)
+
+**Solution**
+
+Use the **JavaScriptProxy** API in ArkTs to register the object in ArkTS with the window object of HTML5, and then use the window object to call the method in HTML5. In the following example, the **testObj** object is registered with the HTML5 window object under the alias **testObjName** in ArkTS. Then in HTML5, **window.testObjName** can then be used to access the object.
+
+For details about the example, see [Invoking Application Functions on the Frontend Page](../web/web-in-page-app-function-invoking.md#establishing-an-interaction-channel-between-the-application-side-and-the-html5-page).
+
+**Reference**
+
+[javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-i.md#javascriptproxy12)
+
+
+## How do I set the domStorageAccess attribute of the Web component? (API version 9)
+
+**Solution**
+
+The **domStorageAccess** attribute sets whether to enable the DOM Storage API. By default, this feature is disabled.
+
+**Reference**
+
+[domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)
+
+
+## What should I do if the network status fails to be detected on the loaded HTML page? (API version 9)
+
+**Symptom**
+
+When **window.navigator.onLine** is used on the HTML page to obtain the network status, the value is **false** no matter the network connection is set up or not.
+
+**Solution**
+
+Configure the permission for the application to obtain network information: ohos.permission.GET_NETWORK_INFO
+
+**Reference**
+
+[GET\_NETWORK\_INFO](../security/AccessToken/permissions-for-all.md#ohospermissionget_network_info)
+
+
+## How do I set the User-Agent parameter through string concatenation?
+
+**Solution**
+
+By default, the value of **User-Agent** needs to be obtained through the WebviewController. Specifically, it is obtained by calling the **getUserAgent** API in a **WebviewController** object after it is bound to the **Web** component. Therefore, to set **User-Agent** through string concatenation before page loading:
+
+In the **onControllerAttached** callback of the **Web** component, obtain the default **UserAgent** by calling the **WebviewController.getUserAgent()** API, and set the custom **User-Agent** by calling the **WebviewController.setCustomUserAgent()** API.
+
+**Code Example**
+
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // Third-party application information identifier
+  @State customUserAgent: string = ' DemoApp';
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+      .onControllerAttached(() => {
+        console.info("onControllerAttached");
+        try {
+          let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+          this.controller.setCustomUserAgent(userAgent);
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+    }
+  }
+}
+```
+
+**Reference**
+
+[Developing User-Agent (Custom User-Agent Structure)](../web/web-default-userAgent.md#custom-user-agent-structure)
+## Does WebView support same-layer rendering (API version 10)?
+
+**Solution**
+
+1. **WebView**, **Video**, **Map**, **Camera**, **Canvas**, and **WebGL** all support same-layer rendering.
+2. The **id**, **type**, **src**, **width**, **height**, and **url** attributes of web embedded tags can be transferred to native components.
+
+
+## What debugging tools does WebView provide? How do I use them? (API version 10)
+
+**Solution**
+
+The **\<Web>** component supports debugging of web frontend pages by using DevTools, a web frontend development and debugging tool that allows you to debug an application's frontend pages on a PC. Before you do this, use **setWebDebuggingAccess()** to enable frontend page debugging for the **\<Web>** component and make sure the test device connected to the 2-in-1 device runs 4.1.0 or a later version.
+
+**Reference**
+
+[Debugging Frontend Pages by Using DevTools](../web/web-debugging-with-devtools.md)
+
+
+## How do I use WebView to implement request interception? (API version 10)
+
+**Solution**
+
+You can call **onInterceptRequest()** to customize web page responses, file resource responses, and more. When a resource loading request is initiated on a web page, the application layer will receive the request. The application layer then constructs a local resource response and sends it to the web kernel. On receiving the response, the web kernel parses the response and loads page resources accordingly.
+
+**Reference**
+
+[Customizing Page Request Responses](../web/web-resource-interception-request-mgmt.md)
+
+
+## How does WebView communicate with the native side? (API version 10)
+
+**Solution**
+
+1. For communication from the native side to the HTML5 side, use the **runJavaScript** API. For communication from the HTML5 side to the native side, use the **registerJavaScriptProy** API. Register the native method with the HTML5 side, and then from the HTML5 side call the frontend method to communicate with the native side.
+2. Both **runJavaScript** and **registerJavaScriptProy** are exposed in the C API on the NDK side.
+3. The **onInterceptrequest** API is used to intercept requests from the HTML5 side and return native data as a response to the HTML5 side. In this way, the implement communication between the native side and HTML5 side is implemented.
+
+**Reference**
+
+[runJavaScript](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10), [registerJavaScriptProxy](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy), [javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy), [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)
+
+
+## What are the WebView process model and rendering mechanism? (API version 11)
+
+**Solution**
+
+1. Process model: one main process and multiple render processes
+2. Rendering mechanism: web self-rendering
+
+
+## Does the system support WebRTC? What WebRTC features are provided?
+
+**Solution**
+
+1. WebView provides the peer-to-peer (P2P) and audio and video streaming features in WebRTC.
+2. When WebView is not used, the system provides technical support for adaptation, but not direct support for WebRTC. For example, the following are provided to work with WebRTC (RR-30030985):
+   * GN + Ninja cross compilation mode in the SDK
+   * Compilation samples
+
+
+## How do I set the mixed content policy in WebView to load HTTP and HTTPS mixed content?
+
+**Solution**
+
+WebView provides the **mixedMode(mixedMode: MixedMode)** API for specifying whether to enable loading of HTTP and HTTPS mixed content. By default, loading of mixed content is disabled.
+
+**Reference**
+
+[mixedmode](../reference/apis-arkweb/arkts-basic-components-web-e.md#mixedmode)
+
+
+## In addition to setting the cache, is there any other way to speed up rendering in WebView?
+
+**Solution**
+
+You can use the **prepareForPageLoad** API to preconnect to a URL.
+
+**Reference**
+
+[prepareforpageload](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)
+
+
+## How do I create a \<Web> component? How do I reuse one?
+
+**Solution**
+
+**\<Web>** components can be pre-created, reclaimed, and reused through dynamic component tree mount and unmount capability provided by ArkUI.
+
+**Reference**
+
+[Dynamic creation of ../web/web-page-loading-with-web-components.md components]
+
+
+## Does OpenHarmony provide JavaScript engine capabilities as other systems?
+
+**Solution**
+
+Yes. For details, see the reference.
+
+**Reference**
+
+[JSVM](../reference/common/capi-jsvm.md)
+
+## What should I do if the `requestPointerLock` function is unavailable?
+
+**Symptom**
+
+1. After the HTML calls `requestPointerLock`, the mouse pointer is hidden, but can still be moved out of the web area.
+2. When the HTML calls `requestPointerLock`, the error message `SecurityError: The root document of this element is not valid for pointer lock.` is returned.
+
+**Solution**
+
+Since API version 22, **ArkWeb** supports the complete mouse lock function. This function requires the application permission [ohos.permission.LOCK_WINDOW_CURSOR](../security/AccessToken/permissions-for-all.md#ohospermissionlock_window_cursor).

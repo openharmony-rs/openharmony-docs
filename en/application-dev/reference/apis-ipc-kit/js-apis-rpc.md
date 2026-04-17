@@ -9530,7 +9530,7 @@ class Stub extends rpc.RemoteObject {
 
 static restoreCallingIdentity(identity: string): void
 
-Restores the UID and PID of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required. This API is supported only in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9); otherwise, it returns directly.
+Restores the UID and PID to those of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required. This API is supported only in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9); otherwise, it returns directly.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9573,7 +9573,7 @@ class Stub extends rpc.RemoteObject {
 
 static setCallingIdentity(identity: string): boolean
 
-Sets the UID and PID of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required.
+Sets the UID and PID to those of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required.
 
 > **NOTE**
 >
@@ -9919,8 +9919,8 @@ Provides a response to **sendMessageRequest()**. The server processes the reques
 
 > **NOTE**
 >
-> You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
-> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
+> You are advised to override the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
+> If both **onRemoteRequest** and **onRemoteMessageRequest** are overridden, only **onRemoteMessageRequest** takes effect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9940,9 +9940,10 @@ Provides a response to **sendMessageRequest()**. The server processes the reques
   | ----------------- | ----------------------------------------------------------------------------------------------- |
   | boolean \| Promise\<boolean>  | - If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite.<br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite.|
 
-**Example**: Overload **onRemoteMessageRequest** to process requests synchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** to process requests synchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9965,9 +9966,10 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-  **Example**: Overload **onRemoteMessageRequest** to process requests asynchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** to process requests asynchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9993,9 +9995,10 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-**Example**: Overload **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10036,8 +10039,8 @@ Called to return a response to **sendMessageRequest()**. The server processes th
 
 > **NOTE**
 >
-> You are advised to overload **onRemoteMessageRequest** preferentially, which implements synchronous and asynchronous message processing.
-> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
+> You are advised to override **onRemoteMessageRequest** preferentially, which can implement synchronous and asynchronous message processing.
+> If both **onRemoteRequest** and **onRemoteMessageRequest** are overridden, only **onRemoteMessageRequest** takes effect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -10056,9 +10059,10 @@ Called to return a response to **sendMessageRequest()**. The server processes th
   | ----------------- | ----------------------------------------------------------------------------------------------- |
   | boolean \| Promise\<boolean>  | - If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite.<br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite.|
 
-**Example**: Overload **onRemoteMessageRequest** to process requests synchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** to process requests synchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10080,9 +10084,10 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-  **Example**: Overload **onRemoteMessageRequest** to process requests asynchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** to process requests asynchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -10107,9 +10112,10 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-**Example**: Overload **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

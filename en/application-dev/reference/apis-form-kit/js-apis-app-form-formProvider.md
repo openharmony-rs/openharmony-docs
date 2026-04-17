@@ -57,7 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
@@ -115,7 +115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info(`formProvider setFormNextRefreshTime success`);
@@ -168,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -233,7 +233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 let param: Record<string, string> = {
   'temperature': '22c',
   'time': '22:00'
@@ -736,7 +736,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 let overflowInfo: formInfo.OverflowInfo = {
   area: {
     left: -10,
@@ -802,7 +802,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 
 try {
   formProvider.cancelOverflow(formId).then(() => {
@@ -857,7 +857,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {

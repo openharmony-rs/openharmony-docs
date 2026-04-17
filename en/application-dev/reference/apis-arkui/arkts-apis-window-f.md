@@ -51,8 +51,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
 | 1300006 | This window context is abnormal. |
 | 1300009 | The parent window is invalid. |
 
@@ -127,8 +127,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
 | 1300006 | This window context is abnormal. |
 | 1300009 | The parent window is invalid. |
 
@@ -141,6 +141,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
@@ -149,7 +150,8 @@ export default class EntryAbility extends UIAbility {
     try {
       window.createWindow(config).then((value:window.Window) => {
         console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
-        value.resize(500, 1000);
+        windowClass = value;
+        windowClass.resize(500, 1000);
       }).catch((err:BusinessError)=> {
         console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
       });
@@ -228,7 +230,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Top window or main window is null or destroyed.  |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.  |
 | 1300006 | This window context is abnormal. |
 
 **Example**
@@ -272,7 +274,7 @@ export default class EntryAbility extends UIAbility {
       });
     });
   }
-  //...
+  // ...
 }
 ```
 
@@ -307,7 +309,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Top window or main window is null or destroyed.   |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.   |
 | 1300006 | This window context is abnormal. |
 
 **Example**
@@ -349,7 +351,7 @@ export default class EntryAbility extends UIAbility {
       });
     });
   }
-  //...
+  // ...
 }
 ```
 
@@ -363,6 +365,7 @@ Ensure that the target window can gain focus (configurable by calling [setWindow
 > **NOTE**
 >
 > Before calling **shiftAppWindowFocus()**, ensure that the target window has called [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) and these operations have been effective. Otherwise, an invisible window may gain focus, causing function exceptions or affecting user experience.
+>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -389,9 +392,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported. 2. The two windows are not from the same process.|
 
 **Example**
 
@@ -494,9 +497,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | --------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Failed to convert parameter to sourceWindowId; 3. Failed to convert parameter to targetWindowId; 4. Invalid sourceWindowId or targetWindowId. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. SourceWindow cannot find: not created or not belong to current process; 2. TargetWindow cannot find: not created or not belong to current process; 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported; 2. The two windows are not from the same process. |
 
 **Example**
 
@@ -566,9 +569,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                     |
 | ------- | --------------------------------------------- |
 | 801     | Capability not supported. Function shiftAppWindowTouchEvent can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. SourceWindow cannot find: not created or not belong to current process; 2. TargetWindow cannot find: not created or not belong to current process; 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported; 2. The two windows are not from the same process. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range.|
 
 **Example**
@@ -646,27 +649,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-try {
-  let displayId = 0;
-  window.getWindowsByCoordinate(displayId).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    try {
+      let displayId = 0;
+      window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
+        console.info(`Succeeded in getting windows. Data: ${data}`);
+        for (let windowObject of data) {
+          // do something with window
+          windowClass = windowObject;
+        }
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-  window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -674,7 +676,7 @@ try {
 
 getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
 
-Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array. This API uses a promise to return the result.
+Obtains an array of visible window layout information on the specified screen. The width and height of each returned Rect are the scaled values after calculation, arranged according to the current window hierarchy. The highest level corresponds to index 0 in the array. This operation uses **Promise** for asynchronous callbacks.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -710,6 +712,64 @@ try {
   let displayId = 0;
   let promise = window.getAllWindowLayoutInfo(displayId);
   promise.then((data) => {
+    console.info('Succeeded in obtaining all window layout info. Data: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to obtain all window layout info. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.getAllWindowLayoutInfo
+
+getAllWindowLayoutInfo(displayId: number, option?: WindowInfoOptions): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
+
+Obtains an array of visible window layout information on the specified screen based on the filtering criteria specified by **option**. The width and height of each returned Rect are the scaled values after calculation, arranged according to the current window hierarchy. The highest level corresponds to index 0 in the array. This API returns the result asynchronously through a promise. If **option** is not passed or all fields in the passed **option** are set to their default values, this API is equivalent to [getAllWindowLayoutInfo](#windowgetallwindowlayoutinfo15).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                                       |
+| ------ | ---------- |----|---------------------------------------------------------------------------|
+| displayId   | number| Yes | ID of the display where the windows are located. The value must be an integer and can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties).|
+| option   | [WindowInfoOptions](arkts-apis-window-i.md#windowinfooptions) | No | Filter options. Whether to exclude system windows and windows whose levels are lower or higher than the specified window level from the returned information. By default, filtering is disabled.|
+
+**Return value**
+
+| Type                            | Description                     |
+| -------------------------------- |-------------------------|
+| Promise&lt;Array&lt;[WindowLayoutInfo](arkts-apis-window-i.md#windowlayoutinfo15)&gt;&gt; | Promise used to return an array of window layout information objects.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID   | Error Message|
+|----------| ------------------------------ |
+| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let displayId = 0;
+  let option: window.WindowInfoOptions = {
+    excludeSystemWindows: false,
+    foregroundAboveWindow: 0,
+    foregroundBelowWindow: 0,
+  };
+  window.getAllWindowLayoutInfo(displayId, option).then((data) => {
     console.info('Succeeded in obtaining all window layout info. Data: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error(`Failed to obtain all window layout info. Cause code: ${err.code}, message: ${err.message}`);
@@ -793,7 +853,7 @@ Obtains the window mode of the window that is in the foreground lifecycle on the
 
 | Type                            | Description                     |
 | -------------------------------- |-------------------------|
-| Promise&lt;number&gt; | Promise used to return the window mode. Each binary bit represents a window mode. For details about the supported window modes, see [GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20). The return value is the result of a bitwise OR operation on the corresponding window mode values. For example, if there are full-screen, floating, and PiP windows on the specified screen, the return value is `0b1\|0b100\|0b1000 = 13`.| | |
+| Promise&lt;number&gt; | Promise used to return the window mode. Each binary bit represents a window mode. For details about the supported window modes, see [GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20). The return value is the result of a bitwise OR operation on the corresponding window mode values. For example, if there are full-screen, floating, and PiP windows on the current screen, the return value is **0b1\|0b100\|0b1000 = 13**.|
 
 **Error codes**
 
@@ -1117,6 +1177,75 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 }
 ```
 
+## window.onApplicationFocusStateChange
+
+onApplicationFocusStateChange(callback: Callback\<boolean\>): void
+
+Registers listening for application process focus state changes. This listener is used to listen for focus status changes between applications. Focus changes between windows of the same application do not trigger the callback.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description                                                         | 
+| -------- |-------------------------|---|-------------------------------------------------------------|
+| callback | Callback&lt;boolean&gt; | Yes| Callback used to return the focus status change of the current application process. The value **true** indicates that the current application process gains focus, and the value **false** indicates that the current application process loses focus.|
+
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+try {
+  window.onApplicationFocusStateChange((data) =>{
+      console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
+  })
+} catch(exception){
+  console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.offApplicationFocusStateChange
+
+offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
+
+Unregisters listening for application process focus state changes.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                                               |
+| -------- | ----------------------- | -- |---------------------------------------------------|
+| callback | Callback&lt;boolean&gt; | No| Registered callback. If a value is passed in, the corresponding listener is unregistered. If no value is passed in, all listeners for application process focus state changes are unregistered.|
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+const callback = (bool: boolean) => {
+  // ...
+}
+try {
+  window.onApplicationFocusStateChange(callback);
+  window.offApplicationFocusStateChange(callback);
+  // Unregister all the callbacks that have been registered through on().
+  window.offApplicationFocusStateChange(); 
+} catch (exception) {
+  console.error(`Failed to enable or disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## window.create<sup>(deprecated)</sup>
 
 create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): void
@@ -1127,7 +1256,7 @@ The child window created uses an [immersive layout](../../windowmanager/window-t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. If **null** or **undefined** is passed to the **id** parameter, the callback may fail to be executed. You are advised to use [createWindow()](#windowcreatewindow9) instead.
 
 **Model restriction**: This API can be used only in the FA model.
 
@@ -1212,7 +1341,7 @@ Creates a system window. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -1252,7 +1381,7 @@ Creates a system window. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9-1) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -1441,7 +1570,7 @@ Obtains the top window of the current application. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getLastWindow()](#windowgetlastwindow9) instead.
+> This API has been supported since API version 8 and deprecated since API version 9. If **null** or **undefined** is passed to the **ctx** parameter, the callback may fail to be executed. You are advised to use [getLastWindow()](#windowgetlastwindow9) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
