@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **inputEventClient** module provides the capability of injecting key, mouse/touchpad, and touchscreen events.
 
@@ -298,7 +298,7 @@ Permission required: ohos.permission.INJECT_INPUT_EVENT
 
 | Name      | Type                   | Mandatory  | Description       |
 | -------- | --------------------- | ---- | --------- |
-| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touch event information. [Action](js-apis-touchevent.md#action) in this parameter cannot be set to **CANCEL**.|
+| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touch event data. [Action](js-apis-touchevent.md#action) in this parameter cannot be set to **CANCEL**.|
 
 **Error codes**
 

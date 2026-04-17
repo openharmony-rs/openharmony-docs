@@ -41,8 +41,8 @@ Describes audio renderer configurations.
 
 | Name        | Type                                    | Read-Only| Optional| Description            |
 | ------------ | ---------------------------------------- | ---- |---| ---------------- |
-| streamInfo   | [AudioStreamInfo](#audiostreaminfo8)     | No| No| Audio stream information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
-| rendererInfo | [AudioRendererInfo](#audiorendererinfo8) | No| No| Audio renderer information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
+| streamInfo   | [AudioStreamInfo](#audiostreaminfo8)     | No| No| Describes audio stream information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
+| rendererInfo | [AudioRendererInfo](#audiorendererinfo8) | No| No| Describes audio renderer information.<br>**System capability**: SystemCapability.Multimedia.Audio.Renderer|
 | privacyType<sup>10+</sup> | [AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10) | No| Yes| Whether the audio stream can be recorded by other applications. The default value is **0**.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture|
 
 ## InterruptEvent<sup>9+</sup>
@@ -204,7 +204,7 @@ Describes the event received by the application when the audio stream device is 
 | Name             | Type                                                               | Read-Only| Optional| Description              |
 | :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
 | devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | No| No| Device information.|
-| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | No| No| Reason for the device change.|
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | No| No| Reason for the change.|
 
 ## CurrentOutputDeviceChangedEvent<sup>20+</sup>
 
@@ -238,7 +238,7 @@ Describes the information about the audio stream timestamp and the current data 
 | Name| Type| Read-Only| Optional| Description                               |
 | ---------| ------ | ---- | ---- |-----------------------------------|
 | framePos | number | Yes  | No  | Position of the current data frame for playback or recording.                  |
-| timestamp | number | Yes  | No  | Timestamp corresponding to the current data frame position during playback or recording.|
+| timestamp | number | Yes  | No  | Timestamp corresponding to the current data frame position during playback or recording, in nanoseconds.|
 
 ## AudioCapturerInfo<sup>8+</sup>
 
@@ -259,7 +259,7 @@ Describes audio capturer configurations.
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
 | streamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | No| No| Audio stream information.<br>**System capability**: SystemCapability.Multimedia.Audio.Capturer  |
 | capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | No| No| Audio capturer information.<br>**System capability**: SystemCapability.Multimedia.Audio.Capturer       |
-| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | No| Yes| Configuration for capturing played audio.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
+| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | No| Yes| Defines configuration for capturing played audio.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
 
 ## AudioInterrupt<sup>(deprecated)</sup>
 
@@ -292,7 +292,7 @@ Defines the options for filtering the played audio streams to be recorded.
 
 ## AudioPlaybackCaptureConfig<sup>(deprecated)</sup>
 
-Defines the configuration for capturing played audio.
+Defines configuration for capturing played audio.
 
 > **NOTE**
 > This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead.

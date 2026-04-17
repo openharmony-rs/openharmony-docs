@@ -44,7 +44,7 @@ Obtains the geographic location.
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationOption](#getlocationoptiondeprecated) | No| Options of a single location request.|
 
-**JS example**:
+**JS example**
 
 ```xml
 <div class="container">
@@ -114,7 +114,7 @@ Obtains the supported location types.
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationTypeOption](#getlocationtypeoptiondeprecated) | No| Callback used to return the result.|
 
-**JS example**:
+**JS example**
 
 ```xml
 <div class="container">
@@ -186,7 +186,7 @@ Listens to the geographic location. If this API is called multiple times, the la
 | -------- | -------- | -------- | -------- |
 | options | [SubscribeLocationOption](#subscribelocationoptiondeprecated) | Yes| Options for continuous location.|
 
-**JS example**:
+**JS example**
 
 ```xml
 <div class="container">
@@ -252,7 +252,7 @@ Cancels listening to the geographic location.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
-**JS example**:
+**JS example**
 
 ```xml
 <div class="container">
@@ -315,7 +315,7 @@ Obtains coordinate system types supported by the device.
 | -------- | -------- | -------- |
 | Array&lt;string&gt; | Yes| Coordinate system types, for example, **[wgs84, gcj02]**.|
 
-**JS example**:
+**JS example**
 
 ```xml
 <div class="container">
@@ -404,7 +404,7 @@ Defines the location information, including the longitude, latitude, and locatio
 | longitude | number | No| No| Longitude.|
 | latitude | number | No| No| Latitude.|
 | altitude | number | No| No| Altitude.|
-| accuracy | number | No| No| Location accuracy.|
+| accuracy | number | No| No| Location accuracy. <!--RP1--> (This field is provided by the GNSS positioning chip or network location service. If this function is not supported, the default value **0** is returned.)<!--RP1End--> |
 | time | number | No| No| Time when the location is obtained.|
 
 ## GetLocationTypeOption<sup>(deprecated)</sup>

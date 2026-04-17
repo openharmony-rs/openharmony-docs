@@ -9515,7 +9515,7 @@ class Stub extends rpc.RemoteObject {
 
 static restoreCallingIdentity(identity: string): void
 
-Restores the UID and PID of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required. This API is supported only in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9); otherwise, it returns directly.
+Restores the UID and PID to those of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required. This API is supported only in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9); otherwise, it returns directly.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9558,7 +9558,7 @@ class Stub extends rpc.RemoteObject {
 
 static setCallingIdentity(identity: string): boolean
 
-Sets the UID and PID of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required.
+Sets the UID and PID to those of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required.
 
 > **NOTE**
 >

@@ -822,7 +822,7 @@ Sets the type of volume that the volume keys should control.
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of audio volume to control.|
-| duration |number | Yes  | Duration that the volume keys will control this type of volume if no volume key events occur. When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds. If the duration is set to **-1**, the setting is canceled.|
+| duration |number | Yes  | Duration that the volume keys will control this type of volume if no volume key events occur, in seconds. When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds. If the duration is set to **-1**, the setting is canceled.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
@@ -967,7 +967,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-Obtains the volume of an application based on the application ID. (The volume range is 1 to 100.) This API uses a promise to return the result.
+Obtains the volume percentage (within a range of 0 to 100) of an application based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -983,7 +983,7 @@ Obtains the volume of an application based on the application ID. (The volume ra
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise used to return the application volume (ranging from 0 to 100).|
+| Promise&lt;number&gt; | Promise used to return the application volume percentage (ranging from 0 to 100).|
 
 **Error codes**
 
@@ -1009,7 +1009,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-Sets the application volume (within a range of 0 to 100) based on the application ID. This API uses a promise to return the result.
+Sets the volume percentage (within a range of 0 to 100) of an application based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1020,7 +1020,7 @@ Sets the application volume (within a range of 0 to 100) based on the applicatio
 | Name    | Type                                     | Mandatory| Description      |
 | ---------- | ---------------------------------------- | ---- |----------|
 | uid    | number                                   | Yes  | Application ID.  |
-| volume    | number                                   | Yes  | Volume to set.|
+| volume    | number                                   | Yes  | Volume percentage. The value range is [0, 100].|
 
 **Return value**
 
@@ -1727,7 +1727,7 @@ setMicMutePersistent(mute: boolean, type: PolicyType): Promise&lt;void&gt;
 
 Mutes or unmutes the microphone permanently. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.MICROPHONE_CONTROL
+**Required permissions**: ohos.permission.MICROPHONE_CONTROL
 
 **System API**: This is a system API.
 
@@ -1771,7 +1771,7 @@ isPersistentMicMute(): boolean
 
 Checks whether the microphone is muted permanently. This API returns the result synchronously.
 
-**Required permission**: ohos.permission.MICROPHONE_CONTROL
+**Required permissions**: ohos.permission.MICROPHONE_CONTROL
 
 **System API**: This is a system API.
 
@@ -2873,7 +2873,7 @@ Restores previously excluded output devices. Once this API is called successfull
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | usage          | [DeviceUsage](arkts-apis-audio-e.md#deviceusage12)            | Yes  | Device type. Only output devices can be excluded.              |
-| devices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Lit of output devices to restore.              |
+| devices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | List of output devices to restore.              |
 
 **Return value**
 
@@ -3618,7 +3618,7 @@ Subscribes to the spatial audio rendering status change event, which is triggere
 | Name  | Type                                                | Mandatory| Description                                          |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | Yes  | Event type. The event **'spatializationEnabledChange'** is triggered when the spatial audio rendering status is changed.|
-| callback | Callback<boolean\> | Yes  | Callback function. indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.|
+| callback | Callback<boolean\> | Yes  | Callback used to return the result, indicating whether spatial audio rendering is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
 
@@ -5340,7 +5340,7 @@ async function getTarget(){
   await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
   console.info('Succeeded in setting target.');
 
-  // If the SetTarget API has been called before this API is called, ensure that the SetTarget API has been successfully set. Otherwise, the obtained value may be inaccurate.
+  // If the SetTarget API has been called before this API is called, ensure that the SetTarget API has been successfully called. Otherwise, the obtained value may be inaccurate.
   let renderTarget = audioRenderer.getTarget();
   console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
 }

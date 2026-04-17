@@ -274,7 +274,6 @@ Sets an audio parameter. This API uses an asynchronous callback to return the re
 This API is used to extend the audio configuration based on the hardware capability. The supported audio parameters vary according to the device and are not common parameters. Sample parameters are used in the sample code below.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MODIFY_AUDIO_SETTINGS
@@ -312,7 +311,6 @@ Sets an audio parameter. This API uses a promise to return the result.
 This API is used to extend the audio configuration based on the hardware capability. The supported audio parameters vary according to the device and are not common parameters. Sample parameters are used in the sample code below.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MODIFY_AUDIO_SETTINGS
@@ -349,7 +347,6 @@ Obtains the value of an audio parameter. This API uses an asynchronous callback 
 This API is used to extend the audio configuration based on the hardware capability. The supported audio parameters vary according to the device and can be obtained from the device manual. The example below is for reference only.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
@@ -384,7 +381,6 @@ Obtains the value of an audio parameter. This API uses a promise to return the r
 This API is used to extend the audio configuration based on the hardware capability. The supported audio parameters vary according to the device and can be obtained from the device manual. The example below is for reference only.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
@@ -413,7 +409,7 @@ audioManager.getAudioParameter('key_example').then((value: string) => {
 
 setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the volume for a stream. This API uses an asynchronous callback to return the result.
+Sets the volume level for a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -453,7 +449,7 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => 
 
 setVolume(volumeType: AudioVolumeType, volume: number): Promise&lt;void&gt;
 
-Sets the volume for a stream. This API uses a promise to return the result.
+Sets the volume level for a stream. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -492,10 +488,9 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10).then(() => {
 
 getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the volume of a stream. This API uses an asynchronous callback to return the result.
+Obtains the volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolumedeprecated) instead. For API version 20 and later, you are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -505,7 +500,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
+| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume level obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Example**
 
@@ -525,10 +520,9 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: 
 
 getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-Obtains the volume of a stream. This API uses a promise to return the result.
+Obtains the volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [getVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getvolumedeprecated) instead. For API version 20 and later, you are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -543,7 +537,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 | Type                 | Description                     |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
+| Promise&lt;number&gt; | Promise used to return the stream volume level obtained. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Example**
 
@@ -557,10 +551,9 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 
 getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the minimum volume allowed for a stream. This API uses an asynchronous callback to return the result.
+Obtains the minimum volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) instead. For API version 20 and later, you are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -570,7 +563,7 @@ Obtains the minimum volume allowed for a stream. This API uses an asynchronous c
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume obtained; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume level obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -590,10 +583,9 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 
 getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-Obtains the minimum volume allowed for a stream. This API uses a promise to return the result.
+Obtains the minimum volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [getMinVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getminvolumedeprecated) instead. For API version 20 and later, you are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -608,7 +600,7 @@ Obtains the minimum volume allowed for a stream. This API uses a promise to retu
 
 | Type                 | Description                     |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise used to return the minimum volume.|
+| Promise&lt;number&gt; | Promise used to return the minimum volume level.|
 
 **Example**
 
@@ -622,10 +614,9 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 
 getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the maximum volume allowed for a stream. This API uses an asynchronous callback to return the result.
+Obtains the maximum volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated) instead. For API version 20 and later, you are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -635,7 +626,7 @@ Obtains the maximum volume allowed for a stream. This API uses an asynchronous c
 | Name    | Type                               | Mandatory| Description                  |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.          |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume obtained; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume level obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -655,10 +646,9 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 
 getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-Obtains the maximum volume allowed for a stream. This API uses a promise to return the result.
+Obtains the maximum volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [getMaxVolume](arkts-apis-audio-AudioVolumeGroupManager.md#getmaxvolumedeprecated) instead. For API version 20 and later, you are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -673,7 +663,7 @@ Obtains the maximum volume allowed for a stream. This API uses a promise to retu
 
 | Type                 | Description                         |
 | --------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise used to return the maximum volume.|
+| Promise&lt;number&gt; | Promise used to return the maximum volume level.|
 
 **Example**
 
@@ -692,7 +682,6 @@ Mutes or unmutes a stream. This API uses an asynchronous callback to return the 
 When the minimum volume of a stream cannot be set to 0, muting the stream is not supported. Example scenarios: alarms or phone calls.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -728,7 +717,6 @@ Mutes or unmutes a stream. This API uses a promise to return the result.
 When the minimum volume of a stream cannot be set to 0, muting the stream is not supported. Example scenarios: alarms or phone calls.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -762,7 +750,6 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 Checks whether a stream is muted. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [isMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismutedeprecated) instead. For API version 20 and later, you are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -795,7 +782,6 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 Checks whether a stream is muted. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [isMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismutedeprecated) instead. For API version 20 and later, you are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -810,7 +796,7 @@ Checks whether a stream is muted. This API uses a promise to return the result.
 
 | Type                  | Description                                                  |
 | ---------------------- | ------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise. **true** if muted, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is muted. **true** if muted, **false** otherwise.|
 
 **Example**
 
@@ -827,7 +813,6 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 Checks whether a stream is active. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [isActive](arkts-apis-audio-AudioStreamManager.md#isactivedeprecated) instead. For API version 20 and later, you are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -860,7 +845,6 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 Checks whether a stream is active. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. From API version 9 to 19, you are advised to use [isActive](arkts-apis-audio-AudioStreamManager.md#isactivedeprecated) instead. For API version 20 and later, you are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -875,7 +859,7 @@ Checks whether a stream is active. This API uses a promise to return the result.
 
 | Type                  | Description                                                    |
 | ---------------------- | -------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise indicating whether the stream is active. **true** if active, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is active. **true** if active, **false** otherwise.|
 
 **Example**
 
@@ -892,7 +876,6 @@ setRingerMode(mode: AudioRingMode, callback: AsyncCallback&lt;void&gt;): void
 Sets the ringer mode. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.ACCESS_NOTIFICATION_POLICY
@@ -929,7 +912,6 @@ setRingerMode(mode: AudioRingMode): Promise&lt;void&gt;
 Sets the ringer mode. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 
@@ -966,7 +948,6 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 Obtains the ringer mode. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getRingerMode](arkts-apis-audio-AudioVolumeGroupManager.md#getringermode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Communication
@@ -998,7 +979,6 @@ getRingerMode(): Promise&lt;AudioRingMode&gt;
 Obtains the ringer mode. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getRingerMode](arkts-apis-audio-AudioVolumeGroupManager.md#getringermode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Communication
@@ -1024,7 +1004,6 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 Obtains the audio devices with a specific flag. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getDevices](arkts-apis-audio-AudioRoutingManager.md#getdevices9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1056,7 +1035,6 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 Obtains the audio devices with a specific flag. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getDevices](arkts-apis-audio-AudioRoutingManager.md#getdevices9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1088,7 +1066,6 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 Sets a device to the active state. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCommunicationDevice](arkts-apis-audio-AudioRoutingManager.md#setcommunicationdevice9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1122,7 +1099,6 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise&lt;void&
 Sets a device to the active state. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCommunicationDevice](arkts-apis-audio-AudioRoutingManager.md#setcommunicationdevice9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1156,7 +1132,6 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback&lt;boolean&
 Checks whether a device is active. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [isCommunicationDeviceActive](arkts-apis-audio-AudioRoutingManager.md#iscommunicationdeviceactive9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1189,7 +1164,6 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise&lt;boolean&gt;
 Checks whether a device is active. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [isCommunicationDeviceActive](arkts-apis-audio-AudioRoutingManager.md#iscommunicationdeviceactive9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1204,7 +1178,7 @@ Checks whether a device is active. This API uses a promise to return the result.
 
 | Type                  | Description                                  |
 | ---------------------- |---------------------------------------|
-| Promise&lt;boolean&gt; | Promise indicating whether the device is active. **true** if active, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the device is active. **true** if active, **false** otherwise.|
 
 **Example**
 
@@ -1221,7 +1195,6 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback&lt;void&gt;): void
 Mutes or unmutes the microphone. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MICROPHONE
@@ -1256,7 +1229,6 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 Mutes or unmutes the microphone. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MICROPHONE
@@ -1290,7 +1262,6 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 Checks whether the microphone is muted. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [isMicrophoneMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9) instead.
 
 **Required permissions**: ohos.permission.MICROPHONE
@@ -1324,7 +1295,6 @@ isMicrophoneMute(): Promise&lt;boolean&gt;
 Checks whether the microphone is muted. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [isMicrophoneMute](arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9) instead.
 
 **Required permissions**: ohos.permission.MICROPHONE
@@ -1335,7 +1305,7 @@ Checks whether the microphone is muted. This API uses a promise to return the re
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise indicating whether the microphone is muted. **true** if muted, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the microphone is muted. **true** if muted, **false** otherwise.|
 
 **Example**
 
@@ -1352,7 +1322,6 @@ on(type: 'deviceChange', callback: Callback<DeviceChangeAction\>): void
 Subscribes to the event indicating that the connection status of an audio device is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [on('deviceChange')](arkts-apis-audio-AudioRoutingManager.md#ondevicechange9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1382,7 +1351,6 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 Unsubscribes from the audio device change event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [off('deviceChange')](arkts-apis-audio-AudioRoutingManager.md#offdevicechange9) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
@@ -1422,7 +1390,6 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 Same as [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9), this API is used to listen for focus changes. However, this API is used in scenarios without audio streams (no AudioRenderer instance is created), such as frequency modulation (FM) and voice wakeup.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 11. You are advised to use [on('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -1465,7 +1432,6 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback\<Interrupt
 Unsubscribes from the audio interruption event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 7 and deprecated since API version 11. You are advised to use [off('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#offaudiointerrupt10) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer

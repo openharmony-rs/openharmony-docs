@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -110,7 +110,7 @@ The possible causes are as follows:
 
 1. Check that the target device administrator application has been enabled.
 2. Check that the specified device administrator ability component of the target device administrator application has been enabled.
-3. Check whether the device administrator application to be disabled is the caller itself.
+3. Ensure that the device administrator application to be disabled is the caller itself.
 
 ## 9200006 Invalid User ID
 
@@ -130,8 +130,8 @@ The possible causes are as follows:
 
 **Solution**
 
-1. Check whether the user ID specified for the API is valid.
-2. Check whether the caller user ID and the specified user ID are the same. If the application is a device administrator application, policies cannot be set across users.
+1. Ensure that the user ID specified for the API is valid.
+2. Ensure that the caller user ID and the specified user ID are the same. If the application is a device administrator application, policies cannot be set across users.
 
 ## 9200007 System Ability Error
 
@@ -247,15 +247,15 @@ The possible causes are as follows:
 2. The length of the input parameter exceeds the upper limit.
 3. The length of the input array exceeds the upper limit.
 4. The parameter value is out of the value range.
-5. The blocklist or trustlist that has not been set is removed.
+5. A removal operation is performed on a blocklist or trustlist that has not been set yet.
 
 **Solution**
 
-1. Check whether the input **EnterpriseAdminExtensionAbility** belongs to the current application.
-2. Check whether the length of the input parameter exceeds the upper limit.
-3. Check whether the length of the input array exceeds the upper limit.
-4. Check whether the input parameter value is within the supported value range.
-5. Before removing the list, check whether the corresponding list is set.
+1. Ensure that the input **EnterpriseAdminExtensionAbility** belongs to the current application.
+2. Ensure that the length of the input parameter does not exceed the upper limit.
+3. Ensure that the length of the input array does not exceed the upper limit.
+4. Ensure that the input parameter value is within the supported value range.
+5. Before removing the list, ensure that the corresponding list is set.
 
 ## 9200013 Control Not Immediately Effective
 
@@ -301,7 +301,7 @@ Failed to install the application.
 
 **Description**
 
-This error code is reported when a device administrator application fails to install an enterprise app.
+This error code is reported when a device administrator application fails to install an enterprise application.
 
 **Possible Causes**
 

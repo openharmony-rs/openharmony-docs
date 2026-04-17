@@ -62,7 +62,7 @@ The file declares the functions related to an audio renderer.
 | [typedef void (\*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)](#oh_audiorenderer_onerrorcallback) | OH_AudioRenderer_OnErrorCallback | Defines the callback for error events of an audio renderer.|
 | [OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer, OH_AudioStream_FastStatus* status)](#oh_audiorenderer_getfaststatus) | - | Obtains the running status of an audio renderer to determine whether it is running in low-latency mode.|
 | [typedef void (\*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status)](#oh_audiorenderer_onfaststatuschange) | OH_AudioRenderer_OnFastStatusChange | Defines a callback function for low-latency status changes during audio playback.|
-| [OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)](#oh_audiorenderer_setloudnessgain) | - | Sets the loudness of audio playback. The default loudness value is 0.0 dB. The audio stream playback type must be one of the following: Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Audiobooks (including books, crosstalk, and storytelling), listening to news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK<br> The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> Loudness settings are not supported for high-definition audio channels.<br> Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.<br> You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.|
+| [OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)](#oh_audiorenderer_setloudnessgain) | - | Sets the loudness of audio playback. The default loudness value is 0.0 dB. The audio stream playback type must be one of the following: Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC;<br> movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE;<br> audiobooks (including books, crosstalk, and storytelling), audio news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK.<br> The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> Loudness settings are not supported for high-definition audio channels.<br> Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.<br> You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.|
 | [OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)](#oh_audiorenderer_getloudnessgain) | - | Obtains the loudness of audio playback.|
 | [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | Defines a function pointer to the callback used to write audio data. Unlike **OH_AudioRenderer_OnWriteDataCallback**, this function allows the application to fill data of the length ranging [0, audioDataSize].<br> Here, **audioDataSize** refers to the length of the callback buffer. The caller notifies the system of the length of the data written through the return value.<br> If the return value is 0, the callback thread sleeps for a period of time.<br> Otherwise, the system may immediately initiate the next callback.|
 
@@ -435,7 +435,12 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **Description**
 
-Obtains the timestamp and position information of an output audio stream.<br> This function obtains the actual playback position (specified by **framePosition**) of the audio channel and the timestamp when playing to that position (specified by **timestamp**, in nanoseconds).<br> When you switch devices or resume playback after a pause, the playback position and timestamp retrieved via this function will temporarily stay in the state they were in before the switch or pause, since the playback channel requires a moment to stabilize.<br> This function is used to implement audio and video synchronization. It is recommended that the function be called once every minute (at least every 200 ms). Frequent calls may increase power consumption. Therefore, do not frequently query the timestamp when the audio-visual synchronization effect can be ensured.
+Obtains the timestamp and position information of an output audio stream.<br> This function obtains the actual playback position (specified by **framePosition**) of the audio channel and the timestamp when playing to that position (specified by **timestamp**, in nanoseconds).<br> When you switch devices or resume playback after a pause, the playback position and timestamp retrieved via this function will temporarily stay in the state they were in before the switch or pause, since the playback channel requires a moment to stabilize.<br> This API is used to implement audio-video synchronization. You are advised to keep the API call frequency within reasonable limits, such as once per minute. The minimal interval between calls should not be less than 200 ms. Frequent calls may increase power consumption. Therefore, do not frequently query the timestamp when the audio-video synchronization effect can be ensured.
+
+> **NOTE**
+>
+> - When the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins playback.
+> - The playback position is also reset when **Flush** is called.
 
 **Since**: 10
 
@@ -447,7 +452,7 @@ Obtains the timestamp and position information of an output audio stream.<br> Th
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | clockid_t clockId | Clock identifier. Use **CLOCK_MONOTONIC**.|
 | int64_t* framePosition | Pointer to a variable used to receive the position information.|
-| int64_t* timestamp | Pointer to a variable used to receive the timestamp.|
+| int64_t* timestamp | Pointer to a variable used to receive the timestamp, in nanoseconds.|
 
 **Returns**
 
@@ -463,7 +468,14 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 **Description**
 
-Obtains the timestamp and position information of an output audio stream. It adapts to the speed adjustment interface.<br> This information is commonly used for audio and video synchronization.<br> Note that when the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins to play. The playback position is also reset when **Flush** is called.<br> Additionally, changes in the audio stream route, such as switching devices or output types, will reset the playback position, whereas the timestamp keeps increasing. You are advised to call this function to obtain the corresponding value only when the actual playback position and timestamp are stable. This function adapts to the speed adjustment interface. For example, if the playback speed is set to 2x, the rate at which the playback position increases is also twice the normal speed.<br>
+Obtains the timestamp and position information of an output audio stream. It adapts to the speed adjustment interface.<br> This information is commonly used for audio and video synchronization.
+
+> **NOTE**
+>
+> - When the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins playback.
+> - The playback position is also reset when **Flush** is called.
+> - Additionally, changes in the audio stream route, such as switching devices or output types, will reset the playback position, whereas the timestamp keeps increasing. You are advised to call this function to obtain the corresponding value only when the actual playback position and timestamp are stable. This function adapts to the speed adjustment interface. For example, if the playback speed is set to 2x, the rate at which the playback position increases is also twice the normal speed.
+
 
 **Since**: 15
 
@@ -474,7 +486,7 @@ Obtains the timestamp and position information of an output audio stream. It ada
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | int64_t* framePosition | Pointer to a variable used to receive the position information.|
-| int64_t* timestamp | Pointer to a variable used to receive the timestamp.|
+| int64_t* timestamp | Pointer to a variable used to receive the timestamp, in nanoseconds.|
 
 **Returns**
 
@@ -684,7 +696,7 @@ Obtains the volume of an audio renderer.
 | Name| Description|
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
-| float* volume | Pointer to the audio volume. The audio volume is in the range of [0.0, 1.0].|
+| float* volume | Pointer to the audio volume, in the range of [0.0, 1.0].|
 
 **Returns**
 
@@ -882,7 +894,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 **Description**
 
-Sets the default built-in audio output device.<br> This function applies only to the scenario where [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to voice messages, VoIP voice calls, and VoIP video calls and the available device types are the receiver, speaker, and system default device.<br> This function can be called at any time after an AudioRenderer instance is created. The system records the default built-in audio output device set by the application. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.<br>
+Sets the default built-in audio output device.<br> This function applies only to the scenario where [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to voice messages, VoIP voice calls, and VoIP video calls and the available device types are the receiver, speaker, and system default device.<br> This function can be called at any time after an AudioRenderer instance is created. The system records the default built-in audio output device set by the application. When the application is started, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.<br>
 
 **Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
@@ -1000,7 +1012,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 
 **Description**
 
-Sets the loudness of audio playback. The default loudness value is 0.0 dB. The audio stream playback type must be one of the following: Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Audiobooks (including books, crosstalk, and storytelling), listening to news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK<br> The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> Loudness settings are not supported for high-definition audio channels.<br> Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.<br> You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.
+Sets the loudness of audio playback. The default loudness value is 0.0 dB. The audio stream playback type must be one of the following: Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC;<br> movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE;<br> audiobooks (including books, crosstalk, and storytelling), audio news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK.<br> The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> Loudness settings are not supported for high-definition audio channels.<br> Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.<br> You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.
 
 **Since**: 20
 
@@ -1036,7 +1048,7 @@ Obtains the loudness of audio playback.
 | Name| Description|
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
-| float* loudnessGain | Pointer to the variable that receives the loudness.|
+| float* loudnessGain | Pointer to the variable that receives the playback loudness, in decibels.|
 
 **Returns**
 

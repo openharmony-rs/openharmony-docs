@@ -138,7 +138,7 @@ The widget does not belong to the application.
 
 <!--Del-->
 1. Upgrade the application permission to **SystemApp**.
-2. <!--DelEnd-->Check whether the widget ID belongs to the application.
+2. <!--DelEnd-->Ensure that the widget ID belongs to the application.
 
 ## 16501006 Failed to Connect to the Widget Rendering Service
 
@@ -174,7 +174,7 @@ The widget code has problems such as infinite loop and memory leakage, causing s
 
 **Solution**
 
-Check whether the widget code has an infinite loop or memory leakage.
+Ensure that the widget code does not have infinite loops or memory leakage.
 
 <!--Del-->
 ## 16501008 Adding a Widget to the Home Screen Times Out
@@ -212,7 +212,7 @@ The background image resource is invalid.
 
 **Solution**
 
-Check whether the background image resource is valid.
+Ensure that the background image resource is valid.
 
 ## 16501011 API Not Supported
 
@@ -230,7 +230,7 @@ The interactive widget animation is requested by a common widget, or the current
 
 **Solution**
 
-Check whether the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
+Ensure that the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
 
 ## 16501012 Incorrect Widget Dimension
 
@@ -248,9 +248,9 @@ The specified widget dimension is not configured, or the transferred widget dime
 
 **Solution**
 
-Check whether the input widget dimension is in the [FormDimension](js-apis-app-form-formInfo.md#formdimension) and [supportDimensions](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file) configuration list.
+Ensure that the input widget dimension is in the [FormDimension](js-apis-app-form-formInfo.md#formdimension) and [supportDimensions](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file) configuration list.
 
-## 16501013 Operation Not Supported
+## 2293761 Internal Service Error
 
 **Error Message**
 
@@ -304,7 +304,7 @@ Invalid input parameters are passed when the API is called.
 1. Mandatory parameters are not transferred.
 2. The parameter type is incorrect.
 3. The number of parameters is incorrect.
-4. The input parameter is empty, for example, an empty string ('').
+4. The parameter value is empty. For example, an empty string ('') is passed.
 5. Incorrect parameter format.
 6. Invalid parameter value. The input parameters must be the same as those in [app.json5](../../quick-start/app-configuration-file.md) and [Configuring ArkTS Widget Configuration Files](../../form/arkts-ui-widget-configuration.md).
 

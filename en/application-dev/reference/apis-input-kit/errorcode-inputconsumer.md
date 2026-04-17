@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -47,7 +47,7 @@ This error code is generated when the shortcut key is registered by a third-part
 
 1. In the cmd window, run **hidumper -s 3101 -a -s** to query all registered shortcut keys and use any available shortcut keys.
 
-## 3800001 Multimodal input internal error
+## 3800001 Multimodal Input Service Internal Error
 
 **Error Message**
 
@@ -55,11 +55,11 @@ Input service exception. Possible causes: 1. Memory allocation failure. 2. Threa
 
 **Description**
 
-Internal error of the multimodal input service.
+An internal error of the multimodal input service occurred.
 
 **Possible Cause**
 
-Unexpected errors, such as memory allocation failure, busy thread, and abnormal service exit, occur.
+An unexpected error occurred, such as memory allocation failure, busy thread, or abnormal service exit.
 
 **Solution**
 

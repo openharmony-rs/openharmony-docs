@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 This module provides the [EnterpriseAdminExtensionAbility](../../mdm/mdm-kit-term.md#enterpriseadminextensionability).
 
@@ -12,9 +12,9 @@ To have the capabilities provided by this module, for example, to receive a noti
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 > 
 
 ## Modules to Import
@@ -27,7 +27,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 onAdminEnabled(): void
 
-Called when the device administrator application is enabled by the enterprise administrator or employee. Upon receiving the event notification from the system, the device administrator application can set initialization policies in this callback.
+Callback triggered when a device administrator application is enabled. After an enterprise administrator or employee deploys and enables the device administrator application, the system notifies the device administrator application that the admin permission has been granted. The device administrator application can initialize policies within this callback.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -49,7 +49,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAdminDisabled(): void
 
-Called when the device administrator application is disabled by the enterprise administrator or employee. Upon receiving the event notification from the system, the device administrator application can use this callback to notify the enterprise administrator that the device is no longer under management.
+Callback triggered when a device administrator application is disabled. After an enterprise administrator or employee disables the device administrator application, the system notifies the application that the admin permission has been revoked. The device administrator application can use this callback to notify the enterprise administrator that the device is no longer under management.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -120,7 +120,7 @@ Called when applications are installed. The application bundle name and account 
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-  // Since there is another callback method with the same name onBundleAdded(bundleName: string) that lacks the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
+  // Since there is another callback method with the same name onBundleAdded(bundleName: string) that does not have the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
   onBundleAdded(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}, accountId: ${accountId}`);
   }
@@ -180,7 +180,7 @@ Called when applications are uninstalled. The application bundle name and accoun
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-  // Since there is another callback method with the same name onBundleRemoved(bundleName: string) that lacks the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
+  // Since there is another callback method with the same name onBundleRemoved(bundleName: string) that does not have the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
   onBundleRemoved(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}, accountId: ${accountId}`);
   }

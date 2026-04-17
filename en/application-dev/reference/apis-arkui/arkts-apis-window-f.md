@@ -1129,7 +1129,7 @@ The child window created uses an [immersive layout](../../windowmanager/window-t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. If **null** or **undefined** is passed to the **id** parameter, the callback may fail to be executed. You are advised to use [createWindow()](#windowcreatewindow9) instead.
 
 **Model restriction**: This API can be used only in the FA model.
 

@@ -17,7 +17,7 @@
 
 Resource unavailable.
 
-**Description**
+**Symptom**
 
 This error code is reported when an API fails to be called.
 
@@ -35,9 +35,9 @@ Check the image and follow the instructions to decode it.
 
 The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.
 
-**Description**
+**Symptom**
 
-This error code is reported when an operation fails.
+This error code is reported when the operations fails.
 
 **Possible Cause**
 
@@ -57,9 +57,9 @@ Check the image and follow the instructions to decode it.
 
 IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception. 3. Decode process exception. 4. Insufficient memory.
 
-**Description**
+**Symptom**
 
-This error code is reported when PixelMap serialization transmission fails.
+This error code is reported when PixelMap serialization and transmission fails.
 
 **Possible Cause**
 
@@ -78,7 +78,7 @@ Check the image and follow the instructions to decode it.
 
 Shared memory does not exist.
 
-**Description**
+**Symptom**
 
 This error code is reported when a shared memory space error occurs.
 
@@ -98,7 +98,7 @@ Check the memory usage or restart the device.
 
 The shared memory data is abnormal.
 
-**Description**
+**Symptom**
 
 This error code is reported when a data error occurs in the shared memory.
 
@@ -118,7 +118,7 @@ Restart the device.
 
 Image decoding abnormal.
 
-**Description**
+**Symptom**
 
 This error code is reported when an image decoding error occurs.
 
@@ -139,7 +139,7 @@ Check the image and follow the instructions to decode it.
 
 The image data is abnormal.
 
-**Description**
+**Symptom**
 
 This error code is reported when the input image data is incorrect.
 
@@ -159,7 +159,7 @@ Use a valid image.
 
 Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data.
 
-**Description**
+**Symptom**
 
 This error code is reported when an error occurs during image memory allocation.
 
@@ -177,7 +177,7 @@ Clear the memory and try again.
 
 The image data is not supported.
 
-**Description**
+**Symptom**
 
 The image type is not supported.
 
@@ -195,7 +195,7 @@ Change the image type and try again.
 
 Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
 
-**Description**
+**Symptom**
 
 This error code is reported when an image initialization error occurs.
 
@@ -215,7 +215,7 @@ Correct the parameters or user another image.
 
 Failed to get the data.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image data fails to be obtained.
 
@@ -234,7 +234,7 @@ Correct the image data or use another image.
 
 The image data is too large. This status code is thrown when an error occurs during the process of checking size.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image data is too large.
 
@@ -252,7 +252,7 @@ Use a smaller image.
 
 Image conversion abnormal.
 
-**Description**
+**Symptom**
 
 This error code is reported when an image conversion error occurs.
 
@@ -271,7 +271,7 @@ Correct the encoding parameters or use another image.
 
 Failed to convert the color space.
 
-**Description**
+**Symptom**
 
 This error code is reported when an image color conversion error occurs.
 
@@ -290,7 +290,7 @@ Try again or change the image type.
 
 Failed to crop the image.
 
-**Description**
+**Symptom**
 
 This error code is reported when a cropping error occurs.
 
@@ -309,7 +309,7 @@ Correct the cropping parameters or image data.
 
 The image source data is incorrect.
 
-**Description**
+**Symptom**
 
 The image source data is incorrect.
 
@@ -327,7 +327,7 @@ Check the operation procedure or use another image.
 
 The image source data is incomplete.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image source data is incomplete.
 
@@ -345,9 +345,9 @@ Check the operation procedure or use another image.
 
 The image format does not match.
 
-**Description**
+**Symptom**
 
-This error code is reported when the image format does not match.
+This error code is reported when an image format mismatch error occurs.
 
 **Possible Cause**
 
@@ -363,7 +363,7 @@ Use an image in a matched format.
 
 Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image format is unknown.
 
@@ -381,7 +381,7 @@ Use another image.
 
 Image source not parsed.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image source is not parsed.
 
@@ -399,7 +399,7 @@ Correct the image source data.
 
 Invalid image parameter.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image parameter is invalid.
 
@@ -417,9 +417,9 @@ Correct the input parameter.
 
 Failed to decode the image.
 
-**Description**
+**Symptom**
 
-This error code is reported when the decoding fails.
+This error code is reported when decoding fails.
 
 **Possible Cause**
 
@@ -437,7 +437,7 @@ Ensure that the image is read or use another image.
 
 Failed to register the plugin.
 
-**Description**
+**Symptom**
 
 This error code is reported when the plugin registration fails.
 
@@ -456,7 +456,7 @@ Correct the input data or use another image.
 
 Failed to create the image plugin.
 
-**Description**
+**Symptom**
 
 This error code is reported when the plugin creation fails.
 
@@ -475,7 +475,7 @@ Correct the input data or use another image.
 
 Failed to encode the image.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image encoding fails.
 
@@ -494,7 +494,7 @@ Correct the input data or use another image.
 
 Add pixelmap out of range.
 
-**Description**
+**Symptom**
 
 This error code is reported when pixel mapping fails to be added.
 
@@ -513,9 +513,9 @@ Check the operation procedure or use another image.
 
 Image hardware decoding is not supported.
 
-**Description**
+**Symptom**
 
-This error code is reported when hardware decoding is not supported.
+This error code is reported when image hardware decoding is not supported.
 
 **Possible Cause**
 
@@ -531,7 +531,7 @@ Use another decoding mode.
 
 Failed to decode the image header.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image header fails to be decoded.
 
@@ -550,7 +550,7 @@ Correct the image data or use another image.
 
 The image does not support EXIF decoding.
 
-**Description**
+**Symptom**
 
 The image does not support Exif decoding.
 
@@ -568,7 +568,7 @@ Use another image.
 
 The image property does not exist.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image property does not exist.
 
@@ -587,7 +587,7 @@ Use another image.
 
 The EXIF data is out of range.
 
-**Description**
+**Symptom**
 
 The value of the image property is out of range.
 
@@ -605,7 +605,7 @@ Change the image or check the length of the image property value.
 
 The EXIF value is invalid.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image property value is invalid.
 
@@ -623,7 +623,7 @@ Correct the image data or use another image.
 
 Invalid media operation.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image operation is invalid.
 
@@ -641,7 +641,7 @@ Use another image.
 
 The EXIF data failed to be written to the file.
 
-**Description**
+**Symptom**
 
 This error code is reported when image property values fail to be written to the file.
 
@@ -659,7 +659,7 @@ Use another image.
 
 Invalid MIME type for the image source.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image parameter is invalid.
 
@@ -677,7 +677,7 @@ Use another image.
 
 Failed to encode icc.
 
-**Description**
+**Symptom**
 
 This error code is reported when ICC encoding fails.
 
@@ -695,7 +695,7 @@ Check the image data or use another image.
 
 The DMA memory does not exist.
 
-**Description**
+**Symptom**
 
 This error code is reported when a DMA memory space error occurs.
 
@@ -715,7 +715,7 @@ Check the memory usage or restart the device.
 
 The DMA memory data is abnormal.
 
-**Description**
+**Symptom**
 
 This error code is reported when the DMA memory data is abnormal.
 
@@ -735,7 +735,7 @@ Restart the device.
 
 Abnormal API environment.
 
-**Description**
+**Symptom**
 
 This error code is reported when the API environment is abnormal.
 
@@ -753,7 +753,7 @@ Check the SDK version.
 
 Failed to create the PixelMap.
 
-**Description**
+**Symptom**
 
 This error code is reported when the PixelMap fails to be created.
 
@@ -764,7 +764,7 @@ This error code is reported when the PixelMap fails to be created.
 
 **Solution**
 
-Check whether the input parameters are correct and whether the instance is released in advance.
+Ensure that the input parameters are correct and the instance is available.
 
 ## 62980179 Abnormal Buffer Size
 
@@ -772,7 +772,7 @@ Check whether the input parameters are correct and whether the instance is relea
 
 Abnormal buffer size.
 
-**Description**
+**Symptom**
 
 This error code is reported when the buffer size is abnormal.
 
@@ -790,7 +790,7 @@ Check the input parameters.
 
 FD mapping failed.
 
-**Description**
+**Symptom**
 
 This error code is reported when the file descriptor fails to be mapped.
 
@@ -808,7 +808,7 @@ Pass a correct file descriptor.
 
 Failed to read the pixel map.
 
-**Description**
+**Symptom**
 
 This error code is reported when the PixelMap fails to be read.
 
@@ -827,7 +827,7 @@ Create another PixelMap or request the read permission.
 
 Failed to write the pixel map.
 
-**Description**
+**Symptom**
 
 This error code is reported when the PixelMap fails to be written.
 
@@ -846,7 +846,7 @@ Create another PixelMap or request the read permission.
 
 PixelMap does not allow modification.
 
-**Description**
+**Symptom**
 
 This error code is reported when the PixelMap is modified, which is not allowed.
 
@@ -864,7 +864,7 @@ Do not modify the PixelMap.
 
 Failed to create surface.
 
-**Description**
+**Symptom**
 
 This error code is reported when a surface fails to be created.
 
@@ -882,7 +882,7 @@ Try again or use another image.
 
 Configuration error.
 
-**Description**
+**Symptom**
 
 This error code is reported when the configuration is incorrect.
 
@@ -900,7 +900,7 @@ Correct the configuration.
 
 The conversion failed.
 
-**Description**
+**Symptom**
 
 This error code is reported when image conversion fails.
 
@@ -919,7 +919,7 @@ Correct the encoding parameters or use another image.
 
 The type to be converted is an unsupported target pixel format.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image conversion target type is not supported.
 
@@ -937,7 +937,7 @@ Use another image or change the target type.
 
 Memory format not supported.
 
-**Description**
+**Symptom**
 
 This error code is reported when the memory identifier fails to be set for PixelMap.
 
@@ -957,9 +957,9 @@ Check whether the PixelMap instance has been released. Check whether the memory 
 
 Memory copy failed.
 
-**Description**
+**Symptom**
 
-This error code is reported when memory copy failed.
+This error code is reported when memory copy fails.
 
 **Possible Cause**
 
@@ -971,15 +971,105 @@ This error code is reported when memory copy failed.
 
 Check whether the instance to be copied has been released. Check whether the memory type matches.
 
+## 7600101 Unsupported MIME Type
+
+**Error Message**
+
+Unsupported mime type.
+
+**Symptom**
+
+This error code is reported when the MIME type is not supported.
+
+**Possible Cause**
+
+The device does not support the MIME type.
+
+**Solution**
+
+Verify the image data or use another image. You can call relevant APIs to query the codec capability range.
+
+## 7600102 Unknown MIME Type
+
+**Error Message**
+
+Unknown mime type.
+
+**Symptom**
+
+This error is reported for an unknown MIME type.
+
+**Possible Cause**
+
+The device does not support the image type or the image is damaged.
+
+**Solution**
+
+Verify the image data or use another image.
+
+## 7600103 Data or Image Too Large
+
+**Error Message**
+
+Too large data or image.
+
+**Symptom**
+
+This error code is reported if the data or image is too large.
+
+**Possible Cause**
+
+The image dimensions are too large.
+
+**Solution**
+
+Use a smaller image.
+
+## 7600173 DMA Memory Does Not Exist
+
+**Error Message**
+
+DMA memory does not exist.
+
+**Symptom**
+
+This error code is reported if the DMA memory does not exist.
+
+**Possible Cause**
+
+The DMA memory is not used to decode HDR images.
+
+**Solution**
+
+Use a correct memory allocation type.
+
+## 7600174 DMA Operation Failed
+
+**Error Message**
+
+DMA operation failed.
+
+**Symptom**
+
+This error code is reported if the operation on the DMA memory fails.
+
+**Possible Cause**
+
+The synchronization operation is not correctly performed when data is read from or written to the DMA memory.
+
+**Solution**
+
+Read and write the DMA memory in a correct way.
+
 ## 7600201 Unsupported Operation
 
 **Error Message**
 
 Unsupported operation, e.g. on cross-platform.
 
-**Description**
+**Symptom**
 
-The operation is not supported. For example, modify a PixelMap whose **Editable** property is **false**.
+This error code is reported when the operation is not supported, for example, modifying a PixelMap whose **Editable** property is **false**.
 
 **Possible Cause**
 
@@ -995,7 +1085,7 @@ Use a supported operation.
 
 Unsupported metadata. Possible causes: Unsupported metadata type.
 
-**Description**
+**Symptom**
 
 This error code is reported when the metadata read/write operation is not supported.
 
@@ -1007,13 +1097,31 @@ The metadata read/write operation is not supported. For example, the Exif field 
 
 Check whether the auxiliary picture type corresponds to the metadata type, and then perform the read and write operations.
 
+## 7600203 Unsupported Conversion
+
+**Error Message**
+
+Unsupported conversion.
+
+**Symptom**
+
+This error code is reported for unsupported conversion.
+
+**Possible Cause**
+
+The PixelMap data cannot be converted.
+
+**Solution**
+
+Use PixelMap data with a matching format.
+
 ## 7600204 Invalid Region
 
 **Error Message**
 
 Invalid region.
 
-**Description**
+**Symptom**
 
 This error code is reported when a region is invalid.
 
@@ -1031,7 +1139,7 @@ Adjust the **Region** parameters so that the entire crop area falls within the d
 
 Unsupported memory format or pixel format.
 
-**Description**
+**Symptom**
 
 This error code is reported when the memory format or pixel format is not supported.
 
@@ -1049,7 +1157,7 @@ Check the API specifications for the list of supported formats, and convert the 
 
 Memory alloc failed.
 
-**Description**
+**Symptom**
 
 This error code is reported when the memory allocation fails.
 
@@ -1067,9 +1175,9 @@ Clear the memory and try again.
 
 Memory copy failed.
 
-**Description**
+**Symptom**
 
-This error code is reported when memory copy failed.
+This error code is reported when memory copy fails.
 
 **Possible Cause**
 
@@ -1079,13 +1187,68 @@ The memory to copy does not exist, or the device memory is insufficient.
 
 Check whether the memory to copy exists. Clear the memory and try again.
 
+## 7600303 Memory Lock or Unlock Failed
+
+**Error Message**
+
+Memory lock or unlock failed.
+
+**Symptom**
+
+This error is reported if memory lock or unlock fails.
+
+**Possible Cause**
+
+The PixelMap or memory address is invalid.
+
+**Solution**
+
+Ensure that the PixelMap or memory address is valid.
+
+## 7600305 Failed to Create the PixelMap
+
+**Error Message**
+
+Failed to create the PixelMap.
+
+**Symptom**
+
+This error code is reported when the PixelMap fails to be created.
+
+**Possible Cause**
+
+1. Incorrect parameter. For example, the region is not in the valid range or an invalid value is passed in.
+2. The instance is incorrectly released in advance.
+
+**Solution**
+
+Ensure that the input parameters are correct and the instance is available.
+
+## 7600501 Unsupported Allocator Mode
+
+**Error Message**
+
+Unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata.
+
+**Symptom**
+
+This error code is reported for unsupported allocator mode.
+
+**Possible Cause**
+
+No memory allocation type is specified, or an incorrect memory allocation type is specified. For example, an error occurs when an HDR image is decoded in shared memory mode, because only the DMA mode supports HDR metadata.
+
+**Solution**
+
+Use a correct memory allocation type.
+
 ## 7600901 Unknown Error
 
 **Error Message**
 
 Unknown error.
 
-**Description**
+**Symptom**
 
 This error code is reported when an unknown error occurs.
 
@@ -1103,7 +1266,7 @@ Locate the cause based on logs.
 
 Bad source.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image source is abnormal.
 
@@ -1123,7 +1286,7 @@ Check the image data or use another image.
 
 Unsupported MIME type.
 
-**Description**
+**Symptom**
 
 This error code is reported when the MIME type is not supported.
 
@@ -1141,7 +1304,7 @@ Check the image data or use another image.
 
 Image too large.
 
-**Description**
+**Symptom**
 
 The image is too large.
 
@@ -1159,7 +1322,7 @@ Check the image data or use another image.
 
 Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata.
 
-**Description**
+**Symptom**
 
 This error code is reported when the memory allocator type is not supported.
 
@@ -1177,7 +1340,7 @@ Use a correct memory allocation type.
 
 Unsupported metadata.
 
-**Description**
+**Symptom**
 
 This error code is reported when the metadata is not supported.
 
@@ -1196,7 +1359,7 @@ Check whether the metadata field is supported or whether the metadata value is v
 
 Unsupported options, e.g, cannot convert image into desired pixel format.
 
-**Description**
+**Symptom**
 
 This error code is reported when an option is not supported.
 
@@ -1206,7 +1369,7 @@ Some parameters are incorrectly configured, or the operation required by the opt
 
 **Solution**
 
-Check the parameter settings.
+Verify the parameter settings.
 
 ## 7700204 Invalid Parameter
 
@@ -1214,9 +1377,9 @@ Check the parameter settings.
 
 Invalid parameter.
 
- **Description**
+ **Symptom**
  	 
- Invalid parameter.
+ This error code is reported when the parameter is invalid.
 
 **Possible Cause**
 
@@ -1224,7 +1387,7 @@ An input parameter is invalid.
 
 **Solution**
 
-Verify and enter correct parameters.
+Enter correct parameters.
 
 ## 7700301 Decoding Failure
 
@@ -1232,9 +1395,9 @@ Verify and enter correct parameters.
 
 Decode failed.
 
-**Description**
+**Symptom**
 
-This error code is reported when the decoding fails.
+This error code is reported when decoding fails.
 
 **Possible Cause**
 
@@ -1252,7 +1415,7 @@ Check the image data or use another image.
 
 Memory allocation failed.
 
-**Description**
+**Symptom**
 
 This error code is reported when the memory allocation fails.
 
@@ -1271,7 +1434,7 @@ Check the device memory or input data.
 
 Failed to write image properties to the file.
 
-**Description**
+**Symptom**
 
 This error code is reported when the image information fails to be written into the file.
 
@@ -1290,7 +1453,7 @@ Check the image data and confirm that you have the required permissions for the 
 
 Unsupported options.
 
-**Description**
+**Symptom**
 
 This error code is reported when an option is not supported.
 
@@ -1300,7 +1463,25 @@ Some parameters are incorrectly configured, or the operation required by the opt
 
 **Solution**
 
-Check the parameter settings.
+Verify the parameter settings.
+
+## 7800202 Invalid ImagePacker Parameter
+
+**Error Message**
+
+Invalid parameter for ImagePacker.
+
+**Symptom**
+
+This error code is reported if the encoding parameter is invalid.
+
+**Possible Cause**
+
+The encoding parameter is empty or invalid.
+
+**Solution**
+
+Verify the encoding parameter settings.
 
 ## 7800301 Encoding Failure
 
@@ -1308,7 +1489,7 @@ Check the parameter settings.
 
 Encode failed.
 
-**Description**
+**Symptom**
 
 This error code is reported when encoding fails.
 
