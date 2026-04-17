@@ -490,8 +490,8 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 >**说明：**
 >
-> 当指定网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
-
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 
 ```ts
@@ -521,20 +521,19 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
-以下示例以绑定蜂窝网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到蜂窝网络可用时绑定蜂窝网络，不可用时解绑，使用默认网络。
+以下示例以绑定WIFI网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ```ts
 
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 创建NetConnection对象。仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
-let timeout = 1000;
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
 let netCon = connection.createNetConnection({
   netCapabilities: {
-    bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
-}, timeout);
+});
 
 // 使用on接口订阅网络可用事件
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
@@ -587,7 +586,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 >**说明：**
 >
-> 当指定网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
 > 
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 ```ts
@@ -621,20 +620,19 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
-以下示例以绑定蜂窝网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到蜂窝网络可用时绑定蜂窝网络，不可用时解绑，使用默认网络。
+以下示例以绑定WIFI网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ```ts
 
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 创建NetConnection对象。仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
-let timeout = 1000;
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
 let netCon = connection.createNetConnection({
   netCapabilities: {
-    bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
-}, timeout);
+});
 
 // 使用on接口订阅网络可用事件
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
