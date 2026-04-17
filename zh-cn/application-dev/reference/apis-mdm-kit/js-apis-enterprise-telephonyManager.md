@@ -628,7 +628,7 @@ try {
 ## telephonyManager.activeSim
 activeSim(admin: Want, slotId: number): void
 
-启用指定卡槽的SIM卡。在软件层面上，手机可识别并加载该SIM卡，允许其连接到移动网络（支持通话、短信、上网等功能）。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
+停用指定卡槽SIM卡。停用该SIM卡，无法使用该卡槽的SIM卡接打电话，收发短信，上网。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
 
 **起始版本：** 26.0.0
 
@@ -684,7 +684,7 @@ try {
 ## telephonyManager.deactiveSim
 deactiveSim(admin: Want, slotId: number): void
 
-停用指定卡槽SIM卡。临时停用该SIM卡的网络接入功能，不影响账户状态、用户数据、号码归属及账户余额等。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
+停用指定卡槽SIM卡。停用该SIM卡，无法使用该卡槽的SIM卡接打电话，收发短信，上网。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
 
 **起始版本：** 26.0.0
 
