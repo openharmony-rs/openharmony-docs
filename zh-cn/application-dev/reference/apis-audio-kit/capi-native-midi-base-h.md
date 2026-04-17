@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明MIDI模块的基础数据结构。
+声明MIDI模块的基础数据结构。定义MIDI接口的基础类型、枚举、结构体和回调函数。
 
 **引用文件：** <midi/native_midi_base.h>
 
@@ -234,7 +234,7 @@ typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MID
 
 **描述**
 
-异步打开BLE设备的结果回调。当BLE设备打开尝试完成后调用，无论成功还是失败。
+异步打开BLE设备的结果回调。
 
 **起始版本：** 24
 
