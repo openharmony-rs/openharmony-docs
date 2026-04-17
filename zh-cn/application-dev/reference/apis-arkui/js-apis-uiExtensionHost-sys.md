@@ -10,13 +10,13 @@
 
 > **说明**
 >
-> 后续此接口不再新增功能，相关功能在接口[uiExtension](js-apis-arkui-uiExtension.md)中提供。
+> - 后续此接口不再新增功能，相关功能在接口[uiExtension](js-apis-arkui-uiExtension.md)中提供。
 >
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本模块接口为系统接口。
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -32,7 +32,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -50,7 +50,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -98,7 +98,7 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,7 +136,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-### onAvoidAreaChange<sup>22+</sup>
+### onAvoidAreaChange<sup>23+</sup>
 
 onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
@@ -148,7 +148,7 @@ onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -185,7 +185,7 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,7 +221,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-### offAvoidAreaChange<sup>22+</sup>
+### offAvoidAreaChange<sup>23+</sup>
 
 offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
 
@@ -233,7 +233,7 @@ offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -270,7 +270,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowSizeChange](#onwindowsizechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowSizeChange](#onwindowsizechange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -308,7 +308,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-### onWindowSizeChange<sup>22+</sup>
+### onWindowSizeChange<sup>23+</sup>
 
 onWindowSizeChange(callback: Callback<window.Size>): void;
 
@@ -320,7 +320,7 @@ onWindowSizeChange(callback: Callback<window.Size>): void;
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -356,7 +356,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowSizeChange](#offwindowsizechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowSizeChange](#offwindowsizechange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,7 +392,7 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-### offWindowSizeChange<sup>22+</sup>
+### offWindowSizeChange<sup>23+</sup>
 
 offWindowSizeChange(callback?: Callback<window.Size>): void
 
@@ -404,7 +404,7 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -451,7 +451,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -547,7 +547,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -679,6 +679,10 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -818,7 +822,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -915,7 +919,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
@@ -989,7 +993,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口**：此接口为系统接口。
 
