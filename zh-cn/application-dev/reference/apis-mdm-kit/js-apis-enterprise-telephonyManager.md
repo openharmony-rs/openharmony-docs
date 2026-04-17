@@ -628,7 +628,7 @@ try {
 ## telephonyManager.activeSim
 activeSim(admin: Want, slotId: number): void
 
-停用指定卡槽SIM卡。停用该SIM卡，无法使用该卡槽的SIM卡接打电话，收发短信，上网。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
+启用指定卡槽的SIM卡。设备已经插入SIM但是并未启用的场景，可以通过该接口启用SIM卡，无需用户手动启用。SIM卡启用后可以使用该SIM卡进行通信。该接口需要插入SIM卡并关闭飞行模式才能成功调用。
 
 **起始版本：** 26.0.0
 
