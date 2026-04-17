@@ -2063,6 +2063,20 @@ type NotificationRequest = _NotificationRequest
 | --- | --- |
 | [_NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | 通知请求。 |
 
+## NotificationParameters<sup>24+</sup>
+
+type NotificationParameters = _NotificationParameters
+
+描述通知请求中wantAgent的部分信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**： SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24) | 描述通知请求中wantAgent的部分信息。 |
+
 ## DistributedOptions
 
 type DistributedOptions = _DistributedOptions
