@@ -42,6 +42,38 @@ import { cloudData } from '@kit.ArkData';
 | WIFI | 1 | WIFI网络策略。 |
 | CELLULAR | 2 | 蜂窝网络策略。   |
 
+## AutoSyncTriggerMode
+
+自动同步触发模式枚举。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| ACCOUNT_LOGIN | 0 | 账号登录触发模式。 |
+| CLOUD_SWITCH_ON | 1 | 同步开关触发模式。 |
+| NETWORK_RECOVER | 2 | 网络恢复后的触发模式。 |
+| CLOUD_DATA_CHANGE | 3 | 云端数据变更触发模式。 |
+| USER_CHANGE | 4 | 用户变更触发模式。 |
+
+## AutoSyncTriggerInfo
+
+自动同步触发信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|------|------|------|------|------|
+| mode | [AutoSyncTriggerMode](#autosynctriggermode) | 否 | 否 | 自动同步触发模式。 |
+
 ## cloudData.setCloudStrategy
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
@@ -84,38 +116,6 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 });
 
 ```
-
-## AutoSyncTriggerMode
-
-自动同步触发模式枚举。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称 | 值 | 说明 |
-|------|---|------|
-| ACCOUNT_LOGIN | 0 | 账号登录触发模式。 |
-| CLOUD_SWITCH_ON | 1 | 同步开关触发模式。 |
-| NETWORK_RECOVER | 2 | 网络恢复后的触发模式。 |
-| CLOUD_DATA_CHANGE | 3 | 云端数据变更触发模式。 |
-| USER_CHANGE | 4 | 用户变更触发模式。 |
-
-## AutoSyncTriggerInfo
-
-自动同步触发信息。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-|------|------|------|------|------|
-| mode | [AutoSyncTriggerMode](#autosynctriggermode) | 否 | 否 | 自动同步触发模式。 |
 
 ## cloudData.onAutoSyncTrigger
 

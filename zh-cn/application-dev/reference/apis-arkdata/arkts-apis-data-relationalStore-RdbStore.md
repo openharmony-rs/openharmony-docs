@@ -5186,7 +5186,20 @@ cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): P
 
 > **说明：**
 >
-> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中谓词仅支持[equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)、[notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)、[beginWrap](arkts-apis-data-relationalStore-RdbPredicates.md#beginwrap)、[endWrap](arkts-apis-data-relationalStore-RdbPredicates.md#endwrap)、[or](arkts-apis-data-relationalStore-RdbPredicates.md#or)、[and](arkts-apis-data-relationalStore-RdbPredicates.md#and)、[greaterThan](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthan)、[lessThan](arkts-apis-data-relationalStore-RdbPredicates.md#lessthan)、[greaterThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthanorequalto)、[lessThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#lessthanorequalto)、[in](arkts-apis-data-relationalStore-RdbPredicates.md#in)、[notIn](arkts-apis-data-relationalStore-RdbPredicates.md#notin)，类型仅支持[number类型的整数和string](arkts-apis-data-relationalStore-t.md#valuetype)。
+> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中仅支持以下谓词，其中数据类型仅支持[number类型的整数和string](arkts-apis-data-relationalStore-t.md#valuetype)。
+> 
+> - [equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)
+> - [notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)
+> - [beginWrap](arkts-apis-data-relationalStore-RdbPredicates.md#beginwrap)
+> - [endWrap](arkts-apis-data-relationalStore-RdbPredicates.md#endwrap)
+> - [or](arkts-apis-data-relationalStore-RdbPredicates.md#or)
+> - [and](arkts-apis-data-relationalStore-RdbPredicates.md#and)
+> - [greaterThan](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthan)
+> - [lessThan](arkts-apis-data-relationalStore-RdbPredicates.md#lessthan)
+> - [greaterThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#greaterthanorequalto)
+> - [lessThanOrEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#lessthanorequalto)
+> - [in](arkts-apis-data-relationalStore-RdbPredicates.md#in)
+> - [notIn](arkts-apis-data-relationalStore-RdbPredicates.md#notin)
 > 
 > 谓词中支持使用主键（必填）和资产（可选）作为同步条件：当选择资产作为同步条件时，同步模式需要设置为relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST；指定资产的数量较多时（最多支持指定50个资产），建议谓词中仅使用主键作为同步条件。
 
