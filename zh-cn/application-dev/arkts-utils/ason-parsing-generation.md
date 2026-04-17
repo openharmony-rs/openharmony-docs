@@ -19,18 +19,41 @@ ASON.stringify方法还支持将Map和Set对象转换为字符串，可转换的
 使用ASON提供的接口，对[Sendable对象](arkts-sendable.md)进行序列化、反序列化。
 <!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) -->
 
-```ts
+``` TypeScript
 import { ArkTSUtils, collections } from '@kit.ArkTS';
 
-ArkTSUtils.ASON.parse("{}")
-ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3))
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
 
-let options2: ArkTSUtils.ASON.ParseOptions = {
-    bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
-    parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          ArkTSUtils.ASON.parse('{}');
+          ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3));
+
+          let options2: ArkTSUtils.ASON.ParseOptions = {
+            bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+            parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+          }
+          let jsonText = '{"largeNumber":112233445566778899}';
+          let map = ArkTSUtils.ASON.parse(jsonText, undefined, options2);
+          // 执行结果为：{"largeNumber":112233445566778899}
+          console.info(ArkTSUtils.ASON.stringify(map));
+          this.message = 'success';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
 }
-let jsonText = '{"largeNumber":112233445566778899}';
-let map = ArkTSUtils.ASON.parse(jsonText, undefined, options2);
-// 执行结果为：{"largeNumber":112233445566778899}
-console.info(ArkTSUtils.ASON.stringify(map));
 ```

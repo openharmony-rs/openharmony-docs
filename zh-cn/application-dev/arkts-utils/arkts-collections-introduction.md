@@ -19,14 +19,14 @@ ArkTS共享容器包含如下几种：[Array](../reference/apis-arkts/arkts-apis
 容器集使用示例如下：
 <!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) -->
 
-```ts
+``` TypeScript
 import { ArkTSUtils, collections, taskpool } from '@kit.ArkTS';
 
 @Concurrent
 async function add(arr: collections.Array<number>, lock: ArkTSUtils.locks.AsyncLock) {
- await lock.lockAsync(() => {  // 如果不添加异步锁，任务会因为数据竞争冲突，导致抛异常失败
-   arr[0]++;
- })
+  await lock.lockAsync(() => { // 如果不添加异步锁，任务会因为数据竞争冲突，导致抛异常失败
+    arr[0]++;
+  })
 }
 
 @Entry
@@ -56,8 +56,9 @@ struct Index {
           taskpool.execute(taskGroup).then(() => {
             console.info(`Return success: ${arr[0]} === ${count}`);
           }).catch((e: Error) => {
-            console.error("Return error.");
+            console.error('Return error.');
           })
+          this.message = 'success';
         })
     }
     .height('100%')
