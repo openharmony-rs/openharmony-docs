@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
@@ -27,7 +27,7 @@ Provides functions such as event injection and status query.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) | Input_InterceptorEventCallback | Defines the struct of interceptor callback events, including mouse events, touch events, and axis events.|
+| [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) | Input_InterceptorEventCallback | Defines the structure of interceptor callback events, including mouse events, touch events, and axis events.|
 | [Input_DeviceListener](capi-input-input-devicelistener.md) | Input_DeviceListener | Defines a listener for device hot swap events.|
 | [OH_PixelmapNative](capi-input-oh-pixelmapnative.md) | OH_PixelmapNative | Pixel map.|
 | [Input_KeyState](capi-input-input-keystate.md) | Input_KeyState | Defines key information, which identifies a key pressing behavior. For example, the Ctrl key information contains the key value and key type.|
@@ -4776,7 +4776,7 @@ Obtains the pointer size level of the specified mouse pointer information object
 | Parameter| Description|
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](#oh_input_getcursorinfo) to query the current mouse pointer information.|
-| int32_t* sizeLevel | Pointer size level of the mouse pointer information object. The value is an integer ranging from 1 to 7. A larger value indicates a higher pointer size level. The size of the custom pointer [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual pixel map size.|
+| int32_t* sizeLevel | Pointer size level of the mouse pointer information object. The value is an integer ranging from 1 to 7. A larger value indicates a higher pointer size level. The size of the custom pointer [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual bitmap size.|
 
 **Return value**
 
@@ -4801,7 +4801,7 @@ Obtains the pointer color of the specified mouse pointer information object.
 | Parameter| Description|
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](#oh_input_getcursorinfo) to query the current mouse pointer information.|
-| uint32_t* color | Pointer color of the mouse pointer information object, which is represented by a 32-bit ARGB integer. The size of the custom pointer [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual pixel map color.|
+| uint32_t* color | Pointer color of the mouse pointer information object, which is represented by a 32-bit ARGB integer. The size of the custom pointer [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual bitmap color.|
 
 **Return value**
 

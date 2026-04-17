@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **applicationManager** module provides application management capabilities, including adding, removing, and obtaining the applications that are forbidden to run.
 
@@ -793,7 +793,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): void
 
-Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. After the device is powered on or the application is killed, the system will proactively restart these application processes. <!--RP7--><!--RP7End-->Applications added to the keep-alive list via this API cannot be manually removed from keep-alive status by users on the device<!--RP6--><!--RP6End-->. However, they can be removed from the keep-alive list using the [removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14) API. If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.
+Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. After the device is powered on or the application is killed, the system will proactively restart these application processes.<!--RP7--><!--RP7End--><br>For applications added to the keep-alive list via this API, users cannot manually revoke their keep-alive status on the device <!--RP6--><!--RP6End-->. However, you can call the [removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14) API to remove them from the keep-alive list.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -853,7 +853,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, disallowModify: boolean): void
 
-Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. You can also set whether to disable manual keep-alive cancellation. After the device is powered on or the application is killed, the system will proactively restart these application processes.<br>Applications can be added to the keep-alive list via this API and the [addKeepAliveApps](#applicationmanageraddkeepaliveapps14) API. Settings from both APIs can take effect simultaneously. For a single user, the keep-alive list supports a maximum of 5 applications. For example, if there are already 3 applications in the current list, a maximum of 2 more can be added for the user via this API.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.
+Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. You can also set whether to disable manual keep-alive cancellation. After the device is powered on or the application is killed, the system will proactively restart these application processes.<br>Applications can be added to the keep-alive list via this API and the [addKeepAliveApps](#applicationmanageraddkeepaliveapps14) API. Settings from both APIs can take effect simultaneously. For a single user, the keep-alive list supports a maximum of 5 applications. For example, if there are already 3 applications in the current list, a maximum of 2 more can be added for the user via this API.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 

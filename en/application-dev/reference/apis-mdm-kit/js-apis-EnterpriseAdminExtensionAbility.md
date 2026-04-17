@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 This module provides the [EnterpriseAdminExtensionAbility](../../mdm/mdm-kit-term.md#enterpriseadminextensionability).
 
@@ -576,7 +576,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 1.2 The user short-presses the power key.
   * 1.3 The callback is triggered.
   * Result (press): onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
-  *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
+  *          "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
   *       Result (release): onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
   *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 1895101259}]}
   *

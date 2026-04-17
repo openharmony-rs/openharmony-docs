@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **pointer** module provides APIs related to pointer attribute management, such as querying and setting pointer attributes.
 
@@ -728,7 +728,7 @@ Mouse pointer style.
 | CROSS                            | 13   | Cross (accurate selection)  |![Cross.png](./figures/Cross.png)|
 | CURSOR_COPY                      | 14   | Copy    |![Copy.png](./figures/Copy.png)|
 | CURSOR_FORBID                    | 15   | Forbid   |![Forbid.png](./figures/Forbid.png)|
-| COLOR_SUCKER                     | 16   | Sucker    |![Colorsucker.png](./figures/Colorsucker.png)|
+| COLOR_SUCKER                     | 16   | Color picker    |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING                    | 17   | Grabbing hand  |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN                        | 18   | Opening hand  |![Hand_Open.png](./figures/Hand_Open.png)|
 | HAND_POINTING                    | 19   | Hand-shaped pointer  |![Hand_Poniting.png](./figures/Hand_Pointing.png)|
@@ -939,7 +939,7 @@ struct Index {
 
 setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
-Sets the custom cursor style of the specified window. This API returns the result synchronously.
+Sets the custom mouse pointer style of the specified window. This API returns the result synchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 

@@ -20,7 +20,7 @@ The module provides APIs for image processing. You can use the APIs to create a 
 import { image } from '@kit.ImageKit';
 ```
 
-## DecodingOptions<sup>12+</sup>
+## DecodingOptions<sup>7+</sup>
 
 Describes the image decoding options.
 
@@ -34,7 +34,7 @@ Describes the image decoding options.
 
 | Name              | Type             | Read-Only| Optional| Description            |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
-| resolutionQuality | [ResolutionQuality](#resolutionquality12) | No  | Yes  | Image quality.|
+| resolutionQuality<sup>12+</sup> | [ResolutionQuality](#resolutionquality12) | No  | Yes  | Image quality.|
 
 ## ResolutionQuality<sup>12+</sup>
 
@@ -82,7 +82,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePictureTest(context: Context) {
@@ -109,7 +109,7 @@ async function CreatePictureTest(context: Context) {
   let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
   packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
   const path: string = context.filesDir + "/hdr-test.jpg";
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
   }).catch((error : BusinessError) => {
     console.error('Failed to pack the image. And the error is: ' + error);
@@ -117,7 +117,7 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-## ImageSource<sup>6+</sup>
+## ImageSource
 
 Provides APIs to obtain image information.
 

@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **infraredEmitter** module generates IR signals of the specified frequency and size, and queries the frequency range supported by the device.
 
@@ -79,11 +79,13 @@ Queries the frequency range of IR signals supported by the device.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**Device behavior differences**: On phones and TVs that support IR emitters, this API returns the frequency range of IR signals. On devices that do not support IR emitters, this API returns one group of maximum and minimum frequencies, both of which are 0 Hz. You are advised to use the [hasIrEmitter](#infraredemitterhasiremitter23) API to check whether a device supports IR emitters.
+
 **Return value**
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.<br>When the device does not have an infrared transmitter, it returns a set of maximum and minimum frequencies, both of which are **0** Hz.|
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.<br>Since API version 23, one group of maximum and minimum frequencies, both of which are **0** Hz, are returned.|
 
 **Error codes**
 

@@ -885,8 +885,8 @@ Obtains the estimated latency of the current audio route.
 
 > **NOTE**
 >
-> - The delay of a wireless audio device may be inaccurate. The result is for reference only.
-> - The latency is not counted in the real-time buffer. You are advised to obtain the latency only when the audio playback starts to avoid frequent calling. Otherwise, the API calling may be blocked due to route switchover.
+> - The estimated latency of a wireless audio device may be inaccurate. The result is for reference only.
+> - Since the latency is not counted in the real-time buffer, you are advised to obtain the latency only when the audio playback starts to avoid frequent calls. Otherwise, the API call may be blocked due to route switching.
 > - You are advised to use [getAudioTimestampInfo](#getaudiotimestampinfo19) or [getAudioTimestampInfoSync](#getaudiotimestampinfosync19) to implement audio and video synchronization after the audio is output to the hardware.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -941,7 +941,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API uses a
 
 | Name  | Type                  | Mandatory| Description                |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<number> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.<br>The unit is bytes.|
 
 **Example**
 
@@ -972,7 +972,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API uses a
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise used to return the buffer size.|
+| Promise\<number> | Promise used to return the buffer size.<br>The unit is bytes.|
 
 **Example**
 
@@ -1001,7 +1001,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API return
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| number | Buffer size.|
+| number | Buffer size, in bytes.|
 
 **Example**
 
@@ -1060,7 +1060,7 @@ Obtains the playback speed.
 
 | Type                                             | Description       |
 | ------------------------------------------------- |-----------|
-| number | Playback speed.|
+| number | Playback rate, which ranges from 0.25 to 4.0.|
 
 **Example**
 
@@ -1267,7 +1267,7 @@ Obtains the minimum volume of the audio stream. This API uses an asynchronous ca
 
 | Name | Type      | Mandatory  | Description                |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum volume (range [0, 1]) obtained; otherwise, **err** is an error object.|
+|callback |AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum volume obtained; otherwise, **err** is an error object.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1294,7 +1294,7 @@ Obtains the minimum volume of the audio stream. This API uses a promise to retur
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise used to return the minimum volume, which is in the range [0, 1].|
+| Promise&lt;number&gt;| Promise used to return the minimum volume of the audio stream.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1320,7 +1320,7 @@ Obtains the minimum volume of the audio stream. This API returns the result sync
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| number| Minimum volume, which is in the range [0, 1].|
+| number| Minimum volume of the audio stream, which ranges from 0.0 to 1.0.|
 
 **Example**
 
@@ -1348,7 +1348,7 @@ Obtains the maximum volume of the audio stream. This API uses an asynchronous ca
 
 | Name | Type      | Mandatory  | Description                |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum volume (range [0, 1]) obtained; otherwise, **err** is an error object.|
+|callback | AsyncCallback&lt;number&gt; | Yes    |Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum volume obtained; otherwise, **err** is an error object.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1375,7 +1375,7 @@ Obtains the maximum volume of the audio stream. This API uses a promise to retur
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise used to return the maximum volume, which is in the range [0, 1].|
+| Promise&lt;number&gt;| Promise used to return the maximum volume of the audio stream.<br>The volume range is [0.0, 1.0].|
 
 **Example**
 
@@ -1401,7 +1401,7 @@ Obtains the maximum volume of the audio stream. This API returns the result sync
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| number| Maximum volume, which is in the range [0, 1].|
+| number| Maximum volume of the audio stream, which ranges from 0.0 to 1.0.|
 
 **Example**
 
@@ -1726,7 +1726,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
 
 **Parameters**
 
@@ -1773,7 +1773,7 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 
 The AudioRenderer instance proactively gains the focus when the **start** event occurs and releases the focus when the **pause** or **stop** event occurs. Therefore, you do not need to request to gain or release the focus.
 
-After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Interrupt
 
@@ -2735,11 +2735,10 @@ Obtains the playback loudness.
 
 | Type   | Description            |
 |------- |-----------------  |
-| number | Playback loudness.|
+| number | Playback loudness, in decibels.|
 
 **Example**
 
 ```ts
 let loudnessGain = audioRenderer.getLoudnessGain();
 ```
-<!--no_check-->

@@ -27,6 +27,10 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeI
 
 Obtains the information about this audio renderer. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> The audio renderer information returned by this API may include internal audio playback streams, such as cellular calls and ultrasonic streams.
+
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters**
@@ -55,6 +59,10 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 
 Obtains the information about this audio renderer. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> The audio renderer information returned by this API may include internal audio playback streams, such as cellular calls and ultrasonic streams.
+
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
 **Return value**
@@ -79,6 +87,10 @@ audioStreamManager.getCurrentAudioRendererInfoArray().then((audioRendererChangeI
 getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 
 Obtains the information about this audio renderer. This API returns the result synchronously.
+
+> **NOTE**
+>
+> The audio renderer information returned by this API may include internal audio playback streams, such as cellular calls and ultrasonic streams.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -108,6 +120,10 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 Obtains the information about this audio capturer. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> The audio capturer information returned by this API may include internal audio recording streams, such as voice wakeup and cellular calls.
+
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters**
@@ -136,6 +152,10 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 
 Obtains the information about this audio capturer. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> The audio capturer information returned by this API may include internal audio recording streams, such as voice wakeup and cellular calls.
+
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
 **Return value**
@@ -161,6 +181,10 @@ audioStreamManager.getCurrentAudioCapturerInfoArray().then((audioCapturerChangeI
 getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 
 Obtains the information about this audio capturer. This API returns the result synchronously.
+
+> **NOTE**
+>
+> The audio capturer information returned by this API may include internal audio recording streams, such as voice wakeup and cellular calls.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -189,6 +213,10 @@ try {
 on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
 Subscribes to the audio renderer change event, which is triggered when the audio playback stream status or device is changed. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> The audio renderer information returned by this API may include internal audio playback streams, such as cellular calls and ultrasonic streams.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -222,6 +250,10 @@ off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoA
 
 Unsubscribes from the audio renderer change event. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> The audio renderer information returned by this API may include internal audio playback streams, such as cellular calls and ultrasonic streams.
+
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters**
@@ -243,7 +275,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 ```ts
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
-// If multiple subscriptions are made to the same event, you can call audioStreamManager.off('audioRendererChange'); to cancel all of them.
+// When there are multiple listeners for this event, you can use audioStreamManager.off('audioRendererChange'); to unregister all of them.
 let audioRendererChangeCallback = (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
   console.info(`Succeeded in using on or off function, AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}.`);
 };
@@ -258,6 +290,10 @@ audioStreamManager.off('audioRendererChange', audioRendererChangeCallback);
 on(type: 'audioCapturerChange', callback: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
 
 Subscribes to the audio capturer change event, which is triggered when the audio recording stream status or device is changed. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> The audio capturer information returned by this API may include internal audio recording streams, such as voice wakeup and cellular calls.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -291,6 +327,10 @@ off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoA
 
 Unsubscribes from the audio capturer change event. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> The audio capturer information returned by this API may include internal audio recording streams, such as voice wakeup and cellular calls.
+
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters**
@@ -312,7 +352,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 ```ts
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
-// If multiple subscriptions are made to the same event, you can call audioStreamManager.off('audioCapturerChange'); to cancel all of them.
+// When there are multiple listeners for this event, you can use audioStreamManager.off('audioCapturerChange'); to unregister all of them.
 let audioCapturerChangeCallback = (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
   console.info(`Succeeded in using on or off function, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 };
@@ -329,7 +369,6 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 Checks whether a stream is active. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -362,7 +401,6 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 Checks whether a stream is active. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -394,7 +432,6 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 Checks whether a stream is active. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [isStreamActive](arkts-apis-audio-AudioStreamManager.md#isstreamactive20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
