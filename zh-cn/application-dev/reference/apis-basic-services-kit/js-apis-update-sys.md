@@ -1937,7 +1937,7 @@ try {
 
 factoryReset(): Promise\<void>
 
-恢复出厂设置。使用Promise异步回调。
+清除用户数据分区。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1981,7 +1981,7 @@ try {
 
 forceFactoryReset(): Promise\<void>
 
-强制恢复出厂设置。使用Promise异步回调。
+请求用户数据分区，同步清除文件秘钥。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2025,7 +2025,7 @@ try {
 
 deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
-深度清理用户数据及操作系统。使用 Promise 异步回调。
+通过覆写等方式，深度清除用户数据分区、操作系统分区。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
 
