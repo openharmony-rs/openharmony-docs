@@ -1,8 +1,8 @@
 # 渲染节点错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -127,6 +127,7 @@ The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is 
 **错误描述**
 
 该RenderNode是从FrameNode获取得到的，其对应的FrameNode已经被取消接纳或是销毁。
+
 接纳：类似于父子关系，但父节点并不会真正将子节点添加为正常的节点，而是仅允许它像子节点一样接收生命周期回调，但不会像正常子节点一样接收父节点的事件、响应事件等。
 
 **可能原因**
@@ -146,6 +147,7 @@ The node is not adopted.
 **错误描述**
 
 该节点未被接纳，不能获取其RenderNode。
+
 接纳：类似于父子关系，但父节点并不会真正将子节点添加为正常的节点，而是仅允许它像子节点一样接收生命周期回调，但不会像正常子节点一样接收父节点的事件、响应事件等。
 
 **可能原因**

@@ -1,8 +1,8 @@
 # 查询和操作自定义节点
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -197,7 +197,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    }
    } // namespace NativeModule
    
-   #endif //MYAPPLICATION_GETNODEBYID_H
+   #endif // MYAPPLICATION_GETNODEBYID_H
    ```
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
@@ -439,7 +439,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    }
    } // namespace NativeModule
    
-   #endif //MYAPPLICATION_MOVETO_H
+   #endif // MYAPPLICATION_MOVETO_H
    ```
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
