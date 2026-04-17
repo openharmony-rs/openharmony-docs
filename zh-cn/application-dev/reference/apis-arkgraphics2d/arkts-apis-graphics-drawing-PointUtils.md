@@ -48,9 +48,9 @@ static negate(point: common2D.Point): void
 **示例：**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let point = { x: 10, y: 20 };
+let point: common2D.Point = { x: 10, y: 20 };
 drawing.PointUtils.negate(point);
 console.info('point.x:', point.x);
 console.info('point.y:', point.y);
@@ -83,9 +83,9 @@ ArkTS-Sta: static offset(point: common2D.Point, dx: double, dy: double): void
 **示例：**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let point = { x: 10, y: 20 };
+let point: common2D.Point = { x: 10, y: 20 };
 drawing.PointUtils.offset(point, 5, 10);
 console.info('point.x:', point.x);
 console.info('point.y:', point.y);

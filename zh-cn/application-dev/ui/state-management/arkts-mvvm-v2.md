@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @katabanga-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -1060,12 +1060,15 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
 - TaskListModel：任务的集合，提供从本地加载任务数据的功能。
 
-  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) --> 
+  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->     
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { util } from '@kit.ArkTS';
   import TaskModel from './TaskModel';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const DOMAIN = 0x0000;
   
   export default class TaskListModel {
     public tasks: TaskModel[] = [];
@@ -1075,16 +1078,20 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
     }
   
     async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson);
-      this.tasks = JSON.parse(result).map((task: TaskModel) => {
-        let newTask = new TaskModel();
-        newTask.taskName = task.taskName;
-        newTask.isFinish = task.isFinish;
-        return newTask;
-      });
+      try {
+        let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
+        let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let result = textDecoder.decodeToString(getJson);
+        this.tasks = JSON.parse(result).map((task: TaskModel) => {
+          let newTask = new TaskModel();
+          newTask.taskName = task.taskName;
+          newTask.isFinish = task.isFinish;
+          return newTask;
+        });
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to getRawFileContent', JSON.stringify(e) ?? '');
+      }
     }
   }
   ```

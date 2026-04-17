@@ -970,7 +970,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  updataContent: string = '<body><div><image src="resource://rawfile/xxx.png" alt="image -- end" width="500" height="250"></image></div></body>'
+  updateContent: string = '<body><div><image src="resource://rawfile/xxx.png" alt="image -- end" width="500" height="250"></image></div></body>'
 
   build() {
     Column() {
@@ -978,7 +978,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             // UTF-8为charset。
-            this.controller.loadData(this.updataContent, "text/html", "UTF-8", " ", " ");
+            this.controller.loadData(this.updateContent, "text/html", "UTF-8", " ", " ");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -16984,7 +16984,7 @@ setBlanklessLoadingWithKey(key: string, is_start: boolean): WebBlanklessErrorCod
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
 | key | string | 是 | 唯一标识本页面的key值。必须与getBlanklessInfoWithKey接口的key值相同。<br>合法取值范围：非空，长度不超过2048个字符。<br>非法值设置行为：返回错误码WebBlanklessErrorCode，方案不生效。 |
-| is_start | boolean | 是 | 是否启用开始插帧。true：启用，false：不启用。<br>传入undefined或null时为false。 |
+| is_start | boolean | 是 | 是否启用开始插帧。true：启用，false：不启用。<br>ArkTS-Dyn: 传入undefined或null时为false。<br>ArkTS-Sta: 传入undefined或null时IDE编译报错。 |
 
 **返回值：**
 

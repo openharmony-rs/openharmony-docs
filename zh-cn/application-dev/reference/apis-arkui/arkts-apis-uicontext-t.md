@@ -8,11 +8,15 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## CustomBuilderWithId<sup>18+</sup>
 
-type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
+ArkTS-Dyn: type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
+
+ArkTS-Sta: type CustomBuilderWithId = (id: int)&nbsp;=&gt;&nbsp;void
 
 组件属性、方法参数可使用CustomBuilderWithId类型来自定义UI描述，并且可以指定组件ID生成用户自定义组件。
 
@@ -20,21 +24,31 @@ type CustomBuilderWithId = (id: number)&nbsp;=&gt;&nbsp;void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| id | number | 是 | 组件ID。 |
+| id | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 组件ID。 |
 
 ## ClickEventListenerCallback<sup>12+</sup>
 
 type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void
 
-定义了用于在UIObserver中监听点击事件的回调类型。
+ClickEvent事件监听函数类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -52,6 +66,10 @@ Pan手势事件监听函数类型。
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -71,6 +89,10 @@ type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                          |
@@ -80,7 +102,9 @@ type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => v
 
 ## NodeIdentity<sup>20+</sup>
 
-type NodeIdentity = string | number
+ArkTS-Dyn: type NodeIdentity = string | number
+
+ArkTS-Sta: type NodeIdentity = string | int
 
 组件标识。
 
@@ -88,10 +112,14 @@ type NodeIdentity = string | number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 类型              | 说明                                |
 | ----------------- | --------------------------------- |
 | string      | 指定组件id，该id通过通用属性[id](./arkui-ts/ts-universal-attributes-component-id.md#id)设置。   |
-| number | 系统分配的唯一标识的节点UniqueID，可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。  |
+| ArkTS-Dyn: number <br>ArkTS-Sta: int | 系统分配的唯一标识的节点UniqueID，可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。  |
 
 ## NodeRenderStateChangeCallback<sup>20+</sup>
 
@@ -102,6 +130,10 @@ type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -120,6 +152,10 @@ type GestureListenerCallback = (info: GestureTriggerInfo) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名  | 类型              | 必填 | 说明                                |
@@ -136,6 +172,10 @@ type PointerStyle = pointer.PointerStyle
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 |类型|说明|
 | -- | -- |
 |[pointer.PointerStyle](../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
@@ -151,6 +191,10 @@ type Context = common.Context
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 |说明   |
 | ------ | ------------------- |

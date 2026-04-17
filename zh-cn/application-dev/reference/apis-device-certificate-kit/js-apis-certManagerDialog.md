@@ -387,7 +387,7 @@ let property: certificateManagerDialog.CertificateDialogProperty = {
 };
 try {
   certificateManagerDialog.openCertificateDetailDialog(context, caCert, property).then(() => {
-    console.info('Succeeded in opening certificate detail dialog.');
+    console.info('Succeeded opening certificate detail dialog.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open certificate detail dialog. Code: ${err.code}, message: ${err.message}`);
   })

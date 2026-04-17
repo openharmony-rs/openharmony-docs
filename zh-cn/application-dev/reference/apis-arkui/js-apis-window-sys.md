@@ -15,6 +15,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.window (窗口)](arkts-apis-window.md)。
@@ -33,31 +35,31 @@ import { window } from '@kit.ArkUI';
 窗口类型枚举。
 
 
-| 名称                                  | 值 | 说明                                                                                     |
-|-------------------------------------| ------ |----------------------------------------------------------------------------------------|
-| TYPE_INPUT_METHOD<sup>(deprecated)</sup>      | 2      | 表示输入法窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 从API version 9开始支持，从API version 13开始废弃，无替代窗口类型，输入法相关控制都请调用[输入法框架侧接口](../../inputmethod/inputmethod-application-guide.md)执行。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_STATUS_BAR<sup>9+</sup>        | 3      | 表示状态栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_PANEL<sup>9+</sup>             | 4      | 表示通知栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_KEYGUARD<sup>9+</sup>          | 5      | 表示锁屏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_VOLUME_OVERLAY<sup>9+</sup>    | 6      | 表示音量条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_NAVIGATION_BAR<sup>9+</sup>    | 7      | 表示导航栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_WALLPAPER<sup>9+</sup>         | 9      | 表示壁纸。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_DESKTOP<sup>9+</sup>           | 10      | 表示桌面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_LAUNCHER_RECENT<sup>9+</sup>   | 11      | 表示多任务中心。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_LAUNCHER_DOCK<sup>9+</sup>     | 12      | 表示桌面Dock栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_VOICE_INTERACTION<sup>9+</sup> | 13      | 表示智慧语音。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_POINTER<sup>9+</sup>           | 14      | 表示鼠标。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_FLOAT_CAMERA<sup>9+</sup>      | 15      | 表示相机类型悬浮窗。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_SCREENSHOT<sup>9+</sup>        | 17      | 表示截屏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_SYSTEM_TOAST<sup>11+</sup>     | 18      | 表示顶层提示窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_DIVIDER<sup>11+</sup>          | 19      | 表示分屏条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_GLOBAL_SEARCH<sup>11+</sup>    | 20      | 表示全局搜索窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core |
-| TYPE_HANDWRITE<sup>12+</sup>        | 21      | 表示手写笔窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
-| TYPE_WALLET_SWIPE_CARD<sup>15+</sup>| 22      | 表示钱包刷卡窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
-| TYPE_SCREEN_CONTROL<sup>15+</sup>   | 23      | 表示锁定触控的顶层窗口，用于拦截屏幕触摸和点击事件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
-| TYPE_FLOAT_NAVIGATION<sup>17+</sup> | 24      | 表示悬浮的三键导航窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
-| TYPE_DYNAMIC<sup>20+</sup> | 25      | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
-| TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26      | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
+| 名称                                        | 值   | 说明                                                         |
+| ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| TYPE_INPUT_METHOD<sup>(deprecated)</sup>    | 2    | 表示输入法窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 从API version 9开始支持，从API version 13开始废弃，无替代窗口类型，输入法相关控制都请调用[输入法框架侧接口](../../inputmethod/inputmethod-application-guide.md)执行。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **ArkTS-Dyn起始版本：** 9 |
+| TYPE_STATUS_BAR<sup>9+</sup>                | 3    | 表示状态栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_PANEL<sup>9+</sup>                     | 4    | 表示通知栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_KEYGUARD<sup>9+</sup>                  | 5    | 表示锁屏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_VOLUME_OVERLAY<sup>9+</sup>            | 6    | 表示音量条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_NAVIGATION_BAR<sup>9+</sup>            | 7    | 表示导航栏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_WALLPAPER<sup>9+</sup>                 | 9    | 表示壁纸。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_DESKTOP<sup>9+</sup>                   | 10   | 表示桌面。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_LAUNCHER_RECENT<sup>9+</sup>           | 11   | 表示多任务中心。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_LAUNCHER_DOCK<sup>9+</sup>             | 12   | 表示桌面Dock栏。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_VOICE_INTERACTION<sup>9+</sup>         | 13   | 表示智慧语音。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_POINTER<sup>9+</sup>                   | 14   | 表示鼠标。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_FLOAT_CAMERA<sup>9+</sup>              | 15   | 表示相机类型悬浮窗。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_SCREENSHOT<sup>9+</sup>                | 17   | 表示截屏窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_SYSTEM_TOAST<sup>11+</sup>             | 18   | 表示顶层提示窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_DIVIDER<sup>11+</sup>                  | 19   | 表示分屏条。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_GLOBAL_SEARCH<sup>11+</sup>            | 20   | 表示全局搜索窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_HANDWRITE<sup>12+</sup>                | 21   | 表示手写笔窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_WALLET_SWIPE_CARD<sup>15+</sup>        | 22   | 表示钱包刷卡窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_SCREEN_CONTROL<sup>15+</sup>           | 23   | 表示锁定触控的顶层窗口，用于拦截屏幕触摸和点击事件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| TYPE_FLOAT_NAVIGATION<sup>17+</sup>         | 24   | 表示悬浮的三键导航窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_DYNAMIC<sup>20+</sup>                  | 25   | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26   | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## Configuration<sup>9+</sup>
 
@@ -78,6 +80,10 @@ import { window } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 1    | 表示APP未定义窗口模式。       |
@@ -86,20 +92,6 @@ import { window } from '@kit.ArkUI';
 | SECONDARY  | 4    | 表示APP分屏多窗口次要模式。上下分屏时，下分屏为次要模式。左右分屏时，右分屏为次要模式。  |
 | FLOATING   | 5    | 表示APP自由悬浮形式窗口模式。 |
 
-## WindowLayoutMode<sup>9+</sup>
-
-窗口布局模式枚举。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-| 名称       | 值   | 说明                          |
-| ---------- | ---- | ----------------------------- |
-| WINDOW_LAYOUT_MODE_CASCADE  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。     |
-| WINDOW_LAYOUT_MODE_TILE | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。           |
-
-
 ## BlurStyle<sup>9+</sup>
 
 窗口模糊类型枚举。
@@ -107,6 +99,10 @@ import { window } from '@kit.ArkUI';
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
@@ -135,6 +131,10 @@ import { window } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                  | 只读 | 可选 | 说明                                                         |
 | --------------- | ------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | type            | [WindowType](#windowtype7) | 否   | 否   | 当前属性改变的系统栏类型，仅支持类型为导航栏、状态栏的系统栏。 |
@@ -151,9 +151,13 @@ import { window } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                            | 只读 | 可选 | 说明                         |
 | ---------- | --------------------------------------------------- | ---- | ---- | ---------------------------- |
-| displayId  | number                                              | 否   | 否   | 当前窗口所在屏幕id，该参数应为整数。             |
+| displayId  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 当前窗口所在屏幕id，该参数应为整数。             |
 | regionTint | Array<[SystemBarRegionTint](#systembarregiontint8)> | 否   | 否   | 当前已改变的所有系统栏信息。 |
 
 ## ScaleOptions<sup>9+</sup>
@@ -164,12 +168,16 @@ import { window } from '@kit.ArkUI';
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明                                         |
 | ------ | -------- | ---- | ---- | --------------------------------------------|
-| x      | number   | 否   | 是   | X轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
-| y      | number   | 否   | 是   | Y轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
-| pivotX | number   | 否   | 是   | 缩放中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
-| pivotY | number   | 否   | 是   | 缩放中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | X轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | Y轴的缩放参数。该参数为浮点数，默认值为1.0。                   |
+| pivotX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | 缩放中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
+| pivotY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 是   | 缩放中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围[0.0, 1.0]。 |
 
 ## RotateOptions<sup>9+</sup>
 
@@ -179,13 +187,17 @@ import { window } from '@kit.ArkUI';
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明                                          |
 | ------ | -------- | ---- |---- |---------------------------------------------|
-| x      | number   | 否   | 是  | 绕X轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
-| y      | number   | 否   | 是  | 绕Y轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
-| z      | number   | 否   | 是  | 绕Z轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
-| pivotX | number   | 否   | 是  | 旋转中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。 |
-| pivotY | number   | 否   | 是  | 旋转中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。  |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 绕X轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 绕Y轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
+| z      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 绕Z轴的旋转角度。该参数为浮点数，默认值为0.0。                   |
+| pivotX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 旋转中心点X轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。 |
+| pivotY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 旋转中心点Y轴坐标。该参数为浮点数，默认值为0.5， 取值范围为[0.0, 1.0]。  |
 
 ## TranslateOptions<sup>9+</sup>
 
@@ -195,11 +207,15 @@ import { window } from '@kit.ArkUI';
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明                         |
 | ---- | -------- | ---- | ---- | ---------------------------- |
-| x    | number   | 否   | 是  | X轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
-| y    | number   | 否   | 是  | Y轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
-| z    | number   | 否   | 是  | Z轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
+| x    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | X轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
+| y    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | Y轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
+| z    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | Z轴的平移参数。该参数为浮点数，默认值为0.0，单位为px。 |
 
 
 ## StartAnimationSystemParams<sup>20+</sup>
@@ -271,8 +287,33 @@ import { window } from '@kit.ArkUI';
 | parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | 否   | 是   | 父窗大小变化的回调。绑定后立即回调一次，后续父窗大小变化时通知。默认不传，无法收到父窗大小变化通知。|
 | parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | 否   | 是   | 父窗模式变化的回调。绑定后立即回调一次，后续父窗模式变化时通知。默认不传，无法收到父窗大小变化通知。|
 
+## WindowLayoutMode<sup>(deprecated)</sup>
+
+窗口布局模式枚举。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+
+| 名称       | 值   | 说明                          |
+| ---------- | ---- | ----------------------------- |
+| WINDOW_LAYOUT_MODE_CASCADE<sup>(deprecated)</sup>  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代枚举。|
+| WINDOW_LAYOUT_MODE_TILE<sup>(deprecated)</sup> | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代枚举。|
+
 ## window.minimizeAll<sup>9+</sup>
-minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Dyn: minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: minimizeAll(id: long, callback: AsyncCallback&lt;void&gt;): void
 
 最小化指定ID的屏幕中的所有主窗口。
 
@@ -282,25 +323,31 @@ minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
 
 **设备行为差异：** <!--RP1-->该接口在Phone设备中可正常调用，在其他设备中返回801错误码。<!--RP1End-->
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| id       | number                    | 是   | 显示设备[Display](js-apis-display.md#display)的ID号，该参数仅支持整数输入。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调信息。     |
+| 参数名   | 类型                                  | 必填 | 说明                                                         |
+| -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| id       | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是   | 显示设备[Display](js-apis-display.md#display)的ID号，该参数仅支持整数输入。 |
+| callback | AsyncCallback&lt;void&gt;             | 是   | 回调信息。                                                   |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally.                |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { display } from '@kit.ArkUI';
@@ -327,8 +374,39 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+
+try {
+  if (!displayClass) {
+    console.error('displayClass is null');
+  } else {
+    window.minimizeAll(displayClass.id, (err: Error) => {
+      const errCode: number = err?.code;
+      if (errCode) {
+        console.error(`Failed to minimize all windows. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      console.info('Succeeded in minimizing all windows.');
+    });
+  }
+} catch (err: Error) {
+  console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## window.minimizeAll<sup>9+</sup>
-minimizeAll(id: number): Promise&lt;void&gt;
+
+ArkTS-Dyn: minimizeAll(id: number): Promise&lt;void&gt;
+
+ArkTS-Sta: minimizeAll(id: long): Promise&lt;void&gt;
+
 
 最小化指定ID的屏幕中的所有主窗口，使用Promise异步回调。
 
@@ -338,11 +416,15 @@ minimizeAll(id: number): Promise&lt;void&gt;
 
 **设备行为差异：** <!--RP1-->该接口在Phone设备中可正常调用，在其他设备中返回801错误码。<!--RP1End-->
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| id       | number                    | 是   | 显示设备[Display](js-apis-display.md#display)的ID号，该参数仅支持整数输入。 |
+| 参数名 | 类型                                  | 必填 | 说明                                                         |
+| ------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| id     | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是   | 显示设备[Display](js-apis-display.md#display)的ID号，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -354,14 +436,16 @@ minimizeAll(id: number): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003  | This window manager service works abnormally.                |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { display } from '@kit.ArkUI';
@@ -379,6 +463,27 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+
+try {
+  let promise = window.minimizeAll(displayClass.id);
+  promise.then(() => {
+    console.info('Succeeded in minimizing all windows.');
+  }).catch((err: Error) => {
+    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err: Error) {
+  console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -439,6 +544,7 @@ try {
 ```
 
 ## window.toggleShownStateForAllAppWindows<sup>9+</sup>
+
 toggleShownStateForAllAppWindows(callback: AsyncCallback&lt;void&gt;): void
 
 多窗口快速切换时隐藏或者恢复应用窗口。
@@ -516,99 +622,6 @@ promise.then(() => {
 });
 ```
 
-## window.setWindowLayoutMode<sup>9+</sup>
-setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
-
-设置窗口布局模式，使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| mode       | [WindowLayoutMode](#windowlayoutmode9)                  | 是   | 设置的窗口布局模式。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调信息。     |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in setting window layout mode.');
-  });
-} catch (exception) {
-  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-## window.setWindowLayoutMode<sup>9+</sup>
-setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
-
-设置窗口布局模式，使用Promise异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明           |
-| -------- | ------------------------- | ---- | -------------- |
-| mode       | [WindowLayoutMode](#windowlayoutmode9)                    | 是   | 设置的窗口布局模式。 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
-  promise.then(() => {
-    console.info('Succeeded in setting window layout mode.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 ## window.on('systemBarTintChange')<sup>8+</sup>
 
 on(type: 'systemBarTintChange', callback: Callback&lt;SystemBarTintState&gt;): void
@@ -617,7 +630,13 @@ on(type: 'systemBarTintChange', callback: Callback&lt;SystemBarTintState&gt;): v
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onSystemBarTintChange](#windowonsystembartintchange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -647,6 +666,49 @@ try {
 }
 ```
 
+## window.onSystemBarTintChange<sup>23+</sup>
+
+onSystemBarTintChange(callback: Callback&lt;SystemBarTintState&gt;): void
+
+开启状态栏、导航栏属性变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('systemBarTintChange')](#windowonsystembartintchange8)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                       | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[SystemBarTintState](#systembartintstate8)&gt; | 是   | 回调函数。返回当前的状态栏、导航栏信息集合。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+try {
+  window.onSystemBarTintChange((data) => {
+    console.info(`Succeeded in enabling the listener for systemBarTint changes. Data: ${JSON.stringify(data)}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for systemBarTint changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.off('systemBarTintChange')<sup>8+</sup>
 
 off(type: 'systemBarTintChange', callback?: Callback&lt;SystemBarTintState &gt;): void
@@ -655,7 +717,13 @@ off(type: 'systemBarTintChange', callback?: Callback&lt;SystemBarTintState &gt;)
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offSystemBarTintChange](#windowoffsystembartintchange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -690,6 +758,54 @@ try {
 }
 ```
 
+## window.offSystemBarTintChange<sup>23+</sup>
+
+offSystemBarTintChange(callback?: Callback&lt;SystemBarTintState &gt;): void
+
+关闭状态栏、导航栏属性变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('systemBarTintChange')](#windowoffsystembartintchange8)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                       | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[SystemBarTintState](#systembartintstate8)&gt; | 否   | 回调函数。返回当前的状态栏、导航栏信息集合。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有状态栏、导航栏属性变化的监听。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+const callback = (systemBarTintState: window.SystemBarTintState) => {
+  // ...
+}
+try {
+  window.onSystemBarTintChange(callback);
+
+  window.offSystemBarTintChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  window.offSystemBarTintChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for systemBarTint changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.on('gestureNavigationEnabledChange')<sup>10+</sup>
 
 on(type: 'gestureNavigationEnabledChange', callback: Callback&lt;boolean&gt;): void
@@ -698,7 +814,13 @@ on(type: 'gestureNavigationEnabledChange', callback: Callback&lt;boolean&gt;): v
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onGestureNavigationEnabledChange](#windowongesturenavigationenabledchange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -730,6 +852,51 @@ try {
 }
 ```
 
+## window.onGestureNavigationEnabledChange<sup>23+</sup>
+
+onGestureNavigationEnabledChange(callback: Callback&lt;boolean&gt;): void
+
+添加手势导航启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('gestureNavigationEnabledChange')](#windowongesturenavigationenabledchange10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                                          |
+| -------- | ----------------------- | ---- | ----------------------------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前手势导航的启用状态。true表示手势导航状态变化为启用；false表示手势导航状态变化为禁用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  window.onGestureNavigationEnabledChange((data) => {
+    console.info(`Succeeded in enabling the listener for gesture navigation status changes. Data: ${data}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for gesture navigation status changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.off('gestureNavigationEnabledChange')<sup>10+</sup>
 
 off(type: 'gestureNavigationEnabledChange', callback?: Callback&lt;boolean&gt;): void
@@ -738,7 +905,13 @@ off(type: 'gestureNavigationEnabledChange', callback?: Callback&lt;boolean&gt;):
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offGestureNavigationEnabledChange](#windowoffgesturenavigationenabledchange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -774,6 +947,55 @@ try {
 }
 ```
 
+## window.offGestureNavigationEnabledChange<sup>23+</sup>
+
+offGestureNavigationEnabledChange(callback?: Callback&lt;boolean&gt;): void
+
+移除手势导航启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('gestureNavigationEnabledChange')](#windowoffgesturenavigationenabledchange10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                        |
+| -------- | ----------------------- | -- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有手势导航启用状态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (bool: boolean) => {
+  // ...
+}
+try {
+  window.onGestureNavigationEnabledChange(callback);
+  window.offGestureNavigationEnabledChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  window.offGestureNavigationEnabledChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for gesture navigation status changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.on('waterMarkFlagChange')<sup>10+</sup>
 
 on(type: 'waterMarkFlagChange', callback: Callback&lt;boolean&gt;): void
@@ -782,7 +1004,13 @@ on(type: 'waterMarkFlagChange', callback: Callback&lt;boolean&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.onWaterMarkFlagChange](#windowonwatermarkflagchange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -814,6 +1042,51 @@ try {
 }
 ```
 
+## window.onWaterMarkFlagChange<sup>23+</sup>
+
+onWaterMarkFlagChange(callback: Callback&lt;boolean&gt;): void
+
+添加水印启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.on('waterMarkFlagChange')](#windowonwatermarkflagchange10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                                          |
+| -------- | ----------------------- | ---- | ----------------------------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前水印的启用状态。true表示当前已启用水印；false表示当前未启用水印。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  window.onWaterMarkFlagChange((data) => {
+    console.info(`Succeeded in enabling the listener for watermark flag changes. Data: ${data}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the listener for watermark flag changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.off('waterMarkFlagChange')<sup>10+</sup>
 
 off(type: 'waterMarkFlagChange', callback?: Callback&lt;boolean&gt;): void
@@ -822,7 +1095,13 @@ off(type: 'waterMarkFlagChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[window.offWaterMarkFlagChange](#windowoffwatermarkflagchange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -858,6 +1137,55 @@ try {
 }
 ```
 
+## window.offWaterMarkFlagChange<sup>23+</sup>
+
+offWaterMarkFlagChange(callback?: Callback&lt;boolean&gt;): void
+
+移除水印启用状态变化的监听。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[window.off('waterMarkFlagChange')](#windowoffwatermarkflagchange10)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                        |
+| -------- | ----------------------- | -- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有水印启用状态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (bool: boolean) => {
+  // ...
+}
+try {
+  window.onWaterMarkFlagChange(callback);
+  window.offWaterMarkFlagChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  window.offWaterMarkFlagChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable or disable the listener for watermark flag changes. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## window.setGestureNavigationEnabled<sup>10+</sup>
 setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -866,6 +1194,10 @@ setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -887,6 +1219,8 @@ setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -904,6 +1238,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  window.setGestureNavigationEnabled(true, (err: BusinessError<void> | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set gesture navigation enabled. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting gesture navigation enabled.');
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set gesture navigation enabled. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
 ## window.setGestureNavigationEnabled<sup>10+</sup>
 setGestureNavigationEnabled(enable: boolean): Promise&lt;void&gt;
 
@@ -912,6 +1265,10 @@ setGestureNavigationEnabled(enable: boolean): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -938,6 +1295,8 @@ setGestureNavigationEnabled(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -953,6 +1312,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = window.setGestureNavigationEnabled(true);
+  promise.then(() => {
+    console.info('Succeeded in setting gesture navigation enabled.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set gesture navigation enabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set gesture navigation enabled. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
 ## window.setWaterMarkImage<sup>10+</sup>
 setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -961,6 +1339,10 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, callback: AsyncCall
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -981,6 +1363,8 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, callback: AsyncCall
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { image } from '@kit.ImageKit';
@@ -1013,6 +1397,40 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+let color: ArrayBuffer = new ArrayBuffer(0);
+let initializationOptions: image.InitializationOptions = {
+  size: {
+    height: 100,
+    width: 100
+  }
+};
+image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
+  console.info('Succeeded in creating pixelmap.');
+  try {
+    window.setWaterMarkImage(pixelMap, enable, (err: BusinessError<void> | null) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to show watermark image. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      console.info('Succeeded in showing watermark image.');
+    });
+  } catch (exception) {
+    let error = exception as BusinessError;
+    console.error(`Failed to show watermark image. Cause code: ${error.code}, message: ${error.message}`);
+  }
+}).catch((err: Error) => {
+  console.error(`Failed to create PixelMap. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## window.setWaterMarkImage<sup>10+</sup>
 setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean): Promise&lt;void&gt;
 
@@ -1021,6 +1439,10 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean): Promise&lt;void&gt
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1046,6 +1468,8 @@ setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean): Promise&lt;void&gt
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { image } from '@kit.ImageKit';
@@ -1076,9 +1500,43 @@ image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMa
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+let color: ArrayBuffer = new ArrayBuffer(0);
+let initializationOptions: image.InitializationOptions = {
+  size: {
+    height: 100,
+    width: 100
+  }
+};
+image.createPixelMap(color, initializationOptions).then((pixelMap: image.PixelMap) => {
+  console.info('Succeeded in creating pixelmap.');
+  try {
+    let promise = window.setWaterMarkImage(pixelMap, enable);
+    promise.then(() => {
+      console.info('Succeeded in showing watermark image.');
+    }).catch((err: Error) => {
+      console.error(`Failed to show watermark image. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (exception) {
+    let error = exception as BusinessError;
+    console.error(`Failed to show watermark image. Cause code: ${error.code}, message: ${error.message}`);
+  }
+}).catch((err: Error) => {
+  console.error(`Failed to create PixelMap. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## window.getSnapshot<sup>12+</sup>
 
-getSnapshot(windowId: number): Promise<image.PixelMap>
+ArkTS-Dyn: getSnapshot(windowId: number): Promise<image.PixelMap>
+
+ArkTS-Sta: getSnapshot(windowId: int): Promise<image.PixelMap>
 
 获取指定窗口相同尺寸截图，使用Promise异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](arkts-apis-window-Window.md#setwindowprivacymode9)接口设置），截图结果为白屏。
 
@@ -1086,10 +1544,14 @@ getSnapshot(windowId: number): Promise<image.PixelMap>
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名   | 类型   | 必填  | 说明         |
 | -------- | ------ | ----- | ------------ |
-| windowId | number | 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int| 是    | 窗口Id。可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到相关窗口属性，其中属性id即对应为窗口ID。 |
 
 **返回值：**
 | 类型                    | 说明                            |
@@ -1107,6 +1569,8 @@ getSnapshot(windowId: number): Promise<image.PixelMap>
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1126,6 +1590,29 @@ try {
   console.error(`Failed to get snapshot. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+try {
+  // 此处仅示意，请使用getWindowProperties获取对应窗口ID再进行使用
+  let windowId: int = 40;
+  let promise = window.getSnapshot(windowId);
+  promise.then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in getting snapshot window. Pixel bytes number:' + pixelMap.getPixelBytesNumber());
+    pixelMap.release();
+  }).catch((err: Error) =>{
+    console.error(`Failed to get snapshot. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get snapshot. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 
 ## window.notifyScreenshotEvent<sup>20+</sup>
 
@@ -1230,7 +1717,9 @@ try {
 ```
 
 ## window.setSpecificSystemWindowZIndex<sup>23+</sup>
-setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&lt;void&gt;
+ArkTS-Dyn: setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise&lt;void&gt;
 
 设置系统窗口的窗口层级。使用Promise异步回调。
 
@@ -1242,12 +1731,16 @@ setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&l
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
 | windowType | [WindowType](#windowtype7) | 是    | 窗口类型。仅支持TYPE_WALLET_SWIPE_CARD、TYPE_VOICE_INTERACTION、TYPE_SCREENSHOT、TYPE_SCREEN_CONTROL、TYPE_FLOAT_NAVIGATION和TYPE_MUTISCREEN_COLLABORATION。 |
-| zIndex | number | 是    | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。0和负数会使窗口在桌面以下。|
+| zIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 系统窗口的层级。该参数仅支持整数输入，浮点数输入将向下取整。0和负数会使窗口在桌面以下。|
 
 **返回值：**
 
@@ -1264,9 +1757,11 @@ setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&l
 | 202     | Permission verification failed, non-system application uses system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Possible cause: Invalid window type. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -1279,6 +1774,23 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set zIndex. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  window.setSpecificSystemWindowZIndex(window.WindowType.TYPE_SCREENSHOT, 200).then(() => {
+    console.info('Succeeded in setting zIndex');
+  }).catch((err) => {
+    console.error(`Failed to set zIndex. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set zIndex. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1471,6 +1983,150 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## window.setWindowLayoutMode<sup>(deprecated)</sup>
+setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback&lt;void&gt;): void
+
+设置窗口布局模式，使用callback异步回调。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| mode       | [WindowLayoutMode](#windowlayoutmodedeprecated)                  | 是   | 设置的窗口布局模式。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调信息。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting window layout mode.');
+  });
+} catch (exception) {
+  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE, (err: BusinessError<void> | null) => {
+    if (err?.code) {
+      console.error(`Failed to set window layout mode. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting window layout mode.');
+  });
+} catch (exception) {
+    let err = exception as BusinessError;
+    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## window.setWindowLayoutMode<sup>9+</sup>
+setWindowLayoutMode(mode: WindowLayoutMode): Promise&lt;void&gt;
+
+设置窗口布局模式，使用Promise异步回调。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明           |
+| -------- | ------------------------- | ---- | -------------- |
+| mode       | [WindowLayoutMode](#windowlayoutmodedeprecated)                  | 是   | 设置的窗口布局模式。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
+  promise.then(() => {
+    console.info('Succeeded in setting window layout mode.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set window layout mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = window.setWindowLayoutMode(window.WindowLayoutMode.WINDOW_LAYOUT_MODE_CASCADE);
+  promise.then(() => {
+    console.info('Succeeded in setting window layout mode.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set window layout mode. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## Window
 
 当前窗口实例，窗口管理器管理的基本单元。
@@ -1565,6 +2221,10 @@ hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -1584,6 +2244,8 @@ hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1591,6 +2253,21 @@ windowClass.hideWithAnimation((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in hiding the window with animation.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.hideWithAnimation((err: BusinessError<void> | null) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to hide the window with animation. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in hiding the window with animation.');
@@ -1606,6 +2283,10 @@ hideWithAnimation(): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1626,6 +2307,8 @@ hideWithAnimation(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1633,6 +2316,17 @@ let promise = windowClass.hideWithAnimation();
 promise.then(() => {
   console.info('Succeeded in hiding the window with animation.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = windowClass.hideWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in hiding the window with animation.');
+}).catch((err: Error) => {
   console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1646,6 +2340,10 @@ showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1666,6 +2364,8 @@ showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1673,6 +2373,21 @@ windowClass.showWithAnimation((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in showing the window with animation.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.showWithAnimation((err: BusinessError<void> | null) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to show the window with animation. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in showing the window with animation.');
@@ -1688,6 +2403,10 @@ showWithAnimation(): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1708,6 +2427,8 @@ showWithAnimation(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1715,6 +2436,17 @@ let promise = windowClass.showWithAnimation();
 promise.then(() => {
   console.info('Succeeded in showing the window with animation.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = windowClass.showWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in showing the window with animation.');
+}).catch((err: Error) => {
   console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1728,6 +2460,10 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1749,6 +2485,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1784,6 +2521,41 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass) => {
+      if (err?.code) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      let mode = window.WindowMode.FULLSCREEN;
+      try {
+        if (windowClass != undefined) {
+          windowClass.setWindowMode(mode, (err: BusinessError<void> | null) => {
+            if (err?.code) {
+              console.error(`Failed to set the window mode. Cause code: ${err?.code}, message: ${err?.message}`);
+              return;
+            }
+            console.info('Succeeded in setting the window mode.');
+          });
+        }
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to set the window mode. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
 ### setWindowMode<sup>9+</sup>
 
 setWindowMode(mode: WindowMode): Promise&lt;void&gt;
@@ -1793,6 +2565,10 @@ setWindowMode(mode: WindowMode): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1819,6 +2595,7 @@ setWindowMode(mode: WindowMode): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1852,7 +2629,41 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## attachLayoutToParentWindow<sup>24+</sup>
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass) => {
+      if (err?.code) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      let mode = window.WindowMode.FULLSCREEN;
+      try {
+        if (windowClass != undefined) {
+          let promise = windowClass.setWindowMode(mode);
+          promise.then(() => {
+            console.info('Succeeded in setting the window mode.');
+          }).catch((err: Error) => {
+            console.error(`Failed to set the window mode. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        }
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to set the window mode. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+### attachLayoutToParentWindow<sup>24+</sup>
 
 attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise&lt;void&gt;
 
@@ -1878,7 +2689,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 **ArkTS-Sta起始版本：** 24
 
- **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用返回801错误码。
 
 **参数：**
 
@@ -1952,7 +2763,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## detachLayoutToParentWindow<sup>24+</sup>
+### detachLayoutToParentWindow<sup>24+</sup>
 
 detachLayoutToParentWindow(): Promise&lt;void&gt;
 
@@ -1976,7 +2787,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 24
 
- **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用返回801错误码。
 
 **返回值：**
 
@@ -2354,6 +3165,10 @@ setWakeUpScreen(wakeUp: boolean): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型    | 必填 | 说明                         |
@@ -2373,12 +3188,26 @@ setWakeUpScreen(wakeUp: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let wakeUp: boolean = true;
 try {
   windowClass.setWakeUpScreen(wakeUp);
 } catch (exception) {
   console.error(`Failed to wake up the screen. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let wakeUp: boolean = true;
+try {
+  windowClass.setWakeUpScreen(wakeUp);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to wake up the screen. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2418,142 +3247,11 @@ try {
 }
 ```
 
-### setForbidSplitMove<sup>9+</sup>
-
-setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&gt;): void
-
-设置主窗口在分屏模式下是否被禁止移动，使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名      | 类型                      | 必填 | 说明                 |
-| ----------- | ------------------------- | ---- | -------------------- |
-| isForbidSplitMove | boolean                   | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
-| callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let isForbidSplitMove: boolean = true;
-      try {
-        windowClass.setForbidSplitMove(isForbidSplitMove, (err: BusinessError) => {
-          const errCode: number = err.code;
-          if (errCode) {
-            console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
-            return;
-          }
-          console.info('Succeeded in forbidding window moving in split screen mode.');
-        });
-      } catch (exception) {
-        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
-### setForbidSplitMove<sup>9+</sup>
-
-setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
-
-设置主窗口在分屏模式下是否被禁止移动，使用Promise异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**参数：**
-
-| 参数名      | 类型    | 必填 | 说明                 |
-| ----------- | ------- | ---- | -------------------- |
-| isForbidSplitMove | boolean | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let isForbidSplitMove: boolean = true;
-      try {
-        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
-        promise.then(() => {
-          console.info('Succeeded in forbidding window moving in split screen mode.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
 ### opacity<sup>9+</sup>
 
-opacity(opacity: number): void
+ArkTS-Dyn: opacity(opacity: number): void
+
+ArkTS-Sta: opacity(opacity: double): void
 
 设置窗口不透明度。仅支持在[自定义系统窗口的显示与隐藏动画](../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
@@ -2561,11 +3259,15 @@ opacity(opacity: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                 |
 | ------- | ------ | ---- |----------------------------------------------------|
-| opacity | number | 是   | 不透明度。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示完全透明，1.0表示完全不透明。 |
+| opacity | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示完全透明，1.0表示完全不透明。 |
 
 **错误码：**
 
@@ -2597,6 +3299,10 @@ scale(scaleOptions: ScaleOptions): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2640,6 +3346,10 @@ rotate(rotateOptions: RotateOptions): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2685,6 +3395,10 @@ translate(translateOptions: TranslateOptions): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型                                   | 必填 | 说明                 |
@@ -2719,13 +3433,17 @@ try {
 
 ### getTransitionController<sup>9+</sup>
 
- getTransitionController(): TransitionController
+getTransitionController(): TransitionController
 
 获取窗口属性转换控制器。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2751,7 +3469,9 @@ let controller = windowClass.getTransitionController(); // 获取属性转换控
 
 ### setBlur<sup>9+</sup>
 
-setBlur(radius: number): void
+ArkTS-Dyn: setBlur(radius: number): void
+
+ArkTS-Sta: setBlur(radius: double): void
 
 设置窗口模糊。
 
@@ -2759,11 +3479,15 @@ setBlur(radius: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- |--------------------------------------------------|
-| radius | number | 是   | 表示窗口模糊的半径值。该参数为浮点数，单位为px，取值范围为[0, +∞)，取值为0.0时表示关闭窗口模糊。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口模糊的半径值。该参数为浮点数，单位为px，取值范围为[0, +∞)，取值为0.0时表示关闭窗口模糊。 |
 
 **错误码：**
 
@@ -2788,7 +3512,9 @@ try {
 
 ### setBackdropBlur<sup>9+</sup>
 
-setBackdropBlur(radius: number): void
+ArkTS-Dyn: setBackdropBlur(radius: number): void
+
+ArkTS-Sta: setBackdropBlur(radius: double): void
 
 设置窗口背景模糊。
 
@@ -2800,11 +3526,15 @@ setBackdropBlur(radius: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                    |
 | ------ | ------ | ---- |-------------------------------------------------------|
-| radius | number | 是   | 表示窗口背景模糊的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0表示关闭窗口背景模糊。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口背景模糊的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0表示关闭窗口背景模糊。 |
 
 **错误码：**
 
@@ -2838,6 +3568,10 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型      | 必填 | 说明                   |
@@ -2867,7 +3601,9 @@ try {
 
 ### setShadow<sup>9+</sup>
 
-setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): void
+ArkTS-Dyn: setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): void
+
+ArkTS-Sta: setShadow(radius: double, color?: string, offsetX?: double, offsetY?: double): void
 
 设置窗口边缘阴影。
 
@@ -2875,14 +3611,19 @@ setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): v
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名  | 类型   | 必填 | 说明                                                                       |
-| ------- | ------ | ---- |--------------------------------------------------------------------------|
-| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。            |
+| 参数名  | 类型   | 必填 | 说明                                                                        |
+| ------- | ------ | ---- |---------------------------------------------------------------------------|
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。             |
 | color   | string | 否   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#00FF00`或`#FF00FF00`，默认值为'#000000'。 |
-| offsetX | number | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
-| offsetY | number | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
+| offsetX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
+| offsetY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
+
 
 **错误码：**
 
@@ -2907,7 +3648,9 @@ try {
 
 ### setCornerRadius<sup>9+</sup>
 
-setCornerRadius(cornerRadius: number): void
+ArkTS-Dyn: setCornerRadius(cornerRadius: number): void
+
+ArkTS-Sta: setCornerRadius(cornerRadius: double): void
 
 设置窗口圆角半径。
 
@@ -2915,11 +3658,15 @@ setCornerRadius(cornerRadius: number): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                 |
 | ----------- | ------- | ---- |----------------------------------------------------|
-| cornerRadius | number | 是   | 表示窗口圆角的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示没有窗口圆角。 |
+| cornerRadius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 表示窗口圆角的半径值。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示没有窗口圆角。 |
 
 **错误码：**
 
@@ -2952,6 +3699,10 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -2972,12 +3723,28 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 try {
   windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
     {left: 400, top: 100, width: 200, height:200}]);
 } catch (exception) {
   console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
+    {left: 400, top: 100, width: 200, height:200}]);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set touchable areas. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -2992,6 +3759,10 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3012,6 +3783,8 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 | 1300009 | The parent window is invalid. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3044,6 +3817,35 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    // 创建子窗
+    windowStage.createSubWindow('testSubWindow').then((subWindow: window.Window) => {
+      subWindow.showWindow().then(() => {
+        subWindow.raiseToAppTop((err: BusinessError<void> | null) => {
+          const errCode = err?.code;
+          if (errCode) {
+            console.error(`Failed to raise the window to app top. Cause code: ${err?.code}, message: ${err?.message}`);
+            return;
+          }
+          console.info('Succeeded in raising the window to app top.');
+        });
+      });
+    });
+  }
+}
+```
+
 ### setWaterMarkFlag<sup>10+</sup>
 
 setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
@@ -3053,6 +3855,10 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3080,6 +3886,8 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3096,6 +3904,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable = true;
+  let promise = windowClass.setWaterMarkFlag(enable);
+  promise.then(() => {
+    console.info('Succeeded in setting water mark flag of window.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set water mark flag of window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set water mark flag of window. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### setWaterMarkFlag<sup>10+</sup>
 
 setWaterMarkFlag(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -3105,6 +3932,10 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3127,6 +3958,8 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3145,6 +3978,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable: boolean = true;
+  windowClass.setWaterMarkFlag(enable, (err: BusinessError<void> | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set water mark flag of window. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting water mark flag of window.');
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set water mark flag of window. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### setHandwritingFlag<sup>12+</sup>
 
 setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
@@ -3154,6 +4008,10 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3181,6 +4039,8 @@ setHandwritingFlag(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3197,9 +4057,31 @@ try {
 }
 ```
 
+ArkTS-Sta示例
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable = true;
+  let promise = windowClass.setHandwritingFlag(enable);
+  promise.then(() => {
+    console.info('Succeeded in setting handwriting flag of window.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set handwriting flag of window. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
 ### raiseAboveTarget<sup>10+</sup>
 
-raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: raiseAboveTarget(windowId: int, callback: AsyncCallback&lt;void&gt;): void
 
 将同一个主窗口下的子窗口抬升到目标子窗口之上。使用callback异步回调。
 
@@ -3209,11 +4091,15 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| windowId | number                    | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -3231,6 +4117,8 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 | 1300009 | The parent window is invalid. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3272,9 +4160,50 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window;
+    // 创建子窗
+    try {
+      windowStage.createSubWindow("testSubWindow").then((data: window.Window) => {
+        windowClass = data;
+        windowClass.showWindow().then(() => {
+          // windowClass的获取需放在targetWindow之上
+          let targetWindow: window.Window = windowClass;
+          let properties = targetWindow.getWindowProperties();
+          let targetId = properties.id;
+          windowClass.raiseAboveTarget(targetId, (err: BusinessError<void> | null) => {
+            if (err?.code) {
+              console.error(`Failed to raise the subWindow to target subWindow top. Cause code: ${err?.code}, message: ${err?.message}`);
+              return;
+            }
+            console.info('Succeeded in raising the subWindow to target subWindow top.');
+          });
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ### raiseAboveTarget<sup>10+</sup>
 
-raiseAboveTarget(windowId: number): Promise&lt;void&gt;
+ArkTS-Dyn: raiseAboveTarget(windowId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: raiseAboveTarget(windowId: int): Promise&lt;void&gt;
 
 将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
 
@@ -3284,11 +4213,15 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| windowId | number                    | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 目标子窗口的id，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
 
 **返回值：**
 
@@ -3311,6 +4244,8 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 | 1300009 | The parent window is invalid. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3350,9 +4285,48 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window;
+    // 创建子窗
+    try {
+      windowStage.createSubWindow("testSubWindow").then((data: window.Window) => {
+        windowClass = data;
+        windowClass.showWindow().then(() => {
+          // windowClass的获取需放在targetWindow之上
+          let targetWindow: window.Window = windowClass;
+          let properties = targetWindow.getWindowProperties();
+          let targetId = properties.id;
+          windowClass.raiseAboveTarget(targetId).then(()=> {
+            console.info('Succeeded in raising the subWindow to target subWindow top.');
+          }).catch((err: Error)=>{
+            console.error(`Failed to raise the subWindow to target subWindow top. Cause code: ${err?.code}, message: ${err?.message}`);
+          });
+        });
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ### raiseMainWindowAboveTarget<sup>20+</sup>
 
-raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
+ArkTS-Dyn: raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: raiseMainWindowAboveTarget(windowId: int): Promise&lt;void&gt;
 
 将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
 
@@ -3368,13 +4342,17 @@ raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| windowId | number                    | 是   | 目标主窗口的id，该参数为整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
+| windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 目标主窗口的id，该参数为整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。 |
 
 **返回值：**
 
@@ -3396,6 +4374,8 @@ raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 | 1300016 | Parameter error. Possible cause: 1. Invalid Parameter range. 2. Invalid parameter length. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3515,6 +4495,133 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window , AppStorage } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err: BusinessError<void>|null) :void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}.`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      try {
+        let want: Want = {
+          abilityName: "RaiseMainWindowAbility",
+          bundleName: "com.example.myapplication"
+        };
+        let options: StartOptions = {
+          windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING
+        };
+        this.context.startAbility(want, options);
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to start the ability. Cause code: ${err?.code}, message: ${err?.message}.`);
+      }
+
+      setTimeout(async () => {
+        let mainWindow = windowStage.getMainWindowSync();
+        //获取RaiseMainWindowAbility对应的主窗
+        let newMainWindow: window.Window = window.findWindow("myapplication1");
+        let targetId = newMainWindow.getWindowProperties().id;
+        mainWindow.raiseMainWindowAboveTarget(targetId).then((): void => {
+          console.info('Succeeded in raising main window above target.');
+        }).catch((err: BusinessError): void => {
+            console.error(`Failed to raise main window above target. Cause code: ${err?.code}, message: ${err?.message}.`)
+        });
+      }, 3000)
+    });
+  }
+}
+```
+```ts
+// 新建文件src/main/ets/raisemainwindowability/RaiseMainWindowAbility.ets
+// RaiseMainWindowAbility.ets
+import { UIAbility, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window , AppStorage } from '@kit.ArkUI';
+
+export default class RaiseMainWindowAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err: BusinessError<void>|null) :void => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}.`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+  }
+}
+```
+```json5
+//module.json5
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "RaiseMainWindowAbility",
+        "launchType": "multiton",
+        "srcEntry": "./ets/raisemainwindowability/RaiseMainWindowAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 ### setRaiseByClickEnabled<sup>10+</sup>
 
 setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -3528,6 +4635,10 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3551,6 +4662,8 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 | 1300009 | The parent window is invalid. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3587,6 +4700,40 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    // 创建子窗
+    windowStage.createSubWindow("testSubWindow").then((subWindow: window.Window) => {
+      subWindow.showWindow().then(() => {
+        try {
+          let enabled = false;
+          subWindow.setRaiseByClickEnabled(enabled, (err: BusinessError<void> | null) => {
+          if (err?.code) {
+            console.error(`Failed to disable the raise-by-click function. Cause code: ${err?.code}, message: ${err?.message}`);
+            return;
+          }
+          console.info('Succeeded in disabling the raise-by-click function.');
+          });
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      });
+    });
+  }
+}
+```
+
 ### setMainWindowRaiseByClickEnabled<sup>23+</sup>
 
 setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
@@ -3598,6 +4745,10 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3624,6 +4775,8 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 | 1300004 | Unauthorized operation. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -3656,6 +4809,41 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((mainWindow: window.Window) => {
+      // 加载主窗口对应的页面
+      windowStage.loadContent('pages/Index', (err: BusinessError | null): void => {
+        const errCode = err?.code;
+        if (errCode) {
+          console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = mainWindow.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
+      });
+    });
+  }
+}
+```
+
 ### hideNonSystemFloatingWindows<sup>11+</sup>
 
 hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -3667,6 +4855,10 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
@@ -3692,6 +4884,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -3729,6 +4922,54 @@ export default class EntryAbility extends UIAbility {
         });
       } catch (exception) {
         console.error(`Failed to hide the non-system floating windows. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility, Want } from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@ohos.base';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // 加载主窗口对应的页面
+    windowStage.loadContent('pages/Index', (err) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+    });
+
+    // 获取应用主窗口。
+    let mainWindow: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      mainWindow = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+
+      let shouldHide = true;
+      try {
+        // 调用带callback参数的hideNonSystemFloatingWindows接口
+        mainWindow!.hideNonSystemFloatingWindows(shouldHide, (err) => {
+          const errCode = err?.code;
+          if (errCode) {
+            console.error(`Failed to hide the non-system floating windows. Cause code: ${err?.code}, message: ${err?.message}`);
+            return;
+          }
+          console.info('Succeeded in hiding the non-system floating windows.');
+        });
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to hide the non-system floating windows. Cause code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -4074,6 +5315,10 @@ setTopmost(isTopmost: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **设备行为差异：**
 
 在<!--RP2-->OpenHarmony 6.1<!--RP2End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
@@ -4107,6 +5352,8 @@ setTopmost(isTopmost: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -4128,6 +5375,28 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.getMainWindow().then((mainWindow: window.Window) => {
+      let isTopmost: boolean = true;
+      mainWindow.setTopmost(isTopmost).then(() => {
+        console.info('Succeeded in setting the main window to be topmost.');
+      }).catch((err: Error) => {
+        console.error(`Failed to set the main window to be topmost. Cause code: ${err?.code}, message: ${err?.message}`);
+      });
+    });
+  }
+}
+```
+
 ### setSingleFrameComposerEnabled<sup>11+</sup>
 
 setSingleFrameComposerEnabled(enable: boolean): Promise&lt;void&gt;
@@ -4139,6 +5408,10 @@ setSingleFrameComposerEnabled(enable: boolean): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4165,6 +5438,7 @@ setSingleFrameComposerEnabled(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4181,6 +5455,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable = true;
+try {
+  let promise = windowClass!.setSingleFrameComposerEnabled(enable);
+  promise.then(()=> {
+      console.info('Succeeded in enabling the single-frame-composer function.');
+  }).catch((err: Error)=>{
+      console.error(`Failed to enable the single-frame-composer function. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to enable the single-frame-composer function, cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### setTitleButtonVisible<sup>12+</sup>
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
@@ -4192,6 +5484,10 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -4217,6 +5513,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -4251,6 +5548,42 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // 加载主窗口对应的页面。
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err: BusinessError | null): void => {
+      if (err && err.code) {
+        console.error(Failed to load the content. Cause code: ${err.code}, message: ${err.message});
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      // 获取应用主窗口。
+      windowStage.getMainWindow((err: BusinessError | null, mainWindow: window.Window | undefined) => {
+        if (err && err.code) {
+          console.error(Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message});
+          return;
+        }
+        try {
+          // 调用setTitleButtonVisible接口，隐藏主窗标题栏最大化、最小化、分屏按钮。
+          mainWindow?.setTitleButtonVisible(false, false, false);
+          console.info('Succeeded in setTitleButtonVisible.');
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to setTitleButtonVisible. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      });
+    });
+  }
+};
 ```
 
 ### setRotationLocked<sup>22+</sup>
@@ -4358,13 +5691,89 @@ try {
 };
 ```
 
+### requestFocus<sup>13+</sup>
+
+requestFocus(isFocused: boolean): Promise&lt;void&gt;
+
+支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用[on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10)监听窗口获焦/失焦状态。
+
+获焦请求发送后，窗口获焦结果受到窗口可获焦属性及窗口可见状态的限制。获焦成功的窗口需满足以下约束：1.窗口支持获焦；2.窗口可见（窗口已显示，未销毁且未退至后台）。
+
+失焦请求发送后，窗口无条件失焦。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| isFocused | boolean | 是   | 是否获取焦点，true表示请求获焦，false表示请求失焦。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocused: boolean = true;
+let promise = windowClass.requestFocus(isFocused);
+promise.then(() => {
+  console.info('Succeeded in requesting focus.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to request focus. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocused: boolean = true;
+let promise = windowClass.requestFocus(isFocused);
+promise.then(() => {
+  console.info('Succeeded in requesting focus.');
+}).catch((err: Error) => {
+  console.error(`Failed to request focus. Cause code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 ### setWindowType<sup>(deprecated)</sup>
 
 setWindowType(type: WindowType, callback: AsyncCallback&lt;void&gt;): void
 
 设置窗口类型，使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 7
 
 > **说明：**
 >
@@ -4401,7 +5810,11 @@ setWindowType(type: WindowType): Promise&lt;void&gt;
 
 设置窗口类型，使用Promise异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 7
 
 > **说明：**
 >
@@ -4435,25 +5848,138 @@ promise.then(() => {
 });
 ```
 
-### requestFocus<sup>13+</sup>
+### setForbidSplitMove<sup>(deprecated)</sup>
 
-requestFocus(isFocused: boolean): Promise&lt;void&gt;
+setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用[on('windowEvent')](arkts-apis-window-Window.md#onwindowevent10)监听窗口获焦/失焦状态。
+设置主窗口在分屏模式下是否被禁止移动，使用callback异步回调。
 
-获焦请求发送后，窗口获焦结果受到窗口可获焦属性及窗口可见状态的限制。获焦成功的窗口需满足以下约束：1.窗口支持获焦；2.窗口可见（窗口已显示，未销毁且未退至后台）。
-
-失焦请求发送后，窗口无条件失焦。
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| isFocused | boolean | 是   | 是否获取焦点，true表示请求获焦，false表示请求失焦。 |
+| 参数名      | 类型                      | 必填 | 说明                 |
+| ----------- | ------------------------- | ---- | -------------------- |
+| isForbidSplitMove | boolean                   | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
+| callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 1300002 | This window state is abnormal.               |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let isForbidSplitMove: boolean = true;
+      try {
+        windowClass.setForbidSplitMove(isForbidSplitMove, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in forbidding window moving in split screen mode.');
+        });
+      } catch (exception) {
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass) => {
+      if (err?.code) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      let isForbidSplitMove: boolean = true;
+      try {
+        if (windowClass != undefined) {
+          windowClass.setForbidSplitMove(isForbidSplitMove, (err: BusinessError<void> | null) => {
+            if (err?.code) {
+              console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err?.code}, message: ${err?.message}`);
+              return;
+            }
+            console.info('Succeeded in forbidding window moving in split screen mode.');
+          });
+        }
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+### setForbidSplitMove<sup>9+</sup>
+
+setForbidSplitMove(isForbidSplitMove: boolean): Promise&lt;void&gt;
+
+设置主窗口在分屏模式下是否被禁止移动，使用Promise异步回调。
+
+> **说明：**
+>
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                 |
+| ----------- | ------- | ---- | -------------------- |
+| isForbidSplitMove | boolean | 是   | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
 
 **返回值：**
 
@@ -4466,25 +5992,80 @@ requestFocus(isFocused: boolean): Promise&lt;void&gt;
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 202     | Permission verification failed, non-system application uses system API. |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let isFocused: boolean = true;
-let promise = windowClass.requestFocus(isFocused);
-promise.then(() => {
-  console.info('Succeeded in requesting focus.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to request focus. Cause code: ${err.code}, message: ${err.message}`);
-});
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let isForbidSplitMove: boolean = true;
+      try {
+        let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
+        promise.then(() => {
+          console.info('Succeeded in forbidding window moving in split screen mode.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass) => {
+      if (err?.code) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      let isForbidSplitMove: boolean = true;
+      try {
+        if (windowClass != undefined) {
+          let promise = windowClass.setForbidSplitMove(isForbidSplitMove);
+          promise.then(() => {
+            console.info('Succeeded in forbidding window moving in split screen mode.');
+          }).catch((err: Error) => {
+            console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        }
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to forbid window moving in split screen mode. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
 ```
 
 ## SubWindowOptions<sup>11+</sup>
@@ -4493,7 +6074,7 @@ promise.then(() => {
 
 | 名称      | 类型  | 只读 | 可选 | 说明         |
 | ---------- | ---- | ---- | ---- | ----------- |
-| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager |
+| isTopmost<sup>12+</sup>  | boolean | 否 | 是 | 子窗口是否启用置顶属性。true表示子窗口置顶，false表示子窗口不置顶。不设置，则默认为false。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## WindowStage<sup>9+</sup>
 
@@ -4514,6 +6095,10 @@ disableWindowDecor(): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -4553,6 +6138,10 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型    | 必填 | 说明                         |
@@ -4572,6 +6161,8 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -4590,17 +6181,42 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    try {
+      windowStage.setShowOnLockScreen(true);
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to show on lockscreen. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+};
+```
+
 ### setImageForRecent<sup>19+</sup>
 
 setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 
 设置应用在多任务中显示的图片，使用Promise异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：**
 
@@ -4655,7 +6271,9 @@ export default class EntryAbility extends UIAbility {
 
 ### setImageForRecent<sup>22+</sup>
 
-setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+ArkTS-Dyn: setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+
+ArkTS-Sta: setImageForRecent(imageResource: long | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
 
 设置应用在多任务中显示的图片，使用Promise异步回调。
 
@@ -4669,11 +6287,15 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 
 **系统能力**：SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ----------- | ------- | ---- | ------------------------------------------------------------ |
-| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源，可传入资源id或PixelMap位图。|
+| imgResource | ArkTS-Dyn: number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)<br>ArkTS-Sta: long \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源，可传入资源id或PixelMap位图。|
 | value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
@@ -4695,6 +6317,8 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -4742,6 +6366,55 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err?.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let pixelMap: image.PixelMap;
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
+      }
+      image.createPixelMap(color, {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      }).then((data) => {
+        pixelMap = data;
+        console.info(`Succeeded in creating pixelMap`);
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info(`Succeeded in setting image for recent`);
+          }).catch((err: Error) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      })
+    });
+  }
+};
+```
+
 ### removeImageForRecent<sup>22+</sup>
 
 removeImageForRecent(): Promise&lt;void&gt;
@@ -4753,6 +6426,10 @@ removeImageForRecent(): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -4772,6 +6449,8 @@ removeImageForRecent(): Promise&lt;void&gt;
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -4797,6 +6476,32 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    try {
+      let promise = windowStage.removeImageForRecent();
+      promise.then(() => {
+        console.info(`Succeeded in removing image for recent`);
+      }).catch((err: Error) => {
+        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to remove image for recent.`);
+    }
+  }
+};
+```
+
 ## TransitionContext<sup>9+</sup>
 
 属性转换的上下文信息。
@@ -4808,6 +6513,10 @@ export default class EntryAbility extends UIAbility {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型          | 只读 | 可选 | 说明             |
 | --------------------- | ----------------- | ---- | ---- | ---------------- |
@@ -4822,6 +6531,10 @@ completeTransition(isCompleted: boolean): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4868,6 +6581,25 @@ completeTransition(isCompleted: boolean): void
   console.info('complete transition end');
 };
 ```
+## TransitionControllerCallback<sup>23+</sup>
+
+type TransitionControllerCallback = (context: window.TransitionContext) => void
+
+属性转换控制器的属性类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型      | 说明                          |
+| -----------| ---------------------------- |
+| (context: window.TransitionContext) => void | 表示入参为[TransitionContext](#transitioncontext9)的函数类型。 |
 
 ## TransitionController<sup>9+</sup>
 
@@ -4894,6 +6626,20 @@ promise.then((data) => {
   console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+### 属性
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| animationForShown<sup>23+</sup> | [TransitionControllerCallback](#transitioncontrollercallback23) | 否   | 是 | 窗口显示时的自定义动画配置。默认为空（未定义），函数被定义后在窗口显示时触发。 |
+| animationForHidden<sup>23+</sup> | [TransitionControllerCallback](#transitioncontrollercallback23) | 否   | 是 | 窗口隐藏时的自定义动画配置。默认为空（未定义），函数被定义后在窗口隐藏时触发。 |
 
 ### animationForShown<sup>9+</sup>
 
@@ -4901,9 +6647,13 @@ animationForShown(context: TransitionContext): void
 
 窗口显示时的自定义动画配置。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -4984,9 +6734,13 @@ animationForHidden(context: TransitionContext): void
 
 窗口隐藏时的自定义动画配置。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -5071,6 +6825,10 @@ try {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值 | 说明         |
 | ---------- | ----- | ----------- |
 | SYSTEM_WINDOW  | 0 | 系统窗口。|
@@ -5086,6 +6844,10 @@ try {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型                      | 只读  |可选 | 说明       |
 | ------ | ------------------------- | ---- | ---- |---------- |
 | windowType   | [WindowType](#windowtype7) | 否   | 否   | 窗口类型。无默认类型，不配置会导致窗口创建失败。不支持TYPE_DIALOG类型。 |
@@ -5099,6 +6861,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                      | 只读  |可选 | 说明       |
 | ------ | ------------------------- | ---- | ---- |---------- |
