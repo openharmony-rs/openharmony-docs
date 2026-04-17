@@ -78,7 +78,7 @@
 
 | 名称         | 类型                    | 只读  | 可选  | 说明                     |
 | ------------ | ----------------------- | ---- | ---- | ----------------------- |
-| assetId      | string                  | 否   | 否   | 播放列表媒体ID。媒体信息的唯一标识，由应用自定义。<br>在音视频投播场景下，当应用程序调用prepare和start接口，且assetId维持不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| assetId      | string                  | 否   | 否   | 播放列表媒体ID。媒体信息的唯一标识，由应用自定义。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | title        | string                  | 否   | 是   | 播放列表媒体标题。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | subtitle     | string                  | 否   | 是   | 播放列表媒体子标题。<br>在使用了cast+协议的音频投播场景下，不支持使用该属性。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | description  | string                  | 否   | 是   | 播放列表媒体描述的文本。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
