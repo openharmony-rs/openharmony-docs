@@ -340,7 +340,7 @@
 
 5. 资源文件如下。
 
-   ```json
+   ```json5
    // entry/src/main/resources/base/element/string.json
    {
       "string": [
