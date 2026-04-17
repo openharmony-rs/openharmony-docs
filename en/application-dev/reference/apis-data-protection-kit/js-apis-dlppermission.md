@@ -1742,3 +1742,66 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
+
+
+## dlpPermission.queryDlpPolicy<sup>21+</sup>
+
+queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
+
+Parses the file header in a DLP file to obtain the DLP plaintext policy. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| dlpFd | number | Yes| FD of the file to be decrypted.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise used to return the JSON string of the DLP policy.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 19100001 | Invalid parameter value. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
+| 19100003 | Credential task time out. |
+| 19100004 | Credential service error. |
+| 19100005 | Credential authentication server error. |
+| 19100008 | The file is not a DLP file. |
+| 19100009 | Failed to operate the DLP file. |
+| 19100011 | The system ability works abnormally. |
+| 19100013 | The user does not have the permission. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ExampleFunction(dlpFilePath: string) {
+  let dlpFd : number | undefined = undefined;
+  try {
+    dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
+    let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
+    console.info('DLP policy:' + policy);
+  } catch(err) {
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
+  } finally {
+    if (dlpFd) {
+      fileIo.closeSync(dlpFd);
+    }
+  }
+}
+```
