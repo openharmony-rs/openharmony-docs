@@ -1981,7 +1981,7 @@ try {
 
 forceFactoryReset(): Promise\<void>
 
-请求用户数据分区，同步清除文件秘钥。使用Promise异步回调。
+清除用户数据分区，同步清除文件秘钥。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
