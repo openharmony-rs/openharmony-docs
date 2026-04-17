@@ -5781,7 +5781,7 @@ Allows a system application to open the Feedback screen.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 24
+**Since**: 26.0.0
 
 ## ohos.permission.ACCESS_SUPPORT_HELP
 
@@ -5795,4 +5795,4 @@ Allows a system application to launch the intelligent customer service.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 24
+**Since**: 26.0.0
