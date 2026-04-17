@@ -97,7 +97,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 ### 场景概述
 
-开发者可以调用DeviceManager设备发现相关接口，获取周边可用的设备。
+开发者可以调用设备发现相关接口，获取周边可用的设备。
 
 ### 接口说明
 
