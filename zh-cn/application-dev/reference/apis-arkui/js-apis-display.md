@@ -394,8 +394,6 @@ ArkTS-Sta: getDisplayByIdSync(displayId: long): Display
 ArkTS-Dyn示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 try {
@@ -410,8 +408,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 try {
@@ -467,8 +463,6 @@ ArkTS-Sta: getBrightnessInfo(displayId: long): BrightnessInfo
 ArkTS-Dyn示例：
 
 ```ts 
-import { display } from '@kit.ArkUI';
-
 try {
   let brightNessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
@@ -480,8 +474,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 try {
   let brightNessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
@@ -525,7 +517,6 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let promise = display.getAllDisplayPhysicalResolution();
 promise.then((resolutionObjects: Array<display.DisplayPhysicalResolution>) => {
@@ -544,7 +535,6 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let promise = display.getAllDisplayPhysicalResolution();
 promise.then((resolutionObjects: Array<display.DisplayPhysicalResolution>) => {
@@ -592,7 +582,6 @@ getDefaultDisplaySync(): Display
 ArkTS-Dyn示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
@@ -605,7 +594,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
@@ -648,8 +636,6 @@ getPrimaryDisplaySync(): Display
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 displayClass = display.getPrimaryDisplaySync();
@@ -690,7 +676,6 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> = [];
 display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
@@ -707,7 +692,6 @@ display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
 ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 display.getAllDisplays((err: BusinessError | null, data: Array<display.Display> | undefined) => {
   const errCode = err?.code;
@@ -753,7 +737,6 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> =[];
 let promise: Promise<Array<display.Display>> = display.getAllDisplays();
@@ -769,7 +752,6 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> =[];
 let promise: Promise<Array<display.Display>> = display.getAllDisplays();
@@ -954,7 +936,6 @@ off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off("remove");
 
@@ -1032,7 +1013,6 @@ offAdd(callback?: Callback&lt;long&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.offAdd();
 
@@ -1066,7 +1046,6 @@ offRemove(callback?: Callback&lt;long&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.offRemove();
 
@@ -1100,7 +1079,6 @@ offChange(callback?: Callback&lt;long&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.offChange();
 
@@ -1141,8 +1119,6 @@ isFoldable(): boolean
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isFoldable();
 ```
@@ -1177,8 +1153,6 @@ getFoldStatus(): FoldStatus
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldStatus = display.getFoldStatus();
 console.info(`Succeeded in obtaining fold status. Data: ${data}`);
 ```
@@ -1215,8 +1189,6 @@ getFoldDisplayMode(): FoldDisplayMode
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldDisplayMode = display.getFoldDisplayMode();
 console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ```
@@ -1253,8 +1225,6 @@ getCurrentFoldCreaseRegion(): FoldCreaseRegion
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldCreaseRegion = display.getCurrentFoldCreaseRegion();
 console.info(`Succeeded in obtaining current fold crease region. Data: ${JSON.stringify(data)}`);
 ```
@@ -1396,6 +1366,7 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldStatusChange');
@@ -1438,6 +1409,7 @@ offFoldStatusChange(callback?: Callback&lt;FoldStatus&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.offFoldStatusChange();
@@ -1750,6 +1722,7 @@ off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): vo
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldAngleChange');
@@ -1792,6 +1765,7 @@ offFoldAngleChange(callback?: Callback&lt;Array&lt;double&gt;&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.offFoldAngleChange();
@@ -1920,6 +1894,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('captureStatusChange');
@@ -1962,6 +1937,7 @@ offCaptureStatusChange(callback?: Callback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.offCaptureStatusChange();
@@ -2003,8 +1979,6 @@ isCaptured(): boolean
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isCaptured();
 ```
@@ -2148,6 +2122,7 @@ off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): 
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldDisplayModeChange');
@@ -2192,6 +2167,7 @@ offFoldDisplayModeChange(callback?: Callback&lt;FoldDisplayMode&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.offFoldDisplayModeChange();
@@ -2563,8 +2539,6 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 ArkTS-Dyn示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let relativePosition: display.RelativePosition = {
   displayId: 0,
   position: {
@@ -2584,7 +2558,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
 
 let relativePosition: display.RelativePosition = {
   displayId: 0,
@@ -2646,8 +2619,6 @@ ArkTS-Sta: convertGlobalToRelativeCoordinate(position: Position, displayId?: lon
 ArkTS-Dyn示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let position: display.Position = {
     x: 100,
     y: 200
@@ -2663,7 +2634,6 @@ try {
 
 ArkTS-Sta示例：
 ```ts
-import { display } from '@kit.ArkUI';
 
 let position: display.Position = {
     x: 100,
@@ -3059,7 +3029,6 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
@@ -3079,7 +3048,6 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
@@ -3134,7 +3102,6 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -3182,7 +3149,6 @@ onAvailableAreaChange(callback: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -3236,7 +3202,6 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -3285,7 +3250,6 @@ offAvailableAreaChange(callback?: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -3331,8 +3295,6 @@ getLiveCreaseRegion(): FoldCreaseRegion
 ArkTS-Dyn示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
@@ -3346,7 +3308,6 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
