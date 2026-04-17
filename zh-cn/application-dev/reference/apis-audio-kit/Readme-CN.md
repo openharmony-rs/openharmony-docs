@@ -96,5 +96,5 @@
 - 错误码<!--audio-arkts-errcode-->
   - [Audio错误码](errorcode-audio.md)
   <!--Del-->
-  - [Ringtone错误码](errorcode-ringtone.md)
+  - [Ringtone错误码](errorcode-audio-ringtone-sys.md)
   <!--DelEnd-->
