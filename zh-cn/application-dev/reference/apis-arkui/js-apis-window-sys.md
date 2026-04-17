@@ -1891,7 +1891,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
 
-独立子窗不支持调用，调用报1300004错误码。
+独立子窗不支持调用，调用返回1300004错误码。
 
 > **说明：**
 >
@@ -1987,7 +1987,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
 
-独立子窗不支持调用，调用报1300004错误码。
+独立子窗不支持调用，调用返回1300004错误码。
 
 > **说明：**
 >

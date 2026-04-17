@@ -10529,7 +10529,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 该接口调用生效后，[setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled17)接口调用不生效。
 
-独立子窗不支持调用，调用报1300004错误码。
+独立子窗不支持调用，调用返回1300004错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
