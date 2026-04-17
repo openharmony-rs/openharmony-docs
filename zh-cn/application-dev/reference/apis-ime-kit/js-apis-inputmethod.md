@@ -990,7 +990,6 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 | text    | string            | 是   | 预览文本内容。                 |
 | range   | [Range](#range10) | 是   | 文本的选中范围。 |
 
-
 ## AttachFailureReason<sup>22+</sup>
 
 枚举，绑定失败的原因。
