@@ -370,7 +370,7 @@ function setExposureMeteringMode(photoSession: camera.PhotoSession, aeMeteringMo
 
 onExposureStateChange(callback: Callback\<ExposureState\>): void
 
-监听曝光状态变化。使用callback异步回调。
+监听曝光状态事件变更。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -406,7 +406,7 @@ function registerPhotoOutputCaptureStart(captureSession: camera.captureSession):
 
 offExposureStateChange(callback?: Callback<ExposureState>): void
 
-注销监听曝光状态变化。使用callback异步回调。
+注销监听曝光状态事件变更。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
