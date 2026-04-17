@@ -656,7 +656,6 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
 |   `ani_long`       | `Long`      | `C{std.core.Long}`    | `ani_object`     | Boxed long          |
 |   `ani_float`      | `Float`     | `C{std.core.Float}`   | `ani_object`     | Boxed float         |
 |   `ani_double`     | `Double`    | `C{std.core.Double}`  | `ani_object`     | Boxed double        |
-|   `ani_number`     | `Double`    | `C{std.core.Double}`  | `ani_object`     | double的别名         |
 |         -          | `Void`      | `C{std.core.Void}`    | `ani_object`     | 通常无意义           |
 
 
@@ -1313,7 +1312,7 @@ void NativeFuncImpl(ani_env* env, ani_object param) {
 如果你需要创建在多次 native 函数调用之间持久存在的全局引用，可以使用`GlobalReference_Create`：
 
 ```cpp
-ani_object g_obj;
+ani_ref g_obj;
 void OnEnterImpl(ani_env *env, ani_object param) {
     ani_object newObj {};
     if (env->Object_New(cls, ctor, &newObj) != ANI_OK) {
@@ -1392,7 +1391,7 @@ void HandleOneDataPacket(ani_env* env) {
 使用 LocalScope 管理作用域。为了避免手动管理每个对象的麻烦，并确保安全，推荐在循环体内部或处理函数的入口/出口使用 CreateLocalScope 和 DestroyLocalScope。
 
 ```cpp
-void BackgroundWorkerThread(JavaVM* vm) {
+void BackgroundWorkerThread(ani_vm* vm) {
     ani_env *env {nullptr};
     ani_option interopEnabled {"--interop=disable", nullptr};
     ani_options aniArgs {1, &interopEnabled};
@@ -1462,7 +1461,15 @@ auto status = vm->GetEnv(ANI_VERSION_1, &env);
 env->DetachCurrentThread();
 ```
 
-> 注意：只有通过`AttachCurrentThread`绑定的线程才可以`detach`
+> 注意：
+> 1. 只有通过`AttachCurrentThread`绑定的线程才可以调用`DetachCurrentThread`。
+> 2. 使用 `AttachCurrentThread` 绑定的线程通常没有稳定的 ArkTS 类加载上下文，因此不建议在该线程中直接调用 `FindClass`、`FindModule`、`FindNamespace`、`FindEnum` 等依赖上下文查找的接口。ArkTS 运行时会优先根据当前 ArkTS 栈帧所属类的类加载上下文执行查找，而通过 `AttachCurrentThread` 附加的 native 线程通常没有 ArkTS 栈帧，因此往往缺少应用代码对应的类加载上下文。
+>    
+>    ArkTS 运行时中的类加载上下文主要包括以下两类：
+>    - `boot context`：对应 boot panda files 中的类型，主要包括系统启动阶段已加载的 ETS 标准库和运行时基础类型，例如 `std.core.String`、`std.core.Object` 等。对于子线程，这部分内容通常可见，因此查找系统库类型通常可以成功。
+>    - 应用侧 `ClassLinkerContext`：用于加载 HAP/ABC 中的应用自定义代码，例如业务类、模块、命名空间和枚举。native 线程仅通过 `AttachCurrentThread` 附加时，由于没有 ArkTS 调用栈，通常无法自动定位到这部分上下文，因此查找应用自定义类、枚举、模块或命名空间时通常会失败。
+>
+>    如果子线程需要使用这些对象，建议在已有 ArkTS 调用栈的线程中先完成查找，并通过 `GlobalReference` 将所需的 `class`、`module`、`namespace`、`enum` 或实例对象传递给子线程复用，而不是在子线程中重新执行上下文相关查找。
 
 ## 10 多线程
 
