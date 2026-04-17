@@ -1,9 +1,9 @@
 # Repeat
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
