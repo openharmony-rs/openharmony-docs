@@ -7798,18 +7798,6 @@ getWindowLimitsVP(): WindowLimits
 
 **示例：**
 
-ArkTS-Dyn示例：
-
-```ts
-try {
-  let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
-} catch (exception) {
-  console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-ArkTS-Sta示例：
-
 ```ts
 try {
   let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
