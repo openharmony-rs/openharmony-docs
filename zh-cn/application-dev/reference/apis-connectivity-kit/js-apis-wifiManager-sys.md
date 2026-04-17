@@ -169,8 +169,8 @@ WLAN配置信息。
 | disableReason | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 禁用原因： <br /> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br /> 3 - DHCP失败，4 - 暂时无互联网连接 <br /> 5 - 认证无凭据，6 - 永久无互联网连接 <br /> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br /> 9 - 认证无订阅，10 - 私有EAP认证错误 <br /> 11 - 未找到网络，12 - 连续失败 <br /> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br /> 15 - 解除关联原因，16 - 禁用网络选择最大值<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | randomMacType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| ipType | [IpType](#iptype9) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| staticIp | [IpConfig](#ipconfig9) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| ipType | [IpType](#iptype) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | configStatus<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 17<br />**ArkTS-Sta起始版本：** 23|
@@ -372,7 +372,7 @@ connectToDevice(config: WifiDeviceConfig): void
 | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | chload | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | snr | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| suppState | [SuppState](#suppstate9) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | isHiLinkProNetwork | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
 | wifiTxRxValid | boolean | 否 | 是 | 用于指示 Wi-Fi 的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 26.0.0<br />**ArkTS-Sta起始版本：** 26.0.0|
 
@@ -1280,7 +1280,7 @@ setHotspotConfig(config: HotspotConfig): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [HotspotConfig](#hotspotconfig9) | 是 | 热点配置信息。 |
+  | config | [HotspotConfig](#hotspotconfig) | 是 | 热点配置信息。 |
 
 **错误码：**
 
@@ -1356,7 +1356,7 @@ getHotspotConfig(): HotspotConfig
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | [HotspotConfig](#hotspotconfig9) | 热点的配置信息。 |
+  | [HotspotConfig](#hotspotconfig) | 热点的配置信息。 |
 
 **错误码：**
 
@@ -1405,7 +1405,7 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 | 类型 | 说明 |
 | -------- | -------- |
-| &nbsp;Array&lt;[StationInfo](#stationinfo9)&gt; | 连接的设备数组。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的macAddress为真实设备地址，否则为随机设备地址。 |
+| &nbsp;Array&lt;[StationInfo](#stationinfo)&gt; | 连接的设备数组。如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的macAddress为真实设备地址，否则为随机设备地址。 |
 
 **错误码：**
 
@@ -1469,7 +1469,7 @@ addHotspotBlockList(stationInfo: StationInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| stationInfo | [StationInfo](#stationinfo9) | 是 | 将添加到热点的阻止列表中的设备。 |
+| stationInfo | [StationInfo](#stationinfo) | 是 | 将添加到热点的阻止列表中的设备。 |
 
 **错误码：**
 
@@ -1521,7 +1521,7 @@ delHotspotBlockList(stationInfo: StationInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| stationInfo | [StationInfo](#stationinfo9) | 是 | 将从热点的阻止列表中删除的设备。 |
+| stationInfo | [StationInfo](#stationinfo) | 是 | 将从热点的阻止列表中删除的设备。 |
 
 **错误码：**
 
@@ -1572,7 +1572,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| &nbsp;Array&lt;[StationInfo](#stationinfo9)&gt; | 热点的阻止列表。 |
+| &nbsp;Array&lt;[StationInfo](#stationinfo)&gt; | 热点的阻止列表。 |
 
 **错误码：**
 
@@ -2152,7 +2152,7 @@ onHotspotStaJoin(callback: Callback&lt;StationInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[StationInfo](#stationinfo9)&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
 
 **错误码：**
 
@@ -2236,7 +2236,7 @@ offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[StationInfo](#stationinfo9)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 
@@ -2304,7 +2304,7 @@ onHotspotStaLeave(callback: Callback&lt;StationInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;[StationInfo](#stationinfo9)&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 是 | 状态改变回调函数。返回接入的设备信息。 |
 
 **错误码：**
 
