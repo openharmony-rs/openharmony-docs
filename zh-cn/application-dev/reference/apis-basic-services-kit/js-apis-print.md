@@ -2200,7 +2200,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 添加打印机到系统中，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINTER_DRIVER
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

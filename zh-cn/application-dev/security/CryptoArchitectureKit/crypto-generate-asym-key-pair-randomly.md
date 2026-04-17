@@ -124,10 +124,10 @@
   
   function generateSM2KeySync() {
     // 创建一个AsyKeyGenerator实例
-    let rsaGenerator = cryptoFramework.createAsyKeyGenerator('SM2_256');
+    let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
     // 使用密钥生成器随机生成非对称密钥对
     try {
-      let keyPair = rsaGenerator.generateKeyPairSync();
+      let keyPair = sm2Generator.generateKeyPairSync();
       if (keyPair != null) {
         let pubKey = keyPair.pubKey;
         let priKey = keyPair.priKey;
