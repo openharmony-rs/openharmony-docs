@@ -5270,7 +5270,13 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 
 如果存在[on('windowWillClose')](#onwindowwillclose15)监听事件，只响应[on('windowWillClose')](#onwindowwillclose15)接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubWindowClose](#onsubwindowclose23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5306,13 +5312,69 @@ try {
 }
 ```
 
+## onSubWindowClose<sup>23+</sup>
+
+onSubWindowClose(callback: Callback&lt;void&gt;): void
+
+开启子窗口关闭事件的监听。此监听仅在点击系统提供的右上角关闭按钮关闭子窗时触发，其余关闭方式不触发回调。
+
+当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
+
+该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[onWindowWillClose](#onwindowwillclose23)方法。
+
+如果存在[onWindowWillClose](#onwindowwillclose23)监听事件，只响应[onWindowWillClose](#onwindowwillclose23)接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('subWindowClose')](#onsubwindowclose12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+const callback = () => {
+  // ...
+  console.info('Sub Window Close happened');
+}
+try {
+  windowClass.onSubWindowClose(callback);
+} catch (err: Error) {
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('subWindowClose')<sup>12+</sup>
 
 off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 
 关闭子窗口关闭事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSubWindowClose](#offsubwindowclose23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5351,6 +5413,52 @@ try {
 }
 ```
 
+## offSubWindowClose<sup>23+</sup>
+
+offSubWindowClose(callback?: Callback&lt;void&gt;): void
+
+关闭子窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('subWindowClose')](#offsubwindowclose12)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。当点击子窗口右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑的返回值决定当前子窗是否继续关闭，如果返回boolean类型的true表示不关闭子窗，返回false或者其他非boolean类型表示关闭子窗。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有子窗口关闭的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+const callback = () => {
+  // ...
+}
+try {
+  windowClass.onSubWindowClose(callback);
+  windowClass.offSubWindowClose(callback);
+  // 如果通过onSubWindowClose开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offSubWindowClose();
+} catch (err: Error) {
+  console.error(`Failed to register or unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('windowWillClose')<sup>15+</sup>
 
 on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
@@ -5359,9 +5467,15 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[on('subWindowClose')](#onsubwindowclose12)方法。主窗口的同步关闭事件监听参考[on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14)方法。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose23)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 15
 
 **设备行为差异：**
 
@@ -5416,11 +5530,81 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## onWindowWillClose<sup>23+</sup>
+
+onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
+
+开启主窗口或子窗口关闭事件的监听。此监听仅能通过系统提供的窗口标题栏关闭按键触发，其余关闭窗口的方式不触发回调。
+
+该接口触发的回调函数是异步执行。子窗口的同步关闭事件监听参考[onSubWindowClose](#onsubwindowclose23)方法。主窗口的同步关闭事件监听参考[onWindowStageClose](arkts-apis-window-WindowStage.md#onwindowstageclose14)方法。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowWillClose')](#onwindowwillclose15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 是   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    const callback = () => {
+      // ...
+      return new Promise<boolean>((resolve, reject) => {
+        // 是否关闭该窗口
+        let result: boolean = true;
+        resolve(result);
+      });
+    }
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      console.info('Succeeded in on the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## off('windowWillClose')<sup>15+</sup>
 
 off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 用于关闭主窗口或子窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -5431,6 +5615,8 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -5482,13 +5668,86 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## offWindowWillClose<sup>23+</sup>
+
+offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
+
+用于关闭主窗口或子窗口关闭事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowWillClose')](#offwindowwillclose15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;void, Promise&lt;boolean&gt;&gt; | 否   | 回调函数。当点击窗口系统提供的右上角关闭按钮事件发生时的回调。该回调函数不返回任何参数。回调函数内部逻辑需要有Promise&lt;boolean&gt;类型的返回值。在返回的Promise函数里，执行resolve(true) 方法表示不关闭当前窗口，执行resolve(false) 方法或者reject方法均表示关闭当前窗口。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+      const callback = () => {
+        // ...
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      windowClass.onWindowWillClose(callback);
+      windowClass.offWindowWillClose(callback);
+      // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+      windowClass.offWindowWillClose();
+      console.info('Succeeded in off the window will close');
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## on('windowHighlightChange')<sup>15+</sup>
 
 on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;): void
 
 开启窗口激活态变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowHighlightChange](#onwindowhighlightchange23)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 15
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5522,13 +5781,64 @@ try {
 }
 ```
 
+## onWindowHighlightChange<sup>23+</sup>
+
+onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
+
+开启窗口激活态变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowHighlightChange')](#onwindowhighlightchange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。当本窗口的激活态发生变化时的回调。回调函数返回boolean类型参数。当返回参数为true表示激活态；false表示非激活态。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.onWindowHighlightChange((data: boolean) => {
+    console.info(`Window highlight Change: ${data}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('windowHighlightChange')<sup>15+</sup>
 
 off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭窗口激活态变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowHighlightChange](#offwindowhighlightchange23)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 15
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -5568,6 +5878,55 @@ try {
 }
 ```
 
+## offWindowHighlightChange<sup>23+</sup>
+
+offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭窗口激活态变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowhighlightchange15)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。当本窗口的激活态发生变化时的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口激活态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onWindowHighlightChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowHighlightChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowHighlightChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('rotationChange')<sup>19+</sup>
 
 on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | void&gt;): void
@@ -5578,7 +5937,13 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRotationChange](#onrotationchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
 
 **设备行为差异：**
 
@@ -5679,6 +6044,92 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## onRotationChange()<sup>23+</sup>
+
+onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | undefined&gt;): void
+
+开启窗口旋转变化的监听。[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)中窗口旋转事件类型为窗口即将旋转时，必须返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。窗口旋转事件类型为窗口旋转结束时返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)不生效。
+
+该函数只允许在主线程注册。同一个窗口多次注册同类型回调函数，只生效最新注册的同类型回调函数返回值。系统提供了超时保护机制，若20ms内窗口未返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)，系统不处理该返回值。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('rotationChange')](#onrotationchange19)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：**
+
+针对PC/2in1设备：可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 是 | 回调函数。返回窗口旋转信息[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，应用返回当前窗口变化结果[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@Kit.BasicServicesKit';
+
+const calculateRect = (info: window.RotationChangeInfo): window.Rect => {
+    // calculate result with info
+    let rect : window.Rect = {
+      left: 0,
+      top: 0,
+      width: 500,
+      height: 600,
+    }
+    return rect;
+}
+
+const callback = (info: window.RotationChangeInfo): window.RotationChangeResult | undefined => {
+  let result: window.RotationChangeResult = {
+    rectType: window.RectType.RELATIVE_TO_SCREEN,
+    windowRect: {
+      left: 0,
+      top: 0,
+      width: 0,
+      height: 0,
+    }
+  };
+  if (info.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+      result.rectType = window.RectType.RELATIVE_TO_SCREEN;
+      result.windowRect = calculateRect(info);
+      return result;
+  } else {
+      // do something after rotate
+      return undefined;
+  }
+}
+
+try {
+  windowClass?.onRotationChange(callback);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('rotationChange')<sup>19+</sup>
 
 off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | void&gt;): void
@@ -5687,7 +6138,13 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRotationChange](#offrotationchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 19
 
 **设备行为差异：**
 
@@ -5732,6 +6189,65 @@ try {
 }
 ```
 
+## offRotationChange<sup>23+</sup>
+
+offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | undefined&gt;): void
+
+关闭窗口旋转变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('rotationChange')](#offrotationchange19)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：**
+
+针对PC/2in1设备：可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | RotationChangeCallback&lt;[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@Kit.BasicServicesKit';
+
+const callback = (info: window.RotationChangeInfo): window.RotationChangeResult | undefined => {
+  // ...
+  return undefined;
+}
+try {
+  windowClass?.offRotationChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听。
+  windowClass?.offRotationChange();
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('uiExtensionSecureLimitChange')<sup>20+</sup>
 
 on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;): void
@@ -5740,7 +6256,13 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onUiExtensionSecureLimitChange](#onuiextensionsecurelimitchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -5771,6 +6293,49 @@ try {
 }
 ```
 
+## onUiExtensionSecureLimitChange<sup>23+</sup>
+
+onUiExtensionSecureLimitChange(callback: Callback&lt;boolean&gt;): void
+
+开启窗口内uiExtension安全限制变化事件的监听, 建议在窗口创建后立即监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('uiExtensionSecureLimitChange')](#onuiextensionsecurelimitchange20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。当窗口内uiExtension安全限制变化时触发回调。当返回参数为true表示窗口内uiExtension开启了隐藏不安全窗口；当返回参数为false表示窗口内uiExtension关闭了隐藏不安全窗口。若窗口内存在多个uiExtension，当返回参数为true表示窗口内至少一个uiExtension开启了隐藏不安全窗口；当返回参数为false表示窗口内所有uiExtension关闭了隐藏不安全窗口。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported.Function on('uiExtensionSecureLimitChange') can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onUiExtensionSecureLimitChange((data: boolean) => {
+    console.info(`Window secure limit Change: ${data}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('uiExtensionSecureLimitChange')<sup>20+</sup>
 
 off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt;): void
@@ -5779,7 +6344,13 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offUiExtensionSecureLimitChange](#offuiextensionsecurelimitchange23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -5816,6 +6387,55 @@ try {
 }
 ```
 
+## offUiExtensionSecureLimitChange<sup>23+</sup>
+
+offUiExtensionSecureLimitChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭窗口内uiextension安全限制变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('uiExtensionSecureLimitChange')](#offuiextensionsecurelimitchange20)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口安全限制变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported.Function off('uiExtensionSecureLimitChange') can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onUiExtensionSecureLimitChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offUiExtensionSecureLimitChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offUiExtensionSecureLimitChange();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isWindowSupportWideGamut<sup>9+</sup>
 
 isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
@@ -5823,6 +6443,10 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 判断当前窗口是否支持广色域模式，使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5842,6 +6466,8 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5849,6 +6475,21 @@ windowClass.isWindowSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether the window support WideGamut Data: ${data}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.isWindowSupportWideGamut((err: BusinessError<void> | null, data) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to check whether the window support WideGamut. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info(`Succeeded in checking whether the window support WideGamut Data: ${data}`);
@@ -5864,6 +6505,10 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5881,6 +6526,8 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5888,6 +6535,19 @@ let promise = windowClass.isWindowSupportWideGamut();
 promise.then((data) => {
   console.info(`Succeeded in checking whether the window support WideGamut. Data: ${data}`);
 }).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.isWindowSupportWideGamut();
+promise.then((data) => {
+  console.info(`Succeeded in checking whether the window support WideGamut. Data: ${data}`);
+}).catch((err: Error) => {
   console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -5901,6 +6561,10 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5920,6 +6584,8 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5937,6 +6603,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError<void> | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set window colorspace. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting window colorspace.');
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set window colorspace. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## setWindowColorSpace<sup>9+</sup>
 
 setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
@@ -5946,6 +6632,10 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5970,6 +6660,8 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5985,6 +6677,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise = windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT);
+  promise.then(() => {
+    console.info('Succeeded in setting window colorspace.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set window colorspace. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set window colorspace. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
 ## getWindowColorSpace<sup>9+</sup>
 
 getWindowColorSpace(): ColorSpace
@@ -5994,6 +6705,10 @@ getWindowColorSpace(): ColorSpace
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6011,6 +6726,8 @@ getWindowColorSpace(): ColorSpace
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6019,6 +6736,20 @@ try {
   console.info(`Succeeded in getting the window color space. ColorSpace: ${colorSpace}`);
 } catch (exception) {
   console.error(`Failed to get the window color space. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let colorSpace = windowClass.getWindowColorSpace();
+  console.info(`Succeeded in getting the window color space. ColorSpace: ${colorSpace}`);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to get the window color space. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -6036,6 +6767,10 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6051,6 +6786,8 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6076,6 +6813,20 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let color1: string = '#00FF33';
+let color2: ColorMetrics = ColorMetrics.numeric(0xff112233);
+try {
+  windowClass.setWindowBackgroundColor(color1);
+  windowClass.setWindowBackgroundColor(color2);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the background color. Cause code: ${error.code}, message: ${error.message}`);
+};
+```
+
 ## setWindowShadowEnabled<sup>20+</sup>
 
 setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
@@ -6087,6 +6838,10 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 **设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6153,7 +6908,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setWindowBrightness<sup>9+</sup>
 
-setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setWindowBrightness(brightness: double, callback: AsyncCallback&lt;void&gt;): void
 
 主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用callback异步回调。
 
@@ -6175,11 +6932,15 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                        |
 | ---------- | ------------------------- | -- |-------------------------------------------|
-| brightness | number                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | ArkTS-Dyn: number <br> ArkTS-Sta: double                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 | callback   | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
 
 **错误码：**
@@ -6193,6 +6954,8 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -6236,9 +6999,49 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      windowClass = data;
+      let brightness: double = 1.0;
+      try {
+        windowClass!.setWindowBrightness(brightness, (err: BusinessError<void> | null) => {
+          const errCode = err?.code;
+          if (errCode) {
+            console.error(`Failed to set the brightness. Cause code: ${err?.code}, message: ${err?.message}`);
+            return;
+          }
+          console.info('Succeeded in setting the brightness.');
+        });
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to set the brightness. Cause code: ${error.code}, message: ${error.message}`);
+      }
+    });
+  }
+}
+```
+
 ## setWindowBrightness<sup>9+</sup>
 
-setWindowBrightness(brightness: number): Promise&lt;void&gt;
+ArkTS-Dyn: setWindowBrightness(brightness: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setWindowBrightness(brightness: double): Promise&lt;void&gt;
 
 主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用Promise异步回调。
 
@@ -6260,11 +7063,15 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | ---------- | ------ | -- |----------------------------------------|
-| brightness | number | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 
 **返回值：**
 
@@ -6283,6 +7090,8 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -6324,6 +7133,42 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError<void> | null, data) => {
+      const errCode = err?.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      windowClass = data;
+      let brightness: double = 1.0;
+      try {
+        let promise = windowClass!.setWindowBrightness(brightness);
+        promise.then(() => {
+          console.info('Succeeded in setting the brightness.');
+        }).catch((err: Error) => {
+          console.error(`Failed to set the brightness. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        let error = exception as BusinessError;
+        console.error(`Failed to set the brightness. Cause code: ${error.code}, message: ${error.message}`);
+      }
+    });
+  }
+}
+```
+
 ## setWindowFocusable<sup>9+</sup>
 
 setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -6335,6 +7180,10 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6355,6 +7204,8 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6373,6 +7224,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocusable: boolean = true;
+try {
+  windowClass.setWindowFocusable(isFocusable, (err: BusinessError<void> | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set the window to be focusable. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the window to be focusable.');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setWindowFocusable<sup>9+</sup>
 
 setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
@@ -6384,6 +7256,10 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6409,6 +7285,8 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6425,6 +7303,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isFocusable: boolean = true;
+try {
+  let promise = windowClass.setWindowFocusable(isFocusable);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be focusable.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the window to be focusable. Cause code: ${err?.code}, message: ${err?.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setWindowKeepScreenOn<sup>9+</sup>
 
 setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -6436,6 +7333,10 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&g
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6456,6 +7357,8 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&g
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6474,6 +7377,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isKeepScreenOn: boolean = true;
+try {
+  windowClass.setWindowKeepScreenOn(isKeepScreenOn, (err: BusinessError<void> | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set the screen to be always on. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the screen to be always on.');
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the screen to be always on. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## setWindowKeepScreenOn<sup>9+</sup>
 
 setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
@@ -6485,6 +7409,10 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6510,6 +7438,8 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6523,6 +7453,25 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set the screen to be always on. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isKeepScreenOn: boolean = true;
+try {
+  let promise = windowClass.setWindowKeepScreenOn(isKeepScreenOn);
+  promise.then(() => {
+    console.info('Succeeded in setting the screen to be always on.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the screen to be always on. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the screen to be always on. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -6544,6 +7493,10 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 **需要权限：** ohos.permission.PRIVACY_WINDOW
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -6562,6 +7515,8 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6577,6 +7532,27 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set the window to privacy mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isPrivacyMode: boolean = true;
+try {
+  windowClass.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError<void> | null) => {
+    const errCode = err?.code;
+    if (errCode) {
+      console.error(`Failed to set the window to privacy mode. Cause code: ${err?.code}, message: ${err?.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the window to privacy mode.');
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the window to privacy mode. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -6597,6 +7573,10 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.PRIVACY_WINDOW
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6621,6 +7601,8 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6637,6 +7619,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isPrivacyMode: boolean = true;
+try {
+  let promise = windowClass.setWindowPrivacyMode(isPrivacyMode);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to privacy mode.');
+  }).catch((err: Error) => {
+    console.error(`Failed to set the window to privacy mode. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to set the window to privacy mode. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## setWindowTouchable<sup>9+</sup>
 
 setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -6648,6 +7649,10 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6668,6 +7673,8 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6686,6 +7693,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isTouchable = true;
+try {
+  windowClass.setWindowTouchable(isTouchable, (err: BusinessError<void> | null) => {
+    if (err & err.code) {
+      console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting the window to be touchable.');
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setWindowTouchable<sup>9+</sup>
 
 setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
@@ -6697,6 +7724,10 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6722,6 +7753,8 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6738,6 +7771,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isTouchable: boolean = true;
+try {
+  let promise = windowClass.setWindowTouchable(isTouchable);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be touchable.');
+  }).catch((err) => {
+    console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## snapshot<sup>9+</sup>
 
 snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
@@ -6747,6 +7799,10 @@ snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6764,6 +7820,8 @@ snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -6779,6 +7837,23 @@ windowClass.snapshot((err: BusinessError, pixelMap: image.PixelMap) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+windowClass.snapshot((err: BusinessError<void> | null, pixelMap: image.PixelMap | undefined) => {
+  const errCode = err?.code;
+  if (errCode) {
+    console.error(`Failed to snapshot window. Cause code: ${err?.code}, message: ${err?.message}`);
+    return;
+  }
+  console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap?.getPixelBytesNumber());
+  pixelMap?.release(); // PixelMap使用完后及时释放内存
+});
+```
+
 ## snapshot<sup>9+</sup>
 
 snapshot(): Promise&lt;image.PixelMap&gt;
@@ -6788,6 +7863,10 @@ snapshot(): Promise&lt;image.PixelMap&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6805,6 +7884,8 @@ snapshot(): Promise&lt;image.PixelMap&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -6818,6 +7899,22 @@ promise.then((pixelMap: image.PixelMap) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+let promise = windowClass.snapshot();
+promise.then((pixelMap: image.PixelMap) => {
+  console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+  pixelMap.release(); // PixelMap使用完后及时释放内存
+}).catch((err: Error) => {
+  console.error(`Failed to snapshot window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
 ## snapshotSync<sup>20+</sup>
 
 snapshotSync(): image.PixelMap
@@ -6827,6 +7924,10 @@ snapshotSync(): image.PixelMap
 Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6869,6 +7970,10 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -6886,6 +7991,8 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -6899,9 +8006,26 @@ promise.then((pixelMap: image.PixelMap) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+let promise = windowClass.snapshotIgnorePrivacy();
+promise.then((pixelMap: image.PixelMap) => {
+  console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+  pixelMap.release(); // PixelMap使用完后及时释放内存
+}).catch((err: Error) => {
+  console.error(`Failed to snapshot window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## setAspectRatio<sup>10+</sup>
 
-setAspectRatio(ratio: number): Promise&lt;void&gt;
+ArkTS-Dyn: setAspectRatio(ratio: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setAspectRatio(ratio: double): Promise&lt;void&gt;
 
 设置窗口内容布局（不含边框和标题栏等装饰）的比例，使用Promise异步回调。
 
@@ -6917,11 +8041,15 @@ setAspectRatio(ratio: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名             | 类型    | 必填 | 说明                                        |
 | ------------------ | ------- | ---- |-------------------------------------------|
-| ratio | number | 是   | 窗口内容布局（不含边框和标题栏等装饰）的宽高比。该参数为浮点数，受窗口最大最小尺寸限制，比例值下限为最小宽度/最大高度，上限为最大宽度/最小高度。窗口最大最小尺寸由[WindowLimits](arkts-apis-window-i.md#windowlimits11)和系统限制的交集决定，系统限制优先级高于[WindowLimits](arkts-apis-window-i.md#windowlimits11)。ratio的有效范围会随[WindowLimits](arkts-apis-window-i.md#windowlimits11)变化而变化。如果先设置了[WindowLimits](arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码；如果先设置了ratio，后设置的[WindowLimits](arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。 |
+| ratio | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 窗口内容布局（不含边框和标题栏等装饰）的宽高比。该参数为浮点数，受窗口最大最小尺寸限制，比例值下限为最小宽度/最大高度，上限为最大宽度/最小高度。窗口最大最小尺寸由[WindowLimits](arkts-apis-window-i.md#windowlimits11)和系统限制的交集决定，系统限制优先级高于[WindowLimits](arkts-apis-window-i.md#windowlimits11)。ratio的有效范围会随[WindowLimits](arkts-apis-window-i.md#windowlimits11)变化而变化。如果先设置了[WindowLimits](arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码；如果先设置了ratio，后设置的[WindowLimits](arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。 |
 
 **返回值：**
 
@@ -6940,6 +8068,8 @@ setAspectRatio(ratio: number): Promise&lt;void&gt;
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -6971,9 +8101,43 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
+    if (!windowClass) {
+      console.info('windowClass is null');
+    }
+    try {
+      let ratio = 1.0;
+      let promise = windowClass.setAspectRatio(ratio);
+      promise.then(() => {
+        console.info('Succeeded in setting aspect ratio of window.');
+      }).catch((err: Error) => {
+        console.error(`Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## setAspectRatio<sup>10+</sup>
 
-setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setAspectRatio(ratio: double, callback: AsyncCallback&lt;void&gt;): void
 
 设置窗口内容布局（不含边框和标题栏等装饰）的比例，使用callback异步回调。
 
@@ -6989,11 +8153,15 @@ setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名             | 类型    | 必填 | 说明                                         |
 | ------------------ | ------- | ---- |--------------------------------------------|
-| ratio | number | 是   | 窗口内容布局（不含边框和标题栏等装饰）的宽高比。该参数为浮点数，受窗口最大最小尺寸限制，比例值下限为最小宽度/最大高度，上限为最大宽度/最小高度。窗口最大最小尺寸由[WindowLimits](arkts-apis-window-i.md#windowlimits11)和系统限制的交集决定，系统限制优先级高于[WindowLimits](arkts-apis-window-i.md#windowlimits11)。ratio的有效范围会随[WindowLimits](arkts-apis-window-i.md#windowlimits11)变化而变化。如果先设置了[WindowLimits](arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码；如果先设置了ratio，后设置的[WindowLimits](arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。 |
+| ratio | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 窗口内容布局（不含边框和标题栏等装饰）的宽高比。该参数为浮点数，受窗口最大最小尺寸限制，比例值下限为最小宽度/最大高度，上限为最大宽度/最小高度。窗口最大最小尺寸由[WindowLimits](arkts-apis-window-i.md#windowlimits11)和系统限制的交集决定，系统限制优先级高于[WindowLimits](arkts-apis-window-i.md#windowlimits11)。ratio的有效范围会随[WindowLimits](arkts-apis-window-i.md#windowlimits11)变化而变化。如果先设置了[WindowLimits](arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码；如果先设置了ratio，后设置的[WindowLimits](arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                      |
 
 **错误码：**
@@ -7007,6 +8175,8 @@ setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -7038,12 +8208,46 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
+    if (!windowClass) {
+      console.info('Failed to load the content. Cause: windowClass is null');
+    }
+    try {
+      let ratio = 1.0;
+      windowClass.setAspectRatio(ratio, (err: BusinessError<void> | null) => {
+        if (err?.code) {
+          console.error(`Failed to set the aspect ratio of window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in setting the aspect ratio of window.');
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
 ```
 
 ## setContentAspectRatio<sup>21+</sup>
 
-setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: boolean): Promise&lt;void&gt;
+ArkTS-Dyn: setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: boolean): Promise&lt;void&gt;
+
+ArkTS-Sta: setContentAspectRatio(ratio: double, isPersistent?: boolean, needUpdateRect?: boolean): Promise&lt;void&gt;
 
 设置窗口内容布局（不含边框和标题栏等装饰）的比例，使用Promise异步回调。
 
@@ -7059,11 +8263,15 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                        |
 | --- | ------- | ---- |-------------------------------------------|
-| ratio | number | 是   | 窗口内容布局（不含边框和标题栏等装饰）的宽高比。该参数为浮点数，受窗口最大最小尺寸限制，比例值下限为最小宽度/最大高度，上限为最大宽度/最小高度。窗口最大最小尺寸由[WindowLimits](arkts-apis-window-i.md#windowlimits11)和系统限制的交集决定，系统限制优先级高于[WindowLimits](arkts-apis-window-i.md#windowlimits11)。ratio的有效范围会随[WindowLimits](arkts-apis-window-i.md#windowlimits11)变化而变化。如果先设置了[WindowLimits](arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码；如果先设置了ratio，后设置的[WindowLimits](arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。|
+| ratio | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 窗口内容布局（不含边框和标题栏等装饰）的宽高比。该参数为浮点数，受窗口最大最小尺寸限制，比例值下限为最小宽度/最大高度，上限为最大宽度/最小高度。窗口最大最小尺寸由[WindowLimits](arkts-apis-window-i.md#windowlimits11)和系统限制的交集决定，系统限制优先级高于[WindowLimits](arkts-apis-window-i.md#windowlimits11)。ratio的有效范围会随[WindowLimits](arkts-apis-window-i.md#windowlimits11)变化而变化。如果先设置了[WindowLimits](arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码；如果先设置了ratio，后设置的[WindowLimits](arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。|
 | isPersistent | boolean | 否 | 是否持久化保存该比例参数。<br/>如为`true`，比例参数会持久化保存，销毁窗口、关闭应用或重启设备后，当再次切换到自由悬浮窗口模式时仍然生效。可通过[resetAspectRatio](#resetaspectratio10)清除持久化保存的比例参数。<br/>如为`false`，比例参数仅对当前窗口生效，窗口销毁后清除该数据。<br/>默认值为`true`。|
 | needUpdateRect | boolean | 否 | 是否立即根据当前比例更新窗口大小。<br/>如为`true`，立即根据当前比例更新窗口大小。<br/>如为`false`，窗口将在拖拽缩放时根据当前比例更新，也可以使用[resize](#resize9)或[resizeAsync](#resizeasync12)进行主动更新。<br/>默认值为`true`。|
 
@@ -7086,6 +8294,8 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // EntryAbility.ets
@@ -7112,6 +8322,32 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      let windowClass = windowStage.getMainWindowSync();
+      let ratio = 1.0;
+      let promise = windowClass.setContentAspectRatio(ratio, true, true);
+      promise.then(() => {
+        console.info('Succeeded in setting aspect ratio of window.');
+      }).catch((err: Error) => {
+        console.error(`Failed to set the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to set the aspect ratio of window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
 ## resetAspectRatio<sup>10+</sup>
 
 resetAspectRatio(): Promise&lt;void&gt;
@@ -7123,6 +8359,10 @@ resetAspectRatio(): Promise&lt;void&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7140,6 +8380,8 @@ resetAspectRatio(): Promise&lt;void&gt;
 | 1300004 | Unauthorized operation.                      |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -7170,6 +8412,37 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
+    if (!windowClass) {
+      console.info('Failed to load the content. Cause: windowClass is null');
+    }
+    try {
+      let promise = windowClass.resetAspectRatio();
+      promise.then(() => {
+        console.info('Succeeded in resetting aspect ratio of window.');
+      }).catch((err: Error) => {
+        console.error(`Failed to reset the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to reset the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## resetAspectRatio<sup>10+</sup>
 
 resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
@@ -7181,6 +8454,10 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7198,6 +8475,8 @@ resetAspectRatio(callback: AsyncCallback&lt;void&gt;): void
 | 1300004 | Unauthorized operation.                      |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
@@ -7230,6 +8509,38 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
+    if (!windowClass) {
+      console.info('Failed to load the content. Cause: windowClass is null');
+    }
+    try {
+      windowClass.resetAspectRatio((err: BusinessError<void> | null) => {
+        if (err?.code) {
+          console.error(`Failed to reset the aspect ratio of window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        console.info('Succeeded in resetting aspect ratio of window.');
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to reset the aspect ratio of window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## minimize<sup>11+</sup>
 
 minimize(callback: AsyncCallback&lt;void&gt;): void
@@ -7245,6 +8556,10 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7264,6 +8579,8 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7271,6 +8588,20 @@ windowClass.minimize((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in minimizing the window.');
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+windowClass.minimize((err: BusinessError<void> | null): void => {
+  if (err?.code) {
+    console.error(`Failed to minimize the window. Cause code: ${err?.code}, message: ${err?.message}`);
     return;
   }
   console.info('Succeeded in minimizing the window.');
@@ -7293,6 +8624,10 @@ minimize(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -7311,6 +8646,8 @@ minimize(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7318,6 +8655,19 @@ let promise = windowClass.minimize();
 promise.then(() => {
   console.info('Succeeded in minimizing the window.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.minimize();
+promise.then(() => {
+  console.info('Succeeded in minimizing the window.');
+}).catch((err: Error) => {
   console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -7332,6 +8682,10 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7358,6 +8712,7 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -7389,6 +8744,36 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError<void> | null, windowClass) => {
+      if (err?.code) {
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      if (windowClass != undefined) {
+        let promise = windowClass.maximize();
+        promise.then(() => {
+        console.info('Succeeded in maximizing the window.');
+        }).catch((err: Error) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      }
+    });
+  }
+};
+```
+
 ## maximize<sup>22+</sup>
 
 maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&lt;void&gt;
@@ -7396,6 +8781,10 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 实现最大化功能。主窗口可调用此接口实现最大化功能；子窗口需在创建时设置子窗口参数maximizeSupported为true，再调用此接口可实现最大化功能。在具备折叠功能的2in1设备上，支持控制悬停态（参考[折叠屏悬停态最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-folded-hover)）下主窗口的瀑布流模式行为，即窗口在悬停态下最大化时是否跨上下两个半屏显示。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
 
@@ -7425,6 +8814,8 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -7450,6 +8841,34 @@ export default class EntryAbility extends UIAbility {
     });
   }
 };
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err: BusinessError | null) => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err?.code}, message: ${err?.message}`);
+        return;
+      }
+      let mainWindow = windowStage.getMainWindowSync();
+      mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE, true)
+        .then(() => {
+          console.info('Window maximized successfully.');
+        })
+        .catch((err: Error) => {
+          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+    });
+  }
+}
 ```
 
 ## setResizeByDragEnabled<sup>14+</sup>
