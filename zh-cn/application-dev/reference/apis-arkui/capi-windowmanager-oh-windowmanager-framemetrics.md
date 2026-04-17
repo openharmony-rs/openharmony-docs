@@ -1,4 +1,10 @@
 # OH_WindowManager_FrameMetrics
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ```c
 typedef struct OH_WindowManager_FrameMetrics OH_WindowManager_FrameMetrics
