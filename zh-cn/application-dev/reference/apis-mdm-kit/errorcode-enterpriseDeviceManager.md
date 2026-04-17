@@ -667,7 +667,7 @@ The application has not been added to the Dock.
 
 请检查需要从快捷栏中移除的应用包名是否填写正确。
 
-## 9201017 激活SIM或去激活SIM卡失败
+## 9201017 启用SIM或停用SIM卡失败
 
 **错误信息**
 
@@ -675,11 +675,11 @@ SIM card activation or deactivation failed.
 
 **错误描述**
 
-激活SIM或去激活SIM卡失败。
+启用SIM或停用SIM卡失败。
 
 **可能原因**
 
-该错误码表示激活或去激活SIM卡失败，可能原因如下。
+该错误码表示启用SIM或停用SIM卡失败，可能原因如下。
 
 1. 未关闭飞行模式。
 2. 未插入SIM卡。
