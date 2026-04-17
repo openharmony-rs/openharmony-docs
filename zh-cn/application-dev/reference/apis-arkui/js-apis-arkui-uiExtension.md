@@ -39,7 +39,7 @@ UIExtension宿主窗代理。
 
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
-获取宿主应用窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
+获取宿主应用窗口内容避让的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,7 +157,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 
-注册系统规避区变化的监听。
+注册系统避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -171,7 +171,7 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 是 | 回调函数：入参用于接收当前规避区的信息。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 是 | 回调函数：入参用于接收当前避让区的信息。 |
 
 **示例：**
 
@@ -243,7 +243,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
-注销系统规避区变化的监听。
+注销系统避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -257,7 +257,7 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ---- | ---- | ---  |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
 
 **示例：**
 
@@ -1010,9 +1010,10 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     // 占用事件
     setTimeout(() => {
       try {
-        let promise = extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
+        let promise =
+          extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
         promise.then(() => {
-          console.info(`Successed in occupy events`);
+          console.info(`Succeeded in occupying events`);
         }).catch((err) => {
           let error = err as BusinessError;
           console.error(`Failed to occupy events. Cause code: ${error.code}, message: ${error.message}`);
@@ -1397,10 +1398,10 @@ struct Extension {
         let rect = this.extensionWindow?.properties.uiExtensionHostWindowProxyRect;
         console.info(`EmbeddedComponent的位置和尺寸信息: ${JSON.stringify(rect)}`);
       })
-      Button("获取系统规避区信息").width('90%').margin({ top: 5, bottom: 5 } as Margin).fontSize(16).onClick(() => {
+      Button("获取系统避让区信息").width('90%').margin({ top: 5, bottom: 5 } as Margin).fontSize(16).onClick(() => {
         let avoidArea: window.AvoidArea | undefined =
           this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-        console.info(`系统规避区: ${JSON.stringify(avoidArea)}`);
+        console.info(`系统避让区: ${JSON.stringify(avoidArea)}`);
       })
       Button("创建子窗口").width('90%').margin({ top: 5, bottom: 5 } as Margin).fontSize(16).onClick(() => {
         let subWindowOpts: window.SubWindowOptions = {

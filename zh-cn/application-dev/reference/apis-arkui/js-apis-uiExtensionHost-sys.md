@@ -44,7 +44,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
-获取宿主应用窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
+获取宿主应用窗口内容避让的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,7 +140,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
-注册系统规避区变化的监听。
+注册系统避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -156,7 +156,7 @@ onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 是 | 回调函数：入参用于接收当前规避区的信息。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 是 | 回调函数：入参用于接收当前避让区的信息。 |
 
 
 **示例：**
@@ -241,7 +241,7 @@ offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[uiExtension.AvoidAreaInfo](./js-apis-arkui-uiExtension.md#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
 
 **示例：**
 
@@ -1300,9 +1300,9 @@ export default class EntryAbility extends UIExtensionAbility {
           let rect = this.extensionHostWindow?.properties.uiExtensionHostWindowProxyRect;
           console.info(`UIExtensionComponent的宽高和位置信息: ${JSON.stringify(rect)}`);
         })
-        Button("获取系统规避区信息").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
+        Button("获取系统避让区信息").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`系统规避区: ${JSON.stringify(avoidArea)}`);
+          console.info(`系统避让区: ${JSON.stringify(avoidArea)}`);
         })
         Button("创建子窗口").width('90%').margin({top: 5, bottom: 5} as Margin).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {
