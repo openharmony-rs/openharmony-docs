@@ -51513,5 +51513,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/use-napi-load-module.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"napi_load_module_napi_init",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/ets/Test.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"napi_load_module_napi_test",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/build-profile.json5",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"napi_load_module_napi_build",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/cpp/file.cpp",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"napi_load_module_napi_file",
+						"start_line":18
+					}
+				]
+			}
+		]
 	}
 ]
