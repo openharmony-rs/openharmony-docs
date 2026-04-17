@@ -521,7 +521,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
-以下示例以绑定WIFI网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
+以下示例以绑定WIFI网络为例，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ```ts
 
@@ -563,7 +564,9 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
 });
 
 ```
@@ -620,7 +623,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
-以下示例以绑定WIFI网络为例子，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
+以下示例以绑定WIFI网络为例，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ```ts
 
