@@ -216,7 +216,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
            OH_LOG_ERROR(LOG_APP, "Failed to scan directory");
            return;
        }
-
+   
        for (int i = 0; i < num; i++) {
            OH_LOG_INFO(LOG_APP, "Succeeded in scanning directory, file name is %{public}s", namelist[i]->d_name);
        }
