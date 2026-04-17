@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @BruceZong-->
-<!--Designer: @gcw_qzKyUhyU-->
+<!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
