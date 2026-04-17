@@ -156,7 +156,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
     if (err) {
       console.error(`mkdir failed, err code: ${err.code}, err msg: ${err.message}.`);
     } else {
-      console.info(`mkdir succeed.`);
+      console.info(`mkdir success.`);
     }
   });
   let uri = fileUri.getUriFromPath(path);

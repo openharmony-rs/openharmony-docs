@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承自ExtensionContext。
 

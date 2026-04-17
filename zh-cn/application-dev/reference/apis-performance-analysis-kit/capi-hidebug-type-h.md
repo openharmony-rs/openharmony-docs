@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -31,6 +31,7 @@ HiDebug模块代码结构体定义。
 | [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md) | HiDebug_SystemMemInfo | 系统内存信息结构类型定义。 |
 | [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md) | HiDebug_NativeMemInfo | 应用程序进程本机内存信息结构类型定义。 |
 | [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md) | HiDebug_MemoryLimit | 应用程序进程内存限制结构类型定义。 |
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) | OH_HiDebug_RequestTraceConfig | 请求trace采集的配置结构类型定义。 |
 | [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) | HiDebug_JsStackFrame | js栈帧内容的定义。 |
 | [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) | HiDebug_NativeStackFrame | native栈帧内容的定义。 |
 | [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md) | HiDebug_StackFrame | 栈帧内容的定义。 |
@@ -86,6 +87,12 @@ HiDebug模块代码结构体定义。
 | [HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT](#hidebug_trace_tag_distributed_input) (1ULL << 59)                                     | 分布式输入标签。<br>**起始版本：** 12           |
 | [HIDEBUG_TRACE_TAG_BLUETOOTH](#hidebug_trace_tag_bluetooth) (1ULL << 60)                                                     | 蓝牙标签。<br>**起始版本：** 12              |
 
+### 函数
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [typedef void (\*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)](#oh_hidebug_requesttracecallback) | OH_HiDebug_RequestTraceCallback | 请求trace采集的回调类型定义。 |
+
 ## 枚举类型说明
 
 ### HiDebug_ErrorCode
@@ -108,6 +115,7 @@ enum HiDebug_ErrorCode
 | HIDEBUG_NO_PERMISSION = 11400103 | 没有写文件的权限。 |
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | 系统内部错误。 |
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | 当前没有trace正在运行。 |
+| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | trace文件存储达到限制。<br/>**起始版本：** 24。 |
 | HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | 传入符号解析函数的pc地址是无效的。<br/>**起始版本：** 20。 |
 | HIDEBUG_NOT_SUPPORTED = 11400300 | 当前设备不支持。<br>**起始版本：** 22 |
 | HIDEBUG_UNDER_SAMPLING = 11400301 | 当前进程正在采样。<br>**起始版本：** 22 |
@@ -554,4 +562,23 @@ SA标签。
 
 **起始版本：** 12
 
+## 函数说明
 
+### OH_HiDebug_RequestTraceCallback()
+
+```c
+typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)
+```
+
+**描述**
+
+请求trace采集的回调类型定义。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| HiDebug_ErrorCode errorCode | 返回结果码，参考[HiDebug_ErrorCode](#hidebug_errorcode)。 |
+| const char\* filePath | 返回采集的trace文件，失败时可能是空指针。 |

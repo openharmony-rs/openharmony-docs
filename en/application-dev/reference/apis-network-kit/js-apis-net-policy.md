@@ -95,6 +95,16 @@ Queries the network access policy of an application (whether cellular or Wi-Fi n
 | ------------------------------------------------------- | ----------------------------- |
 | Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise used to return the network access policy of the application.|
 
+**Error codes**:
+
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md).
+
+| Error Code| Message                                    |
+| --------- | -------------------------------------------- |
+| 2100002   | Failed to connect to the service.            |
+| 2100003   | System internal error, such as nullptr.    |
+
+
 **Example:**
 ```ts
 import { policy } from '@kit.NetworkKit';

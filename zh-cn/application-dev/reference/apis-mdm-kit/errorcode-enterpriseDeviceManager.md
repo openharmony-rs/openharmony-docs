@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
@@ -746,3 +746,21 @@ set default data sim failed.
 
 1. 检查飞行模式是否关闭。
 2. 检查是否插入SIM卡。
+
+## 9201021 设备存在锁屏密码
+
+**错误信息**
+
+A lock screen password has been set for the device.
+
+**错误描述**
+
+当企业设备管理员添加禁用滑动解锁能力的策略时，会产生此错误码。
+
+**可能原因**
+
+设备已经存在锁屏密码，存在锁屏密码时，设备需要校验密码才能进入桌面。
+
+**处理步骤**
+
+删除锁屏密码。

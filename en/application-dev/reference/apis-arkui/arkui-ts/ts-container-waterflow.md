@@ -61,10 +61,10 @@ Provides parameters of the **WaterFlow** component.
 
 | Name    | Type                                       | Read-Only| Optional| Description                                    |
 | ---------- | ----------------------------------------------- | ------ | -- | -------------------------------------------- |
-| footer |  [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes| Footer of the **WaterFlow** component.<br>**NOTE**<br>For details, see [Example 1](#example-1-using-a-basic-waterflow-component).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| footer |  [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes| Footer component of the **WaterFlow** component, which is used to display custom content (such as loading prompts and bottom icons) at the end of the waterfall. If this parameter is not set, no footer component is displayed.<br>**NOTE**<br>For details, see [Example 1](#example-1-using-a-basic-waterflow-component).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No| Yes| Footer of the **WaterFlow** component.<br>This parameter has a higher priority than **footer**. If both **footer** and **footerContent** are set, the component set by **footerContent** will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | scroller | [Scroller](ts-container-scroll.md#scroller) | No  | Yes| Controller of the scrollable component, bound to the scrollable component.<br>**NOTE**<br>It cannot be bound to the same scrolling control object as other scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | No  | Yes| Water flow item sections, used to implement mixed layouts with different column counts for each section within the same **WaterFlow** component.<br>**NOTE**<br>1. When the mixed layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored.<br>2. When **sections** is used, the footer cannot be set separately. The last section can function as the footer.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | No  | Yes| Water flow item sections, used to implement mixed layouts with different column counts for each section within the same **WaterFlow** component. This is applicable to scenarios where different numbers of columns are required in different areas. If this parameter is not set, the layout with the same number of columns is used.<br>**NOTE**<br>1. When the mixed layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored.<br>2. When **sections** is used, the footer cannot be set separately. The last section can function as the footer.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12)| No| Yes| Layout mode of the **WaterFlow** component.<br>**NOTE**<br>Default value: [ALWAYS_TOP_DOWN](#waterflowlayoutmode12)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 
@@ -336,6 +336,7 @@ Sets the size constraints of the child components during layout. For details abo
 
 **Parameters**
 
+<!--Table: 10%; auto; 10%; auto-->
 | Name| Type                                                      | Mandatory| Description      |
 | ------ | ---------------------------------------------------------- | ---- | ---------- |
 | value  | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes  | Size constraints of the child components during layout. If the value specified is less than **0**, this parameter does not take effect.<br>**NOTE**<br>1. If both **itemConstraintSize** and the [constraintSize](ts-universal-attributes-size.md#constraintsize) attribute of the **FlowItem** are set, the **minWidth** (or **minHeight**) will be the larger of the two values, and the **maxWidth** (or **maxHeight**) will be the smaller of the two values. The resulting values will then be used as the **constraintSize** for the **FlowItem**.<br>2. When only **itemConstraintSize** is set, it effectively applies a uniform size constraint to all child components in the **WaterFlow**.<br>3. The **itemConstraintSize** attribute, once converted to the **constraintSize** attribute of the **FlowItem** through the two methods mentioned above, follows the same rules for taking effect as the universal attribute [constraintSize](./ts-universal-attributes-size.md#constraintsize).|
@@ -354,7 +355,7 @@ Sets the gap between columns.
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞).|
+| value  | [Length](ts-types.md#length) | Yes  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.|
 
 ### rowsGap
 
@@ -370,7 +371,7 @@ Sets the gap between rows.
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Gap between rows.<br>Default value: **0**<br>Value range: [0, +∞).|
+| value  | [Length](ts-types.md#length) | Yes  | Gap between rows.<br>Default value: **0**<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.|
 
 ### layoutDirection
 
@@ -515,6 +516,10 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 Defines whether the **WaterFlow** component supports the generation of empty branch nodes that do not contain any child components using the **if/else** rendering control syntax in **LazyForEach** or **Repeat**. If this attribute is not set, empty branch nodes are not supported. This attribute cannot be updated after being set. Therefore, you cannot switch between the behavior of supporting empty branches and the behavior of not supporting empty branches after setting this attribute.
 
+> **NOTE**
+>
+> When [WaterFlowSections](#waterflowsections12) is set using the [sections](#waterflowoptions) parameter, or when the [SLIDING_WINDOW](#waterflowlayoutmode12) layout mode is set using the [layoutMode](#waterflowoptions) parameter, the **FlowItem** after the empty branch is displayed regardless of the **supportEmptyBranchInLazyLoading** setting.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -527,7 +532,7 @@ Defines whether the **WaterFlow** component supports the generation of empty bra
 
 | Name| Type  | Mandatory| Description                                              |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | Yes  | Whether the current **WaterFlow** component supports the use of the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) rendering syntax in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to generate an empty branch node that contains no child component.<br>**true**: yes; **false**: no<br>If the value is **undefined**, it is processed as **false**.|
+| supported  | boolean \| undefined | Yes  | Whether the current **WaterFlow** component supports the use of the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) rendering syntax in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to generate an empty branch node that contains no child component.<br>**true** indicates that the **FlowItem** after the empty branch is displayed; **false** indicates the opposite.<br>If the value is **undefined**, it is processed as **false**.|
 
 ## Events
 
@@ -1164,7 +1169,7 @@ struct WaterFlowDemo {
     }
   };
 
-  // Calculate the  height for FlowItem.
+  // Calculate the height for FlowItem.
   getSize() {
     let ret = Math.floor(Math.random() * this.maxSize);
     return (ret > this.minSize ? ret : this.minSize);

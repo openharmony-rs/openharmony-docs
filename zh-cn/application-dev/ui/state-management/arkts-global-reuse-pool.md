@@ -1,0 +1,963 @@
+# 全局复用：集中化的组件回收与复用
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+为提升组件回收与复用的性能和内存效率，全局复用池功能允许开发者在组件树中的任意组件处为@Reusable/@ReusableV2组件配置针对指定自定义组件的复用池，该全局复用池优先级高于与父组件绑定的默认复用池。
+
+全局复用池提供了在不同父组件间共享回收组件实例、控制缓存生命周期和大小、以及首次使用前预渲染组件的能力。在阅读本文档之前，建议先阅读[@ComponentV2](./arkts-create-custom-components.md#componentv2)、[@Component](./arkts-create-custom-components.md#component)、[@Reusable](./arkts-reusable.md)和[@ReusableV2](./arkts-new-reusableV2.md)。
+
+>**说明：**
+>
+> 全局复用池功能从API版本26.0.0开始支持。
+>
+> 该功能可从API版本26.0.0开始在原子化服务中使用。
+
+## 概述
+
+在当前实现中，每个@Reusable/@ReusableV2组件的父组件都维护自己的本地复用池。当相同的可复用组件类型被多个同级组件使用时，这会导致复用效率低下，因为一个父组件池中的回收实例无法被另一个父组件复用。
+
+全局复用池通过允许开发者在上级组件@Component或@ComponentV2处配置复用池来解决上述复用效率问题。全局复用池启用后，当复用组件创建或销毁时，框架会向上遍历组件树，为回收和复用操作查找接受指定可复用组件类型的全局复用池，从而支持跨父组件的复用场景，增加复用率，提升复用组件切换的性能。
+
+全局复用池的能力：
+
+- 单个复用池可以为多个子组件提供服务，减少复用池的数量并提高复用率。
+- 开发者可以选择组件类的所有实例共享单个复用池（`shared`）还是每个实例拥有自己的池（`perInstance`）。
+- `IReusableInfo`接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
+- `preRender`接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
+- 如果通过祖先遍历未找到复用池，框架将回退到直接父组件中的传统复用池行为。
+
+### 全局复用池与默认复用池对比
+
+| 类别 | 默认复用池 | 全局复用池 |
+| -------- | ------------------ | ---------------- |
+| 声明方式 | 默认复用池无需声明，当@Reusable或@Reusable装饰的自定义组件被创建或销毁时，会在父组件上创建默认复用池，该复用池能接受任意自定义组件类型。 | 全局复用池通过在@Component或@ComponentV2中配置`reusePool`和`poolAccepts`开启。 | 
+| 跨分支复用 | 不支持 | 支持 |
+| 池共享 | 每个父实例有自己的池。 | `shared`模式允许拥有组件类的所有实例共享单个池。 |
+| 缓存大小控制 | 不支持 | `IReusableInfo.maxCount`提供按组件、按reuseId的缓存限制。 |
+| 预渲染 | 不支持 | `preRender`在首次使用前创建组件。 |
+| 内存管理 | 池生命周期与父实例绑定 | `shared`池持续存在直到所有拥有实例被销毁；`perInstance`池与单个实例绑定。 |
+| V1 与 V2 混合 | 不支持 | `poolAccepts`可同时包含@Reusable复用组件@ReusableV2复用组件。 |
+| 读取复用池状态 | 不支持 | `getReusableInfo`可获取当前自定义组件的全局复用池的信息。 |
+
+
+## 装饰器说明
+
+### @Component/@ComponentV2配置参数
+
+| 参数 | 说明 |
+| --------- | ----------- |
+| `reusePool` | `ReusePoolOwnership`类型的字符串字面量。必须为`"shared"`或`"perInstance"`。决定此组件类的所有实例是共享单个复用池还是每个实例拥有自己的池。必须与`poolAccepts`一起使用。 |
+| `poolAccepts` | 可复用组件构造函数引用数组。列出此复用池接受哪些@Reusable/@ReusableV2组件进行回收。`reusePool`和`poolAccepts`参数必须同时提供。|
+
+
+## 使用规则
+
+### 配置复用池
+
+- `reusePool`和`poolAccepts`参数必须同时提供。仅指定其中一个会导致编译错误。
+
+- `poolAccepts`必须是非空数组。每个项必须引用@Reusable或@ReusableV2装饰的自定义组件名称。使用普通（不可复用）组件、@Builder 函数或非组件类会导致编译错误。
+
+- @Component或@ComponentV2最多只能有一个复用池。
+
+- `reusePool`和`poolAccepts`配置仅在@Component和@ComponentV2上支持。在@CustomDialog上不受支持。
+
+- `poolAccepts`可以同时支持V1和V2可复用组件：数组可以同时包含@Reusable和@ReusableV2装饰的自定义组件名称。
+
+- 可复用组件不能在自己的全局复用池中直接接受自身组件的名称，否则会导致编译错误。
+
+### 复用池所有权模式
+
+**`"shared"`**：拥有@Component/@ComponentV2类的所有实例共享单个复用池实例。
+
+`shared`复用池的生命周期：
+
+1. 当拥有组件的第一个实例被创建时，复用池被创建并被该实例引用。
+2. 当拥有组件的第二个实例被创建时，它引用已创建的复用池。不会创建新池。
+3. 当第一个实例被销毁时，复用池不会被销毁，因为它仍被第二个实例引用。
+4. 当第二个（最后一个）实例被销毁时，复用池也被销毁。其中的所有回收组件被删除。
+5. 如果稍后创建拥有组件的新实例，则会创建新的复用池。
+
+注意：`shared`所有权与`static`类属性不同。全局复用池有跨实例的引用计数，而非永久单例。
+
+**`"perInstance"`**：拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。复用池的生命周期与其拥有组件实例的生命周期相同。当拥有组件被销毁时，其复用池和其中的所有回收组件也被销毁。
+
+建议开发者配置`shared`所有权。这样可以获得更好的复用率和更低的内存占用。
+
+## 可用接口
+
+有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅[状态管理API参考](../../reference/apis-arkui/js-apis-stateManagement.md)。
+
+以下接口可用于全局复用池：
+
+| 接口 | 说明 |
+| --- | ----------- |
+| `UIUtils.getCustomComponentContext(this).getReusePool()` | 获取当前组件的`IReusePool`。如果未配置全局复用池，则返回`undefined`。 |
+| `IReusePool.getReusableInfo(reusableComp, reuseId?)` | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
+| `IReusePool.preRender(builder, n)` | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
+| `IReusableInfo.count` | 池中当前回收的组件数（只读）。 |
+| `IReusableInfo.maxCount` | 允许的最大回收组件数。设置此项可控制缓存大小。 |
+| `IReusableInfo.reuseId` | 与此池桶关联的reuseId（只读）。 |
+
+## 使用限制
+
+- @Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局服用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结功能（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结功能（V2）](./arkts-custom-components-freezeV2.md)。
+
+- `getReusableInfo`和`preRender`仅在全局复用池实例上可用。它们不能在默认复用池的自定义组件上使用。
+
+- 将`IReusableInfo.maxCount`设置为小于当前`count`的值会导致异步清除。在延迟期间，`count`可能暂时超过`maxCount`。
+
+- 使用`preRender`预渲染但不被任何池接受的组件会被创建并立即销毁。仅预渲染池配置为接受的组件。
+
+- 使用`"shared"`所有权时，只要拥有组件类的任何实例存在，池就会持续存在。如果拥有组件在应用程序的多个部分中使用，回收的组件可能会累积。使用`maxCount`来控制内存使用。
+
+- 建议不要在`aboutToRecycle`中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
+
+## 使用场景
+
+### 多个父组件间共享复用池
+
+在此示例中，多个`CompA`实例为`ReusableCompA`子组件创建了共享类型的全局复用池。当删除`CompA`实例时，`ReusableCompA`子组件被回收到全局复用池中。当添加新的`CompA`实例时，它从全局复用池中复用组件，避免创建新组件。
+
+```typescript
+@Entry
+@ComponentV2
+struct Parent {
+  @Local show: boolean[] = [true, true, true];
+
+  build() {
+    Column({ space: 20 }) {
+      Row({ space: 10 }) {
+        Button("删除 Comp1")
+          .onClick(() => this.show[0] = false)
+        Button("添加 Comp1")
+          .onClick(() => this.show[0] = true)
+      }
+      Row({ space: 10 }) {
+        Button("删除 Comp2")
+          .onClick(() => this.show[1] = false)
+        Button("添加 Comp2")
+          .onClick(() => this.show[1] = true)
+      }
+      Row({ space: 10 }) {
+        Button("删除 Comp3")
+          .onClick(() => this.show[2] = false)
+        Button("添加 Comp3")
+          .onClick(() => this.show[2] = true)
+      }
+
+      Column({ space: 10 }) {
+        if (this.show[0]) CompA({ label: "A1" })
+        if (this.show[1]) CompA({ label: "A2" })
+        if (this.show[2]) CompA({ label: "A3" })
+      }
+    }
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct ReusableCompA {
+  @Require @Param value: number;
+
+  aboutToAppear() {
+    console.info('ReusableCompA aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableCompA aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('ReusableCompA aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('ReusableCompA aboutToDisappear');
+  }
+
+  build() {
+    Text(`ReusableCompA Item ${this.value}`)
+      .fontSize(16)
+      .fontColor(Color.Green)
+  }
+}
+
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableCompA], freezeWhenInactive: false})
+struct CompA {
+  @Require @Param label: string;
+
+  build() {
+    Column({ space: 5 }) {
+      Text(`CompA ${this.label}`)
+        .fontSize(18)
+        .fontColor(Color.Blue)
+      ReusableCompA({ value: 1 })
+      ReusableCompA({ value: 2 })
+    }
+      .border({ width: 1, color: Color.Gray })
+      .padding(5)
+  }
+}
+```
+
+**启动** — 3个CompA实例，6个ReusableCompA子组件：
+```plaintext
+CompA aboutToAppear (×3)
+ReusableCompA aboutToAppear (×6)
+```
+
+**删除 Comp1** — 子组件被回收：
+```plaintext
+CompA aboutToDisappear
+ReusableCompA aboutToRecycle (×2)
+```
+
+**添加 Comp1** — 子组件从共享池中复用：
+```plaintext
+CompA aboutToAppear
+ReusableCompA aboutToReuse (×2)
+```
+
+**依次删除所有 3 个 CompA** — 当最后一个CompA被销毁时，没有剩余的CompA实例，因此共享池也被销毁：
+```plaintext
+// 删除 Comp1 和 Comp2：子组件被回收
+ReusableCompA aboutToRecycle (×2, 每个被删除的 CompA)
+
+// 删除 Comp3：最后一个实例 — 共享池被销毁
+ReusableCompA aboutToDisappear (×6, 所有缓存实例被永久销毁)
+```
+
+### 使用@Provider/@Consumer的独立复用池
+
+此示例演示与特定父实例绑定的`perInstance`池。它还展示了@Consumer在复用周期后如何重连到 @Provider。
+
+```typescript
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Consumer() provide: number = 10;
+
+  aboutToAppear() {
+    console.info('ReusableChild aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableChild aboutToReuse');
+    this.provide = 150;
+  }
+  aboutToRecycle() {
+    console.info('ReusableChild aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('ReusableChild aboutToDisappear');
+  }
+
+  build() {
+    Column({ space: 20 }) {
+      Text(`ReusableChild @Consumer: ${this.provide}`)
+        .fontSize(20)
+        .fontColor(Color.Green)
+      SubChild()
+    }
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+struct Parent {
+  @Provider() provide: number = 100;
+  @Local boolVal: boolean = false;
+
+  build() {
+    Column({ space: 10 }) {
+      Button('切换组件')
+        .onClick(() => {
+          this.boolVal = !this.boolVal;
+        })
+
+      Text(`父组件 Provider: ${this.provide}`)
+        .fontSize(20)
+      Button('增加 +10')
+        .onClick(() => {
+          this.provide += 10;
+        })
+
+      if (this.boolVal) {
+        Text("非可复用组件")
+          .fontSize(24)
+          .fontColor(Color.Red)
+        Child()
+      } else {
+        Text("可复用组件")
+          .fontSize(24)
+          .fontColor(Color.Red)
+        ReusableChild()
+      }
+    }
+  }
+}
+
+@ComponentV2
+struct SubChild {
+  @Consumer() provide: number = 10;
+
+  aboutToAppear() {
+    console.info('SubChild aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('SubChild aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('SubChild aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('SubChild aboutToDisappear');
+  }
+
+  build() {
+    Text(`SubChild @Consumer: ${this.provide}`)
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Consumer() provide: number = 10;
+
+  aboutToAppear() {
+    console.info('Child aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('Child aboutToDisappear');
+  }
+
+  build() {
+    Column({ space: 20 }) {
+      Text(`Child @Consumer: ${this.provide}`)
+        .fontSize(20)
+        .fontColor(Color.Green)
+      SubChild()
+    }
+  }
+}
+```
+
+**从ReusableChild切换到Child**：
+```plaintext
+ReusableChild aboutToRecycle   // 进入池
+SubChild aboutToRecycle        // 子树级联
+Child aboutToAppear            // 非可复用，全新创建
+SubChild aboutToAppear         // Child内的新SubChild
+```
+
+**从Child切换到ReusableChild**：
+```plaintext
+Child aboutToDisappear         // 非可复用，永久销毁
+SubChild aboutToDisappear      // 随Child一起销毁
+ReusableChild aboutToReuse     // 从池中检索，@Consumer重连
+SubChild aboutToReuse          // 子树级联
+```
+
+复用后，`aboutToReuse`回调设置`this.provide = 150`。@Consumer重连到Parent组件的@Provider。后续Provider更新正确传播到复用的组件。
+
+### 使用`getReusableInfo`检查和控制池
+
+此示例演示如何使用`getReusableInfo`接口在运行时检查池状态和控制缓存大小。
+
+```typescript
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct GlobalChild {
+  @Consumer() provide: number = 10;
+
+  aboutToAppear() {
+    console.info('GlobalChild aboutToAppear');
+    // 创建时检查池
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const info = pool?.getReusableInfo(LegacyComp) as IReusableInfo | undefined;
+    if (info) {
+      console.info(`LegacyComp 池: count=${info.count}, maxCount=${info.maxCount}`);
+      info.maxCount = 10;  // 设置缓存限制
+      console.info(`设置后 LegacyComp 池: maxCount=${info.maxCount}`);
+    }
+  }
+  aboutToReuse() {
+    console.info('GlobalChild aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('GlobalChild aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('GlobalChild aboutToDisappear');
+  }
+
+  build() {
+    Column({ space: 20 }) {
+      Text('全局子组件')
+      SubChild()
+    }
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct LegacyComp {
+  aboutToAppear() {
+    console.info('LegacyComp aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('LegacyComp aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('LegacyComp aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('LegacyComp aboutToDisappear');
+  }
+
+  build() {
+    Column() {
+      Text('传统组件')
+      ReusableChild()
+    }
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Consumer() provide: number = 10;
+  aboutToAppear() {
+    console.info('ReusableChild aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableChild aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('ReusableChild aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('ReusableChild aboutToDisappear');
+  }
+
+  build() {
+    Text(`ReusableChild @Consumer: ${this.provide}`)
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct SubChild {
+  @Consumer() provide: number = 10;
+  aboutToAppear() {
+    console.info('SubChild aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('SubChild aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('SubChild aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('SubChild aboutToDisappear');
+  }
+
+  build() {
+    Text(`SubChild @Consumer: ${this.provide}`)
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [LegacyComp, GlobalChild, ReusableChild, SubChild], freezeWhenInactive: false })
+struct Index {
+  @Provider() provide: number = 100;
+  @Local boolVal: boolean = true;
+
+  verifyPool(compName: string, comp: Function) {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    if (!pool) {
+      console.info('未找到池');
+      return;
+    }
+    const ret = pool.getReusableInfo(comp);
+    if (ret === undefined) {
+      console.info(`getReusableInfo(${compName}): undefined — 池不接受`);
+    } else if (Array.isArray(ret)) {
+      console.info(`getReusableInfo(${compName}): Array[${ret.length}]`);
+      ret.forEach((info: IReusableInfo, i: number) => {
+        console.info(`  [${i}] reuseId=${info.reuseId}, count=${info.count}, maxCount=${info.maxCount}`);
+      });
+    } else {
+      console.info(`getReusableInfo(${compName}): reuseId=${ret.reuseId}, count=${ret.count}, maxCount=${ret.maxCount}`);
+    }
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Button('切换组件')
+        .onClick(() => {
+          this.boolVal = !this.boolVal;
+        })
+
+      // 手动池检查按钮
+      Button('检查 GlobalChild')
+        .onClick(() => this.verifyPool('GlobalChild', GlobalChild))
+      Button('检查 LegacyComp')
+        .onClick(() => this.verifyPool('LegacyComp', LegacyComp))
+
+      if (this.boolVal) {
+        GlobalChild()
+      } else {
+        LegacyComp()
+      }
+    }
+  }
+}
+```
+
+**步骤 1 — 启动**（GlobalChild可见）：
+```plaintext
+GlobalChild aboutToAppear
+  LegacyComp 池: count=0, maxCount=Infinity
+  设置后 LegacyComp 池: maxCount=10
+SubChild aboutToAppear
+```
+
+点击"检查GlobalChild"：`count=0, maxCount=Infinity`（GlobalChild可见，不在池中）。
+
+点击"检查LegacyComp"：`count=0, maxCount=10`（不可见，从未回收，但设置了maxCount）。
+
+**步骤 2 — 切换到LegacyComp**：
+```plaintext
+GlobalChild aboutToRecycle    // 进入池
+SubChild aboutToRecycle       // 级联
+LegacyComp aboutToAppear      // 全新创建
+ReusableChild aboutToAppear
+SubChild aboutToAppear
+```
+
+点击"检查GlobalChild"：`count=1, maxCount=10`（回收到池中）。
+
+点击"检查LegacyComp"：`count=0, maxCount=10`（可见，不在池中）。
+
+**步骤 3 — 切换回 GlobalChild**：
+```plaintext
+LegacyComp aboutToRecycle
+ReusableChild aboutToRecycle
+SubChild aboutToRecycle
+GlobalChild aboutToReuse      // 从池中复用
+SubChild aboutToReuse         // 级联
+```
+
+点击"检查LegacyComp"：`count=1, maxCount=10`（现在回收到池中）。
+
+**池状态参考表**：
+
+| 可见视图 | 组件 | 在池中 | count | maxCount |
+| ------------ | --------- | ------- | ----- | -------- |
+| GlobalChild树 | GlobalChild | 否 | 0 | Infinity |
+| GlobalChild树 | LegacyComp | 是 | 1 | 10 |
+| LegacyComp树 | GlobalChild | 是 | 1 | 10 |
+| LegacyComp树 | LegacyComp | 否 | 0 | 10 |
+
+通过`info.maxCount = 10`设置的`maxCount`值在回收/复用周期中持续存在。当组件被回收或复用时，它不会被重置。
+
+### 使用`reuseId`控制缓存大小
+
+当使用不同的`reuseId`值回收组件时，`getReusableInfo`返回可以独立控制的每个桶的信息。
+
+```typescript
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct TestChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`TestChild [${this.label}] aboutToAppear - 新建`);
+  }
+  aboutToReuse() {
+    console.info(`TestChild [${this.label}] aboutToReuse - 复用`);
+  }
+  aboutToRecycle() {
+    console.info(`TestChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToDisappear() {
+    console.info(`TestChild [${this.label}] aboutToDisappear - 销毁`);
+  }
+  build() {
+    Text(`子组件: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
+struct PoolOwner {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+  @Local showC: boolean = true;
+
+  purgeReuseId(id: number) {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const info = pool?.getReusableInfo(TestChild, id) as IReusableInfo;
+    if (info) {
+      info.maxCount = 0;  // 仅释放全局复用池中此reuseId对应的复用组件
+    }
+  }
+
+  build() {
+    Column() {
+      Button('切换 A')
+        .onClick(() => {
+          this.showA = !this.showA;
+        })
+      Button('切换 B')
+        .onClick(() => {
+          this.showB = !this.showB;
+        })
+      Button('切换 C')
+        .onClick(() => {
+          this.showC = !this.showC;
+        })
+      Button('仅清除 B')
+        .onClick(() => this.purgeReuseId(2))
+
+      if (this.showA) {
+        TestChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        TestChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+      if (this.showC) {
+        TestChild({ label: 'C' })
+          .reuse({ reuseId: () => 'C' })
+      }
+    }
+  }
+}
+```
+
+当所有3个都被关闭时，`getReusableInfo(TestChild)`（不带reuseId）返回一个数组：
+```typescript
+[
+  { count: 1, maxCount: 100, reuseId: 'A' },
+  { count: 1, maxCount: 100, reuseId: 'B' },
+  { count: 1, maxCount: 100, reuseId: 'C' },
+  { count: 1, maxCount: 100, reuseId: undefined }  // 始终包含
+]
+```
+
+点击"仅清除 B"（设置B的`maxCount = 0`）后，只有B的实例被释放。数组变为：
+```typescript
+[
+  { count: 1, maxCount: 100, reuseId: 'A' },
+  { count: 0, maxCount: 0, reuseId: 'B' },              // 仍列出（maxCount非默认）
+  { count: 1, maxCount: 100, reuseId: 'C' },
+  { count: 1, maxCount: 100, reuseId: undefined }
+]
+```
+
+全部重新打开：
+- A和C触发`aboutToReuse`（从池中复用）。
+- B触发`aboutToAppear`（新实例）。
+
+查询不存在的reuseId（例如，`pool.getReusableInfo(TestChild, 'X')`）返回单个对象，其中 `count: 0, maxCount: 100`。
+
+### 跨分支复用
+
+此示例演示全局复用池的主要优势：从组件树的一个分支回收的组件可以在完全不同的分支中复用。
+
+```typescript
+@Entry
+@ComponentV2
+struct Parent {
+  @Local showIndex1: boolean = true;
+  @Local showIndex2: boolean = true;
+
+  build() {
+    Column({ space: 20 }) {
+      Row({ space: 10 }) {
+        Button("切换 Index1")
+          .onClick(() => { this.showIndex1 = !this.showIndex1 })
+        Button("切换 Index2")
+          .onClick(() => { this.showIndex2 = !this.showIndex2 })
+      }
+      if (this.showIndex1) { 
+        Index1() 
+      }
+      if (this.showIndex2) {
+        Index2()
+      }
+    }
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct Index1 {
+  build() {
+    Column() {
+      ChildComp()
+    }
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct ChildComp {
+  build() {
+    Column() {
+      Text("ChildComp")
+      ReusableChild({ source: "Index1 → ChildComp" })
+    }
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Require @Param source: string;
+  @Local instanceId: number = Math.floor(Math.random() * 1000);
+
+  aboutToAppear() {
+    console.info(`ReusableChild[${this.instanceId}] 出现 source=${this.source}`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild[${this.instanceId}] 回收 source=${this.source}`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild[${this.instanceId}] 复用 source=${this.source}`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild[${this.instanceId}] 消失 source=${this.source}`);
+  }
+
+  build() {
+    Text(`ReusableChild 实例 ${this.instanceId} (${this.source})`)
+  }
+}
+
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+struct Index2 {
+  @Local showChild: boolean = true;
+
+  build() {
+    Column() {
+      Text("Index2 组件")
+      Button("切换 ReusableChild")
+        .onClick(() => { 
+          this.showChild = !this.showChild;
+        })
+      if (this.showChild) {
+        ReusableChild({ source: "Index2" })
+      }
+    }
+  }
+}
+```
+
+**测试序列**：
+
+1. **关闭Index1** — 来自Index1分支的ReusableChild 进入共享池。
+2. **关闭再打开Index2的ReusableChild** — 池化的实例（最初来自Index1）在Index2中被复用。日志中的实例ID确认了同一实例跨越了分支。
+3. **打开Index1** — Index1和ChildComp被复用。ReusableChild从池中被复用。
+
+### 多级复用池结构
+
+当在组件树的不同级别存在多个复用池配置时，每个可复用组件路由到接受它的最近的祖先池。
+
+```typescript
+@ReusableV2
+@ComponentV2
+struct ChildA {
+  aboutToAppear() {
+    console.info('ChildA aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ChildA aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('ChildA aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('ChildA aboutToDisappear');
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text('子组件 A')
+        .fontColor(Color.Blue)
+      ReusableLeaf()
+    }
+  }
+}
+
+@ReusableV2
+@ComponentV2
+struct ReusableLeaf {
+  aboutToAppear() {
+    console.info('ReusableLeaf aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableLeaf aboutToReuse');
+  }
+  aboutToRecycle() {
+    console.info('ReusableLeaf aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('ReusableLeaf aboutToDisappear');
+  }
+
+  build() {
+    Text('可复用叶子节点')
+      .fontColor(Color.Green)
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ChildA], freezeWhenInactive: false })
+struct EntryComp {
+  @Local showParent: boolean = true;
+
+  build() {
+    Column({ space: 15 }) {
+      Text('入口组件')
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+      Button('切换 ParentA')
+        .onClick(() => {
+          this.showParent = !this.showParent;
+        })
+      if (this.showParent) {
+        ParentA()
+      }
+    }
+  }
+}
+
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableLeaf], freezeWhenInactive: false })
+struct ParentA {
+  @Local showChild: boolean = true;
+
+  build() {
+    Column({ space: 8 }) {
+      Text('父组件 A')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+      Button('切换 ChildA')
+        .onClick(() => { 
+          this.showChild = !this.showChild;
+        })
+      if (this.showChild) {
+        ChildA()
+      }
+    }
+  }
+}
+```
+
+- `ChildA`使用`EntryComp`上声明的全局复用池，因为`EntryComp`复用池配置`poolAccepts`接受`ChildA`。
+- `ReusableLeaf`使用`ParentA`上声明的全局复用池，因为`ParentA`复用池配置`poolAccepts`接受 `ReusableLeaf`。
+
+
+**关闭/打开ChildA** — 两者都从各自的池中回收和复用：
+```plaintext
+ChildA aboutToRecycle / aboutToReuse         // EntryComp的池
+ReusableLeaf aboutToRecycle / aboutToReuse   // ParentA的池
+```
+
+**关闭ParentA**（当ChildA在池中时）— ParentA被销毁。其perInstance类型全局复用池被销毁，同时清理ReusableLeaf。但ChildA被在EntryComp的复用池缓存：
+```plaintext
+ParentA aboutToDisappear
+ReusableLeaf aboutToDisappear   // ParentA的perInstance类型复用池被销毁
+// ChildA保存在EntryComp的复用池中！
+```
+
+**打开ParentA** — ParentA被全新创建。ChildA从EntryComp的池中复用。ReusableLeaf被全新创建：
+```plaintext
+ParentA aboutToAppear           // 新实例
+ChildA aboutToReuse             // 在EntryComp的池中幸存
+ReusableLeaf aboutToAppear      // 全新创建—旧池被销毁
+```
+
+### 使用`preRender`预渲染组件
+
+`preRender`API用于提前创建可复用组件实例并将其放入复用池，在后续可复用组件被创建时可以从复用池取已创建的实例。
+
+```typescript
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableComponent {
+  @Require @Param param: number;
+
+  aboutToAppear() {
+    console.info('ReusableComponent aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableComponent aboutToReuse');
+  }
+
+  build() {
+    Column() {
+      Text(`ReusableComponent ${this.param}`)
+    }
+  }
+}
+
+@Builder 
+function preRenderBuilder() {
+  ReusableComponent({ param: 0 })
+}
+
+@Entry
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
+struct Index {
+  @Local onUIFullyLoaded: boolean = false;
+
+  aboutToAppear() {
+    // 获取池并调度预渲染。
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    pool!.preRender(wrapBuilder(preRenderBuilder), 1)
+      .then(() => {
+        this.onUIFullyLoaded = true;
+      });
+  }
+
+  build() {
+    Column() {
+      CompA({ showFullUI: this.onUIFullyLoaded })
+    }
+  }
+}
+
+@ComponentV2
+struct CompA {
+  @Require @Param showFullUI: boolean;
+  @Local param: number = 8;
+
+  build() {
+    if (this.showFullUI) {
+      ReusableComponent({ param: this.param })
+    }
+  }
+}
+```
+
+执行序列：
+
+1. 启动时，`Index.aboutToAppear()`通过`UIUtils.getCustomComponentContext(this).getReusePool()`获取池并调用`preRender`。
+2. `preRender`作为空闲任务异步执行：它调用@Builder函数，创建`ReusableComponent`实例。
+3. 预渲染的`ReusableComponent`被回收到`Index`的复用池中。
+4. 设置`onUIFullyLoaded = true`，这会触发`CompA`的重新渲染。
+5. `CompA`的if条件变为true。框架创建`ReusableComponent`时，能找到`Index`上的全局复用池，并取出预渲染的实例。
+6. `aboutToReuse`触发，组件被复用，无需全新创建。
+
+>**说明：**
+>
+> `preRender`仅将池配置为接受的组件放入池中。预渲染复用池不接受的组件会立即创建并销毁。预渲染期间不会从全局复用池中复用组件；复用池仅接受新创建的实例。

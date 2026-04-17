@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供通话管理能力。
 
@@ -512,7 +512,7 @@ try {
   telephonyManager.removeIncomingCallPolicyNumbers(wantTemp, policy, numbers);
   console.info('Succeeded in removing incoming call policy.');
 } catch (err) {
-  console.error(`Failed to add remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
