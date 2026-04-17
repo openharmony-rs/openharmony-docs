@@ -49966,7 +49966,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":62,
 						"name":"example_use",
 						"start_line":16
 					}
@@ -50031,7 +50031,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":53,
 						"name":"example_serialize",
 						"start_line":16
 					}
