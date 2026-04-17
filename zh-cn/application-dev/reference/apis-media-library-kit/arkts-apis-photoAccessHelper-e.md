@@ -129,6 +129,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。 |
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。|
 | CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间。 |
+| LOCAL_ASSET_SIZE | 'local_asset_size' | 本地文件的实际大小。<br>- 该属性仅表示本地文件大小，默认值为0表示纯云文件或尚未识别的本地文件大小。<br>- 当本地文件为动态照片且模式发生变化时，该属性会发生变化。例如：当图库中的动态照片处于“关闭动态”状态时，该属性仅表示封面帧大小。<br>**起始版本：** 26.0.0<br> ​**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AlbumKeys
 
