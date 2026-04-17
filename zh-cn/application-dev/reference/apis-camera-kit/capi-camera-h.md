@@ -659,6 +659,7 @@ enum Camera_ControlCenterEffectType
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。 |
 
 ### Camera_PhotoQualityPrioritization
 
