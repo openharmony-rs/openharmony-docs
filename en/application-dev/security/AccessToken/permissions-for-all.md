@@ -687,9 +687,9 @@ With this permission, the application can query available types of pluggable emb
 
 ## ohos.permission.STYLUS_FRAME_BOOST
 
-Allow the app to use the handwriting pen tracking enhancement interface.
+Allows an application to use stylus responsiveness enhancement APIs.
 
-After obtaining this permission, the app can optimize the pen tracking performance and improve the responsiveness and experience of handwriting with a stylus in the app.
+With this permission, the application can improve handwriting performance, ensuring a more responsive stylus experience while writing.
 
 **Permission level**: normal
 
