@@ -223,8 +223,7 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 > **说明：**
 > 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)代替。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或(ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))
-- ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或(ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -255,8 +254,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 > **说明：**
 > 从 API version 9开始支持，从API version 10开始废弃。建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)代替。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 (ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))
-- ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 (ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -844,7 +842,7 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
-| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;number&gt; | 是 | 回调函数。err为0时：操作成功，data为添加的网络配置ID，如果data值为-1，表示添加失败。<br /> err为非0值时：操作出现错误。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是 | 回调函数。err为0时：操作成功，data为添加的网络配置ID，如果data值为-1，表示添加失败。<br /> err为非0值时：操作出现错误。 |
 
 **错误码：**
 
@@ -1676,7 +1674,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 | isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量，true: 限制，false:不限制。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | macType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | macAddress | string | 否 | 否 | 设备的MAC地址。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN连接的IP地址。<br>1、IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2、ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | WLAN连接的IP地址。<br>1.IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2.ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | connState | [ConnState](#connstate) | 否 | 否 | WLAN连接状态。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前连接热点的Wi-Fi标准。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
@@ -1770,7 +1768,6 @@ isConnected(): boolean
 
 ```
 
-
 ## wifiManager.disconnect<sup>15+</sup>
 
 disconnect(): void
@@ -1808,8 +1805,6 @@ disconnect(): void
   }
 
 ```
-
-## wifiManager.getDeviceMacAddress<sup>15+</sup>
 
 ## wifiManager.isFeatureSupported
 
@@ -1879,7 +1874,6 @@ ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
 ```
 
-
 ## wifiManager.getDeviceMacAddress<sup>15+</sup>
 
 getDeviceMacAddress(): string[]
@@ -1912,7 +1906,7 @@ API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从AP
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled.|
-
+f
 **示例：**
 ```ts
   import { wifiManager } from '@kit.ConnectivityKit';
@@ -2691,7 +2685,7 @@ createGroup(config: WifiP2PConfig): void
 | passphrase | string | 否 | 否 | 群组密钥。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | groupName | string | 否 | 否 | 群组名称。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | goBand | [GroupOwnerBand](#groupownerband) | 否 | 否 | 群组带宽。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| goFred | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 群组频率，若群组带宽和群组频率同时添加的情况下，当频率合法时（频率在2400MHz-2500MHz或者4900MHz-5900MHz范围内认为合法），以频率为准，否则以带宽为准。 <br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 23|
+| goFred<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 群组频率，若群组带宽和群组频率同时添加的情况下，当频率合法时（频率在2400MHz-2500MHz或者4900MHz-5900MHz范围内认为合法），以频率为准，否则以带宽为准。 <br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 23|
 
 
 ## GroupOwnerBand
@@ -3121,7 +3115,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 onWifiStateChange(callback: Callback&lt;int&gt;): void
 
-取消订阅WIFI状态改变事件。
+取消订阅WIFI状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3153,7 +3147,7 @@ onWifiStateChange(callback: Callback&lt;int&gt;): void
 
 offWifiStateChange(callback?: Callback&lt;int&gt;): void
 
-注册取消WLAN状态改变事件。
+注册取消WLAN状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3303,7 +3297,7 @@ onWifiConnectionChange(callback: Callback&lt;int&gt;): void
 
 offWifiConnectionChange(callback?: Callback&lt;int&gt;): void
 
-取消注册WIFI连接改变事件。
+取消注册WIFI连接改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3425,7 +3419,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
-注册WIFI扫描状态改变事件。
+注册WIFI扫描状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3464,7 +3458,7 @@ onWifiScanStateChange(callback: Callback&lt;int&gt;): void
 
 offWifiScanStateChange(callback?: Callback&lt;int&gt;): void
 
-取消注册WIFI扫描状态改变事件。
+取消注册WIFI扫描状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3528,7 +3522,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 onWifiRssiChange(callback: Callback&lt;int&gt;): void
 
-注册WIFI信号强度(RSSI)变化事件。在业务退出时，要调用offWifiRssiChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。
+注册WIFI信号强度(RSSI)变化事件。在业务退出时，要调用offWifiRssiChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3605,7 +3599,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 offWifiRssiChange(callback?: Callback&lt;int&gt;): void
 
-取消注册WIFI信号强度(RSSI)变化事件。
+取消注册WIFI信号强度(RSSI)变化事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3676,7 +3670,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 onHotspotStateChange(callback: Callback&lt;int&gt;): void
 
-注册热点状态改变事件。
+注册热点状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3762,7 +3756,7 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 offHotspotStateChange(callback?: Callback&lt;int&gt;): void
 
-注册热点状态改变事件。
+注册热点状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3834,7 +3828,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 onP2pStateChange(callback: Callback&lt;int&gt;): void
 
-注册P2P状态改变事件。
+注册P2P状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3943,7 +3937,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 onP2pConnectionChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-注册P2P连接状态改变事件。在业务退出时，要调用offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口取消之前的注册回调。
+注册P2P连接状态改变事件。在业务退出时，要调用offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4020,7 +4014,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 
 offP2pConnectionChange(callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-取消注册P2P连接状态改变事件。
+取消注册P2P连接状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4112,7 +4106,7 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 onP2pDeviceChange(callback: Callback&lt;WifiP2pDevice&gt;): void
 
-注册P2P设备本地变更事件。在业务退出时，要调用offP2pDeviceChange(callback?: Callback&lt;WifiP2pDevice&gt;)接口取消之前的注册回调。
+注册P2P设备本地变更事件。在业务退出时，要调用offP2pDeviceChange(callback?: Callback&lt;WifiP2pDevice&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4187,7 +4181,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 offP2pDeviceChange(callback?: Callback&lt;WifiP2pDevice&gt;): void
 
-取消注册P2P设备本地变更事件。
+取消注册P2P设备本地变更事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4248,7 +4242,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 onP2pPeerDeviceChange(callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
-注册P2P对端设备状态改变事件。在业务退出时，要调用offP2pPeerDeviceChange(callback?: Callback&lt;WifiP2pDevice[]&gt;)接口取消之前的注册回调。
+注册P2P对端设备状态改变事件。在业务退出时，要调用offP2pPeerDeviceChange(callback?: Callback&lt;WifiP2pDevice[]&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4323,7 +4317,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 offP2pPeerDeviceChange(callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
-取消注册P2P对端设备状态改变事件。
+取消注册P2P对端设备状态改变事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4382,7 +4376,7 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 onP2pPersistentGroupChange(callback: Callback&lt;void&gt;): void
 
-注册P2P永久组状态改变事件，在业务退出时，要调用offP2pPersistentGroupChange(callback?: Callback&lt;void&gt;)接口取消之前的注册回调。
+注册P2P永久组状态改变事件，在业务退出时，要调用offP2pPersistentGroupChange(callback?: Callback&lt;void&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4459,7 +4453,7 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 offP2pPersistentGroupChange(callback?: Callback&lt;void&gt;): void
 
-取消注册P2P永久组状态改变事件。
+取消注册P2P永久组状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4528,7 +4522,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 onP2pDiscoveryChange(callback: Callback&lt;int&gt;): void
 
-注册发现设备状态改变事件，在业务退出时，要调用offP2pDiscoveryChange(callback?: Callback&lt;number&gt;)接口取消之前的注册回调。
+注册发现设备状态改变事件，在业务退出时，要调用offP2pDiscoveryChange(callback?: Callback&lt;number&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4606,7 +4600,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 offP2pDiscoveryChange(callback?: Callback&lt;int&gt;): void
 
-取消注册发现设备状态改变事件。
+取消注册发现设备状态改变事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
