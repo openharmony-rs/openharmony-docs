@@ -74,6 +74,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 ArkTS-Dyn示例：
 ```ts
 // ExtensionProvider.ets
+
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -87,7 +88,7 @@ export default class EntryAbility extends UIExtensionAbility {
       console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
     })
   }
-  
+
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // 取消隐藏非安全窗口
