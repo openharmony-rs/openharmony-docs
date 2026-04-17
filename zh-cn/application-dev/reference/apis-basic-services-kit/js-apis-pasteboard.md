@@ -656,10 +656,10 @@ struct PasteboardTest {
               let text = "test";
               let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
               let systemPasteboard = pasteboard.getSystemPasteboard();
-        	  await systemPasteboard.setData(pasteData);
+              await systemPasteboard.setData(pasteData);
               let signal = new pasteboard.ProgressSignal;
               let ProgressListener = (progress: pasteboard.ProgressInfo) => {
-    		    console.log('progressListener success, progress:' + progress.progress);
+                console.info('progressListener success, progress:' + progress.progress);
                 signal.cancel();
               }
               let params: pasteboard.GetDataParams = {
@@ -3810,9 +3810,9 @@ struct PasteboardTest {
               let text = "test";
               let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
               let systemPasteboard = pasteboard.getSystemPasteboard();
-        	  await systemPasteboard.setData(pasteData);
+              await systemPasteboard.setData(pasteData);
               let ProgressListener = (progress: pasteboard.ProgressInfo) => {
-    		    console.log('progressListener success, progress:' + progress.progress);
+                console.info('progressListener success, progress:' + progress.progress);
               }
               let params: pasteboard.GetDataParams = {
                 destUri: '/data/storage/el2/base/haps/entry/files/dstFile.txt',
