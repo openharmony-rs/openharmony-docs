@@ -5795,7 +5795,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：24
+**起始版本**：26.0.0
 
 ## ohos.permission.ACCESS_SUPPORT_HELP
 
@@ -5809,4 +5809,32 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：24
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+允许系统应用使用数字凭证服务的统一管理能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+允许应用使用户外模式服务提供海拔订阅能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0

@@ -299,6 +299,8 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
    >
    > - 若string.json中使用多个占位符的情况，例如资源值value中存在`%1$s`和`%2$d`两个占位符，需要通过`$r('app.string.label', 'aaa', 444)`形式访问。其中label为资源名称name，'aaa'和444用来替代占位符。
    >
+   > - 针对同一个资源，`$r`获取的资源信息Resource对象中的资源ID在应用重新编译时会发生变化，并非固定值，不建议缓存资源ID。如果确实需要缓存资源ID，需要对资源ID进行固定，具体请参考[固定资源ID](../tools/restool.md#固定资源id)。
+   >
    > - rawfile的native访问方式请参考[Rawfile开发指导](../napi/rawfile-guidelines.md)。
 
   [资源文件示例](#资源文件示例)中显示了.json文件内容，包含color.json、string.json和plural.json，访问应用资源时需先了解.json文件的使用规范。访问示例如下：

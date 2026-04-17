@@ -555,7 +555,7 @@ It is not allowed to access this domain.
 
 **处理步骤**
 
-可参考配置服务器域名文档完成服务器域名相关配置。
+可参考配置[服务器域名文档](https://developer.huawei.com/consumer/cn/doc/atomic-guides/agc-help-harmonyos-server-domain)完成服务器域名相关配置。服务器域名配置后一般需要等待一天以上才会生效。
 
 ## 2300999 内部错误
 
