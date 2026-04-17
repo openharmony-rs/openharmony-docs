@@ -95,7 +95,7 @@ ArkTS-Sta: createTimer(options: TimerOptions, callback: AsyncCallback&lt;long&gt
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -117,7 +117,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -180,7 +180,7 @@ ArkTS-Sta: createTimer(options: TimerOptions): Promise&lt;long&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -200,7 +200,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -253,7 +253,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -283,7 +283,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -351,7 +351,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -379,7 +379,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -439,6 +439,7 @@ ArkTS-Sta: stopTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -468,7 +469,7 @@ try {
   console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -536,7 +537,7 @@ ArkTS-Sta: stopTimer(timer: long): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -565,7 +566,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例: 
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -626,7 +627,7 @@ ArkTS-Sta: destroyTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -658,7 +659,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -727,7 +728,7 @@ ArkTS-Sta: destroyTimer(timer: long): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -757,7 +758,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

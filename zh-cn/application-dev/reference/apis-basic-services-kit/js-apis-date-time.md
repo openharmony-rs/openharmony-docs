@@ -519,7 +519,7 @@ ArkTS-Sta: getTime(isNanoseconds?: boolean): long
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -530,7 +530,7 @@ try {
   console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -579,7 +579,7 @@ ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -590,7 +590,7 @@ try {
   console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -718,7 +718,7 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -735,7 +735,7 @@ try {
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -773,7 +773,7 @@ getTimezone(): Promise&lt;string&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -788,7 +788,7 @@ try {
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -824,7 +824,7 @@ getTimezoneSync(): string
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -835,7 +835,7 @@ try {
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -913,7 +913,7 @@ getAutoTimeStatus(): boolean
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -924,7 +924,7 @@ try {
   console.error(`Failed to get autotime status. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
