@@ -26,15 +26,15 @@
 | hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | 是 | 是 | 相机镜头等效焦距。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成）, true表示是逻辑摄像头，false表示是物理摄像头。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是 | 是 | 组成此逻辑相机的物理相机列表。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| lensFocalLength<sup>24+</sup> | number | 是 | 是 | 镜头实际焦距。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| minimumFocusDistance<sup>24+</sup> | number | 是 | 是 | 相机最小对焦距离。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| lensDistortion<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头畸变参数数组。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头内参标定参数数组。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器物理尺寸（宽度和高度）。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器像素阵列尺寸（宽度和高度。单位：像素）。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是 | 是 | 传感器颜色滤镜排列方式。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成）, true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是 | 是 | 组成此逻辑相机的物理相机列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensFocalLength<sup>24+</sup> | number | 是 | 是 | 镜头实际焦距。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| minimumFocusDistance<sup>24+</sup> | number | 是 | 是 | 相机最小对焦距离。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensDistortion<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头畸变参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头内参标定参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器物理尺寸（宽度和高度）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器像素阵列尺寸（宽度和高度。单位：像素）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是 | 是 | 传感器颜色滤镜排列方式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## CameraStatusInfo
 
