@@ -582,6 +582,7 @@ import {
   Color,
   SymbolRenderingStrategy,
   FontWeight,
+  ColumnOptions,
 } from '@ohos.arkui.component'
 import hilog from '@ohos.hilog'
 import { BusinessError } from '@ohos.base'
@@ -592,7 +593,7 @@ struct Index {
 
   build() {
     Row() {
-      Column({ space: 10 }) {
+      Column({ space: 10 } as ColumnOptions) {
         // 设置保存控件的图标为Symbol。
         SaveButton()
           .setIcon($r('sys.symbol.ohos_folder_badge_plus'))

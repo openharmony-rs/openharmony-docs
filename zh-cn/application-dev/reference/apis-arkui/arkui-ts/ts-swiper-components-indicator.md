@@ -16,7 +16,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -37,6 +39,12 @@ IndicatorComponent(controller?: IndicatorComponentController)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |参数名|类型|必填|说明|
@@ -49,7 +57,9 @@ IndicatorComponent(controller?: IndicatorComponentController)
 
 ### style
 
-style(indicatorStyle: DotIndicator | DigitIndicator)
+ArkTS-Dyn: style(indicatorStyle: DotIndicator | DigitIndicator)
+
+ArkTS-Sta: style(indicatorStyle: DotIndicator | DigitIndicator | undefined)
 
 设置可选导航点指示器样式。
 
@@ -59,11 +69,15 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicatorStyle  | [DotIndicator](ts-container-swiper.md#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](ts-container-swiper.md#digitindicator10)&nbsp;| 是   | 可选导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/>&nbsp;&nbsp;默认类型：DotIndicator。 |
+| indicatorStyle  | ArkTS-Dyn: [DotIndicator](ts-container-swiper.md#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](ts-container-swiper.md#digitindicator10)&nbsp;<br/>ArkTS-Sta: [DotIndicator](ts-container-swiper.md#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](ts-container-swiper.md#digitindicator10)&nbsp; \| undefined | 是   | 可选导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/>&nbsp;&nbsp;默认类型：DotIndicator。 |
 
 > **说明：**
 >
@@ -71,7 +85,9 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 ### count
 
-count(totalCount: number)
+ArkTS-Dyn: count(totalCount: number)
+
+ArkTS-Sta: count(totalCount: int | undefined)
 
 设置导航点总数量。
 
@@ -83,15 +99,21 @@ count(totalCount: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| totalCount  | number | 是   |  导航点总数量。<br/>默认值：2。 |
+| totalCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   |  导航点总数量。<br/>默认值：2。 |
 
 ### initialIndex
 
-initialIndex(index: number)
+ArkTS-Dyn: initialIndex(index: number)
+
+ArkTS-Sta: initialIndex(index: int | undefined)
 
 设置首次显示时当前导航点的索引值。设置小于0或大于等于导航点数量时，按照默认值0处理。
 
@@ -103,15 +125,21 @@ initialIndex(index: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| index  | number | 是   | 首次显示时当前导航点的索引值。<br/>默认值：0。 |
+| index  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 首次显示时当前导航点的索引值。<br/>默认值：0。 |
 
 ### loop
 
-loop(isLoop: boolean)
+ArkTS-Dyn: loop(isLoop: boolean)
+
+ArkTS-Sta: loop(isLoop: boolean | undefined)
 
 设置是否开启循环。
 
@@ -123,15 +151,21 @@ loop(isLoop: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| isLoop  | boolean | 是   | 是否开启循环。true为开启循环，false为不开启循环。<br/>默认值：true。 |
+| isLoop  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启循环。true为开启循环，false为不开启循环。<br/>默认值：true。 |
 
 ### vertical
 
-vertical(isVertical: boolean)
+ArkTS-Dyn: vertical(isVertical: boolean)
+
+ArkTS-Sta: vertical(isVertical: boolean | undefined)
 
 设置是否为纵向滑动。
 
@@ -143,11 +177,15 @@ vertical(isVertical: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| isVertical  | boolean | 是   | 是否为纵向滑动。true为纵向滑动，false为横向滑动。<br/>默认值：false |
+| isVertical  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否为纵向滑动。true为纵向滑动，false为横向滑动。<br/>默认值：false |
 
 ## 事件
 
@@ -155,7 +193,9 @@ vertical(isVertical: boolean)
 
 ### onChange
 
-onChange(event: Callback\<number>)
+ArkTS-Dyn: onChange(event: Callback\<number>)
+
+ArkTS-Sta: onChange(event: Callback\<int> | undefined)
 
 当前显示的选中导航点索引变化时触发该事件，可通过回调函数获取当前选中导航点的索引值。
 
@@ -165,11 +205,15 @@ onChange(event: Callback\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示元素的索引变化时触发的回调。|
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<number><br/>ArkTS-Sta: [Callback](./ts-types.md#callback12)\<int> \| undefined | 是   | 当前显示元素的索引变化时触发的回调。|
 
 ## IndicatorComponentController
 
@@ -187,6 +231,10 @@ IndicatorComponentController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 ### showNext
 
 showNext(): void
@@ -198,6 +246,10 @@ showNext(): void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 ### showPrevious
 
@@ -211,9 +263,15 @@ showPrevious(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 ### changeIndex
 
-changeIndex(index: number, useAnimation?: boolean): void
+ArkTS-Dyn: changeIndex(index: number, useAnimation?: boolean): void
+
+ArkTS-Sta: changeIndex(index: int | undefined, useAnimation?: boolean): void
 
 翻至指定导航点。
 
@@ -223,17 +281,23 @@ changeIndex(index: number, useAnimation?: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型       | 必填  | 说明     |
 | -------- | ---------- | ---- | -------- |
-| index| number | 是    | 指定导航点在Swiper中的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。 |
+| index| ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是    | 指定导航点在Swiper中的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。 |
 | useAnimation| boolean | 否    | 设置翻至指定导航点时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。 |
 
 ## 示例
 
 ### 示例1（圆点单独导航点与Swiper绑定使用）
+
 该示例通过[Swiper](ts-container-swiper.md)组件的[indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了圆点单独导航点与Swiper的交互。
+
 ```ts
 @Entry
 @Component
