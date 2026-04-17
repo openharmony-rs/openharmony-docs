@@ -43,6 +43,9 @@ target_link_libraries(sample PUBLIC libohfileio.so)
 ```
 
 调用OH_FileIO_GetFileLocation接口获取文件存储位置。示例代码如下所示：
+
+<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->
+
 ```c
 void GetFileLocationExample() {
     char *uri = "file://com.example.demo/data/storage/el2/base/files/test.txt";
@@ -55,7 +58,7 @@ void GetFileLocationExample() {
             printf("This file is on cloud.");
         } else if (location == FileIO_FileLocation::LOCAL_AND_CLOUD) {
             printf("This file is both on local and cloud.");
-        }
+        } 
     } else {
         printf("GetFileLocation failed, error code is %d", ret);
     }
