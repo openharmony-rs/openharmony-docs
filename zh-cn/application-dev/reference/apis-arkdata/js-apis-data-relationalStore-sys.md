@@ -39,7 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。<br/> |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 12开始，支持此可选参数。<br/> |
-| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用cleanDeviceDirtyData进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
+| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -1307,7 +1307,7 @@ cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 | 参数名   | 类型                                                  | 必填 | 说明                                               |
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | table     | string           | 是   | 表示需要清理数据库表的名称。数据库表名只能由字母、数字和下划线组成，不能包含其他字符，长度为[1, 256]。           |
-| cursor    | number           | 否   | 整数类型，取值大于0，表示数据游标，不大于此游标的脏数据将被清理。当此参数不填时，清理当前表的所有脏数据。 |
+| cursor    | number           | 否   | 表示数据游标，不大于此游标的脏数据将被清理。整数类型，取值应大于0。当传入小于等于0的值时，会抛出异常，异常信息为无效的参数。当此参数不填时，清理当前表的所有脏数据。 |
 
 **返回值：**
 
