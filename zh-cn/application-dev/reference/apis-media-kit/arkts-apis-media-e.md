@@ -91,7 +91,7 @@ Codec MIME类型枚举。
 
 高级音频编码（AAC）类型枚举。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -290,7 +290,7 @@ Codec MIME类型枚举。
 | 名称                      | 值   | 说明                   |
 | ------------------------- | ---- | ---------------------- |
 | AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |

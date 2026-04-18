@@ -200,7 +200,7 @@ type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 
 
 音视频录制的状态机。可通过state属性获取当前状态。
 
-**原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -224,7 +224,7 @@ type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChan
 
 录制状态机切换事件回调方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
