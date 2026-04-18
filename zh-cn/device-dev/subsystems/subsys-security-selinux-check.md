@@ -1013,10 +1013,10 @@ Delete any unused data from "user" field under "permissive_list" field of "trace
 
 ### 编译拦截
 
-配置指定资源的权限不一致会触发编译报错。关键报错信息`Check consistency of 'xxx' and 'xxx' failed in user mode.`，报错如下：
+配置指定标签对的权限不一致时，会触发编译报错。关键报错信息为`Check consistency of 'xxx' and 'xxx' by xxx failed in user mode.`，其中第一个`xxx`为基础标签，第二个`xxx`为扩展标签，检查基础标签所有的权限是否扩展标签具有；`by xxx`中`xxx`取值的为`scontext`或`tcontext`，`scontext`说明是扩展标签作为主体缺少该权限，`tcontext`说明是扩展标签作为客体缺少该权限，报错如下：
 
 ```text
-[Error] Check consistency of 'normal_hap_data_file' and 'appdat' failed in user mode.
+[Error] Check consistency of 'normal_hap_data_file' and 'appdat' by tcontext failed in user mode.
 Violate list (policy)
    (allow distributed_isolate_hap normal_hap_data_file (dir (ioctl setattr search getattr open read)))
 Solution: add the above policy to 'appdat'.
@@ -1027,15 +1027,15 @@ Violate list (policy)
 Solution: the above policy should be consisent.
 
 Violate list (types)
-   typeattribute appdat data_service_file_attr;
-Solution: add the above typeattribute to 'normal_hap_data_file'.
+   typeattribute normal_hap_data_file data_service_file_attr;
+Solution: add the above typeattribute to 'appdat'.
 ```
 
 ### 拦截原因
 
 出现这些报错是因为`normal_hap_data_file`和`appdat`的权限不一致。存在以下3种不一致的情况。
 
-1. 主体对`normal_hap_data_file`为标签的目录具有的访问权限`{ioctl setattr search getattr open read}`，对`appdat`为标签的目录缺少这些权限。对应的策略为：
+1. 主体对`normal_hap_data_file`为标签的目录具有的访问权限`ioctl { getattr ioctl open read search setattr }`，对`appdat`为标签的目录缺少这些权限。对应的策略为：
     ```text
     allow distributed_isolate_hap normal_hap_data_file:dir { getattr ioctl open read search setattr };
     ```
@@ -1047,9 +1047,9 @@ Solution: add the above typeattribute to 'normal_hap_data_file'.
     allowxperm distributed_isolate_hap normal_hap_data_file:file ioctl { 0x5413 0xf50c 0xf546 };
     ```
 
-3. 类型`normal_hap_data_file`和`appdat`关联的属性存在差异。`appdat`关联了属性`data_service_file_attr`，而`normal_hap_data_file`未关联该属性，对应的策略为：
+3. 类型`normal_hap_data_file`和`appdat`关联的属性存在差异。`normal_hap_data_file`关联了属性`data_service_file_attr`，而`appdat`未关联该属性，对应的策略为：
     ```text
-    typeattribute appdat data_service_file_attr;
+    typeattribute normal_hap_data_file data_service_file_attr;
     ```
 
 
@@ -1062,15 +1062,60 @@ Solution: add the above typeattribute to 'normal_hap_data_file'.
     allow distributed_isolate_hap appdat:dir { getattr ioctl open read search setattr };
     ```
 
-2. 对于报错中`normal_hap_data_file`和`appdat`已有`ioctl`权限可以使用的`ioctlcmd`不一致的情况，可以根据提示通过给`normal_hap_data_file`增加以下权限来修复。
+2. 对于报错中`normal_hap_data_file`和`appdat`已有`ioctl`权限可以使用的`ioctlcmd`不一致的情况，可以根据提示通过给`appdat`增加以下权限来修复。
     ```text
-    allowxperm distributed_isolate_hap normal_app_data:file ioctl { 0xf546 };
+    allowxperm distributed_isolate_hap appdat:file ioctl { 0xf546 };
     ```
 
-3. 对于报错中`normal_hap_data_file`和`appdat`关联属性的不一致的情况，可以根据提示给`normal_hap_data_file`关联同样的属性。
+3. 对于报错中`normal_hap_data_file`和`appdat`关联属性的不一致的情况，可以根据提示给`appdat`关联同样的属性。
     ```text
-    typeattribute normal_hap_data_file data_service_file_attr;
+    typeattribute appdat data_service_file_attr;
     ```
+
+## 受限公共类型直接使用检查
+
+### 检查说明
+
+部分公共类型不能在授权策略中被直接使用，应使用对应的属性进行授权，避免策略只覆盖单个具体类型，导致新增同类类型时权限不完整或产生兼容性问题。
+
+### 编译拦截
+
+授权策略中直接使用受限类型时，会触发编译报错。关键报错信息`Check restricted type in te files failed`，报错如下：
+
+```text
+Check restricted type in te files failed.
+The following te rules use restricted types directly:
+    base/security/selinux_adapter/sepolicy/xxx/system/example.te:10: allow normal_hap example_file:file { read open };
+        suggestion: normal_hap -> normal_hap_attr
+solution:
+    1. move the direct type in the rule to the corresponding attribute.
+    2. if the direct type must be kept, add the te rule text to restricted_common_type_whitelist.txt.
+```
+
+### 拦截原因
+
+上述报错是因为授权策略中直接使用了受限类型`normal_hap`：
+
+```text
+allow normal_hap example_file:file { read open };
+```
+
+`normal_hap`属于具体应用进程类型，直接对该类型授权只能覆盖该具体类型，不利于统一管理同类应用进程权限。应使用对应属性`normal_hap_attr`进行授权。
+
+### 修复方法
+
+主要有两种修复方式：
+
+- 方式一：将授权策略中的受限类型替换为对应属性。例如，将上述策略修改为：
+    ```text
+    allow normal_hap_attr example_file:file { read open };
+    ```
+
+- 方式二：如果确需直接使用受限类型，将完整策略文本添加到`//base/security/selinux_adapter/sepolicy/`下的白名单文件`restricted_common_type_whitelist.txt`中。修改该白名单需要评估合理性，审慎添加。
+
+### 删除冗余的白名单
+
+当已整改授权策略后，需要同步从`restricted_common_type_whitelist.txt`中删除对应规则文本，避免后续策略检查或人工审查时保留无效例外。
 
 ## SELinux上下文长度检查
 
