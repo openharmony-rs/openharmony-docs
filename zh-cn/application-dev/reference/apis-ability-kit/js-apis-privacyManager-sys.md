@@ -29,7 +29,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 
 权限使用记录包括：调用方的应用身份标识、使用的应用权限名称，和其访问本应用成功、失败的次数。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -99,7 +99,7 @@ addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCou
 
 权限使用记录包括：调用方的应用身份标识、使用的应用权限名称，和其访问本应用成功、失败的次数。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -153,7 +153,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest): Promise&lt;PermissionUs
 
 获取历史权限使用记录。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -213,7 +213,7 @@ getPermissionUsedRecord(request: PermissionUsedRequest, callback: AsyncCallback&
 
 获取历史权限使用记录。使用callback异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -272,7 +272,7 @@ setPermissionUsedRecordToggleStatus(status: boolean): Promise&lt;void&gt;
 
 status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)接口可以正常添加使用记录；status为false时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)接口不记录权限使用记录，并且删除当前用户的历史记录。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_RECORD_TOGGLE
 
@@ -321,7 +321,7 @@ getPermissionUsedRecordToggleStatus(): Promise&lt;boolean&gt;
 
 系统应用调用此接口，可以获取当前用户的权限使用记录开关状态。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -367,7 +367,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;v
 
 系统应用调用此接口，能够传递应用在前后台的权限使用情况。隐私服务将此状态通知所有该权限使用状态变更事件的订阅者（订阅方法参考[on](#privacymanageron)）。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -422,7 +422,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, pid?: number,
 
 系统应用调用此接口，能够传递应用在前后台的权限使用情况。隐私服务将此状态通知所有该权限使用状态变更事件的订阅者（订阅方法参考[on](#privacymanageron)）。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -590,7 +590,7 @@ startUsingPermission(tokenID: number, permissionName: Permissions, callback: Asy
 
 系统应用调用此接口，能够传递应用在前后台的权限使用情况。隐私服务将此状态通知所有该权限使用状态变更事件的订阅者（订阅方法参考[on](#privacymanageron)）。使用callback异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -642,7 +642,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions): Promise&lt;vo
 
 应用停止使用某项权限，与startUsingPermission对应，由系统服务调用。使用Promise异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -698,7 +698,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions, pid?: number):
 
 pid需要与startUsingPermission传入的pid相同。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -843,7 +843,7 @@ stopUsingPermission(tokenID: number, permissionName: Permissions, callback: Asyn
 
 应用停止使用某项权限，与startUsingPermission对应，由系统服务调用。使用callback异步回调。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -951,7 +951,7 @@ on(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback
 
 不允许存在交集的permissionList订阅相同callback。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -1004,7 +1004,7 @@ off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callbac
 
 取消订阅时，若不传入callback，则批量删除permissionList下的所有callback。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -1051,7 +1051,7 @@ getPermissionUsedTypeInfos(tokenId?: number | null, permissionName?: Permissions
 
 查询设备上指定应用访问敏感权限时的信息（包括敏感权限名称、敏感权限访问方式）。
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -1121,6 +1121,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 表示使用记录的查询方式的枚举。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 | 名称                    | 值 | 说明                   |
@@ -1131,6 +1133,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 ## PermissionUsedRequest
 
 表示使用记录的查询请求。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -1149,6 +1153,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 表示所有应用或设备的访问记录。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 | 名称       | 类型             | 只读 | 可选 | 说明                                       |
@@ -1160,6 +1166,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 ## BundleUsedRecord
 
 某个应用或设备的访问记录。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -1175,6 +1183,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 ## PermissionUsedRecord
 
 某个权限的访问记录。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -1194,6 +1204,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 单次访问记录详情。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 | 名称       | 类型             | 只读 | 可选 | 说明                                       |
@@ -1209,6 +1221,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 表示权限使用状态变化类型的枚举。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 | 名称                      | 值     | 说明              |
@@ -1221,7 +1235,9 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 表示某次权限使用状态变化的详情。
 
- **系统能力:** SystemCapability.Security.AccessToken
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.AccessToken
 
 | 名称           | 类型                    | 只读 | 可选 | 说明                   |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
@@ -1237,6 +1253,8 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 表示通过何种方式使用敏感权限的枚举。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 | 名称                    | 值 | 说明              |
@@ -1249,7 +1267,9 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 表示某次权限使用类型的详情。
 
- **系统能力:** SystemCapability.Security.AccessToken
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.AccessToken
 
 | 名称           | 类型                    | 只读 | 可选 | 说明                   |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
@@ -1261,7 +1281,9 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
 
 添加权限使用记录可选参数集。
 
- **系统能力:** SystemCapability.Security.AccessToken
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Security.AccessToken
 
 | 名称           | 类型                    | 只读 | 可选 | 说明                   |
 | -------------- | ---------------------- | ---- | ---- | --------------------- |
