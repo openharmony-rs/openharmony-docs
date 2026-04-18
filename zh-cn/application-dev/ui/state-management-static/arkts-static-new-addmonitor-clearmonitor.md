@@ -401,7 +401,7 @@ struct Test {
     try {
       // 触发 130000 BusinessError
       this.valueMonitor = UIUtils.addMonitor(() => this.value, this.onChange, { owner: this });
-    } catch (err: Error) {
+    } catch (err) {
       // 错误码需要捕获异常后输出
       if (err instanceof BusinessError) {
         console.error(`[DynamicMonitor] Error code: ${err.code}, message: ${err.message}`);
