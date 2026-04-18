@@ -12,6 +12,8 @@
 
 音频录制管理类，用于录制音频媒体。在调用AudioRecorder的方法前，需要先通过[createAudioRecorder()](arkts-apis-media-f.md#mediacreateaudiorecorderdeprecated) 构建一个AudioRecorder实例。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 ## 导入模块
 
 ```ts
@@ -28,6 +30,8 @@ prepare(config: AudioRecorderConfig): void
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.prepare](arkts-apis-media-AVRecorder.md#prepare9)替代。
 
 **需要权限：** ohos.permission.MICROPHONE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -72,6 +76,8 @@ start(): void
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.start](arkts-apis-media-AVRecorder.md#start9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
 **示例：**
@@ -91,6 +97,8 @@ pause():void
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.pause](arkts-apis-media-AVRecorder.md#pause9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -112,6 +120,8 @@ resume():void
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.resume](arkts-apis-media-AVRecorder.md#resume9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
 **示例：**
@@ -132,6 +142,8 @@ stop(): void
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.stop](arkts-apis-media-AVRecorder.md#stop9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
 **示例：**
@@ -151,6 +163,8 @@ release(): void
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.release](arkts-apis-media-AVRecorder.md#release9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -175,6 +189,8 @@ reset(): void
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.reset](arkts-apis-media-AVRecorder.md#reset9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
 **示例：**
@@ -194,6 +210,8 @@ on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset'
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.on('stateChange')](arkts-apis-media-AVRecorder.md#onstatechange9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -255,6 +273,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.on('error')](arkts-apis-media-AVRecorder.md#onerror9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
