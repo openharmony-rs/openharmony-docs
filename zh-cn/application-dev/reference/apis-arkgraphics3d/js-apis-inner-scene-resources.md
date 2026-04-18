@@ -17,7 +17,7 @@
 ```ts
 import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
   MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
+  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceType
@@ -29,7 +29,7 @@ import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
 | UNKNOWN | 0 | 未定义类型。 |
-| NODE | 1 | 结点类型。 |
+| NODE | 1 | 节点类型。 |
 | ENVIRONMENT | 2 | 环境类型。 |
 | MATERIAL | 3 | 材质类型。 |
 | MESH | 4 | 网格类型。 |
@@ -422,8 +422,6 @@ onStarted(callback: Callback\<void>): void
 | ---- | ---- | ---- | ---- |
 | callback | Callback\<void> | 是 | 回调函数，返回值为空。 |
 
-动画开始时会执行传入的回调函数。
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **示例：**
@@ -648,6 +646,19 @@ function finish(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | width | number | 是 | 否 | 图片宽度，单位为像素（px），取值范围大于0。 |
 | height | number | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
+
+## ImageStream
+流图片类型，继承自[Image](#image)。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| surfaceId | string | 是 | 否 | 流ID，取值范围大于0。 |
 
 ## Effect<sup>21+</sup>
 

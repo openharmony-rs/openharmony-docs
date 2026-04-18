@@ -318,7 +318,7 @@ try {
 | dataSize  | number  | No| No | Size of application files (excluding application installation files), in bytes.|
 
 ## storageStatistics.getTotalInodes<sup>24+</sup>
- 	 
+
 getTotalInodes(): Promise&lt;number&gt;
 
 Obtains the total number of inodes in the file system. Only the system data partition can be queried. This API uses a promise to return the result.
@@ -415,7 +415,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ------------------------------------------------------------ |
 | 13600001 | IPC error.                                                   |
 | 13600002 | File system not supported.                                   |
-| 13600010 | The input parameter is invalid.                              |
 | 13600017 | Failed to query the inode information of the application.    |
 
 **Example**

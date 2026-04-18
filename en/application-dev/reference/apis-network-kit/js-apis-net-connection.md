@@ -3724,8 +3724,8 @@ Defines the network connection properties.
 | routes        | Array\<[RouteInfo](#routeinfo)>     | No| No| Network route information.                                                                                         |
 | dnses         | Array\<[NetAddress](#netaddress)>   | No| No| Network address. For details, see [NetAddress](#netaddress).                                                             |
 | mtu           | number                              | No| No| Maximum transmission unit (MTU).                                                                                       |
-| isIPv4LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.|
-| isIPv6LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv6 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.|
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.<br>**Model restriction**: This API can be used only in the stage model.|
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv6 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## RouteInfo
 

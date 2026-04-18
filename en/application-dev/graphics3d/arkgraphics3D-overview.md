@@ -8,6 +8,7 @@
 
 ArkGraphics 3D provides basic 3D scene rendering capabilities based on the lightweight 3D engine and render pipelines. With this service, you can efficiently build and render a 3D scene.
 
+ArkGraphics 3D takes the custom scene mode as its core capability, allowing you to independently construct and manage nodes such as Scene, Camera, and Light, thereby achieving full control over the rendering effects and interactive behaviors of the 3D scene. Meanwhile, to facilitate the quick preview and display of models, it also provides an automatic scene mode, which allows you to directly load glTF models (.gltf and .glb files), with the framework automatically creating basic cameras, light sources, and interactive controls.
 
 ## Function Description
 
@@ -17,7 +18,7 @@ ArkGraphics 3D provides basic 3D scene rendering capabilities based on the light
 - Provides APIs for controlling the animation status in a 3D scene, such as starting, pausing, and finishing an animation, and playing an animation from a specified position. Callback functions are also provided so that you can perform logic control when an animation starts or ends. For details, see [SceneResource](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md).
 - Provides APIs for you to carry out post-processing, for example, tone mapping. For details, see [ScenePostProcessSettings](../reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md).
 
-To sum up, ArkGraphics 3D provides basic 3D scene rendering capabilities to help you carry out 3D scene rendering and logic control development.
+To sum up, ArkGraphics 3D provides 3D scene rendering capabilities centered on custom scene nodes, while offering a convenient entry for the quick display of models through the automatic scene mode. This satisfies diverse development requirements ranging from simple preview to complex rendering control.
 
 For details about the API usage and parameters, see [@ohos.graphics.scene (ArkGraphics 3D)](../reference/apis-arkgraphics3d/js-apis-scene.md).
 

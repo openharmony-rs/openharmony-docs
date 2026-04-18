@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -884,7 +884,7 @@ struct MonitorWildcardObject {
   }
 
   aboutToAppear(): void {
-    UIUtils.addMonitor(this, 'class0.class1.person.*', this.onPersonChange, { enableWildcard: true });
+    UIUtils.addMonitor(this, 'cls.*', this.onClsChanged, { enableWildcard: true });
   }
 
   build() {
@@ -900,6 +900,10 @@ struct MonitorWildcardObject {
       Button('Assign new object')
         .onClick(() => {
           this.cls = new ClassA(-200, -200); // 触发onClsChanged
+        })
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'cls.*'); // 取消监听
         })
     }
   }
@@ -963,49 +967,61 @@ struct DocAddMonitorAPIArrayOfArrays {
 
   build() {
     Column() {
-      // topArrayMonitor1Star与topArrayMonitorStar均触发
+      // topArrayMonitor1Star与topArrayMonitorStar回调均触发
       Button('topArray = new TopArray')
         .onClick(() => {
           this.topArray = this.makeNewTopArray();
         })
 
-      // topArrayMonitor1Star触发，topArrayMonitorStar不触发
+      // 当topArray[1][0]存在时，topArrayMonitor1Star回调触发，topArrayMonitorStar回调不触发
       Button('topArray[1][0] = new Person')
         .onClick(() => {
-          this.topArray[1][0] = new Person();
+          if (this.topArray.length > 1 && this.topArray[1].length > 0) {
+            this.topArray[1][0] = new Person();
+          }
         })
 
-      // topArrayMonitor1Star与topArrayMonitorStar均不触发
+      // 当topArray[0][1]存在时，topArrayMonitor1Star与topArrayMonitorStar回调均不触发
       Button('topArray[0][1] = new Person')
         .onClick(() => {
-          this.topArray[0][1] = new Person();
+          if (this.topArray.length > 0 && this.topArray[0].length > 1) {
+            this.topArray[0][1] = new Person();
+          }
         })
 
-      // topArrayMonitor1Star触发，topArrayMonitorStar不触发
+      // 当topArray[1]存在时，topArrayMonitor1Star回调触发，topArrayMonitorStar回调不触发
       Button('topArray[1].push')
         .onClick(() => {
-          this.topArray[1].push(new Person());
+          if (this.topArray.length > 1 && this.topArray[1] instanceof ArrayOfPerson) {
+            this.topArray[1].push(new Person());
+          }
         })
 
-      // topArrayMonitor1Star与topArrayMonitorStar均触发
-      Button('topArray.shift (size>2)')
+      // 当topArray的length大于2时，topArrayMonitor1Star与topArrayMonitorStar回调均触发
+      Button('topArray.shift (length>2)')
         .onClick(() => {
-          this.topArray.shift();
+          if (this.topArray.length > 2) {
+            this.topArray.shift();
+          }
         })
 
-      // topArrayMonitor1Star不触发，topArrayMonitorStar触发
+      // 当topArray[0]存在时，topArrayMonitor1Star回调不触发，topArrayMonitorStar回调触发
       Button('topArray[0] = new ArrayOfPerson')
         .onClick(() => {
-          this.topArray[0] = new ArrayOfPerson(new Person(), new Person());
+          if (this.topArray.length > 0) {
+            this.topArray[0] = new ArrayOfPerson(new Person(), new Person());
+          }
         })
 
-      // topArrayMonitor1Star与topArrayMonitorStar均不触发
+      // 当topArray[1][0]存在时，topArrayMonitor1Star与topArrayMonitorStar回调均不触发
       Button('topArray[1][0].last update')
         .onClick(() => {
-          this.topArray[1][0].lastName += '~';
+          if (this.topArray.length > 1 && this.topArray[1].length > 0 && this.topArray[1][0] instanceof Person) {
+            this.topArray[1][0].lastName += '~';
+          }
         })
 
-      // topArrayMonitor1Star不触发，topArrayMonitorStar触发
+      // topArrayMonitor1Star回调不触发，topArrayMonitorStar回调触发
       Button('topArray = new TopArray, keep [1]')
         .onClick(() => {
           let newTop = this.makeNewTopArray();
@@ -1013,10 +1029,17 @@ struct DocAddMonitorAPIArrayOfArrays {
           this.topArray = newTop;
         })
 
-      // topArrayMonitor1Star不触发，topArrayMonitorStar触发
+      // topArrayMonitor1Star回调不触发，topArrayMonitorStar回调触发
       Button('topArray.push')
         .onClick(() => {
           this.topArray.push(new ArrayOfPerson(new Person(), new Person()));
+        })
+
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'topArray.1.*');
+          UIUtils.clearMonitor(this, 'topArray.*');
         })
     }
   }
@@ -1078,6 +1101,11 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
           let sameDate = this.date;
           this.date = sameDate;
         })
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'date.*');
+        })
     }
   }
 }
@@ -1126,53 +1154,63 @@ struct DocAddMonitorAPIMap {
 
   build() {
     Column({ space: 5 }) {
-      // 在首次点击时，两个@Monitor回调都触发
+      Text(`map.size: ${this.map.size}`)
+      Text(`map.get('one'): ${this.map.get('one')}`)
+      // 在首次点击时，onMapSizeChanged、onMapChanged回调都触发
       Button(`Init, map.set('one', 'A'), map.set('two', 'B')`)
         .onClick(() => {
           this.map.set('one', 'A');
           this.map.set('two', 'B');
         })
-      // 两个@Monitor回调都触发
+      // onMapSizeChanged、onMapChanged回调都触发
       Button(`Add new, map.set('three' + this.cnt, 'C')`)
         .onClick(() => {
           this.cnt++;
           this.map.set('three' + this.cnt, 'C')
         })
-      // 当'one'存在时，两个@Monitor回调都触发
+      // 当'one'不存在时，onMapSizeChanged、onMapChanged回调都不触发
+      // 当'one'存在时，onMapSizeChanged、onMapChanged回调都触发
       Button(`Delete from map: map.delete('one')`)
         .onClick(() => {
           this.map.delete('one')
         })
-      // 当map不为空时，两个@Monitor回调都触发
+      // 当map不为空时，onMapSizeChanged、onMapChanged回调都触发
+      // 当map为空时，onMapSizeChanged、onMapChanged回调都不触发
       Button(`Clear map`)
         .onClick(() => {
           this.map.clear();
         })
-      // 在首次点击且假设存在（'one' -> 'A'）时，仅触发onMapChanged
-      // 若已经设置过（'one' -> 'TWO'），则两个回调都不触发
+      // 在首次点击且假设存在（'one' -> 'A'）时，仅onMapChanged回调触发
+      // 若已经设置过（'one' -> 'TWO'），则onMapSizeChanged、onMapChanged回调都不触发
       Button(`Update one to 'TWO' - map.set('one', 'TWO')`)
         .onClick(() => {
           this.map.set('one', 'TWO');
         })
-      // 当Map存在'one'时，两个回调都不会触发
+      // 当Map不存在'one'时，onMapSizeChanged、onMapChanged回调都触发
+      // 当Map存在'one'时，onMapSizeChanged、onMapChanged回调都不会触发
       Button(`Update one to the same - map.set('one', sameval)`)
         .onClick(() => {
           const sameval = this.map.get('one') ?? 'one' ;
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'update \'one\' to ' + sameval + ' from ' + this.map.get('one'));
           this.map.set('one', sameval);
         })
-      // 当Map存在'one'时，仅触发onMapChanged
+      // 当Map不存在'one'时，onMapSizeChanged、onMapChanged回调都触发
+      // 当Map存在'one'时，仅onMapChanged回调触发
       Button(`Update one to new value - map.set('one', newval)`)
         .onClick(() => {
           let newval = 'x' + (++this.cnt);
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'update \'one\' to ' + newval + ' from ' + this.map.get('one'));
           this.map.set('one', newval);
         })
-      // 触发仅触发onMapChanged
-      // 当map不为空时，触发onMapSizeChanged
+      // 当map为空时，仅onMapChanged回调触发
+      // 当map不为空时，onMapChanged、onMapSizeChanged回调都触发
       Button(`new map`)
         .onClick(() => {
           this.map = new Map();
+        })
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'map.size');
+          UIUtils.clearMonitor(this, 'map.*');
         })
     }
     .border({ style: BorderStyle.Solid, width: 2, color: Color.Green })
@@ -1224,31 +1262,41 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
   build() {
     Column({ space: 5 }) {
-      // 两个@Monitor回调都触发
+      // onSetChanged、onSetSizeChanged回调都触发
       Button(`Add three<Num> to the set`)
         .onClick(() => {
           this.cnt++;
           this.set.add('three' + this.cnt);
         })
-      // 当元素存在时，两个@Monitor回调都触发
+      // 当元素不存在时，onSetChanged、onSetSizeChanged回调都不触发
+      // 当元素存在时，onSetChanged、onSetSizeChanged回调都触发
       Button(`Delete 'three<Num>' from the set - set.delete(...)`)
         .onClick(() => {
           this.set.delete('three' + this.cnt);
         })
-      // 当set不为空时，两个@Monitor回调都触发
+      // 当set不为空时，onSetChanged、onSetSizeChanged回调都触发
+      // 当set为空时，onSetChanged、onSetSizeChanged回调都不触发
       Button(`Clear the set - set.clear()`)
         .onClick(() => {
           this.set.clear();
         })
-      // 当set不为空时，两个@Monitor回调都触发
+      // 当set不为空时，onSetChanged、onSetSizeChanged回调都触发
+      // 当set为空时，仅onSetChanged回调触发
       Button(`Assign new set`)
         .onClick(() => {
           this.set = new Set();
         })
-      // 当set不包含'one'时，两个@Monitor回调都触发
+      // 当set不包含'one'时，onSetChanged、onSetSizeChanged回调都触发
+      // 当set包含'one'时，onSetChanged、onSetSizeChanged回调都不触发
       Button(`Add 'one' to the set`)
         .onClick(() => {
           this.set.add('one');
+        })
+      // 取消监听
+      Button('clearMonitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this, 'set.*');
+          UIUtils.clearMonitor(this, 'set.size');
         })
     }
   }

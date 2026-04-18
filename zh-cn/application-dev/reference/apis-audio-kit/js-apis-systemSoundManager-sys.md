@@ -1598,7 +1598,7 @@ setAlarmToneUri(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1748,7 +1748,7 @@ openAlarmTone(context: BaseContext, uri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1853,7 +1853,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -1923,7 +1923,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2045,7 +2045,7 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2098,7 +2098,7 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2155,7 +2155,7 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2206,7 +2206,7 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -2259,7 +2259,7 @@ openToneHaptics(context: BaseContext, hapticsUri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2357,7 +2357,7 @@ openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2369,15 +2369,18 @@ openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.openToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing openToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.openToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in opening tone list.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to open tone list. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to openToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2407,7 +2410,7 @@ removeCustomizedToneList(uriList: Array\<string>): Promise\<Array\<[string, Syst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-audio-ringtone-sys.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2420,15 +2423,18 @@ removeCustomizedToneList(uriList: Array\<string>): Promise\<Array\<[string, Syst
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing removeCustomizedToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.removeCustomizedToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in using removeCustomizedToneList function.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to use removeCustomizedToneList function. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to removeCustomizedToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

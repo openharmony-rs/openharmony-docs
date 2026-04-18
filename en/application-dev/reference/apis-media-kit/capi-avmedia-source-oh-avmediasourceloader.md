@@ -12,7 +12,7 @@ typedef struct OH_AVMediaSourceLoader OH_AVMediaSourceLoader
 
 ## Overview
 
-Defines a struct for the media source loader type, which is implemented by the application.
+Declares the media source loader type, which is implemented by the application.
 
 **Since**: 23
 

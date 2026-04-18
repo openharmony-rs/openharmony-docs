@@ -1,7 +1,7 @@
 # @ohos.inputMethodEngine (输入法服务)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -163,8 +163,8 @@ type CommandDataType = number | string | boolean;
 
 | 类型    | 说明                 |
 | ------- | -------------------- |
-| string  | 表示值类型为字符串。  |
 | number  | 表示值类型为数字。   |
+| string  | 表示值类型为字符串。  |
 | boolean | 表示值类型为布尔值。 |
 
 ## SizeChangeCallback<sup>15+</sup>
@@ -4174,6 +4174,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 >
 > - 私有数据通道是系统预置输入法应用与系统特定组件（如文本框、桌面应用等）的通信机制，常用于设备级厂商在特定设备上实现自定义的输入法功能。
 > - 私有数据规格限制：总大小32KB，数量限制5条。
+> - 私有数据默认发送给文本框，如果需要发送给桌面应用，请在私有数据中携带一条`{'sys_cmd':1}`数据。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4593,7 +4594,7 @@ inputClient.off('attachOptionsDidChange', attachOptionsDidChangeCallback);
 console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 ```
 
-### CapitalizeMode<sup>20+</sup>
+## CapitalizeMode<sup>20+</sup>
 
 枚举，定义了文本首字母大写的不同模式。
 
@@ -4606,7 +4607,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | WORDS | 2 | 每个单词的首字母大写。|
 | CHARACTERS | 3 | 每个字母都大写。|
 
-### EditorAttribute
+## EditorAttribute
 
 编辑框属性值。
 

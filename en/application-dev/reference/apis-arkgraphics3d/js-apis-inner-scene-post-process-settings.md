@@ -9,8 +9,8 @@
 The module provides image post-processing methods (for example, tone mapping) in 3D graphics.
 
 > **NOTE**
->
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> 
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -62,8 +62,8 @@ Describes the settings for vignette effects.
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| roundness | number | No| Yes| Extent of the effect. The value ranges from 0 to 1. The value **1** means a global effect. The default is **sqrt(0.5)**.|
-| intensity | number | No| Yes| Strength of the effect. The default value is **0.4**.|
+| roundness | number | No| Yes| Application scope. The value range is [0, 1]. When the value is **0**, the application scope is minimized. When the value is **1**, the application scope is global. The default value is **sqrt(0.5)**.|
+| intensity | number | No| Yes| Effect strength. The value range is [0, 1]. The value **0** indicates no vignetting effect, and the value **1** indicates maximum vignetting intensity. The default value is **0.4**.|
 
 ## ColorFringeSettings<sup>22+</sup>
 
@@ -77,7 +77,7 @@ Describes the settings for color fringing. It is unavailable when [RenderingPipe
 
 ## PostProcessSettings
 
-Describes the post-processing settings.
+Post-processing settings, which are used to configure the image processing effect after camera rendering, including tone mapping, bloom, vignetting, and chromatic aberration. This is used as the postProcess attribute of [Camera](js-apis-inner-scene-nodes.md#camera).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
