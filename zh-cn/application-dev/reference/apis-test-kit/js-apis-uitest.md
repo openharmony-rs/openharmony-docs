@@ -2391,8 +2391,10 @@ import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
-  await scrollBar.scrollToBottom();
+  let scrollBar: Component | null = await driver.findComponent(ON.type('Scroll'));
+  if (scrollBar) {
+    await scrollBar.scrollToBottom();
+  }
 }
 ```
 
@@ -3063,7 +3065,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
 }
 ```
 
@@ -3110,7 +3112,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
 }
 ```
 
@@ -6790,7 +6792,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     let name: string = await window.getBundleName();
   }
@@ -6834,7 +6836,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     let rect = await window.getBounds();
   }
@@ -6878,7 +6880,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     let title = await window.getTitle();
   }
@@ -6922,7 +6924,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     let mode = await window.getWindowMode();
   }
@@ -6966,7 +6968,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     let focused = await window.isFocused();
   }
@@ -7014,7 +7016,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     let focused = await window.isActived();
   }
@@ -7058,7 +7060,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.focus();
   }
@@ -7115,7 +7117,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.moveTo(100, 100);
   }
@@ -7169,7 +7171,7 @@ import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.resize(100, 100, ResizeDirection.LEFT);
   }
@@ -7216,7 +7218,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.split();
   }
@@ -7263,7 +7265,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.maximize();
   }
@@ -7310,7 +7312,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.minimize();
   }
@@ -7357,7 +7359,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.resume();
   }
@@ -7404,7 +7406,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow | null = await driver.findWindow({ actived: true });
+  let window: UiWindow | null = await driver.findWindow({ active: true });
   if (window) {
     await window.close();
   }
