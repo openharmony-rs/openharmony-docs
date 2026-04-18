@@ -281,6 +281,24 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 | ------ | ----- | ---- | --- |
 | value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
 
+### fontVariations
+
+fontVariations(fontVariations: Array&lt;FontVariation&gt;)
+
+设置可变字体的属性。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 参数名 | 类型                                          | 必填 | 说明                                          |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。fontVariations属性的优先级高于[fontWeight](#fontweight24)。 |
+
 ## 事件
 
 通用事件支持[点击事件onClick](ts-universal-events-click.md#onclick)、[悬浮事件onHover](ts-universal-events-hover.md#onhover)。
@@ -639,3 +657,35 @@ struct SpanExample {
 
 ![SpanBaselineOffset](figures/SpanBaselineOffset.png)
 
+### 示例5（设置文本可变字体的属性）
+
+该示例通过[fontVariations](#fontvariations)属性设置可变字体的属性。
+
+从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SpanExample {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text() {
+        Span('Hello World !')
+          // wght代表可变字体的字重属性
+          .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      }
+
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
+![SpanFontVariations](figures/FontVariations.gif)
