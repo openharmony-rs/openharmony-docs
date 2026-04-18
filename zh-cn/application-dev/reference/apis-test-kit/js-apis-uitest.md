@@ -2292,6 +2292,59 @@ async function demo() {
 }
 ```
 
+### scrollSearch<sup>23+</sup>
+
+scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Component \| null>
+
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[scrollSearch(on)](#scrollsearch18)。
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名                    | 类型       | 必填 | 说明                                |
+|------------------------| ---------- | ---- |-----------------------------------|
+| on                     | [On](#on9) | 是   | 目标控件的属性要求。                        |
+| vertical |    boolean | 否 | 默认为true，表示查找方向是纵向。false表示查找方向为横向。 |
+| offset   | int| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。    |
+
+**返回值：**
+
+| 类型                               | 说明                                  |
+| ---------------------------------- | ------------------------------------- |
+| Promise\<Component \| null>(#component9)> | Promise对象，返回目标控件对象。在未找到目标对象时以Promise形式返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | ---------------------------------------- |
+| 17000002 | The API does not support concurrent calls. |
+| 17000004 | The window or component is invisible or destroyed.           |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+  let button = await scrollBar.scrollSearch(ON.text('next page'));
+}
+```
+
 ### scrollToTop<sup>9+</sup>
 
 ArkTS-Dyn: scrollToTop(speed?: number): Promise\<void>
@@ -3077,7 +3130,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow | null\>
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[findWindow](#findwindow)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[findWindow](#findwindow9)。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -5572,7 +5625,7 @@ ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int, 
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[mouseLongClick(p, btnId, key1, key2)](#mouselongclick)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[mouseLongClick(p, btnId, key1, key2)](#mouselongclick11)。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -5886,6 +5939,7 @@ async function demo() {
     await driver.inputText(point, '123');
   }
 }
+```
 
 ### inputText<sup>20+</sup>
 
@@ -8740,7 +8794,6 @@ async function demo() {
     console.info('This button can not be operated');
   }
 }
-
 ```
 
 ### isFocused<sup>(deprecated)</sup>
