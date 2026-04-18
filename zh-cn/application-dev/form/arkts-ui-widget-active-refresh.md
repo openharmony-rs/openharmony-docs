@@ -80,7 +80,7 @@
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
-   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -168,19 +168,19 @@
    // entry/src/main/resources/zh_CN/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    },
-   	    {
-   	      "name": "update",
-   	      "value": "刷新"
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        },
+        {
+          "name": "update",
+          "value": "刷新"
+        }
       ]
    }
    ```
@@ -337,19 +337,19 @@
 
 5. 资源文件如下。
 
-   ```json
+   ```json5
    // entry/src/main/resources/base/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        }
       ]
    }
    ```
