@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
+<!--Designer: @yuchaozhng-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -422,14 +422,14 @@ ArkTS-Sta示例：
 // g_object加入分布式组网
 g_object!.setSessionId(distributedDataObject.genSessionId()).then(() => {
   console.info("join session.");
-}).catch((error: Error) => {
+}).catch((error) => {
   console.error("error:" + error.code + error.message);
 });
 // 退出分布式组网
 g_object!.setSessionId().then(() => {
   console.info("leave all session.");
-}).catch((error: Error) => {
-  console.error("error:":" + error.code + error.message);
+}).catch((error) => {
+  console.error("error:" + error.code + error.message);
 });
 ```
 
@@ -620,7 +620,7 @@ onChange(callback: DataObserver): void
 **示例：**
 
 ```ts
-const changeCallback1: distributedDataObject.DataObserver = = (sessionId: string, fields: Array<string>) => {
+const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
   console.info("change callback callback1 " + sessionId);
   if (fields != null && fields != undefined) {
     for (let index: int = 0; index < fields.length; index++) {
@@ -630,7 +630,7 @@ const changeCallback1: distributedDataObject.DataObserver = = (sessionId: string
 }
 try {
   g_object!.onChange(changeCallback1);
-} catch (error: Error) {
+} catch (error) {
   console.error("Execute failed, error code =  " + error.code);
 }
 ```
@@ -685,7 +685,7 @@ try {
   g_object!.onChange(changeCallback1);
   g_object!.onChange(changeCallback2);
   g_object!.offChange();
-} catch (error: Error) {
+} catch (error) {
   console.error("Execute failed, error code =  " + error.code);
 }
 ```
@@ -719,7 +719,7 @@ const statusCallback1: distributedDataObject.StatusObserver =
   }
 try {
   g_object!.onStatus(statusCallback1);
-} catch (error: Error) {
+} catch (error) {
   console.error("Execute failed, error code =  " + error.code);
 }
 ```
@@ -765,7 +765,7 @@ try {
   g_object!.onStatus(statusCallback1);
   g_object!.onStatus(statusCallback2);
   g_object!.offStatus();
-} catch (error: Error) {
+} catch (error) {
   console.error("Execute failed, error code =  " + error.code);
 }
 ```
@@ -793,13 +793,13 @@ onProgressChanged(callback: ProgressObserver): void
 **示例：**
 
 ```ts
-const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: Double) => {
+const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: int) => {
   console.info("progressChanged callback" + sessionId);
   console.info("progressChanged callback" + progress);
 }
 try {
   g_object!.onProgressChanged(progressChangedCallback);
-} catch (error: Error) {
+} catch (error) {
   console.error("Execute failed, error code =  " + error.code);
 }
 ```
@@ -827,12 +827,12 @@ offProgressChanged(callback?: ProgressObserver): void
 **示例：**
 
 ```ts
-const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: Double) => {
+const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: int) => {
   console.info("progressChanged callback1" + sessionId);
   console.info("progressChanged callback1" + progress);
 }
 
-const progressChangedCallback2: distributedDataObject.ProgressObserver = (sessionId: string, progress: Double) => {
+const progressChangedCallback2: distributedDataObject.ProgressObserver = (sessionId: string, progress: int) => {
   console.info("progressChanged callback2" + sessionId);
   console.info("progressChanged callback2" + progress);
 }
@@ -845,7 +845,7 @@ try {
   g_object!.onProgressChanged(progressChangedCallback2);
   // 取消对资产传输进度的所有监听
   g_object!.offProgressChanged();
-} catch (error: Error) {
+} catch (error) {
   console.error("Execute failed, error code =  " + error.code);
 }
 ```
@@ -989,7 +989,7 @@ g_object!.save("local").then((callbackInfo: distributedDataObject.SaveSuccessRes
     console.info("save sessionId " + callbackInfo.sessionId);
     console.info("save version " + callbackInfo.version);
     console.info("save deviceId " + callbackInfo.deviceId);
-}).catch((err: Error) => {
+}).catch((err) => {
     console.error("save failed, error code = " + err.code);
     console.error("save failed, error message: " + err.message);
 });
@@ -1150,7 +1150,7 @@ g_object!.save("local").then((result: distributedDataObject.SaveSuccessResponse)
   console.info("save sessionId " + result.sessionId);
   console.info("save version " + result.version);
   console.info("save deviceId " + result.deviceId);
-}).catch((err: Error) => {
+}).catch((err) => {
   console.error("save failed, error code = " + err.code);
   console.error("save failed, error message: " + err.message);
 });
@@ -1158,7 +1158,7 @@ g_object!.save("local").then((result: distributedDataObject.SaveSuccessResponse)
 g_object!.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessResponse) => {
   console.info("revokeSave callback");
   console.info("sessionId" + result.sessionId);
-}).catch((err: Error) => {
+}).catch((err) => {
   console.error("revokeSave failed, error code = " + err.code);
   console.error("revokeSave failed, error message = " + err.message);
 });
@@ -1196,6 +1196,8 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;
   | 801      | Capability not supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -1241,6 +1243,61 @@ class EntryAbility extends UIAbility {
     }
 
     g_object.bindAssetStore('attachment', bindInfo, (err: BusinessError) => {
+      if (err) {
+        console.error('bindAssetStore failed.');
+      }
+      console.info('bindAssetStore success.');
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import commonType from '@ohos.data.commonType';
+import distributedDataObject from '@ohos.data.distributedDataObject';
+
+class Note {
+  title: string
+  text: string
+  attachment: commonType.Asset
+
+  constructor(title: string, text: string, attachment: commonType.Asset) {
+    this.title = title;
+    this.text = text;
+    this.attachment = attachment;
+  }
+}
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let attachment: commonType.Asset = {
+      name: 'test_img.jpg',
+      uri: 'file://com.example.myapplication/data/storage/el2/distributedfiles/dir/test_img.jpg',
+      path: '/dir/test_img.jpg',
+      createTime: '2024-01-02 10:00:00',
+      modifyTime: '2024-01-02 10:00:00',
+      size: '5',
+      status: commonType.AssetStatus.ASSET_NORMAL
+    }
+    let note: Note = new Note('test', 'test', attachment);
+    let g_object: distributedDataObject.DataObject = distributedDataObject.create(this.context, note);
+    g_object.setSessionId('123456');
+
+    const bindInfo: distributedDataObject.BindInfo = {
+      storeName: 'notepad',
+      tableName: 'note_t',
+      primaryKey: {
+        'uuid': '00000000-0000-0000-0000-000000000000'
+      },
+      field: 'attachment',
+      assetName: attachment.name as string
+    }
+
+    g_object.bindAssetStore('attachment', bindInfo, (err: BusinessError<void> | null): void => {
       if (err) {
         console.error('bindAssetStore failed.');
       }
@@ -1347,7 +1404,6 @@ ArkTS-Sta示例：
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 import commonType from '@ohos.data.commonType';
 import distributedDataObject from '@ohos.data.distributedDataObject';
 
@@ -1390,7 +1446,7 @@ class EntryAbility extends UIAbility {
 
     g_object.bindAssetStore("attachment", bindInfo).then(() => {
       console.info('bindAssetStore success.');
-    }).catch((err: Error) => {
+    }).catch((err) => {
       console.error("bindAssetStore failed, error code = " + err.code);
     });
   }
@@ -1779,7 +1835,7 @@ class EntryAbility extends UIAbility {
     let uri = "file://test/test.img";
     g_object.setAsset("attachment", uri).then(() => {
       console.info('setAsset success.');
-    }).catch((err: Error) => {
+    }).catch((err) => {
       console.error("setAsset failed, error code = " + err.code);
     });
   }
@@ -1920,7 +1976,7 @@ class EntryAbility extends UIAbility {
     let uris: Array<string> = ["file://test/test_1.txt", "file://test/test_2.txt"];
     g_object.setAssets("attachment", uris).then(() => {
       console.info('setAssets success.');
-    }).catch((err: Error) => {
+    }).catch((err) => {
       console.error("setAssets failed, error code = " + err.code);
     });
   }
