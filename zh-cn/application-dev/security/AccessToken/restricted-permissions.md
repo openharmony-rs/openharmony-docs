@@ -222,9 +222,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：General
+
 **起始版本**：11
 
-**变更信息**：API 11，权限等级为system_core；从API 12开始，权限等级变更为system_basic，向普通应用开放。
+**变更信息**：API 11，权限等级为system_core；从API 12开始，权限等级变更为system_basic，向普通应用开放。从API 26.0.0开始，该权限支持在全设备上申请。
 
 ## ohos.permission.INPUT_MONITORING
 
