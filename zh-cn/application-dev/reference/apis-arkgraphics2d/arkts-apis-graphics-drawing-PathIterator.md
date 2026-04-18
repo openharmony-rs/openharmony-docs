@@ -99,7 +99,7 @@ let path: drawing.Path = new drawing.Path();
 path.moveTo(10, 20);
 let iter: drawing.PathIterator = new drawing.PathIterator(path);
 let verbStr: Array<string> = ["MOVE", "LINE", "QUAD", "CONIC", "CUBIC", "CLOSE", "DONE"];
-let pointCount: Array<number> = [1,2,3,4,4,0,0]; //1,2,3,3.5,4,0,0
+let pointCount: Array<number> = [1,2,3,4,4,0,0]; // 1,2,3,3.5,4,0,0
 let points: Array<common2D.Point> = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 let offset = 0;
 let verb = iter.next(points, offset);
@@ -119,7 +119,7 @@ let path: drawing.Path = new drawing.Path();
 path.moveTo(10.0, 20.0);
 let iter: drawing.PathIterator = new drawing.PathIterator(path);
 let verbStr: Array<string> = ["MOVE", "LINE", "QUAD", "CONIC", "CUBIC", "CLOSE", "DONE"];
-let pointCount: Array<int> = [1,2,3,4,4,0,0]; //1,2,3,4,4,0,0
+let pointCount: Array<int> = [1,2,3,4,4,0,0]; // 1,2,3,4,4,0,0
 let points: Array<common2D.Point> = [{x: 0.0, y: 0.0}, {x: 0.0, y: 0.0}, {x: 0.0, y: 0.0}, {x: 0.0, y: 0.0}];
 let offset = 0;
 let verb = iter.next(points, offset);

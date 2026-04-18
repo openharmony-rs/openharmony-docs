@@ -1,5 +1,3 @@
-
-
 # Class (Brush)
 
 <!--Kit: ArkGraphics 2D-->

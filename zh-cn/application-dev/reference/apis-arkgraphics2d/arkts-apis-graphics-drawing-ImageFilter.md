@@ -1,5 +1,3 @@
-
-
 # Class (ImageFilter)
 
 <!--Kit: ArkGraphics 2D-->

@@ -586,6 +586,7 @@ ArkTS-Dyn: addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): 
 ArkTS-Sta: addArc(rect: common2D.Rect, startAngle: double, sweepAngle: double): void
 
 向路径添加一段圆弧。
+
 当startAngle和sweepAngle同时满足以下两种情况时，添加整个椭圆而不是圆弧:
 1.startAngle对90取余接近于0；
 2.sweepAngle不在(-360, 360)区间内。
@@ -1681,7 +1682,7 @@ console.info("pointData[0].y: ", pointData[0].y);
 
 ## getVerbData
 
-getVerbData(): Array<PathIteratorVerb>
+getVerbData(): Array\<PathIteratorVerb\>
 
 获取路径的指令数据。
 
