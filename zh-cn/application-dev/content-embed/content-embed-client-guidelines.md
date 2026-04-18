@@ -272,6 +272,48 @@ void ContentEmbedManager::CreateProxy(void* contextPtr, ContentEmbed_Document *o
 }
 ```
 
+获取当前上下文实例
+
+```ArkTS
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+nativeModule.receiveContext(context); // 调用Native接口
+```
+
+```cpp
+static napi_value ReceiveContext(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value argv;
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+
+    // 获取ArkTS传递的UIAbilityContext对象
+    napi_value contextObj = argv;
+  
+    // 转换为Native可操作指针（需提前通过napi_wrap绑定）
+    void* contextPtr = nullptr;
+    napi_status status = napi_unwrap(env, contextObj, &contextPtr);
+  
+    if (status != napi_ok || nativeContextPtr == nullptr) {
+        // 错误处理
+        napi_throw_error(env, nullptr, "Failed to unwrap context");
+        return nullptr;
+    }
+    // 记录contextPtr，后续使用
+    ...
+    return nullptr;
+}
+
+// napi注册
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports) {
+    napi_property_descriptor desc[] = {
+        {"receiveContext", nullptr, ReceiveContext, nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END  
+```
+
 ### 客户端OE对象和OE Extension交互
 
 1. 拉起OE Extension：启动OE Extension组件。
