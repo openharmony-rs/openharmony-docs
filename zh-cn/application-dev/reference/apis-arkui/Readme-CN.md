@@ -66,6 +66,9 @@
     - [@ohos.mediaquery (媒体查询)](js-apis-mediaquery.md)
     - [@ohos.pluginComponent (PluginComponentManager)](js-apis-plugincomponent.md)
     - [@ohos.promptAction (弹窗)](js-apis-promptAction.md)
+    <!--Del-->
+    - [@ohos.promptAction (弹窗)(系统接口)](js-apis-promptAction-sys.md)
+    <!--DelEnd-->
     - [@ohos.router (页面路由)(不推荐)](js-apis-router.md)
     - [@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)
     - [getContext](js-apis-getContext.md)
@@ -429,8 +432,17 @@
     <!--DelEnd-->
   - 弹窗<!--dialog-boxes-->
     - [警告弹窗 (AlertDialog)](arkui-ts/ts-methods-alert-dialog-box.md)
+    <!--Del-->
+    - [警告弹窗 (AlertDialog) (系统接口)](arkui-ts/ts-methods-alert-dialog-box-sys.md)
+    <!--DelEnd-->
     - [列表选择弹窗 (ActionSheet)](arkui-ts/ts-methods-action-sheet.md)
+    <!--Del-->
+    - [列表选择弹窗 (ActionSheet) (系统接口)](arkui-ts/ts-methods-action-sheet-sys.md)
+    <!--DelEnd-->
     - [自定义弹窗 (CustomDialog)](arkui-ts/ts-methods-custom-dialog-box.md)
+    <!--Del-->
+    - [自定义弹窗 (CustomDialog) (系统接口)](arkui-ts/ts-methods-custom-dialog-box-sys.md)
+    <!--DelEnd-->
     - [日历选择器弹窗 (CalendarPickerDialog)](arkui-ts/ts-methods-calendarpicker-dialog.md)
     - [日期滑动选择器弹窗 (DatePickerDialog)](arkui-ts/ts-methods-datepicker-dialog.md)
     - [时间滑动选择器弹窗 (TimePickerDialog)](arkui-ts/ts-methods-timepicker-dialog.md)
