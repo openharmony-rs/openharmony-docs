@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块使用屏幕物理像素单位px。
@@ -32,6 +34,10 @@ isSubpixel(): boolean
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -59,6 +65,10 @@ isLinearMetrics(): boolean
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                 |
@@ -77,7 +87,9 @@ console.info("values=" + font.isLinearMetrics());
 
 ## getSkewX<sup>12+</sup>
 
-getSkewX(): number
+ArkTS-Dyn: getSkewX(): number
+
+ArkTS-Sta: getSkewX(): double
 
 获取字型在x轴方向上的倾斜度。
 
@@ -85,11 +97,15 @@ getSkewX(): number
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 返回字型在x轴方向上的倾斜度。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回字型在x轴方向上的倾斜度。 |
 
 **示例：**
 
@@ -97,7 +113,7 @@ getSkewX(): number
 import {drawing} from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setSkewX(-1)
+font.setSkewX(-1.0);
 console.info("values=" + font.getSkewX());
 ```
 
@@ -110,6 +126,10 @@ isEmbolden(): boolean
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -129,7 +149,9 @@ console.info("values=" + font.isEmbolden());
 
 ## getScaleX<sup>12+</sup>
 
-getScaleX(): number
+ArkTS-Dyn: getScaleX(): number
+
+ArkTS-Sta: getScaleX(): double
 
 获取字型在x轴方向上的缩放比例。
 
@@ -137,11 +159,15 @@ getScaleX(): number
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number  | 返回字型在x轴方向上的缩放比例。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回字型在x轴方向上的缩放比例。 |
 
 **示例：**
 
@@ -149,13 +175,15 @@ getScaleX(): number
 import {drawing} from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setScaleX(2);
+font.setScaleX(2.0);
 console.info("values=" + font.getScaleX());
 ```
 
 ## getHinting<sup>12+</sup>
 
-getHinting(): FontHinting
+ArkTS-Dyn: getHinting(): FontHinting
+
+ArkTS-Sta: getHinting(): FontHinting | undefined
 
 获取字型轮廓效果。
 
@@ -163,11 +191,15 @@ getHinting(): FontHinting
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| [FontHinting](arkts-apis-graphics-drawing-e.md#fonthinting12)  | 返回字型轮廓效果。 |
+| ArkTS-Dyn: [FontHinting](arkts-apis-graphics-drawing-e.md#fonthinting12)<br/>ArkTS-Sta: [FontHinting](arkts-apis-graphics-drawing-e.md#fonthinting12) \| undefined  | 返回字型轮廓效果。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -180,7 +212,9 @@ console.info("values=" + font.getHinting());
 
 ## getEdging<sup>12+</sup>
 
-getEdging(): FontEdging
+ArkTS-Dyn: getEdging(): FontEdging
+
+ArkTS-Sta: getEdging(): FontEdging | undefined
 
 获取字型边缘效果。
 
@@ -188,11 +222,15 @@ getEdging(): FontEdging
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| [FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12)  | 返回字型边缘效果。 |
+| ArkTS-Dyn: [FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12)<br/>ArkTS-Sta: [FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) \| undefined  | 返回字型边缘效果。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -212,6 +250,10 @@ enableSubpixel(isSubpixel: boolean): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -246,6 +288,10 @@ enableEmbolden(isEmbolden: boolean): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型    | 必填 | 说明                                                  |
@@ -279,6 +325,10 @@ enableLinearMetrics(isLinearMetrics: boolean): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
@@ -304,7 +354,9 @@ font.enableLinearMetrics(true);
 
 ## setSize
 
-setSize(textSize: number): void
+ArkTS-Dyn: setSize(textSize: number): void
+
+ArkTS-Sta: setSize(textSize: double): void
 
 设置字型大小。
 
@@ -312,11 +364,15 @@ setSize(textSize: number): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型   | 必填 | 说明             |
-| -------- | ------ | ---- | ---------------- |
-| textSize | number | 是   | 字型大小，该参数为浮点数，为负数时字型大小会被置为0。字型大小为0时，绘制的文字不会显示。|
+| 参数名   | 类型                                    | 必填 | 说明                                                         |
+| -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
+| textSize | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 字型大小，该参数为浮点数，为负数时字型大小会被置为0。字型大小为0时，绘制的文字不会显示。 |
 
 **错误码：**
 
@@ -332,12 +388,14 @@ setSize(textSize: number): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
-font.setSize(5);
+font.setSize(5.0);
 ```
 
 ## getSize
 
-getSize(): number
+ArkTS-Dyn: getSize(): number
+
+ArkTS-Sta: getSize(): double
 
 获取字型大小。
 
@@ -345,11 +403,15 @@ getSize(): number
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字型大小，浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字型大小，浮点数。 |
 
 **示例：**
 
@@ -357,7 +419,7 @@ getSize(): number
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
-font.setSize(5);
+font.setSize(5.0);
 let fontSize = font.getSize();
 ```
 
@@ -370,6 +432,10 @@ setTypeface(typeface: Typeface): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -396,7 +462,9 @@ font.setTypeface(new drawing.Typeface());
 
 ## getTypeface
 
-getTypeface(): Typeface
+ArkTS-Dyn: getTypeface(): Typeface
+
+ArkTS-Sta: getTypeface(): Typeface | undefined
 
 获取字体。
 
@@ -404,11 +472,15 @@ getTypeface(): Typeface
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明   |
 | --------------------- | ------ |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | 字体。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 字体。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -421,7 +493,9 @@ let typeface = font.getTypeface();
 
 ## getMetrics
 
-getMetrics(): FontMetrics
+ArkTS-Dyn: getMetrics(): FontMetrics
+
+ArkTS-Sta: getMetrics(): FontMetrics | undefined
 
 获取与字体关联的FontMetrics属性。
 
@@ -429,11 +503,15 @@ getMetrics(): FontMetrics
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                        | 说明              |
 | --------------------------- | ----------------- |
-| [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) | FontMetrics属性。 |
+| ArkTS-Dyn: [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)<br/>ArkTS-Sta: [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) \| undefined | FontMetrics属性。获取失败时返回undefined |
 
 **示例：**
 
@@ -446,7 +524,9 @@ let metrics = font.getMetrics();
 
 ## measureText
 
-measureText(text: string, encoding: TextEncoding): number
+ArkTS-Dyn: measureText(text: string, encoding: TextEncoding): number
+
+ArkTS-Sta: measureText(text: string, encoding: TextEncoding): double
 
 测量文本的宽度。
 
@@ -457,6 +537,10 @@ measureText(text: string, encoding: TextEncoding): number
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -469,7 +553,7 @@ measureText(text: string, encoding: TextEncoding): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 文本的宽度，浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 文本的宽度，浮点数。 |
 
 **错误码：**
 
@@ -490,13 +574,19 @@ font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
 
 ## measureSingleCharacter<sup>12+</sup>
 
-measureSingleCharacter(text: string): number
+ArkTS-Dyn: measureSingleCharacter(text: string): number
+
+ArkTS-Sta: measureSingleCharacter(text: string): double
 
 测量单个字符的宽度。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -508,7 +598,7 @@ measureSingleCharacter(text: string): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字符的宽度，浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数。 |
 
 **错误码：**
 
@@ -520,6 +610,7 @@ measureSingleCharacter(text: string): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -534,15 +625,36 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const font = new drawing.Font();
+    font.setSize(20.0);
+    let width = font.measureSingleCharacter("你");
+  }
+}
+```
+
 ## measureSingleCharacterWithFeatures<sup>20+</sup>
 
-measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>): number
+ArkTS-Dyn: measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>): number
+
+ArkTS-Sta: measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>): double
 
 测量单个字符的宽度，字符带有字体特征。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **参数**
 
@@ -555,7 +667,7 @@ measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>)
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字符的宽度，浮点数，单位为px。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数，单位为px。 |
 
 **错误码：**
 
@@ -576,7 +688,7 @@ class DrawingRenderNode extends RenderNode {
     const font = new drawing.Font();
     font.setSize(20);
     let fontFeatures : Array<drawing.FontFeature> = [];
-    fontFeatures.push({name: 'calt', value: 0});
+    fontFeatures.push({name: 'calt', value: 0.0});
     let width = font.measureSingleCharacterWithFeatures("你", fontFeatures);
   }
 }
@@ -584,7 +696,9 @@ class DrawingRenderNode extends RenderNode {
 
 ## setScaleX<sup>12+</sup>
 
-setScaleX(scaleX: number): void
+ArkTS-Dyn: setScaleX(scaleX: number): void
+
+ArkTS-Sta: setScaleX(scaleX: double): void
 
 设置字型对象在x轴上的缩放比例。
 
@@ -592,11 +706,15 @@ setScaleX(scaleX: number): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
-| scaleX     | number                      | 是   | 文本在x轴上的缩放比例，该参数为浮点数。 |
+| scaleX     | ArkTS-Dyn: number<br/>ArkTS-Sta: double                      | 是   | 文本在x轴上的缩放比例，该参数为浮点数。 |
 
 **错误码：**
 
@@ -608,6 +726,7 @@ setScaleX(scaleX: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -628,9 +747,35 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTs-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    let font = new drawing.Font();
+    font.setSize(100.0);
+    font.setScaleX(2.0);
+    const textBlob = drawing.TextBlob.makeFromString("hello", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    if (textBlob == undefined) {
+      return;
+    }
+    canvas.drawTextBlob(textBlob, 200.0, 200.0);
+  }
+}
+```
+
 ## setSkewX<sup>12+</sup>
 
-setSkewX(skewX: number): void
+ArkTS-Dyn: setSkewX(skewX: number): void
+
+ArkTS-Sta: setSkewX(skewX: double): void
 
 设置字型对象在x轴上的倾斜比例。
 
@@ -638,11 +783,15 @@ setSkewX(skewX: number): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
-| skewX     | number                      | 是   | 文本在x轴上的倾斜比例，正数表示往左边倾斜，负数表示往右边倾斜，该参数为浮点数。 |
+| skewX     | ArkTS-Dyn: number<br/>ArkTS-Sta: double                      | 是   | 文本在x轴上的倾斜比例，正数表示往左边倾斜，负数表示往右边倾斜，该参数为浮点数。 |
 
 **错误码：**
 
@@ -654,6 +803,7 @@ setSkewX(skewX: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -674,6 +824,30 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    let font = new drawing.Font();
+    font.setSize(100.0);
+    font.setSkewX(1.0);
+    const textBlob = drawing.TextBlob.makeFromString("hello", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    if (textBlob == undefined) {
+      return;
+    }
+    canvas.drawTextBlob(textBlob, 200.0, 200.0);
+  }
+}
+```
+
 ## setEdging<sup>12+</sup>
 
 setEdging(edging: FontEdging): void
@@ -683,6 +857,10 @@ setEdging(edging: FontEdging): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -717,6 +895,10 @@ setHinting(hinting: FontHinting): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明       |
@@ -742,13 +924,19 @@ font.setHinting(drawing.FontHinting.FULL);
 
 ## countText<sup>12+</sup>
 
-countText(text: string): number
+ArkTS-Dyn: countText(text: string): number
+
+ArkTS-Sta: countText(text: string): int
 
 获取文本所表示的字符数量。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -760,7 +948,7 @@ countText(text: string): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 返回文本所表示的字符数量，整数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回文本所表示的字符数量，整数。 |
 
 **错误码：**
 
@@ -776,7 +964,7 @@ countText(text: string): number
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
-let resultNumber: number = font.countText('ABCDE');
+let resultNumber = font.countText('ABCDE');
 console.info("count text number: " + resultNumber);
 ```
 
@@ -789,6 +977,10 @@ setBaselineSnap(isBaselineSnap: boolean): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -824,6 +1016,10 @@ isBaselineSnap(): boolean
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明             |
@@ -850,6 +1046,10 @@ setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -886,6 +1086,10 @@ isEmbeddedBitmaps(): boolean
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明             |
@@ -912,6 +1116,10 @@ setForceAutoHinting(isForceAutoHinting: boolean): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -948,6 +1156,10 @@ isForceAutoHinting(): boolean
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明             |
@@ -967,7 +1179,9 @@ console.info("drawing isForceAutoHinting:  " + font.isForceAutoHinting());
 
 ## getWidths<sup>12+</sup>
 
-getWidths(glyphs: Array\<number>): Array\<number>
+ArkTS-Dyn: getWidths(glyphs: Array\<number>): Array\<number>
+
+ArkTS-Sta: getWidths(glyphs: Array\<int>): Array\<double> | undefined
 
 获取字形数组中每个字形对应的宽度。
 
@@ -975,17 +1189,21 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<number> | 返回字形宽度数组。 |
+| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> \| undefined | 返回字形宽度数组。获取失败时返回undefined。 |
 
 **错误码：**
 
@@ -997,6 +1215,7 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -1009,9 +1228,26 @@ for (let index = 0; index < fontWidths.length; index++) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let font: drawing.Font = new drawing.Font();
+let text: string = 'hello world';
+let glyphs: int[] | undefined = font.textToGlyphs(text);
+if (glyphs != undefined && font.getWidths(glyphs!) != undefined) {
+  let fontWidths: Array<double> = font.getWidths(glyphs!)!;
+  for (let index = 0; index < fontWidths.length; index++) {
+    console.info("get fontWidths[", index, "]:", fontWidths[index]);
+  }
+}
+```
+
 ## textToGlyphs<sup>12+</sup>
 
-textToGlyphs(text: string, glyphCount?: number): Array\<number>
+ArkTS-Dyn: textToGlyphs(text: string, glyphCount?: number): Array\<number>
+
+ArkTS-Sta: textToGlyphs(text: string, glyphCount?: int): Array\<int> | undefined
 
 将文本转换为字形索引。
 
@@ -1019,18 +1255,22 @@ textToGlyphs(text: string, glyphCount?: number): Array\<number>
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
 | text     | string                        | 是   | 文本字符串。 |
-| glyphCount | number | 否   | 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等，默认为text的字符数量，该参数为整数。 |
+| glyphCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | ArkTS-Dyn: 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等。当glyphCount传入undefined时，该方法将抛错误码。不传该参数时，默认为text的字符数量，该参数为整数。<br/>ArkTS-Sta: 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等。当不传该参数，或者glyphCount传入undefined时，默认为text的字符数量，该参数为整数。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<number> | 返回转换得到的字形索引数组。 |
+| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> \| undefined | 返回转换得到的字形索引数组。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -1042,6 +1282,7 @@ textToGlyphs(text: string, glyphCount?: number): Array\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -1051,9 +1292,23 @@ let glyphs : number[] = font.textToGlyphs(text);
 console.info("drawing text toglyphs OnTestFunction num =  " + glyphs.length );
 ```
 
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let font : drawing.Font = new drawing.Font();
+let text : string = 'hello world';
+let glyphs : int[] | undefined = font.textToGlyphs(text);
+if (glyphs != undefined) {
+  console.info("drawing text toglyphs OnTestFunction num =  " + glyphs!.length );
+}
+```
+
 ## getBounds<sup>18+</sup>
 
-getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
+ArkTS-Dyn: getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
+
+ArkTS-Sta: getBounds(glyphs: Array\<int>): Array\<common2D.Rect> | undefined
 
 获取字形数组中每个字形的边界矩形。
 
@@ -1061,20 +1316,25 @@ getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<[common2D.Rect](js-apis-graphics-common2D.md#rect)> | 返回字形边界矩形数组。 |
+| ArkTS-Dyn: Array\<[common2D.Rect](js-apis-graphics-common2D.md#rect)><br/>ArkTS-Sta: Array\<[common2D.Rect](js-apis-graphics-common2D.md#rect)> \| undefined | 返回字形边界矩形数组。获取失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
@@ -1088,9 +1348,27 @@ for (let index = 0; index < fontBounds.length; index++) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let font: drawing.Font = new drawing.Font();
+let text: string = 'hello world';
+let glyphs : int[] | undefined = font.textToGlyphs(text);
+if (glyphs != undefined && font.getBounds(glyphs!) != undefined) {
+  let fontBounds: Array<common2D.Rect> = font.getBounds(glyphs!)!;
+  for (let index = 0; index < fontBounds.length; index++) {
+    console.info("get fontWidths[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
+      " right:", fontBounds[index].right, " bottom:", fontBounds[index].bottom);
+  }
+}
+```
+
 ## getTextPath<sup>18+</sup>
 
-getTextPath(text: string, byteLength: number, x: number, y: number): Path
+ArkTS-Dyn: getTextPath(text: string, byteLength: number, x: number, y: number): Path
+
+ArkTS-Sta: getTextPath(text: string, byteLength: int, x: double, y: double): Path | undefined
 
 获取文字的轮廓路径。
 
@@ -1098,20 +1376,24 @@ getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                               | 必填 | 说明                    |
 | ------   | ------------------------------------------------   | ---- | ---------------------- |
 |   text   |    string                                          | 是   | 表示存储UTF-8 文本编码的字符。|
-|byteLength|    number                                          | 是   | 表示要获取对应文本路径的字节长度，按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
-|    x     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。|
-|    y     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。|
+|byteLength|    ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 表示要获取对应文本路径的字节长度，按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
+|    x     |    ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。|
+|    y     |    ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。|
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| [Path](arkts-apis-graphics-drawing-Path.md) | 返回获取到的文本的路径轮廓。 |
+| ArkTS-Dyn: [Path](arkts-apis-graphics-drawing-Path.md)<br/>ArkTS-Sta: [Path](arkts-apis-graphics-drawing-Path.md) \| undefined | 返回获取到的文本的路径轮廓。获取失败时返回undefined。 |
 
 **错误码：**
 
@@ -1123,6 +1405,7 @@ getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 import { buffer } from '@kit.ArkTS';
@@ -1133,9 +1416,31 @@ class DrawingRenderNode extends RenderNode {
     const canvas = context.canvas;
     let font = new drawing.Font();
     font.setSize(50);
-    let myString: string = "Hello";
-    let length: number = buffer.from(myString).length;
+    let myString: string = "你好, HarmonyOS";
+    let length: number = myString.length;
     let path = font.getTextPath(myString, length, 0, 100);
+    canvas.drawPath(path);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { buffer } from '@kit.ArkTS';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    font.setSize(50.0)
+    let myString: string = "你好, HarmonyOS";
+    let length = myString.length;
+    let path = font.getTextPath(myString, length, 0.0, 100.0);
+    if (path == undefined) {
+      return;
+    }
     canvas.drawPath(path);
   }
 }
@@ -1143,7 +1448,9 @@ class DrawingRenderNode extends RenderNode {
 
 ## createPathForGlyph<sup>18+</sup>
 
-createPathForGlyph(index: number): Path
+ArkTS-Dyn: createPathForGlyph(index: number): Path
+
+ArkTS-Sta: createPathForGlyph(index: int): Path | undefined
 
 获取指定字形的路径轮廓。
 
@@ -1151,22 +1458,27 @@ createPathForGlyph(index: number): Path
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| index | number | 是   | 字形索引。 |
+| index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 字形索引。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| [Path](arkts-apis-graphics-drawing-Path.md) | 返回指定字形的路径轮廓。 |
+| ArkTS-Dyn: [Path](arkts-apis-graphics-drawing-Path.md)<br/>ArkTS-Sta: [Path](arkts-apis-graphics-drawing-Path.md) \| undefined | 返回指定字形的路径轮廓。获取失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -1184,6 +1496,32 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { FrameNode, NodeController, RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    font.setSize(50)
+    let text: string = '你好';
+    let glyphs = font.textToGlyphs(text);
+    if (glyphs == undefined) {
+      return;
+    }
+    for (let index = 0; index < glyphs.length; index++) {
+      let path = font.createPathForGlyph(glyphs[index]);
+      if (path == undefined) {
+        continue;
+      }
+      canvas.drawPath(path);
+    }
+  }
+}
+```
+
 ## setThemeFontFollowed<sup>15+</sup>
 
 setThemeFontFollowed(followed: boolean): void
@@ -1193,6 +1531,10 @@ setThemeFontFollowed(followed: boolean): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1227,6 +1569,10 @@ isThemeFontFollowed(): boolean
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
