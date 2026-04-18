@@ -12,7 +12,7 @@
     - [基本语法概述](state-management/arkts-basic-syntax-overview.md)
     - [UI装饰器总览](state-management/arkts-decorator-overview.md)
     - [声明式UI描述](state-management/arkts-declarative-ui-description.md)
-    - 自定义组件<!--arkts-custom-components-->
+    - 动态自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](state-management/arkts-create-custom-components.md)
       - [自定义组件生命周期](state-management/arkts-page-custom-components-lifecycle.md)
       - [自定义组件生命周期（推荐）](state-management/arkts-custom-components-new-lifecycle.md)
@@ -24,15 +24,26 @@
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
+    - 静态自定义组件<!--arkts-static-custom-components-->
+      - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
+      - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
+      - [自定义组件生命周期](state-management-static/arkts-custom-components-new-lifecycle.md)
+      - [自定义组件冻结](../ui/state-management-static/arkts-static-custom-components-v1-v2-freeze.md)
+        - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
+        - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
     - 组件扩展<!--arkts-extend-components-->
       - [组件扩展概述](state-management/arkts-extend-components-overview.md)
       - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
       - [\@LocalBuilder装饰器：维持组件关系](state-management/arkts-localBuilder.md)
       - [\@BuilderParam装饰器：引用\@Builder函数](state-management/arkts-builderparam.md)
-      - [wrapBuilder：封装全局@Builder](state-management/arkts-wrapBuilder.md)
+      - [wrapBuilder：封装全局@Builder（ArkTS-Dyn）](state-management/arkts-wrapBuilder.md)
+      - [wrapBuilder：封装全局@Builder（ArkTS-Sta）](../ui/state-management/arkts-static-wrapBuilder.md)
+      - [rememberVariable: \@Builder内部状态（ArkTS-Sta）](../ui/state-management-static/arkts-static-remembervariable.md)
       - [mutableBuilder：实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md) 
+      - [applyStyles：定义组件重用样式（ArkTS-Sta）](../ui/state-management/arkts-apply-styles.md)
       - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
       - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
+      - [Function-with-Receiver：定义扩展组件样式（ArkTS-Sta）](../ui/state-management/arkts-function-with-receiver.md)
       - [stateStyles：多态样式](state-management/arkts-statestyles.md)
       - [@AnimatableExtend装饰器：定义可动画属性](state-management/arkts-animatable-extend.md)
     - [@Require装饰器：校验构造传参](state-management/arkts-require.md)
@@ -82,8 +93,11 @@
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
-      - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
-      - [!!语法：双向绑定](state-management/arkts-new-binding.md)
+      - 动态ArkTS<!--arkts-ui-syntactic-sugar-dynamic-->
+        - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
+        - [!!语法：双向绑定](state-management/arkts-new-binding.md)
+      - 静态ArkTS<!--arkts-ui-syntactic-sugar-static-->
+        - [$$()语法：系统组件双向同步](state-management/arkts-two-way-sync-static.md)
     - 状态管理V1-V2迁移指导<!--arkts-v1-v2-guide-->
       - [V1-V2迁移概述](state-management/arkts-v1-v2-migration.md)
       - 状态管理V1向V2迁移场景<!--arkts-state-management-v1-v2-migration-guide-->
