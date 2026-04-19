@@ -403,6 +403,7 @@
   - [UI预览](ui-ide-previewer.md)
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
+    - [UI并行化创建组件树（ArkTS-Sta）](ui-parallel-components.md)
   - UI开发常见问题<!--ui-development-faq-->
     - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
