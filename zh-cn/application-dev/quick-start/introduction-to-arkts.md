@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @LeechyLiang-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao；@cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -150,7 +150,7 @@ let s3 = `The result is ${a}`;
 
 ```typescript
 class Class<T> {
-  //...
+  // ...
 }
 let instance: Class<void>;
 ```
@@ -855,7 +855,7 @@ function foo(x: string): void;            /* 第二个函数定义 */
 function foo(x: number | string): void {  /* 函数实现 */
 }
 
-foo(123);     //  OK，使用第一个定义
+foo(123);     // OK，使用第一个定义
 foo('aa'); // OK，使用第二个定义
 ```
 
@@ -1403,7 +1403,7 @@ abstract class X {
   }
 }
 
-let x = new X(666)  //编译时错误：不能创建抽象类的具体实例
+let x = new X(666)  // 编译时错误：不能创建抽象类的具体实例
 ```
 
 抽象类的子类可以是抽象类也可以是非抽象类。抽象父类的非抽象子类可以实例化。因此，执行抽象类的构造函数和该类非静态字段的字段初始化器：
@@ -1433,7 +1433,7 @@ let x = new Derived(666);
 
 ```typescript
 class Y {
-  abstract method(p: string)  //编译时错误：抽象方法只能在抽象类内。
+  abstract method(p: string)  // 编译时错误：抽象方法只能在抽象类内。
 }
 ```
 
