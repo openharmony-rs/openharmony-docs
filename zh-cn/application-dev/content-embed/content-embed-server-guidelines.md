@@ -23,25 +23,25 @@ OE服务端应用利用[OE Extension框架](../reference/apis-content-embed-kit/
 
 | 接口名称 | 功能描述 |
 | ------- | ---- |
-| OH_ContentEmbed_Extension_GetExtensionInstance | 从ExtensionAbility基类实例中获取对应的OE Extension实例 |
-| OH_ContentEmbed_Extension_GetContentEmbedContext | 从OE Extension实例中获取其对应的OE Extension上下文对象 |
-| OH_ContentEmbed_Extension_GetContext | 从OE Extension上下文中获取AbilityRuntime上下文 |
-| OH_ContentEmbed_Extension_RegisterOnCreateFunc | 注册OE Extension实例创建时的生命周期函数 |
-| OH_ContentEmbed_Extension_RegisterOnDestroyFunc | 注册OE Extension实例销毁时的生命周期函数 |
-| OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc | 注册客户端OE对象连接时的回调函数 |
-| OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc | 取消注册客户端OE对象连接时的回调函数。 |
-| OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc | 注册服务端OE对象写入OE文档数据流时的回调函数。 |
-| OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc | 注册客户端OE对象请求获取OE文档快照时的回调函数 |
-| OH_ContentEmbed_Extension_RegisterOnDoEditFunc | 注册客户端OE对象请求编辑OE文档时的回调函数 |
-| OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc | 注册客户端OE对象请求OE文档编辑状态时的回调函数 |
-| OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc | 注册客户端OE对象查询OE Extension实例支持能力时的回调函数 |
-| OH_ContentEmbed_Extension_GetContentEmbedDocument | 获取服务端OE对象关联的OE文档实例 |
-| OH_ContentEmbed_Extension_CallbackToOnUpdate | 触发客户端OE对象注册的OE文档更新回调函数 |
-| OH_ContentEmbed_Extension_CallbackToOnError | 触发客户端OE对象注册的OE文档错误回调函数 |
-| OH_ContentEmbed_Extension_CallbackToOnEditingFinished | 触发客户端OE对象注册的OE文档编辑完成回调函数 |
-| OH_ContentEmbed_Extension_CallbackToOnExtensionStopped | 触发OE Extension关联的所有客户端OE对象注册的OE Extension停止时的回调函数 |
-| OH_ContentEmbed_Extension_SetSnapshot | 设置客户端OE对象关联的OE文档快照图像 |
-| OH_ContentEmbed_Extension_ContextStartSelfUIAbility | 通过OE Extension上下文启动自身的UIAbility |
+| OH_ContentEmbed_Extension_GetExtensionInstance | 从ExtensionAbility基类实例中获取对应的[OE Extension](content-embed-kit-terminology.md#OE-Extension)实例。|
+| OH_ContentEmbed_Extension_GetContentEmbedContext | 从OE Extension实例中获取其对应的OE Extension上下文对象。|
+| OH_ContentEmbed_Extension_GetContext | 从OE Extension上下文中获取AbilityRuntime上下文。|
+| OH_ContentEmbed_Extension_RegisterOnCreateFunc | 注册OE Extension实例创建时的生命周期函数。|
+| OH_ContentEmbed_Extension_RegisterOnDestroyFunc | 注册OE Extension实例销毁时的生命周期函数。|
+| OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc | 注册[客户端OE对象](content-embed-kit-terminology.md#客户端OE对象)连接时的回调函数。|
+| OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc | 取消注册客户端OE对象连接时的回调函数。|
+| OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc | 注册[服务端OE对象](content-embed-kit-terminology.md#服务端OE对象)写入[OE文档](content-embed-kit-terminology.md#OE文档)数据流时的回调函数。|
+| OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc | 注册客户端OE对象请求获取OE文档快照时的回调函数。|
+| OH_ContentEmbed_Extension_RegisterOnDoEditFunc | 注册客户端OE对象请求编辑OE文档时的回调函数。|
+| OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc | 注册客户端OE对象请求OE文档编辑状态时的回调函数。|
+| OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc | 注册客户端OE对象查询OE Extension实例支持能力时的回调函数。|
+| OH_ContentEmbed_Extension_GetContentEmbedDocument | 获取服务端OE对象关联的OE文档实例。|
+| OH_ContentEmbed_Extension_CallbackToOnUpdate | 触发客户端OE对象注册的OE文档更新回调函数。|
+| OH_ContentEmbed_Extension_CallbackToOnError | 触发客户端OE对象注册的OE文档错误回调函数。|
+| OH_ContentEmbed_Extension_CallbackToOnEditingFinished | 触发客户端OE对象注册的OE文档编辑完成回调函数。|
+| OH_ContentEmbed_Extension_CallbackToOnExtensionStopped | 触发OE Extension关联的所有客户端OE对象注册的OE Extension停止时的回调函数。|
+| OH_ContentEmbed_Extension_SetSnapshot | 设置客户端OE对象关联的OE文档快照图像。|
+| OH_ContentEmbed_Extension_ContextStartSelfUIAbility | 通过OE Extension上下文启动自身的UIAbility。|
 
 ## 开发步骤
 
@@ -52,7 +52,7 @@ OE服务端开发的步骤包括：
 4. 注册回调：注册ExtensionAbility回调，以响应客户端请求。
 5. 编辑OE文档：在OnDoEdit回调中拉起UIAbility编辑文档，并返回OE文档快照。
 
-以下演示使用 Native API 开发OE服务端应用的完整流程，演示了OE服务端注册Extension组件回调，响应客户端请求，返回OE文档快照和拉起UIAbility编辑OE文档。
+以下演示使用Native API开发OE服务端应用的完整流程，演示了OE服务端注册Extension组件回调，响应客户端请求，返回OE文档快照和拉起UIAbility编辑OE文档。
 
 ### OE服务端配置OE ExtensionAbility
 
@@ -111,7 +111,7 @@ OE服务端开发的步骤包括：
 
 CMakeLists.txt中添加以下lib。
 
-```sh
+```text
 # content embed
 libcontent_embed_ndk.so
 # hilog
@@ -124,7 +124,7 @@ libpixelmap.so
 libability_runtime.so
 # want
 libability_base_want.so
-# fileyuri
+# fileuri
 libohfileuri.so
 ```
 
@@ -142,6 +142,12 @@ libohfileuri.so
 #include <multimedia/image_framework/image/image_source_native.h>
 ```
 
+### 定义全局变量
+
+```cpp
+static ContentEmbed_ExtensionInstanceHandle g_instance = nullptr;
+```
+
 ### OE服务端应用需实现入口函数，在该函数中注册Extension回调
 
 当OE服务端应用的OE Extension被系统拉起以响应OE客户端请求时，首先执行`OH_AbilityRuntime_OnNativeExtensionCreate` 函数。
@@ -156,6 +162,8 @@ extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_Extensi
     ContentEmbed_ExtensionInstanceHandle ceExtensionInstance;
     // 获取OE Extension实例
     ContentEmbed_ErrorCode ret = OH_ContentEmbed_Extension_GetExtensionInstance(instance, &ceExtensionInstance);
+    // 给全局变量赋值
+    g_instance = ceExtensionInstance;
     // 注册OE Extension创建函数回调
     ret = OH_ContentEmbed_Extension_RegisterOnCreateFunc(ceExtensionInstance, NativeOnCreate);
     // 注册OE Extension销毁函数回调
@@ -188,6 +196,7 @@ static void NativeOnDestroy(ContentEmbed_ExtensionInstanceHandle instance)
 当OE客户端通过[OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h#OH_ContentEmbed_Proxy_StopWork)函数将客户端OE对象与服务端OE对象解除绑定时，会触发OE服务端的`RegisterOnObjectDetachFunc` 回调，在该回调后服务端OE对象将失效。
 
 ```cpp
+
 static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
 {
     ContentEmbed_ErrorCode ret = CE_ERR_OK;
@@ -283,6 +292,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
     ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
     // 判断document中是否有指定stream
     ContentEmbed_Stream *childStream;
+    char* fileType = "aaa";
     ret = OH_ContentEmbed_Storage_GetStream(rootStorage, fileType, &childStream);
     if (ret == CE_ERR_OK) {
         size_t bufferSize;
@@ -305,7 +315,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
             outputFile.close();
             OH_LOG_INFO(LOG_APP, "数据写入成功。");
         } else {
-            OH_LOG_INFO(LOG_APP, "无法打开文件！");
+            OH_LOG_INFO(LOG_APP, "无法打开文件。");
         }
         char* tempFileUri;
         OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
@@ -339,7 +349,7 @@ static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bi
 ```cpp
 static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *isEditing, bool *isModified)
 {
-    if (!isEditing || ！isModified) {
+    if (!isEditing || !isModified) {
         OH_LOG_ERROR(LOG_APP, "param is null");
         return;
     }
