@@ -6,13 +6,15 @@
 <!--Tester: @zhaotianyu-->
 <!--Adviser: @jinqiuheng-->
 
+本文介绍Content Embed Kit相关术语
+
 ## OE
 
-对象编辑object editor缩写，代表OpenHarmony提供的对象编辑框架与技术，用来实现应用间文档嵌入与协同编辑。
+对象编辑object editor缩写，代表HarmonyOS提供的对象编辑框架与技术，用来实现应用间文档嵌入与协同编辑。
 
 ## OE文档
 
-通过OE技术实现的被嵌入文档，它在客户端界面中可能呈现为缩略图或者快照（Snapshot），也可能以标准格式序列化为一段二进制数据保存在内存或者某个文件中。
+通过OE技术实现的被嵌入文档，在客户端界面中可能呈现为缩略图或者快照（Snapshot），也可能以标准格式序列化为一段二进制数据保存在内存或者某个文件中。
 
 ## OE格式文件
 
@@ -24,7 +26,7 @@
 
 ## OE Extension
 
-Content Embed Kit提供的ExtensionAbility组件，用于三方应用实现特定格式文档嵌入与编辑能力。
+Content Embed Kit提供的[ExtensionAbility组件](../application-models/extensionability-overview.md)，用于三方应用实现特定格式文档嵌入与编辑能力。
 
 ## OE SA
 
