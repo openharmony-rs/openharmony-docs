@@ -29,15 +29,15 @@ OE客户端应用：指面向终端用户且被嵌入文档的应用。通过调
 
 | 接口名称 | 功能描述 |
 | ------- | ---- |
-| OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](./content-embed-kit-terminology.md#OE文档)。|
-| OH_ContentEmbed_CreateDocumentByOEId | 通过[OEID](./content-embed-kit-terminology.md#OEID)创建OE文档。|
-| OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](./content-embed-kit-terminology.md#OE格式文件)加载OE文档。|
-| OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](./content-embed-kit-terminology.md#客户端OE对象)。|
+| OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](content-embed-kit-terminology.md#OE文档)。|
+| OH_ContentEmbed_CreateDocumentByOEId | 通过[OEID](content-embed-kit-terminology.md#OEID)创建OE文档。|
+| OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](content-embed-kit-terminology.md#OE格式文件)加载OE文档。|
+| OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](content-embed-kit-terminology.md#客户端OE对象)。|
 | OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源。|
 | OH_ContentEmbed_Proxy_RegisterOnUpdateFunc | 向客户端OE对象注册OE文档更新时的回调函数。|
 | OH_ContentEmbed_Proxy_RegisterOnErrorFunc | 向客户端OE对象注册OE文档触发错误时回调函数。|
 | OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc | 向客户端OE对象注册OE文档编辑完成时的回调函数。|
-| OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc | 向客户端OE对象注册OE Extension停止时的回调函数。|
+| OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc | 向客户端OE对象注册[OE Extension](content-embed-kit-terminology.md#OE-Extension)停止时的回调函数。|
 | OH_ContentEmbed_Proxy_StartWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，拉起OE Extension组件，并创建服务端OE对象。|
 | OH_ContentEmbed_Proxy_StopWork | 客户端通过客户端OE对象与Object Editor服务跨进程通信，销毁服务端OE对象，释放资源。|
 | OH_ContentEmbed_Proxy_GetSnapshot | 从客户端OE对象获取当前OE文档的快照图像，用于预览或缩略图显示。|
@@ -185,7 +185,7 @@ bool isLinking = false;
 ContentEmbed_ErrorCode ret = OH_ContentEmbed_CreateDocumentByFile(filePath.c_str(), filePath.size(), isLinking, &ceDocument);
 ```
 
-3. 基于[OE格式文件](./content-embed-kit-terminology.md#OE格式文件)加载OE文档，当OE格式文件为数据流存储时需先落盘至本地再使用此接口。
+3. 基于[OE格式文件](content-embed-kit-terminology.md#OE格式文件)加载OE文档，当OE格式文件为数据流存储时需先落盘至本地再使用此接口。
 
 ```cpp
 // OE格式文件路径
