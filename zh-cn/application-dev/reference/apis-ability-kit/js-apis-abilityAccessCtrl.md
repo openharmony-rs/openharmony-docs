@@ -66,7 +66,7 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Grant
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象。返回授权状态结果。 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | 是   | 订阅事件类型，固定为'selfPermissionStateChange'，自身权限状态变更事件。  |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 订阅的权限名列表，如果为空，则表示订阅所有的权限状态变化，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 是 | 回调函数，返回订阅指定权限名状态变更事件的结果。|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 是 | 回调函数。订阅指定权限名状态变更事件的回调。|
 
 **错误码：**
 
@@ -178,16 +178,18 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
 try {
-    atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.info(`receive permission state change, result: ${data}`);
-    });
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+  atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
+  });
 } catch(err) {
-    console.error(`Code: ${err.code}, message: ${err.message}`);
+  console.error(`Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
 ### off<sup>18+</sup>
 
 off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;PermissionStateChangeInfo&gt;): void
@@ -206,7 +208,7 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | 是   | 订阅事件类型，固定为'selfPermissionStateChange'，权限状态变更事件。  |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#on18)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 回调函数，返回取消订阅指定tokenID与指定权限名状态变更事件的结果。|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 回调函数。取消订阅指定tokenID与指定权限名状态变更事件的回调。|
 
 **错误码：**
 
@@ -223,12 +225,12 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
 try {
-    atManager.off('selfPermissionStateChange', permissionList);
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+  atManager.off('selfPermissionStateChange', permissionList);
 } catch(err) {
-    console.error(`Code: ${err.code}, message: ${err.message}`);
+  console.error(`Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -319,7 +321,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象，返回接口的结果。 |
+| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象。返回接口的结果。 |
 
 **错误码：**
 
@@ -384,11 +386,11 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[GrantStatus](#grantstatus)&gt;&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;Array&lt;[GrantStatus](#grantstatus)&gt;&gt; | Promise对象。返回授权状态结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -541,7 +543,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise对象，返回跳转设置页弹窗结果。 |
+| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise对象。返回跳转设置页弹窗结果。 |
 
 **错误码：**
 
@@ -641,7 +643,7 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Gran
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象。返回授权状态结果。 |
 
 **示例：**
 
@@ -683,7 +685,7 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise&lt;GrantStat
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象。返回授权状态结果。 |
 
 **示例：**
 
