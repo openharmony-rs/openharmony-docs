@@ -201,11 +201,11 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 
 **ArkTS-Dyn起始版本：** 18
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSelfPermissionStateChange](#onselfpermissionstatechange23)。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -307,8 +307,6 @@ onSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback: 
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on18)。
@@ -359,8 +357,6 @@ offSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback?
 取消订阅不传callback时，批量删除permissionList下面的所有callback。
 
 **ArkTS-Sta起始版本：** 23
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

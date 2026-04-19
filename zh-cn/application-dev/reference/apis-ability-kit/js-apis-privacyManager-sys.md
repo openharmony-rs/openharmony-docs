@@ -1014,7 +1014,7 @@ pid需要与startUsingPermission传入的pid相同。
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1038,7 +1038,7 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).t
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1221,7 +1221,7 @@ ArkTS-Sta: stopUsingPermission(tokenID: int, permissionName: Permissions, callba
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1236,7 +1236,7 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: 
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1295,7 +1295,7 @@ checkPermissionInUse(permissionName: Permissions): boolean
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 
@@ -1307,7 +1307,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { privacyManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
