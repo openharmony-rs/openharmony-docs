@@ -8,7 +8,7 @@
 
 sensor模块提供了获取传感器数据的能力，包括获取传感器属性列表，订阅传感器数据，以及一些通用的传感器算法。
 
-> **说明：**
+> **说明**：
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用[getSingleSensor](#sensorgetsinglesensor9)接口获取该传感器的信息，获取该传感器信息成功时可正常订阅传感器，异常情况详见[getSingleSensor](#sensorgetsinglesensor9)错误码说明，具体使用方法可参考[指南开发步骤](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/sensor-guidelines#开发步骤)；订阅传感器数据时确保on订阅和off取消订阅成对出现。
 
@@ -18,9 +18,8 @@ sensor模块提供了获取传感器数据的能力，包括获取传感器属�
 ```ts
 import { sensor } from '@kit.SensorServiceKit';
 ```
-## sensor.on
 
-### ACCELEROMETER<sup>9+</sup>
+## sensor.on('SensorId.ACCELEROMETER')<sup>9+</sup>
 
 on(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options): void
 
@@ -72,7 +71,7 @@ try {
 }
 ```
 
-### FUSION_PRESSURE<sup>22+</sup>
+## sensor.on('SensorId.FUSION_PRESSURE')<sup>22+</sup>
 
 on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
 
@@ -117,7 +116,7 @@ try {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>
+## sensor.on('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>
 
 on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
 
@@ -170,7 +169,7 @@ try {
 }
 ```
 
-### AMBIENT_LIGHT<sup>9+</sup>
+## sensor.on('SensorId.AMBIENT_LIGHT')<sup>9+</sup>
 
 on(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options): void
 
@@ -215,7 +214,7 @@ try {
 }
 ```
 
-###  AMBIENT_TEMPERATURE<sup>9+</sup>
+## sensor.on('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup>
 
 on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options): void
 
@@ -260,7 +259,7 @@ try {
 }
 ```
 
-### BAROMETER<sup>9+</sup>
+## sensor.on('SensorId.BAROMETER')<sup>9+</sup>
 
 on(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options): void
 
@@ -305,7 +304,7 @@ try {
 }
 ```
 
-###  GRAVITY<sup>9+</sup>
+## sensor.on('SensorId.GRAVITY')<sup>9+</sup>
 
 on(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options): void
 
@@ -352,7 +351,7 @@ try {
 }
 ```
 
-###  GYROSCOPE<sup>9+</sup>
+## sensor.on('SensorId.GYROSCOPE')<sup>9+</sup>
 
 on(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options): void
 
@@ -404,7 +403,7 @@ try {
 }
 ```
 
-###  GYROSCOPE_UNCALIBRATED<sup>9+</sup>
+## sensor.on('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup>
 
 on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
@@ -458,7 +457,7 @@ try {
 
 ```
 
-###  HALL<sup>9+</sup>
+## sensor.on('SensorId.HALL')<sup>9+</sup>
 
 on(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
@@ -504,7 +503,7 @@ try {
 
 ```
 
-###   HEART_RATE<sup>9+</sup>
+## sensor.on('SensorId.HEART_RATE')<sup>9+</sup>
 
 on(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options): void
 
@@ -552,7 +551,7 @@ try {
 }
 ```
 
-###  HUMIDITY<sup>9+</sup>
+## sensor.on('SensorId.HUMIDITY')<sup>9+</sup>
 
 on(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options): void
 
@@ -597,7 +596,7 @@ try {
 }
 ```
 
-###   LINEAR_ACCELEROMETER<sup>9+</sup>
+## sensor.on('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup>
 
 on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
@@ -647,7 +646,7 @@ try {
 }
 ```
 
-###  MAGNETIC_FIELD<sup>9+</sup>
+## sensor.on('SensorId.MAGNETIC_FIELD')<sup>9+</sup>
 
 on(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options): void
 
@@ -694,7 +693,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>9+</sup>
+## sensor.on('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup>
 
 on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
 
@@ -744,7 +743,7 @@ try {
 }
 ```
 
-### ORIENTATION<sup>9+</sup>
+## sensor.on('SensorId.ORIENTATION')<sup>9+</sup>
 
 on(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options): void
 
@@ -797,7 +796,7 @@ try {
 }
 ```
 
-### PEDOMETER<sup>9+</sup>
+## sensor.on('SensorId.PEDOMETER')<sup>9+</sup>
 
 on(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
@@ -845,7 +844,7 @@ try {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>9+</sup>
+## sensor.on('SensorId.PEDOMETER_DETECTION')<sup>9+</sup>
 
 on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
@@ -893,7 +892,7 @@ try {
 }
 ```
 
-### PROXIMITY<sup>9+</sup>
+## sensor.on('SensorId.PROXIMITY')<sup>9+</sup>
 
 on(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options): void
 
@@ -938,7 +937,7 @@ try {
 }
 ```
 
-### ROTATION_VECTOR<sup>9+</sup>
+## sensor.on('SensorId.ROTATION_VECTOR')<sup>9+</sup>
 
 on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
@@ -986,7 +985,7 @@ try {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>9+</sup>
+## sensor.on('SensorId.SIGNIFICANT_MOTION')<sup>9+</sup>
 
 on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
@@ -1031,7 +1030,7 @@ try {
 }
 ```
 
-###  WEAR_DETECTION<sup>9+</sup>
+## sensor.on('SensorId.WEAR_DETECTION')<sup>9+</sup>
 
 on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options): void
 
@@ -1076,7 +1075,7 @@ try {
 }
 ```
 
-### sensorStatusChange<sup>19+</sup>
+## sensor.on('sensorStatusChange')<sup>19+</sup>
 
 on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): void
 
@@ -1120,9 +1119,8 @@ try {
 ```
 
 
-## sensor.once<sup>9+</sup>
 
-### ACCELEROMETER<sup>9+</sup>
+## sensor.once('SensorId.ACCELEROMETER')<sup>9+</sup>
 
 once(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -1168,7 +1166,7 @@ try {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>
+## sensor.once('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>
 
 once(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -1217,7 +1215,7 @@ try {
 }
 ```
 
-### AMBIENT_LIGHT<sup>9+</sup>
+## sensor.once('SensorId.AMBIENT_LIGHT')<sup>9+</sup>
 
 once(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;): void
 
@@ -1258,7 +1256,7 @@ try {
 }
 ```
 
-### AMBIENT_TEMPERATURE<sup>9+</sup>
+## sensor.once('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup>
 
 once(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -1299,7 +1297,7 @@ try {
 }
 ```
 
-### BAROMETER<sup>9+</sup>
+## sensor.once('SensorId.BAROMETER')<sup>9+</sup>
 
 once(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;): void
 
@@ -1340,7 +1338,7 @@ try {
 }
 ```
 
-### GRAVITY<sup>9+</sup>
+## sensor.once('SensorId.GRAVITY')<sup>9+</sup>
 
 once(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;): void
 
@@ -1383,7 +1381,7 @@ try {
 }
 ```
 
-### GYROSCOPE<sup>9+</sup>
+## sensor.once('SensorId.GYROSCOPE')<sup>9+</sup>
 
 once(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -1429,7 +1427,7 @@ try {
 }
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>9+</sup>
+## sensor.once('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup>
 
 once(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -1478,7 +1476,7 @@ try {
 }
 ```
 
-### HALL<sup>9+</sup>
+## sensor.once('SensorId.HALL')<sup>9+</sup>
 
 once(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;): void
 
@@ -1519,7 +1517,7 @@ try {
 }
 ```
 
-### HEART_RATE<sup>9+</sup>
+## sensor.once('SensorId.HEART_RATE')<sup>9+</sup>
 
 once(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;): void
 
@@ -1563,7 +1561,7 @@ try {
 }
 ```
 
-### HUMIDITY<sup>9+</sup>
+## sensor.once('SensorId.HUMIDITY')<sup>9+</sup>
 
 once(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;): void
 
@@ -1604,7 +1602,7 @@ try {
 }
 ```
 
-### LINEAR_ACCELEROMETER<sup>9+</sup>
+## sensor.once('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup>
 
 once(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -1650,7 +1648,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD<sup>9+</sup>
+## sensor.once('SensorId.MAGNETIC_FIELD')<sup>9+</sup>
 
 once(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -1693,7 +1691,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>9+</sup>
+## sensor.once('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup>
 
 once(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -1739,7 +1737,7 @@ try {
 }
 ```
 
-### ORIENTATION<sup>9+</sup>
+## sensor.once('SensorId.ORIENTATION')<sup>9+</sup>
 
 once(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;): void
 
@@ -1782,7 +1780,7 @@ try {
 }
 ```
 
-### PEDOMETER<sup>9+</sup>
+## sensor.once('SensorId.PEDOMETER')<sup>9+</sup>
 
 once(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;): void
 
@@ -1826,7 +1824,7 @@ try {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>9+</sup>
+## sensor.once('SensorId.PEDOMETER_DETECTION')<sup>9+</sup>
 
 once(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -1870,7 +1868,7 @@ try {
 }
 ```
 
-### PROXIMITY<sup>9+</sup>
+## sensor.once('SensorId.PROXIMITY')<sup>9+</sup>
 
 once(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;): void
 
@@ -1911,7 +1909,7 @@ try {
 }
 ```
 
-### ROTATION_VECTOR<sup>9+</sup>
+## sensor.once('SensorId.ROTATION_VECTOR')<sup>9+</sup>
 
 once(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -1955,7 +1953,7 @@ try {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>9+</sup>
+## sensor.once('SensorId.SIGNIFICANT_MOTION')<sup>9+</sup>
 
 once(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;): void
 
@@ -1996,7 +1994,7 @@ try {
 }
 ```
 
-### WEAR_DETECTION<sup>9+</sup>
+## sensor.once('SensorId.WEAR_DETECTION')<sup>9+</sup>
 
 once(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -2037,9 +2035,8 @@ try {
 }
 ```
 
-## sensor.off
 
-### ACCELEROMETER<sup>9+</sup> 
+## sensor.off('SensorId.ACCELEROMETER')<sup>9+</sup>
 
 off(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -2095,7 +2092,7 @@ try {
 }
 ```
 
-### ACCELEROMETER<sup>19+</sup>
+## sensor.off('SensorId.ACCELEROMETER')<sup>19+</sup>
 
 off(type: SensorId.ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -2184,7 +2181,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>  
+## sensor.off('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>  
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -2238,7 +2235,7 @@ try {
 }
 ```
 
-### FUSION_PRESSURE<sup>22+</sup>
+## sensor.off('SensorId.FUSION_PRESSURE')<sup>22+</sup>
 
 off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
 
@@ -2323,7 +2320,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>19+</sup>
+## sensor.off('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>19+</sup>
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -2410,7 +2407,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### AMBIENT_LIGHT<sup>9+</sup> 
+## sensor.off('SensorId.AMBIENT_LIGHT')<sup>9+</sup> 
 
 off(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): void
 
@@ -2461,7 +2458,7 @@ try {
 }
 ```
 
-### AMBIENT_LIGHT<sup>19+</sup>
+## sensor.off('SensorId.AMBIENT_LIGHT')<sup>19+</sup>
 
 off(type: SensorId.AMBIENT_LIGHT, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LightResponse&gt;): void
 
@@ -2545,7 +2542,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### AMBIENT_TEMPERATURE<sup>9+</sup> 
+## sensor.off('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup> 
 
 off(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -2596,7 +2593,7 @@ try {
 }
 ```
 
-### AMBIENT_TEMPERATURE<sup>19+</sup>
+## sensor.off('SensorId.AMBIENT_TEMPERATURE')<sup>19+</sup>
 
 off(type: SensorId.AMBIENT_TEMPERATURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -2681,7 +2678,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-### BAROMETER<sup>9+</sup>  
+## sensor.off('SensorId.BAROMETER')<sup>9+</sup>  
 
 off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): void
 
@@ -2732,7 +2729,7 @@ try {
 }
 ```
 
-### BAROMETER<sup>19+</sup>
+## sensor.off('SensorId.BAROMETER')<sup>19+</sup>
 
 off(type: SensorId.BAROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;BarometerResponse&gt;): void
 
@@ -2816,7 +2813,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### GRAVITY<sup>9+</sup> 
+## sensor.off('SensorId.GRAVITY')<sup>9+</sup> 
 
 off(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
@@ -2868,7 +2865,7 @@ try {
 
 ```
 
-### GRAVITY<sup>19+</sup>
+## sensor.off('SensorId.GRAVITY')<sup>19+</sup>
 
 off(type: SensorId.GRAVITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GravityResponse&gt;): void
 
@@ -2952,7 +2949,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### GYROSCOPE<sup>9+</sup> 
+## sensor.off('SensorId.GYROSCOPE')<sup>9+</sup> 
 
 off(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -3008,7 +3005,7 @@ try {
 }
 ```
 
-### GYROSCOPE<sup>19+</sup>
+## sensor.off('SensorId.GYROSCOPE')<sup>19+</sup>
 
 off(type: SensorId.GYROSCOPE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -3097,7 +3094,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>9+</sup> 
+## sensor.off('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup> 
 
 off(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -3151,7 +3148,7 @@ try {
 }
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>19+</sup>
+## sensor.off('SensorId.GYROSCOPE_UNCALIBRATED')<sup>19+</sup>
 
 off(type: SensorId.GYROSCOPE_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -3238,7 +3235,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### HALL<sup>9+</sup> 
+## sensor.off('SensorId.HALL')<sup>9+</sup> 
 
 off(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;): void
 
@@ -3289,7 +3286,7 @@ try {
 }
 ```
 
-### HALL<sup>19+</sup>
+## sensor.off('SensorId.HALL')<sup>19+</sup>
 
 off(type: SensorId.HALL, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HallResponse&gt;): void
 
@@ -3373,7 +3370,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### HEART_RATE<sup>9+</sup> 
+## sensor.off('SensorId.HEART_RATE')<sup>9+</sup> 
 
 off(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): void
 
@@ -3427,7 +3424,7 @@ try {
 }
 ```
 
-### HEART_RATE<sup>19+</sup>
+## sensor.off('SensorId.HEART_RATE')<sup>19+</sup>
 
 off(type: SensorId.HEART_RATE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HeartRateResponse&gt;): void
 
@@ -3514,7 +3511,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### HUMIDITY<sup>9+</sup> 
+## sensor.off('SensorId.HUMIDITY')<sup>9+</sup> 
 
 off(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
@@ -3565,7 +3562,7 @@ try {
 }
 ```
 
-### HUMIDITY<sup>19+</sup>
+## sensor.off('SensorId.HUMIDITY')<sup>19+</sup>
 
 off(type: SensorId.HUMIDITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;HumidityResponse&gt;): void
 
@@ -3649,7 +3646,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### LINEAR_ACCELEROMETER<sup>9+</sup> 
+## sensor.off('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup> 
 
 off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -3703,7 +3700,7 @@ try {
 }
 ```
 
-### LINEAR_ACCELEROMETER<sup>19+</sup>
+## sensor.off('SensorId.LINEAR_ACCELEROMETER')<sup>19+</sup>
 
 off(type: SensorId.LINEAR_ACCELEROMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -3790,7 +3787,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### MAGNETIC_FIELD<sup>9+</sup> 
+## sensor.off('SensorId.MAGNETIC_FIELD')<sup>9+</sup> 
 
 off(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -3841,7 +3838,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD<sup>19+</sup>
+## sensor.off('SensorId.MAGNETIC_FIELD')<sup>19+</sup>
 
 off(type: SensorId.MAGNETIC_FIELD, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -3925,7 +3922,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>9+</sup> 
+## sensor.off('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup> 
 
 off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -3976,7 +3973,7 @@ try {
 }
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>19+</sup>
+## sensor.off('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>19+</sup>
 
 off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -4060,7 +4057,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### ORIENTATION<sup>9+</sup> 
+## sensor.off('SensorId.ORIENTATION')<sup>9+</sup>
 
 off(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;): void
 
@@ -4113,7 +4110,7 @@ try {
 }
 ```
 
-### ORIENTATION<sup>19+</sup>
+## sensor.off('SensorId.ORIENTATION')<sup>19+</sup>
 
 off(type: SensorId.ORIENTATION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;OrientationResponse&gt;): void
 
@@ -4199,7 +4196,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### PEDOMETER<sup>9+</sup>
+## sensor.off('SensorId.PEDOMETER')<sup>9+</sup>
 
 off(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): void
 
@@ -4253,7 +4250,7 @@ try {
 }
 ```
 
-### PEDOMETER<sup>19+</sup>
+## sensor.off('SensorId.PEDOMETER')<sup>19+</sup>
 
 off(type: SensorId.PEDOMETER, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerResponse&gt;): void
 
@@ -4340,7 +4337,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>9+</sup> 
+## sensor.off('SensorId.PEDOMETER_DETECTION')<sup>9+</sup> 
 
 off(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -4394,7 +4391,7 @@ try {
 }
 ```
 
-### PEDOMETER_DETECTION<sup>19+</sup>
+## sensor.off('SensorId.PEDOMETER_DETECTION')<sup>19+</sup>
 
 off(type: SensorId.PEDOMETER_DETECTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -4481,7 +4478,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### PROXIMITY<sup>9+</sup>  
+## sensor.off('SensorId.PROXIMITY')<sup>9+</sup>  
 
 off(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): void
 
@@ -4532,7 +4529,7 @@ try {
 }
 ```
 
-### PROXIMITY<sup>19+</sup>
+## sensor.off('SensorId.PROXIMITY')<sup>19+</sup>
 
 off(type: SensorId.PROXIMITY, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;ProximityResponse&gt;): void
 
@@ -4616,7 +4613,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### ROTATION_VECTOR<sup>9+</sup> 
+## sensor.off('SensorId.ROTATION_VECTOR')<sup>9+</sup>
 
 off(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -4667,7 +4664,7 @@ try {
 }
 ```
 
-### ROTATION_VECTOR<sup>19+</sup>
+## sensor.off('SensorId.ROTATION_VECTOR')<sup>19+</sup>
 
 off(type: SensorId.ROTATION_VECTOR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -4751,7 +4748,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>9+</sup> 
+## sensor.off('SensorId.SIGNIFICANT_MOTION')<sup>9+</sup>
 
 off(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
@@ -4802,7 +4799,7 @@ try {
 }
 ```
 
-### SIGNIFICANT_MOTION<sup>19+</sup>
+## sensor.off('SensorId.SIGNIFICANT_MOTION')<sup>19+</sup>
 
 off(type: SensorId.SIGNIFICANT_MOTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
@@ -4886,7 +4883,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### WEAR_DETECTION<sup>9+</sup> 
+## sensor.off('SensorId.WEAR_DETECTION')<sup>9+</sup>
 
 off(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -4937,7 +4934,7 @@ try {
 }
 ```
 
-### WEAR_DETECTION<sup>19+</sup>
+## sensor.off('SensorId.WEAR_DETECTION')<sup>19+</sup>
 
 off(type: SensorId.WEAR_DETECTION, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -5021,7 +5018,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### sensorStatusChange<sup>19+<sup>
+## sensor.off('sensorStatusChange')<sup>19+<sup>
 
 off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): void
 
@@ -6901,11 +6898,10 @@ type SensorFrequency = 'game' | 'ui' | 'normal'
 | longitude | number | 否   | 否   | 经度，单位度（°）。     |
 | altitude  | number | 否   | 否   | 海拔高度，单位m。 |
 
-## sensor.on<sup>(deprecated)</sup>
 
-### ACCELEROMETER<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
 
-on(type:  SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;,options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;,options?: Options): void
 
 监听加速度传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
 
@@ -6939,7 +6935,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accelero
 );
 ```
 
-### LINEAR_ACCELERATION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
@@ -6961,7 +6957,7 @@ on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Line
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 是   | 注册线性加速度传感器的回调函数，上报的数据类型为LinearAccelerometerResponse。 |
 | options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
 
-### ACCELEROMETER_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
 
@@ -7001,7 +6997,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: se
 
 ```
 
-### GRAVITY<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_GRAVITY')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityResponse&gt;,options?: Options): void
 
@@ -7035,7 +7031,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespons
 );
 ```
 
-### GYROSCOPE<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_GYROSCOPE')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options): void
 
@@ -7071,7 +7067,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeRes
 );
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback:Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
@@ -7110,7 +7106,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sensor
 );
 ```
 
-### SIGNIFICANT_MOTION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
@@ -7142,7 +7138,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.Sig
 );
 ```
 
-### PEDOMETER_DETECTION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
@@ -7176,7 +7172,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.Pe
 );
 ```
 
-### PEDOMETER<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_PEDOMETER')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options): void
 
@@ -7210,9 +7206,9 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerRes
 );
 ```
 
-### AMBIENT_TEMPERATURE<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE')<sup>(deprecated)</sup>
 
-on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback:Callback&lt;AmbientTemperatureResponse&gt;,  options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback:Callback&lt;AmbientTemperatureResponse&gt;,  options?: Options): void
 
 监听环境温度传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
 
@@ -7242,7 +7238,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.Am
 );
 ```
 
-### MAGNETIC_FIELD<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;,options?: Options): void
 
@@ -7276,9 +7272,9 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magneti
 );
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED')<sup>(deprecated)</sup>
 
-on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options): void
 
 监听未校准磁场传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
 
@@ -7313,7 +7309,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data: s
 );
 ```
 
-### PROXIMITY<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_PROXIMITY')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityResponse&gt;,options?: Options): void
 
@@ -7345,7 +7341,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityRes
 );
 ```
 
-### HUMIDITY<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_HUMIDITY')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityResponse&gt;,options?: Options): void
 
@@ -7377,7 +7373,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRespo
 );
 ```
 
-### BAROMETER<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_BAROMETER')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;,options?: Options): void
 
@@ -7409,7 +7405,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerRes
 );
 ```
 
-### HALL<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_HALL')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;, options?: Options): void
 
@@ -7441,7 +7437,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) => 
 );
 ```
 
-### AMBIENT_LIGHT<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options): void
 
@@ -7473,7 +7469,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightRes
 );
 ```
 
-### ORIENTATION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ORIENTATION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options): void
 
@@ -7507,7 +7503,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientatio
 );
 ```
 
-### HEART_RATE<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_HEART_RATE')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options): void
 
@@ -7529,9 +7525,9 @@ on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateRe
 | callback | Callback&lt;[HeartRateResponse](#heartrateresponse)&gt;      | 是   | 注册心率传感器的回调函数，上报的数据类型为HeartRateResponse。 |
 | options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
 
-### ROTATION_VECTOR<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')<sup>(deprecated)</sup>
 
-on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,callback: Callback&lt;RotationVectorResponse&gt;,options?: Options): void
+on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;,options?: Options): void
 
 监听旋转矢量传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
 
@@ -7564,7 +7560,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rotati
 );
 ```
 
-### WEAR_DETECTION<sup>(deprecated)</sup>
+## sensor.on('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')<sup>(deprecated)</sup>
 
 on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;,options?: Options): void
 
@@ -7596,9 +7592,8 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearDet
 );
 ```
 
-## sensor.once<sup>(deprecated)</sup>
 
-### ACCELEROMETER<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -7631,9 +7626,9 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accele
 });
 ```
 
-### LINEAR_ACCELERATION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
+once(type: ,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 
 监听线性加速度传感器数据变化一次。
 
@@ -7652,7 +7647,7 @@ once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Li
 | type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_LINEAR_ACCELERATION | 是   | 线性加速度传感器类型为SENSOR_TYPE_ID_LINEAR_ACCELERATION。   |
 | callback | Callback&lt;[LinearAccelerometerResponse](#linearaccelerometerresponse)&gt; | 是   | 注册一次线性加速度传感器的回调函数，上报的数据类型为LinearAccelerometerResponse。 |
 
-### ACCELEROMETER_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -7688,7 +7683,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: 
 });
 ```
 
-### GRAVITY<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_GRAVITY')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityResponse&gt;): void
 
@@ -7719,7 +7714,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespo
   });
 ```
 
-### GYROSCOPE<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_GYROSCOPE')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -7752,7 +7747,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeR
 });
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -7789,9 +7784,9 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sens
 });
 ```
 
-### SIGNIFICANT_MOTION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION,callback: Callback&lt;SignificantMotionResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;): void
 
 监听有效运动传感器的数据变化一次。
 
@@ -7818,9 +7813,9 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.S
 });
 ```
 
-### PEDOMETER_DETECTION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION,callback: Callback&lt;PedometerDetectionResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;): void
 
 监听计步检测传感器数据变化一次。
 
@@ -7849,7 +7844,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.
 });
 ```
 
-### PEDOMETER<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_PEDOMETER')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;): void
 
@@ -7880,9 +7875,9 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerR
 });
 ```
 
-### AMBIENT_TEMPERATURE<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE,callback: Callback&lt;AmbientTemperatureResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;): void
 
 监听环境温度传感器数据变化一次。
 
@@ -7909,7 +7904,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.
 });
 ```
 
-### MAGNETIC_FIELD<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -7940,9 +7935,9 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magne
 });
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED')<sup>(deprecated)</sup>
 
-once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED,callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
 监听未校准磁场传感器数据变化一次。
 
@@ -7974,7 +7969,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data:
 });
 ```
 
-### PROXIMITY<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_PROXIMITY')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityResponse&gt;): void
 
@@ -8004,7 +7999,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityR
 );
 ```
 
-### HUMIDITY<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_HUMIDITY')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityResponse&gt;): void
 
@@ -8033,7 +8028,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRes
 });
 ```
 
-### BAROMETER<sup>(deprecated)</sup>
+## sensor.once('type: SensorType.SENSOR_TYPE_ID_BAROMETER')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;): void
 
@@ -8062,7 +8057,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerR
 });
 ```
 
-### HALL<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_HALL')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;): void
 
@@ -8091,7 +8086,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) =
 });
 ```
 
-### AMBIENT_LIGHT<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;): void
 
@@ -8120,7 +8115,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightR
 });
 ```
 
-### ORIENTATION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ORIENTATION')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;): void
 
@@ -8151,7 +8146,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientat
 });
 ```
 
-### ROTATION_VECTOR<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -8183,7 +8178,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rota
 });
 ```
 
-### HEART_RATE<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_HEART_RATE')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;): void
 
@@ -8215,7 +8210,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, (data: sensor.HeartRate
 });
 ```
 
-### WEAR_DETECTION<sup>(deprecated)</sup>
+## sensor.once('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')<sup>(deprecated)</sup>
 
 once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;): void
 
@@ -8245,9 +8240,8 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearD
 });
 ```
 
-## sensor.off<sup>(deprecated)</sup>
 
-### ACCELEROMETER<sup>(deprecated)</sup>
+## sensor.off('type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 
@@ -8282,7 +8276,7 @@ function callback(data: sensor.AccelerometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
 ```
 
-### ACCELEROMETER_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
@@ -8320,7 +8314,7 @@ function callback(data: sensor.AccelerometerUncalibratedResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback);
 ```
 
-### AMBIENT_LIGHT<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): void
 
@@ -8351,7 +8345,7 @@ function callback(data: sensor.LightResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
 ```
 
-### AMBIENT_TEMPERATURE<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -8382,7 +8376,7 @@ function callback(data: sensor.AmbientTemperatureResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback);
 ```
 
-### BAROMETER<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_BAROMETER')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): void
 
@@ -8413,7 +8407,7 @@ function callback(data: sensor.BarometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, callback);
 ```
 
-### GRAVITY<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_GRAVITY')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
@@ -8446,7 +8440,7 @@ function callback(data: sensor.GravityResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
 ```
 
-### GYROSCOPE<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_GYROSCOPE')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -8481,7 +8475,7 @@ function callback(data: sensor.GyroscopeResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
 ```
 
-### GYROSCOPE_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -8516,7 +8510,7 @@ function callback(data: sensor.GyroscopeUncalibratedResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback);
 ```
 
-### HALL<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_HALL')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback&lt;HallResponse&gt;): void
 
@@ -8547,7 +8541,7 @@ function callback(data: sensor.HallResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
 ```
 
-### HEART_RATE<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_HEART_RATE')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): void
 
@@ -8580,7 +8574,7 @@ function callback(data: sensor.HeartRateResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
 ```
 
-### HUMIDITY<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_HUMIDITY')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
@@ -8611,7 +8605,7 @@ function callback(data: sensor.HumidityResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
 ```
 
-### LINEAR_ACCELERATION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
@@ -8646,7 +8640,7 @@ function callback(data: sensor.LinearAccelerometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
 ```
 
-### MAGNETIC_FIELD<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD')<sup>(deprecated)</sup>
 
  off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
@@ -8679,7 +8673,7 @@ function callback(data: sensor.MagneticFieldResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
 ```
 
-### MAGNETIC_FIELD_UNCALIBRATED<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED')<sup>(deprecated)</sup>
 
  off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
@@ -8715,7 +8709,7 @@ function callback(data: sensor.MagneticFieldUncalibratedResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback);
 ```
 
-### ORIENTATION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ORIENTATION')<sup>(deprecated)</sup>
 
  off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;): void
 
@@ -8748,7 +8742,7 @@ function callback(data: sensor.OrientationResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
 ```
 
-### PEDOMETER<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_PEDOMETER')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): void
 
@@ -8781,7 +8775,7 @@ function callback(data: sensor.PedometerResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, callback);
 ```
 
-### PEDOMETER_DETECTION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
@@ -8814,7 +8808,7 @@ function callback(data: sensor.PedometerDetectionResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback);
 ```
 
-### PROXIMITY<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_PROXIMITY')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): void
 
@@ -8845,7 +8839,7 @@ function callback(data: sensor.ProximityResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, callback);
 ```
 
-### ROTATION_VECTOR<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;): void
 
@@ -8879,7 +8873,7 @@ function callback(data: sensor.RotationVectorResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
 ```
 
-### SIGNIFICANT_MOTION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;): void
 
@@ -8910,7 +8904,7 @@ function callback(data: sensor.SignificantMotionResponse) {
 sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
 ```
 
-### WEAR_DETECTION<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;): void
 
