@@ -707,8 +707,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t width | 录屏屏幕的宽度。单位为像素(px)，范围[0, 4096] |
-| int32_t height | 录屏屏幕的高度。单位为像素(px)，范围[0, 4096] |
+| int32_t width | 录屏屏幕的宽度。单位为像素(px) |
+| int32_t height | 录屏屏幕的高度。单位为像素(px) |
 
 **返回：**
 
@@ -763,7 +763,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t frameRate | 录屏的最大帧率。单位为帧率(FPS)，范围[1, 60] |
+| int32_t frameRate | 录屏的最大帧率。单位为帧率(FPS) |
 
 **返回：**
 
