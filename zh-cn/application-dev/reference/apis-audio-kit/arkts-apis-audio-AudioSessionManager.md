@@ -27,6 +27,8 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise\<void>
 
 激活音频会话。使用Promise异步回调。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **参数：**
@@ -73,6 +75,8 @@ deactivateAudioSession(): Promise\<void>
 
 停用音频会话。使用Promise异步回调。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **返回值：**
@@ -107,6 +111,8 @@ isAudioSessionActivated(): boolean
 
 检查音频会话是否已激活。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **返回值：**
@@ -126,6 +132,8 @@ let isActivated = audioSessionManager.isAudioSessionActivated();
 on(type: 'audioSessionDeactivated', callback: Callback\<AudioSessionDeactivatedEvent>): void
 
 监听音频会话停用事件（当音频会话停用时触发）。使用callback异步回调。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -159,6 +167,8 @@ audioSessionManager.on('audioSessionDeactivated',
 off(type: 'audioSessionDeactivated', callback?: Callback\<AudioSessionDeactivatedEvent>): void
 
 取消监听音频会话停用事件。使用callback异步回调。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
