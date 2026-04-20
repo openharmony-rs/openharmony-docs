@@ -38,7 +38,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 要加载的Ability信息。 |
-| options | [SecurityUIExtensionOptions](#securityuiextensionoptions) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
+| options | [SecurityUIExtensionOptions](#securityuiextensionoptions26) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
 
 ## SecurityUIExtensionOptions<sup>26+</sup>
 
@@ -54,7 +54,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | isTransferringCaller | boolean | 否 | 是 | 设置当前能力是否作为Caller使用。设置为true时，当前SecurityUIExtensionComponent的token（应用身份标识）将被设置为rootToken，用于跨进程身份转发；设置为false时，不进行Caller身份转发。默认值：false。 |
 | placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。 |
-| dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI。 |
+| dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy26) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI。 |
 
 ## SecurityDpiFollowStrategy<sup>26+</sup>
 
@@ -137,7 +137,7 @@ onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#
 
 onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)\>)
 
-当被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-ability-UIAbility.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-ability-UIAbility.md#terminateself)正常退出时，触发此回调函数。
+当被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发此回调函数。
 
 **系统接口：** 此接口为系统接口。
 
@@ -219,7 +219,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 | 100011 | No callback has been registered to respond to this request. |
 | 100012 | Transferring data failed. |
 
-以上错误码的详细介绍请参见[通用错误码](../../errorcodes/errorcode-universal.md)。
+以上错误码的详细介绍请参见[通用错误码](../../reference/errorcode-universal.md)。
 
 ### on('asyncReceiverRegister')
 
