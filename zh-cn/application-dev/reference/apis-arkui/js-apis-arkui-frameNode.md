@@ -6719,7 +6719,7 @@ createXComponentNodeDefault(context: UIContext, options?: FrameNodeOptions): XCo
 | 参数名 | 类型 | 必填 | 说明  |
 | --- | --- | --- | --- |
 | context | [UIContext](arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例。 |
-| options | FrameNodeOptions | 否 | FrameNode创建的配置选项。 |
+| options | [FrameNodeOptions](#framenodeoptions24) | 否 | FrameNode创建的配置选项。 |
 
 **返回值：**
 
@@ -6747,7 +6747,7 @@ createXComponentNodeWithOptions(context: UIContext, value: XComponentOptions, op
 | --- | --- | --- | --- |
 | context | [UIContext](arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例。 |
 | value | [XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions12) | 是 | 定义XComponent的具体配置参数。 |
-| options | FrameNodeOptions | 否 | FrameNode创建的配置选项。 |
+| options | [FrameNodeOptions](#framenodeoptions24) | 否 | FrameNode创建的配置选项。 |
 
 **返回值：**
 
@@ -6775,7 +6775,7 @@ createXComponentNodeWithNativeParameters(context: UIContext, parameters: NativeX
 | --- | --- | --- | --- |
 | context | [UIContext](arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例。 |
 | parameters | [NativeXComponentParameters](./arkui-ts/ts-basic-components-xcomponent.md#nativexcomponentparameters19) | 是 | 定义XComponent的具体配置参数。 |
-| options | FrameNodeOptions | 否 | FrameNode创建的配置选项。 |
+| options | [FrameNodeOptions](#framenodeoptions24) | 否 | FrameNode创建的配置选项。 |
 
 **返回值：**
 
@@ -6806,6 +6806,22 @@ getXComponentAttribute(node: FrameNode): XComponentAttribute | undefined
 | 类型 | 说明 |
 | --- | --- |
 | XComponentAttribute&nbsp;\|&nbsp;undefined | XComponent节点类型的属性，若获取失败，则返回undefined。 |
+
+### FrameNodeOptions<sup>24+</sup>
+
+FrameNode创建的配置选项。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| supportMultiThread | boolean | 否 | 是否支持多线程操作。设置为true时，节点可以安全地在多线程场景中使用。 |
 
 ### QRCode<sup>14+</sup>
 type QRCode = TypedFrameNode&lt;QRCodeInterface, QRCodeAttribute&gt;
