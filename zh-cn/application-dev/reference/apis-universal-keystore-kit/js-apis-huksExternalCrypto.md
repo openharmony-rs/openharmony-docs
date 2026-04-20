@@ -427,6 +427,7 @@ getResourceId(providerName: string, params: Array\<HuksExternalCryptoParam>): Pr
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 801 | API is not supported. |
+| 12000002 | The ability name or bundle name parameter is missing. |
 | 12000005 | IPC communication failed. |
 | 12000011 | The cached resource ID not found. |
 | 12000012 | Device environment or input parameters are abnormal. This may occur if the process function is null, or due to other issues. |
@@ -511,7 +512,6 @@ openResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Prom
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 801 | API is not supported. |
-| 12000002 | The ability name or bundle name parameter is missing. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID is not found. This may happen because the resource ID has not been opened. |
