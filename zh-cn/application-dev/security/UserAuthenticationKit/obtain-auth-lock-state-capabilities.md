@@ -36,7 +36,7 @@ async obtainingAuthLockState() : Promise<string> {
       Logger.info('the authentication of given authType is permanent locked');
     }
     const authLockStateContent : string = JSON.stringify(authLockState);
-    Logger.info(`get auth lock state success, authLockState is: ${authLockStateContent}`);
+    Logger.info('get auth lock state successfully');
     return authLockStateContent;
   } catch (error) {
     const errorMessage : string = `get auth lock state failed, err code is : ${error?.code}, err message is : ${error?.message}`;

@@ -255,7 +255,7 @@ enum Camera_Format
 | 枚举项 | 描述 |
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。 |
-| CAMERA_FORMAT_DNG = 4 | DNG格式。 |
+| CAMERA_FORMAT_DNG = 4 | DNG格式。<br>**起始版本：** 24 |
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。 |
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
@@ -659,6 +659,7 @@ enum Camera_ControlCenterEffectType
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24 |
 
 ### Camera_PhotoQualityPrioritization
 

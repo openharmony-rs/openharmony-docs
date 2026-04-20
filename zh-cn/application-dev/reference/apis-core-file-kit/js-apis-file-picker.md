@@ -32,7 +32,7 @@ constructor(context: Context)
 
 创建DocumentViewPicker对象，推荐使用该构造函数，获取context参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -76,7 +76,7 @@ constructor()
 
 创建DocumentViewPicker对象，不推荐使用该构造函数，会出现概率性失败问题。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -142,7 +142,7 @@ select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -186,7 +186,7 @@ select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string
 
 通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -227,7 +227,7 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -266,7 +266,7 @@ save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -311,7 +311,7 @@ save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;
 
 通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -353,7 +353,7 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -398,7 +398,7 @@ getSelectedIndex(): number
 
 该方法返回的是所选后缀类型的下标(number)。所选的后缀类型是开发者所传的参数[DocumentSaveOptions.fileSuffixChoices](#documentsaveoptions)里的某个后缀类型。如果没有传参，并且调用了getSelectedIndex()方法，返回值为-1。
 
-**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
 
@@ -451,7 +451,7 @@ constructor(context: Context)
 
 创建AudioViewPicker对象，推荐使用该构造函数，获取context参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -495,7 +495,7 @@ constructor()
 
 创建AudioViewPicker对象，不推荐使用该构造函数，会出现概率性失败问题。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -511,7 +511,7 @@ select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -630,7 +630,7 @@ save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -750,7 +750,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 枚举，picker选择的文档类型。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
 
@@ -766,22 +766,22 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。<br>API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>API version 23及之后的版本取消目录选择数量的限制。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
-| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService          |
-| fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
-| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
-| authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
-|multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
-|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService|
-|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService|
-|isEncryptionSupported<sup>19+</sup>    | boolean |否    |  是 | 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。<br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService |
-| allowsMulFolderSelection<sup>24+</sup>       | boolean                                      | 否   | 是 | 是否支持多选文件夹。true表示支持，false表示不支持，默认值为false。<br>该参数需要与selectMode配合使用，当selectMode为FOLDER或者MIXED，并且allowsMulFolderSelection为true，多选文件夹功能生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
+| maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。<br>API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>API version 23及之后的版本取消目录选择数量的限制。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
+| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。 <br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService          |
+| fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
+| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
+| authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
+|multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
+|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService|
+|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService|
+|isEncryptionSupported<sup>19+</sup>    | boolean |否    |  是 | 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 19开始，该接口支持在原子化服务中使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService |
+| allowsMulFolderSelection<sup>24+</sup>       | boolean                                      | 否   | 是 | 是否支持多选文件夹。true表示支持，false表示不支持，默认值为false。<br>该参数需要与selectMode配合使用，当selectMode为FOLDER或者MIXED，并且allowsMulFolderSelection为true，多选文件夹功能生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
 
 ## DocumentPickerMode<sup>12+</sup>
 
 枚举，picker保存的模式。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -794,7 +794,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 枚举，文件聚合类型。
 
-**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -814,17 +814,17 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| newFileNames            | Array&lt;string&gt;   | 否 | 是   | 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
-| defaultFilePathUri<sup>10+</sup>    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
-| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
-| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
+| newFileNames            | Array&lt;string&gt;   | 否 | 是   | 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
+| defaultFilePathUri<sup>10+</sup>    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
+| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
+| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
 | autoCreateEmptyFile<sup>23+</sup> | boolean | 否 | 是 | 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
 
 ## AudioSelectOptions
 
 音频选择选项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -836,7 +836,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 音频保存选项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -904,7 +904,7 @@ struct Index {
 
 constructor()
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -930,7 +930,7 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -980,7 +980,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-1)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1027,7 +1027,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-2)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1200,7 +1200,7 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewMIMETypes](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1218,7 +1218,7 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoSelectOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectoptions)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -1235,7 +1235,7 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoSelectResult](../apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectresult)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 

@@ -54,8 +54,9 @@ export default class EntryAbility extends UIAbility {
       store.createTransaction().then(async (transaction: relationalStore.Transaction) => {
         console.info(`createTransaction success`);
         // 成功获取到事务对象后执行后续操作
-      }).catch((err: BusinessError) => {
-        console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+      }).catch((err: Error) => {
+        let businessError = err as BusinessError;
+        console.error(`createTransaction failed, code is ${businessError.code},message is ${businessError.message}`);
       });
     }
   }
@@ -232,12 +233,41 @@ ArkTS-Sta: insert(table: string, values: ValuesBucket, conflict?: ConflictResolu
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucket1: relationalStore.ValuesBucket = {
   NAME: 'Lisa',
   AGE: 18,
   SALARY: 100.5,
   CODES: new Uint8Array([1, 2, 3, 4, 5])
+};
+
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      const rowId = await transaction.insert('EMPLOYEE', valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+      await transaction.commit();
+      console.info(`Insert is successful, rowId = ${rowId}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': 'Lisa',
+  'AGE': 18 as long,
+  'SALARY': 100.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
 };
 
 if (store != undefined) {
@@ -311,6 +341,7 @@ insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesB
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 let value5 = 'Lisa';
 let value6 = 18;
@@ -328,6 +359,36 @@ if (store != undefined) {
     const transaction = await store.createTransaction();
     try {
       let rowId: number = transaction.insertSync(
+        'EMPLOYEE',
+        valueBucket2,
+        relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+      );
+      await transaction.commit();
+      console.info(`Insert is successful, rowId = ${rowId}`);
+    } catch (e) {
+      await transaction.rollback();
+      console.error(`Insert is failed, code is ${e.code},message is ${e.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucket2: relationalStore.ValuesBucket = {
+  'NAME': 'Lisa',
+  'AGE': 18 as long,
+  'SALARY': 100.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
+};
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      let rowId: long = transaction.insertSync(
         'EMPLOYEE',
         valueBucket2,
         relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
@@ -400,6 +461,7 @@ ArkTS-Sta: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promis
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucket3: relationalStore.ValuesBucket = {
   NAME: 'Lisa',
@@ -421,6 +483,47 @@ const valueBucket5: relationalStore.ValuesBucket = {
 };
 
 let valueBuckets = new Array(valueBucket3, valueBucket4, valueBucket5);
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      const insertNum = await transaction.batchInsert('EMPLOYEE', valueBuckets);
+      await transaction.commit();
+      console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucket3: relationalStore.ValuesBucket = {
+  'NAME': 'Lisa',
+  'AGE': 18 as long,
+  'SALARY': 100.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
+};
+const valueBucket4: relationalStore.ValuesBucket = {
+  'NAME': 'Jack',
+  'AGE': 19 as long,
+  'SALARY': 101.5,
+  'CODES': new Uint8Array([6, 7, 8, 9, 10])
+};
+const valueBucket5: relationalStore.ValuesBucket = {
+  'NAME': 'Tom',
+  'AGE': 20 as long,
+  'SALARY': 102.5,
+  'CODES': new Uint8Array([11, 12, 13, 14, 15])
+};
+
+let valueBuckets = new Array<relationalStore.ValuesBucket>(valueBucket3, valueBucket4, valueBucket5);
 if (store != undefined) {
   try {
     const transaction = await store.createTransaction();
@@ -495,6 +598,7 @@ ArkTS-Sta: batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): lo
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucket6: relationalStore.ValuesBucket = {
   NAME: 'Lisa',
@@ -521,6 +625,47 @@ if (store != undefined) {
     const transaction = await store.createTransaction();
     try {
       let insertNum: number = (transaction as relationalStore.Transaction).batchInsertSync('EMPLOYEE', valueBuckets2);
+      await transaction.commit();
+      console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucket6: relationalStore.ValuesBucket = {
+  'NAME': 'Lisa',
+  'AGE': 18 as long,
+  'SALARY': 100.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
+};
+const valueBucket7: relationalStore.ValuesBucket = {
+  'NAME': 'Jack',
+  'AGE': 19 as long,
+  'SALARY': 101.5,
+  'CODES': new Uint8Array([6, 7, 8, 9, 10])
+};
+const valueBucket8: relationalStore.ValuesBucket = {
+  'NAME': 'Tom',
+  'AGE': 20 as long,
+  'SALARY': 102.5,
+  'CODES': new Uint8Array([11, 12, 13, 14, 15])
+};
+
+let valueBuckets2 = new Array<relationalStore.ValuesBucket>(valueBucket6, valueBucket7, valueBucket8);
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      let insertNum: long = (transaction as relationalStore.Transaction).batchInsertSync('EMPLOYEE', valueBuckets2);
       await transaction.commit();
       console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
     } catch (error) {
@@ -598,6 +743,7 @@ ArkTS-Sta: batchInsertWithConflictResolution(table: string, values: Array&lt;Val
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucket9: relationalStore.ValuesBucket = {
   NAME: 'Lisa',
@@ -619,6 +765,52 @@ const valueBucketB: relationalStore.ValuesBucket = {
 };
 
 let valueBuckets3 = new Array(valueBucket9, valueBucketA, valueBucketB);
+
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      const insertNum = await transaction.batchInsertWithConflictResolution(
+        'EMPLOYEE',
+        valueBuckets3,
+        relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+      );
+      await transaction.commit();
+      console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucket9: relationalStore.ValuesBucket = {
+  'NAME': 'Lisa',
+  'AGE': 18 as long,
+  'SALARY': 100.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
+};
+const valueBucketA: relationalStore.ValuesBucket = {
+  'NAME': 'Jack',
+  'AGE': 19 as long,
+  'SALARY': 101.5,
+  'CODES': new Uint8Array([6, 7, 8, 9, 10])
+};
+const valueBucketB: relationalStore.ValuesBucket = {
+  'NAME': 'Tom',
+  'AGE': 20 as long,
+  'SALARY': 102.5,
+  'CODES': new Uint8Array([11, 12, 13, 14, 15])
+};
+
+let valueBuckets3 = new Array<relationalStore.ValuesBucket>(valueBucket9, valueBucketA, valueBucketB);
 
 if (store != undefined) {
   try {
@@ -706,6 +898,7 @@ ArkTS-Sta: batchInsertWithConflictResolutionSync(table: string, values: Array&lt
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucketC: relationalStore.ValuesBucket = {
   NAME: 'Lisa',
@@ -727,6 +920,51 @@ const valueBucketE: relationalStore.ValuesBucket = {
 };
 
 let valueBuckets4 = new Array(valueBucketC, valueBucketD, valueBucketE);
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      const insertNum = transaction.batchInsertWithConflictResolutionSync(
+        'EMPLOYEE',
+        valueBuckets4,
+        relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+      );
+      await transaction.commit();
+      console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucketC: relationalStore.ValuesBucket = {
+  'NAME': 'Lisa',
+  'AGE': 18 as long,
+  'SALARY': 100.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
+};
+const valueBucketD: relationalStore.ValuesBucket = {
+  'NAME': 'Jack',
+  'AGE': 19 as long,
+  'SALARY': 101.5,
+  'CODES': new Uint8Array([6, 7, 8, 9, 10])
+};
+const valueBucketE: relationalStore.ValuesBucket = {
+  'NAME': 'Tom',
+  'AGE': 20 as long,
+  'SALARY': 102.5,
+  'CODES': new Uint8Array([11, 12, 13, 14, 15])
+};
+
+let valueBuckets4 = new Array<relationalStore.ValuesBucket>(valueBucketC, valueBucketD, valueBucketE);
 if (store != undefined) {
   try {
     const transaction = await store.createTransaction();
@@ -809,6 +1047,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 async function transBatchInsertWithReturningExample(trans: relationalStore.Transaction)
 {
@@ -816,6 +1055,27 @@ async function transBatchInsertWithReturningExample(trans: relationalStore.Trans
   const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 20 };
   const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
   const valueBuckets = new Array(valueBucket1, valueBucket2);
+  try {
+    let results = await trans.batchInsertWithReturning("EMPLOYEE", valueBuckets, config);
+    console.info(`transBatchInsertWithReturningExample is successful, changed is ${results.changed}`);
+    while(results.resultSet.goToNextRow()) {
+      const row = results.resultSet.getRow();
+      console.info(`transBatchInsertWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+    }
+  } catch (e) {
+    console.error(`transBatchInsertWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+async function transBatchInsertWithReturningExample(trans: relationalStore.Transaction)
+{
+  const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'zhangsan', 'AGE': 18 as long };
+  const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 20 as long };
+  const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
+  const valueBuckets = new Array<relationalStore.ValuesBucket>(valueBucket1, valueBucket2);
   try {
     let results = await trans.batchInsertWithReturning("EMPLOYEE", valueBuckets, config);
     console.info(`transBatchInsertWithReturningExample is successful, changed is ${results.changed}`);
@@ -888,6 +1148,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 function transBatchInsertWithReturningSyncExample(trans: relationalStore.Transaction)
 {
@@ -895,6 +1156,27 @@ function transBatchInsertWithReturningSyncExample(trans: relationalStore.Transac
   const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 20 };
   const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
   const valueBuckets = new Array(valueBucket1, valueBucket2);
+  try {
+    let results = trans.batchInsertWithReturningSync("EMPLOYEE", valueBuckets, config);
+    console.info(`transBatchInsertWithReturningSyncExample is successful, changed is ${results.changed}`);
+    while(results.resultSet.goToNextRow()) {
+      const row = results.resultSet.getRow();
+      console.info(`transBatchInsertWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+    }
+  } catch (e) {
+    console.error(`transBatchInsertWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+function transBatchInsertWithReturningSyncExample(trans: relationalStore.Transaction)
+{
+  const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'zhangsan', 'AGE': 18 as long };
+  const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 20 as long };
+  const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
+  const valueBuckets = new Array<relationalStore.ValuesBucket>(valueBucket1, valueBucket2);
   try {
     let results = trans.batchInsertWithReturningSync("EMPLOYEE", valueBuckets, config);
     console.info(`transBatchInsertWithReturningSyncExample is successful, changed is ${results.changed}`);
@@ -960,12 +1242,43 @@ ArkTS-Sta: update(values: ValuesBucket, predicates: RdbPredicates, conflict?: Co
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucketF: relationalStore.ValuesBucket = {
   NAME: 'Rose',
   AGE: 22,
   SALARY: 200.5,
   CODES: new Uint8Array([1, 2, 3, 4, 5])
+};
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.equalTo('NAME', 'Lisa');
+
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      const rows = await transaction.update(valueBucketF, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+      await transaction.commit();
+      console.info(`Updated row count: ${rows}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucketF: relationalStore.ValuesBucket = {
+  'NAME': 'Rose',
+  'AGE': 22 as long,
+  'SALARY': 200.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
 };
 let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates.equalTo('NAME', 'Lisa');
@@ -1041,12 +1354,43 @@ ArkTS-Sta: updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucketG: relationalStore.ValuesBucket = {
   NAME: 'Rose',
   AGE: 22,
   SALARY: 200.5,
   CODES: new Uint8Array([1, 2, 3, 4, 5])
+};
+let predicates1 = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates1.equalTo('NAME', 'Lisa');
+
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      let rows = transaction.updateSync(valueBucketG, predicates1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+      await transaction.commit();
+      console.info(`Updated row count: ${rows}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+const valueBucketG: relationalStore.ValuesBucket = {
+  'NAME': 'Rose',
+  'AGE': 22 as long,
+  'SALARY': 200.5,
+  'CODES': new Uint8Array([1, 2, 3, 4, 5])
 };
 let predicates1 = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates1.equalTo('NAME', 'Lisa');
@@ -1121,6 +1465,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 async function transUpdateWithReturningExample(trans: relationalStore.Transaction)
 {
@@ -1133,6 +1478,31 @@ async function transUpdateWithReturningExample(trans: relationalStore.Transactio
     trans.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
     valueBucket1['NAME'] = "zhangsan";
     valueBucket1['AGE'] = 18;
+    let results = await trans.updateWithReturning(valueBucket1, predicates, config);
+    console.info(`transUpdateWithReturningExample is successful, changed is ${results.changed}`);
+    while(results.resultSet.goToNextRow()) {
+      const row = results.resultSet.getRow();
+      console.info(`transUpdateWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+    }
+  } catch (e) {
+    console.error(`transUpdateWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+async function transUpdateWithReturningExample(trans: relationalStore.Transaction)
+{
+  const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 as long };
+  const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 18 as long };
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  predicates.equalTo('NAME', 'lisi');
+  const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
+  try {
+    trans.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
+    valueBucket1['NAME'] = "zhangsan";
+    valueBucket1['AGE'] = 18 as long;
     let results = await trans.updateWithReturning(valueBucket1, predicates, config);
     console.info(`transUpdateWithReturningExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
@@ -1196,6 +1566,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 function transUpdateWithReturningSyncExample(trans: relationalStore.Transaction)
 {
@@ -1208,6 +1579,31 @@ function transUpdateWithReturningSyncExample(trans: relationalStore.Transaction)
     trans.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
     valueBucket1['NAME'] = "zhangsan";
     valueBucket1['AGE'] = 18;
+    let results = trans.updateWithReturningSync(valueBucket1, predicates, config);
+    console.info(`transUpdateWithReturningSyncExample is successful, changed is ${results.changed}`);
+    while(results.resultSet.goToNextRow()) {
+      const row = results.resultSet.getRow();
+      console.info(`transUpdateWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+    }
+  } catch (e) {
+    console.error(`transUpdateWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+function transUpdateWithReturningSyncExample(trans: relationalStore.Transaction)
+{
+  const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 as long };
+  const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 18 as long };
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  predicates.equalTo('NAME', 'lisi');
+  const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
+  try {
+    trans.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
+    valueBucket1['NAME'] = "zhangsan";
+    valueBucket1['AGE'] = 18 as long;
     let results = trans.updateWithReturningSync(valueBucket1, predicates, config);
     console.info(`transUpdateWithReturningSyncExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
@@ -1412,11 +1808,34 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 async function transDeleteWithReturningExample(trans: relationalStore.Transaction)
 {
   const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 };
   const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'zhangsan', 'AGE': 18 };
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
+  try {
+    trans.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
+    let results = await trans.deleteWithReturning(predicates, config);
+    console.info(`transDeleteWithReturningExample is successful, changed is ${results.changed}`);
+    while(results.resultSet.goToNextRow()) {
+      const row = results.resultSet.getRow();
+      console.info(`transDeleteWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+    }
+  } catch (e) {
+    console.error(`transDeleteWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+async function transDeleteWithReturningExample(trans: relationalStore.Transaction)
+{
+  const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 as long };
+  const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'zhangsan', 'AGE': 18 as long };
   let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
   const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
   try {
@@ -1480,11 +1899,34 @@ deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Res
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 function transDeleteWithReturningSyncExample(trans: relationalStore.Transaction)
 {
   const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 };
   const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'zhangsan', 'AGE': 18 };
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
+  try {
+    trans.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
+    let results = trans.deleteWithReturningSync(predicates, config);
+    console.info(`transDeleteWithReturningSyncExample is successful, changed is ${results.changed}`);
+    while(results.resultSet.goToNextRow()) {
+      const row = results.resultSet.getRow();
+      console.info(`transDeleteWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+    }
+  } catch (e) {
+    console.error(`transDeleteWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+function transDeleteWithReturningSyncExample(trans: relationalStore.Transaction)
+{
+  const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 as long };
+  const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'zhangsan', 'AGE': 18 as long };
   let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
   const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
   try {
@@ -1632,7 +2074,7 @@ if (store != undefined) {
   try {
     const transaction = await store.createTransaction();
     try {
-      let resultSet = transaction.querySync(predicates5, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
+      let resultSet = transaction!.querySync(predicates5, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
       while (resultSet.goToNextRow()) {
@@ -1782,7 +2224,7 @@ if (store != undefined) {
   try {
     const transaction = await store.createTransaction();
     try {
-      let resultSet = transaction.querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
+      let resultSet = transaction!.querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
       while (resultSet.goToNextRow()) {

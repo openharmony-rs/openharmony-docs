@@ -11,6 +11,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块仅支持PC/2in1设备。
 > - 仅支持集成了划词扩展的应用调用。
@@ -18,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import { selectionManager } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
 ```
 
 ## selectionManager
@@ -27,15 +28,23 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 ### selectionManager.on('selectionCompleted')
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 订阅划词完成事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
 
 **参数：**
 
@@ -66,22 +75,68 @@ try {
 }
 ```
 
+### onSelectionComplete
+
+onSelectionComplete(callback: Callback\<SelectionInfo>): void
+
+订阅划词完成事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                           |
+| -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。       |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+
+| 错误码ID   | 错误信息                       |
+| ---------- | ----------------------------- |
+| 33600003   | The application calling the API does not match the application selected in the system settings. |
+
+**示例：**
+
+```ts
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+try {
+  selectionManager.onSelectionComplete((info: selectionManager.SelectionInfo) => {
+    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+  });
+} catch (err) {
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, error message: ${err.message}}`);
+}
+```
+
 ### selectionManager.off('selectionCompleted')
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 取消订阅划词完成事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
 
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 回调函数，返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -100,6 +155,43 @@ try {
 }
 ```
 
+### offSelectionComplete
+
+offSelectionComplete(callback?: Callback\<SelectionInfo>): void
+
+取消订阅划词完成事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                                         |
+| -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 回调函数，返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
+
+**示例：**
+
+```ts
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
+  console.info(`Enter the callback function.`);
+};
+
+selectionManager.onSelectionComplete(selectionChangeCallback);
+try {
+  selectionManager.offSelectionComplete(selectionChangeCallback);
+} catch (err) {
+  console.error(`Failed to unregister selectionComplete: ${err.code}, error message: ${err.message}`);
+}
+```
+
 ### getSelectionContent()
 
 getSelectionContent(): Promise\<string>
@@ -109,6 +201,10 @@ getSelectionContent(): Promise\<string>
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -130,6 +226,7 @@ getSelectionContent(): Promise\<string>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 
@@ -142,24 +239,49 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+selectionManager.onSelectionComplete((info: selectionManager.SelectionInfo) => {
+  try {
+    getSelectionContentAsync().catch((err) => {
+      console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
+    })
+  } catch (err) {
+    console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
+  }
+});
+
+async function getSelectionContentAsync(): Promise<void> {
+  const content = await selectionManager.getSelectionContent();
+  console.info('Selection content:', content);
+}
+
+```
+
 ### createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 创建划词面板。使用Promise异步回调。
 
-单个划词应用仅允许创建一个[主面板类型](./js-apis-selectionInput-selectionPanel.md)和一个[菜单面板类型](./js-apis-selectionInput-selectionPanel.md)的窗口。
+单个划词应用仅允许创建一个[主面板类型](js-apis-selectionInput-selectionPanel.md#paneltype)和一个[菜单面板类型](js-apis-selectionInput-selectionPanel.md#paneltype)的窗口。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **参数：**
 
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
-| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前划词面板依赖的上下文信息。 |
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板信息。 |
+| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 当前划词面板依赖的上下文信息。 |
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板信息。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -177,6 +299,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { selectionManager, SelectionExtensionAbility, PanelInfo, PanelType, BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
@@ -219,6 +342,52 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import SelectionExtensionAbility from '@ohos.selectionInput.SelectionExtensionAbility';
+import { PanelInfo, PanelType } from '@ohos.selectionInput.SelectionPanel';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+import rpc from '@ohos.rpc';
+import { Want } from '@kit.AbilityKit';
+
+class SelectionAbilityStub extends rpc.RemoteObject {
+  constructor(des: string) {
+    super(des);
+  }
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption
+  ): boolean | Promise<boolean> {
+    return true;
+  }
+}
+
+class ServiceExtAbility extends SelectionExtensionAbility {
+  onConnect(want: Want): rpc.RemoteObject {
+    let panelInfo: PanelInfo = {
+      panelType: PanelType.MENU_PANEL,
+      x: 0,
+      y: 0,
+      width: 500,
+      height: 200
+    }
+    let selectionPanel: selectionManager.Panel | undefined = undefined;
+    selectionManager.createPanel(this.context, panelInfo)
+      .then((panel: selectionManager.Panel) => {
+        selectionPanel = panel;
+        console.info('Succeed in creating panel.');
+      }).catch((err) => {
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}}`);
+    });
+    return new SelectionAbilityStub('remote');
+  }
+}
+export default ServiceExtAbility;
+```
+
 ### destroyPanel
 
 destroyPanel(panel: Panel): Promise\<void>
@@ -228,6 +397,10 @@ destroyPanel(panel: Panel): Promise\<void>
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **参数：**
 
@@ -250,6 +423,7 @@ destroyPanel(panel: Panel): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { selectionManager, SelectionExtensionAbility, PanelInfo, PanelType, BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
@@ -304,6 +478,64 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import SelectionExtensionAbility from '@ohos.selectionInput.SelectionExtensionAbility';
+import { PanelInfo, PanelType } from '@ohos.selectionInput.SelectionPanel';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+import rpc from '@ohos.rpc';
+import { Want } from '@kit.AbilityKit';
+
+class SelectionAbilityStub extends rpc.RemoteObject {
+  constructor(des: string) {
+    super(des);
+  }
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption
+  ): boolean | Promise<boolean> {
+    return true;
+  }
+}
+
+class ServiceExtAbility extends SelectionExtensionAbility {
+  onConnect(want: Want): rpc.RemoteObject {
+    let panelInfo: PanelInfo = {
+      panelType: PanelType.MENU_PANEL,
+      x: 0,
+      y: 0,
+      width: 500,
+      height: 200
+    }
+    let selectionPanel: selectionManager.Panel | undefined = undefined;
+
+    selectionManager.createPanel(this.context, panelInfo)
+      .then((panel: selectionManager.Panel) => {
+        console.info('Succeed in creating panel.');
+        selectionPanel = panel;
+        try {
+          if (selectionPanel) {
+            selectionManager.destroyPanel(selectionPanel as selectionManager.Panel).then(() => {
+              console.info('Succeed in destroying panel.');
+            }).catch((err) => {
+              console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+            });
+          }
+        } catch (err) {
+          console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+        }
+      }).catch((err) => {
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
+    });
+    return new SelectionAbilityStub('remote');
+  }
+}
+export default ServiceExtAbility;
+```
+
 ## SelectionInfo
 
 划词事件信息。
@@ -312,19 +544,23 @@ export default ServiceExtAbility;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
 | selectionType |[SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
-| startDisplayX |number| 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
-| startDisplayY |number| 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
-| endDisplayX   |number| 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
-| endDisplayY   |number| 否   | 否   | 划词结束位置的屏幕y轴坐标，单位为px。 |
-| startWindowX  |number| 否   | 否   | 划词起始位置的窗口x轴坐标，单位为px。 |
-| startWindowY  |number| 否   | 否   | 划词起始位置的窗口y轴坐标，单位为px。 |
-| endWindowX    |number| 否   | 否   | 划词结束位置的窗口x轴坐标，单位为px。 |
-| endWindowY    |number| 否   | 否   | 划词结束位置的窗口y轴坐标，单位为px。 |
-| displayID     |number| 否   | 否   | 被划词应用窗口的屏幕ID。 |
-| windowID      |number| 否   | 否   | 被划词应用的窗口ID。 |
+| startDisplayX |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
+| startDisplayY |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
+| endDisplayX   |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
+| endDisplayY   |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词结束位置的屏幕y轴坐标，单位为px。 |
+| startWindowX  |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词起始位置的窗口x轴坐标，单位为px。 |
+| startWindowY  |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词起始位置的窗口y轴坐标，单位为px。 |
+| endWindowX    |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词结束位置的窗口x轴坐标，单位为px。 |
+| endWindowY    |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 划词结束位置的窗口y轴坐标，单位为px。 |
+| displayID     |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 被划词应用窗口的屏幕ID。 |
+| windowID      |ArkTS-Dyn:number<br>ArkTS-Sta:int| 否   | 否   | 被划词应用的窗口ID。 |
 | bundleName    |string| 否   | 否   | 被划词应用的bundleName。 |
 
 ## Panel
@@ -334,6 +570,10 @@ export default ServiceExtAbility;
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 下列API均需使用[createPanel](#createpanel)获取到Panel实例后，通过实例调用。
 
@@ -346,6 +586,10 @@ setUiContent(path: string): Promise\<void>
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **参数：**
 
@@ -369,6 +613,8 @@ setUiContent(path: string): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
@@ -384,6 +630,23 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+try {
+  selectionPanel?.setUiContent('pages/Index').then(() => {
+    console.info('Succeeded in setting the content.');
+  }).catch((err) => {
+    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}}`);
+  });
+} catch (err) {
+  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}}`);
+}
+```
+
 ### show
 
 show(): Promise\<void>
@@ -393,6 +656,10 @@ show(): Promise\<void>
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **返回值：**
 
@@ -410,6 +677,8 @@ show(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
@@ -417,6 +686,19 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+selectionPanel?.show().then(() => {
+  console.info('Succeeded in showing the panel.');
+}).catch((err) => {
   console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
 });
 ```
@@ -431,6 +713,10 @@ hide(): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **返回值：**
 
 | 类型   | 说明                             |
@@ -447,6 +733,8 @@ hide(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
@@ -454,6 +742,19 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+selectionPanel?.hide().then(() => {
+  console.info('Succeeded in hiding the panel.');
+}).catch((err) => {
   console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
 });
 ```
@@ -468,6 +769,10 @@ startMoving(): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **返回值：**
 
 | 类型   | 说明                             |
@@ -484,6 +789,8 @@ startMoving(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
@@ -506,6 +813,30 @@ RelativeContainer() {
 })
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+RelativeContainer() {
+  /* 
+   * 页面布局内容，需要开发者根据实际补充
+   */
+}
+.onTouch((event: TouchEvent) => {
+  if (event.type === TouchType.Down) {
+    if (selectionPanel !== undefined) {
+      selectionPanel?.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
+        console.info('Succeeded in startMoving the panel.');
+      }).catch((err) => {
+        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
+      });
+    }
+  }
+})
+```
+
 <!--Del-->
 ### moveTo<sup>(deprecated)</sup>
 
@@ -519,7 +850,11 @@ moveTo(x: number, y: number): Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -562,7 +897,9 @@ try {
 
 ### moveToGlobalDisplay
 
-moveToGlobalDisplay(x: number, y: number): Promise\<void>
+ArkTS-Dyn: moveToGlobalDisplay(x: number, y: number): Promise\<void>
+
+ArkTS-Sta: moveToGlobalDisplay(x: int, y: int): Promise\<void>
 
 移动划词面板至屏幕指定位置。使用Promise异步回调。
 
@@ -570,12 +907,16 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| x | number | 是   |x轴方向移动的值，单位为px。|
-| y | number | 是   |y轴方向移动的值，单位为px。|
+| x | ArkTS-Dyn:number<br>ArkTS-Sta:int | 是   |x轴方向移动的值，单位为px。|
+| y | ArkTS-Dyn:number<br>ArkTS-Sta:int | 是   |y轴方向移动的值，单位为px。|
 
 **返回值：**
 
@@ -593,6 +934,8 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
@@ -608,22 +951,43 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+try {
+  selectionPanel?.moveToGlobalDisplay(200, 200).then(() => {
+    console.info('Succeeded in moving the panel.');
+  }).catch((err) => {
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+}
+```
+
 ### on('destroyed')
 
 on(type: 'destroyed', callback: Callback\<void>): void
 
 订阅划词窗口销毁事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
 
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。 |
-| callback | Callback\<void> | 是   | 回调函数。       |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空       |
 
 **示例：**
 <!--code_no_check-->
@@ -639,22 +1003,61 @@ try {
 }
 ```
 
+### onDestroy
+
+onDestroy(callback: Callback\<void>): void
+
+订阅划词窗口销毁事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                           |
+| -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空       |
+
+**示例：**
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+try {
+  selectionPanel?.onDestroy(() => {
+    console.info('Panel has been destroyed.');
+  });
+} catch (err) {
+  console.error(`Failed to register destroy callback: ${err.code}, error message: ${err.message}`);
+}
+```
+
 ### off('destroyed')
 
 off(type: 'destroyed', callback?: Callback\<void>): void
 
 取消订阅划词窗口销毁事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
 
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。               |
-| callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 <!--code_no_check-->
@@ -668,22 +1071,59 @@ try {
 }
 ```
 
+### offDestroy
+
+offDestroy(callback?: Callback\<void>): void
+
+取消订阅划词窗口销毁事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                                         |
+| -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
+
+**示例：**
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+try {
+  selectionPanel?.offDestroy();
+} catch (err) {
+  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
+}
+```
+
 ### on('hidden')
 
 on(type: 'hidden', callback: Callback\<void>): void
 
 订阅划词窗口隐藏事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
 
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。 |
-| callback | Callback\<void> | 是   | 回调函数，返回当前划词服务的信息。       |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
 
 **示例：**
 <!--code_no_check-->
@@ -699,22 +1139,61 @@ try {
 }
 ```
 
+### onHide
+
+onHide(callback: Callback\<void>): void
+
+订阅划词窗口隐藏事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                           |
+| -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
+
+**示例：**
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+try {
+  selectionPanel?.onHide(() => {
+    console.info('Panel has been hidden.');
+  });
+} catch (err) {
+  console.error(`Failed to register hide callback: ${err.code}, error message: ${err.message}`);
+}
+```
+
 ### off('hidden')
 
 off(type: 'hidden', callback?: Callback\<void>): void
 
 取消订阅划词窗口隐藏事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
 
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。               |
-| callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 <!--code_no_check-->
@@ -728,13 +1207,50 @@ try {
 }
 ```
 
-## SelectionType
+### offHide
+
+offHide(callback?: Callback\<void>): void
+
+取消订阅划词窗口隐藏事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本**：24
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                                         |
+| -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
+
+**示例：**
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import selectionManager from '@ohos.selectionInput.selectionManager';
+
+try {
+  selectionPanel?.offHide();
+} catch (err) {
+  console.error(`Failed to unregister hide: ${err.code}, error message: ${err.message}`);
+}
+```
+
+### SelectionType
 
 定义触发划词的类型枚举。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |

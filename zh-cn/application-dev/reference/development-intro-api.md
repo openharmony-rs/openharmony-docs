@@ -23,10 +23,9 @@ API参考采用两种方式标记组件或接口开始支持的版本号：
 文档在每一个接口描述中说明了接口的系统能力，如：**系统能力**：SystemCapability.xxx.xxx
 
 <!--Del-->
-- 通过[系统能力SystemCapability列表](phone-syscap-list.md)，可以速查具体能力集支持的设备。<!--DelEnd-->
-- 系统提供了canIUse接口，可用于[判断API是否可以使用](syscap.md#判断-api-是否可以使用)。
-- 相同的系统能力，在不同的设备下，也会有能力的差异。开发者可以进行[不同设备相同能力的差异检查](syscap.md#不同设备相同能力的差异检查)。
-<!--RP2--><!--RP2End-->
+- 通过[系统能力SystemCapability列表](phone-syscap-list.md)，可以速查具体能力集支持的设备；<!--DelEnd-->
+- 系统提供了canIUse接口，可[使用canIUse判断SysCap是否可调用](./syscap.md#使用caniuse判断syscap是否可调用)；
+- 相同的系统能力，在不同的设备下，也会有能力的差异。开发者可以进行[多设备应用开发场景下的适配开发](./syscap.md#多设备应用开发场景下的适配开发)。
 
 <!--RP1--><!--RP1End-->
 

@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -37,6 +37,7 @@
 | [void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)](#oh_hidebug_getappmemorylimit) | - | 获取应用程序进程的内存限制。 |
 | [HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)](#oh_hidebug_startapptracecapture) | - | 启动应用trace采集。 |
 | [HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()](#oh_hidebug_stopapptracecapture) | - | 停止采集应用程序trace。 |
+| [HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)](#oh_hidebug_requesttrace) | - | 根据设置的采集配置请求trace采集。 |
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)](#oh_hidebug_getgraphicsmemory) | - | 获取应用GPU显存大小。注意：由于该接口涉及多次跨进程通信，其耗时可能超过1秒，建议不要在主线程中直接调用该接口。 |
 | [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | 根据给定的fp地址进行栈回溯，该函数异步信号安全。 |
 | [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | 若[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口调用成功，将通过该函数将解析后的栈信息返回给调用者。<br>**注意：** 由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。 |
@@ -244,6 +245,31 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 | 类型 | 说明 |
 | -- | -- |
 | [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 0 - 成功。<br>         11400104 - 系统内部错误。<br>         11400105 - 当前没有trace正在运行 |
+
+### OH_HiDebug_RequestTrace()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)
+```
+
+**描述**
+
+根据设置的采集配置请求trace采集。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) *config | trace采集的采集配置参数，参考[OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md)。 |
+| [OH_HiDebug_RequestTraceCallback](capi-hidebug-type-h.md#oh_hidebug_requesttracecallback) callback | trace采集的回调函数，参考[OH_HiDebug_RequestTraceCallback](capi-hidebug-type-h.md#oh_hidebug_requesttracecallback)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>         HIDEBUG_SUCCESS：采集成功。<br>         HIDEBUG_TRACE_ABNORMAL：远程服务异常或状态异常。<br>         OH_HIDEBUG_TRACE_STORAGE_LIMIT：trace存储达到限制。目录下存储的trace文件大于等于3份时，返回失败。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采集资源限制。 |
 
 ### OH_HiDebug_GetGraphicsMemory()
 

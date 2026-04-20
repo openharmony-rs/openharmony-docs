@@ -8,6 +8,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
@@ -20,6 +22,10 @@ type WebviewController = WebviewController
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明       |
 | ------ | ---------- |
 | [WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
@@ -31,6 +37,10 @@ type OnAdsBlockedCallback = (details: AdsBlockedDetails) => void
 当页面发生广告过滤时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -45,6 +55,10 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 用户加载资源时发生SSL错误时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -74,6 +88,10 @@ type OnContextMenuHideCallback = () => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ## OnRenderProcessNotRespondingCallback<sup>12+</sup>
 
 type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingData) => void
@@ -81,6 +99,10 @@ type OnRenderProcessNotRespondingCallback = (data : RenderProcessNotRespondingDa
 渲染进程无响应时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -96,6 +118,10 @@ type OnRenderProcessRespondingCallback = () => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ## OnViewportFitChangedCallback<sup>12+</sup>
 
 type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void
@@ -103,6 +129,10 @@ type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void
 网页meta中viewport-fit配置项更改时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -118,6 +148,10 @@ type OnNativeEmbedVisibilityChangeCallback = (nativeEmbedVisibilityInfo: NativeE
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -131,6 +165,10 @@ type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void
 Web组件进入全屏时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -146,6 +184,10 @@ type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPai
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -159,6 +201,10 @@ type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContent
 网页绘制页面最大内容度量信息的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -174,6 +220,10 @@ type OnNavigationEntryCommittedCallback = (loadCommittedDetails: [LoadCommittedD
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -187,6 +237,10 @@ type OnSafeBrowsingCheckResultCallback = (threatType: ThreatType) => void
 网站安全风险检查触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -202,6 +256,10 @@ type OnIntelligentTrackingPreventionCallback = (details: IntelligentTrackingPrev
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -215,6 +273,10 @@ type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => 
 onOverrideUrlLoading的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -236,6 +298,10 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型   | 必填   | 说明               |
@@ -255,6 +321,10 @@ type OnOverrideErrorPageCallback = (errorPageEvent: OnErrorReceiveEvent) => stri
 onOverrideErrorPage的回调函数，网页加载失败时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -276,6 +346,10 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -293,6 +367,10 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -312,6 +390,10 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -330,6 +412,10 @@ type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                        | 必填   | 说明                         |
@@ -344,6 +430,10 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                        | 必填   | 说明                         |
@@ -357,6 +447,10 @@ type TextSelectionChangeCallback = (selectionText: string) => void
 onTextSelectionChange的回调，选区内容改变时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -376,6 +470,10 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -385,6 +483,97 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 **示例：**
 
 完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23)。
+
+## OnCreateAISession
+
+type OnCreateAISession = (id: string, params: string, result: OnAISessionCallback) => boolean
+
+AI会话创建回调函数类型。允许自定义模型初始化和结果处理。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型                                            | 必填 | 说明                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | 是  | 会话任务ID。            |
+| params | string                                        | 是  | 会话创建时传递的上下文数据。     |
+| result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统会话创建结果的回调函数。 |
+
+**返回值：**
+
+| 类型      | 说明                                            |
+| ------- | --------------------------------------------- |
+| boolean | `true`表示使用自定义逻辑，跳过系统默认行为；`false`表示继续执行系统默认逻辑。 |
+
+## OnExecuteAIAction
+
+type OnExecuteAIAction = (id: string, params: string, result: OnAISessionCallback) => void
+
+AI会话执行操作回调函数类型。用于自定义实现AI模型执行。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型                                            | 必填 | 说明                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | 是  | 会话任务ID。            |
+| params | string                                        | 是  | 执行操作时传递的上下文数据。     |
+| result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统操作执行结果的回调函数。 |
+
+## OnDestroyAISession
+
+type OnDestroyAISession = (id: string) => void
+
+AI会话销毁回调函数类型。用于清理与自定义AI模型关联的资源。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明      |
+| --- | ------ | -- | ------- |
+| id  | string | 是  | 会话任务ID。 |
+
+## OnAISessionCallback
+
+type OnAISessionCallback = (state: AISessionResultType, content: string) => void
+
+AI会话操作结果回调函数类型。用于报告会话创建或执行的结果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名     | 类型                                                                             | 必填 | 说明              |
+| ------- | ------------------------------------------------------------------------------ | -- | --------------- |
+| state   | [AISessionResultType](./arkts-basic-components-web-e.md#aisessionresulttype) | 是  | AI会话创建或执行的状态结果。 |
+| content | string                                                                         | 是  | AI会话的响应内容。      |
 
 ## OnInputmethodAttachedCallback
 

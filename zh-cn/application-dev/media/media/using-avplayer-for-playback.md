@@ -138,6 +138,9 @@
     ```
 
 6. 音频播控：播放play()、暂停pause()、跳转seek()、停止stop() 等操作。
+   > **说明：**
+   >
+   > 在API version 23及之后版本中，播放音频时会跳过静音帧。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -174,7 +177,7 @@
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    avPlayer.reset((err: BusinessError) => {
+    await avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
             console.error('Failed to reset,error message is :' + err.message);

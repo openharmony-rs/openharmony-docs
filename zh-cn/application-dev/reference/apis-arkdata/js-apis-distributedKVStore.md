@@ -40,7 +40,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称     | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
-| context    | BaseContext    | 否   | 否   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
+| context    | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)    | 否   | 否   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
 | bundleName | string          | 否   | 否   | 调用方的包名。                                               |
 
 ## Constants
@@ -133,7 +133,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 ## ChangeNotification
 
-数据变更时通知的对象，包括数据插入的数据、更新的数据、删除的数据和设备ID。
+数据变更时通知的对象，包括插入的数据、更新的数据、删除的数据和设备ID。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -214,7 +214,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | S1         | 2 | 表示数据库的安全级别为低级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。<br>例如，性别、国籍，用户申请记录等。 |
 | S2         | 3 | 表示数据库的安全级别为中级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。<br>例如，个人详细通信地址，姓名昵称等。 |
 | S3         | 5 | 表示数据库的安全级别为高级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。<br>例如，个人实时精确定位信息、运动轨迹等。 |
-| S4         | 6 | 表示数据库的安全级别为关键级别，业界法律法规中定义的特殊数据类型，涉及个人的最私密领域的信息或者一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响数据。<br>例如，政治观点、宗教、和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况、性取向等或设备认证鉴权、个人的信用卡等财务信息。 |
+| S4         | 6 | 表示数据库的安全级别为关键级别，业界法律法规中定义的特殊数据类型，涉及个人的最私密领域的信息，一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响。<br>例如，政治观点、宗教、哲学信仰、工会成员资格、基因数据、生物信息、健康、性生活状况、性取向、设备认证鉴权或个人的信用卡等财务信息。 |
 
 ## Options
 
@@ -3622,7 +3622,7 @@ deviceId(deviceId:string):Query
 添加设备ID作为Key的前缀。
 > **说明：**
 >
-> 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
+> 其中deviceId为[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)中的networkId，通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
 > deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
@@ -4572,7 +4572,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | ------------------------- | ---- | ---------------------- |
-| deviceId | string                    | 是   | 表示要删除设备的networkId。 |
+| deviceId | string                    | 是   | 设备的networkId。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。删除指定设备的数据成功，err为undefined，否则为错误对象。    |
 
 **错误码：**
@@ -4595,26 +4595,34 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
 try {
   kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, async (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to put device data: ${err.code} - ${err.message}`);
+      return;
+    }
     console.info('Succeeded in putting data');
     const deviceid = 'no_exist_device_id';
-    if (kvStore != null) {
+    if (kvStore) {
       kvStore.removeDeviceData(deviceid, async (err: BusinessError) => {
-        if (err == undefined) {
-          console.info('succeeded in removing device data');
-        } else {
-          console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
-          if (kvStore != null) {
+        if (err) {
+          console.error(`Failed to remove device data: ${err.code} - ${err.message}`);
+          if (kvStore) {
             kvStore.get(KEY_TEST_STRING_ELEMENT, async (err: BusinessError, data: boolean | string | number | Uint8Array) => {
-              console.info('Succeeded in getting data');
-            });
+                if (err) {
+                  console.error(`Failed to get data: ${err.code} - ${err.message}`);
+                  return;
+                }
+                console.info(`Succeeded in getting data.data=${data}`);
+              });
           }
+        } else {
+          console.info('Succeeded in removing device data');
         }
       });
     }
   });
 } catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`)
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`)
 }
 ```
 
@@ -4670,7 +4678,7 @@ removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型 | 必填 | 说明                   |
 | -------- | -------- | ---- | ---------------------- |
-| deviceId | string   | 是   | 表示要删除设备的networkId。 |
+| deviceId | string   | 是   | 设备的networkId。 |
 
 **返回值：**
 
@@ -4709,7 +4717,7 @@ try {
     console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
   });
   kvStore.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
-    console.info('Succeeded in getting data');
+    console.info(`Succeeded in getting data. Data=${data}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get data.code is ${err.code},message is ${err.message} `);
   });
@@ -7181,15 +7189,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   kvStore.commit((err: BusinessError) => {
-    if (err == undefined) {
-      console.info('Succeeded in committing');
+    if (err) {
+      console.error(`Failed to commit. Code is ${err.code}, message is ${err.message}`);
     } else {
-      console.error(`Failed to commit.code is ${err.code},message is ${err.message}`);
+      console.info('Succeeded in committing');
     }
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -7321,15 +7329,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   kvStore.rollback((err: BusinessError) => {
-    if (err == undefined) {
-      console.info('Succeeded in rolling back');
+    if (err) {
+      console.error(`Failed to rollback. Code is ${err.code}, message is ${err.message}`);
     } else {
-      console.error(`Failed to rollback.code is ${err.code},message is ${err.message}`);
+      console.info('Succeeded in rolling back');
     }
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -7462,15 +7470,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   kvStore.enableSync(true, (err: BusinessError) => {
-    if (err == undefined) {
-      console.info('Succeeded in enabling sync');
+    if (err) {
+      console.error(`Failed to enable sync. Code is ${err.code}, message is ${err.message}`);
     } else {
-      console.error(`Failed to enable sync.code is ${err.code},message is ${err.message}`);
+      console.info('Succeeded in enabling sync');
     }
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -8727,7 +8735,7 @@ try {
         console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
         return;
       }
-      console.info(`Succeeded in getting data.data=${data}`);
+      console.info(`Succeeded in getting data. Data=${data}`);
     });
   });
 } catch (error: BusinessError) {
@@ -8832,7 +8840,7 @@ ArkTS-Dyn: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean
 
 ArkTS-Sta: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
 
-获取与指定设备ID和Key匹配的string值，使用callback异步回调。
+获取与指定设备ID和Key匹配的值，使用callback异步回调。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -8928,7 +8936,7 @@ ArkTS-Dyn: get(deviceId: string, key: string): Promise&lt;boolean | string | num
 
 ArkTS-Sta: get(deviceId: string, key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
 
-获取与指定设备ID和Key匹配的string值，使用Promise异步回调。
+获取与指定设备ID和Key匹配的值，使用Promise异步回调。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -9738,7 +9746,7 @@ getEntries(deviceId: string, query: Query, callback: AsyncCallback&lt;Entry[]&gt
 
 | 参数名   | 类型                               | 必填 | 说明                                                    |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------- |
-| deviceId | string                                 | 是   | 键值对所属的设备ID。                                    |
+| deviceId | string                                 | 是   | 设备的networkId。                                    |
 | query    | [Query](#query)                         | 是   | 表示查询对象。                                          |
 | callback | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数。返回与指定设备ID和Query对象匹配的键值对列表。 |
 
@@ -9867,7 +9875,7 @@ getEntries(deviceId: string, query: Query): Promise&lt;Entry[]&gt;
 
 | 参数名   | 类型       | 必填 | 说明                 |
 | -------- | -------------- | ---- | -------------------- |
-| deviceId | string         | 是   | 键值对所属的设备ID。 |
+| deviceId | string         | 是   | 设备的networkId。 |
 | query    | [Query](#query) | 是   | 表示查询对象。       |
 
 **返回值：**

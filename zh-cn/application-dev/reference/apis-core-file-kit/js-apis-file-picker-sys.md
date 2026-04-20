@@ -22,7 +22,7 @@ import  { picker } from '@kit.CoreFileKit';
 
 文档选择选项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>
 
 **系统能力**：SystemCapability.FileManagement.UserFileService<br> 
 
@@ -40,7 +40,7 @@ import  { picker } from '@kit.CoreFileKit';
 
 文档保存选项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 

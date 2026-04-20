@@ -852,8 +852,6 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 
 根据权限列表查询所有已请求过该权限的应用及其权限状态。使用Promise异步回调。当查询的数据结果的大小超过50000条时，返回12100015错误码。
 
-**起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -862,6 +860,9 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -890,6 +891,7 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -903,13 +905,27 @@ atManager.queryStatusByPermission(permissionList).then((data: Array<abilityAcces
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permissionList: Array<Permissions> = ['ohos.permission.CAMERA'];
+atManager.queryStatusByPermission(permissionList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
+  console.info('queryStatusByPermission success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
+  console.error(`queryStatusByPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ### queryStatusByTokenID
 
-queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
+ArkTS-Dyn: queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
+
+ArkTS-Sta: queryStatusByTokenID(tokenIDList: Array&lt;int&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
 
 根据应用tokenID列表查询其所有的权限状态。使用Promise异步回调。当查询的数据结果的大小超过50000条时，返回12100015错误码。
-
-**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -919,11 +935,15 @@ queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;Perm
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenIDList | Array&lt;number&gt;   | 是   | 待查询的应用tokenID列表，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。该参数不能为空，且长度不能超过1024。 |
+| tokenIDList | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt;  | 是   | 待查询的应用tokenID列表，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。该参数不能为空，且长度不能超过1024。 |
 
 **返回值：**
 
@@ -946,6 +966,7 @@ queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;Perm
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -960,11 +981,24 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: int = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let tokenIDList: Array<int> = [tokenID];
+atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
+  console.info('queryStatusByTokenID success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
+  console.error(`queryStatusByTokenID fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## PermissionStatusInfo
 
 表示权限状态信息。
-
-**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
@@ -972,12 +1006,17 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称           | 类型                       | 只读 | 可选 | 说明                |
 | -------------- | ------------------------- | ---- | ---- | ------------------ |
-| tokenID        | number                    | 否   | 否   | 应用的身份标识。 |
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 应用的身份标识。 |
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 否   | 否   | 权限名称。 |
 | grantStatus    | [GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus) | 否   | 否   | 权限授权状态。 |
-| grantFlags     | number                    | 否   | 否   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+| grantFlags     | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+| grantTimestamp     | ArkTS-Dyn: number <br> ArkTS-Sta: long                    | 否   | 是   | 授权状态变化的时间戳，单位：ms。 |
 
 ## PermissionRequestToggleStatus<sup>12+</sup>
 

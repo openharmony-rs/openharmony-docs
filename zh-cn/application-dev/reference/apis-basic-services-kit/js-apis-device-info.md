@@ -73,6 +73,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 |
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号<br/> 示例：xxxxx |
 | bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 |
+| deviceColor<sup>26+</sup> | string | 是 | 当前设备颜色<br/> 示例：gold |
 
 **示例**
 
@@ -245,6 +246,9 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     // 输出结果：the value of the bootCount is :100
     console.info('the value of the deviceInfo bootCount is :' + bootCount);
 
+    let deviceColor: string = deviceInfo.deviceColor;
+    // 输出结果：the value of the deviceColor is :blue
+    console.info('the value of the deviceColor is :' + deviceColor);
 ```
 
 ## PerformanceClassLevel<sup>19+</sup>

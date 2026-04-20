@@ -120,6 +120,30 @@ getId(): string
 | ------ | --------- |
 | string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md#id)。 |
 
+### getUniqueId
+
+ArkTS-Dyn: getUniqueId(): number
+
+ArkTS-Sta: getUniqueId(): int
+
+返回当前组件的唯一id。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 当前组件的唯一id。 |
+
 ## TouchRecognizer<sup>20+</sup> 
 
 触摸识别器对象。
@@ -153,6 +177,36 @@ cancelTouch(): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### isHostBelongsTo
+
+ArkTS-Dyn: isHostBelongsTo(uniqueId: number): boolean
+
+ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
+
+返回当前触摸识别器绑定节点是否为传入组件的后代节点。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| uniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| boolean | 当前触摸识别器绑定节点是否为传入组件的后代节点。true表示当前绑定节点为传入组件的后代节点，false表示当前绑定节点非传入组件的后代节点。 |
 
 ## GestureRecognizer<sup>12+</sup> 
 
@@ -325,6 +379,36 @@ preventBegin(): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### isHostBelongsTo
+
+ArkTS-Dyn: isHostBelongsTo(uniqueId: number): boolean
+
+ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
+
+返回当前手势识别器绑定节点是否为传入组件的后代节点。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| uniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| boolean | 当前手势识别器绑定节点是否为传入组件的后代节点。true表示当前绑定节点为传入组件的后代节点，false表示当前绑定节点非传入组件的后代节点。 |
 
 ## TapRecognizer<sup>18+</sup>
 

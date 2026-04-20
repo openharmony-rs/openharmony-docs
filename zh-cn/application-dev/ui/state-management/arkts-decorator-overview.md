@@ -1,8 +1,8 @@
 # UI装饰器总览
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @s10021109-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 

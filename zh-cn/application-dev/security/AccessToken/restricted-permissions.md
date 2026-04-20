@@ -154,9 +154,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用访问公共目录下Desktop目录及子目录。
 
-<!--RP15-->
 当前仅2in1设备和平板上的应用可申请此权限。
-<!--RP15End-->
 
 **权限级别**：system_basic
 

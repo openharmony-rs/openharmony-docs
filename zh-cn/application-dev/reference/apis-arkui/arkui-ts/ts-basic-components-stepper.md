@@ -10,6 +10,8 @@
 
 
 >  **说明：**
+>
+> - 本模块仅适用于ArkTS-Dyn。
 > 
 > - 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](ts-container-swiper.md)替代。详细示例请参考[示例2](#示例2使用swiper替代stepper)。
 >
