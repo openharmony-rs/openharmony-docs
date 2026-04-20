@@ -366,15 +366,17 @@ function setExposureMeteringMode(photoSession: camera.PhotoSession, aeMeteringMo
 }
 ```
 
-## onExposureStateChange<sup>26.0.0+</sup>
+## onExposureStateChange
 
 onExposureStateChange(callback: Callback\<ExposureState\>): void
 
 监听曝光状态事件变更。使用callback异步回调。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -402,23 +404,25 @@ function registerPhotoOutputCaptureStart(captureSession: camera.captureSession):
 }
 ```
 
-## offExposureStateChange<sup>26.0.0+</sup>
+## offExposureStateChange
 
 offExposureStateChange(callback?: Callback<ExposureState>): void
 
 注销监听曝光状态事件变更。使用callback异步回调。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e#exposurestate2600)\> | 否   | 回调函数，如果指定参数则取消对应callback，callback对象如果是空或者匿名函数，取消所有callback。     |
+| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e#exposurestate2600)\> | 否   | 回调函数，如果指定参数则取消对应callback，callback对象如果为空或为匿名函数，则取消所有callback。     |
 
 **示例：**
 
