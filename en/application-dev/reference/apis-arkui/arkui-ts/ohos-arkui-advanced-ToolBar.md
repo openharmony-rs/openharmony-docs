@@ -52,7 +52,7 @@ The **Toolbar** component is designed to present a set of action options related
 
 ## ToolBarOptions
 
-Inherits Array<[ToolBarOption](#toolbaroption)>.
+Inherits from Array<[ToolBarOption](#toolbaroption)>.
 
 **Decorator Type**: \@Observed
 
