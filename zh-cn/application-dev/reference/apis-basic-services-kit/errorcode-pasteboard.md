@@ -18,7 +18,7 @@ The index is out of range.
 
 **错误描述**
 
-当调用getRecord等涉及索引的接口时，若索引超出有效范围（应介于0至recordCount-1之间），系统会报此错误码。
+当调用getRecord等涉及索引的接口时，若索引超过范围（应介于0至recordCount-1之间），系统会报此错误码。
 
 **可能原因**
 
@@ -40,7 +40,7 @@ The number of records exceeds the upper limit.
 
 **可能原因**
 
-当前PasteData记录数已达到最大值，未进行相关Record的删除或数目检查，直接继续添加Record导致。
+当前PasteData记录数已达到最大值，由于未进行相关Record的删除或数目检查，直接继续添加Record导致。
 
 **处理步骤**
 
@@ -78,7 +78,7 @@ Replication is prohibited.
 
 **错误描述**
 
-当对不支持复制的数据内容进行复制操作时，系统会报此错误码。
+对不支持复制的数据内容进行复制操作时，系统会报此错误码。
 
 **可能原因**
 
@@ -115,7 +115,7 @@ Settings already exist.
 
 **错误描述**
 
-当应用全局的可粘贴的范围已存在时，再次进行设置时，系统会报此错误码。
+当应用全局的可粘贴的范围已存在时，再次进行设置会导致系统会报此错误码。
 
 **可能原因**
 

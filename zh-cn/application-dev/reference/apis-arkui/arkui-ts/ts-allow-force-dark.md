@@ -10,11 +10,15 @@
 
 >  **说明：**
 >
-> 本模块首批接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记该接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记该接口的起始版本。
 
 ## allowForceDark
 
-allowForceDark(value: boolean): T
+ArkTS-Dyn: allowForceDark(value: boolean): T
+
+ArkTS-Sta: allowForceDark(value: boolean): this
 
 设置组件是否使用反色能力。
 
@@ -28,6 +32,12 @@ allowForceDark(value: boolean): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型      | 必填 | 说明                       |
@@ -38,7 +48,7 @@ allowForceDark(value: boolean): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 

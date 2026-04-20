@@ -8,7 +8,8 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -34,6 +35,10 @@ getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback&lt;Rd
 getRdbStore支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -141,6 +146,10 @@ getRdbStore支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                             | 必填 | 说明                                                         |
@@ -196,8 +205,9 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
   store = rdbStore;
   console.info('Get RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -220,8 +230,9 @@ class EntryAbility extends UIAbility {
     relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
       store = rdbStore;
       console.info('Get RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -245,6 +256,10 @@ getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
 getRdbStoreSync支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -317,6 +332,10 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -475,6 +494,10 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名  | 类型    | 必填 | 说明                                                         |
@@ -513,8 +536,9 @@ relationalStore.deleteRdbStore(context, "RdbTest.db").then(() => {
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -531,8 +555,9 @@ class EntryAbility extends UIAbility {
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -549,6 +574,10 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -635,6 +664,10 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名  | 类型                        | 必填 | 说明                                                         |
@@ -681,8 +714,9 @@ relationalStore.deleteRdbStore(context, STORE_CONFIG).then(() => {
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
 });
 ```
 
@@ -703,8 +737,9 @@ class EntryAbility extends UIAbility {
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Delete RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
   }
 }
@@ -716,6 +751,10 @@ isVectorSupported(): boolean
 判断系统是否提供向量数据库能力。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -770,6 +809,10 @@ isTokenizerSupported(tokenizer: Tokenizer): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
@@ -807,6 +850,10 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
@@ -832,10 +879,26 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
+  sex: "man",
+  desc: "asserter"
+};
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
+  "USER",
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  name: "Logitech",
+  age: 18 as long,
   sex: "man",
   desc: "asserter"
 };
@@ -853,6 +916,10 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 获取用于更新数据的SQL语句，此为同步接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -879,10 +946,27 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
   name: "Logitech",
   age: 18,
+  sex: "man",
+  desc: "asserter"
+};
+const predicates = new relationalStore.RdbPredicates("users");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(
+  predicates,
+  bucket,
+  relationalStore.ConflictResolution.ON_CONFLICT_NONE
+);
+```
+
+ArkTS-Sta示例：
+```ts
+const bucket: relationalStore.ValuesBucket = {
+  name: "Logitech",
+  age: 18 as long,
   sex: "man",
   desc: "asserter"
 };
@@ -901,6 +985,10 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 获取用于删除数据的SQL语句，此为同步接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -925,10 +1013,19 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.equalTo("tableName", "a");
 predicates.notEqualTo("age", 18);
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.equalTo("tableName", "a");
+predicates.notEqualTo("age", 18 as long);
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getDeleteSqlInfo(predicates);
 ```
 
@@ -939,6 +1036,10 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 获取用于查询数据的SQL语句，此为同步接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -964,9 +1065,18 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 const predicates = new relationalStore.RdbPredicates("users");
 predicates.notEqualTo("age", 18);
+predicates.equalTo("name", "zhangsan");
+const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
+```
+
+ArkTS-Sta示例：
+```ts
+const predicates = new relationalStore.RdbPredicates("users");
+predicates.notEqualTo("age", 18 as long);
 predicates.equalTo("name", "zhangsan");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
 ```

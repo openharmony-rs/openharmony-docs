@@ -10,14 +10,25 @@ webNativeMessagingExtensionManager模块提供基于Web标准的消息扩展管�
 
 > **说明**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
+
 ```ts
 import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
 ```
 
 ## ConnectionNativeInfo
@@ -25,14 +36,18 @@ import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束:** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
-| connectionId | number | 否 | 否 | 连接ID。 |
+| connectionId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接ID。 |
 | bundleName | string | 否 | 否 | Web原生消息扩展应用的包名。 |
 | extensionOrigin | string | 否 | 否 | 浏览器扩展的源URL。 |
-| extensionPid | number | 否 | 否 | Web原生消息扩展的进程ID。 |
+| extensionPid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Web原生消息扩展的进程ID。 |
 
 ## NmErrorCode
 
@@ -40,11 +55,15 @@ Native Messaging的错误列表。
 
 **系统能力**：SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
 | PERMISSION_DENY | 17100203 | Permission denied due to missing ohos.permission.WEB_NATIVE_MESSAGING. |
 | WANT_CONTENT_ERROR | 17100202 | The want content is invalid. |
-| INNER_ERROR | 17100201 | Inner error for native messaging.Error code: |
+| INNER_ERROR | 17100201 | Inner error for native messaging. |
 
 ## WebExtensionConnectionCallback
 
@@ -55,6 +74,10 @@ onConnect(connection: ConnectionNativeInfo): void
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束:** 此接口仅可在Stage模型下使用。
 
 **参数:**
@@ -64,6 +87,8 @@ onConnect(connection: ConnectionNativeInfo): void
 | connection | [ConnectionNativeInfo](#connectionnativeinfo) | 是 | 连接信息。 |
 
 **示例:**
+
+ArkTS-Dyn示例：
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -80,7 +105,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -98,6 +123,57 @@ export default class EntryAbility extends UIAbility {
 
         let connectionId = webNativeMessagingExtensionManager.connectNative(context, want, callback);
     } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectNative failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base'
+import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
+import common from '@ohos.app.ability.common';
+
+class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
+  constructor() {
+  }
+
+  onConnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onConnect, connectionId:' + connection.connectionId);
+  }
+
+  onDisconnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onDisconnect');
+  }
+
+  onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
+    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    try {
+      let context: common.UIAbilityContext = this.context; // 获取UIAbilityContext
+      let parameters = new Record<string, Object>();
+      parameters.set("ohos.arkweb.messageReadPipe", "333") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.messageWritePipe", "444") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.extensionOrigin", "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/") // 此处需要插件URI
+      let want:Want = {
+        bundleName: 'com.example.app',
+        abilityName: 'MyWebNativeMessageExtAbility',
+        parameters: parameters,
+      };
+      let callback : ConnectionCallback = new ConnectionCallback() ;
+      let connectionId = webNativeMessagingExtensionManager.connectNative(context, want, callback);
+    } catch (err: BusinessError) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
@@ -114,6 +190,10 @@ onDisconnect(connection: ConnectionNativeInfo): void
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束:** 此接口仅可在Stage模型下使用。
 
 **参数:**
@@ -123,6 +203,8 @@ onDisconnect(connection: ConnectionNativeInfo): void
 | connection | [ConnectionNativeInfo](#connectionnativeinfo) | 是 | 连接信息。 |
 
 **示例:**
+
+ArkTS-Dyn示例：
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +221,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -157,6 +239,57 @@ export default class EntryAbility extends UIAbility {
 
         let connectionId = webNativeMessagingExtensionManager.connectNative(context, want, callback);
     } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectNative failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base'
+import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
+import common from '@ohos.app.ability.common';
+
+class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
+  constructor() {
+  }
+
+  onConnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onConnect, connectionId:' + connection.connectionId);
+  }
+
+  onDisconnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onDisconnect');
+  }
+
+  onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
+    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    try {
+      let context: common.UIAbilityContext = this.context; // 获取UIAbilityContext
+      let parameters = new Record<string, Object>();
+      parameters.set("ohos.arkweb.messageReadPipe", "333") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.messageWritePipe", "444") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.extensionOrigin", "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/") // 此处需要插件URI
+      let want:Want = {
+        bundleName: 'com.example.app',
+        abilityName: 'MyWebNativeMessageExtAbility',
+        parameters: parameters,
+      };
+      let callback : ConnectionCallback = new ConnectionCallback() ;
+      let connectionId = webNativeMessagingExtensionManager.connectNative(context, want, callback);
+    } catch (err: BusinessError) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
@@ -173,6 +306,10 @@ onFailed(code: NmErrorCode, errMsg: string): void
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束:** 此接口仅可在Stage模型下使用。
 
 **参数:**
@@ -183,6 +320,8 @@ onFailed(code: NmErrorCode, errMsg: string): void
 | errMsg | string | 是 | 错误码对应信息。 |
 
 **示例:**
+
+ArkTS-Dyn示例：
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -199,7 +338,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -226,14 +365,72 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base'
+import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
+import common from '@ohos.app.ability.common';
+
+class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
+  constructor() {
+  }
+
+  onConnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onConnect, connectionId:' + connection.connectionId);
+  }
+
+  onDisconnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onDisconnect');
+  }
+
+  onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
+    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    try {
+      let context: common.UIAbilityContext = this.context; // 获取UIAbilityContext
+      let parameters = new Record<string, Object>();
+      parameters.set("ohos.arkweb.messageReadPipe", "333") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.messageWritePipe", "444") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.extensionOrigin", "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/") // 此处需要插件URI
+      let want:Want = {
+        bundleName: 'com.example.app',
+        abilityName: 'MyWebNativeMessageExtAbility',
+        parameters: parameters,
+      };
+      let callback : ConnectionCallback = new ConnectionCallback() ;
+      let connectionId = webNativeMessagingExtensionManager.connectNative(context, want, callback);
+    } catch (err: BusinessError) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectNative failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ## webNativeMessagingExtensionManager.connectNative
-connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number
+
+ArkTS-Dyn: connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number
+
+ArkTS-Sta: connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): int
 
 将当前Ability连接到指定的Web原生消息扩展Ability。
 
 **需要权限**：ohos.permission.WEB_NATIVE_MESSAGING
 
 **系统能力:** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **模型约束:** 此接口仅可在Stage模型下使用。
 
@@ -249,7 +446,7 @@ connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConne
 
 | 类型 | 说明 |
 |------|------|
-| number | 连接标识ID。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 连接标识ID。 |
 
 **错误码:**
 
@@ -260,6 +457,8 @@ connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConne
 | 801 | Capability not supported. |
 
 **示例:**
+
+ArkTS-Dyn示例：
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -276,7 +475,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -303,8 +502,62 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+'use static'
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base'
+import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
+import common from '@ohos.app.ability.common';
+
+class ConnectionCallback implements webNativeMessagingExtensionManager.WebExtensionConnectionCallback {
+  constructor() {
+  }
+
+  onConnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onConnect, connectionId:' + connection.connectionId);
+  }
+
+  onDisconnect(connection: webNativeMessagingExtensionManager.ConnectionNativeInfo): void {
+    console.info('onDisconnect');
+  }
+
+  onFailed(code: webNativeMessagingExtensionManager.NmErrorCode, errMsg: string): void {
+    console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    try {
+      let context: common.UIAbilityContext = this.context; // 获取UIAbilityContext
+      let parameters = new Record<string, Object>();
+      parameters.set("ohos.arkweb.messageReadPipe", "333") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.messageWritePipe", "444") // 假设此处为合法pipefd
+      parameters.set("ohos.arkweb.extensionOrigin", "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/") // 此处需要插件URI
+      let want:Want = {
+        bundleName: 'com.example.app',
+        abilityName: 'MyWebNativeMessageExtAbility',
+        parameters: parameters,
+      };
+      let callback : ConnectionCallback = new ConnectionCallback() ;
+      let connectionId = webNativeMessagingExtensionManager.connectNative(context, want, callback);
+    } catch (err: BusinessError) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectNative failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ## webNativeMessagingExtensionManager.disconnectNative
-disconnectNative(connectionId: number): Promise&lt;void&gt;
+
+ArkTS-Dyn: disconnectNative(connectionId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: disconnectNative(connectionId: int): Promise&lt;void&gt;
 
 断开指定Web原生消息扩展连接。
 
@@ -312,13 +565,17 @@ disconnectNative(connectionId: number): Promise&lt;void&gt;
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **模型约束:** 此接口仅可在Stage模型下使用。
 
 **参数:**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| connectionId | number | 是 | 连接的标识ID。 |
+| connectionId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由[connectNative](#webnativemessagingextensionmanagerconnectnative)方法返回。建立连接后需要通过disconnectNative释放。 |
 
 **返回值:**
 
@@ -338,10 +595,41 @@ disconnectNative(connectionId: number): Promise&lt;void&gt;
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例:**
+
+ArkTS-Dyn示例：
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  async disconnect() {
+    try {
+        let connectionId = 1;
+        // 假设之前已连接并获得connectionId
+        await webNativeMessagingExtensionManager.disconnectNative(connectionId).then(() => {
+            console.info('disconnectNative success');
+        })
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`disconnectNative failed, code is ${code}, message is ${message}`);
+    }
+  }
+  onForeground() {
+    this.disconnect();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base'
+import webNativeMessagingExtensionManager from '@ohos.web.webNativeMessagingExtensionManager';
 
 export default class EntryAbility extends UIAbility {
   async disconnect() {

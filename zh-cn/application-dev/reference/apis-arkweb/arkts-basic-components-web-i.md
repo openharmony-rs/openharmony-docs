@@ -224,7 +224,7 @@ Web同层渲染的配置。
 
 ## OnHttpErrorReceiveEvent<sup>12+</sup>
 
-定义网页收到加载资源加载HTTP错误时触发。
+定义网页收到资源加载HTTP错误时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -617,6 +617,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选    | 说明                                       |
 | -------------- | ---- | ---- | -------------|--------------------------- |
 | origin | string | 否 | 否 | 指定源的字符串索引。                       |
@@ -641,7 +645,7 @@ Web同层渲染的配置。
 
 | 名称                     | 类型   | 只读   | 可选 | 说明                                   |
 | ------------------------ | ---- | ---- | ---- | -------------------------------------- |
-| jsStack      | string | 否 | 否 | 网页的javaScript调用栈信息。       |
+| jsStack      | string | 否 | 否 | 网页的JavaScript调用栈信息。       |
 | pid | number | 否 | 否 | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 否 | 否 | 触发渲染进程无响应回调的原因。 |
 
@@ -845,7 +849,7 @@ Web组件进入全屏回调事件的详情。
 
 ## OnPdfScrollEvent<sup>20+</sup>
 
-定义PDF页面滚动到底时触发的函数。
+定义PDF页面滚动到底时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -953,3 +957,22 @@ Web屏幕捕获的配置。
 | url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
 | navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。<br>单位：毫秒。 |
 | firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。<br>单位：毫秒。|
+
+## AISessionEvent
+
+自定义AI会话配置对象，用于定义AI会话的生命周期回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| aiSessionType | [AISessionType](./arkts-basic-components-web-e.md#aisessiontype) | 否 | 否 | AI会话类型。 |
+| onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | 否 | 否 | AI会话创建时触发的回调函数。返回`true`跳过系统默认行为，返回`false`继续执行系统默认逻辑。 |
+| onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | 否 | 否 | AI会话执行操作时触发的回调函数。 |
+| onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | 否 | 否 | AI会话销毁时触发的回调函数，用于清理与自定义AI模型关联的资源。 |

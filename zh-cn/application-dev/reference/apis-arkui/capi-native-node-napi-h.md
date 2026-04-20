@@ -1,8 +1,8 @@
 # native_node_napi.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -673,7 +673,7 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 
 **描述：**
 
-启用或禁用事件直通。事件直通表示在事件分发过程中，不经过重采样直接下发给组件。
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过[重采样](../../ui/arkts-interaction-development-guide-touch-screen.md#重采样与历史点)直接下发给组件。
 
 **起始版本：** 26.0.0
 
@@ -683,7 +683,7 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [UIContext](arkts-apis-uicontext-uicontext.md)对象，用以绑定实例。 |
-| bool enabled | 启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通，默认值为false。 |
+| bool enabled | 启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通。 |
 | [ArkUI_RawInputEventType](capi-native-type-h.md#arkui_rawinputeventtype) type | 指定启用或禁用事件直通的原始输入事件类型[ArkUI_RawInputEventType](capi-native-type-h.md#arkui_rawinputeventtype)。 |
 
 **返回：**

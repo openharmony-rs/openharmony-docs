@@ -1,8 +1,8 @@
 # 自定义组件内置方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,8 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
+> - 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## getUIContext
 
@@ -101,6 +102,10 @@ queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Sta起始版本：** 11
+
 **返回值：**
 
 | 类型                                                                       | 说明      |
@@ -147,6 +152,10 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Sta起始版本：** 18
 
 **参数：** 
 
@@ -270,14 +279,17 @@ type NavDestinationInfo = NavDestinationInfo
 
 NavDestinationInfo实例对象。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明       |
 | ------ | ---------- |
 | [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | 返回NavDestinationInfo实例对象。 |
-
 
 ## queryNavigationInfo<sup>12+</sup>
 
@@ -288,6 +300,10 @@ queryNavigationInfo(): NavigationInfo | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Sta起始版本：** 12
 
 **返回值：**
 
@@ -345,6 +361,10 @@ NavigationInfo实例对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明       |
 | ------ | ---------- |
 | [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | 返回NavigationInfo实例对象。 |
@@ -358,6 +378,10 @@ queryRouterPageInfo(): RouterPageInfo | undefined;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Sta起始版本：** 12
 
 **返回值：**
 
@@ -389,9 +413,13 @@ type RouterPageInfo = RouterPageInfo
 
 RouterPageInfo实例对象。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明       |
 | ------ | ---------- |
