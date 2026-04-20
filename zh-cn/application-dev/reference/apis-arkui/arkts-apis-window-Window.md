@@ -7687,7 +7687,7 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offNoInteractionDetected](#offnointeractiondetected23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onNoInteractionDetected](#onnointeractiondetected23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
