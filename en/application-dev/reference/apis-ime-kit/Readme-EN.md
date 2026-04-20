@@ -43,4 +43,4 @@
     - [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)
 - Error Codes<!--ime-arkts-errcode-->
   - [Input Method Framework Error Codes](errorcode-inputmethod-framework.md)
-  
+ <!--no_check--> 

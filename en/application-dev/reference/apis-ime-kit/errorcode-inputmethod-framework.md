@@ -460,3 +460,4 @@ The operation on the input method system panel fails.
 2. Adjust the volume of data to be transmitted by referring to [IPC Constraints](../../ipc/ipc-rpc-overview.md#constraints).
 3. Ensure that the caller is the system panel.
 <!--DelEnd-->
+<!--no_check-->

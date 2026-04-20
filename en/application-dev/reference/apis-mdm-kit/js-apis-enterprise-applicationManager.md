@@ -375,7 +375,7 @@ Adds the auto-start applications for the current user. Applications added to the
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.从API version 24开始，该接口新增支持配置应用开机自启时是否隐藏UI界面，隐藏UI界面的能力仅在PC/2in1和Tablet的PC模式中可正常使用。
+**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21. Since API version 24, this API allows you to configure whether to hide the UI when applications automatically start upon device startup. This capability is available only on PCs/2-in-1 devices and tablets in PC mode.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -386,7 +386,7 @@ Adds the auto-start applications for the current user. Applications added to the
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The maximum array length is 10. For example, if there are already 5 applications in the list, a maximum of 5 more can be added via this API. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started.从API version 24开始，新增支持通过Want的parameters属性中的isHiddenStart字段配置应用开机自启是否隐藏UI界面，true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须<!--RP8-->接入状态栏<!--RP8End-->，否则自启设置失败（若当前仅设置一个应用自启时隐藏UI界面，该应用未接入状态栏，则抛出401异常；若设置多个应用，有一个设置成功，返回成功）。设置成功后，应用自启后不显示UI界面，仅在状态栏显示，UI进程存在。隐藏UI界面能力仅在PC/2in1和Tablet的PC模式中可正常使用。 |
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The maximum array length is 10. For example, if there are already 5 applications in the list, a maximum of 5 more can be added via this API. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started. Since API version 24, you can specify whether to hide the UI when applications automatically start upon device startup by setting **isHiddenStart** in the **parameters** attribute of Want. The value **true** indicates that yes, and the value **false** indicates no. The default value is **false**. If the **true** value is used, the applications must be <!--RP8-->integrated with the status bar<!--RP8End-->. Otherwise, the auto-start setting fails. (If only one application is set to hide the UI upon auto-start but the application is not integrated with the status bar, error 401 is reported. This API returns success as long as one application is successfully set.) After the setting is successful, the applications do not display the UI but their UI processes exist. The capability of hiding the UI is available only on PCs/2-in-1 devices and tablets in PC mode.|
 
 **Error codes**
 
@@ -415,9 +415,9 @@ let autoStartApps: Array<Want> = [
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
     abilityName: 'EntryAbility',
-    // 下面为非必选参数
+    // The following parameters are optional.
     parameters: {
-      // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
+      // Since API version 24, you can configure whether to hide the UI when applications automatically start upon device startup. The value true indicates yes. If this parameter is set to true, the applications must be integrated with the status bar. Otherwise, the automatic startup setting fails and error 401 is reported.
       isHiddenStart: true 
     }
   }
@@ -577,7 +577,7 @@ Checks the auto-start applications for the current user.
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained.从API version 24开始，支持返回是否隐藏UI的配置。 |
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained. Since API version 24, the setting of whether the UI is hidden can be returned.|
 
 **Error codes**
 
@@ -611,12 +611,12 @@ try {
 ```
 
 ```ts
-// 返回示例
+// Return value example.
 [
   {
     "bundleName": "com.example.edmtest",
     "abilityName": "EntryAbility",
-    // 从API version 24支持
+    // Supported since API version 24.
     "parameters": {
       "isHiddenStart": false
     }
@@ -629,13 +629,13 @@ try {
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, disallowModify: boolean): void
 
-Adds a list of applications that automatically start upon system startup for a specified user, and sets whether to forbid the user to manually cancel the automatic startup of applications<!--RP4--><!--RP4End-->.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
+Adds a list of applications that automatically start upon device startup for a specified user, and sets whether to prohibit the user from manually canceling application auto-start<!--RP4--><!--RP4End-->.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.从API version 24开始，该接口新增支持配置应用开机自启时是否隐藏UI界面，隐藏UI界面的能力仅在PC/2in1和Tablet的PC模式中可正常使用。
+**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21. Since API version 24, this API allows you to configure whether to hide the UI when applications automatically start upon device startup. This capability is available only on PCs/2-in-1 devices and tablets in PC mode.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -646,9 +646,9 @@ Adds a list of applications that automatically start upon system startup for a s
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The array can contain a maximum of 10 applications. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started.从API version 24开始，新增支持通过Want的parameters属性中的isHiddenStart字段配置应用开机自启是否隐藏UI界面，true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须<!--RP8-->接入状态栏<!--RP8End-->，否则自启设置失败（若当前仅设置一个应用自启时隐藏UI界面，该应用未接入状态栏，则抛出401异常；若设置多个应用，有一个设置成功，返回成功）。设置成功后，应用自启后不显示UI界面，仅在状态栏显示，UI进程存在。隐藏UI界面能力仅在PC/2in1和Tablet的PC模式中可正常使用。 |
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The array can contain a maximum of 10 applications. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started. Since API version 24, you can specify whether to hide the UI when applications automatically start upon device startup by setting **isHiddenStart** in the **parameters** attribute of Want. The value **true** indicates that yes, and the value **false** indicates no. The default value is **false**. If the **true** value is used, the applications must be <!--RP8-->integrated with the status bar<!--RP8End-->. Otherwise, the auto-start setting fails. (If only one application is set to hide the UI upon auto-start but the application is not integrated with the status bar, error 401 is reported. This API returns success as long as one application is successfully set.) After the setting is successful, the applications do not display the UI but their UI processes exist. The capability of hiding the UI is available only on PCs/2-in-1 devices and tablets in PC mode.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
-| disallowModify | boolean | Yes  | Whether to disable the user from manually disabling automatic application startup. The value **true** indicates that auto-start is disabled, and the value **false** indicates the opposite.<!--RP1--><!--RP1End-->|
+| disallowModify | boolean | Yes  | Whether to prohibit the user from manually disabling application auto-start. The value **true** indicates yes and the value **false** indicates no.<!--RP1--><!--RP1End-->|
 
 **Error codes**
 
@@ -677,9 +677,9 @@ let autoStartApps: Array<Want> = [
   {
     bundleName: 'com.example.autoStartApplication',
     abilityName: 'EntryAbility',
-    // 下面为非必选参数
+    // The following parameters are optional.
     parameters: {
-      // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
+      // Since API version 24, you can configure whether to hide the UI when applications automatically start upon device startup. The value true indicates yes. If this parameter is set to true, the applications must be integrated with the status bar. Otherwise, the automatic startup setting fails and error 401 is reported.
       isHiddenStart: true 
     }
   }
@@ -718,7 +718,7 @@ Checks the auto-start applications for the specified user.
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained.从API version 24开始，支持返回是否隐藏UI的配置。 |
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained. Since API version 24, the setting of whether the UI is hidden can be returned.|
 
 **Error codes**
 
@@ -751,12 +751,12 @@ try {
 ```
 
 ```ts
-// 返回示例
+// Return value example.
 [
   {
     "bundleName": "com.example.edmtest",
     "abilityName": "EntryAbility",
-    // 从API version 24支持
+    // Supported since API version 24.
     "parameters": {
       "isHiddenStart": false
     }
@@ -769,7 +769,7 @@ try {
 
 isModifyAutoStartAppsDisallowed(admin: Want, autoStartApp: Want, accountId: number): boolean
 
-Checks whether the auto-start of an application is disabled for the specified user.
+Checks whether a specified user is prohibited from canceling application auto-start.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -791,7 +791,7 @@ Checks whether the auto-start of an application is disabled for the specified us
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | Whether to disable the user from disabling automatic application startup. The value **true** indicates that auto-start is disabled, and the value **false** indicates the opposite.<!--PR1--><!--PR1End-->|
+| boolean | Whether the user is prohibited from canceling application auto-startup. The value **true** indicates yes and the value **false** indicates no.<!--PR1--><!--PR1End-->|
 
 **Error codes**
 
@@ -833,7 +833,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): void
 
-Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. After the device is powered on or the application is killed, the system will proactively restart these application processes.<!--RP7--><!--RP7End--><br>通过本接口添加至保活名单的应用，禁止用户在设备上手动取消保活<!--RP6--><!--RP6End-->，但可通过[removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14)接口将应用从保活名单中移除。<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
+Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. After the device is powered on or the application is killed, the system will proactively restart these application processes.<!--RP7--><!--RP7End--><br>For applications added to the keep-alive list via this API, users cannot manually revoke their keep-alive status on the device <!--RP6--><!--RP6End-->. However, you can call the [removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14) API to remove them from the keep-alive list.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -893,7 +893,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, disallowModify: boolean): void
 
-Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. You can also set whether to disable manual keep-alive cancellation. After the device is powered on or the application is killed, the system will proactively restart these application processes.<br>Applications can be added to the keep-alive list via this API and the [addKeepAliveApps](#applicationmanageraddkeepaliveapps14) API. Settings from both APIs can take effect simultaneously. For a single user, the keep-alive list supports a maximum of 5 applications. For example, if there are already 3 applications in the current list, a maximum of 2 more can be added for the user via this API.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
+Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. You can also set whether to disable manual keep-alive cancellation. After the device is powered on or the application is killed, the system will proactively restart these application processes.<br>Applications can be added to the keep-alive list via this API and the [addKeepAliveApps](#applicationmanageraddkeepaliveapps14) API. Settings from both APIs can take effect simultaneously. For a single user, the keep-alive list supports a maximum of 5 applications. For example, if there are already 3 applications in the current list, a maximum of 2 more can be added for the user via this API.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1330,11 +1330,11 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-Sets the features of kiosk mode.通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心、控制中心。
+Sets the features of kiosk mode. This API is used to control whether the notification center and control panel can be accessed [in kiosk mode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode).
 
-从API version 24开始，新增支持设置是否允许底部上滑进入最近任务栏，左滑或右滑悬停展示侧边DOCK栏。
+Since API version 24, you can set whether to allow users to swipe up from the bottom to access the recent taskbar and swipe left or right to display the side dock.
 
-在非Kiosk模式下，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
+In non-kiosk mode, this API can be called normally but does not take effect. The settings will take effect after kiosk mode is enabled.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1351,7 +1351,7 @@ Sets the features of kiosk mode.通过本接口可以控制在[Kiosk模式](../a
 | Name      | Type                                                   | Mandatory| Description                  |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.        |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Kiosk模式的特征集合（从API version 24开始，新增允许底部上滑进入最近任务栏、左滑悬停或右滑悬停展示侧边DOCK栏）。 <br> If an empty array is passed, the system will clear all previously delivered features and restore kiosk mode to its default state.即：禁用通知中心、控制中心、最近任务栏、侧边Dock栏等能力。|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Feature set of the Kiosk mode. (Since API version 24, swiping up from the bottom to access the recent taskbar and swiping left or right to display the side dock are supported.)<br> If an empty array is passed, the system will clear all previously delivered features and restore the kiosk mode to its default state. To be specific, abilities such as the notification center, control panel, recent task bar, and side dock are disabled.|
 
 **Error codes**
 
@@ -1394,13 +1394,15 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applicatio
 
 Adds applications to the non-stoppable application list for a specified user. This policy only applies to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list. Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 
-Non-stoppable applications cannot be closed by swiping up in the task center. After a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable.
+On phones and tablets, non-stoppable applications cannot be closed by swiping up in the task center. After a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable, and the disable button does not take effect.
+
+On PCs/2-in-1 devices, after a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable, and the disable button does not take effect.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices. Since API version 24, this API can be properly called on PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1881,23 +1883,23 @@ try {
 
 addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void
 
-根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。
+Adds an application to the bottom shortcut bar of a PC/2-in-1 device based on the location index. Then users can tap the application icon in the shortcut bar to directly launch the application. The application icon is the default icon displayed on the home screen.
 
 > **NOTE**
 >
-> 1.若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。
+> 1. If location 0 or 1 is already occupied by the application center or task center, adding an application to that location returns error code 9201019. If that location is occupied by another app, the addition succeeds.
 >
-> 2.以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。
+> 2. The following applications cannot be added to the shortcut bar using this API: Application Center, Task Center, Files, and Recycle Bin.
 >
-> 3.仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
+> 3. Only applications with an entry (that is, an icon) can be added.
 >
-> 4.仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
+> 4. Only the shortcut bar of the current user can be configured. Each user's shortcut bar can contain a maximum of 100 applications.
 >
-> 5.在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
+> 5. When a new application is inserted into an occupied location, the new application will directly take that location, and the original application along with all subsequent applications will shift back by one location.
 >
-> 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
+> 6. If the **index** parameter is not passed or the passed value is greater than the number of applications in the shortcut bar, the new application is added to the end of the shortcut bar by default.
 >
-> 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
+> 7. After an application is added to the shortcut bar using this API, users can manually remove the application or adjust its position.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1905,7 +1907,7 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 
 **Model restriction**: This API can be used only in the stage model.
 
-**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
@@ -1914,9 +1916,9 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| bundleName   | string                                                  | Yes  | 应用的包名。 |
-| abilityName  | string                                                  | Yes  | 应用的Ability名称，仅支持应用程序入口Ability。 |
-| index        | number                                                  | No  | 应用在快捷栏中的位置索引，取值范围：[0, 100)，默认值为99。 |
+| bundleName   | string                                                  | Yes  | Bundle name of the application.|
+| abilityName  | string                                                  | Yes  | Ability name of the application. Only the application entry ability is supported.|
+| index        | number                                                  | No  | Location index of the application in the shortcut bar. The value range is [0, 100). The default value is 99.|
 
 **Error codes**
 
@@ -1963,11 +1965,11 @@ try {
 
 removeDockApp(admin: Want, bundleName: string, abilityName: string): void
 
-从快捷栏中移除应用。
+Removes an application from the shortcut bar.
 
 > **NOTE**
 >
-> 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
+> The following applications cannot be removed from the shortcut bar using this API: Application Center, Task Center, Files, and Recycle Bin. Otherwise, error code 9201018 will be reported.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1975,15 +1977,15 @@ removeDockApp(admin: Want, bundleName: string, abilityName: string): void
 
 **Model restriction**: This API can be used only in the stage model.
 
-**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Parameters**
 
 | Name      | Type                                                   | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| bundleName   | string                                                  | Yes  | 应用的包名。 |
-| abilityName  | string                                                  | Yes  | 应用的Ability名称。 |
+| bundleName   | string                                                  | Yes  | Bundle name of the application.|
+| abilityName  | string                                                  | Yes  | Ability name of the application. |
 
 **Error codes**
 
@@ -2025,7 +2027,7 @@ try {
 
 getDockApps(admin: Want): Array\<DockInfo>
 
-获取当前快捷栏中应用信息的列表。
+Obtains the list of applications in the shortcut bar currently.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -2033,7 +2035,7 @@ getDockApps(admin: Want): Array\<DockInfo>
 
 **Model restriction**: This API can be used only in the stage model.
 
-**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Parameters**
 
@@ -2045,7 +2047,7 @@ getDockApps(admin: Want): Array\<DockInfo>
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| Array&lt;[DockInfo](#dockinfo24)&gt; | 快捷栏中的应用信息数组。|
+| Array&lt;[DockInfo](#dockinfo24)&gt; | Array of application information in the shortcut bar.|
 
 **Error codes**
 
@@ -2079,7 +2081,7 @@ try {
 ```
 
 ```ts
-// 返回示例
+// Return value example.
 [
   {
     "bundleName": "com.example.edmtest",
@@ -2101,21 +2103,21 @@ Defines the features of the kiosk mode.
 | Name                       | Value | Description   |
 | ----------------------------| ----| ------------------------------- |
 | ALLOW_NOTIFICATION_CENTER   | 1   | Allow access to the notification center (by swiping down from the upper left corner with one finger).|
-| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control center (by swiping down from the upper right corner with one finger).|
+| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control panel (by swiping down from the upper right corner with one finger).|
 | ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | Allow access to the recent task bar (by swiping up from the bottom with one finger and holding).|
-| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 允许进入侧边DOCK栏（通过单指边缘内滑停留进入）。 |
+| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | Allow access to the side dock (by swiping inward from the edge with one finger and holding).|
 
 
 ## DockInfo<sup>24+</sup>
 
-快捷栏中的应用信息。
+Describes information about an application in the shortcut bar.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
 
-| Name        | Type  | 只读  | 可选  |Description         |
+| Name        | Type  | Read-Only | Optional |Description         |
 | ----------- | ------ |------ |------| ---------------|
-| bundleName  | string | No   | No  | 应用的包名。 |
-| abilityName | string | No   | No  | 应用的Ability名称。 |
-| index       | number | No   | No  | 应用在快捷栏中的位置索引。 |
+| bundleName  | string | No   | No  | Bundle name of the application.|
+| abilityName | string | No   | No  | Ability name of the application. |
+| index       | number | No   | No  | Location index of the application in the shortcut bar.|

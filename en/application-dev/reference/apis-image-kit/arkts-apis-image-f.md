@@ -1881,3 +1881,4 @@ The SVG tags are supported since API version 10. The used version is (SVG) 1.1, 
 - textPath
 - tspan
 - use
+<!--no_check-->
