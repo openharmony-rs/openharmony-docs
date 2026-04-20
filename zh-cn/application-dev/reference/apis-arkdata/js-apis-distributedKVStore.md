@@ -130,8 +130,6 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库类型枚举。
 
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
-
 | 名称                 | 值 | 说明                                                         |
 | -------------------- | - | ------------------------------------------------------------ |
 | DEVICE_COLLABORATION | 0 | 表示多设备协同数据库。<br>**数据库特点：** 数据以设备的维度管理，不存在冲突；支持按照设备的维度查询数据。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
@@ -159,8 +157,6 @@ import { distributedKVStore } from '@kit.ArkData';
 ## Options
 
 用于提供创建数据库的配置信息。
-
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 | 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
 | --------------- | -------------- | ---- | ----| -------------------------|
