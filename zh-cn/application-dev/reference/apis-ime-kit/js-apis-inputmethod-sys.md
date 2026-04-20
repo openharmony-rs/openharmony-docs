@@ -564,11 +564,13 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 });
 ```
 
-## inputMethod.getDefaultInputMethod<sup>26+</sup>
+## inputMethod.getDefaultInputMethod
 
 getDefaultInputMethod(userId?: number): InputMethodProperty
 
 获取指定用户的默认输入法。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -606,11 +608,13 @@ getDefaultInputMethod(userId?: number): InputMethodProperty
 let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
 ```
 
-## inputMethod.getSystemInputMethodConfigAbility<sup>26+</sup>
+## inputMethod.getSystemInputMethodConfigAbility
 
 getSystemInputMethodConfigAbility(userId?: number): ElementName
 
 获取指定用户的系统输入法设置界面Ability信息。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -650,11 +654,13 @@ import { bundleManager } from '@kit.AbilityKit';
 let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
 ```
 
-## inputMethod.switchInputMethodWithUserId<sup>26+</sup>
+## inputMethod.switchInputMethodWithUserId
 
 switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
 
 切换输入法，使用promise异步回调。
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
@@ -676,7 +682,7 @@ switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: num
 
   | 类型                                      | 说明                         |
   | ----------------------------------------- | ---------------------------- |
-  | Promise\<void> | Promise对象。异步执行切换输入法操作，无返回值。 |
+  | Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -704,11 +710,13 @@ inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbili
 });
 ```
 
-## inputMethod.getCurrentInputMethod<sup>26+</sup>
+## inputMethod.getCurrentInputMethod
 
 getCurrentInputMethod(userId?: number): InputMethodProperty
 
 获取指定用户的当前输入法。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -746,11 +754,13 @@ getCurrentInputMethod(userId?: number): InputMethodProperty
 let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
 ```
 
-## inputMethod.getCurrentInputMethodSubtype<sup>26+</sup>
+## inputMethod.getCurrentInputMethodSubtype
 
 getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 
 获取指定用户的当前输入法子类型。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -790,11 +800,13 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
 ```
 
-### enableInputMethod<sup>26+</sup>
+### enableInputMethod
 
 enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
 
 修改指定用户输入法的启用状态。
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
@@ -817,7 +829,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -846,11 +858,13 @@ inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodE
 });
 ```
 
-### getAllInputMethodsSync<sup>26+</sup>
+### getAllInputMethodsSync
 
 getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
 获取指定用户的所有输入法应用列表。同步接口。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -868,7 +882,7 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
 | 类型                                                 | 说明               |
 | ---------------------------------------------------- | ------------------ |
-| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回所有输入法列表 |
+| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回所有输入法列表。 |
 
 **错误码：**
 
@@ -889,11 +903,13 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
 ```
 
-### getInputMethodSubtypes<sup>26+</sup>
+### getInputMethodSubtypes
 
 getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMethodSubtype&gt;
 
 获取指定用户指定输入法的子类型列表。同步接口。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -936,11 +952,13 @@ let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting(
 let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
 ```
 
-### getInputMethodsSync<sup>26+</sup>
+### getInputMethodsSync
 
 getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
 
 获取指定用户已激活/未激活的输入法应用列表。同步接口。
+
+**起始版本：** 26.0.0
 
 > **说明：**
 >
@@ -986,11 +1004,13 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
 ```
 
-## ImeChangeWithUserIdCallback<sup>26+</sup>
+## ImeChangeWithUserIdCallback
 
 type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
 
 输入法变更事件回调，携带发生输入法变更的用户ID。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1006,11 +1026,13 @@ type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, in
 | inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
 | userId | number | 是 | 输入法发生变化的用户ID。 |
 
-### onImeChangeWithUserId<sup>26+</sup>
+### onImeChangeWithUserId
 
 onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
-订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。
+订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。使用callback异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1044,11 +1066,13 @@ inputMethod.getSetting()
   });
 ```
 
-### offImeChangeWithUserId<sup>26+</sup>
+### offImeChangeWithUserId
 
 offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
-取消订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。
+取消订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。使用callback异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1076,9 +1100,11 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 inputMethod.getSetting().offImeChangeWithUserId();
 ```
 
-## InputWindowInfo<sup>26+</sup>
+## InputWindowInfo
 
 输入法软键盘的窗口信息（系统接口扩展属性）。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1090,4 +1116,4 @@ inputMethod.getSetting().offImeChangeWithUserId();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| userId<sup>26+</sup> | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。|
+| userId | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。<br>**起始版本：**26.0.0|
