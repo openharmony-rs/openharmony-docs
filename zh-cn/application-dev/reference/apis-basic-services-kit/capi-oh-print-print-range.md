@@ -27,9 +27,9 @@ typedef struct {...} Print_Range
 | 名称 | 描述 | 
 | -------- | -------- |
 | uint32_t [startPage](#startpage) | 打印起始页。 | 
-| uint32_t [endPage](#endpage) | 打印结束页。 | 
-| uint32_t [pagesArrayLen](#pagesarraylen) | 打印页数组长度。 | 
-| uint32_t \* [pagesArray](#pagesarray) | 打印页数组。 | 
+| uint32_t [endPage](#endpage) | 打印终止页。 | 
+| uint32_t [pagesArrayLen](#pagesarraylen) | 打印队列长度。 | 
+| uint32_t \* [pagesArray](#pagesarray) | 打印队列指针。 | 
 
 
 ## 结构体成员变量说明
