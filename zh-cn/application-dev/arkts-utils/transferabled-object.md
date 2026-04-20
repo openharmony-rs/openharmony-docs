@@ -43,13 +43,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
+  uiContext = this.getUIContext();
   @State message: string = 'Hello World';
   @State pixelMap: PixelMap | undefined = undefined;
 
   private loadImageFromThread(): void {
-    const resourceMgr = getContext(this).resourceManager;
+    const resourceMgr = this.uiContext?.getHostContext()?.resourceManager;
     // 此处‘startIcon.png’为media下复制到rawfile文件夹中，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-    resourceMgr.getRawFd('startIcon.png').then(rawFileDescriptor => {
+    resourceMgr?.getRawFd('startIcon.png').then(rawFileDescriptor => {
       taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
         if (pixelMap) {
           this.pixelMap = pixelMap as PixelMap;
@@ -62,6 +63,8 @@ struct Index {
       }).catch((e: BusinessError) => {
         console.error('taskpool execute loadPixelMap failed. Code: ' + e.code + ', message: ' + e.message);
       });
+    }).catch(() => {
+      console.error(`Failed to get RawFd`);
     });
   }
 
