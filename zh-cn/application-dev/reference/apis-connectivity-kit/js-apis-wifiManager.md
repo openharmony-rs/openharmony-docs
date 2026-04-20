@@ -1907,7 +1907,7 @@ API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从AP
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled.|
-f
+
 **示例：**
 ```ts
   import { wifiManager } from '@kit.ConnectivityKit';
