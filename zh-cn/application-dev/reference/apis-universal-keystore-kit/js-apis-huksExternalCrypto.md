@@ -43,8 +43,8 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_TAG_EXTRA_DATA | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200003    | 外部数据，在通用查询场景，表示返回的数据。 |
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose定义](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
-| HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO<sup>26+</sup> | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。 |
-| HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME<sup>26+</sup> | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。 |
+| HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。<br>**起始版本：** 26.0.0 |
+| HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。<br>**起始版本：** 26.0.0 |
 
 ## HuksExternalCryptoParam
 
@@ -337,7 +337,7 @@ async function testFunction() : Promise<void>
 
 ## huksExternalCrypto.clearUkeyPinAuthState
 
-clearUkeyPinAuthState(resourceId: string): Promise\<void>
+clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
 
 清除指定资源ID的PIN码认证状态。使用Promise异步回调。
 
@@ -397,7 +397,7 @@ huksExternalCrypto.clearUkeyPinAuthState(testResourceId)
 
 ## huksExternalCrypto.getResourceId
 
-getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise\<string>
+getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&lt;string&gt;
 
 获取密钥扩展能力的资源ID。使用Promise异步回调。
 
@@ -478,7 +478,7 @@ huksExternalCrypto.getResourceId(providerName, extProperties)
 
 ## huksExternalCrypto.openResource
 
-openResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<void>
+openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt;void&gt;
 
 打开指定资源ID的资源。使用Promise异步回调。
 
@@ -545,7 +545,7 @@ huksExternalCrypto.openResource(testResourceId)
 
 ## huksExternalCrypto.closeResource
 
-closeResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<void>
+closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt;void&gt;
 
 关闭指定资源ID的资源。使用Promise异步回调。
 

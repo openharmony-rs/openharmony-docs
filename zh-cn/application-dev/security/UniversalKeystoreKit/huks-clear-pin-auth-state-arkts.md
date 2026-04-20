@@ -26,12 +26,12 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.clearUkeyPinAuthState(resourceId)
       .then(() => {
-        console.info(`promise: clearUkeyPinAuthState success`);
+        console.info('promise: clearUkeyPinAuthState success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: clearUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: clearUkeyPinAuthState input arg invalid`);
+    console.error('promise: clearUkeyPinAuthState input arg invalid.');
   }
 }
 ```
