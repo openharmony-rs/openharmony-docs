@@ -200,8 +200,6 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | message | string | 异常原因。 |
 | stack | string | 异常调用栈。 |
 | thread_name | string | 线程名称。<br>**说明**：从API version 21开始支持。 |
-| caught_by_errormanager | boolean | 是否注册异常管理捕获。true：已注册异常管理捕获；false：未注册异常管理捕获。<br>**说明**：从API version 24开始，支持该字段。 |
-| uncatchable_fault | boolean | 是否为不可捕获的异常类型，当前仅包含OutOfMemoryError。true：不可捕获的异常类型；false：可捕获的异常类型。<br>**说明**：从API version 24开始，支持该字段。 |
 
 **NativeCrash类型exception字段说明**
 
