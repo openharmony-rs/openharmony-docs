@@ -1008,7 +1008,7 @@ udp.off('error');
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| address<sup>11+</sup> | string | 否   | 否   | IP地址。在bind方法中表示本地绑定的地址，在connect方法中表示目标地址。                                           |
+| address<sup>11+</sup> | string | 否   | 否   | IP地址。                                           |
 | port    | number | 否   | 否   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
 | family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPV6类型，该字段必须被显式指定为2。<br />- 3：Domain<sup>18+</sup>。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
 
