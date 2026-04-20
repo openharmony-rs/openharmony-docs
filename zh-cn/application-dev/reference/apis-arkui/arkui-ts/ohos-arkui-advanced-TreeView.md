@@ -384,6 +384,8 @@ type OnChangedCallback = (callbackParam: CallbackParam) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**

@@ -46,15 +46,19 @@ ArkTS-Sta: SelectTitleBar({selected: int, options: Array&lt;SelectOption&gt;, me
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| selected | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef | 当前选中项目的索引。<br>第一项的索引为0。如果不设置该属性，则默认值为0。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| options | Array&lt;[SelectOption](ts-basic-components-select.md#selectoption对象说明)&gt; | 是 | - | 下拉菜单中的项目。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| menuItems | Array&lt;[SelectTitleBarMenuItem](#selecttitlebarmenuitem)&gt;              | 否 | - | 右侧菜单项目列表，定义标题栏右侧的菜单项目。需要在标题栏右侧添加菜单项目列表时传入此参数，缺省时不显示右侧菜单区域。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | 否 | - | 子标题。用于显示补充信息，需要显示子标题时传入，缺省时不显示子标题区域。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| badgeValue | ArkTS-Dyn: number<br/>ArkTS-Sta: int          | 否 | - | 新事件标记。<br>取值范围：[-2147483648,2147483647]，超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。<br>**说明：** 小于等于0时不显示信息标记。<br>最大消息数99，超过最大消息时仅显示99+。超大数值属于异常值，不显示信息标记。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| hidesBackButton | boolean                                                                     | 否 | - | 是否隐藏左侧的返回箭头。<br>默认值：false。true：隐藏，false：显示。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
-| onSelected | ArkTS-Dyn: (index:&nbsp;number)&nbsp;=&gt;&nbsp;void<br/>ArkTS-Sta: [OnSelectedCallback](#onselectedcallback23)         | 否 | - | 下拉菜单项目选中触发的回调函数，传入选中项的索引。下拉菜单选中后需要处理特定业务逻辑时时传入此参数，无特定业务逻辑时可缺省此参数。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| selected | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef | 当前选中项目的索引。<br>第一项的索引为0。如果不设置该属性，则默认值为0。 |
+| options | Array&lt;[SelectOption](ts-basic-components-select.md#selectoption对象说明)&gt; | 是 | - | 下拉菜单中的项目。 |
+| menuItems | Array&lt;[SelectTitleBarMenuItem](#selecttitlebarmenuitem)&gt;              | 否 | - | 右侧菜单项目列表，定义标题栏右侧的菜单项目。需要在标题栏右侧添加菜单项目列表时传入此参数，缺省时不显示右侧菜单区域。 |
+| subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | 否 | - | 子标题。用于显示补充信息，需要显示子标题时传入，缺省时不显示子标题区域。 |
+| badgeValue | ArkTS-Dyn: number<br/>ArkTS-Sta: int          | 否 | - | 新事件标记。<br>取值范围：[-2147483648,2147483647]，超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。<br>**说明：** 小于等于0时不显示信息标记。<br>最大消息数99，超过最大消息时仅显示99+。超大数值属于异常值，不显示信息标记。 |
+| hidesBackButton | boolean                                                                     | 否 | - | 是否隐藏左侧的返回箭头。<br>默认值：false。true：隐藏，false：显示。|
+| onSelected | ArkTS-Dyn: (index:&nbsp;number)&nbsp;=&gt;&nbsp;void<br/>ArkTS-Sta: [OnSelectedCallback](#onselectedcallback23)         | 否 | - | 下拉菜单项目选中触发的回调函数，传入选中项的索引。下拉菜单选中后需要处理特定业务逻辑时时传入此参数，无特定业务逻辑时可缺省此参数。 |
 
 > **说明：**
 > 

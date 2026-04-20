@@ -44,13 +44,17 @@ SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, t
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 装饰器类型        | 说明     |
 | -------- | -------- | -------- |---------------|--------|
-| mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23  |
-| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef   | 标题内容。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23  |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef  | 副标题内容。当需要在标题下方显示副标题时传入，不传入时取默认值，不显示副标题。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef | 辅助文本。当需要显示辅助文本时传入，不传入时取默认值，不显示辅助文本。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23  |
-| container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。 |
+| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef   | 标题内容。 |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef  | 副标题内容。当需要在标题下方显示副标题时传入，不传入时取默认值，不显示副标题。 |
+| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef | 辅助文本。当需要显示辅助文本时传入，不传入时取默认值，不显示辅助文本。 |
+| container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
