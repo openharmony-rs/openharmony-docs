@@ -770,9 +770,9 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 
 **参数：**
 
-| 参数名                | 类型                                        | 必填 | 说明                                                         |
-| --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |设定值为undefined时，关闭自定义键盘。
-| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup>\| undefined<sup>22+</sup> <br/> ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContentBase](../js-apis-arkui-ComponentContent-static.md#componentcontentbase) \| undefined | 是   | 自定义键盘。设定值为undefined时，关闭自定义键盘。|
+| 参数名           | 类型                                        | 必填 | 说明     |
+| --------------- | ------------------------------------------- | ---- | ----------- |
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup>\| undefined<sup>22+</sup> <br/> ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| ComponentContentBase \| undefined | 是   | 自定义键盘。设定值为undefined时，关闭自定义键盘。|
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。 |
 
 ### enableAutoFill<sup>11+</sup>
@@ -864,6 +864,26 @@ cancelButton(options: CancelButtonOptions)
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options  | [CancelButtonOptions](ts-basic-components-search.md#cancelbuttonoptions12对象说明) | 是   | 右侧清除按钮样式选项。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />}<br/>Wearable设备上默认值为：28vp |
+
+### cancelButton<sup>23+</sup>
+
+cancelButton(iconOptions: CancelButtonOptions | undefined)
+
+设置右侧清除按钮样式。不支持内联模式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[cancelButton](#cancelbutton11)。
+  
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| iconOptions  | [CancelButtonOptions](ts-basic-components-search.md#cancelbuttonoptions12对象说明) \|  undefined | 是   | 右侧清除按钮样式选项。<br />默认值：<br />{<br />style: CancelButtonStyle.INPUT<br />}<br/>Wearable设备上默认值为：28vp |
 
 ### selectAll<sup>11+</sup>
 
@@ -1018,7 +1038,7 @@ ArkTS-Sta: decoration(value: TextDecorationOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明)<br/>ArkTS-Sta: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明) \| undefined | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID,<br/>&nbsp;thicknessScale:&nbsp;1.0<br/>} |
+| value  | ArkTS-Dyn: [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明)<br/>ArkTS-Sta: [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) \| undefined | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID,<br/>&nbsp;thicknessScale:&nbsp;1.0<br/>} |
 
 >  **说明：**
 >
@@ -4317,6 +4337,8 @@ struct TextExample {
   }
 }
 ```
+
+该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 不开启孤字优化：
 

@@ -656,7 +656,7 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContentBase](../js-apis-arkui-ComponentContent-static.md#componentcontentbase) \| undefined | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>值为undefined时，不设置自定义键盘。|
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| ComponentContentBase | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>值为undefined时，不设置自定义键盘。|
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)   | 否   | 设置自定义键盘是否支持避让功能。                             |
 
 ### type<sup>11+</sup>
@@ -3842,5 +3842,7 @@ struct TextExample {
   }
 }
 ```
+
+该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textAreaOrphanCharOptimization](figures/textAreaOrphanCharOptimization.png)

@@ -153,7 +153,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false <br/>设置undefined时按默认值处理。|
+| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false <br/>设置undefined时按默认值处理。|
 
 ## 事件
 
@@ -442,7 +442,7 @@ struct SpanExample {
           'scaleMode': 1, // 缩略值
           'size': { height: 100, width: 100 }
         };
-        //创建图片大小
+        // 创建图片大小
         imageSource.createPixelMap(option).then((pixelMap: PixelMap) => {
           this.imageAlt = pixelMap;
         })

@@ -6,13 +6,13 @@
 
 ArkTS-Dyn接口声明：[onEditChanged(callback: (isEditing:boolean) => void)](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#oneditchangeddeprecated)
 
-替代的ArkTS-Sta接口声明：[onEditChange(callback: Callback<boolean>)](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#oneditchange8)
+替代的ArkTS-Sta接口声明：[onEditChange(callback: Callback<boolean\>)](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#oneditchange8)
 
 
 
 ArkTS-Dyn示例：
-
-```
+<!--code_no_check-->
+```ts
 TextInput({ text: "TextInput支持输入状态变化时回调" })
   .onEditChanged((status: boolean) => {
     this.editStatus = status;
@@ -20,8 +20,8 @@ TextInput({ text: "TextInput支持输入状态变化时回调" })
 ```
 
 ArkTS-Sta示例：
-
-```
+<!--code_no_check-->
+```ts
 TextInput({ text: "TextInput支持输入状态变化时回调" })
   .onEditChange((status: boolean) => {
     this.editStatus = status;
@@ -32,13 +32,13 @@ TextInput({ text: "TextInput支持输入状态变化时回调" })
 
 ArkTS-Dyn接口声明：[measureTextSize(options: MeasureOptions): SizeOptions](../reference/apis-arkui/js-apis-measure.md#measuretextmeasuretextsizedeprecated)
 
-替代的ArkTS-Sta接口声明：[measureTextSize(options: MeasureOptions): SizeOptions](../reference/apis-arkui/js-apis-arkui-UIContext.md#measuretextsize12)
+替代的ArkTS-Sta接口声明：[measureTextSize(options: MeasureOptions): SizeOptions](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)
 
 
 
 ArkTS-Dyn示例：
-
-```
+<!--code_no_check-->
+```ts
 textSize: SizeOptions = MeasureText.measureTextSize({
   textContent: "Hello World",
   fontSize: '50px'
@@ -46,8 +46,8 @@ textSize: SizeOptions = MeasureText.measureTextSize({
 ```
 
 ArkTS-Sta示例：
-
-```
+<!--code_no_check-->
+```ts
 @State uiContext: UIContext = this.getUIContext();
 
 @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
@@ -62,13 +62,13 @@ textSize : SizeOptions = this.uiContextMeasure.measureTextSize({
 
 ArkTS-Dyn接口声明：[measureText(options: MeasureOptions): number](../reference/apis-arkui/js-apis-measure.md#measuretextmeasuretextdeprecated)
 
-替代的ArkTS-Sta接口声明：[measureText(options: MeasureOptions): number](../reference/apis-arkui/js-apis-arkui-UIContext.md#measuretext12)
+替代的ArkTS-Sta接口声明：[measureText(options: MeasureOptions): number](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretext12)
 
 
 
 ArkTS-Dyn示例：
-
-```
+<!--code_no_check-->
+```ts
 @State textWidth: number = MeasureText.measureText({
   textContent: "Hello World",
   fontSize: '50px'
@@ -76,8 +76,8 @@ ArkTS-Dyn示例：
 ```
 
 ArkTS-Sta示例：
-
-```
+<!--code_no_check-->
+```ts
 @State uiContext: UIContext = this.getUIContext();
 
 @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
@@ -92,20 +92,20 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn接口声明：[getFontByName(fontName: string): FontInfo](../reference/apis-arkui/js-apis-font.md#fontgetfontbynamedeprecated)
 
-替代的ArkTS-Sta接口声明：[getFontByName(fontName: string): font.FontInfo](../reference/apis-arkui/js-apis-arkui-UIContext.md#getfontbyname)
+替代的ArkTS-Sta接口声明：[getFontByName(fontName: string): font.FontInfo](../reference/apis-arkui/arkts-apis-uicontext-font.md#getfontbyname)
 
 
 
 ArkTS-Dyn示例：
-
-```
+<!--code_no_check-->
+```ts
 import { font } from '@kit.ArkUI';
 font.getFontByName('HarmonyOS Sans Italic')
 ```
 
 ArkTS-Sta示例：
-
-```
+<!--code_no_check-->
+```ts
 import { UIContext, Font } from '@ohos.arkui.UIContext';
 
 let uiContext:UIContext = this.getUIContext();
@@ -117,21 +117,21 @@ if (font) {
 
 ## getSystemFontList
 
-ArkTS-Dyn接口声明：[getSystemFontList(): Array<string>](../reference/apis-arkui/js-apis-font.md#fontgetsystemfontlistdeprecated)
+ArkTS-Dyn接口声明：[getSystemFontList(): Array<string\>](../reference/apis-arkui/js-apis-font.md#fontgetsystemfontlistdeprecated)
 
-替代的ArkTS-Sta接口声明：[getSystemFontList(): Array<string>](../reference/apis-arkui/js-apis-arkui-UIContext.md#getsystemfontlist)
+替代的ArkTS-Sta接口声明：[getSystemFontList(): Array<string\>](../reference/apis-arkui/arkts-apis-uicontext-font.md#getsystemfontlist)
 
 
 
 ArkTS-Dyn示例：
-
-```
+<!--code_no_check-->
+```ts
 font.getSystemFontList()
 ```
 
 ArkTS-Sta示例：
-
-```
+<!--code_no_check-->
+```ts
 import { UIContext, Font } from '@ohos.arkui.UIContext';
 
 let uiContext:UIContext = this.getUIContext();
@@ -145,19 +145,19 @@ if (font) {
 
 ArkTS-Dyn接口声明：[registerFont(options: FontOptions): void](../reference/apis-arkui/js-apis-font.md#fontregisterfontdeprecated)
 
-替代的ArkTS-Sta接口声明：[registerFont(options: font.FontOptions): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#registerfont)
+替代的ArkTS-Sta接口声明：[registerFont(options: font.FontOptions): void](../reference/apis-arkui/arkts-apis-uicontext-font.md#registerfont)
 
 
 
 ArkTS-Dyn示例：
-
-```
+<!--code_no_check-->
+```ts
 font.registerFont({familyName: 'mediumRawFile', familySrc: $rawfile('font/medium.ttf')})
 ```
 
 ArkTS-Sta示例：
-
-```
+<!--code_no_check-->
+```ts
 let uiContext:UIContext = this.getUIContext();
 let font:Font = uiContext.getFont();
 

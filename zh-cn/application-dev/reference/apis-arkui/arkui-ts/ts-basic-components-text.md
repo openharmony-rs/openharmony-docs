@@ -178,7 +178,7 @@ ArkTS-Sta: baselineOffset(value: double | string | undefined)
 ### bindSelectionMenu<sup>11+</sup>
 
 ArkTS-Dyn: bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType,
-    options?: SelectionMenuOptions)
+options?: SelectionMenuOptions)
 
 ArkTS-Sta: bindSelectionMenu(spanType: TextSpanType | undefined, content: CustomBuilder | undefined, responseType: TextResponseType | undefined, options?: SelectionMenuOptions | undefined)
 
@@ -207,7 +207,7 @@ bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](ts-universal-
 | spanType     | ArkTS-Dyn: [TextSpanType](#textspantype11枚举说明) <br/> ArkTS-Sta: [TextSpanType](#textspantype11枚举说明) \| undefined         | 是   | 选择菜单的类型。<br/>默认值：TextSpanType.TEXT               |
 | content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br/> ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined                | 是   | 选择菜单的内容。                                             |
 | responseType | ArkTS-Dyn: [TextResponseType](#textresponsetype11枚举说明) <br/> ArkTS-Sta: [TextResponseType](#textresponsetype11枚举说明) \| undefined | 是   | 选择菜单的响应类型。<br/>默认值：TextResponseType.LONG_PRESS |
-| options      | ArkTS-Dyn: [SelectionMenuOptions](ts-basic-components-richeditor.md#selectionmenuoptions10) <br/> ArkTS-Sta: [SelectionMenuOptions](ts-basic-components-richeditor.md#selectionmenuoptions10) \| undefined | 否   | 选择菜单的选项。                                             |
+| options      | ArkTS-Dyn: [SelectionMenuOptions](ts-basic-components-richeditor.md#selectionmenuoptions) <br/> ArkTS-Sta: [SelectionMenuOptions](ts-basic-components-richeditor.md#selectionmenuoptions) \| undefined | 否   | 选择菜单的选项。                                             |
 
 ### caretColor<sup>14+</sup>
 
@@ -415,7 +415,7 @@ ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false<br/>值为undefined时，不开启中文与西文的自动间距。 |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false<br/>值为undefined时，不开启中文与西文的自动间距。 |
 
 ### enableDataDetector<sup>11+</sup>
 
@@ -961,7 +961,7 @@ ArkTS-Sta: marqueeOptions(options: TextMarqueeOptions | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| options | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextMarqueeOptions](#textmarqueeoptions18对象说明)> <br/> ArkTS-Sta: [TextMarqueeOptions](#textmarqueeoptions18对象说明) \| undefined | 是 | 当Text组件的textOverflow属性设置为MARQUEE时，可通过marqueeOptions设置跑马灯动效具体的属性，如开关、步长、循环次数、方向等。 |
+| options | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextMarqueeOptions](#textmarqueeoptions18对象说明)> <br/> ArkTS-Sta: [TextMarqueeOptions](#textmarqueeoptions18对象说明) \| undefined | 是 | 当Text组件的textOverflow属性设置为MARQUEE时，可通过marqueeOptions设置跑马灯动效具体的属性，如开关、步长、循环次数、方向等。 |
 
 ### maxFontScale<sup>12+</sup>
 
@@ -1177,7 +1177,7 @@ ArkTS-Sta: includeFontPadding(include: boolean | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| include | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。<br/>undefined表示在首行和尾行不增加间距。 |
+| include | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。<br/>undefined表示在首行和尾行不增加间距。 |
 
 ### fallbackLineSpacing<sup>23+</sup>
 
@@ -1195,7 +1195,7 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>undefined表示行高不基于文字实际高度自适应。 |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>undefined表示行高不基于文字实际高度自适应。 |
 
 ### optimizeTrailingSpace<sup>20+</sup>
 
@@ -1223,7 +1223,7 @@ ArkTS-Sta: optimizeTrailingSpace(optimize: boolean | undefined)
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| optimize         | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否优化每行末尾的空格。<br/>true表示优化末尾空格，false则不优化。<br/>默认值：false<br>值为undefined时，不优化末尾空格。 |
+| optimize         | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否优化每行末尾的空格。<br/>true表示优化末尾空格，false则不优化。<br/>默认值：false<br>值为undefined时，不优化末尾空格。 |
 
 ### orphanCharOptimization
 
@@ -1590,7 +1590,7 @@ ArkTS-Sta: textVerticalAlign(textVerticalAlign: TextVerticalAlign | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textVerticalAlign  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)><br/>ArkTS-Sta: [TextVerticalAlign](ts-text-common.md#textverticalalign20) \| undefined | 是   | 文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE<br/>取值为undefined时，按照TextVerticalAlign.BASELINE处理，对齐文本基线。 |
+| textVerticalAlign  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)><br/>ArkTS-Sta: [TextVerticalAlign](ts-text-common.md#textverticalalign20) \| undefined | 是   | 文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE<br/>取值为undefined时，按照TextVerticalAlign.BASELINE处理，对齐文本基线。 |
 
 ### wordBreak<sup>11+</sup>
 
@@ -3560,5 +3560,7 @@ struct TextExample {
   }
 }
 ```
+
+该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textOrphanCharOptimization](figures/textOrphanCharOptimization.png)
