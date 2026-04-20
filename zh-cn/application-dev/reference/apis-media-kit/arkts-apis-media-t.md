@@ -18,6 +18,10 @@ type SoundPool = _SoundPool
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
 | [_SoundPool](js-apis-inner-multimedia-soundPool.md#soundpool)  | 音频池，提供了系统声音的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。 |
@@ -29,6 +33,10 @@ type PlayParameters = _PlayParameters
 表示音频池播放参数设置。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
