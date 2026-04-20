@@ -19,3 +19,4 @@ This struct defines the raw data in an image, which is obtained through [OH_Imag
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
 
 **Header file**: [image_source_native.h](capi-image-source-native-h.md)
+<!--no_check-->

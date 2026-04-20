@@ -614,3 +614,4 @@ Enumerates the actions that can be performed to apply the power policy.
 | FORCE_SUSPEND | 2 | Forcibly enter the sleep mode.|
 | HIBERNATE | 3 | Enter the sleep mode. This policy does not take effect currently.|
 | SHUTDOWN | 4 | Shut down the system.|
+<!--no_check-->

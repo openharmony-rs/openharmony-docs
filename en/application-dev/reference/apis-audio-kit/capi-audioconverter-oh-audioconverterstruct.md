@@ -19,3 +19,4 @@ This struct declares the audio converter.<br> The handle to the audio converter 
 **Related module**: AudioConverter](capi-audioconverter.md)
 
 **Header file**: [native_audio_converter.h](capi-native-audio-converter-h.md)
+<!--no_check-->

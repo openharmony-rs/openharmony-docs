@@ -702,3 +702,4 @@ If the application in position 0 or 1 in the Dock is Application Center or Task 
 **Solution**
 
 Add the application to another location.
+<!--no_check-->

@@ -30,3 +30,4 @@ This struct defines the audio converter format data structure, which is used to 
 | [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | Audio sampling rate.<br>**Since**: 26.0.0|
 | OH_AudioChannelLayout channelLayout | Audio channel layout.<br>**Since**: 26.0.0|
 | [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | Audio sample format.<br>**Since**: 26.0.0|
+<!--no_check-->

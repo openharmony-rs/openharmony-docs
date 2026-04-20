@@ -108,3 +108,4 @@ struct SystemMaterialPage {
 ```
 
 ![systemMaterial](figures/uiMaterial.jpg)
+<!--no_check-->
