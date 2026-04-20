@@ -18,6 +18,7 @@
 >
 > - 静态方法必须在用户界面（UI）线程上使用。
 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 该模块提供以下Web控制相关的常用功能：
 
 - [AdsBlockManager](./arkts-apis-webview-AdsBlockManager.md)：广告过滤配置。
