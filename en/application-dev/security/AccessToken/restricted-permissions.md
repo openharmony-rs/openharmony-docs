@@ -1217,3 +1217,19 @@ Allows an application to get call forwarding status.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.GET_NETWORK_STATS
+
+Allows an application to query traffic data of other applications.
+
+<!--RP80--><!--RP80End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 10
+
+**Changelog**: **Enable via ACL** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12. This permission is available to system applications in API versions 10 to 24, and available to normal applications since API version 26.0.0.
