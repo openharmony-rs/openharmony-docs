@@ -37,7 +37,7 @@
 
 从API版本26.0.0开始，支持配置[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md#monitordecoratoroptions)来获得以下能力增强：
 
-- 支持在监听路径中设置通配符“*”，用于模糊监听对象内部变化，包括@ObservedV2中任意@Trace属性变化，内置类型（Array、Map、Date、Set）的API调用引起的变化等。详情见[监听包含通配符的路径](#监听包含通配符的路径)
+- 支持在监听路径中设置通配符“*”，用于模糊监听对象内部变化，包括@ObservedV2中任意@Trace属性变化，内置类型（Array、Map、Date、Set）的API调用引起的变化等。详情见[监听包含通配符的路径](#监听包含通配符的路径)。
 - 对@Monitor部分能力进行修正，详情见[@Monitor使用配置项前后的对比](#monitor使用配置项前后的对比)。
 
 ## 状态管理V1版本\@Watch装饰器的局限性
@@ -121,7 +121,7 @@ onValueChange(monitor: IMonitor) {
 使用配置项的@Monitor语法：
 
 ``` ts
-@Monitor({ enableWildcard: false}, 'path') // 使用配置项，显式配置不使能通配符
+@Monitor({ enableWildcard: false }, 'path') // 使用配置项，显式配置不使能通配符
 onValueChanged1(monitor: IMonitor) {
 }
 @Monitor({}, 'path.*') // 使用配置项，默认使能通配符，监听path对象内任意可观察变化
@@ -719,7 +719,7 @@ export struct DocSampleNestedClass {
       Button('2. Class0 = new Class, keep Class1')
         .onClick(() => {
           // 当class0为Class0类型时，@Monitor回调不触发
-          // 原因：即使class0变化了，通配符前最后一个确定值person也没有改变
+          // 原因：即使class0变化了，路径'class0.class1.person.*'中通配符前最后一个确定值person也没有改变
           if (this.class0 instanceof Class0) {
             let newClass0 = new Class0();
             newClass0.class1.person = (this.class0 as Class0).class1.person;
@@ -808,7 +808,7 @@ struct DocMonitorArrayOfArrays {
     return new TopArray(
       new ArrayOfPerson(new Person('Adrian'), new Person('Andrew'), new Person('Aaliyah'), new Person('Amir'), new Person('Angel')),
       new ArrayOfPerson(new Person('Carter'), new Person('Charlie'), new Person('Cooper'), new Person('Cole'), new Person('Callie')),
-      new ArrayOfPerson(new Person('Danile'), new Person('Dasy'), new Person('Dawson'), new Person('Dana'), new Person('Dalton'))
+      new ArrayOfPerson(new Person('Daniel'), new Person('Daisy'), new Person('Dawson'), new Person('Dana'), new Person('Dalton'))
     );
   }
 
@@ -872,7 +872,7 @@ struct DocMonitorArrayOfArrays {
       Button('topArray = new TopArray, keep [1]')
         .onClick(() => {
           let newTop = this.makeNewTopArray();
-          newTop[1] = this.topArray[1]; // topArray.1 unchanged, LSV for 'topArray.1.*' not changed
+          newTop[1] = this.topArray[1]; // topArray.1未改变，路径'topArray.1.*'中通配符前最后一个确定值未改变
           this.topArray = newTop;
         })
 
@@ -933,7 +933,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
           this.date = new Date();
         })
       // 整体赋相同值，不触发onDateChanged
-      Button(`Re-assign the same  Date`)
+      Button(`Re-assign the same Date`)
         .onClick(() => {
           let sameDate = this.date;
           this.date = sameDate;
