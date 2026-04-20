@@ -335,11 +335,15 @@ async function testFunction() : Promise<void>
 }
 ```
 
-## huksExternalCrypto.clearUkeyPinAuthState<sup>26+</sup>
+## huksExternalCrypto.clearUkeyPinAuthState
 
 clearUkeyPinAuthState(resourceId: string): Promise\<void>
 
 清除指定资源ID的PIN码认证状态。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -387,15 +391,17 @@ const testResourceId = JSON.stringify({
 
 huksExternalCrypto.clearUkeyPinAuthState(testResourceId)
     .then(() => {
-      console.info(`promise: clearUkeyPinAuthState success`);
+      console.info('promise: clearUkeyPinAuthState success');
     });
 ```
 
-## huksExternalCrypto.getResourceId<sup>26+</sup>
+## huksExternalCrypto.getResourceId
 
 getResourceId(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<string>
 
 获取密钥扩展能力的资源ID。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -469,7 +475,7 @@ huksExternalCrypto.getResourceId(providerName, extProperties)
     });
 ```
 
-## huksExternalCrypto.openResource<sup>26+</sup>
+## huksExternalCrypto.openResource
 
 openResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<void>
 
@@ -478,6 +484,8 @@ openResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Prom
 > **说明：**
 >
 > 打开的资源必须使用[closeResource](#huksexternalcryptoopenresource26)关闭。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -503,6 +511,7 @@ openResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Prom
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 801 | API is not supported. |
+| 12000002 | The ability name or bundle name parameter is missing. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID is not found. This may happen because the resource ID has not been opened. |
@@ -534,13 +543,15 @@ huksExternalCrypto.openResource(testResourceId)
     });
 ```
 
-## huksExternalCrypto.closeResource<sup>26+</sup>
+## huksExternalCrypto.closeResource
 
 closeResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<void>
 
 关闭指定资源ID的资源。使用Promise异步回调。
 
 该接口会回调[onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

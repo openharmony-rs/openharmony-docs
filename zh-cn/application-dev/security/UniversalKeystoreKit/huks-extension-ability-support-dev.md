@@ -444,7 +444,7 @@
    }
    ```
 
-（12）onGetResourceId<sup>26+</sup>用于获取密钥扩展能力的资源ID。params中需携带以下必选参数：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示Ability名称、[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示Bundle名称、[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示厂商自定义的资源信息。当调用成功时，返回值中的resultCode成员设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
+   （12）从API版本26.0.0开始，onGetResourceId用于获取密钥扩展能力的资源ID。params中需携带以下必选参数：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示Ability名称、[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示Bundle名称、[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)表示厂商自定义的资源信息。当调用成功时，返回值中的resultCode成员设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
@@ -472,7 +472,7 @@
    }
    ```
 
-   （13）onImportCertificate<sup>26+</sup>用于导入证书到扩展设备。certInfo包含待导入的证书信息，包括证书用途、资源ID和证书数据。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
+   （13）从API版本26.0.0开始，onImportCertificate用于导入证书到扩展设备。certInfo包含待导入的证书信息，包括证书用途、资源ID和证书数据。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
@@ -492,7 +492,7 @@
    }
    ```
 
-（14）onGenerateKeyItem<sup>26+</sup>用于在扩展设备内生成密钥对。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
+   （14）从API版本26.0.0开始，onGenerateKeyItem用于在扩展设备内生成密钥对。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
 
    ```ts
    onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
@@ -531,7 +531,7 @@
    }
    ```
 
-（15）onExportKeyItem<sup>26+</sup>用于导出指定密钥的公钥。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。当调用成功时，返回值中的resultCode成员设置为0，outData携带导出的公钥数据；调用失败时，resultCode携带错误码信息。
+   （15）从API版本26.0.0开始，onExportKeyItem用于导出指定密钥的公钥。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。当调用成功时，返回值中的resultCode成员设置为0，outData携带导出的公钥数据；调用失败时，resultCode携带错误码信息。
 
    ```ts
    onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise<HuksCryptoExtensionResult> {
@@ -561,7 +561,7 @@
    }
    ```
 
-（16）onImportWrappedKeyItem<sup>26+</sup>用于导入加密封装的密钥对。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
+   （16）从API版本26.0.0开始，onImportWrappedKeyItem用于导入加密封装的密钥对。params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
 
    ```ts
    onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
