@@ -41,7 +41,7 @@ animateToImmediately(value: AnimateParam , event: () => void): void
 
 ## animateToImmediately<sup>23+</sup>
 
-animateToImmediately(value: AnimateParam, processor: VoidCallback)
+animateToImmediately(value: AnimateParam, processor: VoidCallback): void
 
 提供显式动画立即下发功能。
 

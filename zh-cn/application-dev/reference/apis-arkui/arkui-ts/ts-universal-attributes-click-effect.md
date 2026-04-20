@@ -10,9 +10,7 @@
 
 ## clickEffect
 
-ArkTS-Dyn: clickEffect(value: ClickEffect | null): T
-
-ArkTS-Sta: clickEffect(value: ClickEffect | null | undefined): this
+clickEffect(value: ClickEffect | null): T
 
 设置当前组件的点击回弹效果。
 
@@ -20,15 +18,15 @@ ArkTS-Sta: clickEffect(value: ClickEffect | null | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
-| 参数名 | 类型                                                  | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null <br/>ArkTS-Sta: [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null&nbsp;\|&nbsp;undefined | 是   | 设置当前组件点击回弹效果。<br/>**说明：**<br/>可通过null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | -------- | ---- | ---- | --------- |
+| value  | ArkTS-Dyn: [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null <br/>ArkTS-Sta: [ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null&nbsp;\|&nbsp;undefined | 否 | 否 | 设置当前组件点击回弹效果。<br/>**说明：**<br/>可通过null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
 **返回值：**
 
@@ -38,7 +36,9 @@ ArkTS-Sta: clickEffect(value: ClickEffect | null | undefined): this
 
 ## clickEffect<sup>18+</sup>
 
-clickEffect(effect: Optional\<ClickEffect | null>): T
+ArkTS-Dyn: clickEffect(effect: Optional\<ClickEffect | null>): T
+
+ArkTS-Sta: clickEffect(value: ClickEffect | null | undefined): this
 
 设置当前组件的点击回弹效果。与[clickEffect](#clickeffect)相比，effect参数新增了对undefined类型的支持。
 
@@ -50,11 +50,13 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 
 **ArkTS-Dyn起始版本：** 18
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型                                                         | 必填 | 说明                                                         |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| effect | Optional\<[ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null> | 是   | 设置当前组件的点击回弹效果。<br/>**说明：**<br/>可通过undefined或者null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | -------- | ---- | ---- | --------- |
+| effect | Optional\<[ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null> | 否 | 否 | 设置当前组件的点击回弹效果。<br/>**说明：**<br/>可通过undefined或者null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
 
 **返回值：**
 

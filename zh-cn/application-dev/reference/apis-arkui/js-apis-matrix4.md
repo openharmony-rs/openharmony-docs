@@ -674,11 +674,11 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型   | 必填 | 说明                                                        |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| x    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | x轴的平移距离。<br/>单位：px<br/>默认值：0<br/>取值范围 (-∞, +∞) |
-| y    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | y轴的平移距离。<br/>单位：px<br/>默认值：0<br/>取值范围 (-∞, +∞) |
-| z    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | z轴的平移距离。<br/>单位：px<br/>默认值：0<br/>取值范围 (-∞, +∞) |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| x    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | x轴的平移距离。<br/>单位：px<br/>默认值：0<br/>取值范围 (-∞, +∞) |
+| y    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | y轴的平移距离。<br/>单位：px<br/>默认值：0<br/>取值范围 (-∞, +∞) |
+| z    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | z轴的平移距离。<br/>单位：px<br/>默认值：0<br/>取值范围 (-∞, +∞) |
 
 ## ScaleOption
 
@@ -692,13 +692,13 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称    | 类型   | 必填 | 说明                                                         |
-| ------- | ------ | ---- | ------------------------------------------------------------ |
-| x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | x轴的缩放倍数。x>1时以x轴方向放大，0&lt;x&lt;1时以x轴方向缩小，x<0时沿x轴反向并缩放。<br/>默认值：1<br/>取值范围 (-∞, +∞) |
-| y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | y轴的缩放倍数。y>1时以y轴方向放大，0&lt;y&lt;1时以y轴方向缩小，y<0时沿y轴反向并缩放。<br/>默认值：1<br/>取值范围 (-∞, +∞) |
-| z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | z轴的缩放倍数。z>1时以z轴方向放大，0&lt;z&lt;1时以z轴方向缩小，z<0时沿z轴反向并缩放。<br/>默认值：1<br/>取值范围 (-∞, +∞) |
-| centerX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 变换中心点x轴坐标。<br/>单位：px<br/>默认值：组件中心点x轴坐标。<br/>取值范围 (-∞, +∞)    |
-| centerY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 变换中心点y轴坐标。<br/>单位：px<br/>默认值：组件中心点y轴坐标。<br/>取值范围 (-∞, +∞)    |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | x轴的缩放倍数。x>1时以x轴方向放大，0&lt;x&lt;1时以x轴方向缩小，x<0时沿x轴反向并缩放。<br/>默认值：1<br/>取值范围 (-∞, +∞) |
+| y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | y轴的缩放倍数。y>1时以y轴方向放大，0&lt;y&lt;1时以y轴方向缩小，y<0时沿y轴反向并缩放。<br/>默认值：1<br/>取值范围 (-∞, +∞) |
+| z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | z轴的缩放倍数。z>1时以z轴方向放大，0&lt;z&lt;1时以z轴方向缩小，z<0时沿z轴反向并缩放。<br/>默认值：1<br/>取值范围 (-∞, +∞) |
+| centerX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 变换中心点x轴坐标。<br/>单位：px<br/>默认值：组件中心点x轴坐标。<br/>取值范围 (-∞, +∞)    |
+| centerY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 变换中心点y轴坐标。<br/>单位：px<br/>默认值：组件中心点y轴坐标。<br/>取值范围 (-∞, +∞)    |
 
 ## RotateOption
 
@@ -712,14 +712,14 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称    | 类型   | 必填 | 说明                                                         |
-| ------- | ------ | ---- | ------------------------------------------------------------ |
-| x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 旋转轴向量x坐标。<br/>默认值：0。<br/>取值范围 (-∞, +∞)      |
-| y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 旋转轴向量y坐标。<br/>默认值：0。<br/>取值范围 (-∞, +∞)      |
-| z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 旋转轴向量z坐标。<br/>默认值：0。<br/>取值范围 (-∞, +∞)。<br/>**说明：** 旋转向量中x、y、z至少有一个不为0才有意义。 |
-| angle   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 旋转角度。<br/>默认值：0                                     |
-| centerX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 单次矩阵变换中心点相对于组件变换中心点（锚点）的额外x轴偏移值。<br/>单位：px<br/>默认值：0<br/>**说明：** <br/>为0时表示x方向的矩阵变换中心恰好为组件x方向锚点，取值表示相对组件x方向锚点的额外偏移量。具体实现可参考[示例3（按中心点旋转）](arkui-ts/ts-universal-attributes-transformation.md#示例3按中心点旋转)。 |
-| centerY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 单次矩阵变换中心点相对于组件变换中心点（锚点）的额外y轴偏移值。<br/>单位：px<br/>默认值：0<br/>**说明：** <br/>为0时表示y方向的矩阵变换中心恰好为组件y方向锚点，取值表示相对组件y方向锚点的额外偏移量。具体实现可参考[示例3（按中心点旋转）](arkui-ts/ts-universal-attributes-transformation.md#示例3按中心点旋转)。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| x       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 旋转轴向量x坐标。<br/>默认值：0。<br/>取值范围 (-∞, +∞)      |
+| y       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 旋转轴向量y坐标。<br/>默认值：0。<br/>取值范围 (-∞, +∞)      |
+| z       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 旋转轴向量z坐标。<br/>默认值：0。<br/>取值范围 (-∞, +∞)。<br/>**说明：** 旋转向量中x、y、z至少有一个不为0才有意义。 |
+| angle   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 旋转角度。<br/>默认值：0                                     |
+| centerX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 单次矩阵变换中心点相对于组件变换中心点（锚点）的额外x轴偏移值。<br/>单位：px<br/>默认值：0<br/>**说明：** <br/>为0时表示x方向的矩阵变换中心恰好为组件x方向锚点，取值表示相对组件x方向锚点的额外偏移量。具体实现可参考[示例3（按中心点旋转）](arkui-ts/ts-universal-attributes-transformation.md#示例3按中心点旋转)。 |
+| centerY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是  | 单次矩阵变换中心点相对于组件变换中心点（锚点）的额外y轴偏移值。<br/>单位：px<br/>默认值：0<br/>**说明：** <br/>为0时表示y方向的矩阵变换中心恰好为组件y方向锚点，取值表示相对组件y方向锚点的额外偏移量。具体实现可参考[示例3（按中心点旋转）](arkui-ts/ts-universal-attributes-transformation.md#示例3按中心点旋转)。 |
 
 ## PolyToPolyOptions<sup>12+</sup>
 
@@ -733,13 +733,13 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型   | 必填 | 说明                                                        |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| src    |  Array<[Point](#point12)> | 是   | 源点坐标。 |
-| srcIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 源点坐标起始索引。<br>默认值:0 <br/> 取值范围：[0, +∞)|
-| dst    |  Array<[Point](#point12)>  | 是   | 目标点坐标。 |
-| dstIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |  目标坐标起始索引。<br>默认值: src.length/2 <br/> 取值范围：[0, +∞) |
-| pointCount    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 使用到的点数量。<br>默认值: 0 <br/> 取值范围：[0, +∞)|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| src    |  Array<[Point](#point12)> | 是 | 否 | 源点坐标。 |
+| srcIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 源点坐标起始索引。<br>默认值:0 <br/> 取值范围：[0, +∞)|
+| dst    |  Array<[Point](#point12)>  | 是| 否 | 目标点坐标。 |
+| dstIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  |  目标坐标起始索引。<br>默认值: src.length/2 <br/> 取值范围：[0, +∞) |
+| pointCount    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 使用到的点数量。<br>默认值: 0 <br/> 取值范围：[0, +∞)|
 
 ## Point<sup>12+</sup>
 
@@ -753,10 +753,10 @@ struct Index {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型   | 必填 | 说明                                                        |
-| ---- | ------ | ---- | ----------------------------------------------------------- |
-| x    |  ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴坐标。<br/>取值范围：(-∞, +∞) |
-| y    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴坐标。<br/>取值范围：(-∞, +∞) |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| x    |  ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  | x轴坐标。<br/>取值范围：(-∞, +∞) |
+| y    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  | y轴坐标。<br/>取值范围：(-∞, +∞) |
 
 ## matrix4.copy<sup>(deprecated)</sup>
 

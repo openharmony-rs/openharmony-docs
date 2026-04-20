@@ -114,11 +114,11 @@ outline(value: OutlineOptions | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称     | 说明                            |
-| ------ | ----------------------------- |
-| SOLID  | 显示为一条实线。                      |
-| DASHED | 显示为一系列短的方形虚线。                 |
-| DOTTED | 显示为一系列圆点，圆点半径为outlineWidth的一半。 |
+| 名称   | 值   | 说明     |
+| ----- | --------- | --------- |
+| SOLID  | 0 | 显示为一条实线。                      |
+| DASHED | 1 | 显示为一系列短的方形虚线。                 |
+| DOTTED | 2 | 显示为一系列圆点，圆点半径为outlineWidth的一半。 |
 
 ## outlineStyle
 
@@ -186,10 +186,6 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): this
 
 设置元素的外描边样式。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -212,9 +208,7 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): this
 
 ## outlineWidth
 
-ArkTS-Dyn: outlineWidth(value: Dimension | EdgeOutlineWidths): T
-
-ArkTS-Sta: outlineWidth(value: Dimension | EdgeOutlineWidths | undefined): this
+outlineWidth(value: Dimension | EdgeOutlineWidths): T
 
 设置元素的外描边宽度。
 
@@ -224,21 +218,23 @@ ArkTS-Sta: outlineWidth(value: Dimension | EdgeOutlineWidths | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[outlineWidth](#outlinewidth23)。
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths对象说明)<br/>  ArkTS-Sta: [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths对象说明) \| undefined| 是   | 设置元素的外描边宽度，不支持百分比。 <br/>默认值：0。 |
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths对象说明)| 是   | 设置元素的外描边宽度，不支持百分比。 <br/>默认值：0。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>  ArkTS-Sta: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## outlineWidth<sup>18+</sup>
 
@@ -252,6 +248,12 @@ outlineWidth(width: Optional\<Dimension | EdgeOutlineWidths>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[outlineWidth](#outlinewidth23)。
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
@@ -264,11 +266,29 @@ outlineWidth(width: Optional\<Dimension | EdgeOutlineWidths>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## outlineWidth<sup>23+</sup>
+
+outlineWidth(value: Dimension | EdgeOutlineWidths | undefined): this
+
+设置元素的外描边宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[outlineWidth](#outlineWidth)和[outlineWidth<sup>18+</sup>](#outlineWidth18)。
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths对象说明) \| undefined | 是   | 设置元素的外描边宽度，不支持百分比。 <br/>默认值：0。<br/>当width的值为undefined时，恢复为无外描边宽度的效果。 |
+
 ## outlineColor
 
-ArkTS-Dyn: outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
-
-ArkTS-Sta: outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors | undefined): this
+outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 
 设置元素的外描边颜色。
 
@@ -278,21 +298,21 @@ ArkTS-Sta: outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                             |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors对象说明)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors对象说明12)<sup>12+</sup><br/>  ArkTS-Sta:  [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors对象说明)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors对象说明12)<sup>12+</sup><br/> \| undefined | 是   | 设置元素的外描边颜色。<br/>默认值：Color.Black |
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors对象说明)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors对象说明12)<sup>12+</sup> | 是   | 设置元素的外描边颜色。<br/>默认值：Color.Black |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>  ArkTS-Sta: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## outlineColor<sup>18+</sup>
 
@@ -306,6 +326,10 @@ outlineColor(color: Optional\<ResourceColor | EdgeColors | LocalizedEdgeColors>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
@@ -318,11 +342,33 @@ outlineColor(color: Optional\<ResourceColor | EdgeColors | LocalizedEdgeColors>)
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## outlineColor<sup>23+</sup>
+
+outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors | undefined): this
+
+设置元素的外描边颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                             |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors对象说明)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors对象说明12)<sup>12+</sup><br/> \| undefined | 是   | 设置元素的外描边颜色。<br/>默认值：Color.Black |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
+
 ## outlineRadius
 
-ArkTS-Dyn: outlineRadius(value: Dimension | OutlineRadiuses): T
-
-ArkTS-Sta: outlineRadius(value: Dimension | OutlineRadiuses | undefined): this
+outlineRadius(value: Dimension | OutlineRadiuses): T
 
 设置元素的外描边圆角半径。
 
@@ -332,21 +378,21 @@ ArkTS-Sta: outlineRadius(value: Dimension | OutlineRadiuses | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses对象说明)<br/>  ArkTS-Sta: [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses对象说明) \| undefined | 是   | 设置元素的外描边圆角半径，不支持百分比。<br/>默认值：0。<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses对象说明) | 是   | 设置元素的外描边圆角半径，不支持百分比。<br/>默认值：0。<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>  ArkTS-Sta: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## outlineRadius<sup>18+</sup>
 
@@ -360,6 +406,10 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
@@ -371,6 +421,30 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
+
+## outlineRadius<sup>23+</sup>
+
+outlineRadius(value: Dimension | OutlineRadiuses | undefined): this
+
+设置元素的外描边圆角半径。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses对象说明) \| undefined | 是   | 设置元素的外描边圆角半径，不支持百分比。<br/>默认值：0。<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 ## OutlineOptions对象说明
 
