@@ -16,9 +16,9 @@
 
 ## iconSize
 
-ArkTS-Dyn: iconSize(value: Dimension)
+ArkTS-Dyn: iconSize(value: Dimension): T
 
-ArkTS-Sta: iconSize(value: Dimension | undefined)
+ArkTS-Sta: iconSize(value: Dimension | undefined): this
 
 设置安全控件图标的尺寸。
 
@@ -40,13 +40,13 @@ ArkTS-Sta: iconSize(value: Dimension | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## layoutDirection
 
-ArkTS-Dyn: layoutDirection(value: ecurityComponentLayoutDirection)
+ArkTS-Dyn: layoutDirection(value: SecurityComponentLayoutDirection): T
 
-ArkTS-Sta: layoutDirection(value: SecurityComponentLayoutDirection | undefined)
+ArkTS-Sta: layoutDirection(value: SecurityComponentLayoutDirection | undefined): this
 
 设置安全控件图标和文字分布的方向。
 
@@ -68,13 +68,13 @@ ArkTS-Sta: layoutDirection(value: SecurityComponentLayoutDirection | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## position
 
-ArkTS-Dyn: position(value: Position)
+ArkTS-Dyn: position(value: Position): T
 
-ArkTS-Sta: position(value: Position | undefined)
+ArkTS-Sta: position(value: Position | undefined): this
 
 设置绝对定位，设置安全控件的左上角相对于父容器左上角的偏移位置。
 
@@ -96,13 +96,13 @@ ArkTS-Sta: position(value: Position | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## markAnchor
 
-ArkTS-Dyn: markAnchor(value: Position)
+ArkTS-Dyn: markAnchor(value: Position): T
 
-ArkTS-Sta: markAnchor(value: Position | undefined)
+ArkTS-Sta: markAnchor(value: Position | undefined): this
 
 设置安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。
 
@@ -124,13 +124,13 @@ ArkTS-Sta: markAnchor(value: Position | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## offset
 
-ArkTS-Dyn: offset(value: Position | Edges | LocalizedEdges)
+ArkTS-Dyn: offset(value: Position | Edges | LocalizedEdges): T
 
-ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined)
+ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined): this
 
 设置安全控件相对于自身布局位置的坐标偏移。
 
@@ -152,13 +152,13 @@ ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## fontSize
 
-ArkTS-Dyn: fontSize(value: Dimension)
+ArkTS-Dyn: fontSize(value: Dimension): T
 
-ArkTS-Sta: fontSize(value: Dimension | undefined)
+ArkTS-Sta: fontSize(value: Dimension | undefined): this
 
 设置安全控件文字的尺寸。
 
@@ -180,13 +180,13 @@ ArkTS-Sta: fontSize(value: Dimension | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## fontStyle
 
-ArkTS-Dyn: fontStyle(value: FontStyle)
+ArkTS-Dyn: fontStyle(value: FontStyle): T
 
-ArkTS-Sta: fontStyle(value: FontStyle | undefined)
+ArkTS-Sta: fontStyle(value: FontStyle | undefined): this
 
 设置安全控件文字的样式。
 
@@ -208,13 +208,13 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## fontWeight
 
-ArkTS-Dyn: fontWeight(value: number | FontWeight | string | Resource)
+ArkTS-Dyn: fontWeight(value: number | FontWeight | string | Resource): T
 
-ArkTS-Sta: fontWeight(value: int | FontWeight | string | Resource | undefined)
+ArkTS-Sta: fontWeight(value: int | FontWeight | string | Resource | undefined): this
 
 设置安全控件文字粗细。
 
@@ -236,13 +236,13 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | Resource | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## fontFamily
 
-ArkTS-Dyn: fontFamily(value: string | Resource)
+ArkTS-Dyn: fontFamily(value: string | Resource): T
 
-ArkTS-Sta: fontFamily(value: string | Resource | undefined)
+ArkTS-Sta: fontFamily(value: string | Resource | undefined): this
 
 设置安全控件文字的字体。
 
@@ -264,13 +264,13 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## fontColor
 
-ArkTS-Dyn: fontColor(value: ResourceColor)
+ArkTS-Dyn: fontColor(value: ResourceColor): T
 
-ArkTS-Sta: fontColor(value: ResourceColor | undefined)
+ArkTS-Sta: fontColor(value: ResourceColor | undefined): this
 
 设置安全控件文字的颜色。
 
@@ -292,13 +292,13 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## iconColor
 
-ArkTS-Dyn: iconColor(value: ResourceColor)
+ArkTS-Dyn: iconColor(value: ResourceColor): T
 
-ArkTS-Sta: iconColor(value: ResourceColor | undefined)
+ArkTS-Sta: iconColor(value: ResourceColor | undefined): this
 
 设置安全控件图标的颜色。
 
@@ -320,13 +320,13 @@ ArkTS-Sta: iconColor(value: ResourceColor | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## backgroundColor
 
-ArkTS-Dyn: backgroundColor(value: ResourceColor)
+ArkTS-Dyn: backgroundColor(value: ResourceColor): T
 
-ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
+ArkTS-Sta: backgroundColor(value: ResourceColor | undefined): this
 
 设置安全控件的背景颜色。
 
@@ -348,13 +348,13 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## borderStyle
 
-ArkTS-Dyn: borderStyle(value: BorderStyle)
+ArkTS-Dyn: borderStyle(value: BorderStyle): T
 
-ArkTS-Sta: borderStyle(value: BorderStyle | undefined)
+ArkTS-Sta: borderStyle(value: BorderStyle | undefined): this
 
 设置安全控件的边框的样式。
 
@@ -376,13 +376,13 @@ ArkTS-Sta: borderStyle(value: BorderStyle | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## borderWidth
 
-ArkTS-Dyn: borderWidth(value: Dimension)
+ArkTS-Dyn: borderWidth(value: Dimension): T
 
-ArkTS-Sta: borderWidth(value: Dimension | undefined)
+ArkTS-Sta: borderWidth(value: Dimension | undefined): this
 
 设置安全控件的边框宽度。
 
@@ -404,13 +404,13 @@ ArkTS-Sta: borderWidth(value: Dimension | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## borderColor
 
-ArkTS-Dyn: borderColor(value: ResourceColor)
+ArkTS-Dyn: borderColor(value: ResourceColor): T
 
-ArkTS-Sta: borderColor(value: ResourceColor | undefined)
+ArkTS-Sta: borderColor(value: ResourceColor | undefined): this
 
 设置安全控件的边框颜色。
 
@@ -432,19 +432,19 @@ ArkTS-Sta: borderColor(value: ResourceColor | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## borderRadius
 
-ArkTS-Dyn: borderRadius(radius: Dimension | BorderRadiuses)
-
-ArkTS-Sta: borderRadius(radius: Dimension | BorderRadiuses | undefined)
+borderRadius(radius: Dimension): T
 
 设置安全控件的边框圆角半径。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[borderRadius](#borderradius-1)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -454,7 +454,7 @@ ArkTS-Sta: borderRadius(radius: Dimension | BorderRadiuses | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9)<sup>15+</sup> <br> ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9)<sup>15+</sup> \| undefined |是 |安全控件的边框圆角半径。<br/>默认值：0vp。<br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
+| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。默认值: 0vp。|
 
 **返回值：**
 
@@ -468,6 +468,12 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 
 设置安全控件的边框圆角半径，支持分别设置四个圆角的半径。
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[borderRadius](#borderradius-1)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -476,7 +482,7 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。|
+| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。默认值: 0vp。|
 
 **返回值：**
 
@@ -484,11 +490,37 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 | -------- | -------- |
 | T | 返回安全控件的属性。 |
 
+## borderRadius
+
+borderRadius(radius: Dimension | BorderRadiuses | undefined): this
+
+设置安全控件的边框圆角半径。
+
+**ArkTS-Sta起始版本：** 23
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[borderRadius](#borderradius)和[borderRadius](#borderradius15)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                   |
+|------------|------|-------|---------|
+| value | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9)<sup>15+</sup> \| undefined |是 |安全控件的边框圆角半径。<br/>默认值: 0vp。设定为undefined时使用默认值进行设置。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回安全控件的属性。 |
+
 ## padding
 
-ArkTS-Dyn: padding(value: Padding | Dimension)
+ArkTS-Dyn: padding(value: Padding | Dimension): T
 
-ArkTS-Sta: padding(value: Padding | Dimension | undefined)
+ArkTS-Sta: padding(value: Padding | Dimension | undefined): this
 
 设置安全控件的内边距。
 
@@ -510,13 +542,13 @@ ArkTS-Sta: padding(value: Padding | Dimension | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## align<sup>15+</sup>
 
-ArkTS-Dyn: align(alignType: Alignment)
+ArkTS-Dyn: align(alignType: Alignment): T
 
-ArkTS-Sta: align(alignType: Alignment | undefined)
+ArkTS-Sta: align(alignType: Alignment | undefined): this
 
 设置安全控件图标文本的对齐方式。
 
@@ -538,13 +570,13 @@ ArkTS-Sta: align(alignType: Alignment | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## textIconSpace
 
-ArkTS-DynextIconSpace(value: Dimension)
+ArkTS-Dyn: textIconSpace(value: Dimension): T
 
-ArkTS-StaextIconSpace(value: Dimension | undefined)
+ArkTS-Sta: textIconSpace(value: Dimension | undefined): this
 
 设置安全控件中图标和文字的间距。
 
@@ -566,13 +598,13 @@ ArkTS-StaextIconSpace(value: Dimension | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## width<sup>11+</sup>
 
-ArkTS-Dyn: width(value: Length)
+ArkTS-Dyn: width(value: Length): T
 
-ArkTS-Sta: width(value: Length | undefined)
+ArkTS-Sta: width(value: Length | undefined): this
 
 设置安全控件自身的宽度，缺省时将根据元素内容自适配宽度。
 
@@ -594,13 +626,13 @@ ArkTS-Sta: width(value: Length | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## height<sup>11+</sup>
 
-ArkTS-Dyn: height(value: Length)
+ArkTS-Dyn: height(value: Length): T
 
-ArkTS-Sta: height(value: Length | undefined)
+ArkTS-Sta: height(value: Length | undefined): this
 
 设置安全控件自身的高度，缺省时将根据元素内容自适配高度。
 
@@ -622,13 +654,13 @@ ArkTS-Sta: height(value: Length | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## size<sup>11+</sup>
 
-ArkTS-Dyn: size(value: SizeOptions)
+ArkTS-Dyn: size(value: SizeOptions): T
 
-ArkTS-Sta: size(value: SizeOptions | undefined)
+ArkTS-Sta: size(value: SizeOptions | undefined): this
 
 设置宽高尺寸，缺省时将根据元素内容自适配高宽尺寸。
 
@@ -650,13 +682,13 @@ ArkTS-Sta: size(value: SizeOptions | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## constraintSize<sup>11+</sup>
 
-ArkTS-Dyn: constraintSize(value: ConstraintSizeOptions)
+ArkTS-Dyn: constraintSize(value: ConstraintSizeOptions): T
 
-ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined)
+ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
 设置约束尺寸，组件布局时限制尺寸范围。
 
@@ -678,7 +710,7 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## alignRules<sup>15+</sup>
 
@@ -738,7 +770,7 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 ## alignRules
 
-alignRules(alignRule: AlignRuleOption | LocalizedAlignRuleOptions | undefined)
+alignRules(alignRule: AlignRuleOption | LocalizedAlignRuleOptions | undefined): this
 
 指定设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer](ts-container-relativecontainer.md)时生效。LocalizedAlignRuleOptions水平方向上以start和end分别替代上述[alignRules](#alignrules15)的left和right，以便在RTL模式下能镜像显示，建议使用LocalizedAlignRuleOptions指定设置在相对容器中子组件的对齐规则。
 
@@ -756,11 +788,17 @@ alignRules(alignRule: AlignRuleOption | LocalizedAlignRuleOptions | undefined)
 | ------ | ------------------------------------------- | ---- | ------------------------ |
 | alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9对象说明) \| [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明) \| undefined | 是 | 指定设置在相对容器中子组件的对齐规则。设定为undefined时不生效。|
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回安全控件的属性。 |
+
 ## id<sup>15+</sup>
 
-ArkTS-Dyn: id(id: string)
+ArkTS-Dyn: id(id: string): T
 
-ArkTS-Sta: id(id: string | undefined)
+ArkTS-Sta: id(id: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。
 
@@ -782,13 +820,13 @@ ArkTS-Sta: id(id: string | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## chainMode<sup>15+</sup>
 
-ArkTS-Dyn: chainMode(direction: Axis, style: ChainStyle)
+ArkTS-Dyn: chainMode(direction: Axis, style: ChainStyle): T
 
-ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
+ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined): this
 
 指定以该组件为链头所构成的链的参数，仅当父容器为[RelativeContainer](ts-container-relativecontainer.md)时生效。
 
@@ -811,13 +849,13 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## minFontScale<sup>18+</sup>
 
-ArkTS-Dyn: minFontScale(scale: number | Resource)
+ArkTS-Dyn: minFontScale(scale: number | Resource): T
 
-ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
+ArkTS-Sta: minFontScale(scale: double | Resource | undefined): this
 
 设置文本最小的字体缩小倍数。
 
@@ -839,13 +877,13 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## maxFontScale<sup>18+</sup>
 
-ArkTS-Dyn: maxFontScale(scale: number | Resource)
+ArkTS-Dyn: maxFontScale(scale: number | Resource): T
 
-ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
+ArkTS-Sta: maxFontScale(scale: double | Resource | undefined): this
 
 设置文本最大的字体放大倍数。
 
@@ -867,13 +905,13 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## minFontSize<sup>18+</sup>
 
-ArkTS-Dyn: minFontSize(minSize: number | string | Resource)
+ArkTS-Dyn: minFontSize(minSize: number | string | Resource): T
 
-ArkTS-Sta: minFontSize(minSize: double | string | Resource | undefined)
+ArkTS-Sta: minFontSize(minSize: double | string | Resource | undefined): this
 
 设置文本最小显示字号。
 - 配合[maxFontSize](#maxfontsize18)以及[maxLines](#maxlines18)或布局大小限制使用，可实现自适应字号，单独设置不生效。
@@ -898,13 +936,13 @@ ArkTS-Sta: minFontSize(minSize: double | string | Resource | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## maxFontSize<sup>18+</sup>
 
-ArkTS-Dyn: maxFontSize(maxSize: number | string | Resource)
+ArkTS-Dyn: maxFontSize(maxSize: number | string | Resource): T
 
-ArkTS-Sta: maxFontSize(maxSize: double | string | Resource | undefined)
+ArkTS-Sta: maxFontSize(maxSize: double | string | Resource | undefined): this
 
 设置文本最大显示字号。
 - 配合[minFontSize](#minfontsize18)以及[maxLines](#maxlines18)或布局大小限制使用，可实现自适应字号，单独设置不生效。
@@ -928,13 +966,13 @@ ArkTS-Sta: maxFontSize(maxSize: double | string | Resource | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## maxLines<sup>18+</sup>
 
-ArkTS-Dyn: maxLines(line: number | Resource)
+ArkTS-Dyn: maxLines(line: number | Resource): T
 
-ArkTS-Sta: maxLines(line: int | Resource | undefined)
+ArkTS-Sta: maxLines(line: int | Resource | undefined): this
 
 设置文本的最大行数。默认情况下，文本自动换行，指定此属性后，文本的最大显示行数不会超过指定值。
 
@@ -956,13 +994,13 @@ ArkTS-Sta: maxLines(line: int | Resource | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## heightAdaptivePolicy<sup>18+</sup>
 
-ArkTS-Dyn: heightAdaptivePolicy(policyextHeightAdaptivePolicy)
+ArkTS-Dyn: heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
-ArkTS-Sta: heightAdaptivePolicy(policyextHeightAdaptivePolicy | undefined)
+ArkTS-Sta: heightAdaptivePolicy(policy: TextHeightAdaptivePolicy | undefined): this
 
 设置文本自适应高度的方式。
 
@@ -998,13 +1036,13 @@ ArkTS-Sta: heightAdaptivePolicy(policyextHeightAdaptivePolicy | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## enabled<sup>18+</sup>
 
-ArkTS-Dyn: enabled(respond: boolean)
+ArkTS-Dyn: enabled(respond: boolean): T
 
-ArkTS-Sta: enabled(respond: boolean | undefined)
+ArkTS-Sta: enabled(respond: boolean | undefined): this
 
 设置安全控件是否可交互。
 
@@ -1026,13 +1064,13 @@ ArkTS-Sta: enabled(respond: boolean | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## focusBox<sup>22+</sup>
 
-ArkTS-Dyn: focusBox(style: FocusBoxStyle)
+ArkTS-Dyn: focusBox(style: FocusBoxStyle): T
 
-ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined)
+ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 设置安全控件系统焦点框样式。
 
@@ -1054,7 +1092,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |
 
 ## SecurityComponentLayoutDirection
 
