@@ -1923,7 +1923,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### setImageForRecent
+## setImageForRecent
 
 setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
 
@@ -2026,7 +2026,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-### removeImageForRecent
+## removeImageForRecent
 
 removeImageForRecent(): Promise&lt;void&gt;
 
