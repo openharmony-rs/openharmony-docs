@@ -904,7 +904,7 @@ audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOther
 
 setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
 
-应用将当前音频会话内录音流的应用自身静音状态传递给底层框架。该方法不会触发录音流静音，仅在部分场景用于优化设备功耗和内部处理策略。使用Promise异步回调。
+应用将当前音频会话内录音流的自身静音状态传递给底层框架。该方法不会触发录音流静音，仅在部分场景用于优化设备功耗和内部处理策略。使用Promise异步回调。
 
 > **说明：**
 >
