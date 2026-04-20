@@ -382,7 +382,7 @@ onExposureStateChange(callback: Callback\<ExposureState\>): void
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e#exposurestate24)\> | 是   | 使用callback的方式获取当前曝光状态。            |
+| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e#exposurestate24)\> | 是   | 回调函数，返回当前曝光状态。            |
 
 **示例：**
 
@@ -418,7 +418,7 @@ offExposureStateChange(callback?: Callback<ExposureState>): void
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e#exposurestate24)\> | 否   | 回调函数，如果指定参数则取消对应callback，callback对象不可是匿名函数，否则取消所有callback。     |
+| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e#exposurestate24)\> | 否   | 回调函数，如果指定参数则取消对应callback，callback对象如果是空或者匿名函数，取消所有callback。     |
 
 **示例：**
 
