@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,41 +23,59 @@ import { fileIo } from '@kit.CoreFileKit';
 
 使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
 
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
+ArkTS-Dyn示例：
 
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let context = this.context;
+    let pathDir = context.filesDir;
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let pathDir = context.filesDir;
+```
 
 获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义解及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 ## fileIo.stat
 
-stat(file: string | number): Promise&lt;Stat&gt;
+ArkTS-Dyn: stat(file: string | number): Promise&lt;Stat&gt;
+
+ArkTS-Sta: stat(file: string | int): Promise&lt;Stat&gt;
 
 获取文件或目录详细属性信息，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                       |
-| ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   |  文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
-  | 类型                           | 说明         |
-  | ---------------------------- | ---------- |
-  | Promise&lt;[Stat](#stat)&gt; | Promise对象。返回文件或目录的具体信息。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;[Stat](#stat)&gt; | Promise对象。返回文件或目录的具体信息。 |
 
 **错误码：**
 
@@ -64,33 +83,55 @@ stat(file: string | number): Promise&lt;Stat&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.stat(filePath).then((stat: fileIo.Stat) => {
-    console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get file info. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.stat(filePath).then((stat: fileIo.Stat) => {
+  console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get file info. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.stat(filePath).then((stat:fileIo.Stat) => {
+console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
+}).catch((error: Error) => {
+let err: BusinessError = error as BusinessError;
+console.error(`Failed to get file info. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.stat
 
-stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
+ArkTS-Dyn: stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
+
+ArkTS-Sta: stat(file: string | int, callback: AsyncCallback&lt;Stat&gt;): void
 
 获取文件或目录的详细属性信息，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                               | 必填 | 说明                           |
-| -------- | ---------------------------------- | ---- | ------------------------------ |
-| file     | string \| number                   | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
-| callback | AsyncCallback&lt;[Stat](#stat)&gt; | 是   | 异步获取文件或目录的信息之后的回调。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file     | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。 |
+| callback | AsyncCallback&lt;[Stat](#stat)&gt;                   | 是   | 异步获取文件或目录的信息之后的回调。                 |
 
 **错误码：**
 
@@ -98,39 +139,61 @@ stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  fileIo.stat(pathDir, (err: BusinessError, stat: fileIo.Stat) => {
-    if (err) {
-      console.error(`Failed to get file info. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+fileIo.stat(pathDir, (err: BusinessError, stat: fileIo.Stat) => {
+if (err) {
+  console.error(`Failed to get file info. Code: ${err.code}, message: ${err.message}`);
+} else {
+  console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
+}
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+fileIo.stat(pathDir, (err: BusinessError | null, stat:fileIo.Stat | undefined) => {
+if (err) {
+  console.error(`Failed to get file info. Code: ${err.code}, message: ${err.message}`);
+} else {
+  console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
+}
+});
+```
 
 ## fileIo.statSync
 
-statSync(file: string | number): Stat
+ArkTS-Dyn: statSync(file: string | number): Stat
+
+ArkTS-Sta: statSync(file: string | int): Stat
 
 以同步方法获取文件或目录详细属性信息。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                       |
-| ------ | ------ | ---- | -------------------------- |
-| file   | string \| number | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
-  | 类型            | 说明         |
-  | ------------- | ---------- |
-  | [Stat](#stat) | 表示文件或目录的具体信息。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| [Stat](#stat) | 表示文件或目录的具体信息。 |
 
 **错误码：**
 
@@ -138,10 +201,10 @@ statSync(file: string | number): Stat
 
 **示例：**
 
-  ```ts
-  let stat = fileIo.statSync(pathDir);
-  console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
-  ```
+```ts
+let stat = fileIo.statSync(pathDir);
+console.info(`Succeeded in getting file info, the size of file is ${stat.size}`);
+```
 
 ## fileIo.access
 
@@ -149,44 +212,67 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
 检查文件或目录是否存在，或校验操作权限，使用promise异步回调。<br>校验读、写或读写权限不通过会抛出13900012（Permission denied）错误码。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录应用沙箱路径。                                   |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件是否存在。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                 |
+| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;boolean&gt; | Promise对象。返回布尔值。返回true，表示文件存在；返回false，表示文件不存在。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;boolean&gt; | Promise对象。返回布尔值。返回true，表示文件存在；返回false，表示文件不存在。 |
 
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
-
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.access(filePath).then((res: boolean) => {
-    if (res) {
-      console.info(`Succeeded in checking file, file exists.`);
-    } else {
-      console.info(`Succeeded in checking file, file does not exist.`);
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath).then((res: boolean) => {
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath).then((res: boolean) => {
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
+  }
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.access<sup>12+</sup>
 
@@ -196,19 +282,23 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path | string | 是   | 文件或目录应用沙箱路径。                                   |
-| mode | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。|
-| flag | [AccessFlagType](#accessflagtype12) | 是| 文件或目录校验的位置。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path               | string                              | 是   | 文件或目录应用沙箱路径。 |
+| mode | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。 |
+| flag | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;boolean&gt; | Promise对象。返回布尔值。返回true，表示文件或目录在本地且校验权限存在；返回false，表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;boolean&gt; | Promise对象。返回布尔值。返回true，表示文件或目录在本地且校验权限存在；返回false，表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
 
 **错误码：**
 
@@ -216,20 +306,40 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.access(filePath, fileIo.AccessModeType.EXIST, fileIo.AccessFlagType.LOCAL).then((res: boolean) => {
-    if (res) {
-      console.info(`Succeeded in checking file, file exists.`);
-    } else {
-      console.info(`Succeeded in checking file, file does not exist.`);
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath, fileIo.AccessModeType.EXIST, fileIo.AccessFlagType.LOCAL).then((res: boolean) => {
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath,fileIo.AccessModeType.EXIST,fileIo.AccessFlagType.LOCAL).then((res: boolean) => {
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
+  }
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.access
 
@@ -237,40 +347,62 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 检查文件或目录是否存在，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.File.FileIO
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明                                                         |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                    | 是   | 文件或目录应用沙箱路径。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path     | string                       | 是   | 文件或目录应用沙箱路径。                                                  |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
 
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
-
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.access(filePath, (err: BusinessError, res: boolean) => {
-    if (err) {
-      console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath, (err: BusinessError, res: boolean) => {
+  if (err) {
+    console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    if (res) {
+      console.info(`Succeeded in checking file, file exists.`);
     } else {
-      if (res) {
-        console.info(`Succeeded in checking file, file exists.`);
-      } else {
-        console.info(`Succeeded in checking file, file does not exist.`);
-      }
+      console.info(`Succeeded in checking file, file does not exist.`);
     }
-  });
-  ```
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.access(filePath, (err: BusinessError<void> | null, res: boolean | undefined) => {
+  if (err) {
+    console.error(`Failed to access. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    if (res) {
+      console.info(`Succeeded in checking file, file exists.`);
+    } else {
+      console.info(`Succeeded in checking file, file does not exist.`);
+    }
+  }
+});
+```
 
 ## fileIo.accessSync
 
@@ -278,22 +410,26 @@ accessSync(path: string, mode?: AccessModeType): boolean
 
 以同步方法检查文件或目录是否存在，或校验操作权限。<br>校验读、写或读写权限不通过会抛出13900012（Permission denied）错误码。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录应用沙箱路径。                                   |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件或目录是否存在。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                       |
+| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件或目录是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | boolean | 返回true，表示文件存在；返回false，表示文件不存在。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 返回true，表示文件存在；返回false，表示文件不存在。 |
 
 **错误码：**
 
@@ -301,22 +437,22 @@ accessSync(path: string, mode?: AccessModeType): boolean
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let filePath = pathDir + "/test.txt";
-  try {
-    let res = fileIo.accessSync(filePath);
-    if (res) {
-      console.info(`Succeeded in checking file, file exists.`);
-    } else {
-      console.info(`Succeeded in checking file, file does not exist.`);
-    }
-  } catch(error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
+let filePath = pathDir + "/test.txt";
+try {
+  let res = fileIo.accessSync(filePath);
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
   }
-  ```
+} catch(error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## fileIo.accessSync<sup>12+</sup>
 
@@ -326,19 +462,23 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path  | string | 是   | 文件应用沙箱路径。                                   |
-| mode | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。|
-| flag | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path               | string                              | 是   | 文件应用沙箱路径。 |
+| mode | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。 |
+| flag | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | boolean | 返回true，表示文件在本地且校验权限存在；返回false，表示文件不存在或者文件在云端或其他分布式设备上。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 返回true，表示文件在本地且校验权限存在；返回false，表示文件不存在或者文件在云端或其他分布式设备上。 |
 
 **错误码：**
 
@@ -346,44 +486,50 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let filePath = pathDir + "/test.txt";
-  try {
-    let res = fileIo.accessSync(filePath, fileIo.AccessModeType.EXIST, fileIo.AccessFlagType.LOCAL);
-    if (res) {
-      console.info(`Succeeded in checking file, file exists.`);
-    } else {
-      console.info(`Succeeded in checking file, file does not exist.`);
-    }
-  } catch(error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
+let filePath = pathDir + "/test.txt";
+try {
+  let res = fileIo.accessSync(filePath, fileIo.AccessModeType.EXIST, fileIo.AccessFlagType.LOCAL);
+  if (res) {
+    console.info(`Succeeded in checking file, file exists.`);
+  } else {
+    console.info(`Succeeded in checking file, file does not exist.`);
   }
-  ```
+} catch(error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## fileIo.close
 
-close(file: number | File): Promise&lt;void&gt;
+ArkTS-Dyn: close(file: number | File): Promise&lt;void&gt;
+
+ArkTS-Sta: close(file: int | File): Promise&lt;void&gt;
 
 关闭文件或目录，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名  | 类型     | 必填   | 说明           |
-  | ---- | ------ | ---- | ------------ |
-  | file   | number \| [File](#file) | 是    | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file   | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是   | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -391,34 +537,57 @@ close(file: number | File): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath);
-  fileIo.close(file).then(() => {
-    console.info(`Succeeded in closing file.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to close file. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath);
+fileIo.close(file).then(() => {
+  console.info(`Succeeded in closing file.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to close file. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file =fileIo.openSync(filePath);
+fileIo.close(file).then(() => {
+  console.info(`Succeeded in closing file.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to close file. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.close
 
-close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: close(file: int | File, callback: AsyncCallback&lt;void&gt;): void
 
 关闭文件或目录，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名      | 类型                        | 必填   | 说明           |
-  | -------- | ------------------------- | ---- | ------------ |
-  | file       | number \| [File](#file)        | 是    | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
-  | callback | AsyncCallback&lt;void&gt; | 是    | 异步关闭文件或目录之后的回调。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file     | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是   | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| callback | AsyncCallback&lt;void&gt;                                          | 是   | 异步关闭文件或目录之后的回调。                                                                                   |
 
 **错误码：**
 
@@ -426,35 +595,57 @@ close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath);
-  fileIo.close(file, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to close file. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in closing file.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath);
+fileIo.close(file, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to close file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in closing file.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file =fileIo.openSync(filePath);
+fileIo.close(file, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to close file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in closing file.`);
+  }
+});
+```
 
 ## fileIo.closeSync
 
-closeSync(file: number | File): void
+ArkTS-Dyn: closeSync(file: number | File): void
+
+ArkTS-Sta: closeSync(file: int | File): void
 
 以同步方法关闭文件或目录。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.File.FileIO
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-  | 参数名  | 类型     | 必填   | 说明           |
-  | ---- | ------ | ---- | ------------ |
-  | file   | number \| [File](#file) | 是    | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file   | ArkTS-Dyn: number \| [File](#file)<br>ArkTS-Sta: int \| [File](#file) | 是   | 已打开的File对象或已打开的文件描述符fd。关闭后file对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
 
 **错误码：**
 
@@ -462,11 +653,11 @@ closeSync(file: number | File): void
 
 **示例：**
 
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath);
-  fileIo.closeSync(file);
-  ```
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath);
+fileIo.closeSync(file);
+```
 
 ## fileIo.copy<sup>11+</sup>
 
@@ -479,25 +670,31 @@ copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名  | 类型                         | 必填   | 说明                                       |
-  | ---- | -------------------------- | ---- | ---------------------------------------- |
-  | srcUri  | string | 是    | 待复制文件或目录的URI。                      |
-  | destUri | string | 是    | 目标文件或目录的URI。                          |
-  | options | [CopyOptions](#copyoptions11)| 否| options中提供拷贝进度回调。不填该参数则无拷贝进度回调。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| srcUri  | string                        | 是   | 待复制文件或目录的URI。                                 |
+| destUri | string                        | 是   | 目标文件或目录的URI。                                   |
+| options | [CopyOptions](#copyoptions11) | 否   | options中提供拷贝进度回调。不填该参数则无拷贝进度回调。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise\<void> | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<void> | Promise对象。无返回值。 |
 
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -526,6 +723,37 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let srcDirPathLocal: string = pathDir + "/src";
+let dstDirPathLocal: string = pathDir + "/dest";
+
+let srcDirUriLocal: string = fileUri.getUriFromPath(srcDirPathLocal);
+let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
+
+let progressListener:fileIo.ProgressListener = (progress:fileIo.Progress) => {
+  console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+};
+let copyOption:fileIo.CopyOptions = {
+  "progressListener" : progressListener
+}
+try {
+  fileIo.copy(srcDirUriLocal, dstDirUriLocal, copyOption).then(()=>{
+    console.info("Succeeded in copying.");
+  }).catch((error: Error)=>{
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch(error: Error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to copy.Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
@@ -537,19 +765,25 @@ copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名  | 类型    | 必填   | 说明          |
-  | ---- | ------------------ | ---- | ----------------------------|
-  | srcUri  | string | 是    | 待复制文件或目录的URI。                      |
-  | destUri | string | 是    | 目标文件或目录的URI。                          |
-  | callback | AsyncCallback\<void>| 是| 异步拷贝之后的回调。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| srcUri   | string               | 是   | 待复制文件或目录的URI。 |
+| destUri  | string               | 是   | 目标文件或目录的URI。   |
+| callback | AsyncCallback\<void> | 是   | 异步拷贝之后的回调。    |
 
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -574,6 +808,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let srcDirPathLocal: string = pathDir + "/src";
+let dstDirPathLocal: string = pathDir + "/dest";
+
+let srcDirUriLocal: string = fileUri.getUriFromPath(srcDirPathLocal);
+let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
+
+try {
+  fileIo.copy(srcDirUriLocal, dstDirUriLocal, (err: BusinessError<void> | null) => {
+    if (err) {
+      console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in copying.");
+  })
+} catch(error: Error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback\<void>): void
@@ -585,20 +845,26 @@ copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallb
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名  | 类型                         | 必填   | 说明                                       |
-  | ---- | -------------------------- | ---- | ---------------------------------------- |
-  | srcUri  | string | 是    | 待复制文件或目录的URI。                      |
-  | destUri | string | 是    | 目标文件或目录的URI。                          |
-  | options | [CopyOptions](#copyoptions11) |是| 拷贝进度回调。                          |
-  | callback | AsyncCallback\<void>| 是| 异步拷贝之后的回调。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| srcUri   | string                        | 是   | 待复制文件或目录的URI。 |
+| destUri  | string                        | 是   | 目标文件或目录的URI。   |
+| options  | [CopyOptions](#copyoptions11) | 是   | 拷贝进度回调。          |
+| callback | AsyncCallback\<void>          | 是   | 异步拷贝之后的回调。    |
 
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -629,29 +895,67 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let srcDirPathLocal: string = pathDir + "/src";
+let dstDirPathLocal: string = pathDir + "/dest";
+
+let srcDirUriLocal: string = fileUri.getUriFromPath(srcDirPathLocal);
+let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
+
+try {
+  let progressListener:fileIo.ProgressListener = (progress:fileIo.Progress) => {
+    console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+  };
+  let copyOption:fileIo.CopyOptions = {
+    "progressListener" : progressListener
+  }
+  fileIo.copy(srcDirUriLocal, dstDirUriLocal, copyOption, (err: BusinessError<void> | null) => {
+    if (err) {
+      console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in copying.");
+  })
+} catch(error: Error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## fileIo.copyFile
 
-copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt;void&gt;
+ArkTS-Dyn: copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: copyFile(src: string | int, dest: string | int, mode?: int): Promise&lt;void&gt;
 
 复制文件，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名  | 类型                         | 必填   | 说明                                       |
-  | ---- | -------------------------- | ---- | ---------------------------------------- |
-  | src  | string \| number | 是    | 待复制文件的路径或待复制文件的文件描述符。                      |
-  | dest | string \| number | 是    | 目标文件路径或目标文件的文件描述符。                          |
-  | mode | number                     | 否    | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src    | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 待复制文件的路径或待复制文件的文件描述符。                                                       |
+| dest   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 目标文件路径或目标文件的文件描述符。                                                             |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 否   | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -659,36 +963,59 @@ copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let srcPath = pathDir + "/srcDir/test.txt";
-  let dstPath = pathDir + "/dstDir/test.txt";
-  fileIo.copyFile(srcPath, dstPath, 0).then(() => {
-    console.info(`Succeeded in copying file.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let srcPath = pathDir + "/srcDir/test.txt";
+let dstPath = pathDir + "/dstDir/test.txt";
+fileIo.copyFile(srcPath, dstPath, 0).then(() => {
+  console.info(`Succeeded in copying file.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let srcPath = pathDir + "/srcDir/test.txt";
+let dstPath = pathDir + "/dstDir/test.txt";
+fileIo.copyFile(srcPath, dstPath, 0).then(() => {
+  console.info(`Succeeded in copying file.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.copyFile
 
-copyFile(src: string | number, dest: string | number, mode: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: copyFile(src: string | number, dest: string | number, mode: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: copyFile(src: string | int, dest: string | int, mode: int, callback: AsyncCallback&lt;void&gt;): void
 
 复制文件，可设置覆盖文件的方式，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名      | 类型                         | 必填   | 说明                                       |
-  | -------- | -------------------------- | ---- | ---------------------------------------- |
-  | src      | string \| number | 是    | 待复制文件的路径或待复制文件的文件描述符。                      |
-  | dest     | string \| number | 是    | 目标文件路径或目标文件的文件描述符。                          |
-  | mode     | number                     | 是    | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
-  | callback | AsyncCallback&lt;void&gt;  | 是    | 异步复制文件之后的回调。                             |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src      | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 待复制文件的路径或待复制文件的文件描述符。                                                       |
+| dest     | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 目标文件路径或目标文件的文件描述符。                                                             |
+| mode     | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| callback | AsyncCallback&lt;void&gt;                            | 是   | 异步复制文件之后的回调。                                                                         |
 
 **错误码：**
 
@@ -696,37 +1023,61 @@ copyFile(src: string | number, dest: string | number, mode: number, callback: As
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let srcPath = pathDir + "/srcDir/test.txt";
-  let dstPath = pathDir + "/dstDir/test.txt";
-  fileIo.copyFile(srcPath, dstPath, 0, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in copying file.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let srcPath = pathDir + "/srcDir/test.txt";
+let dstPath = pathDir + "/dstDir/test.txt";
+fileIo.copyFile(srcPath, dstPath, 0, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in copying file.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let srcPath = pathDir + "/srcDir/test.txt";
+let dstPath = pathDir + "/dstDir/test.txt";
+fileIo.copyFile(srcPath, dstPath, 0, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in copying file.`);
+  }
+});
+```
 
 ## fileIo.copyFile
 
-copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: copyFile(src: string | int, dest: string | int, callback: AsyncCallback&lt;void&gt;): void
 
 复制文件，覆盖方式为完全覆盖目标文件，未覆盖部分将被裁切。使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名      | 类型                         | 必填   | 说明                                       |
-  | -------- | -------------------------- | ---- | ---------------------------------------- |
-  | src      | string \| number | 是    | 待复制文件的路径或待复制文件的文件描述符。                      |
-  | dest     | string \| number | 是    | 目标文件路径或目标文件的文件描述符。                          |
-  | callback | AsyncCallback&lt;void&gt;  | 是    | 异步复制文件之后的回调。                             |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src      | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 待复制文件的路径或待复制文件的文件描述符。 |
+| dest     | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 目标文件路径或目标文件的文件描述符。       |
+| callback | AsyncCallback&lt;void&gt;                            | 是   | 异步复制文件之后的回调。                   |
 
 **错误码：**
 
@@ -734,38 +1085,61 @@ copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let srcPath = pathDir + "/srcDir/test.txt";
-  let dstPath = pathDir + "/dstDir/test.txt";
-  fileIo.copyFile(srcPath, dstPath, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in copying file.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let srcPath = pathDir + "/srcDir/test.txt";
+let dstPath = pathDir + "/dstDir/test.txt";
+fileIo.copyFile(srcPath, dstPath, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in copying file.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let srcPath = pathDir + "/srcDir/test.txt";
+let dstPath = pathDir + "/dstDir/test.txt";
+fileIo.copyFile(srcPath, dstPath, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to copy file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in copying file.`);
+  }
+});
+```
 
 ## fileIo.copyFileSync
 
-copyFileSync(src: string | number, dest: string | number, mode?: number): void
+ArkTS-Dyn: copyFileSync(src: string | number, dest: string | number, mode?: number): void
+
+ArkTS-Sta: copyFileSync(src: string | int, dest: string | int, mode?: int): void
 
 以同步方法复制文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名  | 类型                         | 必填   | 说明                                       |
-  | ---- | -------------------------- | ---- | ---------------------------------------- |
-  | src  | string \| number | 是    | 待复制文件的路径或待复制文件的文件描述符。                      |
-  | dest | string \| number | 是    | 目标文件路径或目标文件的文件描述符。                          |
-  | mode | number                     | 否    | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src    | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 待复制文件的路径或待复制文件的文件描述符。                                                       |
+| dest   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 目标文件路径或目标文件的文件描述符。                                                             |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 否   | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
 
 **错误码：**
 
@@ -773,33 +1147,39 @@ copyFileSync(src: string | number, dest: string | number, mode?: number): void
 
 **示例：**
 
-  ```ts
-  let srcPath = pathDir + "/srcDir/test.txt";
-  let dstPath = pathDir + "/dstDir/test.txt";
-  fileIo.copyFileSync(srcPath, dstPath);
-  ```
+```ts
+let srcPath = pathDir + "/srcDir/test.txt";
+let dstPath = pathDir + "/dstDir/test.txt";
+fileIo.copyFileSync(srcPath, dstPath);
+```
 
 ## fileIo.copyDir<sup>10+</sup>
 
-copyDir(src: string, dest: string, mode?: number): Promise\<void>
+ArkTS-Dyn: copyDir(src: string, dest: string, mode?: number): Promise\<void>
+
+ArkTS-Sta: copyDir(src: string, dest: string, mode?: int): Promise\<void>
 
 复制源目录至目标路径下，使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名    | 类型     | 必填   | 说明                          |
-  | ------ | ------ | ---- | --------------------------- |
-  | src | string | 是    | 源目录的应用沙箱路径。 |
-  | dest | string | 是    | 目标目录的应用沙箱路径。 |
-  | mode | number | 否    | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src    | string                            | 是   | 源目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| dest   | string                            | 是   | 目标目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -807,18 +1187,37 @@ copyDir(src: string, dest: string, mode?: number): Promise\<void>
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  // copy directory from srcPath to destPath
-  let srcPath = pathDir + "/srcDir/";
-  let destPath = pathDir + "/destDir/";
-  fileIo.copyDir(srcPath, destPath, 0).then(() => {
-    console.info(`Succeeded in copying directory.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// copy directory from srcPath to destPath
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fileIo.copyDir(srcPath, destPath, 0).then(() => {
+  console.info(`Succeeded in copying directory.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// copy directory from srcPath to destPath
+let pathDir = "/data/storage/el2/base/haps/entry/files";
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fileIo.copyDir(srcPath, destPath, 0).then(() => {
+  console.info(`Succeeded in copying directory.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.copyDir<sup>10+</sup>
 
@@ -826,16 +1225,22 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[copyDirWithConflictFiles](#fileiocopydirwithconflictfiles23)。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
-  | 参数名    | 类型     | 必填   | 说明                          |
-  | ------ | ------ | ---- | --------------------------- |
-  | src | string | 是    | 源目录的应用沙箱路径。 |
-  | dest | string | 是    | 目标目录的应用沙箱路径。 |
-  | mode | number | 是    | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。|
-  | callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是    | 异步复制目录之后的回调。              |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src      | string                                                                    | 是   | 源目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| dest     | string                                                                    | 是   | 目标目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| mode     | number                                         | 是   | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是   | 异步复制目录之后的回调。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 **错误码：**
 
@@ -843,25 +1248,75 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { ConflictFiles } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ConflictFiles } from '@kit.CoreFileKit';
 
-  // copy directory from srcPath to destPath
-  let srcPath = pathDir + "/srcDir/";
-  let destPath = pathDir + "/destDir/";
-  fileIo.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) => {
-    if (err && err.code == 13900015 && err.data?.length !== undefined) {
-      for (let i = 0; i < err.data.length; i++) {
-        console.error(`Failed to copy directory, with conflicting files: ${err.data[i].srcFile} ${err.data[i].destFile}`);
-      }
-    } else if (err) {
-      console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in copying directory.`);
+// copy directory from srcPath to destPath
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fileIo.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) => {
+  if (err && err.code == 13900015 && err.data?.length !== undefined) {
+    for (let i = 0; i < err.data.length; i++) {
+      console.error(`Failed to copy directory, with conflicting files: ${err.data[i].srcFile} ${err.data[i].destFile}`);
     }
-  });
-  ```
+  } else if (err) {
+    console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in copying directory.`);
+  }
+});
+```
+
+## fileIo.copyDirWithConflictFiles<sup>23+</sup>
+
+copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
+
+复制源目录至目标路径下，可设置复制模式。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[copyDir](#fileiocopydir10-1)。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src | string | 是   | 源目录的应用沙箱路径。 |
+| dest | string | 是   | 目标目录的应用沙箱路径。 |
+| mode | int | 是 | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步复制目录之后的回调。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fileIo.copyDirWithConflictFiles(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>|null) => {
+  if (err && err.data && err.code == 13900015 && err.data?.length !== undefined) {
+    let errData = err?.data;
+    if (errData != null) {
+      for (let i = 0; i < errData.length; i++) {
+        console.error("copy directory failed with conflicting files: " + err?.data![i].srcFile + " " + err?.data![i].destFile);
+      }
+    }
+  } else if (err) {
+    console.error("copy directory failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("copy directory succeed");
+  }
+});
+```
 
 ## fileIo.copyDir<sup>10+</sup>
 
@@ -871,15 +1326,21 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[copyDirWithConflictFiles](#fileiocopydirwithconflictfiles23-1)。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
-  | 参数名    | 类型     | 必填   | 说明                          |
-  | ------ | ------ | ---- | --------------------------- |
-  | src | string | 是    | 源目录的应用沙箱路径。 |
-  | dest | string | 是    | 目标目录的应用沙箱路径。 |
-  | callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是    | 异步复制目录之后的回调。              |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src      | string                                                                    | 是   | 源目录的应用沙箱路径。   |
+| dest     | string                                                                    | 是   | 目标目录的应用沙箱路径。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是   | 异步复制目录之后的回调。 |
 
 **错误码：**
 
@@ -887,41 +1348,98 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { ConflictFiles } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ConflictFiles } from '@kit.CoreFileKit';
 
-  // copy directory from srcPath to destPath
-  let srcPath = pathDir + "/srcDir/";
-  let destPath = pathDir + "/destDir/";
-  fileIo.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
-    if (err && err.code == 13900015 && err.data?.length !== undefined) {
-      for (let i = 0; i < err.data.length; i++) {
-        console.error(`Failed to copy directory, with conflicting files: ${err.data[i].srcFile} ${err.data[i].destFile}`);
-      }
-    } else if (err) {
-      console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in copying directory.`);
+// copy directory from srcPath to destPath
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fileIo.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
+  if (err && err.code == 13900015 && err.data?.length !== undefined) {
+    for (let i = 0; i < err.data.length; i++) {
+      console.error(`Failed to copy directory, with conflicting files: ${err.data[i].srcFile} ${err.data[i].destFile}`);
     }
-  });
-  ```
+  } else if (err) {
+    console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in copying directory.`);
+  }
+});
+```
+
+## fileIo.copyDirWithConflictFiles<sup>23+</sup>
+
+copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
+
+复制源目录至目标路径下。使用callback异步回调。
+
+如果目标目录下有与源目录名冲突的目录，且冲突目录下有同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[copyDir](#fileiocopydir10-2)。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src | string | 是 | 源目录的应用沙箱路径。 |
+| dest | string | 是 | 目标目录的应用沙箱路径。 |
+| callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步复制目录之后的回调。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+fileIo.copyDirWithConflictFiles(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>|null) => {
+  if (err && err.data && err.code == 13900015 && err.data?.length !== undefined) {
+    let errData = err?.data;
+    if (errData != null) {
+      for (let i = 0; i < errData.length; i++) {
+        console.error("copy directory failed with conflicting files: " + err?.data![i].srcFile + " " + err?.data![i].destFile);
+      }
+    }
+  } else if (err) {
+    console.error("copy directory failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("copy directory succeed");
+  }
+});
+```
 
 ## fileIo.copyDirSync<sup>10+</sup>
 
-copyDirSync(src: string, dest: string, mode?: number): void
+ArkTS-Dyn: copyDirSync(src: string, dest: string, mode?: number): void
+
+ArkTS-Sta: copyDirSync(src: string, dest: string, mode?: int): void
 
 以同步方法复制源目录至目标路径下。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名    | 类型     | 必填   | 说明                          |
-  | ------ | ------ | ---- | --------------------------- |
-  | src | string | 是    | 源目录的应用沙箱路径。 |
-  | dest | string | 是    | 目标目录的应用沙箱路径。 |
-  | mode | number | 否    | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| src    | string                            | 是   | 源目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| dest   | string                            | 是   | 目标目录的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 复制模式，默认值为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。 |
 
 **错误码：**
 
@@ -929,40 +1447,46 @@ copyDirSync(src: string, dest: string, mode?: number): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // copy directory from srcPath to destPath
-  let srcPath = pathDir + "/srcDir/";
-  let destPath = pathDir + "/destDir/";
-  try {
-    fileIo.copyDirSync(srcPath, destPath, 0);
-    console.info(`Succeeded in copying directory.`);
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
-  }
-  ```
+// copy directory from srcPath to destPath
+let srcPath = pathDir + "/srcDir/";
+let destPath = pathDir + "/destDir/";
+try {
+  fileIo.copyDirSync(srcPath, destPath, 0);
+  console.info(`Succeeded in copying directory.`);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to copy directory. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## fileIo.dup<sup>10+</sup>
 
-dup(fd: number): File
+ArkTS-Dyn: dup(fd: number): File
+
+ArkTS-Sta: dup(fd: int): File
 
 复制文件描述符，并返回对应的File对象。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名    | 类型     | 必填   | 说明                          |
-  | ------ | ------ | ---- | --------------------------- |
-  | fd | number | 是    | 文件描述符。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | [File](#file) | 打开的File对象。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| [File](#file) | 打开的File对象。 |
 
 **错误码：**
 
@@ -970,15 +1494,29 @@ dup(fd: number): File
 
 **示例：**
 
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let file1 = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
-  let fd: number = file1.fd;
-  let file2 = fileIo.dup(fd);
-  console.info(`Succeeded in getting file name of the file2 is ${file2.name}`);
-  fileIo.closeSync(file1);
-  fileIo.closeSync(file2);
-  ```
+ArkTS-Dyn示例：
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file1 = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+let fd: number = file1.fd;
+let file2 = fileIo.dup(fd);
+console.info(`Succeeded in getting file name of the file2 is ${file2.name}`);
+fileIo.closeSync(file1);
+fileIo.closeSync(file2);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let filePath = pathDir + "/test.txt";
+let file1 =fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE);
+let fd: int = file1.fd;
+let file2 =fileIo.dup(fd);
+console.info(`Succeeded in getting file name of the file2 is ${file2.name}`);
+fileIo.closeSync(file1);
+fileIo.closeSync(file2);
+```
 
 ## fileIo.connectDfs<sup>12+</sup>
 
@@ -1084,19 +1622,23 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录的应用沙箱路径。                                   |
-| key   | string | 是   | 扩展属性的key。仅支持前缀为“user.”的字符串，且长度需小于256字节。  |
-| value   | string | 是   | 扩展属性的value。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string | 是   | 文件或目录的应用沙箱路径。                                          |
+| key    | string | 是   | 扩展属性的key。仅支持前缀为“user.”的字符串，且长度需小于256字节。 |
+| value  | string | 是   | 扩展属性的value。                                                   |
 
 **返回值：**
 
-  | 类型     | 说明                                       |
-  | ------ | ---------------------------------------- |
-  | Promise&lt;void&gt;| Promise对象。无返回值。                             |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -1104,20 +1646,41 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let attrKey = "user.comment";
-  let attrValue = "Test file.";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  fileIo.setxattr(filePath, attrKey, attrValue).then(() => {
-    console.info(`Succeeded in setting extended attribute successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set extended attribute. Code: ${err.code}, message: ${err.message}`);
-  });
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
+let attrValue = "Test file.";
 
-  ```
+fileIo.setxattr(filePath, attrKey, attrValue).then(() => {
+  console.info(`Succeeded in setting extended attribute successfully.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set extended attribute. Code: ${err.code}, message: ${err.message}`);
+});
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
+let attrValue = "Test file.";
+
+fileIo.setxattr(filePath, attrKey, attrValue).then(() => {
+  console.info(`Succeeded in setting extended attribute successfully.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to set extended attribute. Code: ${err.code}, message: ${err.message}`);
+});
+
+```
+
 ## fileIo.setxattrSync<sup>12+</sup>
 
 setxattrSync(path: string, key: string, value: string): void
@@ -1126,13 +1689,17 @@ setxattrSync(path: string, key: string, value: string): void
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录的应用沙箱路径。                                   |
-| key   | string | 是   | 扩展属性的key。仅支持前缀为“user.”的字符串，且长度需小于256字节。   |
-| value   | string | 是   | 扩展属性的value。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string | 是   | 文件或目录的应用沙箱路径。                                          |
+| key    | string | 是   | 扩展属性的key。仅支持前缀为“user.”的字符串，且长度需小于256字节。 |
+| value  | string | 是   | 扩展属性的value。                                                   |
 
 **错误码：**
 
@@ -1140,21 +1707,42 @@ setxattrSync(path: string, key: string, value: string): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let attrKey = "user.comment";
-  let attrValue = "Test file.";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    fileIo.setxattrSync(filePath, attrKey, attrValue);
-    console.info(`Succeeded in setting extended attribute successfully.`);
-  } catch (err) {
-    console.error(`Failed to set extended attribute. Code: ${err.code}, message: ${err.message}`);
-  }
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
+let attrValue = "Test file.";
 
-  ```
+try {
+  fileIo.setxattrSync(filePath, attrKey, attrValue);
+  console.info(`Succeeded in setting extended attribute successfully.`);
+} catch (err) {
+  console.error(`Failed to set extended attribute. Code: ${err.code}, message: ${err.message}`);
+}
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
+let attrValue = "Test file.";
+
+try {
+  fileIo.setxattrSync(filePath, attrKey, attrValue);
+  console.info(`Succeeded in setting extended attribute successfully.`);
+} catch (error: Error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to set extended attribute. Code: ${err.code}, message: ${err.message}`);
+}
+
+```
 
 ## fileIo.getxattr<sup>12+</sup>
 
@@ -1164,18 +1752,22 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录的应用沙箱路径。                                   |
-| key   | string | 是   | 扩展属性的key。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string | 是   | 文件或目录的应用沙箱路径。 |
+| key    | string | 是   | 扩展属性的key。            |
 
 **返回值：**
 
-  | 类型     | 说明                                       |
-  | ------ | ---------------------------------------- |
-  | Promise&lt;string&gt;| Promise对象。返回扩展属性的value。    |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;string&gt; | Promise对象。返回扩展属性的value。 |
 
 **错误码：**
 
@@ -1183,19 +1775,38 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let attrKey = "user.comment";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  fileIo.getxattr(filePath, attrKey).then((attrValue: string) => {
-    console.info(`Succeeded in getting extended attribute, the value is: ${attrValue}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get extended attribute. Code: ${err.code}, message: ${err.message}`);
-  });
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
 
-  ```
+fileIo.getxattr(filePath, attrKey).then((attrValue: string) => {
+  console.info(`Succeeded in getting extended attribute, the value is: ${attrValue}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get extended attribute. Code: ${err.code}, message: ${err.message}`);
+});
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
+
+fileIo.getxattr(filePath, attrKey).then((attrValue: string) => {
+  console.info(`Succeeded in getting extended attribute, the value is: ${attrValue}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to get extended attribute. Code: ${err.code}, message: ${err.message}`);
+});
+
+```
 
 ## fileIo.getxattrSync<sup>12+</sup>
 
@@ -1205,18 +1816,22 @@ getxattrSync(path: string, key: string): string
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录的应用沙箱路径。                                   |
-| key   | string | 是   | 扩展属性的key。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string | 是   | 文件或目录的应用沙箱路径。 |
+| key    | string | 是   | 扩展属性的key。            |
 
 **返回值：**
 
-  | 类型    | 说明                |
-  | ------ | ------------------- |
-  | string | 返回扩展属性的value。|
+| 类型 | 说明 |
+| ---- | ---- |
+| string | 返回扩展属性的value。 |
 
 **错误码：**
 
@@ -1224,20 +1839,40 @@ getxattrSync(path: string, key: string): string
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let attrKey = "user.comment";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let attrValue = fileIo.getxattrSync(filePath, attrKey);
-    console.info(`Succeeded in getting extended attribute, the value is: ${attrValue}`);
-  } catch (err) {
-    console.error(`Failed to get extended attribute. Code: ${err.code}, message: ${err.message}`);
-  }
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
 
-  ```
+try {
+  let attrValue = fileIo.getxattrSync(filePath, attrKey);
+  console.info(`Succeeded in getting extended attribute, the value is: ${attrValue}`);
+} catch (err) {
+  console.error(`Failed to get extended attribute. Code: ${err.code}, message: ${err.message}`);
+}
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let attrKey = "user.comment";
+
+try {
+  let attrValue =fileIo.getxattrSync(filePath, attrKey);
+  console.info(`Succeeded in getting extended attribute, the value is: ${attrValue}`);
+} catch (error: Error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to get extended attribute. Code: ${err.code}, message: ${err.message}`);
+}
+
+```
 
 ## fileIo.mkdir
 
@@ -1245,21 +1880,25 @@ mkdir(path: string): Promise&lt;void&gt;
 
 创建目录，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 目录的应用沙箱路径。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string | 是   | 目录的应用沙箱路径。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -1267,16 +1906,30 @@ mkdir(path: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let dirPath = pathDir + "/testDir";
-  fileIo.mkdir(dirPath).then(() => {
-    console.info(`Succeeded in making directory.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir";
+fileIo.mkdir(dirPath).then(() => {
+  console.info(`Succeeded in making directory.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+let dirPath = pathDir + "/testDir";
+fileIo.mkdir(dirPath).then(() => {
+  console.info(`Succeeded in making directory.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.mkdir<sup>11+</sup>
 
@@ -1284,22 +1937,26 @@ mkdir(path: string, recursion: boolean): Promise\<void>
 
 创建目录，使用promise异步回调。当recursion指定为true时，可递归创建目录。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 目录的应用沙箱路径。                                   |
-| recursion   | boolean | 是   | 是否递归创建目录。recursion指定为true时，可递归创建目录。recursion指定为false时，仅可创建单层目录。   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path      | string  | 是   | 目录的应用沙箱路径。                                                                                |
+| recursion | boolean | 是   | 是否递归创建目录。recursion指定为true时，可递归创建目录。recursion指定为false时，仅可创建单层目录。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -1307,16 +1964,32 @@ mkdir(path: string, recursion: boolean): Promise\<void>
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let dirPath = pathDir + "/testDir1/testDir2/testDir3";
-  fileIo.mkdir(dirPath, true).then(() => {
-    console.info(`Succeeded in making directory.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir1/testDir2/testDir3";
+fileIo.mkdir(dirPath, true).then(() => {
+  console.info(`Succeeded in making directory.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir1/testDir2/testDir3";
+fileIo.mkdir(dirPath, true).then(() => {
+  console.info(`Succeeded in making directory.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.mkdir
 
@@ -1324,16 +1997,20 @@ mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 创建目录，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明                                                         |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                    | 是   | 目录的应用沙箱路径。                                   |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步创建目录操作完成之后的回调。                             |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path     | string                    | 是   | 目录的应用沙箱路径。             |
+| callback | AsyncCallback&lt;void&gt; | 是   | 异步创建目录操作完成之后的回调。 |
 
 **错误码：**
 
@@ -1341,18 +2018,34 @@ mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let dirPath = pathDir + "/testDir";
-  fileIo.mkdir(dirPath, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in making directory.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir";
+fileIo.mkdir(dirPath, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in making directory.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir";
+fileIo.mkdir(dirPath, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in making directory.`);
+  }
+});
+```
 
 ## fileIo.mkdir<sup>11+</sup>
 
@@ -1360,17 +2053,21 @@ mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 创建目录，使用callback异步回调。当recursion指定为true，可递归创建目录。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明                                                         |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                    | 是   | 目录的应用沙箱路径。                                   |
-| recursion   | boolean | 是   | 是否递归创建目录。recursion指定为true时，可递归创建目录。recursion指定为false时，仅可创建单层目录。   |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步创建目录操作完成之后的回调。                             |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path      | string                    | 是   | 目录的应用沙箱路径。                                                                                |
+| recursion | boolean                   | 是   | 是否递归创建目录。recursion指定为true时，可递归创建目录。recursion指定为false时，仅可创建单层目录。 |
+| callback  | AsyncCallback&lt;void&gt; | 是   | 异步创建目录操作完成之后的回调。                                                                    |
 
 **错误码：**
 
@@ -1378,18 +2075,35 @@ mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let dirPath = pathDir + "/testDir1/testDir2/testDir3";
-  fileIo.mkdir(dirPath, true, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in making directory.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir1/testDir2/testDir3";
+fileIo.mkdir(dirPath, true, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in making directory.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir1/testDir2/testDir3";
+fileIo.mkdir(dirPath, true, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to make directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in making directory.`);
+  }
+});
+```
 
 ## fileIo.mkdirSync
 
@@ -1397,15 +2111,19 @@ mkdirSync(path: string): void
 
 以同步方法创建目录。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 目录的应用沙箱路径。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string | 是   | 目录的应用沙箱路径。 |
 
 **错误码：**
 
@@ -1413,10 +2131,10 @@ mkdirSync(path: string): void
 
 **示例：**
 
-  ```ts
-  let dirPath = pathDir + "/testDir";
-  fileIo.mkdirSync(dirPath);
-  ```
+```ts
+let dirPath = pathDir + "/testDir";
+fileIo.mkdirSync(dirPath);
+```
 
 ## fileIo.mkdirSync<sup>11+</sup>
 
@@ -1424,16 +2142,20 @@ mkdirSync(path: string, recursion: boolean): void
 
 以同步方法创建目录。当recursion指定为true，可递归创建目录。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 目录的应用沙箱路径。                                   |
-| recursion   | boolean | 是   | 是否递归创建目录。recursion指定为true时，可递归创建目录。recursion指定为false时，仅可创建单层目录。   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path      | string  | 是   | 目录的应用沙箱路径。                                                                                |
+| recursion | boolean | 是   | 是否递归创建目录。recursion指定为true时，可递归创建目录。recursion指定为false时，仅可创建单层目录。 |
 
 **错误码：**
 
@@ -1441,33 +2163,39 @@ mkdirSync(path: string, recursion: boolean): void
 
 **示例：**
 
-  ```ts
-  let dirPath = pathDir + "/testDir1/testDir2/testDir3";
-  fileIo.mkdirSync(dirPath, true);
-  ```
+```ts
+let dirPath = pathDir + "/testDir1/testDir2/testDir3";
+fileIo.mkdirSync(dirPath, true);
+```
 
 ## fileIo.open
 
-open(path: string, mode?: number): Promise&lt;File&gt;
+ArkTS-Dyn: open(path: string, mode?: number): Promise&lt;File&gt;
+
+ArkTS-Sta: open(path: string, mode?: int): Promise&lt;File&gt;
 
 打开文件或目录，使用promise异步回调。支持使用URI打开文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录的应用沙箱路径或文件URI。                                   |
-| mode  | number | 否   | 打开文件或目录的[选项](#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>可以追加以下功能选项，以按位或的方式组合，默认情况下不追加任何额外选项。<br/>-&nbsp;OpenMode.CREATE(0o100)：如果文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO方式打开文件。<br/>- OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string                            | 是   | 文件或目录的应用沙箱路径或文件URI。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 打开文件或目录的[选项](#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>可以追加以下功能选项，以按位或的方式组合，默认情况下不追加任何额外选项。<br/>-&nbsp;OpenMode.CREATE(0o100)：如果文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO方式打开文件。<br/>- OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存。 |
 
 **返回值：**
 
-  | 类型                    | 说明          |
-  | --------------------- | ----------- |
-  | Promise&lt;[File](#file)&gt; | Promise对象。返回File对象。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;[File](#file)&gt; | Promise对象。返回File对象。 |
 
 **错误码：**
 
@@ -1475,38 +2203,60 @@ open(path: string, mode?: number): Promise&lt;File&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).then((file: fileIo.File) => {
-    console.info(`Succeeded in getting file fd: ${file.fd}`);
-    fileIo.closeSync(file);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to open file. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let filePath = pathDir + "/test.txt";
+fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).then((file: fileIo.File) => {
+  console.info(`Succeeded in getting file fd: ${file.fd}`);
+  fileIo.closeSync(file);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to open file. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.open(filePath,fileIo.OpenMode.READ_WRITE |fileIo.OpenMode.CREATE).then((file:fileIo.File) => {
+  console.info(`Succeeded in getting file fd: ${file.fd}`);
+ fileIo.closeSync(file);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to open file. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.open
 
-open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
+ArkTS-Dyn: open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
+
+ArkTS-Sta: open(path: string, mode: int, callback: AsyncCallback&lt;File&gt;): void
 
 打开文件或目录，可设置打开文件的选项。使用callback异步回调。
 
 支持使用URI打开文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                            | 必填 | 说明                                                         |
-| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                          | 是   | 文件或目录的应用沙箱路径或URI。                                   |
-| mode  | number | 是   | 打开文件或目录的[选项](#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。<br/>- OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存。|
-| callback     | AsyncCallback&lt;[File](#file)&gt;                          | 是   | 异步打开文件之后的回调。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path     | string                            | 是   | 文件或目录的应用沙箱路径或URI。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| mode     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 打开文件或目录的[选项](#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。<br/>- OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存。 |
+| callback | AsyncCallback&lt;[File](#file)&gt;         | 是   | 异步打开文件之后的回调。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 **错误码：**
 
@@ -1514,19 +2264,37 @@ open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE, (err: BusinessError, file: fileIo.File) => {
-    if (err) {
-      console.error(`Failed to open. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in getting file fd: ${file.fd}`);
-      fileIo.closeSync(file);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE, (err: BusinessError, file: fileIo.File) => {
+  if (err) {
+    console.error(`Failed to open. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting file fd: ${file.fd}`);
+    fileIo.closeSync(file);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.open(filePath,fileIo.OpenMode.READ_WRITE |fileIo.OpenMode.CREATE, (err: BusinessError<void> | null, file:fileIo.File | undefined) => {
+  if (err) {
+    console.error(`Failed to open. Code: ${err.code}, message: ${err.message}`);
+  } else if (file) {
+    console.info(`Succeeded in getting file fd: ${file.fd}`);
+    fileIo.closeSync(file);
+  }
+});
+```
 
 ## fileIo.open
 
@@ -1534,16 +2302,20 @@ open(path: string, callback: AsyncCallback&lt;File&gt;): void
 
 打开文件或目录，使用callback异步回调。支持使用URI打开文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                            | 必填 | 说明                                                         |
-| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                          | 是   | 文件或目录的应用沙箱路径或URI。                                   |
-| callback     | AsyncCallback&lt;[File](#file)&gt;                          | 是   | 异步打开文件之后的回调。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path     | string                    | 是   | 文件或目录的应用沙箱路径或URI。 |
+| callback | AsyncCallback&lt;[File](#file)&gt; | 是   | 异步打开文件之后的回调。        |
 
 **错误码：**
 
@@ -1551,42 +2323,66 @@ open(path: string, callback: AsyncCallback&lt;File&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.open(filePath, (err: BusinessError, file: fileIo.File) => {
-    if (err) {
-      console.error(`Failed to open. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in getting file fd: ${file.fd}`);
-      fileIo.closeSync(file);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.open(filePath, (err: BusinessError, file: fileIo.File) => {
+  if (err) {
+    console.error(`Failed to open. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting file fd: ${file.fd}`);
+    fileIo.closeSync(file);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.open(filePath, (err: BusinessError<void> | null, file:fileIo.File | undefined) => {
+  if (err) {
+    console.error(`Failed to open. Code: ${err.code}, message: ${err.message}`);
+  } else if (file) {
+    console.info(`Succeeded in getting file fd: ${file.fd}`);
+    fileIo.closeSync(file);
+  }
+});
+```
 
 ## fileIo.openSync
 
-openSync(path: string, mode?: number): File
+ArkTS-Dyn: openSync(path: string, mode?: number): File
+
+ArkTS-Sta: openSync(path: string, mode?: int): File
 
 以同步方法打开文件或目录。支持使用URI打开文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 打开文件或目录的应用沙箱路径或URI。                                   |
-| mode  | number | 否   | 打开文件或目录的[选项](#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。<br/>- OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path   | string                            | 是   | 打开文件或目录的应用沙箱路径或URI。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| mode   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 打开文件或目录的[选项](#openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。<br/>- OpenMode.UNCACHE(0o10000000000)：读写文件不进行页缓存。 |
 
 **返回值：**
 
-  | 类型     | 说明          |
-  | ------ | ----------- |
-  | [File](#file) | 打开的File对象。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| [File](#file) | 打开的File对象。 |
 
 **错误码：**
 
@@ -1594,36 +2390,42 @@ openSync(path: string, mode?: number): File
 
 **示例：**
 
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-  console.info(`Succeeded in getting file fd: ${file.fd}`);
-  fileIo.closeSync(file);
-  ```
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+console.info(`Succeeded in getting file fd: ${file.fd}`);
+fileIo.closeSync(file);
+```
 
 ## fileIo.read
 
-read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
+ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
+
+ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
 读取文件数据，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名  | 类型        | 必填 | 说明                                                         |
-| ------- | ----------- | ---- | ------------------------------------------------------------ |
-| fd      | number      | 是   | 已打开的文件描述符。                                     |
-| buffer  | ArrayBuffer | 是   | 用于保存读取到的文件数据的缓冲区。                           |
-| options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                             |
+| buffer  | ArrayBuffer                       | 是   | 用于保存读取到的文件数据的缓冲区。                                                                                                                                               |
+| options | [ReadOptions](#readoptions11)     | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**
 
-  | 类型                                 | 说明     |
-  | ---------------------------------- | ------ |
-  | Promise&lt;number&gt; | Promise对象。返回实际读取的数据长度，单位为Byte。|
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -1631,41 +2433,70 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { buffer } from '@kit.ArkTS';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
-  let arrayBuffer = new ArrayBuffer(4096);
-  fileIo.read(file.fd, arrayBuffer).then((readLen: number) => {
-    let buf = buffer.from(arrayBuffer, 0, readLen);
-    console.info(`Succeeded in reading file data. The content of file: ${buf.toString()}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to read file data. Code: ${err.code}, message: ${err.message}`);
-  }).finally(() => {
-    fileIo.closeSync(file);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+let arrayBuffer = new ArrayBuffer(4096);
+fileIo.read(file.fd, arrayBuffer).then((readLen: number) => {
+  let buf = buffer.from(arrayBuffer, 0, readLen);
+  console.info(`Succeeded in reading file data. The content of file: ${buf.toString()}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to read file data. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  fileIo.closeSync(file);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+
+let filePath = pathDir + "/test.txt";
+let file =fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE);
+let arrayBuffer = new ArrayBuffer(4096);
+fileIo.read(file.fd, arrayBuffer).then((readLen: long) => {
+  console.info(`Succeeded in reading file data. The content of file: ${buf.toString()}`);
+  let buf = buffer.from(arrayBuffer, 0, readLen.toInt());
+  console.info(`The content of file: ${buf.toString()}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to read file data. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  fileIo.closeSync(file);
+});
+```
 
 ## fileIo.read
 
-read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;long&gt;): void
 
 从文件读取数据，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名      | 类型                                       | 必填   | 说明                                       |
-  | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-  | fd       | number                                   | 是    | 已打开的文件描述符。                             |
-  | buffer   | ArrayBuffer                              | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
-  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。                             |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                            | 是   | 已打开的文件描述符。                                                                                                                                                             |
+| buffer   | ArrayBuffer                                                                  | 是   | 用于保存读取到的文件数据的缓冲区。                                                                                                                                               |
+| options  | [ReadOptions](#readoptions11)                                                | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   |  异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。                                                                                                                       |
 
 **错误码：**
 
@@ -1673,47 +2504,76 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCall
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { buffer } from '@kit.ArkTS';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
-  let arrayBuffer = new ArrayBuffer(4096);
-  fileIo.read(file.fd, arrayBuffer, (err: BusinessError, readLen: number) => {
-    if (err) {
-      console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      let buf = buffer.from(arrayBuffer, 0, readLen);
-      console.info(`Succeeded in reading file data. The content of file: ${buf.toString()}`);
-    }
-    fileIo.closeSync(file);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+let arrayBuffer = new ArrayBuffer(4096);
+fileIo.read(file.fd, arrayBuffer, (err: BusinessError, readLen: number) => {
+  if (err) {
+    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    let buf = buffer.from(arrayBuffer, 0, readLen);
+    console.info(`Succeeded in reading file data. The content of file: ${buf.toString()}`);
+  }
+  fileIo.closeSync(file);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { buffer } from '@kit.ArkTS';
+
+let filePath = pathDir + "/test.txt";
+let file =fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE);
+let arrayBuffer = new ArrayBuffer(4096);
+fileIo.read(file.fd, arrayBuffer, (err: BusinessError<void> | null, readLen: long | undefined) => {
+  if (err) {
+    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in reading file data. The content of file: ${buf.toString()}`);
+    let buf = buffer.from(arrayBuffer, 0, readLen?.toInt());
+    console.info(`The content of file: ${buf.toString()}`);
+  }
+  fileIo.closeSync(file);
+});
+```
 
 ## fileIo.readSync
 
-readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
+ArkTS-Dyn: readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
+
+ArkTS-Sta: readSync(fd: int, buffer: ArrayBuffer, options?: ReadOptions): long
 
 以同步方法从文件读取数据。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名     | 类型          | 必填   | 说明                                       |
-  | ------- | ----------- | ---- | ---------------------------------------- |
-  | fd      | number      | 是    | 已打开的文件描述符。                             |
-  | buffer  | ArrayBuffer | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                       |
+| buffer  | ArrayBuffer                       | 是   | 用于保存读取到的文件数据的缓冲区。                                                                                                                                                                                                                                                                                                                                         |
+| options | [ReadOptions](#readoptions11)     | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**
 
-  | 类型     | 说明       |
-  | ------ | -------- |
-  | number | 返回实际读取的数据长度，单位为Byte。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -1721,13 +2581,13 @@ readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
 
 **示例：**
 
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
-  let buf = new ArrayBuffer(4096);
-  fileIo.readSync(file.fd, buf);
-  fileIo.closeSync(file);
-  ```
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+let buf = new ArrayBuffer(4096);
+fileIo.readSync(file.fd, buf);
+fileIo.closeSync(file);
+```
 
 ## fileIo.rmdir
 
@@ -1739,21 +2599,25 @@ rmdir(path: string): Promise&lt;void&gt;
 >
 > 该接口支持删除单个文件，但不推荐使用此方法删除单个文件，推荐使用unlink接口删除单个文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                       |
-| ------ | ------ | ---- | -------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
 | path   | string | 是   | 目录的应用沙箱路径。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -1761,16 +2625,32 @@ rmdir(path: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let dirPath = pathDir + "/testDir";
-  fileIo.rmdir(dirPath).then(() => {
-    console.info(`Succeeded in removing directory.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to remove directory. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir";
+fileIo.rmdir(dirPath).then(() => {
+  console.info(`Succeeded in removing directory.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to remove directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir";
+fileIo.rmdir(dirPath).then(() => {
+  console.info(`Succeeded in removing directory.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to remove directory. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.rmdir
 
@@ -1782,16 +2662,20 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 >
 > 该接口支持删除单个文件，但不推荐使用此方法删除单个文件，推荐使用unlink接口删除单个文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明                       |
-| -------- | ------------------------- | ---- | -------------------------- |
-| path     | string                    | 是   | 目录的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步删除目录之后的回调。   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path     | string                    | 是   | 目录的应用沙箱路径。     |
+| callback | AsyncCallback&lt;void&gt; | 是   | 异步删除目录之后的回调。 |
 
 **错误码：**
 
@@ -1799,18 +2683,35 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let dirPath = pathDir + "/testDir";
-  fileIo.rmdir(dirPath, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to remove directory. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in removing directory.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir";
+fileIo.rmdir(dirPath, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to remove directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in removing directory.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dirPath = pathDir + "/testDir";
+fileIo.rmdir(dirPath, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to remove directory. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in removing directory.`);
+  }
+});
+```
 
 ## fileIo.rmdirSync
 
@@ -1822,14 +2723,18 @@ rmdirSync(path: string): void
 >
 > 该接口支持删除单个文件，但不推荐使用此方法删除单个文件，推荐使用unlinkSync接口删除单个文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                       |
-| ------ | ------ | ---- | -------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
 | path   | string | 是   | 目录的应用沙箱路径。 |
 
 **错误码：**
@@ -1838,10 +2743,10 @@ rmdirSync(path: string): void
 
 **示例：**
 
-  ```ts
-  let dirPath = pathDir + "/testDir";
-  fileIo.rmdirSync(dirPath);
-  ```
+```ts
+let dirPath = pathDir + "/testDir";
+fileIo.rmdirSync(dirPath);
+```
 
 ## fileIo.unlink
 
@@ -1849,21 +2754,25 @@ unlink(path: string): Promise&lt;void&gt;
 
 删除单个文件，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                       |
-| ------ | ------ | ---- | -------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
 | path   | string | 是   | 文件的应用沙箱路径。 |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -1871,16 +2780,32 @@ unlink(path: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.unlink(filePath).then(() => {
-    console.info(`Succeeded in removing file.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to remove file. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.unlink(filePath).then(() => {
+  console.info(`Succeeded in removing file.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to remove file. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.unlink(filePath).then(() => {
+  console.info(`Succeeded in removing file.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to remove file. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.unlink
 
@@ -1888,16 +2813,20 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 删除文件，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明                       |
-| -------- | ------------------------- | ---- | -------------------------- |
-| path     | string                    | 是   | 文件的应用沙箱路径。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步删除文件之后的回调。   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| path     | string                    | 是   | 文件的应用沙箱路径。     |
+| callback | AsyncCallback&lt;void&gt; | 是   | 异步删除文件之后的回调。 |
 
 **错误码：**
 
@@ -1905,18 +2834,35 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  fileIo.unlink(filePath, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to remove file. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in removing file.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.unlink(filePath, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to remove file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in removing file.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+fileIo.unlink(filePath, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to remove file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in removing file.`);
+  }
+});
+```
 
 ## fileIo.unlinkSync
 
@@ -1924,14 +2870,18 @@ unlinkSync(path: string): void
 
 以同步方法删除文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                       |
-| ------ | ------ | ---- | -------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
 | path   | string | 是   | 文件的应用沙箱路径。 |
 
 **错误码：**
@@ -1940,35 +2890,40 @@ unlinkSync(path: string): void
 
 **示例：**
 
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  fileIo.unlinkSync(filePath);
-  ```
-
+```ts
+let filePath = pathDir + "/test.txt";
+fileIo.unlinkSync(filePath);
+```
 
 ## fileIo.write
 
-write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&gt;
+ArkTS-Dyn: write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&gt;
+
+ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;long&gt;
 
 将数据写入文件，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名     | 类型                              | 必填   | 说明                                       |
-  | ------- | ------------------------------- | ---- | ---------------------------------------- |
-  | fd      | number                          | 是    | 已打开的文件描述符。                             |
-  | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| buffer  | ArrayBuffer \| string              | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| options | [WriteOptions](#writeoptions11)   | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
-  | 类型                    | 说明       |
-  | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的数据长度，单位为Byte。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -1976,39 +2931,65 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-  let str: string = "hello, world";
-  fileIo.write(file.fd, str).then((writeLen: number) => {
-    console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to write data to file. Code: ${err.code}, message: ${err.message}`);
-  }).finally(() => {
-    fileIo.closeSync(file);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let str: string = "hello, world";
+fileIo.write(file.fd, str).then((writeLen: number) => {
+  console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to write data to file. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  fileIo.closeSync(file);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file =fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE |fileIo.OpenMode.CREATE);
+let str: string = "hello, world";
+fileIo.write(file.fd, str).then((writeLen: long) => {
+  console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to write data to file. Code: ${err.code}, message: ${err.message}`);
+}).finally(() => {
+  fileIo.closeSync(file);
+});
+```
 
 ## fileIo.write
 
-write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallback&lt;long&gt;): void
 
 将数据写入文件，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名      | 类型                              | 必填   | 说明                                       |
-  | -------- | ------------------------------- | ---- | ---------------------------------------- |
-  | fd       | number                          | 是    | 已打开的文件描述符。                             |
-  | buffer   | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
-  | callback | AsyncCallback&lt;number&gt;     | 是    | 异步将数据写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。                       |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                            | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| buffer   | ArrayBuffer \| string                                                         | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| options  | [WriteOptions](#writeoptions11)                                              | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步将数据写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 **错误码：**
 
@@ -2016,45 +2997,71 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-  let str: string = "hello, world";
-  fileIo.write(file.fd, str, (err: BusinessError, writeLen: number) => {
-    if (err) {
-      console.error(`Failed to write data to file. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
-    }
-    fileIo.closeSync(file);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let str: string = "hello, world";
+fileIo.write(file.fd, str, (err: BusinessError, writeLen: number) => {
+  if (err) {
+    console.error(`Failed to write data to file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
+  }
+  fileIo.closeSync(file);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let file =fileIo.openSync(filePath,fileIo.OpenMode.READ_WRITE |fileIo.OpenMode.CREATE);
+let str: string = "hello, world";
+fileIo.write(file.fd, str, (err: BusinessError<void> | null, writeLen: long | undefined) => {
+  if (err) {
+    console.error(`Failed to write data to file. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
+  }
+  fileIo.closeSync(file);
+});
+```
 
 ## fileIo.writeSync
 
-writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number
+ArkTS-Dyn: writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number
+
+ArkTS-Sta: writeSync(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions): long
 
 以同步方法将数据写入文件。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名     | 类型                              | 必填   | 说明                                       |
-  | ------- | ------------------------------- | ---- | ---------------------------------------- |
-  | fd      | number                          | 是    | 已打开的文件描述符。                             |
-  | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| buffer  | ArrayBuffer \| string              | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| options | [WriteOptions](#writeoptions11)   | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
-  | 类型     | 说明       |
-  | ------ | -------- |
-  | number | 返回实际写入的数据长度，单位为Byte。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -2062,37 +3069,43 @@ writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): num
 
 **示例：**
 
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-  let str: string = "hello, world";
-  let writeLen = fileIo.writeSync(file.fd, str);
-  console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
-  fileIo.closeSync(file);
-  ```
+```ts
+let filePath = pathDir + "/test.txt";
+let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let str: string = "hello, world";
+let writeLen = fileIo.writeSync(file.fd, str);
+console.info(`Succeeded in writing data to file, size is: ${writeLen}`);
+fileIo.closeSync(file);
+```
 
 ## fileIo.truncate
 
-truncate(file: string | number, len?: number): Promise&lt;void&gt;
+ArkTS-Dyn: truncate(file: string | number, len?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: truncate(file: string | int, len?: long): Promise&lt;void&gt;
 
 截断文件，使用promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                             |
-| ------ | ------ | ---- | -------------------------------- |
-| file   | string \| number | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。 |
+| len    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度，单位为Byte。默认为0。  |
 
 **返回值：**
 
-  | 类型                  | 说明                           |
-  | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | Promise对象。无返回值。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -2100,35 +3113,58 @@ truncate(file: string | number, len?: number): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let len: number = 5;
-  fileIo.truncate(filePath, len).then(() => {
-    console.info(`Succeeded in truncating file.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to truncate file. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let len: number = 5;
+fileIo.truncate(filePath, len).then(() => {
+  console.info(`Succeeded in truncating file.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to truncate file. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let len: long = 5;
+fileIo.truncate(filePath, len).then(() => {
+  console.info(`Succeeded in truncating file.`);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to truncate file. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.truncate
 
-truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: truncate(file: string | int, len?: long, callback: AsyncCallback&lt;void&gt;): void
 
 截断文件，使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                      | 必填 | 说明                             |
-| -------- | ------------------------- | ---- | -------------------------------- |
-| file     | string \| number                    | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len      | number                    | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，本调用无返回值。   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file     | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。 |
+| len      | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度，单位为Byte。默认为0。  |
+| callback | AsyncCallback&lt;void&gt;                            | 是   | 回调函数，本调用无返回值。                 |
 
 **错误码：**
 
@@ -2136,36 +3172,60 @@ truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let len: number = 5;
-  fileIo.truncate(filePath, len, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to truncate. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in truncating.`);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let len: number = 5;
+fileIo.truncate(filePath, len, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to truncate. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in truncating.`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+let len: long = 5;
+fileIo.truncate(filePath, len, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`Failed to truncate. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in truncating.`);
+  }
+});
+```
 
 ## fileIo.truncateSync
 
-truncateSync(file: string | number, len?: number): void
+ArkTS-Dyn: truncateSync(file: string | number, len?: number): void
+
+ArkTS-Sta: truncateSync(file: string | int, len?: long): void
 
 以同步方法截断文件内容。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                             |
-| ------ | ------ | ---- | -------------------------------- |
-| file   | string \| number | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。 |
+| len    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度，单位为Byte。默认为0。  |
 
 **错误码：**
 
@@ -2173,11 +3233,21 @@ truncateSync(file: string | number, len?: number): void
 
 **示例：**
 
-  ```ts
-  let filePath = pathDir + "/test.txt";
-  let len: number = 5;
-  fileIo.truncateSync(filePath, len);
-  ```
+ArkTS-Dyn示例：
+
+```ts
+let filePath = pathDir + "/test.txt";
+let len: number = 5;
+fileIo.truncateSync(filePath, len);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let filePath = pathDir + "/test.txt";
+let len: long = 5;
+fileIo.truncateSync(filePath, len);
+```
 
 ## fileIo.readLines<sup>11+</sup>
 
@@ -2187,18 +3257,22 @@ readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型   | 必填 | 说明                                                         |
-| -------- | ------ | ---- | ------------------------------------------------------------ |
-| filePath | string | 是   | 文件的应用沙箱路径。                                   |
-| options | [Options](#options11) | 否   | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| filePath | string                | 是   | 文件的应用沙箱路径。                                                                                                                                       |
+| options  | [Options](#options11) | 否   | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
-  | 类型                    | 说明         |
-  | --------------------- | ---------- |
-  | Promise&lt;[ReaderIterator](#readeriterator11)&gt; | Promise对象。返回文件读取迭代器。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;[ReaderIterator](#readeriterator11)&gt; | Promise对象。返回文件读取迭代器。 |
 
 **错误码：**
 
@@ -2206,22 +3280,44 @@ readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { Options } from '@kit.CoreFileKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let options: Options = {
-    encoding: 'utf-8'
-  };
-  fileIo.readLines(filePath, options).then((readerIterator: fileIo.ReaderIterator) => {
-    for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
-      console.info(`Succeeded in reading lines, content: ${it.value}`);
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to read lines. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Options } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let options: Options = {
+  encoding: 'utf-8'
+};
+fileIo.readLines(filePath, options).then((readerIterator: fileIo.ReaderIterator) => {
+  for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
+    console.info(`Succeeded in reading lines, content: ${it.value}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to read lines. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Options } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let options: Options = {
+  encoding: 'utf-8'
+};
+fileIo.readLines(filePath, options).then((readerIterator:fileIo.ReaderIterator) => {
+  for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
+    console.info(`Succeeded in reading lines, content: ${it.value}`);
+  }
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to read lines. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## fileIo.readLines<sup>11+</sup>
 
@@ -2231,13 +3327,17 @@ readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;Reader
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型   | 必填 | 说明                                                         |
-| -------- | ------ | ---- | ------------------------------------------------------------ |
-| filePath | string | 是   | 文件的应用沙箱路径。                                   |
-| options | [Options](#options11) | 否   | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。|
-| callback | AsyncCallback&lt;[ReaderIterator](#readeriterator11)&gt; | 是   | 逐行读取文件文本内容回调。返回文件读取迭代器。                                   |
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| filePath | string                                                   | 是   | 文件的应用沙箱路径。                                                                                                                                       |
+| options  | [Options](#options11)                                    | 否   | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| callback | AsyncCallback&lt;[ReaderIterator](#readeriterator11)&gt; | 是   | 逐行读取文件文本内容回调。返回文件读取迭代器。                                                                                                                                 |
 
 **错误码：**
 
@@ -2245,24 +3345,47 @@ readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;Reader
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { Options } from '@kit.CoreFileKit';
+ArkTS-Dyn示例：
 
-  let filePath = pathDir + "/test.txt";
-  let options: Options = {
-    encoding: 'utf-8'
-  };
-  fileIo.readLines(filePath, options, (err: BusinessError, readerIterator: fileIo.ReaderIterator) => {
-    if (err) {
-      console.error(`Failed to read lines. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
-        console.info(`Succeeded in reading lines, content: ${it.value}`);
-      }
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Options } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let options: Options = {
+  encoding: 'utf-8'
+};
+fileIo.readLines(filePath, options, (err: BusinessError, readerIterator: fileIo.ReaderIterator) => {
+  if (err) {
+    console.error(`Failed to read lines. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
+      console.info(`Succeeded in reading lines, content: ${it.value}`);
     }
-  });
-  ```
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Options } from '@kit.CoreFileKit';
+
+let filePath = pathDir + "/test.txt";
+let options: Options = {
+  encoding: 'utf-8'
+};
+fileIo.readLines(filePath, options, (err: BusinessError<void> | null, readerIterator:fileIo.ReaderIterator | undefined) => {
+  if (err) {
+    console.error(`Failed to read lines. Code: ${err.code}, message: ${err.message}`);
+  } else if (readerIterator) {
+    for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
+      console.info(`Succeeded in reading lines, content: ${it.value}`);
+    }
+  }
+});
+```
 
 ## fileIo.readLinesSync<sup>11+</sup>
 
@@ -2272,18 +3395,22 @@ readLinesSync(filePath: string, options?: Options): ReaderIterator
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型   | 必填 | 说明                                                         |
-| -------- | ------ | ---- | ------------------------------------------------------------ |
-| filePath | string | 是   | 文件的应用沙箱路径。                                   |
-| options | [Options](#options11) | 否   | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。|
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| filePath | string                | 是   | 文件的应用沙箱路径。                                                                                                                                       |
+| options  | [Options](#options11) | 否   | 可选项。支持以下选项：<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
-  | 类型                    | 说明         |
-  | --------------------- | ---------- |
-  | [ReaderIterator](#readeriterator11) | 返回文件读取迭代器。 |
+| 类型 | 说明 |
+| ---- | ---- |
+| [ReaderIterator](#readeriterator11) | 返回文件读取迭代器。 |
 
 **错误码：**
 
@@ -2291,18 +3418,18 @@ readLinesSync(filePath: string, options?: Options): ReaderIterator
 
 **示例：**
 
-  ```ts
-  import { Options } from '@kit.CoreFileKit';
+```ts
+import { Options } from '@kit.CoreFileKit';
 
-  let filePath = pathDir + "/test.txt";
-  let options: Options = {
-    encoding: 'utf-8'
-  };
-  let readerIterator = fileIo.readLinesSync(filePath, options);
-  for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
-    console.info(`Succeeded in reading lines, content: ${it.value}`);
-  }
-  ```
+let filePath = pathDir + "/test.txt";
+let options: Options = {
+  encoding: 'utf-8'
+};
+let readerIterator = fileIo.readLinesSync(filePath, options);
+for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
+  console.info(`Succeeded in reading lines, content: ${it.value}`);
+}
+```
 
 ## ReaderIterator<sup>11+</sup>
 
