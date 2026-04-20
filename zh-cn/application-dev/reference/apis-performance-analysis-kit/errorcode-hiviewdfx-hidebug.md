@@ -69,7 +69,7 @@ The number of available invocations for the interface is insufficient. Please wa
 
 **处理步骤**
 
-等待进程或整机的调用配额刷新。
+等待进程或整机的调用配额刷新或者在开发者模式下调用接口。
 
 ## 11400107 dump子进程fork失败
 

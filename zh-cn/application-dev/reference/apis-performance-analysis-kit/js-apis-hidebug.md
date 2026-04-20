@@ -1454,6 +1454,8 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 > 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 当设置的开发者选项开关打开并重启设备后，此功能有效。
+>
+> 在开发者模式下，无接口调用配额限制。
 
 **起始版本**：26.0.0
 
