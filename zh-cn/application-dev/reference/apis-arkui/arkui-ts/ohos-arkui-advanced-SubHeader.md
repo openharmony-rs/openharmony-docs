@@ -796,7 +796,7 @@ struct SubHeaderExample {
           value: 'selectDemo',
           selected: 0,
           onSelect: (index: int, value?: string) => {
-            console.log(`subheader onselect index : ${index}, value: ${value}`);
+            console.info(`subheader onselect index : ${index}, value: ${value}`);
           }
         },
         operationType: OperationType.ICON_GROUP,
@@ -829,6 +829,7 @@ struct SubHeaderExample {
 在获焦状态下，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
 
 ArkTS-Dyn示例：
+
 从API version 18开始，在[OperationOption](#operationoption)中新增defaultFocus接口。
 ```ts
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';

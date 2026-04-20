@@ -1360,6 +1360,7 @@ struct SubHeaderExample {
 ### 示例9（右侧按钮设置默认获焦）
 
 ArkTS-Dyn示例：
+
 从API version 18开始，在[SubHeaderV2OperationItem](#subheaderv2operationitemoptions)中新增defaultFocus接口。
 ```ts
 import {

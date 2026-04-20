@@ -29,14 +29,11 @@ import { ProgressButton } from '@kit.ArkUI';
 
 ## ProgressButton
 
-ArkTS-Dyn: ProgressButton({progress: number, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
-boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
+ArkTS-Dyn: ProgressButton({progress: number, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
-ArkTS-Sta: ProgressButton({progress: double, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
-boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
+ArkTS-Sta: ProgressButton({progress: double, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
 **装饰器类型：**\@Component
-
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
