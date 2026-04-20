@@ -75,7 +75,7 @@ ArkTS-Sta: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;int&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because br proxy function not support.[since 26] |
+| 801      | Capability not supported.[since 26] |
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
 | 32390006 | Parameter error.|
@@ -191,7 +191,7 @@ ArkTS-Sta: closeProxyChannel(channelId:&nbsp;int):&nbsp;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because br proxy function not support.[since 26] |
+| 801      | Capability not supported.[since 26] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -263,7 +263,7 @@ ArkTS-Sta: sendData(channelId:int, data:ArrayBuffer):Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported because br proxy function not support.[since 26] |
+| 801      | Capability not supported.[since 26] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
