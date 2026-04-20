@@ -73,7 +73,7 @@ unsubscribeAccelerometer(): void
 
 取消订阅加速度数据。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometer9-2)。
+除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometerdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -252,7 +252,7 @@ Sensor.unsubscribeLight();
 
 订阅计步传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometer9)。
+除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -289,7 +289,7 @@ unsubscribeStepCounter(): void
 
 取消订阅计步传感器。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometer9-2)。
+除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
