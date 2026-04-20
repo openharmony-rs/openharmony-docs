@@ -43,8 +43,8 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    从scene.animations[0]获取动画资源，启用并注册onStarted()、onFinished()回调，用于监听动画播放状态或触发逻辑。
 
    ArkGraphics 3D提供以下动画回调接口：
-    - onStarted()：动画开始播放时触发，start 与 restart 操作均会触发该回调。
-    - onFinished()：动画播放完成或执行 finish 操作时触发。
+    - onStarted()：动画开始播放时触发，start与restart操作均会触发该回调。
+    - onFinished()：动画播放完成或执行finish操作时触发。
 
    <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
