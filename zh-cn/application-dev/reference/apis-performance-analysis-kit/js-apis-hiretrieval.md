@@ -155,10 +155,8 @@ isParticipant(): boolean
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 let isParticipant = hiRetrieval.isParticipant();
 ```
 
@@ -183,10 +181,8 @@ getLastParticipationTimestamp(): number
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 let ts = hiRetrieval.getLastParticipationTimestamp();
 ```
 
@@ -245,9 +241,7 @@ getCurrentConfig(): HiRetrievalConfig
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 let cfg = hiRetrieval.getCurrentConfig();
 ```
