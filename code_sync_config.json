@@ -50591,7 +50591,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/TransferabledObject.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":68,
 						"name":"example_pass_obj",
 						"start_line":16
 					}
