@@ -193,7 +193,7 @@ export async function activatePermissionExample() {
 
 ## 持久化权限保留配置
 
-从API version 23开始，系统新增支持持久化权限保留能力。应用卸载时根据ohos.fileshare.supportPreservePersistentPermission标签保留持久化。再次安装时恢复上次已保留的持久化权限。
+从API version 24开始，系统新增支持持久化权限保留能力。应用卸载时根据ohos.fileshare.supportPreservePersistentPermission标签保留持久化。再次安装时恢复上次已保留的持久化权限。
 
 ### 配置方式
 
