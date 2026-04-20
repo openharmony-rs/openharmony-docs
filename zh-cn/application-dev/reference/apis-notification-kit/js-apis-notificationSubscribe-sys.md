@@ -327,7 +327,7 @@ let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: BusinessError) => {
-  cconsole.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
