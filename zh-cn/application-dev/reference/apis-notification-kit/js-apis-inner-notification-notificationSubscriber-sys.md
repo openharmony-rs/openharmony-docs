@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-作为订阅通知接口[subscribe](./js-apis-notificationSubscribe-sys.md)的入参，提供订阅者接收到新通知、取消通知等的回调方法。
+作为订阅通知接口[subscribeNotification](js-apis-notificationSubscribe-sys.md#notificationsubscribesubscribenotification)的入参，提供订阅者接收到新通知、取消通知等的回调方法。
 
 > **说明：**
 >
@@ -636,14 +636,6 @@ type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => vo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('subscribeCallback');
-  }
-};
-
 let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
   console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
 };
@@ -714,14 +706,6 @@ type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminder
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
 
 let onEnabledSilentReminderChangedCallback: notificationSubscribe.EnabledSilentReminderChangedCallback = (callbackData: notificationSubscribe.EnabledSilentReminderCallbackData) => {
   console.info("bundle: ", callbackData.bundle);
