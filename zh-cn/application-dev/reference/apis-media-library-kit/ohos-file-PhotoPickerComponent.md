@@ -1267,11 +1267,11 @@ struct PickerDemo {
 import { display } from '@kit.ArkUI';
 import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
 const enum DrawerState {
-  // 展开态
+  // 展开态。
   Expanding,
-  // 收缩态
+  // 收缩态。
   Collapsing,
-  // 滚动态
+  // 滚动态。
   Sliding
 }
 
