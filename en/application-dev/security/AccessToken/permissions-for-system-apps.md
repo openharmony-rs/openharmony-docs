@@ -5727,34 +5727,6 @@ Allows an application to obtain and set the car scenario mode.
 
 **Valid since**: 26.0.0
 
-## ohos.permission.ENCRYPT_VOLUME_MANAGER
- 	 
-Allows an application to call the API of storage manager for managing volume encryption.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: General
-
-**Since**: 24
-
-## ohos.permission.ODD_MANAGER
-
-Allows an application to call the API of storage manager for managing optical disc burning.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: General
-
-**Since**: 24
-
 ## ohos.permission.ASSET_CACHE_MANAGER
 
 Allows an application to deliver, control, and query tasks through the asset cache service management APIs.
