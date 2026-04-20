@@ -174,6 +174,199 @@ struct Index {
 }
 ```
 
+## inputConsumer.onkey<sup>26+</sup>
+
+onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
+
+订阅组合按键（按键命令模式），支持通过 triggerType 指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用 Callback 异步方式上报按键事件数据。
+
+与 inputConsumer.on('key') 现有接口（API 8）的区别：
+- 本接口的 keyOptions 支持 triggerType 参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。
+- 本接口回调参数为 KeyCommandCallback 类型，同时接收 KeyOptions 和 KeyEvent 对象。
+- 本接口采用事件消费机制，可通过事件消费阻止按键事件向后传递。
+> **说明：**
+> 本接口从 API version 26.0.0 开始支持。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，支持 triggerType 参数。 |
+| callback | [KeyCommandCallback](#keycommandcallback26) | 是 | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合键选项和按键事件数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputConsumer } from '@kit.InputKit';
+
+let leftCtrlKey = 2072;
+let cKey = 2049;
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftCtrlKey],
+  finalKey: cKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
+};
+let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+  console.log(`KeyOptions: ${JSON.stringify(keyOptions)}`);
+  if (keyEvent) {
+    console.log(`KeyEvent: keyCode=${keyEvent.key.keyCode}, action=${keyEvent.action}`);
+  }
+}
+try {
+  inputConsumer.onKey(keyOptions, callback);
+} catch (error) {
+  console.log(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [],
+  finalKey: 2049,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.REPEAT_PRESSED
+};
+let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+  console.log(`Repeat key event`);
+}
+try {
+  inputConsumer.onKey(keyOptions, callback);
+} catch (error) {
+  console.log(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+let leftAltKey = 2045;
+let tabKey = 2049;
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftAltKey],
+  finalKey: tabKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.ALL_RELEASED
+};
+let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+  console.log(`All released event`);
+}
+try {
+  inputConsumer.onKey(keyOptions, callback);
+} catch (error) {
+  console.log(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+## inputConsumer.offKey<sup>26+</sup>
+
+offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
+
+取消订阅系统快捷键。使用callback异步回调。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，需与订阅时传入的 keyOptions 一致。 |
+| callback | [KeyCommandCallback](#keycommandcallback26) | 否 | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：** 
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+// Unsubscribe a single callback
+let leftCtrlKey = 2072;
+let cKey = 2049;
+let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
+  console.log(`KeyEvent received`);
+}
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftCtrlKey],
+  finalKey: cKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
+};
+try {
+  inputConsumer.onKey(keyOptions, callback);
+  inputConsumer.offKey(keyOptions, callback);
+  console.log(`Unsubscribe success`);
+} catch (error) {
+  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+// Unsubscribe all callbacks for the specified keyOptions
+let leftCtrlKey = 2072;
+let cKey = 2049;
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftCtrlKey],
+  finalKey: cKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
+};
+try {
+  inputConsumer.offKey(keyOptions);
+  console.log(`Unsubscribe all success`);
+} catch (error) {
+  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+---
+
+## 新增类型定义
+
+### KeyCommandCallback<sup>26+</sup>
+
+type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
+
+按键命令回调函数类型，当快捷键注册条件满足时触发的回调。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**系统API：** 此接口为系统接口。
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
+| keyEvent | [KeyEvent](../apis-input-kit/js-apis-multimodalinput-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
+
+---
+
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
 setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
@@ -296,6 +489,7 @@ struct Index {
 | isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
 | finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
+| triggerType<sup>26+</sup> | [KeyCommandTriggerType](#keycommandtriggertype26) | 否 | 是 | 触发模式。默认值为0，表示使用 isFinalKeyDown 和 isRepeat 的传统模式。设置为 PRESSED(1)、REPEAT_PRESSED(2) 或 ALL_RELEASED(3) 时，启用命令触发模式。一旦设置此值，isFinalKeyDown 和 isRepeat 将被忽略。|
 
 ## shieldMode<sup>11+</sup>
 
@@ -306,3 +500,23 @@ struct Index {
 | 名称                        | 值 | 说明           |
 | ------------------------------ | ----------- | ---------------- |
 | FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 |
+
+---
+
+## 新增枚举
+
+### KeyCommandTriggerType<sup>26+</sup>
+
+按键命令触发类型枚举，用于指定组合按键的触发时机。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**系统API：** 此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| PRESSED | 1 | 首次按下触发。当最终按键首次按下时触发回调，自动重复按下不触发。 |
+| REPEAT_PRESSED | 2 | 重复按下触发。当最终按键每次按下时都触发回调，包括自动重复按下。 |
+| ALL_RELEASED | 3 | 按下按键或抬起按键时均会触发回调。包括自动重复按下的按键。 |
+
+---
