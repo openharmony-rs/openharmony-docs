@@ -216,7 +216,7 @@ Heap包含两种类型：LocalHeap和SharedHeap。LocalHeap是应用进程中每
 
 ![image](./figures/gc-heap-space.png)
 
-- YoungSpace：年轻代（Young Generation），又称SemiSpace，存放新创建出来的对象，存活率低，主要使用复制算法进行内存回收。
+- YoungSpace：年轻代（Young Generation），又称SemiSpace，存放新创建出来的对象，存活率低，主要使用半空间复制算法进行内存回收。
 - OldSpace：老年代（Old Generation），存放年轻代多次回收仍存活的对象会被移动到该空间，根据场景混合多种算法进行内存回收。
 - HugeObjectSpace：大对象空间，使用单独的Region存放一个大对象的空间。
 - ReadOnlySpace：只读空间，存放运行期间的只读数据。
