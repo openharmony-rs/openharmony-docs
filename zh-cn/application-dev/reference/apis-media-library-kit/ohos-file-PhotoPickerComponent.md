@@ -1260,15 +1260,18 @@ struct PickerDemo {
 
 ## 示例二（抽屉组件）
 
-可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、onScrollStopAtStart和onScrollStopAtEnd属性来实现抽屉效果。
+可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、[photoPickerComponent](#photopickercomponent)的onScrollStopAtStart和onScrollStopAtEnd回调来实现抽屉效果。
 
 ```ts
 // xxx.ets
 import { display } from '@kit.ArkUI';
 import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
 const enum DrawerState {
+  // 展开态
   Expanding,
+  // 收缩态
   Collapsing,
+  // 滚动态
   Sliding
 }
 
@@ -1277,17 +1280,17 @@ const enum DrawerState {
 struct Drawer {
   @State pickerController: PickerController = new PickerController();
   private pickerOptions: PickerOptions = new PickerOptions();
-  // 屏幕高度，单位为：vp。
+  // 屏幕高度，单位为vp。
   @State screenHeight: number = 0;
-  // 抽屉高度，单位为：vp。
+  // 抽屉高度，单位为vp。
   @State drawerHeight: number = 0;
-  // 抽屉的偏移量，单位为：vp。
+  // 抽屉的偏移量，单位为vp。
   @State offsetY: number = 0;
   // 抽屉是否展开。
   @State isExpanded: boolean = false;
-  // 拖拽起始位置，单位为：vp。
+  // 拖拽起始位置，单位为vp。
   private startY: number = 0;
-  // 当前拖拽的偏移量，单位为：vp。
+  // 当前拖拽的偏移量，单位为vp。
   private currentOffset: number = 0;
   // 自定义抽屉高度在整个屏幕的占比。
   private drawerRatio: number = 0.8;
@@ -1471,10 +1474,10 @@ struct Drawer {
           .onActionEnd(()=>{
             // 手势结束，根据位置自动展开或收起。
             if (this.offsetY > this.drawerHeight / 2) {
-              // 滑动超过抽屉一半，收缩态。
+              // 滑动超过抽屉高度一半，抽屉状态置为收缩态。
               this.hideDrawer();
             } else {
-              // 滑动不到抽屉一半，展开态。
+              // 滑动不到抽屉高度一半，抽屉状态置为展开态。
               this.showDrawer();
             }
           })
