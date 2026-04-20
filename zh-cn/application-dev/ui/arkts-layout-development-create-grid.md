@@ -161,28 +161,28 @@ Grid() {
   GridItem() {
     // app.string.Meeting资源文件中的value值为‘会议’
     Text($r('app.string.Meeting'))
-    // ···
+    // ...
   }
 
   GridItem() {
-    // app.string.Check_in资源文件中的value值为‘投票’
+    // app.string.Check_in资源文件中的value值为‘签到’
     Text($r('app.string.Check_in'))
-    // ···
+    // ...
   }
 
   GridItem() {
-    // app.string.Voting资源文件中的value值为‘签到’
+    // app.string.Voting资源文件中的value值为‘投票’
     Text($r('app.string.Voting'))
-    // ···
+    // ...
   }
 
   GridItem() {
     // app.string.Printing资源文件中的value值为‘打印’
     Text($r('app.string.Printing'))
-    // ···
+    // ...
   }
 }
-// ···
+// ...
 .rowsTemplate('1fr 1fr')
 .columnsTemplate('1fr 1fr')
 ```
@@ -196,37 +196,37 @@ Grid() {
 @Entry
 @Component
 export struct DataInGrid {
-// ···
+  // ...
 
   @State services: Array<string> = [
     // app.string.Meeting资源文件中的value值为‘会议’
     this.context!.resourceManager.getStringSync($r('app.string.Meeting').id),
-    // app.string.Check_in资源文件中的value值为‘投票’
+    // app.string.Check_in资源文件中的value值为‘签到’
     this.context!.resourceManager.getStringSync($r('app.string.Check_in').id),
-    // app.string.Voting资源文件中的value值为‘签到’
+    // app.string.Voting资源文件中的value值为‘投票’
     this.context!.resourceManager.getStringSync($r('app.string.Voting').id),
     // app.string.Printing资源文件中的value值为‘打印’
     this.context!.resourceManager.getStringSync($r('app.string.Printing').id)
   ];
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
       Column() {
-        // ···
+        // ...
           Grid() {
             ForEach(this.services, (service: string) => {
               GridItem() {
                 Text(service)
               }
-            // ···
+              // ...
             }, (service: string): string => service)
           }
           .rowsTemplate(('1fr 1fr') as string)
           .columnsTemplate(('1fr 1fr') as string)
-        // ···
+          // ...
       }
-    // ···
+      // ...
   }
 }
 ```
