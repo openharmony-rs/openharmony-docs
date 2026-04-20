@@ -10,8 +10,9 @@
 该模块为基本打印的操作API，提供调用基础打印功能的接口。
 
 > **说明：**  
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[@ohos.print (打印)](js-apis-print-sys.md)。
+> 当前界面仅包含本模块的系统接口，其他公开接口参见[@ohos.print (打印)](./js-apis-print.md)。
 
 ## 导入模块
 
@@ -37,6 +38,41 @@ import { print } from '@kit.BasicServicesKit';
 | vendorIcon | number | 否 | 否 | 表示供应商图标。 |
 | version | string | 否 | 否 | 表示当前打印机扩展的版本。 |
 
+## PrintMargin
+
+定义打印页边距的接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
+**属性：**
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- |--------| -------- | -------- |
+| top | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面上边距。默认值为0。 |
+| bottom | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面下边距。默认值为0。 |
+| left | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面左边距。默认值为0。 |
+| right | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面右边距。默认值为0。 |
+
+## PrinterRange
+
+定义打印范围的接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：20
+
+**属性：**
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+
 ## print.queryAllPrinterExtensionInfos
 
 queryAllPrinterExtensionInfos(callback: AsyncCallback&lt;Array&lt;PrinterExtensionInfo&gt;&gt;): void
@@ -57,7 +93,7 @@ queryAllPrinterExtensionInfos(callback: AsyncCallback&lt;Array&lt;PrinterExtensi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -68,13 +104,13 @@ queryAllPrinterExtensionInfos(callback: AsyncCallback&lt;Array&lt;PrinterExtensi
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrinterExtensionInfos((err: BusinessError, extensionInfos: print.PrinterExtensionInfo[]) => {
     if (err) {
         console.error('queryAllPrinterExtensionInfos err ' + JSON.stringify(err));
     } else {
-        console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
+        console.log('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
     }
 })
 ```
@@ -99,7 +135,7 @@ queryAllPrinterExtensionInfos(): Promise&lt;Array&lt;PrinterExtensionInfo&gt;&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -110,10 +146,10 @@ queryAllPrinterExtensionInfos(): Promise&lt;Array&lt;PrinterExtensionInfo&gt;&gt
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrinterExtensionInfos().then((extensionInfos: print.PrinterExtensionInfo[]) => {
-    console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
+    console.log('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
     // ...
 }).catch((error: BusinessError) => {
     console.error('failed to get AllPrinterExtension because ' + JSON.stringify(error));
@@ -141,7 +177,7 @@ disconnectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -153,14 +189,14 @@ disconnectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId, (err: BusinessError) => {
     if (err) {
         console.error('failed to disconnect Printer because : ' + JSON.stringify(err));
     } else {
-        console.info('start disconnect Printer success');
+        console.log('start disconnect Printer success');
     }
 })
 ```
@@ -191,7 +227,7 @@ disconnectPrinter(printerId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -203,11 +239,11 @@ disconnectPrinter(printerId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId).then(() => {
-    console.info('start disconnect Printer success');
+    console.log('start disconnect Printer success');
 }).catch((error: BusinessError) => {
     console.error('failed to disconnect Printer because : ' + JSON.stringify(error));
 })
@@ -234,7 +270,7 @@ queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -246,14 +282,14 @@ queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): 
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId, (err: BusinessError) => {
     if (err) {
         console.error('failed to query Printer Capability because : ' + JSON.stringify(err));
     } else {
-        console.info('start query Printer Capability success');
+        console.log('start query Printer Capability success');
     }
 })
 ```
@@ -284,7 +320,7 @@ queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -296,11 +332,11 @@ queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId).then(() => {
-    console.info('start query Printer success');
+    console.log('start query Printer success');
 }).catch((error: BusinessError) => {
     console.error('failed to query Printer Capability because : ' + JSON.stringify(error));
 })
@@ -327,7 +363,7 @@ startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -339,7 +375,7 @@ startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
@@ -362,7 +398,7 @@ print.startPrintJob(jobInfo, (err: BusinessError) => {
     if (err) {
         console.error('failed to start Print Job because : ' + JSON.stringify(err));
     } else {
-        console.info('start Print Job success');
+        console.log('start Print Job success');
     }
 })
 ```
@@ -393,7 +429,7 @@ startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -405,7 +441,7 @@ startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
@@ -425,7 +461,7 @@ let jobInfo : print.PrintJob = {
     options : undefined
 };
 print.startPrintJob(jobInfo).then(() => {
-    console.info('start Print success');
+    console.log('start Print success');
 }).catch((error: BusinessError) => {
     console.error('failed to start Print because : ' + JSON.stringify(error));
 })
@@ -452,7 +488,7 @@ cancelPrintJob(jobId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -464,14 +500,14 @@ cancelPrintJob(jobId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId, (err: BusinessError) => {
     if (err) {
         console.error('cancelPrintJob failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('cancelPrintJob success');
+        console.log('cancelPrintJob success');
     }
 })
 ```
@@ -502,7 +538,7 @@ cancelPrintJob(jobId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -514,11 +550,11 @@ cancelPrintJob(jobId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId).then(() => {
-    console.info('cancelPrintJob success');
+    console.log('cancelPrintJob success');
 }).catch((error: BusinessError) => {
     console.error('cancelPrintJob failed, because : ' + JSON.stringify(error));
 })
@@ -550,7 +586,7 @@ restartPrintJob(jobId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -561,11 +597,11 @@ restartPrintJob(jobId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '121212';
 print.restartPrintJob(jobId).then(() => {
-    console.info('restartPrintJob success');
+    console.log('restartPrintJob success');
 }).catch((error: BusinessError) => {
     console.error('restartPrintJob failed, because : ' + JSON.stringify(error));
 })
@@ -592,7 +628,7 @@ requestPrintPreview(jobInfo: PrintJob, callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -623,7 +659,7 @@ let jobInfo : print.PrintJob = {
     options : undefined
 };
 print.requestPrintPreview(jobInfo, (num : number) => {
-    console.info('requestPrintPreview success, num : ' + JSON.stringify(num));
+    console.log('requestPrintPreview success, num : ' + JSON.stringify(num));
 
 })
 ```
@@ -654,7 +690,7 @@ requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -666,7 +702,7 @@ requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
@@ -686,7 +722,7 @@ let jobInfo : print.PrintJob = {
     options : undefined
 };
 print.requestPrintPreview(jobInfo).then((num: number) => {
-    console.info('requestPrintPreview success, num : ' + JSON.stringify(num));
+    console.log('requestPrintPreview success, num : ' + JSON.stringify(num));
 }).catch((error: BusinessError) => {
     console.error('requestPrintPreview failed, because : ' + JSON.stringify(error));
 })
@@ -713,7 +749,7 @@ on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -731,8 +767,8 @@ print.on('printerStateChange', (state: print.PrinterState, info: print.PrinterIn
         console.error('printer state changed state is null or info is null');
         return;
     } else {
-        console.info('on printer state changed, state : ' + JSON.stringify(state));
-        console.info('on printer state changed, info : ' + JSON.stringify(info));
+        console.log('on printer state changed, state : ' + JSON.stringify(state));
+        console.log('on printer state changed, info : ' + JSON.stringify(info));
     }
 })
 ```
@@ -758,7 +794,7 @@ off(type: 'printerStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -772,7 +808,7 @@ off(type: 'printerStateChange', callback?: Callback&lt;boolean&gt;): void
 import { print } from '@kit.BasicServicesKit';
 
 print.off('printerStateChange', (data: boolean) => {
-    console.info('off printerStateChange data : ' + JSON.stringify(data));
+    console.log('off printerStateChange data : ' + JSON.stringify(data));
 })
 ```
 
@@ -797,7 +833,7 @@ on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -811,7 +847,7 @@ on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => vo
 import { print } from '@kit.BasicServicesKit';
 
 print.on('jobStateChange', (state: print.PrintJobState, job: print.PrintJob) => {
-    console.info('onJobStateChange, state : ' + JSON.stringify(state) + ', job : ' + JSON.stringify(job));
+    console.log('onJobStateChange, state : ' + JSON.stringify(state) + ', job : ' + JSON.stringify(job));
 })
 ```
 
@@ -836,7 +872,7 @@ off(type: 'jobStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -850,7 +886,7 @@ off(type: 'jobStateChange', callback?: Callback&lt;boolean&gt;): void
 import { print } from '@kit.BasicServicesKit';
 
 print.off('jobStateChange', (data: boolean) => {
-    console.info('offJobStateChanged data : ' + JSON.stringify(data));
+    console.log('offJobStateChanged data : ' + JSON.stringify(data));
 })
 ```
 
@@ -875,7 +911,7 @@ on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -889,7 +925,7 @@ on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void)
 import { print } from '@kit.BasicServicesKit';
 
 print.on('extInfoChange', (extensionId: string, info: string) => {
-    console.info('onExtInfoChange, extensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
+    console.log('onExtInfoChange, extensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
 })
 ```
 
@@ -914,7 +950,7 @@ off(type: 'extInfoChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -928,7 +964,7 @@ off(type: 'extInfoChange', callback?: Callback&lt;boolean&gt;): void
 import { print } from '@kit.BasicServicesKit';
 
 print.off('extInfoChange', (data: boolean) => {
-    console.info('offExtInfoChange data : ' + JSON.stringify(data));
+    console.log('offExtInfoChange data : ' + JSON.stringify(data));
 })
 ```
 
@@ -953,7 +989,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;void&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -965,7 +1001,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;void&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -980,7 +1016,7 @@ print.addPrinters([printerInfo], (err: BusinessError) => {
     if (err) {
         console.error('addPrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('addPrinters success');
+        console.log('addPrinters success');
     }
 })
 ```
@@ -1011,7 +1047,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1023,7 +1059,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1035,7 +1071,7 @@ let printerInfo : print.PrinterInfo = {
     options : 'opt'
 };
 print.addPrinters([printerInfo]).then(() => {
-    console.info('add printers success.');
+    console.log('add printers success.');
 }).catch((error: BusinessError) => {
     console.error('add printers error : ' + JSON.stringify(error));
 })
@@ -1062,7 +1098,7 @@ removePrinters(printerIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1074,14 +1110,14 @@ removePrinters(printerIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 print.removePrinters([printerId], (err: BusinessError) => {
     if (err) {
         console.error('removePrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('removePrinters success');
+        console.log('removePrinters success');
     }
 })
 ```
@@ -1112,7 +1148,7 @@ removePrinters(printerIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1124,11 +1160,11 @@ removePrinters(printerIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 print.removePrinters([printerId]).then(() => {
-    console.info('remove printers success');
+    console.log('remove printers success');
 }).catch((error: BusinessError) => {
     console.error('remove printers error : ' + JSON.stringify(error));
 })
@@ -1155,7 +1191,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1167,7 +1203,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;vo
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1182,7 +1218,7 @@ print.updatePrinters([printerInfo], (err: BusinessError) => {
     if (err) {
         console.error('updataPrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('updataPrinters success');
+        console.log('updataPrinters success');
     }
 })
 ```
@@ -1213,7 +1249,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1225,7 +1261,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1237,7 +1273,7 @@ let printerInfo : print.PrinterInfo = {
     options : 'opt'
 };
 print.updatePrinters([printerInfo]).then(() => {
-    console.info('update printers success');
+    console.log('update printers success');
 }).catch((error: BusinessError) => {
     console.error('update printers error : ' + JSON.stringify(error));
 })
@@ -1265,7 +1301,7 @@ updatePrinterState(printerId: string, state: PrinterState, callback: AsyncCallba
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1277,7 +1313,7 @@ updatePrinterState(printerId: string, state: PrinterState, callback: AsyncCallba
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
@@ -1285,7 +1321,7 @@ print.updatePrinterState(printerId, state, (err: BusinessError) => {
     if (err) {
         console.error('updatePrinterState failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('updatePrinterState success');
+        console.log('updatePrinterState success');
     }
 })
 ```
@@ -1317,7 +1353,7 @@ updatePrinterState(printerId: string, state: PrinterState): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1329,12 +1365,12 @@ updatePrinterState(printerId: string, state: PrinterState): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
 print.updatePrinterState(printerId, state).then(() => {
-    console.info('update printer state success');
+    console.log('update printer state success');
 }).catch((error: BusinessError) => {
     console.error('update printer state error : ' + JSON.stringify(error));
 })
@@ -1361,7 +1397,7 @@ updateExtensionInfo(info: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1373,14 +1409,14 @@ updateExtensionInfo(info: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info, (err: BusinessError) => {
     if (err) {
         console.error('updateExtensionInfo failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('updateExtensionInfo success');
+        console.log('updateExtensionInfo success');
     }
 })
 ```
@@ -1411,7 +1447,7 @@ updateExtensionInfo(info: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1423,11 +1459,11 @@ updateExtensionInfo(info: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info).then(() => {
-    console.info('update print job state success');
+    console.log('update print job state success');
 }).catch((error: BusinessError) => {
     console.error('update print job state error : ' + JSON.stringify(error));
 })
@@ -1456,7 +1492,7 @@ queryAllPrintJobs(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1467,13 +1503,13 @@ queryAllPrintJobs(callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrintJobs((err: BusinessError) => {
     if (err) {
         console.error('queryAllPrintJobs failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('queryAllPrintJobs success');
+        console.log('queryAllPrintJobs success');
     }
 })
 ```
@@ -1501,7 +1537,7 @@ queryAllPrintJobs(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1512,10 +1548,10 @@ queryAllPrintJobs(): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrintJobs().then(() => {
-    console.info('queryAllPrintJobs success');
+    console.log('queryAllPrintJobs success');
 }).catch((error: BusinessError) => {
     console.error('queryAllPrintJobs failed, error : ' + JSON.stringify(error));
 })
@@ -1541,7 +1577,7 @@ queryAllActivePrintJobs(): Promise&lt;[PrintJob](js-apis-print.md#printjob24)[]&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1552,10 +1588,10 @@ queryAllActivePrintJobs(): Promise&lt;[PrintJob](js-apis-print.md#printjob24)[]&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllActivePrintJobs().then((printJobs : print.PrintJob[]) => {
-    console.info('queryAllActivePrintJobs success, data : ' + JSON.stringify(printJobs));
+    console.log('queryAllActivePrintJobs success, data : ' + JSON.stringify(printJobs));
 }).catch((error: BusinessError) => {
     console.error('queryAllActivePrintJobs failed, error : ' + JSON.stringify(error));
 })
@@ -1581,7 +1617,7 @@ queryPrintJobList(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1592,13 +1628,13 @@ queryPrintJobList(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryPrintJobList((err: BusinessError, printJobs : print.PrintJob[]) => {
     if (err) {
         console.error('queryPrintJobList failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
+        console.log('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
     }
 })
 ```
@@ -1623,7 +1659,7 @@ queryPrintJobList(): Promise&lt;Array&lt;PrintJob&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1634,10 +1670,10 @@ queryPrintJobList(): Promise&lt;Array&lt;PrintJob&gt;&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
-    console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
+    console.log('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
 }).catch((error: BusinessError) => {
     console.error('queryPrintJobList failed, error : ' + JSON.stringify(error));
 })
@@ -1664,7 +1700,7 @@ queryPrintJobById(jobId: string, callback: AsyncCallback&lt;PrintJob&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1676,14 +1712,14 @@ queryPrintJobById(jobId: string, callback: AsyncCallback&lt;PrintJob&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId, (err: BusinessError, printJob : print.PrintJob) => {
     if (err) {
         console.error('queryPrintJobById failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('queryPrintJobById success, data : ' + JSON.stringify(printJob));
+        console.log('queryPrintJobById success, data : ' + JSON.stringify(printJob));
     }
 })
 ```
@@ -1714,7 +1750,7 @@ queryPrintJobById(jobId: string): Promise&lt;PrintJob&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1726,11 +1762,11 @@ queryPrintJobById(jobId: string): Promise&lt;PrintJob&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
-    console.info('queryPrintJobById data : ' + JSON.stringify(printJob));
+    console.log('queryPrintJobById data : ' + JSON.stringify(printJob));
 }).catch((error: BusinessError) => {
     console.error('queryPrintJobById error : ' + JSON.stringify(error));
 })
@@ -1759,7 +1795,7 @@ startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: numbe
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1806,7 +1842,7 @@ printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
 
 let fd : number = 1;
 print.startGettingPrintFile(jobId, printAttributes, fd, (state: print.PrintFileCreationState) => {
-    console.info('onFileStateChanged success, data : ' + JSON.stringify(state));
+    console.log('onFileStateChanged success, data : ' + JSON.stringify(state));
 })
 ```
 
@@ -1832,7 +1868,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1844,14 +1880,14 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started', (err: BusinessError) => {
     if (err) {
         console.error('notifyPrintService failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('notifyPrintService success');
+        console.log('notifyPrintService success');
     }
 })
 ```
@@ -1883,7 +1919,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1895,11 +1931,11 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started').then(() => {
-    console.info('notifyPrintService success');
+    console.log('notifyPrintService success');
 }).catch((error: BusinessError) => {
     console.error('notifyPrintService error : ' + JSON.stringify(error));
 })
@@ -1931,7 +1967,7 @@ getPrinterInfoById(printerId: string): Promise&lt;PrinterInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1943,11 +1979,11 @@ getPrinterInfoById(printerId: string): Promise&lt;PrinterInfo&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1';
 print.getPrinterInfoById(printerId).then((printerInfo : print.PrinterInfo) => {
-    console.info('getPrinterInfoById data : ' + JSON.stringify(printerInfo));
+    console.log('getPrinterInfoById data : ' + JSON.stringify(printerInfo));
 }).catch((error: BusinessError) => {
     console.error('getPrinterInfoById error : ' + JSON.stringify(error));
 })
@@ -1979,7 +2015,7 @@ notifyPrintServiceEvent(event: ApplicationEvent): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1991,11 +2027,11 @@ notifyPrintServiceEvent(event: ApplicationEvent): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 print.notifyPrintServiceEvent(event).then(() => {
-    console.info('notifyPrintServiceEvent success');
+    console.log('notifyPrintServiceEvent success');
 }).catch((error: BusinessError) => {
     console.error('notifyPrintServiceEvent error : ' + JSON.stringify(error));
 })
@@ -2028,7 +2064,7 @@ setPrinterPreferences(printerId: string, printerPreferences: PrinterPreferences)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2040,14 +2076,14 @@ setPrinterPreferences(printerId: string, printerPreferences: PrinterPreferences)
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = 'testPrinterId';
 let preferences : print.PrinterPreferences = {
     defaultDuplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE
 };
 print.setPrinterPreferences(printerId, preferences).then(() => {
-    console.info('setPrinterPreferences success');
+    console.log('setPrinterPreferences success');
 }).catch((error: BusinessError) => {
     console.error('setPrinterPreferences error : ' + JSON.stringify(error));
 })
@@ -2073,7 +2109,7 @@ discoverUsbPrinters(): Promise&lt;Array&lt;PrinterInformation&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2084,10 +2120,10 @@ discoverUsbPrinters(): Promise&lt;Array&lt;PrinterInformation&gt;&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.discoverUsbPrinters().then((printers : print.PrinterInformation[]) => {
-    console.info('discoverUsbPrinters data : ' + JSON.stringify(printers));
+    console.log('discoverUsbPrinters data : ' + JSON.stringify(printers));
 }).catch((error: BusinessError) => {
     console.error('discoverUsbPrinters error : ' + JSON.stringify(error));
 })
@@ -2120,7 +2156,7 @@ setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise&lt;void&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2132,12 +2168,12 @@ setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise&lt;void&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1';
 let type : print.DefaultPrinterType = print.DefaultPrinterType.DEFAULT_PRINTER_TYPE_SET_BY_USER;
 print.setDefaultPrinter(printerId, type).then(() => {
-    console.info('setDefaultPrinter success');
+    console.log('setDefaultPrinter success');
 }).catch((error: BusinessError) => {
     console.error('setDefaultPrinter error : ' + JSON.stringify(error));
 })
@@ -2170,7 +2206,7 @@ notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promise&lt;void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2182,12 +2218,12 @@ notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promise&lt;void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 let jobId : string = '1';
 print.notifyPrintServiceEvent(event, jobId).then(() => {
-    console.info('notifyPrintServiceEvent success');
+    console.log('notifyPrintServiceEvent success');
 }).catch((error: BusinessError) => {
     console.error('notifyPrintServiceEvent error : ' + JSON.stringify(error));
 })
@@ -2234,12 +2270,12 @@ queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerUri : string = "testPrinterUri";
 let printerId : string = "testPrinterId";
 print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: print.PrinterCapabilities) => {
-    console.info('queryPrinterCapabilityByUri success' + JSON.stringify(capabilities));
+    console.log('queryPrinterCapabilityByUri success' + JSON.stringify(capabilities));
 }).catch((error: BusinessError) => {
     console.error('queryPrinterCapabilityByUri error : ' + JSON.stringify(error));
 })
@@ -2287,14 +2323,14 @@ addPrinterToCups(printerUri: string, printerName: string, printerMake: string): 
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerUri : string = "testPrinterUri";
 let printerName : string = "testPrinterName";
 let printerMake : string = "testPrinterMake";
 
 print.addPrinterToCups(printerUri, printerName, printerMake).then((result: boolean) => {
-    console.info('addPrinterToCups success' + JSON.stringify(result));
+    console.log('addPrinterToCups success' + JSON.stringify(result));
 }).catch((error: BusinessError) => {
     console.error('addPrinterToCups error : ' + JSON.stringify(error));
 })
@@ -2328,7 +2364,7 @@ deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2339,12 +2375,12 @@ deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerName : string = "testPrinterName";
 
 print.deletePrinterFromCups(printerName).then(() => {
-    console.info('deletePrinterFromCups success');
+    console.log('deletePrinterFromCups success');
 }).catch((error: BusinessError) => {
     console.error('deletePrinterFromCups error : ' + JSON.stringify(error));
 })

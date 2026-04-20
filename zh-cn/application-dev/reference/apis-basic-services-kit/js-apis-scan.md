@@ -12,6 +12,7 @@
 > **说明：**  
 > 本模块首批接口从API version 20开始支持。
 > 当前界面仅包含本模块的公开接口。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -24,6 +25,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义扫描错误码的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
@@ -49,6 +54,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
 | SCAN_CONSTRAINT_NONE | 0 | 无限制。 |
@@ -61,6 +70,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义物理单位的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
@@ -78,6 +91,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
 | SCAN_TYPE_BOOL | 0 | 布尔类型。 |
@@ -91,6 +108,10 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
 | UPDATE_STR | 'update' | 更新码，表示扫描仪id的变化。 |
@@ -101,6 +122,10 @@ import { scan } from '@kit.BasicServicesKit';
 定义扫描仪发现方式的枚举。
 
 **系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | **名称** | **值** | **说明** |
 | -------- | ------ | -------- |
@@ -113,12 +138,16 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| minValue | number | 否 | 否 | 范围的最小值。 |
-| maxValue | number | 否 | 否 | 范围的最大值。 |
-| quantValue | number | 否 | 否 | 范围的量化值。 |
+| minValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最小值。 |
+| maxValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最大值。 |
+| quantValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的量化值。 |
 
 ## ScannerParameter
 
@@ -126,18 +155,22 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | optionName | string | 否 | 否 | 选项名称。 |
-| optionIndex | number | 否 | 否 | 选项索引。 |
+| optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 选项索引。 |
 | optionTitle | string | 否 | 否 | 选项标题。 |
 | optionDesc | string | 否 | 否 | 选项描述。 |
 | optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。 |
 | optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。 |
 | optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型。 |
 | optionConstraintString | string[] | 否 | 是 | 选项字符串约束。 |
-| optionConstraintInt | number[] | 否 | 是 | 选项整数约束。 |
+| optionConstraintInt | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 选项整数约束。 |
 | optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束。 |
 
 ## ScannerOptionValue
@@ -226,7 +259,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.init().then(() => {
-    console.info('scan init success');
+    console.log('scan init success');
 }).catch((error: BusinessError) => {
     console.error('scan init failed: ' + JSON.stringify(error));
 })
@@ -260,7 +293,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.exit().then(() => {
-    console.info('scan exit success');
+    console.log('scan exit success');
 }).catch((error: BusinessError) => {
     console.error('scan exit failed: ' + JSON.stringify(error));
 })
@@ -294,7 +327,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.startScannerDiscovery().then(() => {
-    console.info('start scanner discovery success');
+    console.log('start scanner discovery success');
 }).catch((error: BusinessError) => {
     console.error('start scanner discovery failed: ' + JSON.stringify(error));
 })
@@ -334,7 +367,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.openScanner(scannerId).then(() => {
-    console.info('open scanner success');
+    console.log('open scanner success');
 }).catch((error: BusinessError) => {
     console.error('open scanner failed: ' + JSON.stringify(error));
 })
@@ -374,7 +407,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
-    console.info('close scanner success');
+    console.log('close scanner success');
 }).catch((error: BusinessError) => {
     console.error('close scanner failed: ' + JSON.stringify(error));
 })
@@ -414,7 +447,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) => {
-    console.info('get scanner parameters success: ' + JSON.stringify(parameters));
+    console.log('get scanner parameters success: ' + JSON.stringify(parameters));
 }).catch((error: BusinessError) => {
     console.error('get scanner parameters failed: ' + JSON.stringify(error));
 })
@@ -461,7 +494,7 @@ let value: scan.ScannerOptionValue = {
     numValue: 100
 };
 scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
-    console.info('set scanner parameter success');
+    console.log('set scanner parameter success');
 }).catch((error: BusinessError) => {
     console.error('set scanner parameter failed: ' + JSON.stringify(error));
 })
@@ -503,7 +536,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.setScanAutoOption(scannerId, optionIndex).then(() => {
-    console.info('set scan auto option success');
+    console.log('set scan auto option success');
 }).catch((error: BusinessError) => {
     console.error('set scan auto option failed: ' + JSON.stringify(error));
 })
@@ -545,7 +578,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.getScannerCurrentSetting(scannerId, optionIndex).then((value: scan.ScannerOptionValue) => {
-    console.info('get scanner current setting success: ' + JSON.stringify(value));
+    console.log('get scanner current setting success: ' + JSON.stringify(value));
 }).catch((error: BusinessError) => {
     console.error('get scanner current setting failed: ' + JSON.stringify(error));
 })
@@ -587,7 +620,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let scannerId: string = 'scanner_001';
 let batchMode: boolean = true;
 scan.startScan(scannerId, batchMode).then(() => {
-    console.info('start scan success');
+    console.log('start scan success');
 }).catch((error: BusinessError) => {
     console.error('start scan failed: ' + JSON.stringify(error));
 })
@@ -627,7 +660,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
-    console.info('cancel scan success');
+    console.log('cancel scan success');
 }).catch((error: BusinessError) => {
     console.error('cancel scan failed: ' + JSON.stringify(error));
 })
@@ -667,7 +700,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
-    console.info('get picture scan progress success: ' + JSON.stringify(progress));
+    console.log('get picture scan progress success: ' + JSON.stringify(progress));
 }).catch((error: BusinessError) => {
     console.error('get picture scan progress failed: ' + JSON.stringify(error));
 })
@@ -701,7 +734,7 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
-    console.info('scan device found: ' + JSON.stringify(device));
+    console.log('scan device found: ' + JSON.stringify(device));
 })
 ```
 
@@ -733,7 +766,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.info('scan device found: ' + JSON.stringify(device));
+    console.log('scan device found: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceFound', callback);
 // 取消注册
@@ -768,7 +801,7 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
-    console.info('scan device sync: ' + JSON.stringify(device));
+    console.log('scan device sync: ' + JSON.stringify(device));
 })
 ```
 
@@ -800,7 +833,7 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerSyncDevice) => {
-    console.info('scan device sync: ' + JSON.stringify(device));
+    console.log('scan device sync: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceSync', callback);
 // 取消注册

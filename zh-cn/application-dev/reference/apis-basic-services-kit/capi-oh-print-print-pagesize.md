@@ -24,10 +24,52 @@ typedef struct {...} Print_PageSize
 
 ### 成员变量
 
-| 名称            | 描述       |
-| --------------- | ---------- |
-| char *id        | 纸张 ID。  |
-| char *name      | 纸张名称。 |
-| uint32_t width  | 纸张宽度，单位：毫米。 |
-| uint32_t height | 纸张高度，单位：毫米。 |
+| 名称 | 描述 | 
+| -------- | -------- |
+| char \* [id](#id) | 纸张 ID。 | 
+| char \* [name](#name) | 纸张名称。 | 
+| uint32_t [width](#width) | 纸张宽度，单位：毫米。 | 
+| uint32_t [height](#height) | 纸张高度，单位：毫米。 | 
 
+
+## 结构体成员变量说明
+
+
+### height
+
+```
+uint32_t Print_PageSize::height
+```
+**描述**
+
+纸张高度。
+
+
+### id
+
+```
+char* Print_PageSize::id
+```
+**描述**
+
+纸张 ID。
+
+
+### name
+
+```
+char* Print_PageSize::name
+```
+**描述**
+
+纸张名称。
+
+
+### width
+
+```
+uint32_t Print_PageSize::width
+```
+**描述**
+
+纸张宽度。
