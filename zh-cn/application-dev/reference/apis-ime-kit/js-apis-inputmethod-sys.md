@@ -586,7 +586,7 @@ getDefaultInputMethod(userId?: number): InputMethodProperty
 
 | 类型                                         | 说明                     |
 | -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](#inputmethodproperty8) | 返回默认输入法属性对象。 |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回默认输入法属性对象。 |
 
 **错误码：**
 
@@ -726,7 +726,7 @@ getCurrentInputMethod(userId?: number): InputMethodProperty
 
 | 类型                                         | 说明                     |
 | -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](#inputmethodproperty8) | 返回当前输入法属性对象。 |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回当前输入法属性对象。 |
 
 **错误码：**
 
@@ -810,7 +810,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 输入法的包名。 |
 | extensionName | string | 是 | 输入法的扩展名。 |
-| enabledState | [EnabledState](#enabledstate15) | 是 | 要修改的启用状态。 |
+| enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 要修改的启用状态。 |
 | userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
@@ -868,7 +868,7 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
 | 类型                                                 | 说明               |
 | ---------------------------------------------------- | ------------------ |
-| Array\<[InputMethodProperty](#inputmethodproperty8)> | 返回所有输入法列表 |
+| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回所有输入法列表 |
 
 **错误码：**
 
@@ -965,7 +965,7 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 
 | 类型                                                 | 说明                          |
 | ---------------------------------------------------- | ----------------------------- |
-| Array\<[InputMethodProperty](#inputmethodproperty8)> | 返回已激活/未激活输入法列表。 |
+| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回已激活/未激活输入法列表。 |
 
 **错误码：**
 
@@ -1002,6 +1002,6 @@ type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, in
 
 | 参数名                    | 类型                                                         | 必填 | 说明             |
 | ------------------------- | ------------------------------------------------------------ | ---- | ---------------- |
-| inputMethodProperty | [InputMethodProperty](#inputmethodproperty8) | 是   | 当前输入法的属性。 |
+| inputMethodProperty | [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 是   | 当前输入法的属性。 |
 | inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
 | userId | number | 是 | 输入法发生变化的用户ID。 |
