@@ -1090,4 +1090,4 @@ inputMethod.getSetting().offImeChangeWithUserId();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| userId<sup>24+</sup> | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。|
+| userId<sup>26+</sup> | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。|
