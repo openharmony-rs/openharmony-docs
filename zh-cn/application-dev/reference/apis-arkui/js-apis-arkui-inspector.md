@@ -94,7 +94,7 @@ on(type: 'layout', callback: () => void): void
 
 onLayout(callback: VoidCallback): void
 
-通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
+通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
