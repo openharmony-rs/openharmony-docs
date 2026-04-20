@@ -248,6 +248,26 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | X25519_SK_BN<sup>11+</sup> | 601 | X25519算法中的私钥sk。 |
 | X25519_PK_BN<sup>11+</sup> | 602 | X25519算法中的公钥pk。 |
 
+## AsyKeyDataItem
+
+表示非对称密钥数据项类型的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+| 名称         | 值   | 说明             |
+| ------------ | ---- | ---------------- |
+| EC_PRIVATE_K | 6 | 表示椭圆曲线（EC）私钥的 K。 |
+| EC_PRIVATE_04_X_Y_K | 7 | 表示椭圆曲线（EC）私钥的 04\|\|X\|\|Y\|\|K。 |
+| EC_PUBLIC_X_Y | 8 | 表示椭圆曲线（EC）公钥的 X\|\|Y。 |
+| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y 。 |
+| EC_PUBLIC_COMPRESS_X | 10 | 表示椭圆曲线（EC）公钥的 02\|\|X 或 03\|\|X。 |
+
 ## AsyKeySpecType<sup>10+</sup>
 
 表示密钥参数类型的枚举。
@@ -1235,6 +1255,106 @@ function TestPubKeyPkcs1ToX509BySync1024() {
 }
 ```
 
+### getKeyData
+
+getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
+
+指定密钥数据项类型，获取对应类型的公钥数据。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                 |
+| ---- | --------------------- | ---- | -------------------- |
+| itemType  | [AsyKeyDataItem](#asykeydataitem) | 是   | 指定密钥数据项类型。|
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| Promise\<Uint8Array> | Promise对象，返回指定密钥数据项类型的公钥数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function eccGetKeyDataTest() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = await eccGenerator.generateKeyPair();
+  let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+}
+```
+
+### getKeyDataSync
+
+getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
+
+同步方法，指定密钥数据项类型，获取对应类型的公钥数据。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                 |
+| ---- | --------------------- | ---- | -------------------- |
+| itemType  | [AsyKeyDataItem](#asykeydataitem) | 是   | 指定密钥数据项类型。|
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| Uint8Array | 返回指定密钥数据项类型的公钥数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function eccGetKeyDataTest() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = eccGenerator.generateKeyPairSync();
+  let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+}
+```
+
 ## PriKey
 
 私钥，是[Key](#key)的子类，在非对称加解密、签名、密钥协商时需要将其作为输入使用。
@@ -1413,7 +1533,7 @@ getEncodedPem(format: string): string
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。|
+| format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。从API版本26.0.0起，ECC算法的私钥可为'EC'格式。|
 
 **返回值：**
 
@@ -1720,6 +1840,106 @@ function generateAsyKey() {
   } catch (e) {
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
+}
+```
+
+### getKeyData
+
+getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
+
+指定密钥数据项类型，获取对应类型的公钥数据。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                 |
+| ---- | --------------------- | ---- | -------------------- |
+| itemType  | [AsyKeyDataItem](#asykeydataitem) | 是   | 指定密钥数据项类型。|
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| Promise\<Uint8Array> | Promise对象，返回指定密钥数据项类型的私钥数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+async function eccGetKeyDataTest() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = await eccGenerator.generateKeyPair();
+  let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+}
+```
+
+### getKeyDataSync
+
+getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
+
+同步方法，指定密钥数据项类型，获取对应类型的私钥数据。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                 |
+| ---- | --------------------- | ---- | -------------------- |
+| itemType  | [AsyKeyDataItem](#asykeydataitem) | 是   | 指定密钥数据项类型。|
+
+**返回值：**
+
+| 类型                        | 说明                              |
+| --------------------------- | --------------------------------- |
+| Uint8Array | 返回指定密钥数据项类型的私钥数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function eccGetKeyDataTest() {
+  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+  let keyPair = eccGenerator.generateKeyPairSync();
+  let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
 }
 ```
 
