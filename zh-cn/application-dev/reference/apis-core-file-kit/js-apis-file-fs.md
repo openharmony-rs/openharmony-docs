@@ -9370,7 +9370,7 @@ filter(name: string): boolean
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
 | recursion | boolean | 否 | 是 | 是否递归子目录下的文件名，默认为false。<br>true：返回该目录下所有符合过滤条件的文件的相对路径（以/开头）。<br>false：返回当前目录下满足过滤要求的文件名及目录名。 |
-| listNum | number | 否 | 是 | 列出文件名数量，默认为0，表示列出所有文件。 |
+| listNum | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 列出文件名数量，默认为0，表示列出所有文件。 |
 | fileFilter | [FileFilter](#filefilter) | 否 | 是 | 自定义文件名过滤的规则。 |
 
 ## ListFileOptions<sup>11+</sup>
