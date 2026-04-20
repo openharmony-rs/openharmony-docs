@@ -1022,7 +1022,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback24)  | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback26)  | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
 
 **错误码：**
 
@@ -1060,7 +1060,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback24)  | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。<br>参数不填写时，取消订阅所有的回调事件。 |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback26)  | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。<br>参数不填写时，取消订阅所有的回调事件。 |
 
 **错误码：**
 
