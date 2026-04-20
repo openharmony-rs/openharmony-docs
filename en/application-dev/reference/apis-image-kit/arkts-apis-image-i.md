@@ -80,7 +80,7 @@ Describes the auxiliary picture information.
 | ------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | auxiliaryPictureType      | [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)              | No  | No  | Auxiliary picture type.                                          |
 | size         | [Size](#size)                                                | No  | No  | Image size.|
-| rowStride                 | number                                                       | No  | No  | Row stride.                                                      |
+| rowStride                 | number                                                       | No  | No  | Row stride, in bytes.                                                      |
 | pixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)                           | No  | No  | Pixel format.|
 | colorSpace                | [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | No  | No  | Color space.                                              |
 
@@ -124,7 +124,7 @@ Describes the image decoding options.
 | Name              | Type                              | Read Only| Optional| Description            |
 | ------------------ | ---------------------------------- | ---- | ---- | ---------------- |
 | sampleSize         | number                             | No  | Yes  | Sampling size of the thumbnail. The default value is **1**. Currently, the value can only be **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
-| rotate             | number                             | No  | Yes  | Rotation angle. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.      |
+| rotate             | number                             | No  | Yes  | Rotation angle, in degrees. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.      |
 | editable           | boolean                            | No  | Yes  | Whether pixels are editable. **true** if editable, **false** otherwise. The default value is **false**.<br>If this parameter is set to **false**, the image rendering and transmission performance is improved, but the image cannot be edited. For example, the writePixels operation will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12. |
 | desiredSize        | [Size](#size)                      | No  | Yes  | Expected output size. The value must be a positive integer and defaults to the original image size. If the output size is different from the original size, the output is stretched or scaled to the specified size.<br>Note: If both **desiredSize** and **desiredRegion** are passed to the decoding API, you must also include **cropAndScaleStrategy** to determine whether to crop or scale first. **CROP_FIRST** is recommended.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.  |
 | desiredRegion      | [Region](#region8)                 | No  | Yes  | Rectangle specified by **Region** in the decoded image. When the original image is large and only a specific part of the image is required, you can set this parameter to improve performance. The default value is the original image size.<br>Note: If both **desiredSize** and **desiredRegion** are passed to the decoding API, you must also include **cropAndScaleStrategy** to determine whether to crop or scale first. **CROP_FIRST** is recommended.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.      |
@@ -208,8 +208,8 @@ Describes the color components of an image.
 | Name         | Type                            | Read Only| Optional| Description        |
 | ------------- | -------------------------------- | ---- | ---- | ------------ |
 | componentType | [ComponentType](arkts-apis-image-e.md#componenttype9) | Yes  | No  | Color component type.  |
-| rowStride     | number                           | Yes  | No  | Row stride. The camera preview stream data needs to be read by stride. For details, see [Solution to Screen Artifacts During Camera Preview](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-deal-stride-solution).      |
-| pixelStride   | number                           | Yes  | No  | Pixel stride.  |
+| rowStride     | number                           | Yes  | No  | Row stride, in bytes. The camera preview stream data needs to be read by stride. For details, see [Solution to Screen Artifacts During Camera Preview](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-deal-stride-solution).      |
+| pixelStride   | number                           | Yes  | No  | Pixel stride, in bytes.  |
 | byteBuffer    | ArrayBuffer                      | Yes  | No  | Component buffer.|
 
 ## HdrStaticMetadata<sup>12+</sup>
@@ -224,10 +224,10 @@ Describes the static metadata keys, that is, the values available for **HDR_STAT
 | displayPrimariesY     | Array\<number>  | No| No| Y coordinate of the three primary colors of the display device after normalization. The array length is 3. The unit is 0.00002. The value range is [0.0, 1.0]. |
 | whitePointX  | number  | No| No| X coordinate of the white point after normalization. The unit is 0.00002. The value range is [0.0, 1.0].  |
 | whitePointY  | number   | No| No| Y coordinate of the white point after normalization. The unit is 0.00002. The value range is [0.0, 1.0].  |
-| maxLuminance  | number  | No| No| Maximum luminance of the main monitor. The unit is 1, and the maximum value is 65535.  |
-| minLuminance  | number   | No| No| Minimum luminance of the main monitor. The unit is 0.0001, and the maximum value is 6.55535.  |
-| maxContentLightLevel  | number  | No| No| Maximum luminance of the displayed content. The unit is 1, and the maximum value is 65535.  |
-| maxFrameAverageLightLevel  | number  | No| No| Maximum average luminance of the displayed content. The unit is 1, and the maximum value is 65535.|
+| maxLuminance  | number  | No| No| Maximum luminance of the main monitor, in nits. The maximum value is 65535.  |
+| minLuminance  | number   | No| No| Minimum luminance of the main monitor, in nits. Actual value = Stored value × 0.0001. The maximum value is 6.5535.  |
+| maxContentLightLevel  | number  | No| No| Maximum luminance of the displayed content, in nits. The maximum value is 65535.  |
+| maxFrameAverageLightLevel  | number  | No| No| Maximum average luminance of the displayed content, in nits. The maximum value is 65535.|
 
 ## GainmapChannel<sup>12+</sup>
 

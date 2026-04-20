@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **inputMonitor** module implements listening for events of input devices, including the touchscreen, mouse, touchpad, etc.
 
@@ -1701,7 +1701,7 @@ struct Index {
 
 queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
-Queries the latest touch events. A maximum of 100 events can be queried. This API uses a promise to return the result asynchronously.
+Queries the latest touch events. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 

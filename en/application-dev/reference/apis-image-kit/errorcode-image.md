@@ -687,7 +687,7 @@ The image ICC information is incorrect.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 62980173 DMA Memory Space Error
 
@@ -764,7 +764,7 @@ This error code is reported when the PixelMap fails to be created.
 
 **Solution**
 
-Check whether the input parameters are correct and whether the instance is released in advance.
+Ensure that the input parameters are correct and the instance is available.
 
 ## 62980179 Abnormal Buffer Size
 
@@ -969,7 +969,61 @@ This error code is reported when memory copy fails.
 
 **Solution**
 
-Check whether the instance to be copied has been released. Check whether the memory type matches.
+Ensure that the instance to be copied is not released. Ensure that the memory type matches.
+
+## 7600101 Unsupported MIME Type
+
+**Error Message**
+
+Unsupported mime type.
+
+**Symptom**
+
+This error code is reported when the MIME type is not supported.
+
+**Possible Cause**
+
+The device does not support the MIME type.
+
+**Solution**
+
+Verify the image data or use another image. You can call relevant APIs to query the codec capability range.
+
+## 7600102 Unknown MIME Type
+
+**Error Message**
+
+Unknown mime type.
+
+**Symptom**
+
+This error is reported for an unknown MIME type.
+
+**Possible Cause**
+
+The device does not support the image type or the image is damaged.
+
+**Solution**
+
+Verify the image data or use another image.
+
+## 7600103 Data or Image Too Large
+
+**Error Message**
+
+Too large data or image.
+
+**Symptom**
+
+This error code is reported if the data or image is too large.
+
+**Possible Cause**
+
+The image dimensions are too large.
+
+**Solution**
+
+Use a smaller image.
 
 ## 7600104 Failed to Obtain Image Data
 
@@ -990,6 +1044,42 @@ This error code is reported when image data fails to be obtained.
 
 Verify the image data source or use new image data.
 
+## 7600173 DMA Memory Does Not Exist
+
+**Error Message**
+
+DMA memory does not exist.
+
+**Symptom**
+
+This error code is reported if the DMA memory does not exist.
+
+**Possible Cause**
+
+The DMA memory is not used to decode HDR images.
+
+**Solution**
+
+Use a correct memory allocation type.
+
+## 7600174 DMA Operation Failed
+
+**Error Message**
+
+DMA operation failed.
+
+**Symptom**
+
+This error code is reported if the operation on the DMA memory fails.
+
+**Possible Cause**
+
+The synchronization operation is not correctly performed when data is read from or written to the DMA memory.
+
+**Solution**
+
+Read and write the DMA memory in a correct way.
+
 ## 7600201 Unsupported Operation
 
 **Error Message**
@@ -1002,7 +1092,7 @@ This error code is reported when the operation is not supported, for example, mo
 
 **Possible Cause**
 
-The operation is not supported, for example, modifying a PixelMap whose **Editable** property is **false**.
+The operation is not supported. For example, modify a PixelMap whose **Editable** property is **false**.
 
 **Solution**
 
@@ -1025,6 +1115,24 @@ The metadata read/write operation is not supported. For example, the Exif field 
 **Solution**
 
 Check whether the auxiliary picture type corresponds to the metadata type, and then perform the read and write operations.
+
+## 7600203 Unsupported Conversion
+
+**Error Message**
+
+Unsupported conversion.
+
+**Symptom**
+
+This error code is reported for unsupported conversion.
+
+**Possible Cause**
+
+The PixelMap data cannot be converted.
+
+**Solution**
+
+Use PixelMap data with a matching format.
 
 ## 7600204 Invalid Region
 
@@ -1116,6 +1224,24 @@ The memory to copy does not exist, or the device memory is insufficient.
 
 Check whether the memory to copy exists. Clear the memory and try again.
 
+## 7600303 Memory Lock or Unlock Failed
+
+**Error Message**
+
+Memory lock or unlock failed.
+
+**Symptom**
+
+This error is reported if memory lock or unlock fails.
+
+**Possible Cause**
+
+The PixelMap or memory address is invalid.
+
+**Solution**
+
+Ensure that the PixelMap or memory address is valid.
+
 ## 7600305 Failed to Create the PixelMap
 
 **Error Message**
@@ -1134,6 +1260,24 @@ This error code is reported when the PixelMap fails to be created.
 **Solution**
 
 Ensure that the input parameters are correct and the instance is available.
+
+## 7600501 Unsupported Allocator Mode
+
+**Error Message**
+
+Unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata.
+
+**Symptom**
+
+This error code is reported for unsupported allocator mode.
+
+**Possible Cause**
+
+No memory allocation type is specified, or an incorrect memory allocation type is specified. For example, an error occurs when an HDR image is decoded in shared memory mode, because only the DMA mode supports HDR metadata.
+
+**Solution**
+
+Use a correct memory allocation type.
 
 ## 7600901 Unknown Error
 
@@ -1171,7 +1315,7 @@ This error code is reported when the image source is abnormal.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 7700102 Unsupported MIME Type
 
@@ -1262,7 +1406,7 @@ Some parameters are incorrectly configured, or the operation required by the opt
 
 **Solution**
 
-Check the parameter settings.
+Verify the parameter settings.
 
 ## 7700204 Invalid Parameter
 
@@ -1300,7 +1444,7 @@ This error code is reported when decoding fails.
 
 **Solution**
 
-Check the image data or use another image.
+Verify the image data or use another image.
 
 ## 7700302 Memory Allocation Failed
 
@@ -1319,7 +1463,7 @@ This error code is reported when the memory allocation fails.
 
 **Solution**
 
-Check the device memory or input data.
+Verify the device memory or input data.
 
 ## 7700304 Failed to Write Image Information to the File
 
@@ -1356,7 +1500,25 @@ Some parameters are incorrectly configured, or the operation required by the opt
 
 **Solution**
 
-Check the parameter settings.
+Verify the parameter settings.
+
+## 7800202 Invalid ImagePacker Parameter
+
+**Error Message**
+
+Invalid parameter for ImagePacker.
+
+**Symptom**
+
+This error code is reported if the encoding parameter is invalid.
+
+**Possible Cause**
+
+The encoding parameter is empty or invalid.
+
+**Solution**
+
+Verify the encoding parameter settings.
 
 ## 7800301 Encoding Failure
 

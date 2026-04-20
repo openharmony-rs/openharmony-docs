@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
@@ -61,7 +61,7 @@ Enumerates the pointer styles.
 | CROSS = 13   | Cross (accurate selection)  |![Cross.png](./figures/Cross.png)|
 | CURSOR_COPY = 14   | Copy    |![Copy.png](./figures/Copy.png)|
 | CURSOR_FORBID = 15   | Forbid   |![Forbid.png](./figures/Forbid.png)|
-| COLOR_SUCKER = 16   | Sucker    |![Colorsucker.png](./figures/Colorsucker.png)|
+| COLOR_SUCKER = 16   | Color picker    |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING = 17   | Grabbing hand  |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN = 18   | Opening hand  |![Hand_Open.png](./figures/Hand_Open.png)|
 | HAND_POINTING = 19   | Hand-shaped pointer  |![Hand_Pointing.png](./figures/Hand_Pointing.png)|
