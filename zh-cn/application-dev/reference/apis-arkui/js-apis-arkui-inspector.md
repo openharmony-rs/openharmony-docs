@@ -71,7 +71,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 on(type: 'layout', callback: () => void): void
 
-通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
+通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -157,7 +157,7 @@ offLayout(callback?: VoidCallback): void
 
 on(type: 'draw', callback: () => void): void
 
-通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
+通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -180,7 +180,7 @@ on(type: 'draw', callback: () => void): void
 
 onDraw(callback: VoidCallback): void
 
-通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
+通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -389,7 +389,7 @@ ArkTS-Sta: onDrawChildren(callback: Callback\<int[]\>): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。使用callback异步回调。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 

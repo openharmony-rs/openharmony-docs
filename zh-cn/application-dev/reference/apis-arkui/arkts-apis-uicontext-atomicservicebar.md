@@ -86,7 +86,7 @@ ArkTS-Sta: setBackgroundColor(color:Nullable<Color | int | string>): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
