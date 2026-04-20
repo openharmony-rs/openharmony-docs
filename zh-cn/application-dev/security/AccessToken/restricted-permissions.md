@@ -1215,3 +1215,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.GET_NETWORK_STATS
+
+允许应用查询其他应用的流量数据。
+
+<!--RP80--><!--RP80End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**：10
+ 	 
+**变更信息**：API 10-11，ACL使能为false；从API 12开始，变更为true。对于API版本10-24，权限的开放范围为系统应用；从API版本26.0.0开始，开放范围变更为普通应用。
