@@ -324,7 +324,7 @@ Heap中生成两个SemiSpace，供复制使用。
 
 ### SharedHeap相关参数
 
-以下参数适用于手机等大内存设备，开发者可以通过[getAllVMHeapMemoryInfo](../reference/apis-arkts/js-apis-util.md#getallvmheapmemoryinfo24)获取Shared堆内存信息。
+以下参数适用于手机等大内存设备。
 
 > **说明：**
 >
