@@ -73,7 +73,7 @@
       - [Using startAbilityByType to Start an Express Delivery Application](start-express-apps.md)
       - [Using startAbilityByType to Start an Image Editing Application](photoEditorExtensionAbility.md)
       - [Using startAbility to Start a File Application](file-processing-apps-startup.md)
-    - [Starting a System Application](system-app-startup.md)
+    - [Starting a System Application](system-app-startup.md)<!--PR1--><!--PR1End-->
   - [Process Model (Stage Model)](process-model-stage.md)
   - [Thread Model (Stage Model)](thread-model-stage.md)
   <!--Del-->
