@@ -201,7 +201,7 @@ Called when the pull-down distance changes.
 
 | Name| Type                                   | Mandatory| Description      |
 | ------ | --------------------------------------- | ---- | ---------- |
-| callback  | Callback\<number> | Yes  | Pull-down distance.<br>Unit: vp|
+| callback  | Callback\<number> | Yes  | Callback used to listen for the pull-down distance changes. It is triggered when the pull-down distance changes and returns the current pull-down distance.<br>Unit: vp|
 
 
 ## RefreshStatus
@@ -834,7 +834,7 @@ struct RefreshExample {
 
 ### Example 9: Implementing Pull-to-Refresh in the Non-Full-Screen Scenario
 
-You can set the **alwaysEnabled** parameter in the [edgeEffect](ts-container-scrollable-common.md#edgeeffect11) attribute to implement the pull-to-refresh effect of the **Refresh** component when the screen is not full.
+When calling [edgeEffect](ts-container-scrollable-common.md#edgeeffect11), set [alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11) of the **options** parameter to **true** to implement the pull-to-refresh effect of the **Refresh** component in the non-full-screen scenario.
 
 ```ts
 // xxx.ets

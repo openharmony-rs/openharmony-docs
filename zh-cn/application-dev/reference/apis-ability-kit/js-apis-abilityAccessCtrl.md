@@ -45,8 +45,6 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 
 管理访问控制模块的实例。
 
-AtManager接口调用依赖于tokenID，应用可通过[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取tokenID。<!--Del-->对于系统应用，还可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。<!--DelEnd-->
-
 ### checkAccessToken<sup>9+</sup>
 
 checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;
@@ -61,7 +59,7 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Grant
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -82,12 +80,14 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Grant
 **示例：**
 
 ```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
-atManager.checkAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: abilityAccessCtrl.GrantStatus) => {
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`checkAccessToken success, result: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`checkAccessToken fail, code: ${err.code}, message: ${err.message}`);
@@ -108,7 +108,7 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -129,10 +129,11 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 **示例：**
 
 ```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
 let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
 console.info(`Result: ${data}`);
@@ -582,7 +583,7 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -603,12 +604,14 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 **示例：**
 
 ```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
 try {
-  let data: abilityAccessCtrl.GrantStatus = atManager.verifyAccessTokenSync(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS');
+  let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+  let data: abilityAccessCtrl.GrantStatus = atManager.verifyAccessTokenSync(tokenID, permissionName);
   console.info(`verifyAccessTokenSync success, result: ${data}`);
 } catch(err) {
   console.error(`verifyAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
@@ -631,7 +634,7 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Gran
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -643,11 +646,12 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Gran
 **示例：**
 
 ```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
 atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
@@ -672,7 +676,7 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise&lt;GrantStat
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | string | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -684,12 +688,14 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise&lt;GrantStat
 **示例：**
 
 ```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
-atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: abilityAccessCtrl.GrantStatus) => {
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
@@ -747,7 +753,7 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 | 名称           | 类型                       | 只读 | 可选 | 说明                |
 | -------------- | ------------------------- | ---- | ---- | ------------------ |
 | change         | [PermissionStateChangeType](#permissionstatechangetype18) | 否   | 否   | 权限授权状态变化类型。        |
-| tokenID        | number                    | 否   | 否   | 被订阅的应用身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | number                    | 否   | 否   | 被订阅的应用身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md)                    | 否   | 否   | 当前授权状态发生变化的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 ## PermissionRequestResult<sup>10+</sup>

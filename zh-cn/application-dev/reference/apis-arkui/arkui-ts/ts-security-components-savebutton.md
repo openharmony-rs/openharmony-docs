@@ -161,7 +161,7 @@ setIcon(icon: Resource)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| icon | [Resource](ts-types.md#resource) |是 |自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。|
+| icon | [Resource](ts-types.md#resource) |是 |自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。 <br/>如果应用无ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。|
 
 ### setText<sup>20+</sup>
 
@@ -248,6 +248,76 @@ userCancelEvent(enabled: boolean)
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
 | enabled | boolean | 是 | 表示是否接收保存控件的用户取消授权事件，true表示接收保存控件的用户取消授权事件，false表示不接收保存控件的用户取消授权事件。<br/>默认值：false。<br/> |
+
+### symbolIconColor
+
+symbolIconColor(color: Array&lt;ResourceColor&gt; )
+
+设置安全控件Symbol图标颜色。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[渲染策略](#symbolrenderingstrategy)下默认值不同。 |
+
+### symbolFontWeight
+
+symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
+
+设置安全控件Symbol图标粗细。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                |
+| ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
+| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
+
+### symbolRenderingStrategy
+
+symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
+
+设置安全控件Symbol图标渲染策略。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| strategy  | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 是   | 安全控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 |
+
+不同渲染策略效果可参考以下示意图。
+
+![renderingStrategy](figures/renderingStrategy.png)
 
 ## 属性
 
@@ -423,3 +493,66 @@ struct SetIcon {
 }
 ```
 ![custom_savebutton](figures/custom_savebutton.png)
+
+## 示例3
+
+应用需要申请权限：ohos.permission.CUSTOMIZE_SAVE_BUTTON
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        // 设置保存控件的图标为Symbol。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+
+        // 设置保存控件的Symbol颜色为绿色和白色，渲染策略为单色。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green, Color.White])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.SINGLE)
+
+        // 设置保存控件的Symbol颜色为绿色和白色，渲染策略为多色。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green, Color.White])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+
+        // 设置保存控件的Symbol颜色为绿色，渲染策略为多色。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+
+        // 设置保存控件的Symbol颜色为绿色和白色，渲染策略为分层。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green, Color.White])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+
+        // 设置保存控件的Symbol粗细为Lighter。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+          .symbolFontWeight(FontWeight.Lighter)
+
+        // 设置保存控件的Symbol粗细为Bolder。
+        SaveButton()
+          .setIcon($r('sys.symbol.ohos_folder_badge_plus'))
+          .symbolIconColor([Color.Green])
+          .symbolRenderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+          .symbolFontWeight(FontWeight.Bolder)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![save_button_symbol_dynamic](figures/save_button_symbol_dynamic.jpeg)

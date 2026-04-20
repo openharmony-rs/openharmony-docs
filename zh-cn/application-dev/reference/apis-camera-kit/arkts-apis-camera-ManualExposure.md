@@ -70,6 +70,8 @@ setExposureDuration(exposureDuration: number): void
 
 设置曝光时长值。
 
+仅在[ExposureMode](arkts-apis-camera-e.md#exposuremode).EXPOSURE_MODE_MANUAL 手动曝光模式下设置生效。
+
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

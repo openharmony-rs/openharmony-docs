@@ -125,7 +125,6 @@ enum Camera_ErrorCode
 | CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
-| CAMERA_MULTI_CAMERA_NOT_SUPPORTED = 7400113 | 不支持同时打开多个摄像头。<br>**起始版本：** 24 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 
 ### Camera_Status
@@ -255,7 +254,7 @@ enum Camera_Format
 | 枚举项 | 描述 |
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。 |
-| CAMERA_FORMAT_DNG = 4 | DNG格式。 |
+| CAMERA_FORMAT_DNG = 4 | DNG格式。<br>**起始版本：** 24 |
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。 |
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
@@ -317,6 +316,7 @@ enum Camera_ExposureMode
 | EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。|
 | EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用[OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。 |
+| EXPOSURE_MODE_MANUAL = 3 | 手动曝光模式。可以使用[OH_CaptureSession_SetExposureDuration](capi-capture-session-h.md#oh_capturesession_setexposureduration)接口设置曝光时长。<br>**起始版本：** 24 |
 
 ### OH_Camera_ExposureMeteringMode
 
@@ -659,6 +659,7 @@ enum Camera_ControlCenterEffectType
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24 |
 
 ### Camera_PhotoQualityPrioritization
 

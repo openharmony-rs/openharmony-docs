@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块为企业MDM应用提供admin权限管理能力，包括激活/解除激活admin权限、事件订阅、委托授权等。
 

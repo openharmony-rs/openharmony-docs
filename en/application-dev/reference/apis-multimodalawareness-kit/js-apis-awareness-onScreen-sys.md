@@ -121,12 +121,12 @@ Defines onscreen awareness capabilities (including but not limited to awareness 
 | capList   | string[] | No  | Yes  | Capability list, including the capabilities for obtaining page content, page link, and text selection information. The following table describes the specific capabilities.|
 | groupId | string | No| Yes| Service group ID. A group of capabilities preset based on service scenarios. Service scenarios can be subscribed to in a unified manner. The following table describes the specific group IDs.|
 
-**Parameter constraints**:<br>
+Parameter constraints:<br>
 You can use the on-screen awareness feature through **capList** or **groupId**.
 * Logical relationship: **capList** and **groupId** are mutually supplementary and mandatory. At least one of them must be provided and cannot be empty.<br>
 * Verification rule: When the API is called, the system checks **capList** and **groupId** separately.<br>
 * Capability list: Use the on-screen awareness feature by **capList** or **groupId**. The definitions are as follows.
-  * List of supported capabilities by **capList**<br>
+  * Capabilities supported by capList<br>
 
     |Capability|**Function**|
     | ---- | ------ |
@@ -138,7 +138,7 @@ You can use the on-screen awareness feature through **capList** or **groupId**.
     |JumpContext|Highlights and jumps to a specified context.|
     |QuickSnap|Obtains the information about a single snapshot.<br> **Usage specifications**: This capability is used only in the **trigger** API. It takes effect only when **capList** is set to **QuickSnap**. For other APIs, error code 401 is returned.|
 
-  * Capabilities supported by **groupId**<br>
+  * Capabilities supported by groupId<br>
   
     |Capability|Sub-capability|**Function**|
     | ---- | ------ | ------|
@@ -558,7 +558,7 @@ Proactively triggers screen content awareness to obtain page information.
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
 
-**capList** capabilities supported by the **capture** API
+capList capabilities supported by the capture API
 |capList Capability|**Function**|
 | ---- | ------ |
 |UiImage|Obtains the information about sub-images on a page.|
@@ -618,7 +618,7 @@ Proactively triggers screen behavior interaction to identify screen behaviors an
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
 
-**capList** capabilities supported by the **interact** API
+capList capabilities supported by the interact API
 |capList Capability|**Function**|
 | ---- | ------ |
 |JumpContext|Highlights and jumps to a specified context.|
@@ -688,7 +688,7 @@ Proactively triggers screen content awareness to obtain the screen content for s
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
 
-**groupId** capabilities supported by the **apperceive** API
+groupId capabilities supported by the apperceive API
 |groupId Capability|Sub-capability|**Function**|
 | ---- | ------ | ------|
 |SmartEdge|Acticle|Obtains the information about awareness in a reading scenario.|

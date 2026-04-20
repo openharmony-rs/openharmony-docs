@@ -154,9 +154,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用访问公共目录下Desktop目录及子目录。
 
-<!--RP15-->
 当前仅2in1设备和平板上的应用可申请此权限。
-<!--RP15End-->
 
 **权限级别**：system_basic
 
@@ -994,11 +992,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**: 系统授权（system_grant）
 
-**支持设备**: PC/2in1 | Tablet
+**支持设备**: PC/2in1 | Tablet | Phone
 
 **起始版本**: 22
 
-**变更信息：** 从API 24开始，增加支持在平板上申请。
+**变更信息：** 从API版本24开始，增加支持在平板上申请；从API版本26.0.0开始，增加支持在手机上申请。
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
@@ -1132,7 +1130,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car
 
-**起始版本**：26.0.0
+**起始版本**：24
 
 ## ohos.permission.CHECK_CALL_LOG
 
@@ -1199,6 +1197,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.GET_CALL_TRANSFER_INFO
+
+允许应用查询呼叫转移状态。
+
+<!--RP80--><!--RP80End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | PC/2in1 | Tablet
 

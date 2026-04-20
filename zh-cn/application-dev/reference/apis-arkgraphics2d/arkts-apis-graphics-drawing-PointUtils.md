@@ -46,9 +46,9 @@ static negate(point: common2D.Point): void
 **示例：**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let point = { x: 10, y: 20 };
+let point: common2D.Point = { x: 10, y: 20 };
 drawing.PointUtils.negate(point);
 console.info('point.x:', point.x);
 console.info('point.y:', point.y);
@@ -71,15 +71,15 @@ static offset(point: common2D.Point, dx: number, dy: number): void
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | point   | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是   | 要偏移的点。 |
-| dx   | number | 是   | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。 |
-| dy    | number | 是   | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。 |
+| dx   | number | 是   | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dy    | number | 是   | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
 
 **示例：**
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let point = { x: 10, y: 20 };
+let point: common2D.Point = { x: 10, y: 20 };
 drawing.PointUtils.offset(point, 5, 10);
 console.info('point.x:', point.x);
 console.info('point.y:', point.y);

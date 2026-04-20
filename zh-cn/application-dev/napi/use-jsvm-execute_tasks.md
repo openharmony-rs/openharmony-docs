@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行任务队列相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -188,7 +188,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     CHECK_RET(OH_JSVM_PerformMicrotaskCheckpoint(vm));
@@ -196,7 +196,7 @@ static int SetMicrotaskPolicy(JSVM_VM vm, JSVM_Env env) {
     CHECK_RET(OH_JSVM_GetValueBool(env, hasEvaluateMicrotask, &val));
     OH_LOG_INFO(
         LOG_APP,
-        "Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
+        "Policy: JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: %{public}d",
         val);
 
     return 0;

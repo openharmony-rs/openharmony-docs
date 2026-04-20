@@ -72,7 +72,7 @@ UIExtensionAbility连接完成时的回调，之后可使用proxy向被拉起的
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<UIExtensionProxy>) | 是 | 回调函数，用于向对端Ability发送数据。                          |
+| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<UIExtensionProxy> | 是 | 回调函数，用于向对端Ability发送数据。                          |
 
 ### onReceive
 

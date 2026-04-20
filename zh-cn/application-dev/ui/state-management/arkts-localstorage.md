@@ -1,8 +1,8 @@
 # LocalStorage：页面级UI状态存储
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -490,14 +490,14 @@ struct ParentFour {
 
 上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
 
-<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
-// ···
+// ...
 export default class EntryAbility extends UIAbility {
   para: Record<string, number> = {
     'PropA': 47
@@ -506,10 +506,12 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 当前用例需要开发者手动修改为windowStage.loadContent('pages/PageFiveShare', this.storage);
-    windowStage.loadContent('pages/Index', this.storage);
+    windowStage.loadContent('pages/Index', this.storage).catch(() => {
+      hilog.error(DOMAIN, 'testTag', '%{public}s', 'Ability onCreonWindowStageCreateate');
+    });
   }
 
-// ···
+  // ...
 }
 ```
 

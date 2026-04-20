@@ -97,7 +97,7 @@ Sets whether to enable edit mode, where the list item can be deleted or moved.
 
 | Name| Type                                                        | Mandatory| Description                                      |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;[EditMode](#editmodedeprecated) | Yes  | Whether to enable edit mode.<br>Default value: **false**|
+| value  | boolean&nbsp;\|&nbsp;[EditMode](#editmodedeprecated)| Yes  | Whether to enable edit mode.<br>Default value: **false**|
 
 ### selectable<sup>8+</sup>
 
@@ -206,8 +206,8 @@ The swipe gesture works only in the list item area. If a swipe causes a child co
 
 | Name                        | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No  | Yes| Swipe action item displayed on the left of the list item when the item is swiped right (in vertical list layout) or above the list item when the item is swiped down (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No  | Yes| Swipe action item displayed on the right of the list item when the item is swiped left (in vertical list layout) or below the list item when the item is swiped up (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10)| No  | Yes| Swipe action item displayed on the left of the list item when the item is swiped right (in vertical list layout) or above the list item when the item is swiped down (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10)| No  | Yes| Swipe action item displayed on the right of the list item when the item is swiped left (in vertical list layout) or below the list item when the item is swiped up (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | edgeEffect                   | [SwipeEdgeEffect](#swipeedgeeffect9)                 | No  | Yes| Scroll effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                               |
 | onOffsetChange<sup>11+</sup> | (offset: number) => void                                     | No  | Yes| Specifically, this callback is invoked when the location of the list item changes, in vp, when it is swiped left or right (in vertical list layout) or up or down (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
@@ -236,6 +236,7 @@ Defines **ListItem** component configuration options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; auto; 10%; 10%; auto-->
 | Name | Type                                 | Read-Only| Optional| Description                                                        |
 | ----- | ----------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | style | [ListItemStyle](#listitemstyle10) | No  | Yes| Style of the list item.<br>Default value: **ListItemStyle.NONE**<br>If this parameter is set to **ListItemStyle.NONE**, no style is applied.<br>When **ListItemStyle.CARD** is used, you are advised to pair it with **ListItemGroupStyle.CARD** from [ListItemGroup](ts-container-listitemgroup.md) to apply the default card style.<br>In the card style, the default specifications for a list item are as follows: a height of 48 vp, a width of 100%, and horizontal padding of 8 vp on both the left and right sides. If you want to implement an adaptive height for the list item, you can set the **height** attribute to **undefined**.<br>The card style provides default focus, hover, press, selected, and disabled states for list items.<br>**NOTE**<br>When **ListItemStyle.CARD** is set, the **listDirection** attribute of **List** must be **Axis.Vertical**. If **listDirection** is set to **Axis.Horizontal**, the display will be disordered. The default value of **alignListItem** is **ListItemAlign.Center**, which centers the items vertically.|
@@ -530,7 +531,7 @@ struct ListItemExample3 {
 
 ### Example 4: Setting the Swipe Action Item Using ComponentContent
 
-This example demonstrates how to set the action items displayed during swipe operations in **ListItem** using [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) .
+This example demonstrates how to set the action items displayed during swipe operations in **ListItem** using [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1).
 
 ```ts
 // xxx.ets

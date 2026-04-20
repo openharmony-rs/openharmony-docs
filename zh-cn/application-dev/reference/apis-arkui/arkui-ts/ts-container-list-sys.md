@@ -56,8 +56,8 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 | 名称           | 类型                                       | 只读   | 可选 | 说明                                       |
 | ------------ | ---------------------------------------- | ---- | -- | ---------------------------------------- |
-| minSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最小间距。                            |
-| maxSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最大间距。                            |
+| minSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最小间距。<br/>单位：与Length一致。                            |
+| maxSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最大间距。<br/>单位：与Length一致。                          |
 | conductivity | number                                   | 否    | 是 | 设置链式联动动效传导系数。取值范围[0,1]，数值越大，动效传导范围越远。<br/>默认值：0.7 |
 | intensity    | number                                   | 否    | 是 | 设置链式联动动效效果强度。取值范围[0,1]，数值越大，动效效果越明显。<br/>默认值：0.3 |
 | edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10枚举说明) | 否    | 是 | 设置链式联动动效边缘效果。<br/>默认值：ChainEdgeEffect.DEFAULT |

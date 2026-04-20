@@ -88,7 +88,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
@@ -128,7 +128,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
@@ -166,7 +166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
@@ -220,7 +220,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -233,7 +233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let sessionId = 100;
@@ -282,7 +282,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300001      | Only one stream can be created for the current session.|
@@ -360,7 +359,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.getSurfaceId
 
-getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
+getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 Obtains the unique ID of the surface bound to the specified transport streams.
 
@@ -374,7 +373,7 @@ Obtains the unique ID of the surface bound to the specified transport streams.
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 | param | [SurfaceParam](#surfaceparam) | Yes   | Surface configuration.|
 
 **Return value**
@@ -412,7 +411,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.updateSurfaceParam
 
-updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 Updates the configuration of the surface bound to the specified transport streams.
 
@@ -426,7 +425,7 @@ Updates the configuration of the surface bound to the specified transport stream
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 | param | [SurfaceParam](#surfaceparam) | Yes   | Surface configuration.|
 
 **Error codes**
@@ -458,7 +457,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.destroyStream
 
-destroyStream(sessionId:&nbsp;number):&nbsp;void
+destroyStream(streamId:&nbsp;number):&nbsp;void
 
 Destroys the transport streams after the sending of images and videos is complete.
 
@@ -472,7 +471,7 @@ Destroys the transport streams after the sending of images and videos is complet
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 
 **Error codes**
 
@@ -480,7 +479,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
@@ -497,7 +495,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.startStream
 
-startStream(sessionId:&nbsp;number):&nbsp;void
+startStream(streamId:&nbsp;number):&nbsp;void
 
 Starts transmission of the specified transport streams.
 
@@ -511,7 +509,7 @@ Starts transmission of the specified transport streams.
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 
 **Error codes**
 
@@ -536,7 +534,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.stopStream
 
-stopStream(sessionId:&nbsp;number):&nbsp;void
+stopStream(streamId:&nbsp;number):&nbsp;void
 
 Stops transmission of the specified transport streams.
 
@@ -550,7 +548,7 @@ Stops transmission of the specified transport streams.
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 
 **Error codes**
 
@@ -705,3 +703,4 @@ Enumerates application start options.
 | Name|  Value| Description|
 |-------|-------|-------|
 | START_IN_BACKGROUND | 1 |Start of the peer application in the background.|
+<!--no_check-->

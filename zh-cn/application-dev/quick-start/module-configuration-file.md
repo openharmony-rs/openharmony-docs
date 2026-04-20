@@ -119,7 +119,7 @@ module.json5配置文件包含以下标签。
 | srcEntry | 标识AbilityStage组件的代码路径，详情参考[AbilityStage组件容器](../application-models/abilitystage.md)，取值为长度不超过127字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | description | 标识当前Module的描述信息，开发者可以通过该标签描述当前模块的功能与作用，取值为长度不超过255字节的字符串，可以采用字符串资源索引格式。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | <!--DelRow-->process | 标识当前Module的进程名，取值为长度不超过31字节的字符串。如果在HAP标签下配置了process，则该Module的所有UIAbility、DataShareExtensionAbility、ServiceExtensionAbility都运行在该进程中。<br/>**说明：**<br/>开启[多实例特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)生效，三方应用配置不生效。 | 字符串 | 该标签可缺省，缺省为app.json5文件下app标签下的bundleName。 |
-| mainElement | 标识当前Module的入口UIAbility名称，取值为长度不超过255字节的字符串。<br/>**说明：**<br/>如果在[abilities](#abilities标签)中配置了多个入口[UIAbility](../application-models/uiability-overview.md)，则桌面图标、名称和启动入口以该标签配置为准。如果该标签缺省或未匹配到，则按照ASCII字典序对UIAbility的name标签正序排序，返回第一个作为桌面图标、名称和启动入口。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| mainElement | 标识当前Module的入口UIAbility名称，取值为长度不超过255字节的字符串，详情请参考配置应用图标和名称中的[配置优先级和生成策略](./layered-image.md#配置优先级和生成策略)。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | [deviceTypes](#devicetypes标签) | 标识当前Module可以运行在哪类设备上。<br/>**说明：**<br/>当存在多个模块时，各模块的配置可以不同，但都必须包含将要安装的设备类型，以确保正常运行。 | 字符串数组 | 该标签不可缺省。 |
 | deliveryWithInstall | 标识当前Module是否在用户主动安装的时候安装，即该Module对应的HAP/HSP是否跟随应用一起安装。<br/>-&nbsp;true：跟随应用一起安装。<br/>-&nbsp;false：不跟随应用一起安装。<!--RP11--><!--RP11End--> | 布尔值 | 当前Module类型为HAP或HSP时，该标签不可缺省。 |
 | installationFree | 标识当前Module是否支持免安装特性。<br/>-&nbsp;true：表示支持免安装特性，且符合免安装约束。<br/>-&nbsp;false：表示不支持免安装特性。 | 布尔值 | 该标签可缺省。该标签在编译构建时自动生成，手动配置不生效。<br/>**说明：**<br/>当[bundleType](./app-configuration-file.md#配置文件标签)为原子化服务时，该标签自动配置为true。反之，该标签自动配置为false。 |
@@ -456,6 +456,7 @@ skills示例：
           // ...
         ],
         // ...
+      }
     ],
     // ...
 }
@@ -489,6 +490,7 @@ skills示例：
 | dataGroupIds | 标识当前ExtensionAbility组件的dataGroupId集合。如果当前ExtensionAbility组件所在的应用在应用市场申请的证书里groupIds也申请了某个dataGroupId，那么当前ExtensionAbility组件可以和应用共享这一个dataGroupId生成的目录，所以ExtensionAbility组件的dataGroupId需要是应用的签名证书中groupIds标签里配置的才能生效。 且该标签仅在当前ExtensionAbility组件存在独立的沙箱目录时生效。<!--RP8--><!--RP8End--> | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[进程模型定义](../application-models/process-model-stage.md#其他进程类型)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| skipAbilityStageLifecycle | 标识type为backup的ExtensionAbility组件是否跳过[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)生命周期回调。<br/>-&nbsp;true：跳过AbilityStage生命周期，不执行onCreate、onDestroy等回调。<br/>-&nbsp;false：不跳过AbilityStage生命周期，正常执行生命周期回调。<br/>**说明：**<br/>1. 该标签仅在ExtensionAbility的type为backup时配置生效。<br/>2. 从API version 26.0.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 
 extensionAbilities示例：
 
@@ -670,6 +672,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -687,6 +690,7 @@ wants标签示例：
         "tablet"
       ],
       // ...
+    }
   }
   ```
 
@@ -798,10 +802,11 @@ wants标签示例：
       "metadata": [
         {
           "name": "ohos.module.distribution",
-          "resource": "$profile:distributionFilter_config",
+          "resource": "$profile:distributionFilter_config"
         }
       ],
       // ...
+    }
   }
   ```
 
@@ -860,7 +865,7 @@ atomicService标签示例：
 ``` JSON5
 {
   "module": {
-  // ···
+    // ...
     "atomicService": {
       "preloads":[
         {
@@ -869,7 +874,8 @@ atomicService标签示例：
       ],
       "resizeable": true
     },
-  // ···
+    // ...
+  }
 }
 ```
 

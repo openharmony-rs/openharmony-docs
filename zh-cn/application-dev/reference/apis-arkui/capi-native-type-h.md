@@ -1,8 +1,8 @@
 # native_type.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -46,6 +46,7 @@
 | [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) | ArkUI_DrawContext | 定义组件绘制上下文类型结构。 |
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI native组件实例对象指针定义。 |
 | [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | 定义ArkUI在Native侧的自定义弹窗控制器对象指针。 |
+| [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | 定义手势收集拦截信息。 |
 | [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | 定义Grid布局选项onGetIrregularSizeByIndex回调返回值结构体。 |
 | [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | 定义Grid布局选项onGetRectByIndex回调返回值结构体。 |
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | 定义Grid布局选项。 |
@@ -258,6 +259,7 @@
 | [OH_ArkUI_TextMenuType](#oh_arkui_textmenutype) | OH_ArkUI_TextMenuType | 文本菜单类型枚举。 |
 | [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | 换行策略类型枚举。 |
 | [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | 原始输入事件类型枚举。 |
+| [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | 跨语言配置项的节点树操作状态。 |
 
 ### 函数
 
@@ -514,6 +516,8 @@
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | - | 销毁跨语言配置项实例。 |
 | [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | - | 设置配置项中是否允许跨语言修改属性。 |
 | [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | - | 获取配置项中是否允许跨语言修改属性。 |
+| [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | - | 设置跨语言配置项的节点树操作状态。 |
+| [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | - | 获取跨语言配置项的节点树操作状态。 |
 | [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | 创建可见区域变化监听的参数。 |
 | [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | 销毁可见区域变化监听的参数。 |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | - | 设置阈值数组。 |
@@ -3814,6 +3818,25 @@ enum ArkUI_RawInputEventType
 | -- | -- |
 | ARKUI_RAW_INPUT_EVENT_TYPE_TOUCH = 0 | 触摸事件类型。 |
 | ARKUI_RAW_INPUT_EVENT_TYPE_MOUSE = 1 | 鼠标事件类型。 |
+
+### OH_ArkUI_CrossLanguageOperatingStatus
+
+```c
+enum OH_ArkUI_CrossLanguageOperatingStatus
+```
+
+**描述**
+
+跨语言配置项的节点树操作状态。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED = 0 | 未定义，节点树操作状态的初始值。处于此状态的节点不支持跨语言节点树操作。 |
+| OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1 | 启用，表示当该配置项应用到节点时，节点的节点树操作状态将被启用。 |
+| OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2 | 禁用，表示当该配置项应用到节点时，节点的节点树操作状态将被禁用。 |
+
 
 ## 函数说明
 
@@ -9678,6 +9701,51 @@ bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageO
 | 类型 | 说明 |
 | -- | -- |
 | bool | 是否允许跨语言修改属性。true表示允许跨语言修改属性，false表示不允许跨语言修改属性。 |
+
+### OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus()
+
+```c
+void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)
+```
+
+**描述：**
+
+设置跨语言配置项的节点树操作状态。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | 跨语言配置项实例。 |
+| [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) status | 需要设置的节点树操作状态。 默认值：OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED。 |
+
+### OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus()
+
+```c
+OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)
+```
+
+**描述：**
+
+获取跨语言配置项的节点树操作状态。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | 跨语言配置项实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | 跨语言配置项的节点树操作状态。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
@@ -17017,7 +17085,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 **描述**
 
-设置是否启用可变字体粗细调节。
+设置是否启用可变字重调节。
 
 **起始版本：** 24
 
@@ -17026,7 +17094,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向待修改的文本字体粗细配置对象的指针。 |
-| bool enable | 是否启用可变字体粗细。true表示启用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。false表示禁用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。默认值为false。 |
+| bool enable | 是否启用可变字重调节。true表示启用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。false表示禁用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。默认值为false。 |
 
 ### OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight()
 
@@ -17036,7 +17104,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 **描述**
 
-获取文本字体粗细配置对象是否启用了可变字体粗细调节。
+获取文本字体粗细配置对象是否启用了可变字重调节。
 
 **起始版本：** 24
 
@@ -17050,7 +17118,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回是否启用可变字体粗细调节。<br>        true表示启用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。<br>         false表示禁用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。<br>         默认值为false。字重weight取值为[100, 900]范围外的值，字重取默认值400。 |
+| bool | 返回是否启用可变字重调节。<br>        true表示启用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。<br>         false表示禁用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。<br>         默认值为false。字重weight取值为[100, 900]范围外的值，字重取默认值400。 |
 
 ### OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory()
 
@@ -17093,7 +17161,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontW
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回文本字体粗细是否跟随设备的字体粗细级别更新。<br>         true表示当设备的字体粗细级别改变时，文本字体粗细将自动更新。<br>         false表示当设备的字体粗细级别改变时，文本字体粗不会自动更新。 |
+| bool | 返回文本字体粗细是否跟随设备的字体粗细级别更新。<br>         true表示当设备的字体粗细级别改变时，文本字体粗细将自动更新。<br>         false表示当设备的字体粗细级别改变时，文本字体粗细不会自动更新。 |
 
 ### OH_ArkUI_FontConfigs_Create()
 
@@ -17139,7 +17207,7 @@ void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_
 
 **描述**
 
-设置文本字体配置对象的文本字体粗细配置。
+设置文本字体配置对象的文本字体粗细配置。当该配置不为空指针时，若用户未显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）。当该配置为空指针时，不应用上述默认值，文本字体粗细行为与父组件保持一致。
 
 **起始版本：** 24
 
