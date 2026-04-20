@@ -1043,7 +1043,7 @@ on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | [SensorId](#sensorid9).WEAR_DETECTION                        | 是   | 传感器类型，该值固定为SensorId.WEAR_DETECTION。             |
+| type     | [SensorId](#sensorid9)                       | 是   | 传感器类型，该值固定为[SensorId](#sensorid9).WEAR_DETECTION                        | 是   | 传感器类型，该值固定为SensorId.WEAR_DETECTION。             |
 | callback | Callback&lt;[WearDetectionResponse](#weardetectionresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为WearDetectionResponse。 |
 | options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
 
@@ -1088,7 +1088,7 @@ on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     |  'sensorStatusChange'         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
+| type     | string         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 是   | 回调函数，异步上报的传感器事件数据SensorStatusEvent。 |
 
 **错误码**：
@@ -5033,7 +5033,7 @@ off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): v
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     |  'sensorStatusChange'         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
+| type     | string         | 是   | 固定传入'sensorStatusChange',状态监听固定参数。             |
 | callback | Callback&lt;[SensorStatusEvent](#sensorstatusevent19)&gt; | 否   | sensor.on传入的回调函数，不传则取消所有监听。 |
 
 **错误码**：
@@ -6432,7 +6432,7 @@ try {
 | PEDOMETER                   | 266  | 计步传感器。                                                 |
 | HEART_RATE                  | 278  | 心率传感器。                                                 |
 | WEAR_DETECTION              | 280  | 佩戴检测传感器。                                             |
-| ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。                                       |
+| ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度传感器。                                       |
 | FUSION_PRESSURE<sup>22+</sup>             | 283  | 融合压力传感器。<br/>仅智能表有该传感器                        |
 
 
@@ -6550,7 +6550,7 @@ try {
 
 ## AccelerometerUncalibratedResponse
 
-未校准加速度计传感器数据，继承于[Response](#response)。
+未校准加速度传感器数据，继承于[Response](#response)。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -6965,7 +6965,7 @@ on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Line
 
 on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
 
-监听未校准加速度计传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
+监听未校准加速度传感器的数据变化。如果多次调用该接口，仅最后一次调用生效。
 
 > **说明**：
 >
@@ -6979,8 +6979,8 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED | 是   | 要订阅的未校准加速度计传感器类型为SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED。 |
-| callback | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 是   | 注册未校准加速度计传感器的回调函数，上报的数据类型为AccelerometerUncalibratedResponse。 |
+| type     | [SensorType](#sensortypedeprecated).SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED | 是   | 要订阅的未校准加速度传感器类型为SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED。 |
+| callback | Callback&lt;[AccelerometerUncalibratedResponse](#accelerometeruncalibratedresponse)&gt; | 是   | 注册未校准加速度传感器的回调函数，上报的数据类型为AccelerometerUncalibratedResponse。 |
 | options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
 
 **示例**：
@@ -9642,7 +9642,7 @@ promise.then((data: sensor.RotationMatrixResponse) => {
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[SensorId](#sensorid9)代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId](#sensorid9)代替。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9668,5 +9668,5 @@ promise.then((data: sensor.RotationMatrixResponse) => {
 | SENSOR_TYPE_ID_PEDOMETER                   | 266  | 计步传感器。           |
 | SENSOR_TYPE_ID_HEART_RATE                  | 278  | 心率传感器。           |
 | SENSOR_TYPE_ID_WEAR_DETECTION              | 280  | 佩戴检测传感器。       |
-| SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。 |
+| SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度传感器。 |
 

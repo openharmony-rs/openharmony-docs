@@ -1024,7 +1024,7 @@ on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | 'vibratorStateChange'                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
+| type     | string                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
 | callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | 是   | 回调函数，回调参数数据为VibratorStatusEvent。 |
 
 **错误码**：
@@ -1070,7 +1070,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | 'vibratorStateChange'                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
+| type     | string                       | 是   | 监听类型，该值固定为vibratorStateChange。              |
 | callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | 否   | 回调函数，回调参数数据为VibratorStatusEvent，不填此参数则为注销所有callback |
 
 **错误码**：
@@ -1201,6 +1201,10 @@ isHdHapticSupported(): boolean
    ```
 
 ## VibratorPatternBuilder<sup>18+</sup>
+
+提供添加长振、短振事件和生成VibratorPattern对象的方法。
+
+**系统能力**：SystemCapability.Sensors.MiscDevice
 
 ### vibrator('addContinuousEvent')<sup>18+</sup>
 

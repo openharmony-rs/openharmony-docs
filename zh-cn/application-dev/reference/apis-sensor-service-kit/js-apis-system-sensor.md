@@ -73,7 +73,7 @@ unsubscribeAccelerometer(): void
 
 取消订阅加速度数据。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometerdeprecated-2)。
+除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometer9-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -252,7 +252,7 @@ Sensor.unsubscribeLight();
 
 订阅计步传感器数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated)。
+除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometer9)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -289,7 +289,7 @@ unsubscribeStepCounter(): void
 
 取消订阅计步传感器。
 
-除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated-2)。
+除Lite Wearable外，从API Version8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometer9-2)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -620,11 +620,11 @@ Sensor.unsubscribeGyroscope();
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-| 名称     | 类型                                            | 必填 | 说明                                                         |
-| -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| interval | string                                          | 是   | 频率参数，加速度的回调函数执行频率。<br/>默认为normal，可选值有：<br/>game：极高的回调频率，20ms/次，适用于游戏。<br/>ui：较高的回调频率，60ms/次，适用于UI更新。<br/>normal：普通的回调频率，200ms/次，低功耗。 |
-| success  | [AccelerometerResponse](#accelerometerresponse) | 是   | 感应到加速度数据变化后的回调函数。                           |
-| fail     | Function                                        | 否   | 接口调用失败的回调函数。                                     |
+| 名称     | 类型                                            | 只读 | 可选 | 说明                                                         |
+| -------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| interval | string                                          | 否   | 否   | 频率参数，加速度的回调函数执行频率。<br/>默认为normal，可选值有：<br/>game：极高的回调频率，20ms/次，适用于游戏。<br/>ui：较高的回调频率，60ms/次，适用于UI更新。<br/>normal：普通的回调频率，200ms/次，低功耗。 |
+| success  | [AccelerometerResponse](#accelerometerresponse) | 否   | 否   | 感应到加速度数据变化后的回调函数。                           |
+| fail     | Function                                        | 否   | 是   | 接口调用失败的回调函数。                                     |
 
 ## AccelerometerResponse 
 
@@ -634,11 +634,11 @@ Sensor.unsubscribeGyroscope();
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-| 名称 | 类型   | 必填 | 说明          |
-| ---- | ------ | ---- | ------------- |
-| x    | number | 是   | x轴的加速度。 |
-| y    | number | 是   | y轴的加速度。 |
-| z    | number | 是   | z轴的加速度。 |
+| 名称 | 类型   | 只读 | 可选 | 说明                                                       |
+| ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
+| x    | number | 否   | 否   | 施加在设备x轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
+| y    | number | 否   | 否   | 施加在设备y轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
+| z    | number | 否   | 否   | 施加在设备z轴的加速度，单位 : m/s²；取值为实际上报物理量。 |
 
 ## SubscribeCompassOptions
 
@@ -646,10 +646,10 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                | 必填 | 说明                           |
-| ------- | ----------------------------------- | ---- | ------------------------------ |
-| success | [CompassResponse](#compassresponse) | 是   | 罗盘数据改变后触发的回调函数。 |
-| fail    | Function                            | 否   | 接口调用失败的回调函数。       |
+| 名称    | 类型                                | 只读 | 可选 | 说明                           |
+| ------- | ----------------------------------- | ---- | ---- | ------------------------------ |
+| success | [CompassResponse](#compassresponse) | 否   | 否   | 罗盘数据改变后触发的回调函数。 |
+| fail    | Function                            | 否   | 是   | 接口调用失败的回调函数。       |
 
 ## CompassResponse 
 
@@ -657,9 +657,9 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称      | 类型   | 必填 | 说明                 |
-| --------- | ------ | ---- | -------------------- |
-| direction | number | 是   | 设备面对的方向度数。 |
+| 名称      | 类型   | 只读 | 可选 | 说明                 |
+| --------- | ------ | ---- | ---- | -------------------- |
+| direction | number | 否   | 否   | 设备面对的方向度数。 |
 
 ## SubscribeProximityOptions
 
@@ -669,10 +669,10 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-| 名称    | 类型                                    | 必填 | 说明                               |
-| ------- | --------------------------------------- | ---- | ---------------------------------- |
-| success | [ProximityResponse](#proximityresponse) | 是   | 距离感应数据改变后调用的回调函数。 |
-| fail    | Function                                | 否   | 接口调用失败的回调函数。           |
+| 名称    | 类型                                    | 只读 | 可选 | 说明                               |
+| ------- | --------------------------------------- | ---- | ---- | ---------------------------------- |
+| success | [ProximityResponse](#proximityresponse) | 否   | 否   | 距离感应数据改变后调用的回调函数。 |
+| fail    | Function                                | 否   | 是   | 接口调用失败的回调函数。           |
 
 ## ProximityResponse 
 
@@ -682,9 +682,9 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-| 名称     | 类型   | 必填 | 说明                                       |
-| -------- | ------ | ---- | ------------------------------------------ |
-| distance | number | 是   | 可见物体相对于设备显示屏的接近或远离状态。 |
+| 名称     | 类型   | 只读 | 可选 | 说明                                       |
+| -------- | ------ | ---- | ---- | ------------------------------------------ |
+| distance | number | 否   | 否   | 可见物体相对于设备显示屏的接近或远离状态。 |
 
 ## SubscribeLightOptions
 
@@ -694,10 +694,10 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-| 名称    | 类型                            | 必填 | 说明                           |
-| ------- | ------------------------------- | ---- | ------------------------------ |
-| success | [LightResponse](#lightresponse) | 是   | 光线感应数据改变后的回调函数。 |
-| fail    | Function                        | 否   | 接口调用失败的回调函数。       |
+| 名称    | 类型                            | 只读 | 可选 | 说明                           |
+| ------- | ------------------------------- | ---- | ---- | ------------------------------ |
+| success | [LightResponse](#lightresponse) | 否   | 否   | 光线感应数据改变后的回调函数。 |
+| fail    | Function                        | 否   | 是   | 接口调用失败的回调函数。       |
 
 ## LightResponse 
 
@@ -707,9 +707,9 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-| 名称      | 类型   | 必填 | 说明                  |
-| --------- | ------ | ---- | --------------------- |
-| intensity | number | 是   | 光线强度，单位为lux。 |
+| 名称      | 类型   | 只读 | 可选 | 说明                  |
+| --------- | ------ | ---- | ---- | --------------------- |
+| intensity | number | 否   | 否   | 光线强度，单位为lux。 |
 
 ## SubscribeStepCounterOptions
 
@@ -719,10 +719,10 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                        | 必填 | 说明                             |
-| ------- | ------------------------------------------- | ---- | -------------------------------- |
-| success | [StepCounterResponse](#stepcounterresponse) | 是   | 计步传感器数据改变后的回调函数。 |
-| fail    | Function                                    | 否   | 接口调用失败的回调函数。         |
+| 名称    | 类型                                        | 只读 | 可选 | 说明                             |
+| ------- | ------------------------------------------- | ---- | ---- | -------------------------------- |
+| success | [StepCounterResponse](#stepcounterresponse) | 否   | 否   | 计步传感器数据改变后的回调函数。 |
+| fail    | Function                                    | 否   | 是   | 接口调用失败的回调函数。         |
 
 ## StepCounterResponse 
 
@@ -732,9 +732,9 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称  | 类型   | 必填 | 说明                             |
-| ----- | ------ | ---- | -------------------------------- |
-| steps | number | 是   | 计步传感器重启后累计记录的步数。 |
+| 名称  | 类型   | 只读 | 可选 | 说明                             |
+| ----- | ------ | ---- | ---- | -------------------------------- |
+| steps | number | 否   | 否   | 计步传感器重启后累计记录的步数。 |
 
 ## SubscribeBarometerOptions
 
@@ -742,10 +742,10 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                    | 必填 | 说明                             |
-| ------- | --------------------------------------- | ---- | -------------------------------- |
-| success | [BarometerResponse](#barometerresponse) | 是   | 气压计传感器数据改变后的回调函数。 |
-| fail    | Function                                | 否   | 接口调用失败的回调函数。         |
+| 名称    | 类型                                    | 只读 | 可选 | 说明                             |
+| ------- | --------------------------------------- | ---- | ---- | -------------------------------- |
+| success | [BarometerResponse](#barometerresponse) | 否   | 否   | 气压计传感器数据改变后的回调函数。 |
+| fail    | Function                                | 否   | 是   | 接口调用失败的回调函数。         |
 
 ## BarometerResponse 
 
@@ -753,9 +753,9 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称     | 类型   | 必填 | 说明                   |
-| -------- | ------ | ---- | ---------------------- |
-| pressure | number | 是   | 气压值，单位：帕斯卡。 |
+| 名称     | 类型   | 只读 | 可选 | 说明                   |
+| -------- | ------ | ---- | ---- | ---------------------- |
+| pressure | number | 否   | 否   | 气压值，单位：帕斯卡。 |
 
 ## SubscribeHeartRateOptions
 
@@ -765,10 +765,10 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                    | 必填 | 说明                                            |
-| ------- | --------------------------------------- | ---- | ----------------------------------------------- |
-| success | [HeartRateResponse](#heartrateresponse) | 是   | 心率传感器数据改变后的回调函数，默认频率5s/次。 |
-| fail    | Function                                | 否   | 接口调用失败的回调函数。                        |
+| 名称    | 类型                                    | 只读 | 可选 | 说明                                            |
+| ------- | --------------------------------------- | ---- | ---- | ----------------------------------------------- |
+| success | [HeartRateResponse](#heartrateresponse) | 否   | 否   | 心率传感器数据改变后的回调函数，默认频率5s/次。 |
+| fail    | Function                                | 否   | 是   | 接口调用失败的回调函数。                        |
 
 ## HeartRateResponse 
 
@@ -778,9 +778,9 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称      | 类型   | 必填 | 说明     |
-| --------- | ------ | ---- | -------- |
-| heartRate | number | 是   | 心率值。 |
+| 名称      | 类型   | 只读 | 可选 | 说明     |
+| --------- | ------ | ---- | ---- | -------- |
+| heartRate | number | 否   | 否   | 心率值。 |
 
 ## SubscribeOnBodyStateOptions
 
@@ -788,10 +788,10 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                        | 必填 | 说明                       |
-| ------- | ------------------------------------------- | ---- | -------------------------- |
-| success | [OnBodyStateResponse](#onbodystateresponse) | 是   | 传感器所在设备穿戴状态改变后的回调函数。 |
-| fail    | Function                                    | 否   | 接口调用失败的回调函数。   |
+| 名称    | 类型                                        | 只读 | 可选 | 说明                       |
+| ------- | ------------------------------------------- | ---- | ---- | -------------------------- |
+| success | [OnBodyStateResponse](#onbodystateresponse) | 否   | 否   | 传感器所在设备穿戴状态改变后的回调函数。 |
+| fail    | Function                                    | 否   | 是   | 接口调用失败的回调函数。   |
 
 ## OnBodyStateResponse 
 
@@ -799,9 +799,9 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称  | 类型    | 必填 | 说明                                               |
-| ----- | ------- | ---- | -------------------------------------------------- |
-| value | boolean | 是   | 是否已佩戴设备，当返回true表示已佩戴，否则未佩戴。 |
+| 名称  | 类型    | 只读 | 可选 | 说明                                               |
+| ----- | ------- | ---- | ---- | -------------------------------------------------- |
+| value | boolean | 否   | 否   | 是否已佩戴设备，当返回true表示已佩戴，否则未佩戴。 |
 
 ## GetOnBodyStateOptions
 
@@ -809,11 +809,11 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称     | 类型                                        | 必填 | 说明                     |
-| -------- | ------------------------------------------- | ---- | ------------------------ |
-| success  | [OnBodyStateResponse](#onbodystateresponse) | 是   | 接口调用成功的回调函数。 |
-| fail     | Function                                    | 否   | 接口调用失败的回调函数。 |
-| complete | Function                                    | 否   | 接口调用结束的回调函数。 |
+| 名称     | 类型                                        | 只读 | 可选 | 说明                     |
+| -------- | ------------------------------------------- | ---- | ---- | ------------------------ |
+| success  | [OnBodyStateResponse](#onbodystateresponse) | 否   | 否   | 接口调用成功的回调函数。 |
+| fail     | Function                                    | 否   | 是   | 接口调用失败的回调函数。 |
+| complete | Function                                    | 否   | 是   | 接口调用结束的回调函数。 |
 
 ## SubscribeDeviceOrientationOptions<sup>6+</sup>
 
@@ -823,11 +823,11 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-| 名称     | 类型                                                     | 必填 | 说明                                                         |
-| -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| interval | string                                                   | 是   | 频率参数，设备方向传感器的回调函数执行频率。<br/>默认为normal，可选值有：<br/>-&nbsp;game：极高的回调频率，20ms/次，适用于游戏。<br/>-&nbsp;ui：较高的回调频率，60ms/次，适用于UI更新。<br/>-&nbsp;normal：普通的回调频率，200ms/次，低功耗。 |
-| success  | [DeviceOrientationResponse](#deviceorientationresponse6) | 是   | 感应到设备方向传感器数据变化后的回调函数。                   |
-| fail     | Function                                                 | 否   | 接口调用失败的回调函数。                                     |
+| 名称     | 类型                                                     | 只读 | 可选 | 说明                                                         |
+| -------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| interval | string                                                   | 否   | 否   | 频率参数，设备方向传感器的回调函数执行频率。<br/>默认为normal，可选值有：<br/>-&nbsp;game：极高的回调频率，20ms/次，适用于游戏。<br/>-&nbsp;ui：较高的回调频率，60ms/次，适用于UI更新。<br/>-&nbsp;normal：普通的回调频率，200ms/次，低功耗。 |
+| success  | [DeviceOrientationResponse](#deviceorientationresponse6) | 否   | 否   | 感应到设备方向传感器数据变化后的回调函数。                   |
+| fail     | Function                                                 | 否   | 是   | 接口调用失败的回调函数。                                     |
 
 ## DeviceOrientationResponse<sup>6+</sup> 
 
@@ -837,11 +837,11 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
-| 名称  | 类型   | 必填 | 说明                                                         |
-| ----- | ------ | ---- | ------------------------------------------------------------ |
-| alpha | number | 是   | 当设备坐标&nbsp;X/Y&nbsp;和地球&nbsp;X/Y&nbsp;重合时，绕着&nbsp;Z&nbsp;轴转动的夹角为&nbsp;alpha。 |
-| beta  | number | 是   | 当设备坐标&nbsp;Y/Z&nbsp;和地球&nbsp;Y/Z&nbsp;重合时，绕着&nbsp;X&nbsp;轴转动的夹角为&nbsp;beta。 |
-| gamma | number | 是   | 当设备&nbsp;X/Z&nbsp;和地球&nbsp;X/Z&nbsp;重合时，绕着&nbsp;Y&nbsp;轴转动的夹角为&nbsp;gamma。 |
+| 名称  | 类型   | 只读 | 可选 | 说明                                                         |
+| ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| alpha | number | 否   | 否   | 当设备坐标&nbsp;X/Y&nbsp;和地球&nbsp;X/Y&nbsp;重合时，绕着&nbsp;Z&nbsp;轴转动的夹角为&nbsp;alpha。 |
+| beta  | number | 否   | 否   | 当设备坐标&nbsp;Y/Z&nbsp;和地球&nbsp;Y/Z&nbsp;重合时，绕着&nbsp;X&nbsp;轴转动的夹角为&nbsp;beta。 |
+| gamma | number | 否   | 否   | 当设备&nbsp;X/Z&nbsp;和地球&nbsp;X/Z&nbsp;重合时，绕着&nbsp;Y&nbsp;轴转动的夹角为&nbsp;gamma。 |
 
 ## SubscribeGyroscopeOptions<sup>6+</sup> 
 
@@ -851,11 +851,11 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称     | 类型                                     | 必填 | 说明                                                         |
-| -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| interval | string                                   | 是   | 频率参数，陀螺仪的回调函数执行频率。<br/>默认为normal，可选值有：<br/>game：极高的回调频率，20ms/次，适用于游戏。<br/>ui：较高的回调频率，60ms/次，适用于UI更新。<br/>normal：普通的回调频率，200ms/次，低功耗。 |
-| success  | [GyroscopeResponse](#gyroscoperesponse6) | 是   | 感应到陀螺仪数据变化后的回调函数。                           |
-| fail     | Function                                 | 否   | 接口调用失败的回调函数。                                     |
+| 名称     | 类型                                     | 只读 | 可选 | 说明                                                         |
+| -------- | ---------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| interval | string                                   | 否   | 否   | 频率参数，陀螺仪的回调函数执行频率。<br/>默认为normal，可选值有：<br/>game：极高的回调频率，20ms/次，适用于游戏。<br/>ui：较高的回调频率，60ms/次，适用于UI更新。<br/>normal：普通的回调频率，200ms/次，低功耗。 |
+| success  | [GyroscopeResponse](#gyroscoperesponse6) | 否   | 否   | 感应到陀螺仪数据变化后的回调函数。                           |
+| fail     | Function                                 | 否   | 是   | 接口调用失败的回调函数。                                     |
 
 ## GyroscopeResponse<sup>6+</sup> 
 
@@ -865,8 +865,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称 | 类型   | 必填 | 说明              |
-| ---- | ------ | ---- | ----------------- |
-| x    | number | 是   | x轴的旋转角速度。 |
-| y    | number | 是   | y轴的旋转角速度。 |
-| z    | number | 是   | z轴的旋转角速度。 |
+| 名称 | 类型   | 只读 | 可选 | 说明              |
+| ---- | ------ | ---- | ---- | ----------------- |
+| x    | number | 否   | 否   | x轴的旋转角速度，单位rad/s。 |
+| y    | number | 否   | 否   | y轴的旋转角速度，单位rad/s。 |
+| z    | number | 否   | 否   | z轴的旋转角速度，单位rad/s。 |
