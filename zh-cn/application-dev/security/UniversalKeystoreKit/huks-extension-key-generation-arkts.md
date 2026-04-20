@@ -9,13 +9,13 @@
 
 从API版本26.0.0开始，在外部密钥管理扩展场景下，密钥生成能力支持在扩展设备内生成密钥对。密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
 
-具体的场景介绍及开发流程，请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
+具体的场景介绍请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
 
 ## 开发步骤
 
-1. 获取外部密钥管理扩展的资源ID。具体请参考[获取外部密钥管理扩展资源ID(ArkTS)](huks-extension-get-resource-id-arkts.md)。
+1. 通过[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。
 
-2. 打开资源，获取资源句柄。
+2. 调用[openResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开资源。
 
 3. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥对。
 
@@ -41,12 +41,12 @@ async function openResource(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.openResource(resourceId)
       .then(() => {
-        console.info(`promise: openResource success`);
+        console.info('promise: openResource success');
       }).catch((error: BusinessError) => {
         console.error(`promise: openResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: openResource input arg invalid`);
+    console.error('promise: openResource input arg invalid.');
   }
 }
 
@@ -54,12 +54,12 @@ async function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions):
   try {
     await huks.generateKeyItem(keyAlias, huksOptions)
       .then(() => {
-        console.info(`promise: generateKeyItem success`);
+        console.info('promise: generateKeyItem success');
       }).catch((error: BusinessError) => {
         console.error(`promise: generateKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: generateKeyItem input arg invalid`);
+    console.error('promise: generateKeyItem input arg invalid.');
   }
 }
 
@@ -67,12 +67,12 @@ async function closeResource(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.closeResource(resourceId)
       .then(() => {
-        console.info(`promise: closeResource success`);
+        console.info('promise: closeResource success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: closeResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: closeResource input arg invalid`);
+    console.error('promise: closeResource input arg invalid.');
   }
 }
 
@@ -88,7 +88,6 @@ async function extensionKeyGeneration(): Promise<void> {
   });
   const keyAlias = resourceId;
 
-  /* 2.构造密钥生成参数 */
   const properties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -109,22 +108,18 @@ async function extensionKeyGeneration(): Promise<void> {
   };
 
   try {
-    /* 3.打开资源 */
+    /* 2.打开资源 */
     await openResource(resourceId);
     
-    /* 4.生成密钥 */
+    /* 3.生成密钥 */
     await generateKeyItem(keyAlias, huksOptions);
     
-    /* 5.关闭资源 */
+    /* 4.关闭资源 */
     await closeResource(resourceId);
     
-    console.info(`promise: extensionKeyGeneration completed successfully`);
+    console.info('promise: extensionKeyGeneration completed successfully.');
   } catch (error) {
-    console.error(`promise: extensionKeyGeneration input arg invalid`);
+    console.error('promise: extensionKeyGeneration input arg invalid.');
   }
 }
 ```
-
-## 公钥导出
-
-密钥生成完成后，如需导出公钥用于证书申请等场景，可调用[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口。具体请参考[公钥导出(ArkTS)](huks-extension-key-export-arkts.md)。
