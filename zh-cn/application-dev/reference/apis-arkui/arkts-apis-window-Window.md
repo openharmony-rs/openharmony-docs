@@ -1901,7 +1901,7 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
   
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -2039,7 +2039,7 @@ isSystemAvoidAreaEnabled(): boolean
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -2278,7 +2278,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -2394,7 +2394,7 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2963,7 +2963,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -3297,7 +3297,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -4856,7 +4856,7 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -6058,7 +6058,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 开启截屏事件的监听。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6134,7 +6134,7 @@ off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
 
 关闭截屏事件的监听。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6726,7 +6726,7 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
 开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -6813,7 +6813,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 
 关闭本窗口所处屏幕变化事件的监听。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -7488,7 +7488,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 在接口回调函数中，建议直接使用返回值进行vp和px的转换。例如，若返回值为density，计算px可使用vp * density = px。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -7584,7 +7584,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 在接口回调函数中，建议直接使用返回值进行vp和px的转换。例如，若返回值为density，计算px可使用vp * density = px。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -8238,7 +8238,7 @@ ArkTS-Sta: setWindowGrayScale(grayScale: double): Promise&lt;void&gt;
 
 设置窗口灰阶，使用Promise异步回调。该接口需要在调用[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)使窗口加载页面内容后调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -10077,7 +10077,7 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 
 判断当前窗口是否支持广色域模式，使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -10137,7 +10137,7 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 
 判断当前窗口是否支持广色域模式，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -10193,7 +10193,7 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 
 设置当前窗口为广色域模式或默认色域模式，使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -10264,7 +10264,7 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
 设置当前窗口为广色域模式或默认色域模式，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -11601,7 +11601,7 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 
 获取当前窗口截图。即使当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](#setwindowprivacymode9)接口设置），仍可调用本接口返回当前窗口截图。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -15961,7 +15961,7 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1、其他设备的电脑模式中调用会返回801错误码，在其他设备和其他模式中可正常调用。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -16084,7 +16084,7 @@ isGestureBackEnabled(): boolean
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -17897,7 +17897,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
