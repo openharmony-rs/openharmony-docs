@@ -415,6 +415,10 @@ Codec MIME类型枚举。
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。       |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。       |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。       |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | 录屏已被用户暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | 录屏已被用户恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | 录屏已被应用程序暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | 录屏已被应用程序恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 

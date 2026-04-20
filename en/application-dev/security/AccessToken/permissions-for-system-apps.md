@@ -5782,3 +5782,17 @@ Allows a system application to use the unified management capabilities of the di
 **Supported devices**: Phone | Tablet
 
 **Since**: 26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+Allows an application to enable the outdoor exploration service to provide the altitude subscription capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones
+
+**Since**: 26.0.0
