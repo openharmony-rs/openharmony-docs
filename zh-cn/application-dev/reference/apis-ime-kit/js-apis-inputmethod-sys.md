@@ -810,7 +810,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 输入法的包名。 |
 | extensionName | string | 是 | 输入法的扩展名。 |
-| enabledState | [EnabledState](#enabledstate15) | 是 | 要修改的启用状态。 |
+| enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 要修改的启用状态。 |
 | userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
