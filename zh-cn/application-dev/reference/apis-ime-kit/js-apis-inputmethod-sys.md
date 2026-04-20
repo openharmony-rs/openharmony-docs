@@ -564,7 +564,7 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 });
 ```
 
-## inputMethod.getDefaultInputMethod<sup>24+</sup>
+## inputMethod.getDefaultInputMethod<sup>26+</sup>
 
 getDefaultInputMethod(userId?: number): InputMethodProperty
 
@@ -606,7 +606,7 @@ getDefaultInputMethod(userId?: number): InputMethodProperty
 let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
 ```
 
-## inputMethod.getSystemInputMethodConfigAbility<sup>24+</sup>
+## inputMethod.getSystemInputMethodConfigAbility<sup>26+</sup>
 
 getSystemInputMethodConfigAbility(userId?: number): ElementName
 
@@ -650,7 +650,7 @@ import { bundleManager } from '@kit.AbilityKit';
 let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
 ```
 
-## inputMethod.switchInputMethodWithUserId<sup>24+</sup>
+## inputMethod.switchInputMethodWithUserId<sup>26+</sup>
 
 switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
 
@@ -704,7 +704,7 @@ inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbili
 });
 ```
 
-## inputMethod.getCurrentInputMethod<sup>24+</sup>
+## inputMethod.getCurrentInputMethod<sup>26+</sup>
 
 getCurrentInputMethod(userId?: number): InputMethodProperty
 
@@ -746,7 +746,7 @@ getCurrentInputMethod(userId?: number): InputMethodProperty
 let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
 ```
 
-## inputMethod.getCurrentInputMethodSubtype<sup>24+</sup>
+## inputMethod.getCurrentInputMethodSubtype<sup>26+</sup>
 
 getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 
@@ -790,7 +790,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
 ```
 
-### enableInputMethod<sup>24+</sup>
+### enableInputMethod<sup>26+</sup>
 
 enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
 
@@ -810,7 +810,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 输入法的包名。 |
 | extensionName | string | 是 | 输入法的扩展名。 |
-| enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 要修改的启用状态。 |
+| enabledState | [EnabledState](#enabledstate15) | 是 | 要修改的启用状态。 |
 | userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
@@ -846,7 +846,7 @@ inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodE
 });
 ```
 
-### getAllInputMethodsSync<sup>24+</sup>
+### getAllInputMethodsSync<sup>26+</sup>
 
 getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
@@ -889,7 +889,7 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
 ```
 
-### getInputMethodSubtypes<sup>24+</sup>
+### getInputMethodSubtypes<sup>26+</sup>
 
 getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMethodSubtype&gt;
 
@@ -936,7 +936,7 @@ let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting(
 let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
 ```
 
-### getInputMethodsSync<sup>24+</sup>
+### getInputMethodsSync<sup>26+</sup>
 
 getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
 
@@ -986,7 +986,7 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
 ```
 
-## ImeChangeWithUserIdCallback<sup>24+</sup>
+## ImeChangeWithUserIdCallback<sup>26+</sup>
 
 type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
 
@@ -1005,3 +1005,19 @@ type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, in
 | inputMethodProperty | [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 是   | 当前输入法的属性。 |
 | inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
 | userId | number | 是 | 输入法发生变化的用户ID。 |
+
+## InputWindowInfo<sup>26+</sup>
+
+输入法软键盘的窗口信息（系统接口扩展属性）。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+关于输入法软键盘窗口信息的更多属性，请参见[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| userId<sup>24+</sup> | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。|

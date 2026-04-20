@@ -869,7 +869,6 @@ Enter键的功能类型。
 | width  | number | 否 | 否 | 输入法窗口的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
 | height  | number | 否 | 否 | 输入法窗口的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
 | displayId<sup>23+</sup> | number | 否 | 是 | 输入法软键盘窗口所在的屏幕ID。<br>**模型约束：** 该参数仅可在Stage模型下使用。|
-| userId<sup>24+</sup> | number | 否 | 是 | 显示输入法窗口的用户ID。<br>**模型约束：** 该参数仅可在Stage模型下使用。|
 
 ## EnabledState<sup>15+</sup>
 
