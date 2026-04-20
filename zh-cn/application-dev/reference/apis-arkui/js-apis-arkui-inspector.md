@@ -243,7 +243,7 @@ offDraw(callback?: VoidCallback): void
 
 > **说明：**
 >
-> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md#uicontext)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
 
 ### on('drawChildren')<sup>20+</sup>
 

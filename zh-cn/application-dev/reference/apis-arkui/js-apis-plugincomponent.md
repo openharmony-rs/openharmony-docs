@@ -43,7 +43,7 @@ Plugin组件模板参数。
 
 ArkTS-Dyn: type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 
-ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean | Array<KVObject> | KVObject>;
+ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean | Array\<KVObject\> | KVObject>;
 
 以键值对形式存储信息，符合json格式。
 
@@ -57,7 +57,7 @@ ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean
 
 | 名称    | 类型   | 必填 | 说明                        |
 | ------- | ------ | ---- | --------------------------- |
-|  [key: string]  | ArkTS-Dyn: number \| string \| boolean \| [] \| [KVObject](#kvobject)<br/>ArkTS-Sta: string, int \| long \| double \| string \| boolean \| Array<KVObject> \| KVObject  | 否   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
+|  [key: string]  | ArkTS-Dyn: number \| string \| boolean \| [] \| [KVObject](#kvobject)<br/>ArkTS-Sta: string, int \| long \| double \| string \| boolean \| Array\<KVObject\> \| KVObject  | 否   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
 
 
 ### PushParameters
