@@ -1006,6 +1006,76 @@ type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, in
 | inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
 | userId | number | 是 | 输入法发生变化的用户ID。 |
 
+### onImeChangeWithUserId<sup>26+</sup>
+
+onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
+
+订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                            | 必填 | 说明                                                         |
+| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback24)  | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202      | not system application.  |
+
+**示例：**
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+inputMethod.getSetting()
+  .onImeChangeWithUserId((inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => {
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name} ` +
+      `, inputMethodSubtype.id: ${inputMethodSubtype.id}, userId: ${userId}`);
+  });
+```
+
+### offImeChangeWithUserId<sup>26+</sup>
+
+offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
+
+取消订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                            | 必填 | 说明                                                         |
+| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback24)  | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。<br>参数不填写时，取消订阅所有的回调事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202      | not system application.  |
+
+**示例：**
+
+```ts
+inputMethod.getSetting().offImeChangeWithUserId();
+```
+
 ## InputWindowInfo<sup>26+</sup>
 
 输入法软键盘的窗口信息（系统接口扩展属性）。
