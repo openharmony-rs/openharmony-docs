@@ -6700,6 +6700,113 @@ getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponentAttribute | und
 typeNode.getAttribute(node, 'XComponent');
 ```
 
+### createXComponentNodeDefault<sup>23+</sup>
+
+createXComponentNodeDefault(context: UIContext, options?: FrameNodeOptions): XComponent
+
+创建XComponent类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| context | [UIContext](arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例。 |
+| options | FrameNodeOptions | 否 | FrameNode创建的配置选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [XComponent](#xcomponent12) | XComponent类型的FrameNode节点。 |
+
+### createXComponentNodeWithOptions<sup>23+</sup>
+
+createXComponentNodeWithOptions(context: UIContext, value: XComponentOptions, options?: FrameNodeOptions): XComponent
+
+按照options中的配置参数创建XComponent类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| context | [UIContext](arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例。 |
+| value | [XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions12) | 是 | 定义XComponent的具体配置参数。 |
+| options | FrameNodeOptions | 否 | FrameNode创建的配置选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [XComponent](#xcomponent12) | XComponent类型的FrameNode节点。 |
+
+### createXComponentNodeWithNativeParameters<sup>23+</sup>
+
+createXComponentNodeWithNativeParameters(context: UIContext, parameters: NativeXComponentParameters, options?: FrameNodeOptions): XComponent
+
+按照parameters中的配置参数创建XComponent类型的FrameNode节点。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| context | [UIContext](arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例。 |
+| parameters | [NativeXComponentParameters](./arkui-ts/ts-basic-components-xcomponent.md#nativexcomponentparameters19) | 是 | 定义XComponent的具体配置参数。 |
+| options | FrameNodeOptions | 否 | FrameNode创建的配置选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [XComponent](#xcomponent12) | XComponent类型的FrameNode节点。 |
+
+### getXComponentAttribute<sup>23+</sup>
+
+getXComponentAttribute(node: FrameNode): XComponentAttribute | undefined
+
+获取XComponent节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| node | [FrameNode](#framenode-1) | 是 | 获取属性时所需的目标节点。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| XComponentAttribute&nbsp;\|&nbsp;undefined | XComponent节点类型的属性，若获取失败，则返回undefined。 |
+
 ### QRCode<sup>14+</sup>
 type QRCode = TypedFrameNode&lt;QRCodeInterface, QRCodeAttribute&gt;
 
