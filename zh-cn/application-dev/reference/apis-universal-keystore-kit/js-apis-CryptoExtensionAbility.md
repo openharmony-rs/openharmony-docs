@@ -540,7 +540,7 @@ onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]):Promise&lt
 
 | 类型 | 说明 |
 | ---------- | ----------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，resourceId携带资源ID信息。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，resourceId携带资源ID信息。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 

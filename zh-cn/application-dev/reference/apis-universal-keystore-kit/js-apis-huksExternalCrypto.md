@@ -397,7 +397,7 @@ huksExternalCrypto.clearUkeyPinAuthState(testResourceId)
 
 ## huksExternalCrypto.getResourceId
 
-getResourceId(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<string>
+getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise\<string>
 
 获取密钥扩展能力的资源ID。使用Promise异步回调。
 
