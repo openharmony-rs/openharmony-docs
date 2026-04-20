@@ -54,7 +54,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     let url = "http://xx";
@@ -119,7 +119,7 @@ let param: media.PixelMapParams = {
 };
 // Obtain the thumbnail.
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {

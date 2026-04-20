@@ -540,6 +540,10 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 Sets whether the captured screen data should rotate.<br> When **canvasRotation** is set to **true**, rotation is enabled and the captured screen data remains upright.<br> The default value is **false**.
 
+> **NOTE**
+>
+> Since API version 20, foldable PCs/2-in-1 devices are supported.
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12

@@ -70,7 +70,7 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 
 ## metadataBinding.decodeImage
-function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
+decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 Decodes the information carried in the image. This API uses a promise to return the result.
 
@@ -124,7 +124,7 @@ Transfers metadata to the application or service that calls the encoding API. Th
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
@@ -136,7 +136,7 @@ Transfers metadata to the application or service that calls the encoding API. Th
 | ---------------------------- | ---------- |
 | Promise&lt;string&gt; | Promise used to return the application link information of the current page.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
 
