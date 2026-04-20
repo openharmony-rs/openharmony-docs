@@ -303,6 +303,21 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendMessage()方法给对端应用发送文本信息。
 
+**ArkTS-Dyn示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
+    hilog.info(0x0000, 'testTag', "sendMessage success");
+  }).catch(() => {
+    hilog.error(0x0000, 'testTag', "connect failed");
+  })
+  ```
+
+**ArkTS-Sta示例：**
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -318,11 +333,30 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据（仅支持系统应用调用）。
 
+**ArkTS-Dyn示例：**
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
-  
+
+  let textEncoder = util.TextEncoder.create("utf-8");
+  const arrayBuffer  = textEncoder.encodeInto("data send success");
+
+  abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
+    hilog.info(0x0000, 'testTag', "sendMessage success");
+  }).catch(() => {
+    hilog.info(0x0000, 'testTag', "sendMessage failed");
+  })
+  ```
+
+**ArkTS-Sta示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { util } from '@kit.ArkTS';
+
   let textEncoder = util.TextEncoder.create("utf-8");
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
@@ -336,6 +370,45 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **3.发送图片**
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendImage()方法给对端应用发送图片（仅支持系统应用调用）。
+
+**ArkTS-Dyn示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { image } from '@kit.ImageKit';
+  import { fileIo } from '@kit.CoreFileKit';
+
+  try {
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    photoPicker.select(photoSelectOptions).then((photoSelectResult) => {
+      if (!photoSelectResult) {
+        hilog.error(0x0000, 'testTag', 'photoSelectResult = null');
+      return;
+      }
+
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
+      hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
+
+      let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
+      if (imageSourceApi) {
+        imageSourceApi.createPixelMap().then((pixelMap) => {
+          abilityConnectionManager.sendImage(this.sessionId, pixelMap)
+        });
+      } else {
+        hilog.info(0x0000, 'testTag', 'imageSourceApi is undefined');
+      }
+    })
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'photoPicker failed with error: ' + JSON.stringify(error));
+  }
+  ```
+
+**ArkTS-Sta示例：**
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -376,6 +449,28 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 应用连接成功后，开发者可在设备A或者设备B上调用createStream()方法创建传输流(仅支持系统应用调用)，之后调用startStream()方法传输流给对端设备。
 
+**ArkTS-Dyn示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  hilog.info(0x0000, 'testTag', 'startStream');
+  abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
+    let surfaceParam: abilityConnectionManager.SurfaceParam = {
+      width: 640,
+      height: 480,
+      format: 1
+    }
+    let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
+    hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
+    AppStorage.setOrCreate<string>('surfaceId', surfaceId);
+    abilityConnectionManager.startStream(streamId);
+  })
+  ```
+
+**ArkTS-Sta示例：**
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -398,11 +493,28 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 业务协同完毕后需及时结束协同状态。若是后续短期内还有协同需要，可调用disconnect()方法断开应用间的连接，保留sessionId，以便下次继续使用该sessionId进行连接。若是短期无需使用协同业务，可直接调用destroyAbilityConnectionSession()接口销毁会话，此时会自动断开连接。
 
+**ArkTS-Dyn示例：**
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
+  if (this.sessionId == -1) {
+    hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+  return;
+  }
+  abilityConnectionManager.disconnect(this.sessionId);
+
+  hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
+  abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
+  ```
+
+**ArkTS-Sta示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   if (this.sessionId == -1) {
     hilog.info(0x0000, 'testTag', 'Invalid session ID.');
   return;

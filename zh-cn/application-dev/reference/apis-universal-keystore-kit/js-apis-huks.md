@@ -1243,7 +1243,7 @@ anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksR
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -1740,6 +1740,8 @@ wrapKeyItem(keyAlias: string, params: HuksOptions): Promise\<HuksReturnResult>
 
 <!--Del-->该功能暂不支持。<!--DelEnd-->
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **参数：**
@@ -1778,6 +1780,8 @@ unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Pr
 加密导入密钥。使用Promise异步回调。
 
 <!--Del-->该功能暂不支持。<!--DelEnd-->
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -3485,7 +3489,7 @@ API version 10-11系统能力为SystemCapability.Security.Huks.Extension；从AP
 | HUKS_USER_AUTH_TYPE_FINGERPRINT | 1 << 0 | 表示用户认证类型为指纹。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | HUKS_USER_AUTH_TYPE_FACE        | 1 << 1 | 表示用户认证类型为人脸。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | HUKS_USER_AUTH_TYPE_PIN         | 1 << 2  | 表示用户认证类型为PIN码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| HUKS_USER_AUTH_TYPE_TUI_PIN<sup>20+</sup>         | 1 << 5  | 表示用户认证类型为TUI PIN码。<!--Del-->（暂不支持）<!--DelEnd--> |
+| HUKS_USER_AUTH_TYPE_TUI_PIN<sup>20+</sup>         | 1 << 5  | 表示用户认证类型为TUI PIN码。<!--Del-->（暂不支持）<!--DelEnd--> <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## HuksUserAuthMode<sup>12+</sup>
 
@@ -3585,6 +3589,23 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | ------------------------------ | ---- | ------------------------------------------------------------ |
 | HUKS_KEY_WRAP_TYPE_HUK_BASED | 2    | 硬件唯一密钥加密类型。<!--Del-->（暂不支持）<!--DelEnd--> |
 
+## HuksKeySecurityLevel
+
+表示密钥安全级别的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+| 名称                           | 值   | 说明                                                         |
+| ------------------------------ | ---- | ------------------------------------------------------------ |
+| HUKS_KEY_SECURITY_LEVEL_TEE | 0    | 密钥在可信执行环境中生成并使用。 |
+| HUKS_KEY_SECURITY_LEVEL_SE | 1    | 密钥在安全环境中生成并使用。 |
+
 ## HuksTagType
 
 表示Tag的数据类型。
@@ -3605,8 +3626,6 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 ## HuksTag
 
 表示调用参数的Tag。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 | 名称                                                        | 值                                       | 说明                                                         |
 | ----------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------ |
@@ -3675,6 +3694,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | 表示指定的AEAD标签长度，单位：byte。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_CLASS<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 522   | 表示密钥来源。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_ACCESS_GROUP<sup>23+</sup>                     | HuksTagType.HUKS_TAG_TYPE_BYTES \| 523   | 表示指定的分组信息。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_KEY_SECURITY_LEVEL                                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 526   | 表示密钥安全级别。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_AAD<sup>24+</sup>                                  | HuksTagType.HUKS_TAG_TYPE_BYTES \| 527   | 标记指示GCM或CCM模式的附加验证数据。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | 表示密钥存储方式的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |

@@ -158,32 +158,47 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array\<Sp
 
 ### fromHtml
 
-static fromHtml(html: string): Promise\<StyledString>
+ArkTS-Dyn: static fromHtml(html: string): Promise\<StyledString\>
 
-将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>。支持将标签中的style属性样式转换成对应的属性字符串样式。
+ArkTS-Sta: static fromHtml(html: string): Promise\<StyledString | undefined\>
 
-使用方法参考[示例12（fromHtml和toHtml互相转换）](#示例12fromhtml和tohtml互相转换)。
+将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>、\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>。支持将标签中的style属性样式转换成对应的属性字符串样式。
+
+使用方法参考[示例12（fromHtml和toHtml互相转换）](#示例12fromhtml和tohtml互相转换)和[示例18（fromHtml转换）](#示例18fromhtml转换)。
 
 | 标签名称 | 说明                   |
 | ------------- | ---------------------------- |
-| \<p\>       | 段落，分隔文本段落         |
+| \<p\>       | 段落，分隔文本段落。       |
 | \<span\>    | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。     |
-| \<img\>     | 插入图片                   |
-| \<strong\>  | 加粗文本                   |
-| &lt;br&gt;<sup>20+</sup>      | 换行                       |
-| \<b\><sup>20+</sup>       | 加粗文本                   |
-| \<a\><sup>20+</sup>       | 超链接                     |
-| \<i\><sup>20+</sup>       | 斜体文本                   |
-| \<em\><sup>20+</sup>      | 斜体文本                   |
-| \<s\><sup>20+</sup>       | 删除线（中划线）           |
-| \<u\><sup>20+</sup>       | 下划线                     |
-| \<del\><sup>20+</sup>     | 删除线（中划线）           |
-| \<sup\><sup>20+</sup>     | 上标文本                   |
-| \<sub\><sup>20+</sup>     | 下标文本                   |
+| \<img\>     | 插入图片。                   |
+| \<strong\>  | 加粗文本。                   |
+| &lt;br&gt;<sup>20+</sup>      | 换行。                       |
+| \<b\><sup>20+</sup>       | 加粗文本。                   |
+| \<a\><sup>20+</sup>       | 超链接。                     |
+| \<i\><sup>20+</sup>       | 斜体文本。                   |
+| \<em\><sup>20+</sup>      | 斜体文本。                   |
+| \<s\><sup>20+</sup>       | 删除线（中划线）。            |
+| \<u\><sup>20+</sup>       | 下划线。                     |
+| \<del\><sup>20+</sup>     | 删除线（中划线）。            |
+| \<sup\><sup>20+</sup>     | 上标文本。                   |
+| \<sub\><sup>20+</sup>     | 下标文本。                   |
+| \<cite\>    | 斜体文本。<br/>**起始版本：** 26.0.0        |
+| \<dfn\>     | 斜体文本。<br/>**起始版本：** 26.0.0        |
+| \<small\>   | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。<br/>**起始版本：** 26.0.0        |
+| \<h1\>      | 一级标题。<br/>**起始版本：** 26.0.0        |
+| \<h2\>      | 二级标题。<br/>**起始版本：** 26.0.0        |
+| \<h3\>      | 三级标题。<br/>**起始版本：** 26.0.0        |
+| \<h4\>      | 四级标题。<br/>**起始版本：** 26.0.0        |
+| \<h5\>      | 五级标题。<br/>**起始版本：** 26.0.0        |
+| \<h6\>      | 六级标题。<br/>**起始版本：** 26.0.0        |
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -195,7 +210,7 @@ static fromHtml(html: string): Promise\<StyledString>
 
 | 类型              |       说明       |
 | ------- | --------------------------------- |
-| Promise\<[StyledString](#styledstring)> | 属性字符串。 |
+| ArkTS-Dyn: [StyledString](#styledstring) <br/> ArkTS-Sta: [StyledString](#styledstring) | 属性字符串。 |
 
 **错误码**：
 
@@ -583,7 +598,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称        | 类型                                     | 只读 | 可选 | 说明                                                                                                                              |
 | ----------- | ---------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                               |
@@ -2573,14 +2588,14 @@ struct styled_string_html_convert_demo {
         .margin(5)
 
       // 按钮1:将HTML转换为SpanString
-      Button("将HTML转换为SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML to SpanString successfully.";
       }).margin(5)
 
       // 按钮2:将SpanString转换为HTML
-      Button("将SpanString转换为HTML").onClick(() => {
+      Button("Convert SpanString to HTML").onClick(() => {
         if (this.spanString) {
           // 将spanString转换为HTML并替换当前的HTML状态
           const newHtml = StyledString.toHtml(this.spanString);
@@ -2594,14 +2609,14 @@ struct styled_string_html_convert_demo {
       }).margin(5)
 
       // 按钮3:将HTML转换回SpanString
-      Button("将HTML转换回SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML back to SpanString successfully.";
       }).margin(5)
 
       // 重置：重置HTML和SpanString
-      Button("重置").onClick(() => {
+      Button("Reset").onClick(() => {
         this.html = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
         this.spanString = undefined;
         this.controller.setStyledString(new StyledString("")); // 使用空的StyledString实例
@@ -3075,3 +3090,70 @@ struct StyledStringFontConfigsDemo {
 }
 ```
 ![styledString_18](figures/styledString_18.png)
+
+### 示例18（fromHtml转换）
+
+该示例通过[fromHtml](#fromhtml)接口，将HTML中\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>标签转换为属性字符串。
+ 
+从API版本26.0.0开始，fromHtml新增支持\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>标签。
+
+ArkTS-Dyn示例：
+```ts
+@Entry
+@Component
+struct html_convert_demo {
+  @State html: string = '<p><cite>cite</cite><dfn>dfn</dfn></p><p>normal<small>small<small>smaller</small></small></p><h1>一级标题</h1><h2>二级标题</h2><h3>三级标题</h3><h4>四级标题</h4><h5>五级标题</h5><h6>六级标题</h6>';
+  @State spanString: StyledString | undefined = undefined;
+  controller: TextController = new TextController;
+
+  build() {
+    Column() {
+      // 显示转换后的spanString
+      Text(undefined, { controller: this.controller })
+      // TextArea显示每个步骤的结果
+      TextArea({ text: this.html })
+        .width("100%")
+        .height(100)
+        .margin(5)
+
+      Button('将HTML转换为SpanString').onClick(async () => {
+        this.spanString = await StyledString.fromHtml(this.html);
+        this.controller.setStyledString(this.spanString);
+      }).margin(5)
+    }.width("100%").padding(20)
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, TextArea, Component, Button, ClickEvent, StyledString, TextController } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+
+@Entry
+@Component
+struct html_convert_demo {
+  @State html: string = '<p><cite>cite</cite><dfn>dfn</dfn></p><p>normal<small>small<small>smaller</small></small></p><h1>一级标题</h1><h2>二级标题</h2><h3>三级标题</h3><h4>四级标题</h4><h5>五级标题</h5><h6>六级标题</h6>';
+  controller: TextController = new TextController;
+
+  build() {
+    Column() {
+      // 显示转换后的spanString
+      Text(undefined, { controller: this.controller })
+      // TextArea显示每个步骤的结果
+      TextArea({ text: this.html })
+        .width("100%")
+        .height(100)
+        .margin(5)
+
+      Button('将HTML转换为SpanString')
+        .onClick((e: ClickEvent) => {
+          StyledString.fromHtml(this.html).then((spanString : StyledString | undefined) => {
+            this.controller.setStyledString(spanString!);
+          });
+      }).margin(5)
+    }.width("100%").padding(20)
+  }
+}
+```
+![html_convert_demo](figures/html_convert_demo.png)

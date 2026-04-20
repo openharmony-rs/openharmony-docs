@@ -1881,11 +1881,11 @@ createImageSource(fd: number): ImageSource
 
 ```ts
 import { sendableImage } from '@kit.ImageKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function Demo(context : Context) {
   const path: string = context.cacheDir + "/test.jpg";
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(file.fd);
 }
 ```

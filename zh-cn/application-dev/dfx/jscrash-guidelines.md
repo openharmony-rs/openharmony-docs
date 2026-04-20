@@ -26,7 +26,7 @@
 
 ## 约束与限制
 
-在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
+在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。从**API版本26.0.0**开始，当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
 
 
 ## 日志获取
@@ -68,7 +68,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | IsSystemApp | 应用是否为系统应用 | 23 | 是 | - |
 | Pid | 故障进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
-| Process name | 故障进程名 | 24 | 是 | - |
+| Process name | 故障进程名 | 26 | 是 | - |
 | Process life time | 故障进程存活时间 | 22 | 是 | - |
 | Process Memory(kB) | 进程占用内存 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[检测原理](#检测原理)。 |

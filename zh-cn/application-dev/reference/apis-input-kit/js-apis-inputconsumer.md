@@ -168,8 +168,6 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
-
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                              |

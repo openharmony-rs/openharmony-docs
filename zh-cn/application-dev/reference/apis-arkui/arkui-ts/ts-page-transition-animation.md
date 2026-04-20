@@ -62,7 +62,7 @@ onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
 
 PageTransitionExit(value: PageTransitionOptions)
 
-设置当前页面的自定义退场动效。继承自[CommonTransition](#commontransition)
+设置当前页面的自定义退场动效。继承自[CommonTransition](#commontransition)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -454,10 +454,10 @@ struct Index {
 
   // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
   pageTransition() {
-    //设置入场动效
+    // 设置入场动效
     PageTransitionEnter({ duration: 200 })
       .slide(SlideEffect.START)
-    //设置退场动效
+    // 设置退场动效
     PageTransitionExit({ delay: 100 })
       .slide(SlideEffect.START) //Left
   }
