@@ -5727,34 +5727,6 @@
 
 **起始版本**：26.0.0
 
-## ohos.permission.ENCRYPT_VOLUME_MANAGER
-
-允许应用调用storage_manager服务中管理卷加密的接口。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：General
-
-**起始版本**：24
-
-## ohos.permission.ODD_MANAGER
-
-允许应用调用storage_manager服务中管理光驱刻录的接口。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：General
-
-**起始版本**：24
-
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。
