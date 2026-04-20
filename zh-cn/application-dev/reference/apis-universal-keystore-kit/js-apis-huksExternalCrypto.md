@@ -484,7 +484,7 @@ openResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Prom
 
 > **说明：**
 >
-> 打开的资源必须使用[closeResource](#huksexternalcryptoopenresource26)关闭。
+> 打开的资源必须使用[closeResource](#huksexternalcryptocloseresource)关闭。
 
 **起始版本：** 26.0.0
 
@@ -496,7 +496,7 @@ openResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Prom
 
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
-| resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid26)获取外部密钥管理扩展的资源ID。 |
+| resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
 | params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 输入操作参数。 |
 
 **返回值：**
@@ -561,7 +561,7 @@ closeResource(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Pro
 
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
-| resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid26)获取外部密钥管理扩展的资源ID。 |
+| resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
 | params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 输入操作参数。 |
 
 **返回值：**
