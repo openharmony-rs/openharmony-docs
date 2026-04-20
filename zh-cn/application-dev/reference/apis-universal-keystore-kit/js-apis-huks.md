@@ -116,6 +116,9 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -288,6 +291,9 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -1389,6 +1395,8 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020<sup>26+</sup> | the provider operation failed. |
+| 12000024<sup>26+</sup> | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -1602,6 +1610,8 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020<sup>26+</sup> | the provider operation failed. |
+| 12000024<sup>26+</sup> | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -1654,6 +1664,8 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020<sup>26+</sup> | the provider operation failed. |
+| 12000024<sup>26+</sup> | the provider or Ukey is busy. |
 
 **示例：**
 
@@ -1714,6 +1726,8 @@ exportKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the group id specified by the access group tag is invalid. |
+| 12000020<sup>26+</sup> | the provider operation failed. |
+| 12000024<sup>26+</sup> | the provider or Ukey is busy. |
 
 **示例：**
 

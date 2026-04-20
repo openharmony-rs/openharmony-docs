@@ -77,7 +77,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | certs  | Array<[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)> | 否   | 是   | 证书。 |
 | property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
 | outData  | Uint8Array | 否   | 是   | 返回的数据。 |
-| resourceId<sup>26+</sup> | string | 否 | 是 | 返回的资源ID。 |
+| resourceId | string | 否 | 是 | 返回的资源ID。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CryptoExtensionAbility.onOpenResource
 
@@ -518,11 +518,15 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## CryptoExtensionAbility.onGetResourceId<sup>26+</sup>
+## CryptoExtensionAbility.onGetResourceId
 
-onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]):Promise\<HuksCryptoExtensionResult>
+onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]):Promise&lt;HuksCryptoExtensionResult&gt;
 
 获取密钥扩展能力的资源ID。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -556,11 +560,15 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## CryptoExtensionAbility.onImportCertificate<sup>26+</sup>
+## CryptoExtensionAbility.onImportCertificate
 
-onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise\<HuksCryptoExtensionResult>
+onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise&lt;HuksCryptoExtensionResult&gt;
 
 导入指定资源句柄的证书。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -597,11 +605,15 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## CryptoExtensionAbility.onGenerateKeyItem<sup>26+</sup>
+## CryptoExtensionAbility.onGenerateKeyItem
 
-onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCryptoExtensionResult>
+onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise&lt;HuksCryptoExtensionResult&gt;
 
 用于在扩展设备内生成密钥对。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -610,7 +622,7 @@ onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCrypto
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 待生成密钥的资源句柄。 |
-| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 密钥生成操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。可选参数包括算法类型（HUKS_TAG_ALGORITHM）、密钥长度（HUKS_TAG_KEY_SIZE）、密钥用途（HUKS_TAG_PURPOSE）等，由Extension厂商定义支持范围。如未传入可选参数，厂商需设置默认行为。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 密钥生成操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
 
 **返回值：**
 
@@ -654,11 +666,15 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## CryptoExtensionAbility.onExportKeyItem<sup>26+</sup>
+## CryptoExtensionAbility.onExportKeyItem
 
-onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCryptoExtensionResult>
+onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise&lt;HuksCryptoExtensionResult&gt;
 
 用于导出指定密钥的公钥。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -667,7 +683,7 @@ onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise\<HuksCryptoEx
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 待导出公钥的资源句柄。 |
-| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导出公钥操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。可选参数包括密钥用途（HUKS_TAG_PURPOSE）等，由Extension厂商定义支持范围。如未传入可选参数，厂商需设置默认行为。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导出公钥操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
 
 **返回值：**
 
@@ -703,11 +719,15 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## CryptoExtensionAbility.onImportWrappedKeyItem<sup>26+</sup>
+## CryptoExtensionAbility.onImportWrappedKeyItem
 
-onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[], wrappedKey: Uint8Array): Promise\<HuksCryptoExtensionResult>
+onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksParam[], wrappedKey: Uint8Array): Promise&lt;HuksCryptoExtensionResult&gt;
 
 用于导入加密封装的密钥对。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -717,7 +737,7 @@ onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksP
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 待导入密钥的资源句柄。 |
 | wrappedHandle | string | 是   | 用于解封导入密钥的密钥资源句柄。 |
-| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导入封装密钥操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。可选参数包括算法类型（HUKS_TAG_ALGORITHM）、密钥长度（HUKS_TAG_KEY_SIZE）、密钥用途（HUKS_TAG_PURPOSE）等，由Extension厂商定义支持范围。如未传入可选参数，厂商需设置默认行为。 |
+| params  | [huks.HuksParam](js-apis-huks.md#huksparam)[] | 是 | 导入封装密钥操作的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
 | wrappedKey | Uint8Array | 是   | 封装密钥数据，格式由密钥扩展定义。 |
 
 **返回值：**
