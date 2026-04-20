@@ -1497,7 +1497,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。       |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
-| densityDpi | number                    | 是   |否   | 像素密度。|     
+| densityDpi | number                    | 是   |否   | 像素密度。该参数为正整数，取值范围为[80, 640]。|     
 
 ### setOrientation
 
