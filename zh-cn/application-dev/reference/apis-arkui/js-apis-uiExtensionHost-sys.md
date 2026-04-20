@@ -102,6 +102,7 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listener has been registered. <br/> 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -142,6 +143,7 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listening type is not registered. <br/> 3. The listener has not been registered. <br/> 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -180,6 +182,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listener has been registered. <br/> 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -220,6 +223,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listening type is not registered. <br/> 3. The listener has not been registered. <br/> 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
