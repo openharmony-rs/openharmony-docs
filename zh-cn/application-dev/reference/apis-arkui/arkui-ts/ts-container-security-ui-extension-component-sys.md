@@ -31,6 +31,8 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -46,6 +48,8 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isTransferringCaller | boolean | 否 | 是 | 设置当前能力是否作为Caller使用。设置为true时，当前SecurityUIExtensionComponent的token（应用身份标识）将被设置为rootToken，用于跨进程身份转发；设置为false时，不进行Caller身份转发。默认值：false。 |
@@ -59,6 +63,8 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -83,6 +89,8 @@ UIExtensionAbility连接完成时触发的回调，使用callback异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -99,6 +107,8 @@ onReceive(callback: Callback\<Record\<string, Object\>\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -114,6 +124,8 @@ onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -139,6 +151,8 @@ onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -152,6 +166,8 @@ onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -172,6 +188,8 @@ send(data: Record\<string, Object\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -187,6 +205,8 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -219,6 +239,8 @@ on(type: 'asyncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -235,6 +257,8 @@ on(type: 'syncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>)
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -253,6 +277,8 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -269,6 +295,8 @@ off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
