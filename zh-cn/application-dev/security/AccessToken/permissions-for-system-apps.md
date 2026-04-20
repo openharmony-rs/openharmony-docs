@@ -5769,6 +5769,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.ASSET_CACHE_MANAGER
+
+允许应用通过资产缓存服务管理接口下发、控制、查询任务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 允许应用和服务接入端侧模型部署态管理。
