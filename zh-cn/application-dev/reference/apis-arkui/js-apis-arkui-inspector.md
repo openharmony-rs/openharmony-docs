@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -35,6 +37,10 @@ createComponentObserver(id: string): ComponentObserver
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明       |
@@ -57,6 +63,10 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 组件布局和组件绘制送显完成回调的句柄，包含了申请句柄时的首次查询结果。
 
+> **说明：**
+>
+> 该接口不支持设置空值、null/undefined以及其他非法值。若输入非法值会导致编译报错。
+
 ### on('layout')
 
 on(type: 'layout', callback: () => void): void
@@ -65,14 +75,40 @@ on(type: 'layout', callback: () => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onLayout<sup>23+</sup>](#onlayout23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明|
 | -------- | ------ | ---- | -------------------------------------|
 | type     | string | 是   | 必须填写字符串'layout'。<br>layout: 组件布局完成。|
-| callback | () => void   | 是   | 监听layout的回调。|
+| callback | () => void  | 是   | 监听layout的回调。|
+
+### onLayout<sup>23+</sup>
+
+onLayout(callback: VoidCallback): void
+
+通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('layout')](#onlayout)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明|
+| -------- | ------ | ---- | -------------------------------------|
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听layout的回调。|
 
 ### off('layout')
 
@@ -82,14 +118,40 @@ off(type: 'layout', callback?: () => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offLayout<sup>23+</sup>](#offlayout23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | -------------------------------------------- |
 | type     | string | 是   | 必须填写字符串'layout'。<br>layout: 组件布局完成。|
-| callback | () => void   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('layout')](#onlayout)方法中的callback为相同对象时才能取消回调成功。|
+| callback | () => void  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('layout')](#onlayout)方法中的callback为相同对象时才能取消回调成功。|
+
+### offLayout<sup>23+</sup>
+
+offLayout(callback?: VoidCallback): void
+
+通过句柄向对应的查询条件取消注册回调，当组件布局完成时不再触发指定的回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('layout')](#offlayout)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | -------------------------------------------- |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayout](#onlayout23)方法中的callback为相同对象时才能取消回调成功。|
 
 ### on('draw')
 
@@ -99,24 +161,56 @@ on(type: 'draw', callback: () => void): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDraw<sup>23+</sup>](#ondraw23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
-| callback | () => void   | 是   | 监听draw的回调。                                     |
+| callback | () => void  | 是   | 监听draw的回调。                                     |
+
+### onDraw<sup>23+</sup>
+
+onDraw(callback: VoidCallback): void
+
+通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('draw')](#ondraw)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听draw的回调。                                     |
 
 ### off('draw')
 
 off(type: 'draw', callback?: () => void): void
 
-通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
+通过句柄向对应的查询条件取消注册回调，当组件的子组件绘制送显完成时不再触发指定的回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offDraw<sup>23+</sup>](#offdraw23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
@@ -125,22 +219,74 @@ off(type: 'draw', callback?: () => void): void
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
 | callback | () => void   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('draw')](#ondraw)方法中的callback为相同对象时才能取消回调成功。 |
 
-### on('drawChildren')<sup>20+<sup>
+### offDraw<sup>23+</sup>
+
+offDraw(callback?: VoidCallback): void
+
+通过句柄向对应的查询条件取消注册回调，当组件的子组件绘制送显完成时不再触发指定的回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('draw')](#offdraw)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDraw](#ondraw23)方法中的callback为相同对象时才能取消回调成功。 |
+
+**示例：**
+
+> **说明：**
+>
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md#uicontext)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
+
+### on('drawChildren')<sup>20+</sup>
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
-通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onDrawChildren<sup>23+</sup>](#ondrawchildren23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | 是   | 必须填写字符串'drawChildren'。<br>drawChildren: 子组件绘制送显完成。|
-| callback | Callback\<void\>  | 是   | 监听drawChildren的回调。                                     |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void\>  | 是   | 监听drawChildren的回调。                                     |
+
+### onDrawChildren<sup>23+</sup>
+
+onDrawChildren(callback: VoidCallback): void
+
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('drawChildren')](#ondrawchildren20)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听drawChildren的回调。                                     |
 
 ### off('drawChildren')<sup>20+</sup>
 
@@ -150,62 +296,100 @@ off(type: 'drawChildren', callback?: Callback\<void\>): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offDrawChildren<sup>23+</sup>](#offdrawchildren23)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | 是   | 必须填写字符串'drawChildren'。<br>drawChildren: 子组件绘制送显完成。|
-| callback | Callback\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('drawChildren')20+](#ondrawchildren20)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('drawChildren')](#ondrawchildren20)方法中的callback为相同对象时才能取消回调成功。 |
 
-### onLayoutChildren<sup>23+</sup>
+### offDrawChildren<sup>23+</sup>
 
-onLayoutChildren(callback: Callback\<void\>): void
+offDrawChildren(callback?: VoidCallback): void
 
-通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调。使用callback异步回调。
+通过句柄向对应的查询条件取消注册回调，当组件的子组件绘制送显完成时不再触发指定的回调。
 
-把当前注册监听的节点作为根节点，子树中的节点完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。取消最顶层的回调后，其余layoutChildren事件回调也无法生效。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('drawChildren')](#offdrawchildren20)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<void\>  | 是   | 监听layoutChildren的回调。                              |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren](#ondrawchildren23)方法中的callback为相同对象时才能取消回调成功。 |
+
+### onLayoutChildren<sup>23+</sup>
+
+ArkTS-Dyn: onLayoutChildren(callback: Callback\<void\>): void
+
+ArkTS-Sta: onLayoutChildren(callback: VoidCallback): void
+
+通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调方法，当组件的子组件布局完成时会触发该回调方法。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | ArkTS-Dyn: Callback\<void\><br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听layoutChildren的回调。                              |
 
 ### offLayoutChildren<sup>23+</sup>
 
-offLayoutChildren(callback?: Callback\<void\>): void
+ArkTS-Dyn: offLayoutChildren(callback?: Callback\<void\>): void
 
-取消注册layoutChildren事件回调。使用callback异步回调。
+ArkTS-Sta: offLayoutChildren(callback?: VoidCallback): void
+
+通过句柄向对应的查询条件取消注册回调，当组件的子组件布局完成时不再触发指定的回调。使用callback异步回调。
 
 要实现在子组件布局完成后停止触发特定回调，只需通过其句柄，在对应的查询条件上取消注册该回调即可。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayoutChildren23+](#onlayoutchildren23)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | ArkTS-Dyn: Callback\<void\><br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayoutChildren](#onlayoutchildren23)方法中的callback为相同对象时才能取消回调成功。 |
 
 ### onDrawChildren<sup>24+</sup>
 
-onDrawChildren(callback: Callback\<number[]\>): void
+ArkTS-Dyn: onDrawChildren(callback: Callback\<int[]\>): void
+
+ArkTS-Sta: onDrawChildren(callback: Callback\<int[]\>): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
+把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -213,15 +397,21 @@ onDrawChildren(callback: Callback\<number[]\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<number[]\>  | 是   | 监听drawChildren的回调。                              |
+| callback | ArkTS-Dyn: Callback\<int[]\> <br/>ArkTS-Sta: Callback\<int[]\> | 是   | 监听drawChildren的回调。                              |
 
 ### offDrawChildren<sup>24+</sup>
 
-offDrawChildren(callback?: Callback\<number[]\>): void
+ArkTS-Dyn: offDrawChildren(callback?: Callback\<int[]\>): void
+
+ArkTS-Sta: offDrawChildren(callback?: Callback\<int[]\>): void
 
 取消注册drawChildren事件回调。使用callback异步回调。
 
@@ -233,11 +423,16 @@ offDrawChildren(callback?: Callback\<number[]\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<number[]\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren](#ondrawchildren24)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | ArkTS-Dyn: Callback\<int[]\> <br/>ArkTS-Sta: Callback\<int[]\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren24+](#ondrawchildren24)方法中的callback为相同对象时才能取消回调成功。 |
+
 
 ## 示例
 
