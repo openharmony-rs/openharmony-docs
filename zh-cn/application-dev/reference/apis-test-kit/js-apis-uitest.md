@@ -45,12 +45,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称  | 值 | 说明      |
 |-----------------------|---|--------------------------------|
-| EQUALS                | 0 | 等于给定值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23         |
-| CONTAINS              | 1 | 包含给定值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23        |
-| STARTS_WITH           | 2 | 以给定值开始。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23       |
-| ENDS_WITH             | 3 | 以给定值结束。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23      |
-| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23      |
-| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| EQUALS                | 0 | 等于给定值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23         |
+| CONTAINS              | 1 | 包含给定值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23        |
+| STARTS_WITH           | 2 | 以给定值开始。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23       |
+| ENDS_WITH             | 3 | 以给定值结束。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23      |
+| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23      |
+| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
 
 ## ResizeDirection<sup>9+</sup>
 
@@ -85,9 +85,9 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| y    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。|
-| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| x    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| y    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。|
+| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## Rect<sup>9+</sup>
 
@@ -99,11 +99,11 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| top    | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| right  | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| bottom | ArkTS-Dyn: number  <br />ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br />ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23  |
+| left   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| top    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| right  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| bottom | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
+| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br/>ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23  |
 
 ## WindowMode<sup>9+</sup>
 
@@ -153,12 +153,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
-| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                      |
-| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br />                     |
-| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br /> |
+| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                      |
+| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br/>                     |
+| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br/> |
 | actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>  **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>   **ArkTS-Dyn起始版本：** 9   <br>从API version 11开始废弃，建议使用active替代。                            |
-| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23<br />                  |
-| displayId<sup>20+</sup> | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23<br/>                  |
+| displayId<sup>20+</sup> | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## UiDirection<sup>10+</sup>
 
@@ -254,7 +254,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| timeout | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
 | bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
@@ -272,7 +272,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| timeout | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
 | on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
 
 ## UIElementInfo<sup>10+</sup>
@@ -290,7 +290,7 @@ UI事件的相关信息。
 | text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|
 | windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
 | componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
-| windowId<sup>22+</sup>       | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
+| windowId<sup>22+</sup>       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
 | componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
 | componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
 
@@ -310,7 +310,7 @@ UI事件的相关信息。
 | 名称       | 类型   | 只读 | 可选 | 说明                                                     |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | 否  | 是  | 触摸板多指滑动结束是否停留1s后再抬起，默认为false（不停留1s），true：停留，false：不停留。 |
-| speed       | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值2000。为负数时抛出参数错误的错误码。   |
+| speed       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，不在范围内设为默认值为2000，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值2000。为负数时抛出参数错误的错误码。   |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -327,7 +327,7 @@ UI事件的相关信息。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                                       |
 | ---------- | ------ |----|----|----------------------------------------------------------|
-| paste | boolean | 否  | 是  | 输入文本时是否指定以复制粘贴方式输入。true：指定以复制粘贴方式输入。false：指定以逐字键入方式输入。默认为false。<br /> **说明：** 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论该参数取值为何，均以复制粘贴方式输入。|
+| paste | boolean | 否  | 是  | 输入文本时是否指定以复制粘贴方式输入。true：指定以复制粘贴方式输入。false：指定以逐字键入方式输入。默认为false。<br/> **说明：** 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论该参数取值为何，均以复制粘贴方式输入。|
 | addition       | boolean | 否  | 是  | 输入文本时是否以追加的方式进行输入。true：以追加方式输入。false：不以追加方式输入。默认为false。|
 
 
@@ -345,8 +345,8 @@ UI事件的相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| key1 | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 是  | 操作时注入的第一个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。 |
-| key2 | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 是  | 操作时注入的第二个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br> **说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
+| key1 | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作时注入的第一个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。 |
+| key2 | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作时注入的第二个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br> **说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
 
 ## TouchOptions
 
@@ -362,9 +362,9 @@ UI事件的相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| speed | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
-| duration | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。为小于1500的值时抛出17000007错误码。为null或undefined时使用默认值。 |
-| pressure | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。为超出范围的值时抛出17000007错误码。为null或undefined时使用默认值。 |
+| speed | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。为小于1500的值时抛出17000007错误码。为null或undefined时使用默认值。 |
+| pressure | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。为超出范围的值时抛出17000007错误码。为null或undefined时使用默认值。 |
 
 ## On<sup>9+</sup>
 
@@ -1227,7 +1227,7 @@ ArkTS-Sta: belongingDisplay(displayId: int): On
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ |----|---------------------------------------|
-| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
 
 **返回值：**
 
@@ -2365,7 +2365,7 @@ ArkTS-Sta: scrollToTop(speed?: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -2418,7 +2418,7 @@ ArkTS-Sta: scrollToBottom(speed?: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -2525,7 +2525,7 @@ ArkTS-Sta: pinchOut(scale: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 是   | 指定放大的比例。取值范围大于1。 |
+| scale  | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 是   | 指定放大的比例。取值范围大于1。 |
 
 **返回值：**
 
@@ -2578,7 +2578,7 @@ ArkTS-Sta: pinchIn(scale: double): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 是   | 指定缩小的比例。取值范围为0~1。 |
+| scale  | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 是   | 指定缩小的比例。取值范围为0~1。 |
 
 **返回值：**
 
@@ -2717,7 +2717,7 @@ ArkTS-Sta: getDisplayId(): Promise\<int>
 
 | 类型             | 说明                   |
 | ---------------- |----------------------|
-| ArkTS-Dyn: Promise\<number>  <br />ArkTS-Sta: Promise\<int> | Promise对象，返回控件所属的屏幕ID。 |
+| ArkTS-Dyn: Promise\<number>  <br/>ArkTS-Sta: Promise\<int> | Promise对象，返回控件所属的屏幕ID。 |
 
 **错误码：**
 
@@ -2852,7 +2852,7 @@ ArkTS-Sta: delayMs(duration: int): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| duration | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -3375,7 +3375,7 @@ ArkTS-Sta: pressBack(displayId: int): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
@@ -3424,7 +3424,7 @@ ArkTS-Sta: triggerKey(keyCode: int): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
@@ -3474,8 +3474,8 @@ ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
-| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
@@ -3578,10 +3578,10 @@ ArkTS-Sta: triggerCombineKeys(key0: int, key1: int, key2?: int, displayId?: int)
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否   | 指定的第三个key值，取值范围：大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int  | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。 |
+| key0   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 指定的第三个key值，取值范围：大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。 |
 
 **返回值：**
 
@@ -3630,8 +3630,8 @@ ArkTS-Sta: click(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -3779,8 +3779,8 @@ ArkTS-Sta: doubleClick(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -3876,8 +3876,8 @@ ArkTS-Sta: longClick(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -3927,7 +3927,7 @@ ArkTS-Sta: longClickAt(point: Point, duration?: int): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
 | point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
-| duration | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
@@ -4000,11 +4000,11 @@ ArkTS-Sta: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): P
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
-| startx | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。                       |
-| starty | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| endx   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
-| endy   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| startx | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。                       |
+| starty | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。                       |
+| endx   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。                       |
+| endy   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。                       |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -4055,7 +4055,7 @@ ArkTS-Sta: swipeBetween(from: Point, to: Point, speed?: int): Promise\<void>
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
 
@@ -4160,11 +4160,11 @@ ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
-| starty | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
-| endx   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
-| endy   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。|
+| startx | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
+| starty | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
+| endx   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
+| endy   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。|
 
 **返回值：**
 
@@ -4217,8 +4217,8 @@ ArkTS-Sta: dragBetween(from: Point, to: Point, speed?: int, duration?: int): Pro
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
-| duration  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
+| duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -4372,7 +4372,7 @@ ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | 文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4422,7 +4422,7 @@ ArkTS-Sta: dumpLayout(savePath: string, displayId?: int): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | JSON文件保存路径。路径需为当前应用的沙箱目录。 |
-| displayId     | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 指定设备屏幕ID，默认为主屏幕的displayId。 |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 指定设备屏幕ID，默认为主屏幕的displayId。 |
 
 **返回值：**
 
@@ -4561,7 +4561,7 @@ ArkTS-Sta: getDisplayRotation(displayId: int): Promise\<DisplayRotation>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4699,7 +4699,7 @@ ArkTS-Sta: getDisplaySize(displayId: int): Promise\<Point>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。               |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。               |
 
 **返回值：**
 
@@ -4788,7 +4788,7 @@ ArkTS-Sta: getDisplayDensity(displayId: int): Promise\<Point>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4921,7 +4921,7 @@ ArkTS-Sta: pressHome(displayId: int): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4970,8 +4970,8 @@ ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| idleTime | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
-| timeout  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。                    |
+| idleTime | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：毫秒，取值范围：大于等于0的整数。 |
+| timeout  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 等待空闲的最大时间，单位：毫秒，取值范围：大于等于0的整数。                    |
 
 **返回值：**
 
@@ -5022,8 +5022,8 @@ ArkTS-Sta: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<voi
 | ------- | ---------------- | ---- |------------------------------------------------------|
 | from    | [Point](#point9) | 是   | 手指接触屏幕的起始点坐标。                                        |
 | to      | [Point](#point9) | 是   | 手指离开屏幕时的坐标点。                                         |
-| stepLen | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
-| speed   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| stepLen | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
+| speed   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -5073,7 +5073,7 @@ ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promi
 | 参数名   | 类型                             | 必填 | 说明                                                     |
 | -------- | -------------------------------- | ---- |--------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。                                  |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -5134,7 +5134,7 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int): Promise\<void>
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -5184,8 +5184,8 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<v
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
-| displayId     | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -5289,8 +5289,8 @@ ArkTS-Sta: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Pro
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标点击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -5479,10 +5479,10 @@ ArkTS-Sta: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, 
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
 | p      | [Point](#point9) | 是   | 鼠标点击的坐标。                                             |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滑动。false表示向上滚动。  |
-| d      | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
-| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出401错误码。 |
+| d      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -5533,8 +5533,8 @@ ArkTS-Sta: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标双击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
-| key2   | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key1   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key2   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
 
 **返回值：**
 
@@ -5639,9 +5639,9 @@ ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int, 
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId    | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1     | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2     | ArkTS-Dyn: number  <br />ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| duration | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| key1     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第一个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 否   | 指定的第二个key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -5692,7 +5692,7 @@ ArkTS-Sta: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<voi
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to     | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -5798,8 +5798,8 @@ ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promi
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| duration  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -6024,7 +6024,7 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | ArkTS-Dyn: number  <br />ArkTS-Sta: int                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
+| fingers      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
 | direction | [UiDirection](#uidirection10)                 | 是  | 触摸板多指滑动的方向。           |
 | options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值。        |
 
@@ -6080,8 +6080,8 @@ ArkTS-Sta: touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: int
 | ------ |-----------------------------------------------|----|-----------------------|
 | point       | [Point](#point9) | 是   | 触摸板双指滚动时鼠标光标的位置。                                            |
 | direction   | [UiDirection](#uidirection10)                 | 是  | 触摸板双指滚动的方向。           |
-| d           | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
-| speed       | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
+| d           | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
+| speed       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
 
 **返回值：**
 
@@ -6179,7 +6179,7 @@ ArkTS-Sta: penLongClick(point: Point, pressure?: double): Promise\<void>
 | 参数名 | 类型                                            | 必填 | 说明                            |
 | ------ |-----------------------------------------------|----|-------------------------------|
 | point      | [Point](#point9) | 是  | 长按的坐标点。                       |
-| pressure      | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。 |
 
 **返回值：**
 
@@ -6278,8 +6278,8 @@ ArkTS-Sta: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: 
 | ------ |-----------------------------------------------|----|--------------------------------------------------------|
 | startPoint      | [Point](#point9) | 是  | 起始位置的坐标点。                                              |
 | endPoint      | [Point](#point9) | 是  | 结束位置的坐标点。                                              |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| pressure      | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
 
 **返回值：**
 
@@ -6329,8 +6329,8 @@ ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
-| speed      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。            |
-| pressure      | ArkTS-Dyn: number  <br />ArkTS-Sta: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
+| speed      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。            |
+| pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
 
 **返回值：**
@@ -6386,8 +6386,8 @@ ArkTS-Sta: crownRotate(d: int, speed?: int): Promise\<void>
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| d      | ArkTS-Dyn: number  <br />ArkTS-Sta: int   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
+| d      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
 
 **返回值：**
 
@@ -6447,7 +6447,7 @@ ArkTS-Sta: knuckleKnock(pointers: Array\<Point>, times: int): Promise\<void>
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。         |
-| times     | ArkTS-Dyn: number  <br />ArkTS-Sta: int   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
+| times     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
 
 **返回值：**
 
@@ -6506,7 +6506,7 @@ ArkTS-Sta: injectKnucklePointerAction(pointers: PointerMatrix, speed?: int): Pro
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。|
-| speed    | ArkTS-Dyn: number  <br />ArkTS-Sta: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
+| speed    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
 
@@ -6566,7 +6566,7 @@ ArkTS-Sta: isComponentPresentWhenLongClick(on: On, point: Point, duration?: int)
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | point  | [Point](#point9) | 是   | 长按的坐标点。 |
-| duration   | ArkTS-Dyn: number  <br />ArkTS-Sta: int     | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int     | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -6618,8 +6618,8 @@ ArkTS-Sta: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: in
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
-| duration  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
+| duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
 
@@ -6671,7 +6671,7 @@ ArkTS-Sta: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: i
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
-| speed  | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
 
 **返回值：**
 
@@ -6724,8 +6724,8 @@ ArkTS-Sta: static create(fingers: int, steps: int): PointerMatrix
 
 | 参数名  | 类型   | 必填 | 说明                                       |
 | ------- | ------ | ---- | ------------------------------------------ |
-| fingers | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
-| steps   | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+| fingers | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
+| steps   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
 
 **返回值：**
 
@@ -6770,8 +6770,8 @@ setPoint(finger: number, step: number, point: Point): void
 
 | 参数名 | 类型             | 必填 | 说明                                                       |
 | ------ | ---------------- | ---- | ---------------------------------------------------------- |
-| finger | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
-| step   | ArkTS-Dyn: number  <br />ArkTS-Sta: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
+| finger | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 手指的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的手指数。                                              |
+| step   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int           | 是   | 步骤的序号，取值大于等于0的整数，且不超过构造PointerMatrix对象时设置的操作的步骤数。                                               |
 | point  | [Point](#point9) | 是   | 该行为的坐标点。建议相邻的坐标点距离在10px至80px范围内。 |
 
 **错误码：**
@@ -7143,8 +7143,8 @@ ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| x      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | ArkTS-Dyn: number  <br />ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| x      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
+| y      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
 **返回值：**
 
@@ -7198,8 +7198,8 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 | 参数名    | 类型                                 | 必填 | 说明                                                         |
 | --------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| wide      | ArkTS-Dyn: number  <br />ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
-| height    | ArkTS-Dyn: number  <br />ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
+| wide      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数。                         |
+| height    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数。                         |
 | direction | [ResizeDirection](#resizedirection9) | 是   | 以[ResizeDirection](#resizedirection9)的形式传入窗口调整的方向。 |
 
 **返回值：**

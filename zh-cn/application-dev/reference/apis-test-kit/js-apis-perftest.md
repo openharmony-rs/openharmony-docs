@@ -84,8 +84,8 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 | actionCode  | Callback\<Callback\<boolean>> | 否 | 否 | 测试代码段。  |
 | resetCode   | Callback\<Callback\<boolean>> | 否 | 是 | 测试结束环境重置代码段。默认为空，框架运行时不执行此代码段。  |
 | bundleName  | string                      | 否 | 是 | 被测应用包名。默认为""，框架运行时测试当前测试应用的性能数据。  |
-| iterations  | ArkTS-Dyn: number  <br />ArkTS-Sta: int                      | 否 | 是 | 测试迭代执行次数，默认值为5。  |
-| timeout     | ArkTS-Dyn: number  <br />ArkTS-Sta: int                      | 否 | 是 | 单次代码段（actionCode/resetCode）执行的超时时间，默认值为10000ms。  |
+| iterations  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                      | 否 | 是 | 测试迭代执行次数，默认值为5。  |
+| timeout     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                      | 否 | 是 | 单次代码段（actionCode/resetCode）执行的超时时间，默认值为10000ms。  |
 
 > **说明**
 >
@@ -107,10 +107,10 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
 | metric        | [PerfMetric](#perfmetric)    | 是 | 否 | 被测性能指标。  |
-| roundValues   | ArkTS-Dyn: Array\<number> ArkTS-Sta: Array\<int>| 是 | 否 | 被测性能指标的各轮测量数据值。当数据采集失败时返回-1。  |
-| maximum       | ArkTS-Dyn: number  <br />ArkTS-Sta: int        | 是 | 否 | 各轮测量数据最大值（剔除为-1的数据后计算）。  |
-| minimum       | ArkTS-Dyn: number  <br />ArkTS-Sta: int        | 是 | 否 | 各轮测量数据最小值（剔除为-1的数据后计算）。  |
-| average       | ArkTS-Dyn: number  <br />ArkTS-Sta: int        | 是 | 否 | 各轮测量数据平均值（剔除为-1的数据后计算）。  |
+| roundValues   | ArkTS-Dyn: Array\<number> <br/> ArkTS-Sta: Array\<int>| 是 | 否 | 被测性能指标的各轮测量数据值。当数据采集失败时返回-1。  |
+| maximum       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int        | 是 | 否 | 各轮测量数据最大值（剔除为-1的数据后计算）。  |
+| minimum       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int        | 是 | 否 | 各轮测量数据最小值（剔除为-1的数据后计算）。  |
+| average       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int        | 是 | 否 | 各轮测量数据平均值（剔除为-1的数据后计算）。  |
 
 
 ## PerfTest
