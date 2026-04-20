@@ -346,7 +346,7 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 }
 ```
 
-通过[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)接口打开输入端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midiportdescriptor)结构配置端口参数，并注册数据接收回调。
+通过[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)接口打开输入端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数，并注册数据接收回调。
 
 <!-- @[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -428,7 +428,7 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 
 **打开输出端口**
 
-通过[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口打开输出端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midiportdescriptor)结构配置端口参数和协议。
+通过[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)接口打开输出端口，传入[OH_MIDIPortDescriptor](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportdescriptor.md)结构配置端口参数和协议。
 
 <!-- @[open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -518,7 +518,7 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 
 **发送自定义MIDI消息**
 
-构造[OH_MIDIEvent](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midievent)事件数组，通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送MIDI消息。
+构造[OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md)事件数组，通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送MIDI消息。
 
 <!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
