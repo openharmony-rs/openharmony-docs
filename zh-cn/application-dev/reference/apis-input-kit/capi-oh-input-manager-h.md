@@ -4300,8 +4300,11 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 **描述**
 
 获取当前屏幕上鼠标的坐标点。
+从API version 26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。非焦点应用使用前，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限的调用方也可以直接使用本接口。
 
 **设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
+
+**需要权限：** ohos.permission.INPUT_DEVICE_CONFIGURATOR
 
 **起始版本：** 20
 
@@ -5147,7 +5150,7 @@ Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t di
 
 **需要权限：** ohos.permission.INPUT_DEVICE_CONFIGURATOR
 
-**起始版本：** 24
+**起始版本：** 26.0.0
 
 
 **参数：**
@@ -5161,4 +5164,4 @@ Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t di
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_BindInputDeviceToDisplay 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PERMISSION_DENIED](#input_result) 表示权限校验失败。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：<br>  [INPUT_SUCCESS](#input_result)表示操作成功。<br>  [INPUT_PERMISSION_DENIED](#input_result)表示权限校验失败。<br>  [INPUT_PARAMETER_ERROR](#input_result)表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result)表示服务异常，请重试。 |
