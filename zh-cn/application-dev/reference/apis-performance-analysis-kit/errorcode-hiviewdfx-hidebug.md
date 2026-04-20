@@ -67,7 +67,7 @@ The number of available invocations for the interface is insufficient. Please wa
 
 **处理步骤**
 
-可通过导出rawheap文件确认接口调用配额自动重置后再重试。
+等待接口调用配额自动重置后再重试或者重启系统刷新整机配额。
 
 ## 11400107 dump子进程fork失败
 
