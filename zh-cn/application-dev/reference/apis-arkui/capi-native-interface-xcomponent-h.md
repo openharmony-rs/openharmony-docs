@@ -57,7 +57,7 @@
 | [OH_NativeXComponent_TouchEvent_SourceTool](#oh_nativexcomponent_touchevent_sourcetool) | OH_NativeXComponent_TouchEvent_SourceTool | 表示触摸事件的源工具类型。 |
 
  ### 宏定义
- 	 
+
 | 名称 | 描述 |
 | -------- | -------- |
 | OH_NATIVE_XCOMPONENT_OBJ ("\_\_NATIVE_XCOMPONENT_OBJ\_\_") | 代表Native XComponent实例。 |
