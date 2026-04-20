@@ -909,7 +909,7 @@ setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
 > **说明：**
 >
 > - 该接口用于向框架上报当前音频会话内录音流的应用自身静音状态，不会改变录音流的实际静音状态。
-> - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回6800103。
+> - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码6800103。
 > - 会话级muteHint设置仅对运行态录音流优先级生效。若某条录音流同时调用了[AudioCapturer.setMuteHint](arkts-apis-audio-AudioCapturer.md#setmutehint24)和本接口，则capturer级设置优先级更高，以capturer级设置值为准。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
