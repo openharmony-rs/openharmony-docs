@@ -2879,7 +2879,7 @@ export default class EntryServiceExtAbility extends ServiceExtensionAbility {
   }
 }
 ```
-## ServiceExtensionContext.requestModalUIExtension
+## ServiceExtensionContext.requestModalUIExtensionWithAccount
 
 requestModalUIExtensionWithAccount(pickerWant: Want, accountId：int): Promise\<void>
 
