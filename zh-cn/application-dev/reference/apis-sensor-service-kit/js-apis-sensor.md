@@ -5086,7 +5086,7 @@ getSensorListByDeviceSync(deviceId?: number): Array&lt;Sensor&gt;
 
 | 参数名          | 类型                                                         | 必填 | 说明     |
 | --------------- | ------------------------------------------------------------ | ---- |--------|
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。 |
+| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensoronsensorstatuschange19)获取。 |
 
 
 **返回值**：
@@ -5128,7 +5128,7 @@ getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&
 | 参数名          | 类型                                                         | 必填 | 说明       |
 | --------------- | ------------------------------------------------------------ | ---- |----------|
 | type     | [SensorId](#sensorid9) | 是   | 指定传感器类型。 |
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。 |
+| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensoronsensorstatuschange19)获取。 |
 
 
 **返回值**：
@@ -6444,8 +6444,8 @@ try {
 
 | 名称          | 类型     | 只读  | 可选  | 说明             |
 |--------------|----------|-------|------|----------------- |
-| deviceId    | number    | 否    | 是    | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。      |
-| sensorIndex | number    | 否    | 是    | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
+| deviceId    | number    | 否    | 是    | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensoronsensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。      |
+| sensorIndex | number    | 否    | 是    | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensoronsensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
 
 
 ## SensorStatusEvent<sup>19+</sup>
@@ -6907,7 +6907,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;Accelero
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER](#accelerometer9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER](#sensoronsensoridaccelerometer9)替代。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -6943,7 +6943,7 @@ on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION,callback:Callback&lt;Line
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.LINEAR_ACCELEROMETER](#linear_accelerometer9)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.LINEAR_ACCELEROMETER](#sensoronsensoridlinear_accelerometer9)替代。 
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -6965,7 +6965,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callback
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER_UNCALIBRATED](#sensoronsensoridaccelerometer_uncalibrated9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -7005,7 +7005,7 @@ on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityRespons
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GRAVITY](#gravity9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GRAVITY](#sensoronsensoridgravity9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7039,7 +7039,7 @@ on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeRes
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE](#gyroscope9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE](#sensoronsensoridgyroscope9)替代。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -7075,7 +7075,7 @@ on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback:Callback&lt;G
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE_UNCALIBRATED](#sensoronsensoridgyroscope_uncalibrated9)替代。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -7114,7 +7114,7 @@ on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;Sig
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.SIGNIFICANT_MOTION](#significant_motion9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.SIGNIFICANT_MOTION](#sensoronsensoridsignificant_motion9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7146,7 +7146,7 @@ on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;Pe
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER_DETECTION](#pedometer_detection9)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER_DETECTION](#sensoronsensoridpedometer_detection9)替代。 
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -7180,7 +7180,7 @@ on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerRes
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER](#pedometer9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER](#sensoronsensoridpedometer9)替代。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 
 
@@ -7214,7 +7214,7 @@ on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback:Callback&lt;Amb
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_TEMPERATURE](#ambient_temperature9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_TEMPERATURE](#sensoronsensoridambient_temperature9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7246,7 +7246,7 @@ on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;Magneti
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD](#magnetic_field9)<sup>9+</sup>代替。  
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD](#sensoronsensoridmagnetic_field9)替代。  
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7280,7 +7280,7 @@ on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callba
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#sensoronsensoridmagnetic_field_uncalibrated9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7317,7 +7317,7 @@ on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityRes
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PROXIMITY](#proximity9)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PROXIMITY](#sensoronsensoridproximity9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7349,7 +7349,7 @@ on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityRespo
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HUMIDITY](#humidity9)<sup>9+</sup>代替。  
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HUMIDITY](#sensoronsensoridhumidity9)替代。  
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7381,7 +7381,7 @@ on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerRes
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.BAROMETER](#barometer9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.BAROMETER](#sensoronsensoridbarometer9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7413,7 +7413,7 @@ on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt;,
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HALL](#hall9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HALL](#sensoronsensoridhall9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7445,7 +7445,7 @@ on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightRes
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_LIGHT](#ambient_light9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_LIGHT](#sensoronsensoridambient_light9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7477,7 +7477,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;Orientatio
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ORIENTATION](#orientation9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ORIENTATION](#sensoronsensoridorientation9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7511,7 +7511,7 @@ on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateRe
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HEART_RATE](#heart_rate9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HEART_RATE](#sensoronsensoridheart_rate9)替代。
 
 **需要权限**：ohos.permission.HEALTH_DATA 
 
@@ -7533,7 +7533,7 @@ on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;Rotati
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ROTATION_VECTOR](#rotation_vector9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ROTATION_VECTOR](#sensoronsensoridrotation_vector9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7568,7 +7568,7 @@ on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDet
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.WEAR_DETECTION](#wear_detection9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.WEAR_DETECTION](#sensoronsensoridwear_detection9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7601,7 +7601,7 @@ once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;Accele
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ACCELEROMETER](#accelerometer9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ACCELEROMETER](#sensoroncesensoridaccelerometer9)替代。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -7634,7 +7634,7 @@ once(type: ,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.LINEAR_ACCELEROMETER](#linear_accelerometer9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.LINEAR_ACCELEROMETER](#sensoroncesensoridlinear_accelerometer9)替代。
 
 **需要权限**：ohos.permission.ACCELERATION
 
@@ -7655,7 +7655,7 @@ once(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,callback: Callba
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ACCELEROMETER_UNCALIBRATED](#sensoroncesensoridaccelerometer_uncalibrated9)替代。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -7691,7 +7691,7 @@ once(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback&lt;GravityRespo
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.GRAVITY](#gravity9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.GRAVITY](#sensoroncesensoridgravity9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7722,7 +7722,7 @@ once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.GYROSCOPE](#gyroscope9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.GYROSCOPE](#sensoroncesensoridgyroscope9)替代。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -7755,7 +7755,7 @@ once(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED,callback: Callback&l
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.GYROSCOPE_UNCALIBRATED](#sensoroncesensoridgyroscope_uncalibrated9)>代替。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -7792,7 +7792,7 @@ once(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback&lt;S
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.SIGNIFICANT_MOTION](#significant_motion9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.SIGNIFICANT_MOTION](#sensoroncesensoridsignificant_motion9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7821,7 +7821,7 @@ once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback&lt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.PEDOMETER_DETECTION](#pedometer_detection9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.PEDOMETER_DETECTION](#sensoroncesensoridpedometer_detection9)替代。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -7852,7 +7852,7 @@ once(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.PEDOMETER](#pedometer9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.PEDOMETER](#sensoroncesensoridpedometer9)替代。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -7883,7 +7883,7 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback&lt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.AMBIENT_TEMPERATURE](#ambient_temperature9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.AMBIENT_TEMPERATURE](#sensoroncesensoridambient_temperature9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7912,7 +7912,7 @@ once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback&lt;Magne
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.MAGNETIC_FIELD](#magnetic_field9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.MAGNETIC_FIELD](#sensoroncesensoridmagnetic_field9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7943,7 +7943,7 @@ once(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Call
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#sensoroncesensoridmagnetic_field_uncalibrated9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7977,7 +7977,7 @@ once(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback&lt;ProximityR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.PROXIMITY](#proximity9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.PROXIMITY](#sensoroncesensoridproximity9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8007,7 +8007,7 @@ once(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback&lt;HumidityRes
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.HUMIDITY](#humidity9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.HUMIDITY](#sensoroncesensoridhumidity9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8036,7 +8036,7 @@ once(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.BAROMETER](#barometer9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.BAROMETER](#sensoroncesensoridbarometer9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8065,7 +8065,7 @@ once(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback&lt;HallResponse&gt
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.HALL](#hall9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.HALL](#sensoroncesensoridhall9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8094,7 +8094,7 @@ once(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback&lt;LightR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.AMBIENT_LIGHT](#ambient_light9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.AMBIENT_LIGHT](#sensoroncesensoridambient_light9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8123,7 +8123,7 @@ once(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;Orientat
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ORIENTATION](#orientation9-1)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ORIENTATION](#sensoroncesensoridorientation9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8154,7 +8154,7 @@ once(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback&lt;Rota
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ROTATION_VECTOR](#rotation_vector9-1)<sup>9+</sup>代替。  
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.ROTATION_VECTOR](#sensoroncesensoridrotation_vector9)替代。  
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8186,7 +8186,7 @@ once(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRate
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.HEART_RATE](#heart_rate9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.HEART_RATE](#sensoroncesensoridheart_rate9)替代。
 
 **需要权限**：ohos.permission.HEART_RATE  
 
@@ -8218,7 +8218,7 @@ once(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearD
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.WEAR_DETECTION](#wear_detection9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.WEAR_DETECTION](#sensoroncesensoridwear_detection9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8249,7 +8249,7 @@ off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;Accele
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ACCELEROMETER<sup>9+</sup>](#accelerometer9-2)代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ACCELEROMETER<sup>9+</sup>](#sensoroffsensoridaccelerometer9)替代。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -8284,7 +8284,7 @@ off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback?: Callb
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ACCELEROMETER_UNCALIBRATED](#sensoroffsensoridaccelerometer_uncalibrated9)替代。 
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -8322,7 +8322,7 @@ off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.AMBIENT_LIGHT](#ambient_light9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.AMBIENT_LIGHT](#sensoroffsensoridambient_light9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8353,7 +8353,7 @@ off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback&lt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.AMBIENT_TEMPERATURE](#ambient_temperature9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.AMBIENT_TEMPERATURE](#sensoroffsensoridambient_temperature9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8384,7 +8384,7 @@ off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.BAROMETER](#barometer9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.BAROMETER](#sensoroffsensoridbarometer9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8415,7 +8415,7 @@ off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback&lt;GravityRespo
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.GRAVITY](#gravity9-2)<sup>9+</sup>代替。  
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.GRAVITY](#sensoroffsensoridgravity9)替代。  
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8448,7 +8448,7 @@ off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.GYROSCOPE](#gyroscope9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.GYROSCOPE](#sensoroffsensoridgyroscope9)替代。 
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -8483,7 +8483,7 @@ off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback?: Callback&
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-2)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.GYROSCOPE_UNCALIBRATED](#sensoroffsensoridgyroscope_uncalibrated9)替代。
 
 **需要权限**：ohos.permission.GYROSCOPE
 
@@ -8518,7 +8518,7 @@ off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback&lt;HallResponse&gt
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.HALL](#hall9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.HALL](#sensoroffsensoridhall9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8549,7 +8549,7 @@ off(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRate
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.HEART_RATE](#heart_rate9-2)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.HEART_RATE](#sensoroffsensoridheart_rate9)替代。
 
 **需要权限**：ohos.permission.HEALTH_DATA 
 
@@ -8582,7 +8582,7 @@ off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback&lt;HumidityRes
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.HUMIDITY](#humidity9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.HUMIDITY](#sensoroffsensoridhumidity9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8613,7 +8613,7 @@ off(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback?: Callback&lt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.LINEAR_ACCELEROMETER](#linear_accelerometer9-2)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.LINEAR_ACCELEROMETER](#sensoroffsensoridlinear_accelerometer9)替代。
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
@@ -8648,7 +8648,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.MAGNETIC_FIELD](#magnetic_field9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.MAGNETIC_FIELD](#sensoroffsensoridmagnetic_field9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8681,7 +8681,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-2)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#sensoroffsensoridmagnetic_field_uncalibrated9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8717,7 +8717,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ORIENTATION](#orientation9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ORIENTATION](#sensoroffsensoridorientation9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8750,7 +8750,7 @@ off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.PEDOMETER](#pedometer9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.PEDOMETER](#sensoroffsensoridpedometer9)替代。 
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -8783,7 +8783,7 @@ off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback?: Callback&lt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.PEDOMETER_DETECTION](#pedometer_detection9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.PEDOMETER_DETECTION](#sensoroffsensoridpedometer_detection9)替代。 
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION
 
@@ -8816,7 +8816,7 @@ off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback&lt;ProximityR
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.PROXIMITY](#proximity9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.PROXIMITY](#sensoroffsensoridproximity9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8847,7 +8847,7 @@ off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback&lt;Rota
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ROTATION_VECTOR](#rotation_vector9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.ROTATION_VECTOR](#sensoroffsensoridrotation_vector9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8881,7 +8881,7 @@ off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback&lt;S
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.SIGNIFICANT_MOTION](#significant_motion9-2)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.SIGNIFICANT_MOTION](#sensoroffsensoridsignificant_motion9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8912,7 +8912,7 @@ off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearD
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.WEAR_DETECTION](#wear_detection9-2)<sup>9+</sup>代替。 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.off.WEAR_DETECTION](#sensoroffsensoridwear_detection9)替代。 
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8943,7 +8943,7 @@ transformCoordinateSystem(inRotationVector: Array&lt;number&gt;, coordinates: Co
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.transformRotationMatrix](#sensortransformrotationmatrix9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.transformRotationMatrix](#sensortransformrotationmatrix9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -8981,7 +8981,7 @@ transformCoordinateSystem(inRotationVector: Array&lt;number&gt;, coordinates: Co
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.transformRotationMatrix](#sensortransformrotationmatrix9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.transformRotationMatrix](#sensortransformrotationmatrix9-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9023,7 +9023,7 @@ getGeomagneticField(locationOptions: LocationOptions, timeMillis: number, callba
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9060,7 +9060,7 @@ getGeomagneticField(locationOptions: LocationOptions, timeMillis: number): Promi
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9101,7 +9101,7 @@ getAltitude(seaPressure: number, currentPressure: number, callback: AsyncCallbac
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getDeviceAltitude](#sensorgetdevicealtitude9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getDeviceAltitude](#sensorgetdevicealtitude9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9136,7 +9136,7 @@ getAltitude(seaPressure: number, currentPressure: number): Promise&lt;number&gt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getDeviceAltitude](#sensorgetdevicealtitude9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getDeviceAltitude](#sensorgetdevicealtitude9-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9176,7 +9176,7 @@ getGeomagneticDip(inclinationMatrix: Array&lt;number&gt;, callback: AsyncCallbac
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getInclination](#sensorgetinclination9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getInclination](#sensorgetinclination9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9210,7 +9210,7 @@ getGeomagneticDip(inclinationMatrix: Array&lt;number&gt;): Promise&lt;number&gt;
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getInclination](#sensorgetinclination9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getInclination](#sensorgetinclination9-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9248,7 +9248,7 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getAngleVariation](#sensorgetanglevariation9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getAngleVariation](#sensorgetanglevariation9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9286,7 +9286,7 @@ getAngleModify(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Ar
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getAngleVariation](#sensorgetanglevariation9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getAngleVariation](#sensorgetanglevariation9-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9329,7 +9329,7 @@ createRotationMatrix(rotationVector: Array&lt;number&gt;, callback: AsyncCallbac
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9366,7 +9366,7 @@ createRotationMatrix(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;n
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9407,7 +9407,7 @@ createQuaternion(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9444,7 +9444,7 @@ createQuaternion(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;numbe
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getQuaternion](#sensorgetquaternion9-1)>代替。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9485,7 +9485,7 @@ getDirection(rotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Arr
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getOrientation](#sensorgetorientation9)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getOrientation](#sensorgetorientation9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9522,7 +9522,7 @@ getDirection(rotationMatrix: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getOrientation](#sensorgetorientation9-1)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getOrientation](#sensorgetorientation9-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9563,7 +9563,7 @@ createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-2)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9599,7 +9599,7 @@ createRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-3)<sup>9+</sup>代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.getRotationMatrix](#sensorgetrotationmatrix9-3)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -9636,7 +9636,7 @@ promise.then((data: sensor.RotationMatrixResponse) => {
 
 > **说明**：
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId](#sensorid9)代替。
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.SensorId](#sensorid9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
