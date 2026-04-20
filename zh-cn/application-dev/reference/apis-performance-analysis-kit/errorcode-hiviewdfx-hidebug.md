@@ -63,11 +63,13 @@ The number of available invocations for the interface is insufficient. Please wa
 
 **可能原因**
 
-接口调用次数超过系统限制，剩余可用调用次数为0。
+1.进程调用次数超出配额（1次/天）。
+
+2.整机调用次数超出配额（5次/周）。
 
 **处理步骤**
 
-等待接口调用配额自动重置后再重试。
+等待进程或整机的调用配额刷新。
 
 ## 11400107 dump子进程fork失败
 
