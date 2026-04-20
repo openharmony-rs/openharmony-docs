@@ -60,7 +60,7 @@
  	  	 
 | 名称 | 描述 |
 | -------- | -------- |
-| OH_NATIVE_XCOMPONENT_OBJ ("__NATIVE_XCOMPONENT_OBJ__") | 代表Native XComponent实例。 |
+| OH_NATIVE_XCOMPONENT_OBJ ("\_\_NATIVE_XCOMPONENT_OBJ\_\_") | 代表Native XComponent实例。 |
 | OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | 触摸事件中的可识别的触摸点个数最大值。 |
 
 ### 函数
