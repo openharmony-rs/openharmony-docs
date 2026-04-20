@@ -6236,14 +6236,14 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | ------------------------------ | 
+| ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 
-**示例：** 
+**示例：**
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -6260,7 +6260,7 @@ export default class EntryAbility extends UIAbility {
       promise.then(() => {
         console.info(`Succeeded in setting image for recent`);
       }).catch((err: BusinessError) => {
-        console.error(`Failed to set image for recent. Cause code: ${err.code},message: ${err.message}`);
+        console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {
       console.error(`Failed to set image for recent.`);
