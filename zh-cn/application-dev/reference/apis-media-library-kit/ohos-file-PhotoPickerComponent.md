@@ -1105,15 +1105,19 @@ struct PickerDemo {
 ```
 
 ## 示例二（抽屉组件）
-可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、onScrollStopAtStart和onScrollStopAtEnd属性来实现抽屉效果。
+
+可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、[photoPickerComponent](#photopickercomponent)的onScrollStopAtStart和onScrollStopAtEnd回调来实现抽屉效果。
 
 ```ts
 // xxx.ets
 import { display } from '@kit.ArkUI';
 import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
 const enum DrawerState {
+  // 展开态。
   Expanding,
+  // 收缩态。
   Collapsing,
+  // 滚动态。
   Sliding
 }
 
@@ -1122,20 +1126,22 @@ const enum DrawerState {
 struct Drawer {
   @State pickerController: PickerController = new PickerController();
   private pickerOptions: PickerOptions = new PickerOptions();
-  // 屏幕高度。
+  // 屏幕高度，单位为vp。
   @State screenHeight: number = 0;
-  // 抽屉高度。
+  // 抽屉高度，单位为vp。
   @State drawerHeight: number = 0;
-  // 抽屉的偏移量。
+  // 抽屉的偏移量，单位为vp。
   @State offsetY: number = 0;
-  // 抽屉状态。
+  // 抽屉是否展开。
   @State isExpanded: boolean = false;
-  // 拖拽起始位置。
+  // 拖拽起始位置，单位为vp。
   private startY: number = 0;
-  // 当前拖拽的偏移量。
+  // 当前拖拽的偏移量，单位为vp。
   private currentOffset: number = 0;
   // 自定义抽屉高度在整个屏幕的占比。
   private drawerRatio: number = 0.8;
+  // 自定义初始化是隐藏抽屉的占比。
+  private hideRatio: number = 0.8;
   // 初始化为收缩态。
   private drawerState: DrawerState = DrawerState.Collapsing;
   // 手势响应阈值，判断手势是否是向下。
@@ -1144,10 +1150,10 @@ struct Drawer {
   aboutToAppear(): void {
     // 获取屏幕高度。
     this.screenHeight = px2vp(display.getDefaultDisplaySync().height);
-    // 获取抽屉高度。
+    // 获取抽屉高度，示例为屏幕高度的0.8倍，可自定义修改。
     this.drawerHeight = this.screenHeight * this.drawerRatio;
-    // 初始时抽屉在底部（隐藏高度）。
-    this.offsetY = this.drawerHeight * 0.8;
+    // 初始时抽屉在底部（隐藏高度），示例为隐藏抽屉的0.8倍。
+    this.offsetY = this.drawerHeight * this.hideRatio;
     // 初始化时Picker不支持滚动。
     this.pickerOptions.isSlidingSupported = false;
     // 无边缘回弹。
@@ -1285,7 +1291,7 @@ struct Drawer {
       .translate({ y: this.offsetY })
       .gesture(
         PanGesture({ direction: PanDirection.Vertical })
-          // 记录开始拖拽的位置。
+          // 记录抽屉开始拖拽的位置。
           .onActionStart((event: GestureEvent) => {
             this.startY = event.fingerList[0].globalY || 0;
             this.currentOffset = this.offsetY;
@@ -1295,10 +1301,10 @@ struct Drawer {
             if (this.drawerState === DrawerState.Sliding) {
               return;
             }
-            // 如果是展开态或者收缩态则需要通过手势来改变状态。
+            // 如果抽屉的状态是展开态或者收缩态则需要通过手势来进一步改变抽屉状态。
             // 计算移动距离。
             const deltaY = event.fingerList[0].globalY - this.startY || 0;
-            // 展开态且向下滑动，那么屏蔽宫格的滑动且状态置为滚动态。
+            // 当抽屉处于展开状态且用户向下滑动时，开启宫格滑动功能并将抽屉状态切换为滚动态。
             if (this.drawerState === DrawerState.Expanding && deltaY < this.pullingDownThreshold) {
               this.pickerController.updatePickerOptions({
                 isSlidingSupported: true
@@ -1314,10 +1320,10 @@ struct Drawer {
           .onActionEnd(()=>{
             // 手势结束，根据位置自动展开或收起。
             if (this.offsetY > this.drawerHeight / 2) {
-              // 滑动超过抽屉一半，收缩态。
+              // 滑动超过抽屉高度一半，抽屉状态置为收缩态。
               this.hideDrawer();
             } else {
-              // 滑动不到抽屉一半，展开态。
+              // 滑动不到抽屉高度一半，抽屉状态置为展开态。
               this.showDrawer();
             }
           })
