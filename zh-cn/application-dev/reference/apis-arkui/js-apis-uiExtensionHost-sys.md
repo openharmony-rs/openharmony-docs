@@ -94,7 +94,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-注册系统避让区变化的监听。
+注册宿主应用窗口避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -140,7 +140,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
-注册系统避让区变化的监听。
+注册宿主应用窗口避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -181,7 +181,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-注销系统避让区变化的监听。
+注销宿主应用窗口避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -225,7 +225,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
 
-注销系统避让区变化的监听。
+注销宿主应用窗口避让区变化的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
