@@ -49,8 +49,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | CONTAINS              | 1 | 包含给定值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23        |
 | STARTS_WITH           | 2 | 以给定值开始。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23       |
 | ENDS_WITH             | 3 | 以给定值结束。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23      |
-| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23      |
-| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| REG_EXP<sup>18+</sup>   | 4 | 正则表达式匹配。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23      |
+| REG_EXP_ICASE<sup>18+</sup>           | 5 | 正则表达式匹配，忽略大小写。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## ResizeDirection<sup>9+</sup>
 
@@ -85,9 +85,9 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| y    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。|
-| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| x    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的横坐标，取值大于0的整数。<br/>**原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
+| y    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否   | 坐标点的纵坐标，取值大于0的整数。<br/>**原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
+| displayId<sup>20+</sup>     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## Rect<sup>9+</sup>
 
@@ -99,11 +99,11 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| top    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| right  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| bottom | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br> **说明：** 从API version 20开始，该属性不再为只读属性。 |
-| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br/>ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23  |
+| left   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的X坐标，取值大于0的整数。<br/>**原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| top    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的左上角的Y坐标，取值大于0的整数。<br/>**原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
+| right  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的X坐标，取值大于0的整数。<br/>**原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
+| bottom | ArkTS-Dyn: number  <br/>ArkTS-Sta: int |  否   | 否 |控件边框的右下角的Y坐标，取值大于0的整数。<br/>**原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** 从API version 20开始，该属性不再为只读属性。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>20+</sup>  |  ArkTS-Dyn: number  <br/>ArkTS-Sta: int  |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23  |
 
 ## WindowMode<sup>9+</sup>
 
@@ -153,12 +153,12 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
-| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                      |
-| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br/>                     |
-| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23<br/> |
-| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>  **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>   **ArkTS-Dyn起始版本：** 9   <br>从API version 11开始废弃，建议使用active替代。                            |
-| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23<br/>                  |
-| displayId<sup>20+</sup> | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
+| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br/>  **ArkTS-Dyn起始版本：** 9   <br/>从API version 11开始废弃，建议使用active替代。                            |
+| active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>20+</sup> | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## UiDirection<sup>10+</sup>
 
@@ -212,7 +212,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                | 值   | 说明         |
 | ------------------- | ---- | ------------ |
-| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。<br/>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
 | WINDOW_ADDED  | 1    | 窗口出现事件。   |
 | WINDOW_REMOVED | 2    | 窗口消失事件。 |
 | WINDOW_BOUNDS_CHANGED | 3    | 窗口边框变化事件。 |
@@ -232,7 +232,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                | 值   | 说明         |
 | ------------------- | ---- | ------------ |
-| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。<br/>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
 | COMPONENT_CLICKED  | 1    | 控件被点击事件。   |
 | COMPONENT_LONG_CLICKED | 2    | 控件被长按事件。 |
 | COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
@@ -273,7 +273,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | timeout | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
-| on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
+| on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br/>**说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
 
 ## UIElementInfo<sup>10+</sup>
 
@@ -285,14 +285,14 @@ UI事件的相关信息。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| bundleName | string | 是   | 否   | 应用包名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23   |
-| type       | string | 是   | 否   | 控件/窗口类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23    |
-| text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|
-| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
-| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
-| windowId<sup>22+</sup>       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
-| componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
-| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23|
+| bundleName | string | 是   | 否   | 应用包名。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23   |
+| type       | string | 是   | 否   | 控件/窗口类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23    |
+| text       | string | 是   | 否   | 控件/窗口的文本信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
+| windowId<sup>22+</sup>       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 是   | 控件所属窗口id。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
+| componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -327,7 +327,7 @@ UI事件的相关信息。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                                       |
 | ---------- | ------ |----|----|----------------------------------------------------------|
-| paste | boolean | 否  | 是  | 输入文本时是否指定以复制粘贴方式输入。true：指定以复制粘贴方式输入。false：指定以逐字键入方式输入。默认为false。<br/> **说明：** 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论该参数取值为何，均以复制粘贴方式输入。|
+| paste | boolean | 否  | 是  | 输入文本时是否指定以复制粘贴方式输入。true：指定以复制粘贴方式输入。false：指定以逐字键入方式输入。默认为false。<br/>**说明：** 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论该参数取值为何，均以复制粘贴方式输入。|
 | addition       | boolean | 否  | 是  | 输入文本时是否以追加的方式进行输入。true：以追加方式输入。false：不以追加方式输入。默认为false。|
 
 
@@ -346,7 +346,7 @@ UI事件的相关信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | key1 | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作时注入的第一个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。 |
-| key2 | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作时注入的第二个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br> **说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
+| key2 | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 操作时注入的第二个按键值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。未设置时不注入按键事件。<br/>**说明：** 仅设置key2而不设置key1时，将抛出17000007参数校验失败的错误。 |
 
 ## TouchOptions
 
@@ -368,8 +368,8 @@ UI事件的相关信息。
 
 ## On<sup>9+</sup>
 
-UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
-On提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
+UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br/>
+On提供的API能力具有以下几个特点:<br/>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br/>2、控件属性支持多种匹配模式。<br/>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br/>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
 
 ```ts
 // xxx.test.ets
@@ -1227,7 +1227,7 @@ ArkTS-Sta: belongingDisplay(displayId: int): On
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ |----|---------------------------------------|
-| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br/>**说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
 
 **返回值：**
 
@@ -2101,7 +2101,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
 | text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br> **说明：** InputTextMode.addition取值为true时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。|
+| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br/>**说明：** InputTextMode.addition取值为true时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。|
 
 **返回值：**
 
@@ -3244,7 +3244,7 @@ waitForComponent(on: On, time: int): Promise\<Component | null\>
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| Promise\<[Component](#component9)> \| null\> | Promise对象，返回控件对象，未找到时返回null。 |
+| Promise\<[Component](#component9) \| null\> | Promise对象，返回控件对象，未找到时返回null。 |
 
 **错误码：**
 
@@ -3375,7 +3375,7 @@ ArkTS-Sta: pressBack(displayId: int): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br/>**说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
@@ -3475,7 +3475,7 @@ ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
 | keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的key值，取值范围：大于等于0的整数。取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
-| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br/>**说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
@@ -3929,6 +3929,8 @@ ArkTS-Sta: longClickAt(point: Point, duration?: int): Promise\<void>
 | point      | [Point](#point9) | 是   | 以Point对象的形式传入目标点信息。 |
 | duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
+### longClickAt
+
 longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 长按目标坐标点，支持指定触摸选项。使用Promise异步回调。
@@ -4054,7 +4056,7 @@ ArkTS-Sta: swipeBetween(from: Point, to: Point, speed?: int): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
@@ -4103,7 +4105,7 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置speed和pressure属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
@@ -4216,7 +4218,7 @@ ArkTS-Sta: dragBetween(from: Point, to: Point, speed?: int, duration?: int): Pro
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
 | duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
@@ -4268,7 +4270,7 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                                     |
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | options  | [TouchOptions](#touchoptions) | 否   | 触摸操作选项。仅支持设置pressure、speed和duration属性，设置其他属性将抛出17000007参数校验失败的错误。默认值参考[TouchOptions](#touchoptions)各属性默认值。 |
 
 **返回值：**
@@ -4372,7 +4374,7 @@ ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | 文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4561,7 +4563,7 @@ ArkTS-Sta: getDisplayRotation(displayId: int): Promise\<DisplayRotation>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4699,7 +4701,7 @@ ArkTS-Sta: getDisplaySize(displayId: int): Promise\<Point>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。               |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。               |
 
 **返回值：**
 
@@ -4788,7 +4790,7 @@ ArkTS-Sta: getDisplayDensity(displayId: int): Promise\<Point>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -4921,7 +4923,7 @@ ArkTS-Sta: pressHome(displayId: int): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -5185,7 +5187,7 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<v
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
 | speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -5961,7 +5963,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | 是   | 输入文本的坐标点。 |
 | text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** <br> InputTextMode.addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
+| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br/>**说明：** <br/>InputTextMode.addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
 
 **返回值：**
 
@@ -6328,7 +6330,7 @@ ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
+| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br/>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
 | speed      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。            |
 | pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
@@ -6387,7 +6389,7 @@ ArkTS-Sta: crownRotate(d: int, speed?: int): Promise\<void>
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | d      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
-| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
+| speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br/>**说明：** 参数取值超出合法范围时，设为默认值20。 |
 
 **返回值：**
 
@@ -6505,7 +6507,7 @@ ArkTS-Sta: injectKnucklePointerAction(pointers: PointerMatrix, speed?: int): Pro
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。|
+| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br/>**说明：** 当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。|
 | speed    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
@@ -6617,7 +6619,7 @@ ArkTS-Sta: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: in
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
 | duration  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
@@ -6670,7 +6672,7 @@ ArkTS-Sta: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: i
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | on     | [On](#on9) | 是   | 目标控件的属性要求。 |
 | from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
-| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br/>**说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
 
 **返回值：**
@@ -7989,8 +7991,8 @@ async function demo() {
 
 ## By<sup>(deprecated)</sup>
 
-UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
-By提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated)和[By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated)等API限定邻近控件特征进行辅助定位。<br>By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
+UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br/>
+By提供的API能力具有以下几个特点:<br/>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br/>2、控件属性支持多种匹配模式。<br/>3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated)和[By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated)等API限定邻近控件特征进行辅助定位。<br/>By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
 
 > **说明：**
 >
