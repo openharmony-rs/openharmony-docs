@@ -849,7 +849,7 @@ dlpPermission.getDLPFileAccessRecords((err, res) => {
 
 startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt;
 
-在当前[UIAbility](./js-apis-app-ability-uiAbility.md)界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
+在当前[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#UIAbility)界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
 
 > **说明：**
 >
