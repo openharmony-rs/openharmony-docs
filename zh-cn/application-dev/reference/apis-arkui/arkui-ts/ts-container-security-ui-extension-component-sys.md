@@ -119,7 +119,7 @@ onReceive(callback: Callback\<Record\<string, Object\>\>)
 
 onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback))
 
-被拉起的Ability扩展在运行过程中发生异常时触发本回调（不包含与UIExtensionAbility断开连接场景）。可通过回调参数中的code、name和message获取错误信息并进行处理。
+被拉起的Ability扩展在运行过程中发生异常时触发本回调（不包含与UIExtensionAbility断开连接场景）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -132,14 +132,6 @@ onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息。 |
-
-ErrorCallback的参数说明：
-
-| 参数名 | 类型 | 说明 |
-| -------- | -------- | -------- |
-| code | number | 错误码。 |
-| name | string | 错误名称。 |
-| message | string | 错误信息。 |
 
 ### onTerminated
 
