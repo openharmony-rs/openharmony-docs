@@ -1395,7 +1395,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1453,9 +1453,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 >
 > 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
->
-> 在开发者模式下，无接口调用配额限制。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **起始版本**：26.0.0
 
