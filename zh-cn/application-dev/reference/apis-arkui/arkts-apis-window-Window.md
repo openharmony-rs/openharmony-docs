@@ -7685,8 +7685,8 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 
- 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offNoInteractionDetected](#offnointeractiondetected23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -9891,7 +9891,7 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onUiExtensionSecureLimitChange](#onuiextensionsecurelimitchange23)。
 
