@@ -942,7 +942,7 @@ setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioSessionManager.setCapturerMuteHint(true).then(() => {
-  console.info('Succeeded in doing setCapturerMuteHint.');
+  console.info('Successfully set capturer mute hint.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
 });
