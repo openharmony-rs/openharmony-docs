@@ -1,9 +1,9 @@
 # 分布式文件系统概述
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 分布式文件系统（hmdfs，OpenHarmony Distributed File System）提供跨设备的文件访问能力，适用于以下场景：
