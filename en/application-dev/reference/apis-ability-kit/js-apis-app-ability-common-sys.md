@@ -37,7 +37,7 @@ Level-2 module ServiceExtensionContext.
 | --- | --- |
 | [_ServiceExtensionContext.default](js-apis-inner-application-serviceExtensionContext-sys.md) | Level-2 module ServiceExtensionContext.|
 
-## AutoFillExtensionContext<sup>11+<sup>
+## AutoFillExtensionContext<sup>11+</sup>
 
 type AutoFillExtensionContext = _AutoFillExtensionContext.default
 
@@ -51,7 +51,7 @@ Level-2 module AutoFillExtensionContext.
 | --- | --- |
 | [_AutoFillExtensionContext.default](js-apis-inner-application-autoFillExtensionContext-sys.md) | Level-2 module AutoFillExtensionContext.|
 
-## AutoStartupInfo<sup>11+<sup>
+## AutoStartupInfo<sup>11+</sup>
 
 type AutoStartupInfo = _AutoStartupInfo
 
@@ -65,7 +65,7 @@ Level-2 module AutoStartupInfo.
 | --- | --- |
 | [_AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | Level-2 module AutoStartupInfo.|
 
-## AutoStartupCallback<sup>11+<sup>
+## AutoStartupCallback<sup>11+</sup>
 
 type AutoStartupCallback = _AutoStartupCallback
 
@@ -79,7 +79,7 @@ Level-2 module AutoStartupCallback.
 | --- | --- |
 | [_AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | Level-2 module AutoStartupCallback.|
 
-## UIServiceExtensionContext<sup>14+<sup>
+## UIServiceExtensionContext<sup>14+</sup>
 
 type UIServiceExtensionContext = _UIServiceExtensionContext.default
 
@@ -93,7 +93,7 @@ Level-2 module UIServiceExtensionContext.
 | --- | --- |
 | [_UIServiceExtensionContext.default](js-apis-inner-application-uiserviceExtensionContext-sys.md) | Level-2 module UIServiceExtensionContext.|
 
-## UIServiceHostProxy<sup>14+<sup>
+## UIServiceHostProxy<sup>14+</sup>
 
 type UIServiceHostProxy = _UIServiceHostProxy.default
 
