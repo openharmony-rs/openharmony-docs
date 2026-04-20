@@ -8,6 +8,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
@@ -20,12 +22,12 @@
 
 | 名称        | 类型                          | 只读     | 可选   | 说明                                     |
 | ---------- | ------------------------------|---- | ---- | ---------------------------------------- |
-| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件（文件支持html和txt类型），请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| WebviewController  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用[WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9)替代。 |
-| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
-| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。 |
-| sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。  |
-| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否被转换成触摸事件。<br> 默认值：false。 |
+| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否    | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件（文件支持html和txt类型），请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9) <br>ArkTS-Sta: [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 否    | 否   | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用[WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9)替代。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否    | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件异步渲染，`RenderMode.SYNC_RENDER`表示支持Web组件同步渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| incognitoMode<sup>11+</sup> | boolean | 否    | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>传入undefined或null时为false。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| sharedRenderProcessToken<sup>12+</sup> | string | 否    | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否    | 是 |  设定鼠标事件是否被转换成触摸事件。<br> 默认值：false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23<br> |
 
 ## WebMediaOptions<sup>10+</sup>
 
@@ -35,9 +37,9 @@ Web媒体策略的配置。
 
 | 名称             | 类型      | 只读 | 可选  | 说明                                       |
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
-| resumeInterval | number  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。|
-| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。<br>默认值：true。                       |
-| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。|
+| resumeInterval | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。resumeInterval值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有效期可能存在一秒内的误差。 <br>**说明：** <br>HLS视频被打断后，回到前台将自动续播，不受该时间控制。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>|
+| audioExclusive | boolean | 否 | 是 | 应用内多个Web实例的音频是否独占。<br>true表示应用内多个Web实例的音频独占，false表示应用内多个Web实例的音频不独占。<br>默认值：true。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>                    |
+| audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | 否 | 是 | 应用中Web音频类型。默认值对应[系统音频流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)STREAM_USAGE_MUSIC。设置该参数会改变组件音频类型与系统音频类型映射关系，进而影响ArkWeb音频焦点策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23<br>|
 
 ## ScriptItem<sup>11+</sup>
 
@@ -47,9 +49,9 @@ Web媒体策略的配置。
 
 | 名称         | 类型           | 只读 | 可选   | 说明           |
 | ----------- | -------------- | --- | ------|--------------- |
-| script      | string         | 否  |  否    | 需要注入、执行的JavaScript脚本。 |
-| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议（自定义协议），不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。 |
-| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | 否  |  是    | 一组允许来源的正则匹配规则。 当scriptRules设置为[]时，才使用urlRegexRules进行匹配。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| script      | string         | 否  |  否    | 需要注入、执行的JavaScript脚本。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| scriptRules | Array\<string> | 否  |  否    | 一组允许来源的匹配规则。<br>1.如果需要允许所有来源的网址，使用通配符“ * ”。<br>2.如果需要精确匹配，则描述网站地址，如"https:\//www\.example.com"。<br>3.如果模糊匹配网址，可以使用“ * ”通配符替代，如"https://*.example.com"。不允许使用"x. * .y.com"、" * foobar.com"等。<br>4.如果来源是ip地址，则使用规则2。<br>5.对于http/https以外的协议（自定义协议），不支持使用精确匹配和模糊匹配，且必须以`://`结尾，例如"resource://"。<br>6.一组scriptRule中，如果其中一条不满足以上规则，则整组scriptRule都不生效。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | 否  |  是    | 一组允许来源的正则匹配规则。 当scriptRules设置为[]时，才使用urlRegexRules进行匹配。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## UrlRegexRule<sup>23+</sup>
 
@@ -58,6 +60,10 @@ Web媒体策略的配置。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型  | 只读 | 可选 | 说明            |
 | ----------- | ------ | --- | -----|---------------- |
@@ -69,6 +75,10 @@ Web媒体策略的配置。
 通过NestedScrollOptionsExt可以设置上下左右四个方向的嵌套滚动规则。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型               | 只读 | 可选 | 说明                   |
 | -------------- | ---------------- | ---- | ---- | -------------------- |
@@ -83,6 +93,10 @@ Web媒体策略的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|------|------|------|------|
 |  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
@@ -95,7 +109,11 @@ Web媒体策略的配置。
 > 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 自定义菜单扩展项。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 | 名称           | 类型                                             | 只读    | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
@@ -108,6 +126,10 @@ Web媒体策略的配置。
 发生广告拦截时，广告资源信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型             | 只读 | 可选   | 说明                 |
 | ---------- | -----------------|---- | ----- | -------------------- |
@@ -122,19 +144,23 @@ Web媒体策略的配置。
 
 | 名称           | 类型                                             | 只读    | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
-| onAppear   | Callback\<void\>   | 否     | 是     | 自定义选择菜单弹出时回调。     |
-| onDisappear | Callback\<void\>  | 否     | 是     | 自定义选择菜单关闭时回调。     |
-| preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | 否     | 是     | 自定义选择菜单的预览内容样式，未配置时无预览内容。|
-| menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13枚举说明)      | 否     | 是     | 自定义选择菜单类型。<br>默认值：`MenuType.SELECTION_MENU`。<br> 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。     |
-| previewMenuOptions<sup>20+</sup> | [PreviewMenuOptions](#previewmenuoptions20) | 否     | 是     | 自定义选择预览菜单选项。 |
-| onMenuShow<sup>21+</sup> | Callback\<void\> | 否     | 是     | 自定义选择菜单显示时回调。 |
-| onMenuHide<sup>21+</sup> | Callback\<void\> | 否     | 是     | 自定义选择菜单隐藏时回调。 |
+| onAppear   | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     | 是     | 自定义选择菜单弹出时回调。   <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23  |
+| onDisappear | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     | 是     | 自定义选择菜单关闭时回调。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
+| preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | 否     | 是     | 自定义选择菜单的预览内容样式，未配置时无预览内容。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23|
+| menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13枚举说明)      | 否     | 是     | 自定义选择菜单类型。<br>默认值：`MenuType.SELECTION_MENU`。<br> 从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。    <br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
+| previewMenuOptions<sup>20+</sup> | [PreviewMenuOptions](#previewmenuoptions20) | 否     | 是     | 自定义选择预览菜单选项。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuShow<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     | 是     | 自定义选择菜单显示时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| onMenuHide<sup>21+</sup> | ArkTS-Dyn: Callback\<void\> <br/>ArkTS-Sta: VoidCallback | 否     | 是     | 自定义选择菜单隐藏时回调。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## PreviewMenuOptions<sup>20+</sup>
 
 预览菜单选项。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 | 名称           | 类型                                             | 只读    | 可选    | 说明             |
 | ---------- | -----------------------------------------------------| ------ | ------ | ---------------- |
@@ -148,14 +174,18 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选 | 说明                                       |
 | -------------- | ------- | ---- |  ---- |---------------------------------------- |
-| supportDefaultIntrinsicSize | boolean | 否    | 是 | 设置同层渲染元素是否支持固定大小 300 * 150。<br>当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。<br>为true时，固定大小为 300 * 150。<br>为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。<br>默认值：false<br>单位：px |
-| supportCssDisplayChange<sup>20+</sup> | boolean | 否    | 是 | 设置同层渲染可见性接口是否支持显示属性。 <br>同层渲染可见性接口默认支持同层标签相对于视口的可见状态。 <br>设置为true时，支持显示CSS属性，包括visibility、display和宽高。 <br>设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。 |
+| supportDefaultIntrinsicSize | boolean | 否    | 是 | 设置同层渲染元素是否支持固定大小 300 * 150。<br>当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。<br>为true时，固定大小为 300 * 150。<br>为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。<br>默认值：false<br>单位：px <br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23|
+| supportCssDisplayChange<sup>20+</sup> | boolean | 否    | 是 | 设置同层渲染可见性接口是否支持显示属性。 <br>同层渲染可见性接口默认支持同层标签相对于视口的可见状态。 <br>设置为true时，支持显示CSS属性，包括visibility、display和宽高。 <br>设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。 <br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## OnAlertEvent<sup>12+</sup>
 
 定义网页触发 `alert()` 告警时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
 | ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
@@ -171,16 +201,20 @@ Web同层渲染的配置。
 
 | 名称                   | 类型     | 只读| 可选  | 说明                              |
 | --------------------- | -------- | -- | ----|--------------------------------- |
-| url                   | string   | 否 | 否  | 当前显示弹窗所在网页的URL。                 |
-| message               | string   | 否 | 否  | 弹窗中显示的信息。                              |
-| result                | [JsResult](./arkts-basic-components-web-JsResult.md) | 否 | 否 | 通知Web组件用户操作行为。                       |
-| isReload<sup>20+</sup>| boolean | 否 | 是   | 页面是否刷新。<br>当页面因刷新即将离开时，isReload参数被设置为true；当页面因关闭即将离开时，isReload参数被设置为false。<br>默认值：false。|
+| url                   | string   | 否 | 否  | 当前显示弹窗所在网页的URL。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| message               | string   | 否 | 否  | 弹窗中显示的信息。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| result                | [JsResult](./arkts-basic-components-web-JsResult.md) | 否 | 否 | 通知Web组件用户操作行为。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| isReload<sup>20+</sup>| boolean | 否 | 是   | 页面是否刷新。<br>当页面因刷新即将离开时，isReload参数被设置为true；当页面因关闭即将离开时，isReload参数被设置为false。<br>默认值：false。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## OnConfirmEvent<sup>12+</sup>
 
 定义网页触发 `confirm()` 弹窗时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
 | ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
@@ -193,6 +227,10 @@ Web同层渲染的配置。
 定义网页触发 `prompt()` 弹窗时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
 | ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
@@ -207,6 +245,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---------|------------------------------- |
 | message | [ConsoleMessage](./arkts-basic-components-web-ConsoleMessage.md) | 否 | 否 | 触发的控制台信息。                       |
@@ -217,6 +259,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------|---------------------------------- |
 | request | [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | 网页请求的封装信息。      |
@@ -224,9 +270,13 @@ Web同层渲染的配置。
 
 ## OnHttpErrorReceiveEvent<sup>12+</sup>
 
-定义网页收到加载资源加载HTTP错误时触发。
+定义网页收到资源加载HTTP错误时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                                                                        |只读 | 可选 | 说明               |
 | ---------- | --------------------------------------------------------------------------- | -- | ----|------------------- |
@@ -239,13 +289,17 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型     | 只读 | 可选  | 说明                                |
 | ---------------- | -------- | --- | -----|----------------------------------- |
 | url                | string | 否 | 否 | 文件下载的URL。                           |
 | userAgent          | string | 否 | 否 | 用于下载的用户代理。                          |
 | contentDisposition | string | 否 | 否 | 服务器返回的 Content-Disposition响应头，服务器可能返回空。 |
 | mimetype           | string | 否 | 否 | 服务器返回内容媒体类型（MIME）信息。                |
-| contentLength      | number | 否 | 否 | 服务器返回文件的长度。  单位：字节。                       |
+| contentLength      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 服务器返回文件的长度。  单位：字节。                       |
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
@@ -255,15 +309,19 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| url         | string  | 否 | 否 | 访问的url。                                  |
-| isRefreshed | boolean | 否 | 否 | true表示该页面是被重新加载的（调用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)接口），false表示该页面是新加载的。 |
-| isMainFrame<sup>22+</sup> | boolean | 否 | 是 | 是否是主文档触发。<br>true表示是主文档触发，false表示不是主文档触发。|
+| url         | string  | 否 | 否 | 访问的url。 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                      |
+| isRefreshed | boolean | 否 | 否 | true表示该页面是被重新加载的（调用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)接口），false表示该页面是新加载的。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| isMainFrame<sup>22+</sup> | boolean | 否 | 是 | 是否是主文档触发。<br>true表示是主文档触发，false表示不是主文档触发。<br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
 定义渲染过程退出时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
@@ -274,6 +332,10 @@ Web同层渲染的配置。
 定义文件选择器结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型                                                                     | 只读 | 可选 | 说明                            |
 | ------------ | ------------------------------------------------------------------------ | ---- | ---- | ------------------------------- |
@@ -286,6 +348,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url  | string | 否 | 否 | 所加载的资源文件url信息。 |
@@ -296,16 +362,24 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型   | 只读 | 可选 | 说明                     |
 | -------- | ------ | ---- | ---- | ------------------------ |
-| oldScale | number | 否   | 否   | 变化前的显示比例百分比。 |
-| newScale | number | 否   | 否   | 变化后的显示比例百分比。 |
+| oldScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 变化前的显示比例百分比。 |
+| newScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 变化后的显示比例百分比。 |
 
 ## OnHttpAuthRequestEvent<sup>12+</sup>
 
 定义通知收到http auth认证请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | -----------|----------------------------- |
@@ -319,6 +393,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | request | [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md) | 否 | 否 | url请求的相关信息。 |
@@ -328,6 +406,10 @@ Web同层渲染的配置。
 定义通知收到获取权限请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -339,6 +421,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选 | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | handler | [ScreenCaptureHandler](./arkts-basic-components-web-ScreenCaptureHandler.md) | 否 | 否 | 通知Web组件用户操作行为。 |
@@ -348,6 +434,10 @@ Web同层渲染的配置。
 定义调用时触发的回调，以允许自定义显示上下文菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -360,10 +450,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 类型    | 只读 | 可选 | 说明                                       |
 | ------------------ | ------- | --- | --- |----------------------------- |
-| activeMatchOrdinal | number  | 否  | 否  | 当前匹配的查找项的序号（从0开始）。                       |
-| numberOfMatches    | number  | 否  | 否  | 所有匹配到的关键词的个数。                            |
+| activeMatchOrdinal | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否  | 否  | 当前匹配的查找项的序号（从0开始）。                       |
+| numberOfMatches    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否  | 否  | 所有匹配到的关键词的个数。                            |
 | isDoneCounting     | boolean | 否  | 否  | 当次页内查找操作是否结束。<br>true表示当次页内查找操作结束，false表示当次页内查找操作未结束。<br>该方法可能会回调多次，直到isDoneCounting为true为止。 |
 
 ## OnScrollEvent<sup>12+</sup>
@@ -372,10 +466,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选 | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| xOffset | number |  否   | 否   | 以网页最左端为基准，水平滚动条滚动所在位置。<br>单位：vp。 |
-| yOffset | number |  否   | 否   | 以网页最上端为基准，竖直滚动条滚动所在位置。<br>单位：vp。 |
+| xOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double |  否   | 否   | 以网页最左端为基准，水平滚动条滚动所在位置。<br>单位：vp。 |
+| yOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double |  否   | 否   | 以网页最上端为基准，竖直滚动条滚动所在位置。<br>单位：vp。 |
 
 ## OnSslErrorEventReceiveEvent<sup>12+</sup>
 
@@ -385,9 +483,9 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| handler | [SslErrorHandler](./arkts-basic-components-web-SslErrorHandler.md) | 否 | 否 | 通知Web组件用户操作行为。 |
-| error   | [SslError](./arkts-basic-components-web-e.md#sslerror9)           | 否 | 否 | 错误码。           |
-| certChainData<sup>15+</sup>   | Array<Uint8Array\>           | 否 | 是 | 证书链数据。           |
+| handler | [SslErrorHandler](./arkts-basic-components-web-SslErrorHandler.md) | 否 | 否 | 通知Web组件用户操作行为。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| error   | [SslError](./arkts-basic-components-web-e.md#sslerror9)           | 否 | 否 | 错误码。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| certChainData<sup>15+</sup>   | Array<Uint8Array\>           | 否 | 是 | 证书链数据。  <br>**ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
 
 ## SslErrorEvent<sup>12+</sup>
 
@@ -397,14 +495,14 @@ Web同层渲染的配置。
 
 | 名称     | 类型                                 | 只读 | 可选   | 说明           |
 | ------- | ------------------------------------ | ---- | ------|------------- |
-| handler | [SslErrorHandler](./arkts-basic-components-web-SslErrorHandler.md) | 否 | 否    | 通知Web组件用户操作行为。 |
-| error   | [SslError](./arkts-basic-components-web-e.md#sslerror9)            | 否 | 否   | 错误码。           |
-| url   | string                                 | 否 | 否    | url地址。           |
-| originalUrl   | string                         | 否 | 否    | 请求的原始url地址。           |
-| referrer   | string                            | 否 | 否    | referrer url地址。           |
-| isFatalError   | boolean                       | 否 | 否    | 是否是致命错误。<br>true表示致命错误，false表示非致命错误。           |
-| isMainFrame   | boolean                        | 否 | 否    | 是否是主资源。<br>true表示主资源，false表示非主资源。           |
-| certChainData<sup>20+</sup>   | Array<Uint8Array\>         | 否 | 是 | 证书链数据。           |
+| handler | [SslErrorHandler](./arkts-basic-components-web-SslErrorHandler.md) | 否 | 否    | 通知Web组件用户操作行为。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| error   | [SslError](./arkts-basic-components-web-e.md#sslerror9)            | 否 | 否   | 错误码。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| url   | string                                 | 否 | 否    | url地址。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| originalUrl   | string                         | 否 | 否    | 请求的原始url地址。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| referrer   | string                            | 否 | 否    | referrer url地址。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| isFatalError   | boolean                       | 否 | 否    | 是否是致命错误。<br>true表示致命错误，false表示非致命错误。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| isMainFrame   | boolean                        | 否 | 否    | 是否是主资源。<br>true表示主资源，false表示非主资源。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| certChainData<sup>20+</sup>   | Array<Uint8Array\>         | 否 | 是 | 证书链数据。  <br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## OnClientAuthenticationEvent<sup>12+</sup>
 
@@ -412,11 +510,15 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 否 | 否 | 通知Web组件用户操作行为。  |
 | host     | string                                   | 否 | 否 | 请求证书服务器的主机名。    |
-| port     | number                                   | 否 | 否 | 请求证书服务器的端口号。    |
+| port     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 否 | 否 | 请求证书服务器的端口号。    |
 | keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称密钥类型。    |
 | issuers  | Array<string\>                           | 否 | 否 | 与私钥匹配的证书可接受颁发者。 |
 
@@ -437,6 +539,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | isAlert       | boolean                                  | 否 | 否 | true代表请求创建对话框，false代表新标签页。    |
@@ -450,18 +556,26 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 类型                                  | 只读 | 可选 | 说明                        |
 |-------------------| ------------------------------------ | ---- | ---- |---------------------------|
-| x                 | number                              | 否    | 否 | 新窗口左上角横坐标（单位：像素）。   |
-| y                 | number                              | 否    | 否 | 新窗口左上角纵坐标（单位：像素）。            |
-| width             | number                              | 否    | 否 | 新窗口宽度（单位：像素）。          |
-| height            | number                              | 否    | 否 | 新窗口高度（单位：像素）。          |
+| x                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否    | 否 | 新窗口左上角横坐标（单位：像素）。   |
+| y                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否    | 否 | 新窗口左上角纵坐标（单位：像素）。            |
+| width             | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否    | 否 | 新窗口宽度（单位：像素）。          |
+| height            | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否    | 否 | 新窗口高度（单位：像素）。          |
 
 ## OnWindowNewExtEvent<sup>23+</sup>
 
 定义网页请求用户创建窗口时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -478,6 +592,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url         | string  | 否 | 否 | 接收到的apple-touch-icon url地址。 |
@@ -489,15 +607,23 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| favicon | [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | 接收到的favicon图标的PixelMap对象。 |
+| favicon | ArkTS-Dyn: [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) <br/> ArkTS-Sta: [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | 接收到的favicon图标的PixelMap对象。 |
 
 ## OnPageVisibleEvent<sup>12+</sup>
 
 定义旧页面不再呈现，新页面即将可见时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型   | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -509,6 +635,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | handler | [DataResubmissionHandler](./arkts-basic-components-web-DataResubmissionHandler.md) | 否 | 否 | 表单数据重新提交句柄。 |
@@ -518,6 +648,10 @@ Web同层渲染的配置。
 定义网页上的音频播放状态发生改变时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -529,16 +663,24 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选 | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| navigationStartTick    | number | 否 | 否 | 启动页面加载开始的时间，单位以微秒表示。          |
-| firstContentfulPaintMs | number | 否 | 否 | 从启动页面加载开始到第一次绘制内容的时间，单位是以毫秒表示。 |
+| navigationStartTick    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 启动页面加载开始的时间，单位以微秒表示。          |
+| firstContentfulPaintMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 从启动页面加载开始到第一次绘制内容的时间，单位是以毫秒表示。 |
 
 ## OnLoadInterceptEvent<sup>12+</sup>
 
 定义截获资源加载时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
@@ -550,10 +692,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选 | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| xOffset | number |  否   | 否   | 以网页最左端为基准，水平过度滚动的偏移量。<br>单位：vp。 |
-| yOffset | number |  否   | 否   | 以网页最上端为基准，竖直过度滚动的偏移量。<br>单位：vp。 |
+| xOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double |  否   | 否   | 以网页最左端为基准，水平过度滚动的偏移量。<br>单位：vp。 |
+| yOffset | ArkTS-Dyn: number<br>ArkTS-Sta: double |  否   | 否   | 以网页最上端为基准，竖直过度滚动的偏移量。<br>单位：vp。 |
 
 ## JavaScriptProxy<sup>12+</sup>
 
@@ -561,12 +707,16 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| object     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。                   |
+| ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。                   |
 | name       | string                                   | 否 | 否    | 注册对象的名称，与window中调用的对象名一致。                |
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) | 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) <br/>ArkTS-Sta: [WebviewController<sup>22+</sup>](./arkts-apis-webview-WebviewController.md)| 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否 | 是    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
 | permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 
@@ -575,6 +725,10 @@ Web同层渲染的配置。
 定义网页加载结束时触发的函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
@@ -586,6 +740,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url | string | 否 | 否 | 页面的URL地址。                       |
@@ -596,9 +754,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| newProgress | number | 否 | 否 | 新的加载进度，取值范围为[0, 100]的整数。                       |
+| newProgress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 新的加载进度，取值范围为[0, 100]的整数。                       |
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 
@@ -608,8 +771,8 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选    | 说明                                       |
 | -------------- | ---- | ---- | -------------|--------------------------- |
-| title | string | 否 | 否 | document标题内容。                       |
-| isRealTitle<sup>20+</sup> | boolean | 否 | 是 | document标题来源，true表示来自网页的title标签，false表示该title是根据url自动生成。 <br>默认值：false |
+| title | string | 否 | 否 | document标题内容。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| isRealTitle<sup>20+</sup> | boolean | 否 | 是 | document标题来源，true表示来自网页的title标签，false表示该title是根据url自动生成。 <br>默认值：false。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## OnGeolocationShowEvent<sup>12+</sup>
 
@@ -632,6 +795,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                                | 只读 | 可选 | 说明              |
 | -------------  | ------------------------------------| ----- | ----- | ------------------ |
 | visibility     | boolean                             | 否     | 否 | 可见性。<br>true表示可见，false表示不可见。         |
@@ -643,10 +810,14 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                     | 类型   | 只读   | 可选 | 说明                                   |
 | ------------------------ | ---- | ---- | ---- | -------------------------------------- |
 | jsStack      | string | 否 | 否 | 网页的JavaScript调用栈信息。       |
-| pid | number | 否 | 否 | 网页的进程id。 |
+| pid | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 网页的进程id。 |
 | reason | [RenderProcessNotRespondingReason](./arkts-basic-components-web-e.md#renderprocessnotrespondingreason12) | 否 | 否 | 触发渲染进程无响应回调的原因。 |
 
 ## FullScreenEnterEvent<sup>12+</sup>
@@ -655,17 +826,25 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
 | handler     | [FullScreenExitHandler](./arkts-basic-components-web-FullScreenExitHandler.md) | 否 | 否  | 用于退出全屏模式的函数句柄。 |
-| videoWidth  | number | 否 | 是 | 视频的宽度，单位：px。如果进入全屏的是 `<video>` 元素，表示其宽度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的宽度；其他情况下，为0。 |
-| videoHeight  | number | 否 | 是  | 视频的高度，单位：px。如果进入全屏的是 `<video>` 元素，表示其高度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的高度；其他情况下，为0。 |
+| videoWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 视频的宽度，单位：px。如果进入全屏的是 `<video>` 元素，表示其宽度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的宽度；其他情况下，为0。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| videoHeight  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 视频的高度，单位：px。如果进入全屏的是 `<video>` 元素，表示其高度；如果进入全屏的子元素中包含 `<video>` 元素，表示第一个子视频元素的高度；其他情况下，为0。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
 
 ## LoadCommittedDetails<sup>11+</sup>
 
 提供已提交跳转的网页的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | -------|-------------- |
@@ -683,21 +862,25 @@ Web组件进入全屏回调事件的详情。
 
 | 名称                | 类型                                  | 只读 | 可选 | 说明                        |
 |-------------------| ------------------------------------ | ---- | ---- |---------------------------|
-| id                | string             | 否    | 是 | 同层标签的id信息。             |
-| type              | string                              | 否    | 是 | 同层标签的type信息，统一为小写字符。   |
-| src               | string                              | 否    | 是 | 同层标签的src信息。            |
-| width             | number  | 否    | 是 | 同层标签的宽，单位为px。          |
-| height            | number                              | 否    | 是 | 同层标签的高，单位为px。          |
-| url               | string                              | 否    | 是 | 同层标签的url信息。            |
-| tag<sup>12+</sup> | string              | 否    | 是 | 标签名，统一为大写字符。              |
-| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。  |
-| position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签相对于Web组件左上角为坐标原点的位置信息，此处区别于标准Position，单位为px。 |
+| id                | string             | 否    | 是 | 同层标签的id信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| type              | string                              | 否    | 是 | 同层标签的type信息，统一为小写字符。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| src               | string                              | 否    | 是 | 同层标签的src信息。  <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23  |
+| width             | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是 | 同层标签的宽，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| height            | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 否    | 是 | 同层标签的高，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| url               | string                              | 否    | 是 | 同层标签的url信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23  |
+| tag<sup>12+</sup> | string              | 否    | 是 | 标签名，统一为大写字符。   <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
+| params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签相对于Web组件左上角为坐标原点的位置信息，此处区别于标准Position，单位为px。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## NativeEmbedParamItem<sup>21+</sup>
 
 提供同层渲染object标签内嵌param元素的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                  | 只读 | 可选 | 说明                        |
 |-------------------| ------------------------------------ | ---- | ---- |---------------------------|
@@ -712,6 +895,10 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                                | 只读  | 可选  | 说明         |
 | ------------- | ------------------------------------| ---- | ---- |------- |
 | host          | string                              | 否    | 否   | 网站域名。    |
@@ -722,6 +909,10 @@ Web组件进入全屏回调事件的详情。
 拦截网页可编辑元素拉起软键盘的回调入参，其中包括[WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)、可编辑元素的属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型   | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -734,10 +925,14 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型   | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 否 | 否 | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
-| enterKeyType | number | 否 | 是 | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，默认值为UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
+| enterKeyType | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，默认值为UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
 | customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。|
 
 
@@ -747,10 +942,14 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                     | 类型   | 只读 | 可选 | 说明                                   |
 | ------------------------ | ------ | ---- | ---- | -------------------------------------- |
-| navigationStartTime      | number | 否 | 是  | 导航条加载时间，单位以微秒表示。       |
-| firstMeaningfulPaintTime | number | 否 | 是   | 绘制页面主要内容时间，单位以毫秒表示。 |
+| navigationStartTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是  | 导航条加载时间，单位以微秒表示。       |
+| firstMeaningfulPaintTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 绘制页面主要内容时间，单位以毫秒表示。 |
 
 ## LargestContentfulPaint<sup>12+</sup>
 
@@ -758,20 +957,28 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                      | 类型   | 只读 | 可选 | 说明                                     |
 | ------------------------- | ------ | ---- | ---- | ---------------------------------------- |
-| navigationStartTime       | number | 否 | 是   | 导航条加载时间，单位以微秒表示。         |
-| largestImagePaintTime     | number | 否 | 是   | 最大图片加载的时间，单位是以毫秒表示。   |
-| largestTextPaintTime      | number | 否 | 是   | 最大文本加载时间，单位是以毫秒表示。     |
-| largestImageLoadStartTime | number | 否 | 是   | 最大图片开始加载时间，单位是以毫秒表示。 |
-| largestImageLoadEndTime   | number | 否 | 是   | 最大图片结束加载时间，单位是以毫秒表示。 |
-| imageBPP                  | number | 否 | 是   | 最大图片像素位数。                           |
+| navigationStartTime       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 导航条加载时间，单位以微秒表示。         |
+| largestImagePaintTime     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 最大图片加载的时间，单位是以毫秒表示。   |
+| largestTextPaintTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 最大文本加载时间，单位是以毫秒表示。     |
+| largestImageLoadStartTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 最大图片开始加载时间，单位是以毫秒表示。 |
+| largestImageLoadEndTime   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 最大图片结束加载时间，单位是以毫秒表示。 |
+| imageBPP                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是   | 最大图片像素位数。                           |
 
 ## NativeEmbedDataInfo<sup>11+</sup>
 
 提供同层标签生命周期变化的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
@@ -788,15 +995,19 @@ Web组件进入全屏回调事件的详情。
 
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------  | ---- | ---- | --------------------- |
-| embedId     | string   | 否    | 是 | 同层标签的唯一id。 |
-| touchEvent  | [TouchEvent](../apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)  | 否 | 是    | 手指触摸动作信息。 |
-| result<sup>12+</sup>     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否 | 是    | 通知Web组件手势事件的消费结果。 |
+| embedId     | string   | 否    | 是 | 同层标签的唯一id。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| touchEvent  | [TouchEvent](../apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)  | 否 | 是    | 手指触摸动作信息。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| result<sup>12+</sup>     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否 | 是    | 通知Web组件手势事件的消费结果。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
 
 ## NativeEmbedMouseInfo<sup>20+</sup>
 
 提供鼠标/触摸板在同层标签上点击或长按的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------  | ---- | ---- | --------------------- |
@@ -810,6 +1021,10 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
 | embedId | string                              | 否 | 否    | 同层标签的唯一id。  |
@@ -822,6 +1037,10 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url | string | 否 | 否 | 页面的URL地址。                       |
@@ -832,6 +1051,10 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ------------|---------------------------- |
 | url | string | 否 | 否 | 页面的URL地址。                       |
@@ -841,6 +1064,10 @@ Web组件进入全屏回调事件的详情。
 定义PDF加载成功或失败时触发的函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -853,6 +1080,10 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | 否 | 否 | 页面的URL地址。    |
@@ -862,6 +1093,10 @@ Web组件进入全屏回调事件的详情。
 Web组件返回的请求/响应头对象。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型  | 只读 | 可选 | 说明            |
 | ----------- | ------ | --- | -----|---------------- |
@@ -874,6 +1109,10 @@ Web屏幕捕获的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                                      | 只读 | 可选  | 说明         |
 | ----------- | --------------------------------------- | ---- |----| ---------- |
 | captureMode | [WebCaptureMode](./arkts-basic-components-web-e.md#webcapturemode10) | 否 | 否 | Web屏幕捕获模式。 |
@@ -883,6 +1122,10 @@ Web屏幕捕获的配置。
 定义检测到白屏时的事件信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -896,9 +1139,13 @@ Web屏幕捕获的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| detectedContentfulNodesCount | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
+| detectedContentfulNodesCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
 
 ## BlankScreenDetectionConfig<sup>22+</sup>
 
@@ -906,18 +1153,26 @@ Web屏幕捕获的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | enable | boolean | 否 | 否 | 是否使能白屏策略功能。   |
-| detectionTiming | number[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
+| detectionTiming | ArkTS-Dyn: number[]<br/>ArkTS-Sta: double[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
-| contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
+| contentfulNodesCountThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
 
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
 定义摄像头触发回调时的改变前后的状态信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
@@ -930,6 +1185,10 @@ Web屏幕捕获的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
@@ -940,6 +1199,10 @@ Web屏幕捕获的配置。
 定义文件选择器拉取文件时网页推荐的文件类型信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                     | 只读 | 可选 | 说明             |
 | :---- | :------------------------- | :--- | :--- | :--------------- |
@@ -952,8 +1215,31 @@ Web屏幕捕获的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
-| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。<br>单位：毫秒。 |
-| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。<br>单位：毫秒。|
+| navigationStartTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | url所指页面开始导航的时刻。<br>单位：毫秒。 |
+| firstScreenPaintTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | url所指页面首屏绘制完成的时刻。<br>单位：毫秒。|
+
+## AISessionEvent
+
+自定义AI会话配置对象，用于定义AI会话的生命周期回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| aiSessionType | [AISessionType](./arkts-basic-components-web-e.md#aisessiontype) | 否 | 否 | AI会话类型。 |
+| onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | 否 | 否 | AI会话创建时触发的回调函数。返回`true`跳过系统默认行为，返回`false`继续执行系统默认逻辑。 |
+| onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | 否 | 否 | AI会话执行操作时触发的回调函数。 |
+| onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | 否 | 否 | AI会话销毁时触发的回调函数，用于清理与自定义AI模型关联的资源。 |

@@ -545,6 +545,8 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 | 16000005 | The specified process does not have the permission. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to commnicate with dependency module.|
 | 16000053 | The ability is not on the top of the UI. |
 | 16000070 | The extension cannot start the service. |

@@ -266,3 +266,18 @@ picker内宫格的捏合模式。
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
 | ---- | ---- | ---- | ---- | ---- |
 | supportedHighResolution       | boolean  | 否 | 否 | 是否支持启用高分辨率资产。true表示支持，false表示不支持。 |
+
+## MediaLibraryAvailability
+
+媒体库可用性信息。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| availabilityStatus | [AvailabilityStatus](arkts-apis-photoAccessHelper-e.md#availabilitystatus) | 否 | 否 | 媒体库可用性状态。 |
+| unavailabilityReason | string | 否 | 否 | 媒体库不可用原因，例如"Database corrupted"。 |

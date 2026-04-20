@@ -1,7 +1,7 @@
 # 使用JSVM-API接口获取JSVM API的版本号
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -78,7 +78,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 
 预期结果：
-```
+```txt
 JSVM GetVersion success:9
 JSVM API apiVersion: 1
 JSVM API engine: v8

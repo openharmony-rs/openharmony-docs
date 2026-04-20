@@ -67,6 +67,32 @@ import { effectKit } from "@kit.ArkGraphics2D";
 | DARK_PICTURE     | 5    | 图片颜色深浅度为较深。|
 | EXTREMELY_DARK_PICTURE     | 6    | 图片颜色深浅度为极深。|
 
+## PictureLightDegree
+
+图片颜色明亮度的枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+| 名称                   | 值   | 说明                           |
+| ---------------------- | ---- | ------------------------------ |
+| UNKNOWN_LIGHT_COLOR_DEGREE_PICTURE | 0 | 未知明亮度的图片。 |
+| EXTREMELY_LIGHT_COLOR_PICTURE | 1 | 极亮色图片。 |
+| LIGHT_COLOR_PICTURE | 2 | 亮色图片。 |
+| DARK_COLOR_PICTURE | 3 | 暗色图片。 |
+| EXTREMELY_DARK_COLOR_PICTURE | 4 | 极暗色图片。 |
+| FLOWERY_PICTURE | 5 | 花色图片。 |
+| EXTREMELY_FLOWERY_PICTURE | 6 | 极花色图片。 |
+
 ## ColorPicker
 
 取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](js-apis-effectKit.md#effectkitcreatecolorpicker)创建一个ColorPicker实例。
@@ -310,6 +336,326 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.info('Succeeded in creating color picker.');
         let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
       console.info('Get proportion of fully transparent pixels: ' + percentage);
+    }
+  })
+})
+```
+
+### getMorandiShadowColor
+
+getMorandiShadowColor(): Color
+
+从图像的主色中获取莫兰迪阴影色，并将结果写入[Color](js-apis-effectKit.md#color)。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)   | Color实例，即图像莫兰迪阴影色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getMorandiShadowColor();
+      console.info('get Morandi shadow color =' + color);
+    }
+  })
+})
+```
+
+### getDeepenImmersionColor
+
+getDeepenImmersionColor(): Color
+
+生成与背景色融合且比背景色更深的强沉浸感颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+|[Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getDeepenImmersionColor();
+      console.info('get deepen immersion color =' + color);
+    }
+  })
+})
+```
+
+### getImmersiveBackgroundColor
+
+getImmersiveBackgroundColor(): Color
+
+生成能够创造沉浸式视觉效果的沉浸式背景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式背景色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getImmersiveBackgroundColor();
+      console.info('get immersive background color =' + color);
+    }
+  })
+})
+```
+
+### getImmersiveForegroundColor
+
+getImmersiveForegroundColor(): Color
+
+生成能够创造沉浸式视觉效果的沉浸式前景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式前景色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getImmersiveForegroundColor();
+      console.info('get immersive foreground color =' + color);
+    }
+  })
+})
+```
+
+### discriminatePictureLightDegree()
+
+discriminatePictureLightDegree(): PictureLightDegree
+
+获取图片的明亮程度。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型                                     | 说明                                            |
+| :--------------------------------------- | :---------------------------------------------- |
+| [PictureLightDegree](#picturelightdegree) | 图像颜色明亮程度。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```js
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let pictureLightDegree: effectKit.PictureLightDegree = colorPicker.discriminatePictureLightDegree();
+      console.info('The color light degree of the image is ' + pictureLightDegree);
+    }
+  })
+})
+```
+
+### getReverseColor
+
+getReverseColor(): Color
+
+基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。根据[discriminatePictureLightDegree](#discriminatepicturelightdegree)接口获取的图片明亮类型得到一个反色，仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像反向颜色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getReverseColor();
+      console.info('get reverse color =' + color);
     }
   })
 })

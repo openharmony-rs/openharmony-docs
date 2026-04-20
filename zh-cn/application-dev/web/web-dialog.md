@@ -59,7 +59,7 @@
       }
     }
     ```
-  加载的html。
+  加载的HTML。
   ```html
   <!-- test.html -->
   <!DOCTYPE html>

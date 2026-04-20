@@ -81,7 +81,7 @@ export class testClass {
 
 重写globalThis.clearTimeout函数，实现在调用clearTimeout函数时打印调用栈，快速定位定时器是在哪里被删除的。
 
-调用顺序为先调用clearTimeout.ts文件中的test()函数，再调用TimerTest.ets文件中的timerTestCase()函数。
+调用顺序为先调用clearTimeout.ts文件中的test()函数，再调用TimerTest.ets文件中testClass类的clearAnimation()函数。
 
 示例代码：
 
@@ -111,22 +111,44 @@ export function test() {
 ```ts
 // 自定义ets文件TimerTest.ets
 
-let timeoutId: number = 0;
+export class testClass {
+    // 初始值设置为0
+    private timeoutId: number = 0;
+    private intervalId: number = 0;
 
-export function timerTestCase() {
-    test1();
-    clearTime();
+    // 在某些情况下没有调用setTimeout设置定时器就调用了clearAnimation函数删除了定时器，就会导致timeoutId为0的定时器被删除
+    clearAnimation(): void {
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeoutId);
+    }
 }
+```
 
-function test1() {
-    timeoutId = setTimeout(() => {
-        console.info("begin");
-    }, 1);
-    console.info("timeoutId = " + timeoutId);
-}
+```ts
+import { test } from './clearTimeout';
+import { testClass } from './TimerTest';
 
-function clearTime() {
-    clearTimeout(timeoutId);
-    console.info("clearTimeout Id = " + timeoutId);
+@Entry
+@Component
+struct Index {
+    @State message: string = 'Hello World';
+
+    build() {
+      Row() {
+        Column() {
+          Text(this.message)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+                test();
+                let testCase = new testClass();
+                testCase.clearAnimation();
+                this.message = 'success';
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
 }
 ```
