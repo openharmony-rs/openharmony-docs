@@ -100,30 +100,35 @@ struct example {
   }
 }
 ```
-## uiEffect.createHdrDarkenBlender<sup>20+</sup>
-createHdrDarkenBlender(param: HdrDarkenBlenderParam): HdrDarkenBlender
+## uiEffect.createHdrDarkenBlender
+createHdrDarkenBlender(hdrBrightnessRatio: number,
+      grayscaleFactor?: [number, number, number]): HdrDarkenBlender
 
-创建[HdrDarkenBlender](#hdrdarkenblender20)实例用于HDR图层的压暗混合效果。
+创建[HdrDarkenBlender](#hdrdarkenblender)实例用于HDR图层的压暗混合效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
 
 **参数：**
-| 参数名  | 类型                                              | 必填 | 说明                        |
-| ------ | ------------------------------------------------- | ---- | --------------------------- |
-| param  | [HdrDarkenBlenderParam](#hdrdarkenblenderparam) | 是   | 实现HDR压暗混合器的参数。 |
+
+| 参数名               | 类型                        | 必填  | 说明                                                              |
+| ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，不做任何处理；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。                        |
+| grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为[0.299, 0.587, 0.114]。      
 
 **返回值：**
 
 | 类型                                   | 说明                       |
 | ---------------------------------------- | ------------------------- |
-| [HdrDarkenBlender](#hdrdarkenblender20) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
+| [HdrDarkenBlender](#hdrdarkenblender) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
 
 **示例：**
 ```ts
 let blender : uiEffect.HdrDarkenBlender = 
-  uiEffect.createHdrDarkenBlender({hdrBrightnessRatio:1.3, grayscaleFactor:[0.299, 0.587, 0.114]}) 
+  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]) 
 @Entry 
 @Component 
 struct example { 
@@ -1334,7 +1339,7 @@ struct Index {
 
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender
+type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 混合器类型，用于描述混合效果。
 
@@ -1346,6 +1351,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
+| [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1374,10 +1380,11 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 
 **系统接口：** 此接口为系统接口。
 
-## HdrDarkenBlender<sup>20+</sup>
-HDR压暗混合器，用于将压暗效果添加到指定的组件上。用于将提亮效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过[createHdrDarkenBlender](#uiEffectcreateHdrdarkenBlender20)创建一个HdrDarkenBlender实例。
+## HdrDarkenBlender
+支持HDR的压暗混合器，用于将压暗效果添加到指定的组件上。用于将提亮效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过[createHdrDarkenBlender](#uieffectcreatehdrdarkenblender)创建一个HdrDarkenBlender实例。
+该混合器参数见[createHdrDarkenBlender](#uieffectcreatehdrdarkenblender)。
 
-该混合器参数可见[HdrDarkenBlenderParam](#HdrDarkenBlenderParam)。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
