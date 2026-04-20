@@ -11,6 +11,8 @@ The **NotificationTemplate** module describes the notification template.
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The predefined system templates are supported. You only need to provide the template name and related data for the system to automatically render the notification style that complies with the specifications.
+> Application scenario: Currently, only the upload and download scenarios are supported.
 
 ## NotificationTemplate
 

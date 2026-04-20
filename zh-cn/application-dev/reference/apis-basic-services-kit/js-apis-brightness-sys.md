@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块提供屏幕亮度的设置接口。
 

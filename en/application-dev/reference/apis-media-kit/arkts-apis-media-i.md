@@ -21,8 +21,8 @@ Describes an audio and video file asset. It is used to specify a particular asse
 | Name  | Type  | Read-Only| Optional | Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | fd     | number | No | No | Resource handle, which is obtained by calling [resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9) or [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).   |
-| offset | number | No | Yes | Resource offset, which needs to be entered based on the preset asset information. The default value is **0**. An invalid value causes a failure to parse audio and video assets.|
-| length | number | No | Yes | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse audio and video assets.|
+| offset | number | No | Yes | Resource offset.<br>The value ranges from 0 to the size of the audio/video file to be played. The default value is **0**. The value needs to be entered based on the preset resource information. An invalid value causes a failure to parse audio and video resources.|
+| length | number | No | Yes | Resource length.<br>The value ranges from 0 to the size of the audio or video file to be played. The default value is the number of remaining bytes starting from the offset in the file. The value needs to be entered based on the preset resource information. An invalid value causes a failure to parse audio and video resources.|
 
 ## AVDataSrcDescriptor<sup>10+</sup>
 
@@ -262,6 +262,7 @@ Defines the audio and video metadata.
 | location<sup>12+</sup> | [Location](#location) | No| Yes| Geographical location of the media asset.|
 | customInfo<sup>12+</sup> | Record<string, string> | No| Yes| Custom key-value mappings obtained from **moov.meta.list**.|
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | No| Yes| Track information of the media asset. This property cannot be set for the AVRecorder.|
+| encoder | string | No| Yes| Identifier of the software, hardware, and settings used for encoding. This property cannot be set for the AVRecorder.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
 
 ### MediaDescriptionKey<sup>8+</sup> Values Supported by AVMetadata.tracks
 
@@ -454,6 +455,39 @@ Describes the information about a metric event.
 | timeStamp | number | No  | No  | System time when an event occurs.|
 | playbackPosition | number | No  | No  | Playback position when an event occurs.|
 | details | Record\<string, Object> | No  | No  | Detailed information about an event. The information contained in an event varies according to the event type.<br>The information includes the stalling duration (**duration**: number) and the media type (**media**: [MediaType](arkts-apis-media-e.md#mediatype8)) of the stalling.<br>**Model restriction**: This API can be used only in the stage model.|
+
+## VideoSize<sup>24+</sup>
+
+Describes the video size.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| width  | number | No  | Yes  | Video resolution width.<br>The value must be a positive integer (greater than 0).|
+| height | number | No  | Yes  | Video resolution height.<br>The value must be a positive integer (greater than 0).|
+
+## TrackSelectionFilter<sup>24+</sup>
+
+Describes the track selection filter.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| maxVideoBitrate | number | No  | Yes  | Maximum bit rate of the video, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| minVideoBitrate | number | No  | Yes  | Minimum bit rate of the video, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| maxVideoFrameRate | number | No  | Yes  | Maximum frame rate of the video, in Hz.<br>The value must be a positive integer (greater than 0).|
+| minVideoFrameRate | number | No  | Yes  | Minimum frame rate of the video, in Hz.<br>The value must be a positive integer (greater than 0).|
+| maxVideoResolution | [VideoSize](#videosize24) | No  | Yes  | Maximum resolution of the video.|
+| minVideoResolution | [VideoSize](#videosize24) | No  | Yes  | Minimum resolution of the video.|
+| preferredVideoMimeTypes | Array\<string> | No  | Yes  | Preferred MIME types of the video track, sorted by priority. An empty value indicates that any type is accepted.|
+| maxAudioBitrate | number | No  | Yes  | Maximum bit rate of the audio, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| minAudioBitrate | number | No  | Yes  | Minimum bit rate of the audio, in bit/s.<br>The value must be a positive integer (greater than 0).|
+| maxAudioChannels | number | No  | Yes  | Maximum number of audio channels.<br>The value must be a positive integer (greater than 0).|
+| preferredAudioMimeTypes | Array\<string> | No  | Yes  | Preferred MIME type of the audio track, sorted by priority. An empty value indicates that any type is acceptable.|
+| preferredAudioLanguages | Array\<string> | No  | Yes  | Preferred languages of the audio track, sorted by priority. The value is a language tag that complies with the IETF BCP 47 criterion. An empty value indicates that any language is accepted.|
+| preferredSubtitleLanguages | Array\<string> | No  | Yes  | Preferred languages of the subtitle track, sorted by priority. The value is a language tag that complies with the IETF BCP 47 criterion. An empty value indicates that any language is accepted.|
 
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 

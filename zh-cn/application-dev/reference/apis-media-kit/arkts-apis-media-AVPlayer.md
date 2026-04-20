@@ -2475,7 +2475,9 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 >
 > - 当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。
 > - 调用此接口时，需确保已设置音频渲染信息AVPlayer.audioRendererInfo，audioRendererInfo的usage参数必须是[STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)其中之一。
-
+> - 该接口不支持高清通路的响度设置。
+> - 音频流的时延模式必须是普通时延。
+> - 该接口错误信息通过[on('error')](#onerror9)回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2490,16 +2492,6 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
 | Promise\<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                   |
-| -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by promise. e.g. The function is called in an incorrect state, or the stream usage of audioRendererInfo is not one of [STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).|
-| 5400105  | Service died. |
-| 5400108  | Parameter check failed. Returned by promise. |
 
 **示例：**
 
@@ -3816,5 +3808,64 @@ offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.offMetricsEvent();
+}
+```
+
+## onTimedMetaData
+
+onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
+
+注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如监听插播的元数据信息。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 是   | 回调函数，返回上报基于时间的元数据。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onTimedMetaData((data: media.AVTimedMetaData) => {
+  });
+}
+```
+
+## offTimedMetaData
+
+offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
+
+取消注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的元数据信息。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offTimedMetaData();
 }
 ```

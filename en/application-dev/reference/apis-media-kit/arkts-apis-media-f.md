@@ -563,7 +563,7 @@ Creates a media source for streaming media to be pre-downloaded.
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
 | url | string | Yes  | - URL of the media source. The following streaming media formats are supported: HLS, HTTP-FLV, DASH, and HTTPS.<br> - FD path of the local M3U8 file. |
-| headers | Record\<string, string> | No  | HTTP header customized for streaming media pre-download.|
+| headers | Record\<string, string> | No  | HTTP header customized for streaming media pre-download. If this parameter is not passed, the default HTTP header of the network request is used.|
 
 **Return value**
 

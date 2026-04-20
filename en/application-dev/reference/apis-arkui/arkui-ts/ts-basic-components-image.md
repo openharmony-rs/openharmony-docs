@@ -227,7 +227,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 interpolation(value: ImageInterpolation)
 
-Sets the interpolation effect of the image, which can alleviate aliasing that occurs when the image is zoomed. This attribute is not applicable to SVG images.
+Defines the image interpolation effect. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
@@ -1631,7 +1631,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view9.gif)
+![imageContent](figures/en-us_image_view9.gif)
 
 ### Example 12: Securing Sensitive Information
 
@@ -1656,7 +1656,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view10.gif)
+![imageContent](figures/en-us_image_view10.gif)
 
 ### Example 13: Setting the Scan Effect for an Image
 

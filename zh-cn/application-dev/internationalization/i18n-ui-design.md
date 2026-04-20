@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 一套有效的国际化界面布局设计规则，既可以树立产品在国际化设计中产品调性，还可以保证操作的一致性，遵循以下设计规则可有效提升应用全球化质量。
 

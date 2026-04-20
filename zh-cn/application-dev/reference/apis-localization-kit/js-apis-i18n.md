@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 本模块提供系统相关的以及增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。接口中使用的名词定义如下：
 - 模式字符串：由[Unicode日期字段符号](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)和单引号包裹的自定义文本自由组合而成的字符串。
@@ -1106,33 +1106,7 @@ get(field: string): number
 
 | 参数名   | 类型     | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| field | string | 是    | 指定的日历属性，目前支持的属性值请参考下表。 |
-
-
-| 属性名称   | 说明                                       |
-| ----- | ---------------------------------------- |
-| era | 纪元，例如公历中的公元前或者公元后。 |
-| year | 年。 |
-| month | 月。说明：月份从0开始计数，例如0表示一月。 |
-| date | 日。 |
-| hour | 挂钟小时数。 |
-| hour_of_day | 一天中的第几小时。 |
-| minute | 分。 |
-| second | 秒。 |
-| millisecond | 毫秒。 |
-| week_of_year | 一年中的第几周，按照星期计算周，注意：第一周的归属算法各地有区别。 |
-| year_woy | 一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。 |
-| week_of_month | 一个月中的第几周，按照星期计算周。 |
-| day_of_week_in_month | 一月中的第几周，按照数值计算周，例如1-7日属于第一周。 |
-| day_of_year | 一年中的第几天。 |
-| day_of_week | 一周中的第几天(星期)。 |
-| milliseconds_in_day | 一天中的第几毫秒。 |
-| zone_offset | 以毫秒计时的时区固定偏移量（不含夏令时）。 |
-| dst_offset | 以毫秒计时的夏令时偏移量。 |
-| dow_local | 本地星期。 |
-| extended_year | 扩展的年份数值，支持负数。 |
-| julian_day | 儒略日,与当前时区相关。 |
-| is_leap_month | 是否为闰月。 |
+| field | string | 是    | 指定的日历属性，取值包括：<br>"era"：纪元，例如公历中的公元前或者公元后。<br>"year"：年。<br>"month"：月，从0开始计数，0表示一月。<br>"date"：日。<br>"hour"：挂钟小时数。<br>"hour_of_day"：一天中的第几小时。<br>"minute"：分。<br>"second"：秒。<br>"millisecond"：毫秒。<br>"week_of_year"：一年中的第几周，按照星期计算周，第一周的归属各地有区别。<br>"year_woy"：一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。<br>"week_of_month"：一个月中的第几周，按照星期计算周。<br>"day_of_week_in_month"：一月中的第几周，按照数值计算周，例如1-7日属于第一周。<br>"day_of_year"：一年中的第几天。<br>"day_of_week"：一周中的第几天(星期)。<br>"milliseconds_in_day"：一天中的第几毫秒。<br>"zone_offset"：以毫秒计时的时区固定偏移量（不含夏令时）。<br>"dst_offset"：以毫秒计时的夏令时偏移量。<br>"dow_local"：本地星期。<br>"extended_year"：扩展的年份数值，支持负数。<br>"julian_day"：儒略日，与当前时区相关。<br>"is_leap_month"：返回1表示是闰月，返回0表示不是闰月。<br> |
 
 **返回值：**
 
@@ -2528,7 +2502,7 @@ static getAvailableIDs(): string[]
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
-  // 共支持742个ID。每一个ID由使用中划线分割的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为译拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
+  // 共支持742个ID。每一个ID由短横线分隔的两部分组成，格式为 source-destination。例如ids = ['Han-Latin','Latin-ASCII', 'Amharic-Latin/BGN','Accents-Any', ...]，Han-Latin表示汉语转为拉丁文，Amharic-Latin表示阿姆哈拉语转为拉丁文。
   // 更多使用信息可以参考ISO-15924。
   let ids: string[] = i18n.Transliterator.getAvailableIDs();
   ```
@@ -2876,43 +2850,7 @@ static getType(ch: string): string
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| string | 输入字符的一般类别值。|
-
-一般类别值如下，更详细的介绍可以参考Unicode标准。
-
-| 名称 | 值 | 说明 |
-| ---- | -------- | ---------- |
-| U_UNASSIGNED | U_UNASSIGNED | 表示未分配和非字符代码点对应类别。 |
-| U_GENERAL_OTHER_TYPES | U_GENERAL_OTHER_TYPES | 与 U_UNASSIGNED 一致。 |
-| U_UPPERCASE_LETTER | U_UPPERCASE_LETTER | 表示大写字母。 |
-| U_LOWERCASE_LETTER | U_LOWERCASE_LETTER | 表示小写字母。  |
-| U_TITLECASE_LETTER | U_TITLECASE_LETTER | 表示首字母大写。 |
-| U_MODIFIER_LETTER | U_MODIFIER_LETTER | 表示字母修饰符。 |
-| U_OTHER_LETTER | U_OTHER_LETTER | 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 |
-| U_NON_SPACING_MARK | U_NON_SPACING_MARK | 表示非间距标记，例如重音符号'，变音符号#。 |
-| U_ENCLOSING_MARK | U_ENCLOSING_MARK | 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 |
-| U_COMBINING_SPACING_MARK | U_COMBINING_SPACING_MARK | 表示间距标记，例如元音符号[ ]。 |
-| U_DECIMAL_DIGIT_NUMBER | U_DECIMAL_DIGIT_NUMBER | 表示十进制数字。 |
-| U_LETTER_NUMBER | U_LETTER_NUMBER | 表示字母数字，罗马数字。 |
-| U_OTHER_NUMBER | U_OTHER_NUMBER | 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 |
-| U_SPACE_SEPARATOR | U_SPACE_SEPARATOR | 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 |
-| U_LINE_SEPARATOR | U_LINE_SEPARATOR | 表示行分隔符。|
-| U_PARAGRAPH_SEPARATOR | U_PARAGRAPH_SEPARATOR | 表示段落分割符。 |
-| U_CONTROL_CHAR | U_CONTROL_CHAR | 表示控制字符。 |
-| U_FORMAT_CHAR | U_FORMAT_CHAR | 表示格式字符。 |
-| U_PRIVATE_USE_CHAR | U_PRIVATE_USE_CHAR | 表示私人使用区代码点类别，例如公司 logo。 |
-| U_SURROGATE | U_SURROGATE | 表示代理项，在UTF-16中用来表示补充字符的方法。 |
-| U_DASH_PUNCTUATION | U_DASH_PUNCTUATION | 表示短划线标点。 |
-| U_START_PUNCTUATION | U_START_PUNCTUATION | 表示开始标点，如左括号。 |
-| U_END_PUNCTUATION | U_END_PUNCTUATION | 表示结束标点，如右括号。 |
-| U_INITIAL_PUNCTUATION | U_INITIAL_PUNCTUATION | 表示前引号，例如左双引号、左单引号。 |
-| U_FINAL_PUNCTUATION | U_FINAL_PUNCTUATION | 表示后引号，例如右双引号、右单引号。 |
-| U_CONNECTOR_PUNCTUATION | U_CONNECTOR_PUNCTUATION | 表示连接符标点。 |
-| U_OTHER_PUNCTUATION | U_OTHER_PUNCTUATION | 表示其他标点。 |
-| U_MATH_SYMBOL | U_MATH_SYMBOL | 表示数学符号。 |
-| U_CURRENCY_SYMBOL | U_CURRENCY_SYMBOL | 表示货币符号。 |
-| U_MODIFIER_SYMBOL | U_MODIFIER_SYMBOL | 表示修饰符号。 |
-| U_OTHER_SYMBOL | U_OTHER_SYMBOL | 表示其它符号。 |
+| string | 输入字符的一般类别值。取值包括：<br>U_UNASSIGNED： 表示未分配和非字符代码点对应类别。 <br>U_GENERAL_OTHER_TYPES： 与 U_UNASSIGNED 一致。 <br>U_UPPERCASE_LETTER： 表示大写字母。 <br>U_LOWERCASE_LETTER： 表示小写字母。  <br>U_TITLECASE_LETTER： 表示首字母大写。 <br>U_MODIFIER_LETTER： 表示字母修饰符。 <br>U_OTHER_LETTER： 表示其它字母，不属于大写字母、小写字母、首字母大写或修饰符字母的字母。 <br>U_NON_SPACING_MARK： 表示非间距标记，例如重音符号'，变音符号#。 <br>U_ENCLOSING_MARK： 表示封闭标记和能围住其它字符的标记，如圆圈、方框等。 <br>U_COMBINING_SPACING_MARK： 表示间距标记，例如元音符号[ ]。 <br>U_DECIMAL_DIGIT_NUMBER： 表示十进制数字。 <br>U_LETTER_NUMBER： 表示字母数字，罗马数字。 <br>U_OTHER_NUMBER： 表示其它作为加密符号和记号的数字，非阿拉伯数字的数字表示符，例如@、#、（1）、①等。 <br>U_SPACE_SEPARATOR： 表示空白分隔符，如空格符、不间断空格、固定宽度的空白符。 <br>U_LINE_SEPARATOR： 表示行分隔符。 <br>U_PARAGRAPH_SEPARATOR： 表示段落分隔符。 <br>U_CONTROL_CHAR： 表示控制字符。 <br>U_FORMAT_CHAR： 表示格式字符。 <br>U_PRIVATE_USE_CHAR： 表示私人使用区代码点类别，例如公司 logo。 <br>U_SURROGATE： 表示代理项，在UTF-16中用来表示补充字符的方法。 <br>U_DASH_PUNCTUATION： 表示短划线标点。 <br>U_START_PUNCTUATION： 表示开始标点，如左括号。 <br>U_END_PUNCTUATION： 表示结束标点，如右括号。 <br>U_INITIAL_PUNCTUATION： 表示前引号，例如左双引号、左单引号。 <br>U_FINAL_PUNCTUATION： 表示后引号，例如右双引号、右单引号。 <br>U_CONNECTOR_PUNCTUATION： 表示连接符标点。 <br>U_OTHER_PUNCTUATION： 表示其他标点。 <br>U_MATH_SYMBOL： 表示数学符号。 <br>U_CURRENCY_SYMBOL： 表示货币符号。 <br>U_MODIFIER_SYMBOL： 表示修饰符号。 <br>U_OTHER_SYMBOL： 表示其它符号。 <br> 更详细的介绍可以参考Unicode标准。|
 
 **示例：**
   ```ts
@@ -4591,7 +4529,7 @@ getSystemRegion(): string
 
 getSystemLocale(): string
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaledeprecated)代替。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaleinstance20)代替。
 
 获取系统区域ID。
 

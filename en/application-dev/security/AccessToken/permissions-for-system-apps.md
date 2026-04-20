@@ -5713,6 +5713,20 @@ Allows a system application to launch another application to a specified page st
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
+
+Allows an application to obtain and set the car scenario mode.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: cars
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENCRYPT_VOLUME_MANAGER
  	 
 Allows an application to call the API of storage manager for managing volume encryption.
@@ -5741,6 +5755,20 @@ Allows an application to call the API of storage manager for managing optical di
 
 **Since**: 24
 
+## ohos.permission.ASSET_CACHE_MANAGER
+
+Allows an application to deliver, control, and query tasks through the asset cache service management APIs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 Allows an application and a service to access the device-side model deployment management.
@@ -5754,3 +5782,31 @@ Allows an application and a service to access the device-side model deployment m
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+Allows a system application to use the unified management capabilities of the digital certificate service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+Allows an application to enable the outdoor exploration service to provide the altitude subscription capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones
+
+**Since**: 26.0.0

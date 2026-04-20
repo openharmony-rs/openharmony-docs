@@ -10,7 +10,8 @@ The RecentPhotoComponent embedded in the UI of an application allows the applica
 
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component does not support [same-layer rendering](../../../application-dev/web/web-same-layer.md).
 
 ## Modules to Import
 
