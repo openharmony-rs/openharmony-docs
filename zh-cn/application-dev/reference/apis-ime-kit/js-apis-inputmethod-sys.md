@@ -572,7 +572,7 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 
 ArkTS-Dyn: getDefaultInputMethod(userId?: number): InputMethodProperty
 
-ArkTS-Sta: getDefaultInputMethod(userId?: long): InputMethodProperty
+ArkTS-Sta: getDefaultInputMethod(userId?: int): InputMethodProperty
 
 获取指定用户的默认输入法。
 
@@ -590,7 +590,7 @@ ArkTS-Sta: getDefaultInputMethod(userId?: long): InputMethodProperty
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -628,7 +628,7 @@ let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMet
 
 ArkTS-Dyn: getSystemInputMethodConfigAbility(userId?: number): ElementName
 
-ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: long): ElementName
+ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: int): ElementName
 
 获取指定用户的系统输入法设置界面Ability信息。
 
@@ -646,7 +646,7 @@ ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: long): ElementName
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -688,7 +688,7 @@ let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMet
 
 ArkTS-Dyn: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
 
-ArkTS-Sta: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: long): Promise&lt;void&gt;
+ArkTS-Sta: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: int): Promise&lt;void&gt;
 
 切换输入法，使用promise异步回调。
 
@@ -710,7 +710,7 @@ ArkTS-Sta: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, u
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 目标输入法的包名。 |
 | subtypeId | string | 否 | 输入法子类型的id。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -762,7 +762,7 @@ inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbili
 
 ArkTS-Dyn: getCurrentInputMethod(userId?: number): InputMethodProperty
 
-ArkTS-Sta: getCurrentInputMethod(userId?: long): InputMethodProperty
+ArkTS-Sta: getCurrentInputMethod(userId?: int): InputMethodProperty
 
 获取指定用户的当前输入法。
 
@@ -780,7 +780,7 @@ ArkTS-Sta: getCurrentInputMethod(userId?: long): InputMethodProperty
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -818,7 +818,7 @@ let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMet
 
 ArkTS-Dyn: getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 
-ArkTS-Sta: getCurrentInputMethodSubtype(userId?: long): InputMethodSubtype
+ArkTS-Sta: getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
 
 获取指定用户的当前输入法子类型。
 
@@ -836,7 +836,7 @@ ArkTS-Sta: getCurrentInputMethodSubtype(userId?: long): InputMethodSubtype
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -878,7 +878,7 @@ let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSub
 
 ArkTS-Dyn: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
 
-ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: long): Promise&lt;void&gt;
+ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: int): Promise&lt;void&gt;
 
 修改指定用户输入法的启用状态。使用Promise异步回调。
 
@@ -901,7 +901,7 @@ ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledS
 | bundleName | string | 是 | 输入法的包名。 |
 | extensionName | string | 是 | 输入法的扩展名。 |
 | enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 要修改的启用状态。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -954,7 +954,7 @@ inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodE
 
 ArkTS-Dyn: getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
-ArkTS-Sta: getAllInputMethodsSync(userId?: long): Array&lt;InputMethodProperty&gt;
+ArkTS-Sta: getAllInputMethodsSync(userId?: int): Array&lt;InputMethodProperty&gt;
 
 获取指定用户的所有输入法应用列表。同步接口。
 
@@ -972,7 +972,7 @@ ArkTS-Sta: getAllInputMethodsSync(userId?: long): Array&lt;InputMethodProperty&g
 
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -1011,7 +1011,7 @@ let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting
 
 ArkTS-Dyn: getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMethodSubtype&gt;
 
-ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: long): Array&lt;InputMethodSubtype&gt;
+ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: int): Array&lt;InputMethodSubtype&gt;
 
 获取指定用户指定输入法的子类型列表。同步接口。
 
@@ -1030,7 +1030,7 @@ ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: long): Array&lt;I
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 指定输入法的包名。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -1075,7 +1075,7 @@ let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubty
 
 ArkTS-Dyn: getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
 
-ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: long): Array&lt;InputMethodProperty&gt;
+ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: int): Array&lt;InputMethodProperty&gt;
 
 获取指定用户已激活/未激活的输入法应用列表。同步接口。
 
@@ -1100,7 +1100,7 @@ ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: long): Array&lt;InputMe
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
 | enable | boolean | 是   |- 是否激活输入法列表，true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
-| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -1179,7 +1179,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback26)  | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback)  | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
 
 **错误码：**
 
@@ -1236,7 +1236,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback26)  | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。<br>参数不填写时，取消订阅所有的回调事件。 |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback)  | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。<br>参数不填写时，取消订阅所有的回调事件。 |
 
 **错误码：**
 
