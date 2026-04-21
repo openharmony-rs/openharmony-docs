@@ -77,6 +77,8 @@ getInfo(options?: GetDeviceOptions): void
 
 **示例：**
 
+ArkTS示例：
+
 ```typescript
 export default class Page {
   getInfo() {
@@ -97,5 +99,83 @@ export default class Page {
       console.error('Device information API is not supported');
     }
   }
+}
+```
+
+JS示例：
+
+```xml
+<div class="container">
+    <text class="title">Device Information</text>
+    <input type="button" value="Get Device Brand" class="button" onclick="getDeviceInfo"></input>
+    <text class="info">{{brandInfo}}</text>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 50px;
+}
+
+.button {
+    font-size: 30px;
+    text-align: center;
+    width: 240px;
+    height: 80px;
+    margin: 20px;
+}
+
+.info {
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    margin-top: 50px;
+    color: #007dff;
+}
+```
+
+```js
+//xxx.js
+import device from '@system.device';
+
+export default {
+    data: {
+        brandInfo: 'Click the button to get device brand'
+    },
+    
+    getDeviceInfo() {
+        try {
+            device.getInfo({
+                success: (data) => {
+                    console.info('Device information obtained successfully. Device brand:' + data.brand);
+                    this.brandInfo = 'Device brand: ' + data.brand;
+                },
+                fail: (data, code) => {
+                    console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
+                    this.brandInfo = 'Failed to obtain, error code: ' + code;
+                },
+            });
+        } catch (error) {
+            console.error('Device information API is not supported');
+            this.brandInfo = 'Current device does not support this API';
+        }
+    }
 }
 ```
