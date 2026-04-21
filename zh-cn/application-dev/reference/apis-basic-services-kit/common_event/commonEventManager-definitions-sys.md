@@ -415,9 +415,9 @@
 
 ### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
 
-表示vpn连接状态的公共事件。
+表示VPN连接状态的公共事件。
 
-当vpn连接或者断开时会发送此公共事件。
+当VPN连接或者断开时会发送此公共事件。
 
 **系统接口：** 此接口为系统接口。
 
