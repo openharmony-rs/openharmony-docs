@@ -1294,11 +1294,11 @@ struct Drawer {
   private currentOffset: number = 0;
   // 自定义抽屉高度在整个屏幕的占比。
   private drawerRatio: number = 0.8;
-  // 自定义初始化是隐藏抽屉的占比。
+  // 自定义初始化时隐藏抽屉的占比。
   private hideRatio: number = 0.8;
   // 初始化为收缩态。
   private drawerState: DrawerState = DrawerState.Collapsing;
-  // 手势响应阈值，判断手势是否是向下。
+  // 手势响应阈值，判断手势是否为向下。
   private pullingDownThreshold: number = -5;
 
   aboutToAppear(): void {
