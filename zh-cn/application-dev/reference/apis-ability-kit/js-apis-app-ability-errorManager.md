@@ -914,7 +914,7 @@ type ErrorHandler = (errObject: Error) => void
 
 type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, detailInfo?: Record<string, number>) => void;
 
-定义应用资源使用情况的观察者回调函数，作为[errorManager.setDefaultResourceUsageObserver](#errormanagersetdefaultresourceusageObserver24)的入参，用于监听各类资源占用变化，并支持应用执行自定义资源处理逻辑。
+定义应用资源使用情况的观察者回调函数，作为[errorManager.setDefaultResourceUsageObserver](#errormanagersetdefaultresourceusageobserver24)的入参，用于监听各类资源占用变化，并支持应用执行自定义资源处理逻辑。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
