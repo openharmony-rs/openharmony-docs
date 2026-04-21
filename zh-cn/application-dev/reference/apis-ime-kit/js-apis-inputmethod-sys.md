@@ -612,7 +612,7 @@ let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMet
 
 getSystemInputMethodConfigAbility(userId?: number): ElementName
 
-获取指定用户的系统输入法设置界面Ability信息。
+获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。
 
 **起始版本：** 26.0.0
 
@@ -675,7 +675,7 @@ switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: num
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 目标输入法的包名。 |
-| subtypeId | string | 否 | 输入法子类型的id。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
+| subtypeId | string | 否 | 输入法子类型的ID。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
 | userId | number | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
@@ -958,13 +958,13 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 
 获取指定用户已激活/未激活的输入法应用列表。同步接口。
 
-**起始版本：** 26.0.0
-
 > **说明：**
 >
 > 已激活输入法为使能的输入法应用。默认输入法默认使能，其他输入法可被设置为使能或非使能。
 >
 > 已激活输入法列表包括默认输入法和已被设置为使能的输入法应用，未激活输入法列表包括除使能输入法以外的其他已安装的输入法。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1061,8 +1061,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 
 inputMethod.getSetting()
   .onImeChangeWithUserId((inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => {
-    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name} ` +
-      `, inputMethodSubtype.id: ${inputMethodSubtype.id}, userId: ${userId}`);
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name}, inputMethodSubtype.id: ${inputMethodSubtype.id}, userId: ${userId}`);
   });
 ```
 
@@ -1116,4 +1115,4 @@ inputMethod.getSetting().offImeChangeWithUserId();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| userId | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。<br>**起始版本：**26.0.0|
+| userId | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。|
