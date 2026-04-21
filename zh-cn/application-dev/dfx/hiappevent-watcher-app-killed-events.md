@@ -57,6 +57,7 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | ResourceLeak(KernelZoneLeak)  | 页表内存泄漏。                  |
 | IllegalAudioRendererBySuspend | 应用的音频播放未申请合理的后台任务，其退至后台后仍有大量音频播放。       |
 | PowerSaveClean                | 整机切换到省电模式或应急模式。                 |
+| VrsKill                       | 三方应用检测到恶意进程后，调用PC端病毒检测处置服务接口终止进程。                |
 | RssThresholdKiller            | 应用的RSS（Resident Size Set）占用超标。  |
 | OomKiller                     | 整机低内存，触发内核管控，按一定策略终止应用。                  |
 | CpaKiller                     | DRM（Digital Right Management）业务申请内存但是内存不足时，按一定策略终止进程以回收内存。        |
@@ -80,12 +81,12 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | IllegalAudioCapturerBySuspend | 应用录音未申请合理的后台任务，其退至到后台后仍进行录音。        |
 | IOHighload                    | IO高负载。                          |
 | AppFreeze                     | 应用冻屏无响应。                        |
-| MALICIOUS_CONTINUOUSTASK_ACTIVE | 恶意连续任务活跃。                        |
+| MaliciousContinuousTaskActive | 恶意连续任务活跃。                        |
 | RsDataOverflow                | RS数据溢出。                          |
 | HighTemperature               | 温度超限。                           |
 | TransientTaskTimeout          | 短时任务超时6s并且处于后台。                 |
 | TooManyReadyThreads           | 就绪线程过多。                          |
-| REASON_RESOURCE_CONTROL       | 资源控制原因。                          |
+| JsHeapSleepCleanKill          | sleep状态（夜间充电）进行js heapsize检测，超限后查杀                 |
 | HardwareDecodingResourcesLimit | 硬件解码资源限制。                        |
 | AppRecoveryNotifyAppOverLimit | 应用恢复通知应用超限。                      |
 | GpuError                      | GPU错误。                           |
@@ -96,3 +97,5 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | DmaKiller                     | 整机低内存，单进程Dma占用达到阈值。                      |
 | ThreadKiller                  | 单进程线程超限。                           |
 | UninstallStorage              | 卸载存储卡。                          |
+
+<small>注意事项：系统侧会持续完善上方表格，如果开发者需要使用表中reason字符串进行逻辑判断，建议做成云侧可配置下发。</small>
