@@ -86,7 +86,7 @@ extension配置格式：
   ]
 }
 ```
-extension配置存放在[dataShare配置项](../database/share-config.md#modulejson5-配置)，uri为固定格式：datashareproxy://[包名]/browserNativeMessagingHosts。
+extension配置通过[dataShare配置项](../database/share-config.md#modulejson5-配置)向浏览器应用暴露，具体的配置方式可参考下方[实现一个WebNativeMessagingExtensionAbility（应用开发者）](#实现一个webnativemessagingextensionability应用开发者)中步骤6。其中，uri为固定格式：datashareproxy://[包名]/browserNativeMessagingHosts，value字段填写上述extension配置的JSON字符串，allowList字段填写允许访问该配置的浏览器应用的appIdentifier。
 
 ### WebNativeMessagingExtensionAbility生命周期管理
 - [onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative)：当浏览器扩展调用一次runtime.connectNative时触发，如果WebNativeMessagingExtensionAbility尚未运行，调用runtime.connectNative会拉起WebNativeMessagingExtensionAbility，并触发该回调。
