@@ -190,24 +190,6 @@ Unresolved conflicts with current configurations.
 
 检测当前提交的配置是否符合设备所支持的配置。
 
-## 7400113 不支持的多相机组合
-
-**错误信息**
-
-Unsupported multi-camera combination.
-
-**错误描述**
-
-不支持的多相机组合。
-
-**可能原因**
-
-同时打开了多个相机设备，底层能力不支持当前组合的多设备同时打开。
-
-**处理步骤**
-
-建议使用[getCameraConcurrentInfos](arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口检查并发信息。
-
 ## 7400201 相机服务异常
 
 **错误信息**
