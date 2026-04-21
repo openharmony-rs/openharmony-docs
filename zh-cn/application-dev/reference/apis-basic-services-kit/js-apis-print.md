@@ -31,7 +31,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onBlock](#printtaskonblock22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onBlock](#printtaskonblock23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -128,7 +128,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onSucceed](#printtaskonsucceed22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onSucceed](#printtaskonsucceed23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -225,7 +225,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onFail](#printtaskonfail22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onFail](#printtaskonfail23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -322,7 +322,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onCancel](#printtaskoncancel22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.onCancel](#printtaskoncancel23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -419,7 +419,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offBlock](#printtaskoffblock22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offBlock](#printtaskoffblock23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -516,7 +516,7 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offSucceed](#printtaskoffsucceed22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offSucceed](#printtaskoffsucceed23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -613,7 +613,7 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offFail](#printtaskofffail22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offFail](#printtaskofffail23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -710,7 +710,7 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offCancel](#printtaskoffcancel22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[PrintTask.offCancel](#printtaskoffcancel23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2018,7 +2018,7 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[print.onPrinterChange](#printonprinterchange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[print.onPrinterChange](#printonprinterchange23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -2062,7 +2062,7 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[print.offPrinterChange](#printoffprinterchange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[print.offPrinterChange](#printoffprinterchange23)。
 
 **需要权限：** ohos.permission.PRINT
 
