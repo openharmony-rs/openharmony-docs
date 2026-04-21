@@ -1369,7 +1369,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待解密文件的FD。取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| dlpFd | number | 是 | 待解密文件的fd。取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 
 **返回值：**
 
