@@ -361,7 +361,9 @@ enableInputMethodSafely();
 
 ### getCursorInfo
 
-getCursorInfo(userId?: long): CursorInfo
+ArkTS-Dyn: getCursorInfo(userId?: number): CursorInfo
+
+ArkTS-Sta: getCursorInfo(userId?: long): CursorInfo
 
 获取指定用户的光标信息。当编辑框未给输入法服务通知光标信息时，返回所有属性值都为0。
 
@@ -379,7 +381,7 @@ getCursorInfo(userId?: long): CursorInfo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | userId |  long | 否 | 指定的用户ID。<br>如果调用者不是用户0应用，该值默认为调用者的用户ID。<br> 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。|
+  | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 指定的用户ID。<br>如果调用者不是用户0应用，该值默认为调用者的用户ID。<br> 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。|
 
 **返回值：**
 
@@ -402,15 +404,33 @@ getCursorInfo(userId?: long): CursorInfo
 
 **示例：**
 
+ArkTS-Dyn示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let cursorInfo = inputMethod.getSetting().getCursorInfo();
+  console.info('get cursorInfo success, left: ' + cursorInfo.left + ', top: ' + cursorInfo.top + 
+    ', width: ' + cursorInfo.width + ', height: ' + cursorInfo.height + ', displayId: ' + cursorInfo.displayId);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error('Failed to get cursorInfo. Code: ' + error.code + ', message: ' + error.message);
+}
+```
+
+ArkTS-Sta示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo();
-  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
+  console.info('get cursorInfo success, left: ' + cursorInfo.left + ', top: ' + cursorInfo.top + 
+    ', width: ' + cursorInfo.width + ', height: ' + cursorInfo.height + ', displayId: ' + cursorInfo.displayId);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
+  console.error('Failed to get cursorInfo. Code: ' + error.code + ', message: ' + error.message);
 }
 ```
 
