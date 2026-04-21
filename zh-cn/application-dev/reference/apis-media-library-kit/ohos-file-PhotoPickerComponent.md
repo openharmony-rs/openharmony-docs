@@ -1104,7 +1104,7 @@ struct PickerDemo {
 }
 ```
 
-## 示例二（抽屉组件）
+## 示例二（使用PhotoPickerComponent实现抽屉组件效果）
 
 从API version 23开始，可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、[photoPickerComponent](#photopickercomponent)的onScrollStopAtStart和onScrollStopAtEnd回调来实现抽屉效果。
 
