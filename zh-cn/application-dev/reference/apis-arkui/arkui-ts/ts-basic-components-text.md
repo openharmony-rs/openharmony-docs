@@ -177,8 +177,7 @@ ArkTS-Sta: baselineOffset(value: double | string | undefined)
 
 ### bindSelectionMenu<sup>11+</sup>
 
-ArkTS-Dyn: bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType,
-options?: SelectionMenuOptions)
+ArkTS-Dyn: bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType, options?: SelectionMenuOptions)
 
 ArkTS-Sta: bindSelectionMenu(spanType: TextSpanType | undefined, content: CustomBuilder | undefined, responseType: TextResponseType | undefined, options?: SelectionMenuOptions | undefined)
 
@@ -1159,7 +1158,7 @@ ArkTS-Sta: minLines(minLines: int | undefined)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| minLines  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number><br/>ArkTS-Sta: int \| undefined | 是   | 文本最小行数。<br>取值范围：[0, INT32_MAX]<br/>设置的值小于0时按0处理。<br/>值为undefined时，最小行数无限制。|
+| minLines  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number><br/>ArkTS-Sta: int \| undefined | 是   | 文本最小行数。<br>取值范围：[0, INT32_MAX]<br/>设置的值小于0时按0处理。<br/>值为undefined时，最小行数无限制。|
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -1271,7 +1270,7 @@ ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩；undefined表示不开启。|
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩；undefined表示不开启。|
 
 ### privacySensitive<sup>12+</sup>
 

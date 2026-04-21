@@ -23,11 +23,24 @@
   
   Navigation可以通过NavPathStack提供的[disableAnimation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#disableanimation11)接口，关闭或打开当前Navigation的所有转场动画。
 
+  ArkTS-Dyn示例：
+
   <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
   
   ``` TypeScript
   pageStack: NavPathStack = new NavPathStack();
   
+  aboutToAppear(): void {
+    this.pageStack.disableAnimation(true);
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { NavPathStack } from '@kit.ArkUI';
+
+  pageStack: NavPathStack = new NavPathStack();
   aboutToAppear(): void {
     this.pageStack.disableAnimation(true);
   }
@@ -62,6 +75,8 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 1. 为需要实现共享元素转场的组件添加geometryTransition属性，id参数必须在两个NavDestination之间保持一致。
 
+   ArkTS-Dyn示例：
+   
    <!-- @[GeometryTransitionFromPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
    
    ``` TypeScript
@@ -94,8 +109,39 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    .title('ToPage')
    ```
 
+   ArkTS-Sta示例：
+
+    ```ts
+    // 起始页配置共享元素id
+    import { NavDestination, Column, $r, Image } from '@kit.ArkUI';
+    NavDestination() {
+      Column() {
+        // ...
+        Image($r('app.media.startIcon'))
+        .geometryTransition('sharedId')
+        .width(100)
+        .height(100)
+      }
+    }
+    .title('FromPage')
+
+    // 目的页配置共享元素id
+    NavDestination() {
+      Column() {
+        // ...
+        Image($r('app.media.startIcon'))
+        .geometryTransition('sharedId')
+        .width(200)
+        .height(200)
+      }
+    }
+    .title('ToPage')
+    ```
+
 2. 将页面路由的操作，放到[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)动画闭包中，配置对应的动画参数以及关闭系统默认的转场。
 
+   ArkTS-Dyn示例：
+   
    <!-- @[GeometryTransitionFromPageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
    
    ``` TypeScript
@@ -116,3 +162,23 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
      }
    }.title('FromPage')
    ```
+
+   ArkTS-Sta示例：
+    
+    ```ts
+    import { NavDestination, Column, Button, ClickEvent } from '@kit.ArkUI';
+    NavDestination() {
+      Column() {
+        Button('跳转目的页')
+        .width('80%')
+        .height(40)
+        .margin(20)
+        .onClick((e: ClickEvent) => {
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.pageStack.pushPath({ name: 'ToPage' }, false)
+            });
+        })
+      }
+    }
+    .title('FromPage')
+    ```

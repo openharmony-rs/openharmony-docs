@@ -99,7 +99,7 @@
 
 6. 定义一个回调函数用来接收传感器数据。
 
-   <!-- @[sensor_capi_define_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_define_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) -->
    
    ``` C++
    // 定义回调函数
@@ -113,21 +113,21 @@
        // 获取传感器数据的时间戳。
        int32_t ret = OH_SensorEvent_GetTimestamp(event, &timestamp);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get timestamp is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get timestamp failed");
            return;
        }
        Sensor_Type sensorType;
        // 获取传感器类型。
        ret = OH_SensorEvent_GetType(event, &sensorType);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type failed");
            return;
        }
        Sensor_Accuracy accuracy = SENSOR_ACCURACY_UNRELIABLE;
        // 获取传感器数据的精度。
        ret = OH_SensorEvent_GetAccuracy(event, &accuracy);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor accuracy is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor accuracy failed");
            return;
        }
        float *data = nullptr;
@@ -135,7 +135,7 @@
        // 获取传感器数据。
        ret = OH_SensorEvent_GetData(event, &data, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor data is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor data failed");
            return;
        }
        if (data == nullptr) {
@@ -152,7 +152,7 @@
 
 7. 获取设备上所有传感器的信息。  
 
-   <!-- @[sensor_capi_get_sensors_info_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) -->
+   <!-- @[sensor_capi_get_sensors_info_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
    
    ``` C++
    static int32_t GetSensorInfo(Sensor_Info *sensorInfoTemp)
@@ -162,7 +162,7 @@
        // 获取传感器名称。
        int32_t ret = OH_SensorInfo_GetName(sensorInfoTemp, sensorName, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor name is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor name failed");
            return ret;
        }
        char vendorName[SENSOR_NAME_LENGTH_MAX] = {};
@@ -170,35 +170,35 @@
        // 获取传感器的厂商名称。
        ret = OH_SensorInfo_GetVendorName(sensorInfoTemp, vendorName, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor vendor name is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor vendor name failed");
            return ret;
        }
        Sensor_Type sensorType;
        // 获取传感器类型。
        ret = OH_SensorInfo_GetType(sensorInfoTemp, &sensorType);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type failed");
            return ret;
        }
        float resolution = INVALID_RESOLUTION;
        // 获取传感器分辨率。
        ret = OH_SensorInfo_GetResolution(sensorInfoTemp, &resolution);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor resolution is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor resolution failed");
            return ret;
        }
        int64_t minSamplePeriod = INVALID_VALUE;
        // 获取传感器的最小数据上报间隔。
        ret = OH_SensorInfo_GetMinSamplingInterval(sensorInfoTemp, &minSamplePeriod);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor min sampling interval is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor min sampling interval failed");
            return ret;
        }
        int64_t maxSamplePeriod = INVALID_VALUE;
        // 获取传感器的最大数据上报间隔时间。
        ret = OH_SensorInfo_GetMaxSamplingInterval(sensorInfoTemp, &maxSamplePeriod);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor max sampling interval is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor max sampling interval failed");
        }
        return ret;
    }
@@ -209,19 +209,19 @@
        // 获取设备上所有传感器的个数。
        int32_t ret = OH_Sensor_GetInfos(nullptr, &count);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor count is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor count failed");
            return nullptr;
        }
        // 用给定的数字创建一个实例数组。
        Sensor_Info **sensors = OH_Sensor_CreateInfos(count);
        if (sensors == nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create sensorInfo array is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create sensorInfo array failed");
            return nullptr;
        }
        // 获取设备上所有传感器的信息。
        ret = OH_Sensor_GetInfos(sensors, &count);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get all sensor info is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get all sensor info failed");
            return nullptr;
        }
        for (uint32_t i = 0; i < count; ++i) {
@@ -236,7 +236,7 @@
        // 销毁实例数组并回收内存。
        ret = OH_Sensor_DestroyInfos(sensors, count);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "destroy sensor info is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "destroy sensor info failed");
            return nullptr;
        }
        return nullptr;
