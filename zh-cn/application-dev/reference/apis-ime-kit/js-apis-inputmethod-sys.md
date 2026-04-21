@@ -650,7 +650,7 @@ ArkTS-Dyn: getSystemInputMethodConfigAbility(userId?: number): ElementName
 
 ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: int): ElementName
 
-获取指定用户的系统输入法设置界面Ability信息。
+获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -729,7 +729,7 @@ ArkTS-Sta: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, u
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 目标输入法的包名。 |
-| subtypeId | string | 否 | 输入法子类型的id。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
+| subtypeId | string | 否 | 输入法子类型的ID。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
 | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
@@ -1218,8 +1218,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 
 inputMethod.getSetting()
   .onImeChangeWithUserId((inputMethodProperty, inputMethodSubtype, userId) => {
-    console.info('Succeeded in subscribing imeChange: inputMethodProperty.name: ' + 
-      inputMethodProperty.name + ', inputMethodSubtype.id: ' + inputMethodSubtype.id + ', userId: ' + userId);
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name}, inputMethodSubtype.id: ${inputMethodSubtype.id}, userId: ${userId}`);
   });
 ```
 
@@ -1231,8 +1230,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 inputMethod.getSetting()
   .onImeChangeWithUserId((inputMethodProperty: inputMethod.InputMethodProperty, 
     inputMethodSubtype: InputMethodSubtype, userId: number) => {
-    console.info('Succeeded in subscribing imeChange: inputMethodProperty.name: ' + 
-      inputMethodProperty.name + ', inputMethodSubtype.id: ' + inputMethodSubtype.id + ', userId: ' + userId);
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name}, inputMethodSubtype.id: ${inputMethodSubtype.id}, userId: ${userId}`);
   });
 ```
 
@@ -1290,4 +1288,4 @@ inputMethod.getSetting().offImeChangeWithUserId();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| userId | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0|
+| userId | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。|
