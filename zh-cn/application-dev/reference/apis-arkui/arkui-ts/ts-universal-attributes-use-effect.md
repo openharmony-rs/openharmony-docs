@@ -19,6 +19,12 @@ useEffect(value: boolean): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useEffect23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -33,9 +39,7 @@ useEffect(value: boolean): T
 
 ## useEffect<sup>14+</sup>
 
-ArkTS-Dyn: useEffect(useEffect: boolean, effectType: EffectType): T
-
-ArkTS-Sta: useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): this
+useEffect(useEffect: boolean, effectType: EffectType): T
 
 用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。
 
@@ -43,22 +47,24 @@ ArkTS-Sta: useEffect(useEffect: boolean | undefined, effectType: EffectType | un
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useEffect23)。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| useEffect  | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false |
-| effectType | ArkTS-Dyn: [EffectType](ts-universal-attributes-use-effect.md#effecttype14) <br/> ArkTS-Sta: [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT |
+| useEffect  | boolean  | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false |
+| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## useEffect<sup>18+</sup>
 
@@ -69,6 +75,12 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useEffect23)。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -82,6 +94,33 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
+
+## useEffect<sup>23+</sup>
+
+useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): this
+
+用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useEffect)，[useEffect<sup>14+</sup>](#useEffect14)和[useEffect<sup>18+</sup>](#useEffect18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                                         | 必填 | 说明                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| useEffect  | boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false |
+| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
 
 ## EffectType<sup>14+</sup>
 

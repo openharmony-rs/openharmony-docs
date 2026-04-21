@@ -45,9 +45,11 @@ constructor(options?: ShapeSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | 否 | 形状的大小。 |
+**参数：** 
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| options | [ShapeSize](#shapesize) | 否 | 是  | 形状的大小。 |
 
 ## EllipseShape
 
@@ -81,9 +83,11 @@ constructor(options?: ShapeSize)
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [ShapeSize](#shapesize) | 否 | 形状的大小。 |
+**参数：** 
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| options | [ShapeSize](#shapesize) | 否 | 是  | 形状的大小。 |
 
 ## PathShape
 
@@ -117,9 +121,11 @@ constructor(options?: PathShapeOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| options | [PathShapeOptions](#pathshapeoptions) | 否 | 路径参数。 |
+**参数：** 
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| options | [PathShapeOptions](#pathshapeoptions) | 否 | 是  | 路径参数。 |
 
 ### commands
 
@@ -294,8 +300,8 @@ ArkTS-Sta: radius(radius: double | string | Array<double &nbsp;\|&nbsp; string>)
 
 | 名称         | 类型                                               | 必填                                             | 说明                                         |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| width | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 形状的宽度。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |<br/>单位：vp |
-| height | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 形状的高度。 <br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |<br/>单位：vp|
+| width | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 形状的宽度。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |<br/>单位：vp |
+| height | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 形状的高度。 <br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |<br/>单位：vp|
 
 ## PathShapeOptions
 
@@ -311,9 +317,9 @@ PathShape 的构造函数参数。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称         | 类型                                               | 必填                                             | 说明                                         |
-| ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| commands | string | 否 | 绘制路径的指令。更多说明请参考commands支持的[绘制命令](./arkui-ts/ts-drawing-components-path.md#commands)。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| commands | string | 否 | 是 | 绘制路径的指令。更多说明请参考commands支持的[绘制命令](./arkui-ts/ts-drawing-components-path.md#commands)。 |
 
 ## RectShapeOptions
 
@@ -331,9 +337,9 @@ RectShape 的构造函数参数。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称         | 类型                                               | 必填                                             | 说明                                         |
-| ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| radius | ArkTS-Dyn: number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string><br/>ArkTS-Sta: double &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<double &nbsp;\|&nbsp; string> | 否 | 矩形形状的圆角半径。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| radius | ArkTS-Dyn: number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string><br/>ArkTS-Sta: double &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<double &nbsp;\|&nbsp; string> | 否 | 是 | 矩形形状的圆角半径。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |
 
 ## RoundRectShapeOptions
 
@@ -351,10 +357,10 @@ RectShape 带有半径的构造函数参数。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称         | 类型                                               | 必填                                             | 说明                                         |
-| ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| radiusWidth | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 矩形形状圆角半径的宽度。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |
-| radiusHeight | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 矩形形状圆角半径的高度。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| radiusWidth | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 矩形形状圆角半径的宽度。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |
+| radiusHeight | ArkTS-Dyn: number &nbsp;\|&nbsp; string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 否 | 是  | 矩形形状圆角半径的高度。<br/> 类型为number或double时取值范围是[0, +∞)，string时是length。 |
 
 ## BaseShape
 

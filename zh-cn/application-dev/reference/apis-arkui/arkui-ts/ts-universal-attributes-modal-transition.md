@@ -44,7 +44,7 @@ ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, bu
 
 ## bindContentCover
 
-ArkTS-Dyn: bindContentCover(isShow: Optional\<boolean\>, builder: CustomBuilder, options?: ContentCoverOptions)
+ArkTS-Dyn: bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T
 
 ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: ContentCoverOptions)
 
@@ -72,12 +72,12 @@ ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, bu
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型                                       | 必填   | 描述            |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| modalTransition | [ModalTransition](ts-types.md#modaltransition10) | 否    | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23  |
-| onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12类型说明)&gt; | 否    | 全屏模态页面交互式关闭回调函数。<br/>**说明：**<br />当用户执行back事件关闭交互操作时，如果注册该回调函数，则不会立刻关闭。在回调函数中可以通过reason得到阻拦关闭页面的操作类型，从而根据原因选择是否关闭全屏模态页面。在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23|
-| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否    | 全屏模态页面的自定义转场方式。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23|
-| enableSafeArea<sup>20+</sup> | boolean  | 否   | 全屏模态是否适配安全区域，true表示全屏模态适配安全区域，将内容限制在安全区内，避让导航条和状态栏，false表示不做处理，和之前的样式保持一致。默认值为false。  <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | ---------- | ------ | ------ | --------- |
+| modalTransition | [ModalTransition](ts-types.md#modaltransition10) | 否 | 是 | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23  |
+| onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12类型说明)&gt; | 否 | 是 | 全屏模态页面交互式关闭回调函数。<br/>**说明：**<br />当用户执行back事件关闭交互操作时，如果注册该回调函数，则不会立刻关闭。在回调函数中可以通过reason得到阻拦关闭页面的操作类型，从而根据原因选择是否关闭全屏模态页面。在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23|
+| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否 | 是 | 全屏模态页面的自定义转场方式。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23|
+| enableSafeArea<sup>20+</sup> | boolean  | 否 | 是| 全屏模态是否适配安全区域，true表示全屏模态适配安全区域，将内容限制在安全区内，避让导航条和状态栏，false表示不做处理，和之前的样式保持一致。默认值为false。  <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
 
 ## DismissContentCoverAction<sup>12+</sup>类型说明
 
@@ -89,10 +89,10 @@ ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, bu
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称              | 类型                                       | 必填   | 描述            |
-| --------------- | ---------------------------------------- | ---- | ------------- |
-| dismiss | function | 是    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。 |
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 是    | 返回本次拦截全屏模态页面退出的事件原因。  |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | ---------- | ------ | ------ | --------- |
+| dismiss | function | 否 | 否 | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。 |
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否 | 返回本次拦截全屏模态页面退出的事件原因。  |
 
 ## 示例
 

@@ -85,6 +85,22 @@ ArkTS-Sta: overlay\<T extends Object>(value: string | CustomBuilder | ComponentC
 | x<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 横向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23       |
 | y<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 纵向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23       |
 
+## ComponentContent<sup>12+</sup>
+
+type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+
+组件内容的实体封装。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+| 类型|说明 |
+| ----- | ----------------- |
+| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent)\<T\> | 组件内容的实体封装。|
+
 ## 示例
 
 ### 示例1（通过string设置浮层）

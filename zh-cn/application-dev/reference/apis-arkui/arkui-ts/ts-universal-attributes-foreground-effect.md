@@ -37,15 +37,20 @@ ArkTS-Sta: foregroundEffect(options: ForegroundEffectOptions | undefined): this
 |  ArkTS-Dyn: T<br/>ArkTS-Sta: this  | 返回当前组件。 |
 
 ## ForegroundEffectOptions<sup>12+</sup>
+
 前景效果参数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        |   类型         |   必填 |  说明                        |
-| ----         |  ----         |   ---- | --------------------------  |
-| radius       | number        |   是   |   模糊半径，取值范围：[0, +∞)，默认为0。<br/> 仅在组件范围内生效，与其他接口连用时超出组件范围的效果无法生效。     |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| radius       | number        |  否 | 否  |   模糊半径，取值范围：[0, +∞)，默认为0。<br/> 仅在组件范围内生效，与其他接口连用时超出组件范围的效果无法生效。     |
 
 ## 示例
 
