@@ -1220,7 +1220,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用查询其他应用的流量数据。
 
-<!--RP80--><!--RP80End-->
+<!--RP81--><!--RP81End-->
 
 **权限级别**：system_basic
 
