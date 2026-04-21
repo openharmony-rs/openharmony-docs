@@ -1,4 +1,4 @@
-# 编码支持前处理开发指南
+# 编码支持前处理
 
 从API version 26.0.0开始，支持编码前处理功能。
 
@@ -95,10 +95,7 @@ if (capability == nullptr) {
 }
 
 OH_AVCodec *encoder = nullptr;
-OH_AVErrCode ret = OH_VideoEncoder_CreatePrimaryWithPreproc(
-    OH_AVCODEC_MIMETYPE_VIDEO_AVC,
-    &encoder        // 输出编码器句柄，不可为 NULL
-);
+OH_AVErrCode ret = OH_VideoEncoder_CreatePrimaryWithPreproc(OH_AVCODEC_MIMETYPE_VIDEO_AVC, &encoder);
 if (ret != AV_ERR_OK || encoder == nullptr) {
     // 异常处理
     return -1;
