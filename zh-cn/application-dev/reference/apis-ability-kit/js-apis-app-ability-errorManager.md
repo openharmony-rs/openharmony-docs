@@ -781,7 +781,8 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
 | 16000205      | The API is not called in the main thread. |
 
 **示例**：
-    
+
+ArkTS-Dyn示例: 
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
@@ -796,6 +797,21 @@ const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType,
     // 建议增加判空操作，如果为空采用同步退出方式
     const processManager = new process.ProcessManager();
     processManager.exit(0);
+  }
+};
+oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver);
+```
+ArkTS-Sta示例:
+```ts
+let oldObserver: errorManager.ResourceUsageObserver;
+const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType: errorManager.ResourceType,
+  resourceSize: long, detailInfo?: Record<string, long>) => {
+  // 自定义的resourceUsageObserver实现逻辑
+  console.info('[Observer] Resource usage observer.');
+  if (oldObserver) {
+    oldObserver(resourceType, resourceSize, detailInfo);
+  } else {
+    console.error('[Observer] oldObserver is null')
   }
 };
 oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver);
