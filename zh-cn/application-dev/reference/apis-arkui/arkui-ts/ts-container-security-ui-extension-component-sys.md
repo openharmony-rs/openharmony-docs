@@ -48,7 +48,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 26
+**起始版本：** 26
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
