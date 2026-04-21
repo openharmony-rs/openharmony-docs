@@ -1,1274 +1,705 @@
-# @ohos.distributedDeviceManager (设备管理)(系统接口)
+# @ohos.distributedsched.abilityConnectionManager (应用多端协同管理)(系统接口)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
-本模块提供分布式设备管理能力。
-
-应用可调用接口实现如下功能：
-
-- 注册和解除注册设备上下线变化监听。
-- 发现周边不可信设备。
-- 认证和取消认证设备。
-- 查询可信设备列表。
-- 查询本地设备信息，包括设备名称，设备类型和设备标识等。
+abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输，包括字符串、[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流、图片、传输流。
 
 > **说明：**
 >
-> - 本模块同时支持 ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.distributedDeviceManager (设备管理)](js-apis-distributedDeviceManager.md)。
+> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块为系统接口。
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
-```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+```js
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 ```
 
-## ReplyResult<sup>23+</sup>
+## abilityConnectionManager.on('collaborateEvent')
 
-设备认证用户界面状态改变通知信息。
+on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| param | string | 是 | 认证用户界面状态改变信息。 |
-
-## StrategyForHeartbeat<sup>15+</sup>
-
-表示心跳广播策略。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称         | 值  | 说明              |
-| ----------- | ---- | --------------- |
-| TEMP_STOP_HEARTBEAT      | 100    | 临时停止心跳广播，超时后自动恢复。             |
-| START_HEARTBEAT          | 101    | 开始心跳广播。                               |
-
-## DeviceProfileInfoFilterOptions<sup>15+</sup>
-
-设备信息过滤器选项。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称         | 类型  | 只读 | 可选             |  说明    |
-| ----------- | ---- | -- | --- |--------------- | 
-| isCloud      | boolean    |  否 | 否           | 表示是否需要实时从云端获取设备列表。<br /> - false：表示从设备获取。<br /> - true：表示从云端获取。       |
-| deviceIdList  | Array&lt;string&gt;  | 否 | 是    | 表示获取指定deviceId的设备信息，deviceId一般为设备的UDID，如设备无UDID，则取其MAC或SN作为deviceId。默认为空。       |
-
-
-## ServiceProfileInfo<sup>15+</sup>
-
-服务配置信息。根据云端返回的数据填充。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称           | 类型  | 只读| 可选              |  说明    |
-| -------------- | ---- | --------| ------- | --------|
-| deviceId       | string  | 否 | 否   |  设备ID。          |
-| serviceId       | string  | 否 |否   | 服务ID。           |
-| serviceType     | string   | 否 | 否   | 服务类型。           |
-| data       | string  | 否 | 是   |  服务数据。字符长度不超过1000个字符。默认为空。          |
-
-## DeviceProfileInfo<sup>15+</sup>
-
-设备信息。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称           | 类型  | 只读   |可选              |  说明    |
-| -------------- | ---- | ---| --------------- | --------|
-|  deviceId      | string  |  否    | 否   |  设备ID。          |
-|  deviceSn      | string  |  否    | 否   |  设备序列号。      |
-|  mac           | string  |  否    | 否   |  MAC地址。         |
-|  model         | string  |  否    | 否   |  设备型号。         |
-|  deviceType    | string  |  否    | 否   |  设备类型。         |
-|  manufacturer  | string  |  否    | 否   |  制造商。           |
-|  deviceName    | string  |  否    | 否   |  设备名称。         |
-|  productId     | string  |  否    | 否   |  设备所属产品ID。    |
-|  subProductId  | string  |  否    | 是   |  设备所属产品子ID。默认为空。         |
-|  sdkVersion    | string  |  否    | 否   |  SDK版本。          |
-|  bleMac        | string  |  否    | 否   |  蓝牙BLE的MAC地址。  |
-|  brMac         | string  |  否    | 否   |  蓝牙BR的MAC地址。  |
-|  sleMac        | string  |  否    | 否   |  Starflash的MAC地址。 |
-|  firmwareVersion | string |  否   | 否  |  固件版本。          |
-|  hardwareVersion | string |  否   | 否  |  硬件版本。          |
-|  softwareVersion | string |  否  | 否  |  软件版本。          |
-|  protocolType    | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  协议类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
-|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设备类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
-|  wiseDeviceId    | string |  否   | 否  |  已注册设备标识。        |
-|  wiseUserId      | string |  否   | 否  |  已注册用户标识。        |
-|  registerTime    | string |  否   | 否  |  注册时间。          |
-|  modifyTime      | string |  否   | 否  |  修改时间。          |
-|  shareTime       | string |  否   | 否  |  分享时间。          |
-|  isLocalDevice   | boolean | 否   | 否 |  是否为本地设备。<br /> - false：表示非本地设备，即被查询的其他设备。<br /> - true：表示本地设备，即当前正在使用该接口的设备。     |
-|  services        | Array&lt;[ServiceProfileInfo](#serviceprofileinfo15)&gt; | 否  | 是  | 服务配置信息列表。默认为空。 |
-|  productName<sup>18+</sup>     | string  | 否   | 是 |  设备所属的产品名称。默认为空。    |
-|  internalModel<sup>18+</sup>   | string  | 否   | 是 |  设备所属产品的内部型号。默认为空。 |
-
-
-## DeviceIconInfoFilterOptions<sup>18+</sup>
-
-设备图标信息过滤选项。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称           | 类型  | 只读 | 可选              |  说明    |
-| -------------- | ---- | -------| -------- | --------|
-|  productId      | string  | 否 | 否   |  设备所属产品ID。          |
-|  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空。      |
-|  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。 |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图，尺寸为1016064px。<br /> - sm：小图，尺寸为65536px。         |
-|  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。        |
-
-## DeviceIconInfo<sup>18+</sup>
-
-设备图标信息。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称           | 类型  | 只读  |可选              |  说明    |
-| -------------- | ---- | ------| --------- | --------|
-|  productId      | string  | 否 | 否   |  设备所属产品ID。          |
-|  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空字符。     |
-|  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。        |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图，尺寸为1016064px。<br /> - sm：小图，尺寸为65536px。         |
-|  url            | string  | 否 | 否   |  URL。          |
-|  icon           | ArrayBuffer | 否| 否 | 图标。         |
-|  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。         |
-
-## NetworkIdQueryFilter<sup>18+</sup>
-
-设备网络ID过滤器选项。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称           | 类型  | 只读 | 可选              |  说明    |
-| -------------- | ---- | ------ | --------- | --------|
-|  wiseDeviceId       | string  | 否 | 否   |  已注册设备标识。          |
-|  onlineStatus    | ArkTS-Dyn: number <br /> ArkTS-Sta: int  | 否 | 否   |  设备在线状态，包括<br /> - 0：表示设备处于离线状态。<br /> - 1：表示设备处于在线状态。<br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
-
-## DeviceIdentification<sup>24+</sup>
-
-用于分布式设备识别的结构体。
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+注册collaborateEvent事件的回调监听,使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**ArkTS-Dyn起始版本**：24
-
-**ArkTS-Sta起始版本**：24
-
-| 名称       | 类型  | 只读 | 可选              | 说明          |
-|----------| ---- | ------ | --------- |-------------|
-| deviceId | string  | 否 | 否   | 应用获取的匿名化设备ID。 |
-| udid     | string  | 否 | 否   | 设备唯一标识。     |
-
-## DeviceManager
-
-设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
-
-### replyUiAction
-
-ArkTS-Dyn: replyUiAction(action: number, actionResult: string): void
-
-ArkTS-Sta: replyUiAction(action: int, actionResult: string): void
-
-回复用户UI操作行为。此接口只能被devicemanager的PIN码hap使用。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
+**系统API**：此接口为系统接口。
 
 **参数：**
 
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  | action        | ArkTS-Dyn: number <br /> ArkTS-Sta: int        | 是    | 用户操作动作。<br /> - 0：允许授权。<br /> - 1：取消授权。<br /> - 2：授权框用户操作超时。<br /> - 3：取消pin码框展示。<br /> - 4：取消pin码输入框展示。<br /> - 5：pin码输入框确定操作。<br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 23 |
-  | actionResult        | string          | 是    | 表示用户操作结果，长度范围1~255字符。 |
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，完成`collaborateEvent()`调用，触发该事件。   |
+| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数，callback返回协同事件的信息。    |
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified actionResult is greater than 255. |
-
-**示例：**
-
-ArkTS-Dyn示例：
-<!--code_no_check-->
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    /*
-      action = 0 - 允许授权
-      action = 1 - 取消授权
-      action = 2 - 授权框用户操作超时
-      action = 3 - 取消pin码框展示
-      action = 4 - 取消pin码输入框展示
-      action = 5 - pin码输入框确定操作
-    */
-    let operation = 0;
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.replyUiAction(operation, 'extra');
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('replyUiAction errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    /*
-      action = 0 - 允许授权
-      action = 1 - 取消授权
-      action = 2 - 授权框用户操作超时
-      action = 3 - 取消pin码框展示
-      action = 4 - 取消pin码输入框展示
-      action = 5 - pin码输入框确定操作
-    */
-    let operation : int = 0;
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.replyUiAction(operation, 'extra');
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('replyUiAction errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### on('replyResult')
-
-on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
-
-回复UI操作结果回调。使用callback异步回调。
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**相关接口**：该接口对应的ArkTS-Sta接口是 [onReplyResult](#onreplyresult23)。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**参数：**
-
-  | 参数名      | 类型                             | 必填 | 说明                            |
-  | -------- | ------------------------------------ | ---- | ------------------------------ |
-  | type     | string                                | 是  | 注册的设备管理器 UI 状态回调，以便在状态改变时通知应用，固定为replyResult。 |
-  | callback | Callback&lt;{&nbsp;param:&nbsp;string;}&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
-| 202 | Permission verification failed. A non-system application calls a system API.                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
-
-**示例：**
-
-<!--code_no_check-->
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  class Data {
-    param: string = '';
-  }
-
-  interface TmpStr {
-    verifyFailed: boolean;
-  }
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.on('replyResult', (data: Data) => {
-      console.info('replyResult executed, dialog closed' + JSON.stringify(data));
-      let tmpStr: TmpStr = JSON.parse(data.param);
-      let isShow = tmpStr.verifyFailed;
-      console.info('replyResult executed, dialog closed' + isShow);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### onReplyResult<sup>23+</sup>
-
-onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
-
-回复UI操作结果回调。使用callback异步回调。
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('replyResult')](#onreplyresult)。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名      | 类型                             | 必填 | 说明                            |
-  | -------- | ------------------------------------ | ---- | ------------------------------ |
-  | callback | Callback&lt;[ReplyResult](#ReplyResult23)&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
-| 202 | Permission verification failed. A non-system application calls a system API.                            |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.onReplyResult((data: distributedDeviceManager.ReplyResult) => {
-      console.info('onReplyResult executed, data: ' + JSON.stringify(data));
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('onReplyResult errCode:' + e.code + ',errMessage:' + e.message);
-  }
+  let sessionId = 100;
+  abilityConnectionManager.on("collaborateEvent", sessionId, (callbackInfo) => {
+    hilog.info(0x0000, 'testTag', 'session collaborateEvent, eventType is', callbackInfo.eventType);
+  });
   ```
 
-### off('replyResult')
+## abilityConnectionManager.on('receiveImage')
 
-off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
+on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-取消回复UI操作结果回调。使用callback异步回调。
-
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
-**相关接口**：该接口对应的ArkTS-Sta接口是 [offReplyResult](#offreplyresult23)。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 10
-
-**参数：**
-
-  | 参数名      | 类型                              | 必填 | 说明                            |
-  | -------- | ------------------------------------- | ---- | ------------------------------ |
-  | type     | string                                | 是   | 取消注册的设备管理器 UI 状态回调，固定为replyResult。 |
-  | callback | Callback&lt;{&nbsp;param:&nbsp;string;}&gt; | 否   | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.    |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
-
-**示例：**
-
-<!--code_no_check-->
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.off('replyResult');
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### offReplyResult<sup>23+</sup>
-
-offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
-
-取消回复UI操作结果回调。使用callback异步回调。
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('replyResult')](#offreplyresult)。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名      | 类型                              | 必填 | 说明                            |
-| -------- | ------------------------------------- | ---- | ---- | 
-| callback | Callback&lt;[ReplyResult](#ReplyResult23)&gt; | 否   | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-
-**示例：**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.offReplyResult();
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('offReplyResult errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-### setHeartbeatPolicy<sup>15+</sup>
-
-ArkTS-Dyn: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
-
-ArkTS-Sta: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): void
-
-设置心跳广播策略。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  | policy        |  &nbsp;[StrategyForHeartbeat](#strategyforheartbeat15)&nbsp;         | 是    | 心跳广播策略。       |
-  | delayTime     | ArkTS-Dyn: number <br /> ArkTS-Sta: int          | 是    | 临时关闭心跳广播的时长，单位为：ms，取值范围1000ms到15000ms。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 11600102 | Failed to obtain service.                                 |
-
-**示例：**
-
-ArkTS-Dyn示例：
-<!--code_no_check-->
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let policy = distributedDeviceManager.StrategyForHeartbeat.TEMP_STOP_HEARTBEAT;
-    let delayTime = 1000;
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.setHeartbeatPolicy(policy, delayTime);
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('setHeartbeatPolicy errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let policy: distributedDeviceManager.StrategyForHeartbeat =
-      distributedDeviceManager.StrategyForHeartbeat.TEMP_STOP_HEARTBEAT;
-    let delayTime: int = 1000;
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.setHeartbeatPolicy(policy, delayTime);
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('setHeartbeatPolicy errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### getDeviceProfileInfoList<sup>15+</sup>
-
-getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise&lt;Array&lt;DeviceProfileInfo&gt;&gt;
-
-获取同账号下全部的设备列表，使用Promise异步回调。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  | filterOptions        |  &nbsp;[DeviceProfileInfoFilterOptions](#deviceprofileinfofilteroptions15)&nbsp;         | 是    | 查询过程中使用的过滤条件。     |
-
-**返回值：**
-
-  | 类型                                                       | 说明                               |
-  | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise&lt;Array&lt;[DeviceProfileInfo](#deviceprofileinfo15)&gt;&gt; | Promise实例，返回设备列表。 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
-| 11600102 | Failed to obtain service.                                 |
-| 11600106 | Get data from cloud fail. |
-| 11600107 | A login account is required.  |
-
-**示例：**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.getDeviceProfileInfoList({"isCloud": false}).then((data: Array<distributedDeviceManager.DeviceProfileInfo>) => {
-      console.info('getDeviceProfileInfoList' + JSON.stringify(data));
-    }).catch((err) => {
-      let e: BusinessError = err as BusinessError;
-      console.error('getDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('getDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### putDeviceProfileInfoList<sup>18+</sup>
-
-ArkTS-Dyn: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;): Promise&lt;number&gt;
-
-ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;): Promise&lt;int&gt;
-
-业务调用更新设备列表，使用Promise异步回调。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  |  deviceProfileInfoList       |  Array&lt;[DeviceProfileInfo](#deviceprofileinfo15)&gt;        |  是   |  需要更新的设备列表。    |
-
-**返回值：**
-
-  | 类型                                                       | 说明                               |
-  | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
-| 11600102 | Failed to obtain service.                                 |
-
-**示例：**
-
-ArkTS-Dyn示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let deviceProfileInfoList:Array<distributedDeviceManager.DeviceProfileInfo> = [];
-    dmInstance.putDeviceProfileInfoList(deviceProfileInfoList).then((data:number) => {
-      console.info('put device profile info:' + JSON.stringify(data));
-    }).catch((e: BusinessError) => {
-      console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let deviceProfileInfoList: Array<distributedDeviceManager.DeviceProfileInfo> = [];
-    dmInstance.putDeviceProfileInfoList(deviceProfileInfoList).then((data: int) => {
-      console.info('put device profile info:' + JSON.stringify(data));
-    }).catch((err) => {
-      let e: BusinessError = err as BusinessError;
-      console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-  
-### getDeviceIconInfo<sup>18+</sup>
-
-getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;DeviceIconInfo&gt;
-
-获取设备图标，使用Promise异步回调。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  |  filterOptions       | [DeviceIconInfoFilterOptions](#deviceiconinfofilteroptions18)         | 是    |  查询过程中使用的过滤条件。    |
-
-**返回值：**
-
-  | 类型                                                       | 说明                               |
-  | ---------------------------------------------------------- | ---------------------------------- |
-  |  Promise&lt;[DeviceIconInfo](#deviceiconinfo18)&gt; | Promise实例，返回设备图标信息。                                    |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-| 11600102 | Failed to obtain service.                                 |
-| 11600106 | Get data from cloud fail. |
-
-**示例：**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let productIds:Array<string> = ['M0D2', 'M0D3', 'M0D5', 'M0AB', 'M0BD', 'M0E9', 'M0BC', 'M0EA'];
-    let options:distributedDeviceManager.DeviceIconInfoFilterOptions = {
-      productId: 'P14U',
-      imageType: 'ID',
-      specName: 'lg',
-    };
-    if (productIds.indexOf(options.productId) != -1) {
-      options.internalModel = '';
-    } else {
-      options.subProductId = '';
-    }
-    dmInstance.getDeviceIconInfo(options).then((data: distributedDeviceManager.DeviceIconInfo) => {
-      console.info('getDeviceIconInfo' + JSON.stringify(data));
-    }).catch((err) => {
-      let e: BusinessError = err as BusinessError;
-      console.error('getDeviceIconInfo errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('getDeviceIconInfo errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### getLocalDisplayDeviceName<sup>18+</sup>
-
-ArkTS-Dyn: getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
-
-ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
-
-获取本机指定长度（字节数）的显示名，使用Promise异步回调。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  |  maxNameLength       |  ArkTS-Dyn: number <br /> ArkTS-Sta: int        |  是  | 可显示的设备名称长度（字节数），取值范围为[18，100]，为0时表示不限制。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
-
-**返回值：**
-
-  | 类型                                                       | 说明                               |
-  | ---------------------------------------------------------- | ---------------------------------- |
-  | string | 指定名称长度最大字节数的本机设备显示名。 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-| 11600102 | Failed to obtain service.                                 |
-
-**示例：**
-
-ArkTS-Dyn示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let maxNameLength:number = 21;
-    dmInstance.getLocalDisplayDeviceName(maxNameLength).then((data:string)=>{
-      console.info('getLocalDisplayDeviceName name:' + JSON.stringify(data));
-    }).catch((e: BusinessError)=>{
-      console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let maxNameLength: int = 21;
-    dmInstance.getLocalDisplayDeviceName(maxNameLength).then((data: string) => {
-      console.info('getLocalDisplayDeviceName name:' + JSON.stringify(data));
-    }).catch((err) => {
-      let e: BusinessError = err as BusinessError;
-      console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### setLocalDeviceName<sup>18+</sup>
-
-ArkTS-Dyn: setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
-
-ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
-
-修改本机设备名称，使用Promise异步回调。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  |  deviceName       | string         |  是   | 自定义设备名称。字符串长度范围1~255。     |
-
-**返回值：**
-
-  | 类型                                                       | 说明                               |
-  | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-| 11600102 | Failed to obtain service.                                 |
-| 11600106 | Failed to get data from the cloud. |
-| 11600107 | A login account is required.  |
-| 11600108 | The device name contains non-compliant content. |
-
-**示例：**
-
-ArkTS-Dyn示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let deviceName:string = 'xxx';
-    dmInstance.setLocalDeviceName(deviceName).then((data:number)=>{
-      console.info('setLocalDeviceName name:' + JSON.stringify(data));
-    }).catch((e: BusinessError)=>{
-      console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let deviceName: string = 'xxx';
-    dmInstance.setLocalDeviceName(deviceName).then((data: int) => {
-      console.info('setLocalDeviceName name:' + JSON.stringify(data));
-    }).catch((err) => {
-      let e: BusinessError = err as BusinessError;
-      console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### setRemoteDeviceName<sup>18+</sup>
-
-ArkTS-Dyn: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
-
-ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;int&gt;
-
-设置远端设备名称，使用Promise异步回调。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  |  deviceId       | string         | 是    | 远端设备的UDID，没有UDID的设备取MAC或SN，优先取SN。     |
-  |  deviceName       | string         | 是    | 自定义设备名称。字符串长度范围1~255。    |
-
-**返回值：**
-
-  | 类型                                                       | 说明                               |
-  | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-| 11600102 | Failed to obtain service.                                 |
-| 11600106 | Failed to get data from the cloud. |
-| 11600107 | A login account is required.  |
-| 11600108 | The device name contains non-compliant content. |
-
-**示例：**
-
-ArkTS-Dyn示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let deviceId:string = 'xxx';
-    let deviceName:string = 'xxx';
-    dmInstance.setRemoteDeviceName(deviceId, deviceName).then((data:number)=>{
-      console.info('setRemoteDeviceName name:' + JSON.stringify(data));
-    }).catch((e: BusinessError)=>{
-      console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    let deviceId: string = 'xxx';
-    let deviceName: string = 'xxx';
-    dmInstance.setRemoteDeviceName(deviceId, deviceName).then((data: int) => {
-      console.info('setRemoteDeviceName name:' + JSON.stringify(data));
-    }).catch((err) => {
-      let e: BusinessError = err as BusinessError;
-      console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-    });
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
-### getDeviceNetworkIdList<sup>18+</sup>
-
-getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt;string&gt;&gt;
-
-获取符合条件的网络设备ID列表。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**系统API**： 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-  | 参数名       | 类型            | 必填  | 说明                |
-  | ------------- | --------------- | ---- | ------------------- |
-  |   filterOptions      | [NetworkIdQueryFilter](#networkidqueryfilter18)         |  是   |   查询过程中使用的过滤条件。   |
-
-**返回值：**
-
-  | 类型                                                       | 说明                               |
-  | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise&lt;Array&lt;string&gt;&gt; |  Promise实例，返回设备网络ID的列表。|
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
-| 11600102 | Failed to obtain service.                                 |
-| 11600107 | A login account is required.  |
-
-**示例：**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let queryFiler: distributedDeviceManager.NetworkIdQueryFilter = {
-      wiseDeviceId: '',
-      onlineStatus: 1,
-    }
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.getDeviceNetworkIdList(queryFiler).then((data:Array<string>) => {
-      console.info('getDeviceNetworkIdList name:' + JSON.stringify(data));
-    }).catch((err) => {
-      let e: BusinessError = err as BusinessError;
-      console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
-    })
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-### getIdentificationByDeviceIds<sup>24+</sup>
-
-getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIdentification&gt;;
-
-根据设备ID查询设备标识。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM，ohos.permission.DISTRIBUTED_DATASYNC，ohos.permission.sec.ACCESS_UDID
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+注册receiveImage事件的回调监听。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
+**系统API**：此接口为系统接口。
 
 **参数：**
 
-  | 参数名       | 类型                  | 必填  | 说明               |
-  | ------------- |---------------------| ---- |------------------|
-  |   deviceIds      | Array&lt;string&gt; |  是   | 应用程序可以获取的设备ID列表，最大列表长度为50。 |
-
-**返回值：**
-
-  | 类型                                                           | 说明            |
-  |--------------------------------------------------------------| --------------- |
-  | Array&lt;[DeviceIdentification](#deviceidentification24)&gt; |  DeviceIdentification列表。|
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| type | string  | 是    |   表示事件回调类型，支持的事件类型为'receiveImage'，完成`sendImage()`调用，触发该事件。   |
+| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 表示注册的回调函数。    |
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID    | 错误信息                                                                                                              |
-|----------|-------------------------------------------------------------------------------------------------------------------|
-| 201      | User permission verify failed.            |
-| 202      | The caller is not a system application.                                    |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
-| 11600101 | Failed to execute the function.                                                                        |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
-  getDeviceUdids(deviceIds: Array<string>): void {
-    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-    try {
-      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
-      console.info("Successfully retrieved UDID list");
-    } catch (error) {
-      console.error('Get device UDID failed:', error);
-      this.idsLists = [];
-    } finally {
-      if (deviceManager) {
-        try {
-          distributedDeviceManager.releaseDeviceManager(deviceManager);
-          console.info("deviceManager released successfully");
-        } catch (releaseError) {
-          console.error('Release device manager failed:', releaseError);
-        }
+  abilityConnectionManager.on("receiveImage", sessionId, (callbackInfo) => {
+    hilog.info(0x0000, 'testTag', 'session receiveImage, sessionId is', callbackInfo.sessionId);
+  });
+  ```
+
+## abilityConnectionManager.off('collaborateEvent')
+
+off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
+
+取消collaborateEvent事件的回调监听。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'。    |
+| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+
+  let sessionId = 100;
+  abilityConnectionManager.off("collaborateEvent", sessionId);
+  ```
+
+## abilityConnectionManager.off('receiveImage')
+
+off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
+
+取消receiveImage事件的回调监听。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| type | string  | 是    |   表示事件回调类型，支持的事件类型为'receiveImage'。    |
+| sessionId | number  | 是    | 表示创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'receiveImage'事件监听。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+
+  let sessionId = 100;
+  abilityConnectionManager.off("receiveImage", sessionId);
+  ```
+
+## abilityConnectionManager.sendImage
+
+sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
+
+应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片，使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| sessionId | number | 是    | 表示协同会话ID。 |
+| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 表示图片信息。 |
+| quality | number | 否    | 表示图像压缩质量（取值范围为0到100，默认值为30）。 |
+
+**返回值：**
+
+| 类型                  | 说明               |
+| ------------------- | ---------------- |
+| Promise&lt;void&gt; | 无返回结果的promise对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { image } from '@kit.ImageKit';
+  import { fileIo } from '@kit.CoreFileKit';
+
+  try {
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    photoPicker.select(photoSelectOptions).then((photoSelectResult) => {
+      if (!photoSelectResult) {
+        hilog.error(0x0000, 'testTag', 'photoSelectResult = null');
+      return;
       }
-    }
+
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
+      hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
+
+      let sessionId = 100;
+      let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
+      if (imageSourceApi) {
+        imageSourceApi.createPixelMap().then((pixelMap) => {
+          abilityConnectionManager.sendImage(sessionId, pixelMap)
+        });
+      } else {
+        hilog.info(0x0000, 'testTag', 'imageSourceApi is undefined');
+      }
+    })
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'photoPicker failed with error: ' + JSON.stringify(error));
   }
   ```
 
-### restoreLocalDeviceName<sup>24+</sup>
+## abilityConnectionManager.createStream
 
-restoreLocalDeviceName(): void
+createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
-还原本机设备名。
-
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流，使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**ArkTS-Dyn起始版本：** 24
+**系统API**：此接口为系统接口。
 
-**ArkTS-Sta起始版本：** 24
+**参数：**
+
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| sessionId | number | 是    | 表示协同会话ID。 |
+| param | [StreamParam](#streamparam) | 是    | 表示传输流的配置信息。 |
+
+**返回值：**
+
+| 类型                  | 说明               |
+| ------------------- | ---------------- |
+| Promise&lt;number&gt; | 返回number结果的promise对象。number为创建结果。 |
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[分布式设备管理错误码](./errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 11600102 | Failed to obtain the service.                                 |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+| 32300001      | Only one stream can be created for the current session.|
+| 32300003      | Bitrate not supported.|
+| 32300004      | Color space not supported.|
 
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.restoreLocalDeviceName();
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
+  hilog.info(0x0000, 'testTag', 'startStream');
+  let sessionId = 100;
+  abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+    let surfaceParam: abilityConnectionManager.SurfaceParam = {
+      width: 640,
+      height: 480,
+      format: 1
+    }
+    let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
+    hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
+    AppStorage.setOrCreate<string>('surfaceId', surfaceId);
+    abilityConnectionManager.startStream(streamId);
+  })
   ```
 
-### restoreLocalDeivceName<sup>(deprecated)</sup>
+## abilityConnectionManager.setSurfaceId
 
-restoreLocalDeivceName(): void
+setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
-系统重置还原网络设置时，还原本机设备名。
+设置传输流与Surface的绑定关系。
 
-> **说明：**
->
-> 从API version 18开始支持，从API version 24开始废弃，建议使用[restoreLocalDeviceName](#restorelocaldevicename24)替代。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+**系统API**：此接口为系统接口。
 
-**系统API**： 此接口为系统接口。
+**参数：**
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| streamId | number | 是    | 表示协同会话ID。 |
+| surfaceId | string | 是    | 表示Surface的唯一标识符。 |
+| param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 11600102 | Failed to obtain the service.                                 |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.restoreLocalDeivceName();
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
+  hilog.info(0x0000, 'testTag', 'setSurfaceId');
+  let sessionId = 100;
+  abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+    let surfaceParam: abilityConnectionManager.SurfaceParam = {
+      width: 640,
+      height: 480,
+      format: 1
+    }
+    let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
+    abilityConnectionManager.setSurfaceId(streamId, surfaceId, surfaceParam);
+  })
   ```
+
+## abilityConnectionManager.getSurfaceId
+
+getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
+
+获取指定传输流绑定的Surface的唯一标识符。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| streamId | number | 是    | 表示协同会话ID。 |
+| param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
+
+**返回值：**
+
+| 类型                  | 说明               |
+| ------------------- | ---------------- |
+| string | Surface的唯一标识符。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  hilog.info(0x0000, 'testTag', 'getSurfaceId');
+  let sessionId = 100;
+  abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+    let surfaceParam: abilityConnectionManager.SurfaceParam = {
+      width: 640,
+      height: 480,
+      format: 1
+    }
+    let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
+  })
+  ```
+
+## abilityConnectionManager.updateSurfaceParam
+
+updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+
+更新与传输流绑定的Surface的配置信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| streamId | number | 是    | 表示协同会话ID。 |
+| param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  hilog.info(0x0000, 'testTag', 'updateSurfaceParam');
+  let sessionId = 100;
+  abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+    let surfaceParam: abilityConnectionManager.SurfaceParam = {
+      width: 640,
+      height: 480,
+      format: 1
+    }
+    abilityConnectionManager.updateSurfaceParam(streamId, surfaceParam);
+  })
+  ```
+
+## abilityConnectionManager.destroyStream
+
+destroyStream(streamId:&nbsp;number):&nbsp;void
+
+发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| streamId | number | 是    | 表示协同会话ID。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let sessionId = 100;
+  hilog.info(0x0000, 'testTag', 'destroyStream called');
+  abilityConnectionManager.destroyStream(sessionId)
+  ```
+
+## abilityConnectionManager.startStream
+
+startStream(streamId:&nbsp;number):&nbsp;void
+
+启动指定传输流。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| streamId | number | 是    | 表示协同会话ID。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[分布式设备管理错误码](./errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+| 32300002      | The stream at the receive end is not started. |
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let sessionId = 100;
+  hilog.info(0x0000, 'testTag', 'startStream called');
+  abilityConnectionManager.startStream(sessionId)
+  ```
+
+## abilityConnectionManager.stopStream
+
+stopStream(streamId:&nbsp;number):&nbsp;void
+
+停止指定传输流。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填   | 说明    |
+| --------- | --------------------------------------- | ---- | ----- |
+| streamId | number | 是    | 表示协同会话ID。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let sessionId = 100;
+  hilog.info(0x0000, 'testTag', 'stopStream called');
+  abilityConnectionManager.stopStream(sessionId)
+  ```
+
+## CollaborateEventInfo
+
+协作事件信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称       | 类型   | 只读 | 可选 | 说明      |
+| -------- | ------ | ---- | ---- | ------- |
+| eventType | [CollaborateEventType](#collaborateeventtype) | 否    | 否   | 表示协作事件的类型。 |
+| eventMsg | string | 否    | 是   | 表示协作事件的协作消息。 |
+
+## StreamParam
+
+流传输配置的参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称       | 类型    | 只读 | 可选 | 说明          |
+| -------- | ------ | ---- | ---- | ----------- |
+| name  | string   | 否    | 否 |   表示流传输的名称（接收端必须与发送端一致）。 |
+| role  | [StreamRole](#streamrole)     | 否    | 否   |   表示流传输的方式（可以是接收流或发送流）。 |
+| bitrate  | number   | 否    | 是   |   表示视频比特率（仅在发送端有效，默认值为80000）。 |
+| colorSpaceConversionTarget  | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)     | 否    | 是   |  表示转换的目标色彩空间。 |
+
+## SurfaceParam
+
+Surface配置参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称       | 类型   | 只读 | 可选 | 说明      |
+| -------- | ------ | ---- | ---- | ------- |
+| width | number | 否    | 否   | 表示编码宽度。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
+| height | number | 否    | 否  | 表示编码长度。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
+| format | [VideoPixelFormat](#videopixelformat) | 否    | 是   | 表示视频像素格式，此选项必须在发送端配置。 |
+| rotation | number | 否    | 是   | 表示视频的旋转角度（取值范围为{0, 90, 180, 270}，默认值为0）。 |
+| flip | [FlipOptions](#flipoptions) | 否    | 是   | 表示视频是否反转。 |
+
+## CollaborateEventType
+
+协作事件的类型的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| SEND_FAILURE | 0 |表示任务发送失败。|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
+
+## FlipOptions
+
+翻转选项的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| HORIZONTAL | 0 | 表示水平翻转。 |
+| VERTICAL | 1 | 表示垂直翻转。 |
+
+## StreamRole
+
+流传输的方式。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| SOURCE  | 0 | 表示流是发送流。 |
+| SINK  | 1 | 表示流是接收流。 |
+
+## VideoPixelFormat
+
+视频像素格式的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| UNKNOWN   | -1 | 表示未知的像素格式。 |
+| NV12  | 0 | 表示NV12，YUV420半平面格式。 |
+| NV21  | 1 | 表示NV21，YUV420半平面格式。 |
+
+## ConnectOptions
+
+应用连接时所需的连接选项。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称          | 类型    | 只读   | 可选   | 说明          |
+| ----------- | ------- | ---- | ---- | ----------- |
+| needSendStream    | boolean  | 否    | 是    | true表示需要发送流，false表示不需要发送流。    |
+| needReceiveStream    | boolean  | 否    | 是    | true表示需要接收流，false表示不需要接收流。     |
+
+## EventCallbackInfo
+
+回调方法的接收信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称       | 类型    | 只读  | 可选  | 说明          |
+| -------- | ------ | ---- | ---- | ----------- |
+| image  | image.PixelMap | 否   | 是   |   表示接收的图片。 |
+
+## StartOptionParams
+
+启动选项参数的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| START_IN_BACKGROUND | 1 |表示将对端应用启动至后台。|
