@@ -8915,7 +8915,7 @@ if (proxy != undefined) {
   | TF_SYNC       | number | 是    | 否    | 同步调用标识。                                                            |
   | TF_ASYNC      | number | 是    | 否    | 异步调用标识。                                                            |
   | TF_ACCEPT_FDS | number | 是    | 否    | 指示sendMessageRequest<sup>9+</sup>接口可以传递文件描述符。               |
-  | TF_WAIT_TIME  | number | 是    | 否    | RPC等待时间(单位/秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
+  | TF_WAIT_TIME  | number | 是    | 否    | RPC等待时间（单位：秒），IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
 
 ### constructor<sup>9+</sup>
 
@@ -8956,7 +8956,7 @@ MessageOption构造函数。
   | 参数名    | 类型   | 必填 | 说明                                          |
   | --------- | ------ | ---- | --------------------------------------------- |
   | syncFlags | number | 否   | 同步调用或异步调用标志，同步调用标志：0；异步调用标志：1。默认同步调用。        |
-  | waitTime  | number | 否   | 调用rpc最长等待时间。默认TF_WAIT_TIME。 |
+  | waitTime  | number | 否   | 调用rpc最长等待时间（单位：秒）。默认TF_WAIT_TIME。 |
 
 **示例：**
 
@@ -9048,13 +9048,13 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let option = new rpc.MessageOption();
-  hilog.info(0x0000, 'testTag', 'create object successfully');
+  hilog.info(0x0000, 'testTag', 'Succeeded in creating object');
   let flag = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag is ' + flag);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag is ' + flag);
   option.setFlags(rpc.MessageOption.TF_ASYNC);
-  hilog.info(0x0000, 'testTag', 'run setFlags success');
+  hilog.info(0x0000, 'testTag', 'Succeeded in running setFlags');
   let flag2 = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag2 is ' + flag2);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag2 is ' + flag2);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9083,9 +9083,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let option = new rpc.MessageOption();
   option.setFlags(rpc.MessageOption.TF_ASYNC);
-  hilog.info(0x0000, 'testTag', 'run setFlags success');
+  hilog.info(0x0000, 'testTag', 'Succeeded in running setFlags');
   let flag = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag is ' + flag);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag is ' + flag);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9103,7 +9103,7 @@ getWaitTime(): number
 
   | 类型   | 说明              |
   | ------ | ----------------- |
-  | number | rpc最长等待时间。默认TF_WAIT_TIME。 |
+  | number | rpc最长等待时间（单位：秒）。默认TF_WAIT_TIME。 |
 
 **示例：**
 
@@ -9114,10 +9114,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let option = new rpc.MessageOption();
   let time = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time);
   option.setWaitTime(16);
   let time2 = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time2);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time2);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9135,7 +9135,7 @@ setWaitTime(waitTime: number): void
 
   | 参数名   | 类型   | 必填 | 说明                  |
   | -------- | ------ | ---- | --------------------- |
-  | waitTime | number | 是   | rpc调用最长等待时间，上限为3000秒。 |
+  | waitTime | number | 是   | rpc调用最长等待时间（单位：秒），上限为3000秒。 |
 
 **示例：**
 
@@ -9147,7 +9147,7 @@ try {
   let option = new rpc.MessageOption();
   option.setWaitTime(16);
   let time = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
