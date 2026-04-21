@@ -522,7 +522,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 
 onGetResourceId(params: huksExternalCrypto.HuksExternalCryptoParam[]):Promise&lt;HuksCryptoExtensionResult&gt;
 
-获取密钥扩展能力的资源ID。使用Promise异步回调。
+获取外部扩展设备内的资源ID。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -578,7 +578,7 @@ onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, param
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 导入证书的资源句柄。 |
 | certInfo | [HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo) | 是   | 待导入的证书信息。需指定证书类型（purpose）。 |
-| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 否 | 导入证书所需的属性参数。必选TAG：[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)（调用方身份）。 |
+| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 否 | 导入证书所需的属性参数。 |
 
 **返回值：**
 
