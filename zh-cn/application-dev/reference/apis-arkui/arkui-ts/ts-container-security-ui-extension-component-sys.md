@@ -40,7 +40,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 要加载的Ability信息。 |
 | options | [SecurityUIExtensionOptions](#securityuiextensionoptions26) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
 
-## SecurityUIExtensionOptions<sup>26+</sup>
+## SecurityUIExtensionOptions
 
 用于构造SecurityUIExtensionComponent时传递参数。
 
@@ -56,7 +56,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。 |
 | dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy26) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI。 |
 
-## SecurityDpiFollowStrategy<sup>26+</sup>
+## SecurityDpiFollowStrategy
 
 定义SecurityUIExtensionComponent内容分辨率跟随策略的枚举。
 
