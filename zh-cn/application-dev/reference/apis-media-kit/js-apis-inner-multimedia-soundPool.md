@@ -836,7 +836,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setLoop
 
-ArkTS-Dyn: setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
+ArkTS-Dyn: setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void
 
 ArkTS-Sta: setLoop(streamID: int, loop: int, callback: AsyncCallback\<void>): void
 
