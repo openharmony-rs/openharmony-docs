@@ -31,7 +31,7 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为0-2<sup>31</sup>-1。|
+| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
 
 **返回值：**
 | 类型 | 说明 |
@@ -77,7 +77,7 @@ isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为0-2<sup>31</sup>-1。 |
+| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示是DLP文件，返回false表示非DLP文件。 |
 
 **错误码：**
@@ -205,7 +205,7 @@ getOriginalFileName(fileName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fileName | string | 是 | 指定要查询的文件名。不超过255字节。 |
+| fileName | string | 是 | 指定要查询的文件名。不超过255字节，否则返回null。 |
 
 **返回值：**
 
@@ -244,7 +244,7 @@ getDLPSuffix(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回DLP文件扩展名。例如：原文件"text.txt"，加密后的DLP文件名为"test.txt.dlp"，返回拓展名为".dlp"。不超过255字节。 |
+| string | 返回DLP文件扩展名。例如：原文件"text.txt"，加密后的DLP文件名为"test.txt.dlp"，返回拓展名为".dlp"。返回值固定为".dlp"。 |
 
 **错误码：**
 
@@ -493,7 +493,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。Array不限长度，每个string不超过4095字节，否则返回null。 |
 
 **返回值：**
 
@@ -580,7 +580,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。Array不限长度，每个string不超过4095字节。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。Array不限长度，每个string不超过4095字节，否则返回null。 |
 
 **返回值：**
 
@@ -620,7 +620,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。Array不限长度，每个string不超过4095字节。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。Array不限长度，每个string不超过4095字节，否则返回null。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -661,7 +661,7 @@ getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 否 | 指定应用包名。默认为空，查询当前应用的保留沙箱信息列表。最小7字节，最大128字节。 |
+| bundleName | string | 否 | 指定应用包名。默认为空，查询当前应用的保留沙箱信息列表。最小7字节，最大128字节，超出此范围返回null。 |
 
 **返回值：**
 
@@ -702,7 +702,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 指定应用包名。最小7字节，最大128字节。 |
+| bundleName | string | 是 | 指定应用包名。最小7字节，最大128字节，超出此范围返回null。 |
 | callback | AsyncCallback&lt;Array&lt;[RetentionSandboxInfo](#retentionsandboxinfo)&gt;&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
@@ -915,7 +915,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| configInfo | string | 是 | 沙箱应用配置信息。长度小于4MB。 |
+| configInfo | string | 是 | 沙箱应用配置信息。长度小于4MB，超出此范围返回null。 |
 
 **返回值：**
 
@@ -1231,8 +1231,8 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | 是 | 明文文件的文件描述符。 取值范围为0-2<sup>31</sup>-1。|
-| dlpFd | number | 是 | 加密文件的文件描述符。 取值范围为0-2<sup>31</sup>-1。|
+| plaintextFd | number | 是 | 明文文件的文件描述符。 取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
+| dlpFd | number | 是 | 加密文件的文件描述符。 取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
 | property | [DLPProperty](#dlpproperty21) | 是 | DLP文件通用策略。 |
 | customProperty | [CustomProperty](#customproperty21) | 是 | 企业定制策略。 |
 
@@ -1308,8 +1308,8 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待解密文件的FD。取值范围为0-2<sup>31</sup>-1。 |
-| plaintextFd | number | 是 | 目标解密文件的FD。取值范围为0-2<sup>31</sup>-1。 |
+| dlpFd | number | 是 | 待解密文件的FD。取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| plaintextFd | number | 是 | 目标解密文件的FD。取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 
 **返回值：**
 
@@ -1369,7 +1369,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待解密文件的FD。取值范围为0-2<sup>31</sup>-1。 |
+| dlpFd | number | 是 | 待解密文件的FD。取值范围为0-2<sup>31</sup>-1。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 
 **返回值：**
 
@@ -1442,7 +1442,7 @@ if (dlpFd) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4MB。 |
+| enterprise | string | 否 | 否 | 表示企业定制策略的json字符串。长度不超过4MB，超出此范围返回null。 |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1453,19 +1453,19 @@ if (dlpFd) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ownerAccount | string | 否 | 否 | 表示权限设置者账号。不超过255字节。 |
-| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。不超过255字节。 |
+| ownerAccount | string | 否 | 否 | 表示权限设置者账号。不超过255字节，超出此范围返回null。 |
+| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。不超过255字节，超出此范围返回null。 |
 | ownerAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示权限设置者账号类型。 |
 | authUserList | Array&lt;[AuthUser](#authuser21)&gt; | 否 | 是 | 表示授权用户列表，默认为空。 |
-| contactAccount | string | 否 | 否 | 表示联系人账号。不超过255字节。 |
+| contactAccount | string | 否 | 否 | 表示联系人账号。不超过255字节，超出此范围返回null。 |
 | offlineAccess | boolean | 否 | 否 | 表示是否是离线打开。true表示允许离线打开，false表示不可离线打开。 |
 | everyoneAccessList | Array&lt;[DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess)&gt; | 否 | 是 | 表示授予所有人的权限，默认为空。 |
-| expireTime | number | 否 | 是 | 表示文件权限到期时间戳，默认为空。取值范围大于等于0。 |
+| expireTime | number | 否 | 是 | 表示文件权限到期时间戳，默认为空。取值范围大于等于0，超出此范围返回null。 |
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效，默认为空。 |
-| fileId | string | 否 | 是 | 表示文件的标识，默认为空。不超过255字节。 |
-| allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为空。取值范围大于等于0。 |
+| fileId | string | 否 | 是 | 表示文件的标识，默认为空。不超过255字节，超出此范围返回null。 |
+| allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为空。取值范围大于等于0，超出此范围返回null。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
-| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为空，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。取值范围大于等于0。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为空，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。取值范围大于等于0，超出此范围返回null。 |
 | extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
