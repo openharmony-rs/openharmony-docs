@@ -38,6 +38,10 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                          | 必填   | 说明     |
@@ -59,6 +63,25 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -85,6 +108,10 @@ getRestorer(): Restorer
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                    | 说明     |
@@ -100,6 +127,18 @@ getRestorer(): Restorer
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let restorer = update.getRestorer();
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -119,6 +158,10 @@ getLocalUpdater(): LocalUpdater
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                            | 说明     |
@@ -134,6 +177,18 @@ getLocalUpdater(): LocalUpdater
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let localUpdater = update.getLocalUpdater();
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -155,6 +210,10 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -175,9 +234,31 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
+  console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
+});
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: "com.ohos.ota.updateclient",
@@ -205,6 +286,10 @@ checkNewVersion(): Promise\<CheckResult>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值：**
@@ -225,9 +310,10 @@ checkNewVersion(): Promise\<CheckResult>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
 try {
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: "com.ohos.ota.updateclient",
@@ -247,7 +333,31 @@ try {
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
+```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion().then((result: update.CheckResult) => {
+    console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
+    // 版本摘要信息
+    console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
+    }).catch((err: BusinessError)=>{
+      console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
+    });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getNewVersionInfo
@@ -259,6 +369,10 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -280,6 +394,28 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
@@ -310,6 +446,10 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值：**
@@ -329,6 +469,32 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -362,6 +528,10 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -384,6 +554,42 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 描述文件选项
+const descriptionOptions: update.DescriptionOptions = {
+  format: update.DescriptionFormat.STANDARD, // 标准格式
+  language: "zh-cn" // 中文
+};
+
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
+    console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -427,6 +633,10 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -454,6 +664,44 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 描述文件选项
+const descriptionOptions: update.DescriptionOptions = {
+  format: update.DescriptionFormat.STANDARD, // 标准格式
+  language: "zh-cn" // 中文
+};
+
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
+    .then((info: Array<update.ComponentDescription>)=> {
+    console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -499,6 +747,10 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -518,6 +770,32 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info?.osVersion}`);
+    console.info(`info deviceName = ${info?.deviceName}`);
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -551,6 +829,10 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值：**
@@ -570,6 +852,33 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info.osVersion}`);
+    console.info(`info deviceName = ${info.deviceName}`);
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -604,6 +913,10 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -625,6 +938,35 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// 描述文件选项
+const descriptionOptions: update.DescriptionOptions = {
+  format: update.DescriptionFormat.STANDARD, // 标准格式
+  language: "zh-cn" // 中文
+};
+
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
+    console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 // 描述文件选项
@@ -661,6 +1003,10 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -687,6 +1033,36 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+// 描述文件选项
+const descriptionOptions: update.DescriptionOptions = {
+  format: update.DescriptionFormat.STANDARD, // 标准格式
+  language: "zh-cn" // 中文
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
+    console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -724,6 +1100,10 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -743,6 +1123,30 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -774,6 +1178,10 @@ getTaskInfo(): Promise\<TaskInfo>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值：**
@@ -793,6 +1201,32 @@ getTaskInfo(): Promise\<TaskInfo>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo().then((info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info.existTask}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -826,6 +1260,10 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -848,6 +1286,40 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 下载选项
+const downloadOptions: update.DownloadOptions = {
+  allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
+  order: update.Order.DOWNLOAD // 下载
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
+    console.info(`download error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -889,6 +1361,10 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -916,6 +1392,42 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 下载选项
+const downloadOptions: update.DownloadOptions = {
+  allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
+   order: update.Order.DOWNLOAD // 下载
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions).then(() => {
+    console.info(`download start`);
+  }).catch((err: BusinessError) => {
+    console.error(`download error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -959,6 +1471,10 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -981,6 +1497,39 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo : update.VersionDigestInfo= {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 恢复下载选项
+const resumeDownloadOptions : update.ResumeDownloadOptions= {
+  allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
+    console.info(`resumeDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1021,6 +1570,10 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1048,6 +1601,41 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 恢复下载选项
+const resumeDownloadOptions: update.ResumeDownloadOptions = {
+  allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
+    console.info(`resumeDownload start`);
+  }).catch((err: BusinessError) => {
+    console.error(`resumeDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1090,6 +1678,10 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1112,6 +1704,39 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 暂停下载选项
+const pauseDownloadOptions: update.PauseDownloadOptions = {
+  isAllowAutoResume: true // 允许自动恢复下载
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
+    console.info(`pauseDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1152,6 +1777,10 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1179,6 +1808,41 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 暂停下载选项
+const pauseDownloadOptions: update.PauseDownloadOptions = {
+  isAllowAutoResume: true // 允许自动恢复下载
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
+    console.info(`pauseDownload`);
+  }).catch((err: BusinessError)  => {
+    console.error(`pauseDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1221,6 +1885,10 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1243,6 +1911,39 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 安装选项
+const upgradeOptions: update.UpgradeOptions = {
+  order: update.Order.INSTALL // 安装指令
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
+    console.info(`upgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1283,6 +1984,10 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1310,6 +2015,41 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 安装选项
+const upgradeOptions: update.UpgradeOptions = {
+  order: update.Order.INSTALL // 安装指令
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
+    console.info(`upgrade start`);
+  }).catch((err: BusinessError) => {
+    console.error(`upgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1352,6 +2092,10 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1374,6 +2118,39 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 清除选项
+const clearOptions: update.ClearOptions = {
+  status: update.UpgradeStatus.UPGRADE_FAIL,
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
+    console.info(`clearError error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1414,6 +2191,10 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1441,6 +2222,41 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 版本摘要信息
+const versionDigestInfo: update.VersionDigestInfo = {
+  versionDigest: "versionDigest" // 检测结果中的版本摘要信息
+};
+
+// 清除选项
+const clearOptions: update.ClearOptions = {
+  status: update.UpgradeStatus.UPGRADE_FAIL,
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions).then(() => {
+    console.info(`clearError success`);
+  }).catch((err: BusinessError) => {
+    console.error(`clearError error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1483,6 +2299,10 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1502,6 +2322,30 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1533,6 +2377,10 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值：**
@@ -1552,6 +2400,32 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
+  }).catch((err: BusinessError)  => {
+    console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1585,6 +2459,10 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1605,6 +2483,35 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const policy: update.UpgradePolicy = {
+  downloadStrategy: false,
+  autoUpgradeStrategy: false,
+  autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy, (err: BusinessError) => {
+    console.info(`setUpgradePolicy result: ${err}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1641,6 +2548,10 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1666,6 +2577,37 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const policy: update.UpgradePolicy = {
+  downloadStrategy: false,
+  autoUpgradeStrategy: false,
+  autoUpgradePeriods: [ { start: 120, end: 240 } ] // 自动升级时间段，用分钟表示
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy).then(() => {
+    console.info(`setUpgradePolicy success`);
+  }).catch((err: BusinessError) => {
+    console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1704,6 +2646,10 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1723,6 +2669,29 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade((err: BusinessError) => {
+    console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1753,6 +2722,10 @@ terminateUpgrade(): Promise\<void>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值：**
@@ -1772,6 +2745,31 @@ terminateUpgrade(): Promise\<void>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade().then(() => {
+    console.info(`terminateUpgrade success`);
+  }).catch((err: BusinessError) => {
+    console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1803,6 +2801,10 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -1819,6 +2821,32 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const eventClassifyInfo: update.EventClassifyInfo = {
+  eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
+  extraInfo: ""
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater on ${JSON.stringify(eventInfo)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
@@ -1851,6 +2879,10 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -1867,6 +2899,32 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const eventClassifyInfo: update.EventClassifyInfo = {
+  eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
+  extraInfo: ""
+};
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater off ${JSON.stringify(eventInfo)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
@@ -1902,6 +2960,10 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.FACTORY_RESET
 
 **参数：**
@@ -1921,6 +2983,21 @@ factoryReset(callback: AsyncCallback\<void>): void
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let restorer = update.getRestorer();
+  restorer.factoryReset((err) => {
+    console.info(`factoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 try {
@@ -1943,6 +3020,10 @@ factoryReset(): Promise\<void>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.FACTORY_RESET
 
 **返回值：**
@@ -1962,6 +3043,24 @@ factoryReset(): Promise\<void>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  restorer.factoryReset().then(() => {
+    console.info(`factoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`factoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1987,6 +3086,10 @@ forceFactoryReset(): Promise\<void>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.FORCE_FACTORY_RESET
 
 **返回值：**
@@ -2006,6 +3109,24 @@ forceFactoryReset(): Promise\<void>
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  restorer.forceFactoryReset().then(() => {
+    console.info(`forceFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2027,15 +3148,15 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 通过覆写等方式，深度清除用户数据分区、操作系统分区。使用 Promise 异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
@@ -2063,6 +3184,28 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  let factoryResetStrategy: update.FactoryResetStrategy = {
+    scope: update.FactoryResetScope.DATA,
+    strategy: "deepFactoryReset test"
+  };
+  restorer.deepFactoryReset(factoryResetStrategy).then(() => {
+    console.info(`deepFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
@@ -2087,15 +3230,15 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 获取深度恢复出厂设置信息。使用 Promise 异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
@@ -2122,6 +3265,29 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let factoryResetStrategy: update.FactoryResetStrategy = {
+  scope: update.FactoryResetScope.DATA,
+  strategy: "deepFactoryReset"
+};
+try {
+  let restorer = update.getRestorer();
+  restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
+    console.info(`getDeepFactoryResetInfo success`);
+  }).catch((err: BusinessError) => {
+    console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2154,6 +3320,10 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -2176,6 +3346,26 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const upgradeFile: update.UpgradeFile = {
+  fileType: update.ComponentType.OTA, // OTA包
+  filePath: "path" // 本地升级包路径
+};
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "certFilePath", (err) => {
+    console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 const upgradeFile: update.UpgradeFile = {
@@ -2202,6 +3392,10 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -2230,6 +3424,30 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const upgradeFile: update.UpgradeFile = {
+  fileType: update.ComponentType.OTA, // OTA包
+  filePath: "path" // 本地升级包路径
+};
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "certFilePath").then(() => {
+    console.info(`verifyUpgradePackage success`);
+  }).catch((err: BusinessError) => {
+    console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2260,6 +3478,10 @@ applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: Asy
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -2281,6 +3503,26 @@ applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: Asy
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const upgradeFiles: Array<update.UpgradeFile> = [{
+  fileType: update.ComponentType.OTA, // OTA包
+  filePath: "path" // 本地升级包路径
+}];
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles, (err) => {
+    console.info(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 const upgradeFiles: Array<update.UpgradeFile> = [{
@@ -2308,6 +3550,10 @@ applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<voi
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -2334,6 +3580,30 @@ applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<voi
 | 11500104 | IPC error.               |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const upgradeFiles: Array<update.UpgradeFile> = [{
+  fileType: update.ComponentType.OTA, // OTA包
+  filePath: "path" // 本地升级包路径
+}];
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles).then(() => {
+    console.info(`applyNewVersion success`);
+  }).catch((err: BusinessError) => {
+    console.error(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2364,6 +3634,10 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -2380,6 +3654,28 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const eventClassifyInfo: update.EventClassifyInfo = {
+  eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
+  extraInfo: ""
+};
+
+let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => {
+  console.info(`on eventInfo id `, eventInfo.eventId);
+};
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.on(eventClassifyInfo, onTaskUpdate);
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
@@ -2408,6 +3704,10 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -2424,6 +3724,28 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+const eventClassifyInfo: update.EventClassifyInfo = {
+  eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
+  extraInfo: ""
+};
+
+let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => {
+  console.info(`on eventInfo id `, eventInfo.eventId);
+};
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.off(eventClassifyInfo, onTaskUpdate);
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
@@ -2451,6 +3773,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                          | 只读 | 可选 | 说明     |
 | ------------ | ----------------------------- | ---- | ---- | ------ |
 | upgradeApp   | string                        | 否 | 否 | 调用方包名。  |
@@ -2463,6 +3789,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                | 只读 | 可选 |  说明   |
 | ------- | ----------------------------------- | ---- | ---- | ---- |
@@ -2477,6 +3807,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 类型                              | 只读 | 可选 | 说明     |
 | ----------------- | --------------------------------- | ---- | ---- | ------ |
 | isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>true表示有新版本，false表示没有新版本。|
@@ -2489,6 +3823,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                     | 只读 | 可选 | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |---- |
@@ -2503,6 +3841,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型   | 只读 | 可选 | 说明   |
 | ------------- | ------ | ---- | ---- | ---- |
 | versionDigest | string | 否 | 否 | 版本摘要。 |
@@ -2514,6 +3856,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                | 只读 | 可选 | 说明       |
 | --------------- | ----------------------------------- | ---- | ---- | -------- |
@@ -2535,6 +3881,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                    | 只读 | 可选 | 说明     |
 | -------- | --------------------------------------- | ---- | ---- | ------ |
 | format   | [DescriptionFormat](#descriptionformat) | 否 | 否 | 描述文件格式。 |
@@ -2547,6 +3897,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
 | --------------- | ----------------------------------- | ---- | ---- | ------ |
@@ -2561,6 +3915,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
 | --------------- | ----------------------------------- | ---- | ---- | ------ |
 | descriptionType | [DescriptionType](#descriptiontype) | 否 | 否 | 描述文件类型。 |
@@ -2573,6 +3931,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                     | 只读 | 可选 | 说明    |
 | ----------------- | ---------------------------------------- | ---- | ---- | ----- |
@@ -2588,6 +3950,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                | 只读 | 可选   | 说明   |
 | ------------ | ------------------- | ---- | ---- | ---- |
 | allowNetwork | [NetType](#nettype) | 否  | 否 | 网络类型。 |
@@ -2601,6 +3967,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                | 只读 | 可选 | 说明   |
 | ------------ | ------------------- | ---- | ---- | ---- |
 | allowNetwork | [NetType](#nettype) | 否 | 否 | 网络类型。 |
@@ -2612,6 +3982,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型 | 只读 | 可选 | 说明       |
 | ----------------- | ---- | ---- |---- | -------- |
@@ -2625,6 +3999,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型            | 只读 | 可选 | 说明   |
 | ----- | --------------- | ---- | ---- |---- |
 | order | [Order](#order) | 否 | 否 | 升级指令。 |
@@ -2637,6 +4015,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                            | 只读 | 可选 | 说明   |
 | ------ | ------------------------------- | ---- | ---- | ---- |
 | status | [UpgradeStatus](#upgradestatus) | 否 | 否 | 异常状态。 |
@@ -2648,6 +4030,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                    | 只读 | 可选 | 说明      |
 | ------------------- | --------------------------------------- | ---- | ---- | ------- |
@@ -2663,6 +4049,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型   | 只读 | 可选 | 说明 |
 | ----- | ------ | ---- | ---- | ---- |
 | start | int | 否 | 否 | 开始时间。 |
@@ -2675,6 +4065,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                  | 只读 | 可选 | 说明 |
 | --------- | --------------------- | ---- | ------ |------ |
@@ -2689,6 +4083,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                  | 只读 | 可选 | 说明 |
 | -------- | --------------------- | ---- | ---- | ---- |
 | eventId  | [EventId](#eventid)   | 否 | 否 | 事件ID。 |
@@ -2701,6 +4099,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                     | 只读 | 可选 | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- | ---- |
@@ -2733,6 +4135,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                            | 只读 | 可选  | 说明   |
 | ------------- | ------------------------------- | ---- | ---- | ---- |
 | eventClassify | [EventClassify](#eventclassify) | 否  | 否  | 事件类型。 |
@@ -2746,6 +4152,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
 | fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
@@ -2755,15 +4165,15 @@ try {
 
 恢复出厂设置策略。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
@@ -2774,15 +4184,15 @@ try {
 
 恢复出厂设置信息。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
@@ -2792,15 +4202,15 @@ try {
 
 恢复出厂设置范围。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
@@ -2817,6 +4227,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                    | 必填   | 说明   |
 | --------- | ----------------------- | ---- | ---- |
 | eventInfo | [EventInfo](#eventinfo) | 是    | 事件信息。 |
@@ -2828,6 +4242,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值      | 说明   |
 | ------ | -------- | ---- |
@@ -2841,6 +4259,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值  | 说明   |
 | -------- | ---- | ---- |
 | FIRMWARE | 1    | 固件。   |
@@ -2853,6 +4275,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 值  | 说明   |
 | ---- | ---- | ---- |
 | OTA  | 1    | 固件。   |
@@ -2864,6 +4290,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值        | 说明   |
 | -------- | ---------- | ---- |
@@ -2878,6 +4308,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
 | COLD          | 1    | 冷升级。  |
@@ -2891,6 +4325,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
@@ -2907,6 +4345,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值  | 说明   |
 | ------- | ---- | ---- |
 | CONTENT | 0    | 内容。   |
@@ -2920,6 +4362,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值  | 说明   |
 | ---------- | ---- | ---- |
 | STANDARD   | 0    | 标准格式。 |
@@ -2932,6 +4378,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值  | 说明        |
 | ----------------- | ---- | --------- |
@@ -2949,6 +4399,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 值  | 说明    |
 | -------------------- | ---- | ----- |
 | DOWNLOAD             | 1    | 下载。    |
@@ -2964,6 +4418,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值  | 说明   |
 | ---------------- | ---- | ---- |
@@ -2986,6 +4444,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值        | 说明   |
 | ---- | ---------- | ---- |
 | TASK | 0x01000000 | 任务事件。 |
@@ -2997,6 +4459,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值        | 说明     |
 | ---------------------- | ---------- | ------ |
