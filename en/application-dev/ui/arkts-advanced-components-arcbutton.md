@@ -155,7 +155,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
 This example demonstrates a brightness settings screen where a slider displays the current brightness level at 30%. When the reset button is clicked, the brightness value is reset to the default value of 50%.
 
-You are advised to run this example on a wearable for optimal display effects and is also supported on other devices. To run the example on a wearable, configure **wearable** under the [deviceTypes](../quick-start/module-configuration-file.md#devicetypes) tag in the [module.json5] (../quick-start/module-configuration-file.md) configuration file in the **src/main** directory.
+You are advised to run this example on a wearable for optimal display effects and it can also run on other devices. To run the example on a wearable, configure **wearable** under the [deviceTypes](../quick-start/module-configuration-file.md#devicetypes) tag in the [module.json5] (../quick-start/module-configuration-file.md) configuration file in the **src/main** directory.
 <!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
 
 ``` JSON5
