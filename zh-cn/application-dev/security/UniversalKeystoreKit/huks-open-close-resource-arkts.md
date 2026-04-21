@@ -29,12 +29,12 @@ async function openResource(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.openResource(resourceId)
       .then(() => {
-        console.info(`promise: openResource success`);
+        console.info('promise: openResource success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: openResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: openResource input arg invalid`);
+    console.error('promise: openResource input arg invalid.');
   }
 }
 ```
@@ -59,12 +59,12 @@ async function closeResource(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.closeResource(resourceId)
       .then(() => {
-        console.info(`promise: closeResource success`);
+        console.info('promise: closeResource success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: closeResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: closeResource input arg invalid`);
+    console.error('promise: closeResource input arg invalid.');
   }
 }
 ```
