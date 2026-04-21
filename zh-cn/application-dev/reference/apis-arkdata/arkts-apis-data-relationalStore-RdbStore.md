@@ -5182,11 +5182,11 @@ if (store != undefined) {
 
 cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行端云同步，根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现[云服务](js-apis-data-cloudExtension-sys.md)功能。
+手动执行端云同步，根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
 > **说明：**
 >
-> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中仅支持以下谓词，其中[数据字段类型](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数和string。
+> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中仅支持以下谓词，其中数据字段类型[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数和string。
 > 
 > - [equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)
 > - [notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)
