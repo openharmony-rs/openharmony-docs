@@ -135,7 +135,7 @@ onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#
 
 ### onTerminated
 
-onTerminated(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)\>)
+onTerminated(callback: Callback\<TerminationInfo>)
 
 当被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发此回调函数。
 
