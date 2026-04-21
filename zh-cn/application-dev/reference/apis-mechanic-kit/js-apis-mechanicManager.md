@@ -282,6 +282,29 @@ let layout = mechanicManager.getCameraTrackingLayout();
 console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 ```
 
+## mechanicManager.isControlSupported()
+
+isControlSupported(mechDeviceType?: MechDeviceType): boolean
+
+判断当前设备是否支持某类设备的具身控制。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| true | 当前设备支持某类设备的具身控制。 |
+| false | 当前设备不支持某类设备的具身控制。 |
+
+**示例：**
+
+```ts
+console.info('Check whether supported for control');
+let isSupported = mechanicManager.isControlSupported(MechDeviceType.GIMBAL_DEVICE);
+console.info(`'isSupported:' ${isSupported}`);
+```
+
 ## MechInfo
 
 机械体设备信息。
