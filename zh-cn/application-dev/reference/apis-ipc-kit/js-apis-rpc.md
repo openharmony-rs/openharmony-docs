@@ -9048,13 +9048,13 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let option = new rpc.MessageOption();
-  hilog.info(0x0000, 'testTag', 'create object successfully');
+  hilog.info(0x0000, 'testTag', 'Succeeded in creating object');
   let flag = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag is ' + flag);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag is ' + flag);
   option.setFlags(rpc.MessageOption.TF_ASYNC);
-  hilog.info(0x0000, 'testTag', 'run setFlags success');
+  hilog.info(0x0000, 'testTag', 'Succeeded in running setFlags');
   let flag2 = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag2 is ' + flag2);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag2 is ' + flag2);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9083,9 +9083,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let option = new rpc.MessageOption();
   option.setFlags(rpc.MessageOption.TF_ASYNC);
-  hilog.info(0x0000, 'testTag', 'run setFlags success');
+  hilog.info(0x0000, 'testTag', 'Succeeded in running setFlags');
   let flag = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag is ' + flag);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag is ' + flag);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9114,10 +9114,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let option = new rpc.MessageOption();
   let time = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time);
   option.setWaitTime(16);
   let time2 = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time2);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time2);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9147,7 +9147,7 @@ try {
   let option = new rpc.MessageOption();
   option.setWaitTime(16);
   let time = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
