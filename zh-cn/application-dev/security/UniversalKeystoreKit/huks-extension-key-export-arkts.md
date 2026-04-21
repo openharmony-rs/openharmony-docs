@@ -81,7 +81,7 @@ async function extensionKeyExport(): Promise<Uint8Array> {
     await openResource(resourceId);
     
     /* 3.导出公钥 */
-    publicKey = await exportPublicKey(keyAlias);
+    publicKey = await exportPublicKey(resourceId);
     console.info(`promise: public key length: ${publicKey.length}`);
     
     /* 4.关闭资源 */
