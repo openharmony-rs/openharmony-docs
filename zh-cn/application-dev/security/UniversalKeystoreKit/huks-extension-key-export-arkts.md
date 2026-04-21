@@ -17,7 +17,7 @@
 
 2. 调用[openResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开资源。
 
-3. 调用[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)导出公钥。
+3. 调用[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)导出公钥，密钥参数中需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyclass)，表示该密钥由外部密钥管理扩展管理。
 
 ## 开发案例
 
@@ -41,9 +41,14 @@ async function openResource(resourceId: string): Promise<void> {
 async function exportPublicKey(keyAlias: string): Promise<Uint8Array> {
   let publicKey: Uint8Array = new Uint8Array([]);
   try {
+    const exportProperties: Array<huks.HuksParam> = [
+      {
+        tag: huks.HuksTag.HUKS_TAG_KEY_CLASS,
+        value: huks.HuksKeyClass.HUKS_KEY_CLASS_EXTENSION
+      }
+    ];
     const exportOptions: huks.HuksOptions = {
-      properties: [],
-      inData: new Uint8Array([])
+      properties: exportProperties
     };
     await huks.exportKeyItem(keyAlias, exportOptions)
       .then((data) => {

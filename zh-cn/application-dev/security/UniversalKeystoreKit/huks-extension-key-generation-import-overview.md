@@ -41,4 +41,4 @@
 
 > **说明：**
 >
-> 在外部密钥管理扩展场景下，keyAlias传入的是资源ID（resourceId），而非传统的密钥别名。keyAlias和wrappingKeyAlias需要保证其是有效的资源ID，即已通过[openResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开的资源。
+> 在外部密钥管理扩展场景下，keyAlias传入的是资源ID（resourceId），而非传统的密钥别名。keyAlias和wrappingKeyAlias需要保证其是有效的资源ID，即已通过[openResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开的资源，同时需要保证keyAlias和wrappingKeyAlias中包含的提供者名称（providerName）、外部扩展名称（abilityName）和应用包名（bundleName）内容一致。
