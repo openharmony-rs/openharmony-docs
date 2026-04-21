@@ -17,11 +17,11 @@
 数据防泄漏服务关键接口如下表所示。具体API说明详见API参考。
 | 名称 | 描述 |
 | -------- | -------- |
-| DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)| 查询当前DLP沙箱的权限信息。 |
-|DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)  | 获取指定DLP文件名的原始文件名。 |
-|DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)  |查询当前应用是否运行在DLP沙箱环境。  |
-| DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo) | 设置沙箱应用配置信息。 |
-| DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo) |获取沙箱应用配置信息。  |
+| DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess \*dlpFileAccess, uint32_t \*flags)| 查询当前DLP沙箱的权限信息。 |
+|DLP_ErrCode OH_DLP_GetOriginalFileName(const char \*fileName, char \*\*originalFileName)  | 获取指定DLP文件名的原始文件名。 |
+|DLP_ErrCode OH_DLP_IsInSandbox(bool \*isInSandbox)  |查询当前应用是否运行在DLP沙箱环境。  |
+| DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char \*configInfo) | 设置沙箱应用配置信息。 |
+| DLP_ErrCode OH_DLP_GetSandboxAppConfig(char \*\*configInfo) |获取沙箱应用配置信息。  |
 |DLP_ErrCode OH_DLP_CleanSandboxAppConfig()  |清理沙箱应用配置信息。  |
 
 
