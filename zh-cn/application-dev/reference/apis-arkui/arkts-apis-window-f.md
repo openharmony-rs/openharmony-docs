@@ -941,7 +941,7 @@ ArkTS-Dyn: getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: 
 
 ArkTS-Sta: getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, y?: int): Promise&lt;Array&lt;Window&gt;&gt;
 
-查询本应用指定坐标下的可见窗口数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
+查询本应用指定坐标下的可见窗口（可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)接口监听）数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
