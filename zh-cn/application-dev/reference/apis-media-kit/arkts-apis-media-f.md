@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -199,8 +200,9 @@ media.createAVRecorder().then((recorder: media.AVRecorder) => {
 
 ## media.createAVTranscoder<sup>12+</sup>
 
-createAVTranscoder(): Promise\<AVTranscoder>
+ArkTS-Dyn: createAVTranscoder(): Promise\<AVTranscoder>
 
+ArkTS-Sta: createAVTranscoder(): Promise\<AVTranscoder | undefined>
 创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
@@ -211,11 +213,15 @@ createAVTranscoder(): Promise\<AVTranscoder>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[AVTranscoder](arkts-apis-media-AVTranscoder.md)> | Promise对象。异步返回AVTranscoder实例，失败时返回null。可用于视频转码。 |
+| ArkTS-Dyn: Promise\<[AVTranscoder](arkts-apis-media-AVTranscoder.md)><br>ArkTS-Sta: Promise\<[AVTranscoder](arkts-apis-media-AVTranscoder.md) \| undefined> | Promise对象。异步返回AVTranscoder实例，失败时返回null。可用于视频转码。 |
 
 **错误码：**
 
@@ -245,17 +251,22 @@ media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
 
 ## media.createAVMetadataExtractor<sup>11+</sup>
 
-createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
+ArkTS-Dyn: createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
 
+ArkTS-Sta: createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor | undefined>): void
 创建AVMetadataExtractor实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVMetadataExtractor](arkts-apis-media-AVMetadataExtractor.md)> | 是   | 回调函数。当创建AVMetadataExtractor实例成功，err为undefined，data为获取到的AVMetadataExtractor实例，否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[AVMetadataExtractor](arkts-apis-media-AVMetadataExtractor.md)><br>ArkTS-Sta: AsyncCallback\<[AVMetadataExtractor](arkts-apis-media-AVMetadataExtractor.md) \| undefined> | 是   | 回调函数。当创建AVMetadataExtractor实例成功，err为undefined，data为获取到的AVMetadataExtractor实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -283,17 +294,22 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 ## media.createAVMetadataExtractor<sup>11+</sup>
 
-createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
+ArkTS-Dyn: createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
 
+ArkTS-Sta: createAVMetadataExtractor(): Promise\<AVMetadataExtractor | undefined>
 创建AVMetadataExtractor实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[AVMetadataExtractor](arkts-apis-media-AVMetadataExtractor.md)>  | Promise对象。异步返回元数据获取类对象（AVMetadataExtractor）。 |
+| ArkTS-Dyn: Promise\<[AVMetadataExtractor](arkts-apis-media-AVMetadataExtractor.md)><br>ArkTS-Sta: Promise\<[AVMetadataExtractor](arkts-apis-media-AVMetadataExtractor.md) \| undefined>  | Promise对象。异步返回元数据获取类对象（AVMetadataExtractor）。 |
 
 **错误码：**
 
@@ -323,8 +339,9 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 
 ## media.createSoundPool<sup>10+</sup>
 
-createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
+ArkTS-Dyn: createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
 
+ArkTS-Sta: createSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool | undefined>): void
 创建音频池实例。使用callback异步回调。
 
 > **说明：**
@@ -334,13 +351,17 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, ca
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxStreams | number | 是   | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
+| maxStreams | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
 | audioRenderInfo | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)  | 是   | 音频播放参数信息。其中audioRenderInfo中的参数usage取值为STREAM_USAGE_UNKNOWN，STREAM_USAGE_MUSIC，STREAM_USAGE_MOVIE，STREAM_USAGE_AUDIOBOOK时，SoundPool播放短音时为混音模式，不会打断其他音频播放。SoundPool支持将rendererFlags设置为1用于低时延通路播放。 |
-| callback | AsyncCallback<[SoundPool](js-apis-inner-multimedia-soundPool.md)> | 是   | 回调函数。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
+| callback | ArkTS-Dyn: AsyncCallback<[SoundPool](js-apis-inner-multimedia-soundPool.md)><br>ArkTS-Sta: AsyncCallback<[SoundPool](js-apis-inner-multimedia-soundPool.md) \| undefined> | 是   | 回调函数。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
 
@@ -374,8 +395,9 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 
 ## media.createSoundPool<sup>10+</sup>
 
-createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
+ArkTS-Dyn: createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
 
+ArkTS-Sta: createSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool | undefined>
 创建音频池实例。使用Promise异步回调。
 
 > **说明：**
@@ -385,18 +407,22 @@ createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): P
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxStreams | number | 是   | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
+| maxStreams | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | soundPool实例的最大播放的流数，设置范围为1-32的正整数。 |
 | audioRenderInfo | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)  | 是   | 音频播放参数信息 |
 
 **返回值：**
 
 | 类型                                      | 说明                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| Promise<[SoundPool](js-apis-inner-multimedia-soundPool.md)> | Promise对象。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
+| ArkTS-Dyn: Promise<[SoundPool](js-apis-inner-multimedia-soundPool.md)><br>ArkTS-Sta: Promise<[SoundPool](js-apis-inner-multimedia-soundPool.md) \| undefined> | Promise对象。异步返回SoundPool实例，失败时返回null。用于音频池实例的加载播放功能。 |
 
 **错误码：**
 
@@ -472,17 +498,22 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 
 ## media.createAVImageGenerator<sup>12+</sup>
 
-createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
+ArkTS-Dyn: createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
 
+ArkTS-Sta: createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator | undefined>): void
 创建AVImageGenerator实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVImageGenerator](arkts-apis-media-AVImageGenerator.md)> | 是   | 回调函数。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[AVImageGenerator](arkts-apis-media-AVImageGenerator.md)><br>ArkTS-Sta: AsyncCallback\<[AVImageGenerator](arkts-apis-media-AVImageGenerator.md) \| undefined> | 是   | 回调函数。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
 
 **错误码：**
 
@@ -510,17 +541,22 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
 
 ## media.createAVImageGenerator<sup>12+</sup>
 
-createAVImageGenerator(): Promise\<AVImageGenerator>
+ArkTS-Dyn: createAVImageGenerator(): Promise\<AVImageGenerator>
 
+ArkTS-Sta: createAVImageGenerator(): Promise\<AVImageGenerator | undefined>
 创建AVImageGenerator对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[AVImageGenerator](arkts-apis-media-AVImageGenerator.md)> | Promise对象。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
+| ArkTS-Dyn: Promise\<[AVImageGenerator](arkts-apis-media-AVImageGenerator.md)><br>ArkTS-Sta: Promise\<[AVImageGenerator](arkts-apis-media-AVImageGenerator.md) \| undefined> | Promise对象。异步返回AVImageGenerator实例，失败时返回null。可用于获取视频缩略图。 |
 
 **错误码：**
 
@@ -550,13 +586,18 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
 
 ## media.createMediaSourceWithUrl<sup>12+</sup>
 
-createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource
+ArkTS-Dyn: createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource
 
+ArkTS-Sta: createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource | undefined
 创建流媒体预下载媒体来源实例方法。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -569,7 +610,7 @@ createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaS
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| [MediaSource](arkts-apis-media-MediaSource.md) | MediaSource返回值。 |
+| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | MediaSource返回值。 |
 
 **错误码：**
 
@@ -613,13 +654,18 @@ async function test(context: Context){
 
 ## media.createMediaSourceWithStreamData<sup>19+</sup>
 
-createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource
+ArkTS-Dyn: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource
 
+ArkTS-Sta: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource | undefined
 创建流媒体多码率媒体来源实例方法，当前仅支持HTTP-FLV协议格式多码率。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -631,7 +677,7 @@ createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource
 
 | 类型                          | 说明                |
 | ----------------------------- | ------------------- |
-| [MediaSource](arkts-apis-media-MediaSource.md) | 返回MediaSource，用于媒体资源设置。 |
+| ArkTS-Dyn: [MediaSource](arkts-apis-media-MediaSource.md)<br>ArkTS-Sta: [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | 返回MediaSource，用于媒体资源设置。 |
 
 **示例：**
 
