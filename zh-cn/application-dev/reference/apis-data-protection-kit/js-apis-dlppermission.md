@@ -1465,7 +1465,7 @@ if (dlpFd) {
 | fileId | string | 否 | 是 | 表示文件的标识，默认为空。不超过255字节，超出此范围返回null。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为空。取值范围大于等于0，超出此范围返回null。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
-| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为空，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。取值范围大于等于0，超出此范围返回null。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为空，单位：秒。<br>**模型约束**：此接口仅可在Stage模型下使用。取值范围大于等于0，超出此范围返回null。 |
 | extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
