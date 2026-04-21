@@ -57,7 +57,7 @@
     return signData;
   }
   
-  async function verifyMessagBySegment(pubKey: cryptoFramework.PubKey, plainText: Uint8Array,
+  async function verifyMessageBySegment(pubKey: cryptoFramework.PubKey, plainText: Uint8Array,
     signMessageBlob: cryptoFramework.DataBlob) {
     let verifyAlg = 'RSA1024|PKCS1|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -76,20 +76,20 @@
   }
   
   async function rsaSignatureBySegment() {
-    let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!';
+    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
     let keyGenAlg = 'RSA1024';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = await generator.generateKeyPair();
     let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
     let signData = await signMessageBySegment(keyPair.priKey, messageData);
-    let verifyResult = await verifyMessagBySegment(keyPair.pubKey, messageData, signData);
+    let verifyResult = await verifyMessageBySegment(keyPair.pubKey, messageData, signData);
     if (verifyResult === true) {
       console.info('verify result: success.');
     } else {

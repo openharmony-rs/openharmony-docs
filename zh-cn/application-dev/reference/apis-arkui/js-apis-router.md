@@ -12,6 +12,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 页面路由需要在页面渲染完成之后才能调用，在onInit和onReady生命周期中页面还处于渲染阶段，禁止调用页面路由方法。
@@ -42,6 +44,10 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |
@@ -57,6 +63,7 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -119,6 +126,10 @@ pushUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |
@@ -129,6 +140,7 @@ pushUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -188,6 +200,10 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
@@ -204,6 +220,7 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -266,6 +283,10 @@ pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;voi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
@@ -277,6 +298,7 @@ pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;voi
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -337,6 +359,10 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明               |
@@ -352,6 +378,7 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -403,6 +430,10 @@ replaceUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明               |
@@ -413,6 +444,7 @@ replaceUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -479,6 +511,7 @@ replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -530,6 +563,10 @@ replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
@@ -541,6 +578,7 @@ replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -590,6 +628,10 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |
@@ -605,6 +647,7 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -669,6 +712,10 @@ pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |
@@ -679,6 +726,7 @@ pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -738,6 +786,10 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
@@ -754,6 +806,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -816,6 +869,10 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCal
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
@@ -827,6 +884,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCal
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -887,6 +945,10 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明               |
@@ -902,6 +964,7 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -953,6 +1016,10 @@ replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&g
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明               |
@@ -963,6 +1030,7 @@ replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&g
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -1012,13 +1080,16 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
 | options | [NamedRouterOptions](#namedrouteroptions10) | 是    | 替换页面描述信息。  |
 | mode    | [RouterMode](#routermode9)      | 是    | 跳转页面使用的模式。 |
-
 
 **返回值：**
 
@@ -1029,6 +1100,7 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -1080,6 +1152,10 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: Async
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
@@ -1091,6 +1167,7 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: Async
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[页面路由错误码](errorcode-router.md)和[接口调用异常错误码](errorcode-internal.md)。
+
 > **说明：**
 >
 > 该接口返回的以下错误码均为string类型。
@@ -1140,6 +1217,10 @@ back(options?: RouterOptions ): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明                                                         |
@@ -1167,6 +1248,10 @@ back(index: number, params?: Object): void;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1200,6 +1285,10 @@ clear(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **示例：**
 
 ```ts
@@ -1221,6 +1310,10 @@ getLength(): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -1250,6 +1343,10 @@ getState(): RouterState
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -1281,6 +1378,10 @@ getStateByIndex(index: number): RouterState | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1321,6 +1422,10 @@ getStateByUrl(url: string): Array&lt;RouterState&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明         |
@@ -1353,10 +1458,10 @@ for (let i: number = 0; i < options.length; i++) {
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                                         |
 | ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| index | number | 否   | 否   | 表示当前页面在页面栈中的索引。从栈底到栈顶，index从1开始递增。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| name  | string | 否   | 否   | 表示当前页面的名称，即对应文件名。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| path  | string | 否   | 否   | 表示当前页面的路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| params<sup>12+</sup>  | Object | 否   | 否   | 表示当前页面携带的参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                         |
+| index | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否   | 否   | 表示当前页面在页面栈中的索引。从栈底到栈顶，index从1开始递增。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| name  | string | 否   | 否   | 表示当前页面的名称，即对应文件名。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| path  | string | 否   | 否   | 表示当前页面的路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| params<sup>12+</sup>  | Object | 否   | 否   | 表示当前页面携带的参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                                       |
 
 ## router.showAlertBeforeBackPage<sup>(deprecated)</sup>
 
@@ -1373,6 +1478,10 @@ showAlertBeforeBackPage(options: EnableAlertOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1410,6 +1519,10 @@ try {
 
 **系统能力：** 以下各项对应的系统能力均为SystemCapability.ArkUI.ArkUI.Full。
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型     | 只读 | 可选 | 说明       |
 | ------- | ------ | ---- | ---- | -------- |
 | message | string | 否    | 否    | 询问对话框内容。 |
@@ -1429,6 +1542,10 @@ hideAlertBeforeBackPage(): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **示例：**
 
@@ -1454,6 +1571,10 @@ getParams(): Object
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **返回值：**
 
 | 类型   | 说明                               |
@@ -1474,9 +1595,9 @@ this.getUIContext().getRouter().getParams();
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| url    | string | 否   | 否   | 表示目标页面的url，可以用以下两种格式：<br/>-&nbsp;页面绝对路径，由配置文件中pages列表提供，例如：<br/>&nbsp;&nbsp;-&nbsp;pages/index/index<br/>&nbsp;&nbsp;-&nbsp;pages/detail/detail<br/>-&nbsp;特殊值，如果url的值是"/"，则跳转到首页，首页默认为页面跳转配置项src数组的第一个数据项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据，切换到其他页面时，当前接收的数据失效。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。<br/>**说明：** <br/>params参数只能传递可序列化的参数，不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| recoverable<sup>14+</sup> | boolean | 否   | 是   | 表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。<br/>**说明：** <br/> 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../application-models/ability-recover-guideline.md)。 |
+| url    | string | 否   | 否   | 表示目标页面的url，可以用以下两种格式：<br/>-&nbsp;页面绝对路径，由配置文件中pages列表提供，例如：<br/>&nbsp;&nbsp;-&nbsp;pages/index/index<br/>&nbsp;&nbsp;-&nbsp;pages/detail/detail<br/>-&nbsp;特殊值，如果url的值是"/"，则跳转到首页，首页默认为页面跳转配置项src数组的第一个数据项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据，切换到其他页面时，当前接收的数据失效。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。<br/>**说明：** <br/>params参数只能传递可序列化的参数，不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| recoverable<sup>14+</sup> | boolean | 否   | 是   | 表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。<br/>**说明：** <br/> 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../application-models/ability-recover-guideline.md)。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 
   > **说明：**
   > 页面路由栈支持的最大Page数量为32。
@@ -1487,7 +1608,11 @@ this.getUIContext().getRouter().getParams();
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明                                                         |
 | -------- | --- | ------------------------------------------------------------ |
@@ -1500,9 +1625,9 @@ this.getUIContext().getRouter().getParams();
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| name   | string | 否   | 否   | 表示目标命名路由页面的name。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。 <br/>**说明：** <br/>params参数不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full  |
-| recoverable<sup>14+</sup> | boolean | 否   | 是   | 表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。<br/>**说明：** <br/> 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../application-models/ability-recover-guideline.md)。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite |
+| name   | string | 否   | 否   | 表示目标命名路由页面的name。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。 <br/>**说明：** <br/>params参数不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| recoverable<sup>14+</sup> | boolean | 否   | 是   | 表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。<br/>**说明：** <br/> 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../application-models/ability-recover-guideline.md)。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 完整示例
 
@@ -1672,6 +1797,10 @@ push(options: RouterOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |
@@ -1718,6 +1847,10 @@ replace(options: RouterOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：**
 
 | 参数名  | 类型                            | 必填 | 说明               |
@@ -1753,6 +1886,10 @@ enableAlertBeforeBackPage(options: EnableAlertOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明        |
@@ -1778,6 +1915,10 @@ disableAlertBeforeBackPage(): void
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[hideAlertBeforeBackPage](arkts-apis-uicontext-router.md#hidealertbeforebackpage)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **示例：**
 

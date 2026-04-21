@@ -14,6 +14,8 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 >
 > - 从API version 23开始，图片类型新增支持tiff格式。
 >
+> - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
+>
 > - 使用快捷组合键对Image组件复制时，Image组件必须处于获焦状态，如何获焦请参考[设置组件是否可获焦](../../../ui/arkts-common-events-focus-event.md#设置组件是否可获焦)。Image组件默认不获焦，需将[focusable](ts-universal-attributes-focus.md#focusable)属性设置为true，即可使用Tab键将焦点切换到组件上，再将[focusOnTouch](ts-universal-attributes-focus.md#focusontouch9)属性设置为true，即可实现点击获焦。
 >
 > - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](./ts-basic-svg.md)。
@@ -369,7 +371,7 @@ fillColor(color: ResourceColor|ColorContent)
 
 fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
-设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter9)。如果想重置填充颜色可以传入[ColorContent](#colorcontent15)类型。支持通过传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型设置P3色域颜色值，可在支持高色域的设备上获得更丰富的色彩表现。
+设置填充颜色。仅对SVG图源生效，设置后会替换SVG图片中所有可绘制元素的填充颜色。如需对png图片进行修改颜色，可以使用[colorFilter](#colorfilter9)。如果想重置填充颜色可以传入[ColorContent](#colorcontent15)类型。支持通过传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型设置P3色域颜色值<!--Del-->，从API version 24开始，支持BT2020色域颜色值<!--DelEnd-->，可在支持高色域的设备上获得更丰富的色彩表现。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 

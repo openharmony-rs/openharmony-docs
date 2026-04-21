@@ -2723,7 +2723,8 @@ error: check syscap filed and device type is not supported.
 
 **错误描述**
 
-<!--RP12-->应用配置的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)不支持安装。
+<!--RP12-->
+应用配置的[设备类型](../quick-start/module-configuration-file.md#devicetypes标签)不支持安装。
 
 **可能原因**
 
