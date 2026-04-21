@@ -1232,7 +1232,7 @@ restoreLocalDeviceName(): void
 
 restoreLocalDeivceName(): void
 
-系统重置还原网络设置时，还原本机设备名。
+还原本机设备名。
 
 > **说明：**
 >
