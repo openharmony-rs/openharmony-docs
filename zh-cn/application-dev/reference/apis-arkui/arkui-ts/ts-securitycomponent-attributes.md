@@ -454,7 +454,7 @@ borderRadius(radius: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。默认值: 0vp。|
+| radius | [Dimension](ts-types.md#dimension10) |是 |安全控件的边框圆角半径。默认值: 0vp。|
 
 **返回值：**
 
