@@ -37,7 +37,7 @@ typedef struct {...} Print_Range
 
 ### endPage
 
-```
+```c
 uint32_t Print_Range::endPage
 ```
 **描述**
@@ -47,7 +47,7 @@ uint32_t Print_Range::endPage
 
 ### pagesArray
 
-```
+```c
 uint32_t* Print_Range::pagesArray
 ```
 **描述**
@@ -57,7 +57,7 @@ uint32_t* Print_Range::pagesArray
 
 ### pagesArrayLen
 
-```
+```c
 uint32_t Print_Range::pagesArrayLen
 ```
 **描述**
@@ -67,7 +67,7 @@ uint32_t Print_Range::pagesArrayLen
 
 ### startPage
 
-```
+```c
 uint32_t Print_Range::startPage
 ```
 **描述**

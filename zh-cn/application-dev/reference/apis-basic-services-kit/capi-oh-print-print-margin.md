@@ -37,7 +37,7 @@ typedef struct {...} Print_Margin
 
 ### bottomMargin
 
-```
+```c
 uint32_t Print_Margin::bottomMargin
 ```
 **描述**
@@ -47,7 +47,7 @@ uint32_t Print_Margin::bottomMargin
 
 ### leftMargin
 
-```
+```c
 uint32_t Print_Margin::leftMargin
 ```
 **描述**
@@ -57,7 +57,7 @@ uint32_t Print_Margin::leftMargin
 
 ### rightMargin
 
-```
+```c
 uint32_t Print_Margin::rightMargin
 ```
 **描述**
@@ -67,7 +67,7 @@ uint32_t Print_Margin::rightMargin
 
 ### topMargin
 
-```
+```c
 uint32_t Print_Margin::topMargin
 ```
 **描述**

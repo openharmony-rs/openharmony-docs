@@ -43,7 +43,7 @@ typedef struct {...} Print_PrintAttributes
 
 ### colorMode
 
-```
+```c
 uint32_t Print_PrintAttributes::colorMode
 ```
 **描述**
@@ -53,7 +53,7 @@ uint32_t Print_PrintAttributes::colorMode
 
 ### copyNumber
 
-```
+```c
 uint32_t Print_PrintAttributes::copyNumber
 ```
 **描述**
@@ -63,7 +63,7 @@ uint32_t Print_PrintAttributes::copyNumber
 
 ### duplexMode
 
-```
+```c
 uint32_t Print_PrintAttributes::duplexMode
 ```
 **描述**
@@ -73,7 +73,7 @@ uint32_t Print_PrintAttributes::duplexMode
 
 ### hasOption
 
-```
+```c
 bool Print_PrintAttributes::hasOption
 ```
 **描述**
@@ -83,7 +83,7 @@ bool Print_PrintAttributes::hasOption
 
 ### isLandscape
 
-```
+```c
 bool Print_PrintAttributes::isLandscape
 ```
 **描述**
@@ -93,7 +93,7 @@ bool Print_PrintAttributes::isLandscape
 
 ### isSequential
 
-```
+```c
 bool Print_PrintAttributes::isSequential
 ```
 **描述**
@@ -103,7 +103,7 @@ bool Print_PrintAttributes::isSequential
 
 ### options
 
-```
+```c
 char Print_PrintAttributes::options[256]
 ```
 **描述**
@@ -113,7 +113,7 @@ char Print_PrintAttributes::options[256]
 
 ### pageMargin
 
-```
+```c
 Print_Margin Print_PrintAttributes::pageMargin
 ```
 **描述**
@@ -123,7 +123,7 @@ Print_Margin Print_PrintAttributes::pageMargin
 
 ### pageRange
 
-```
+```c
 Print_Range Print_PrintAttributes::pageRange
 ```
 **描述**
@@ -133,7 +133,7 @@ Print_Range Print_PrintAttributes::pageRange
 
 ### pageSize
 
-```
+```c
 Print_PageSize Print_PrintAttributes::pageSize
 ```
 **描述**

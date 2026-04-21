@@ -35,7 +35,7 @@ typedef struct {...} Print_PrintDocCallback
 
 ### jobStateChangedCb
 
-```
+```c
 Print_OnJobStateChanged Print_PrintDocCallback::jobStateChangedCb
 ```
 **描述**
@@ -45,7 +45,7 @@ Print_OnJobStateChanged Print_PrintDocCallback::jobStateChangedCb
 
 ### startLayoutWriteCb
 
-```
+```c
 Print_OnStartLayoutWrite Print_PrintDocCallback::startLayoutWriteCb
 ```
 **描述**

@@ -37,7 +37,7 @@ typedef struct {...} Print_PageSize
 
 ### height
 
-```
+```c
 uint32_t Print_PageSize::height
 ```
 **描述**
@@ -47,7 +47,7 @@ uint32_t Print_PageSize::height
 
 ### id
 
-```
+```c
 char* Print_PageSize::id
 ```
 **描述**
@@ -57,7 +57,7 @@ char* Print_PageSize::id
 
 ### name
 
-```
+```c
 char* Print_PageSize::name
 ```
 **描述**
@@ -67,7 +67,7 @@ char* Print_PageSize::name
 
 ### width
 
-```
+```c
 uint32_t Print_PageSize::width
 ```
 **描述**

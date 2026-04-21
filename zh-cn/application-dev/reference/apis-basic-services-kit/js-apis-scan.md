@@ -259,7 +259,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.init().then(() => {
-    console.log('scan init success');
+    console.info('scan init success');
 }).catch((error: BusinessError) => {
     console.error('scan init failed: ' + JSON.stringify(error));
 })
@@ -293,7 +293,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.exit().then(() => {
-    console.log('scan exit success');
+    console.info('scan exit success');
 }).catch((error: BusinessError) => {
     console.error('scan exit failed: ' + JSON.stringify(error));
 })
@@ -327,7 +327,7 @@ import { scan } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 scan.startScannerDiscovery().then(() => {
-    console.log('start scanner discovery success');
+    console.info('start scanner discovery success');
 }).catch((error: BusinessError) => {
     console.error('start scanner discovery failed: ' + JSON.stringify(error));
 })
@@ -367,7 +367,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.openScanner(scannerId).then(() => {
-    console.log('open scanner success');
+    console.info('open scanner success');
 }).catch((error: BusinessError) => {
     console.error('open scanner failed: ' + JSON.stringify(error));
 })
@@ -407,7 +407,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
-    console.log('close scanner success');
+    console.info('close scanner success');
 }).catch((error: BusinessError) => {
     console.error('close scanner failed: ' + JSON.stringify(error));
 })
@@ -447,7 +447,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) => {
-    console.log('get scanner parameters success: ' + JSON.stringify(parameters));
+    console.info('get scanner parameters success: ' + JSON.stringify(parameters));
 }).catch((error: BusinessError) => {
     console.error('get scanner parameters failed: ' + JSON.stringify(error));
 })
@@ -494,7 +494,7 @@ let value: scan.ScannerOptionValue = {
     numValue: 100
 };
 scan.setScannerParameter(scannerId, optionIndex, value).then(() => {
-    console.log('set scanner parameter success');
+    console.info('set scanner parameter success');
 }).catch((error: BusinessError) => {
     console.error('set scanner parameter failed: ' + JSON.stringify(error));
 })
@@ -536,7 +536,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.setScanAutoOption(scannerId, optionIndex).then(() => {
-    console.log('set scan auto option success');
+    console.info('set scan auto option success');
 }).catch((error: BusinessError) => {
     console.error('set scan auto option failed: ' + JSON.stringify(error));
 })
@@ -578,7 +578,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
 scan.getScannerCurrentSetting(scannerId, optionIndex).then((value: scan.ScannerOptionValue) => {
-    console.log('get scanner current setting success: ' + JSON.stringify(value));
+    console.info('get scanner current setting success: ' + JSON.stringify(value));
 }).catch((error: BusinessError) => {
     console.error('get scanner current setting failed: ' + JSON.stringify(error));
 })
@@ -620,7 +620,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let scannerId: string = 'scanner_001';
 let batchMode: boolean = true;
 scan.startScan(scannerId, batchMode).then(() => {
-    console.log('start scan success');
+    console.info('start scan success');
 }).catch((error: BusinessError) => {
     console.error('start scan failed: ' + JSON.stringify(error));
 })
@@ -660,7 +660,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
-    console.log('cancel scan success');
+    console.info('cancel scan success');
 }).catch((error: BusinessError) => {
     console.error('cancel scan failed: ' + JSON.stringify(error));
 })
@@ -700,7 +700,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
-    console.log('get picture scan progress success: ' + JSON.stringify(progress));
+    console.info('get picture scan progress success: ' + JSON.stringify(progress));
 }).catch((error: BusinessError) => {
     console.error('get picture scan progress failed: ' + JSON.stringify(error));
 })
@@ -734,7 +734,7 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceFound', (device: scan.ScannerDevice) => {
-    console.log('scan device found: ' + JSON.stringify(device));
+    console.info('scan device found: ' + JSON.stringify(device));
 })
 ```
 
@@ -766,7 +766,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerDevice) => {
-    console.log('scan device found: ' + JSON.stringify(device));
+    console.info('scan device found: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceFound', callback);
 // 取消注册
@@ -801,7 +801,7 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 scan.on('scanDeviceSync', (device: scan.ScannerSyncDevice) => {
-    console.log('scan device sync: ' + JSON.stringify(device));
+    console.info('scan device sync: ' + JSON.stringify(device));
 })
 ```
 
@@ -833,7 +833,7 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 import { scan } from '@kit.BasicServicesKit';
 
 let callback = (device: scan.ScannerSyncDevice) => {
-    console.log('scan device sync: ' + JSON.stringify(device));
+    console.info('scan device sync: ' + JSON.stringify(device));
 };
 scan.on('scanDeviceSync', callback);
 // 取消注册

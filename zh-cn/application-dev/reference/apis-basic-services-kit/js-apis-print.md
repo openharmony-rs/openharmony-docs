@@ -64,7 +64,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('block', () => {
-        console.log('print state is block');
+        console.info('print state is block');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -112,7 +112,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.onBlock(() => {
-        console.log('print state is block');
+        console.info('print state is block');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -161,7 +161,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('succeed', () => {
-        console.log('print state is succeed');
+        console.info('print state is succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -209,7 +209,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.onSucceed(() => {
-        console.log('print state is succeed');
+        console.info('print state is succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -258,7 +258,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('fail', () => {
-        console.log('print state is fail');
+        console.info('print state is fail');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -306,7 +306,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.onFail(() => {
-        console.log('print state is fail');
+        console.info('print state is fail');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -355,7 +355,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('cancel', () => {
-        console.log('print state is cancel');
+        console.info('print state is cancel');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -403,7 +403,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.onCancel(() => {
-        console.log('print state is cancel');
+        console.info('print state is cancel');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -452,7 +452,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('block', () => {
-        console.log('unregister state block');
+        console.info('unregister state block');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -500,7 +500,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.offBlock(() => {
-        console.log('unregister state block');
+        console.info('unregister state block');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -549,7 +549,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('succeed', () => {
-        console.log('unregister state succeed');
+        console.info('unregister state succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -597,7 +597,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.offSucceed(() => {
-        console.log('unregister state succeed');
+        console.info('unregister state succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -646,7 +646,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('fail', () => {
-        console.log('unregister state fail');
+        console.info('unregister state fail');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -694,7 +694,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.offFail(() => {
-        console.log('unregister state fail');
+        console.info('unregister state fail');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -743,7 +743,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.off('cancel', () => {
-        console.log('unregister state cancel');
+        console.info('unregister state cancel');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -791,7 +791,7 @@ import { fileUri } from '@kit.CoreFileKit';
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.offCancel(() => {
-        console.log('unregister state cancel');
+        console.info('unregister state cancel');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -852,15 +852,15 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     };
     onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
         if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
-            console.log('PREVIEW_DESTROY');
+            console.info('PREVIEW_DESTROY');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
-            console.log('PRINT_TASK_SUCCEED');
+            console.info('PRINT_TASK_SUCCEED');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
-            console.log('PRINT_TASK_FAIL');
+            console.info('PRINT_TASK_FAIL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
-            console.log('PRINT_TASK_CANCEL');
+            console.info('PRINT_TASK_CANCEL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
-            console.log('PRINT_TASK_BLOCK');
+            console.info('PRINT_TASK_BLOCK');
         }
     }
 }
@@ -878,15 +878,15 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     };
     onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
         if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
-            console.log('PREVIEW_DESTROY');
+            console.info('PREVIEW_DESTROY');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
-            console.log('PRINT_TASK_SUCCEED');
+            console.info('PRINT_TASK_SUCCEED');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
-            console.log('PRINT_TASK_FAIL');
+            console.info('PRINT_TASK_FAIL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
-            console.log('PRINT_TASK_CANCEL');
+            console.info('PRINT_TASK_CANCEL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
-            console.log('PRINT_TASK_BLOCK');
+            console.info('PRINT_TASK_BLOCK');
         }
     }
 }
@@ -934,15 +934,15 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     };
     onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
         if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
-            console.log('PREVIEW_DESTROY');
+            console.info('PREVIEW_DESTROY');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_SUCCEED) {
-            console.log('PRINT_TASK_SUCCEED');
+            console.info('PRINT_TASK_SUCCEED');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_FAIL) {
-            console.log('PRINT_TASK_FAIL');
+            console.info('PRINT_TASK_FAIL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_CANCEL) {
-            console.log('PRINT_TASK_CANCEL');
+            console.info('PRINT_TASK_CANCEL');
         } else if (state == print.PrintDocumentAdapterState.PRINT_TASK_BLOCK) {
-            console.log('PRINT_TASK_BLOCK');
+            console.info('PRINT_TASK_BLOCK');
         }
     }
 }
@@ -984,14 +984,14 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: print.PrintTask) => {
     if (err) {
         console.error('print err ' + JSON.stringify(err));
     } else {
         printTask.on('succeed', () => {
-            console.log('print state is succeed');
+            console.info('print state is succeed');
         })
         // ...
     }
@@ -1038,11 +1038,11 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('succeed', () => {
-        console.log('print state is succeed');
+        console.info('print state is succeed');
     })
     // ...
 }).catch((error: BusinessError) => {
@@ -1101,7 +1101,7 @@ struct Index {
                             console.error('print err ' + JSON.stringify(err));
                         } else {
                             printTask.on('succeed', () => {
-                                console.log('print state is succeed');
+                                console.info('print state is succeed');
                             })
                             // ...
                         }
@@ -1186,7 +1186,7 @@ struct Index {
                     let context = this.getUIContext().getHostContext();
                     print.print([fileUri.getUriFromPath(filePath)], context).then((printTask: print.PrintTask) => {
                         printTask.on('succeed', () => {
-                            console.log('print state is succeed');
+                            console.info('print state is succeed');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -1270,7 +1270,7 @@ struct Index {
 
                     print.print(jobName, printAdapter, printAttributes, context).then((printTask: print.PrintTask) => {
                         printTask.on('succeed', () => {
-                            console.log('print state is succeed');
+                            console.info('print state is succeed');
                         })
                         // ...
                     }).catch((error: BusinessError) => {
@@ -1625,7 +1625,7 @@ let printerInformation : print.PrinterInformation = {
     options : 'testOps'
 };
 print.addPrinterToDiscovery(printerInformation).then(() => {
-    console.log('addPrinterToDiscovery success');
+    console.info('addPrinterToDiscovery success');
 }).catch((error: BusinessError) => {
     console.error('addPrinterToDiscovery error : ' + JSON.stringify(error));
 })
@@ -1698,7 +1698,7 @@ let printerInformation : print.PrinterInformation = {
     options : 'testOptions'
 };
 print.updatePrinterInDiscovery(printerInformation).then(() => {
-    console.log('updatePrinterInDiscovery success');
+    console.info('updatePrinterInDiscovery success');
 }).catch((error: BusinessError) => {
     console.error('updatePrinterInDiscovery error : ' + JSON.stringify(error));
 })
@@ -1745,7 +1745,7 @@ import { BusinessError } from '@ohos.base';
 
 let printerId : string = 'testPrinterId';
 print.removePrinterFromDiscovery(printerId).then(() => {
-    console.log('removePrinterFromDiscovery success');
+    console.info('removePrinterFromDiscovery success');
 }).catch((error: BusinessError) => {
     console.error('removePrinterFromDiscovery error : ' + JSON.stringify(error));
 })
@@ -1792,7 +1792,7 @@ import { BusinessError } from '@ohos.base';
 
 let printerId : string = 'testPrinterId';
 print.getPrinterInformationById(printerId).then((printerInformation : print.PrinterInformation) => {
-    console.log('getPrinterInformationById data : ' + JSON.stringify(printerInformation));
+    console.info('getPrinterInformationById data : ' + JSON.stringify(printerInformation));
 }).catch((error: BusinessError) => {
     console.error('getPrinterInformationById error : ' + JSON.stringify(error));
 })
@@ -1985,7 +1985,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 print.getAddedPrinters().then((printers: string[]) => {
-    console.log('getAddedPrinters success ' + JSON.stringify(printers));
+    console.info('getAddedPrinters success ' + JSON.stringify(printers));
     // ...
 }).catch((error: BusinessError) => {
     console.error('failed to getAddedPrinters because ' + JSON.stringify(error));
@@ -2049,7 +2049,7 @@ import { print } from '@kit.BasicServicesKit';
 // Trigger this callback when a added printer is changed.
 let onPrinterChange =
     (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
     };
 print.on('printerChange', onPrinterChange);
 ```
@@ -2093,7 +2093,7 @@ import { print } from '@kit.BasicServicesKit';
 // Trigger this callback when a added printer is changed.
 let onPrinterChange =
     (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
     };
 print.on('printerChange', onPrinterChange);
 print.off('printerChange');
@@ -2137,7 +2137,7 @@ import { print } from '@kit.BasicServicesKit';
 // Trigger this callback when a added printer is changed.
 let onPrinterChange =
     (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
     };
 print.onPrinterChange(onPrinterChange);
 ```
@@ -2180,7 +2180,7 @@ import { print } from '@kit.BasicServicesKit';
 // Trigger this callback when a added printer is changed.
 let onPrinterChange =
     (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
     };
 print.onPrinterChange(onPrinterChange);
 print.offPrinterChange(onPrinterChange);
@@ -2228,7 +2228,7 @@ print.startDiscoverPrinter(extensionList, (err: BusinessError) => {
     if (err) {
         console.error('failed to start Discover Printer because : ' + JSON.stringify(err));
     } else {
-        console.log('start Discover Printer success');
+        console.info('start Discover Printer success');
     }
 })
 ```
@@ -2274,7 +2274,7 @@ let extensionList: string[] = [];
 // 通过指定自己应用的包名，在发现时加载自己的打印扩展能力
 // let extensionList: string[] = ['com.myapplication.test'];
 print.startDiscoverPrinter(extensionList).then(() => {
-    console.log('start Discovery success');
+    console.info('start Discovery success');
 }).catch((error: BusinessError) => {
     console.error('failed to start Discovery because : ' + JSON.stringify(error));
 })
@@ -2314,7 +2314,7 @@ print.stopDiscoverPrinter((err: BusinessError) => {
     if (err) {
         console.error('failed to stop Discover Printer because : ' + JSON.stringify(err));
     } else {
-        console.log('stop Discover Printer success');
+        console.info('stop Discover Printer success');
     }
 })
 ```
@@ -2350,7 +2350,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
 print.stopDiscoverPrinter().then(() => {
-    console.log('stop Discovery success');
+    console.info('stop Discovery success');
 }).catch((error: BusinessError) => {
     console.error('failed to stop Discovery because : ' + JSON.stringify(error));
 })
@@ -2392,7 +2392,7 @@ print.connectPrinter(printerId, (err: BusinessError) => {
     if (err) {
         console.error('failed to connect Printer because : ' + JSON.stringify(err));
     } else {
-        console.log('start connect Printer success');
+        console.info('start connect Printer success');
     }
 })
 ```
@@ -2435,7 +2435,7 @@ import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.connectPrinter(printerId).then(() => {
-    console.log('start connect Printer success');
+    console.info('start connect Printer success');
 }).catch((error: BusinessError) => {
     console.error('failed to connect Printer because : ' + JSON.stringify(error));
 })
@@ -2497,7 +2497,7 @@ let printJobData: print.PrintJobData = {
     fdList: [file.fd],
 }
 print.startPrint(printJobData).then(() => {
-    console.log('start print success');
+    console.info('start print success');
 }).catch((error: BusinessError) => {
     console.error('failed to print because : ' + JSON.stringify(error));
 })
@@ -2721,7 +2721,7 @@ print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
     if (err) {
         console.error('updataPrintJobState failed, because : ' + JSON.stringify(err));
     } else {
-        console.log('updatePrintJobState success');
+        console.info('updatePrintJobState success');
     }
 })
 ```
@@ -2769,7 +2769,7 @@ let jobId : string = 'jobId';
 let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
 let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
 print.updatePrintJobState(jobId, state, subState).then(() => {
-    console.log('update print job state success');
+    console.info('update print job state success');
 }).catch((error: BusinessError) => {
     console.error('update print job state error : ' + JSON.stringify(error));
 })
@@ -2840,7 +2840,7 @@ let printerInformation : print.PrinterInformation = {
     options : 'testOptions'
 };
 print.updatePrinterInformation(printerInformation).then(() => {
-    console.log('updatePrinterInformation success');
+    console.info('updatePrinterInformation success');
 }).catch((error: BusinessError) => {
     console.error('updatePrinterInformation error : ' + JSON.stringify(error));
 })
