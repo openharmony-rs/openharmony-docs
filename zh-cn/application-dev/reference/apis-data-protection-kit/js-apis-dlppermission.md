@@ -244,7 +244,7 @@ getDLPSuffix(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回DLP文件扩展名。例如：原文件"text.txt"，加密后的DLP文件名为"test.txt.dlp"，返回拓展名为".dlp"。返回值固定为".dlp"。 |
+| string | 返回DLP文件扩展名。例如：原文件"text.txt"，加密后的DLP文件名为"test.txt.dlp"，返回扩展名为".dlp"。返回值固定为".dlp"。 |
 
 **错误码：**
 
@@ -260,7 +260,7 @@ getDLPSuffix(): string
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let res = dlpPermission.getDLPSuffix(); // 获取DLP拓展名。
+let res = dlpPermission.getDLPSuffix(); // 获取DLP扩展名。
 console.info('res', res);
 ```
 
