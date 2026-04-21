@@ -25,9 +25,20 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function openResource(resourceId: string): Promise<void> {
+const resourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+const openResourceParams: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+
+async function openResource(): Promise<void> {
   try {
-    await huksExternalCrypto.openResource(resourceId)
+    await huksExternalCrypto.openResource(resourceId, openResourceParams)
       .then(() => {
         console.info('promise: openResource success.');
       }).catch((error: BusinessError) => {
@@ -55,9 +66,20 @@ async function openResource(resourceId: string): Promise<void> {
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function closeResource(resourceId: string): Promise<void> {
+const resourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+const closeResourceParams: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+
+async function closeResource(): Promise<void> {
   try {
-    await huksExternalCrypto.closeResource(resourceId)
+    await huksExternalCrypto.closeResource(resourceId, closeResourceParams)
       .then(() => {
         console.info('promise: closeResource success.');
       }).catch((error: BusinessError) => {
