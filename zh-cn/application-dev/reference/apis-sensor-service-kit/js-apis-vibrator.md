@@ -1206,11 +1206,11 @@ isHdHapticSupported(): boolean
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-### vibrator('addContinuousEvent')<sup>18+</sup>
+### addContinuousEvent<sup>18+</sup>
 
 addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder;
 
-添加长振事件的方法成VibratorPattern对象。
+添加长振事件的方法，添加后使用[build](#build18)方法生成[VibratorPattern](#vibratorpattern18)对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1272,11 +1272,11 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
    }
    ```
 
-### vibrator('addTransientEvent')<sup>18+</sup>
+### addTransientEvent<sup>18+</sup>
 
 addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
 
-添加短振事件的方法成VibratorPattern对象。
+添加短振事件的方法, 添加后使用[build](#build18)方法生成[VibratorPattern](#vibratorpattern18)对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1323,7 +1323,7 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
    }
    ```
 
-### vibrator('build')<sup>18+</sup>
+### build<sup>18+</sup>
 
 build(): VibratorPattern;
 
@@ -1380,7 +1380,7 @@ build(): VibratorPattern;
 
 预置的振动效果。在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的时候需要使用此参数类型。此参数值种类多样，'haptic.clock.timer'为其中一种。[HapticFeedback<sup>12+</sup>](#hapticfeedback12)展示了几种常用的EffectId值。
 
-> **说明：**
+> **说明**
 > 
 > 由于设备存在多样性，不同的设备可能预置不同的效果，建议使用预置效果前先使用[vibrator.isSupportEffect](#vibratorissupporteffect10-1)<sup>10+</sup>接口查询当前设备是否支持该预置效果。
 
@@ -1648,7 +1648,9 @@ vibrate(duration: number, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定持续时间触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)替代。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1683,7 +1685,9 @@ vibrate(effectId: EffectId): Promise&lt;void&gt;
 
 按照预置振动效果触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)替代。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1755,7 +1759,9 @@ stop(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 按照指定模式停止马达的振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 
@@ -1802,7 +1808,9 @@ stop(stopMode: VibratorStopMode, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定模式停止马达的振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
+> **说明**
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
 
 **需要权限**：ohos.permission.VIBRATE
 

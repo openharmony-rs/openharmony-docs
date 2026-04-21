@@ -8241,7 +8241,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearD
 ```
 
 
-## sensor.off('type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
+## sensor.off('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')<sup>(deprecated)</sup>
 
 off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;): void
 

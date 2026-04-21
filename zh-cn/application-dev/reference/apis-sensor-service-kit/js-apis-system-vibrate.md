@@ -26,14 +26,17 @@ vibrator模块提供控制马达振动的能力，主要包含灯的列表查询
 ```ts
 import { Vibrator } from '@kit.SensorServiceKit';
 ```
+## Vibrator
 
-## Vibrator.vibrate
+### Vibrator.vibrate
 
- vibrate(options?: VibrateOptions): void
+ static vibrate(options?: VibrateOptions): void
 
 触发设备振动。
 
-除Lite Wearable外，从API Version8开始，推荐使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)。
+> **说明：**
+>
+> 除Lite Wearable外，从API Version8开始，建议使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)替代。
 
 **需要权限**：ohos.permission.VIBRATE
 
