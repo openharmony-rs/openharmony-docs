@@ -174,7 +174,7 @@ struct Index {
 }
 ```
 
-## inputConsumer.onkey<sup>26+</sup>
+## inputConsumer.onKey<sup>26+</sup>
 
 onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
@@ -298,7 +298,7 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 | 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：** 
+**示例：**
 
 ```ts
 import { inputConsumer } from '@kit.InputKit';
