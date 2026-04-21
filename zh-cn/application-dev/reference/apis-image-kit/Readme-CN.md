@@ -25,6 +25,7 @@
     - [Class (JfifMetadata)](arkts-apis-image-JfifMetadata.md)
     - [Class (TiffMetadata)](arkts-apis-image-TiffMetadata.md)
     - [Class (PngMetadata)](arkts-apis-image-PngMetadata.md)
+    - [Class (AvisMetadata)](arkts-apis-image-AvisMetadata.md)
     - [Interface (Picture)](arkts-apis-image-Picture.md)
     - [Interface (PixelMap)](arkts-apis-image-PixelMap.md)
     - [Interfaces (其他)](arkts-apis-image-i.md)

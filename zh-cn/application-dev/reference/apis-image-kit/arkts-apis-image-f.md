@@ -1099,7 +1099,7 @@ createImageSource(uri: string): ImageSource
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、[SVG<sup>10+</sup>](#svg标签说明)、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、[SVG<sup>10+</sup>](#svg标签说明)、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 
 **返回值：**
 
@@ -1134,7 +1134,7 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、[SVG<sup>10+</sup>](#svg标签说明)、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、[SVG<sup>10+</sup>](#svg标签说明)、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
