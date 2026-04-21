@@ -219,7 +219,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 | 100011 | No callback has been registered to respond to this request. |
 | 100012 | Transferring data failed. |
 
-以上错误码的详细介绍请参见[通用错误码](../../reference/errorcode-universal.md)。
+以上错误码的详细介绍请参见[通用错误码](../../../reference/errorcode-universal.md)。
 
 ### on('asyncReceiverRegister')
 
