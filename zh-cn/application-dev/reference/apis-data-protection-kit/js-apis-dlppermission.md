@@ -849,7 +849,7 @@ dlpPermission.getDLPFileAccessRecords((err, res) => {
 
 startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt;
 
-在当前[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiaAbility)界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
+在当前[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
 
 > **说明：**
 >
@@ -863,7 +863,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 当前窗口[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiaAbility)上下文。 |
+| context | [common.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 当前窗口[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)上下文。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 请求对象。 |
 
 **返回值：**
