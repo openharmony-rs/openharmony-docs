@@ -1162,6 +1162,30 @@ NODE_LIST_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING = 1003019
 | -- | -- |
 | .value[0].i32 | List组件是否支持空分支。0：不支持，1：支持。 |
 
+## NODE_LIST_BACK_PRESS_BEHAVIOR
+
+```c
+NODE_LIST_BACK_PRESS_BEHAVIOR = 1003020
+```
+
+设置List组件的系统返回键行为，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 系统返回键生效时是否收起ListItem的划出组件。0：不收起，1：收起。默认值：1 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 系统返回键生效时是否收起ListItem的划出组件。0：不收起，1：收起。 |
+
 ## NODE_LIST_ITEM_SWIPE_ACTION
 
 ```c
