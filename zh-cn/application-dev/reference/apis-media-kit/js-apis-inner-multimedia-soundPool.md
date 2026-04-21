@@ -12,7 +12,7 @@ SoundPool需要和@ohos.multimedia.media配合使用，需要先通过[media.cre
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -759,7 +759,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -769,7 +769,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.stop(streamID).then(() => {
       console.info('Succeeded in stopping soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to stop soundpool and catch error is ' + err.message);
+      console.error(`Failed to stop soundpool Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -777,7 +777,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setLoop
 
-setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
+setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void
 
 设置循环模式。使用callback异步回调。
 
