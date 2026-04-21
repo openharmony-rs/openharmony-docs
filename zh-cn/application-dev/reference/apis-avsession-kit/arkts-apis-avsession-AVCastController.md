@@ -478,7 +478,7 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 在音视频投播场景下，当应用程序调用[prepare](#prepare10)和start接口，且assetId维持不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
+> 在音视频投播场景下，当应用程序顺序调用[prepare](#prepare10)和start接口，且assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -536,7 +536,7 @@ start(item: AVQueueItem): Promise\<void>
 
 > **说明：**
 >
-> 在音视频投播场景下，当应用程序调用[prepare](#prepare10)和start接口，且assetId维持不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
+> 在音视频投播场景下，当应用程序顺序调用[prepare](#prepare10)和start接口，且assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
