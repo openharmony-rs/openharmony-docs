@@ -687,8 +687,8 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 @Entry
 @Component
 struct Index {
-
-  @Builder customAccessibilityNode() {
+  @Builder
+  customAccessibilityNode() {
     Column() {
       Text(`virtual node`)
     }
@@ -911,6 +911,7 @@ struct Index {
             .margin({ top: 15 })
             .accessibilityText($r('app.string.app_name'))
             .accessibilityDescription($r('app.string.module_desc'))
+
             Column() {
               Text('文本4')
                 .fontSize(18)
@@ -945,7 +946,7 @@ struct Index {
 
   build() {
     Column({ space: 20 }) {
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Text("是否开启功能")
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor('#007DFF')
@@ -954,12 +955,14 @@ struct Index {
             console.info('Component status:' + isOn);
           })
       }
-      .accessibilityGroup(true, {stateControllerRoleType : AccessibilityRoleType.TOGGLER,
-                                 actionControllerRoleType : AccessibilityRoleType.TOGGLER})
+      .accessibilityGroup(true, {
+        stateControllerRoleType: AccessibilityRoleType.TOGGLER,
+        actionControllerRoleType: AccessibilityRoleType.TOGGLER
+      })
       .width('80%')
-      .border({ color : Color.Black, width : 2 })
+      .border({ color: Color.Black, width: 2 })
 
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Text("是否开启功能")
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor('#007DFF')
@@ -969,11 +972,12 @@ struct Index {
           })
           .id("TestToggle")
       }
-      .accessibilityGroup(true, {stateControllerId : "TestToggle",
-                                 actionControllerId : "TestToggle"})
+      .accessibilityGroup(true, {
+        stateControllerId: "TestToggle",
+        actionControllerId: "TestToggle"
+      })
       .width('80%')
-      .border({ color : Color.Black, width : 2 })
-
+      .border({ color: Color.Black, width: 2 })
     }
     .height('100%')
     .width('100%')
@@ -1027,8 +1031,8 @@ struct Index {
           max: 100,
           style: SliderStyle.OutSet
         })
-          // 调整屏幕朗读手势下slider滑动的步长
-          .accessibilityActionOptions({ scrollStep : 10 })
+        // 调整屏幕朗读手势下slider滑动的步长
+          .accessibilityActionOptions({ scrollStep: 10 })
       }
       .width('80%')
     }
