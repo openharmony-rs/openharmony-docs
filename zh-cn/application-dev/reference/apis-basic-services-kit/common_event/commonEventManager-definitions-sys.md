@@ -394,7 +394,7 @@
 
 **取值：** "usual.event.CLOUD_DISK_STATE_CHANGED"
 
-### COMMON_EVENT_RESTORE_END<sup>23+<sup>
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
 
 表示某个应用结束恢复的公共事件。
 
