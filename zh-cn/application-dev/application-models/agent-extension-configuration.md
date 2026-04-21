@@ -8,7 +8,7 @@
 
 [AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)作为Agent的“名片”，主要用于描述Agent的能力。AgentCard的详细配置信息需要通过agent_config.json配置文件来承载。
 
-该配置文件由开发者手动创建，通常位于Module的`resources/base/profile/`目录下。AgentExtensionAbility可以在metadata配置项中引用该资源文件，来绑定对应的AgentCard。
+该配置文件由开发者手动创建，通常位于Module的`resources/base/profile/`目录下。AgentExtensionAbility可以在metadata配置项中引用该资源文件，来绑定对应的AgentCard。一个agent_config.json只能被一个AgentExtensionAbility引用。
 
 ## agent_config.json配置文件字段说明
 
@@ -80,7 +80,7 @@
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| deviceTypes | Agent支持的设备类型列表，取值范围参考[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)。 | 字符串数组 | 可缺省，缺省为应用的deviceTypes。 |
+| deviceTypes | Agent支持的设备类型列表，取值范围参考[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)。Agent配置的设备类型列表需要为所属Module设备类型列表的一个子集，如果配置了Module之外的设备类型，系统将会忽略掉。 | 字符串数组 | 可缺省，缺省为应用的deviceTypes。 |
 | minAppVersion | Agent运行的最低应用版本要求，使用语义化版本号格式（如“1.0.0”），指定运行该Agent所需的应用最低版本，低于此版本的应用将无法正确加载和运行该Agent，最大长度为32字节。 | 字符串 | 可缺省，缺省为空。 |
 
 ## agent_config.json配置文件示例
