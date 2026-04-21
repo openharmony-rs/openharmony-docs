@@ -90,9 +90,9 @@ begin(name: string, flags?: number): HiTraceId
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| name  | string | 是 | 跟踪业务名。 |
+| 参数名 | 类型 | 必填 | 说明                                             |
+| -------- | -------- | -------- |------------------------------------------------|
+| name  | string | 是 | 跟踪业务名。<br/>建议该参数的长度不要超过63Byte，超出部分将被截断。    |
 | flags | number | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
 
 **返回值：**
@@ -272,7 +272,7 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 // 开始跟踪，跟踪标志是INCLUDE_ASYNC与DONOT_CREATE_SPAN的并集。
 let traceId = hiTraceChain.begin("business", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC | hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
 // 若干业务逻辑完成后，触发信息埋点操作。
-hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just a example");
+hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just an example");
 // 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```

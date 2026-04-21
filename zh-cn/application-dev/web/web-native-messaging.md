@@ -29,7 +29,7 @@
 
 ### 设备限制
 
-WebNativeMessagingExtensionAbility组件当前仅支持2in1设备。
+对于API版本21-23，WebNativeMessagingExtensionAbility组件仅支持2in1设备；从API版本24开始，增加支持在平板上使用。
 
 ### 规格限制
 
@@ -37,7 +37,7 @@ WebNativeMessagingExtensionAbility组件当前仅支持2in1设备。
 
 - WebNativeMessagingExtensionAbility组件内不支持调用[Window](../reference/apis-arkui/arkts-apis-window.md)相关API。
 
-- WebNativeMessagingExtensionAbility仅支持拉起本应用的UIAbility，不支持拉起其他应用UIAbility或者其他类型ExtensionAbility。
+- WebNativeMessagingExtensionAbility仅支持拉起本应用的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)，不支持拉起其他应用UIAbility或者其他类型ExtensionAbility。
 
 - WebNativeMessagingExtensionAbility仅用于浏览器扩展与应用通信场景，不支持如后台服务等其他场景使用。
 
@@ -90,13 +90,13 @@ extension配置存放在[dataShare配置项](../database/share-config.md#modulej
 
 ### WebNativeMessagingExtensionAbility生命周期管理
 - [onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative)：当浏览器扩展调用一次runtime.connectNative时触发，如果WebNativeMessagingExtensionAbility尚未运行，调用runtime.connectNative会拉起WebNativeMessagingExtensionAbility，并触发该回调。
-- [onDisconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#ondisconnectnative)：当浏览器扩展销毁runtime.port时，会触发一次该回调，每条nativeMessaging连接的断开，都会触发一次该回调，当全部连接都断开时，会触发onDestroy的回调后关闭WebNativeMessagingExtensionAbility。
+- [onDisconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#ondisconnectnative)：当浏览器扩展销毁runtime.port时，会触发一次该回调，每条NativeMessaging连接的断开，都会触发一次该回调，当全部连接都断开时，会触发onDestroy的回调后关闭WebNativeMessagingExtensionAbility。
 - [onDestroy](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#ondestroy)：当WebNativeMessagingExtensionAbility销毁前触发该回调，全部NativeMessaging连接断开会触发WebNativeMessagingExtensionAbility的销毁。
 - [stopNativeConnection](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#stopnativeconnection)：WebNativeMessagingExtensionAbility可以主动断开一条NativeMessaging连接，如果断开的是最后一条连接，则会触发WebNativeMessagingExtensionAbility的销毁。
 - [terminateSelf](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#terminateself)：WebNativeMessagingExtensionAbility可以主动退出，触发后会销毁所有NativeMessaging连接。
 
 ### 消息格式和限制
-NativeMessaging连接使用的具体格式，每个消息都使用 JSON 进行序列化，编码为 UTF-8，并在前面附加 32 位消息长度（采用原生字节顺序）。来自WebNativeMessagingExtensionAbility的单个消息的大小上限为 1 MB，这主要是为了保护浏览器免受行为异常的应用影响。发送到WebNativeMessagingExtensionAbility的消息大小上限为 64 MB。
+NativeMessaging连接使用的具体格式，每个消息都使用JSON进行序列化，编码为UTF-8，并在前面附加32位消息长度（采用原生字节顺序）。来自WebNativeMessagingExtensionAbility的单个消息的大小上限为 1 MB，这主要是为了保护浏览器免受行为异常的应用影响。发送到WebNativeMessagingExtensionAbility的消息大小上限为 64 MB。
 
 ### 实现一个connectNative的扩展（应用开发者）
 > **说明**
@@ -146,33 +146,33 @@ function sendMessageToNative() {
 **实现配置background.js**
 
 1. 使用chrome.runtime.connectNative连接
-   ``` ts	
-   var port = null;	
-   //监听来自main.js的信息	
-   chrome.runtime.onMessage.addListener(	
-     function (request, sender, sendResponse) {	
-       if (request.type == "sendMessage") {	
-         if (port == null) {	
-           connectToNativeHost();	
-         }	
-         port.postMessage(request.message); //向应用程序发送信息	
-       }	
-       return true; //保持消息通道开放	
-   });	
-   function connectToNativeHost() {	
-     var bundleName = "com.example.app"; //插件对应应用的bundleName	
-     port = chrome.runtime.connectNative(bundleName); //根据bundleName名得到通信端口port	
-     port.onMessage.addListener(onNativeMessage); //监听native应用程序是否发来消息	
-     port.onDisconnect.addListener(onDisconnected); //监听是否断开连接	
-   }	
-    //接收到来自native程序的消息时触发	
-   async function onNativeMessage(message) {	
-     console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); //示例中的pong	
-   }	
-   //断开连接时触发	
-   function onDisconnected() {	
-     port = null;	
-   }	
+   ``` ts
+   var port = null;
+   // 监听来自main.js的信息
+   chrome.runtime.onMessage.addListener(
+     function (request, sender, sendResponse) {
+       if (request.type == "sendMessage") {
+         if (port == null) {
+           connectToNativeHost();
+         }
+         port.postMessage(request.message); // 向应用程序发送信息
+       }
+       return true; // 保持消息通道开放
+   });
+   function connectToNativeHost() {
+     var bundleName = "com.example.app"; // 插件对应应用的bundleName
+     port = chrome.runtime.connectNative(bundleName); // 根据bundleName名得到通信端口port
+     port.onMessage.addListener(onNativeMessage); // 监听native应用程序是否发来消息
+     port.onDisconnect.addListener(onDisconnected); // 监听是否断开连接
+   }
+    // 接收到来自native程序的消息时触发
+   async function onNativeMessage(message) {
+     console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); // 示例中的pong
+   }
+   // 断开连接时触发
+   function onDisconnected() {
+     port = null;
+   }
    ```
  
 2. 使用chrome.runtime.sendNativeMessage连接
@@ -210,7 +210,7 @@ function sendMessageToNative() {
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import {buffer, util} from '@kit.ArkTS';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
    const TAG: string = '[MyWebNativeMessageExtAbility]';
    const DOMAIN_NUMBER: number = 0xFF00;
@@ -221,7 +221,7 @@ function sendMessageToNative() {
        try {
          // read
          let arrayBuffer = new ArrayBuffer(1024);
-         let readLen = await fs.read(fdRead, arrayBuffer);
+         let readLen = await fileIo.read(fdRead, arrayBuffer);
          if (readLen <= 4) {
            hilog.error(DOMAIN_NUMBER, TAG, 'read pipe length failed');
            return;
@@ -241,10 +241,10 @@ function sendMessageToNative() {
          const writeBuffer = new Uint8Array(4 + bufferLen);
          writeBuffer.set(lenBytes, 0);
          writeBuffer.set(strBytes, 4);
-         let writeLen = await fs.write(fdWrite, writeBuffer.buffer);
+         let writeLen = await fileIo.write(fdWrite, writeBuffer.buffer);
          hilog.info(DOMAIN_NUMBER, TAG, 'write pipe length %{public}d', writeLen);
        } catch (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, 'fs io failed, error code: ' + err.code + " message: " + err.code);
+         hilog.error(DOMAIN_NUMBER, TAG, 'fileIo failed, error code: ' + err.code + " message: " + err.code);
        }
      }
 
@@ -275,7 +275,7 @@ function sendMessageToNative() {
            "description": "webNativeMessaging",
            "type": "webNativeMessaging",
            "exported": true,
-           "srcEntry": "./ets/MyWebNativeMessageExtAbility/ MyWebNativeMessageExtAbility.ets"
+           "srcEntry": "./ets/MyWebNativeMessageExtAbility/MyWebNativeMessageExtAbility.ets"
          }
        ]
      }
@@ -310,7 +310,7 @@ function sendMessageToNative() {
    }
    ```
 ### 实现拉起WebNativeMessagingExtensionAbility（浏览器开发者）
-浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING
+浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING。
 
 1. 当接收到创建NativeMessaging连接时，先通过[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
    ```ts
@@ -366,7 +366,7 @@ function sendMessageToNative() {
      }
    }
    ```
-2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessage，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
+2. 调用[webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative)创建NativeMessaging连接，如WebNativeMessagingExtensionAbility尚未运行，该接口则会拉起ExtensionAbility并触发。
    ```ts
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'

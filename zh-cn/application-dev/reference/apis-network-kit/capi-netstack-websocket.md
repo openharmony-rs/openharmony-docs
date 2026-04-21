@@ -13,7 +13,7 @@ struct WebSocket {...}
 
 ## 概述
 
-webSocket客户端结构体。
+WebSocket客户端结构体。
 
 **起始版本：** 11
 

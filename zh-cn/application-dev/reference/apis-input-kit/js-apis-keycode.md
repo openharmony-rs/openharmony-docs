@@ -5,12 +5,12 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 按键设备的键值，按键设备包括键盘、光盘、游戏手柄等。
 
 > **说明：**
-> 
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -288,7 +288,7 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_SPREADSHEET              |  2703 | 电子表格键。                       |
 | KEYCODE_GRAPHICSEDITOR           |  2704 | 图形编辑器键。                      |
 | KEYCODE_PRESENTATION             |  2705 | 演示文稿键。                       |
-| KEYCODE_DATABASE                 |  2706 | 数据库键标。                       |
+| KEYCODE_DATABASE                 |  2706 | 数据库键。                       |
 | KEYCODE_NEWS                     |  2707 | 新闻键。                         |
 | KEYCODE_VOICEMAIL                |  2708 | 语音信箱。                        |
 | KEYCODE_ADDRESSBOOK              |  2709 | 通讯簿。                         |
@@ -314,6 +314,9 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP |  2729 | 键盘输入Assist_Next，切换输入组中下一个输入法。               |
 | KEYCODE_KBDINPUTASSIST_ACCEPT    |  2730 | 键盘输入Assist_Accept。           |
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | 键盘输入Assist_Cancel。          |
+| KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | 鼠标AI助手键。          |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | 鼠标智慧框选键。          |
+| KEYCODE_AOD_SINGLE_CLICK         |  2740 | 手机触摸屏单击事件，在熄屏显示状态下使用。<br/>**起始版本：** 26.0.0 |
 | KEYCODE_FRONT                    |  2800 | 挡风玻璃除雾器开关。                   |
 | KEYCODE_SETUP                    |  2801 | 设置键。                         |
 | KEYCODE_WAKEUP                   |  2802 | 唤醒键。                         |
@@ -375,3 +378,4 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | 智能手表智感窗按键双击。 |
 | KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | 智能手表智感窗按键长按。 |
 | KEYCODE_DIV<sup>20+</sup> | 3220 | 智能手表左按键。 |
+| KEYCODE_XKEY | 3232 | 自定义快捷键。<br/>**起始版本：** 26.0.0 |

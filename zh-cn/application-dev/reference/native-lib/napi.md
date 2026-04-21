@@ -32,7 +32,7 @@ libace_napi.z.so
 
 ## 已从Node-API组件标准库中导出的符号列表
 
-从Node-API标准库导出的接口，其使用方法及行为基于[Node.js](https://nodejs.org/docs/latest-v12.x/api/n-api.html)，并进行了部分[能力拓展](#node-api组件扩展的符号列表)。
+从Node-API标准库导出的接口，其使用方法及行为基于[Node.js](https://nodejs.org/docs/latest-v12.x/api/n-api.html)，并进行了部分[能力拓展](#node-api组件扩展的接口)。
 
 |符号类型|符号名|说明|起始支持API版本|
 | --- | --- | --- | --- |
@@ -685,52 +685,7 @@ libace_napi.z.so
 | --- | --- | --- |
 |FUNC|napi_adjust_external_memory|调整js `Object`持有的外部内存。|
 
-## Node-API组件扩展的符号列表
-
-|符号类型|符号名|说明|起始支持API版本|
-| --- | --- | --- | --- |
-|FUNC|napi_queue_async_work_with_qos|将异步工作对象加到队列，由底层根据传入的qos优先级去调度执行。|10|
-|FUNC|napi_run_script_path|运行abc文件。|10|
-|FUNC|napi_load_module|将abc文件作为模块加载，返回模块的命名空间。|11|
-|FUNC|napi_create_object_with_properties|使用给定的napi_property_descriptor创建js `Object`。descriptor的键名必须为 string，且不可转为number。|11|
-|FUNC|napi_create_object_with_named_properties|使用给定的napi_value和键名创建js `Object`。键名必须为 string，且不可转为number。|11|
-|FUNC|napi_coerce_to_native_binding_object|强制将js `Object`和Native对象绑定。|11|
-|FUNC|napi_create_ark_runtime|创建基础运行时环境。|12|
-|FUNC|napi_destroy_ark_runtime|销毁基础运行时环境。|12|
-|FUNC|napi_run_event_loop|触发底层的事件循环。|12|
-|FUNC|napi_stop_event_loop|停止底层的事件循环。|12|
-|FUNC|napi_load_module_with_info|将abc文件作为模块加载，返回模块的命名空间。可在新创建的ArkTS基础运行时环境中使用。|12|
-|FUNC|napi_serialize|将ArkTS对象转换为native数据。|12|
-|FUNC|napi_deserialize|将native数据转为ArkTS对象。|12|
-|FUNC|napi_delete_serialization_data|删除序列化数据。|12|
-|FUNC|napi_call_threadsafe_function_with_priority|将指定优先级和入队方式的任务投递到ArkTS主线程。|12|
-|FUNC|napi_is_sendable|判断给定JS value是否是Sendable的。|12|
-|FUNC|napi_define_sendable_class|创建一个Sendable类。|12|
-|FUNC|napi_create_sendable_object_with_properties | 使用给定的napi_property_descriptor创建一个Sendable对象。|12|
-|FUNC|napi_create_sendable_array | 创建一个Sendable数组。|12|
-|FUNC|napi_create_sendable_array_with_length | 创建一个指定长度的Sendable数组。|12|
-|FUNC|napi_create_sendable_arraybuffer | 创建一个Sendable ArrayBuffer。|12|
-|FUNC|napi_create_sendable_typedarray | 创建一个Sendable TypedArray。|12|
-|FUNC|napi_wrap_sendable | 包裹一个native实例到ArkTS对象中。|12|
-|FUNC|napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。|12|
-|FUNC|napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。|12|
-|FUNC|napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。|12|
-|FUNC|napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。|18|
-|FUNC|napi_create_ark_context|创建一个新的运行时上下文环境。|20|
-|FUNC|napi_switch_ark_context|切换到指定的运行时上下文环境。|20|
-|FUNC|napi_destroy_ark_context|销毁通过接口napi_create_ark_context创建的一个上下文环境。|20|
-|FUNC|napi_open_critical_scope|打开临界区作用域。|21|
-|FUNC|napi_close_critical_scope|关闭临界区作用域。|21|
-|FUNC|napi_get_buffer_string_utf16_in_critical_scope|获取ArkTS String的UTF-16编码内存缓冲区数据。|21|
-|FUNC|napi_create_strong_reference|创建指向ArkTS对象的强引用。|21|
-|FUNC|napi_delete_strong_reference|删除强引用。|21|
-|FUNC|napi_get_strong_reference_value|根据强引用获取其关联的ArkTS对象值。|21|
-|FUNC|napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |22|
-|FUNC|napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |22|
-|FUNC|napi_create_strong_sendable_reference|创建指向Sendable ArkTS对象的Sendable强引用。|22|
-|FUNC|napi_delete_strong_sendable_reference|删除Sendable强引用。|22|
-|FUNC|napi_get_strong_sendable_reference_value|根据Sendable强引用获取其关联的ArkTS对象值。|22|
-|FUNC|napi_throw_business_error|抛出一个带文本信息的ArkTS Error, 其错误对象的code属性类型为number类型。|23|
+## Node-API组件扩展的接口
 
 > 说明：
 >
@@ -750,6 +705,8 @@ typedef enum {
 **描述：**
 表示QoS的枚举值，QoS决定了线程调度的优先级。
 
+**起始版本：** 10
+
 ### napi_event_mode
 
 ```cpp
@@ -762,6 +719,8 @@ typedef enum {
 **描述：**
 用于运行事件循环的事件模式。
 
+**起始版本：** 12
+
 ### napi_queue_async_work_with_qos
 
 ```cpp
@@ -773,6 +732,8 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
 **描述：**
 
 将异步工作对象加到队列，由底层根据传入的qos优先级去调度执行。
+
+**起始版本：** 10
 
 **参数：**
 
@@ -798,6 +759,8 @@ napi_status napi_run_script_path(napi_env env,
 
 运行指定abc文件。
 
+**起始版本：** 10
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -821,6 +784,8 @@ napi_status napi_load_module(napi_env env,
 **描述：**
 
 加载系统模块或开发者自定义的模块，返回模块的命名空间。
+
+**起始版本：** 11
 
 **参数：**
 
@@ -849,6 +814,8 @@ napi_status napi_create_object_with_properties(napi_env env,
 
 使用给定的napi_property_descriptor创建js Object。descriptor的键名必须为string，且不可转为number。
 
+**起始版本：** 11
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -876,6 +843,8 @@ napi_status napi_create_object_with_named_properties(napi_env env,
 **描述：**
 
 使用给定的napi_value和键名创建js Object。键名必须为string，且不可转为number。
+
+**起始版本：** 11
 
 **参数：**
 
@@ -908,6 +877,8 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 
 用于给JS Object绑定回调和回调所需的参数，转成携带Native信息的JS Object。
 
+**起始版本：** 11
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -936,6 +907,8 @@ napi_status napi_create_ark_runtime(napi_env *env)
 
 创建基础运行时环境，一个进程最多创建64个，并满足与[Worker](../../arkts-utils/worker-introduction.md)创建的子线程总数不超过80个。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -954,6 +927,8 @@ napi_status napi_destroy_ark_runtime(napi_env *env)
 
 销毁基础运行时环境。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -971,6 +946,8 @@ napi_status napi_run_event_loop(napi_env env, napi_event_mode mode)
 **描述：**
 
 触发底层的事件循环。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -992,6 +969,8 @@ napi_status napi_stop_event_loop(napi_env env)
 
 停止底层的事件循环。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -1012,6 +991,8 @@ napi_status napi_load_module_with_info(napi_env env,
 **描述：**
 
 将abc文件作为模块加载，返回模块的命名空间。可在新创建的ArkTS基础运行时环境中使用。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1041,6 +1022,8 @@ napi_status napi_serialize(napi_env env,
 
 将ArkTS对象转换为native数据。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -1067,6 +1050,8 @@ napi_status napi_deserialize(napi_env env, void* buffer, napi_value* object)
 
 将native数据转为ArkTS对象。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -1088,6 +1073,8 @@ napi_status napi_delete_serialization_data(napi_env env, void* buffer)
 **描述：**
 
 删除序列化数据。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1112,6 +1099,8 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 将指定优先级和入队方式的任务投递到ArkTS主线程。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] func: 线程安全函数对象，在创建线程安全函数时返回。
@@ -1135,6 +1124,8 @@ napi_status napi_is_sendable(napi_env env, napi_value value, bool* result)
 **描述：**
 
 判断给定JS value是否是Sendable的。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1168,6 +1159,8 @@ napi_status napi_define_sendable_class(napi_env env,
 **描述：**
 
 创建一个Sendable类。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1206,6 +1199,8 @@ napi_status napi_create_sendable_object_with_properties(napi_env env,
 
 使用给定的napi_property_descriptor创建一个Sendable对象。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -1230,6 +1225,8 @@ napi_status napi_create_sendable_array(napi_env env, napi_value* result)
 
 创建一个Sendable数组。
 
+**起始版本：** 12
+
 **参数：**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
@@ -1249,6 +1246,8 @@ napi_status napi_create_sendable_array_with_length(napi_env env, size_t length, 
 **描述：**
 
 创建一个指定长度的Sendable数组。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1271,6 +1270,8 @@ napi_status napi_create_sendable_arraybuffer(napi_env env, size_t byte_length, v
 **描述：**
 
 创建一个Sendable ArrayBuffer。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1300,6 +1301,8 @@ napi_status napi_create_sendable_typedarray(napi_env env,
 **描述：**
 
 创建一个Sendable TypedArray。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1331,7 +1334,9 @@ napi_status napi_wrap_sendable(napi_env env,
 
 **描述：**
 
-包裹一个native实例到ArkTS对象中。
+封装一个native实例到ArkTS对象中。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1362,7 +1367,9 @@ napi_status napi_wrap_sendable_with_size(napi_env env,
 
 **描述：**
 
-包装一个native实例到ArkTS对象中并指定大小。
+封装一个native实例到ArkTS对象中并指定大小。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1390,7 +1397,9 @@ napi_status napi_unwrap_sendable(napi_env env, napi_value js_object, void** resu
 
 **描述：**
 
-获取ArkTS对象包装的native实例。
+获取ArkTS对象封装的native实例。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1412,7 +1421,9 @@ napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void**
 
 **描述：**
 
-移除并获取ArkTS对象包装的native实例，移除后回调将不再触发，需手动delete释放内存。
+移除并获取ArkTS对象封装的native实例，移除后回调将不再触发，需手动delete释放内存。
+
+**起始版本：** 12
 
 **参数：**
 
@@ -1442,6 +1453,8 @@ napi_status napi_wrap_enhance(napi_env env,
 **描述：**
 
 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。
+
+**起始版本：** 18
 
 **参数：**
 
@@ -1488,6 +1501,8 @@ napi_status napi_create_ark_context(napi_env env, napi_env* newEnv);
 5. 多上下文运行时环境不支持sendable特性。
 6. 通过napi_create_ark_context接口创建的运行时上下文环境暂时不支持console、timer等模块能力。
 
+**起始版本：** 20
+
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
@@ -1510,6 +1525,8 @@ napi_status napi_switch_ark_context(napi_env env)
 1. 当前该接口不支持在非主线程的ArkTS线程中调用。
 2. 调用该接口前，调用者需要保证当前上下文环境不存在异常，否则会导致该接口调用失败。
 
+**起始版本：** 20
+
 **参数：**
 
 - [in] env：指定的运行时上下文环境。
@@ -1531,6 +1548,8 @@ napi_status napi_destroy_ark_context(napi_env env)
 2. 该接口只能销毁通过napi_create_ark_context接口创建的运行时上下文环境。
 3. 不能通过该接口去销毁正在运行的上下文环境。
 
+**起始版本：** 20
+
 **参数：**
 
 - [in] env：要销毁的运行时上下文环境。
@@ -1550,6 +1569,8 @@ napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
 打开临界区作用域。使用该接口需要注意以下几点：
 1. 不能重复打开临界区作用域，必须在关闭当前作用域后才能再次打开。
 2. 在临界区作用域内，不能调用非临界区接口。
+
+**起始版本：** 21
 
 **参数：**
 
@@ -1572,6 +1593,8 @@ napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
 关闭临界区作用域。使用该接口需要注意以下几点：
 1. 不能重复关闭临界区作用域，必须确保作用域已经打开且未被关闭。
 2. 关闭临界区作用域后，请勿使用临界接口及其返回结果，否则可能导致程序崩溃或数据损坏。
+
+**起始版本：** 21
 
 **参数：**
 
@@ -1597,6 +1620,8 @@ napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
 获取ArkTS String的UTF-16编码内存缓冲区数据。使用该接口需要注意以下几点：
 1. 当ArkTS String以UTF-16编码存储时，`napi_get_buffer_string_utf16_in_critical_scope`才能正确获取其内存缓冲区，否则该函数返回错误。
 
+**起始版本：** 21
+
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
@@ -1621,6 +1646,8 @@ napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_st
 
 创建指向ArkTS对象的强引用。
 
+**起始版本：** 21
+
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
@@ -1643,6 +1670,8 @@ napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_st
 
 删除强引用。使用该接口需要注意以下几点：
 1. 不能重复删除同一个强引用。
+
+**起始版本：** 21
 
 **参数：**
 
@@ -1667,6 +1696,8 @@ napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, n
 
 根据强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
 1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能预期外的错误。
+
+**起始版本：** 21
 
 **参数：**
 
@@ -1715,6 +1746,8 @@ typedef void (*napi_finalize_callback)(void* finalize_data,
 
 用于定义通过接口napi_create_external_string_utf16和napi_create_external_string_ascii创建出的ArkTS string对象生命周期结束时触发的回调函数。
 
+**起始版本：** 22
+
 **参数：**
 
 - [in] finalize_data：指向需要清理的用户数据的指针。
@@ -1743,6 +1776,8 @@ napi_status napi_create_external_string_utf16(napi_env env,
 2. 传入的字符串数据在ArkTS字符串对象生命周期内必须保持有效，否则可能导致不可预期的行为。
 3. 如果提供了finalize_callback回调函数，当ArkTS字符串对象被销毁时，该回调函数将被调用。finalize_hint参数可以用于传递上下文信息给回调函数。
 4. 如果传入的length参数为NAPI_AUTO_LENGTH，接口内部自动查找到'\0'处计算字符串实际长度。
+
+**起始版本：** 22
 
 **参数：**
 
@@ -1781,6 +1816,8 @@ napi_status napi_create_external_string_ascii(napi_env env,
 4. 如果传入的length参数为NAPI_AUTO_LENGTH，接口内部自动查找到'\0'处计算字符串实际长度。
 5. 传入的字符串在指定的length长度范围内不得包含'\0'字符，否则可能导致异常行为。
 
+**起始版本：** 22
+
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
@@ -1816,6 +1853,8 @@ napi_status napi_create_strong_sendable_reference(napi_env env,
 3. 同一进程内，同时存活的`napi_sendable_ref`最大数量为51200个。
 4. 调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。
 
+**起始版本：** 22
+
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
@@ -1840,6 +1879,8 @@ napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_re
 1. 不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`作为本接口入参。`napi_delete_strong_sendable_reference`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。
 2. 调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。
 
+**起始版本：** 22
+
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
@@ -1863,6 +1904,8 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 根据Sendable强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
 1. 不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`作为本接口入参。`napi_get_strong_sendable_reference_value`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。
 2. 调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。
+
+**起始版本：** 22
 
 **参数：**
 
@@ -1890,6 +1933,8 @@ napi_status napi_throw_business_error(napi_env env,
 1. 入参env和msg不可以为nullptr，否则会返回napi_invalid_arg。
 2. 当前上下文中存在ArkTS Error的时候，调用接口会返回napi_pending_exception。
 
+**起始版本：** 23
+
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
@@ -1897,6 +1942,120 @@ napi_status napi_throw_business_error(napi_env env,
 - [in] errorCode：int32_t类型的错误码，用于设置在错误对象上。
 
 - [in] msg：表示要与错误关联的文本的C字符串。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_create_callsite_info
+
+```cpp
+napi_status napi_create_callsite_info(napi_env env, napi_callsite_info* result);
+```
+
+**描述：**
+
+创建调用点信息句柄，用于缓存属性访问信息。每个不同的调用点应创建独立的句柄，同一句柄可跨多次调用复用，但不可跨线程使用。当不再需要时，必须调用napi_delete_callsite_info释放。
+
+**起始版本：** 24
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] result：指向napi_callsite_info的指针，用于接收创建的调用点信息句柄。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_delete_callsite_info
+
+```cpp
+napi_status napi_delete_callsite_info(napi_env env, napi_callsite_info info);
+```
+
+**描述：**
+
+删除调用点信息句柄，释放关联的缓存资源。
+
+**起始版本：** 24
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] info：要删除的调用点信息句柄。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_property_with_callsite_info
+
+```cpp
+napi_status napi_get_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_callsite_info info,
+                                                 napi_value* result,
+                                                 bool* hit);
+```
+
+**描述：**
+
+使用调用点信息快速获取对象属性值。info参数可以传入NULL，此时行为等同于napi_get_property。
+
+**起始版本：** 24
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] object：要获取属性的对象。
+
+- [in] key：要获取的属性的键名。
+
+- [in] info：调用点信息句柄。可以为NULL。
+
+- [out] result：指向napi_value的指针，用于接收属性值。
+
+- [out] hit：写入缓存是否命中：true表示命中（快速路径），false表示未命中。可以传入nullptr。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_set_property_with_callsite_info
+
+```cpp
+napi_status napi_set_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_value value,
+                                                 napi_callsite_info info,
+                                                 bool* hit);
+```
+
+**描述：**
+
+使用调用点信息快速设置对象属性值。info参数可以传入NULL，此时行为等同于napi_set_property。
+
+**起始版本：** 24
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] object：要设置属性的对象。
+
+- [in] key：要设置的属性的键名。
+
+- [in] value：要设置的属性值。
+
+- [in] info：调用点信息句柄。可以为NULL。
+
+- [out] hit：写入缓存是否命中：true表示命中（快速路径），false表示未命中。可以传入nullptr。
 
 **返回：**
 

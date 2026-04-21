@@ -22,6 +22,7 @@
 
 工程结构主要包含的文件类型及用途如下：
 
+<!--Table: 25%; 75%-->
 | 文件类型 | 说明 |
 | -------- | -------- |
 | 配置文件 | 包括应用级配置信息、以及Module级配置信息：<br/> - **AppScope &gt; app.json5**：[app.json5配置文件](app-configuration-file.md)，用于声明应用的全局配置信息，比如应用Bundle名称、应用名称、应用图标、应用版本号等。<br/> - **ModuleName &gt; src &gt; main &gt; module.json5**：[module.json5配置文件](module-configuration-file.md)，用于声明Module基本信息、支持的设备类型、所含的组件信息、运行所需申请的权限等。 |

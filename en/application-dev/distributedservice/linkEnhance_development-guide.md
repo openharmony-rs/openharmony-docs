@@ -31,6 +31,9 @@ The implementation process is as follows: 1. Enable the enhanced connection func
 
 - The **linkEnhance** module provides only connection capabilities, with the link security policy following the Bluetooth pairing policy initially set by the caller, such as Numeric Comparison, Passkey Entry, Just Works, and Out of Band.
 
+<!--RP1-->
+<!--RP1End-->
+
 ## Environment preparation
 
 ### Environment requirement
@@ -62,7 +65,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 | start()                                    | Starts the server.                                                                                        |   
 | stop()                                     | Stops the server.                                                                                          |
 | close()                                    | Destroys a **Server** object and cancels all subscribed event callbacks. The **Server** object cannot be used after this API is called.                   |
-| on(type: 'acceptConnected')                | Subscribes to **acceptConnected** events.                                                                          |
+| on(type: 'connectionAccepted')                | Subscribes to **acceptConnected** events.                                                                          |
 | on(type: 'serverStopped')                  | Subscribes to **serverStopped** events.                                                                          |
 | createServer(name: string)                 | Creates a **Server** object.                                                                                     |
 

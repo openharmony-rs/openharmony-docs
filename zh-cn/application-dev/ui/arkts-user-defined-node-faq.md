@@ -1,8 +1,8 @@
 # 自定义节点常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -281,11 +281,11 @@ export struct pageThreeTmp {
 **可能原因**
 
 - 使用[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建自定义节点，创建的前端BuilderNode对象默认持有后端节点的强引用，而后端节点可能通过某些路径（如事件回调、全局缓存）反过来引用前端BuilderNode对象，因此形成了前后端循环引用，前端对象无法被回收，后端节点也因为被前端对象持有强引用而无法释放，导致内存泄漏。
-- BuilderNode会持有[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build)函数传递的参数对象，如果传递给BuilderNode的参数对象也引用了BuilderNode对象，会产生前端对象的循环引用。
+- BuilderNode会持有[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build)函数传递的参数对象，如果传递给BuilderNode的参数对象也引用了BuilderNode对象，会产生前端对象的循环引用。从API version 26.0.0版本开始，该循环引用会被自动释放。
 
 **解决措施**
 
-- 步骤一：如果传递给BuilderNode的参数持有了BuilderNode对象，当不再需要一个BuilderNode节点时，使用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口更新参数，解除参数对象对BuilderNode的引用。
+- 步骤一：如果传递给BuilderNode的参数持有了BuilderNode对象，当不再需要一个BuilderNode节点时，使用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口更新参数，解除参数对象对BuilderNode的引用。从API version 26.0.0版本开始，步骤一可被省略。
 - 步骤二：当不再需要一个BuilderNode节点时，将此BuilderNode节点从组件树上移除，并调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用，解除前后端的引用关系。
 
 **示例代码**

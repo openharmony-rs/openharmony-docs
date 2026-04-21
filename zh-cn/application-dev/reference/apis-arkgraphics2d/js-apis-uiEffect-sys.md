@@ -258,8 +258,8 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | number         | 是   | 模糊半径，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12对象)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| value  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -660,44 +660,6 @@ struct MaskDispersion {
 }
 ```
 
-### hdrBrightnessRatio<sup>20+</sup>
-hdrBrightnessRatio(ratio: number): Filter
-
-为组件内容添加HDR（高动态范围成像）提亮效果。不建议嵌套使用，强行嵌套使用可能造成过曝现象。
-
-提亮效果需要开启HDR渲染管线才能生效，某些场景下即使尝试触发HDR渲染管线也无法开启HDR，例如：设备硬件规格不支持HDR。
-
-设备当前支持最大提亮倍数为设备当前的最大亮度除以设备SDR参考白亮度得到的值。
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-| 参数名         | 类型                  | 必填 | 说明                       |
-| ------------- | --------------------- | ---- | ------------------------- |
-| ratio  | number         | 是   | 提亮倍数，取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，不做任何处理；当值大于1.0时，会尝试触发HDR渲染管线，设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。|
-
-**返回值：**
-
-| 类型              | 说明                               |
-| ----------------- | --------------------------------- |
-| [Filter](#filter) | 返回挂载了HDR提亮效果的Filter。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 202 | Permission verification failed. A non-system application calls a system API. |
-
-**示例：**
-
-```ts
-filter.hdrBrightnessRatio(2.0)
-```
-
 ### maskTransition<sup>20+</sup>
 maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 
@@ -856,7 +818,7 @@ variableRadiusBlur(radius: number, radiusMap: Mask): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| radius  | number         | 是   | 最大模糊半径，该值越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| radius  | number         | 是   | 最大模糊半径，单位为px，该值越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
 | radiusMap  |  [Mask](#mask20)    | 是   | 代表模糊程度的Mask对象。|
 
 **返回值：**

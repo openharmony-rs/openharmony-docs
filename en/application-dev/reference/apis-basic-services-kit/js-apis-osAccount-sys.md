@@ -4613,11 +4613,84 @@ Authenticates a domain account.
   }
   ```
 
+### auth<sup>24+</sup>
+
+auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: DomainAccountAuthOptions, callback: IUserAuthCallback): void
+
+Authenticates a specified domain account. You can specify authentication options, such as server parameters. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Required permissions**: ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**Parameters**
+
+| Name     | Type                                   | Mandatory| Description            |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | Yes  | Domain account information.|
+| credential   | Uint8Array  | Yes  | Credentials of the domain account.|
+| options   | [DomainAccountAuthOptions](#domainaccountauthoptions24)  | Yes  | Options for domain account authentication.|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | Yes  | Callback used to return the authentication result.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                    |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid domainAccountInfo or credential. |
+| 12300003 | Domain account does not exist. |
+| 12300013 | Network exception. |
+| 12300101 | Authentication failed. |
+| 12300109 | The authentication, enrollment, or update operation is canceled. |
+| 12300110 | The authentication is locked. |
+| 12300111 | The authentication time out. |
+| 12300112 | The authentication service is busy. |
+| 12300113 | The account authentication service does not exist. |
+| 12300114 | The account authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+let credential = new Uint8Array([0]);
+try {
+  let serverParams: Record<string, Object> = {
+    "uri": "test.example.com",
+    "port": 100
+  }
+  let authOptions: osAccount.DomainAccountAuthOptions = {
+    serverParams: serverParams
+  }
+  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, authOptions, {
+    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+      console.info('auth resultCode = ' + resultCode);
+      console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### authWithPopup<sup>10+</sup>
 
 authWithPopup(callback: IUserAuthCallback): void
 
-Authenticates this domain account with a dialog box.
+Authenticates a domain account in a pop-up window.
 
 **System API**: This is a system API.
 
@@ -4674,7 +4747,7 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 authWithPopup(localId: number, callback: IUserAuthCallback): void
 
-Authenticates this domain account with a dialog box.
+Authenticates a domain account in a pop-up window.
 
 **System API**: This is a system API.
 
@@ -6369,10 +6442,10 @@ Defines the executor property.
 | result       | number                       | No   | No  | Result.        |
 | authSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.|
 | remainTimes  | number                       | No   | Yes  | Number of remaining authentication times, which is **-1** by default.    |
-| freezingTime | number                       | No   | Yes  | Freezing time, which is **-1** by default.    |
+| freezingTime | number                       | No   | Yes  | Freezing time, in milliseconds. The default value is **-1**.    |
 | enrollmentProgress<sup>10+</sup> | string   | No   | Yes  | Enrollment progress, which is left blank by default.|
 | sensorInfo<sup>10+</sup> | string           | No   | Yes  | Sensor information, which is left blank by default.|
-| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, which is **undefined** by default.|
+| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, in milliseconds. The default value is **undefined**.|
 | credentialLength<sup>20+</sup> | number | No   | Yes  | Credential length, which is **undefined** by default. When credentials with indefinite-length attributes such as biometric information are queried, **undefined** is returned.|
 
 ## AuthResult<sup>8+</sup>
@@ -6387,11 +6460,11 @@ Defines the authentication result information.
 | ------------ | ----------- | ----- | ----- | ----------------- |
 | token        | Uint8Array  | No   | Yes  | Authentication token, which is left blank by default.     |
 | remainTimes  | number      | No   | Yes  | Number of remaining authentication times, which is left blank by default.     |
-| freezingTime | number      | No   | Yes  | Freezing time. By default, no value is passed in.     |
-| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, which is **undefined** by default.|
+| freezingTime | number      | No   | Yes  | Freezing time, in milliseconds. The default value is left empty.     |
+| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, in milliseconds. The default value is **undefined**.|
 | credentialId<sup>12+</sup> | Uint8Array  | No   | Yes  | Credential ID, which is left blank by default.|
 | accountId<sup>12+</sup>         | number | No   | Yes  | System account ID, which is **undefined** by default.|
-| pinValidityPeriod<sup>12+</sup> | number | No   | Yes  | Authentication validity period, which is **undefined** by default.|
+| pinValidityPeriod<sup>12+</sup> | number | No   | Yes  | Authentication validity period, in milliseconds. The default value is **undefined**.|
 
 ## CredentialInfo<sup>8+</sup>
 
@@ -6436,7 +6509,7 @@ Defines enrolled credential information.
 | authSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.|
 | templateId   | Uint8Array                               | No   | No  | Authentication credential template ID.    |
 | isAbandoned<sup>20+</sup>   | boolean                      | No   | Yes  | Whether the credential is abandoned. The abandoned credential may be stored as a backup credential for a period of time. The value **true** indicates that the credential is abandoned, and the value **false** indicates the opposite. The default value is **undefined**.  |
-| validityPeriod<sup>20+</sup>   | number                    | No   | Yes  | Validity period of the credential. The default value is **undefined**.    |
+| validityPeriod<sup>20+</sup>   | number                    | No   | Yes  | Credential validity period, in milliseconds. The default value is **undefined**.    |
 
 ## GetPropertyType<sup>8+</sup>
 
@@ -6670,7 +6743,7 @@ Presents the authentication status information.
 | Name     | Type  | Read-Only | Optional| Description      |
 | ----------- | ------ | ---- | ---- | ---------- |
 | remainTimes  | number | No| No | Number of remaining times.  |
-| freezingTime | number | No| No | Freezing time.|
+| freezingTime | number | No| No | Freezing time, in milliseconds.|
 
 ## GetDomainAccessTokenOptions<sup>10+</sup>
 
@@ -6686,6 +6759,19 @@ Defines the options for obtaining a domain access token.
 | domainAccountToken | Uint8Array | No| No | Token of the domain account.|
 | businessParams | Record<string, Object> | No| No | Service parameters customized by the service party based on the request protocol.|
 | callerUid | number | No| No | Unique identifier of the caller.|
+
+
+## DomainAccountAuthOptions<sup>24+</sup>
+
+Defines the options for domain account authentication.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name     | Type  | Read-Only | Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| serverParams | Record<string, Object> | No| Yes | Configuration parameters of the domain account authentication server. which is **undefined** by default.|
 
 ## GetDomainAccountInfoOptions<sup>10+</sup>
 
@@ -6751,7 +6837,7 @@ Represents the optional parameter used to create a system account.
 | Name     | Type  | Read-Only | Optional  | Description      |
 | ----------- | ------ | ---- | ---- | ---------- |
 | shortName | string | No| No  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>1. Contain any of the following characters: \< \>\| : " * ? / \\<br>2. Contain any of the following: . or ..<br>3. Exceed 255 characters.|
-| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Forbidden list of the preinstalled applications, which cannot be installed on the device. The value is empty by default.|
+| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Forbidden list of the preinstalled applications, which cannot be installed on the device. The value is left empty by default.|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Trustlist of the preinstalled applications, which can be installed on the device. The default value is **std::nullopt**.|
 | token<sup>24+</sup> | Uint8Array | No  | Yes  | Token obtained from the authentication management API. The value is left empty by default.|
 

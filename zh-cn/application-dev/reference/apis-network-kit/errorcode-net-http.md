@@ -191,7 +191,7 @@ Failed to write the received data to the disk or application.
 
 1.应用没有写文件权限或待下载的文件超过5M。
 
-2.上一次请求数据未接受完毕便调用destroy销毁导致接收数据不完整。
+2.上一次请求数据未接收完毕便调用destroy销毁导致接收数据不完整。
 
 **处理步骤**
 
@@ -555,7 +555,7 @@ It is not allowed to access this domain.
 
 **处理步骤**
 
-可参考配置服务器域名文档完成服务器域名相关配置。
+可参考配置[服务器域名文档](https://developer.huawei.com/consumer/cn/doc/atomic-guides/agc-help-harmonyos-server-domain)完成服务器域名相关配置。服务器域名配置后一般需要等待一天以上才会生效。
 
 ## 2300999 内部错误
 

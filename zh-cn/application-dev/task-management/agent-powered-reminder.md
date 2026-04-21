@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -28,7 +28,7 @@
 - **跳转限制**：点击提醒通知后跳转的应用必须是申请代理提醒的本应用。
 
 ## 与相关Kit的关系
-- 当到达设置的提醒时间点后，代理提醒使用Notification Kit发布通知，通知会显示在通知中心，通知样式请参考[Notification Kit通知样式](../notification/notification-overview.md#通知样式)中文本类型。
+- 当到达设置的提醒时间点后，代理提醒使用Notification Kit发布通知，通知会显示在通知中心，通知样式请参考[Notification Kit通知样式](../notification/notification-overview.md#通知样式)中的文本类型。
 
 ## 模拟器支持情况
 
@@ -65,7 +65,7 @@
 
 1. 导入模块。
 
-    <!-- @[reminder_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+    <!-- @[reminder_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
     
     ``` TypeScript
     import { notificationManager } from '@kit.NotificationKit';
@@ -77,7 +77,7 @@
 
    - 定义倒计时实例。
      
-      <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+      <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
       
       ``` TypeScript
       let timer: reminderAgentManager.ReminderRequestTimer = {
@@ -97,7 +97,7 @@
 
    - 定义日历实例。
      
-      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
@@ -125,7 +125,7 @@
 
    - 定义闹钟实例。
    
-      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
+      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
       
       ``` TypeScript
       let alarm: reminderAgentManager.ReminderRequestAlarm = {
@@ -159,7 +159,7 @@
 
 3. 发布相应的提醒代理。代理发布后，应用即可使用后台代理提醒功能。
    
-   <!-- @[publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @[publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
    
    ``` TypeScript
    let reminderId: number = await reminderAgentManager.publishReminder(
@@ -170,7 +170,7 @@
 
 4. 根据需要删除提醒任务。
    
-   <!-- @[cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @[cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
    
    ``` TypeScript
    Logger.info(TAG, `cancel reminder id is ${this.calendarReminders[index].reminderId}`)
@@ -181,6 +181,6 @@
 
 基于代理提醒，有以下相关实例可供参考：
 
-- [后台代理提醒（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ReminderAgentManager)
+- [后台代理提醒（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager)
 
 - [翻页时钟（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/FlipClock)

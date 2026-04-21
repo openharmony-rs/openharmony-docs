@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -160,9 +160,7 @@ import { UIUtils } from '@kit.ArkUI';
           .margin(20)
           .onClick(() => {
             // test1：调用applySync接口，日志打印两次
-            // UIUtils.applySync(() => {
-            //   this.message = 'Hello World';
-            // })
+            // UIUtils.applySync(() => { this.message = 'Hello World'; });
   
             // test2：调用flushUpdates接口，日志打印两次
             // this.message = 'Hello World';
@@ -229,7 +227,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 - 在applySync闭包函数中调用flushUpdates或flushUIUpdates接口将不起作用。同时打印出对应警告信息`UIUtils.flushUpdates will be skipped when called within UIUtils.applySync`/`UIUtils.flushUIUpdates will be skipped when called within UIUtils.applySync`。
   
-  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) -->
+  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) --> 
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -252,7 +250,7 @@ import { UIUtils } from '@kit.ArkUI';
               UIUtils.flushUIUpdates(); // 在applySync中，flushUIUpdates被忽略
             });
             this.h = 100;
-            UIUtils.flushUpdates(); //会生效
+            UIUtils.flushUpdates(); // 会生效
   
             this.getUIContext().animateTo({
               duration: 1000

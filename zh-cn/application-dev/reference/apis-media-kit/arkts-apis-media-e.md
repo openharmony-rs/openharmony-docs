@@ -12,7 +12,7 @@
 
 ## AVErrorCode<sup>9+</sup>
 
-[媒体错误码](errorcode-media.md)类型枚举。
+[Media错误码](errorcode-media.md)类型枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -97,9 +97,9 @@ Codec MIME类型枚举。
 
 | 名称         | 值                    | 说明                        |
 | ------------ | --------------------- | --------------------------- |
-| AAC_LC       |     0                 | 表示 AAC Low-Complexity 类型。        |
-| AAC_HE       |     1                 | 表示 AAC Hight-Efficiency 类型。        |
-| AAC_HE_V2    |     2                 | 表示 AAC Hight-Efficiency version 2 类型。     |
+| AAC_LC       |     0                 | 表示AAC Low-Complexity类型。        |
+| AAC_HE       |     1                 | 表示AAC High-Efficiency类型。        |
+| AAC_HE_V2    |     2                 | 表示AAC High-Efficiency version 2类型。     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
@@ -226,11 +226,13 @@ Codec MIME类型枚举。
 | SEEK_NEXT_SYNC | 0    | 表示跳转到指定时间点的下一个关键帧，建议向后快进的时候用这个枚举值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | SEEK_PREV_SYNC | 1    | 表示跳转到指定时间点的上一个关键帧，建议向前快进的时候用这个枚举值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | SEEK_CLOSEST<sup>12+</sup> | 2    | 表示跳转到距离指定时间点最近的帧，建议精准跳转进度的时候用这个枚举值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SEEK_CONTINUOUS<sup>18+</sup> | 3    | 该模式提供了一种画面平滑流畅变化的Seek体验，应用可以结合进度条控件持续调用Seek方法，AVPlayer根据Seek调用持续流畅地更新画面。<br>应用可以调用[isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18)方法根据返回结果感知视频源是否支持该模式Seek。<br>对于不支持该Seek模式的视频源调用该模式Seek时，会上报AVERR_SEEK_CONTINUOUS_UNSUPPORTED错误([媒体错误码](#averrorcode9))，同时画面更新的流畅性会降低。<br>该Seek模式不会触发[seekDone事件](arkts-apis-media-AVPlayer.md#onseekdone9)。<br>当应用需要退出该模式下的Seek时，需要调用`seek(-1, SeekMode.SEEK_CONTINUOUS)`来结束该模式下的Seek。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| SEEK_CONTINUOUS<sup>18+</sup> | 3    | 该模式提供了一种画面平滑流畅变化的Seek体验，应用可以结合进度条控件持续调用Seek方法，AVPlayer根据Seek调用持续流畅地更新画面。<br>应用可以调用[isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18)方法根据返回结果感知视频源是否支持该模式Seek。<br>对于不支持该Seek模式的视频源调用该模式Seek时，会上报AVERR_SEEK_CONTINUOUS_UNSUPPORTED错误(参考[AVErrorCode](#averrorcode9))，同时画面更新的流畅性会降低。<br>该Seek模式不会触发[on('seekDone')](arkts-apis-media-AVPlayer.md#onseekdone9)事件。<br>当应用需要退出该模式下的Seek时，需要调用`seek(-1, SeekMode.SEEK_CONTINUOUS)`来结束该模式下的Seek。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## SwitchMode<sup>12+</sup>
 
-视频播放的selectTrack模式枚举，可通过selectTrack方法作为参数传递下去，当前仅DASH协议视频轨支持该扩展参数。
+表示视频播放的selectTrack模式枚举。
+
+可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API版本26.0.0开始HLS协议视频轨支持该扩展参数）。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -413,6 +415,10 @@ Codec MIME类型枚举。
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。       |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。       |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。       |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | 录屏已被用户暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | 录屏已被用户恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | 录屏已被应用程序暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | 录屏已被应用程序恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
@@ -446,6 +452,25 @@ Codec MIME类型枚举。
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
+
+## PlaylistLoopMode
+
+表示播放列表循环模式的枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYLIST_LOOP_MODE_ALL | 1    | 列表循环模式。 |
+| PLAYLIST_LOOP_MODE_ONE | 2    | 单曲循环模式。 |
+| PLAYLIST_LOOP_MODE_SHUFFLE | 3    | 随机循环模式。 |
+| PLAYLIST_LOOP_MODE_NONE | 4    | 关闭循环模式。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 
@@ -486,7 +511,7 @@ Codec MIME类型枚举。
 媒体服务错误类型枚举。
 
 > **说明：**
-> 从API version 8开始支持，从API version 11开始废弃，建议使用[媒体错误码](#averrorcode9)替代。
+> 从API version 8开始支持，从API version 11开始废弃，建议使用[AVErrorCode](#averrorcode9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

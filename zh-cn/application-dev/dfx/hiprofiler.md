@@ -179,6 +179,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | offline_symbolization | bool | 是否开启离线符号化。<br/>true：使用离线符号化。<br/>false：使用在线符号化。 | 使用离线符号化时，根据IP匹配符号的操作在网页端（smartperf）完成，优化了native daemon的性能，减少了调优时的进程卡顿。但离线符号化会将符号表写入trace文件，导致文件大小比在线符号化时更大。 |
 | sample_interval | int | 采样大小。 | 设置此参数时开启采样模式。采样模式下对于malloc size小于采样大小进行概率性统计。调用栈分配内存大小越大，出现次数越高，被统计的几率越大。 | 
 | restrace_tag | string | 需要抓取资源的类型 | 参数可多次添加不同类型。当前支持类型见表[restrace_tag参数介绍](#restrace_tag参数介绍)。|
+| use_file_cache_mode | bool | 是否使用文件缓存模式。<br/>true：使用文件缓存模式。<br/>false：不使用文件缓存模式。<br/>默认为false。 |文件缓存模式通过将缓存数据落盘，提升内存分配信息的采集性能，有效缓解应用进程在内存信息采集过程中可能出现的卡顿问题。<br/>**说明**：从API version 24开始，支持该参数。 | 
 
 ### restrace_tag参数介绍
 
@@ -199,13 +200,18 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_THREAD_PTHREAD | 线程创建时的调用栈。 | 23 |
 | RES_THREAD_ALL | 以上线程相关操作时的调用栈。 | 23 |
 | RES_ARKTS_HEAP_MASK | arkts内存分配栈。 | 23 |
-| RES_JS_HEAP_MASK | arkweb内存分配栈。 | 23 |
+| RES_JS_HEAP_MASK | 龙雀虚拟机JSVM内存跟踪 | 23 |
 | RES_KMP_HEAP_MASK | kmp内存分配栈。 | 23 |
-| RES_SO_MASK | so内存分配栈。 | 23 |
+| RES_SO_MASK | SO内存分配栈。 | 23 |
 | RES_ASHMEM_MASK | ashmem内存分配栈。 | 23 |
 | RES_RN_HEAP_MASK | rn内存分配栈。 | 23 |
 | RES_DMABUF_MASK | dmabuf内存分配栈。 | 23 |
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
+| RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
+| RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
+| RES_KOTLIN_HEAP_MASK | KOTLIN平台内存分配跟踪。 | 24 |
+| RES_RN_HERMES_HEAP | RN HERMES内存分配跟踪。 | 24 |
+| RES_DART_HEAP | DART框架内存分配跟踪。 | 24 |
 
 **结果分析**
 
@@ -836,6 +842,63 @@ plugin_configs {
 CONFIG
 ```
 
+从API version 23开始支持LocalHandle对象内存录制功能。例如，可通过如下方式对com.example.insight_test_stage进程进行内存录制。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 20 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 20
+  process_name: "com.example.insight_test_stage"
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  startup_mode: true
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_LOCAL_HANDLE"
+  }
+}
+CONFIG
+```
+LocalHandle对象内存录制功能要求被测应用在启动时替换加载维测库，才能正常采集LocalHandle内存信息。
+
+应用替换加载维测库方法：
+
+1.应用处于退出状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后启动应用，应用启动后即可进行数据采集。
+
+2.应用处于运行状态：下发LocalHandle对象内存录制命令，设置startup_mode参数为true，然后重启应用，应用重启后即可进行数据采集。
+
+> **说明：**
+>
+> 1.应用加载维测库后，只要应用不退出，维测库持续生效。此后，可以通过非启动模式录制localhandle内存。
+>
+> 2.使用此种方式后，此次应用打开的时长会变长，此次运行的性能上也会有损失。但不影响下次的使用。
+>
+> 3.此种方式抓取到的localhandle内存一定是泄漏的。
+>
+> 4.命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+
+
 使用手动控制采集时长调优启停方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈。
 
 调优开始：
@@ -929,3 +992,13 @@ hiprofiler_cmd命令中config参数的调整方法如下：
  - 适当减小max_stack_depth和max_js_stack_depth参数的值，减少回栈深度，减少调用栈信息的采集。
  - 适当增大smb_pages参数的值，增大调优数据传输的共享内存大小。默认值为16384个页大小，即：16384*4096=67108864字节（64M）。可以调整到128M。
  - 适当增加sample_interval参数的值，增大采样线程栈的大小。默认值为256，可以调整到512。
+
+### 调优时使用FP回栈异常
+
+**现象描述**
+
+使用hiprofiler_cmd命令抓取应用进程的内存trace，对应的共享库（SO）无法进行基于FP的栈回溯。
+
+**可能原因&amp;解决方法**
+
+检查对应的共享库编译时是否开启了-fomit-frame-pointer编译选项，需保证该选项保持关闭状态。

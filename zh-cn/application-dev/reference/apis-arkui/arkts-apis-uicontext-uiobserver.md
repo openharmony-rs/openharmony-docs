@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -2436,7 +2436,7 @@ struct Index {
       .border({ width: 2, color: '#FF6B81' })
       .justifyContent(FlexAlign.Center)
       .gesture(TapGesture().onAction((event: GestureEvent)=>{
-        //具体实现内容
+        // 具体实现内容
       }))
 
       Row() {
@@ -2451,10 +2451,10 @@ struct Index {
       .gesture(
         PanGesture()
           .onActionStart((event: GestureEvent) => {
-            //具体实现内容
+            // 具体实现内容
           })
           .onActionEnd((event: GestureEvent) => {
-            //具体实现内容
+            // 具体实现内容
           })
       )
 
@@ -2470,10 +2470,10 @@ struct Index {
       .gesture(
         LongPressGesture()
           .onAction((event: GestureEvent)=>{
-            //具体实现内容
+            // 具体实现内容
           })
           .onActionEnd((event: GestureEvent) => {
-            //具体实现内容
+            // 具体实现内容
           })
       )
     }

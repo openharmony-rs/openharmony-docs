@@ -14,7 +14,7 @@ A custom dialog box is implemented using the **CustomDialogController** class AP
 
 ## CustomDialogController
 
-Controller of the custom dialog box.
+Defines the controller of the custom dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -27,7 +27,7 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 ```
 > **NOTE**
 >
-> - **CustomDialogController** is effective only when it is a member variable of the **@CustomDialog** and **@Component** decorated struct and is defined in the **@Component** decorated struct. For details, see the following example.
+> - **CustomDialogController** is effective only when it is a member variable of the @CustomDialog and @Component decorated struct and is defined in the @Component decorated struct. For details, see the following example.
 >
 > - You can pass in multiple other controllers in the CustomDialog to open one or more other CustomDialogs in the CustomDialog. In this case, you must place the controller pointing to the self behind all controllers. For details, see [Example 1: Opening Nested Dialog Boxes](#example-1-opening-nested-dialog-boxes).
 
@@ -41,9 +41,9 @@ Constructor for a custom dialog box.
 >
 > Custom dialog box parameters do not support dynamic updates. However, by setting **customStyle** to **true** and configuring attributes such as [background color](ts-universal-attributes-background.md#backgroundcolor), [background blur](ts-universal-attributes-background.md#backgroundblurstyle9), and [width/height](ts-universal-attributes-size.md) on the custom component, dynamic updates can be achieved through state variables bound to these attributes.
 >
-> If CustomDialogController is used as a global variable to implement global custom dialog boxes, the previous dialog box cannot be closed after the controller is reassigned. You are advised to close the dialog box before reassigning the value.
+> If **CustomDialogController** is used as a global variable to implement global custom dialog boxes, the previous dialog box cannot be closed after a new value is assigned to the controller. You are advised to close the dialog box before reassigning the value.
 >
-> When two custom dialogs are opened one after another, you are advised not to directly close the first custom dialog.
+> When a custom dialog box is started within another custom dialog box, you are advised not to close the latter custom dialog box directly.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -101,7 +101,7 @@ Obtains the state of the custom dialog box.
 
 type PromptActionCommonState = promptAction.CommonState
 
-Enumerates states of the custom dialog box.
+Defines the state of the custom dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -124,7 +124,7 @@ Defines the style of the custom dialog box.
 | autoCancel                    | boolean                                  | No   | Yes  | Whether to close the dialog box when the mask is touched. The value **true** means to close the dialog box when the mask is touched, and **false** means the opposite.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | alignment                     | [DialogAlignment](ts-methods-alert-dialog-box.md#dialogalignment) | No   | Yes  | Alignment mode of the dialog box in the vertical direction.<br>Default value: **DialogAlignment.Default**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | offset                        | [Offset](ts-types.md#offset)             | No   | Yes  | Offset of the dialog box relative to the alignment position.<br>Default value: **{dx: 0, dy: 0}**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| customStyle                   | boolean                                  | No   | Yes  | Whether to use a custom style for the dialog box. If this parameter is set to true, the dialog box container style cannot be customized. If this parameter is set to false, the dialog box container style can be customized.<br>Default value: **false**.<br>When this parameter is set to **false**:<br>1. The default radius is 32 vp.<br>2. If the width and height of the dialog box are not set, the dialog box automatically adapts its width to the grid system and its height to the child components.<br>3. The set width of the dialog box cannot exceed the maximum width in the default style (100% width for a custom node), and the set height cannot exceed the maximum height (100% height for a custom node).<br>4. Due to safe area constraints, the dialog box display area excludes safe areas. For example, on PC/2-in-1 devices, it avoids screen edges and window title bars.<br>When this parameter is set to **true**:<br>1. The corner radius is 0, and the background color is transparent.<br>2. The width, height, border width, border style, border color, and shadow width cannot be set for the dialog box.<br>3. The dialog box display area covers the entire screen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| customStyle                   | boolean                                  | No   | Yes  | Whether to use a custom style for the dialog box. **true** means a custom style cannot be used for the dialog box, and **false** means the opposite.<br>Default value: **false**<br>When this parameter is set to **false**:<br>1. The default rounded corner radius is 32 vp.<br>2. If the width and height of the dialog box are not set, the dialog box automatically adapts its width to the grid system and its height to the custom content node.<br>3. The set width of the dialog box cannot exceed the maximum width in the default style (100% width for a custom node), and the set height cannot exceed the maximum height (100% height for a custom node).<br>4. Due to safe area constraints, the dialog box display area excludes safe areas. For example, on PC/2-in-1 devices, it avoids screen edges and window title bars.<br>When this parameter is set to **true**:<br>1. The rounded corner radius is 0, and the background color is transparent.<br>2. The width, height, border width, border style, border color, and shadow width cannot be set for the dialog box.<br>3. The dialog box display area covers the entire screen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | gridCount<sup>8+</sup>        | number                                   | No   | Yes  | Number of [grid columns](../../../ui/arkts-layout-development-grid-layout.md) occupied by the dialog box.<br>The default value is subject to the window size, and the maximum value is the maximum number of columns supported by the system. If this parameter is set to an invalid value, the default value is used.<br>Value range: an integer no less than 0<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | maskColor<sup>10+</sup>       | [ResourceColor](ts-types.md#resourcecolor) | No   | Yes  | Custom mask color.<br>Default value: **0x33000000**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
 | maskRect<sup>10+</sup>        | [Rectangle](ts-methods-alert-dialog-box.md#rectangle8) | No    | Yes   | Mask area of the dialog box. Events outside the mask area are transparently transmitted, and events within the mask area are not.<br>Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }**<br>**NOTE**<br>**maskRect** does not take effect when **showInSubWindow** is set to **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -132,7 +132,7 @@ Defines the style of the custom dialog box.
 | closeAnimation<sup>10+</sup>  | [AnimateParam](ts-explicit-animation.md#animateparam) | No   | Yes  | Parameters for defining the close animation of the dialog box.<br>**NOTE**<br>**tempo**: The default value is **1**; a value less than or equal to 0 is handled as the default value.<br>**iterations**: The default value is **1**, indicating that the animation is played once; any other value is handled as the default value.<br>**playMode**: The default value is **PlayMode.Normal**; any other value is handled as the default value.<br>For page transition, you are advised to use the default close animation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | showInSubWindow<sup>10+</sup> | boolean                                  | No   | Yes  | Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window. **true**: The dialog box is shown in a subwindow.<br>Default value: **false**<br>**NOTE**<br>A dialog box whose **showInSubWindow** attribute is **true** cannot trigger the display of another dialog box whose **showInSubWindow** attribute is also **true**. Avoid using the **CalendarPicker**, **CalendarPickerDialog**, **DatePickerDialog**, **TextPickerDialog**, **TimePickerDialog**, and **Toast** components in the dialog box where **showInSubWindow** is set to **true**, as the dialog box may affect the behavior of these components.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | backgroundColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)      | No  | Yes | Background color of the dialog box.<br>Default value: **Color.Transparent**<br>**NOTE**<br>If the content builder also has the background color set, the background color set here will be overridden by the background color of the content builder.<br>The background color will be visually combined with the blur effect when both properties are set. If the resulting effect does not match your design requirements, you can disable the blur effect entirely by explicitly setting the **backgroundBlurStyle** property to **BlurStyle.NONE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| cornerRadius<sup>10+</sup>    | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9) | No  | Yes | Corner radius of the background.<br>You can set separate radiuses for the four corners.<br>Default value: **{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }**<br>Note: The default corner radius of the background is 32 vp.This attribute must be used together with the [borderRadius](ts-universal-attributes-border.md#borderradius) attribute.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| cornerRadius<sup>10+</sup>    | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9) | No  | Yes | Rounded corner radius of the background.<br>You can set separate radii for the four corners.<br>Default value: **{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }**<br>Note: The default corner radius of the background is 32 vp. This attribute must be used together with the [borderRadius](ts-universal-attributes-border.md#borderradius) attribute.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | isModal<sup>11+</sup> | boolean | No| Yes| Whether the dialog box is a modal, which has a mask applied and does not allow for interaction with other components around the menu. <br>**true**: The dialog box is a modal. <br>**false**: The dialog box is not a modal.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onWillDismiss<sup>12+</sup> | Callback<[DismissDialogAction](#dismissdialogaction12)> | No| Yes| Callback for interactive closure of the dialog box.<br>**NOTE**<br>1. If this callback is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The **reason** parameter in the callback is used to determine whether the dialog box can be closed. The reason returned by the component does not support the value **CLOSE_BUTTON**.<br>2. In the **onWillDismiss** callback, another **onWillDismiss** callback is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | borderWidth<sup>12+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](ts-types.md#edgewidths9)  | No| Yes| Border width of the dialog box.<br>You can set the width for all four sides or set separate widths for individual sides.<br>Default value: **0**<br> When set to a percentage, the value defines the border width as a percentage of the parent dialog box's width.<br>If the left and right borders are greater than its width, or the top and bottom borders are greater than its height, the dialog box may not display as expected.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -140,12 +140,12 @@ Defines the style of the custom dialog box.
 | borderStyle<sup>12+</sup> | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](ts-types.md#edgestyles9)  | No| Yes| Border style of the dialog box.<br>Default value: **BorderStyle.Solid**<br>**borderStyle** must be used with **borderWidth** in pairs.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | width<sup>12+</sup> | [Dimension](ts-types.md#dimension10) | No  | Yes | Width of the dialog box.<br>**NOTE**<br>- Default maximum width of the dialog box: 400 vp<br>- When this parameter is set to a percentage, the reference width of the dialog box is the width of the window where the dialog box is located. You can decrease or increase the width as needed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | height<sup>12+</sup> | [Dimension](ts-types.md#dimension10)   | No| Yes| Height of the dialog box.<br>**NOTE**<br>- Default maximum height of the dialog box: 0.9 x (Window height – Safe area)<br>- When this parameter is set to a percentage, the reference height of the dialog box is the height of the window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| shadow<sup>12+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)   | No| Yes| Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| shadow<sup>12+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)  | No| Yes| Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyle<sup>12+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | No  | Yes | Background blur style of the dialog box.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No| Yes| Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No| Yes| Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | keyboardAvoidMode<sup>12+</sup> | [KeyboardAvoidMode](ts-universal-attributes-popup.md#keyboardavoidmode12) | No| Yes| How the dialog box avoids the soft keyboard when it is brought up.<br>Default value: **KeyboardAvoidMode.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableHoverMode<sup>14+</sup>     | boolean | No  | Yes | Whether to respond when the device is in semi-folded mode. The value **true** means to respond when the device is in semi-folded mode.<br>Default value: **false**, meaning not to enable the hover state.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| enableHoverMode<sup>14+</sup>     | boolean | No  | Yes | Whether to respond when the device is in semi-folded mode. The value **true** means to respond when the device is in semi-folded mode.<br>Default value: **false**, meaning not to enable the hover state.<br>**NOTE**<br>For a PC or 2-in-1 device, the dialog box is displayed on the upper half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the dialog box on the lower half of the screen. For other devices, the dialog box is displayed on the lower half of the screen by default when **enableHoverMode** is set to **true**. You can set **hoverModeArea** to display the dialog box on the upper half of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No  | Yes | Display area of the dialog box in the hover state.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | onWillAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Event callback when the dialog box is about to appear.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | onDidAppear<sup>19+</sup> | Callback&lt;void&gt; | No| Yes| Event callback after the dialog box appears.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.<br>3. When a dialog box is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.<br>4. If the dialog box is dismissed before its entrance animation is finished, the animation will be interrupted, and **onDidAppear** will not be triggered.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
@@ -157,6 +157,7 @@ Defines the style of the custom dialog box.
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15) | No  | Yes | Overlay effect for the page-level dialog box.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | No  | Yes | Display order of the dialog box.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**<br>- Dynamic updating is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | focusable<sup>19+</sup>       | boolean | No  | Yes | Whether the dialog box can gain focus. **true**: The dialog box can gain focus. **false**: The dialog box cannot gain focus.<br>Default value: **true**<br>**NOTE**<br>Only dialog boxes that are displayed on top of the current window can gain focus.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| systemMaterial  | SystemUiMaterial | No| Yes| System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 > **NOTE**
 >
@@ -166,7 +167,7 @@ Defines the style of the custom dialog box.
 > - Use the custom dialog box to contain simple alert messages only. Do not use it as a page. When the dialog box avoids the soft keyboard, there is a 16 vp safe spacing between the two.
 > - For optimal visual experience, dialog box display and closing include default animations, though the animation duration may vary by device.
 >   Note: During animation playback, the page does not respond to touch, swipe, or click interactions. To disable default dialog box animations, set **duration** of both **openAnimation** and **closeAnimation** to **0**.
-> - In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation page displayed in dialog mode](../../../ui/arkts-navigation-navdestination.md#page-display-mode) or [page-level dialog box](../../../ui/arkts-embedded-dialog.md).
+> - In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation subpage displayed in dialog mode](../../../ui/arkts-navigation-navdestination.md#page-display-mode) or [page-level dialog box](../../../ui/arkts-embedded-dialog.md).
 
 ## DismissDialogAction<sup>12+</sup>
 
@@ -336,7 +337,7 @@ struct CustomDialogUser {
 
 ### Example 2: Opening a Dialog Box Outside the Main Window
 
-When [showInSubWindow](#customdialogcontrolleroptions) is set to true on a 2-in-1 device, a pop-up window can be displayed outside the main window.
+This example demonstrates how to configure a dialog box to display outside the main window on a 2-in-1 device by setting [showInSubWindow](#customdialogcontrolleroptions) to **true**.
 
 ```ts
 // xxx.ets
@@ -609,9 +610,9 @@ struct CustomDialogUser {
 
 ### Example 5: Obtaining the Dialog Box State
 
-This example shows how to call the [getState](#getstate20) API in [CustomDialogController](#customdialogcontroller) to obtain the current status of the dialog.
+This example demonstrates how to call [getState](#getstate20) in [CustomDialogController](#customdialogcontroller) to obtain the current status of the dialog box.
 
-The getState API is added to CustomDialogController since API version 20.
+The **getState** API is added to **CustomDialogController** since API version 20.
 
 ```ts
 // xxx.ets
@@ -670,7 +671,7 @@ struct CustomDialogUser {
 
 ### Example 6: Using @Link and @Consume to Listen for Data Changes
 
-This example uses @[Link](../../../ui/state-management/arkts-link.md) and @[Consume](../../../ui/state-management/arkts-provide-and-consume.md) to implement bidirectional data binding between the page and the dialog box.
+This example uses @[Link](../../../ui/state-management/arkts-link.md) and @[Consume](../../../ui/state-management/arkts-provide-and-consume.md) to implement two-way data binding between the page and the dialog box.
 
 ```ts
 @CustomDialog
@@ -773,7 +774,7 @@ struct CustomDialogUser {
 
 ### Example 7: Customizing a Loading Dialog Box
 
-In this example, [maskColor](#customdialogcontrolleroptions), [maskRect](#customdialogcontrolleroptions), and [LoadingProgress](ts-basic-components-loadingprogress.md) are used to implement a dialog with loading and display the transparent transmission effect of events that are not in the maskRect area.
+This example uses [maskColor](#customdialogcontrolleroptions), [maskRect](#customdialogcontrolleroptions), and [LoadingProgress](ts-basic-components-loadingprogress.md) to implement a loading dialog box and display the transparent transmission effect of events that are not in the **maskRect** area.
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -823,7 +824,7 @@ struct CustomDialogUser {
         this.number++;
       })
       Button("show loading dialog").onClick(() => {
-        // Obtain a Window object.
+        // Obtain a window object.
         let windowClass = window.getLastWindow(this.getUIContext().getHostContext());
         windowClass.then(window => {
           // Obtain the window information and set maskRect.
@@ -875,11 +876,11 @@ struct CustomDialogUser {
 ```
 ![en-us_image_custom](figures/custom_loading_dialog.gif)
 
-### Example 8: Adjusting Dialog Box Spacing from the Soft Keyboard Without keyboardAvoidDistance
+### Example 8: Adjusting Spacing Between the Dialog Box and the Soft Keyboard Without keyboardAvoidDistance
 
 This example demonstrates how to listen for keyboard changes and adjust the [bottom](ts-types.md#margin) of [margin](ts-universal-attributes-size.md#margin) to achieve the same effect as using [keyboardAvoidDistance](#customdialogcontrolleroptions) to adjust the spacing between the dialog box and the soft keyboard.
 
-Starting from API version 15, the keyboardAvoidDistance attribute is added to CustomDialogControllerOptions.
+Since API version 15, the **keyboardAvoidDistance** attribute is added to **CustomDialogControllerOptions**.
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -1013,11 +1014,11 @@ struct CustomDialogUser {
 ```
 ![en-us_image_custom](figures/dialog_keyboard_distance.gif)
 
-### Example 9: Using Dialog Box Lifecycle Callbacks
+### Example 9: Configuring the Lifecycle Callback for the Dialog Box
 
 This example demonstrates how to configure the lifecycle callbacks for the dialog box.
 
-In API version 19, the onDidAppear, onDidDisappear, onWillAppear, and onWillDisappear attributes are added to [CustomDialogControllerOptions](#customdialogcontrolleroptions).
+Since API version 19, the **onDidAppear**, **onDidDisappear**, **onWillAppear**, and **onWillDisappear** attributes are added to [CustomDialogControllerOptions](#customdialogcontrolleroptions).
 
 ```ts
 // xxx.ets
@@ -1112,7 +1113,7 @@ struct Example3 {
 
 ### Example 10: Implementing Dialog Boxes with Different customStyle Values
 
-This example shows the effect of the dialog box content and safe area when the alignment mode is [DialogAlignment.Bottom](#customdialogcontrolleroptions) and the value of [customStyle](#customdialogcontrolleroptions) is different.
+This example demonstrates the effect of the dialog box content and safe area when the alignment mode is [DialogAlignment.Bottom](#customdialogcontrolleroptions) and the value of [customStyle](#customdialogcontrolleroptions) is different.
 
 ```ts
 @CustomDialog
@@ -1197,9 +1198,9 @@ struct CustomDialogUser {
 
 ### Example 11: Customizing the Background Blur Effect
 
-This example describes how to customize the background blur effect by configuring the [backgroundBlurStyleOptions](#customdialogcontrolleroptions).
+This example demonstrates how to customize the background blur effect by configuring [backgroundBlurStyleOptions](#customdialogcontrolleroptions).
 
-In API version 19, the backgroundBlurStyleOptions attribute is added to [CustomDialogControllerOptions](#customdialogcontrolleroptions).
+Since API version 19, the **backgroundBlurStyleOptions** attribute is added to [CustomDialogControllerOptions](#customdialogcontrolleroptions).
 
 ```ts
 @CustomDialog
@@ -1259,9 +1260,9 @@ struct CustomDialogUser {
 
 ### Example 12: Customizing the Background Effect
 
-This example shows how to customize the background effect by configuring [backgroundEffect](#customdialogcontrolleroptions).
+This example demonstrates how to customize the background effect by configuring [backgroundEffect](#customdialogcontrolleroptions).
 
-In API version 19, the backgroundEffect attribute is added to [CustomDialogControllerOptions](#customdialogcontrolleroptions).
+Since API version 19, the **backgroundEffect** attribute is added to [CustomDialogControllerOptions](#customdialogcontrolleroptions).
 
 ```ts
 @CustomDialog

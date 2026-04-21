@@ -72,3 +72,37 @@ export default class UserTestRunner implements TestRunner {
   }
 }
 ```
+
+## TestRunner.onStop
+
+onStop(): void
+
+Called when the test is complete and before the test environment exits.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Example**
+
+```ts
+import { TestRunner } from '@kit.TestKit';
+
+export default class UserTestRunner implements TestRunner {
+  onPrepare() {
+    console.info('Trigger onPrepare');
+  }
+
+  onRun() {
+    console.info('Trigger onRun');
+  }
+
+  onStop() {
+    console.info('Trigger onStop');
+  }
+}
+```

@@ -134,30 +134,30 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 > **说明**
 > 
-> 1、防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
->   - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
->     - 显式阻止规则
->     - 显式允许规则
->     - 默认阻止策略
->   - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
->     - 显式允许规则
->     - 显式阻止规则
->     - 默认允许策略
->   - 防火墙IP规则和域名规则冲突时（域名解析的IP与IP规则的IP相同，规则行为冲突）：
->     - 若以域名方式访问，则域名规则优先级高于IP规则，不受域名解析出的IP的规则影响。
->     - 若以IP方式访问，遵循以下原则：
->       - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。
->       - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。
->       - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。
-> 2、规则类型补充说明：
->   - 当addNetFirewallRule的入参rule.type配置为RULE_IP时：
->     - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；
->     - 若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。
->   - 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。
-> 3、防火墙规则添加上限说明： 
->   - 单个系统用户ID添加的防火墙规则上限是1000，若超过该上限，则报错29400001。
->   - 所有的系统用户ID添加的防火墙规则总和的上限是2000，若超过该上限，则报错29400001。
->   - 所有的系统用户ID添加的模糊域名规则总和的上限是100，若超过该上限，则报错29400005。
+> 1. 防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
+>    - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+>      - 显式阻止规则
+>      - 显式允许规则
+>      - 默认阻止策略
+>    - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+>      - 显式允许规则
+>      - 显式阻止规则
+>      - 默认允许策略
+>    - 防火墙IP规则和域名规则冲突时（域名解析的IP与IP规则的IP相同，规则行为冲突）：
+>      - 若以域名方式访问，则域名规则优先级高于IP规则，不受域名解析出的IP的规则影响。
+>      - 若以IP方式访问，遵循以下原则：
+>        - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。
+>        - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。
+>        - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。
+> 2. 规则类型补充说明：
+>    - 当addNetFirewallRule的入参rule.type配置为RULE_IP时：
+>      - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；
+>      - 若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。
+>    - 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置，该规则不生效。
+> 3. 防火墙规则添加上限说明： 
+>    - 单个系统用户ID添加的防火墙规则上限是1000，若超过该上限，则报错29400001。
+>    - 所有的系统用户ID添加的防火墙规则总和的上限是2000，若超过该上限，则报错29400001。
+>    - 所有的系统用户ID添加的模糊域名规则总和的上限是100，若超过该上限，则报错29400005。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -664,7 +664,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 | 名称        | 类型   |只读|可选| 说明                                             |
 | ----------- | -------|----|------|------------------------------------------|
-| type        | number | 否 |否 |1：IP地址或子网。该场景下必须指定address和mask字段，当使用单个IP时，mask字段需设置为32。 <br />2：IP段，该场景下必须指定starIp和endIp字段。  |
+| type        | number | 否 |否 |1：IP地址或子网。该场景下必须指定address和mask字段，当使用单个IP时，mask字段需设置为32。 <br />2：IP段，该场景下必须指定startIp和endIp字段。  |
 | family      | number | 否 | 是|1：表示family地址族设置为IPv4。<br />2：表示family地址族设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
 | address     | string | 否 | 是|IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
 | mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |

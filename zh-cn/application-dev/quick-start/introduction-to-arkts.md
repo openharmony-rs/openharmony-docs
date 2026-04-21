@@ -105,13 +105,13 @@ function factorial(n: number): number {
   if (n <= 1) {
     return 1;
   }
-  return n * factorial(n - 1);
+  return n * (n - 1);
 }
   // ...
-  factorial(n1) // 7.660344000000002
-  factorial(n2) // 7.680640444893748
+  factorial(n1) // 6.719600000000001
+  factorial(n2) // 6.728008294464001
   factorial(n3) // 1
-  factorial(n4) // 9.33262154439441e+157
+  factorial(n4) // 9900
 ```
 
 `number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
@@ -2087,6 +2087,7 @@ export function add(a: number, b: number): number {
 
 ``` TypeScript
 // Index.ets
+// ESObject是ArkTS跨语言调用场景中用于标注JS/TS对象的类型
 import('./Calc').then((obj: ESObject) => {
   console.info(obj.add(3, 5));
 }).catch((err: Error) => {
@@ -2670,6 +2671,71 @@ abstract class C {
   @MyAnno
   abstract foo(): void; // 编译错误：不允许在抽象类和抽象方法上使用注解
 }
+```
+
+### 源码态注解
+从API version 24开始，支持用户自定义源码态注解。
+
+源码态注解为一类特殊形式的注解。源码态注解的生命周期只在编译期，不会影响编译产物。
+
+开发者可以通过使用ArkTS提供的[Retention API](../reference/apis-arkts/js-apis-arkts-lang.md#retention24)来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
+- 类
+- 类成员（除构造函数外）
+- 变量声明
+- 接口
+- 接口成员
+- 注解
+- 函数
+- 命名空间
+- 类型别名
+- 枚举
+
+源码态注解的声明和使用示例如下所示：
+
+**示例：**
+
+<!-- @[annotation_source_retention_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/SourceRetentionAnnotation.ets) -->
+
+```ts
+import { Retention, RetentionPolicy } from '@kit.ArkTS';
+
+// 构造用户自定义源码态注解
+@Retention({policy: RetentionPolicy.SOURCE})
+@interface SourceAnnotation {}
+// 源码态注解可以在类和类成员上使用
+@SourceAnnotation
+class C {
+  @SourceAnnotation
+  private name_: string = '';
+  @SourceAnnotation
+  get name(): string {
+    return this.name_;
+  }
+}
+// 源码态注解可以在变量声明上使用
+@SourceAnnotation
+let a = 1;
+// 源码态注解可以在接口和接口成员上使用
+@SourceAnnotation
+interface I {
+  @SourceAnnotation
+  foo(): void
+}
+// 源码态注解可以在注解上使用
+@SourceAnnotation
+@interface Anno {}
+// 源码态注解可以在函数上使用
+@SourceAnnotation
+function func () {}
+// 源码态注解可以在命名空间上使用
+@SourceAnnotation
+namespace ns {}
+// 源码态注解可以在类型别名上使用
+@SourceAnnotation
+type A = number;
+// 源码态注解可以在枚举上使用
+@SourceAnnotation
+enum ColorSet { RED, GREEN, BLUE }
 ```
 
 ## ArkUI支持

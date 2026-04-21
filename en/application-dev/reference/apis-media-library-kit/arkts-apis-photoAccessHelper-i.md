@@ -239,10 +239,12 @@ Describes the notification information about the change of an album.
 | isForRecheck          | boolean  | No| No| Whether the application should query all albums again. **true** if the application should query all albums again, **false** otherwise.<br>**NOTE**<br>In scenarios involving bulk album operations or abnormal notifications, **isForRecheck** will be **true**. In this case, the application should query all albums again. |
 
 ## GridPinchMode<sup>23+</sup>
- 	  	 
+
 Represents the pinch mode of the grid in the picker.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
     
@@ -250,3 +252,17 @@ Represents the pinch mode of the grid in the picker.
 | ---- | ---- | ---- | ---- | ---- |
 | gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | No| Yes| Grid pinch mode. If this parameter is set, the pinch function is supported. Otherwise, the pinch function is not supported.|
 | defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | No| Yes| Grid level after the picker is started. The default value is **STANDARD**.|
+
+## AssetCompatibleCapability<sup>24+</sup>
+
+Defines the asset compatibility capability.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| Name                  | Type               | Read-Only| Optional| Description          |
+| ---- | ---- | ---- | ---- | ---- |
+| supportedHighResolution       | boolean  | No| No| Whether high-resolution assets are supported. **true**: yes; **false**: no.|

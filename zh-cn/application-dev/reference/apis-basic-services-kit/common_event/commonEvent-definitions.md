@@ -1,4 +1,4 @@
-# 系统公共事件定义(待停用)
+# 系统公共事件定义 (已废弃)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @peixu-->
@@ -9,6 +9,11 @@
 本文档提供系统所定义的公共事件类型的索引。
 
 公共事件类型定义在[ohos.commonEvent模块的Support枚举](../js-apis-commonEvent.md#support)中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，从API version 9 开始废弃，建议使用[系统定义的公共事件](commonEventManager-definitions.md)替代。
+
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -25,10 +30,10 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃。
+  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_LOCKED_BOOT_COMPLETED](commonEventManager-definitions.md#common_event_locked_boot_completed)替代。
 
   - 值：usual.event.LOCKED_BOOT_COMPLETED
-  - 订阅者所需权限：ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
+  - 订阅者所需权限：无
 
 * COMMON_EVENT_SHUTDOWN<sup>(deprecated)</sup> 提示设备正在关闭并将继续直至最终关闭。
 

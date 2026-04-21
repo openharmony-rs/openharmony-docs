@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
@@ -27,6 +27,6 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 | 名称 | 描述 |
 | -- | -- |
 | Hid_KeyCode* hidKeyCode | 键值编码 |
-| uint16_t length | 数组长度 |
+| uint16_t length | 数组的有效长度 |
 
 

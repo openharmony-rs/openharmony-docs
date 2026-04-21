@@ -9,7 +9,7 @@
 
 ## 解析大文件xml发生内存溢出（Out of Memory）
 
-由于ArkTS侧提供的XML解析接口暂不支持流式解析模式，建议通过Native工程调用第三方C/C++库来实现。推荐使用**libxml2**库，该库具有成熟稳定、性能优越的特点，能够完美支持SAX等流式解析方式，有效降低内存占用。
+由于ArkTS侧提供的XML解析接口暂不支持流式解析模式，建议通过Native工程调用第三方C/C++库来实现。推荐使用**libxml2**库，该库具有成熟稳定、性能优越的特点，能够支持SAX等流式解析方式，有效降低内存占用。
 
 具体实施步骤如下：
 1. **创建Native工程**：在OpenHarmony项目中创建C++模块。
@@ -64,20 +64,24 @@ xmlCleanupParser();
 例如以下场景：
 
 ```ts
-// 初始值设置为0
-private timeOutId: number = 0;
-private interbalId: number = 0;
+export class testClass {
+    // 初始值设置为0
+    private timeoutId: number = 0;
+    private intervalId: number = 0;
 
-// 在某些情况下没有设置timerOut就调用了clearAnimation导致timeOutId为0的定时器被删除
-clearAnimation(): void {
-    clearInteval(this.interbalId);
-    clearTimeOut(this.timeOutId);
+    // 在某些情况下没有调用setTimeout设置定时器就调用了clearAnimation函数删除了定时器，就会导致timeoutId为0的定时器被删除
+    clearAnimation(): void {
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeoutId);
+    }
 }
 ```
 
 可以通过以下方法快速定位：
 
 重写globalThis.clearTimeout函数，实现在调用clearTimeout函数时打印调用栈，快速定位定时器是在哪里被删除的。
+
+调用顺序为先调用clearTimeout.ts文件中的test()函数，再调用TimerTest.ets文件中testClass类的clearAnimation()函数。
 
 示例代码：
 
@@ -88,7 +92,7 @@ clearAnimation(): void {
 export function test() {
     // 完全兼容原始 clearTimeout 类型
     const origClear = globalThis.clearTimeout;
-    globalThis.clearTimeout = (...argsx: any[]) => {
+    globalThis.clearTimeout = (...args: any[]) => {
         const timeoutId = args[0];
 
         // 检查所有可能的 timerId = 0 的情况
@@ -100,6 +104,51 @@ export function test() {
 
         // 使用 apply 确保正确传递所有参数
         return origClear.apply(this, args);
+    }
+}
+```
+
+```ts
+// 自定义ets文件TimerTest.ets
+
+export class testClass {
+    // 初始值设置为0
+    private timeoutId: number = 0;
+    private intervalId: number = 0;
+
+    // 在某些情况下没有调用setTimeout设置定时器就调用了clearAnimation函数删除了定时器，就会导致timeoutId为0的定时器被删除
+    clearAnimation(): void {
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeoutId);
+    }
+}
+```
+
+```ts
+import { test } from './clearTimeout';
+import { testClass } from './TimerTest';
+
+@Entry
+@Component
+struct Index {
+    @State message: string = 'Hello World';
+
+    build() {
+      Row() {
+        Column() {
+          Text(this.message)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+                test();
+                let testCase = new testClass();
+                testCase.clearAnimation();
+                this.message = 'success';
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
     }
 }
 ```

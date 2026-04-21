@@ -22,10 +22,10 @@ sendableContextManager模块提供Context与[SendableContext](js-apis-inner-appl
 - 主线程向子线程传递Sendable数据时，需要将Context转换为SendableContext。
 - 子线程使用Sendable数据时，需要将SendableContext转换为Context。
 
-这里的Context与[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12)方法创建的Context不同，具体差异如下：
+这里的Context与[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext)方法创建的Context不同，具体差异如下：
 - 与SendableContext相互转换的Context：ArkTS并发实例持有的应用侧Context是不同的实例，底层对应同一个Context对象。当一个实例中Context属性和方法被修改时，相关实例中的Context属性和方法将会同步修改。其中，Context实例中的eventHub属性比较特殊，不同实例中的eventHub是独立的对象，不支持跨ArkTS实例使用。如果需要使用[EventHub](./js-apis-inner-application-eventHub.md)跨实例传递数据，可以通过[setEventHubMultithreadingEnabled](#sendablecontextmanagerseteventhubmultithreadingenabled20)启用跨线程数据传递功能。
 
-- 通过[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12)创建的Context：ArkTS并发实例持有的应用侧Context是不同的实例，底层对应不同的Context对象。
+- 通过[createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext)创建的Context：ArkTS并发实例持有的应用侧Context是不同的实例，底层对应不同的Context对象。
 
 ## 约束限制
 
@@ -114,7 +114,7 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -183,7 +183,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -218,7 +219,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertToContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -297,7 +299,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -332,7 +335,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToApplicationContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToApplicationContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -409,7 +413,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -444,7 +449,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToAbilityStageContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToAbilityStageContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -521,7 +527,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -556,7 +563,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToUIAbilityContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToUIAbilityContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }

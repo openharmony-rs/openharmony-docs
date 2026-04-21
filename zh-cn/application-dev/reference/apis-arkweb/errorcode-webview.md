@@ -1,8 +1,8 @@
 # Webview错误码
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -29,7 +29,7 @@ WebviewController还没有和具体的Web组件关联。
 请检查WebviewController对象是否已与Web组件关联，可以通过[onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10)接口进行检查。<!--RP1--><!--RP1End-->
 
 
-## 17100002 Url格式错误
+## 17100002 URL格式错误
 
 **错误信息**
 
@@ -51,27 +51,30 @@ URL错误，可能原因：
 
 **处理步骤**
 
-请检查输入的url是否正确且url长度不超过2\*1024\*1024。
+请检查输入的URL是否正确且URL长度不超过2\*1024\*1024。
 
 
 ## 17100003 resource路径错误
 
 **错误信息**
 
-Invalid resource path or file type.
+1. Invalid resource path or file type.
+2. Calling a JS method that returns an empty ArrayBuffer via runJavaScript.
 
 **错误描述**
 
-resource路径错误。
+1. resource路径错误。
+2. 通过runJavaScript调用H5侧的方法，这个方法返回了空的ArrayBuffer。
 
 **可能原因**
 
-资源路径下文件不存在或无法访问。
+1. 资源路径下文件不存在或无法访问。
+2. 通过runJavaScript调用H5侧的方法，这个方法返回了空的ArrayBuffer。
 
 **处理步骤**
 
-请检查输入的resource路径是否正确。
-
+1. 请检查输入的resource路径是否正确。
+2. 使用runJavaScriptExt接口替代runJavaScript接口。
 
 ## 17100004 功能开关未打开
 
@@ -85,11 +88,11 @@ Function not enabled.
 
 **可能原因**
 
-相关功能未设置或开关未打开。
+相关功能未设置、开关未打开或错误调用。
 
 **处理步骤**
 
-请检查相关功能开关是否已配置打开，如该功能对应的XXXAccess是否配置为true。
+请检查相关功能开关是否已配置打开，如该功能对应的XXXAccess是否配置为true，或检测当前接口是否支持并发。
 
 
 ## 17100005 cookie value格式错误
@@ -130,7 +133,7 @@ port可能已经关闭。
 请检查port是否关闭。
 
 
-## 17100008 删除不存在的javaScriptProxy
+## 17100008 删除不存在的JavaScriptProxy
 
 **错误信息**
 
@@ -138,15 +141,15 @@ Failed to delete JavaScriptProxy because it does not exist.
 
 **错误描述**
 
-删除不存在的javaScriptProxy。
+删除不存在的JavaScriptProxy。
 
 **可能原因**
 
-传入的javaScriptProxy之前没有注册。
+传入的JavaScriptProxy之前没有注册。
 
 **处理步骤**
 
-检查传入的javaScriptProxy是否注册成功。
+检查传入的JavaScriptProxy是否注册成功。
 
 
 ## 17100010 无法使用该端口发送消息

@@ -4,7 +4,7 @@
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要由系统时间和系统时区功能组成。开发者可以获取系统时间及系统时区。
 
@@ -37,7 +37,7 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -45,7 +45,7 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型       | 必填 | 说明                             |
 | -------- | -------------- | ---- | ------------------ |
-| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br>- true：表示返回结果为纳秒数(ns)。 <br>- false：表示返回结果为毫秒数(ms)。 |
+| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自Unix纪元以来经过的时间戳。         |
 
 **错误码：**
@@ -83,7 +83,7 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -91,7 +91,7 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型               | 必填 | 说明                            |
 | -------- | ----------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自Unix纪元以来经过的时间戳(ms)。         |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自Unix纪元以来经过的时间戳（ms）。         |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -136,7 +136,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                     |
 | ------ | ------- | ---- | ------------------------- |
-| isNano | boolean | 否   | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数(ns)。 <br/>- false：表示返回结果为毫秒数(ms)。 |
+| isNano | boolean | 否   | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
 
 **返回值：**
 
@@ -177,7 +177,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -185,7 +185,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明   |
 | -------- | ---------- | ---- | -------------------------- |
-| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数(ns)。 <br/>- false：表示返回结果为毫秒数(ms)。 |
+| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
 
 **错误码：**
@@ -223,7 +223,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -231,7 +231,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明    |
 | -------- | -------------- | ---- | --------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间（ms），但不包括深度睡眠时间。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -276,7 +276,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | ----------------------------------- |
-| isNano | boolean | 否   | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数(ns)。 <br/>- false：表示返回结果为毫秒数(ms)。 |
+| isNano | boolean | 否   | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
 
 **返回值：**
 
@@ -317,7 +317,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -325,7 +325,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明   |
 | -------- | --------------- | ---- | ------------------------------- |
-| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数(ns)。 <br/>- false：表示返回结果为毫秒数(ms)。 |
+| isNano   | boolean                     | 是   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。   |
 
 **错误码：**
@@ -363,7 +363,7 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -371,7 +371,7 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明      |
 | -------- | --------- | ---- | --------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，包括深度睡眠时间。   |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间（ms），包括深度睡眠时间。   |
 
 **错误码：**
 
@@ -408,7 +408,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -416,7 +416,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ------------------------------- |
-| isNano | boolean | 否   | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数(ns)。 <br/>- false：表示返回结果为毫秒数(ms)。 |
+| isNano | boolean | 否   | 返回结果是否为纳秒数,默认值为false。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。 |
 
 **返回值：**
 
@@ -461,7 +461,7 @@ getTime(isNanoseconds?: boolean): number
 
 | 参数名        | 类型    | 必填 | 说明                                                         |
 | ------------- | ------- | ---- | ------------------------------------------------------------ |
-| isNanoseconds | boolean | 否   | 返回结果是否为纳秒数。<br>- true：表示返回结果为纳秒数(ns)。 <br>- false：表示返回结果为毫秒数(ms)。<br>默认值为false。 |
+| isNanoseconds | boolean | 否   | 返回结果是否为纳秒数。<br>- true：表示返回结果为纳秒数（ns）。 <br>- false：表示返回结果为毫秒数（ms）。<br>默认值为false。 |
 
 **返回值：**
 
@@ -495,7 +495,7 @@ getUptime(timeType: TimeType, isNanoseconds?: boolean): number
 | 参数名        | 类型                    | 必填 | 说明                                                                                |
 | ------------- | ----------------------- | ---- |-----------------------------------------------------------------------------------|
 | timeType      | [TimeType](#timetype10) | 是   | 获取时间的类型，仅能为`STARTUP`或者`ACTIVE`。                                                  |
-| isNanoseconds | boolean                 | 否   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数(ns)。 <br/>- false：表示返回结果为毫秒数(ms)。<br>默认值为false。 |
+| isNanoseconds | boolean                 | 否   | 返回结果是否为纳秒数。<br/>- true：表示返回结果为纳秒数（ns）。 <br/>- false：表示返回结果为毫秒数（ms）。<br>默认值为false。 |
 
 **返回值：**
 

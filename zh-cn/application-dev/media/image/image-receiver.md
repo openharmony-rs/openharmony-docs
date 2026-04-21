@@ -13,7 +13,7 @@
 
 ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../camera/camera-dual-channel-preview.md)。
 
-ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
+相关API的详细介绍请参见[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
 
 ## 开发步骤
 
@@ -24,9 +24,9 @@ ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/
    <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
    
    ``` TypeScript
-   import image from '@ohos.multimedia.image'
+   import { image } from '@kit.ImageKit'
    import { camera } from '@kit.CameraKit';
-   import { BusinessError } from '@ohos.base'
+   import { BusinessError } from '@kit.BasicServicesKit'
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
    
@@ -135,5 +135,9 @@ let pixelMap = await image.createPixelMap(dstArr.buffer, {
 let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
   size:{height: height, width: stride}, srcPixelFormat: 8});
 // 裁剪多余的像素。
-pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
+try {
+  pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});
+} catch (err) {
+  hilog.error(0x00000, TAG, `adjust bufferSize failed: ${err}!`);
+}
 ```

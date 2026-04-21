@@ -1,4 +1,4 @@
-# Es2abc 编译器错误码
+# Es2abc编译器错误码
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

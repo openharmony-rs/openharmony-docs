@@ -314,7 +314,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
 
 ## Using Single-version Table Mode for Data Sync
 
-Data sync using the single-version table mode follows basic development steps similar to those of the [multi-device collaborative table mode](#using-multi-device-collaborative-table-mode-for-data-sync). However, when creating a data table (that is, step 3 in *Using Multi-device Collaborative Table Mode for Data Sync*, you need to set the data table to be synced across devices to the **SINGLE_VERSION** type. An example is provided as follows.
+Data sync using the single-version table mode follows basic development steps similar to those of the [multi-device collaborative table mode](#using-multi-device-collaborative-table-mode-for-data-sync). However, when creating a data table (that is, step 3 in *Using Multi-device Collaborative Table Mode for Data Sync*), you need to set the data table to be synced across devices to the **SINGLE_VERSION** type. An example is provided as follows.
    <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
    
    ``` TypeScript
@@ -375,7 +375,7 @@ The schema file is in JSON format. You can configure multiple databases in the *
       - **type**: column type, which is of the string type and mandatory. The value can be ["Text", "Integer", "Long", "Float", "Double", "Blob"].
       - **primaryKey**: indicates whether the column is a conflict resolution column, which is irrelevant to the primary key in the table. The value is of the Boolean type. This field is mandatory for an auto-increment table. The value **true** means that the column is a conflict resolution column, and **false** means the opposite.
       - **autoIncrement**: indicates whether the column is auto-increment, which must be consistent with the corresponding table structure. The value is of the Boolean type. Cross-device data sync for RDB store does not support the sync of auto-increment primary keys. The value **true** means it is an auto-increment primary key, and **false** means the opposite. The default value is **false**.
-      - **notNull**: indicates whether the filed is not null. The value is of the Boolean type. This field is optional. The value **true** means that the field is not null, and **false** means the opposite. The default value is **false**.
+      - **notNull**: indicates whether the field is not null. The value is of the Boolean type. This field is optional. The value **true** means that the field is not null, and **false** means the opposite. The default value is **false**.
 
 ### Schema Sample
 

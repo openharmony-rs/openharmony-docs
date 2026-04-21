@@ -53,7 +53,7 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 | windowY<sup>10+</sup> | number                           |  No        |  No    |Y coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayX<sup>10+</sup> | number                          |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current screen window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayY<sup>10+</sup> | number                         |  No         |  No    |Y coordinate of the mouse position in the coordinate system of the current screen window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| screenX<sup>(deprecated)</sup> | number                 |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>**NOTE**<br>This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowX** instead.|
+| screenX<sup>(deprecated)</sup> | number                 |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowX** instead.|
 | screenY<sup>(deprecated)</sup> | number                 |  No         |  No    |Y coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowY** instead.|
 | rawDeltaX<sup>15+</sup> | number      |  No  |  Yes    |Movement increment of the mouse along the X axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | rawDeltaY<sup>15+</sup> | number      |  No    |  Yes   |Movement increment of the mouse along the Y axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
@@ -81,7 +81,8 @@ struct MouseEventExample {
   build() {
     Column({ space: 20 }) {
       Button(this.hoverText)
-        .width(180).height(80)
+        .width(180)
+        .height(80)
         .backgroundColor(this.color)
         .fontSize(24)
         .onHover((isHover: boolean, event: HoverEvent) => {
@@ -97,7 +98,7 @@ struct MouseEventExample {
       Button('onMouse')
         .width(180).height(80)
         .fontSize(24)
-        // Use onMouse to listen to mouse events, parse the buttons, actions, coordinates, and other information, and combines the information.
+        // Use onMouse to listen for mouse events, parse the buttons, actions, coordinates, and other information, and combines the information.
         .onMouse((event: MouseEvent): void => {
           if (event) {
             // Determine the type of the pressed mouse button.
@@ -157,4 +158,3 @@ struct MouseEventExample {
 The figure below shows how the button looks when clicked.
 
 ![mouse](figures/mouse.gif)
-<!--no_check-->

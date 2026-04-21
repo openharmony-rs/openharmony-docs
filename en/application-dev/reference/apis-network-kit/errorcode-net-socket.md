@@ -338,7 +338,7 @@ This error code is reported if the type of the specified socket protocol is inco
 
 **Cause**
 
-The socket function is called with an unsupported socket protocol type. For example, the protocol type cannot be set to **SOCK_STREAM** socket for the the Internet UDP protocol.
+The socket function is called with an unsupported socket protocol type. For example, the protocol type cannot be set to **SOCK_STREAM** socket for the Internet UDP protocol.
 
 **Procedure**
 
@@ -428,7 +428,7 @@ This error code is reported if the SSL is null.
 
 **Cause**
 
-The returned error information is null when an internal function fails to be executed.
+The [Tlssocket.connect](./js-apis-socket.md#connect9) function is not called or fails to be executed.
 
 **Procedure**
 
@@ -486,7 +486,7 @@ The local certificate does not match the server certificate.
 
 **Procedure**
 
-Check whether the local CA matches the server certificate.
+Check whether the local CA root certificate matches the server certificate.
 
 ## 2303505 TLS System Call Error
 

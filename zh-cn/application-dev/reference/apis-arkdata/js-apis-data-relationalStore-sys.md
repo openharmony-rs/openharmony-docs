@@ -39,6 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。<br/> |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 12开始，支持此可选参数。<br/> |
+| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -1111,6 +1112,239 @@ if (store != undefined) {
 }
 ```
 
+### retainDeviceData<sup>24+</sup>
+
+retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void>
+
+保留对应[单版本表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表中对应设备同步过来的数据，删除其他设备同步过来的数据，使用Promise异步回调。
+
+不支持对[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表进行删除。
+
+要删除数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参允许为空，数据库表名对应的设备id列表也允许为空，但是数据库表名和设备id不允许为空字符串。
+> 
+> 入参如果为空，则删除当前数据库所有单版本分布式表中所有其他设备同步过来的数据。
+> 
+> 入参中如果数据库表名对应的设备id列表为空，则删除该表下所有其他设备同步过来的数据。
+>
+> 保留本地写入以及传入设备id同步过来的数据，其他设备id同步过来的数据会被删除。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| retainDevices  | Record<string, Array\<string>> |  否  | 指定要保留的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步数据。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**示例：**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+
+async function retainDeviceData(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  console.info(`retainDeviceData, length is ${devices.length}`);
+  if (store != undefined) {
+    try {
+      const retainDevices: Record<string, string[]> = {};
+      retainDevices['EMPLOYEE'] = devices;
+      await store.retainDeviceData(retainDevices);
+      console.info(`retainDeviceData success`);
+    } catch (e) {
+      console.error(`retainDeviceData failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
+### updateDistributedInfo<sup>24+</sup>
+
+updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
+
+更新分布式信息，只支持单版本表模式，使用Promise异步回调。
+
+不支持对多设备协同表模式分布式数据表进行更新。
+
+要更新数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参info中若要传入设备id信息，则设备id必须是已与当前设备建立网络连接的设备id。
+>
+> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedinfo24)，则只允许使用等于空或不等于空。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| info  | [DistributedInfo](#distributedinfo24) |  是  | 指定要更新的分布式表的日志信息。|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise&lt;number&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800015     | The database does not respond. |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**示例：**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
+  if (store != undefined && devices.length > 0) {
+    try {
+      const DISTRIBUTEDINFOINSERT:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+        oriDevice: devices[0]
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOINSERT, predicates);
+      console.info(`updateDistributedInfoInsert success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoInsert failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+
+async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
+  if (store != undefined) {
+    try {
+      const DISTRIBUTEDINFOUPDATE:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.notEqualTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOUPDATE, predicates);
+      console.info(`updateDistributedInfoUpdate success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoUpdate failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
+## cleanDeviceDirtyData
+
+cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
+
+本端手动清理对端删除后同步过来的数据。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                               |
+| -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
+| table     | string           | 是   | 表示需要清理数据库表的名称。数据库表名只能由字母、数字和下划线组成，不能包含其他字符，长度为[1, 256]。           |
+| cursor    | number           | 否   | 表示数据游标，不大于此游标的脏数据将被清理。整数类型，取值应大于0。当传入小于等于0的值时，会抛出异常，异常信息为无效的参数。当此参数不填时，清理当前表的所有脏数据。 |
+
+**返回值：**
+
+| 类型     | 说明                                              |
+| -------- | ------------------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**     |
+|-----------|---------------|
+| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800015  | The database does not respond. |
+| 14800021  | SQLite: Generic error. |
+| 14800024  | SQLite: The database file is locked. |
+| 14800043  | DB is not support this scenario. Possible causes: 1. DB type is not support; 2. Table type is not support; 3. This is a readonly db. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  try {
+    await store.cleanDeviceDirtyData('test_table', 100);
+    console.info('Succeeded in cleaning device dirty data.');
+  } catch (err) {
+    console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+  };
+}
+```
+
 ## ResultSet
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -1119,7 +1353,7 @@ if (store != undefined) {
 
 getFloat32Array(columnIndex: number): Float32Array
 
-以浮点数组的形式获取当前行中指定列的值，仅可在[向量数据库](#storeconfig)下可用。
+以浮点数组的形式获取当前行中指定列的值，仅可在向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1223,3 +1457,45 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   }
 }
 ```
+
+## DistributedOrigin<sup>24+</sup>
+
+表示数据来源。请使用枚举名称而非枚举值。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称           | 值   | 说明                               |
+| -------------- | ---- | ---------------------------------- |
+| ORI_LOCAL       |  0  | 表示本地数据。      |
+| ORI_CLOUD       |  1  | 表示云端同步的数据。     |
+| ORI_REMOTE      |  2  | 表示端端同步的数据。 |
+
+## DistributedField<sup>24+</sup>
+
+用于谓词查询条件的特殊字段。请使用枚举名称而非枚举值。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称           | 值   | 说明                               |
+| -------------- | ---- | ---------------------------------- |
+| ORIGIN      | '#_origin'     | 用于查找或更新时指定数据来源的字段名。    |
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
+| CURSOR_FIELD      | '#_cursor'     | 用于cursor查找的字段名。<br/>**起始版本：** 26.0.0<br/> |
+| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段。true表示对端删除的数据，同步到本端。false表示对端写入或更新的数据，同步到本端；或者本端写入或更新的数据。<br/>**起始版本：** 26.0.0<br/> |
+
+## DistributedInfo<sup>24+</sup>
+
+记录分布式信息。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| flag | [DistributedOrigin](#distributedorigin24) | 否 | 是 | 表示数据来源，不传入则保持原有数值。 |
+| oriDevice | string | 否 | 是 | 表示数据产生者的设备id，不传入则保持原有设备id。 |

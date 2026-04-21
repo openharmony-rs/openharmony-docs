@@ -14,6 +14,7 @@
 - 发布通知<!--publish-notification-->
   - [发布文本类型通知](text-notification.md)
   - [发布进度条类型通知](progress-bar-notification.md)
+  - [为通知添加自定义铃声](notification-customized-ringtone.md)
   <!--Del-->
   - [发布实况窗类型通知（仅对系统应用开放）](live-view-notification-sys.md)
   <!--DelEnd-->
@@ -30,7 +31,7 @@
   <!--DelEnd-->
   - [清除跨设备场景下的重复通知](notification-distributed-messageid.md)
 - 通知订阅扩展能力<!--notification-subscriber-extension-->
-  - [NotificationSubscriberExtensionAbility (开发概述)](notification-subscriber-extension-ability.md)
+  - [通知订阅扩展能力概述](notification-subscriber-extension-ability.md)
   - [通知订阅扩展能力开发步骤](notification-subscriber-extension-ability-development-steps.md)
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->

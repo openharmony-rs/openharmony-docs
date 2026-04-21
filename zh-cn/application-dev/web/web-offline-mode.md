@@ -136,10 +136,10 @@ export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
 ```
 
 <!--  -->
-<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-import { getNWeb } from './common'
+import { getNWeb } from './Common'
 @Entry
 @Component
 struct Index {
@@ -158,7 +158,7 @@ struct Index {
   }
 }
 ```
-<!--  -->
+
 
 ## 预启动渲染进程
 
@@ -171,19 +171,31 @@ struct Index {
 
 示例在onWindowStageCreate时预创建Web组件加载blank页面，提前启动Render进程，从index跳转到index2时，优化了Web渲染进程启动和初始化的耗时。
 
-<!-- @[entry_ability_window_stage_created_after_page_loaded](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/entry1ability/Entry1Ability.ets) -->
+<!-- @[entry_ability_window_stage_created_after_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/entry1ability/Entry1Ability.ets) --> 
 
 ``` TypeScript
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err, data) => {
-    // 创建空的Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
-    createNWeb('about：blank', windowStage.getMainWindowSync().getUIContext());
-    if (err.code) {
-      return;
-    }
-  });
-}
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { createNWeb } from '../pages/Common';
+// ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err && err.code) {
+        console.info('loadContent failed. errorCode: ' + err.code);
+        return;
+      }
+      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      if (!windowClass) {
+        console.info('windowClass is null');
+        return;
+      }
+      // 创建空的Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
+      createNWeb('about:blank', windowClass.getUIContext());
+    });
+  }
 ```
+
 <!--  -->
 <!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
 
@@ -278,45 +290,46 @@ export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
 ```
 
 <!--  -->
-<!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) -->  
+<!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // index.ets
 import { webview } from '@kit.ArkWeb';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index1 {
   webviewController: webview.WebviewController = new webview.WebviewController();
-      
+
   build() {
     Column() {
-      // 已经预启动Render进程
-      Button('Jump to web page').onClick(()=>{
-        this.getUIContext().getRouter().pushUrl({url: 'pages/index2'});
-      })
-        .width('100%')
-        .height('100%')
+      Button('Jump to web page').onClick(()=> {
+        this.getUIContext().getRouter().pushUrl({ url: 'pages/Index2' }).catch((error: BusinessError) => {
+          hilog.info(0x0000, 'testTag', 'pushUrl error, %{public}s', error);
+        })
+      }).width('100%').height('100%')
     }
   }
 }
 ```
 
 <!--  -->
-<!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/index2.ets) -->
+<!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index2.ets) --> 
 
 ``` TypeScript
-import web_webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
-struct index2 {
-  webviewController: web_webview.WebviewController = new web_webview.WebviewController();
+struct Index2 {
+  webviewController: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Row() {
       Column() {
-        Web({src: 'www.example.com', controller: this.webviewController})
+        Web({src: $r('app.string.ExampleUrl'), controller: this.webviewController})
           .width('100%')
           .height('100%')
       }
@@ -326,8 +339,8 @@ struct index2 {
   }
 }
 ```
-<!--  -->
 
+<!--  -->
 ## 预渲染Web页面
 
 预渲染Web页面优化方案适用于Web页面启动和跳转场景，例如，进入首页后，跳转到其他子页。建议在高命中率的页面使用该方案。
@@ -354,7 +367,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 <!--  -->
-<!-- @[offline_web_component_builder_with_render_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets) -->  
+<!-- @[offline_web_component_builder_with_render_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets) --> 
 
 ``` TypeScript
 // 创建NodeController
@@ -403,7 +416,7 @@ export class MyNodeController extends NodeController {
   // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中
   // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info('uicontext is undifined : ' + (uiContext === undefined));
+    console.info('uiContext is undefined : ' + (uiContext === undefined));
     if (this.rootNode !== null) {
       // 返回FrameNode节点
       return this.rootNode.getFrameNode();
@@ -465,10 +478,10 @@ export const getNWeb = (url: string): MyNodeController | undefined => {
 ```
 
 <!--  -->
-<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-import { getNWeb } from './common'
+import { getNWeb } from './Common'
 @Entry
 @Component
 struct Index {
@@ -487,11 +500,11 @@ struct Index {
   }
 }
 ```
-<!--  -->
+
 
 ## 复用和释放离线Web组件
 
-通过复用和释放离线Web组件，可以优化内存占用，降低应用因内存占用过高被系统查杀的概率。
+通过复用和释放离线Web组件，可以优化内存占用，降低应用因内存占用过高被系统终止的概率。
 
 > **说明：**
 > - 每个窗口推荐只使用一个Web组件。
@@ -657,7 +670,7 @@ onBackground(): void {
 
 检查是否已在module.json5中添加网络权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-<!-- @[add_network_permission](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+<!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
 
 ``` JSON5
 "requestPermissions":[
@@ -666,6 +679,7 @@ onBackground(): void {
   }
 ],
 ```
+
 
 2.排查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的逻辑。
 

@@ -96,8 +96,8 @@ BadgeParamWithNumber继承自[BadgeParam](#badgeparam对象说明)，具有Badge
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| count | number | 否 | 否 | 设置提醒消息数。<br/>**说明：** <br/>当该值小于等于0且小于maxCount时不显示信息标记。<br/>取值范围：[-2147483648,2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。 |
-| maxCount | number | 否 | 是 | 最大消息数，超过最大消息时仅显示maxCount+，如maxCount是99时，显示`99+`。<br/>默认值：99<br/>取值范围：[-2147483648,2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。 |
+| count | number | 否 | 否 | 设置提醒消息数。<br/>**说明：** <br/>当该值小于等于0且小于maxCount时不显示信息标记。<br/>取值范围：[-2147483648, 2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。 |
+| maxCount | number | 否 | 是 | 最大消息数，超过最大消息时仅显示maxCount+，如maxCount是99时，显示`99+`。<br/>默认值：99<br/>取值范围：[-2147483648, 2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。 |
 
 ## BadgeParamWithString对象说明
 
@@ -138,8 +138,8 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 | 名称                      | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | color                     | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 文本颜色。<br/>默认值：Color.White<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fontSize                  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | 否   | 是   | 文本大小。string类型仅支持number类型取值的字符串形式，可以附带单位，支持的单位有"px"、"vp"、"fp"、"lpx"，例如"10"、"10fp"，不附带单位时默认单位为"fp"。<br/>默认值：10vp<br/>取值范围：大于0；取值为0时不显示文本，取值小于0时取默认值。<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| badgeSize                 | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | 否   | 是   | Badge的大小。string类型支持number类型取值的字符串形式，可以附带单位，例如"16"、"16vp"。<br/>默认值：16<br/>单位：vp<br/>取值范围：大于0；取值为0时不显示Badge，取值小于0时取默认值。<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| fontSize                  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | 否   | 是   | 文本大小。string类型仅支持number类型取值的字符串形式，可以附带单位，支持的单位有"px"、"vp"、"fp"、"lpx"，例如"10"、"10fp"，不附带单位时默认单位为"fp"。<br/>默认值：10vp<br/>取值范围：大于0；取值为0时不显示文本，取值小于0时取默认值。<br/>**说明：** <br/>1. 不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>2. 从API version 20开始，支持ResourceStr类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| badgeSize                 | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | 否   | 是   | Badge的大小。string类型支持number类型取值的字符串形式，可以附带单位，例如"16"、"16vp"。<br/>默认值：16<br/>单位：vp<br/>取值范围：大于0；取值为0时不显示Badge，取值小于0时取默认值。<br/>**说明：** <br/>1. 不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>2. 从API version 20开始，支持ResourceStr类型。<br/>3. 当设置了fontSize且badgeSize小于fontSize时，badgeSize将按照fontSize生效。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | badgeColor                | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | Badge的颜色。<br/>默认值：Color.Red<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fontWeight<sup>10+</sup>  | number \|[FontWeight](ts-appendix-enums.md#fontweight) \|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 设置文本的字体粗细。number类型取值范围：[100, 900]，取值间隔为100。取值越大，字体越粗。设置number类型在取值范围外时，按默认值400处理。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | borderColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板描边颜色。<br/>默认值：Color.Red<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |

@@ -94,7 +94,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
   ```typescript
   import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
-  import wifiManager from '@ohos.wifiManager';
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { common } from '@kit.AbilityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
   wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
@@ -106,6 +108,18 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
   class MyClass {
     wifiScanResult = wifiManager.startScan(); // 使用@SuppressWarnings注解后，告警被抑制。
+  }
+
+  async function savePhotoToGallery(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+    // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
+  }
+
+  @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
+  async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，告警被抑制。
   }
   ```
 
@@ -125,12 +139,26 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
   ```typescript
   import { Available } from '@kit.BasicServicesKit';
-  import wifiManager from '@ohos.wifiManager';
+  import { wifiManager } from '@kit.ConnectivityKit';
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { common } from '@kit.AbilityKit';
   wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
   // @SuppressWarnings compatibility
   wifiManager.startScan(); // 使用@SuppressWarnings注释后，告警被抑制。
+
+  async function savePhotoToGallery(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+    // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
+  }
+
+  async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    // @SuppressWarnings permission
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注释后，告警被抑制。
+  }
   ```
 
 ## SuppressWarningsType<sup>23+</sup>
@@ -143,9 +171,12 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**起始版本：** 23
+
 **系统能力：** SystemCapability.Base
 
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
 | COMPATIBILITY     | compatibility    | 支持消除兼容性告警。 |
 | SYSCAP     | syscap    | 支持消除多设备告警。 |
+| PERMISSION     | permission    | 支持消除权限告警。<br/>**起始版本：** 26.0.0 |

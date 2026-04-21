@@ -52,7 +52,6 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array\<StyleO
 | 名称  |   类型   |   只读   |   可选   |   说明   |
 | ------ | ------ | ------ | ------ | -------------- |
 | length | number |  是   | 否   | 属性字符串字符的长度。<br/>**说明：** <br/>属性字符串中的ImageAttachment和CustomSpan长度都计为1。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) |  否   | 是   | 属性字符串的字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ### getString
 
@@ -141,7 +140,7 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array\<Sp
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | start | number | 是   | 指定范围属性字符串的下标。 |
 | length | number | 是   | 指定范围属性字符串的长度。 |
-| styledKey | [StyledStringKey](#styledstringkey枚举说明) | 否   | 指定范围属性字符串样式的枚举值。 |
+| styledKey | [StyledStringKey](#styledstringkey枚举说明) | 否   | 指定范围属性字符串样式的枚举值。<br/>**说明：** <br/>当不传入该参数时默认获取开发者设置的[StyledStringKey](#styledstringkey枚举说明)所有枚举值样式。 |
 
 **返回值：**
 
@@ -161,26 +160,35 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array\<Sp
 
 static fromHtml(html: string): Promise\<StyledString>
 
-将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>。支持将标签中的style属性样式转换成对应的属性字符串样式。
+将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>、\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>。支持将标签中的style属性样式转换成对应的属性字符串样式。
 
-使用方法参考[示例12（fromHtml和toHtml互相转换）](#示例12fromhtml和tohtml互相转换)。
+使用方法参考[示例12（fromHtml和toHtml互相转换）](#示例12fromhtml和tohtml互相转换)和[示例18（fromHtml转换）](#示例18fromhtml转换)。
 
 | 标签名称 | 说明                   |
 | ------------- | ---------------------------- |
-| \<p\>       | 段落，分隔文本段落         |
+| \<p\>       | 段落，分隔文本段落。       |
 | \<span\>    | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。     |
-| \<img\>     | 插入图片                   |
-| \<strong\>  | 加粗文本                   |
-| &lt;br&gt;<sup>20+</sup>      | 换行                       |
-| \<b\><sup>20+</sup>       | 加粗文本                   |
-| \<a\><sup>20+</sup>       | 超链接                     |
-| \<i\><sup>20+</sup>       | 斜体文本                   |
-| \<em\><sup>20+</sup>      | 斜体文本                   |
-| \<s\><sup>20+</sup>       | 删除线（中划线）           |
-| \<u\><sup>20+</sup>       | 下划线                     |
-| \<del\><sup>20+</sup>     | 删除线（中划线）           |
-| \<sup\><sup>20+</sup>     | 上标文本                   |
-| \<sub\><sup>20+</sup>     | 下标文本                   |
+| \<img\>     | 插入图片。                   |
+| \<strong\>  | 加粗文本。                   |
+| &lt;br&gt;<sup>20+</sup>      | 换行。                       |
+| \<b\><sup>20+</sup>       | 加粗文本。                   |
+| \<a\><sup>20+</sup>       | 超链接。                     |
+| \<i\><sup>20+</sup>       | 斜体文本。                   |
+| \<em\><sup>20+</sup>      | 斜体文本。                   |
+| \<s\><sup>20+</sup>       | 删除线（中划线）。            |
+| \<u\><sup>20+</sup>       | 下划线。                     |
+| \<del\><sup>20+</sup>     | 删除线（中划线）。            |
+| \<sup\><sup>20+</sup>     | 上标文本。                   |
+| \<sub\><sup>20+</sup>     | 下标文本。                   |
+| \<cite\>    | 斜体文本。<br/>**起始版本：** 26.0.0        |
+| \<dfn\>     | 斜体文本。<br/>**起始版本：** 26.0.0        |
+| \<small\>   | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。<br/>**起始版本：** 26.0.0        |
+| \<h1\>      | 一级标题。<br/>**起始版本：** 26.0.0        |
+| \<h2\>      | 二级标题。<br/>**起始版本：** 26.0.0        |
+| \<h3\>      | 三级标题。<br/>**起始版本：** 26.0.0        |
+| \<h4\>      | 四级标题。<br/>**起始版本：** 26.0.0        |
+| \<h5\>      | 五级标题。<br/>**起始版本：** 26.0.0        |
+| \<h6\>      | 六级标题。<br/>**起始版本：** 26.0.0        |
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -584,7 +592,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称        | 类型                                     | 只读 | 可选 | 说明                                                                                                                              |
 | ----------- | ---------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                               |
@@ -592,6 +600,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | fontSize    | number                                   | 是   | 是   | 获取属性字符串的文本字体大小。<br/>单位：[vp](ts-pixel-units.md) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight  | number                                   | 是   | 是   | 获取属性字符串的文本字体粗细。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 是   | 获取属性字符串的文本字体样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 是   | 是   | 获取属性字符串的字体配置。<br/>默认返回undefined，表示未设置fontConfigs。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                           |
 | strokeWidth<sup>20+</sup> | number                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md)。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br/>默认返回字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
@@ -642,6 +651,7 @@ constructor(value?: TextStyleInterface)
 | fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 字体大小。<br/>默认字体大小为16fp。<br/>如果LengthMetrics的unit值是percent，当前设置不生效，处理为16fp。<br/>单位：[fp](ts-pixel-units.md) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight  | number\| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否   | 是 | 字体粗细。<br/>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle)                      | 否   | 是 | 字体样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明)                      | 否   | 是 | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是percent，当前设置不生效，处理为0。<br/>设置值小于0时为实心字，大于0时为空心字。<br/>默认值为0。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值为字体颜色，设置异常值时取字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -971,7 +981,7 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 | 类型  | 说明   |
 | ------ | ---------- |
 | [ColorFilter](ts-types.md#colorfilter9) | ColorFilter类型图片颜色滤镜设置项。 |
-| [DrawingColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md) | DrawingColorFilter类型图片颜色滤镜设置项。 |
+| [DrawingColorFilter](ts-basic-components-image.md#drawingcolorfilter12) | DrawingColorFilter类型图片颜色滤镜设置项。 |
 
 ## ImageAttachmentInterface对象说明
 
@@ -1074,13 +1084,13 @@ invalidate(): void
 
 ## CustomSpanMeasureInfo对象说明
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| fontSize | number |  否  | 否 | 设置文本字体大小。<br/>单位：[fp](ts-pixel-units.md) |
+| fontSize | number |  否  | 否 | 设置文本字体大小。<br/>单位：[fp](ts-pixel-units.md)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxWidth | number |  否  | 是 | 自定义span所在父组件的内容区的最大宽度约束。<br/>单位：[px](ts-pixel-units.md)<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| layoutPolicy | [LayoutPolicy](./ts-universal-attributes-size.md#layoutpolicy15) |  否  | 是 | 自定义span所在父组件的宽度布局策略。<br/>**说明：** <br/>当值为null或undefined时，表示父组件没有设置宽度布局策略。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CustomSpanMetrics对象说明
 
@@ -1113,6 +1123,9 @@ invalidate(): void
 除首个段落外，后续段落按'\n'划分。
 
 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。
+
+在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](#customspan)或[ImageAttachment](#imageattachment)时，设置在该段落上的段落样式不生效。从API版本26.0.0开始，设置段落样式生效。
+
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2084,6 +2097,8 @@ struct styled_string_set_lineheight_paragraphstyle_demo {
 
 从API version 12开始，该示例通过[CustomSpan](#customspan)接口和[measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12)实现属性字符串设置自定义绘制Span。
 
+从API版本26.0.0开始，[CustomSpanMeasureInfo](#customspanmeasureinfo对象说明)新增maxWidth、layoutPolicy属性。
+
 ```ts
 // xxx.ets
 import { drawing } from '@kit.ArkGraphics2D';
@@ -2102,7 +2117,12 @@ class MyCustomSpan extends CustomSpan {
   onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics {
     this.setPx(gUIContext.vp2px(2));
     let textSize = gUIContext.getMeasureUtils().measureTextSize({ textContent: this.word, fontSize: this.wordFontSize })
-    this.width = textSize.width as number;
+    // 从API版本26.0.0开始CustomSpanMeasureInfo支持maxWidth与layoutPolicy属性
+    if (measureInfo.layoutPolicy != LayoutPolicy.fixAtIdealSize) {
+      this.width = Math.min(textSize.width as number, measureInfo.maxWidth as number)
+    } else {
+      this.width = textSize.width as number
+    }
     this.height = textSize.height as number;
     return {
       width: gUIContext.px2vp(this.width) + (this.paddingLeft + this.paddingRight) * 2,
@@ -2551,7 +2571,8 @@ struct styled_string_strokewidth_strokecolor_demo {
 @Entry
 @Component
 struct styled_string_html_convert_demo {
-  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>"; // 从API version 20开始支持b、em、i、u、del、s、a、sup、sub标签
+  // 从API version 20开始支持b、em、i、u、del、s、a、sup、sub标签
+  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
   @State spanString: StyledString | undefined = undefined;
   @State resultText: string = ""; // 保存结果文本的状态
   controller: TextController = new TextController;
@@ -2568,14 +2589,14 @@ struct styled_string_html_convert_demo {
         .margin(5)
 
       // 按钮1:将HTML转换为SpanString
-      Button("将HTML转换为SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML to SpanString successfully.";
       }).margin(5)
 
       // 按钮2:将SpanString转换为HTML
-      Button("将SpanString转换为HTML").onClick(() => {
+      Button("Convert SpanString to HTML").onClick(() => {
         if (this.spanString) {
           // 将spanString转换为HTML并替换当前的HTML状态
           const newHtml = StyledString.toHtml(this.spanString);
@@ -2589,14 +2610,14 @@ struct styled_string_html_convert_demo {
       }).margin(5)
 
       // 按钮3:将HTML转换回SpanString
-      Button("将HTML转换回SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML back to SpanString successfully.";
       }).margin(5)
 
       // 重置：重置HTML和SpanString
-      Button("重置").onClick(() => {
+      Button("Reset").onClick(() => {
         this.html = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
         this.spanString = undefined;
         this.controller.setStyledString(new StyledString("")); // 使用空的StyledString实例
@@ -2966,7 +2987,9 @@ struct styled_string_process_demo {
 
 ### 示例17（设置字体配置）
 
-该示例通过在TextStyle中设置[fontConfigs](ts-text-common.md#fontconfigs24对象说明)属性实现属性字符串的字体配置。从API version 24开始，新增支持fontConfigs属性。
+该示例通过[TextStyleInterface](#textstyleinterface对象说明)中的[fontConfigs](ts-text-common.md#fontconfigs24对象说明)实现属性字符串的字体配置。
+
+从API version 24开始，TextStyleInterface新增fontConfigs属性。
 
 ```ts
 // xxx.ets
@@ -2982,7 +3005,7 @@ struct StyledStringFontConfigsDemo {
   aboutToAppear() {
     // 示例1：启用可变字重
     let textStyle1: TextStyle = new TextStyle({
-      fontColor: Color.Red,
+      fontColor: Color.Gray,
       fontSize: LengthMetrics.vp(18)
     });
     let styledString1: MutableStyledString = new MutableStyledString('StyledString with FontConfigs: ', [{
@@ -3013,7 +3036,7 @@ struct StyledStringFontConfigsDemo {
 
     // 示例2：禁用设备字体粗细级别自动更新
     let textStyle3: TextStyle = new TextStyle({
-      fontColor: Color.Red,
+      fontColor: Color.Gray,
       fontSize: LengthMetrics.vp(18)
     });
     let styledString3: MutableStyledString = new MutableStyledString('禁用跟随设备字重级别更新: ', [{
@@ -3023,7 +3046,7 @@ struct StyledStringFontConfigsDemo {
       styledValue: textStyle3
     }]);
     let textStyle4: TextStyle = new TextStyle({
-      fontColor: Color.Green,
+      fontColor: Color.Blue,
       fontSize: LengthMetrics.vp(24),
       fontWeight: 600,
       fontConfigs: {
@@ -3068,3 +3091,37 @@ struct StyledStringFontConfigsDemo {
 }
 ```
 ![styledString_18](figures/styledString_18.png)
+
+### 示例18（fromHtml转换）
+
+该示例通过[fromHtml](#fromhtml)接口，将HTML中\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>标签转换为属性字符串。
+ 
+从API版本26.0.0开始，fromHtml新增支持\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>标签。
+
+```ts
+@Entry
+@Component
+struct html_convert_demo {
+  @State html: string = '<p><cite>cite</cite><dfn>dfn</dfn></p><p>normal<small>small<small>smaller</small></small></p><h1>一级标题</h1><h2>二级标题</h2><h3>三级标题</h3><h4>四级标题</h4><h5>五级标题</h5><h6>六级标题</h6>';
+  @State spanString: StyledString | undefined = undefined;
+  controller: TextController = new TextController;
+
+  build() {
+    Column() {
+      // 显示转换后的spanString
+      Text(undefined, { controller: this.controller })
+      // TextArea显示每个步骤的结果
+      TextArea({ text: this.html })
+        .width("100%")
+        .height(100)
+        .margin(5)
+
+      Button('将HTML转换为SpanString').onClick(async () => {
+        this.spanString = await StyledString.fromHtml(this.html);
+        this.controller.setStyledString(this.spanString);
+      }).margin(5)
+    }.width("100%").padding(20)
+  }
+}
+```
+![html_convert_demo](figures/html_convert_demo.png)

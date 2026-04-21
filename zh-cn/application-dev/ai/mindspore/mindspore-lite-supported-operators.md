@@ -4,7 +4,7 @@
 <!--Subsystem: AI-->
 <!--Owner: @zhuguodong8-->
 <!--Designer: @zhuguodong8; @jjfeing-->
-<!--Tester: @principal87-->
+<!--Tester: @nierong182-->
 <!--Adviser: @ge-yafang-->
 
 本文档介绍了MindSpore Lite Kit与ONNX Opset18相比所支持的CPU后端算子列表以及对应关系。在使用模型转换工具将ONNX模型转换为ms模型进行部署时，通过查询此表可以知道MindSpore Lite Kit所支持的常用ONNX算子，以确保模型转换成功。
@@ -40,7 +40,7 @@
 | FusedBatchNorm         | 对输入做标准化                                               | BatchNormalization                                           | -                                                            |
 | Gather                 | 沿单一维度收集指定索引位置的元素                             | Gather                                                       | 不支持uint8类型。不支持QuantType_QUANT_NONE量化类型。        |
 | GatherD                | 将输入tensor中的元素根据索引tensor进行收集                   | GatherElements                                               | -                                                            |
-| GatherNd               | 将输入张量的切片聚合成具有indices指定维度的新张量            | GatherND                                                     | -                                                            |
+| GatherNd               | 将输入张量的切片聚合成具有indices指定维度的新张量            | GatherND                                                     | 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始支持空shape推理。                                                            |
 | InstanceNorm           | 实例归一化                                                   | InstanceNormalization                                        | -                                                            |
 | Log                    | 逐元素求对数                                                 | Log                                                          | 不支持负数输入。                                             |
 | LogicalNot             | 元素级逻辑非                                                 | Not                                                          | -                                                            |
@@ -58,6 +58,7 @@
 | PReLUFusion            | PRelu激活函数                                                | PRelu                                                        | -                                                            |
 | Range                  | 生成某个区间内的元素                                         | Range                                                        | -                                                            |
 | Reciprocal             | 返回倒数                                                     | Reciprocal                                                   | -                                                            |
+| Reduce                 | 对指定维度进行聚合计算来减少张量维度 |  ReduceSum<br/>ReduceMean<br/>ReduceMax<br/>ReduceMin<br/>ReduceProd<br/>ReduceLogSum<br>ReduceLogSumExp<br/>ReduceSumSquare<br/>ReduceL1<br>ReduceL2               | 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始支持空shape推理。                             |
 | Reshape                | 改变张量形状，总元素个数不变                                 | Reshape                                                      | -                                                            |
 | Round                  | 四舍五入到最接近的整数数值                                   | Round                                                        | -                                                            |
 | ScatterNdUpdate        | 使用给定值以及输入索引更新输入数据的值                       | ScatterND                                                    | -                                                            |

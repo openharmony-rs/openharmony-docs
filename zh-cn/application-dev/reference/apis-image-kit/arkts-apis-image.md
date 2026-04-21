@@ -28,11 +28,13 @@
 
 - [HeifsMetadata](arkts-apis-image-HeifsMetadata.md)类，以Key-Value的形式存储图像的HEIF序列图像元数据。HEIF序列图像元数据的Key可参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
+- [WebPMetadata](arkts-apis-image-WebPMetadata.md)类，以Key-Value的形式存储图像的WebP图像元数据。WebP图像元数据的Key可参考[WebPPropertyKey](arkts-apis-image-e.md#webppropertykey24)。
+
 - [ImageReceiver](arkts-apis-image-ImageReceiver.md)类，作为图片的消费者，用于从Surface中接收、读取图片。
 
 - [ImageCreator](arkts-apis-image-ImageCreator.md)类，作为图片的生产者，用于将图片写入到Surface中。
 
-- [Image](arkts-apis-image-Image.md)类，供ImageReceiver和ImageCreator使用，用于传输图片对象，它的实际内容由生产者决定。如相机预览流提供的Image对象存储了YUV数据，相机拍照提供的Image对象存储了JPEG文件。
+- [Image](arkts-apis-image-Image.md)类，供ImageReceiver和ImageCreator使用，用于传输图片对象，其实际内容由生产者决定。如相机预览流提供的Image对象存储了YUV数据、相机拍照提供的Image对象存储了JPEG文件。
 
 > **说明：**
 >

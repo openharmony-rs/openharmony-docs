@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-图片编码相关API的详细介绍请参见：[图片编码接口说明](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
+图片编码相关API的详细介绍请参见[ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
 
 1. 导入相关模块包。
    
@@ -71,10 +71,10 @@
      
      ``` TypeScript
      async function packToFile(picture: image.Picture, packOpts: image.PackingOption, context: Context) {
-       const path : string = context.cacheDir + '/picture.jpg';
-       let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-       const imagePackerApi = image.createImagePacker();
        try {
+         const path : string = context.cacheDir + '/picture.jpg';
+         let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+         const imagePackerApi = image.createImagePacker();
          await imagePackerApi.packToFile(picture, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the picture to file. And the error is: ' + error);

@@ -30,7 +30,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：png、jpeg、bmp、gif、webp、dng、heic<sup>12+</sup>、wbmp<sup>23+</sup>、heifs<sup>23+</sup>、tiff<sup>23+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：PNG、JPEG、BMP、GIF、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>。从API版本26.0.0开始，增加支持AVIF格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 
 ## getImageInfo
 
@@ -538,6 +538,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 > - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
 > - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
 > - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+> - 从API版本24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -638,6 +639,112 @@ async function WriteImageMetadata(imageSourceObj : image.ImageSource) {
     console.info(`write image metadata success.`);
   }).catch((error: BusinessError) => {
     console.error(`writeImageMetadata failed error.code is ${error.code}, error.message is ${error.message}`);
+  });
+}
+```
+
+## readImageMetadataByType<sup>24+</sup>
+
+readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise\<ImageMetadata>
+
+读取图像源的元数据，使用metadataTypes指定元数据类型。若未指定metadataTypes，则返回所有支持的元数据。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF、WEBP、DNG和HEIFS（不同硬件设备支持情况不同）文件。
+
+> **说明：**
+>
+> - EXIF_METADATA元数据类型适用于JPEG、PNG、HEIF、WEBP和DNG格式图片。
+> - HEIFS_METADATA元数据类型适用于HEIFS格式图片。
+> - 当传入的MetadataType与图片格式无法匹配时，返回错误码7700102。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名        | 类型            | 必填 | 说明                      |
+| ------------- | -------------- | ---- | ------------------------- |
+| metadataTypes | [MetadataType](arkts-apis-image-e.md#metadatatype13)[] | 否   | 元数据类型的数组。当该参数缺省时，获取全部支持的元数据。 |
+| index         | number         | 否   | 图片帧序号，表示获取指定帧的元数据。默认值为0。<br>- 单帧图片场景中index取值只能为0。<br>- 动图等多帧图片场景中index的取值范围为[0, 帧数-1]。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<[ImageMetadata](arkts-apis-image-i.md#imagemetadata23)> | Promise对象。返回的ImageMetadata对象中含有对应的metadata对象，通过ImageMetadata中的metadata对象可以获取图片属性值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700102  | Unsupported MIME type. |
+| 7700202  | Unsupported metadata.  |
+| 7700204  | Invalid parameter. Possible causes: 1.The index is negative.2. The index is greater than or equal to the number of frames in the image. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function ReadImageMetadataByType(imageSource : image.ImageSource, type: image.MetadataType) {
+  let types: image.MetadataType[] = [type];
+  await imageSource.readImageMetadataByType(types, 0).then((metaData: image.ImageMetadata) => {
+    if (metaData != undefined && metaData.exifMetadata != undefined) {
+      console.info("ImageWidth: " + metaData.exifMetadata.imageWidth);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`ReadImageMetadataByType failed error.code is ${error.code}, error.message is ${error.message}`);
+  })
+}
+```
+
+## createImageRawData<sup>24+</sup>
+
+createImageRawData(): Promise\<ImageRawData>
+
+获取图片原始数据。使用Promise异步回调。目前仅支持获取DNG图片类型的原始数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<[ImageRawData](arkts-apis-image-i.md#imagerawdata24)> | Promise对象，返回ImageRawData对象，其中含有数据缓冲区和像素位数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700101  | Bad source.  |
+| 7700102  | Unsupported MIME type. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function createImageRawData(imageSourceObj: image.ImageSource) {
+  await imageSourceObj.createImageRawData().then((data: image.ImageRawData) => {
+    console.info(`createImageRawData success. length: ${data.buffer.byteLength}, bitPerPixel:${data.bitsPerPixel}`);
+    if (data.bitsPerPixel == 16) {
+      let array: Uint16Array = new Uint16Array();
+      let value: string = "";
+      array = new Uint16Array(data.buffer);
+      for (let i = 0; i < array.length && i < 10; i++) {
+        value += array[i] + ', ';
+      }
+      console.info(`get dng rawdata is:${value}.`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`createImageRawData failed error.code is ${error.code}, error.message is ${error.message}`);
   });
 }
 ```
@@ -747,7 +854,8 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
-| 7700301  | Failed to decode image.                                      |
+| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
+| 7700301  | Decode failed.                                               |
 
 **示例：**
 
@@ -1348,6 +1456,173 @@ async function CreatePixelMapUsingAllocator(context : Context) {
     console.info('Succeeded in creating pixelMap object.');
   } else {
     console.error('Failed to create pixelMap.');
+  }
+}
+```
+
+## createThumbnail
+
+createThumbnail(options?: DecodingOptionsForThumbnail): Promise\<PixelMap \| undefined>
+
+通过图片解码参数创建缩略图PixelMap对象。使用Promise异步回调。
+
+当前支持对JPEG和HEIF格式的图片创建缩略图PixelMap对象。
+
+优先解码图片文件中包含的缩略图。若图片文件中没有缩略图，则对原图进行解码。
+
+> **说明：**
+>
+> - 不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明       |
+| ------- | ------------------------------------------------------------ | ---- | ---------- |
+| options | [DecodingOptionsForThumbnail](arkts-apis-image-i.md#decodingoptionsforthumbnail) | 否   | 解码参数，控制是否生成缩略图以及生成缩略图的目标尺寸。<br>默认表现：<br>- 当图像有缩略图时，解码原始缩略图，返回的PixelMap对象的宽和高与原缩略图保持一致。<br>- 当原图文件无缩略图时，对原图进行解码后，根据解码参数options下采样生成缩略图，生成后的缩略图PixelMap对象宽和高都限制在512像素以内。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                        |
+| ------------------------------------------------------------ | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 7700102  | Unsupported mimetype.                          |
+| 7700103  | Image too large.                               |
+| 7700204  | Invalid parameter, e.g, invalid generate size. |
+| 7700301  | Decode failed.                                 |
+| 7700303  | Image does not carry thumbnail data.           |
+| 7700305  | Thumbnail generation failed.                   |
+
+**示例：**
+
+```ts
+async function CreateThumbnail(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
+  try {
+    if (!imageSource) {
+      console.error('CreateThumbnail: imageSource is null or undefined');
+      return undefined;
+    }
+    const imageInfo = await imageSource.getImageInfo();
+    const supportedMimeTypes = ['image/jpeg', 'image/heif', 'image/heic'];
+    if (!supportedMimeTypes.includes(imageInfo.mimeType)) {
+      console.error(`CreateThumbnail: Unsupported MIME type: ${imageInfo.mimeType}`);
+      return undefined;
+    }
+
+    const decodingOptions: image.DecodingOptionsForThumbnail = {
+      generateThumbnailIfAbsent: true,
+      maxGeneratedPixelDimension: 200,
+    };
+
+    const pixelmap = await imageSource.createThumbnail(decodingOptions);
+    if (pixelmap) {
+      console.info('Succeeded in creating thumbnail pixelMap object.');
+      return pixelmap;
+    } else {
+      console.error('Failed to create thumbnail pixelMap.');
+      return undefined;
+    }
+  } catch (error) {
+    console.error('CreateThumbnail error:', JSON.stringify(error));
+    return undefined;
+  }
+}
+```
+
+## createThumbnailSync
+
+createThumbnailSync(options?: DecodingOptionsForThumbnail): PixelMap \| undefined
+
+通过图片解码参数同步创建缩略图。返回创建结果对应的[PixelMap](arkts-apis-image-PixelMap.md)对象。
+
+当前支持对JPEG和HEIF格式的图片创建缩略图PixelMap对象。
+
+优先解码图片文件中包含的缩略图。若图片文件中没有缩略图，则对原图进行解码。
+
+> **说明：**
+>
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明       |
+| ------- | ------------------------------------------------------------ | ---- | ---------- |
+| options | [DecodingOptionsForThumbnail](arkts-apis-image-i.md#decodingoptionsforthumbnail) | 否   | 解码参数，控制是否生成缩略图以及生成缩略图的目标尺寸。<br>默认表现：<br>- 当图像有缩略图时，解码原始缩略图，返回的PixelMap对象的宽和高与原缩略图保持一致。<br>- 当原图文件无缩略图时，对原图进行解码后，根据解码参数options下采样生成缩略图，生成后的缩略图PixelMap对象宽和高都限制在512像素以内。 |
+
+**返回值：**
+
+| 类型                                                  | 说明                   |
+| ----------------------------------------------------- | ---------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 7700102  | Unsupported mimetype.                          |
+| 7700103  | Image too large.                               |
+| 7700204  | Invalid parameter, e.g, invalid generate size. |
+| 7700301  | Decode failed.                                 |
+| 7700303  | Image does not carry thumbnail data.           |
+| 7700305  | Thumbnail generation failed.                   |
+
+**示例：**
+
+```ts
+async function CreateThumbnailSync(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
+  try {
+    if (!imageSource) {
+      console.error('CreateThumbnailSync: imageSource is null or undefined');
+      return undefined;
+    }
+    const imageInfo = await imageSource.getImageInfo();
+    const supportedMimeTypes = ['image/jpeg', 'image/heif', 'image/heic'];
+    if (!supportedMimeTypes.includes(imageInfo.mimeType)) {
+      console.error(`CreateThumbnailSync: Unsupported MIME type: ${imageInfo.mimeType}`);
+      return undefined;
+    }
+
+    const decodingOptionsForThumbnail: image.DecodingOptionsForThumbnail = {
+      generateThumbnailIfAbsent: true,
+      maxGeneratedPixelDimension: 200,
+    };
+
+    const pixelmap = imageSource.createThumbnailSync(decodingOptionsForThumbnail);
+
+    if (pixelmap) {
+      console.info('Succeeded in creating thumbnail pixelMap object.');
+      return pixelmap;
+    } else {
+      console.error('Failed to create thumbnail pixelMap.');
+      return undefined;
+    }
+  } catch (error) {
+    console.error('CreateThumbnailSync error:', JSON.stringify(error));
+    return undefined;
   }
 }
 ```

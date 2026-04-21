@@ -31,7 +31,7 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVPlayer API参考](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)。
+详细的API说明请参考[AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)。
 
 1. 创建实例createAVPlayer()，AVPlayer初始化idle状态。
 
@@ -99,7 +99,7 @@
    > 
    > - 如果使用网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
    > 
-   > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
+   > - 可以使用ResourceManager.[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)打开HAP资源文件描述符。
    > 
    > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
 
@@ -138,6 +138,9 @@
     ```
 
 6. 音频播控：播放play()、暂停pause()、跳转seek()、停止stop() 等操作。
+   > **说明：**
+   >
+   > 在API version 23及之后版本中，播放音频时会跳过静音帧。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -174,7 +177,7 @@
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
 
-    avPlayer.reset((err: BusinessError) => {
+    await avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
             console.error('Failed to reset,error message is :' + err.message);

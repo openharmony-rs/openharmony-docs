@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct ScsiPeripheral_Request {...} ScsiPeripheral_Request
@@ -28,7 +28,7 @@ typedef struct ScsiPeripheral_Request {...} ScsiPeripheral_Request
 | -- | -- |
 | uint8_t commandDescriptorBlock[SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN] | 命令描述符块。 |
 | uint8_t cdbLength | 命令描述符块的长度。 |
-| int8_t dataTransferDirection | 数据传输方向。 |
+| int8_t dataTransferDirection | 数据传输方向：-1为无数据传输的命令，-2为从主机到设备的数据传输(写)，-3为从设备到主机的数据传输(读)，-4为双向数据传输。 |
 | ScsiPeripheral_DeviceMemMap* data | 数据传输的缓冲区。 |
 | uint32_t timeout | 超时时间（单位：毫秒）。 |
 

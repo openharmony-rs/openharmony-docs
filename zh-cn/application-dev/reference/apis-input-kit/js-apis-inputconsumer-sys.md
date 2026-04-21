@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 全局快捷键订阅模块，用于处理组合按键的订阅。
 
@@ -42,7 +42,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | type       | string                     | 是    | 事件类型，目前仅支持'key'。                       |
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
-| callback   | Callback&lt;KeyOptions&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
 **错误码**：
 
@@ -102,7 +102,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 | ---------- | -------------------------- | ---- | ------------------------------- |
 | type       | string                     | 是    | 事件类型，当前仅支持 'key'。              |
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
-| callback   | Callback&lt;KeyOptions&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
 **错误码**：
 
@@ -188,7 +188,7 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
-| shieldMode       | [ShieldMode](js-apis-inputconsumer-sys.md#shieldmode11)                     | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
+| shieldMode       | [ShieldMode](#shieldmode11)                     | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
 | isShield | boolean  | 是    | 屏蔽类型生效状态，true代表屏蔽类型生效，false代表不生效。              |
 
 **错误码**：
@@ -240,7 +240,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
-| shieldMode       | [ShieldMode](js-apis-inputconsumer-sys.md#shieldmode11)                    | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
+| shieldMode       | [ShieldMode](#shieldmode11)                    | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
 
 **返回值：** 
 

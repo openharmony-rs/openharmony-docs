@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块提供软硬件耗电统计信息的查询接口。
 
@@ -159,7 +159,7 @@ getAppPowerPercent(uid: number): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | UID对应应用的耗电百分比。 |
+| number | UID对应应用的耗电百分比，取值范围是[0.00，1.00]。 |
 
 **错误码：**
 
@@ -245,7 +245,7 @@ getHardwareUnitPowerPercent(type: ConsumptionType): number
 
 | 类型   | 说明                               |
 | ------ | ---------------------------------- |
-| number | 电量消耗类型对应硬件的耗电百分比。 |
+| number | 电量消耗类型对应硬件的耗电百分比，取值范围是[0.00，1.00]。 |
 
 **错误码：**
 

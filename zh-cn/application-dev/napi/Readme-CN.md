@@ -60,6 +60,7 @@
       - [使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)
       - [使用Node-API调用返回值为promise的ArkTS方法](use-napi-method-promise.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用](use-napi-about-sendable-reference.md)
+      - [使用扩展的Node-API接口加速属性访问](use-napi-about-fast-property-access.md)
     - Node-API常见问题汇总<!--napi-questions-->
       - [Node-API常见问题](use-napi-faqs.md)
       - [稳定性相关问题汇总](napi-faq-about-stability.md)
@@ -129,7 +130,7 @@
   - 内存管理<!--memory-management-->
     - [Purgeable memory开发指导](purgeable-memory-guidelines.md)
   - 包管理<!--bundle-management-->
-    - [NativeBundle开发指导](native-bundle-guidelines.md)
+    - [NativeBundle开发指导](native-bundle-guidelines.md)<!--RP3--><!--RP3End-->
 - 调试和性能分析<!--debugging-profiling-->
   - [调试和性能分析概述](debug-performance-profiling-overview.md)
   - [C/C++内存错误检测](debug-asan.md)<!--RP2--><!--RP2End-->

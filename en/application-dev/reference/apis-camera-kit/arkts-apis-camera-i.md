@@ -14,19 +14,27 @@
 
 Describes the camera device information.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                             | Type                                 | Read-only| Optional| Description       |
 |---------------------------------|-------------------------------------| ---- |----|---------- |
-| cameraId                        | string                              | Yes  | No | Camera ID.|
-| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | Yes  | No | Camera position.   |
-| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | Yes  | No | Camera type.   |
-| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | Yes  | No | Camera connection type.|
-| cameraOrientation<sup>12+</sup> | number                              | Yes  | No | Camera installation angle, which does not change as the screen rotates. The value range is [0, 360], in degrees.|
-| hostDeviceName<sup>15+</sup>    | string                              | Yes  | No | Remote device name. If no remote device is available, null is returned.|
-| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | Yes  | No | Remote device type.|
+| cameraId                        | string                              | Yes  | No | Camera ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | Yes  | No | Camera position.<br>**Atomic service API**: This API can be used in atomic services since API version 19.   |
+| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | Yes  | No | Camera type.<br>**Atomic service API**: This API can be used in atomic services since API version 19.   |
+| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | Yes  | No | Camera connection type.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| cameraOrientation<sup>12+</sup> | number                              | Yes  | No | Camera installation angle, which does not change as the screen rotates. The value range is [0, 360], in degrees.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| hostDeviceName<sup>15+</sup>    | string                              | Yes  | No | Remote device name. If no remote device is available, an empty value is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | Yes  | No | Remote device type.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | Yes| Yes| Equivalent focal length of the camera lens.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| isLogicalCamera<sup>24+</sup> | boolean | Yes| Yes| Whether a camera is a logical camera (consisting of multiple physical cameras). **true** if the camera is a logical camera, **false** otherwise.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | Yes| Yes| List of physical cameras that form the logical camera.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| lensFocalLength<sup>24+</sup> | number | Yes| Yes| Actual focal length of the lens.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| minimumFocusDistance<sup>24+</sup> | number | Yes| Yes| Minimum focus distance of the camera.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| lensDistortion<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens distortion parameters.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens intrinsic calibration parameters.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | Yes| Yes| Physical dimensions (width and height) of the sensor.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | Yes| Yes| Pixel array dimensions (width and height, in pixels) of the sensor.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | Yes| Yes| Arrangement mode of the sensor color filter.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## CameraStatusInfo
 
@@ -77,7 +85,7 @@ Describes the frame rate range.
 
 | Name     | Type                         | Read-only| Optional| Description           |
 | -------- | ----------------------------- |----- |---| -------------- |
-| min      | number                        |  Yes | No| Minimum frame rate, in fps.     |
+| min      | number                        |  Yes | No| Minimum frame rate, in frames per second (fps).     |
 | max      | number                        |  Yes | No| Maximum frame rate, in fps.     |
 
 ## VideoProfile
@@ -90,7 +98,7 @@ Describes the video configuration information. It inherits from [Profile](#profi
 
 | Name                      | Type                                     | Read-only| Optional| Description       |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | Yes |  No | Frame rate range, in units of frames per second (FPS).|
+| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | Yes |  No | Frame rate range, in fps.|
 
 ## CameraOutputCapability
 
@@ -172,8 +180,8 @@ Describes the geolocation information.
 
 | Name         | Type  | Read-only| Optional |Description        |
 | ------------ | ------ | ---- |-----|------------ |
-| latitude     | number |  No | No  |Latitude, in degrees, within the range [-90, 90].   |
-| longitude    | number |  No | No  |Longitude, in degrees, within the range [-180, 180].   |
+| latitude     | number |  No | No  |Latitude, in degrees, within the range [–90, 90].   |
+| longitude    | number |  No | No  |Longitude, in degrees, within the range [–180, 180].   |
 | altitude     | number |  No | No  |Altitude, in meters.   |
 
 ## PhotoCaptureSetting
@@ -227,7 +235,7 @@ Describes the capture start information.
 | Name      | Type   | Read-only| Optional| Description      |
 | ---------- | ------ | ---- | ---- | --------- |
 | captureId  | number | No  | No  | ID of this capture action.|
-| time       | number | No  | No  | Estimated duration when the sensor captures frames at the bottom layer in a single capture. If **–1** is reported, there is no estimated duration.   |
+| time       | number | No  | No  | Estimated duration when the sensor captures frames at the bottom layer in a single capture. If **-1** is reported, there is no estimated duration.   |
 
 ## CaptureEndInfo
 
@@ -298,7 +306,7 @@ Describes the smooth zoom information.
 
 | Name    | Type       |   Read-only  |   Optional  | Description      |
 | -------- | ---------- | -------- | -------- | ---------- |
-| duration |   number   |   No    |    No   | Total duration of smooth zoom, in ms.|
+| duration |   number   |   No    |    No   | Total duration of smooth zoom, in milliseconds.|
 
 ## ControlCenterStatusInfo<sup>20+</sup>
 
@@ -337,3 +345,41 @@ Describes the instance returned by the occlusion status callback, which indicate
 |--------------------| ---------- | ---- | ---- |-----------------------------------|
 | isCameraOccluded   | boolean    | Yes  | No  | Whether the camera lens is blocked. **true** if blocked, **false** otherwise.|
 | isCameraLensDirty  | boolean    | Yes  | No  | Whether the camera lens is dirty. **true** if dirty, false otherwise.|
+
+## ZoomRange<sup>24+</sup>
+
+Describes the zoom range.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name     | Type                         | Read-only| Optional| Description           |
+| -------- | ----------------------------- |----- |---| --------------|
+| min      | number                        |  Yes | No| Minimum zoom value.     |
+| max      | number                        |  Yes | No| Maximum zoom value.     |
+
+## PhysicalAperture<sup>24+</sup>
+
+Describes the physical aperture object.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Type                                     | Read-only| Optional| Description       |
+| ------------------------- | ----------------------------------------- | --- | ---- |----------- |
+| zoomRange            | [ZoomRange](#zoomrange24)         | No |  No | Zoom range of a given physical aperture.|
+| apertures                 | Array\<number\>              | No |  No | Supported physical aperture.       |
+
+## ExposureInfo<sup>24+</sup>
+
+Describes the exposure information object.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name     | Type                         | Read-only| Optional| Description           |
+| -------- | ----------------------------- |----- |---| --------------|
+| exposureTime      | number                        |  Yes | Yes| Exposure time, in microseconds.     |

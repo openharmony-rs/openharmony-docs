@@ -239,7 +239,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | isForRecheck          | boolean  | 否 | 否 | 应用是否应该重新查询所有相册信息。true表示需要重新查询所有相册，false表示无需查询所有相册。<br>**注意：**<br>在大量相册操作或者异常通知的场景下，应用收到的isForRecheck为true，表示重新查询所有相册信息。  |
 
 ## GridPinchMode<sup>23+</sup>
- 	  	 
+
 picker内宫格的捏合模式。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
@@ -252,3 +252,31 @@ picker内宫格的捏合模式。
 | ---- | ---- | ---- | ---- | ---- |
 | gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | 否 | 是 | 宫格捏合模式类型，配置即支持捏合功能，反之不支持捏合功能。|
 | defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。|
+
+## AssetCompatibleCapability<sup>24+</sup>
+
+资产兼容能力。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| 名称                   | 类型                | 只读 | 可选 | 说明           |
+| ---- | ---- | ---- | ---- | ---- |
+| supportedHighResolution | boolean  | 否 | 否 | 是否支持启用高分辨率资产。true表示支持，false表示不支持。<br>**原子化服务API:** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持MIME types的类型。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## MediaLibraryAvailability
+
+媒体库可用性信息。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| availabilityStatus | [AvailabilityStatus](arkts-apis-photoAccessHelper-e.md#availabilitystatus) | 否 | 否 | 媒体库可用性状态。 |
+| unavailabilityReason | string | 否 | 否 | 媒体库不可用原因，例如"Database corrupted"。 |

@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_Device {...} Hid_Device
@@ -31,7 +31,7 @@ typedef struct Hid_Device {...} Hid_Device
 | uint16_t productId | 产品ID |
 | uint16_t version | 版本号 |
 | uint16_t bustype | 总线类型 |
-| Hid_DeviceProp* properties | 设备特性 |
+| Hid_DeviceProp* properties | 由[Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop)表示的设备特性 |
 | uint16_t propLength | 设备特性数量 |
 
 

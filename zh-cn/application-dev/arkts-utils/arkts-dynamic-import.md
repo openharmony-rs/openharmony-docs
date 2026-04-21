@@ -2,12 +2,12 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @ctw-ian-->
+<!--Owner: @jokerxd-liu; @zmw1-->
+<!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @jinqiuheng-->
 
-动态import支持条件延迟加载，支持部分反射功能，可以提升页面的加载速度；动态import支持加载HSP模块/HAR模块/OHPM包/Native库等，并且HAR模块之间可通过变量动态import来访问彼此导出的内容，可避免编译期强依赖，实现模块解耦。
+动态import支持条件延迟加载，支持部分反射功能，可以提升页面的加载速度；动态import支持加载HSP模块/HAR模块/ohpm包/Native库等，并且HAR模块之间可通过变量动态import来访问彼此导出的内容，可避免编译期强依赖，实现模块解耦。
 
 ## 技术适用场景介绍
 应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态import代替[静态import](../quick-start/introduction-to-arkts.md#导入)。下面是可能会需要动态import的场景：
@@ -327,8 +327,8 @@ import(filePath).then((obj: ESObject) => {
 "buildOption": {
   "arkOptions": {
     "runtimeOnly": {
-      "packages": [ "myhar" ],  // 配置本模块变量动态import其他模块名，要求与dependencies中配置的名字一致。
-      "sources": [ "./src/main/ets/utils/Calc.ets" ]  // 配置本模块变量动态import自己的文件路径，路径相对于当前build-profile.json5文件。
+      "packages": [ "myhar" ],
+      "sources": [ "./src/main/ets/utils/Calc.ets" ]
     }
   }
 }
@@ -563,7 +563,7 @@ HAR之间的依赖关系转移至HAP/HSP后：
 - 转移依赖时，需同时转移**dependencies**和**runtimeOnly**依赖配置。
 - HSP不支持转移依赖。即：HAP->HSP1->HSP2->HSP3，这里的HSP2和HSP3不能转移到HAP上面。
 - 转移依赖的整个链路上只能有HAR包，不能跨越HSP转移。即：HAP->HAR1->HAR2->HSP->HAR3->HAR4，HAR1对HAR2的依赖可以转移到HAP上，HAR3对HAR4的依赖可以转移到HSP上。但是，不能将HAR3或HAR4转移到HAP上。
-- 如果引用了其他工程模块、远程包或集成HSP，需确保**useNormalizedOHMUrl**配置一致，同时设置为true或false，否则可能导致运行错误：**Cannot find dynamic-import module library**。
+- 如果引用了其他工程模块、远程包或集成HSP，需确保在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)中的**useNormalizedOHMUrl**配置一致，同时设置为true或false，否则可能导致运行错误：**Cannot find dynamic-import module library**。
 
 
 **使用实例**
@@ -741,7 +741,7 @@ The name of an indirect dependency cannot be the same as the module name.
   "har2": "file:../har2",
   "har3": "file:../har3"
 }
-// HAP's build-profiles.json5
+// HAP's build-profile.json5
 "buildOption": {
   "arkOptions": {
     "runtimeOnly": {

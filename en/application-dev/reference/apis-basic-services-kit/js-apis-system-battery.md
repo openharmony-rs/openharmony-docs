@@ -48,7 +48,7 @@ Obtains the current charging state and battery level.
 ```js
 Battery.getStatus({
     success: (data: BatteryResponse) => {
-        console.log('success get battery level:' + data.level);
+        console.info('success get battery level:' + data.level);
     },
     fail: (data: string, code: number) => {
         console.error('fail to get battery level code:' + code + ', data: ' + data);
@@ -76,5 +76,5 @@ Defines a response that returns the charging status and remaining power of the d
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| charging | boolean | No| No| Whether the battery is being charged. The value **true** indicates that the battery is being changed; **false** indicates the opposite. The default value is **false**.<br>**Note**: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use [batteryInfo.chargingStatus](js-apis-battery-info.md#constants) instead.|
+| charging | boolean | No| No| Whether the battery is being charged. The value **true** indicates that the battery is being changed; **false** indicates the opposite. The default value is **false**.<br>Note: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use [batteryInfo.chargingStatus](js-apis-battery-info.md#constants) instead.|
 | level | number | No| No| Current battery level, which ranges from **0.00** to **1.00**.<br>Note: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use [batteryInfo.batterySOC](js-apis-battery-info.md#constants) instead.|

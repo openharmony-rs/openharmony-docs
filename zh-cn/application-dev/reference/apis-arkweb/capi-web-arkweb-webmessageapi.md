@@ -82,7 +82,7 @@ void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 
 **描述**
 
-设置消息类型。@param webMessage 消息结构体指针。@param type 消息类型。
+设置消息类型。
 
 **参数：**
 

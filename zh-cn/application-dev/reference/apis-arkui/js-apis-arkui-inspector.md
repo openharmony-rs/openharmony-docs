@@ -129,7 +129,7 @@ off(type: 'draw', callback?: () => void): void
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
-通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -165,7 +165,7 @@ onLayoutChildren(callback: Callback\<void\>): void
 
 通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，子树中的节点完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。
+把当前注册监听的节点作为根节点，子树中的节点完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。取消最顶层的回调后，其余layoutChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -199,9 +199,51 @@ offLayoutChildren(callback?: Callback\<void\>): void
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayoutChildren23+](#onlayoutchildren23)方法中的callback为相同对象时才能取消回调成功。 |
 
+### onDrawChildren<sup>24+</sup>
+
+onDrawChildren(callback: Callback\<number[]\>): void
+
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调。使用callback异步回调。
+
+把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<number[]\>  | 是   | 监听drawChildren的回调。                              |
+
+### offDrawChildren<sup>24+</sup>
+
+offDrawChildren(callback?: Callback\<number[]\>): void
+
+取消注册drawChildren事件回调。使用callback异步回调。
+
+要实现在子组件布局完成后停止触发特定回调，只需通过其句柄，在对应的查询条件上取消注册该回调即可。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<number[]\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren](#ondrawchildren24)方法中的callback为相同对象时才能取消回调成功。 |
+
 ## 示例
 
-以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，从API version 23开始新增[onLayoutChildren](#onlayoutchildren23)接口，用于监听子树中的节点完成布局时的回调事件。
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren](#onlayoutchildren23)接口监听子树中的节点完成布局时的回调事件；监听子树内节点完成渲染后，通过[onDrawChildren](#ondrawchildren24)接口，回调返回该节点的uniqueId信息。
+
+从API version 23开始，新增onLayoutChildren接口；从API version 24开始，新增onDrawChildren接口。
 
 ```ts
 import { inspector } from '@kit.ArkUI';
@@ -253,15 +295,22 @@ struct ImageExample {
     // this.listenerForImage.off('layout', OffFuncLayout)
     // this.listenerForImage.off('draw', OffFuncDraw)
     // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
-    
+
     let onLayoutChildrenComplete: () => void = (): void => {
       // 监听到LayoutChildren事件后，用户可以自定义实现逻辑。
     }
+    let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
+      // 从API version 24开始，新增onDrawChildren接口。监听到DrawChildren事件后，用户可以自定义实现逻辑。
+    }
+
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+    this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
   }
+
+  // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+  // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
 }
 ```

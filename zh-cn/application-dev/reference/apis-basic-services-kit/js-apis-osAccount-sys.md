@@ -2683,7 +2683,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用[错误码说明文档](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
+以下错误码的详细介绍请参见通用[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2982,7 +2982,7 @@ try {
 | resultCode | [AuthorizationResultCode](#authorizationresultcode24) | 否 | 否 | 授权结果码。|
 | privilege | string | 否 | 否 | 与授权关联的权限。 |
 | isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true：表示是复用的授权结果。false：表示不是复用的授权结果。 |
-| validityPeriod | number | 否 | 是 | 授权的有效期，默认300s。 |
+| validityPeriod | number | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
 | token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
 
 ## UserAuth<sup>8+</sup>
@@ -6442,10 +6442,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | result       | number                       | 否    | 否   | 指示结果。         |
 | authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。|
 | remainTimes  | number                       | 否    | 是   | 指示剩余次数，默认为-1。     |
-| freezingTime | number                       | 否    | 是   | 指示冻结时间，默认为-1。     |
+| freezingTime | number                       | 否    | 是   | 指示冻结时间，单位为ms，默认为-1。     |
 | enrollmentProgress<sup>10+</sup> | string   | 否    | 是   | 指示录入进度，默认为空。 |
 | sensorInfo<sup>10+</sup> | string           | 否    | 是   | 指示传感器信息，默认为空。 |
-| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，默认为undefined。 |
+| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。 |
 | credentialLength<sup>20+</sup> | number | 否    | 是   | 指示凭据长度，默认为undefined。查询生物信息等无定长属性的凭据时返回undefined。 |
 
 ## AuthResult<sup>8+</sup>
@@ -6460,11 +6460,11 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | ------------ | ----------- | ----- | ----- | ----------------- |
 | token        | Uint8Array  | 否    | 是   | 指示认证令牌，默认为空。      |
 | remainTimes  | number      | 否    | 是   | 指示剩余次数，默认为空。      |
-| freezingTime | number      | 否    | 是   | 指示冻结时间，默认为空。      |
-| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，默认为undefined。 |
+| freezingTime | number      | 否    | 是   | 指示冻结时间，单位为ms，默认为空。      |
+| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。|
 | credentialId<sup>12+</sup> | Uint8Array  | 否    | 是   | 指示凭据ID，默认为空。 |
 | accountId<sup>12+</sup>         | number | 否    | 是   | 指示系统账号标识，默认为undefined。 |
-| pinValidityPeriod<sup>12+</sup> | number | 否    | 是   | 指示认证有效期，默认为undefined。 |
+| pinValidityPeriod<sup>12+</sup> | number | 否    | 是   | 指示认证有效期，单位为ms，默认为undefined。 |
 
 ## CredentialInfo<sup>8+</sup>
 
@@ -6509,7 +6509,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。 |
 | templateId   | Uint8Array                               | 否    | 否   | 指示凭据模板ID。     |
 | isAbandoned<sup>20+</sup>   | boolean                      | 否    | 是   | 指示凭据是否废弃。废弃后的凭据可能作为备份凭据保存一段时间。true表示已废弃，false表示未废弃。默认为undefined，表示是否废弃未定义。   |
-| validityPeriod<sup>20+</sup>   | number                    | 否    | 是   | 指示凭据有效期。默认为undefined，表示有效期未定义。     |
+| validityPeriod<sup>20+</sup>   | number                    | 否    | 是   | 指示凭据有效期，单位为ms。默认为undefined，表示有效期未定义。     |
 
 ## GetPropertyType<sup>8+</sup>
 
@@ -6743,7 +6743,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
 | remainTimes  | number | 否 | 否  | 剩余次数。   |
-| freezingTime | number | 否 | 否  | 冻结时间。 |
+| freezingTime | number | 否 | 否  | 冻结时间，单位为ms。 |
 
 ## GetDomainAccessTokenOptions<sup>10+</sup>
 

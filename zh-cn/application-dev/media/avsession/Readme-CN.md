@@ -13,6 +13,7 @@
   - [媒体会话提供方(C/C++)](using-ohavsession-developer.md)
   - [应用接入AVSession场景介绍](avsession-access-scene.md)
   - [后台播放](avsession-background-scene.md)
+  - [应用接入桌面歌词](avsession-desktop-lyrics.md)
   <!--Del-->
   - [媒体会话控制方(仅对系统应用开放)](using-avsession-controller-sys.md)
   <!--DelEnd-->
@@ -22,3 +23,9 @@
   - [使用分布式媒体会话(仅对系统应用开放)](using-distributed-avsession-sys.md)
   <!--DelEnd-->
   - [使用通话设备切换组件](using-switch-call-devices.md)<!--RP1--><!--RP1End-->
+
+- 音频模板<!--music-template-->
+  - [使用音频模板](using-avsession-AVMusicTemplate.md)
+  <!--Del-->
+  - [音频模板概述(仅对系统应用开放)](using-avsession-AVMusicTemplateController-sys.md)
+  <!--DelEnd-->

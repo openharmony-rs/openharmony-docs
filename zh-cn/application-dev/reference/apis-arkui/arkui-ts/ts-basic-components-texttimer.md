@@ -8,7 +8,7 @@
 
 通过文本显示计时信息并控制其计时器状态的组件。
 
-组件不可见时，时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
+组件不可见（非锁屏状态和应用后台状态）时，UI时间变动将停止（即该组件此时不会绘制），[onTimer](#ontimer)仍然会正常触发。
 
 >  **说明：**
 >
@@ -32,23 +32,20 @@ TextTimer(options?: TextTimerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [TextTimerOptions](#texttimeroptions对象说明)| 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。 |
+| options |  [TextTimerOptions](#texttimeroptions对象说明)| 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。默认值继承[TextTimerOptions](#texttimeroptions对象说明) 。|
 
 ## TextTimerOptions对象说明
 
 用于构建TextTimer组件的选项。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型     | 只读 | 可选 | 说明                   |
 | ----------- | -------- | -------- | -------- | -------- |
-| isCountDown | boolean  | 否  | 是  | 倒计时开关。<br/>true：计时器开启倒计时，例如从30秒~0秒。<br/>false：计时器开始计时，例如从0秒~30秒。<br/>默认值：false |
-| count       | number   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 |
-| controller  | [TextTimerController](#texttimercontroller) | 否 | 是 | TextTimer控制器。 |
+| isCountDown | boolean  | 否  | 是  | 倒计时开关。<br/>true：计时器开启倒计时，例如从30秒~0秒。<br/>false：计时器开始计时，例如从0秒~30秒。<br/>默认值：false <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| count       | number   | 否  | 是  | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。&nbsp;0&lt;count&lt;86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。<br/>默认值：60000 <br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| controller  | [TextTimerController](#texttimercontroller) | 否 | 是 | TextTimer控制器。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| startTime | number | 否 | 是 | 计时器正向计时模式下的初始时间，仅当isCountDown为false时该参数设置生效。<br/>默认值：0 <br/>单位：毫秒 <br/>当值为负数时，计时器将从负值开始计时，经过0后继续向正数计时。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -290,16 +287,15 @@ ContentModifier接口使用的TextTimer配置。
 
 开发者需要自定义class实现ContentModifier接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型    |  只读  |  可选   |  说明              |
 | ------ | ------ | ------ | ------ |-------------------------------- |
-| count | number | 否 | 否 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。 |
-| isCountDown | boolean| 否 | 否 | 是否倒计时。<br/>true：计时器开启倒计时，例如从30秒 ~ 0秒；false：计时器开始计时，例如从0秒 ~ 30秒。<br/> 默认值：false |
-| started | boolean | 否 | 否 | 是否已经开始了计时。<br/>true：开始计时；false：未开始计时。<br/>默认值：false|
-| elapsedTime | number | 否 | 否 |计时器经过的时间，单位为设置格式的最小单位。 |
+| count | number | 否 | 否 | 计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为倒计时初始值。否则，使用默认值为倒计时初始值。<br> 默认值：60000。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| isCountDown | boolean| 否 | 否 | 是否倒计时。<br/>true：计时器开启倒计时，例如从30秒 ~ 0秒；false：计时器开始计时，例如从0秒 ~ 30秒。<br/> 默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| started | boolean | 否 | 否 | 是否已经开始了计时。<br/>true：开始计时；false：未开始计时。<br/>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| elapsedTime | number | 否 | 否 |计时器经过的时间，单位为设置格式的最小单位。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| startTime | number | 否 | 是 | 计时器正向计时模式下的初始时间，仅当isCountDown为false时该参数设置生效。<br/>默认值：0 <br/>单位：毫秒 <br/>当值为负数时，计时器将从负值开始计时，经过0后继续向正数计时。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 ### 示例1（支持手动启停的文本计时器）
@@ -555,3 +551,43 @@ struct demo {
 ```
 
 ![](figures/text_timer_example_font_setting.png)
+
+### 示例6（设置初始计时时间）
+
+该示例通过[TextTimerOptions](#texttimeroptions对象说明)的startTime属性设置计时器初始计时时间。
+
+从API版本26.0.0开始，[TextTimerOptions](#texttimeroptions对象说明)新增了startTime属性。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextTimerExample {
+  textTimerController: TextTimerController = new TextTimerController();
+  @State format: string = 'mm:ss.SS';
+
+  build() {
+    Column() {
+      TextTimer({ isCountDown: false, controller: this.textTimerController, startTime: 30000 })
+        .format(this.format)
+        .fontColor(Color.Black)
+        .fontSize(50)
+        .onTimer((utc: number, elapsedTime: number) => {
+          console.info('textTimer notCountDown utc is：' + utc + ', elapsedTime: ' + elapsedTime);
+        })
+      Row({ space: 10 }) {
+        Button('start').onClick(() => {
+          this.textTimerController.start();
+        })
+        Button('pause').onClick(() => {
+          this.textTimerController.pause();
+        })
+        Button('reset').onClick(() => {
+          this.textTimerController.reset();
+        })
+      }
+    }
+  }
+}
+```
+![text_timer_auto_start](figures/text_timer_starttime.gif)

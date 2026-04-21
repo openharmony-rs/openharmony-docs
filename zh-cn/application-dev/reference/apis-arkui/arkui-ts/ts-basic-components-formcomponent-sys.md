@@ -54,7 +54,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明                                                                |
 | --------- | ------------------------------- | ---- |---- |-------|
-| id        | number \| string                    | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。                                        |
+| id        | number \| string                    | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。<br>id大于等于0小于2^32。                                        |
 | name      | string                          |  否   | 否   | 卡片名称。                                                              |
 | bundle    | string                          |  否   | 否   | 目标卡片包名。                                                          |
 | ability   | string                          |  否   | 否   | 目标卡片Ability名称。                                                   |
@@ -90,8 +90,8 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明    |
 | --------- | ------------------------------- | ---- | ---- |---------|
-| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。 |
-| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。 |
+| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。<br/>**说明：**<br>width的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
+| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。<br/>**说明：**<br>height的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
 
 ## ErrorInformation<sup>18+</sup>
 

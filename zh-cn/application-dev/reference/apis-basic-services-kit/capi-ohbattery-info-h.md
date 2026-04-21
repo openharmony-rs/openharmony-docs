@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
@@ -77,7 +77,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 **描述**
 
-返回当前电池容量。
+返回当前电池容量百分比。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 

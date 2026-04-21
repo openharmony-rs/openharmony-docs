@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,6 +12,10 @@
 ### 功能介绍
 
 应用退至后台后，在后台需要长时间运行用户可感知的任务，如播放音乐、导航等。为防止应用进程被挂起，导致对应功能异常，可以申请长时任务，使应用在后台长时间运行。在长时任务中，支持同时申请多种类型的任务，也可以对任务类型进行更新。应用退至后台执行业务时，系统会做一致性校验，确保应用在执行相应的长时任务。应用在申请长时任务成功后，通知栏会显示与长时任务相关联的消息，用户删除通知栏消息时，系统会自动停止长时任务。
+
+> **说明：**
+> 
+> 应用退至后台后，在不同类型设备上生命周期变化存在差异，详见[不同设备生命周期的差异化行为](../windowmanager/window-overview.md#不同设备生命周期的差异化行为)。
 
 ### 使用场景
 
@@ -34,7 +38,7 @@
 
 关于DATA_TRANSFER（数据传输）说明：
 
-- 在数据传输时，若应用使用[上传下载代理接口](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
+- 在数据传输时，若应用使用[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
 - 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
 
@@ -155,8 +159,8 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
      // 长时任务id
@@ -164,33 +168,35 @@
      // 长时任务取消原因
      console.info('OnContinuousTaskCancel callback reason ' + info.reason);
    }
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
-
+   
+     // ...
+   
      OnContinuousTaskCancel() {
        try {
-          backgroundTaskManager.on('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
+         backgroundTaskManager.on('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      OffContinuousTaskCancel() {
        try {
-          // callback参数不传，则取消所有已注册的回调
-          backgroundTaskManager.off('continuousTaskCancel', callback);
-          console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
+         // callback参数不传，则取消所有已注册的回调
+         backgroundTaskManager.off('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
        } catch (error) {
-          console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+         console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 申请长时任务.then()写法
      startContinuousTask() {
        let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -214,7 +220,7 @@
            // [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
          // }
        };
-
+   
        try {
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
          // 在原子化服务中，使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
@@ -222,12 +228,12 @@
            try {
              let list: string[] = ['audioPlayback'];
              // let list: string[] = ['bluetoothInteraction']; 长时任务类型包含bluetoothInteraction，CAR_KEY子类型合法
-             // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
              backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).
                then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-               console.info("Operation startBackgroundRunning succeeded");
+               console.info('Operation startBackgroundRunning succeeded');
                // 此处执行具体的长时任务逻辑，如播音等。
                // 系统会对业务场景的真实性进行检测，如果没有实际执行对应的业务，系统可能会取消对应的长时任务并挂起应用。
+               // ...
              }).catch((error: BusinessError) => {
                console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
              });
@@ -239,16 +245,17 @@
          console.error(`Failed to Operation getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 取消长时任务.then()写法
      stopContinuousTask() {
-        backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-          console.info(`Succeeded in operationing stopBackgroundRunning.`);
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
-        });
+       backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+         console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+       });
      }
-
+   
      build() {
        Row() {
          Column() {
@@ -264,6 +271,7 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('applyContinuousTask')
            .onClick(() => {
              // 通过按钮申请长时任务
              this.startContinuousTask();
@@ -277,13 +285,14 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('resetContinuousTask')
            .onClick(() => {
              // 此处结束具体的长时任务的执行
    
              // 通过按钮取消长时任务
              this.stopContinuousTask();
            })
-
+   
            Button() {
              Text('注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
            }
@@ -296,7 +305,7 @@
              // 通过按钮注册长时任务取消回调
              this.OnContinuousTaskCancel();
            })
-
+   
            Button() {
              Text('取消注册长时任务取消回调').fontSize(25).fontWeight(FontWeight.Bold)
            }
@@ -309,6 +318,7 @@
              // 通过按钮取消注册长时任务取消回调
              this.OffContinuousTaskCancel();
            })
+           // ...
          }
          .width('100%')
        }
@@ -325,16 +335,18 @@
    
    从API version 16开始，支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
-   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
-
+   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
+   
    ``` TypeScript
    @Entry
    @Component
-   struct Index {
+   struct IndexAsyncAndAwait {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();
-
+   
+     // ...
+   
      // 申请长时任务async/await写法
      async startContinuousTask() {
        let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -358,7 +370,7 @@
            // [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
          // }
        };
-
+   
        try {
          // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
          // 在原子化服务中，使用const wantAgentObj: object = await wantAgent.getWantAgent(wantAgentInfo);替换下面一行代码
@@ -371,6 +383,7 @@
              await backgroundTaskManager.startBackgroundRunning(this.context as Context, list, wantAgentObj);
            console.info(`Operation startBackgroundRunning succeeded, notificationId: ${res.notificationId}`);
            // 此处执行具体的长时任务逻辑，如播音等。
+           // ...
          } catch (error) {
            console.error(`Failed to Operation startBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
          }
@@ -378,17 +391,18 @@
          console.error(`Failed to Operation getWantAgent. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
        }
      }
-
+   
      // 取消长时任务async/await写法
      async stopContinuousTask() {
        try {
          await backgroundTaskManager.stopBackgroundRunning(this.context);
          console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         // ...
        } catch (error) {
          console.error(`Failed to operation stopBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`)
        }
      }
-
+   
      build() {
        Row() {
          Column() {
@@ -396,7 +410,7 @@
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
    
-          Button() {
+           Button() {
              Text('申请长时任务').fontSize(25).fontWeight(FontWeight.Bold)
            }
            .type(ButtonType.Capsule)
@@ -404,6 +418,7 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('applyContinuousTask')
            .onClick(() => {
              // 通过按钮申请长时任务
              this.startContinuousTask();
@@ -417,12 +432,14 @@
            .backgroundColor('#0D9FFB')
            .width(250)
            .height(40)
+           .id('resetContinuousTask')
            .onClick(() => {
              // 此处结束具体的长时任务的执行
-
+   
              // 通过按钮取消长时任务
              this.stopContinuousTask();
            })
+           // ...
          }
          .width('100%')
        }
@@ -434,7 +451,7 @@
 
    **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[通过跨设备Call调用实现多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
-   <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
+   <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
    
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
@@ -713,4 +730,4 @@
 
 针对长时任务开发，有以下相关实例可供参考：
 
-- [长时任务（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ContinuousTask)
+- [长时任务（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ContinuousTask)

@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,9 +13,9 @@ You can use the APIs to create scheduled reminders for countdown timers, calenda
 
 > **NOTE**
 >
-> - This module is supported since API version 7 and deprecated since API version 9. You are advised to use [@ohos.reminderAgentManager (Agent-powered Reminder)](js-apis-reminderAgentManager.md) instead.
+> This module is supported since API version 7 and deprecated since API version 9. You are advised to use [@ohos.reminderAgentManager (Agent-powered Reminder)](js-apis-reminderAgentManager.md) instead.
 >
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -160,7 +160,7 @@ reminderAgent.cancelReminder(1).then(() => {
 
 getValidReminders(callback: AsyncCallback\<Array\<ReminderRequest>>): void
 
-Obtains all valid (not yet expired) reminders set by the current application. This API uses an asynchronous callback to return the reminders.
+Obtains all valid (not yet expired) reminders set by the current application. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [reminderAgentManager.getValidReminders](js-apis-reminderAgentManager.md#reminderagentmanagergetvalidreminders).
@@ -526,7 +526,7 @@ Defines the reminder to publish.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | reminderType | [ReminderType](#remindertypedeprecated) | No| No| Type of the reminder.|
-| actionButton | [[ActionButton?, ActionButton?]](#actionbuttondeprecated) | No| Yes| Button displayed in the reminder notification. (The parameter is optional. Up to two buttons are supported.)|
+| actionButton | [[ActionButton](#actionbuttondeprecated)?, [ActionButton](#actionbuttondeprecated)?] | No| Yes| Button displayed in the reminder notification. (The parameter is optional. Up to two buttons are supported.)|
 | wantAgent | WantAgent | No| Yes| Information about the ability that is redirected to when the notification is clicked.|
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | No| Yes| Information about the ability that is automatically started when the reminder arrives. If the device is in use, a notification will be displayed.|
 | ringDuration | number | No| Yes| Ringing duration, in seconds. The default value is **1**.|

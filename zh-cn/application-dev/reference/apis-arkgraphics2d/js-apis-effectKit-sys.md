@@ -58,6 +58,30 @@ import { effectKit } from "@kit.ArkGraphics2D";
 | DARK_PICTURE     | 5    | 图片颜色深浅度为较深。|
 | EXTREMELY_DARK_PICTURE     | 6    | 图片颜色深浅度为极深。|
 
+## PictureLightDegree
+
+图片颜色明亮度的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+| 名称                   | 值   | 说明                           |
+| ---------------------- | ---- | ------------------------------ |
+| UNKNOWN_LIGHT_COLOR_DEGREE_PICTURE | 0 | 未知明亮度的图片。 |
+| EXTREMELY_LIGHT_COLOR_PICTURE | 1 | 极亮色图片。 |
+| LIGHT_COLOR_PICTURE | 2 | 亮色图片。 |
+| DARK_COLOR_PICTURE | 3 | 暗色图片。 |
+| EXTREMELY_DARK_COLOR_PICTURE | 4 | 极暗色图片。 |
+| FLOWERY_PICTURE | 5 | 花色图片。 |
+| EXTREMELY_FLOWERY_PICTURE | 6 | 极花色图片。 |
+
 ## ColorPicker
 
 取色类，用于从一张图像数据中获取它的主要颜色。在调用ColorPicker的方法前，需要先通过[createColorPicker](js-apis-effectKit.md#effectkitcreatecolorpicker)创建一个ColorPicker实例。
@@ -286,6 +310,314 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 })
 ```
 
+### getMorandiShadowColor
+
+getMorandiShadowColor(): Color
+
+从图像的主色中获取莫兰迪阴影色，并将结果写入[Color](js-apis-effectKit.md#color)。该接口通过特定的颜色转换算法，将主色调转换为具有莫兰迪风格的阴影色调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)   | Color实例，即图像莫兰迪阴影色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getMorandiShadowColor();
+      console.info('get Morandi shadow color =' + color);
+    }
+  })
+})
+```
+
+### getDeepenImmersionColor
+
+getDeepenImmersionColor(): Color
+
+生成与背景色融合且比背景色更深的强沉浸感颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口通过颜色混合算法，创建一种既与背景色协调又具有更强沉浸感的颜色效果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+|[Color](js-apis-effectKit.md#color)    | Color实例，即图像强沉浸色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getDeepenImmersionColor();
+      console.info('get deepen immersion color =' + color);
+    }
+  })
+})
+```
+
+### getImmersiveBackgroundColor
+
+getImmersiveBackgroundColor(): Color
+
+生成能够创造沉浸式视觉效果的沉浸式背景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式背景的颜色值。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式背景色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getImmersiveBackgroundColor();
+      console.info('get immersive background color =' + color);
+    }
+  })
+})
+```
+
+### getImmersiveForegroundColor
+
+getImmersiveForegroundColor(): Color
+
+生成能够创造沉浸式视觉效果的沉浸式前景色，并将结果写入[Color](js-apis-effectKit.md#color)里。该接口基于主色生成适合作为沉浸式前景的颜色值。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像沉浸式前景色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getImmersiveForegroundColor();
+      console.info('get immersive foreground color =' + color);
+    }
+  })
+})
+```
+
+### discriminatePictureLightDegree()
+
+discriminatePictureLightDegree(): PictureLightDegree
+
+获取图片的明亮程度。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型                                     | 说明                                            |
+| :--------------------------------------- | :---------------------------------------------- |
+| [PictureLightDegree](#picturelightdegree) | 图像颜色明亮程度。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```js
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let pictureLightDegree: effectKit.PictureLightDegree = colorPicker.discriminatePictureLightDegree();
+      console.info('The color light degree of the image is ' + pictureLightDegree);
+    }
+  })
+})
+```
+
+### getReverseColor
+
+getReverseColor(): Color
+
+基于图像亮度判别结果生成反向颜色，并将结果写入[Color](js-apis-effectKit.md#color)里。根据[discriminatePictureLightDegree](#discriminatepicturelightdegree)接口获取的图片明亮类型得到一个反色，仅极亮色图片（EXTREMELY_LIGHT_COLOR_PICTURE）类型返回黑色，其他类型返回白色。用于界面主题或对比度计算。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**返回值：**
+
+| 类型     | 说明                                  |
+| :------- | :----------------------------------- |
+| [Color](js-apis-effectKit.md#color)    | Color实例，即图像反向颜色对应的颜色值，失败时返回null。 |
+
+**示例：**
+
+```ts
+import { image } from "@kit.ImageKit";
+import { effectKit } from "@kit.ArkGraphics2D";
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+}
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let color = colorPicker.getReverseColor();
+      console.info('get reverse color =' + color);
+    }
+  })
+})
+```
+
 ## Filter
 
 图像效果类用于将指定效果添加到输入图像。调用Filter方法前，需先通过[createEffect](js-apis-effectKit.md#effectkitcreateeffect)创建Filter实例。
@@ -312,9 +644,9 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  blurRadius   | number | 是   | 模糊半径，取正整数，单位是px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
-|  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 设置椭圆的中心点，[0, 0]表示组件的左上角，[1, 1]表示组件的右下角。 |
-|  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 第一个值表示椭圆x方向轴半径，第二个值表示椭圆y方向轴半径，两个轴半径的数值1均对应于组件的高度，取值范围均大于0。 |
+|  blurRadius   | number | 是   | 模糊半径，取正整数，单位为px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
+|  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 椭圆形遮罩的中心点坐标。 |
+|  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 椭圆形遮罩在X轴和Y轴方向的半径。 |
 |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1。 模糊程度0表示无模糊，模糊程度1表示输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增，二元数组个数不能小于2，最大为12。 |
 
 **返回值：**
@@ -326,17 +658,17 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 **示例：**
 
 ``` ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
   return new Promise((resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-	  let blurRadius:number = 25;
-	  let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
-	  let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
-	  let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
+    let blurRadius:number = 25;
+    let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
+    let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
+    let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
     imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -393,7 +725,7 @@ struct Index {
 
 type EllipticalMaskRadius = [ number, number ]
 
-定义椭圆形遮罩的半径。
+定义椭圆形遮罩的半径，取值为相对于组件宽和高的比例值。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -403,7 +735,7 @@ type EllipticalMaskRadius = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 椭圆形遮罩的半径。|
+| [ number, number ] | 椭圆形遮罩在X轴和Y轴方向上的半径，单位分别为相对于组件宽和高的比例，取值均需大于0。<br>例如：[0.5, 1]表示遮罩的X轴半径等于组件宽的一半，Y轴半径等于组件高。|
 
 ## EllipticalMaskCenter<sup>23+</sup>
 type EllipticalMaskCenter = [ number, number ]
@@ -418,4 +750,4 @@ type EllipticalMaskCenter = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 椭圆形遮罩的中心点。|
+| [ number, number ] | 椭圆形遮罩的中心点坐标。<br>第一个值表示X轴坐标，取值为正表示在原点右方，取值为负表示在原点左方。<br>第二个值表示Y轴坐标，取值为正表示在原点下方，取值为负表示在原点上方。<br>原点坐标为[0,0]，对应为组件的左上角，[1, 1]对应为组件的右下角。|

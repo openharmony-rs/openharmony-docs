@@ -18,7 +18,7 @@
 
 ## 应用版本声明配置
 
-应用版本声明需要在工程的AppScope目录下的[app.json5配置文件](../quick-start/app-configuration-file.md)中配置versionCode标签和versionName标签。versionCode用于标识应用的版本号，该标签值为32位非负整数。此数字仅用于确定某个版本是否比另一个版本更新，数值越大表示版本越高。versionName标签标识版本号的文字描述。
+应用版本声明需要在工程的AppScope目录下的[app.json5配置文件](../quick-start/app-configuration-file.md)中配置versionCode标签和versionName标签。versionCode用于标识应用的版本号，该标签值为32位非负整数。此数字仅用于确定某个版本是否比另一个版本更新，数值越大表示版本越新。versionName标签标识版本号的文字描述。
 
 ## Module支持的设备类型配置
 
@@ -30,17 +30,7 @@ Module访问系统或其他应用受保护部分所需的权限信息需要在[m
 
 ## 应用启动模式配置
 
-从API version 20开始，支持应用配置startMode字段以自定义点击图标启动的模式，且仅在launchType为[单实例模式](./uiability-launch-type.md#singleton启动模式)时生效，用于一个应用存在多个UIAbility的场景。需要在[app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中配置startMode标签。
+从API version 20开始，支持应用配置startMode字段，设置不同的启动模式，且仅在launchType为[单实例模式](./uiability-launch-type.md#singleton启动模式)时生效，用于一个应用存在多个UIAbility的场景。需要在[app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中配置startMode标签。
 
 - 默认值为"mainTask"，表现为点击图标总是启动应用主UIAbility。
 - 可选值"recentTask"，表现为点击图标打开最近使用的UIAbility。
-
-```json
-{
-  // ...
-  "app": {
-    "startMode": "mainTask"
-    // ...
-  }
-}
-```

@@ -25,10 +25,10 @@
 
 | 接口 | 描述 | 起始支持版本 |
 | -------- | -------- | -------- |
-| napi_get_value_string_utf8 | 需要将ArkTS的字符类型的数据转换为utf8编码的字符时使用这个函数。 | 10 |
-| napi_create_string_utf8 | 需要通过UTF8编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
-| napi_get_value_string_utf16 | 需要将ArkTS的字符类型的数据转换为utf16编码的字符时使用这个函数。 | 10 |
-| napi_create_string_utf16 | 需要通过UTF16编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_get_value_string_utf8 | 需要将ArkTS的字符类型的数据转换为UTF-8编码的字符时使用这个函数。 | 10 |
+| napi_create_string_utf8 | 需要通过UTF-8编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_get_value_string_utf16 | 需要将ArkTS的字符类型的数据转换为UTF-16编码的字符时使用这个函数。 | 10 |
+| napi_create_string_utf16 | 需要通过UTF-16编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
 | napi_get_value_string_latin1 | 需要将ArkTS的字符类型的数据转换为ISO-8859-1编码的字符时使用这个函数。 | 10 |
 | napi_create_string_latin1 | 需要通过ISO-8859-1编码的字符串创建ArkTS string值时使用这个函数。 | 10 |
 | napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 | 22 |
@@ -44,12 +44,10 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
-#include "hilog/log.h"
-#include <cstring>
+<!-- @[napi_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
-static napi_value GetValueStringUtf8(napi_env env, napi_callback_info info) 
+``` C++
+static napi_value GetValueStringUtf8(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -63,7 +61,7 @@ static napi_value GetValueStringUtf8(napi_env env, napi_callback_info info)
         OH_LOG_ERROR(LOG_APP, "napi_get_value_string_utf8 failed");
         return nullptr;
     }
-    char* buf = new char[length + 1];
+    char *buf = new char[length + 1];
     std::memset(buf, 0, length + 1);
     status = napi_get_value_string_utf8(env, args[0], buf, length + 1, &length);
     if (status != napi_ok) {
@@ -85,27 +83,26 @@ static napi_value GetValueStringUtf8(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_get_value_string_utf8_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const getValueStringUtf8: (param: string | number) => string | undefined;
 ```
-<!-- @[napi_get_value_string_utf8_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-// 分别传入字符和非字符检测接口，传入字符串类型的数据将返回原字符串，传入其他类型返回undefined
-hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_string %{public}s', testNapi.getValueStringUtf8('aaBC+-$%^你好123'));
-hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_not_string %{public}s', testNapi.getValueStringUtf8(50));
-```
 <!-- @[ark_napi_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 分别传入字符和非字符检测接口，传入字符串类型的数据将返回原字符串，传入其他类型返回undefined
+hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_string %{public}s',
+  testNapi.getValueStringUtf8('aaBC+-$%^你好123'));
+hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_not_string %{public}s',
+  testNapi.getValueStringUtf8(50));
+```
 
 ### napi_create_string_utf8
 
@@ -113,14 +110,13 @@ hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_not_string %{
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
-#include <string>
+<!-- @[napi_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
-static napi_value CreateStringUtf8(napi_env env, napi_callback_info info) 
+``` C++
+static napi_value CreateStringUtf8(napi_env env, napi_callback_info info)
 {
     const char *str = u8"你好, World!, successes to create UTF-8 string! 111";
-    size_t length = strlen(str);                                        
+    size_t length = strlen(str);
     napi_value result = nullptr;
     napi_status status = napi_create_string_utf8(env, str, length, &result);
     if (status != napi_ok) {
@@ -130,25 +126,23 @@ static napi_value CreateStringUtf8(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_create_string_utf8_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const createStringUtf8: () => string | undefined;
 ```
-<!-- @[napi_create_string_utf8_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf8:%{public}s', testNapi.createStringUtf8());
-```
 <!-- @[ark_napi_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf8:%{public}s',
+  testNapi.createStringUtf8());
+```
 
 ### napi_get_value_string_utf16
 
@@ -156,12 +150,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf8:%{public}s'
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
-// 定义字符串缓冲区的最大长度
-static const int MAX_BUFFER_SIZE = 128;
-
+``` C++
 static napi_value GetValueStringUtf16(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -179,29 +170,26 @@ static napi_value GetValueStringUtf16(napi_env env, napi_callback_info info)
     // 获取字符串返回结果
     napi_create_string_utf16(env, buffer, stringLen, &result);
     // 返回结果
-    return result; 
+    return result;
 }
 ```
-<!-- @[napi_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_get_value_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const getValueStringUtf16: (data: string) => string;
 ```
-<!-- @[napi_get_value_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-let result = testNapi.getValueStringUtf16('hello,');
-hilog.info(0x0000,'testTag','Node-API napi_get_value_string_utf16:%{public}s', result);
-```
 <!-- @[ark_napi_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+let result = testNapi.getValueStringUtf16('hello,');
+hilog.info(0x0000, 'testTag', 'Node-API napi_get_value_string_utf16:%{public}s', result);
+```
 
 ### napi_create_string_utf16
 
@@ -209,12 +197,12 @@ hilog.info(0x0000,'testTag','Node-API napi_get_value_string_utf16:%{public}s', r
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 static napi_value CreateStringUtf16(napi_env env, napi_callback_info info)
 {
-    const char16_t  *str = u"你好, World!, successes to create UTF-16 string! 111";
+    const char16_t *str = u"你好, World!, successes to create UTF-16 string! 111";
     size_t length = NAPI_AUTO_LENGTH;
     napi_value result = nullptr;
     napi_status status = napi_create_string_utf16(env, str, length, &result);
@@ -225,25 +213,23 @@ static napi_value CreateStringUtf16(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_create_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const createStringUtf16: () => string | undefined;
 ```
-<!-- @[napi_create_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf16:%{public}s ', testNapi.createStringUtf16());
-```
 <!-- @[ark_napi_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf16:%{public}s ',
+  testNapi.createStringUtf16());
+```
 
 ### napi_get_value_string_latin1
 
@@ -251,16 +237,14 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf16:%{public}s
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
-static const int MAX_BUFFER_SIZE = 128;
-
+``` C++
 static napi_value GetValueStringLatin1(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char buf[MAX_BUFFER_SIZE];
     size_t length = 0;
     napi_value napi_Res = nullptr;
@@ -273,40 +257,40 @@ static napi_value GetValueStringLatin1(napi_env env, napi_callback_info info)
     return napi_Res;
 }
 ```
-<!-- @[napi_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_get_value_string_latin1_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const getValueStringLatin1: (param: number | string) => string | undefined;
 ```
-<!-- @[napi_get_value_string_latin1_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-// 传入非字符型数据，函数返回undefined
-hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_not_string %{public}s', testNapi.getValueStringLatin1(10));
-// ISO-8859-1编码不支持中文，传入中文字符会乱码
-hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_string_chinese %{public}s', testNapi.getValueStringLatin1('中文'));
-// 传入其他字符，不会乱码
-hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_string %{public}s', testNapi.getValueStringLatin1('abo ABP=-&*/'));
-```
 <!-- @[ark_napi_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 传入非字符型数据，函数返回undefined
+hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_not_string %{public}s',
+  testNapi.getValueStringLatin1(10));
+// ISO-8859-1编码不支持中文，传入中文字符会乱码
+hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_string_chinese %{public}s',
+  testNapi.getValueStringLatin1('中文'));
+// 传入其他字符，不会乱码
+hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_string %{public}s',
+  testNapi.getValueStringLatin1('abo ABP=-&*/'));
+```
 
 ### napi_create_string_latin1
 
-创建一个Latin1编码的ArkTS字符串。
+创建一个Latin-1编码的ArkTS字符串。
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
 static napi_value CreateStringLatin1(napi_env env, napi_callback_info info)
 {
     const char *str = "Hello, World! éçñ, successes to create Latin1 string! 111";
@@ -321,25 +305,23 @@ static napi_value CreateStringLatin1(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
+<!-- @[napi_create_string_latin1_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const createStringLatin1: () => string | undefined;
 ```
-<!-- @[napi_create_string_latin1_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s', testNapi.createStringLatin1());
-```
 <!-- @[ark_napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+  testNapi.createStringLatin1());
+```
 
 ### napi_create_external_string_utf16
 
@@ -391,7 +373,7 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
 <!-- @[napi_create_external_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
-export const CreateExternalStringUtf16: () => string | void;
+export const CreateExternalStringUtf16: () => string | undefined;
 ```
 
 ArkTS侧示例代码
@@ -399,7 +381,7 @@ ArkTS侧示例代码
 <!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_external_string_utf16:%{public}s',
   testNapi.CreateExternalStringUtf16());
 ```
 通过napi_create_external_string_utf16接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerUTF16函数来回收ArkTS string对象指向的native侧资源。
@@ -410,7 +392,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) --> 
+<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
@@ -440,6 +422,8 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
+    // 重要：str指向的内存必须在ArkTS string对象的整个生命周期内保持有效。
+    // 而且在调用此接口后，str指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
         // 处理错误
         delete[] str;
@@ -455,7 +439,7 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
 <!-- @[napi_create_external_string_ascii_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
-export const CreateExternalStringAscii: () => string | void;
+export const CreateExternalStringAscii: () => string | undefined;
 ```
 
 ArkTS侧示例代码
@@ -463,7 +447,7 @@ ArkTS侧示例代码
 <!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_external_string_ascii:%{public}s',
   testNapi.CreateExternalStringAscii());
 ```
 通过napi_create_external_string_ascii接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerASCII函数来回收ArkTS string对象指向的native侧资源。

@@ -6,7 +6,7 @@
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
-卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
+卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md#方式二独立包方式创建卡片)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
 > **说明：**
 >
 >- 卡片五元组是确认卡片唯一的要素信息。五元组分别为bundleName、moduleName、abilityName、formName、formDimension。其中bundleName是[app.json5配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中bundleName配置项、moduleName是[module.json5配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)中的name配置项、abilityName是[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中的name配置项、formName是[配置文件字段说明](#配置文件字段说明)中的name配置项、formDimension对应的是[配置文件字段说明](#配置文件字段说明)中的supportDimensions配置项。
@@ -95,7 +95,7 @@
 | updateDuration | 表示[卡片定时刷新](./arkts-ui-widget-passive-refresh.md#卡片定时刷新)的更新周期，单位为30分钟，取值为自然数。<br/>当取值为0时，表示该参数不生效。<br/>当取值为正整数N时，表示刷新周期为30\*N分钟。<br/>**说明：**<br/>updateDuration参数优先级高于scheduledUpdateTime，两者同时配置时，以updateDuration配置的刷新时间为准。 | 数值 | 可缺省，缺省值为0。 |
 | formConfigAbility | 表示桌面点击编辑后，需要拉起的ability路径，采用URI格式。| 字符串 | 可缺省，缺省值为空。 |
 | metadata | 表示卡片的自定义信息，参考[Metadata](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)数组标签。 | 对象 | 可缺省，缺省值为空。 |
-| <!--DelRow-->dataProxyEnabled | 表示卡片是否支持[卡片代理刷新](./arkts-ui-widget-update-by-proxy-sys.md)，取值范围：<br/>-&nbsp;true：表示支持代理刷新。<br/>-&nbsp;false：表示不支持代理刷新。<br/>设置为true时，[定时刷新和下次刷新](./arkts-ui-widget-passive-refresh.md#卡片定时刷新)不生效，但不影响[定点刷新](./arkts-ui-widget-passive-refresh.md#卡片定点刷新)。 | 布尔类型 | 可缺省，缺省值为false。 |
+| dataProxyEnabled | 表示卡片是否支持卡片代理刷新，取值范围：<br/>-&nbsp;true：表示支持代理刷新。<br/>-&nbsp;false：表示不支持代理刷新。<br/>设置为true时，[定时刷新和下次刷新](./arkts-ui-widget-passive-refresh.md#卡片定时刷新)不生效，但不影响[定点刷新](./arkts-ui-widget-passive-refresh.md#卡片定点刷新)。<br/>**说明：**<br/>从API version 12开始，支持该字段。| 布尔类型 | 可缺省，缺省值为false。 |
 | isDynamic | 表示此卡片是否为动态卡片（仅针对ArkTS卡片生效）。 <br/>-&nbsp;true：为[动态卡片](./arkts-form-overview.md#动态卡片) 。<br/>-&nbsp;false：为[静态卡片](./arkts-form-overview.md#静态卡片)。<br/>| 布尔类型 | 可缺省，缺省值为true。 |
 | fontScaleFollowSystem | 表示卡片使用方设置此卡片的字体是否支持跟随系统变化。 <br/>-&nbsp;true：支持跟随系统字体大小变化。<br/>-&nbsp;false：不支持跟随系统字体大小变化。<br/>| 布尔类型 | 可缺省，缺省值为true。 |
 | supportShapes | 表示卡片的显示形状，取值范围如下：<br/>-&nbsp;rect：表示矩形卡片。<br/>-&nbsp;circle：表示圆形卡片。| 字符串数组 | 可缺省，缺省值：["rect"]。 |
@@ -143,7 +143,7 @@
 
    | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
    | -------- | -------- | -------- | -------- |
-   | designWidth | 标识页面设计基准宽度。以此为基准，根据实际设备宽度来缩放元素大小。 | 数值 | 可缺省，缺省值为720px。 |
+   | designWidth | 标识页面设计基准宽度。以此为基准，根据实际设备宽度来缩放元素大小。取值范围大于等于0小于2^16，单位：px | 数值 | 可缺省，缺省值为720px。 |
    | autoDesignWidth | 标识页面设计基准宽度是否自动计算。当配置为true时，designWidth将会被忽略，设计基准宽度由设备宽度与屏幕密度计算得出。 | 布尔值 | 可缺省，缺省值为false。 |
 
 ### funInteractionParams标签
