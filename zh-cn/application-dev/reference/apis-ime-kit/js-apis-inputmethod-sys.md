@@ -880,7 +880,7 @@ ArkTS-Dyn: enableInputMethod(bundleName: string, extensionName: string, enabledS
 
 ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: long): Promise&lt;void&gt;
 
-修改指定用户输入法的启用状态。
+修改指定用户输入法的启用状态。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1099,7 +1099,7 @@ ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: long): Array&lt;InputMe
 
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
-| enable | boolean | 是   |- true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
+| enable | boolean | 是   |- 是否激活输入法列表，true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
 | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
