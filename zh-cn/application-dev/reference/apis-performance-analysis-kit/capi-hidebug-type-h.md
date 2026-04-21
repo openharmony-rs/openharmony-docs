@@ -40,6 +40,8 @@ HiDebug模块代码结构体定义。
 | [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | 采样配置的结构定义。 |
 | [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | 用于栈回溯及栈解析的对象。 |
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsagePtr | HiDebug_ThreadCpuUsage指针定义。 |
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | OH_HiDebug_ResProfilerConfig | 定义资源采集配置结构体类型。 |
+| [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | OH_HiDebug_ProfilingResult | 封装单次资源采集的结果。 |
 
 ### 枚举
 
@@ -49,6 +51,7 @@ HiDebug模块代码结构体定义。
 | [HiDebug_TraceFlag](#hidebug_traceflag) | HiDebug_TraceFlag | 采集trace线程的类型。 |
 | [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | 栈帧类型的枚举值定义。 |
 | [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | 维测信息数据类型的枚举。 |
+| [OH_HiDebug_ResourceType](#oh_hidebug_resourcetype) | OH_HiDebug_ResourceType | 定义资源采集类型的枚举。 |
 
 ### 宏定义
 
@@ -92,6 +95,7 @@ HiDebug模块代码结构体定义。
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, const char* filePath)](#oh_hidebug_requesttracecallback) | OH_HiDebug_RequestTraceCallback | 请求trace采集的回调类型定义。 |
+| [typedef void (\*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)](#oh_hidebug_profilingcallback) | OH_HiDebug_ProfilingCallback | 定义资源采集回调函数。 |
 
 ## 枚举类型说明
 
@@ -120,6 +124,25 @@ enum HiDebug_ErrorCode
 | HIDEBUG_NOT_SUPPORTED = 11400300 | 当前设备不支持。<br>**起始版本：** 22 |
 | HIDEBUG_UNDER_SAMPLING = 11400301 | 当前进程正在采样。<br>**起始版本：** 22 |
 | HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | 采样资源不可用。<br>**起始版本：** 22 |
+| HIDEBUG_RES_PROF_SUCCESS = 11400400 | 资源采集启动/停止成功。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 | 资源采集参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 | 资源采集最大持续时间参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 | 资源采集过滤大小参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 | 资源采集最大回栈深度参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 | 资源采集统计间隔参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 | 资源采集采样大小参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 | 资源采集资源类型参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | 资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | 资源采集重复启动。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | 资源采集未启动，停止失败。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | 资源采集进程数超出 4 个限制。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_CONFLICT = 11400424 | 资源采集与命令行工具或系统采集任务冲突。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | 资源采集到达指定最大持续时间限制自动停止。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | 资源采集每日配额超出 10 次限制。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | 系统 CPU 处于高负载状态，CPU 占用率超过 70%。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | 内存可用空间紧张，可用空间少于 15%。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 存储可用空间紧张，可用空间少于 15%。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。<br>**起始版本：** 24 |
 
 ### HiDebug_TraceFlag
 
@@ -175,6 +198,26 @@ enum HiDebug_CrashObjType
 | HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024字节内存块 |
 | HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048字节内存块 |
 | HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096字节内存块 |
+
+### OH_HiDebug_ResourceType
+
+```c
+enum OH_HiDebug_ResourceType
+```
+
+**描述**
+
+定义资源采集类型的枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_RES_TYPE_FD | 文件描述符<br>**起始版本：** 24 |
+| OH_RES_TYPE_THREAD | 线程<br>**起始版本：** 24 |
+| OH_RES_TYPE_NATIVE | Native 内存<br>**起始版本：** 24 |
+| OH_RES_TYPE_GPU | GPU 内存<br>**起始版本：** 24 |
+| OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24 |
 
 ## 宏定义说明
 
@@ -582,3 +625,21 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 | -- | -- |
 | HiDebug_ErrorCode errorCode | 返回结果码，参考[HiDebug_ErrorCode](#hidebug_errorcode)。 |
 | const char\* filePath | 返回采集的trace文件，失败时可能是空指针。 |
+
+### OH_HiDebug_ProfilingCallback()
+
+```c
+typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
+```
+
+**描述**
+
+定义资源采集回调函数。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| OH_HiDebug_ProfilingResult\* result | 资源采集回调函数的参数。 |
