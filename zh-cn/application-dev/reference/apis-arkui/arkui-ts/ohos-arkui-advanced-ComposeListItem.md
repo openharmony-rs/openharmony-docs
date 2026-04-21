@@ -113,7 +113,7 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 | subIcon | [OperateIcon](#operateicon) | 否 | 是 | 右侧元素的第二个图标，大小为24\*24vp。<br/>默认不设置或设置为undefined，右侧第二个图标不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | button | [OperateButton](#operatebutton) | 否 | 是 | 右侧元素为按钮。<br/>默认不设置或设置为undefined，右侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | switch | [OperateCheck](#operatecheck) |  否 | 是 | 右侧元素为开关。<br/>默认不设置或设置为undefined，右侧开关不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10  |
-| toggle<sup>23+</sup> | [OperateCheck](#operatecheck) |  否 | 是 | 右侧元素为开关。<br/>默认不设置或设置为undefined，右侧开关不显示。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23  |
+| toggle<sup>23+</sup> | [OperateCheck](#operatecheck) |  否 | 是 | 右侧元素为开关。<br/>默认不设置或设置为undefined，右侧开关不显示。<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23  |
 | checkbox | [OperateCheck](#operatecheck) |  否 | 是 | 右侧元素为多选框，大小为24\*24vp。<br/>默认不设置或设置为undefined，右侧多选框不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | radio | [OperateCheck](#operatecheck) | 否 | 是 | 右侧元素为单选框，大小为24\*24vp。<br/>默认不设置或设置为undefined，右侧单选框不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | image | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 右侧元素为图片，大小为48\*48vp。<br/>默认不设置或设置为undefined，右侧图片不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
