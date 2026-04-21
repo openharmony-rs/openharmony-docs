@@ -5132,7 +5132,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现[云服务](js-apis-data-cloudExtension-sys.md)功能。
+手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
