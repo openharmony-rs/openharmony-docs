@@ -568,7 +568,7 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 });
 ```
 
-## inputMethod.getDefaultInputMethod<sup>26+</sup>
+## inputMethod.getDefaultInputMethod
 
 ArkTS-Dyn: getDefaultInputMethod(userId?: number): InputMethodProperty
 
@@ -624,7 +624,7 @@ ArkTS-Sta示例:
 let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
 ```
 
-## inputMethod.getSystemInputMethodConfigAbility<sup>26+</sup>
+## inputMethod.getSystemInputMethodConfigAbility
 
 ArkTS-Dyn: getSystemInputMethodConfigAbility(userId?: number): ElementName
 
@@ -684,7 +684,7 @@ import { bundleManager } from '@kit.AbilityKit';
 let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
 ```
 
-## inputMethod.switchInputMethodWithUserId<sup>26+</sup>
+## inputMethod.switchInputMethodWithUserId
 
 ArkTS-Dyn: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
 
@@ -758,7 +758,7 @@ inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbili
 });
 ```
 
-## inputMethod.getCurrentInputMethod<sup>26+</sup>
+## inputMethod.getCurrentInputMethod
 
 ArkTS-Dyn: getCurrentInputMethod(userId?: number): InputMethodProperty
 
@@ -814,7 +814,7 @@ ArkTS-Sta示例:
 let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
 ```
 
-## inputMethod.getCurrentInputMethodSubtype<sup>26+</sup>
+## inputMethod.getCurrentInputMethodSubtype
 
 ArkTS-Dyn: getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 
@@ -874,7 +874,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
 ```
 
-### enableInputMethod<sup>26+</sup>
+### enableInputMethod
 
 ArkTS-Dyn: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
 
@@ -950,7 +950,7 @@ inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodE
 });
 ```
 
-### getAllInputMethodsSync<sup>26+</sup>
+### getAllInputMethodsSync
 
 ArkTS-Dyn: getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
@@ -1007,7 +1007,7 @@ ArkTS-Sta示例:
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
 ```
 
-### getInputMethodSubtypes<sup>26+</sup>
+### getInputMethodSubtypes
 
 ArkTS-Dyn: getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMethodSubtype&gt;
 
@@ -1071,7 +1071,7 @@ let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting(
 let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
 ```
 
-### getInputMethodsSync<sup>26+</sup>
+### getInputMethodsSync
 
 ArkTS-Dyn: getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
 
@@ -1135,7 +1135,7 @@ ArkTS-Sta示例:
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
 ```
 
-## ImeChangeWithUserIdCallback<sup>26+</sup>
+## ImeChangeWithUserIdCallback
 
 type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
 
@@ -1159,7 +1159,7 @@ type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, in
 | inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
 | userId | number | 是 | 输入法发生变化的用户ID。 |
 
-### onImeChangeWithUserId<sup>26+</sup>
+### onImeChangeWithUserId
 
 onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
@@ -1216,7 +1216,7 @@ inputMethod.getSetting()
   });
 ```
 
-### offImeChangeWithUserId<sup>26+</sup>
+### offImeChangeWithUserId
 
 offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
@@ -1252,7 +1252,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 inputMethod.getSetting().offImeChangeWithUserId();
 ```
 
-## InputWindowInfo<sup>26+</sup>
+## InputWindowInfo
 
 输入法软键盘的窗口信息（系统接口扩展属性）。
 
