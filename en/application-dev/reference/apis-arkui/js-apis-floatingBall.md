@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-This module provides essential functionalities for floating balls. It lets you check whether the device supports floating balls and create a controller to start, update, or stop them. It is ideal for tasks like comparing prices, searching for answers, or grabbing orders. The floating ball appears as a floating widget above other application, quickly showing important information.
+This module provides essential functionalities for floating balls. It lets you check whether the device supports floating balls and create a controller to start, update, or stop them. This module is ideal for cross-application scenarios such as question search, bill records, product price comparison, order grabbing, and translation, as well as real-time market monitoring in financial apps. It displays content in a small window. The floating ball appears as a floating widget above other application, quickly showing important information.
 
 > **NOTE**
 >
