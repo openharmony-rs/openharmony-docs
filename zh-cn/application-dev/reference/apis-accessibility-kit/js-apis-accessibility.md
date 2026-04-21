@@ -233,6 +233,8 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
 > **说明：**
 >
 > 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
+>
+> 可通过[off('enableChange')](#offenablechangedeprecated)取消监听字幕配置启用状态变化事件。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -285,6 +287,8 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
 > **说明：**
 >
 > 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
+>
+> 可通过[off('styleChange')](#offstylechangedeprecated)取消监听字幕风格变化事件。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -973,6 +977,10 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
 监听辅助应用启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
+> **说明：**
+>
+> 可通过[accessibility.off('accessibilityStateChange')](#accessibilityoffaccessibilitystatechange)取消监听辅助应用启用状态变化事件。
+
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1016,6 +1024,10 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
 监听触摸浏览功能启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
+> **说明：**
+>
+> 可通过[accessibility.off('touchGuideStateChange')](#accessibilityofftouchguidestatechange)取消监听触摸浏览功能启用状态变化事件。
+
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1056,6 +1068,10 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
 监听屏幕朗读功能启用状态变化事件，使用callback异步回调。
 
+> **说明：**
+>
+> 可通过[accessibility.off('screenReaderStateChange')](#accessibilityoffscreenreaderstatechange18)取消监听屏幕朗读功能启用状态变化事件。
+
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1092,6 +1108,10 @@ accessibility.on('screenReaderStateChange', (data: boolean) => {
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
 监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+
+> **说明：**
+>
+> 可通过[accessibility.off('touchModeChange')](#accessibilityofftouchmodechange20)取消监听触摸浏览功能下的单击/双击操作模式变化事件。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1144,6 +1164,10 @@ onAnimationReduceStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听减弱动效功能启用状态变化事件。使用callback异步回调。
 
+> **说明：**
+>
+> 可通过[accessibility.offAnimationReduceStateChange](#accessibilityoffanimationreducestatechange23)取消监听减弱动效功能启用状态变化事件。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
@@ -1183,6 +1207,10 @@ struct Index {
 onFlashReminderStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听闪烁提醒功能启用状态变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> 可通过[accessibility.offFlashReminderStateChange](#accessibilityoffflashreminderstatechange23)取消监听闪烁提醒功能启用状态变化事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1224,6 +1252,10 @@ onAudioMonoStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听单声道音频功能启用状态变化事件。使用callback异步回调。
 
+> **说明：**
+>
+> 可通过[accessibility.offAudioMonoStateChange](#accessibilityoffaudiomonostatechange23)取消监听单声道音频功能启用状态变化事件。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
@@ -1263,6 +1295,10 @@ struct Index {
 onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听关怀模式启用状态变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> 可通过[accessibility.offSeniorModeStateChange](#accessibilityoffseniormodestatechange)取消监听关怀模式启用状态变化事件。
 
 **起始版本：** 26.0.0
 
