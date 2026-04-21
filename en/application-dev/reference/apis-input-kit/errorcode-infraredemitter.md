@@ -13,15 +13,15 @@
 
 ## 3800001 Multimodal Input Service Internal Error
 
-**Message**
+**Error Message**
 
 Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
 
-**Description**
+**Symptom**
 
 An internal error of the multimodal input service occurred.
 
-**Possible causes**
+**Possible Causes**
 
 An unexpected error occurred, such as memory allocation failure, busy thread, or service execution.
 
