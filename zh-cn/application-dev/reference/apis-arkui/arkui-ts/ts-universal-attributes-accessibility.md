@@ -687,8 +687,8 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 @Entry
 @Component
 struct Index {
-
-  @Builder customAccessibilityNode() {
+  @Builder
+  customAccessibilityNode() {
     Column() {
       Text(`virtual node`)
     }
@@ -911,6 +911,7 @@ struct Index {
             .margin({ top: 15 })
             .accessibilityText($r('app.string.app_name'))
             .accessibilityDescription($r('app.string.module_desc'))
+
             Column() {
               Text('文本4')
                 .fontSize(18)
