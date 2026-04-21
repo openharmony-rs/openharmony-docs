@@ -20,7 +20,7 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## notificationSubscribe.subscribe<sup>deprecated</sup>
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback\<void\>): void
 
@@ -86,7 +86,7 @@ let info: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
-## notificationSubscribe.subscribe<sup>deprecated</sup>
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
@@ -148,7 +148,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 
 
-## notificationSubscribe.subscribe<sup>deprecated</sup>
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise\<void\>
 
@@ -207,7 +207,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber).then(() => {
   console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -247,7 +247,6 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -264,9 +263,9 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -307,7 +306,6 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -327,9 +325,9 @@ let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1", "bundleName2"],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -382,7 +380,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribeSelf fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
