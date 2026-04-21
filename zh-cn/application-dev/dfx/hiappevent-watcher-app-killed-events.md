@@ -96,3 +96,5 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | DmaKiller                     | 整机低内存，单进程Dma占用达到阈值。                      |
 | ThreadKiller                  | 单进程线程超限。                           |
 | UninstallStorage              | 卸载存储卡。                          |
+
+ <small>注意事项：系统侧会持续完善上方表格，如果开发者需要使用表中reason字符串进行逻辑判断，建议做成云侧可配置下发。</small>
