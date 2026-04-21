@@ -165,8 +165,8 @@
    
      // 重新加载数据
      public reload(): void {
-       this.dataArray.splice(1, 1);
        this.dataArray.splice(3, 2);
+       this.dataArray.splice(1, 1);
        this.notifyDataReload();
      }
    }
