@@ -203,7 +203,7 @@ SQL语句中的函数，如下所示：
    <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
-   const STORE_CONFIG :relationalStore.StoreConfig= {
+   const STORE_CONFIG :relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
      vector: true // 可选参数，该参数为true时才可以使用向量数据库。
