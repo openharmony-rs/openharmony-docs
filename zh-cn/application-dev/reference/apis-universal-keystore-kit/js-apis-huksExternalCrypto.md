@@ -391,7 +391,7 @@ const testResourceId = JSON.stringify({
 
 huksExternalCrypto.clearUkeyPinAuthState(testResourceId)
     .then(() => {
-      console.info('promise: clearUkeyPinAuthState success');
+      console.info('promise: clearUkeyPinAuthState success.');
     });
 ```
 
@@ -539,7 +539,7 @@ const testResourceId = JSON.stringify({
 
 huksExternalCrypto.openResource(testResourceId)
     .then(() => {
-      console.info(`promise: openResource success`);
+      console.info('promise: openResource success.');
     });
 ```
 
@@ -601,6 +601,6 @@ const testResourceId = JSON.stringify({
 
 huksExternalCrypto.closeResource(testResourceId)
     .then(() => {
-      console.info(`promise: closeResource success`);
+      console.info('promise: closeResource success.');
     });
 ```
