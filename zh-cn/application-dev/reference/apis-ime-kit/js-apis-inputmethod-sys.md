@@ -411,11 +411,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let cursorInfo = inputMethod.getSetting().getCursorInfo();
-  console.info('get cursorInfo success, left: ' + cursorInfo.left + ', top: ' + cursorInfo.top + 
-    ', width: ' + cursorInfo.width + ', height: ' + cursorInfo.height + ', displayId: ' + cursorInfo.displayId);
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error('Failed to get cursorInfo. Code: ' + error.code + ', message: ' + error.message);
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -426,11 +425,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo();
-  console.info('get cursorInfo success, left: ' + cursorInfo.left + ', top: ' + cursorInfo.top + 
-    ', width: ' + cursorInfo.width + ', height: ' + cursorInfo.height + ', displayId: ' + cursorInfo.displayId);
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error('Failed to get cursorInfo. Code: ' + error.code + ', message: ' + error.message);
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -470,7 +468,7 @@ getDefaultInputMethodAbility(): InputMethodProperty
 ```ts
 try {
   const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility();
-  console.info('Succeeded in getting default input method ability, name: ' + defaultAbility.name + ', id: ' + defaultAbility.id);
+  console.info(`Succeeded in getting default input method ability, name: ${defaultAbility.name}, id: ${defaultAbility.id}`);
 } catch (err) {
   console.error(`Failed to getDefaultInputMethodAbility. Code: ${err.code}, message: ${err.message}`);
 }
