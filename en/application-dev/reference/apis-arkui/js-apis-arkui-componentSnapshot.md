@@ -537,22 +537,71 @@ Obtains the size limit of a component screenshot.
 **Example**
 
 ```ts
-import { ComponentUtils } from '@kit.ArkUI';
+import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { UIContext } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  public node: FrameNode | null = null;
+  public imageNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.node = new FrameNode(uiContext);
+    this.node.commonAttribute.width('100%').height('100%');
+
+    let image = typeNode.createNode(uiContext, 'Image');
+    image.initialize($r('app.media.startIcon')).width('100%').height('100%').autoResize(true);
+    this.imageNode = image;
+
+    this.node.appendChild(image);
+    return this.node;
+  }
+}
+
+const SNAPSHOT_NODE_WIDTH = 2000000;
+const SNAPSHOT_NODE_HEIGHT = 200;
 
 @Entry
 @Component
-struct Index {
+struct SnapshotExample {
+  private myNodeController: MyNodeController = new MyNodeController();
+  @State pixmap: image.PixelMap | undefined = undefined;
+
   build() {
     Column() {
-      Button ("Obtain Screenshot Size Limit")
+      Column() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        NodeContainer(this.myNodeController).width(SNAPSHOT_NODE_WIDTH).height(SNAPSHOT_NODE_HEIGHT).margin(5)
+      }
+
+      Button("UniqueId get snapshot")
         .onClick(() => {
-          let componentSnapshot = this.getUIContext().getComponentSnapshot();
-          let limitation = componentSnapshot.getSizeLimitation();
-          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-        })
+          try {
+            let componentSnapshot = this.getUIContext().getComponentSnapshot();
+            // Check the size limit.
+            let limitation = componentSnapshot.getSizeLimitation();
+            console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+            // Check whether the node size meets the maximum size limit.
+            if (limitation.maxWidth > SNAPSHOT_NODE_WIDTH && limitation.maxHeight > SNAPSHOT_NODE_HEIGHT) {
+              this.getUIContext()
+                .getComponentSnapshot()
+                .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
+                  { scale: 2, waitUntilRenderFinished: true })
+                .then((pixmap: image.PixelMap) => {
+                  this.pixmap = pixmap;
+                })
+                .catch((err: Error) => {
+                  console.error(`error: ${err}`);
+                })
+            } else {
+              console.info(`The screenshot size is too big, exceeding the GPU limitation`);
+            }
+          } catch (error) {
+            console.error(`UniqueId get snapshot Error: ${JSON.stringify(error)}`);
+          }
+        }).margin(10)
     }
-    .width('100%')
-    .height('100%')
+    .alignItems(HorizontalAlign.Center)
   }
 }
 ```
