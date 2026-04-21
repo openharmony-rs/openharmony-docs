@@ -220,15 +220,15 @@ let keyOptions: inputConsumer.KeyOptions = {
   triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
 };
 let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
-  console.log(`KeyOptions: ${JSON.stringify(keyOptions)}`);
+  console.info(`KeyOptions: ${JSON.stringify(keyOptions)}`);
   if (keyEvent) {
-    console.log(`KeyEvent: keyCode=${keyEvent.key.keyCode}, action=${keyEvent.action}`);
+    console.info(`KeyEvent: keyCode=${keyEvent.key.keyCode}, action=${keyEvent.action}`);
   }
 }
 try {
   inputConsumer.onKey(keyOptions, callback);
 } catch (error) {
-  console.log(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -243,12 +243,12 @@ let keyOptions: inputConsumer.KeyOptions = {
   triggerType: inputConsumer.KeyCommandTriggerType.REPEAT_PRESSED
 };
 let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
-  console.log(`Repeat key event`);
+  console.info(`Repeat key event`);
 }
 try {
   inputConsumer.onKey(keyOptions, callback);
 } catch (error) {
-  console.log(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -265,12 +265,12 @@ let keyOptions: inputConsumer.KeyOptions = {
   triggerType: inputConsumer.KeyCommandTriggerType.ALL_RELEASED
 };
 let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
-  console.log(`All released event`);
+  console.info(`All released event`);
 }
 try {
   inputConsumer.onKey(keyOptions, callback);
 } catch (error) {
-  console.log(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -307,7 +307,7 @@ import { inputConsumer } from '@kit.InputKit';
 let leftCtrlKey = 2072;
 let cKey = 2049;
 let callback = (keyOptions: inputConsumer.KeyOptions, keyEvent: inputConsumer.KeyEvent) => {
-  console.log(`KeyEvent received`);
+  console.info(`KeyEvent received`);
 }
 let keyOptions: inputConsumer.KeyOptions = {
   preKeys: [leftCtrlKey],
@@ -319,9 +319,9 @@ let keyOptions: inputConsumer.KeyOptions = {
 try {
   inputConsumer.onKey(keyOptions, callback);
   inputConsumer.offKey(keyOptions, callback);
-  console.log(`Unsubscribe success`);
+  console.info(`Unsubscribe success`);
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -340,9 +340,9 @@ let keyOptions: inputConsumer.KeyOptions = {
 };
 try {
   inputConsumer.offKey(keyOptions);
-  console.log(`Unsubscribe all success`);
+  console.info(`Unsubscribe all success`);
 } catch (error) {
-  console.log(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
 
@@ -363,7 +363,7 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
-| keyEvent | [KeyEvent](../apis-input-kit/js-apis-multimodalinput-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
+| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
 
 ---
 
