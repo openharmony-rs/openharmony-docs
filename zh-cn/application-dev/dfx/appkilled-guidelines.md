@@ -130,7 +130,7 @@
     | HighTemperature                    | 温度超限。                                                         | 尝试降低应用自身的CPU负载，减少发热。                                                                                   | 否             | 否        |
     | TransientTaskTimeout               | 短时任务超时6s并且处于后台。                                               | 检查短时任务是否存在耗时操作，优化任务执行效率。                                                                               | 是             | 否        |
     | TooManyReadyThreads                | 单进程就绪线程过多。                                                       | 尝试减少应用创建的线程数量，优化线程管理。                                                                                  | 是             | 否        |
-    | JsHeapSleepCleanKill               | sleep状态（夜间充电）进行js heapsize检测，超限后查终止应用。                     | 归类为整机后台内存清理，尝试降优化应用js heap的使用率。                                                                                         | 否             | 否        |
+    | JsHeapSleepCleanKill               | sleep状态（夜间充电）进行js heapsize检测，超限后查终止应用。                     | 归类为整机后台内存清理，尝试优化应用js heap的使用率。                                                                                         | 否             | 否        |
     | HardwareDecodingResourcesLimit     | 硬件解码资源限制。                                                     | 尝试减少应用对硬件解码资源的使用。                                                                                      | 否             | 否        |
     | AppRecoveryNotifyAppOverLimit      | 应用恢复通知应用超限。                                                   | 检查应用恢复机制是否存在异常，优化恢复逻辑。                                                                                 | 是             | 否        |
     | GpuError                           | GPU错误。                                                        | 检查应用GPU使用是否合理，优化GPU资源管理。                                                                               | 是             | 否        |
@@ -142,4 +142,4 @@
     | ThreadKiller                       | 单进程线程超限。                                                         | 尝试减少应用创建的线程数量，优化线程管理。                                                                                  | 是             | 是        |
     | UninstallStorage                   | 卸载存储卡。                                                        | 无需处理。                                                                                                  | 否             | 否        | 
 
-   <small>注意事项：系统侧会持续完善上方表格，如果开发者需要使用表中reason字符串进行逻辑判断，建议做成云侧可配置下发。</small>
+    **注意事项：** 系统侧会持续完善上方表格，如果开发者需要使用表中reason字符串进行逻辑判断，建议做成云侧可配置下发。
