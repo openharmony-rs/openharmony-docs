@@ -27,8 +27,8 @@
 
 | **接口名** | **描述** |
 | -------- | -------- |
-| subscribe(subscriber:&nbsp;NotificationSubscriber,&nbsp;info:&nbsp;NotificationSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | 订阅指定应用通知。 |
-| subscribe(subscriber:&nbsp;NotificationSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | 订阅所有通知。     |
+| subscribeNotification(subscriber:&nbsp;NotificationSubscriber,&nbsp;info:&nbsp;NotificationSubscribeInfo):&nbsp;Promise&lt;void&gt; | 订阅指定应用通知。|
+| subscribeNotification(subscriber:&nbsp;NotificationSubscriber):&nbsp;Promise&lt;void&gt; | 订阅所有通知。    |
 
 **表2** 通知订阅回调接口介绍
 
@@ -50,7 +50,7 @@
 
 ## 开发步骤
 
-1. 申请`ohos.permission.NOTIFICATION_CONTROLLER`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 导入通知订阅模块。
    
@@ -66,7 +66,7 @@
 3. 创建订阅者对象。
    
    ```ts
-   let subscriber:notificationSubscribe.NotificationSubscriber = {
+   let subscriber: notificationSubscribe.NotificationSubscriber = {
      onConsume: (data:notificationSubscribe.SubscribeCallbackData) => {
        let req: notificationManager.NotificationRequest = data.request;
        hilog.info(DOMAIN_NUMBER, TAG, `onConsume callback. req.id: ${req.id}`);
@@ -93,10 +93,9 @@
 4. 发起通知订阅。
    
    ```ts
-   notificationSubscribe.subscribe(subscriber, (err: BusinessError) => { // callback形式调用异步接口
-     if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to subscribe notification. Code is ${err.code}, message is ${err.message}`);
-       return;
-     }
+   notificationSubscribe.subscribeNotification(subscriber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
