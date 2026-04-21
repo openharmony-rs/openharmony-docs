@@ -1,4 +1,4 @@
-# Arc Button (ArcButton)
+# Arc Button (ArcButton) (Recommended for Circular Screens)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Supported since API version 18, the **ArcButton** component represents an arc button specifically designed for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for watch UIs. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
+Supported since API version 18, the **ArcButton** component represents an arc button. It is recommended for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for users. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
 
 
 ## Creating a Button
@@ -155,7 +155,7 @@ The **ArcButton** component offers two types: top arc button and bottom arc butt
 
 This example demonstrates a brightness settings screen where a slider displays the current brightness level at 30%. When the reset button is clicked, the brightness value is reset to the default value of 50%.
 
-To run this sample code, wearable device support is required. In the project configuration file [module.json5](../quick-start/module-configuration-file.md) located in the **src/main** directory, configure **wearable** under [devicetypes](../quick-start/module-configuration-file.md#devicetypes).
+You are advised to run this example on a wearable for optimal display effects and is also supported on other devices. To run the example on a wearable, configure **wearable** under the [deviceTypes](../quick-start/module-configuration-file.md#devicetypes) tag in the [module.json5] (../quick-start/module-configuration-file.md) configuration file in the **src/main** directory.
 <!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
 
 ``` JSON5
