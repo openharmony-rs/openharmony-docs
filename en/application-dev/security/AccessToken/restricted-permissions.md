@@ -1222,7 +1222,7 @@ Allows an application to get call forwarding status.
 
 Allows an application to query traffic data of other applications.
 
-<!--RP80--><!--RP80End-->
+<!--RP81--><!--RP81End-->
 
 **Permission level**: system_basic
 
