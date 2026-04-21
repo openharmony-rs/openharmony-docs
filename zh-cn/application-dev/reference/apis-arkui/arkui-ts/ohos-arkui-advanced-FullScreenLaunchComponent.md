@@ -39,7 +39,7 @@ import { FullScreenLaunchComponent } from '@kit.ArkUI';
 
 FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo> })
 
-**装饰器类型：**\@Component
+**装饰器类型：**[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
