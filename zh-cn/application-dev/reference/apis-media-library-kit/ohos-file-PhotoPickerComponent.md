@@ -1104,7 +1104,7 @@ struct PickerDemo {
 }
 ```
 
-## 示例二（抽屉组件）
+## 示例二（使用PhotoPickerComponent实现抽屉组件效果）
 
 从API version 23开始，可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、[photoPickerComponent](#photopickercomponent)的onScrollStopAtStart和onScrollStopAtEnd回调来实现抽屉效果。
 
@@ -1140,11 +1140,11 @@ struct Drawer {
   private currentOffset: number = 0;
   // 自定义抽屉高度在整个屏幕的占比。
   private drawerRatio: number = 0.8;
-  // 自定义初始化是隐藏抽屉的占比。
+  // 自定义初始化时隐藏抽屉的占比。
   private hideRatio: number = 0.8;
   // 初始化为收缩态。
   private drawerState: DrawerState = DrawerState.Collapsing;
-  // 手势响应阈值，判断手势是否是向下。
+  // 手势响应阈值，判断手势是否为向下。
   private pullingDownThreshold: number = -5;
 
   aboutToAppear(): void {
