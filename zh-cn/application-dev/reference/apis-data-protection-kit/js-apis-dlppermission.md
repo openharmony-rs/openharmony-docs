@@ -1569,7 +1569,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 注册结果，代表该回调的id。取值范围为0-2<sup>64</sup>-1|
+| number | 注册结果，代表该回调的id。取值范围为[0, 2<sup>64</sup>-1]|
 
 **错误码：**
 
