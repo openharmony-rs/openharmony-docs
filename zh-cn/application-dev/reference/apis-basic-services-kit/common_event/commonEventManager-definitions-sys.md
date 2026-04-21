@@ -411,6 +411,23 @@
 **取值：** "usual.event.SCREEN_SHARE"
 
 
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+表示vpn连接状态的公共事件。
+
+当vpn连接或者断开时会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
+
+
 ## Telephony Kit
 
 ### COMMON_EVENT_SMS_RECEIVE_COMPLETED<sup>10+</sup>
