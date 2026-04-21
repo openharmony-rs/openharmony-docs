@@ -113,21 +113,21 @@
        // 获取传感器数据的时间戳。
        int32_t ret = OH_SensorEvent_GetTimestamp(event, &timestamp);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get timestamp is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get timestamp failed");
            return;
        }
        Sensor_Type sensorType;
        // 获取传感器类型。
        ret = OH_SensorEvent_GetType(event, &sensorType);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor type failed");
            return;
        }
        Sensor_Accuracy accuracy = SENSOR_ACCURACY_UNRELIABLE;
        // 获取传感器数据的精度。
        ret = OH_SensorEvent_GetAccuracy(event, &accuracy);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor accuracy is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor accuracy failed");
            return;
        }
        float *data = nullptr;
@@ -135,7 +135,7 @@
        // 获取传感器数据。
        ret = OH_SensorEvent_GetData(event, &data, &length);
        if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor data is failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor data failed");
            return;
        }
        if (data == nullptr) {
