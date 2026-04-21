@@ -1,7 +1,7 @@
 # EnterpriseAdminExtensionContext
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -78,7 +78,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 **示例：**
 被启动组件在module.json5中配置信息。
 
-```json
+```json5
 "abilities": [
     {
         "name": "MainAbility",
@@ -100,7 +100,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 
 调用方应用需要在module.json5中申请对应的权限。
 
-```json
+```json5
 "requestPermissions": [
     {
         // 启动其他应用中的组件时，调用方应用必须获取该组件所要求的权限。
@@ -139,7 +139,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     
         // 通过context获取到应用文件路径
         let preferencesDir = this.context.preferencesDir;
-        console.log(`preferencesDir: ` + preferencesDir);
+        console.info(`preferencesDir: ` + preferencesDir);
     
         // 通过context获取到preferences数据
         let options: preferences.Options = {
