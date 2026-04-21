@@ -210,6 +210,7 @@ SQL语句中的函数，如下所示：
    };
    // ...
      try {
+       /* context为应用的上下文信息，此处获取方式仅为示例。 */
        store = await relationalStore.getRdbStore(context, STORE_CONFIG);
        // 建表语句，floatvector(2)代表repr的维度是2
        const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
