@@ -152,13 +152,13 @@ async function Marshalling_UnMarshalling(context: Context) {
 }
 ```
 
-## image.createPixelMapFromPixels<sup>8+</sup>
+## image.createPixelMapFromPixels
 
-createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Promise\<PixelMap\>;
+createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Promise\<PixelMap\>
 
 通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。使用Promise异步回调。
 
-不支持创建以下像素格式的PixelMap：
+此接口不支持创建以下像素格式的PixelMap：
 - RGBA_1010102
 - YCBCR_P010
 - YCRCB_P010
@@ -167,6 +167,14 @@ createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Pro
 > **说明：**
 >
 > 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -229,13 +237,13 @@ function DemoCreatePixelMapFromPixels() {
 }
 ```
 
-## image.createPixelMapFromPixelsSync<sup>8+</sup>
+## image.createPixelMapFromPixelsSync
 
-createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions): PixelMap;
+createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions): PixelMap
 
 通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。
 
-不支持创建以下像素格式的PixelMap：
+此接口不支持创建以下像素格式的PixelMap：
 - RGBA_1010102
 - YCBCR_P010
 - YCRCB_P010
@@ -244,6 +252,14 @@ createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions):
 > **说明：**
 >
 > 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -258,7 +274,7 @@ createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions):
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 创建的PixelMap。                                                 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap。                                             |
 
 **错误码：**
 
@@ -315,7 +331,7 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<Pi
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-建议使用[createPixelMapFromPixels](#createpixelmapfrompixels2600)。
+建议使用[createPixelMapFromPixels](#createpixelmapfrompixels)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -361,7 +377,7 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: As
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-建议使用[createPixelMapFromPixels](#createpixelmapfrompixels2600)。
+建议使用[createPixelMapFromPixels](#createpixelmapfrompixels)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -836,7 +852,7 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-建议使用[createPixelMapFromPixelsSync](#createpixelmapfrompixelssync2600)。
+建议使用[createPixelMapFromPixelsSync](#createpixelmapfrompixelssync)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -877,18 +893,25 @@ function CreatePixelMapSync() {
 }
 ```
 
-## image.createEmptyPixelMap<sup>8+</sup>
+## image.createEmptyPixelMap
 
-createEmptyPixelMap(param: InitializationOptions): PixelMap;
+createEmptyPixelMap(param: InitializationOptions): PixelMap
 
 通过图像属性创建空白PixelMap。
 
-不支持创建以下像素格式的PixelMap：
-- ASTC_4x4
+此接口不支持创建以下像素格式的PixelMap：ASTC_4x4。
 
 > **说明：**
 >
 > 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -902,7 +925,7 @@ createEmptyPixelMap(param: InitializationOptions): PixelMap;
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 创建的空白PixelMap。                                             |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的空白PixelMap。                                         |
 
 **错误码：**
 
@@ -911,7 +934,6 @@ createEmptyPixelMap(param: InitializationOptions): PixelMap;
 | 错误码 | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600206 | Invalid parameter. |
-| 7600207 | Unsupported pixel format. |
 | 7600301 | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 | 7600305 | Failed to create the PixelMap. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 
