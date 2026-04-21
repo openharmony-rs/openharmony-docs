@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -59,15 +59,11 @@ addCheckRule(rule: bigint): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    // 添加一条规则
-    hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
-    // 添加多条规则
-    // hichecker.addCheckRule(
-    //     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
-} catch (err) {
-    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
-}
+// 添加一条规则
+hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
+// 添加多条规则
+// hichecker.addCheckRule(
+//     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
 ```
 
 ## hichecker.removeCheckRule<sup>9+</sup>
@@ -95,15 +91,11 @@ removeCheckRule(rule: bigint): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    // 删除一条规则
-    hichecker.removeCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
-    // 删除多条规则
-    // hichecker.removeCheckRule(
-    //     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
-} catch (err) {
-    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
-}
+// 删除一条规则
+hichecker.removeCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
+// 删除多条规则
+// hichecker.removeCheckRule(
+//     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
 ```
 
 ## hichecker.containsCheckRule<sup>9+</sup>
@@ -137,16 +129,12 @@ containsCheckRule(rule: bigint): boolean
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    // 添加一条规则
-    hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+// 添加一条规则
+hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
 
-    // 查询是否包含
-    hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS); // return true;
-    hichecker.containsCheckRule(hichecker.RULE_CAUTION_PRINT_LOG); // return false;
-} catch (err) {
-    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
-}
+// 查询是否包含
+hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS); // return true;
+hichecker.containsCheckRule(hichecker.RULE_CAUTION_PRINT_LOG); // return false;
 ```
 
 ## hichecker.addRule<sup>(deprecated)</sup>
@@ -228,7 +216,7 @@ getRule(): bigint
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // 获取已添加的规则
-hichecker.getRule();   // return 1n;
+hichecker.getRule(); // return 1n;
 ```
 
 ## hichecker.contains<sup>(deprecated)</sup>
