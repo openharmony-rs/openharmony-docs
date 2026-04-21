@@ -41,7 +41,7 @@ async function openResource(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.openResource(resourceId)
       .then(() => {
-        console.info('promise: openResource success');
+        console.info('promise: openResource success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: openResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
@@ -54,7 +54,7 @@ async function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions):
   try {
     await huks.generateKeyItem(keyAlias, huksOptions)
       .then(() => {
-        console.info('promise: generateKeyItem success');
+        console.info('promise: generateKeyItem success.');
       }).catch((error: BusinessError) => {
         console.error(`promise: generateKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
