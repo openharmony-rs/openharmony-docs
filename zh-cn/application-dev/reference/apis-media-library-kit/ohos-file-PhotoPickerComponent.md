@@ -1113,11 +1113,11 @@ struct PickerDemo {
 import { display } from '@kit.ArkUI';
 import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
 const enum DrawerState {
-  // 展开态。
+  // 展开状态。
   Expanding,
-  // 收缩态。
+  // 收缩状态。
   Collapsing,
-  // 滚动态。
+  // 滑动状态。
   Sliding
 }
 
@@ -1142,7 +1142,7 @@ struct Drawer {
   private drawerRatio: number = 0.8;
   // 自定义初始化时隐藏抽屉的占比。
   private hideRatio: number = 0.8;
-  // 初始化为收缩态。
+  // 初始化为收缩状态。
   private drawerState: DrawerState = DrawerState.Collapsing;
   // 手势响应阈值，判断手势是否为向下。
   private pullingDownThreshold: number = -5;
@@ -1154,7 +1154,7 @@ struct Drawer {
     this.drawerHeight = this.screenHeight * this.drawerRatio;
     // 初始时抽屉在底部（隐藏高度），示例为隐藏抽屉的0.8倍。
     this.offsetY = this.drawerHeight * this.hideRatio;
-    // 初始化时Picker不支持滚动。
+    // 初始化时Picker不支持滑动。
     this.pickerOptions.isSlidingSupported = false;
     // 无边缘回弹。
     this.pickerOptions.edgeEffect = EdgeEffect.None;
@@ -1163,7 +1163,7 @@ struct Drawer {
   }
 
   private scrollStopAtStart() {
-    // 状态变更为展开态，同时设置宫格不能滚动。
+    // 状态变更为展开状态，同时设置宫格不能滑动。
     this.drawerState = DrawerState.Expanding;
     this.pickerController.updatePickerOptions({
     isSlidingSupported: false
@@ -1301,10 +1301,10 @@ struct Drawer {
             if (this.drawerState === DrawerState.Sliding) {
               return;
             }
-            // 如果抽屉的状态是展开态或者收缩态则需要通过手势来进一步改变抽屉状态。
+            // 如果抽屉的状态是展开或者收缩则需要通过手势来进一步改变抽屉状态。
             // 计算移动距离。
             const deltaY = event.fingerList[0].globalY - this.startY || 0;
-            // 当抽屉处于展开状态且用户向下滑动时，开启宫格滑动功能并将抽屉状态切换为滚动态。
+            // 当抽屉处于展开状态且用户向下滑动时，开启宫格滑动功能并将抽屉状态切换为滑动状态。
             if (this.drawerState === DrawerState.Expanding && deltaY < this.pullingDownThreshold) {
               this.pickerController.updatePickerOptions({
                 isSlidingSupported: true
@@ -1320,10 +1320,10 @@ struct Drawer {
           .onActionEnd(()=>{
             // 手势结束，根据位置自动展开或收起。
             if (this.offsetY > this.drawerHeight / 2) {
-              // 滑动超过抽屉高度一半，抽屉状态置为收缩态。
+              // 滑动超过抽屉高度一半，抽屉状态置为收缩状态。
               this.hideDrawer();
             } else {
-              // 滑动不到抽屉高度一半，抽屉状态置为展开态。
+              // 滑动不到抽屉高度一半，抽屉状态置为展开状态。
               this.showDrawer();
             }
           })
