@@ -168,13 +168,13 @@ onTerminated(callback: Callback\<TerminationInfo>)
 
 ## SecurityUIExtensionProxy
 
-用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据、订阅和取消订阅的注册。
+用于在双方建立连接成功后，向组件使用方被拉起的Ability发送数据，以及订阅和取消订阅的注册。
 
 ### send
 
 send(data: Record\<string, Object\>): void
 
-用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据，提供异步发送能力。
+用于在双方建立连接成功后，向组件使用方被拉起的Ability发送数据，提供异步发送能力。
 
 **起始版本：** 26.0.0
 
@@ -192,7 +192,7 @@ send(data: Record\<string, Object\>): void
 
 sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
-用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据，提供同步发送能力。
+用于在双方建立连接成功后，向组件使用方被拉起的Ability发送数据，提供同步发送能力。
 
 **起始版本：** 26.0.0
 
