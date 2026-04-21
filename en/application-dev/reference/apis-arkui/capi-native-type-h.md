@@ -1,8 +1,8 @@
 # native_type.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -41,7 +41,7 @@ Defines the common types for the native module.
 | [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md) | ArkUI_TranslationOptions | Defines the translation options for component transition.|
 | [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md) | ArkUI_ScaleOptions | Defines the scaling options for component transition.|
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | Defines the rotation options for component transition.|
-| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | ArkUI_NativeDialog | Defines a custom dialog controller object for ArkUI on the native side.|
+| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | ArkUI_NativeDialog | Defines a custom dialog box controller object for ArkUI on the native side.|
 | [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | Defines layout constraints for a component.|
 | [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) | ArkUI_DrawContext | Defines the component drawing context.|
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to the ArkUI native component object.|
@@ -80,7 +80,7 @@ Defines the common types for the native module.
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options.|
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the data selection list for the text picker.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the created instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Pointer to the created instance of visible area change event parameters.|
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|Provides position parameters relative to the boundaries of the container's content area.|
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines a struct for the component pixel rounding policy.|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
@@ -245,7 +245,7 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | - | Obtains the array length for a water flow section configuration.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | Sets the number of items in a water flow section.|
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | Obtains the number of items in the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | Sets the gap between columns in the specified water flow section.|
 | [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | Obtains the gap between columns in the water flow section that matches the specified index.|
@@ -544,8 +544,8 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextMenuItemClickCallback cb)](#oh_arkui_texteditmenuoptions_registeronmenuitemclickcallback) | - | Registers the callback for text menu item clicks.|
 | [ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()](#oh_arkui_textselectionmenuoptions_create) | - | Creates a custom text selection menu object.|
 | [void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)](#oh_arkui_textselectionmenuoptions_dispose) | - | Releases a custom text selection menu object.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)](#oh_arkui_textselectionmenuoptions_setspantype) | - | Sets the text recognition type of a custom text selection menu.|
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)](#oh_arkui_textselectionmenuoptions_getspantype) | - | Obtains the text recognition type of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)](#oh_arkui_textselectionmenuoptions_setspantype) | - | Sets the recognition type of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)](#oh_arkui_textselectionmenuoptions_getspantype) | - | Obtains the recognition type of a custom text selection menu.|
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle node)](#oh_arkui_textselectionmenuoptions_setcontentnode) | - | Sets the content node of a custom text selection menu.|
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle* node)](#oh_arkui_textselectionmenuoptions_getcontentnode) | - | Obtains the content node of a custom text selection menu.|
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType responseType)](#oh_arkui_textselectionmenuoptions_setresponsetype) | - | Sets the response type of a custom text selection menu.|
@@ -2716,8 +2716,8 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  Corresponding render child node not found. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  The parameter value is out of range. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The current render node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](../apis-arkui/errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since**: 22|
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The current render node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) and the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) has not been adopted as an affiliated node or has been disposed. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](../apis-arkui/errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](../apis-arkui/errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) and the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) has not been adopted as an affiliated node or has been disposed. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](../apis-arkui/errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since**: 22|
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  The current node is not in the adopted state. For details about the error code, see [106408 Current Node Is Not in Adopted State](../apis-arkui/errorcode-node-render.md#106408-current-node-is-not-in-adopted-state).<br>**Since**: 22|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  The current node is not focusable. For details about the error code, see [150001 Component Not Focusable](../apis-arkui/errorcode-focus.md#150001-component-not-focusable).<br>**Since**: 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  An ancestor of the current node is not focusable. For details about the error code, see [150002 Ancestor Component Not Focusable](../apis-arkui/errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since**: 15|
@@ -3986,7 +3986,7 @@ Obtains the main axis size of a specified water flow item based on **itemIndex**
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index | Index of the target water flow section.|
-|  void* userData | Pointer to user-defined data, which will be passed back to the user in the callback.|
+|  void* userData |Pointer to user-defined data, which will be passed back to the user in the callback.|
 | callback | Callback used to return the result. **itemIndex**: index of the [water flow item](../apis-arkui/arkui-ts/ts-container-flowitem.md); **userData**: user-defined data.|
 
 ### OH_ArkUI_GuidelineOption_Create()
@@ -9162,7 +9162,7 @@ Obtains the threshold ratios for visible area changes.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the provided buffer size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 
@@ -10041,7 +10041,7 @@ Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the provided buffer size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
 
@@ -10122,7 +10122,7 @@ Disposes of the text input counter configuration object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object to be disposed.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object to be disposed of.|
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextColor()
 
@@ -10227,7 +10227,7 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 
 **Description**
 
-Creates a text menu item.
+Creates a text menu item object.
 
 **Since**: 22
 
@@ -10245,7 +10245,7 @@ void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 
 **Description**
 
-Releases a text menu item.
+Releases a text menu item object.
 
 **Since**: 22
 
@@ -10299,7 +10299,7 @@ Obtains the title of a text menu item.
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the title information of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
 
 **Returns**
 
@@ -10351,7 +10351,7 @@ Obtains the icon path of a text menu item.
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the icon path of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
 
 **Returns**
 
@@ -10403,7 +10403,7 @@ Obtains the shortcut hint for a text menu item, for example, the shortcut hint f
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the shortcut hint of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
 
 **Returns**
 
@@ -10775,7 +10775,7 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create();
 
 **Description**
 
-Creates a custom text selection menu.
+Creates a custom text selection menu object.
 
 **Since**: 22
 
