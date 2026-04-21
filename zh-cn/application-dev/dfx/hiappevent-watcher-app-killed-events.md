@@ -86,12 +86,12 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | HighTemperature               | 温度超限。                           |
 | TransientTaskTimeout          | 短时任务超时6s并且处于后台。                 |
 | TooManyReadyThreads           | 就绪线程过多。                          |
-| JsHeapSleepCleanKill          | sleep状态（夜间充电）进行js heapsize检测，超限后查杀                 |
+| JsHeapSleepCleanKill          | sleep状态（夜间充电）进行js heapsize检测，超限后终止应用。                |
 | HardwareDecodingResourcesLimit | 硬件解码资源限制。                        |
 | AppRecoveryNotifyAppOverLimit | 应用恢复通知应用超限。                      |
 | GpuError                      | GPU错误。                           |
 | NotAttachedToStatusBar        | 未附加到状态栏。                         |
-| CPUHighload                   | 应用后台CPU高负载，系统自动杀死。              |
+| CPUHighload                   | 应用后台CPU高负载，系统自动终止应用。              |
 | AshmemKiller                  | 整机低内存，单进程ASHMEM内存超限。                       |
 | GpuKiller                     | 整机低内存，单进程GPU占用达到阈值。                      |
 | DmaKiller                     | 整机低内存，单进程Dma占用达到阈值。                      |
