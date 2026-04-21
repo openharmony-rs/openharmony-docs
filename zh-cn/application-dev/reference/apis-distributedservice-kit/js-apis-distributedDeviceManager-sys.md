@@ -261,13 +261,13 @@ ArkTS-Dyn示例：
 
   try {
     /*
-      action = 0 - 允许授权
-      action = 1 - 取消授权
-      action = 2 - 授权框用户操作超时
-      action = 3 - 取消pin码框展示
-      action = 4 - 取消pin码输入框展示
-      action = 5 - pin码输入框确定操作
-    */
+     * action = 0 - 允许授权
+     * action = 1 - 取消授权
+     * action = 2 - 授权框用户操作超时
+     * action = 3 - 取消pin码框展示
+     * action = 4 - 取消pin码输入框展示
+     * action = 5 - pin码输入框确定操作
+     */
     let operation = 0;
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.replyUiAction(operation, 'extra');
@@ -284,13 +284,13 @@ ArkTS-Sta示例：
 
   try {
     /*
-      action = 0 - 允许授权
-      action = 1 - 取消授权
-      action = 2 - 授权框用户操作超时
-      action = 3 - 取消pin码框展示
-      action = 4 - 取消pin码输入框展示
-      action = 5 - pin码输入框确定操作
-    */
+     * action = 0 - 允许授权
+     * action = 1 - 取消授权
+     * action = 2 - 授权框用户操作超时
+     * action = 3 - 取消pin码框展示
+     * action = 4 - 取消pin码输入框展示
+     * action = 5 - pin码输入框确定操作
+     */
     let operation : int = 0;
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.replyUiAction(operation, 'extra');
@@ -386,7 +386,7 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 
   | 参数名      | 类型                             | 必填 | 说明                            |
   | -------- | ------------------------------------ | ---- | ------------------------------ |
-  | callback | Callback&lt;[ReplyResult](#ReplyResult23)&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
+| callback | Callback&lt;[ReplyResult](#replyresult23)&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
 
 **错误码：**
 
@@ -487,7 +487,7 @@ offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
 
 | 参数名      | 类型                              | 必填 | 说明                            |
 | -------- | ------------------------------------- | ---- | ---- | 
-| callback | Callback&lt;[ReplyResult](#ReplyResult23)&gt; | 否   | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
+| callback | Callback&lt;[ReplyResult](#replyresult23)&gt; | 否   | 指示要取消注册的设备管理器 UI 状态，返回UI状态。 |
 
 **错误码：**
 
