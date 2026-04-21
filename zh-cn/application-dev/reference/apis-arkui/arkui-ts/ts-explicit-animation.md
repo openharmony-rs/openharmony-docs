@@ -20,6 +20,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型          | 只读 | 可选 |    说明                                       |
 | ---------- | ---------------|---------- | -------------- | ---------------------------------------- |
 | duration   | number         |  否  | 是 | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明**：1. API版本26.0.0之前，在ArkTS卡片上最大动画持续时间为1000毫秒，若超出则固定为1000毫秒。从API版本26.0.0开始，在ArkTS卡片上最大动画持续时间调整为2000毫秒。<br/>2. 可以通过在持续时间为0的动画闭包函数中改变属性，以实现停止该属性动画的效果。<br/>3. 设置小于0的值时按0处理。<br/>4. 设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。<br/>5. curve配置[springMotion](../js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](../js-apis-curve.md#curvesresponsivespringmotion9)、[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)曲线时，duration不生效。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
