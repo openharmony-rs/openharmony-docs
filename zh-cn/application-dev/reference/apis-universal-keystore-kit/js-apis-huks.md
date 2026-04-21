@@ -1664,8 +1664,8 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020<sup>26+</sup> | the provider operation failed. |
-| 12000024<sup>26+</sup> | the provider or Ukey is busy. |
+| 12000020 | the provider operation failed. |
+| 12000024 | the provider or Ukey is busy. |
 
 **示例：**
 
