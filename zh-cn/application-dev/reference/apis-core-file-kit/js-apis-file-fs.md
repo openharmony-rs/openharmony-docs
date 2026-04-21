@@ -4728,7 +4728,9 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 
 可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4775,12 +4777,13 @@ let options: ListFileExtOptions = {
   fileFilter: filter
 };
 fileIo.listFileExt(pathDir, options).then((filenames: Array<string>) => {
-  console.info("listFileExt succeed");
+  console.info(`Succeeded in listing file.`);
   for (let i = 0; i < filenames.length; i++) {
-    console.info("filename: %s", filenames[i]);
+    console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
   }
-}).catch((err: BusinessError) => {
-  console.error("listFileExt failed with error message: " + err.message + ", error code: " + err.code);
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -4792,7 +4795,9 @@ listFileExtSync(path: string, options?: ListFileExtOptions): string[]
 
 可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4840,13 +4845,13 @@ let options: ListFileExtOptions = {
 };
 try {
   let filenames = fileIo.listFileExtSync(pathDir, options);
-  console.info("listFileExtSync succeed");
+  console.info(`Succeeded in listing file.`);
   for (let i = 0; i < filenames.length; i++) {
-    console.info("filename: %s", filenames[i]);
+    console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
   }
-} catch (err) {
-  let error = err as BusinessError;
-  console.error("listFileExtSync failed with error message: " + error.message + ", error code: " + error.code);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -9165,11 +9170,9 @@ open接口flags参数常量。文件打开标签。
 
 文件名过滤器接口，可通过该接口自定义文件名过滤规则。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.FileManagement.File.FileIO
+**ArkTS-Sta起始版本**：26.0.0
 
 ### filter
 
@@ -9180,6 +9183,14 @@ filter(name: string): boolean
 > **说明**：
 >
 > 该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **参数：**
 
@@ -9361,7 +9372,9 @@ filter(name: string): boolean
 
 可选项类型，支持listFileExt接口使用。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
