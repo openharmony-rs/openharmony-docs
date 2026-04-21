@@ -793,7 +793,9 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
 > **说明：**
 >
-> 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+> 1.本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+>
+> 2.水印图片会以平铺方式重复覆盖整个应用界面。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1276,6 +1278,126 @@ try {
   console.error(`Failed to uninstall enterprise re signature certificate.
     Code: ${err.code}, message: ${err.message}`);
 };
+```
+
+## securityManager.setScreenWatermarkImage
+
+setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
+
+设置屏幕水印策略，对所有用户生效。
+
+> **说明：**
+>
+> 1.屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
+>
+> 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+
+**起始版本**：26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 图像对象。图片宽度不超过设备屏幕宽度的两倍，图片高度不超过设备屏幕高度的两倍。图片像素占用大小不得超过128MB。图片像素占用大小计算公式：图片宽度(像素)×图片高度(像素)×每个像素占用的字节数（通常为4）。例如：一张100×100的图片，像素占用大小为100×100×4=40000字节。对于1920×1080分辨率的屏幕，若使用相同分辨率的图片，像素占用大小为1920×1080×4=8294400字节（约7.9MB）。                                                       |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { common, Want } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 此处'test.png'仅作示例，请开发者自行替换
+const path: string = context.filesDir + "/test.png";
+// 创建ImageSource
+const imageSource: image.ImageSource = image.createImageSource(path);
+// 创建PixelMap
+imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+  try {
+    securityManager.setScreenWatermarkImage(wantTemp, pixelMap);
+    console.info(`Succeeded in setting screen watermark image.`);
+  } catch(err) {
+    console.error(`Failed to set screen watermark image. Code: ${err.code}, message: ${err.message}`);
+  }
+}).catch((err: Error) => {
+  console.error(`Failed to create PixelMap. message: ${err.message}`);
+});
+```
+
+## securityManager.cancelScreenWatermarkImage
+
+cancelScreenWatermarkImage(admin: Want): void
+
+取消屏幕水印策略，对所有用户生效。
+
+**起始版本**：26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。        |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+    securityManager.cancelScreenWatermarkImage(wantTemp);
+    console.info(`Succeeded in canceling screen watermark image.`);
+} catch(err) {
+    console.error(`Failed to cancel screen watermark image. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## CertBlob
