@@ -5554,3 +5554,17 @@ Allows an application to query the properties of local education space accounts.
 **Supported devices**: tablets
  	 
 **Since**: 23
+
+## ohos.permission.RESTORE_END_NOTIFICATION
+
+Allows a system application to subscribe to the restore end event of the backup framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**since**: 23
