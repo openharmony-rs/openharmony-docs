@@ -407,6 +407,7 @@ let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
+// 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1", "bundleName2"],
 }
@@ -425,6 +426,7 @@ let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
+// 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1", "bundleName2"],
 }
