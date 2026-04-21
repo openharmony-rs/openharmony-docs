@@ -38,7 +38,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 要加载的Ability信息。 |
-| options | [SecurityUIExtensionOptions](#securityuiextensionoptions26) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
+| options | [SecurityUIExtensionOptions](#securityuiextensionoptions) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
 
 ## SecurityUIExtensionOptions
 
