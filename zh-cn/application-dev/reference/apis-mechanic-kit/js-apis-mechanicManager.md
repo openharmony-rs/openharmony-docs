@@ -308,7 +308,7 @@ isControlSupported(mechDeviceType?: MechDeviceType): boolean
 ```ts
 console.info('Check whether control is supported');
 let isSupported = mechanicManager.isControlSupported(mechanicManager.MechDeviceType.GIMBAL_DEVICE);
-console.info(`'isSupported:' ${isSupported}`);
+console.info(`isSupported: ${isSupported}`);
 ```
 
 ## MechInfo
