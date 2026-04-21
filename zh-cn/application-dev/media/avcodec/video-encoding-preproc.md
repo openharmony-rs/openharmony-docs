@@ -1,0 +1,265 @@
+# 编码支持前处理开发指南
+
+从API version 26.0.0开始，支持编码前处理功能。
+
+## 1. 功能概述
+
+编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的主编码器或者通过`OH_VideoEncoder_CreateSecondaryFromPrimary`创建的副编码器支持以下三种前处理功能：
+
+| 功能 | 说明 | 典型场景 | 引入版本 |
+|------|------|----------|--------|
+| **降采样（Downsampling）** | 将高分辨率帧缩放到低分辨率后送入编码器 | 低分辨率编码输出 | 26.0.0 |
+| **裁剪（Crop）** | 从原始画面中提取指定矩形区域进行编码 | ROI 区域关注、局部特写 | 26.0.0 |
+| **丢帧（Drop Frame）** | 按目标帧率选择性丢弃输入帧 | 降低带宽占用、自适应码率 | 26.0.0 |
+
+> **互斥规则**：降采样参数与裁剪参数**不能同时使用**。丢帧可与降采样或裁剪**组合使用**。
+
+
+## 2. 使用场景
+
+### 场景一：低分辨率编码输出
+
+- 通过降采样缩放到低分辨率编码输出
+
+### 场景二：ROI 区域关注编码
+
+- 对大尺寸摄像头画面使用**裁剪**功能，仅提取感兴趣区域进行编码
+- 可配合一入二出实现：主路全帧归档 + 副路 ROI 裁剪区域实时分析
+
+### 场景三：自适应码率（ABR）
+
+- 网络正常时：不丢帧或轻度丢帧，保证画质
+- 网络拥堵时：通过 `SetParameter` 动态加大丢帧力度，降低输出帧率以节省带宽
+- 网络恢复后：将丢帧目标设为 `0.0` 取消丢帧
+
+## 3. 约束与限制
+
+### 3.1 基本约束
+
+| 约束项 | 说明 |
+|--------|------|
+| **支持的 MIME 类型** | 和普通编码器支持范围一致，可通过 `OH_AVCapability_GetVideoEncoderCapability` 查询指定 MIME 类型的详细能力信息 |
+| **创建方式** | 必须通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建，不支持普通创建方式 |
+| **数据通路** | **仅支持 Surface 异步模式**，Buffer 模式和同步模式均不支持（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
+| **随帧参数** | 不支持 `RegisterParameterCallback` 接口（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
+
+### 3.2 降采样（Downsampling）约束
+
+| 序号 | 约束规则 |
+|------|----------|
+| 1 | **必须成对配置**：宽度和高度必须同时配置或同时设置。若仅配置其中一个，Configure/SetParameter 将返回 `AV_ERR_INVALID_VAL` |
+| 2 | **禁用条件**：当宽度与高度均配置为合法的零值时，降采样功能被禁用 |
+| 3 | **有效范围**：当宽度与高度在支持的范围内时，降采样功能被启用。建议通过 `OH_AVCapability_IsVideoSizeSupported` 接口查询支持的降采样范围 |
+| 4 | **越界处理**：当宽度或高度不在支持范围内时，Configure/SetParameter 返回 `AV_ERR_INVALID_VAL` |
+| 5 | **与裁剪互斥**：不能与裁剪参数（`CROP_LEFT/TOP/RIGHT/BOTTOM`）同时使用。若同时设置了降采样和裁剪参数，返回 `AV_ERR_INVALID_VAL` |
+
+### 3.3 裁剪（Crop）约束
+
+坐标系统说明：
+- `(left, top)` 为裁剪矩形的左上角坐标
+- `(right, bottom)` 为裁剪矩形的右下角坐标
+- 行/列索引从 **0** 开始
+- **裁剪区域宽度 = right - left + 1**
+- **裁剪区域高度 = bottom - top + 1**
+
+| 序号 | 约束规则 |
+|------|----------|
+| 1 | **必须完整配置**：left、top、right、bottom 四个参数必须同时配置。若仅配置其中部分参数，返回 `AV_ERR_INVALID_VAL` |
+| 2 | **禁用条件**：当 left、top、right、bottom **全部为 0** 时，裁剪功能被禁用 |
+| 3 | **有效范围**：当裁剪的宽度、高度在支持的范围内时，裁剪功能被启用。建议通过 `OH_AVCapability_IsVideoSizeSupported` 查询支持的裁剪范围 |
+| 4 | **越界处理**：当裁剪值不在支持范围内时，返回 `AV_ERR_INVALID_VAL` |
+| 5 | **与降采样互斥**：不能与降采样参数（`DOWNSAMPLING_WIDTH/HEIGHT`）同时使用。若同时设置，返回 `AV_ERR_INVALID_VAL` |
+| 6 | **行为效果**：裁剪启用时，编码器仅对输入帧的裁剪区域进行编码，裁剪矩形之外的内容将被丢弃 |
+
+### 3.4 丢帧（Drop Frame）约束
+
+| 序号 | 约束规则 |
+|------|----------|
+| 1 | **前置条件**：调用方必须已设置原始帧率（`OH_MD_KEY_FRAME_RATE`） |
+| 2 | **精度要求**：数值精度保留到小数点后 **2 位**（采用**四舍五入**方式） |
+| 3 | **值为 0.0**：丢帧功能被禁用 |
+| 4 | **合法正值**：设置为大于 0 且小于原始帧率的正数时，将按设定帧率进行丢帧 |
+| 5 | **非法值**：设置为负数或大于等于原始帧率的值时，返回 `AV_ERR_INVALID_VAL` |
+| 6 | **可组合性**：可与降采样参数**同时使用** |
+| 7 | **可组合性**：可与裁剪参数**同时使用** |
+
+## 4. 开发步骤
+
+支持前处理编码和普通编码器的使用流程一致，主要差异点主要有创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考[视频编码Surface模式](video-encoding.md#surface模式)
+
+### Step 1：创建支持前处理的编码器
+```cpp
+OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
+if (capability == nullptr) {
+    return -1; // 获取能力失败，可能是不支持的MIME类型
+}
+
+OH_AVCodec *encoder = nullptr;
+OH_AVErrCode ret = OH_VideoEncoder_CreatePrimaryWithPreproc(
+    OH_AVCODEC_MIMETYPE_VIDEO_AVC,
+    &encoder        // 输出编码器句柄，不可为 NULL
+);
+if (ret != AV_ERR_OK || encoder == nullptr) {
+    // 异常处理
+    return -1;
+}
+```
+
+### Step 2：注册回调
+
+参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
+
+### Step 3：配置编码参数与前处理参数
+
+编码器参数配置[视频编码Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
+
+```cpp
+OH_AVFormat *format = OH_AVFormat_Create();
+
+// ===== 基础编码参数（必填）=====
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920);         // 输入宽度（像素）
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080);        // 输入高度（像素）
+OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 原始帧率（丢帧功能的前置依赖）
+
+// ===== 前处理参数（按需选用）=====
+// --- 方案 A：降采样示例 ---
+// 将 1920x1080 缩放到 640x360 后编码
+// 注意：width 和 height 必须成对出现！
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH, 640);
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT, 360);
+
+// --- 方案 B：裁剪示例 ---
+// 从 1920x1080 中裁剪中心 1280x720 区域
+// 注意：left/top/right/bottom 必须全部同时出现！
+// int left = 320, top = 180, right = 1599, bottom = 899;  // 宽=1599-320+1=1280, 高=899-180+1=720
+// OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT, 320);
+// OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_TOP, 180);
+// OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT, 1599);
+// OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM, 899);
+
+// --- 方案 C：丢帧示例 ---
+// 从 30fps 降到 15fps（可单独使用或与降采样/裁剪组合）
+// OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
+
+// 执行配置
+ret = OH_VideoEncoder_Configure(encoder, format);
+if (ret != AV_ERR_OK) {
+    // 常见错误：
+    // AV_ERR_INVALID_VAL:
+    //   - 降采样/裁剪参数不完整（未成对/未成组配置）
+    //   - 参数越界（不在支持的范围内）
+    //   - 降采样与裁剪同时设置（二者互斥）
+    //   - 丢帧目标帧率为负数或 >= 原始帧率
+    OH_AVFormat_Destroy(format);
+    return -1;
+}
+OH_AVFormat_Destroy(format);
+```
+
+### Step 4：获取 Surface
+
+```cpp
+// ⚠️ 关键：只能通过主编码器句柄获取 Surface！
+OHNativeWindow *window = nullptr;
+ret = OH_VideoEncoder_GetSurface(encoder, &window);
+if (ret != AV_ERR_OK || window == nullptr) {
+    // 异常处理
+    return -1;
+}
+
+// 将 window 绑定到 Camera / XComponent 等数据源
+// 例如：cameraManager->SetPreviewSurface(window)
+//       nativeXComponent->SetSurface(window)
+```
+
+> **重要规则**：
+> - **仅主编码器**可以调用 `GetSurface`，副编码器调用将返回 `AV_ERR_OPERATE_NOT_PERMIT`
+> - 对于一入二出场景，只需获取一次 Surface 即可（主/副共享同一输入源）
+
+### Step 5：准备、启动、写入编码图像
+参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤7、8、10。
+
+### Step 6：运行时动态调整（可选）
+
+可通过 `SetParameter` 在运行时动态修改前处理参数：
+
+```cpp
+// 动态调整丢帧目标帧率（例如响应网络状态变化）
+// 网络拥堵：AdjustDropFrameRate(encoder, 10.0);   // 大幅丢帧
+// 网络恢复：AdjustDropFrameRate(encoder, 0.0);     // 取消丢帧
+void AdjustDropFrameRate(OH_AVCodec *enc, double targetFps)
+{
+    OH_AVFormat *param = OH_AVFormat_Create();
+    if (targetFps > 0) {
+        OH_AVFormat_SetDoubleValue(param,
+            OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, targetFps);
+    } else {
+        // 设置为 0.0 以禁用丢帧
+        OH_AVFormat_SetDoubleValue(param,
+            OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 0.0);
+    }
+    OH_VideoEncoder_SetParameter(enc, param);
+    OH_AVFormat_Destroy(param);
+}
+
+// 动态调整降采样目标尺寸
+void AdjustDownsampling(OH_AVCodec *enc, int newWidth, int newHeight)
+{
+    OH_AVFormat *param = OH_AVFormat_Create();
+    OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH, newWidth);
+    OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT, newHeight);
+    OH_VideoEncoder_SetParameter(enc, param);
+    OH_AVFormat_Destroy(param);
+}
+```
+其他编码器仍可动态配置，参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤9。
+
+### Step 7：通知编码结束、释放编码帧、销毁编码器
+和普通编码器一致，参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤12、13、17。
+
+## 5. GetInputDescription 查询
+
+启用前处理后，可通过 `GetInputDescription` 查询预处理后的实际输入信息及配置参数：
+
+```cpp
+OH_AVFormat *inputDesc = OH_VideoEncoder_GetInputDescription(encoder);
+if (inputDesc != nullptr) {
+    int32_t originWidth = 0, originHeight = 0;
+    OH_AVFormat_GetIntValue(inputDesc, OH_MD_KEY_WIDTH, &originWidth);
+    OH_AVFormat_GetIntValue(inputDesc, OH_MD_KEY_HEIGHT, &originHeight);
+
+    // 可查询当前生效的前处理配置参数
+    int32_t dsWidth = 0;
+    if (OH_AVFormat_GetIntValue(inputDesc,
+        OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH, &dsWidth)) {
+        // 降采样已启用
+    }
+}
+```
+
+## 6. API 参考
+### 标准编解码 API 可用性
+
+对于通过 `CreatePrimaryWithPreproc` 创建的编码器，以下标准 API 的可用性如下：
+
+| 接口 | 是否可用 | 备注 |
+|------|:--------:|------|
+| `RegisterCallback` | ✅ | 推荐（SetCallback 已废弃） |
+| `RegisterParameterCallback` | ❌ | 返回 AV_ERR_OPERATE_NOT_PERMIT |
+| `Configure` | ✅ | 含前处理参数 |
+| `Prepare` | ✅ | 准备内部资源 |
+| `GetSurface` | ✅（仅主编码器） | 副编码器调用返回 NOT_PERMIT |
+| `Start` | ✅ | |
+| `Stop` | ✅ | |
+| `Flush` | ✅ | |
+| `Reset` | ✅ | 重置到 Initialized 状态 |
+| `SetParameter` | ✅ | 运行时动态调整前处理等参数 |
+| `NotifyEndOfStream` | ✅ | Surface 模式专用 |
+| `FreeOutputBuffer` | ✅ | 回调中必须调用 |
+| `GetInputDescription` | ✅ | 包含前处理元数据 |
+| `GetOutputDescription` | ✅ | |
+| `IsValid` | ✅ | |
+| `Destroy` | ✅ | 销毁编码器实例 |
+| `PushInputData/PushInputBuffer` | ❌ | Buffer 模式不支持 |
+| `QueryInputBuffer/QueryOutputBuffer` | ❌ | 同步模式不支持 |
+
