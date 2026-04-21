@@ -89,7 +89,7 @@ struct rotation {
 }
 ```
 
-Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add processing logic to the [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) method in the **EntryAbility.ets** file to obtain the display orientation of the screen.
+Listen for the **windowSizeChange** event to manage the transitions. For example, you can add processing logic to the [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) method in the **EntryAbility.ets** file to obtain the display orientation of the screen.
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript

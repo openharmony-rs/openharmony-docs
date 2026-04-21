@@ -61,7 +61,7 @@ struct demo {
 
 ### External Keyboard Navigation
 
-When a physical keyboard is connected, users can use **Tab**, **Shift+Tab**, or arrow keys to navigate focus. When focus moves to an input field, the physical keyboard's floating toolbar appears. For details, see [Focus Traversal Guidelines](./arkts-common-events-focus-event.md#focus-traversal-guidelines).
+When a physical keyboard is connected, users can use **Tab**, **Shift+Tab**, or arrow keys to navigate focus. When focus moves to a input field, the physical keyboard's floating toolbar appears. For details, see [Focus Traversal Guidelines](./arkts-common-events-focus-event.md#focus-traversal-guidelines).
 
 The following example demonstrates focus navigation with a connected physical keyboard. Repeatedly pressing the **Tab** key cycles focus among the three page components. Focus transitions are visually indicated by the **Text** component's blue border and the **TextInput** component's blinking cursor. When the **TextInput** component gains focus, the cursor appears and the physical keyboard's floating toolbar is displayed.
 
@@ -85,7 +85,7 @@ struct Index {
   }
 }
 ```
-
+![keyboard_textInput_tab](figures/keyboard_textInput_tab.gif)
 
 ## Hiding the Soft Keyboard
 
@@ -236,12 +236,12 @@ struct demo_text_1 {
 Route configuration:
 
 Add the route table configuration to the **module.json5** file of the redirection target module.
-```json
+```json5
 {
   "module": {
-    //...
+    // ...
     "routerMap": "$profile:route_map",
-    //...
+    // ...
   }
 }
 
@@ -249,7 +249,7 @@ Add the route table configuration to the **module.json5** file of the redirectio
 
 Create the **route_map.json** file in the **resources/base/profile** directory of the project. Add the following configuration information:
 
-```json
+```json5
 // route_map.json
 {
   "routerMap": [
@@ -270,16 +270,18 @@ You can use [TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-comp
 
 The following example shows how to hide the soft keyboard using the [TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8).
 
-```ts
-@Entry
-@Component
-struct demo {
+<!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
+
+``` TypeScript
+struct textInputControllerCloseKeyboard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   build() {
+    NavDestination() {
     Column({ space: 30 }) {
-      Button('Dismiss Keyboard').onClick(() => {
+      // Replace $r('app.string.close_keyboard') with the actual resource file. In this example, the value in the resource file is "close keyboard."
+      Button($r('app.string.close_keyboard')).onClick(() => {
         this.controller.stopEditing()
       })
       TextInput({ controller: this.controller, text: this.inputValue })
@@ -288,6 +290,7 @@ struct demo {
     .height('100%')
     .margin('10%')
     .justifyContent(FlexAlign.Center)
+    }
   }
 }
 ```
@@ -302,24 +305,28 @@ Focus transfer can be controlled programmatically using [requestFocus](../refere
 Compared with using text input controllers to exit edit mode, focus transfer offers better scalability for pages with multiple input fields, eliminating the need for configuring individual controllers for each text input.
 
 The following example demonstrates keyboard dismissal by transferring focus to a button using [requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9):
-``` ts
-@Entry
-@Component
-struct TextInputExample {
+
+<!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
+
+``` TypeScript
+struct requestFocusCloseKeyBoard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   build() {
+    NavDestination() {
     Column({ space: 20 }) {
-      Button('change focus').onClick(() => {
-        this.getUIContext().getFocusController().requestFocus("button")
-      }).id("button")
+      // Replace $r('app.string.button_get_focus') with the actual resource file. In this example, the value in the resource file is "Focused."
+      Button($r('app.string.button_get_focus')).onClick(() => {
+        this.getUIContext().getFocusController().requestFocus('button')
+      }).id('button')
       TextInput({ controller: this.controller, text: this.inputValue })
     }
     .justifyContent(FlexAlign.Center)
     .height('100%')
     .width('80%')
     .margin('10%')
+  }
   }
 }
 ```
@@ -365,7 +372,7 @@ struct Index {
 
 ## FAQs
 
-You may encounter specific scenarios or customization requirements when working with soft keyboards. This section addresses common challenges to help you better manage the keyboard behavior.
+You may encounter specific scenarios or customization requirements when working with soft keyboards. This section addresses common challenges to help you better manage keyboard behavior.
 
 ### Preventing Soft Keyboard Display When the Text Input Field Gains Focus
 

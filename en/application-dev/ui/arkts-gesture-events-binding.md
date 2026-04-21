@@ -57,7 +57,7 @@ For example, you can use it to bind the tap gesture to the **Text** component.
 
 The **priorityGesture** API binds gestures that are preferentially recognized to a component.
 
-By default, the child component preferentially recognizes the gesture specified by **gesture**, and the parent component preferentially recognizes the gesture specified by **priorityGesture** (if set).
+By default, when the parent and child components are bound to the same gesture type using **gesture**, the child component's gesture is preferentially recognized. and the parent component preferentially recognizes the gesture specified by **priorityGesture** (if set).
 
 For components bound with a long press gesture, you can set the minimum trigger duration using [duration](../reference/apis-arkui/arkui-ts/ts-gesturehandler.md#longpressgesturehandleroptions). When a long press gesture is triggered, the system prioritizes responding to the component with the shortest long press trigger time, ignoring the **priorityGesture** setting.
 

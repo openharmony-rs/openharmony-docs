@@ -140,7 +140,7 @@ build() {
 
 ## Dynamically Adjusting the Column Count
 
-Dynamically adjusting the column count allows applications to switch between list and waterfall flow modes or adapt to screen width changes. For faster transitions, use the sliding window layout mode.
+Dynamically adjusting the column count allows applications to switch between list and waterfall flow modes or adapt to screen width changes. To dynamically set the number of columns, you are advised to use the waterfall moving window layout mode, that is, set the value to **SLIDING_WINDOW** in [WaterFlowLayoutMode](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowlayoutmode12). This can implement faster column conversion.
 
 <!-- @[waterFlowDynamicSwitchover_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowDynamicSwitchover.ets) -->
 
