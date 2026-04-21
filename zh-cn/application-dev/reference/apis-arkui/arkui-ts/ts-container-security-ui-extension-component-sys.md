@@ -8,7 +8,7 @@
 
 SecurityUIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI，展示的内容在另一个进程中运行，本应用并不参与其中的布局和渲染。
 
-支持Caller身份转发能力，允许被拉起的Ability使用当前应用（Caller方）的身份进行跨进程调用，从而实现权限的传递与共享。
+支持[Caller](../../apis-ability-kit/js-apis-app-ability-uiAbility.md#caller)身份转发能力，允许被拉起的Ability使用当前应用的身份进行跨进程调用，从而实现权限的传递与共享。
 
 > **说明：**
 >
