@@ -162,6 +162,7 @@ Toast的选项。
 | shadow<sup>12+</sup>    | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是  | Toast的背板阴影。<br/>默认值：ShadowStyle.OUTER_DEFAULT_MD<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | enableHoverMode<sup>14+</sup>    | boolean                       | 否   | 是  | 是否响应悬停态，值为true时，响应悬停态。<br/>默认值：false，默认不响应。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | hoverModeArea<sup>14+</sup> | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14)         | 否   | 是  | 响应悬停态时，弹窗的显示区域。<br/>默认值：HoverModeAreaType.BOTTOM_SCREEN，默认显示在下半屏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。         |
+| systemMaterial |  [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  |设置组件的系统材质。<br/>默认值：undefined，不设置任何材质效果。 <br/>**说明：**不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## ToastShowMode<sup>11+</sup>
 
