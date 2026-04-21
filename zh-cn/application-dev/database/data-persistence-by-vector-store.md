@@ -197,6 +197,7 @@ SQL语句中的函数，如下所示：
    context为应用的上下文信息，此处获取方式仅为示例，开发者可以根据自己的需求获取上下文信息。当前获取方式是通过UIAbility在Index.ets页面获取。
    <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/Index.ets)--> 
    ``` TypeScript
+   /* context为应用的上下文信息，此处获取方式仅为示例。 */
    const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
    ```
 
@@ -206,11 +207,10 @@ SQL语句中的函数，如下所示：
    const STORE_CONFIG :relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
-     vector: true // 可选参数，该参数为true时才可以使用向量数据库。
+     vector: true // 可选参数，该参数为true时才可以使用向量数据库
    };
    // ...
      try {
-       /* context为应用的上下文信息，此处获取方式仅为示例。 */
        store = await relationalStore.getRdbStore(context, STORE_CONFIG);
        // 建表语句，floatvector(2)代表repr的维度是2
        const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
