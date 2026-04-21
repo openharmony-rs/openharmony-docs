@@ -16,5 +16,4 @@ The module provides audio-related C APIs.
 
 | Name| Description|
 | -- | -- |
-| [native_audio_converter.h](capi-native-audio-converter-h.md) | Defines the bottom-layer data structures and format conversion APIs for the input and output audio formats.|
-<!--no_check-->
+| [native_audio_converter.h](capi-native-audio-converter-h.md) | Declares the underlying data structures for input and output audio formats and the definitions of format conversion APIs.|
