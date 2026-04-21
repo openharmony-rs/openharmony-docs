@@ -1311,6 +1311,8 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-resource.md	@fangzhiyua
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-shape.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-theme.md	@gouyuanyuan	@Brilliantry_Rui @fangzhiyuan1
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-UIContext-sys.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension-sys.md @chbchb12 @stupidb @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension.md @chbchb12 @stupidb @ge-yafang
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-xcomponentNode.md	@dutie123	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-curve.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-font.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
@@ -1331,6 +1333,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-system-prompt.md	@houguobiao	
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-router.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance-sys.md	@gouyuanyuan	@Brilliantry_Rui @fangzhiyuan1
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance.md	@gouyuanyuan	@Brilliantry_Rui @fangzhiyuan1
+zh-cn/application-dev/reference/apis-arkui/js-apis-uiExtensionHost-sys.md @chbchb12 @stupidb @ge-yafang
 zh-cn/application-dev/reference/apis-arkui/Readme-CN.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md	@shiyu_huang	@zhangwenhan12	 @Brilliantry_Rui
