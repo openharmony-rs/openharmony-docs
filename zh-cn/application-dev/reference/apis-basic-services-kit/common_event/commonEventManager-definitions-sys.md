@@ -455,7 +455,6 @@
 
 **取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
 
-
 ## Telephony Kit
 
 ### COMMON_EVENT_SMS_RECEIVE_COMPLETED<sup>10+</sup>
