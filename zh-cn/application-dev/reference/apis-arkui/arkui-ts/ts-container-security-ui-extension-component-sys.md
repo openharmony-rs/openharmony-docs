@@ -27,11 +27,11 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 创建SecurityUIExtensionComponent组件，用于嵌入显示远程UIExtensionAbility提供的UI。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -60,11 +60,11 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 定义SecurityUIExtensionComponent内容分辨率跟随策略的枚举。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -85,11 +85,11 @@ onRemoteReady(callback: Callback\<SecurityUIExtensionProxy\>)
 
 UIExtensionAbility连接完成时触发的回调，使用callback异步回调。之后可通过返回的[SecurityUIExtensionProxy](#securityuiextensionproxy)向被拉起的Ability发送数据。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -103,11 +103,11 @@ onReceive(callback: Callback\<Record\<string, Object\>\>)
 
 收到被拉起的Ability发送的数据时触发的回调。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -121,11 +121,11 @@ onError(callback: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#
 
 被拉起的Ability扩展在运行过程中发生异常时触发本回调（不包含与UIExtensionAbility断开连接场景）。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -139,11 +139,11 @@ onTerminated(callback: Callback\<TerminationInfo>)
 
 当被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发此回调函数。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -155,11 +155,11 @@ onTerminated(callback: Callback\<TerminationInfo>)
 
 用于表示被拉起的UIExtensionAbility正常退出时的返回结果。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -176,11 +176,11 @@ send(data: Record\<string, Object\>): void
 
 用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据，提供异步发送能力。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -194,11 +194,11 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 用于在双方建立连接成功后，组件使用方被拉起的Ability发送数据，提供同步发送能力。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -227,11 +227,11 @@ on(type: 'asyncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>
 
 订阅被拉起的Ability发生异步注册的回调。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -246,11 +246,11 @@ on(type: 'syncReceiverRegister', callback: Callback\<SecurityUIExtensionProxy\>)
 
 订阅被拉起的Ability发生同步注册的回调。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -265,11 +265,11 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy
 
 取消订阅被拉起的Ability发生异步注册的回调。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
@@ -284,11 +284,11 @@ off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\
 
 取消订阅被拉起的Ability发生同步注册后触发的回调。
 
+**起始版本：** 26.0.0
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26
 
 **参数：**
 
