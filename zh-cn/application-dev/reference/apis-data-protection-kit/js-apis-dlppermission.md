@@ -1506,11 +1506,9 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| requestId | string | 是 | SA（System Ability）侧传递的本次请求的标识。可取任意值。|
-| requestId | string | 是 | SA（System Ability）侧传递的本次请求的标识。|
-| requestData | string | 是 | SA（System Ability）侧传递的数据。|
-| callback | Callback\<string\>| 是 | SA（System Ability）侧传递的接口，用于回调。 |
-| callback | Callback\<string\>| 是 | SA（System Ability）侧传递的接口，用于回调。可取任意值。 |
+| requestId | string | 是 | SA（System Ability）侧传递的本次请求的标识。无范围限制。|
+| requestData | string | 是 | SA（System Ability）侧传递的数据。无范围限制。|
+| callback | Callback\<string\>| 是 | SA（System Ability）侧传递的接口，用于回调。无范围限制。 |
 
 **错误码：**
 
