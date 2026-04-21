@@ -6690,7 +6690,7 @@ getAttribute(node: FrameNode, nodeType: 'XComponent'): XComponentAttribute | und
 
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
-| XComponentAttribute&nbsp;\|&nbsp;undefined | XComponent节点类型的属性，若获取失败，则返回undefined。 |
+| [XComponentAttribute](./arkui-ts/ts-basic-components-xcomponent.md#属性)&nbsp;\|&nbsp;undefined | XComponent节点类型的属性，若获取失败，则返回undefined。 |
 
 **示例：** 
 
@@ -6805,7 +6805,7 @@ getXComponentAttribute(node: FrameNode): XComponentAttribute | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| XComponentAttribute&nbsp;\|&nbsp;undefined | XComponent节点类型的属性，若获取失败，则返回undefined。 |
+| [XComponentAttribute](./arkui-ts/ts-basic-components-xcomponent.md#属性)&nbsp;\|&nbsp;undefined | XComponent节点类型的属性，若获取失败，则返回undefined。 |
 
 ### FrameNodeOptions<sup>24+</sup>
 
