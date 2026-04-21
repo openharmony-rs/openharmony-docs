@@ -759,7 +759,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to createSoundPool. Code: ${error.code}, message: ${error.message}`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
