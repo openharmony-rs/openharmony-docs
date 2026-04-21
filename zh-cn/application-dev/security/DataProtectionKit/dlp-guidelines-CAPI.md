@@ -6,7 +6,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-数据防泄漏（data loss prevention，DLP）是系统提供的系统级的数据防泄漏解决方案，提供跨设备的文件的权限管理、加密存储、授权访问等能力。
+数据防泄漏（Data Loss Prevention，DLP）是系统提供的系统级的数据防泄漏解决方案，提供跨设备的文件的权限管理、加密存储、授权访问等能力。
 
 - 权限管理：查询当前DLP沙箱的权限信息。
 - 文件信息获取：获取DLP文件的基本信息，如原始文件名。
@@ -14,7 +14,7 @@
 - 配置管理：设置、获取和清理沙箱应用配置信息。
       
 ## 接口说明
-数据防泄漏服务关键接口如下表所示。具体API说明详见API参考。
+数据防泄漏服务关键接口如下表所示。具体API说明详见[API参考](../../reference/apis-data-protection-kit/capi-dlppermissionapi.md)。
 | 名称 | 描述 |
 | -------- | -------- |
 | DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess \*dlpFileAccess, uint32_t \*flags)| 查询当前DLP沙箱的权限信息。 |
@@ -45,7 +45,7 @@
    target_link_libraries(entry PUBLIC libace_napi.z.so libohdlp_permission.so)
    ```
 
-2. 导入数据防泄漏服务的头文件和NAPI相关头文件
+2. 导入数据防泄漏服务的头文件和NAPI相关头文件。
    ``` c++
    #include "napi/native_api.h"
    #include <cstdint>
