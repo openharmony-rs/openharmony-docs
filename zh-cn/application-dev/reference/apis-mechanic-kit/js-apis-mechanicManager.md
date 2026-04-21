@@ -286,7 +286,12 @@ console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 
 isControlSupported(mechDeviceType?: MechDeviceType): boolean
 
-判断当前设备是否支持某类设备的具身控制。
+应用判断当前设备是否支持对特定设备类型的机械体设备控制，以便作出相应的功能选择，
+如是否需要使用APP内部的跟踪控制功能还是使用系统的默认控制功能，或者给予用户相
+应的提示。
+三方厂商APP可以根据此接口判断当前设备是否支持对特定类型的设备的机械控制和
+智能跟踪功能，以决定是否使用自身APP的跟踪控制功能，还是直接使用系统提供的跟
+踪功能，或者给予用户相应的提示。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
