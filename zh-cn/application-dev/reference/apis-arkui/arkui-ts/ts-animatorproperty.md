@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## animation
 
@@ -30,6 +32,12 @@ animation(value:AnimateParam): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[animation<sup>23+</sup>](#animation23)。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
@@ -40,6 +48,37 @@ animation(value:AnimateParam): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
+
+## animation<sup>23+</sup>
+
+animation(value: AnimateParam | undefined): this
+
+设置组件的属性动画。
+
+> **说明：**
+>
+>  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考[动画使用指导-使用renderGroup](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fair-use-animation#section1223162922415)。
+>
+>  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[animation](#animation)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+| 参数名   | 类型                                | 必填 | 说明                                    |
+| ----- | --------------------------------- | ---- | ------------------------------------- |
+| value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| undefined | 是    | 设置动画效果相关参数。                           |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
 
 属性动画只对写在animation前面的属性生效，且对组件构造器的属性不生效。
 
