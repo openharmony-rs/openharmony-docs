@@ -40520,7 +40520,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorObjectPropertyChange.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":59,
 						"name":"wildcard_monitor_object_property_change",
 						"start_line":16
 					}
@@ -40530,7 +40530,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorArrayItemChange.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":91,
 						"name":"wildcard_monitor_array_item_change",
 						"start_line":16
 					}
@@ -40540,7 +40540,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorNestedObjectPropertyChange.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":90,
 						"name":"wildcard_monitor_nested_object_property_change",
 						"start_line":16
 					}
@@ -40550,7 +40550,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorArrayFirstItemChange.ets",
 				"functions":[
 					{
-						"end_line":130,
+						"end_line":136,
 						"name":"wildcard_monitor_array_first_item_change",
 						"start_line":16
 					}
