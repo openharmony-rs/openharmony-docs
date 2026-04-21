@@ -742,13 +742,15 @@ oldHandler = errorManager.setDefaultErrorHandler(errorHandler);
 
 ## errorManager.setDefaultResourceUsageObserver<sup>24+</sup>
 
-setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver;
+setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver
 
 设置资源占用观察者，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。
 
 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
 
 若接口参数为空，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -758,7 +760,7 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
  
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| defaultObserver | [ResourceUsageObserver](#resourceusageobserver24) | 否 | 新注册的资源观察者，缺省时默认值为空。|
+| defaultObserver | [ResourceUsageObserver](#resourceusageobserver24) | 否 | 新注册的资源观察者，默认值为空。|
 
 **返回值**：
 
@@ -912,9 +914,11 @@ type ErrorHandler = (errObject: Error) => void
 
 ## ResourceUsageObserver<sup>24+</sup>
 
-type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, detailInfo?: Record<string, number>) => void;
+type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, detailInfo?: Record<string, number>) => void
 
 定义应用资源使用情况的观察者回调函数，作为[errorManager.setDefaultResourceUsageObserver](#errormanagersetdefaultresourceusageobserver24)的入参，用于监听各类资源占用变化，并支持应用执行自定义资源处理逻辑。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -926,11 +930,13 @@ type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, 
 |--------| ------------- | ---- | --- |
 | resourceType | [ResourceType](#resourcetype24)   | 是   | 表示应用资源超基线的类型。 |
 | resourceSize | number   | 是   | 表示应用资源超基线的资源使用量。 |
-| detailInfo | Record<string, number>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key 为小写内存类型，value 为对应细分项资源大小；<br>细分项的key包含 arkts、native、ion、gpu、ashmem、other。 |
+| detailInfo | Record<string, number>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key为小写内存类型，value为对应细分项资源大小；<br>细分项的key包含arkts、native、ion、gpu、ashmem和other。 |
 
 ## ResourceType<sup>24+</sup>
 
 应用资源超基线的类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
