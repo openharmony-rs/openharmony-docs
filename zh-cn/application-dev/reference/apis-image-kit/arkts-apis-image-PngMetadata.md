@@ -1,0 +1,45 @@
+# Class (PngMetadata)
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+PngMetadata.
+
+PNG图像元数据类，用于存储图像的元数据。
+
+**起始版本：** 26.0.0
+
+## 导入模块
+
+```ts
+import { image } from '@kit.ImageKit';
+```
+
+## 属性
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称                         | 类型   | 只读 | 可选 | 说明                                       |
+| ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
+| xPixelsPerMeter | number | 是   | 是   | PNG图像X方向每米像素数。<br>该值为正整数。 |
+| software | string | 是   | 是   | 用于生成PNG图像的软件名称和版本。 |
+| disclaimer | string | 是   | 是   | PNG图像的免责声明。 |
+| description | string | 是   | 是   | PNG图像的描述。 |
+| copyright | string | 是   | 是   | PNG图像的版权信息。 |
+| interlaceType | number | 是   | 是   | PNG图像的交错模式。<br>- 0表示无交错模式（图像按照从上到下、从左到右的顺序加载）。<br>- 1表示交错模式（通过多次扫描逐步显示图像，图像在加载过程中逐渐清晰）。 |
+| comment | string | 是   | 是   | PNG图像的注释。 |
+| author | string | 是   | 是   | PNG图像的作者。 |
+| creationTime | string | 是   | 是   | PNG图像的创建时间。 |
+| modificationTime | string | 是   | 是   | PNG图像最后一次修改时间。 |
+| gamma | number | 是   | 是   | PNG图像的伽玛值。 |
+| yPixelsPerMeter | number | 是   | 是   | PNG图像Y方向每米像素数。<br>该值为正整数。 |
+| sRGBIntent | number | 是   | 是   | PNG图像的sRGB（standard Red Green Blue，标准红绿蓝）渲染意图。<br>- 0表示感知意图。<br>- 1表示相对比色意图。<br>- 2表示饱和度意图。<br>- 3绝对色度意图。 |
+| title | string | 是   | 是   | PNG图像的标题。 |
+| warning | string | 是   | 是   | PNG图像的警告信息。 |
