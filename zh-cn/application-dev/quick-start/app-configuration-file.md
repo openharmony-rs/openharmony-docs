@@ -61,7 +61,10 @@
       "com.ohos.note"
     ],
     "startMode": "mainTask",
-    "buildVersion": "1.0.0"
+    "buildVersion": "1.0.0",
+    "allowListenBundleChangedEvent": [
+      "5628971256935874952"
+    ]
   }
 }
 ```
