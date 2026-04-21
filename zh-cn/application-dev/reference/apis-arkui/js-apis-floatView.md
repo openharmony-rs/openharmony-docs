@@ -1,4 +1,4 @@
-# @ohos.window.floatView (应用浮窗)
+# @ohos.window.floatView (标准悬浮窗)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
@@ -6,21 +6,35 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-应用浮窗是悬浮在桌面/应用界面上的小型窗口，提供灵活的窗口管理能力。
+标准悬浮窗是悬浮在桌面/应用界面上的小型窗口，提供灵活的窗口管理能力。
 
-本模块提供应用浮窗能力，包括判断设备是否支持应用浮窗功能、创建应用浮窗控制器以启动、更新或停止应用浮窗等。
+本模块提供标准悬浮窗能力，包括判断设备是否支持标准悬浮窗功能、创建标准悬浮窗控制器以启动、更新或停止标准悬浮窗等。
 
-当需要在小窗口中展示应用内容或提供快捷操作时，可使用本模块接口。
+**适用场景：**
 
-本模块接口可与闪控球联合使用，在绑定了的情况下用户点击可相互切换。
+标准悬浮窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。例如：
+- 股市盯盘应用：用户在浏览其他应用时，通过标准悬浮窗实时查看股票行情变化，无需频繁切换应用。
+- 手机直播应用：主播在直播过程中使用标准悬浮窗展示自定义的互动面板或控制界面，方便实时操作和互动。
+
+**与闪控球联动：**
+
+本模块可与[@ohos.window.floatingBall](js-apis-floatingBall.md)（闪控球）联合使用。通过[floatView.bind](#floatviewbind)接口将标准悬浮窗控制器与闪控球控制器绑定后，用户点击闪控球可展开为标准悬浮窗，点击标准悬浮窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。
+
+**全局悬浮窗和标准悬浮窗对比**
+
+- 共同点：全局悬浮窗和标准悬浮窗均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI。
+- 区别：
+  - 全局悬浮窗由开发者管理并实现UI绘制，无统一UI及动效。
+  - 标准悬浮窗由系统管理并统一绘制UI，动效更为高端精致。
+  - 标准悬浮窗支持与[闪控球](js-apis-floatingBall.md)互相绑定联合使用，实现更复杂场景。
+
+**起始版本：** 26.0.0
 
 > **说明：**
 >
-> - 本模块首批接口从API version 26开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 >
-> - 本模块仅支持Stage模型。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -32,17 +46,17 @@ import { floatView } from '@kit.ArkUI';
 
 isFloatViewEnabled(): boolean
 
-判断当前设备是否支持应用浮窗功能。
+判断当前设备是否支持标准悬浮窗功能。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**返回值：**
-
 | 类型 | 说明 |
 |------------|------------|
-| boolean  | 当前设备是否支持应用浮窗功能。true表示支持，false则表示不支持。 |
+| boolean  | 当前设备是否支持标准悬浮窗功能。true表示支持，false则表示不支持。 |
 
 **示例：**
 
@@ -55,23 +69,25 @@ console.info('Float view enabled is: ' + enable);
 
 create(config: FloatViewConfiguration): Promise&lt;FloatViewController&gt;
 
-创建应用浮窗控制器，使用Promise异步回调。
+创建标准悬浮窗控制器。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| config | [FloatViewConfiguration](#floatviewconfiguration) | 是 | 创建应用浮窗控制器的参数。该参数不能为null或者undefined，并且构造该参数的context不能为null或者undefined，否则抛出401。其他参数异常情况抛出1300016，具体原因参考错误码详细介绍。 |
+| config | [FloatViewConfiguration](#floatviewconfiguration) | 是 | 创建标准悬浮窗控制器的参数。该参数以及构造该参数的context不能为null或者undefined，否则抛出401。其他参数异常情况抛出1300016。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;[FloatViewController](#floatviewcontroller)&gt; | Promise对象。返回当前创建的应用浮窗控制器。 |
+| Promise&lt;[FloatViewController](#floatviewcontroller)&gt; | Promise对象。返回当前创建的标准悬浮窗控制器。 |
 
 **错误码：**
 
@@ -116,34 +132,37 @@ struct Index {
 
 ## floatView.bind
 
-bind(floatViewController: FloatViewController, floatingBallController: FloatingBallController, floatingBallParams: FloatingBallParams): Promise&lt;void&gt;
+bind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController, floatingBallParams: floatingBall.FloatingBallParams): Promise&lt;void&gt;
 
-绑定应用浮窗和闪控球。需要先创建[应用浮窗控制器](#floatviewcreate)和[闪控球控制器](js-apis-floatingball#floatingballcreate)，且均未启动。
+绑定标准悬浮窗和闪控球。需要先创建[标准悬浮窗控制器](#floatviewcontroller)和[闪控球控制器](js-apis-floatingBall.md#floatingballcontroller)，且均未启动。使用Promise异步回调。
 
 > **说明：**
-> - 绑定成功后，调用[floatViewController.start()](#start)或[floatingBallController.startFloatingBall](js-apis-floatingball#startfloatingball)均会同时创建应用浮窗窗口和闪控球窗口。但同一时刻仅展示其中一个窗口，展示顺序取决于先调用哪个控制器的启动接口。
-> - 绑定成功后，应用浮窗窗口与闪控球窗口支持用户点击触发的互相切换。
-> - 绑定成功后，调用任一控制器的停止接口会同时销毁应用浮窗窗口和闪控球窗口。
+>
+> - 绑定成功后，调用[start()](#start)或[startFloatingBall()](js-apis-floatingBall.md#startfloatingball)均会同时创建标准悬浮窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。但同一时刻仅展示其中一个窗口，展示顺序取决于先调用哪个控制器的启动接口。
+> - 绑定成功后，用户可通过点击操作在标准悬浮窗窗口与闪控球之间进行切换。
+> - 绑定成功后，调用任一控制器的停止接口（[stop()](#stop)或[stopFloatingBall()](js-apis-floatingBall.md#stopfloatingball)）会同时销毁标准悬浮窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.USE_FLOAT_BALL 和 ohos.permission.FLOAT_VIEW
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 应用浮窗控制器。 |
-| floatingBallController | [FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器。 |
-| floatingBallParams | [FloatingBallParams](js-apis-floatingBall.md#floatingballparams) | 是 | 闪控球参数。 |
+| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 标准悬浮窗控制器。 |
+| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器。 |
+| floatingBallParams | [floatingBall.FloatingBallParams](js-apis-floatingBall.md#floatingballparams) | 是 | 闪控球参数。绑定时设置的参数会覆盖掉闪控球控制器启动时已保存的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -166,8 +185,9 @@ import { floatingBall } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  // 闪控球控制器的创建请参考js-apis-floatingBall.md
   private floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
+  // 创建闪控球控制器
+  // ...
   public bindController(): void {
     let floatingBallParams: floatingBall.FloatingBallParams = {
       template: floatingBall.FloatingBallTemplate.EMPHATIC,
@@ -192,30 +212,32 @@ struct Index {
 
 ## floatView.unbind
 
-unbind(floatViewController: FloatViewController, floatingBallController: FloatingBallController): Promise&lt;void&gt;
+unbind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController): Promise&lt;void&gt;
 
-解绑应用浮窗和闪控球，需要在[应用浮窗控制器](#floatviewcreate)和[闪控球控制器](js-apis-floatingball#floatingballcreate)均停止后才可解绑。
+解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](#floatviewcontroller)和[闪控球控制器](js-apis-floatingBall.md#floatingballcontroller)均停止后才可解绑。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 应用浮窗控制器。 |
-| floatingBallController | [FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器。 |
+| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 标准悬浮窗控制器。 |
+| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 |------------|------------|
@@ -233,7 +255,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   public unbindController(): void {
     try {
-      // 使用绑定时传入的应用浮窗和闪控球控制器
+      // 使用绑定时传入的标准悬浮窗和闪控球控制器
       if (this.floatViewController && this.floatingBallController) {
         floatView.unbind(this.floatViewController, this.floatingBallController).then(() => {
           console.info('Succeeded in unbinding float view and floating ball.');
@@ -250,29 +272,38 @@ struct Index {
 
 ## floatView.getFloatViewLimits
 
-getFloatViewLimits(): FloatViewLimits
+getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits
 
-获取当前应用浮窗窗口的限制，单位为px。
+根据传入的模板类型获取对应标准悬浮窗窗口的限制，单位为px。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 是 | 标准悬浮窗模板类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| [FloatViewLimits](#floatviewlimits) | 返回应用浮窗窗口的限制，包括最大尺寸、最小尺寸和宽高比限制范围。 |
+| [FloatViewLimits](#floatviewlimits) | 返回标准悬浮窗窗口的限制，包括最大尺寸、最小尺寸和宽高比的限制范围。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 801 | Capability not supported. Possible cause: Call the API on unsupported device. |
 | 1300002 | This window state is abnormal. Possible cause: System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
+| 1300016 | Parameter error. Possible cause: Invalid template type. |
 
 **示例：**
 
@@ -283,24 +314,26 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 ## FloatViewConfiguration
 
-创建应用浮窗控制器时需要提供的参数配置。
+创建标准悬浮窗控制器时需要提供的参数配置。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 否 | 表示上下文环境。|
-| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 应用浮窗的模板类型。|
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 标准悬浮窗的模板类型。|
 
 ## FloatViewController
 
-应用浮窗控制器实例，用于启动、停止应用浮窗以及注册回调等操作。
+标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。
 
-下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到应用浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
+下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -308,24 +341,26 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-设置应用浮窗的UI内容。
+根据当前工程中指定的页面路径为标准悬浮窗加载具体页面内容，通过LocalStorage传递状态属性至加载页面。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
 | path | string | 是 | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
-| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否 | 窗口加载的内容实例内共享的数据对象。 |
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否 | 页面级UI状态存储单元，用于为加载到窗口的页面内容传递状态属性。默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -360,25 +395,27 @@ struct Index {
 
 ### setWindowSize
 
-setWindowSize(size: Size): Promise&lt;void&gt;
+setWindowSize(size: window.Size): Promise&lt;void&gt;
 
-设置应用浮窗窗口大小。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。
+设置标准悬浮窗窗口大小。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| size | [Size](arkts-apis-window-i.md#size7) | 是 | 表示窗口的大小。建议大小满足[getFloatViewLimits](#floatviewgetfloatviewlimits)接口返回的限制。 |
+| size | [window.Size](arkts-apis-window-i.md#size7) | 是 | 表示窗口的大小。建议大小满足[getFloatViewLimits](#floatviewgetfloatviewlimits)接口返回的限制。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -422,19 +459,21 @@ struct Index {
 
 start(): Promise&lt;void&gt;
 
-启动应用浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](#onstatechange)接口监听到STARTED回调时判断启动成功。
+启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](#onstatechange)接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](#setuicontext)后调用start()。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.FLOAT_VIEW
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -476,17 +515,19 @@ struct Index {
 
 stop(): Promise&lt;void&gt;
 
-停止应用浮窗窗口。接口返回不表示stop流程结束，需要通过[onStateChange](#onstatechange)接口监听到STOPPED回调时判断停止成功。
+停止标准悬浮窗窗口。接口返回不表示stop流程结束，需要通过[onStateChange](#onstatechange)接口监听到STOPPED回调时判断停止成功。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -525,23 +566,27 @@ struct Index {
 
 setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 
-设置应用在前台时应用浮窗窗口是否可见。
+设置应用在前台时标准悬浮窗窗口是否可见。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Window.SessionManager
+创建标准悬浮窗后未调用此接口前，默认其在应用处于前台时为可见状态。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| isVisible | boolean | 是 | 应用在前台时应用浮窗是否可见，true表示可见，false表示不可见。 |
+| isVisible | boolean | 是 | 应用在前台时标准悬浮窗是否可见，true表示可见，false表示不可见。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -578,23 +623,25 @@ struct Index {
 
 restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;void&gt;
 
-恢复应用浮窗的主窗口到前台。此接口只能在应用浮窗窗口被点击后使用。当主窗口处于PAUSED生命周期或当前系统处于多任务中心时，调用接口将抛出错误码1300032。如果主窗口已处于前台时调用，将抬升主窗口层级。
+恢复标准悬浮窗的主窗口到前台显示。如果主窗口已处于前台时调用，将抬升主窗口层级。此接口只能在标准悬浮窗窗口被点击后使用。当主窗口处于PAUSED生命周期或处于多任务状态时，调用接口将抛出错误码1300032。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**只支持Stage模型。**
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复应用浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md#onnewwant12)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
+| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md#onnewwant12)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -616,9 +663,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   public restoreMainWindow(): void {
-    // 应用浮窗状态需是STARTED
+    let param: Record<string, Object> = {
+      "info": "helloworld",
+    };
+    // 标准悬浮窗状态需是STARTED
     try {
-      this.floatViewController?.restoreMainWindow().then(() => {
+      this.floatViewController?.restoreMainWindow(param).then(() => {
         console.info('Succeeded in restoring main window.');
       }).catch((err: BusinessError) => {
         console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
@@ -634,17 +684,19 @@ struct Index {
 
 getWindowProperties(): FloatViewProperties
 
-获取应用浮窗窗口的属性。
+获取标准悬浮窗窗口的属性。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| [FloatViewProperties](#floatviewproperties) | 返回应用浮窗窗口的属性。 |
+| [FloatViewProperties](#floatviewproperties) | 返回标准悬浮窗窗口的属性。 |
 
 **错误码：**
 
@@ -676,17 +728,19 @@ struct Index {
 
 onStateChange(callback: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
-注册应用浮窗状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
+注册标准悬浮窗状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 是 | 回调函数。返回当前的应用浮窗状态变化信息。 |
+| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
 
 **错误码：**
 
@@ -720,17 +774,19 @@ struct Index {
 
 offStateChange(callback?: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
-取消应用浮窗状态变化的监听事件。
+取消标准悬浮窗状态变化的监听事件。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 否 | 回调函数。返回当前的应用浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有应用浮窗状态变化的监听。 |
+| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态变化的监听。 |
 
 **错误码：**
 
@@ -763,17 +819,19 @@ struct Index {
 
 onRectChange(callback: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
-注册应用浮窗矩形区域（位置和大小）变化的监听事件。不再使用时，取消监听以避免内存泄漏。
+注册标准悬浮窗矩形区域（位置和大小）变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 是 | 回调函数。返回当前的应用浮窗矩形区域变化信息。 |
+| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
 
 **错误码：**
 
@@ -807,17 +865,19 @@ struct Index {
 
 offRectChange(callback?: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
-取消应用浮窗矩形区域变化的监听事件。
+取消标准悬浮窗矩形区域变化的监听事件。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 否 | 回调函数。返回当前的应用浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有应用浮窗矩形区域变化的监听。 |
+| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩形区域变化的监听。 |
 
 **错误码：**
 
@@ -850,17 +910,19 @@ struct Index {
 
 onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 
-注册应用浮窗限制变化的监听事件。不再使用时，取消监听以避免内存泄漏。
+注册标准悬浮窗限制变化的监听事件，当限制规格变化时触发回调，例如设备折叠或者展开。不再使用时，取消监听以避免内存泄漏。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 是 | 回调函数。返回当前的应用浮窗限制变化信息。 |
+| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
 
 **错误码：**
 
@@ -894,17 +956,19 @@ struct Index {
 
 offLimitsChange(callback?: Callback&lt;FloatViewLimits&gt;): void
 
-取消应用浮窗限制变化的监听事件。
+取消标准悬浮窗限制变化的监听事件。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 否 | 回调函数。返回当前的应用浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有应用浮窗限制变化的监听。 |
+| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
 
 **错误码：**
 
@@ -935,11 +999,13 @@ struct Index {
 
 ## FloatViewTemplateType
 
-应用浮窗模板类型的枚举。
+标准悬浮窗模板类型的枚举。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
@@ -947,7 +1013,7 @@ struct Index {
 
 ## FloatViewProperties
 
-应用浮窗窗口的属性。
+标准悬浮窗窗口的属性。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -955,80 +1021,91 @@ struct Index {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| windowId | number | 否 | 否 | 应用浮窗窗口ID。 |
-| displayId | number | 否 | 否 | 应用浮窗所在屏幕ID。 |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 应用浮窗窗口矩形区域。 |
-| windowScale | number | 否 | 否 | 应用浮窗窗口缩放比例。 |
-| titleBarRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 应用浮窗标题栏矩形区域。 |
-| inSidebar | boolean | 否 | 否 | 应用浮窗是否在侧边栏中。 |
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 标准悬浮窗的模板类型。 |
+| windowId | number | 否 | 否 | 标准悬浮窗窗口ID。 |
+| displayId | number | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
+| windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
+| windowScale | number | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
+| avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗的避让区域。 |
+| inSidebar | boolean | 否 | 否 | 标准悬浮窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
 
 ## RatioLimit
 
-应用浮窗的比例限制。
+标准悬浮窗的宽高比限制范围。宽高比比值由窗口矩形区域的宽除以高获得。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| minRatio | number | 否 | 否 | 应用浮窗的宽高比最小值。 |
-| maxRatio | number | 否 | 否 | 应用浮窗的宽高比最大值。 |
+| minRatio | number | 否 | 否 | 标准悬浮窗的宽高比最小值。 |
+| maxRatio | number | 否 | 否 | 标准悬浮窗的宽高比最大值。 |
 
 ## FloatViewLimits
 
-应用浮窗窗口的限制。
+标准悬浮窗窗口的限制。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| minSize | [Size](arkts-apis-window-i.md#size7) | 否 | 否 | 应用浮窗的最小尺寸。 |
-| maxSize | [Size](arkts-apis-window-i.md#size7) | 否 | 否 | 应用浮窗的最大尺寸。 |
-| ratioLimits | Array&lt;[RatioLimit](#ratiolimit)&gt; | 否 | 否 | 应用浮窗的宽高比限制。宽高比比值由窗口矩形区域的宽除以高获得 |
+| minSize | [window.Size](arkts-apis-window-i.md#size7) | 否 | 否 | 标准悬浮窗的最小尺寸。 |
+| maxSize | [window.Size](arkts-apis-window-i.md#size7) | 否 | 否 | 标准悬浮窗的最大尺寸。 |
+| ratioLimits | Array&lt;[RatioLimit](#ratiolimit)&gt; | 否 | 否 | 标准悬浮窗的宽高比限制范围。 |
 
 ## FloatViewStateChangeInfo
 
-应用浮窗状态变化信息。
+标准悬浮窗状态变化信息。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| state | [FloatViewState](#floatviewstate) | 否 | 否 | 应用浮窗的状态。 |
-| stopReason | string | 否 | 否 | 应用浮窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串（""）。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"APP_KILL_STOP"：应用进程被杀死后停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_CLICK_STOP"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他应用浮窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 |
+| state | [FloatViewState](#floatviewstate) | 否 | 否 | 标准悬浮窗的状态。 |
+| stopReason | string | 否 | 否 | 标准悬浮窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"APP_KILL_STOP"：应用进程被终止后停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_CLICK_STOP"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他标准悬浮窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 |
 
 ## FloatViewState
 
-应用浮窗状态的枚举。
+标准悬浮窗状态的枚举。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
-| STARTED | 1 | 应用浮窗已启动并显示。 |
-| HIDDEN | 2 | 应用浮窗已隐藏。上滑进入多任务界面时触发，或设置了应用在前台时隐藏且应用处于前台时触发 |
-| STOPPED | 3 | 应用浮窗已停止。 |
-| IN_SIDEBAR | 4 | 应用浮窗在侧边栏中。 |
-| IN_FLOATING_BALL | 5 | 应用浮窗切换为闪控球。 |
-| ERROR | 6 | 应用浮窗处于错误状态。 |
+| STARTED | 1 | 标准悬浮窗已启动并显示。 |
+| HIDDEN | 2 | 标准悬浮窗已隐藏。上滑进入多任务界面时触发、使用[setFloatViewVisibilityInApp](#setfloatviewvisibilityinapp)接口设置了应用在前台时隐藏标准悬浮窗且应用处于前台时触发。 |
+| STOPPED | 3 | 标准悬浮窗已停止。 |
+| IN_SIDEBAR | 4 | 标准悬浮窗在侧边栏中。 |
+| IN_FLOATING_BALL | 5 | 标准悬浮窗切换为闪控球。 |
+| ERROR | 6 | 标准悬浮窗发生异常。 |
 
 ## FloatViewRectChangeInfo
 
-应用浮窗矩形区域变化信息。
+标准悬浮窗矩形区域变化信息。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 应用浮窗窗口矩形区域。 |
-| windowScale | number | 否 | 否 | 应用浮窗窗口缩放比例。 |
-| reason | string | 否 | 否 | 应用浮窗矩形区域变化的原因。原因和对应含义如下：<br/>"POSITION_CHANGE"：位置变化<br/>"SIZE_CHANGE"：大小变化<br/>"RECT_CHANGE"：位置大小同时变化。 |
+| windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
+| windowScale | number | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
+| reason | string | 否 | 否 | 标准悬浮窗矩形区域变化的原因。原因和对应含义如下：<br/>"POSITION_CHANGE"：位置变化<br/>"SIZE_CHANGE"：大小变化<br/>"RECT_CHANGE"：位置大小同时变化 |
