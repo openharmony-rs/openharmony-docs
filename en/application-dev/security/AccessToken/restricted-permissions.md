@@ -1132,7 +1132,7 @@ Allow an application to use the accessory connection service for pairing and aut
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 24
+**Since**: 26.0.0
 
 ## ohos.permission.CHECK_CALL_LOG
 
