@@ -497,7 +497,7 @@ openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
-| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 输入操作参数。 |
+| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给[Extension Ability](js-apis-CryptoExtensionAbility.md)的输入参数。不传入时，不向Extension Ability传递额外参数。 |
 
 **返回值：**
 
@@ -562,7 +562,7 @@ closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&l
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
-| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 输入操作参数。 |
+| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给[Extension Ability](js-apis-CryptoExtensionAbility.md)的输入参数。不传入时，不向Extension Ability传递额外参数。 |
 
 **返回值：**
 
