@@ -30,7 +30,7 @@ Provides the type of an input signal. This API executes the corresponding algori
 | WIFI_RSSI           | 1    | Wi-Fi strength.     |
 | ULTRASOUND          | 2    | Ultrasonic strength.     |
 | NEAR_LINK           | 3    | NearLink strength. |
-| BLE_WIFI_RSSI       | 4    | Bluetooth and Wi-Fi strength.|
+| WIFI_BLE_RSSI       | 4    | Wi-Fi and Bluetooth strength.|
 
 ## spatialAwareness.ReportingMode
 
