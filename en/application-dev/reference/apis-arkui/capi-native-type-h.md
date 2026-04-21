@@ -264,7 +264,7 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | - | Obtains the array length for a water flow section configuration.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | Sets the number of items in a water flow section.|
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | Obtains the number of items in the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | Sets the gap between columns in the specified water flow section.|
 | [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | Obtains the gap between columns in the water flow section that matches the specified index.|
@@ -4040,7 +4040,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption*
 **Description**
 
 
-Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.
+Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.
 
 **Since**: 12
 
@@ -10794,7 +10794,7 @@ Obtains the title of a text menu item.
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the title information of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Returns**
 
@@ -10846,7 +10846,7 @@ Obtains the icon path of a text menu item.
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the icon path of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Returns**
 
@@ -10898,7 +10898,7 @@ Obtains the shortcut hint for a text menu item, for example, the shortcut hint f
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
 | char* buffer | Pointer to the buffer. You can create it and allocate memory to store the shortcut hint of the text menu item.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Returns**
 
@@ -12304,7 +12304,7 @@ Sets the background style parameters. This API takes effect only when the type o
 | Name| Description|
 | -- | -- |
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | Pointer to the [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance.|
-| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | Pointer to the background.|
+| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | Pointer to the background style.|
 
 **Returns**
 
