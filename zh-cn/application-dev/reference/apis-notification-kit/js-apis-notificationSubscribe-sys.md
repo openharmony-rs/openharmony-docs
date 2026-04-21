@@ -507,7 +507,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
