@@ -26,7 +26,7 @@ The file declares the structs and enums of the AVPlayer.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | Contains the set of the [OH_AVPlayerOnInfo](#oh_avplayeroninfo) and **OH_AVPlayerOnInfo** callback function pointers. To ensure the normal running of OH_AVPlayer, you must register this struct with the OH_AVPlayer instance and process the information reported by the callback functions.|
+| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | Defines a set of pointers to the [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) callbacks. To ensure the normal running of AVPlayer, you must register this struct with the **OH_AVPlayer** instance and process the information reported by the callbacks. (This struct is deprecated in API version 12.)|
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | Describes an initialized AVPlayer.|
 
 ### Enums

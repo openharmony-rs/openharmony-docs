@@ -6629,6 +6629,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
 ### setEffectMode<sup>12+</sup>
 
 setEffectMode(mode: MovingPhotoEffectMode): void
@@ -12214,3 +12215,4 @@ Enumerates the HDR modes of media assets.
 | HDR_CUVA |  3 |  HDR image taken by a legacy device or camera. |
 | HDR_VIVID_SINGLE |  4 |  Single-layer image that complies with the HDR Vivid standard. |
 | HDR_VIVID_DUAL |  5 |  Dual-layer image that complies with the HDR Vivid standard. |
+

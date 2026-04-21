@@ -260,11 +260,11 @@ Defines the parameters used to match a certificate. If no parameter is specified
 
 | Name          | Type                             | Read-Only| Optional| Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
-| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object. |
-| validDate | string    | No |  Yes|Certificate validity period. |
+| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object.|
+| validDate | string    | No |  Yes|Certificate validity period.|
 | issuer | Uint8Array | No | Yes|Certificate issuer, in DER format.|
 | keyUsage | Array\<boolean> | No | Yes|Whether to match the key usage. **true**: yes; **false**: no.|
-| serialNumber | bigint    | No |  Yes|Serial number of the certificate. |
+| serialNumber | bigint    | No |  Yes|Serial number of the certificate.|
 | subject | Uint8Array | No | Yes|Certificate subject, in DER format.|
 | publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.|
 | publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.|
@@ -4605,7 +4605,6 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -6206,7 +6205,6 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -8052,6 +8050,7 @@ try {
   console.error(`createCertChainValidator failed, errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
+
 ## CertChainValidator
 
 Provides APIs for certificate chain validator operations.
@@ -8200,6 +8199,7 @@ try {
 validate(certChain : CertChainData) : Promise\<void>
 
 Validates an X.509 certificate chain. This API uses a promise to return the result.
+
 The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -8332,7 +8332,7 @@ Provides APIs for operating the revoked certificates.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CrlEntry](#x509crlentry11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry](#x509crlentry11) instead.
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -12621,7 +12621,7 @@ async function getName() {
 
 getName(type: string): Array\<string>
 
-Obtains DNs of the specified type.
+Obtains relative distinguished name (RDN) strings of the specified type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -12631,13 +12631,13 @@ Obtains DNs of the specified type.
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type | string | Yes| Type of the DNs to obtain.|
+| type | string | Yes| Type of the RDNs to obtain. For example, **CN** and **OU**.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| Array\<string> | DNs obtained.|
+| Array\<string> | Array of RDN strings.|
 
 **Error codes**
 
@@ -12678,7 +12678,7 @@ async function getName() {
 
 getName(encodingType: EncodingType): string
 
-Obtains the string of the distinguished names based on the specified encoding type.
+Obtains RDN strings based on the specified encoding format.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -12688,13 +12688,13 @@ Obtains the string of the distinguished names based on the specified encoding ty
 
 | Name      | Type         | Mandatory| Description          |
 | ------------ | ------------- | ---- | -------------- |
-| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding type.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | A string of distinguishable names, separated by commas (,).|
+| string | RDN string. Multiple strings are separated by commas (,).|
 
 **Error codes**
 
@@ -12882,7 +12882,7 @@ Provides APIs for generating the messages in CMS format.
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
 Adds signer information to the CMS whose content type is **SIGNED_DATA**.
-
+  
 > **NOTE**
 >
 > OpenSSL does not support signature verification for self-signed certificates. Therefore, self-signed certificates cannot be used as signers.
@@ -13787,7 +13787,7 @@ Verifies and decapsulates signed and encapsulated messages in CMS format.
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 Converts data in CMS format into CMS objects. This API uses a promise to return the result.
-
+  
 > **NOTE**
 >
 > CMS data in PEM and DER formats is supported. **string** corresponds to the PEM format, and **Uint8Array** corresponds to the DER format.
@@ -14632,3 +14632,4 @@ async function testCmsDecryptTest() {
   }
 }
 ```
+
