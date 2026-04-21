@@ -102,11 +102,11 @@
 - 同步方法示例：
 
   <!-- @[pkcs1_seg_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_segment_signature/rsa_pkcs1_segment_signature_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function signMessageBySegment(priKey: cryptoFramework.PriKey, plainText: Uint8Array) {
     let signAlg = 'RSA1024|PKCS1|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
@@ -122,8 +122,8 @@
     let signData = signer.signSync(null);
     return signData;
   }
-
-  function verifyMessagBySegment(pubKey: cryptoFramework.PubKey, plainText: Uint8Array,
+  
+  function verifyMessageBySegment(pubKey: cryptoFramework.PubKey, plainText: Uint8Array,
     signMessageBlob: cryptoFramework.DataBlob) {
     let verifyAlg = 'RSA1024|PKCS1|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -137,29 +137,29 @@
     }
     // 已通过分段传入所有明文，故此处verify第一个参数传入null
     let res = verifier.verifySync(null, signMessageBlob);
-    console.info('verify result is ' + res);
+    console.info('verify result: ' + res);
     return res;
   }
-
+  
   function rsaSignatureBySegment() {
-    let message = 'This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!' +
-      'This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!';
+    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
     let keyGenAlg = 'RSA1024';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
     let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
     let signData = signMessageBySegment(keyPair.priKey, messageData);
-    let verifyResult = verifyMessagBySegment(keyPair.pubKey, messageData, signData);
+    let verifyResult = verifyMessageBySegment(keyPair.pubKey, messageData, signData);
     if (verifyResult === true) {
-      console.info('verify success');
+      console.info('verify result: success.');
     } else {
-      console.error('verify failed');
+      console.error('verify result: failed.');
     }
   }
   ```
