@@ -295,6 +295,12 @@ isControlSupported(mechDeviceType?: MechDeviceType): boolean
 
 **系统能力**：SystemCapability.Mechanic.Core
 
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechDeviceType | [MechDeviceType](#mechdevicetype)  | 否 | 机械体设备的类型。|
+
 **返回值：**
 
 | 类型                                        | 说明        |
