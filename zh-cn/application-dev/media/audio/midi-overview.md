@@ -91,6 +91,8 @@ MIDI事件是MIDI数据传输的基本单元。OH_MIDI强制使用UMP（Universa
 
 ### 完整消息类型参考
 
+UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据包的最高4位，决定了消息的功能范围、数据包大小和状态字段大小。
+
 | MT值 | 名称 | 大小（bit） | 说明 |
 |------|------|------|------|
 | 0x0 | Utility Messages | 32 | 实用消息，如[JR](#术语表)时间戳。 |
@@ -102,8 +104,6 @@ MIDI事件是MIDI数据传输的基本单元。OH_MIDI强制使用UMP（Universa
 | 0x6-0xD | Reserved | - | 保留供未来使用。 |
 | 0xE | Flex Data | 128 | [Flex Data](#术语表)灵活数据消息，如文本、歌词。 |
 | 0xF | Stream Messages | 128 | UMP流消息，如端点发现、功能块配置。 |
-
-UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据包的最高4位，决定了消息的功能范围、数据包大小和状态字段大小。
 
 > **注意：**
 >
@@ -139,7 +139,7 @@ UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据
   - 第二步：关闭所有设备（[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)）。
   - 第三步：销毁客户端（[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)）。
 
-此顺序为推荐做法，用于保证代码逻辑清晰，但系统提供自动资源回收机制确保资源正确释放。
+  此顺序为推荐做法，用于保证代码逻辑清晰，但系统提供自动资源回收机制确保资源正确释放。
 
 - 设备类型特性差异：
   - USB MIDI设备：通过USB连接，支持低延迟传输，设备枚举通过系统USB驱动完成。
