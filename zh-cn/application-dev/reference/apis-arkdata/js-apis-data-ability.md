@@ -294,7 +294,7 @@ endsWith(field: string, value: string): DataAbilityPredicates
 
 **示例：**
 
-  ```
+  ```js
   dataAbilityPredicates.endsWith("NAME", "se")
   ```
 
@@ -790,7 +790,7 @@ export default class EntryAbility extends UIAbility {
     let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()
     dataAbilityPredicates.indexedBy("SALARY_INDEX")
 
-    //  ...
+    // ...
   }
 }
 ```
