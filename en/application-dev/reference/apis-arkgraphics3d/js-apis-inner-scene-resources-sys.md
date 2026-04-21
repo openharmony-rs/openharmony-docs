@@ -9,15 +9,18 @@
 The module provides basic resource types in 3D graphics.
 
 > **NOTE**
+>
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [SceneResources](js-apis-inner-scene-resources.md).
 
 ## Modules to Import
+
 ```ts
 import { MaterialType, UnlitShadowAlphaMaterial } from '@kit.ArkGraphics3D';
 ```
 
 ## MaterialType
+
 Enumerates the material types in a scene. The material type defines how materials in a scene are rendered.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D

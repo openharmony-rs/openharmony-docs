@@ -42,11 +42,29 @@ ArkTS和C之间转换参数失败。
 
 **可能原因**
 
-系统出现的不可预料的错误。
+系统出现的不可预期的错误。
 
 **处理步骤**
 
 检查当前系统功能是否正常。
+
+## 17620003 参数校验失败
+
+**错误信息**
+
+Parameter check failed.
+
+**错误描述**
+
+参数校验失败。
+
+**可能原因**
+
+输入的参数超出了规格范围，如长度、值等。
+
+**处理步骤**
+
+检查当前输入的参数是否在支持的范围内。
 
 ## 17630001 算法相关的操作错误，调用三方算法库API出错
 
@@ -66,4 +84,4 @@ Crypto operation error.
 
 检查该接口或相关联接口输入参数的正确性。
 
-AES解密失败可参考[AES解密失败返回17630001](../../security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md)。
+AES解密失败可参考[AES解密失败返回错误码17630001](../../security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md)。

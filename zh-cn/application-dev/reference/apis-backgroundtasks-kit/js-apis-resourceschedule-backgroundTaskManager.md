@@ -1442,6 +1442,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 30%; 10%; 60%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
@@ -1483,6 +1484,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL             | 1    | 用户取消。                  |
@@ -1563,6 +1565,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 25%; 15%; 8%; 8%; 44%-->
 | 名称          | 类型       | 只读   | 可选   | 说明                    |
 |-------------|----------| ---- | ---- |-----------------------|
 | abilityName | string   | 否    | 否    | UIAbility名称。          |
@@ -1589,12 +1592,13 @@ export default class EntryAbility extends UIAbility {
 4. 通知合并后不能取消合并，已合并的不能更新成不合并。
 5. 通知合并后，点击通知栏消息，会跳转到第一个申请的长时任务对应的UIAbility，如果调用了更新接口，则跳转到最后一次更新的长时任务对应的UIAbility。
 6. 通过[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口更新长时任务时，传入的continuousTaskId必须存在，否则更新失败。
-7. 从API version 22开始支持[特殊场景类型的长时任务](#backgroundtaskmode21)。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
+7. 从API version 22开始支持特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。
 
 ### 属性
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**说明：** 主类型与子类型必须匹配。     |
@@ -1654,7 +1658,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于[特殊场景类型长时任务](#backgroundtaskmode21)。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会发送横幅通知，有提示音。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1768,10 +1772,11 @@ export default class EntryAbility extends UIAbility {
 
 ## BackgroundTaskMode<sup>21+</sup>
 
-长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的[申请](#backgroundtaskmanagerstartbackgroundrunning21)、[更新](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。
+长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的[申请](#backgroundtaskmanagerstartbackgroundrunning21)、[更新](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。</br>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
 | MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** <br/>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。                 |
@@ -1783,7 +1788,7 @@ export default class EntryAbility extends UIAbility {
 | MODE_VOIP                       | 8         | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->            |
 | MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 |
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。            |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>使用场景举例：应用在后台导出媒体文件、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>使用场景举例：应用在后台导出媒体文件、应用使用三方投播组件在后台进行投播，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 从API version 24开始，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)的应用开放。API version 23及之前版本，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放，已经申请该权限的应用在API version 24之后不受影响。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1791,6 +1796,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。       |
@@ -1826,6 +1832,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 30%; 10%; 60%-->
 | 名称           | 值 | 说明     |
 | ------------ |---|--------|
 | NOT_SUPPORTED | 0 | 不支持。例如：申请的长时任务主类型非MODE_SPECIAL_SCENARIO_PROCESSING时，不支持申请用户授权是否能在后台长时间运行。 |

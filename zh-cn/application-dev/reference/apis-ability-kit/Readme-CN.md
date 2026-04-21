@@ -13,6 +13,7 @@
     - [@ohos.app.ability.abilityLifecycleCallback (UIAbility生命周期回调监听器)](js-apis-app-ability-abilityLifecycleCallback.md)
     - [@ohos.app.ability.AbilityStage (AbilityStage组件管理器)](js-apis-app-ability-abilityStage.md)
     - [@ohos.app.ability.ActionExtensionAbility (支持业务操作自定义的ExtensionAbility组件)](js-apis-app-ability-actionExtensionAbility.md)
+    - [@ohos.app.ability.AgentUIExtensionAbility (支持端侧Agent接入的ExtensionAbility组件)](js-apis-agent-agentUIExtensionAbility.md)
     - [@ohos.app.ability.application (应用工具类)](js-apis-app-ability-application.md)
     - [@ohos.app.ability.ApplicationStateChangeCallback (应用前后台状态变化监听器)](js-apis-app-ability-applicationStateChangeCallback.md)
     - [@ohos.app.ability.AppServiceExtensionAbility (应用后台服务扩展组件)](js-apis-app-ability-appServiceExtensionAbility.md)
@@ -75,11 +76,11 @@
        - [continuationResult](js-apis-continuation-continuationResult.md)
        <!--Del-->
        - [ContinuableInfo(系统接口)](js-apis-inner-application-continuableInfo-sys.md)
- 	   - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
- 	   - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
- 	   - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
- 	   - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
- 	   - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
+       - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
+       - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
+       - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
+       - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
+       - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
        <!--DelEnd-->
   - FA模型能力的接口<!--fa-model-->
     - [@ohos.ability.ability (Ability模块)](js-apis-ability-ability.md)
@@ -105,6 +106,7 @@
     - [@ohos.app.ability.dataUriUtils (DataUriUtils模块)](js-apis-app-ability-dataUriUtils.md)
     - [@ohos.app.ability.dialogRequest (dialogRequest模块)](js-apis-app-ability-dialogRequest.md)
     - [@ohos.app.ability.errorManager (错误管理模块)](js-apis-app-ability-errorManager.md)
+    - [@ohos.app.ability.hyperSnapManager (应用快照管理)](js-apis-app-ability-hyperSnapManager.md)
     - [@ohos.app.ability.kioskManager (Kiosk管理模块)](js-apis-app-ability-kioskManager.md)
     - [@ohos.app.ability.Want (Want)](js-apis-app-ability-want.md)
     - [@ohos.app.ability.wantAgent (WantAgent模块)](js-apis-app-ability-wantAgent.md)
@@ -313,6 +315,8 @@
     - [want.h](capi-want-h.md)
     - [ability_resource_info.h](capi-ability-resource-info-h.md)
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
+    - [context.h](capi-abilityruntime-context-h.md)
+    - [extension_ability.h](capi-extension-ability-h.md)
   - 结构体<!--ability-struct-->
     - [AbilityBase_Element](capi-abilitybase-element.md)
     - [AbilityBase_Want](capi-abilitybase-want.md)
@@ -327,6 +331,10 @@
     - [OH_NativeBundle_Metadata](capi-native-bundle-oh-nativebundle-metadata.md)
     - [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md)
     - [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)
+    - [AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md)
+    - [AbilityRuntime_Context*](capi-abilityruntime-abilityruntime-context8h.md)
+    - [AbilityRuntime_ExtensionInstance](capi-abilityruntime-extensioninstance.md)
+    - [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md)
 - 错误码<!--ability-arkts-errcode-->
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)

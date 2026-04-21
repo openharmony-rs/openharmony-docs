@@ -1208,7 +1208,7 @@ void OH_Drawing_SetTextStyleLocale(OH_Drawing_TextStyle* style, const char* loca
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向OH_Drawing_TextStyle对象的指针，由[OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)获取。 |
-| const char* locale | 语言类型，数据类型为指向char的指针，如'en'代表英文，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。 |
+| const char* locale | 语言类型，数据类型为指向char的指针，如'en'代表英文，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。未指定时默认locale为'zh-Hans'。 |
 
 ### OH_Drawing_SetTextStyleForegroundBrush()
 
@@ -6307,7 +6307,7 @@ OH_Drawing_ErrorCode OH_Drawing_ReleaseArrayBuffer(OH_Drawing_Array* array)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | 指向数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。<br>支持的数组类型：<br>字体全名数组，通过[OH_Drawing_GetSystemFontFullNamesByType](capi-drawing-text-font-descriptor-h.md#oh_drawing_getsystemfontfullnamesbytype)获取。<br>文本行数组，通过OH_Drawing_TypographyTextLines获取。<br>字符串索引数组，通过[OH_Drawing_GetRunStringIndices](capi-drawing-text-run-h.md#oh_drawing_getrunstringindices)获取。<br>矩形数组，通过[OH_Drawing_RectCreateArray](capi-drawing-rect-h.md#oh_drawing_rectcreatearray)获取。<br>字体描述符数组，通过[OH_Drawing_GetFontFullDescriptorsFromStream](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorsfromstream)获取。<br>文本范围数组，通过[OH_Drawing_TypographyLayoutWithConstraintsWithBuffer](capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer)获取。 |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | 指向数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。<br>支持的数组类型：<br>字体全名数组，通过[OH_Drawing_GetSystemFontFullNamesByType](capi-drawing-text-font-descriptor-h.md#oh_drawing_getsystemfontfullnamesbytype)获取。<br>文本行数组，通过[OH_Drawing_TypographyGetTextLines](capi-drawing-text-line-h.md#oh_drawing_typographygettextlines)获取。<br>字符串索引数组，通过[OH_Drawing_GetRunStringIndices](capi-drawing-text-run-h.md#oh_drawing_getrunstringindices)获取。<br>矩形数组，通过[OH_Drawing_RectCreateArray](capi-drawing-rect-h.md#oh_drawing_rectcreatearray)获取。<br>字体描述符数组，通过[OH_Drawing_GetFontFullDescriptorsFromStream](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorsfromstream)或[OH_Drawing_GetFontFullDescriptorsFromPath](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorsfrompath)获取。<br>文本范围数组，通过[OH_Drawing_TypographyLayoutWithConstraintsWithBuffer](capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer)获取。 |
 
 **返回：**
 

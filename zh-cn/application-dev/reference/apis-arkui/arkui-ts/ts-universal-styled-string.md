@@ -52,7 +52,6 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array\<StyleO
 | 名称  |   类型   |   只读   |   可选   |   说明   |
 | ------ | ------ | ------ | ------ | -------------- |
 | length | number |  是   | 否   | 属性字符串字符的长度。<br/>**说明：** <br/>属性字符串中的ImageAttachment和CustomSpan长度都计为1。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) |  否   | 是   | 属性字符串的字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ### getString
 
@@ -141,7 +140,7 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array\<Sp
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | start | number | 是   | 指定范围属性字符串的下标。 |
 | length | number | 是   | 指定范围属性字符串的长度。 |
-| styledKey | [StyledStringKey](#styledstringkey枚举说明) | 否   | 指定范围属性字符串样式的枚举值。 |
+| styledKey | [StyledStringKey](#styledstringkey枚举说明) | 否   | 指定范围属性字符串样式的枚举值。<br/>**说明：** <br/>当不传入该参数时默认获取开发者设置的[StyledStringKey](#styledstringkey枚举说明)所有枚举值样式。 |
 
 **返回值：**
 
@@ -584,7 +583,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称        | 类型                                     | 只读 | 可选 | 说明                                                                                                                              |
 | ----------- | ---------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                               |
@@ -592,6 +591,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | fontSize    | number                                   | 是   | 是   | 获取属性字符串的文本字体大小。<br/>单位：[vp](ts-pixel-units.md) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight  | number                                   | 是   | 是   | 获取属性字符串的文本字体粗细。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 是   | 获取属性字符串的文本字体样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 是   | 是   | 获取属性字符串的字体配置。<br/>默认返回undefined，表示未设置fontConfigs。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                           |
 | strokeWidth<sup>20+</sup> | number                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md)。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br/>默认返回字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
@@ -642,6 +642,7 @@ constructor(value?: TextStyleInterface)
 | fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 字体大小。<br/>默认字体大小为16fp。<br/>如果LengthMetrics的unit值是percent，当前设置不生效，处理为16fp。<br/>单位：[fp](ts-pixel-units.md) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight  | number\| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否   | 是 | 字体粗细。<br/>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle)                      | 否   | 是 | 字体样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明)                      | 否   | 是 | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是percent，当前设置不生效，处理为0。<br/>设置值小于0时为实心字，大于0时为空心字。<br/>默认值为0。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值为字体颜色，设置异常值时取字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -2551,7 +2552,8 @@ struct styled_string_strokewidth_strokecolor_demo {
 @Entry
 @Component
 struct styled_string_html_convert_demo {
-  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>"; // 从API version 20开始支持b、em、i、u、del、s、a、sup、sub标签
+  // 从API version 20开始支持b、em、i、u、del、s、a、sup、sub标签
+  @State html: string = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
   @State spanString: StyledString | undefined = undefined;
   @State resultText: string = ""; // 保存结果文本的状态
   controller: TextController = new TextController;
@@ -2568,14 +2570,14 @@ struct styled_string_html_convert_demo {
         .margin(5)
 
       // 按钮1:将HTML转换为SpanString
-      Button("将HTML转换为SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML to SpanString successfully.";
       }).margin(5)
 
       // 按钮2:将SpanString转换为HTML
-      Button("将SpanString转换为HTML").onClick(() => {
+      Button("Convert SpanString to HTML").onClick(() => {
         if (this.spanString) {
           // 将spanString转换为HTML并替换当前的HTML状态
           const newHtml = StyledString.toHtml(this.spanString);
@@ -2589,14 +2591,14 @@ struct styled_string_html_convert_demo {
       }).margin(5)
 
       // 按钮3:将HTML转换回SpanString
-      Button("将HTML转换回SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML back to SpanString successfully.";
       }).margin(5)
 
       // 重置：重置HTML和SpanString
-      Button("重置").onClick(() => {
+      Button("Reset").onClick(() => {
         this.html = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
         this.spanString = undefined;
         this.controller.setStyledString(new StyledString("")); // 使用空的StyledString实例
@@ -2966,7 +2968,9 @@ struct styled_string_process_demo {
 
 ### 示例17（设置字体配置）
 
-该示例通过在TextStyle中设置[fontConfigs](ts-text-common.md#fontconfigs24对象说明)属性实现属性字符串的字体配置。从API version 24开始，新增支持fontConfigs属性。
+该示例通过[TextStyleInterface](#textstyleinterface对象说明)中的[fontConfigs](ts-text-common.md#fontconfigs24对象说明)实现属性字符串的字体配置。
+
+从API version 24开始，TextStyleInterface新增fontConfigs属性。
 
 ```ts
 // xxx.ets
@@ -2982,7 +2986,7 @@ struct StyledStringFontConfigsDemo {
   aboutToAppear() {
     // 示例1：启用可变字重
     let textStyle1: TextStyle = new TextStyle({
-      fontColor: Color.Red,
+      fontColor: Color.Gray,
       fontSize: LengthMetrics.vp(18)
     });
     let styledString1: MutableStyledString = new MutableStyledString('StyledString with FontConfigs: ', [{
@@ -3013,7 +3017,7 @@ struct StyledStringFontConfigsDemo {
 
     // 示例2：禁用设备字体粗细级别自动更新
     let textStyle3: TextStyle = new TextStyle({
-      fontColor: Color.Red,
+      fontColor: Color.Gray,
       fontSize: LengthMetrics.vp(18)
     });
     let styledString3: MutableStyledString = new MutableStyledString('禁用跟随设备字重级别更新: ', [{
@@ -3023,7 +3027,7 @@ struct StyledStringFontConfigsDemo {
       styledValue: textStyle3
     }]);
     let textStyle4: TextStyle = new TextStyle({
-      fontColor: Color.Green,
+      fontColor: Color.Blue,
       fontSize: LengthMetrics.vp(24),
       fontWeight: 600,
       fontConfigs: {

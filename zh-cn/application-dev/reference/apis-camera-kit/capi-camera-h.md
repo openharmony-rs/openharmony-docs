@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明相机的基本概念。
+定义相机的基本接口和功能。
 
 **引用文件：** <ohcamera/camera.h>
 
@@ -50,6 +50,8 @@
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | 相机并发能力信息。 |
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | 控制器效果激活状态信息。 |
 | [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | 变焦范围配置。 |
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | 物理光圈配置。 |
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
@@ -62,9 +64,12 @@
 | [Camera_Position](#camera_position) | Camera_Position | 相机位置的枚举。 |
 | [Camera_Type](#camera_type) | Camera_Type | 相机类型的枚举。 |
 | [Camera_Connection](#camera_connection) | Camera_Connection | 相机连接类型的枚举。 |
+| [OH_Camera_SensorColorFilterArrangement](#oh_camera_sensorcolorfilterarrangement) | OH_Camera_SensorColorFilterArrangement | 传感器滤色阵列排列方式。 |
 | [Camera_Format](#camera_format) | Camera_Format | 相机格式类型的枚举。 |
 | [Camera_FlashMode](#camera_flashmode) | Camera_FlashMode | 闪光模式的枚举。 |
+| [OH_Camera_FlashState](#oh_camera_flashstate) | OH_Camera_FlashState | 闪光灯状态枚举。 |
 | [Camera_ExposureMode](#camera_exposuremode) | Camera_ExposureMode | 曝光模式的枚举。 |
+| [OH_Camera_ExposureMeteringMode](#oh_camera_exposuremeteringmode) | OH_Camera_ExposureMeteringMode | 曝光测光模式枚举。 |
 | [Camera_FocusMode](#camera_focusmode) | Camera_FocusMode | 聚焦模式的枚举。 |
 | [Camera_FocusState](#camera_focusstate) | Camera_FocusState | 焦点状态的枚举。 |
 | [Camera_VideoStabilizationMode](#camera_videostabilizationmode) | Camera_VideoStabilizationMode | 录像防抖模式的枚举。 |
@@ -83,6 +88,8 @@
 | [Camera_WhiteBalanceMode](#camera_whitebalancemode) | Camera_WhiteBalanceMode | 白平衡模式枚举。 |
 | [Camera_ControlCenterEffectType](#camera_controlcentereffecttype) | Camera_ControlCenterEffectType | 控制器效果类型枚举。 |
 | [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | 拍照画质优先策略枚举。 |
+| [OH_Camera_OISMode](#oh_camera_oismode) | OH_Camera_OISMode | 光学防抖（Optical Image Stabilization）模式枚举。 |
+| [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | 光学防抖（OIS）轴枚举。 |
 
 ### 函数
 
@@ -118,6 +125,7 @@ enum Camera_ErrorCode
 | CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
+| CAMERA_MULTI_CAMERA_NOT_SUPPORTED = 7400113 | 不支持同时打开多个摄像头。<br>**起始版本：** 24 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 
 ### Camera_Status
@@ -213,6 +221,25 @@ enum Camera_Connection
 | CAMERA_CONNECTION_USB_PLUGIN = 1 | 使用USB连接的相机。 |
 | CAMERA_CONNECTION_REMOTE = 2 | 远程相机。 |
 
+### OH_Camera_SensorColorFilterArrangement
+
+```c
+enum OH_Camera_SensorColorFilterArrangement
+```
+
+**描述**
+
+传感器滤色阵列排列方式。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_SENSOR_CFA_BGGR = 0 | BGGR（Blue-Green-Green-Red）滤色阵列排列。<br>**起始版本：** 24 |
+| OH_CAMERA_SENSOR_CFA_GBRG = 1 | GBRG（Green-Blue-Red-Green）滤色阵列排列。<br>**起始版本：** 24 |
+| OH_CAMERA_SENSOR_CFA_GRBG = 2 | GRBG（Green-Red-Blue-Green）滤色阵列排列。<br>**起始版本：** 24 |
+| OH_CAMERA_SENSOR_CFA_RGGB = 3 | RGGB（Red-Green-Green-Blue）滤色阵列排列。<br>**起始版本：** 24 |
+
 ### Camera_Format
 
 ```c
@@ -228,6 +255,7 @@ enum Camera_Format
 | 枚举项 | 描述 |
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。 |
+| CAMERA_FORMAT_DNG = 4 | DNG格式。<br>**起始版本：** 24 |
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。 |
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
@@ -253,6 +281,24 @@ enum Camera_FlashMode
 | FLASH_MODE_AUTO = 2 | 自动模式。 |
 | FLASH_MODE_ALWAYS_OPEN = 3 | 始终打开模式。 |
 
+### OH_Camera_FlashState
+
+```c
+enum OH_Camera_FlashState
+```
+
+**描述**
+
+闪光灯状态枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0 | 闪光灯为不可用状态，为默认值。<br>**起始版本：** 24 |
+| OH_CAMERA_FLASH_STATE_READY = 1 | 闪光灯为可用状态。<br>**起始版本：** 24 |
+| OH_CAMERA_FLASH_STATE_FLASHING = 2 | 闪光灯已经被打开。<br>**起始版本：** 24 |
+
 ### Camera_ExposureMode
 
 ```c
@@ -267,11 +313,28 @@ enum Camera_ExposureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EXPOSURE_MODE_UNSPECIFIED = -1    | 曝光模式未指定。<br>**起始版本：** 24|
+| EXPOSURE_MODE_UNSPECIFIED = -1 | 曝光模式未指定。<br>**起始版本：** 24 |
 | EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。|
 | EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用[OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。 |
 
+### OH_Camera_ExposureMeteringMode
+
+```c
+enum OH_Camera_ExposureMeteringMode
+```
+
+**描述**
+
+曝光测光模式枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0 | 矩阵测光模式。对整个画面测光，适用于自然风景拍摄。<br>**起始版本：** 24 |
+| OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1 | 中央测光模式。对画面中心区域测光，适用于人像拍摄。<br>**起始版本：** 24 |
+| OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2 | 点测光模式。对指定微小区域测光，适用于拍摄主体细节（如人物眼睛）。<br>**起始版本：** 24 |
 
 ### Camera_FocusMode
 
@@ -596,6 +659,7 @@ enum Camera_ControlCenterEffectType
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24 |
 
 ### Camera_PhotoQualityPrioritization
 
@@ -613,6 +677,41 @@ enum Camera_PhotoQualityPrioritization
 | -- | -- |
 | CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0 | 画质优先，拍照需要较长的时间，以输出高画质的图片。 |
 | CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1 | 性能优先，会降低画质来提升拍照的速度。 |
+
+### OH_Camera_OISMode
+
+```c
+enum OH_Camera_OISMode
+```
+
+**描述**
+
+光学防抖（Optical Image Stabilization）模式枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_OIS_MODE_OFF = 0 | 关闭光学防抖模式。 |
+| OH_CAMERA_OIS_MODE_AUTO = 1 | 自动光学防抖模式。 |
+| OH_CAMERA_OIS_MODE_CUSTOM = 2 | 手动光学防抖模式。 |
+
+### OH_Camera_OISAxes
+
+```c
+enum OH_Camera_OISAxes
+```
+
+**描述**
+
+光学防抖（OIS）轴枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。 |
+| OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
 
 
 ## 函数说明

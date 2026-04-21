@@ -199,7 +199,6 @@ enum Pasteboard_ProgressIndicator
 | PASTEBOARD_NONE = 0 | 不采用系统默认进度显示。 |
 | PASTEBOARD_DEFAULT = 1 | 采用系统默认进度显示。 |
 
-
 ## 函数说明
 
 ### OH_Pasteboard_ProgressListener()
@@ -219,8 +218,7 @@ typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progress
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项[Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)设置为NONE时才会上报此信息。 |
-
+| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项[Pasteboard_ProgressIndicator](#pasteboard_progressindicator)设置为PASTEBOARD_NONE时才会上报此信息。 |
 ### Pasteboard_Notify()
 
 ```c
@@ -347,7 +345,7 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。<br> 当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](#oh_pasteboard_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_Destroy](#oh_pasteboard_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_Destroy()
 
@@ -652,7 +650,7 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 
 | 类型 | 说明 |
 | -- | -- |
-| char | 执行成功时返回剪贴板所有内容的MIME类型，否则返回nullptr。 |
+| char ** | 执行成功时返回剪贴板所有内容的MIME类型，否则返回nullptr。 |
 
 ### OH_Pasteboard_GetDataParams_Create()
 
@@ -670,7 +668,7 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) * | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_GetDataParams_Destroy()
 

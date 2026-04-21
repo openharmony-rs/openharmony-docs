@@ -591,7 +591,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  updataContent: string = '<body><div><image src="resource://rawfile/xxx.png" alt="image -- end" width="500" height="250"></image></div></body>'
+  updateContent: string = '<body><div><image src="resource://rawfile/xxx.png" alt="image -- end" width="500" height="250"></image></div></body>'
 
   build() {
     Column() {
@@ -599,7 +599,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             // UTF-8为charset。
-            this.controller.loadData(this.updataContent, "text/html", "UTF-8", " ", " ");
+            this.controller.loadData(this.updateContent, "text/html", "UTF-8", " ", " ");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3479,8 +3479,8 @@ slideScroll(vx:number, vy:number): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| vx     | number   | 是   | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。<br>单位：vp/ms。 |
-| vy     | number   | 是   | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。<br>单位：vp/ms。 |
+| vx     | number   | 是   | 轻扫滚动的水平速度分量，其中水平向右为速度正方向。<br>单位：vp/s。 |
+| vy     | number   | 是   | 轻扫滚动的垂直速度分量，其中垂直向下为速度正方向。<br>单位：vp/s。 |
 
 **错误码：**
 
@@ -8913,7 +8913,7 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 **示例**:
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -8944,14 +8944,14 @@ struct Index {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
-                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-                fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
                 }).finally(() => {
-                  fs.closeSync(file);
+                  fileIo.closeSync(file);
                 });
               } catch (resError) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -8996,7 +8996,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 **示例**:
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -9026,14 +9026,14 @@ struct Index {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // 获取沙箱路径，设置pdf文件名
                 let filePath = context.filesDir + "/test.pdf";
-                let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-                fs.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
-                  console.info("createPDF write data to file succeed and size is:" + writeLen);
+                let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                fileIo.write(file.fd, result.pdfArrayBuffer().buffer).then((writeLen: number) => {
+                  console.info("createPDF write data to file succeeded and size is:" + writeLen);
                 }).catch((err: BusinessError) => {
                   console.error("createPDF write data to file failed with error message: " + err.message +
                     ", error code: " + err.code);
                 }).finally(() => {
-                  fs.closeSync(file);
+                  fileIo.closeSync(file);
                 });
               } catch (resError) {
                 console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
@@ -11077,7 +11077,7 @@ setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcar
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. JSON string exceeds 10MB limit.<br/>3.JSON parsing failed (syntax errors, etc.)<br/>4. UrlPermissionList field is missing.<br/>5. URL rule validation failed:<br/>- scheme must be http or https.<br/>- host cannot be empty.<br/>- port must be between 0-65535.<br/>- path length cannot exceed 65536 characters. |
+| 401      | Parameter error, possible causes:<br/>1. Mandatory parameters are left unspecified<br/>2. JSON string exceeds 10MB limit<br/>3. JSON parsing failed (syntax errors, etc.)<br/>4. UrlPermissionList field is missing<br/>5. URL rule validation failed:<br/>- scheme must be http or https<br/>- host cannot be empty<br/>- port must be between 0-65535<br/>- path length cannot exceed 65536 characters |
 | 17100001 | Initialization error. The WebviewController must be associated with a Web component. |
 
 **示例：**

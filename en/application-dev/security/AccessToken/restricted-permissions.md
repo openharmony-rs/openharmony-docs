@@ -869,9 +869,11 @@ With this permission, the application can enable communication between browser e
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 21
+
+**Changelog**: Since API version 24, this permission is also available on phones and tablets.
 
 ## ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -1052,5 +1054,63 @@ With this permission, the driver application can bind external input devices con
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 24
+
+## ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION
+
+Allows an application to register ObjectEditorExtensionAbility components.
+
+With this permission, the application can provide embedded content editing services for use by other applications.
+
+<!--RP67--><!--RP67End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24
+
+## ohos.permission.ALLOW_ACCESSORY_ACCESS
+
+Allow an application to use the accessory connection service for pairing and auto-wake functions.
+
+<!--RP70--><!--RP70End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 24
+
+## ohos.permission.CHECK_CALL_LOG
+
+Allow the application to query whether there are matching call records in the system within a specified time based on specific conditions (phone number, call duration).
+
+<!--RP71--><!--RP71End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
+
+Allows an application to apply for a continuous task of the special scenario type.
+
+<!--RP76--><!--RP76End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24

@@ -93,7 +93,7 @@ API 10开始支持应用卡死时的状态保存。JsError故障时，onSaveStat
 | -------- | -------- | -------- | -------- | -------- |
 | [JS_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 支持 | 支持 | 支持 | 支持 |
 | [APP_FREEZE](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | API18及以上支持 | 支持 | 支持 | 支持 |
-| [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 不支持 | 不支持 | 不支持 | 支持 |
+| [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 不支持 | 不支持 | API24及以上支持 | 支持 |
 
 这里状态保存指的是故障时状态保存，对于应用卡死场景，开发者可以采用定时保存状态或者在UIAbility切入后台后自动保存的方式最大限度的保护用户数据。
 

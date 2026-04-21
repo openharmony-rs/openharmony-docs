@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -1240,7 +1240,7 @@ struct Index {
 
 ### 正确设置\@Monitor入参
 
-由于\@Monitor无法对入参做编译时校验，当前存在以下写法不符合\@Monitor监听条件但\@Monitor仍会触发的情况。开发者应当正确传入\@Monitor入参，不传入非状态变量，避免造成功能异常或行为表现不符合预期。
+从API version 23起，增加了对\@Monitor入参的编译时校验。当\@Monitor的入参不符合监听条件时（如传入非状态变量、不存在的变量等），将会有编辑、编译告警，但\@Monitor回调仍会被触发。开发者应正确传入\@Monitor入参，避免监听非状态变量，防止功能异常或行为与预期不符。
 
 【反例1】
 
@@ -1255,6 +1255,7 @@ class Info {
   @Trace public age: number = 24;
 
   // 同时监听状态变量age和非状态变量name
+  // 此时会编辑、编译告警，提示`The '@Monitor' decorator needs to monitor the state variables that exist.`
   @Monitor('age', 'name')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {

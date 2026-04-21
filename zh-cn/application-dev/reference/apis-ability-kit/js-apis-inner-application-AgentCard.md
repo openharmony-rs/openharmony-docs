@@ -42,7 +42,7 @@ import { common } from '@kit.AbilityKit';
 | defaultInputModes | Array\<string> | 否 | 否 | Agent在所有[AgentSkill](#agentskill)上支持的输入模式集。使用MIME类型格式定义支持的输入媒体类型，例如["text/plain"]表示纯文本输入，["application/json"]表示JSON结构化数据输入，["image/png"]表示图片输入。[AgentSkill](#agentskill)级别的inputModes会覆盖此默认设置。 |
 | defaultOutputModes           | Array\<string>                                                   | 否   | 否   | Agent在所有[AgentSkill](#agentskill)上支持的输出模式集。使用MIME类型格式定义支持的输出媒体类型，例如["text/plain"]表示纯文本输出，["application/html"]表示HTML格式输出，["application/json"]表示JSON数据输出。[AgentSkill](#agentskill)级别的outputModes会覆盖此默认设置。 |
 | skills               | Array\<[AgentSkill](#agentskill)>                                           | 否   | 否   | Agent提供的功能集合。描述Agent可以执行的特定功能或技能，每个技能定义了具体的用途、标签和使用示例。Agent必须至少包含一个技能。 |
-| iconUrl       | string                                                   | 否   | 是   | Agent图标的URL。提供Agent的可视化标识图标，用于在UI界面中展示，增强Agent的辨识度和用户体验。 |
+| iconUrl       | string                                                   | 否   | 否   | Agent图标的URL。提供Agent的可视化标识图标，用于在UI界面中展示，增强Agent的辨识度和用户体验。 |
 | category       | string                                                   | 否   | 否   | Agent的类别。用于对Agent进行分类管理，常见的类别包括："productivity"（生产力）、"entertainment"（娱乐）、"education"（教育）、"finance"（金融）、"health"（健康）等。 |
 | extension       | string                                                   | 否   | 是   | Agent的扩展配置项。用于存储自定义的扩展配置信息，如Agent开场白、版本协议号等，格式为JSON字符串。 |
 | appInfo       | [AgentAppInfo](#agentappinfo)                                                   | 否   | 否   | Agent所在的应用信息。包含Agent所属的应用包名、模块名和能力名等标识信息，用于定位和管理AgentExtensionAbility实例。 |

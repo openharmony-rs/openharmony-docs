@@ -41,7 +41,7 @@
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的[崩溃事件自定义参数](hiappevent-watcher-crash-events.md#崩溃事件自定义参数设置)和[崩溃日志规格自定义参数](hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)，示例代码如下：
 
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     // 构建崩溃事件的自定义参数
@@ -78,7 +78,7 @@
         }
       };
       // 开发者可以设置崩溃日志配置参数
-      hiAppEvent.setEventPolicy(switchLogPolicy).then(() => {
+      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
         hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
       }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
@@ -123,6 +123,8 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.release_type=${eventInfo.params['release_type']}`);
             // 开发者可以获取到崩溃应用的二进制接口类型
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.cpu_abi=${eventInfo.params['cpu_abi']}`);
+            // 开发者可以获取到崩溃事件发生的应用运行时唯一关联id
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
             // 开发者可以获取到崩溃应用的版本信息
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
             // 开发者可以获取到崩溃应用的包名
@@ -270,6 +272,7 @@ HiAppEvent eventInfo.eventType=1
 HiAppEvent eventInfo.params.time=1503045716054
 HiAppEvent eventInfo.params.crash_type=JsError
 HiAppEvent eventInfo.params.foreground=true
+HiAppEvent eventInfo.params.app_running_unique_id=216365426236541722
 HiAppEvent eventInfo.params.bundle_version=1.0.0
 HiAppEvent eventInfo.params.bundle_name=com.samples.eventsub
 HiAppEvent eventInfo.params.pid=2610

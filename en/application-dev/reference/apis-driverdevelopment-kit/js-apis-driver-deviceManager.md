@@ -81,7 +81,7 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 
 **Return value**
@@ -179,7 +179,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -190,7 +190,7 @@ You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to ob
 
 | Name      | Type                                                                                                | Mandatory| Description                                  |
 | ------------ | ---------------------------------------------------------------------------------------------------- | ---- | -------------------------------------- |
-| deviceId     | number                                                                                               | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.          |
+| deviceId     | number                                                                                               | Yes  | ID of Device ID, which can be obtained via **queryDevices()**.          |
 | onDisconnect | AsyncCallback&lt;number&gt;                                                                          | Yes  | Callback to be invoked when the bound peripheral device is disconnected.                    |
 | callback     | AsyncCallback&lt;{deviceId: number; remote: [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject);}&gt; | Yes  | Callback invoked to return the communication object of the peripheral device bound.|
 
@@ -239,7 +239,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**
 > This API is supported since API version 11 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -250,7 +250,7 @@ You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to ob
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 | callback     | AsyncCallback&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt;| Yes| Binding result, including the device ID and remote object.|
 
@@ -295,7 +295,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -306,7 +306,7 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 
 **Return value**
@@ -353,7 +353,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**
 > This API is supported since API version 11 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -364,7 +364,7 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 
 **Return value**
@@ -410,7 +410,7 @@ unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 
 Unbinds a peripheral device.
 
-> **Description**
+> **NOTE**
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -421,7 +421,7 @@ Unbinds a peripheral device.
 
 | Name  | Type                       | Mandatory| Description                          |
 | -------- | --------------------------- | ---- | ------------------------------ |
-| deviceId | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback invoked to return the result.              |
 
 **Error codes**
@@ -459,7 +459,7 @@ unbindDevice(deviceId: number): Promise&lt;number&gt;
 
 Unbinds a peripheral device. This API uses a promise to return the result.
 
-> **Description**
+> **NOTE**
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -470,7 +470,7 @@ Unbinds a peripheral device. This API uses a promise to return the result.
 
 | Name  | Type  | Mandatory| Description                          |
 | -------- | ------ | ---- | ------------------------------ |
-| deviceId | number | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId | number | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 
 **Error codes**
 

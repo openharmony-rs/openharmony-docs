@@ -14,7 +14,8 @@
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件不支持[同层渲染](../../../application-dev/web/web-same-layer.md)。
 
 ## 导入模块
 
@@ -225,7 +226,7 @@ type ScrollStopAtEndCallback = () => void
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## PhotoBrowserChangeStartCallback<sup>23+</sup>
- 	 
+
 type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
 用户在Picker组件中打开/关闭动态效果时的回调事件。
@@ -277,7 +278,7 @@ PhotoPickerComponent产生错误时的回调。
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | pickerError  | [PickerError](#pickererror23) | 是 | 产生的错误的基本信息。 |
- 	 
+
 ## PickerController
 
 应用可通过PickerController向picker组件发送数据。
@@ -433,7 +434,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | 是 | 需要保存到图库的应用沙箱图片/视频uri。trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功的newUri。 |
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | 是 | 返回保存后新生成的媒体库文件对应的uri。             |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。<br>默认使用trustedUris对应mediaItem的title、fileNameExtension和photoType值，且subtype固定为DEFAULT。             |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>1. 传入subtype选项，配置项不生效，仅支持保存DEFAULT类型图片。<br>默认使用trustedUris对应mediaItem的title、fileNameExtension和photoType值，且subtype固定为DEFAULT。<br>2. 该参数在[SaveMode](#savemode15)为OVERWRITE下不生效。             |
 | saveMode | [SaveMode](#savemode15)           | 否 | 图片保存模式。<br>默认使用SAVE_AS模式保存为新图片。             |
 
 ### updatePickerOptions<sup>22+</sup>
@@ -676,7 +677,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
  ## PickerError<sup>23+</sup>
- 	 
+
 使用PhotoPickerComponent组件发生错误时返回的错误的接口名称、错误码和错误描述。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -963,7 +964,7 @@ struct PickerDemo {
       return true; // 返回true则拉起系统相机，若应用需要自行处理则返回false。
     } else {
       if (clickType === ClickType.SELECTED) {
-        // 应用做自己的业务处理（注：非长耗时操作，例如opensync大文件）。
+        // 应用做自己的业务处理（注：非长耗时操作，例如openSync大文件）。
         if (uri) {
           this.selectUris.push(uri);
           this.pickerOptions.preselectedUris = [...this.selectUris];

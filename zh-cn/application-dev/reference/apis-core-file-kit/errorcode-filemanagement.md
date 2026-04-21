@@ -1225,7 +1225,7 @@ Failed to traverse the query data partition directory.
 重启设备后重试。
 
 ### 13600016 获取文件系统inode数失败
- 	 
+
 **错误信息**
 
 Failed to query the inode information of the data partition.

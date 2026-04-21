@@ -141,7 +141,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-  	let windowClass: window.Window | undefined = undefined;
+    let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
@@ -230,7 +230,7 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Top window or main window is null or destroyed.  |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.  |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -309,7 +309,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Top window or main window is null or destroyed.   |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.   |
 | 1300006 | This window context is abnormal. |
 
 **示例：**
@@ -1119,75 +1119,6 @@ function reqPermissionsFromUser(permissions: Array<Permissions>, context: common
 }
 ```
 
-## window.onApplicationFocusStateChange
-
-onApplicationFocusStateChange(callback: Callback\<boolean\>): void
-
-开启应用进程获焦状态变化的监听。此监听针对应用间的获焦状态变化，若同应用内窗口间的获焦状态发生变化，则不会触发回调函数。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明                                                          | 
-| -------- |-------------------------|---|-------------------------------------------------------------|
-| callback | Callback&lt;boolean&gt; | 是 | 回调函数。返回当前应用进程获焦状态的变化。true表示当前应用进程变为获焦状态；false表示当前应用进程变为失焦状态。|
-
-
-**示例：**
-
-```ts
-import { window } from '@kit.ArkUI';
-
-try {
-  window.onApplicationFocusStateChange((data) =>{
-      console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
-  })
-} catch(exception){
-  console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-## window.offApplicationFocusStateChange
-
-offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
-
-关闭应用进程获焦状态变化的监听。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名   | 类型                     | 必填 | 说明                                                |
-| -------- | ----------------------- | -- |---------------------------------------------------|
-| callback | Callback&lt;boolean&gt; | 否 | 已注册的回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有应用进程焦点状态变化的监听。|
-
-**示例：**
-
-```ts
-import { window } from '@kit.ArkUI';
-
-const callback = (bool: boolean) => {
-  // ...
-}
-try {
-  window.onApplicationFocusStateChange(callback);
-  window.offApplicationFocusStateChange(callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
-  window.offApplicationFocusStateChange(); 
-} catch (exception) {
-  console.error(`Failed to enable or disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 ## window.create<sup>(deprecated)</sup>
 
 create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): void
@@ -1198,7 +1129,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，参数id传入null或undefined时，可能会导致callback无法得到执行，建议使用[createWindow()](#windowcreatewindow9)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -1512,7 +1443,7 @@ getTopWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，参数ctx传入null或undefined时，可能会导致callback无法得到执行，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -24,8 +24,6 @@ import { image } from '@kit.ImageKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 各属性详细取值，请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)。
@@ -65,7 +63,7 @@ import { image } from '@kit.ImageKit';
 | yCbCrPositioning                    | number                                             | 否   | 是   | 色度分量相对于亮度分量的位置。                               |
 | referenceBlackWhite                 | number[]                                           | 否   | 是   | 参考黑点值和白点值。                                         |
 | copyright                           | string                                             | 否   | 是   | 图像的版权信息。                                             |
-| exposureTime                        | number                                             | 否   | 是   | 曝光时间。                                                   |
+| exposureTime                        | number                                             | 否   | 是   | 曝光时间。单位为秒（s）。                                                   |
 | fNumber                             | number                                             | 否   | 是   | 光圈值，如f/1.8。                                            |
 | exposureProgram                     | number                                             | 否   | 是   | 相机在拍摄照片时用于设置曝光的程序类。                       |
 | spectralSensitivity                 | string                                             | 否   | 是   | 指示相机每个通道的光谱灵敏度。                           |
@@ -135,8 +133,8 @@ import { image } from '@kit.ImageKit';
 | subsecTimeDigitized                 | string                                             | 否   | 是   | 记录DateTimeDigitized标记的秒数。              |
 | flashpixVersion                     | string                                             | 否   | 是   | FPXR（FlashPix Extension Resource）支持的FlashPix格式版本，用于增强设备兼容性。 |
 | colorSpace                          | number                                             | 否   | 是   | 颜色空间信息标签，通常记录为颜色空间说明符。                 |
-| pixelXDimension                     | number                                             | 否   | 是   | 图像在X轴上的（二维坐标系中的Horizontal Axis）尺寸。           |
-| pixelYDimension                     | number                                             | 否   | 是   | 图像在Y轴上的（二维坐标系中的Vertical Axis）尺寸。             |
+| pixelXDimension                     | number                                             | 否   | 是   | 图像在X轴上的（二维坐标系中的Horizontal Axis）尺寸。单位为像素（px）。           |
+| pixelYDimension                     | number                                             | 否   | 是   | 图像在Y轴上的（二维坐标系中的Vertical Axis）尺寸。单位为像素（px）。              |
 | relatedSoundFile                    | string                                             | 否   | 是   | 与图像数据相关的音频文件的名称。                             |
 | flashEnergy                         | number                                             | 否   | 是   | 图像捕获时的闪光灯能量。单位为光束烛光秒（BCPS，Beam Candlepower Seconds）。 |
 | spatialFrequencyResponse            | ArrayBuffer                                        | 否   | 是   | 相机或输入设备空间频率表。                                   |
@@ -153,7 +151,7 @@ import { image } from '@kit.ImageKit';
 | exposureMode                        | number                                             | 否   | 是   | 曝光模式。                                   |
 | whiteBalance                        | number                                             | 否   | 是   | 白平衡。                                                     |
 | digitalZoomRatio                    | number                                             | 否   | 是   | 拍摄时的数字变焦比。                                         |
-| focalLengthIn35mmFilm               | number                                             | 否   | 是   | 35mm胶片的焦距。                                             |
+| focalLengthIn35mmFilm               | number                                             | 否   | 是   | 换算成35mm等效焦距。单位为毫米（mm）。                                             |
 | sceneCaptureType                    | number                                             | 否   | 是   | 拍摄的场景类型。                                             |
 | gainControl                         | number                                             | 否   | 是   | 整体图像增益调整程度。                                       |
 | contrast                            | number                                             | 否   | 是   | 相机应用的对比度优化策略。例如：标准处理、弱化对比度等。     |
@@ -236,11 +234,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -297,11 +295,11 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -346,11 +344,11 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -393,11 +391,11 @@ clone(): Promise\<ExifMetadata>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -419,7 +417,7 @@ async function exifMetadataClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -438,11 +436,11 @@ getBlob(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -460,7 +458,7 @@ async function exifMetadataGetBlob(context: Context) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
@@ -493,11 +491,11 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }

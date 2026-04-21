@@ -313,7 +313,7 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。 |
+| Promise&lt;Array&lt;[FontDescriptor](#fontdescriptor14)&gt;&gt; | Promise对象，返回所有的字体描述符。如果找不到字体文件、路径无效、无权限或非字体文件，则返回空数组。 |
 
 **示例：**
 
@@ -834,12 +834,11 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
-| axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。       |
-| value     | number                                               | 否  |  否   | 可变字体属性键值对的值。                        |
+| axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。       |
+| value     | number                                               | 否  |  否   | 可变字体属性键值对的值。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                        |
+| isNormalized<sup>24+</sup>     | boolean                         | 否  |  是   | 是否归一化。值为true时，value字段取值范围为-1~1，映射字体文件中配置的最小值到最大值范围，0表示字体文件中配置的默认值；值为false时，value字段取值范围为字体文件本身支持调节的范围；默认为false。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。  |
 
 ## TextBadgeType<sup>20+</sup>
 
@@ -893,7 +892,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。|
 | ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。       |
 | ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。                       |
-| locale        | string                                               | 否 | 是 | 语言类型，如字段为'en'代表英文，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。具体请参照ISO 639-1规范，默认为空字符串。|
+| locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。 |
 | baselineShift | number                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，默认为0.0px。                 |
 | fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。|
 | fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。|
@@ -954,7 +953,41 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | copyright<sup>23+</sup> | string | 否 | 是 | 字体版权信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | trademark<sup>23+</sup> | string | 否 | 是 | 字体商标信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | license<sup>23+</sup> | string | 否 | 是 | 字体许可证信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| variationAxisRecords<sup>24+</sup> | Array<[FontVariationAxis](#fontvariationaxis24)> | 否 | 是 | 字体可变轴记录数组，用于描述字体支持的可变轴信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
+| variationInstanceRecords<sup>24+</sup> | Array<[FontVariationInstance](#fontvariationinstance24)> | 否 | 是 | 字体可变实例记录数组，用于描述字体支持的可变实例信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 | index<sup>23+</sup> | number | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## FontVariationAxis<sup>24+</sup>
+
+字体可变轴信息。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| - | - | - | - | - |
+| key | string | 否 | 否 | 字体可变轴的关键字标识。 |
+| minValue | number | 否 | 否 | 字体可变轴的最小值。 |
+| maxValue | number | 否 | 否 | 字体可变轴的最大值。 |
+| defaultValue | number | 否 | 否 | 字体可变轴的默认值。 |
+| flags | number | 否 | 否 | 字体可变轴的标志位，用于标记某个可变轴是否应该对用户隐藏，值为0或1。值为0时表示该轴对用户可见，值为1时表示该轴应隐藏。 |
+| name | string | 否 | 否 | 字体可变轴的英文名称。 |
+| localName | string | 否 | 否 | 字体可变轴的本地化名称，可以为空。 |
+
+## FontVariationInstance<sup>24+</sup>
+
+字体可变实例信息，存放预设的可变字体样式信息。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| - | - | - | - | - |
+| name | string | 否 | 否 | 字体可变实例的英文名称。 |
+| localName | string | 否 | 否 | 字体可变实例的本地化名称，可以为空。 |
+| coordinates | Array<[FontVariation](#fontvariation)> | 否 | 否 | 可变字体属性数组。 |
 
 ## FontCollection
 
@@ -1083,7 +1116,7 @@ struct RenderTest {
 
 loadFont(name: string, path: string | Resource): Promise\<void>
 
-异步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf。
+加载自定义字体。使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -3656,7 +3689,7 @@ import { text } from '@kit.ArkGraphics2D'
 
 function textFunc() {
   let glyphs = runs[0].getGlyphs(); // 获取渲染块全部字形序号
-  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形序号
+  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // 获取渲染块从起始位置1开始，长度为2范围内的字形序号
   glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1是非法参数，将返回undefined
   glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10是非法参数，将返回undefined
   let glyphsNull = runs[0].getGlyphs(null); // null是非法参数，将返回undefined

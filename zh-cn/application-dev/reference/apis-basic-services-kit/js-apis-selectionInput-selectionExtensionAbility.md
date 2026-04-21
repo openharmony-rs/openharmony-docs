@@ -23,7 +23,7 @@ import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -37,13 +37,13 @@ onConnect(want: Want): rpc.RemoteObject
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明                             |
 | ------ | ----------- | ---- | ------------------------------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 当前SelectionExtensionAbility的Want类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是 | 当前SelectionExtensionAbility的Want类型信息，包括Ability名称、Bundle名称等。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -88,7 +88,7 @@ onDisconnect(): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 

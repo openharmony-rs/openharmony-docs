@@ -123,11 +123,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -184,11 +184,11 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -233,11 +233,11 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -279,11 +279,11 @@ clone(): Promise\<MakerNoteHuaweiMetadata>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -305,7 +305,7 @@ async function makerNoteHuaweiClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -324,11 +324,11 @@ getBlob(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -346,7 +346,7 @@ async function makerNoteHuaweiGetBlob(context: Context) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
@@ -379,11 +379,11 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }

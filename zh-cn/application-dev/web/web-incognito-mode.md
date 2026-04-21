@@ -283,7 +283,7 @@
         Button('configCookieSync')
           .onClick(() => {
             try {
-              // configCookieSync第三个参数表示获取隐私模式（true）或非隐私模式（false）下，对应url的cookies。
+              // configCookieSync第三个参数表示设置隐私模式（true）或非隐私模式（false）下，对应url的cookies。
               webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b', true);
             } catch (error) {
               console.error(

@@ -624,7 +624,7 @@ import Base from '@ohos.base';
 Notification.getActiveNotificationCount().then((data: number) => {
   console.info("getActiveNotificationCount success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
-  console.error(`getAllActiveNotifications failed, code is ${err}`);
+  console.error(`getActiveNotificationCount failed, code is ${err}`);
 });
 ```
 
@@ -680,9 +680,9 @@ import Base from '@ohos.base';
 import NotificationManager from '@ohos.notificationManager';
 
 Notification.getActiveNotifications().then((data: NotificationManager.NotificationRequest[]) => {
-  console.info("removeGroupByBundle success, data: " + JSON.stringify(data));
+  console.info("getActiveNotifications success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
-  console.error(`removeGroupByBundle failed, code is ${err}`);
+  console.error(`getActiveNotifications failed, code is ${err}`);
 });
 ```
 

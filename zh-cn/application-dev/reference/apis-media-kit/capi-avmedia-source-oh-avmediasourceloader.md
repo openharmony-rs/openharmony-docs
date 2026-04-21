@@ -12,7 +12,7 @@ typedef struct OH_AVMediaSourceLoader OH_AVMediaSourceLoader
 
 ## 概述
 
-声明媒体数据加载器类型，由应用实现。
+声明媒体数据加载器类型，该类型由应用程序实现。
 
 **起始版本：** 23
 

@@ -64,6 +64,42 @@ hiAppEvent.setEventConfig(hiappEvent.event.RESOURCE_OVERLIMIT, configParams);
 >
 > 开发者在调试以及自测试过程中，单日内触发OOM次数过多，可能会遇到无法收到hiappevent回传js内存泄漏事件的情况，可以通过将系统时间往后调一天进行规避。
 
+## 页面切换日志规格自定义参数
+
+从**API version 24**开始支持页面切换日志配置。当应用发生资源泄漏故障时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
+
+### configEventPolicy接口说明
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置资源泄漏事件策略参数接口，支持开启资源泄漏事件的页面切换日志采集。 |
+
+### configEventPolicy接口参数设置说明
+
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启资源泄漏事件的页面切换日志采集。
+
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| resourceOverlimitPolicy | [ResourceOverlimitPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。 |
+
+参数配置示例：
+
+```ts
+import { deviceInfo, BusinessError } from '@kit.BasicServicesKit';
+import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+
+let policy: hiAppEvent.EventPolicy = {
+    "resourceOverlimitPolicy": {
+        "pageSwitchLogEnable": true // 启用页面切换日志
+    }
+};
+hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `Set resourceOverlimit config policy successfully.`);
+}).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set resourceOverlimit config policy. code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## params字段说明
 
 资源泄漏事件信息中params属性的详细说明如下：
@@ -71,6 +107,7 @@ hiAppEvent.setEventConfig(hiappEvent.event.RESOURCE_OVERLIMIT, configParams);
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位：ms。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |
@@ -81,6 +118,7 @@ hiAppEvent.setEventConfig(hiappEvent.event.RESOURCE_OVERLIMIT, configParams);
 | thread | object | （resource_type为thread专有）线程信息，详见thread属性。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，请在日志文件处理完后及时删除。** |
 | log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过2GB上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见通用日志。<br>**说明**：从API version 24开始支持。 |
 
 ### resource_type字段说明
 

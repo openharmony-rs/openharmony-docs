@@ -1,7 +1,7 @@
 # JSVM-API使用规范
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -345,7 +345,7 @@ static JSVM_Value GetArgvDemo2(napi_env env, JSVM_CallbackInfo info) {
 
     // 绑定NativeFunction到JSVM中，省略
     std::string sourcecodestr = R"JS(
-        // consolelog需用户实现
+        // console.log需用户实现
         try {
             // 调用Native函数
             NativeFunction()
@@ -420,7 +420,7 @@ OH_JSVM_CreateStringLatin1(env, "FunctionNameInJSContext", JSVM_AUTO_LENGTH, &ke
 OH_JSVM_SetProperty(env, global, key, JSFunc);
 // 在JS中调用函数
 std::string sourcecodestr = R"JS(
-    // consolelog需用户实现
+    // console.log需用户实现
     FunctionNameInJSContext() // 调用成功
     consolelog(FunctionNameInJSContext.name) // 打印 "NativeFunction"
     try {

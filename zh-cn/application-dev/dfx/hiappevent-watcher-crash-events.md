@@ -50,20 +50,20 @@
 
 系统提供通用的NativeCrash崩溃日志生成功能，同时给应用提供设置崩溃日志配置参数功能，以满足其对日志内容的个性化需求。
 
-### **接口说明**
+### setEventConfig接口说明
 
 | 接口名 | 描述 |
 | -------- | -------- |
 | setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void> | 设置崩溃日志配置参数，name需设置为崩溃事件名称常量hiappevent.event.APP_CRASH。**仅支持NativeCrash类型崩溃。** |
 
-### **参数设置说明**
+### setEventConfig参数设置说明
 
 开发者可以使用上述HiAppEvent提供的接口，在Record&lt;string, ParamType>中配置崩溃日志打印规格的参数。具体参数说明如下：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | extend_pc_lr_printing | boolean | 否 | true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>缺省时默认为false。 |
-| log_file_cutoff_sz_bytes | number | 否 | 单位为byte，取值范围为[0-5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
+| log_file_cutoff_sz_bytes | number | 否 | 单位为byte，取值范围为(0-5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
 | simplify_vma_printing | boolean | 否 | true：只打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，进程地址空间中的区域）映射信息，即崩溃日志中Maps，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>缺省时默认为false。 |
 
 参数配置示例如下:
@@ -90,6 +90,36 @@ Timestamp:2025-05-17 19:17:07.000
 ```
 
 崩溃日志详细说明见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](cppcrash-guidelines.md#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。
+
+### OH_HiAppEvent_SetEventConfig接口说明
+
+从**API version 24**开始，新增支持崩溃日志规格自定义设置，拼接应用日志功能。
+
+| 接口名 | 描述 |
+| --- | --- |
+| int [OH_HiAppEvent_SetEventConfig](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig)(const char* name, HiAppEvent_Config* config) | 崩溃日志规格自定义设置，拼接应用日志功能接口。**仅支持NativeCrash类型崩溃。**|
+
+### OH_HiAppEvent_SetEventConfig接口参数设置说明
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| name | const char* | 是 | 应用崩溃事件名称，此处为宏**EVENT_APP_CRASH**。 |
+| config | HiAppEvent_Config* | 是 | 应用崩溃事件配置参数，可使用[OH_HiAppEvent_SetConfigItem](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
+
+| 配置项名称 | 类型 | 必须配置 | 说明 |
+| --- | --- | --- | --- |
+| 宏: OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING<br/>字符串：extend_pc_lr_printing | const char* | 否 | 是否打印PC和LR寄存器扩展字节范围的内存内容。<br/>"true"：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>"false"：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>缺省时默认为"false"。 |
+| 宏：OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES<br/>字符串：log_file_cutoff_sz_bytes | const char* | 否 | 是否截断CPP_CRASH日志，单位为Byte，取值范围为(0-5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
+| 宏：OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING<br/>字符串：simplify_vma_printing | const char* | 否 | 是否打印崩溃日志中出现的地址所属的VMA映射信息。<br/>"true"：只打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，进程地址空间中的区域）映射信息，即崩溃日志中Maps，以减小日志大小。<br/>"false"：打印所有VMA映射信息。<br/>缺省时默认为"false"。 |
+| 宏：OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG<br/>字符串：merge_cppcrash_app_log | const char* | 否 | 是否拼接应用沙箱的日志。<br/>"true"：在 Native Crash 场景拼接应用日志。<br/>"false"：不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log，例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。|
+
+### 参数设置示例
+
+OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃拼接应用日志内容。
+
+> **注意：**
+>
+> 沙箱路径下必须有应用生成的拼接日志。
 
 ## 页面切换日志规格自定义参数设置
 
@@ -144,6 +174,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台状态；false表示应用处于后台状态。 |
 | release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |
@@ -242,3 +273,4 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | 接口名 | 描述 |
 | -------- | -------- |
 | setEventParam(params: Record&lt;string, ParamType>, domain: string, name?: string): Promise&lt;void> | 事件自定义参数设置方法。 |
+

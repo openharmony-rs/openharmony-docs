@@ -222,13 +222,13 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认裁剪，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认剪切，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | COPY  | [TextMenuItemId](#textmenuitemid12) |  是  |  否  | 默认复制，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PASTE | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认粘贴，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认全选，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP1--><!--RP1End-->可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译，为一级菜单项。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -237,7 +237,7 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 | phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 ### of
@@ -546,23 +546,27 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24对象说明) | 否 | 是 | 字体粗细配置。默认值继承[FontWeightConfigs](#fontweightconfigs24对象说明)。 |
+| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24对象说明) | 否 | 是 | 字体粗细配置。默认值继承[FontWeightConfigs](#fontweightconfigs24对象说明)。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontWeightConfigs<sup>24+</sup>对象说明
 
-字体粗细配置项。
+字体粗细配置项。当传入该配置对象时（包括空对象{}），未显式设置的属性将使用默认值。当传入null或undefined时，不应用默认值，字体粗细行为与父组件文本保持一致。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| enableVariableFontWeight | boolean | 否 | 是 | 是否启用可变字重调节。当设置字体粗细的值weight为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight，否则取默认值400。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。当启用了可变字重调节，则文本字体粗细不再跟随设备的字体粗细级别更新。|
+| enableVariableFontWeight | boolean | 否 | 是 | 是否启用可变字重调节。当设置字体粗细的值weight为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight，否则取默认值400。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
 | enableDeviceFontWeightCategory | boolean | 否 | 是 | 是否随设备的字体粗细级别自动更新字重。<br/>默认值：true <br/>true：当设备的字体粗细级别发生变化时，字重会自动更新。<br/>false：当设备的字体粗细级别发生变化时，字重不会自动更新。 |
 
 ## OnDidChangeCallback<sup>12+</sup>
@@ -607,7 +611,7 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | -- | -- | -- | -- | -- |
 | range | [TextRange](#textrange12) | 否 | 否 | 即将被替换的属性字符串子串在原字符串中的范围。 |
 | replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 否 | 用于替换的属性字符串。 |
-| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览样式字符串。 |
+| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览内容属性字符串。<br/> 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。|
 
 ## AutoCapitalizationMode<sup>20+</sup>枚举说明
 
@@ -662,7 +666,7 @@ selectionStart和selectionEnd均为-1时表示全选。
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | 是    | 选中开始位置。<br/>取值小于0时，按0处理。 |
 | selectionEnd   | number | 是    | 选中结束位置。<br/>取值大于文本长度时，按当前文本长度处理。 |
-| options   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 |
+| options   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 默认值继承[SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明)。|
 
 ### closeSelectionMenu<sup>12+</sup>
 
@@ -1206,7 +1210,7 @@ constructor(options?: NumericTextTransitionOptions)
 
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
-| options | [NumericTextTransitionOptions](#numerictexttransitionoptions20对象说明) | 否    | 设置数字翻牌动效。 |
+| options | [NumericTextTransitionOptions](#numerictexttransitionoptions20对象说明) | 否    | 设置数字翻牌动效。 默认值继承[NumericTextTransitionOptions](#numerictexttransitionoptions20对象说明)。|
 
 ## NumericTextTransitionOptions<sup>20+</sup>对象说明
 

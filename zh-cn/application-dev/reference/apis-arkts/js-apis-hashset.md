@@ -8,7 +8,7 @@
 
 HashSet基于[HashMap](js-apis-hashmap.md)实现。在HashSet中，仅处理value对象。
 
-HashSet和[TreeSet](js-apis-treeset.md)相比，HashSet中的数据按Hash值排序，即存放元素的顺序和取出的顺序不一致，而TreeSet是有序存放。它们集合中的元素都不允许重复，HashSet允许插入null值，TreeSet不建议插入null值，可能会影响排序。
+HashSet和[TreeSet](js-apis-treeset.md)相比，HashSet中的数据按Hash值排序，因此元素的插入顺序与遍历时的顺序可能不一致，而TreeSet则是按照元素的自然排序或者自定义比较器进行有序存储。它们集合中的元素都不允许重复，HashSet允许插入null值，TreeSet不建议插入null值，会影响排序结果。
 
 **推荐使用场景：** 可以利用HashSet不重复的特性，当需要不重复的集合或需要去重某个集合的时候使用。
 
@@ -349,7 +349,7 @@ hashSet.forEach((value: string, key: string): void => {
 // value:sparrow key:sparrow
 ```
 ```ts
-// 不建议在forEach中使用add、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在forEach中使用add、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashSet = new HashSet<string>();
 for(let i = 0; i < 10; i++) {
   hashSet.add("sparrow" + i);
@@ -401,7 +401,7 @@ while(!temp.done) {
 // value:sparrow
 ```
 ```ts
-// 不建议在entries中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在entries中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashSet = new HashSet<string>();
 for(let i = 0; i < 10; i++) {
   hashSet.add("sparrow" + i);
@@ -461,7 +461,7 @@ while(!temp.done) {
 ```
 
 ```ts
-// 不建议在Symbol.iterator中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在Symbol.iterator中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashSet = new HashSet<string>();
 for(let i = 0;i < 10;i++) {
   hashSet.add("sparrow" + i);

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
 <!--Designer: @dutie123-->
-<!--Tester: @liuli0427-->
+<!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供用于图形绘制和媒体数据写入的Surface，XComponent负责将其嵌入到视图中，支持应用自定义Surface位置和大小。具体指南请参考[自定义渲染 (XComponent)文档](../../../ui/napi-xcomponent-guidelines.md)。
@@ -88,7 +88,7 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 | id          | string                                        | 是   | 组件的唯一标识，支持最大的字符串长度128。                    |
 | type        | string                                        | 是   | 用于指定XComponent组件类型，可选值仅有两个为：<br/>-"surface"：用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容单独展示到屏幕上。<br/>-"component"<sup>9+</sup> ：XComponent将变成一个容器组件，并可在其中执行非UI逻辑以动态加载显示内容。<br/>其他值均会被视为"surface"类型 |
 | libraryname | string                                        | 否   | 应用Native层编译输出动态库名称（对应的动态库不支持跨模块加载），仅XComponent类型为"surface"时有效。 |
-| controller  | [XComponentcontroller](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅XComponent类型为"surface"时有效。 |
+| controller  | [XComponentController](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅XComponent类型为"surface"时有效。 |
 
 ## XComponentOptions<sup>12+</sup>
 
@@ -205,8 +205,8 @@ hdrBrightness(brightness: number, type?: HdrType)
 调整组件播放HDR视频时的亮度，该接口仅对HDR视频生效。
 > **说明：**
 > 
-> - 仅XComponent构造参数中的type为[XComponentType](ts-appendix-enums.md#xcomponenttype10).SURFACE时该接口生效。
-> - 调用该接口前，需要通过[Display](../js-apis-display.md#display)实例获取`hdrFormats`，判断当前设备是否支持指定的HDR类型。
+> - 仅XComponent构造参数中的type为[XComponentType](ts-appendix-enums.md#xcomponenttype10).SURFACE时该接口生效，否则该接口不生效。
+> - 如果将参数type设置为[HdrType](#hdrtype24枚举说明).AIHDR，调用该接口前需先检查[Display](../js-apis-display.md#display)的hdrFormats性是否包含[HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat).VIDEO_AIHDR。仅当包含HDRFormat.VIDEO_AIHDR时，当前设备才支持AI HDR类型，参数设置才会生效；否则按默认值HdrType.DEFAULT处理。
 > - 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
@@ -484,7 +484,7 @@ onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 
 onSurfaceDestroyed(surfaceId: string): void
 
-当XComponent持有的Surface销毁后进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
+当XComponent持有的Surface销毁后进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效，具体可以参考指南[创建XComponent和管理Surface生命周期](../../../ui/napi-xcomponent-guidelines.md#创建xcomponent和管理surface生命周期)章节。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -741,7 +741,7 @@ class CustomXComponentController extends XComponentController {
   }
 
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
   }
 
@@ -871,7 +871,7 @@ class MyXComponentController extends XComponentController {
   }
 
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
   }
 
@@ -1030,7 +1030,7 @@ class MyXComponentController extends XComponentController{
     nativeRender.SetSurfaceId(BigInt(surfaceId));
   }
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     // 在onSurfaceChanged中调用ChangeSurface绘制内容
     nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
   }

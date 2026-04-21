@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import { display } from '@kit.ArkUI';
+
 ```
 
 ## DisplayState
@@ -320,8 +320,6 @@ getDisplayByIdSync(displayId: number): Display
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 try {
@@ -368,8 +366,6 @@ getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
 **示例：**
 
 ```ts 
-import { display } from '@kit.ArkUI';
-
 try {
   let brightNessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
@@ -406,7 +402,6 @@ getAllDisplayPhysicalResolution(): Promise&lt;Array&lt;DisplayPhysicalResolution
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let promise = display.getAllDisplayPhysicalResolution();
 promise.then((resolutionObjects) => {
@@ -448,8 +443,6 @@ getDefaultDisplaySync(): Display
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
@@ -485,8 +478,6 @@ getPrimaryDisplaySync(): Display
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 displayClass = display.getPrimaryDisplaySync();
@@ -520,7 +511,7 @@ getAllDisplays(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
+
 
 let displayClass: Array<display.Display> = [];
 display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
@@ -562,7 +553,7 @@ getAllDisplays(): Promise&lt;Array&lt;Display&gt;&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
+
 
 let displayClass: Array<display.Display> =[];
 let promise: Promise<Array<display.Display>> = display.getAllDisplays();
@@ -639,7 +630,6 @@ off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off("remove");
 
@@ -714,8 +704,6 @@ isFoldable(): boolean
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isFoldable();
 ```
@@ -746,8 +734,6 @@ getFoldStatus(): FoldStatus
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldStatus = display.getFoldStatus();
 console.info(`Succeeded in obtaining fold status. Data: ${data}`);
 ```
@@ -780,8 +766,6 @@ getFoldDisplayMode(): FoldDisplayMode
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldDisplayMode = display.getFoldDisplayMode();
 console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ```
@@ -814,8 +798,6 @@ getCurrentFoldCreaseRegion(): FoldCreaseRegion
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldCreaseRegion = display.getCurrentFoldCreaseRegion();
 console.info(`Succeeded in obtaining current fold crease region. Data: ${JSON.stringify(data)}`);
 ```
@@ -860,7 +842,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * 注册监听的callback参数要采用对象传递。
  * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
-*/
+ */
 let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
@@ -896,7 +878,6 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 **示例：**
 
 ```ts
-
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldStatusChange');
 
@@ -1053,6 +1034,7 @@ off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): vo
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldAngleChange');
@@ -1130,6 +1112,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('captureStatusChange');
@@ -1167,8 +1150,6 @@ isCaptured(): boolean
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isCaptured();
 ```
@@ -1213,7 +1194,7 @@ import { Callback } from '@kit.BasicServicesKit';
 /**
  * 注册监听的callback参数要采用对象传递。
  * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
-*/
+ */
 let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
   console.info(`Listening enabled. Data: ${data}`);
 }; 
@@ -1251,6 +1232,7 @@ off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): 
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldDisplayModeChange');
@@ -1319,9 +1301,9 @@ let config : VirtualScreenConfig = {
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {
-  console.info(`Succeeded in creating the virtual screen.ScreenId : ${screenId}`);
+  console.info(`Succeeded in creating the virtual screen. ScreenId : ${screenId}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1368,7 +1350,7 @@ let screenId: number = 1;
 display.destroyVirtualScreen(screenId).then(() => {
   console.info('Succeeded in destroying the virtual screen.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to destroy the virtual screen.Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to destroy the virtual screen. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1410,7 +1392,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1424,7 +1406,7 @@ struct Index {
     display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in setting the surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
     });
   }
   build() {
@@ -1488,7 +1470,7 @@ let screenId: number = 0;
 display.makeUnique(screenId).then(() => {
   console.info('Succeeded in making unique screens.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to make unique screens. Code:${err.code},message is ${err.message}`);
+  console.error(`Failed to make unique screens. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1526,8 +1508,6 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let relativePosition: display.RelativePosition = {
   displayId: 0,
   position: {
@@ -1579,8 +1559,6 @@ convertGlobalToRelativeCoordinate(position: Position, displayId?: number): Relat
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let position: display.Position = {
     x: 100,
     y: 200
@@ -1750,7 +1728,7 @@ promise.then((data: Array<display.Display>) => {
 | xDPI | number | 是 | 否 | x轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                    |
 | yDPI | number | 是 | 否 | y轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                    |
 | colorSpaces<sup>11+</sup> | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md)> | 是 | 否 | 显示设备支持的所有色域类型。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                |
-| hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md)> | 是 | 否 | 显示设备支持的所有HDR格式。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                               |
+| hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat)> | 是 | 否 | 显示设备支持的所有HDR格式。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                               |
 | availableWidth<sup>12+</sup> | number | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度。                                                 |
 | availableHeight<sup>12+</sup> | number | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度。                                                |
 | screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | 是 | 是 | 显示设备的屏幕形状，默认值为RECTANGLE。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -1909,14 +1887,14 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
+
 
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
   let promise = displayClass.getAvailableArea();
   promise.then((data) => {
-    console.info(`Succeeded get the available area in this display. data: ${JSON.stringify(data)}`);
+    console.info(`Succeeded in getting the available area in this display. data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
   })
@@ -1957,7 +1935,7 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
+
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -2004,7 +1982,7 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
+
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -2043,8 +2021,6 @@ getLiveCreaseRegion(): FoldCreaseRegion
 **示例：**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();

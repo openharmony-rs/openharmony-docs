@@ -5456,7 +5456,7 @@
 **起始版本**：23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
- 	 
+
 允许系统应用接入运行态能力框架。
 
 **权限级别**：system_basic
@@ -5470,7 +5470,7 @@
 **起始版本**：23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
- 	
+
 允许系统应用拉起其他应用卡片添加到桌面的预览面板。
 
 获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
@@ -5555,6 +5555,20 @@
 
 **起始版本**：23
 
+## ohos.permission.RESTORE_END_NOTIFICATION
+
+允许系统应用订阅备份框架结束恢复的事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 允许应用获取本地账号授权。
@@ -5602,6 +5616,22 @@
 ## ohos.permission.CONNECT_AGENT
 
 允许系统应用连接智能体。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+允许应用豁免传感器管控。
+
+获取该权限后，应用始终可以使用传感器。
 
 **权限级别**：system_basic
 

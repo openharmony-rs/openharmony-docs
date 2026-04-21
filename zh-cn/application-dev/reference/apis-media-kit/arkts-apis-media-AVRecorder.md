@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 
-音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先通过[createAVRecorder()](arkts-apis-media-f.md#mediacreateavrecorder9)构建一个AVRecorder实例。
+音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先调用[createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9)接口构建一个AVRecorder实例。
 
 音视频录制demo可参考：[音频录制开发指导](../../media/media/using-avrecorder-for-recording.md)、[视频录制开发指导](../../media/media/video-recording.md)。
 
@@ -15,7 +15,7 @@
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
-> 使用相机进行视频录制时，需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
+> - 相机视频录制功能需配合相机模块使用，相机模块接口的使用详情请参考[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 
 ## 导入模块
 
@@ -39,9 +39,7 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback\<void>): void
 
 **需要权限：** ohos.permission.MICROPHONE
 
-不涉及音频录制时，可以不需要获取ohos.permission.MICROPHONE权限。
-
-使用相机视频录制还需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
+不涉及音频录制时，无需获取ohos.permission.MICROPHONE权限。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -50,7 +48,7 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                                   | 必填 | 说明                                  |
 | -------- | -------------------------------------- | ---- | ------------------------------------- |
 | config   | [AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9) | 是   | 配置音视频录制的相关参数。            |
-| callback | AsyncCallback\<void>                   | 是   | 回调函数。当prepare方法成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void>                   | 是   | 回调函数。当prepare接口成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -110,9 +108,8 @@ prepare(config: AVRecorderConfig): Promise\<void>
 
 **需要权限：** ohos.permission.MICROPHONE
 
-不涉及音频录制时，可以不需要获取ohos.permission.MICROPHONE权限。
+不涉及音频录制时，无需获取ohos.permission.MICROPHONE权限。
 
-使用相机视频录制还需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 
 **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -189,7 +186,7 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
 
-需在[prepare()](#prepare9)事件成功触发后，才能调用getInputSurface()方法。
+需在[prepare](#prepare9)接口成功调用后，才能调用getInputSurface接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -213,7 +210,8 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-let surfaceID: string; // 该surfaceID用于传递给相机接口创造videoOutput。
+
+let surfaceID: string; // 该surfaceID用于传递给相机接口创建videoOutput。
 
 avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
   if (err) {
@@ -236,7 +234,7 @@ getInputSurface(): Promise\<string>
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
 
-需在[prepare()](#prepare9-1)事件成功触发后，才能调用getInputSurface方法。
+需在[prepare](#prepare9-1)接口成功调用后，才能调用getInputSurface接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -260,7 +258,8 @@ getInputSurface(): Promise\<string>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-let surfaceID: string; // 该surfaceID用于传递给相机接口创造videoOutput。
+
+let surfaceID: string; // 该surfaceID用于传递给相机接口创建videoOutput。
 
 avRecorder.getInputSurface().then((surfaceId: string) => {
   console.info('Succeeded in getting InputSurface');
@@ -277,7 +276,7 @@ updateRotation(rotation: number): Promise\<void>
 
 更新视频旋转角度。使用Promise异步回调。
 
-当且仅当[prepare()](#prepare9-1)事件成功触发后，且在[start()](#start9)之前，才能调用updateRotation方法。
+当且仅当[prepare](#prepare9-1)接口成功调用后，且在[start](#start9)接口之前，才能调用updateRotation接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -367,7 +366,7 @@ start(callback: AsyncCallback\<void>): void
 
 开始视频录制。使用callback异步回调。
 
-纯音频录制需在[prepare()](#prepare9)事件成功触发后，才能调用start方法。纯视频录制，音视频录制需在[getInputSurface()](#getinputsurface9)事件成功触发后，才能调用start方法。
+纯音频录制需在[prepare](#prepare9)接口成功调用后，才能调用start接口。纯视频录制，音视频录制需在[getInputSurface](#getinputsurface9)接口成功调用后，才能调用start接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -407,7 +406,7 @@ start(): Promise\<void>
 
 开始视频录制。使用Promise异步回调。
 
-纯音频录制需在[prepare()](#prepare9-1)事件成功触发后，才能调用start方法。纯视频录制，音视频录制需在[getInputSurface()](#getinputsurface9-1)事件成功触发后，才能调用start方法。
+纯音频录制需在[prepare](#prepare9-1)接口成功调用后，才能调用start接口。纯视频录制，音视频录制需在[getInputSurface](#getinputsurface9-1)接口成功调用后，才能调用start接口。
 
 **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -448,7 +447,7 @@ pause(callback: AsyncCallback\<void>): void
 
 暂停视频录制。使用callback异步回调。
 
-需要[start()](#start9)事件成功触发后，才能调用pause方法，可以通过调用[resume()](#resume9)接口来恢复录制。
+需要[start](#start9)接口成功调用后，才能调用pause接口，可以通过调用[resume](#resume9)接口来恢复录制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -488,7 +487,7 @@ pause(): Promise\<void>
 
 暂停视频录制。使用Promise异步回调。
 
-需要[start()](#start9-1)事件成功触发后，才能调用pause方法，可以通过调用[resume()](#resume9-1)接口来恢复录制。
+需要[start](#start9-1)接口成功调用后，才能调用pause接口，可以通过调用[resume](#resume9-1)接口来恢复录制。
 
 **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -529,7 +528,7 @@ resume(callback: AsyncCallback\<void>): void
 
 恢复视频录制。使用callback异步回调。
 
-需要在[pause()](#pause9)事件成功触发后，才能调用resume方法。
+需要在[pause](#pause9)接口成功调用后，才能调用resume接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -569,7 +568,7 @@ resume(): Promise\<void>
 
 恢复视频录制。使用Promise异步回调。
 
-需要在[pause()](#pause9-1)事件成功触发后，才能调用resume方法。
+需要在[pause](#pause9-1)接口成功调用后，才能调用resume接口。
 
 **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -610,9 +609,9 @@ stop(callback: AsyncCallback\<void>): void
 
 停止视频录制。使用callback异步回调。
 
-需要在[start()](#start9)或[pause()](#pause9)事件成功触发后，才能调用stop方法。
+需要在[start](#start9)或[pause](#pause9)接口成功调用后，才能调用stop接口。
 
-纯音频录制时，需要重新调用[prepare()](#prepare9)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare()](#prepare9)和[getInputSurface()](#getinputsurface9)接口才能重新录制。
+纯音频录制时，需要重新调用[prepare](#prepare9)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](#prepare9)和[getInputSurface](#getinputsurface9)接口才能重新录制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -652,9 +651,9 @@ stop(): Promise\<void>
 
 停止视频录制。使用Promise异步回调。
 
-需要在[start()](#start9-1)或[pause()](#pause9-1)事件成功触发后，才能调用stop方法。
+需要在[start](#start9-1)或[pause](#pause9-1)接口成功调用后，才能调用stop接口。
 
-纯音频录制时，需要重新调用[prepare()](#prepare9-1)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare()](#prepare9-1)和[getInputSurface()](#getinputsurface9-1)接口才能重新录制。
+纯音频录制时，需要重新调用[prepare](#prepare9-1)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](#prepare9-1)和[getInputSurface](#getinputsurface9-1)接口才能重新录制。
 
 **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -695,7 +694,7 @@ reset(callback: AsyncCallback\<void>): void
 
 重置音视频录制。使用callback异步回调。
 
-纯音频录制时，需要重新调用[prepare()](#prepare9)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare()](#prepare9)和[getInputSurface()](#getinputsurface9)接口才能重新录制。
+纯音频录制时，需要重新调用[prepare](#prepare9)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](#prepare9)和[getInputSurface](#getinputsurface9)接口才能重新录制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -734,7 +733,7 @@ reset(): Promise\<void>
 
 重置音视频录制。使用Promise异步回调。
 
-纯音频录制时，需要重新调用[prepare()](#prepare9-1)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare()](#prepare9-1)和[getInputSurface()](#getinputsurface9-1)接口才能重新录制。
+纯音频录制时，需要重新调用[prepare](#prepare9-1)接口才能重新录制。纯视频录制，音视频录制时，需要重新调用[prepare](#prepare9-1)和[getInputSurface](#getinputsurface9-1)接口才能重新录制。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -849,7 +848,7 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback\<audio.AudioCapturerChangeIn
 
 获取当前音频采集参数。使用callback异步回调。
 
-在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
+在[prepare](#prepare9)接口成功调用后，才能调用此接口。在[stop](#stop9)接口成功调用后，调用此接口会报错。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -893,7 +892,7 @@ getCurrentAudioCapturerInfo(): Promise\<audio.AudioCapturerChangeInfo>
 
 获取当前音频采集参数。使用Promise异步回调。
 
-在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
+在[prepare](#prepare9)接口成功调用后，才能调用此接口。在[stop](#stop9)接口成功调用后，调用此接口会报错。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -936,7 +935,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback\<number>): void
 
 获取当前音频最大振幅。使用callback异步回调。
 
-在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
+在[prepare](#prepare9)接口成功调用后，才能调用此接口。在[stop](#stop9)接口成功调用后，调用此接口会报错。
 
 调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
@@ -980,7 +979,7 @@ getAudioCapturerMaxAmplitude(): Promise\<number>
 
 获取当前音频最大振幅。使用Promise异步回调。
 
-在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
+在[prepare](#prepare9)接口成功调用后，才能调用此接口。在[stop](#stop9)接口成功调用后，调用此接口会报错。
 
 调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
@@ -1110,7 +1109,7 @@ getAVRecorderConfig(callback: AsyncCallback\<AVRecorderConfig>): void
 
 获取实时的配置参数。使用callback异步回调。
 
-只能在[prepare()](#prepare9)接口调用后调用。
+只能在[prepare](#prepare9)接口调用成功后调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1153,7 +1152,7 @@ getAVRecorderConfig(): Promise\<AVRecorderConfig>;
 
 获取实时的配置参数。使用Promise异步回调。
 
-只能在[prepare()](#prepare9-1)接口调用后调用。
+只能在[prepare](#prepare9-1)接口调用成功后调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1250,7 +1249,7 @@ avRecorder.off('stateChange');
 
 on(type: 'error', callback: ErrorCallback): void
 
-订阅AVRecorder的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)也切至error状态，用户需要通过[reset()](#reset9)或者[release()](#release9)退出录制操作。使用callback异步回调。
+订阅AVRecorder的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)也切换至error状态，用户需要通过[reset](#reset9)或者[release](#release9)接口退出录制操作。使用callback异步回调。
 
 用户只能订阅一个错误事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
 

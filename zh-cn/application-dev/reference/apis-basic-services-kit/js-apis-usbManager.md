@@ -43,7 +43,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 > **说明：**
 >
-> 三方应用没有权限获取serial字段读取设备序列号，需要通过requestRight申请权限后，自行发起控制传输获取。
+> 三方应用没有权限获取serial字段读取设备序列号，需要通过[requestRight](#usbmanagerrequestright)申请权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -134,7 +134,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用getDevices获取的busNum和devAddress确定设备，当前其他属性不做处理。 |
+| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性不做处理。 |
 
 **返回值：**
 
@@ -162,7 +162,7 @@ function connectDevice() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
@@ -183,7 +183,7 @@ hasRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自getDevices获取的设备列表。 |
+| deviceName | string | 是 | 来自[getDevices](#usbmanagergetdevices)获取的设备列表USBDevice里的name。 |
 
 **返回值：**
 
@@ -210,7 +210,7 @@ function hasRight(): boolean {
     return false;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
@@ -230,7 +230,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自getDevices获取的设备列表。|
+| deviceName | string | 是 | 设备名称，来自[getDevices](#usbmanagergetdevices)获取的设备列表USBDevice里的name。|
 
 **返回值：**
 
@@ -257,9 +257,11 @@ function requestRight() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`requestRight failed : ${error}`);
   });
 }
 ```
@@ -276,7 +278,7 @@ removeRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自getDevices获取的设备列表。|
+| deviceName | string | 是 | 来自[getDevices](#usbmanagergetdevices)获取的设备列表USBDevice里的name。|
 
 **返回值：**
 
@@ -303,7 +305,7 @@ function removeRight(): boolean {
     return false;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   if (usbManager.removeRight(device.name)) {
     console.info(`Succeed in removing right`);
     return true;
@@ -329,15 +331,15 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引，需要调用getDevices获取设备信息并通过id确定唯一接口。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
 | force | boolean | 否 | 可选参数，是否强制获取。默认值为false&nbsp;，表示不强制获取，用户按需选择。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
+| number | claim通信接口成功返回0；claim通信接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -358,10 +360,10 @@ function claimInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number= usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
 }
@@ -375,7 +377,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 > **说明：**
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -383,14 +385,14 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放接口的索引，需要调用getDevices获取设备信息并通过id确定唯一接口。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放接口的索引，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
+| number | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -411,10 +413,10 @@ function releaseInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
@@ -433,14 +435,14 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用getDevices获取设备信息并通过id用于确定唯一设置。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id用于确定唯一设置。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
+| number | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -461,10 +463,10 @@ function setConfiguration() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let config: usbManager.USBConfiguration = device.configs[0];
+  let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: number= usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
 }
@@ -480,7 +482,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 >
 > 一个USB接口可能存在多重选择模式，支持动态切换。使用的场景：数据传输时，通过该接口可重新设置端点，使端点与传输类型匹配。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -488,14 +490,14 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用getDevices获取设备信息并通过id和alternateSetting确定唯一接口。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id和alternateSetting确定唯一接口。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常 。|
+| number | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常 。|
 
 **错误码：**
 
@@ -516,10 +518,10 @@ function setInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
@@ -538,7 +540,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
@@ -565,8 +567,8 @@ function getRawDescriptor() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
 }
 ```
@@ -583,13 +585,13 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符，失败返回负数。|
+| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -610,82 +612,12 @@ function getFileDescriptor() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: number = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${closeRet}`);
-}
-```
-
-## usbManager.controlTransfer<sup>(deprecated)</sup>
-
-controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
-
-控制传输。使用Promise异步回调。
-
-> **说明：**
->
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
-
-**系统能力：**  SystemCapability.USB.USBManager
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
-| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-
-**示例：**
-
-```ts
-class PARA {
-  request: number = 0
-  reqType: usbManager.USBControlRequestType = 0
-  target: usbManager.USBRequestTargetType = 0
-  value: number = 0
-  index: number = 0
-  data: Uint8Array = new Uint8Array()
-}
-
-let param: PARA = {
-  request: 0x06,
-  reqType: 0x80,
-  target:0,
-  value: 0x01 << 8 | 0,
-  index: 0,
-  data: new Uint8Array(18)
-};
-
-function controlTransfer() {
-  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-  if (!devicesList || devicesList.length == 0) {
-    console.info(`device list is empty`);
-    return;
-  }
-
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-  console.info(`controlTransfer = ${ret}`);
-  })
 }
 ```
 
@@ -701,7 +633,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备。 |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
 | timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
@@ -709,7 +641,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -749,8 +681,8 @@ function usbControlTransfer() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`usbControlTransfer = ${ret}`);
   })
@@ -767,7 +699,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 >
 > 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下，数据总量过大会导致传输失败返回-1。
 >
-> 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -775,8 +707,8 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
-| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用getDevices获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其他属性不做处理。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其它属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
 | timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
@@ -784,7 +716,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -812,18 +744,23 @@ function bulkTransfer() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
-
+  if (!usbManager.hasRight(device.name)) {
+    console.error(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  for (let i = 0; i < device.configs[0].interfaces.length; i++) {
-    if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
-      let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
-      let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
+  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+    if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
+      let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: number = usbManager.claimInterface(devicepipe, interfaces);
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
+      }).catch((error: BusinessError) => {
+        console.error(`bulkTransfer failed : ${error}`);
       });
     }
   }
@@ -840,7 +777,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 >
 > 本接口为异步接口，调用后立刻返回，实际读写操作的结果以回调的方式返回。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -880,15 +817,19 @@ function usbSubmitTransfer() {
     console.info(`device list is empty`);
     return;
   }
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
+  if (!usbManager.hasRight(device.name)) {
+    console.info(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   // 获取endpoint端点地址。
-  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+  let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
   // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -924,7 +865,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 > **说明：**
 >
 > 该接口的主要作用是主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -932,7 +873,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](#usbdevicepipe)和[USBEndpoint](#usbendpoint)即可。|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，该参数同[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的入参对象。|
 
 **错误码：**
 
@@ -963,15 +904,23 @@ function usbCancelTransfer() {
     console.info(`device list is empty`);
     return;
   }
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe === undefined) {
+    console.info(`connect device fail`);
+    return;
+  }
   // 获取endpoint端点地址。
-  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+  let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
+  if (endpoint === undefined) {
+    console.info(`invalid endpoint`);
+    return;
+  }
   // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1014,13 +963,13 @@ closePipe(pipe: USBDevicePipe): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息控制通道，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息控制通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 22：服务异常。 |
+| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其它错误码如下：<br>- 22：服务异常。 |
 
 **错误码：**
 
@@ -1041,8 +990,8 @@ function closePipe() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
 }
@@ -1088,10 +1037,10 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.hasAccessoryRight(accList[0])
+  let flag = usbManager.hasAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `hasAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1135,10 +1084,10 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `requestAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1176,11 +1125,11 @@ cancelAccessoryRight(accessory: USBAccessory): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  usbManager.cancelAccessoryRight(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  usbManager.cancelAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1215,7 +1164,7 @@ try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   hilog.info(0, 'testTag ui', `getAccessoryList success, accList: ${JSON.stringify(accList)}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1259,17 +1208,17 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  let handle = usbManager.openAccessory(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  let handle = usbManager.openAccessory(accList?.[0])
   hilog.info(0, 'testTag ui', `openAccessory success`)
   let arrayBuffer = new ArrayBuffer(4096);
-  let readLength = fs.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
+  let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
   hilog.info(0, 'testTag ui', 'readSync ret: ' + readLength.toString(10));
 } catch (error) {
-  hilog.info(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1305,12 +1254,12 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  let handle = usbManager.openAccessory(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  let handle = usbManager.openAccessory(accList?.[0])
   usbManager.closeAccessory(handle)
   hilog.info(0, 'testTag ui', `closeAccessory success`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1330,7 +1279,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
@@ -1361,14 +1310,84 @@ function resetUsbDevice() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
     console.info(`resetUsbDevice  = ${ret}`);
   } catch (err) {
     console.error(`resetUsbDevice failed: ` + err);
   }
+}
+```
+
+## usbManager.controlTransfer<sup>(deprecated)</sup>
+
+controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
+
+控制传输。使用Promise异步回调。
+
+> **说明：**
+>
+> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
+
+**系统能力：**  SystemCapability.USB.USBManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
+| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
+| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例：**
+
+```ts
+class PARA {
+  request: number = 0
+  reqType: usbManager.USBControlRequestType = 0
+  target: usbManager.USBRequestTargetType = 0
+  value: number = 0
+  index: number = 0
+  data: Uint8Array = new Uint8Array()
+}
+
+let param: PARA = {
+  request: 0x06,
+  reqType: 0x80,
+  target:0,
+  value: 0x01 << 8 | 0,
+  index: 0,
+  data: new Uint8Array(18)
+};
+
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
+
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`controlTransfer = ${ret}`);
+  })
 }
 ```
 
@@ -1460,25 +1479,6 @@ USB设备消息传输通道，用于确定设备。
 | busNum     | number | 否 |否 | 总线地址。 |
 | devAddress | number | 否 |否 | 设备地址。 |
 
-## USBControlParams<sup>(deprecated)</sup>
-
-控制传输参数。
-
->**说明：**
->
-> 从 API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
-
-**系统能力：** SystemCapability.USB.USBManager
-
-| 名称      | 类型                                            | 只读  | 可选               |说明               |
-| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| request | number                                          | 否 | 否   |请求类型。            |
-| target  | [USBRequestTargetType](#usbrequesttargettype)   | 否 | 否   |请求目标类型。          |
-| reqType | [USBControlRequestType](#usbcontrolrequesttype) | 否 | 否   |请求控制类型。          |
-| value   | number                                          | 否 | 否   |请求参数。            |
-| index   | number                                          | 否 | 否   |请求参数value对应的索引值。 |
-| data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
-
 ## USBDeviceRequestParams<sup>12+</sup>
 
 控制传输参数。
@@ -1505,7 +1505,7 @@ USB设备消息传输通道，用于确定设备。
 | USB_REQUEST_TARGET_DEVICE    | 0    | 设备。 |
 | USB_REQUEST_TARGET_INTERFACE | 1    | 接口。 |
 | USB_REQUEST_TARGET_ENDPOINT  | 2    | 端点。 |
-| USB_REQUEST_TARGET_OTHER     | 3    | 其他。 |
+| USB_REQUEST_TARGET_OTHER     | 3    | 其它。 |
 
 ## USBControlRequestType
 
@@ -1562,7 +1562,7 @@ USB配件句柄。
 
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
-| devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线号和设备地址，需要调用connectDevice获取。 |
+| devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
 | endpoint | number | 否 | 否 | 端点地址，正整数。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
@@ -1637,3 +1637,22 @@ Usb异步传输回调。
 | length | number | 否 | 否 |读写操作的期望长度值，单位为字节。 |
 | actualLength | number|否 | 否 |读写操作的实际长度值，单位为字节。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |实时传输分包的状态码。 |
+
+## USBControlParams<sup>(deprecated)</sup>
+
+控制传输参数。
+
+>**说明：**
+>
+> 从 API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
+
+**系统能力：** SystemCapability.USB.USBManager
+
+| 名称      | 类型                                            | 只读  | 可选               |说明               |
+| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
+| request | number                                          | 否 | 否   |请求类型。            |
+| target  | [USBRequestTargetType](#usbrequesttargettype)   | 否 | 否   |请求目标类型。          |
+| reqType | [USBControlRequestType](#usbcontrolrequesttype) | 否 | 否   |请求控制类型。          |
+| value   | number                                          | 否 | 否   |请求参数。            |
+| index   | number                                          | 否 | 否   |请求参数value对应的索引值。 |
+| data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |

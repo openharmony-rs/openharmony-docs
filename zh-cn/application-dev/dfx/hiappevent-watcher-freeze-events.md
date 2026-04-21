@@ -24,6 +24,42 @@
 
 详见[AppFreeze（应用冻屏）检测原理](appfreeze-guidelines.md#检测原理)。
 
+## 页面切换日志规格自定义参数设置
+
+从**API version 24**开始支持页面切换日志配置。当应用发生冻屏时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
+
+### configEventPolicy接口说明
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置应用冻屏事件策略参数接口，支持开启应用冻屏事件的页面切换日志采集。 |
+
+### configEventPolicy接口参数设置说明
+
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启应用冻屏事件的页面切换日志采集。
+
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| appFreezePolicy | [AppFreezePolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。 |
+
+**参数设置示例**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+
+let policy: hiAppEvent.EventPolicy = {
+    "appFreezePolicy" : {
+      "pageSwitchLogEnable": true // 启用页面切换日志
+    }
+};
+hiAppEvent.configEventPolicy(policy).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+}).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## 事件字段说明
 
 ### params字段说明
@@ -36,6 +72,7 @@
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
 | release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | process_name | string | 应用的进程名称。 |
@@ -53,6 +90,8 @@
 | external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
 | log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
 | process_life_time | number | 故障进程存活时间。<br>**说明**：从API 22开始支持。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见通用日志。<br>**说明**：从API version 24开始支持。 |
+| external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API 24开始支持。 |
 
 ### exception字段说明
 

@@ -15,6 +15,8 @@
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
+>
+> - 在移动设备上，当应用的Web实例数量超过10个时，系统会主动回收后台页面数据。
 
 该模块提供以下Web组件网页显示相关的常用功能：
 
@@ -56,7 +58,7 @@ Web(value: WebOptions)
 >
 > 不支持转场动画。
 >
-> 同一页面的多个Web组件，必须绑定不同的WebviewController。
+> 为了保证各Web组件间的独立性和性能隔离，同一页面内的多个Web组件应分别绑定不同的WebviewController实例。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,7 +66,7 @@ Web(value: WebOptions)
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | 定义Web选项。 |
+| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
 
 **示例：**
 
@@ -87,7 +89,7 @@ Web(value: WebOptions)
   }
   ```
 
-隐私模式Webview加载在线网页。
+隐私模式WebView加载在线网页。
 
   ```ts
   // xxx.ets
@@ -218,22 +220,22 @@ Web组件指定共享渲染进程。
 <div id="content"></div>
 
 <script>
-	function loadContent() {
-	  var hash = window.location.hash;
-	  var contentDiv = document.getElementById('content');
+  function loadContent() {
+    var hash = window.location.hash;
+    var contentDiv = document.getElementById('content');
 
-	  if (hash === '#home') {
-		contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
-	  } else {
-		contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-	  }
-	}
+    if (hash === '#home') {
+      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+    } else {
+      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+    }
+  }
 
-	// 加载界面
-	window.addEventListener('load', loadContent);
+  // 加载界面
+  window.addEventListener('load', loadContent);
 
-	// 当hash变化时，更新界面
-	window.addEventListener('hashchange', loadContent);
+  // 当hash变化时，更新界面
+  window.addEventListener('hashchange', loadContent);
 </script>
 </body>
 </html>

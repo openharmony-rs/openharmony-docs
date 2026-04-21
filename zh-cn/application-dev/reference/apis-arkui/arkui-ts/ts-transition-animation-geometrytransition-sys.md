@@ -20,8 +20,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **参数：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -32,8 +30,6 @@
 共享元素动画过程中in/out组件层级位置移动策略枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 

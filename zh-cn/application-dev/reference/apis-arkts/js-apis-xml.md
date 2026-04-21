@@ -1151,7 +1151,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getColumnNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1195,7 +1195,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getDepth() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1231,7 +1231,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getLineNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1267,7 +1267,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getName() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1306,7 +1306,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getNamespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1345,7 +1345,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getPrefix() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1381,7 +1381,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getText() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1420,7 +1420,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isEmptyElementTag() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1459,7 +1459,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isWhitespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1493,7 +1493,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getAttributeCount() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1527,11 +1527,20 @@ console.info(str);
 
 XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable](js-apis-stream.md#readable) 流中读取XML数据并进行解析。
 
+> **说明：**
+>
+> - 本接口采用流式解析的方式，理论上可以解析任意大小的XML文本。但考虑到实际性能表现，建议单次解析的数据大小不超过300MB，以避免解析时间过长影响使用体验。
+
 ### constructor<sup>24+</sup>
 
 constructor(inputStream: stream.Readable, encoding?: string)
 
 XmlSAXParser的构造函数。
+
+> **说明：**
+>
+> - `inputStream`参数必须传入继承自[Readable](js-apis-stream.md#readable)且实现[Doread](js-apis-stream.md#doread)的类。可以传入其他模块中满足该条件的类，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)。
+
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -1572,8 +1581,9 @@ parse(xmlSAXHandler: XmlSAXHandler): void
 
 > **说明：**
 >
-> - 在调用parse函数后，用户可以通过控制流的方式来控制解析进度。任意数据块被消费后，解析器会解析相应的进度。具体流控制方式详见[@ohos.util.stream (数据流基类stream)](js-apis-stream.md)。
-> - parse接口注册了流的on监听器，不建议再对流的监听器进行操作。
+> - 在调用parse函数后，用户可以通过控制流的方式来控制解析进度。任意数据块被推入后，解析器会解析相应的进度。具体流控制方式详见[@ohos.util.stream (数据流基类stream)](js-apis-stream.md)。
+> - 可以配合自动控制数据的流使用，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)，此时用户不再需要手动控制数据。
+> - parse接口注册了流的on监听器，会自动读取流中的数据。不建议再对流的监听器进行操作或者读取数据，以免发生冲突导致接口能力失效。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -1605,11 +1615,17 @@ let readableStream = new TestReadable();
 let saxParser = new xml.XmlSAXParser(readableStream);
 
 let handler: xml.XmlSAXHandler = {
-  startDocument: () => {},
-  endDocument: () => {},
-  startElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>) => {},
-  endElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined) => {},
-  characters: (content: string) => {}
+  startDocument: () => {
+  },
+  endDocument: () => {
+  },
+  startElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) => {
+  },
+  endElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined) => {
+  },
+  characters: (content: string) => {
+  }
 };
 
 saxParser.parse(handler);
@@ -1725,7 +1741,8 @@ const saxHandler: xml.XmlSAXHandler = {
   endDocument() {
     console.info("endDocument");
   },
-  startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>) {
+  startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) {
     console.info("startElement elementName:", elementName);
     console.info("startElement namespaceURI:", namespaceURI);
     console.info("startElement qName:", qName);

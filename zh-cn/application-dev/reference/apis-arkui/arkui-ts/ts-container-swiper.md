@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
- 滑块视图容器，提供子组件滑动轮播显示的能力。 
+滑块视图容器，提供子组件滑动轮播显示的能力。 
 
 > **说明：**
 >
@@ -357,33 +357,6 @@ cachedCount(count: number, isShown: boolean)
 | count  | number | 是   | 预加载子组件个数。<br/>默认值：1<br/>取值范围：[0, +∞)，设置小于0的值时，按照默认值处理。 |
 | isShown  | boolean | 是   | 预加载范围内的节点是否进行绘制，不下渲染树。<br/>true：预加载范围内的节点进行绘制；false：预加载范围内的节点不进行绘制。<br/>传入非法值时，按false处理。 |
 
-### cachedCount<sup>24+</sup>
-
-cachedCount(count: number, options: CachedCountOptions)
-
-设置预加载子组件个数和配置选项。
-
-> **说明：**
->
-> - 当options的independent设置为true时，预加载子组件个数按count个数计算，与[displaycount](#displaycount22)的分组swipeByGroup计算解耦。例如cachedCount的count为1时，会将当前显示子节点的前一个和后一个子组件预加载。
-> - 当displayCount的swipeByGroup参数设为true，且options的independent为false（默认值）时，预加载子组件个数以组为基本单位。例如cachedCount的count为1，displayCount的value为2，displayCount的swipeByGroup为true时，会将当前显示组的前一组和后一组的各两个子组件预加载。
-> - 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，生效后超出缓存范围的子节点会被释放。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ------ | ---- | ---- |
-| count | number | 是 | 预加载子组件个数。<br/>取值范围：[0, +∞)，设置小于0的值时，按照1处理。 |
-| options | [CachedCountOptions](#cachedcountoptions24对象说明) | 是 | 预加载子组件的配置选项。 |
-
 ### disableSwipe<sup>8+</sup>
 
 disableSwipe(value: boolean)
@@ -658,6 +631,7 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 30%; 10%; 60%-->
 | 名称                               |  值 |说明                                                         |
 | ---------------------------------- | -- |------------------------------------------------------------ |
 | Stretch<sup>(deprecated)</sup>     | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>**说明**：从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。 |
@@ -1064,7 +1038,7 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 
 **参数：** 
 
-
+<!--Table: 15%; 25%; 10%; 50%-->
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)| 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
@@ -1576,23 +1550,6 @@ DigitIndicator的构造函数。
 | ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | stopWhenTouched   | boolean                              | 否   | 否    | 在按下事件中配置子组件是否立即停止播放。<br/>设置为true时，停止播放。设置为false时，自动播放不中断。<br/>默认值：true |
 
-## CachedCountOptions<sup>24+</sup>对象说明
-
-预加载子组件的配置选项。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称         | 类型    | 只读  | 可选  | 说明                                     |
-| ------------ | ------- | ---- | ---- | ---------------------------------------- |
-| isShown      | boolean | 否    | 是    | 预加载范围内的节点是否进行绘制。<br/>设置为true时，预加载范围内的节点进行绘制。<br/>设置为false时，预加载范围内的节点不进行绘制。<br/>默认值：false |
-| independent  | boolean | 否    | 是    | [cachedCount](#cachedcount24)是否按组计算。<br/>设置为true时，cachedCount按实际子组件个数计算，不按组计算。<br/>设置为false时，如果displayCount.swipeByGroup=true，则cachedCount按组计算，否则按实际子组件个数计算。<br/>默认值：false |
-
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -2014,7 +1971,9 @@ finishTransition(): void
 
 ### 示例1（设置导航点交互及翻页动效）
 
-该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效模式，实现了Swiper组件翻页至指定页面。
+该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效以跳转指定页面，并使用[onScrollStateChanged](#onscrollstatechanged20)回调监听滑动状态的变化。
+
+从API version 20开始，新增onScrollStateChanged事件。
 
 ```ts
 // xxx.ets
@@ -2240,8 +2199,6 @@ struct SwiperExample {
 
 该示例通过[displayCount](#displaycount8)属性实现了按组翻页效果。
 
-从API version 24开始，新增[CachedCountOptions](#cachedcountoptions24对象说明)参数，通过该参数实现缓存的节点个数和displayCount的按组显示数量解耦。
-
 ```ts
 // xxx.ets
 class MyDataSource implements IDataSource {
@@ -2293,7 +2250,6 @@ struct SwiperExample {
         }, (item: string) => item)
       }
       .displayCount(3, true) // 开启按组翻页：每页显示3个轮播项，且翻页时整组切换
-      .cachedCount(1, { independent: true }) // 从API version 24开始，新增CachedCountOptions.independent参数。在显示区域外各缓存一个子节点，和displayCount的按组显示数量解耦
       .autoPlay(true)
       .interval(4000)
       .loop(true)
@@ -2937,7 +2893,7 @@ struct SwiperExample {
 
 该示例展示了Swiper组件基于断点配置显示个数的效果。
 
-从API version 22开始，新增[displaycount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
+从API version 22开始，新增[displayCount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
 
 ```ts
 class MyDataSource implements IDataSource {
