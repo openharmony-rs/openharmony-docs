@@ -466,7 +466,7 @@
        result.resourceId = resourceId;
      } catch (error) {
        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
-       console.error(`promise: onGetResourceId failed`);
+       console.error('promise: onGetResourceId failed.');
      }
      return Promise.resolve(result);
    }
@@ -486,7 +486,7 @@
        result.resultCode = 0;
      } catch (error) {
        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
-       console.error(`promise: onImportCertificate failed`);
+       console.error('promise: onImportCertificate failed.');
      }
      return Promise.resolve(result);
    }
@@ -525,7 +525,7 @@
        result.resultCode = 0;
      } catch (error) {
        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
-       console.error(`promise: onGenerateKeyItem failed`);
+       console.error('promise: onGenerateKeyItem failed.');
      }
      return Promise.resolve(result);
    }
@@ -555,7 +555,7 @@
        result.outData = pubKey;
      } catch (error) {
        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
-       console.error(`promise: onExportKeyItem failed`);
+       console.error('promise: onExportKeyItem failed.');
      }
      return Promise.resolve(result);
    }
@@ -594,7 +594,7 @@
        result.resultCode = 0;
      } catch (error) {
        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
-       console.error(`promise: onImportWrappedKeyItem failed`);
+       console.error('promise: onImportWrappedKeyItem failed.');
      }
      return Promise.resolve(result);
    }
