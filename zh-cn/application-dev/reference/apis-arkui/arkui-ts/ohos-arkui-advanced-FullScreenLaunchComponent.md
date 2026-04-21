@@ -117,7 +117,7 @@ import { window } from '@kit.ArkUI';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends EmbeddableUIAbility {
-  storage = new LocalStorage();
+  storage = new LocalStorage(); // 初始化示例，用于存储窗口和窗口阶段的信息
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
   }
@@ -158,6 +158,7 @@ const DOMAIN = 0x0000;
 @Entry
 @Component
 struct Index {
+  // 用于存储本地数据
   private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
 
   build() {
@@ -198,6 +199,7 @@ struct Index {
     .height('100%')
   }
 
+  // 设置窗口系统栏的显示状态
   testSetSystemBarEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setWindowSystemBarEnable(["status"])
@@ -208,6 +210,7 @@ struct Index {
     })
   }
 
+  // 启用或禁用手势返回功能
   testSetGestureBackEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setGestureBackEnabled(true)
@@ -218,6 +221,7 @@ struct Index {
     })
   }
 
+  // 启用沉浸式模式
   testSetImmersiveEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     try {
@@ -227,6 +231,7 @@ struct Index {
     }
   }
 
+  // 设置特定的系统栏的显示状态
   testSetSpecificSystemBarEnabled() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setSpecificSystemBarEnabled('navigationIndicator', false, false)
