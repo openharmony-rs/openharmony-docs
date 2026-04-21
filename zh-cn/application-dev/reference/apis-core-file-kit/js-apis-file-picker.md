@@ -415,16 +415,16 @@ import  { picker } from '@kit.CoreFileKit';
 async function exampleIndex(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions = new picker.DocumentSaveOptions();
-    //保存文件的名字
+    // 保存文件的名字
     documentSaveOptions.newFileNames = ['DocumentViewPicker01'];
-    //保存文件的后缀类型
+    // 保存文件的后缀类型
     documentSaveOptions.fileSuffixChoices = ['txt', 'mp4', 'pdf'];
     let documentPicker = new picker.DocumentViewPicker(context);
     documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
       if (documentSaveOptions.fileSuffixChoices != undefined && documentSaveResult != undefined) {
-        //获取保存文件的后缀类型的下标
+        // 获取保存文件的后缀类型的下标
         let index = documentPicker.getSelectedIndex();
-        //获取保存文件的后缀类型。
+        // 获取保存文件的后缀类型。
         let selectedsuffix = documentSaveOptions.fileSuffixChoices[index];
         console.info ('DocumentViewPicker.save selectedsuffix is ' + selectedsuffix);
       }
