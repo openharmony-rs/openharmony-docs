@@ -625,6 +625,7 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
+
 // 需根据实际情况进行替换
 let credential: string = '{"enterpriseId": "123456", "appIdentifier": "123456", type: "SDA", "sign": "", "certs": []}';
 
