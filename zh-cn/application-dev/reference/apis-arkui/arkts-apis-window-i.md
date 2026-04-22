@@ -38,10 +38,10 @@
 
 | 名称                                   | 类型 | 只读 | 可选 | 说明                                                         |
 | -------------------------------------- | -------- | ---- | ---- | ------------------------------------------------------------ |
-| statusBarColor                         | string   |  否  |  是   | 状态栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
+| statusBarColor                         | string   |  否  |  是   | 状态栏背景颜色。作为入参时格式为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`；作为返回值时格式固定为ARGB颜色，如`'#FF00FF00'`，默认值为系统配置的颜色。 <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
 | isStatusBarLightIcon<sup>7+</sup>      | boolean  |  否  |  是   | 状态栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | statusBarContentColor<sup>8+</sup>     | string   |  否  |  是   | 状态栏文字颜色。当设置此属性后，`isStatusBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 23|
-| navigationBarColor                     | string   |  否  |  是   | 三键导航栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
+| navigationBarColor                     | string   |  否  |  是   | 三键导航栏背景颜色。作为入参时格式为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`；作为返回值时格式固定为ARGB颜色，如`'#FF00FF00'`，默认值为系统配置的颜色。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
 | isNavigationBarLightIcon<sup>7+</sup>  | boolean  |  否  |  是   | 三键导航栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | navigationBarContentColor<sup>8+</sup> | string   |  否  |  是   | 三键导航栏文字颜色。当设置此属性后，`isNavigationBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 8 <br>**ArkTS-Sta起始版本：** 23|
 | enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否启用状态栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
@@ -146,7 +146,7 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| visible<sup>9+</sup>    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23|
+| visible<sup>9+</sup>    | boolean       | 否   | 否   | 遗留属性，无实际意义。 <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23|
 | leftRect   | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区。<br> **ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | topRect    | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区。 <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | rightRect  | [Rect](arkts-apis-window-i.md#rect7) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区。 <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
@@ -170,7 +170,7 @@
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| visible    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
+| visible    | boolean       | 否   | 否   | 遗留属性，无实际意义。 |
 | leftRect   | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
 | topRect    | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
 | rightRect  | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
