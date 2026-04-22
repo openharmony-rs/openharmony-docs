@@ -15,23 +15,21 @@
 
 [Media错误码](errorcode-media.md)类型枚举。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称                                  | 值      | 说明                                 |
 | :------------------------------------ | ------- | ------------------------------------ |
-| AVERR_OK                              | 0       | 表示操作成功。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                       |
-| AVERR_NO_PERMISSION                   | 201     | 表示无权限执行此操作。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23               |
-| AVERR_INVALID_PARAMETER               | 401     | 表示传入入参无效。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                   |
-| AVERR_UNSUPPORT_CAPABILITY            | 801     | 表示当前版本不支持该API能力。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23        |
-| AVERR_NO_MEMORY                       | 5400101 | 表示系统内存不足或服务数量达到上限。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23 |
-| AVERR_OPERATE_NOT_PERMIT              | 5400102 | 表示当前状态不允许或无权执行此操作。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23 |
-| AVERR_IO                              | 5400103 | 表示数据流异常信息。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                 |
-| AVERR_TIMEOUT                         | 5400104 | 表示系统或网络响应超时。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23             |
-| AVERR_SERVICE_DIED                    | 5400105 | 表示服务进程死亡。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                   |
-| AVERR_UNSUPPORT_FORMAT                | 5400106 | 表示不支持当前媒体资源的格式。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23       |
-| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | 表示音频焦点被抢占。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23                   |
+| AVERR_OK                              | 0       | 表示操作成功。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                       |
+| AVERR_NO_PERMISSION                   | 201     | 表示无权限执行此操作。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23               |
+| AVERR_INVALID_PARAMETER               | 401     | 表示传入入参无效。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                   |
+| AVERR_UNSUPPORT_CAPABILITY            | 801     | 表示当前版本不支持该API能力。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23        |
+| AVERR_NO_MEMORY                       | 5400101 | 表示系统内存不足或服务数量达到上限。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23 |
+| AVERR_OPERATE_NOT_PERMIT              | 5400102 | 表示当前状态不允许或无权执行此操作。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23 |
+| AVERR_IO                              | 5400103 | 表示数据流异常信息。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                 |
+| AVERR_TIMEOUT                         | 5400104 | 表示系统或网络响应超时。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23             |
+| AVERR_SERVICE_DIED                    | 5400105 | 表示服务进程死亡。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                   |
+| AVERR_UNSUPPORT_FORMAT                | 5400106 | 表示不支持当前媒体资源的格式。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23       |
+| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | 表示音频焦点被抢占。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23                   |
 | AVERR_IO_HOST_NOT_FOUND<sup>14+</sup> | 5411001 | 表示解析或链接服务端地址错误。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 14<br> **ArkTS-Sta起始版本：** 23        |
 | AVERR_IO_CONNECTION_TIMEOUT<sup>14+</sup> | 5411002 | 表示网络连接超时。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 14<br> **ArkTS-Sta起始版本：** 23        |
 | AVERR_IO_NETWORK_ABNORMAL<sup>14+</sup> | 5411003 | 表示网络异常导致的数据或链路异常。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 14<br> **ArkTS-Sta起始版本：** 23        |
@@ -198,10 +196,10 @@ Codec MIME类型枚举。
 
 | 名称              | 值   | 说明                             |
 | ----------------- | ---- | -------------------------------- |
-| BUFFERING_START   | 1    | 表示开始缓冲。当上报BUFFERING_START时，播放器会暂停播放。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
-| BUFFERING_END     | 2    | 表示结束缓冲。当上报BUFFERING_END时，播放器会恢复播放。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
-| BUFFERING_PERCENT | 3    | 表示缓冲百分比。可参考该事件感知缓冲进度。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| CACHED_DURATION   | 4    |  表示已缓冲数据预估可播放时长，单位为毫秒（ms）。缓冲区中的数据变化量大于500ms，上报一次。可参考该事件做进度条。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| BUFFERING_START   | 1    | 表示开始缓冲。当上报BUFFERING_START时，播放器会暂停播放。                   |
+| BUFFERING_END     | 2    | 表示结束缓冲。当上报BUFFERING_END时，播放器会恢复播放。                   |
+| BUFFERING_PERCENT | 3    | 表示缓冲百分比。可参考该事件感知缓冲进度。                 |
+| CACHED_DURATION   | 4    |  表示已缓冲数据预估可播放时长，单位为毫秒（ms）。缓冲区中的数据变化量大于500ms，上报一次。可参考该事件做进度条。  |
 
 ## SoundInterruptMode<sup>23+</sup>
 
@@ -242,10 +240,6 @@ Codec MIME类型枚举。
 视频播放的Seek模式枚举，可通过seek方法作为参数传递下去。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                                                         |
 | -------------- | ---- | ------------------------------------------------------------ |
@@ -507,11 +501,13 @@ Codec MIME类型枚举。
 
 表示播放列表循环模式的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -559,8 +555,6 @@ Codec MIME类型枚举。
 ## MediaErrorCode<sup>(deprecated)</sup>
 
 媒体服务错误类型枚举。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[AVErrorCode](#averrorcode9)替代。

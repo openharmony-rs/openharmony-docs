@@ -287,7 +287,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 | tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
-| encoder | string | 否 | 是 | 用于编码的软件、硬件及其设置的标识符。不支持AVRecorder设置该属性。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| encoder | string | 否 | 是 | 用于编码的软件、硬件及其设置的标识符。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 

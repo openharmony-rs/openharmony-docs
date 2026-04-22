@@ -203,6 +203,7 @@ media.createAVRecorder().then((recorder: media.AVRecorder) => {
 ArkTS-Dyn: createAVTranscoder(): Promise\<AVTranscoder>
 
 ArkTS-Sta: createAVTranscoder(): Promise\<AVTranscoder | undefined>
+
 创建视频转码实例。使用Promise异步回调。
 
 > **说明：**
@@ -695,11 +696,13 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
 
 通过文件描述符创建媒体源。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -731,11 +734,13 @@ createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | und
 
 通过自定义数据源创建媒体源。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

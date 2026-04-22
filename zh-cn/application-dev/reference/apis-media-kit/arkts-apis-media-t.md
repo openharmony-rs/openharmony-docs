@@ -265,7 +265,7 @@ ArkTS-Sta: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => lon
 
 | 类型   | 说明                 |
 | -------- | -------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long  | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/> - request对象对应句柄唯一。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: long  | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/> request对象对应句柄唯一。|
 
 **示例：**
 
