@@ -290,9 +290,9 @@ isControlSupported(mechDeviceType?: MechDeviceType): boolean
 
 **系统能力**：SystemCapability.Mechanic.Core
 
-**ArkTS-Dyn起始版本**: 26
+**ArkTS-Dyn起始版本**: 26.0.0
 
-**ArkTS-Sta起始版本**: 26
+**ArkTS-Sta起始版本**: 26.0.0
 
 **参数：**
 
