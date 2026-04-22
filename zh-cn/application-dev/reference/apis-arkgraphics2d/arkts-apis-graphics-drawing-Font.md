@@ -31,7 +31,7 @@ isSubpixel(): boolean
 
 获取字型是否使用次像素渲染。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -61,7 +61,7 @@ isLinearMetrics(): boolean
 
 获取字型是否可以线性缩放。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -93,7 +93,7 @@ ArkTS-Sta: getSkewX(): double
 
 获取字型在x轴方向上的倾斜度。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -123,7 +123,7 @@ isEmbolden(): boolean
 
 获取字型是否设置了粗体效果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -155,7 +155,7 @@ ArkTS-Sta: getScaleX(): double
 
 获取字型在x轴方向上的缩放比例。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -187,7 +187,7 @@ ArkTS-Sta: getHinting(): FontHinting | undefined
 
 获取字型轮廓效果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -218,7 +218,7 @@ ArkTS-Sta: getEdging(): FontEdging | undefined
 
 获取字型边缘效果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -247,7 +247,7 @@ enableSubpixel(isSubpixel: boolean): void
 
 使能字型亚像素级别的文字绘制，显示效果平滑。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -284,7 +284,7 @@ enableEmbolden(isEmbolden: boolean): void
 
 使能字型粗体。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -321,7 +321,7 @@ enableLinearMetrics(isLinearMetrics: boolean): void
 
 使能字型的线性缩放。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -360,7 +360,7 @@ ArkTS-Sta: setSize(textSize: double): void
 
 设置字型大小。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -399,7 +399,7 @@ ArkTS-Sta: getSize(): double
 
 获取字型大小。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -429,7 +429,7 @@ setTypeface(typeface: Typeface): void
 
 为字型设置字体样式（包括字体名称、粗细、斜体等属性）。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -468,7 +468,7 @@ ArkTS-Sta: getTypeface(): Typeface | undefined
 
 获取字体。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -499,7 +499,7 @@ ArkTS-Sta: getMetrics(): FontMetrics | undefined
 
 获取与字体关联的FontMetrics属性。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -534,7 +534,7 @@ ArkTS-Sta: measureText(text: string, encoding: TextEncoding): double
 >
 > 此接口用于测量原始字符串的文本宽度，若想测量排版后的文本宽度，建议使用[measure.measureText](../apis-arkui/arkts-apis-uicontext-measureutils.md#measuretext12)替代。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -580,7 +580,7 @@ ArkTS-Sta: measureSingleCharacter(text: string): double
 
 测量单个字符的宽度。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -648,7 +648,7 @@ ArkTS-Sta: measureSingleCharacterWithFeatures(text: string, features: Array\<Fon
 
 测量单个字符的宽度，字符带有字体特征。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -702,7 +702,7 @@ ArkTS-Sta: setScaleX(scaleX: double): void
 
 设置字型对象在x轴上的缩放比例。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -779,7 +779,7 @@ ArkTS-Sta: setSkewX(skewX: double): void
 
 设置字型对象在x轴上的倾斜比例。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -854,7 +854,7 @@ setEdging(edging: FontEdging): void
 
 设置字型边缘效果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -891,7 +891,7 @@ setHinting(hinting: FontHinting): void
 
 设置字型轮廓效果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -930,7 +930,7 @@ ArkTS-Sta: countText(text: string): int
 
 获取文本所表示的字符数量。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -974,7 +974,7 @@ setBaselineSnap(isBaselineSnap: boolean): void
 
 当前画布矩阵轴对齐时，设置字型基线是否与像素对齐。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1012,7 +1012,7 @@ isBaselineSnap(): boolean
 
 当前画布矩阵轴对齐时，获取字型基线是否与像素对齐的结果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1043,7 +1043,7 @@ setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
 设置字型是否转换成位图处理。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1082,7 +1082,7 @@ isEmbeddedBitmaps(): boolean
 
 获取字型是否转换成位图处理的结果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1113,7 +1113,7 @@ setForceAutoHinting(isForceAutoHinting: boolean): void
 
 设置是否自动调整字型轮廓。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1152,7 +1152,7 @@ isForceAutoHinting(): boolean
 
 获取字型轮廓是否自动调整的结果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1185,7 +1185,7 @@ ArkTS-Sta: getWidths(glyphs: Array\<int>): Array\<double> | undefined
 
 获取字形数组中每个字形对应的宽度。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1251,7 +1251,7 @@ ArkTS-Sta: textToGlyphs(text: string, glyphCount?: int): Array\<int> | undefined
 
 将文本转换为字形索引。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1312,7 +1312,7 @@ ArkTS-Sta: getBounds(glyphs: Array\<int>): Array\<common2D.Rect> | undefined
 
 获取字形数组中每个字形的边界矩形。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1372,7 +1372,7 @@ ArkTS-Sta: getTextPath(text: string, byteLength: int, x: double, y: double): Pat
 
 获取文字的轮廓路径。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1454,7 +1454,7 @@ ArkTS-Sta: createPathForGlyph(index: int): Path | undefined
 
 获取指定字形的路径轮廓。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1528,7 +1528,7 @@ setThemeFontFollowed(followed: boolean): void
 
 设置字型中的字体是否跟随主题字体。设置跟随主题字体后，若系统启用主题字体并且字型未被设置字体，字型会使用该主题字体。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1566,7 +1566,7 @@ isThemeFontFollowed(): boolean
 
 获取字型中的字体是否跟随主题字体。默认不跟随。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

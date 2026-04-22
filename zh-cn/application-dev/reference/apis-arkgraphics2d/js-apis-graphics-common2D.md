@@ -24,7 +24,7 @@ import { common2D } from '@kit.ArkGraphics2D';
 
 ARGB格式的颜色描述。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -39,7 +39,7 @@ ARGB格式的颜色描述。
 
 矩形区域，通过2个坐标点可以描述出一个矩形区域，这2个点分别认为是矩形区域的左上角点与右下角点。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -54,7 +54,7 @@ ARGB格式的颜色描述。
 
 坐标点。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
