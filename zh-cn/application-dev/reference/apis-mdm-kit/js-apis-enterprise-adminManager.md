@@ -578,7 +578,7 @@ adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 
 enableSelfDeviceAdmin(admin: Want, credential: string): void
 
-在企业设备条件下，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口支持激活MDM应用自身，不支持激活其他MDM应用，激活类型支持超级设备管理应用和普通设备管理应用。
+在企业设备中，MDM应用没有预置激活的场景下，MDM应用可以通过该接口实现自激活。该接口仅支持激活MDM应用自身，不支持激活其他MDM应用；支持的激活类型包括超级设备管理应用和普通设备管理应用。
 
 <!--RP1--><!--RP1End-->
 
