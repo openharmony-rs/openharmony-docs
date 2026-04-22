@@ -112,6 +112,7 @@ Failed to deactivate the administrator application of the device.
 2. 检查解除激活时设备管理应用中指定设备管理元能力组件是否激活过。
 3. 检查调用者是否解除激活自身，设备管理器应用不能解除激活其他设备管理器应用。
 
+<!--Del-->
 ## 9200006 指定的用户ID非法
 
 **错误信息**
@@ -154,6 +155,7 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
+<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
