@@ -156,6 +156,7 @@ function ColumChild() {
   }
 }
 ```
+
 **组件提供方**
 
 原子化服务提供方需要修改两个文件：
@@ -200,6 +201,7 @@ export default class EntryAbility extends EmbeddableUIAbility {
 ```
 
 - 提供方扩展Ability入口页面文件：/src/main/ets/pages/Index.ets。
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
