@@ -6693,10 +6693,10 @@ snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 应改为开发者需要设定稍后提醒通知的唯一标识
-let hashCode : string = "__100_20010044_com.example.myapplication__100";
-
-notificationManager.snoozeNotification(hashCode, 60).then(() => {
+// 此处应改为开发者需要设定稍后提醒通知的唯一标识
+let hashCode: string = "hashCode";
+let delayTime: number = 60;
+notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
   console.info("snoozeNotification success.")
 }).catch((err: BusinessError):void => {
   console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
