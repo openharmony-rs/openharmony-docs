@@ -30,8 +30,8 @@ import  { fileShare } from '@kit.CoreFileKit';
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
 | bundleName | string | 是   | 否 | 应用程序的包名。                                       |
-| path | string | 是   | 否 | 应用程序共享目录的路径 |
-| permissionMode | OperationMode | 是   | 否 | 应用程序共享目录的权限，例如 { OperationMode.READ_MODE } |
+| path | string | 是   | 否 | 应用程序共享的目录 |
+| permissionMode | number | 是   | 否 | 应用程序共享目录的权限，例如 { OperationMode.READ_MODE } |
 
 ## fileShare.grantUriPermission
 
@@ -312,6 +312,7 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |
+| 13900011      | Out of memory. |
 
 **示例：**
 
@@ -321,10 +322,16 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
   
   async function getSharedDirectoryInfo() {
     try {
-      
+      fileShare.getSharedDirectoryInfo().then((infos: Array<fileShare.SharedDirectoryInfo>) => {
+        infos.forEach((info: fileShare.SharedDirectoryInfo) => {
+          console.log("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+        });
+      }).catch((err: BusinessError) => {
+        console.log("getSharedDirectoryInfo err : " + JSON.stringify(err))
+      });
     }
     catch (error) {
-      
+      console.info('getSharedDirectoryInfo error, Code: ' + error.code + ', message: ' + error.message);
     }
   }
   ```
@@ -367,10 +374,14 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
   
   async function grantSharedDirectoryPermission() {
     try {
-      
+      fileShare.grantSharedDirectoryPermission().then(() => {
+        console.log("grantSharedDirectoryPermission success")
+      }).catch((err: BusinessError) => {
+        console.log("grantSharedDirectoryPermission err : " + JSON.stringify(err))
+      });
     }
     catch (error) {
-      
+      console.info('grantSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
     }
   }
   ```
@@ -412,10 +423,14 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
   
   async function revokeSharedDirectoryPermission() {
     try {
-      
+      fileShare.revokeSharedDirectoryPermission().then(() => {
+        console.log("revokeSharedDirectoryPermission success")
+      }).catch((err: BusinessError) => {
+        console.log("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
+      });
     }
     catch (error) {
-      
+      console.info('revokeSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
     }
   }
   ```
