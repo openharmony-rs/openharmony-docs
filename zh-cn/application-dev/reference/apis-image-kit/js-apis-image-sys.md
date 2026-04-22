@@ -131,15 +131,15 @@ ImageSource的所有方法均不支持并发调用。
 
 createWideGamutSdrPixelMap(): Promise\<PixelMap>
 
-使用更广的色域解码SDR图片。使用Promise异步回调。
+创建SDR的PixelMap对象。当图片为带有3通道GainMap的HDR图片时，会将其基础图扩展为BT.2020色域的SDR图。使用Promise异步回调。
 
 > **说明：**
 >
->- 对SDR图片源，使用图片自带色彩空间解码。
->- 对带有单通道增益图的HDR图片源，解码图片的基础图（SDR图），忽略增益图。
->- 对带有3通道增益图的HDR图片源，使用CM_DISPLAY_BT2020_SRGB色彩空间解码。
+>- 对SDR图片源，按图片自带的色彩空间解码，输出SDR图。
+>- 对带有单通道GainMap的HDR图片源，解码其基础图（SDR图），忽略GainMap。
+>- 对带有3通道GainMap的HDR图片源，解码其基础图（SDR图），并将输出SDR图的色域扩展为[ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#ColorSpace).DISPLAY_BT2020_SRGB。
 
-**系统接口：** 该接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
