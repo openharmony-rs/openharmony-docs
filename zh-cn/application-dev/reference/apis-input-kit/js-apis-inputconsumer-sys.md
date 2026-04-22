@@ -180,9 +180,9 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 订阅组合按键（按键命令模式），支持通过 triggerType 指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用 Callback 异步方式上报按键事件数据。
 
-与 inputConsumer.on('key') 现有接口（API 8）的区别：
-- 本接口的 keyOptions 支持 triggerType 参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。
-- 本接口回调参数为 KeyCommandCallback 类型，同时接收 KeyOptions 和 KeyEvent 对象。
+与 [inputConsumer.on('key')](#inputconsumeronkey)现有接口的区别：
+- 本接口的keyOptions支持triggerType参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。
+- 本接口回调参数为KeyCommandCallback类型，同时接收KeyOptions和KeyEvent对象。
 - 本接口采用事件消费机制，可通过事件消费阻止按键事件向后传递。
 
 **起始版本：** 26.0.0
@@ -193,7 +193,7 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，支持 triggerType 参数。 |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，支持triggerType参数。 |
 | callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合键选项和按键事件数据。 |
 
 **错误码**：
@@ -288,7 +288,7 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，需与订阅时传入的 keyOptions 一致。 |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，需与订阅时传入的keyOptions一致。 |
 | callback | [KeyCommandCallback](#keycommandcallback) | 否 | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
 **错误码**：
@@ -493,7 +493,7 @@ struct Index {
 | isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
 | finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
-| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。默认值为0，表示使用 isFinalKeyDown 和 isRepeat 的传统模式。设置为 PRESSED(1)、REPEAT_PRESSED(2) 或 ALL_RELEASED(3) 时，启用命令触发模式。一旦设置此值，isFinalKeyDown 和 isRepeat 将被忽略。<br>**起始版本：** 26.0.0|
+| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。默认值为0，表示使用isFinalKeyDown和isRepeat的传统模式。设置为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)时，启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。<br>**起始版本：** 26.0.0|
 
 ## shieldMode<sup>11+</sup>
 
