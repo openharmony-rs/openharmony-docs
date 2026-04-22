@@ -68,7 +68,7 @@ async function getResourceId(): Promise<string> {
         console.error(`promise: getResourceId failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
-    console.error(`promise: getResourceId input arg invalid`);
+    console.error('promise: getResourceId input arg invalid.');
   }
 }
 ```
