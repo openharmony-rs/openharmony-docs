@@ -31,6 +31,7 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 | RULE_CAUTION_PRINT_LOG                           | bigint   | 1ULL << 63 | 告警规则，当有告警时记录日志。                            |
 | RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | 告警规则，当有告警时让应用退出。                          |
 | RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | 检测规则，检测是否有耗时函数被调用。                      |
+| RULE_THREAD_CHECK_NETWORK_USAGE                  | bigint   | 1ULL << 1  | 检测规则，检测线程是否调用网络耗时接口。<br>**起始版本**: 26.0.0  |
 | RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | 检测规则，检测是否发生ability泄露。                      |
 | RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | 检测规则，检测arkui性能。                               |
 
