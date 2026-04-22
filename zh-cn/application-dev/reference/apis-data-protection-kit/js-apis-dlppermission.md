@@ -990,7 +990,7 @@ getSandboxAppConfig(): Promise&lt;string&gt;
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象。返回沙箱应用配置信息。 长度小于4MB。|
+| Promise<string> | Promise对象。返回沙箱应用配置信息。长度小于4MB。|
 
 **错误码：**
 
