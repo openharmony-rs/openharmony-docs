@@ -3133,7 +3133,7 @@ getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
 
 ## geoLocationManager.findMatchingWlan<sup>26+</sup>
 
-findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean):Promise&lt;Array&lt;MachingWlanInfo&gt;&gt;
+findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean):Promise&lt;Array&lt;MatchingWlanInfo&gt;&gt;
 
 使用WLAN扫描结果与输入的WLAN bssid列表进行匹配，匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组。使用Promise异步回调。
 
@@ -3155,7 +3155,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;MachingWlanInfo&gt;&gt; | Promise对象, 匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组。仅返回rssi最强的3个设备信息。 |
+  | Promise&lt;Array&lt;MatchingWlanInfo&gt;&gt; | Promise对象, 匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组。仅返回rssi最强的3个设备信息。 |
 
 **错误码**：
 
@@ -3164,7 +3164,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
-|801 | Capability not supported. Failed to call ${geoLocationManager.isWlanBssidMatched} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.findMatchingWlan} due to limited device capabilities.          |
 |3301100 | The location switch is off.                                           |
 |3301800 | Failed to start WiFi scanning.                                        |
 
