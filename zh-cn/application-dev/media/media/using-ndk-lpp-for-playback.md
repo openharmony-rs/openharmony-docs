@@ -32,7 +32,7 @@
 
 ## 开发建议
 
-当前指导仅介绍如何实现媒体资源播放，在应用开发过程中可能会涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
+当前指导仅介绍如何实现媒体资源播放，在应用开发过程中会涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
 
 - 由于硬件差异，LPP播放器能力仅在部分手机上支持。从API version 21开始，建议通过[OH_LowPowerAVSink_GetCapability](../../reference/apis-media-kit/capi-lowpower-avsink-base-h.md#oh_lowpoweravsink_getcapability)查询LPP播放器能力是否支持。如果不支持，使用[AVCodec](../avcodec/avcodec-kit-intro.md)能力实现播放。
 
@@ -181,7 +181,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
    ```
    lpp_demo-sample/entry/src/main/          
    ├── cpp                                # Native层
-   │   ├── capbilities                    # 能力接口和实现
+   │   ├── capabilities                    # 能力接口和实现
    │   │   ├── include                    # 能力接口
    │   │   ├── demuxer.cpp                # 解封装实现
    │   │   ├── lpp_audio_streamer.cpp     # 低功耗音频流实现
