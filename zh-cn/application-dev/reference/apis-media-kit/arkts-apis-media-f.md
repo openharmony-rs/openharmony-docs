@@ -18,7 +18,9 @@ import { media } from '@kit.MediaKit';
 
 ## media.createAVPlayer<sup>9+</sup>
 
-createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
+ArkTS-Dyn: createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
+
+ArkTS-Sta: createAVPlayer(callback: AsyncCallback\<AVPlayer | undefined>): void
 
 创建音视频播放实例。使用callback异步回调。
 
@@ -28,15 +30,19 @@ createAVPlayer(callback: AsyncCallback\<AVPlayer>): void
 > - 可创建的音视频播放实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放实例。<!--DelEnd-->
 > - 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | 是   | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta: AsyncCallback\<[AVPlayer](arkts-apis-media-AVPlayer.md) \| undefined> | 是   | 回调函数。异步返回AVPlayer实例，失败时返回null。可用于音视频播放。 |
 
 **错误码：**
 
@@ -64,7 +70,9 @@ media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
 
 ## media.createAVPlayer<sup>9+</sup>
 
-createAVPlayer(): Promise\<AVPlayer>
+ArkTS-Dyn: createAVPlayer(): Promise\<AVPlayer>
+
+ArkTS-Sta: createAVPlayer(): Promise\<AVPlayer | undefined>
 
 异步方式创建音视频播放实例。使用Promise异步回调。
 
@@ -74,15 +82,19 @@ createAVPlayer(): Promise\<AVPlayer>
 > - 可创建的音视频播放实例数量依赖于设备芯片的支持情况，如芯片支持创建的数量少于上述情况，请以芯片规格为准。如RK3568推荐单个应用创建6个以内的音视频播放实例。<!--DelEnd-->
 > - 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，导致系统终止应用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | Promise对象。成功时异步返回AVPlayer实例，可用于音视频播放。失败时返回null。 |
+| ArkTS-Dyn:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md) \| undefined> | Promise对象。成功时异步返回AVPlayer实例，可用于音视频播放。失败时返回null。 |
 
 **错误码：**
 
@@ -737,10 +749,14 @@ createAudioPlayer(): AudioPlayer
 
 同步方式创建音频播放实例。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -763,7 +779,11 @@ createVideoPlayer(callback: AsyncCallback\<VideoPlayer>): void
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -796,7 +816,11 @@ createVideoPlayer(): Promise\<VideoPlayer>
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
