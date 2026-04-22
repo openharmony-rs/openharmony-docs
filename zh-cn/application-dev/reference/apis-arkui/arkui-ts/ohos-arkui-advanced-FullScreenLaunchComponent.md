@@ -244,4 +244,4 @@ struct Index {
 }
 ```
 
-  ![screenShot_20260422_111508.jpeg](https://raw.gitcode.com/user-images/assets/9253218/0f905368-d1f1-4751-8d31-0f571ebb91ca/screenShot_20260422_111508.jpeg 'screenShot_20260422_111508.jpeg')
+![](figures/FullScreenLaunchComponentDemo1.jpg)
