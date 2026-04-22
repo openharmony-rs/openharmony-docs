@@ -250,13 +250,7 @@ Codec MIME类型枚举。
 
 视频播放的倍速枚举，可通过setSpeed方法作为参数传递下去。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
-
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值   | 说明                           |
 | -------------------- | ---- | ------------------------------ |
@@ -275,14 +269,12 @@ Codec MIME类型枚举。
 
 枚举，视频缩放模式。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
 | 名称                        | 值   | 说明                                              |
 | ----------------------------| ---- | ------------------------------------------------ |
-| VIDEO_SCALE_TYPE_FIT        | 0    | 默认比例类型，视频拉伸至与窗口等大。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                |
-| VIDEO_SCALE_TYPE_FIT_CROP   | 1    | 保持视频宽高比缩放至最短边填满窗口，长边超出窗口部分被裁剪。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23     |
+| VIDEO_SCALE_TYPE_FIT        | 0    | 默认比例类型，视频拉伸至与窗口等大。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                |
+| VIDEO_SCALE_TYPE_FIT_CROP   | 1    | 保持视频宽高比缩放至最短边填满窗口，长边超出窗口部分被裁剪。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23     |
 | VIDEO_SCALE_TYPE_SCALED_ASPECT<sup>20+</sup> | 2    | 保持视频宽高比缩放至长边填满窗口，短边居中对齐，未填满部分留黑。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23  |
 
 ## AudioSourceType<sup>9+</sup>
