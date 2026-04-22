@@ -13,6 +13,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,6 +29,10 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
 | NETWORK | 0 | 通过网络同步策略。 |
@@ -37,17 +43,26 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
 | WIFI | 1 | WIFI网络策略。 |
 | CELLULAR | 2 | 蜂窝网络策略。   |
 
 ## cloudData.setCloudStrategy
+
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
 设置应用自身的云同步策略，使用Promise异步回调。
  
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -71,7 +86,7 @@ setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&g
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.|
 
-**样例：**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

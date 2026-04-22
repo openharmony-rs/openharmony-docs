@@ -5527,6 +5527,20 @@
 
 **起始版本**：23
 
+## ohos.permission.POWER_CONFIG
+
+允许应用读写电源配置相关的文件节点。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.MANAGE_STANDBY
 
 允许应用管理页面的Standby状态，如进入、退出Standby状态等。

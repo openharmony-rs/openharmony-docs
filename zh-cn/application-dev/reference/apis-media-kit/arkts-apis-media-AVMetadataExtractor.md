@@ -12,6 +12,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
 
@@ -24,6 +25,10 @@ import { media } from '@kit.MediaKit';
 ## 属性
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -38,11 +43,15 @@ setUrlSource(url: string, headers?: Record\<string, string>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| url | string       | 是   | 媒体资源URL。<br/>1. 支持的视频格式包括：mp4、mpeg-ts、mkv。<br/>2. 支持的音频格式包括：m4a、aac、mp3、ogg、wav、flac、amr。<br/>**支持路径示例**：<br/>1. http网络播放：`http\://xx`。<br/>2. https网络播放：`https\://xx`。<br/>**说明：** 不支持设置hls/dash、直播资源。|
+| url | string       | 是   | 媒体资源URL。<br/>1. 支持的视频格式包括：mp4、mpeg-ts、mkv。<br/>2. 支持的音频格式包括：m4a、aac、mp3、ogg、wav、flac、amr。<br/>**支持路径示例**：<br/>1. http网络播放：`http://xx`。<br/>2. https网络播放：`https://xx`。<br/>**说明：** 不支持设置HLS/Dash、直播资源。|
 | headers | Record\<string, string> | 否   | 支持访问网络资源HttpHeader自定义。默认为空。|
 
 **示例：**
@@ -54,7 +63,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     let url = "http://xx";
@@ -70,17 +79,23 @@ media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AV
 
 ## fetchFrameByTime<sup>20+</sup>
 
-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise\<image.PixelMap>
+ArkTS-Dyn: fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap>
+
+ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap | undefined>
 
 获取视频缩略图。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（us）。 |
+| timeUs | ArkTS-Dyn: number<br>ArkTS-Sta: long                 | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（us）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
 
@@ -88,7 +103,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Promise对象，返回视频缩略图对象。 |
+| ArkTS-Dyn: Promise<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: Promise<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -120,7 +135,7 @@ let param: media.PixelMapParams = {
 };
 // 获取缩略图。
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -136,7 +151,9 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 ## fetchFrameByTimeWithTimeout
 
-fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number): Promise\<image.PixelMap | undefined>
+ArkTS-Dyn: fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number): Promise\<image.PixelMap | undefined>
+
+ArkTS-Sta: fetchFrameByTimeWithTimeout(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams, timeoutMs: long): Promise\<image.PixelMap | undefined>
 
 获取视频缩略图，支持设置缩略图获取最大耗时timeoutMs。使用Promise异步回调。
 
@@ -150,10 +167,10 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
+| timeUs | ArkTS-Dyn: number<br>ArkTS-Sta: long                  | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
-| timeoutMs | number                   | 是   | 获取缩略图的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在指定的超时时间内未获取缩略图则返回错误码5400104。 |
+| timeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 是   | 获取缩略图的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在指定的超时时间内未获取缩略图则返回错误码5400104。 |
 
 **返回值：**
 
@@ -193,10 +210,10 @@ let param: media.PixelMapParams = {
 };
 // 获取缩略图。
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap) => {
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
       pixelMap = pixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
@@ -209,7 +226,9 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 ## fetchFramesByTimes<sup>23+</sup>
 
-fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, callback: OnFrameFetched): void
+ArkTS-Dyn: fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, callback: OnFrameFetched): void
+
+ArkTS-Sta: fetchFramesByTimes(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams, callback: OnFrameFetched): void
 
 批量获取视频缩略图。使用Callback异步回调。
 
@@ -222,11 +241,15 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timesUs | number[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μs），数组长度取值范围为(0, 4096]。 |
+| timesUs | ArkTS-Dyn: number[]<br>ArkTS-Sta: long[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μs），数组长度取值范围为(0, 4096]。 |
 | queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
 | callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | 是   | 需要返回的缩略图信息及可能的异常类型。<br>异常类型请参考具体返回的错误码信息。 |
@@ -261,7 +284,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
-  if (avMetadataExtractor !== null) {
+  if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
@@ -277,7 +300,9 @@ async function fetchFramesByTimesDemo() {
 
 ## fetchFramesByTimesWithTimeout
 
-fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number, callback: OnFrameFetched): void
+ArkTS-Dyn: fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number, callback: OnFrameFetched): void
+
+ArkTS-Sta: fetchFramesByTimesWithTimeout(timesUs: long[], queryOption: AVImageQueryOptions, param: PixelMapParams, timeoutMs: long, callback: OnFrameFetched): void
 
 批量获取视频缩略图，支持设置每一帧缩略图获取最大耗时timeoutMs。使用Callback异步回调。
 
@@ -297,10 +322,10 @@ fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOption
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timesUs | number[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μs），数组长度取值范围为(0, 4096]。 |
+| timesUs | ArkTS-Dyn: number[]<br>ArkTS-Sta: long[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μs），数组长度取值范围为(0, 4096]。 |
 | queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
-| timeoutMs | number                  | 是   | 获取每一帧缩略图的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>对于每一帧缩略图，在指定的超时时间内未获取缩略图则返回错误码5400104。 |
+| timeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: long                  | 是   | 获取每一帧缩略图的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>对于每一帧缩略图，在指定的超时时间内未获取缩略图则返回错误码5400104。 |
 | callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | 是   | 需要返回的缩略图信息及可能的异常类型。<br>异常类型请参考具体返回的错误码信息。 |
 
 **错误码：**
@@ -334,7 +359,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
-  if (avMetadataExtractor !== null) {
+  if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
@@ -358,6 +383,10 @@ cancelAllFetchFrames(): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts
@@ -366,7 +395,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();
@@ -378,17 +407,23 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 ## fetchMetadata<sup>11+</sup>
 
-fetchMetadata(callback: AsyncCallback\<AVMetadata>): void
+ArkTS-Dyn: fetchMetadata(callback: AsyncCallback\<AVMetadata>): void
+
+ArkTS-Sta: fetchMetadata(callback: AsyncCallback\<AVMetadata | undefined>): void
 
 获取媒体元数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | 是   | 回调函数。异步返回音视频元数据对象（AVMetadata）。|
+| callback | ArkTS-Dyn: AsyncCallback<[AVMetadata](arkts-apis-media-i.md#avmetadata11)><br>ArkTS-Sta: AsyncCallback<[AVMetadata](arkts-apis-media-i.md#avmetadata11) \| undefined>    | 是   | 回调函数。异步返回音视频元数据对象（AVMetadata）。|
 
 **错误码：**
 
@@ -421,17 +456,23 @@ async function test() {
 
 ## fetchMetadata<sup>11+</sup>
 
-fetchMetadata(): Promise\<AVMetadata>
+ArkTS-Dyn: fetchMetadata(): Promise\<AVMetadata>
+
+ArkTS-Sta: fetchMetadata(): Promise\<AVMetadata | undefined>
 
 获取媒体元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>  | Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
+| ArkTS-Dyn: Promise<[AVMetadata](arkts-apis-media-i.md#avmetadata11)><br>ArkTS-Sta: Promise<[AVMetadata](arkts-apis-media-i.md#avmetadata11) \| undefined>  | Promise对象。异步返回音视频元数据对象（AVMetadata）。 |
 
 **错误码：**
 
@@ -462,7 +503,10 @@ async function test() {
 
 ## fetchMetadataWithTimeout
 
-fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
+ArkTS-Dyn: fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
+
+ArkTS-Sta: fetchMetadataWithTimeout(timeoutMs: long): Promise\<AVMetadata | undefined>
+
 
 获取媒体元数据，支持设置获取最大耗时timeoutMs。使用Promise异步回调。
 
@@ -476,7 +520,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未返回元数据则返回错误码5400104。|
+| timeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未返回元数据则返回错误码5400104。|
 
 **返回值：**
 
@@ -506,8 +550,10 @@ async function test() {
   // 创建AVMetadataExtractor对象。
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   let timeoutMs = 3000;
-  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata) => {
-    console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata | undefined) => {
+    if (metadata) {
+      console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+    }
   }).catch((error: BusinessError) => {
     console.error(`Failed to fetch Metadata, code: ${error.code}, message: ${error.message}`);
   });
@@ -516,17 +562,23 @@ async function test() {
 
 ## fetchAlbumCover<sup>11+</sup>
 
-fetchAlbumCover(callback: AsyncCallback\<image.PixelMap>): void
+ArkTS-Dyn: fetchAlbumCover(callback: AsyncCallback<image.PixelMap>): void
+
+ArkTS-Sta: fetchAlbumCover(callback: AsyncCallback<image.PixelMap | undefined>): void
 
 获取音频专辑封面。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | 是   | 回调函数。异步返回专辑封面。 |
+| callback | ArkTS-Dyn: AsyncCallback<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: AsyncCallback<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined>    | 是   | 回调函数。异步返回专辑封面。 |
 
 **错误码：**
 
@@ -561,17 +613,23 @@ async function test() {
 
 ## fetchAlbumCover<sup>11+</sup>
 
-fetchAlbumCover(): Promise\<image.PixelMap>
+ArkTS-Dyn: fetchAlbumCover(): Promise<image.PixelMap>
+
+ArkTS-Sta: fetchAlbumCover(): Promise<image.PixelMap | undefined>
 
 获取专辑封面。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> |  Promise对象。异步返回专辑封面。 |
+| ArkTS-Dyn: Promise<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: Promise<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> \| undefined> |  Promise对象。异步返回专辑封面。 |
 
 **错误码：**
 
@@ -609,6 +667,10 @@ release(callback: AsyncCallback\<void>): void
 释放资源。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -650,6 +712,10 @@ release(): Promise\<void>
 释放资源。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

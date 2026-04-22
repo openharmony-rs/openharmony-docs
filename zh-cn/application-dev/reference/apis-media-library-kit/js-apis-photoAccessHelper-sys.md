@@ -4082,6 +4082,119 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### setPreferredCompatibleMode
+
+setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatibleMode): Promise\<void>
+
+根据bundleName配置应用程序设置的首选兼容模式。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+​**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | 是   | 应用的bundleName。|
+| compatibleMode | [PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode) | 是   | 应用程序首选兼容模式。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName is invalid, such as null, undefined and empty.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建方法请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例用法。
+
+```ts
+async function setPreferredCompatibleMode(
+  phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  bundleName: string,
+  preferredCompatibleMode: photoAccessHelper.PreferredCompatibleMode
+): Promise<void> {
+  try {
+    await phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setPreferredCompatibleMode call failed. error code: ${err.code}`);
+  }
+}
+```
+
+### getPreferredCompatibleMode
+
+getPreferredCompatibleMode(bundleName: string): Promise\<PreferredCompatibleMode>
+
+根据bundleName获取应用配置的首选兼容模式。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+​**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | 是   | 应用的bundleName。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode)&gt; | 应用程序首选兼容模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName is invalid, such as null, undefined and empty.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function getPreferredCompatibleMode(
+  phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  bundleName: string
+): Promise<photoAccessHelper.PreferredCompatibleMode> {
+  let mode: photoAccessHelper.PreferredCompatibleMode = photoAccessHelper.PreferredCompatibleMode.DEFAULT;
+  try {
+    mode = await phAccessHelper.getPreferredCompatibleMode(bundleName);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getPreferredCompatibleMode call failed. error code: ${err.code}`);
+  }
+  return mode;
+}
+```
+
 ## getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
@@ -12226,6 +12339,9 @@ async function example(context: Context) {
 | DATE_ADDED_DAY<sup>24+</sup>   | 'date_added_day'  | 资产添加时间的日期。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | PACKAGE_NAME<sup>23+</sup> | 'package_name' | 文件的包名信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | PHOTO_RISK_STATUS<sup>23+</sup> | 'photo_risk_status' | 图片风控状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| THUMB_STATUS<sup>24+</sup>  | 'thumb_status' | 缩略图状态标识。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| LCD_FILE_SIZE<sup>24+</sup>  | 'lcd_file_size' | LCD图大小。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| HIDDEN_TIME | 'hidden_time'  | 文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -12835,6 +12951,8 @@ async function example(context: Context) {
 | dateTrashedMs |number  |否 | 否 | 文件删除时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
 | dateAddedMs | number  | 否 | 否 | 文件创建时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
 | dateTakenMs | number  | 否 | 否 | 文件拍摄时的Unix时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。  |
+| dateModifiedMs| number  | 否 | 是 | 文件修改时的Unix时间戳。单位为毫秒。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
+| hiddenTime | number  | 否 | 是 | 媒体资产（图片/视频）的隐藏时间。单位为毫秒。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。  |
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16)  | 否 | 是 | 媒体资产（图片/视频）的所在位置。<br>**系统接口**：此接口为系统接口。  |
 | displayName | string  | 否 | 是 | 媒体资产（图片/视频）的显示名称。<br>**系统接口**：此接口为系统接口。  |
 | size | number  | 否 | 是 | 媒体资产（图片/视频）的文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**系统接口**：此接口为系统接口。  |
@@ -12868,6 +12986,7 @@ async function example(context: Context) {
 | orderSection | number  | 否 | 是 | 相册的排序区域，用于确认相册在图库中的展示区域。<br>**系统接口**：此接口为系统接口。 |
 | albumOrder | number  | 否 | 是 | 相册的排序值。<br>**系统接口**：此接口为系统接口。 |
 | HIDDEN<sup>23+</sup>    | boolean  | 否 | 是 | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| lpath | string  | 否 | 是 | 相册虚拟路径。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## AlbumChangeData<sup>20+</sup>
 

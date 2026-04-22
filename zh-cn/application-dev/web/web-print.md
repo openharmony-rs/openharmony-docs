@@ -113,7 +113,8 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
 - 应用侧代码。
 
   <!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
-  
+
+ArkTS-Dyn示例：  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   
@@ -135,10 +136,36 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
   }
   ```
 
+ArkTS-Sta示例：
+``` TypeScript
+// xxx.ets
+'use static'
+import { $rawfile, Entry, Row, Column, Component, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Row() {
+      Column() {
+        Web({ src: $rawfile('print.html'), controller: this.controller })
+          .javaScriptAccess(true)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## 通过调用应用侧接口拉起打印
 应用侧通过调用[createWebPrintDocumentAdapter](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebprintdocumentadapter11)创建打印适配器，通过将适配器传入打印的print接口调起打印。
 <!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) -->
 
+ArkTS-Dyn示例：
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError, print } from '@kit.BasicServicesKit';
@@ -160,6 +187,56 @@ struct WebComponent {
           }
         })
       Web({ src: 'www.example.com', controller: this.controller });
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+``` TypeScript
+// xxx.ets
+'use static'
+import print from '@ohos.print';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+const myPrintAttributes: print.PrintAttributes = {
+  copyNumber: 1 as int,
+  pageRange: {
+    startPage: 1 as int,
+    endPage: 1 as int,
+    pages: [1] as Array<int>
+  },
+  pageSize: {
+    id: 'PAGE_ISO_A4',
+    name: 'A4',
+    width: 210 as int,
+    height: 297 as int
+  },
+  directionMode: print.PrintDirectionMode.DIRECTION_MODE_PORTRAIT,
+  colorMode: print.PrintColorMode.COLOR_MODE_COLOR,
+  duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('createWebPrintDocumentAdapter')
+        .onClick(() => {
+          try {
+            let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
+            print.print('example_jobid', webPrintDocadapter, myPrintAttributes, this.getUIContext().getHostContext() as common.UIAbilityContext);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }

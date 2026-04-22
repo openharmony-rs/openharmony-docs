@@ -86,12 +86,16 @@
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
+      - [LayoutAlgorithm](js-apis-arkui-layoutAlgorithm.md)
       - [NodeController](js-apis-arkui-nodeController.md)
       - [RenderNode](js-apis-arkui-renderNode.md)
       - [AttributeUpdater](js-apis-arkui-AttributeUpdater.md)
       - [Content](js-apis-arkui-Content.md)
       - [NodeContent](js-apis-arkui-NodeContent.md)
       - [Resource](js-apis-arkui-resource.md)
+      <!--Del-->
+      - [Graphics (系统接口)](js-apis-arkui-graphics-sys.md)
+      <!--DelEnd-->
   - 窗口管理<!--window-manager-api-->
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)
@@ -462,10 +466,12 @@
     - [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)
     - [ContentSlot](arkui-ts/ts-components-contentSlot.md)
   - 自定义组件<!--custom-comp-->
+    - [页面生命周期](arkui-ts/ts-custom-component-pagelifecycle.md)
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
     - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
+    - [自定义组件内置方法（静态）](arkui-ts/ts-custom-component-api-sta.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
     - 组件扩展装饰器<!--arkts-extend-component-decorator-->
       - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
@@ -538,6 +544,7 @@
     - [PluginComponent (系统接口)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (系统接口)](arkui-ts/ts-container-ui-extension-component-sys.md)
     - [UnionEffectContainer (系统接口)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
+    - [DistortionComponent (系统接口)](arkui-ts/ts-container-distortioncomponent-sys.md)
   <!--DelEnd-->
   - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
     <!--Del-->
@@ -625,6 +632,7 @@
     - [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)
     - [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)
     - [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)
+    - [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)
     - [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)
     - [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)
     - [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)
@@ -752,6 +760,7 @@
     - [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)
     - [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)
     - [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md)
+    - [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)
     - [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md)

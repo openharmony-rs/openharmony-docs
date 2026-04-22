@@ -43,7 +43,7 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -93,7 +93,7 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -142,7 +142,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getTime<sup>10+</sup>](#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -195,7 +195,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -245,7 +245,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -294,7 +294,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -347,7 +347,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -397,7 +397,7 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -446,7 +446,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API Version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[systemDateTime.getUptime<sup>10+</sup>](#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -519,7 +519,7 @@ ArkTS-Sta: getTime(isNanoseconds?: boolean): long
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -530,7 +530,7 @@ try {
   console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -579,7 +579,7 @@ ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -590,7 +590,7 @@ try {
   console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -718,7 +718,7 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -735,7 +735,7 @@ try {
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -773,7 +773,7 @@ getTimezone(): Promise&lt;string&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -788,7 +788,7 @@ try {
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -824,7 +824,7 @@ getTimezoneSync(): string
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -835,7 +835,7 @@ try {
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -913,7 +913,7 @@ getAutoTimeStatus(): boolean
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -924,7 +924,7 @@ try {
   console.error(`Failed to get autotime status. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

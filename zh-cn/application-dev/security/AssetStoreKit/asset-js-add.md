@@ -9,13 +9,13 @@
 
 ## 接口介绍
 
-可通过API文档查看新增关键资产的异步接口[add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd)、同步接口[addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12)的详细介绍。
+开发者可以查阅API文档，获取关键资产新增接口的详细说明：[add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd)、同步接口[addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12)。
 
 在新增关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
->**注意：**
+> **注意：**
 >
->下表中“ALIAS”和名称包含“DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
+> 下表中“ALIAS”和名称包含“DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
 
 | 属性名称（Tag）        | 属性内容（Value）                                             | 是否必选  | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -45,15 +45,15 @@
 
 ## 约束和限制
 
-- 基于别名的访问
+- 基于别名的访问。
 
   关键资产以密文的形式存储在ASSET数据库中，以业务身份 + 别名作为唯一索引。故业务需要保证每条关键资产的别名唯一。
 
-- 业务自定义数据存储
+- 业务自定义数据存储。
 
-  ASSET为业务预留了12个关键资产自定义属性，名称以"DATA_LABEL"开头。对于超过12个自定义属性的情况，业务可以将多段数据按照一定的格式（如JSON）拼接到同一个ASSET属性中。
+  ASSET为业务预留了12个关键资产自定义属性，名称以“DATA_LABEL”开头。对于超过12个自定义属性的情况，业务可以将多段数据按照一定的格式（如JSON）拼接到同一个ASSET属性中。
 
-  ASSET对部分属性会进行完整性保护，这部分属性名称以"DATA_LABEL_CRITICAL"开头，写入后不支持更新。
+  ASSET对以“DATA_LABEL_CRITICAL”开头的属性提供完整性保护，写入后不可更新。
 
 ## 代码示例
 

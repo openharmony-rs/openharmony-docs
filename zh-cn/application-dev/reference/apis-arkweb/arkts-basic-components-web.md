@@ -12,7 +12,11 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 >
 > - 示例效果请以真机运行为准。
 >
@@ -52,7 +56,9 @@
 
 ## 接口
 
-Web(value: WebOptions)
+ArkTS-Dyn: Web(value: WebOptions)
+
+ArkTS-Sta: Web(value: WebOptions, content_?: CustomBuilder)
 
 > **说明：**
 >
@@ -62,16 +68,23 @@ Web(value: WebOptions)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | 定义Web选项。 |
+| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
+| content_        | CustomBuilder   | 否    | 子组件的Builder函数。 <br>**ArkTS模式：** 该参数仅适用于ArkTS-Sta。|
+
 
 **示例：**
 
 加载在线网页。
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -89,8 +102,28 @@ Web(value: WebOptions)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+      }
+    }
+  }
+  ```
+
 隐私模式WebView加载在线网页。
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -108,8 +141,28 @@ Web(value: WebOptions)
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true })
+      }
+    }
+  }
+  ```
+
 Web组件同步渲染模式。
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -127,8 +180,28 @@ Web组件同步渲染模式。
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { RenderMode, Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+      }
+    }
+  }
+  ```
+
 Web组件指定共享渲染进程。
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -148,8 +221,31 @@ Web组件指定共享渲染进程。
   }
   ```
 
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller1: webview.WebviewController = new webview.WebviewController(undefined);
+    controller2: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: "111" })
+        Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: "111" })
+      }
+    }
+  }
+  ```
+
 指定Web组件是否将鼠标事件作为触摸事件处理。
 
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -169,9 +265,33 @@ Web组件指定共享渲染进程。
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller1: webview.WebviewController = new webview.WebviewController(undefined);
+    controller2: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller1, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.controller2, emulateTouchFromMouseEvent: true })
+      }
+    }
+  }
+  ```
+
 加载本地网页。
 
 通过$rawfile方式加载。
+
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -190,9 +310,31 @@ Web组件指定共享渲染进程。
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { $rawfile, Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 通过$rawfile加载本地资源文件。
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+      }
+    }
+  }
+  ```
+
 通过resources协议加载。
 
 使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
+
+ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -201,6 +343,26 @@ Web组件指定共享渲染进程。
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        // 通过resource协议加载本地资源文件。
+        Web({ src: "resource://rawfile/index.html#home", controller: this.controller })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -269,6 +431,7 @@ Web组件指定共享渲染进程。
    }
    ```
 
+   ArkTS-Dyn示例：
    ```ts
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
@@ -280,6 +443,30 @@ Web组件指定共享渲染进程。
    @Component
    struct WebComponent {
      controller: webview.WebviewController = new webview.WebviewController();
+
+     build() {
+       Column() {
+         // 加载沙箱路径文件。
+         Web({ src: url, controller: this.controller })
+         .fileAccess(true)
+       }
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+   ```ts
+   // xxx.ets
+   import { Web, Column, Component, Entry } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   import { GlobalContext } from '../GlobalContext';
+
+   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
+
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
 
      build() {
        Column() {

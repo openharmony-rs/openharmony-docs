@@ -108,10 +108,10 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      console.info('The ability has exit last because the ability was not responding.');
+      console.info('The ability has exited last because the ability was not responding.');
     }
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-      console.info(`The ability has exit last because the rss control，the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
+      console.info(`The ability has exited last because the rss control, the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
     }
   }
 }
@@ -197,10 +197,10 @@ export default class MyAbility extends UIAbility {
 | MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
 | MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
 | MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内存极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| MEMORY_LEVEL_UI_HIDDEN<sup>24+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
-| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>24+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
-| MEMORY_LEVEL_BACKGROUND_LOW<sup>24+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中部，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
-| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>24+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_UI_HIDDEN<sup>24+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
+| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>24+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
+| MEMORY_LEVEL_BACKGROUND_LOW<sup>24+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中部，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
+| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>24+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
 
 > **说明：**
 > 
@@ -244,7 +244,7 @@ export default class MyAbility extends UIAbility {
 import { UIAbility, StartOptions, Want, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let want: Want = {
+let targetWant: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
@@ -255,7 +255,7 @@ let option: StartOptions = {
 // 确保从上下文获取到context
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    this.context.startAbility(want, option).then(() => {
+    this.context.startAbility(targetWant, option).then(() => {
       console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
@@ -314,7 +314,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     if (reason === AbilityConstant.StateType.CONTINUATION) {
-      console.info('Save the ability data when the ability continuation.');
+      console.info('Save the ability data when the ability is continuing.');
     }
     return AbilityConstant.OnSaveResult.ALL_AGREE;
   }

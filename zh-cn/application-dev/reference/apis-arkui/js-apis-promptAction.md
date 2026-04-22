@@ -148,6 +148,7 @@ Toast的选项。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | message                 | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | 否  | 否  | 显示的文本信息。<br>**说明：** <br/>默认字体为'Harmony Sans'，不支持设置其他字体。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -182,6 +183,7 @@ Toast的选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | title                             | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) | 否   | 是  | 标题文本。<br/>默认值：undefined，取值为undefined默认不显示标题。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -207,6 +209,7 @@ Toast的选项。
 | levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级对话框需要显示的层级下的[节点UniqueID](js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：** <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15枚举说明) | 否   | 是  | 设置页面内对话框蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelOrder<sup>18+</sup>       | [LevelOrder](#levelorder18) | 否   | 是  | 设置对话框显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| systemMaterial  | SystemUiMaterial | 否 | 是 | 设置弹窗的系统材质。不同的材质具有不同的效果，可以影响弹窗的背景色、边框、阴影等视觉属性。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## ShowDialogSuccessResponse
 
@@ -239,6 +242,7 @@ Toast的选项。
 | onDidAppear<sup>20+</sup> | Callback&lt;void&gt; | 否 | 是 | 菜单弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，关闭菜单时，onWillDisappear在onDidAppear前生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | onWillDisappear<sup>20+</sup> | Callback&lt;void&gt; | 否 | 是 | 菜单退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br /> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | onDidDisappear<sup>20+</sup> | Callback&lt;void&gt; | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| systemMaterial  | SystemUiMaterial | 否 | 是 | 设置弹窗的系统材质。不同的材质具有不同的效果，可以影响弹窗的背景色、边框、阴影等视觉属性。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## ActionMenuSuccessResponse
 
@@ -515,6 +519,7 @@ type DialogOptionsShadow = ShadowOptions&nbsp;\|&nbsp;ShadowStyle
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15枚举说明) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelOrder<sup>18+</sup>       | [LevelOrder](#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | focusable<sup>19+</sup>       | boolean | 否   | 是  | 设置弹窗是否获取焦点。值为true表示获取焦点，值为false表示不获取焦点。<br />默认值：true <br />**说明：**<br />只有弹出覆盖在当前窗口之上的弹窗才可以获取焦点。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| systemMaterial  | SystemUiMaterial | 否 | 是 | 设置弹窗的系统材质。不同的材质具有不同的效果，可以影响弹窗的背景色、边框、阴影等视觉属性。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## DismissDialogAction<sup>12+</sup>
 

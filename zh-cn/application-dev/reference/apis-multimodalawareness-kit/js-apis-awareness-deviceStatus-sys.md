@@ -10,14 +10,31 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块为系统接口。
 
 ## 导入模块
 
    ```ts
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    ```
+
+## DeviceRotationRadian
+
+设备三维旋转状态信息。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称          | 类型                                      | 只读 | 可选 | 说明               |
+|---------------|-------------------------------------------|----|----|----------------------|
+| x             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 X 轴方向的旋转弧度|
+| y             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Y 轴方向的旋转弧度 |
+| z             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Z 轴方向的旋转弧度 |
 
 ## deviceStatus.getDeviceRotationRadian()
 
@@ -29,7 +46,11 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码**：
 
@@ -43,6 +64,8 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
    ```ts
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -51,6 +74,23 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
       deviceStatus.getDeviceRotationRadian().then((radian: deviceStatus.DeviceRotationRadian) => {
          console.info('x:' + radian.x + ' y:' + radian.y + ' z:' + radian.z);
       }).catch((err: BusinessError) => {
+         console.error('get device rotation radian failed, errmsg:' + err);
+      })
+   } catch (err) {
+      console.error('invoke failed, errmsg:' + err)
+   }
+   ```
+
+ArkTS-Sta示例：
+
+   ```ts
+   import { deviceStatus } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   try {
+      deviceStatus.getDeviceRotationRadian().then((radian: deviceStatus.DeviceRotationRadian) => {
+         console.info('x:' + radian.x + ' y:' + radian.y + ' z:' + radian.z);
+      }).catch((err: BusinessError): void => {
          console.error('get device rotation radian failed, errmsg:' + err);
       })
    } catch (err) {

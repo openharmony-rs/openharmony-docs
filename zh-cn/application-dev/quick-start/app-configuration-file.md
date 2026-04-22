@@ -70,9 +70,9 @@
 
 app.json5配置文件包含以下标签。
 
+**表1** app.json5配置文件标签说明
 
-  **表1** app.json5配置文件标签说明
-
+<!--Table: 15%; 60%; 10%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | bundleName | 标识应用的Bundle名称，用于标识应用的唯一性。命名规则如下&nbsp;：<br/>-&nbsp;必须为以点号（.）分隔的字符串，且至少包含三段，每段中仅允许使用英文字母、数字、下划线（_）。<br/>-&nbsp;首段以英文字母开头，非首段以数字或英文字母开头，每一段以数字或者英文字母结尾。<br/>-&nbsp;不允许多个点号（.）连续出现。<br/>-&nbsp;字符串最小长度为7字节，最大长度128字节。<br/>-&nbsp;推荐采用反域名形式命名（如“com.example.demo”，建议第一级为域名后缀com，第二级为厂商/个人名，第三级为应用名，也可以多级）。 | 字符串 | 该标签不可缺省。 |
@@ -99,12 +99,14 @@ app.json5配置文件包含以下标签。
 |targetBundleName|标识当前包所指定的目标应用，标签值的取值规则和范围与bundleName标签一致。配置该标签的应用为具有overlay特征的应用。|字符串|该标签可缺省，缺省值为空。|
 |targetPriority|标识当前应用的优先级，取值范围为1~100。配置targetBundleName标签之后，才支持配置该标签。|数值|该标签可缺省，缺省值为1。|
 |generateBuildHash |标识当前应用的所有HAP和HSP是否由打包工具生成哈希值。<br/>该标签配置为true时，该应用下的所有HAP和HSP都会由打包工具生成对应的哈希值。系统OTA升级时，若应用的versionCode保持不变，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：当前应用下所有HAP和HSP都会由打包工具生成对应的哈希值。<br/>-&nbsp;false：当前应用下所有HAP和HSP都不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该标签仅对预置应用生效。|布尔值|该标签可缺省，缺省值为false。|
+| 2in1 | 标识对PC/2in1设备做的特殊配置，可以配置的属性标签为minAPIVersion。<br/>如果使用该属性对PC/2in1设备做了特殊配置，则应用在PC/2in1设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时PC/2in1设备使用app.json5公共区域配置的属性值。 |
 | GWPAsanEnabled | 标识应用程序是否开启[GWP-asan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection#section2735718353)堆内存检测工具，用于对内存越界、内存释放后使用等内存破坏问题进行分析。<br/>-&nbsp;true：应用程序开启GWP-asan检测。<br/>-&nbsp;false：应用程序不开启GWP-asan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | [appEnvironments](#appenvironments标签) | 标识当前应用配置的应用环境变量。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | maxChildProcess | 标识当前应用自身可创建的子进程的最大个数，取值范围为0到512，0表示不限制，当应用有多个模块时，以entry模块的配置为准。 | 数值 | 该标签可缺省，缺省时使用系统配置的默认值<!--RP2-->1<!--RP2End-->。 |
 | [multiAppMode](#multiappmode标签) | 标识当前应用配置的多开模式。仅bundleType为app的应用的entry或feature模块配置有效，存在多个模块时，以entry模块的配置为准。 | 对象 | 该标签可缺省，缺省值为空。 |
 | hwasanEnabled | 标识应用程序是否开启[HWAsan检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hwasan)。HWAsan(HardWare-assisted AddressSanitizer)是利用Top-Byte-Ignore特性实现的增强版Asan，与Asan相比HWAsan的内存开销更低，检测到的内存错误范围更大。<br/>-&nbsp;true：当前工程开启HWAsan检测。<br/>-&nbsp;false：当前工程不开启HWAsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| ubsanEnabled | 标识应用程序是否开启UBsan检测。<br/>UBsan(Undefined Behavior Sanitizer)是一个用于运行时检测程序中未定义行为的工具，旨在帮助开发人员发现代码中潜在的错误和漏洞。<br/>-&nbsp;true：当前工程开启UBsan检测。<br/>-&nbsp;false：当前工程不开启UBsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| tsanEnabled | 标识应用程序是否开启使用TSan检测线程错误。<br/>[TSan（ThreadSanitizer）](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-tsan-detection)是一个检测数据竞争的工具。<br/>-&nbsp;true：当前工程开启TSan检测。<br/>-&nbsp;false：当前工程不开启TSan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| ubsanEnabled | 标识应用程序是否[使用UBSan检测未定义行为](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ubsan)。<br/>UBsan(Undefined Behavior Sanitizer)是一个用于运行时检测程序中未定义行为的工具，旨在帮助开发人员发现代码中潜在的错误和漏洞。<br/>-&nbsp;true：当前工程开启UBsan检测。<br/>-&nbsp;false：当前工程不开启UBsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | cloudFileSyncEnabled | 标识当前应用是否启用端云文件同步能力。 <br/>-&nbsp;true：当前应用启用端云文件同步能力。<br/>-&nbsp;false：当前应用不启用端云文件同步能力。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | cloudStructuredDataSyncEnabled | 标识当前应用是否启用端云结构化数据同步能力。 <br/>-&nbsp;true：当前应用启用端云结构化数据同步能力。<br/>-&nbsp;false：当前应用不启用端云结构化数据同步能力。<br/>**说明：** <br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | [configuration](#configuration标签) | 标识当前应用字体大小跟随系统配置的能力。<br/>该标签是一个profile文件资源，用于指定描述应用字体大小跟随系统变更的配置文件。| 字符串 | 该标签可缺省，缺省时configuration使用不跟随系统默认设定。 |
@@ -113,6 +115,12 @@ app.json5配置文件包含以下标签。
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该标签。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该标签仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
 | buildVersion | 标识应用的构建版本号，建议采用“A.B.C”三段式。三段式建议的含义如下：<br/>第一段：主版本号/Major，用于标识重大修改的版本，例如实现新的重大特性或重大变化。<br/>第二段：次版本号/Minor，用于表示实现较突出的特性，例如新特性添加或大问题修复。<br/>第三段：特性版本号/Feature，用于标识规划的新版本特性。<br/>**说明：**<br/>从API version 23开始，支持该标签。<br/>字符串格式要求如下：<br/>-&nbsp;字符串最小长度为1字节，最大长度18字节。<br/>-&nbsp;字符串由数字和'.'组成。<br/>-&nbsp;'.'的数量限制0到2个，不能以'.'开头和结尾，也不能相邻。<br/>-&nbsp;数字段可以为0，但不能以0开头，如"02"，"0123"。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | profileable | 标识是否允许[调优工具](../dfx/hiperf.md)对<!--RP3-->[Profile签名文件](../security/app-provision-structure.md)类型为release<!--RP3End-->的应用进行性能分析。<br/>-&nbsp;true：允许调优工具对应用进行性能分析。<br/>-&nbsp;false：不允许调优工具应用进行性能分析。<br/>**说明：**<br/>从API version 24开始，支持该标签。<br/>仅当bundleType为app或atomicService时，可以配置该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| distributedNotificationEnabled<sup>(deprecated)</sup> | 标识应用是否开启分布式通知，当开启分布式通知时，同一分布式组网下的两个设备（A和B），当设备A收到一条消息时，设备B会收到一条分布式消息用于设备B的使用者去查看设备A的消息。<br/>-&nbsp;true：开启。<br/>-&nbsp;false：不开启。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| entityType<sup>(deprecated)</sup> | 标识应用的类别，包括：<br/>-&nbsp;game：游戏类。<br/>-&nbsp;media：影音类。<br/>-&nbsp;communication：社交通信类。<br/>-&nbsp;news：新闻类。<br/>-&nbsp;travel：出行类。<br/>-&nbsp;utility：工具类。<br/>-&nbsp;shopping：购物类。<br/>-&nbsp;education：教育类。<br/>-&nbsp;kids：少儿类。<br/>-&nbsp;business：商务类。<br/>-&nbsp;photography：拍摄类。<br/>-&nbsp;unspecified：其他，不属于上述类。<br/>**说明：** <br/>从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省为unspecified。 |
+| keepAlive<sup>(deprecated)</sup> | 标识应用程序是否保持活动状态。此属性仅在使用系统应用或特权应用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| removable<sup>(deprecated)</sup> | 标识应用是否可移除。此属性仅在系统应用或特权应用使用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为true。 |
+| singleton<sup>(deprecated)</sup> | 标识应用程序是否为单例模式。此属性仅在使用系统应用或特权应用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为false。 |
+| userDataClearable<sup>(deprecated)</sup> | 标识是否允许应用程序清除用户数据。此属性仅在使用系统应用或特权应用时生效，不对三方应用开放。<br/>**说明：** <br/>从API version 9开始废弃。 | 布尔值 | 该标签可缺省，缺省值为true。 |
 
 ## appEnvironments标签
 
@@ -194,6 +202,7 @@ configuration标签示例：
 
    **表4** configuration标签说明
 
+<!--Table: 15%; 50%; 10%; 25%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | 应用字体大小是否跟随系统，支持的取值如下：<br/>-&nbsp;followSystem：跟随系统。<br/>-&nbsp;nonFollowSystem：不跟随系统。| 字符串 | 该标签可缺省，缺省值为nonFollowSystem。 |

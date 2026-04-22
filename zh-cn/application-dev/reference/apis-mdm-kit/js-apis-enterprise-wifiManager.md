@@ -1,10 +1,10 @@
 # @ohos.enterprise.wifiManager（Wi-Fi管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供企业设备Wi-Fi管理能力，包括查询Wi-Fi开启状态等。
 
@@ -1025,6 +1025,10 @@ IP配置信息。
 ## EapMethod
 
 表示EAP认证方式的枚举。
+
+> **说明**：
+>
+> 当前仅支持使用EAP_PEAP、EAP_TLS两种认证方式，其他暂不支持。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

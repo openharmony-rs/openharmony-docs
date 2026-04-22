@@ -1,7 +1,7 @@
 # @ohos.inputMethod (输入法框架) (系统接口)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -359,6 +359,121 @@ function enableInputMethodSafely() {
 enableInputMethodSafely();
 ```
 
+### getCursorInfo
+
+ArkTS-Dyn: getCursorInfo(userId?: number): CursorInfo
+
+ArkTS-Sta: getCursorInfo(userId?: long): CursorInfo
+
+获取指定用户的光标信息。当编辑框未给输入法服务通知光标信息时，返回所有属性值都为0。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | userId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 指定的用户ID。<br>如果调用者不是用户0应用，该值默认为调用者的用户ID。<br> 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [CursorInfo](js-apis-inputmethod.md#cursorinfo10) | 指定用户下的光标信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800003 | input method client error. Possible causes:1. No edit box is bound to the current input method application under the specified user. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let cursorInfo = inputMethod.getSetting().getCursorInfo();
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let cursorInfo: inputMethod.CursorInfo = inputMethod.getSetting().getCursorInfo();
+  console.info(`get cursorInfo success, left: ${cursorInfo.left}, top: ${cursorInfo.top}, width: ${cursorInfo.width}, height: ${cursorInfo.height}, displayId: ${cursorInfo.displayId}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get cursorInfo. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getDefaultInputMethodAbility
+
+getDefaultInputMethodAbility(): InputMethodProperty
+
+获取默认输入法能力。为优化性能，返回的InputMethodProperty对象仅保证能够唯一标识输入法能力的`name`和`id`属性正确，其他属性可能为空。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 默认输入法属性，仅保证`name`和`id`属性正确，其他属性可能为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------------------------------------- |
+| 202      | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+```ts
+try {
+  const defaultAbility: inputMethod.InputMethodProperty = inputMethod.getSetting().getDefaultInputMethodAbility();
+  console.info(`Succeeded in getting default input method ability, name: ${defaultAbility.name}, id: ${defaultAbility.id}`);
+} catch (err) {
+  console.error(`Failed to getDefaultInputMethodAbility. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## InputMethodController
 
 下列API示例中都需使用[getController](./js-apis-inputmethod.md#inputmethodgetcontroller9)获取到InputMethodController实例，再通过实例调用对应方法。
@@ -470,3 +585,705 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
   console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+## inputMethod.getDefaultInputMethod
+
+ArkTS-Dyn: getDefaultInputMethod(userId?: number): InputMethodProperty
+
+ArkTS-Sta: getDefaultInputMethod(userId?: int): InputMethodProperty
+
+获取指定用户的默认输入法。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回默认输入法属性对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+let defaultIme = inputMethod.getDefaultInputMethod(100);
+```
+
+ArkTS-Sta示例:
+
+```ts
+let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
+```
+
+## inputMethod.getSystemInputMethodConfigAbility
+
+ArkTS-Dyn: getSystemInputMethodConfigAbility(userId?: number): ElementName
+
+ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: int): ElementName
+
+获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | 系统输入法设置界面Ability的ElementName。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+
+let inputMethodConfig = inputMethod.getSystemInputMethodConfigAbility(100);
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+
+let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
+```
+
+## inputMethod.switchInputMethodWithUserId
+
+ArkTS-Dyn: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: int): Promise&lt;void&gt;
+
+切换输入法，使用promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 目标输入法的包名。 |
+| subtypeId | string | 否 | 输入法子类型的ID。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+  | 类型                                      | 说明                         |
+  | ----------------------------------------- | ---------------------------- |
+  | Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | permissions check fails. |
+| 202 | not system application. |
+| 12800005 | configuration persistence error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbility', 100).then(() => {
+  console.info('Succeeded in switching input method.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'ServiceExtAbility', 100).then(() => {
+  console.info('Succeeded in switching input method.');
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.getCurrentInputMethod
+
+ArkTS-Dyn: getCurrentInputMethod(userId?: number): InputMethodProperty
+
+ArkTS-Sta: getCurrentInputMethod(userId?: int): InputMethodProperty
+
+获取指定用户的当前输入法。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回当前输入法属性对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+let currentIme = inputMethod.getCurrentInputMethod(100);
+```
+
+ArkTS-Sta示例:
+
+```ts
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
+```
+
+## inputMethod.getCurrentInputMethodSubtype
+
+ArkTS-Dyn: getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
+
+ArkTS-Sta: getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
+
+获取指定用户的当前输入法子类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 返回当前输入法子类型对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+let currentImeSubType = inputMethod.getCurrentInputMethodSubtype(100);
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
+```
+
+### enableInputMethod
+
+ArkTS-Dyn: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: int): Promise&lt;void&gt;
+
+修改指定用户输入法的启用状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 输入法的包名。 |
+| extensionName | string | 是 | 输入法的扩展名。 |
+| enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | 是 | 要修改的启用状态。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | permissions check fails. |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800018 | input method is not found. |
+| 12800019 | current operation cannot be applied to the preconfigured default input method. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodExtAbility', inputMethod.EnabledState.FULL_EXPERIENCE_MODE, 100).then(() => {
+  console.info('Succeeded in enabling input method.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().enableInputMethod('com.example.keyboard', 'InputMethodExtAbility', inputMethod.EnabledState.FULL_EXPERIENCE_MODE, 100).then(() => {
+  console.info('Succeeded in enabling input method.');
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getAllInputMethodsSync
+
+ArkTS-Dyn: getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
+
+ArkTS-Sta: getAllInputMethodsSync(userId?: int): Array&lt;InputMethodProperty&gt;
+
+获取指定用户的所有输入法应用列表。同步接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                    |
+| ------ | ------- | ---- | ----------------------- |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                                 | 说明               |
+| ---------------------------------------------------- | ------------------ |
+| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回所有输入法列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800001 | bundle manager error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+let imeProperty = inputMethod.getSetting().getAllInputMethodsSync(100);
+```
+
+ArkTS-Sta示例:
+
+```ts
+let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
+```
+
+### getInputMethodSubtypes
+
+ArkTS-Dyn: getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMethodSubtype&gt;
+
+ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: int): Array&lt;InputMethodSubtype&gt;
+
+获取指定用户指定输入法的子类型列表。同步接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 指定输入法的包名。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                   |
+| ----------------------------------------------------------- | ---------------------- |
+| Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)> | 返回指定输入法的子类型列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800001 | bundle manager error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+let inputMethodSetting = inputMethod.getSetting();
+let subtypes = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
+```
+
+### getInputMethodsSync
+
+ArkTS-Dyn: getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
+
+ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: int): Array&lt;InputMethodProperty&gt;
+
+获取指定用户已激活/未激活的输入法应用列表。同步接口。
+
+> **说明：**
+>
+> 已激活输入法为使能的输入法应用。默认输入法默认使能，其他输入法可被设置为使能或非使能。
+>
+> 已激活输入法列表包括默认输入法和已被设置为使能的输入法应用，未激活输入法列表包括除使能输入法以外的其他已安装的输入法。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                    |
+| ------ | ------- | ---- | ----------------------- |
+| enable | boolean | 是   |- 是否激活输入法列表，true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 用户ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                                 | 说明                          |
+| ---------------------------------------------------- | ----------------------------- |
+| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | 返回已激活/未激活输入法列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800001 | bundle manager error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+let imeProperty = inputMethod.getSetting().getInputMethodsSync(true, 100);
+```
+
+ArkTS-Sta示例:
+
+```ts
+let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
+```
+
+## ImeChangeWithUserIdCallback
+
+type ImeChangeWithUserIdCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
+
+输入法变更事件回调，携带发生输入法变更的用户ID。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名                    | 类型                                                         | 必填 | 说明             |
+| ------------------------- | ------------------------------------------------------------ | ---- | ---------------- |
+| inputMethodProperty | [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 是   | 当前输入法的属性。 |
+| inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 当前输入法的子类型。 |
+| userId | number | 是 | 输入法发生变化的用户ID。 |
+
+### onImeChangeWithUserId
+
+onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
+
+订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                            | 必填 | 说明                                                         |
+| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback)  | 是 | 回调函数，返回输入法属性对象、子类型对象及用户ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202      | not system application.  |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+inputMethod.getSetting()
+  .onImeChangeWithUserId((inputMethodProperty, inputMethodSubtype, userId) => {
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name}, inputMethodSubtype.id: ${inputMethodSubtype.id}, userId: ${userId}`);
+  });
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+inputMethod.getSetting()
+  .onImeChangeWithUserId((inputMethodProperty: inputMethod.InputMethodProperty, 
+    inputMethodSubtype: InputMethodSubtype, userId: number) => {
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name}, inputMethodSubtype.id: ${inputMethodSubtype.id}, userId: ${userId}`);
+  });
+```
+
+### offImeChangeWithUserId
+
+offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
+
+取消订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                            | 必填 | 说明                                                         |
+| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback)  | 否 | 回调函数，返回取消订阅的输入法属性对象、子类型对象及用户ID。<br>参数不填写时，取消订阅所有的回调事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202      | not system application.  |
+
+**示例：**
+
+```ts
+inputMethod.getSetting().offImeChangeWithUserId();
+```
+
+## InputWindowInfo
+
+输入法软键盘的窗口信息（系统接口扩展属性）。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+关于输入法软键盘窗口信息的更多属性，请参见[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| userId | number | 否 | 是 | 显示输入法窗口的用户ID。<br>该属性仅系统应用可以使用。|

@@ -248,7 +248,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 | onDidDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2. onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23枚举说明) | 否 | 是 | 设置菜单是否避让软键盘。<br /> **说明：** <br />未设置或设置为undefined时，按照MenuKeyboardAvoidMode.NONE处理。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或者设置为undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
@@ -298,6 +298,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 25%; 8%; 8%; 39%-->
 | 名称  | 类型                                       | 只读 | 可选 | 说明                                 |
 | ----- | ------------------------------------------ | ---- | ------------------------------------ | ------------------------------------ |
 | scale | [AnimationRange](#animationrange11)\<number> | 否   | 是  | 动画开始和结束时相对预览原图缩放比例。<br/>默认值：[0.95, 1.1]<br/>**说明：** <br/>缩放比例需要根据实际开发场景设置，建议设置值为小于预览图宽度或布局的最大限制。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

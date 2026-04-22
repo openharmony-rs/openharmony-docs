@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
@@ -30,17 +32,17 @@ NavDestination组件状态。
 
 | 名称      | 值  | 说明                     |
 | --------- | --- | ------------------------ |
-| ON_SHOWN  | 0   | NavDestination组件显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_HIDDEN | 1   | NavDestination组件隐藏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_SHOWN  | 0   | NavDestination组件显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| ON_HIDDEN | 1   | NavDestination组件隐藏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23|
+| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23|
+| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ScrollEventType<sup>12+</sup>
 
@@ -49,6 +51,10 @@ NavDestination组件状态。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值  | 说明                     |
 | --------- | --- | ------------------------ |
@@ -62,6 +68,10 @@ routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPag
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值  | 说明                    |
 | ----------------- | --- | ----------------------- |
@@ -79,6 +89,10 @@ TabContent组件的状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 值  | 说明                    |
 | ----------------- | --- | ----------------------- |
 | ON_SHOW           | 0   | TabContent组件显示。    |
@@ -92,15 +106,15 @@ NavDestination组件信息，由系统返回给开发者。
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明                                         |
 | ------------ | -------------------------------------------------  | --- | -----|--------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否 | 包含NavDestination组件的Navigation组件的id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| name         | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否 | NavDestination组件的名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| state        | [NavDestinationState](#navdestinationstate)     | 否 | 否 | NavDestination组件的状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| index<sup>12+</sup>        | number   | 否  | 否   | NavDestination在页面栈中的索引。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> 取值范围：[0, +∞)      |
-| param<sup>12+</sup>        | Object   | 否 | 是   | NavDestination组件的参数。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
-| navDestinationId<sup>12+</sup>        | string    | 否  | 否  | NavDestination组件的唯一标识ID。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
-| mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)   | 否  | 是   | NavDestination类型。    <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。               |
-| uniqueId<sup>15+</sup>        | number     | 否 | 是 | NavDestination组件的uniqueId。      <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。             |
-| size<sup>23+</sup>        | [Size](./js-apis-arkui-graphics.md#size)     | 否 | 是 | NavDestination组件的大小，单位是vp。      <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。             |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否 | 包含NavDestination组件的Navigation组件的id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| name         | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否 | NavDestination组件的名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| state        | [NavDestinationState](#navdestinationstate)     | 否 | 否 | NavDestination组件的状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| index<sup>12+</sup>        | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 否  | 否   | NavDestination在页面栈中的索引。<br/> 取值范围：[0, +∞)     <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23     |
+| param<sup>12+</sup>        | Object   | 否 | 是   | NavDestination组件的参数。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23               |
+| navDestinationId<sup>12+</sup>        | string    | 否  | 否  | NavDestination组件的唯一标识ID。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23            |
+| mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)   | 否  | 是   | NavDestination类型。    <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23                |
+| uniqueId<sup>15+</sup>        | ArkTS-Dyn: number<br/>ArkTS-Sta: int       | 否 | 是 | NavDestination组件的uniqueId。      <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23              |
+| size<sup>23+</sup>        | [Size](./js-apis-arkui-graphics.md#size)     | 否 | 是 | NavDestination组件的大小，单位是vp。      <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23              |
 
 ## NavigationInfo<sup>12+</sup>
 
@@ -110,24 +124,23 @@ Navigation组件信息。
 
 | 名称         | 类型                                         | 只读   | 可选 | 说明                                         |
 | ------------ | ---------------------------------------------| ----- | ---- | -------------------------------------------- |
-| navigationId | string | 否 | 否   | Navigation组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| pathStack         | [NavPathStack](arkui-ts/ts-basic-components-navigation.md#navpathstack10) | 否 | 否   | Navigation组件的导航控制器。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
-| uniqueId<sup>20+</sup>         | number | 否 | 是   | Navigation组件的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                  |
+| navigationId | string | 否 | 否   | Navigation组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| pathStack         | [NavPathStack](arkui-ts/ts-basic-components-navigation.md#navpathstack10) | 否 | 否   | Navigation组件的导航控制器。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                   |
+| uniqueId<sup>20+</sup>         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | Navigation组件的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                  |
 
 ## ScrollEventInfo<sup>12+</sup>
 
 ScrollEvent滚动信息。
 
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明                                         |
 | ------------ | -------------------------------------------------- | ---- | ---- | -------------------------------------------- |
-| id           | string                                             | 否 | 否 | 滚动组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uniqueId           | number                                             | 否 | 否 | 滚动组件的uniqueId。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| scrollEvent    | [ScrollEventType](#scrolleventtype12)                | 否 | 否 | 滚动事件的类型。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| offset       | number                                             | 否 | 否 | 滚动组件的当前偏移量。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| axis<sup>20+</sup>         | [Axis](arkui-ts/ts-appendix-enums.md#axis)         | 否 | 是 | 滚动组件的滚动方向。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| id           | string                                             | 否 | 否 | 滚动组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| uniqueId           | ArkTS-Dyn: number<br/> ArkTS-Sta: int           | 否 | 否 | 滚动组件的uniqueId。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| scrollEvent    | [ScrollEventType](#scrolleventtype12)                | 否 | 否 | 滚动事件的类型。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| offset       | ArkTS-Dyn: number<br/> ArkTS-Sta: double                   | 否 | 否 | 滚动组件的当前偏移量。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| axis<sup>20+</sup>         | [Axis](arkui-ts/ts-appendix-enums.md#axis)         | 否 | 是 | 滚动组件的滚动方向。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
 
 ## ObserverOptions<sup>12+</sup>
 
@@ -136,6 +149,10 @@ Observer选项。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明                                         |
 | ------------ | -------------------------------------------------- | ---- | ---- | -------------------------------------------- |
@@ -149,13 +166,13 @@ RouterPageInfo包含的信息，由系统返回给开发者。
 
 | 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
-| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| index                | number                                                  | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| state                | [RouterPageState](#routerpagestate)                     | 否   | 否   | 触发生命周期的routerPage页面的状态。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| pageId<sup>12+</sup> | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的唯一标识。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| size<sup>23+</sup> | [Size](./js-apis-arkui-graphics.md#size) | 否 | 是 | routerPage页面的大小，单位是vp。<br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23  |
+| index                | ArkTS-Dyn: number<br/>ArkTS-Sta: int            | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23          |
+| name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23            |
+| path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23            |
+| state                | [RouterPageState](#routerpagestate)                     | 否   | 否   | 触发生命周期的routerPage页面的状态。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23            |
+| pageId<sup>12+</sup> | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的唯一标识。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23        |
+| size<sup>23+</sup> | [Size](./js-apis-arkui-graphics.md#size) | 否 | 是 | routerPage页面的大小，单位是vp。<br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23  |
 
 ## DensityInfo<sup>12+</sup>
 
@@ -164,6 +181,10 @@ RouterPageInfo包含的信息，由系统返回给开发者。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                      | 只读 | 可选 | 说明                                   |
 | ------- | ----------------------------------------- | ---- | ---- | -------------------------------------- |
@@ -177,6 +198,10 @@ Navigation组件页面切换的信息。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型                                         | 只读   | 可选 | 说明                                          |
 | ------------ | -------------------------------------------- | ------ | ---- | -------------------------------------------- |
@@ -193,6 +218,10 @@ Navigation组件页面切换事件的监听选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型                                          | 只读  | 可选 | 说明                                          |
 | ------------ | --------------------------------------------- | ----- | ---- | -------------------------------------------- |
 | navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否   | 指定需要监听的Navigation的ID。 |
@@ -204,10 +233,14 @@ Navigation组件页面切换事件的监听选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
 | ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
 | id           | string                                       | 否   | 否   | 文本输入组件的ID。|
-| uniqueId     | number                                       | 否   | 否   | 文本输入组件的唯一标识符。|
+| uniqueId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否   | 否   | 文本输入组件的唯一标识符。|
 | content        | string                                       | 否   | 否   | 变化后的文本内容。|
 
 ## TabContentInfo<sup>12+</sup>
@@ -218,13 +251,13 @@ TabContent页面的切换信息。
 
 | 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
 | ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
-| tabContentId | string                                       | 否   | 否   | TabContent组件的id。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
-| tabContentUniqueId | number                                 | 否   | 否   | TabContent组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                |
-| state        | [TabContentState](#tabcontentstate12)        | 否   | 否   | TabContent组件的状态。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
-| index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
-| uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
-| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
+| tabContentId | string                                       | 否   | 否   | TabContent组件的id。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                          |
+| tabContentUniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 否   | 否   | TabContent组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                   |
+| state        | [TabContentState](#tabcontentstate12)        | 否   | 否   | TabContent组件的状态。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                    |
+| index        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23        |
+| id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                          |
+| uniqueId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int           | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                       |
+| lastIndex<sup>22+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23    |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
@@ -234,11 +267,14 @@ TabContent页面的切换信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
 | widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | 是   | 否   | 窗口宽度所在的布局断点枚举。        |
 | heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| 是   | 否   | 窗口高度所在的布局断点枚举。        |
-
 
 ## uiObserver.on('navDestinationUpdate')
 
@@ -250,11 +286,37 @@ on(type: 'navDestinationUpdate', callback: Callback\<NavDestinationInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onNavDestinationUpdate<sup>23+</sup>](#uiobserveronnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
+
+**参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
+
+## uiObserver.onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(callback: Callback\<NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('navDestinationUpdate')](#uiobserveronnavdestinationupdate)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
 
 **示例：**
@@ -322,11 +384,41 @@ off(type: 'navDestinationUpdate', callback?: Callback\<NavDestinationInfo\>): vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offNavDestinationUpdate<sup>23+</sup>](#uiobserveroffnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
+
+**参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | 否   | 回调函数。若不指定，则取消所有navDestinationUpdate事件监听。                             |
+
+**示例：**
+
+参考[uiObserver.on('navDestinationUpdate')](#uiobserveronnavdestinationupdate)示例。
+
+## uiObserver.offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(callback?: Callback\<NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('navDestinationUpdate')](#uiobserveroffnavdestinationupdate)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\> | 否   | 回调函数。返回当前的NavDestination组件状态。                             |
 
 **示例：**
@@ -342,6 +434,12 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onNavDestinationUpdate<sup>23+</sup>](#uiobserveronnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -407,6 +505,27 @@ struct Index {
 }
 ```
 
+## uiObserver.onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback: Callback<observer.NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('navDestinationUpdate')](#uiobserveronnavdestinationupdate-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
+
 ## uiObserver.off('navDestinationUpdate')
 
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback\<NavDestinationInfo\>): void
@@ -417,6 +536,12 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offNavDestinationUpdate<sup>23+</sup>](#uiobserveroffnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
@@ -424,6 +549,31 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 | type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | 是   | 指定监听的Navigation的id。                                               |
 | callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\>                | 否   | 回调函数。返回当前的NavDestination组件状态。                             |
+
+**示例：**
+
+参考[uiObserver.on('navDestinationUpdate')](#uiobserveronnavdestinationupdate-1)示例。
+
+## uiObserver.offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(options: NavDestinationSwitchObserverOptions, callback?: Callback\<NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('navDestinationUpdate')](#uiobserveroffnavdestinationupdate-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<[NavDestinationInfo](#navdestinationinfo)\>                | 否   | 需要被注销的回调函数。                                                 |
 
 **示例：**
 
@@ -439,7 +589,13 @@ on(type: 'scrollEvent', callback: Callback\<ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onScrollEvent<sup>23+</sup>](#uiobserveronscrollevent23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -460,7 +616,40 @@ off(type: 'scrollEvent', callback?: Callback\<ScrollEventInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offScrollEvent<sup>23+</sup>](#uiobserveroffscrollevent23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。                   |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>       | 否   | 回调函数。若不指定，则取消所有scrollEvent事件监听。                        |
+
+**示例：**
+
+参考[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)示例。
+
+## uiObserver.offScrollEvent<sup>23+</sup>
+
+offScrollEvent(callback?: Callback\<ScrollEventInfo\>): void
+
+取消监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](./arkui-ts/ts-container-list.md)、[Grid](./arkui-ts/ts-container-grid.md)、[Scroll](arkui-ts/ts-container-scroll.md)、[WaterFlow](./arkui-ts/ts-container-waterflow.md)、[ArcList](./arkui-ts/ts-container-arclist.md)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -469,7 +658,7 @@ off(type: 'scrollEvent', callback?: Callback\<ScrollEventInfo\>): void
 
 **示例：**
 
-参考[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)示例。
+参考[offscrollevent](#uiobserveroffscrollevent12-1)示例。
 
 ## uiObserver.on('scrollEvent')<sup>12+</sup>
 
@@ -481,12 +670,18 @@ on(type: 'scrollEvent', options: ObserverOptions, callback: Callback\<ScrollEven
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onScrollEvent<sup>23+</sup>](#uiobserveronscrollevent23-1)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。                   |
-| options  | [ObserverOptions](#observeroptions12)                                  | 是   | 指定监听的滚动组件的id。                                                 |
+| options  | [uiObserver.observerOptions](#observeroptions12)                                  | 是   | 指定监听的滚动组件的id。                                                 |
 | callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | 是   | 回调函数。返回滚动事件的信息。                                            |
 
 **示例：**
@@ -503,7 +698,41 @@ off(type: 'scrollEvent', options: ObserverOptions, callback?: Callback\<ScrollEv
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offScrollEvent<sup>23+</sup>](#uiobserveroffscrollevent23-1)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                               | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。                   |
+| options  | [ObserverOptions](#observeroptions12)                                  | 是   | 指定监听的滚动组件的id。                                                 |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | 否   | 回调函数。若不指定，则取消指定id下的所有scrollEvent事件监听。                |
+
+**示例：**
+
+参考[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)示例。
+
+## uiObserver.offScrollEvent<sup>23+</sup>
+
+offScrollEvent(options: ObserverOptions, callback?: Callback\<ScrollEventInfo\>): void
+
+取消监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](./arkui-ts/ts-container-list.md)、[Grid](./arkui-ts/ts-container-grid.md)、[Scroll](./arkui-ts/ts-container-scroll.md)、[WaterFlow](./arkui-ts/ts-container-waterflow.md)、[ArcList](./arkui-ts/ts-container-arclist.md)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
@@ -590,11 +819,38 @@ on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Ca
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onRouterPageUpdate<sup>23+</sup>](#uiobserveronrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 是   | 回调函数。携带pageInfo，返回当前的page页面状态。                 |
+
+## uiObserver.onRouterPageUpdate<sup>23+</sup>
+
+onRouterPageUpdate(context: UIAbilityContext | UIContext, callback: Callback\<RouterPageInfo\>): void
+
+监听router中page页面的状态变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('routerPageUpdate')](#uiobserveronrouterpageupdate11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 是   | 回调函数。携带pageInfo，返回当前的page页面状态。                 |
 
@@ -644,7 +900,39 @@ off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offRouterPageUpdate<sup>23+</sup>](#uiobserveroffrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 否   | 需要被注销的回调函数。若不指定，则注销指定context下所有routerPageUpdate监听。                 |
+
+**示例：**
+
+参考[uiObserver.on('routerPageUpdate')](#uiobserveronrouterpageupdate11)示例。
+
+## uiObserver.offRouterPageUpdate<sup>23+</sup>
+
+offRouterPageUpdate(context: UIAbilityContext | UIContext, callback?: Callback\<RouterPageInfo\>): void
+
+取消监听router中page页面的状态变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('routerPageUpdate')](#uiobserveroffrouterpageupdate11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -689,7 +977,13 @@ on(type: 'densityUpdate', context: UIContext, callback: Callback\<DensityInfo\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onDensityUpdate<sup>23+</sup>](#uiobserverondensityupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -738,7 +1032,41 @@ off(type: 'densityUpdate', context: UIContext, callback?: Callback\<DensityInfo\
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offDensityUpdate<sup>23+</sup>](#uiobserveroffdensityupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                      | 必填 | 说明                                                                                           |
+| -------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
+| type     | string                                    | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。                                          |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                                                             |
+| callback | Callback\<[DensityInfo](#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
+
+**示例：**
+
+参考[uiObserver.on('densityUpdate')](#uiobserverondensityupdate12)示例。
+
+## uiObserver.offDensityUpdate<sup>23+</sup>
+
+offDensityUpdate(context: UIContext, callback?: Callback\<DensityInfo\>): void
+
+取消监听屏幕像素密度的变化。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('densityUpdate')](#uiobserveroffdensityupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                                                                                           |
 | -------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
@@ -791,7 +1119,13 @@ on(type: 'willDraw', context: UIContext, callback: Callback\<void\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onWillDraw<sup>23+</sup>](#uiobserveronwilldraw23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -831,7 +1165,41 @@ off(type: 'willDraw', context: UIContext, callback?: Callback\<void\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offWillDraw<sup>23+</sup>](#uiobserveroffwilldraw23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                      | 必填 | 说明                                                  |
+| -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
+| type     | string                                    | 是   | 监听事件，固定为'willDraw'，即是否将要绘制。 |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
+| callback | Callback\<void\>   | 否   | 需要被注销的回调函数。若不指定，则注销指定UIContext下所有willDraw事件监听。                                |
+
+**示例：**
+
+参考[uiObserver.on('willDraw')](#uiobserveronwilldraw12)示例。
+
+## uiObserver.offWillDraw<sup>23+</sup>
+
+offWillDraw(context: UIContext, callback?: Callback\<void\>): void
+
+取消监听每一帧绘制指令下发情况。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('willDraw')](#uiobserveroffwilldraw12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                                                  |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
@@ -875,7 +1243,13 @@ on(type: 'didLayout', context: UIContext, callback: Callback\<void\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onDidLayout<sup>23+</sup>](#uiobserverondidlayout23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -915,7 +1289,41 @@ off(type: 'didLayout', context: UIContext, callback?: Callback\<void\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offDidLayout<sup>23+</sup>](#uiobserveroffdidlayout23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                      | 必填 | 说明                                                  |
+| -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
+| type     | string                                    | 是   | 监听事件，固定为'didLayout'，即是否布局完成。 |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
+| callback | Callback\<void\>   | 否   | 需要被注销的回调函数。若不指定，则注销指定UIContext下所有didLayout事件监听。                                |
+
+**示例：**
+
+参考[uiObserver.on('didLayout')](#uiobserverondidlayout12)。
+
+## uiObserver.offDidLayout<sup>23+</sup>
+
+offDidLayout(context: UIContext, callback?: Callback\<void\>): void
+
+取消监听每一帧布局完成情况。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('didLayout')](#uiobserveroffdidlayout12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                                                  |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
@@ -959,11 +1367,38 @@ on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callback
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onNavDestinationSwitch<sup>23+</sup>](#uiobserveronnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
+
+## uiObserver.onNavDestinationSwitch<sup>23+</sup>
+
+onNavDestinationSwitch(context: UIAbilityContext | UIContext, callback: Callback\<NavDestinationSwitchInfo\>): void
+
+监听Navigation的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('navDestinationSwitch')](#uiobserveronnavdestinationswitch12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
 
@@ -1085,7 +1520,39 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offNavDestinationSwitch<sup>23+</sup>](#uiobserveroffnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\)        | 否   | 需要被注销的回调函数。若不指定，则注销指定context下所有navDestinationSwitch监听。                 |
+
+**示例：**
+
+参考[uiObserver.on('navDestinationSwitch')](#uiobserveronnavdestinationswitch12)示例。
+
+## uiObserver.offNavDestinationSwitch<sup>23+</sup>
+
+offNavDestinationSwitch(context: UIAbilityContext | UIContext, callback?: Callback\<NavDestinationSwitchInfo\>): void
+
+取消监听Navigation的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('navDestinationSwitch')](#uiobserveroffnavdestinationswitch12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1107,11 +1574,39 @@ on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observer
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onNavDestinationSwitch<sup>23+</sup>](#uiobserveronnavdestinationswitch23-1)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
+| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
+
+## uiObserver.onNavDestinationSwitch<sup>23+</sup>
+
+onNavDestinationSwitch(context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback: Callback\<NavDestinationSwitchInfo\>): void
+
+监听Navigation的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('navDestinationSwitch')](#uiobserveronnavdestinationswitch12-1)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
@@ -1239,7 +1734,40 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offNavDestinationSwitch<sup>23+</sup>](#uiobserveroffnavdestinationswitch23-1)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
+| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。若不指定，则注销指定context和observerOptions下所有navDestinationSwitch监听。                 |
+
+**示例：**
+
+参考[uiObserver.on('navDestinationSwitch')](#uiobserveronnavdestinationswitch12-1)接口示例。
+
+## uiObserver.offNavDestinationSwitch<sup>23+</sup>
+
+offNavDestinationSwitch(context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback?: Callback\<NavDestinationSwitchInfo\>): void
+
+取消监听Navigation的页面切换事件。
+
+**系统能力：** SystemCapability.ArkUI.A.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('navDestinationSwitch')](#uiobserveroffnavdestinationswitch12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1262,11 +1790,37 @@ on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onTabContentUpdate<sup>23+</sup>](#uiobserverontabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
+
+## uiObserver.onTabContentUpdate<sup>23+</sup>
+
+onTabContentUpdate(callback: Callback\<TabContentInfo\>): void
+
+监听TabContent页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
 
 **示例：**
@@ -1330,7 +1884,38 @@ off(type: 'tabContentUpdate', callback?: Callback\<TabContentInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offTabContentUpdate<sup>23+</sup>](#uiobserverofftabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定，则取消所有tabContentUpdate事件监听。 |
+
+**示例：**
+
+参考[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12)接口示例。
+
+## uiObserver.offTabContentUpdate<sup>23+</sup>
+
+offTabContentUpdate(callback?: Callback\<TabContentInfo\>): void
+
+取消监听TabContent页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('tabContentUpdate')](#uiobserverofftabcontentupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1351,11 +1936,38 @@ on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabCo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.onTabContentUpdate<sup>23+</sup>](#uiobserverontabcontentupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| options  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
+
+## uiObserver.onTabContentUpdate<sup>23+</sup>
+
+onTabContentUpdate(options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
+
+监听TabContent页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
 | callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
 
@@ -1420,7 +2032,39 @@ off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<Tab
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[uiObserver.offTabContentUpdate<sup>23+</sup>](#uiobserverofftabcontentupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| options  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定，则取消指定id下所有tabContentUpdate事件监听。 |
+
+**示例：**
+
+参考[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)接口示例。
+
+## uiObserver.offTabContentUpdate<sup>23+</sup>
+
+offTabContentUpdate(options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
+
+取消监听TabContent页面的切换事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.off('tabContentUpdate')](#uiobserverofftabcontentupdate12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1431,3 +2075,155 @@ off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<Tab
 **示例：**
 
 参考[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)接口示例。
+
+## TextChangeEventInfo<sup>22+</sup>
+
+触发监听文本内容变化的回调函数时传递的参数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 类型 | 只读    | 可选    | 说明 |
+| --- | --- | --- | --- | --- |
+| id | string | 否 | 否 | 文本组件的ID字符串。|
+| uniqueId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 文本组件的唯一性ID。|
+| content | string | 否 | 否 | 当前文本组件的文本内容。|
+
+**示例：**
+
+请参考[onTextChange](./arkts-apis-uicontext-uicontext.md#ontextchange24)的示例。
+
+## uiObserver.onScrollEvent<sup>23+</sup>
+
+onScrollEvent(callback: Callback\<ScrollEventInfo\>): void
+
+监听所有滚动组件滚动事件的开始和结束。滚动组件包括[List](./arkui-ts/ts-container-list.md)、[Grid](./arkui-ts/ts-container-grid.md)、[Scroll](./arkui-ts/ts-container-scroll.md)、[WaterFlow](./arkui-ts/ts-container-waterflow.md)、[ArcList](./arkui-ts/ts-container-arclist.md)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('scrollEvent')](#uiobserveronscrollevent12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>       | 是   | 回调函数。返回滚动事件的信息。                                           |
+
+**示例：**
+
+参考[uiObserver.on('scrollEvent')](#uiobserveronscrollevent12)示例。
+
+## uiObserver.onScrollEvent<sup>23+</sup>
+
+onScrollEvent(options: ObserverOptions, callback: Callback\<ScrollEventInfo\>): void
+
+监听指定id的滚动组件滚动事件的开始和结束。滚动组件包括[List](./arkui-ts/ts-container-list.md)、[Grid](./arkui-ts/ts-container-grid.md)、[Scroll](./arkui-ts/ts-container-scroll.md)、[WaterFlow](./arkui-ts/ts-container-waterflow.md)、[ArcList](./arkui-ts/ts-container-arclist.md)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('scrollEvent')](#uiobserveronscrollevent12-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | [ObserverOptions](#observeroptions12)                                  | 是   | 指定监听的滚动组件的id。                                                 |
+| callback | Callback\<[ScrollEventInfo](#scrolleventinfo12)\>                      | 是   | 回调函数。返回滚动事件的信息。                                            |
+
+**示例：**
+
+参考[uiObserver.on('scrollEvent')](#uiobserveronscrollevent12-1)示例。
+
+## uiObserver.onDensityUpdate<sup>23+</sup>
+
+onDensityUpdate(context: UIContext, callback: Callback\<DensityInfo\>): void
+
+监听屏幕像素密度变化。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('densityUpdate')](#uiobserverondensityupdate12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
+
+**示例：**
+
+参考[uiObserver.on('densityUpdate')](#uiobserverondensityupdate12)示例。
+
+## uiObserver.onWillDraw<sup>23+</sup>
+
+onWillDraw(context: UIContext, callback: Callback\<void\>): void
+
+监听每一帧绘制指令下发情况。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('willDraw')](#uiobserveronwilldraw12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback\<void\>        | 是   | 回调函数。                 |
+
+**示例：**
+
+参考[uiObserver.on('willDraw')](#uiobserveronwilldraw12)示例。
+
+## uiObserver.onDidLayout<sup>23+</sup>
+
+onDidLayout(context: UIContext, callback: Callback\<void\>): void
+
+监听每一帧布局完成情况。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[uiObserver.on('didLayout')](#uiobserverondidlayout12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| callback | Callback\<void\>        | 是   | 回调函数。                 |
+
+**示例：**
+
+参考[uiObserver.on('didLayout')](#uiobserverondidlayout12)示例。

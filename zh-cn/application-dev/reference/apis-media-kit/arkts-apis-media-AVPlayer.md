@@ -34,7 +34,7 @@ import { media } from '@kit.MediaKit';
 | url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>[通过XComponent创建surfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 视频循环播放属性，默认false，设置为true表示循环播放，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>直播场景不支持loop设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | 否   | 是   | 视频缩放模式，默认VIDEO_SCALE_TYPE_FIT，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | 否   | 是   | 音频焦点模型，默认SHARE_MODE，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>在第一次调用[play()](#play9)之前设置， 以便此后中断模式生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -45,6 +45,7 @@ import { media } from '@kit.MediaKit';
 | duration<sup>9+</sup> | number                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | width<sup>9+</sup>                                  | number                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | number                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| playlistLoopMode<sup>26+</sup>                         | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。 |
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -227,7 +228,7 @@ async function test(){
 
 setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
-流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。使用Promise异步回调。
+流媒体预下载资源设置，下载URL对应的流媒体数据并暂存在内存中，此接口只能在idle状态下调用。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -272,6 +273,481 @@ async function test(){
     thresholdForAutoQuickPlay: 5
   };
   player.setMediaSource(mediaSource, playStrategy);
+}
+```
+
+## getTrackSelectionFilter
+
+getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
+
+获取播放器当前配置的轨道选择过滤器。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<[TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter)> | Promise对象，返回当前配置的轨道选择过滤器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  player.getTrackSelectionFilter().then((selectionFilter: media.TrackSelectionFilter) => {
+    console.info(`Succeeded in getting TrackSelectionFilter: ${selectionFilter}`);
+  }).catch((err: BusinessError) => {
+    console.error('Failed to getTrackSelectionFilter, error message is:' + err.message);
+  });
+}
+
+```
+
+## setTrackSelectionFilter
+
+setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
+
+为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| filter | [TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter) | 是   | 轨道选择过滤器。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let selectionFilter: media.TrackSelectionFilter = {
+    maxVideoBitrate: 80000,
+    minVideoBitrate: 0,
+    maxVideoFrameRate: 60,
+    minVideoFrameRate: 0,
+    maxVideoResolution: { width: 1080, height: 720 },
+    minVideoResolution: { width: 0, height: 0 },
+    preferredVideoMimeTypes: [media.CodecMimeType.VIDEO_AVC],
+    maxAudioBitrate: 8000,
+    minAudioBitrate: 0,
+    maxAudioChannels: 3,
+    preferredAudioMimeTypes: [media.CodecMimeType.AUDIO_AAC, media.CodecMimeType.AUDIO_MP3],
+    preferredAudioLanguages: [],
+    preferredSubtitleLanguages: []
+  };
+  player.setTrackSelectionFilter(selectionFilter).then(() => {
+    console.info('Succeeded in setting TrackSelectionFilter');
+  }).catch((err: BusinessError) => {
+    console.error('Failed to setTrackSelectionFilter, error message is:' + err.message);
+  });
+}
+```
+
+## addPlaybackMediaSource
+
+addPlaybackMediaSource(src: MediaSource, id?: string): Promise\<string>
+
+向播放器的播放列表添加一个新的播放源。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| src | [MediaSource](arkts-apis-media-MediaSource.md) | 是   | 要添加的媒体源。 |
+| id | string | 否   | 表示播放列表中媒体源的ID，新添加的媒体源会插入到指定媒体源之前。如果未指定，默认添加到列表末尾。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<string> | Promise对象，返回对应媒体资源的唯一ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The media source ID does not exist in the playlist. Returned by promise.|
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let source1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let source2 = await player.addPlaybackMediaSource(mediaSource2, source1);
+}
+```
+
+## removePlaybackMediaSource
+
+removePlaybackMediaSource(id: string): Promise\<void>
+
+从播放器的播放列表中移除指定的媒体源。使用Promise异步回调。
+
+> **注意：**
+>
+> - 如果该ID在当前播放列表中不存在，将返回错误码。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| id | string | 是   | 将媒体源添加到播放列表后返回的ID。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The media source ID does not exist in the playlist. Returned via promise. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId = await player.addPlaybackMediaSource(mediaSource1);
+  await player.removePlaybackMediaSource(sourceId);
+}
+```
+
+## clearPlaybackList
+
+clearPlaybackList(): Promise\<void>
+
+清空播放列表中的所有项目，当前正在播放的媒体将会立即终止。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed or no next mediasource in the list. Return by promise. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2, sourceId1);
+  await player.clearPlaybackList();
+}
+```
+
+## getCurrentMediaSource
+
+getCurrentMediaSource(): MediaSource | undefined;
+
+获取当前正在播放的媒体源对象。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| MediaSource \| undefined | 如果操作成功，则返回当前媒体源，否则返回 undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource);
+  let currentMediaSource: media.MediaSource | undefined = player.getCurrentMediaSource();
+}
+```
+
+## getMediaSources
+
+getMediaSources(): Array<MediaSource | undefined>
+
+获取当前播放列表中所有媒体源的数组。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Array<[MediaSource](arkts-apis-media-MediaSource.md) \| undefined> | 播放列表中的媒体源数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2);
+  let sources: Array<media.MediaSource | undefined> = player.getMediaSources();
+}
+```
+
+## advanceToNextMediaSource
+
+advanceToNextMediaSource(): Promise\<void>
+
+结束当前媒体源的播放，并开始播放媒体源列表中的下一个媒体源。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+
+| 错误码 ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource2);
+
+  await player.prepare();
+  await player.play();
+  await player.advanceToNextMediaSource();
+}
+```
+
+## advanceToPrevMediaSource
+
+advanceToPrevMediaSource(): Promise\<void>
+
+结束当前媒体源的播放，并开始播放媒体源列表中的上一个媒体源。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+
+| 错误码 ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource2);
+  let mediaSource3: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video3.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource3);
+
+  await player.prepare();
+  await player.play();
+  await player.advanceToNextMediaSource();
+  await player.advanceToPrevMediaSource();
+}
+```
+
+## advanceToMediaSource
+
+advanceToMediaSource(id: string): Promise\<void>
+
+结束当前媒体源的播放，并开始播放列表中指定的媒体源。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名 | 类型   | 说明                                       |
+| ------ | ------ | ------------------------------------------ |
+| id    | string | 指定媒体源的唯一标识符ID。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+
+| 错误码 ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The mediasource does not exist in the playlist. Returned via promise. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2);
+  let mediaSource3: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video3.mp4", headers);
+  let sourceId3 = await player.addPlaybackMediaSource(mediaSource3);
+  await player.prepare();
+  await player.play();
+  await player.advanceToMediaSource(sourceId3);
 }
 ```
 
@@ -1174,7 +1650,9 @@ async function  test(){
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
-使用AVPlayer播放多音视频轨资源时，选择指定轨道播放，使用Promise异步回调。
+使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1184,8 +1662,8 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| index | number | 是   | 多音视频资源的轨道索引，可通过[getTrackDescription](#gettrackdescription9-1)接口获取当前资源的所有轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)。 |
-| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换视频轨道模式，默认为SMOOTH模式，**仅在DASH协议网络流视频轨切换时生效**，其他场景当前暂不支持。 |
+| index | number | 是   | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](#gettrackdescription9-1)接口返回的音视频轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)中读取的key为MD_KEY_TRACK_INDEX所对应的值。<br>每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
+| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换轨道的模式。<br>取值约束：该模式仅适用于视频轨道的切换。<br>默认值：SMOOTH模式，在片段末尾进行切换，以确保视频播放的连续性。**仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。 |
 
 **返回值：**
 
@@ -1375,7 +1853,9 @@ seek(timeMs: number, mode?:SeekMode): void
 
 > **注意：**
 >
-> 从API version 24开始，直播场景支持seek。
+> 从API版本26.0.0开始，直播场景支持seek。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1385,7 +1865,7 @@ seek(timeMs: number, mode?:SeekMode): void
 
 | 参数名 | 类型                   | 必填 | 说明                                                         |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| timeMs | number                 | 是   | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](#属性)]。<br>当模式为[SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。 |
+| timeMs | number                 | 是   | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](#属性)]。<br>当模式为[SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode   | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
 **示例：**
@@ -1700,7 +2180,7 @@ async function test(){
 }
 ```
 
-## getLoadedTimeRanges<sup>24+</sup>
+## getLoadedTimeRanges
 
 getLoadedTimeRanges(): Promise\<Array\<Range>>
 
@@ -1710,6 +2190,10 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 >
 > - 对于本地媒体资源，返回的时间区间为0到整个媒体时长。
 > - 对于网络媒体资源，返回本地已缓存的时间区间段的列表。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1725,14 +2209,14 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded getLoadedTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getLoadedTimeRanges, error message is :' + err.message);
+    console.error('Failed to getLoadedTimeRanges, error message is: ' + err.message);
   });
 }
 ```
 
-## getSeekableTimeRanges<sup>24+</sup>
+## getSeekableTimeRanges
 
 getSeekableTimeRanges(): Promise\<Array\<Range>>
 
@@ -1742,6 +2226,8 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 >
 > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。
 > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1759,18 +2245,22 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded getSeekableTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getSeekableTimeRanges, error message is :' + err.message);
+    console.error('Failed to getSeekableTimeRanges, error message is: ' + err.message);
   });
 }
 ```
 
-## seekToDefaultPosition<sup>24+</sup>
+## seekToDefaultPosition
 
 seekToDefaultPosition(): void
 
 跳转到播放源的默认接入点。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1785,13 +2275,13 @@ seekToDefaultPosition(): void
 **示例：**
 
 ```ts
-async function  test(){
+async function test(){
   let avPlayer = await media.createAVPlayer();
   try {
     avPlayer.seekToDefaultPosition()
-    console.info('Succeeded seekToDefaultPosition.');
+    console.info('Succeeded in calling seekToDefaultPosition.');
   } catch (err) {
-    console.error('Failed to seekToDefaultPosition, error message is :' + err.message);
+    console.error('Failed to seekToDefaultPosition, error message is: ' + err.message);
   }
 }
 ```
@@ -2007,7 +2497,9 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 >
 > - 当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。
 > - 调用此接口时，需确保已设置音频渲染信息AVPlayer.audioRendererInfo，audioRendererInfo的usage参数必须是[STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)其中之一。
-
+> - 该接口不支持高清通路的响度设置。
+> - 音频流的时延模式必须是普通时延。
+> - 该接口错误信息通过[on('error')](#onerror9)回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2022,16 +2514,6 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
 | Promise\<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                   |
-| -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by promise. e.g. The function is called in an incorrect state, or the stream usage of audioRendererInfo is not one of [STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).|
-| 5400105  | Service died. |
-| 5400108  | Parameter check failed. Returned by promise. |
 
 **示例：**
 
@@ -3051,7 +3533,10 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 
 动态开启/关闭超分算法，可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
 
-在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
+> **说明：**
+>
+> - 在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
+> - 默认目标分辨率为1920x1080，单位为像素。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3084,6 +3569,13 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+  avPlayer.fdSrc = fileDescriptor
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  avPlayer.setPlaybackStrategy(playStrategy);
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
   avPlayer.setSuperResolution(true);
 }
@@ -3132,6 +3624,14 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+  avPlayer.fdSrc = fileDescriptor
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  avPlayer.setPlaybackStrategy(playStrategy);
+  avPlayer.setSuperResolution(true);
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
   avPlayer.setVideoWindowSize(1920, 1080);
 }
@@ -3190,6 +3690,71 @@ async function test(){
   let avPlayer = await media.createAVPlayer();
   // 取消后，不再接收超分算法开启/关闭事件。
   avPlayer.off('superResolutionChanged');
+}
+```
+
+## onPlaybackContentChanged
+
+onPlaybackContentChanged(callback: Callback\<string>):void;
+
+注册监听器用于监听播放内容变更事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<string> | 是 | 事件触发时调用的回调函数。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onPlaybackContentChanged((id: string) => {
+    console.info('MediaSourceChange called, SourceId:' + id);
+  });
+}
+```
+
+## offPlaybackContentChanged
+
+offPlaybackContentChanged(callback?: Callback\<string>):void;
+
+取消监听播放列表中当前媒体源变更事件。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<string> | 否 | 当事件触发时调用的回调函数。若未指定此参数，则取消订阅该事件的所有回调函数。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let callback = (id: string) => {
+    console.info('MediaSourceChange callback called');
+  };
+
+  avPlayer.onPlaybackContentChanged(callback);
+  avPlayer.offPlaybackContentChanged(callback);
 }
 ```
 
@@ -3283,5 +3848,64 @@ offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.offMetricsEvent();
+}
+```
+
+## onTimedMetaData
+
+onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
+
+注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如监听插播的元数据信息。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 是   | 回调函数，返回上报基于时间的元数据。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onTimedMetaData((data: media.AVTimedMetaData) => {
+  });
+}
+```
+
+## offTimedMetaData
+
+offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
+
+取消注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的元数据信息。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offTimedMetaData();
 }
 ```

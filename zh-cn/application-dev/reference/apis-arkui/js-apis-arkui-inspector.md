@@ -223,7 +223,7 @@ onDrawChildren(callback: Callback\<number[]\>): void
 
 offDrawChildren(callback?: Callback\<number[]\>): void
 
-取消注册offDrawChildren事件回调。使用callback异步回调。
+取消注册drawChildren事件回调。使用callback异步回调。
 
 要实现在子组件布局完成后停止触发特定回调，只需通过其句柄，在对应的查询条件上取消注册该回调即可。
 

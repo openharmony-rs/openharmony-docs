@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块仅适用于ArkTS-Dyn。
+>
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
@@ -47,6 +49,8 @@ getCookieManager(): WebCookie
 >
 > 从API version 9开始支持，从API version 9开始废弃，建议使用[getCookie](./arkts-apis-webview-WebCookieManager.md#getcookiedeprecated)代替。
 
+**ArkTS-Dyn起始版本：** 9
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -80,7 +84,7 @@ getCookieManager(): WebCookie
 
 requestFocus()
 
-使当前web页面获取焦点。
+使当前Web页面获取焦点。
 
 > **说明：**
 >
@@ -118,6 +122,8 @@ accessBackward(): boolean
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[accessBackward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessbackward)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -159,6 +165,8 @@ accessForward(): boolean
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[accessForward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessforward)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -198,6 +206,8 @@ accessStep(step: number): boolean
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[accessStep<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessstep)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -246,6 +256,8 @@ backward()
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[backward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#backward)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -279,6 +291,8 @@ forward()
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[forward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#forward)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -311,6 +325,8 @@ deleteJavaScriptRegister(name: string)
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -351,6 +367,8 @@ getHitTest(): HitTestType
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getHitTest<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -396,6 +414,8 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[loadData<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loaddata)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -405,8 +425,8 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 | data       | string | 是   | 按照”Base64“或者”URL"编码后的一段字符串。              |
 | mimeType   | string | 是   | 媒体类型（MIME）。                              |
 | encoding   | string | 是   | 编码类型，具体为“Base64"或者”URL编码。                |
-| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。 |
-| historyUrl | string | 否   | 历史记录URL。非空时，可被历史记录管理，实现前后后退功能。当baseUrl为空时，此属性无效。 |
+| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
+| historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前进后退功能。当baseUrl为空时，此属性无效。 |
 
 **示例：**
 
@@ -437,7 +457,7 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 loadUrl(options: { url: string | Resource, headers?: Array\<Header\> })
 
-使用指定的http头加载指定的URL。
+使用指定的HTTP头加载指定的URL。
 
 通过loadUrl注入的对象只在当前document有效，即通过loadUrl导航到新的页面会无效。
 
@@ -446,6 +466,8 @@ loadUrl(options: { url: string | Resource, headers?: Array\<Header\> })
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[loadUrl<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loadurl)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -487,6 +509,10 @@ onActive(): void
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -519,6 +545,10 @@ onInactive(): void
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive)代替。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -555,11 +585,13 @@ zoom(factor: number): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，正值为放大，负值为缩小。 |
+| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，当入参为1时为默认加载网页的缩放比例，小于1为缩小，大于1为放大。取值范围(0, 100]。 |
 
 **示例：**
 
@@ -593,6 +625,8 @@ refresh()
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -620,11 +654,13 @@ refresh()
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -707,6 +743,8 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[runJavaScript<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#runjavascript)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -714,7 +752,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 | 参数名      | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
 | script   | string                   | 是   | JavaScript脚本。                            |
-| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。 |
+| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。不传入时不进行回调。 |
 
 **示例：**
 
@@ -775,6 +813,8 @@ stop()
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[stop<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#stop)代替。
 
+**ArkTS-Dyn起始版本：** 8
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例：**
@@ -807,6 +847,8 @@ clearHistory(): void
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[clearHistory<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#clearhistory)代替。
+
+**ArkTS-Dyn起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

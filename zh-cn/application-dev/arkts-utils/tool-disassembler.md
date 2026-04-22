@@ -1,8 +1,8 @@
-# Disassembler反汇编工具
+# Disassembler反汇编工具 (ArkTS-Dyn)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao; @luobohua-->
-<!--Designer: @hufeng20-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @jinqiuheng-->
 
@@ -10,7 +10,7 @@
 
 Disassembler是ArkTS反汇编工具。如果需要分析方舟字节码文件（\*.abc）相关问题，开发者可以使用Disassembler将方舟字节码文件反编译为可读的汇编指令。
 
-工具随DevEco Studio SDK发布。以Windows平台为例，Disassembler工具位于DevEco Studio/sdk/default/openharmony/toolchains/ark_disasm.exe。
+工具随DevEco Studio SDK发布。以Windows平台为例，ArkTS-Dyn版本的Disassembler工具位于DevEco Studio/sdk/default/openharmony/toolchains/ark_disasm.exe。
 
 ## 命令行说明
 

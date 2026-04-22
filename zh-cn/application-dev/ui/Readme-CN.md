@@ -152,8 +152,8 @@
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
     - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）
-  - 表单选择<!--arkts-form-selection-->
-    - [表单与选择组件概述](arkts-forms-overview.md)
+  - 按钮与选择<!--arkts-form-selection-->
+    - [按钮与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
     - [弧形按钮 (ArcButton)](arkts-advanced-components-arcbutton.md)（圆形屏幕推荐使用）
     - [单选框 (Radio)](arkts-common-components-radio-button.md)
@@ -272,6 +272,23 @@
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components-sys.md)
     - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components-sys.md)
     <!--DelEnd-->
+  - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
+    - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
+      - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
+      - [UI组件适配（路由与导航）](arkts-sta-deprecated-router-and-navigation.md)
+      - [UI组件适配（滚动与滑动）](arkts-sta-deprecated-scroll-and-swipe.md)
+      - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
+      - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
+  - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
+    - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
+      - [在ArkTS-Sta中使用ArkTS-Dyn的组件导航（Navigation）](arkts-sta-interop-dyn-navigation.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的资源（Resource）](arkts-sta-interop-dyn-resource.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的组件导航（Navigation）](arkts-dyn-interop-sta-navigation.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](arkts-dyn-interop-sta-animator.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](arkts-dyn-interop-sta-resource.md)
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)

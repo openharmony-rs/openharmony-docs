@@ -50,6 +50,12 @@
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | 释放主窗口截图列表的内存。 |
 | [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - | 锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随鼠标移动。仅支持获焦窗口调用，失焦之后会自动取消锁定。 |
 | [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | 清除窗口设置的鼠标光标指定的模式。 |
+| [int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_FrameMetrics* metrics, bool* isFirstDrawFrame)](#oh_windowmanager_framemetrics_isfirstdrawframe) | - | 判断当前帧是否为首帧。 |
+| [int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getinputhandlingduration) | - | 获取当前帧中手势处理的耗时。 |
+| [int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getlayoutmeasureduration) | - | 获取当前帧中布局测量的耗时。 |
+| [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | 获取当前帧开始的时间戳。 |
+| [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | 订阅窗口帧率指标变更监听事件。 <br> 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 <br> 应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。 <br> 如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。 |
+| [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | 取消订阅窗口帧率指标变更监听事件。 <br> 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 <br> 如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback)接口。 |
 
 ## 函数说明
 
@@ -674,3 +680,153 @@ int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_NO_PERMISSION，表示没有权限调用该接口。<br>返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示不支持该设备。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL，表示窗口管理器服务异常。 |
+
+### OH_WindowManager_FrameMetrics_IsFirstDrawFrame()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_FrameMetrics* metrics, bool* isFirstDrawFrame)
+```
+
+**描述**
+
+判断当前帧是否为首帧。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| bool* isFirstDrawFrame | 作为出参使用，表示当前帧是否为首帧，ture表示是首帧，false表示不是首帧。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_FrameMetrics_GetInputHandlingDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)
+```
+
+**描述**
+
+获取当前帧中手势处理的耗时。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| uint64_t* duration | 作为出参使用，表示当前帧中手势处理的耗时，单位为纳秒。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)
+```
+
+**描述**
+
+获取当前帧中布局测量的耗时。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| uint64_t* duration | 作为出参使用，表示当前帧中布局测量的耗时，单位为纳秒。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_FrameMetrics_GetVsyncTimestamp()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)
+```
+
+**描述**
+
+获取当前帧开始的时间戳。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| uint64_t* timestamp | 作为出参使用，表示当前帧开始的时间戳，单位为纳秒。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_RegisterFrameMetricsMeasuredCallback()
+
+```c
+int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)
+```
+
+**描述**
+
+订阅窗口帧率指标变更监听事件。 <br> 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 <br> 应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。 <br> 如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 创建窗口时的窗口ID。 |
+| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | 用于返回帧率指标结果的回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因： <br> 1. 窗口未创建或已销毁； <br> 2. 窗口状态异常。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_UnregisterFrameMetricsMeasuredCallback()
+
+```c
+int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)
+```
+
+**描述**
+
+取消订阅窗口帧率指标变更监听事件。 <br> 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 <br> 如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback)接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 创建窗口时的窗口ID。 |
+| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | 用于返回帧率指标结果的回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因： <br> 1. 窗口未创建或已销毁； <br> 2. 窗口状态异常。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |

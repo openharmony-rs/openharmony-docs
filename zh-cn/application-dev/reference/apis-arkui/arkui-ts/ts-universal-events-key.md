@@ -39,7 +39,7 @@ onKeyEvent(event: (event: KeyEvent) => void): T
 ## onKeyEvent<sup>15+</sup>
 onKeyEvent(event: Callback\<KeyEvent, boolean>): T
 
-当绑定该方法的组件获得焦点后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被处理。
+当绑定该方法的组件获焦后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -140,7 +140,7 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| keys | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+| keys | Array&lt;string&gt; | 是   | 功能键列表。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
 
 **返回值：** 
 

@@ -387,6 +387,25 @@
 | Rtl  | 1 |元素从右到左布局。   |
 | Auto | 2 |使用系统默认布局方向。 |
 
+## RawInputEventType
+
+原始输入事件类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称   | 值  | 说明       |
+| ------ | --- | ---------- |
+| TOUCH  | 0   | 触摸事件。 |
+| MOUSE  | 1   | 鼠标事件。 |
+
 ## DividerMode<sup>19+</sup>枚举说明
 
 分割线模式。
@@ -829,6 +848,55 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | BASELINE | 4 | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | FOLLOW_PARAGRAPH<sup>20+</sup>  | 5 |对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
+## InputEventInterceptAction
+
+输入事件拦截动作枚举。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| CONTINUE | 0 | 允许事件继续传递到UI框架。 |
+| BLOCK | 1 | 阻止事件传递到UI框架。 |
+
+## InputEventSubTypeMask
+
+输入事件子类型掩码枚举，用于标识不同类型的输入事件子类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| LEFT_MOUSE_DOWN | 1 << 0 | 鼠标左键按下。 |
+| LEFT_MOUSE_UP | 1 << 1 | 鼠标左键抬起。 |
+| RIGHT_MOUSE_DOWN | 1 << 2 | 鼠标右键按下。 |
+| RIGHT_MOUSE_UP | 1 << 3 | 鼠标右键抬起。 |
+| MIDDLE_MOUSE_DOWN | 1 << 4 | 鼠标中键按下。 |
+| MIDDLE_MOUSE_UP | 1 << 5 | 鼠标中键抬起。 |
+| LEFT_MOUSE_DRAGGING | 1 << 6 | 鼠标左键按下并移动。 |
+| RIGHT_MOUSE_DRAGGING | 1 << 7 | 鼠标右键按下并移动。 |
+| MIDDLE_MOUSE_DRAGGING | 1 << 8 | 鼠标中键按下并移动。 |
+| TOUCH_DOWN | 1 << 9 | 触控按下。 |
+| TOUCH_UP | 1 << 10 | 触控抬起。 |
+| KEY_DOWN | 1 << 11 | 物理键盘按下。 |
+| KEY_UP | 1 << 12 | 物理键盘抬起。 |
+
 ## InteractionHand<sup>15+</sup>
 
 定义事件是由左手点击触发还是右手点击触发。
@@ -997,6 +1065,28 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | ---------- | ------------------------ | ------------------------ |
 | DEFAULT | 0 | 跑马灯组件属性更新后， 从开始位置， 运行跑马灯效果。     |
 | PRESERVE_POSITION  | 1 | 跑马灯组件属性更新后， 保持当前位置， 运行跑马灯效果。 |
+
+## GestureCollectIntervention
+
+定义手势和事件收集的干预操作类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| CONTINUE        | 0 | 继续正常的手势和事件收集流程。不进行任何干预。 |
+| DISCARD_LOWER         | 1 | 丢弃所有待收集的低优先级手势和事件。丢弃的部分包括左侧兄弟节点以及祖先节点（父节点及以上）的手势。仅保留当前节点和更高优先级节点中已收集的手势。 |
+| DISCARD_HIGHER       | 2 | 丢弃已经收集到的高优先级手势和事件。会丢弃已收集的右侧兄弟节点和当前节点上的手势。将继续处理低优先级手势的收集流程（左侧兄弟节点和祖先节点）。 |
+| DISCARD_SELF      | 3 | 丢弃当前节点自身的手势和事件。当前节点的手势和事件将从手势树中排除。兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。 |
+| DISCARD_LOWER_PRIORITY_SIBLINGS     | 4 | 丢弃左侧兄弟节点中待收集的手势和事件。当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。将继续处理父节点以及祖先节点的收集流程。   |
 
 ## NestedScrollMode<sup>10+</sup>
 

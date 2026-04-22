@@ -5527,6 +5527,20 @@ Allows an application to query the properties of local education space accounts.
 
 **Valid since**: 23
 
+## ohos.permission.POWER_CONFIG
+
+Allows an application to read and write file nodes related to power configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_STANDBY
 
 Allows an application to manage the standby state of the page, such as controlling when the page enters or exits the standby state.

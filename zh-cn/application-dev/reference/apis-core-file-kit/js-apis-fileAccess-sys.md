@@ -1,9 +1,9 @@
 # @ohos.file.fileAccess (公共文件访问与管理)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 fileAccess模块是基于[extension](../../application-models/extensionability-overview.md)机制实现的一个对公共文件访问和操作的框架。该模块一方面对接各类文件管理服务，如存储管理服务等；另一方面为系统应用提供一套统一的文件访问管理接口。存储管理服务可以管理内置存储部分目录，以及共享盘、U盘、SD卡等设备上的资源。
@@ -257,8 +257,8 @@ createFileAccessHelper(context: Context) : FileAccessHelper
 | relativePath<sup>10+</sup> | string | 是 | 否 | 文件(夹)的相对路径。 |
 | fileName | string | 否 | 否 | 文件(夹)的名称。 |
 | mode | number | 否 | 否 | 文件(夹)的权限信息。 |
-| size | number | 否 | 否 |  文件(夹)的大小。 |
-| mtime | number | 否 | 否 |  文件(夹)的修改时间。 |
+| size | number | 否 | 否 |  文件(夹)的大小。（单位：字节） |
+| mtime | number | 否 | 否 |  文件(夹)的修改时间。自1970年1月1日起至目标时间的毫秒数。 |
 | mimeType | string | 否 | 否 |  文件(夹)的媒体资源类型。 |
 
 ### listFile

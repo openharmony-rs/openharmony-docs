@@ -712,7 +712,7 @@ let time = 1611081385000;
 try {
   systemTime.setTime(time, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting time`);
@@ -772,7 +772,7 @@ try {
   systemTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -822,7 +822,7 @@ let date = new Date();
 try {
   systemTime.setDate(date, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting date.`);
@@ -881,7 +881,7 @@ try {
   systemTime.setDate(date).then(() => {
     console.info(`Succeeded in setting date.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -930,7 +930,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemTime.setTimezone('Asia/Shanghai', (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting timezone.`);
@@ -988,7 +988,7 @@ try {
   systemTime.setTimezone('Asia/Shanghai').then(() => {
     console.info(`Succeeded in setting timezone.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;

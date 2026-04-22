@@ -1,8 +1,8 @@
 # ArkGuard源码混淆工具概述
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @jinqiuheng-->
 

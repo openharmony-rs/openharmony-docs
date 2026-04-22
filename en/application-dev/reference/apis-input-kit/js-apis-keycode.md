@@ -316,6 +316,7 @@ Enumerates the key codes.
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | Keyboard Input-assisted Cancel key         |
 | KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | Mouse AI Assistant key         |
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | Mouse Smart Selection key         |
+| KEYCODE_AOD_SINGLE_CLICK         |  2740 | Single tapping the smart phone's touch screen event, which is used when the Always On Display is enabled<br>**Since**: 26.0.0 |
 | KEYCODE_FRONT                    |  2800 | Front key, which is used to launch the windshield defogger                  |
 | KEYCODE_SETUP                    |  2801 | Setup key                        |
 | KEYCODE_WAKEUP                   |  2802 | Wakeup key                        |
