@@ -21,6 +21,7 @@
 
 
 ## 接口
+
 GridRow(option?: GridRowOptions)
 
 栅格行布局容器。
@@ -32,6 +33,7 @@ GridRow(option?: GridRowOptions)
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
+
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
 | option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
@@ -158,10 +160,10 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| WindowSize | 以窗口为参照。 |
-| ComponentSize | 以容器为参照。 |
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| WindowSize | 0 | 以窗口为参照。 |
+| ComponentSize | 1 | 以容器为参照。 |
 
 ## GridRowDirection枚举说明
 
