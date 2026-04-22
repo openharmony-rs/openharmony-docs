@@ -806,3 +806,36 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 };
 ```
+
+### onAdminPolicyChanged
+
+onAdminPolicyChanged(event: common.PolicyChangedEvent): void
+
+策略变更事件回调。超级设备管理应用可以通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_POLICIES_CHANGED事件后可接收此回调。
+企业设备管理场景下，当冲突规则为[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)的接口被调用时，系统会通知当前用户下的超级设备管理应用。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| event | [common.PolicyChangedEvent](./js-apis-enterprise-common.md#policychangedevent) | 是    | 策略变更事件。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onAdminPolicyChanged(event: common.PolicyChangedEvent) {
+    // 输出为: Policy changed, bundleName : com.example.test, functionName: setPasswordPolicy, parameters: {"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\d).{8,}$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}, time: 1776773305379.
+    console.info(`Policy changed, bundleName : ${event.bundleName}, functionName: ${event.functionName}, parameters: ${event.parameters}, time: ${event.time}.`);
+  }
+}
+```
