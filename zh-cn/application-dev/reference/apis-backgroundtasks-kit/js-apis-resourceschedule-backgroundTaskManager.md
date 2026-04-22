@@ -269,7 +269,7 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -360,7 +360,7 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -450,7 +450,7 @@ stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): vo
 
 取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用callback异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -508,7 +508,7 @@ stopBackgroundRunning(context: Context): Promise&lt;void&gt;
 
 取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -569,7 +569,7 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -703,7 +703,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1446,11 +1446,11 @@ export default class EntryAbility extends UIAbility {
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。       |
-| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。                 |
+| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。                 |
 | AUDIO_RECORDING         | 3    | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                    |
 | LOCATION                | 4    | 定位导航。                  |
 | BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。                  |
-| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
+| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
 | VOIP<sup>13+</sup> | 8    | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
 | TASK_KEEPING            | 9    | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。        |
 
@@ -1462,9 +1462,9 @@ export default class EntryAbility extends UIAbility {
 
 | 名称             | 类型     | 只读     | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br/>**说明：** 长时任务申请或更新成功后不支持提示音。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| notificationId | number | 否    | 否    | 长时任务通知 Id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br/>**说明：** 长时任务申请或更新成功后不支持提示音。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| notificationId | number | 否    | 否    | 长时任务通知 Id。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | continuousTaskId<sup>15+</sup> | number | 否    | 是    | 长时任务 Id。|
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>
