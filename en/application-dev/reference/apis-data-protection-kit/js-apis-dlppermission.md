@@ -1755,7 +1755,7 @@ Represents query options for DLP files.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| classificationLabel | string | No| Yes| User-defined classification label for an enterprise DLP file. The value contains up to 255 bytes. If this parameter is not specified or is an empty string, all labels are queried. |
+| classificationLabel | string | No| Yes| User-defined classification label for an enterprise DLP file. The value contains up to 255 bytes. |
 
 ## dlpPermission.queryOpenedEnterpriseDlpFiles<sup>26+</sup>
 
