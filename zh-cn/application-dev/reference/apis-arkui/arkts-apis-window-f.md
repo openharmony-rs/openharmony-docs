@@ -212,7 +212,7 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-非自由窗口状态下，不会返回[独立子窗](../../windowmanager/window-terminology.md#独立子窗)。
+自由窗口状态下，不会返回[独立子窗](../../windowmanager/window-terminology.md#独立子窗)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -288,7 +288,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-非自由窗口状态下，不会返回[独立子窗](../../windowmanager/window-terminology.md#独立子窗)。
+自由窗口状态下，不会返回[独立子窗](../../windowmanager/window-terminology.md#独立子窗)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
