@@ -82,6 +82,9 @@ Enumerates image metadata types.
 | HEIFS_METADATA<sup>23+</sup> | 15    | HEIF image sequence metadata.<br>**Model restriction**: This API can be used only in the stage model.|
 | DNG_METADATA<sup>24+</sup> | 16    | DNG image metadata.<br>**Model restriction**: This API can be used only in the stage model.|
 | WEBP_METADATA<sup>24+</sup> | 17    | WebP image metadata.<br>**Model restriction**: This API can be used only in the stage model.|
+| PNG_METADATA | 19    | PNG image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
+| JFIF_METADATA | 20    | JFIF image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
+| TIFF_METADATA | 21    | TIFF image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
 
 ## ScaleMode<sup>9+</sup>
 
@@ -104,7 +107,7 @@ Enumerates the types of Exchangeable Image File Format (Exif) data of an image.
 
 
 
-- The key in the format example is **image.PropertyKey.*XXX*** (where *XXX* is the name of an enumeration name, for example, **image.PropertyKey.NEW_SUBFILE_TYPE**).
+- The key in the format example is **image.PropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **NEW_SUBFILE_TYPE**).
 - The format example is used only to show how to modify values and read results. For details about how to use them, see [modifyImageProperty](arkts-apis-image-ImageSource.md#modifyimageproperty11) (to modify a single Exif field), [modifyImageProperties](arkts-apis-image-ImageSource.md#modifyimageproperties12) (to modify multiple Exif fields), [getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11) (to read a single Exif field), and [getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12) (to read multiple Exif fields).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
@@ -254,7 +257,7 @@ Enumerates the types of Exchangeable Image File Format (Exif) data of an image.
 | GAMMA<sup>12+</sup>                      | "Gamma"                | Gamma value.<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use a non-negative rational number as a string.<br>**Example of modification**<br>`imageSource.modifyImageProperty(key,'1');`<br>**Example of read result**: "1"|
 | DNG_VERSION<sup>12+</sup>                | "DNGVersion"                | DNG version. It encodes the DNG 4-tier version number.<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use four non-negative integers, separated by spaces or commas (,), as a string.<br>**Example of modification**<br>`imageSource.modifyImageProperty(key,'1 1 1 1');`<br>or `imageSource.modifyImageProperty(key,'1,1,1,1');`<br>**Example of read result**: "1,1,1,1"|
 | DEFAULT_CROP_SIZE<sup>12+</sup>          | "DefaultCropSize"           | Size of the final image area, in raw image coordinates, taking into account extra pixels around the edges of the final image. The unit is px.<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use two non-negative integers, separated by spaces or commas (,), as a string.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'400 400');`<br>or `imageSource.modifyImageProperty(key,'400,400');`<br>**Example of read result**: "400,400" |
-| GIF_LOOP_COUNT<sup>12+</sup>             | "GIFLoopCount"              | Number of GIF loops. The value **0** means an infinite loop, and other values means the number of loops.<br>**Read/Write capability**: read-only<br>| _ |
+| GIF_LOOP_COUNT<sup>12+</sup>             | "GIFLoopCount"              | Number of GIF loops. The value **0** indicates infinite looping, and another value indicates the actual number of loops.<br>**Read/Write capability**: read-only<br>| _ |
 | IS_XMAGE_SUPPORTED<sup>12+</sup> | "HwMnoteIsXmageSupported" | Whether XMAGE is supported.<br>**Read/Write capability**: readable and writable.<br>| _ |
 | XMAGE_MODE<sup>12+</sup> | "HwMnoteXmageMode" | XMAGE watermark mode.<br>**Read/Write capability**: readable and writable.<br>| _ |
 | XMAGE_LEFT<sup>12+</sup> | "HwMnoteXmageLeft" | X1 coordinate of the watermark region.<br>**Read/Write capability**: readable and writable.<br>| _ |
@@ -313,8 +316,13 @@ Enumerates the GIF image information.
 
 | Name             | Value               | Description                  |
 | ----------------- | ----------------- | --------------------- |
-| GIF_DELAY_TIME    | "GifDelayTime"    | Duration for playing each frame of a GIF image, in milliseconds.|
-| GIF_DISPOSAL_TYPE | "GifDisposalType" | Disposal type of each frame in a GIF image.|
+| GIF_DELAY_TIME    | 'GifDelayTime'    | Frame delay of the GIF image after clamping. The clamp range is [100, 65535].<br>The unit is milliseconds.|
+| GIF_DISPOSAL_TYPE | 'GifDisposalType' | Disposal type for each frame of the GIF image.<br>- **0**: Unspecified.<br>- **1**: Do not dispose.<br>- **2**: Restore to the background color.<br>- **3**: Restore to the previous frame.<br>The value is a positive integer.|
+| GIF_HAS_GLOBAL_COLOR_MAP | 'GifHasGlobalColorMap' | Whether the GIF image contains a global color table.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| GIF_CANVAS_WIDTH | 'GifCanvasWidth' | Canvas width of the GIF image.<br>The unit is px.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| GIF_CANVAS_HEIGHT | 'GifCanvasHeight' | Canvas height of the GIF image.<br>The unit is px.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| GIF_LOOP_COUNT | 'GifLoopCount' | Number of GIF loops.<br>The value can be **0** or a positive integer. The value **0** indicates infinite looping, and another value indicates the actual number of loops.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| GIF_UNCLAMPED_DELAY_TIME | 'GifUnclampedDelayTime' | Frame delay of a GIF image without clamping.<br>The unit is milliseconds.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## HeifsPropertyKey<sup>23+</sup>
 
@@ -327,6 +335,9 @@ Enumerates the HEIF image sequence information.
 | Name             | Value               | Description                  |
 | ----------------- | ----------------- | --------------------- |
 | HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | Delay of each frame in an HEIF image sequence,<br>in milliseconds.|
+| HEIFS_UNCLAMPED_DELAY_TIME | 'HeifsUnclampedDelayTime' | Frame delay of a HEIF image sequence without clamping.<br>The unit is milliseconds.<br>**Since**: 26.0.0|
+| HEIFS_CANVAS_HEIGHT | 'HeifsCanvasHeight' | Canvas height of a HEIF image sequence.<br>The unit is px.<br>**Since**: 26.0.0|
+| HEIFS_CANVAS_WIDTH | 'HeifsCanvasWidth' | Canvas width of a HEIF sequence image.<br>The unit is px.<br>**Since**: 26.0.0|
 
 ## WebPPropertyKey<sup>24+</sup>
 
@@ -348,7 +359,7 @@ Enumerates the WebP image information.
 
 Enumerates the DNG image information.
 - For details about the fields, see the DNG Specification 1.4.0.0.
-- The key in the format example is **image.DngPropertyKey.*XXX*** (where *XXX* is the name of an enumeration name, for example, **DNG_BACKWARD_VERSION**).
+- The key in the format example is **image.DngPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **DNG_BACKWARD_VERSION**).
 - The format example is intended only to demonstrate the format of the read result. For details about how to use the API, see [readImageMetadata](arkts-apis-image-ImageSource.md#readimagemetadata23).
 - For details about the return value type, see [DngMetadata](arkts-apis-image-i.md#dngmetadata24).
 
@@ -447,6 +458,101 @@ Enumerates the DNG image information.
 | NEW_RAW_IMAGE_DIGEST | 'NewRawImageDigest' | New MD5 digest of the update raw image data.|
 | RAW_TO_PREVIEW_GAIN | 'RawToPreviewGain' | Gain ratio of the main raw image to the preview image.|
 | DEFAULT_USER_CROP | 'DefaultUserCrop' | Default user crop area.|
+
+## PngPropertyKey
+
+Enumerates the PNG image information.
+
+> **NOTE**
+>
+> - The key in the format example is **image.PngPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **X_PIXELS_PER_METER**).
+> - For details about the return value type, see [PngMetadata](arkts-apis-image-PngMetadata.md).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name| Value| Description|
+| ---- | -- | ---- |
+| X_PIXELS_PER_METER | 'PngXPixelsPerMeter' | Number of pixels per meter in the X direction of the PNG image.|
+| MODIFICATION_TIME | 'PngModificationTime' | Last modification time of the PNG image.|
+| SOFTWARE | 'PngSoftware' | Name and version number of the software used to create the PNG image.|
+| COPYRIGHT | 'PngCopyright' | Copyright notice of the PNG image.|
+| CREATION_TIME | 'PngCreationTime' | Creation time of the PNG image.|
+| SRGB_INTENT | 'PngSRGBIntent' | Standard Red Green Blue (sRGB) rendering intent of the PNG image.<br>- **0**: perceptual intent<br>- **1**: relative colorimetric intent<br>- **2**: saturation intent<br>- **3**: absolute colorimetric intent|
+| AUTHOR | 'PngAuthor' | Author of the PNG image.|
+| INTERLACE_TYPE | 'PngInterlaceType' | Interlace mode of the PNG image.<br>- **0**: no interlace mode. (The image is loaded sequentially from top to bottom and left to right.)<br>- **1**: interlace mode. (The image is displayed progressively through multiple scans, becoming clearer as loading proceeds.)|
+| WARNING | 'PngWarning' | Warning information of the PNG image.|
+| Y_PIXELS_PER_METER | 'PngYPixelsPerMeter' | Number of pixels per meter in the Y direction of the PNG image.|
+| GAMMA | 'PngGamma' | Gamma coefficient value of the PNG image.|
+| CHROMATICITIES | 'PngChromaticities' | Primary chromaticities and white point (cHRM) of the PNG image. This information can be used for device-independent color correction.|
+| DESCRIPTION | 'PngDescription' | Description of the PNG image.|
+| TITLE | 'PngTitle' | Title of the PNG image.|
+| COMMENT | 'PngComment' | Comment of the PNG image.|
+| DISCLAIMER | 'PngDisclaimer' | Disclaimer of the PNG image.|
+
+## JfifPropertyKey
+
+Enumerates the JFIF image information.
+
+> **NOTE**
+>
+> - The key in the format example is **image.JfifPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **DENSITY_UNIT**).
+> - For details about the return value type, see [JfifMetadata](arkts-apis-image-JfifMetadata.md).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name| Value| Description|
+| ---- | -- | ---- |
+| DENSITY_UNIT | 'JfifDensityUnit' | Physical unit of measurement for **JfifXDensity** (horizontal pixel density) and **JfifYDensity** (vertical pixel density).<br>- **0**: no units (pixel aspect ratio only)<br>- **1**: pixels per inch (DPI)<br>- **2**: pixels per centimeter (DPC)<br>The value is a positive integer.|
+| X_DENSITY | 'JfifXDensity' | Pixel density in the X direction of the JFIF image.|
+| Y_DENSITY | 'JfifYDensity' | Pixel density in the Y direction of the JFIF image.|
+| VERSION | 'JfifVersion' | JFIF image version.|
+| IS_PROGRESSIVE | 'JfifIsProgressive' | Whether the image uses progressive encoding, that is, the image gradually improves in clarity through multiple scans during loading. The value **true** indicates yes, and the value **false** indicates no.|
+
+## TiffPropertyKey
+
+Enumerates the TIFF image information.
+
+> **NOTE**
+>
+> - The key in the format example is **image.TiffPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **DOCUMENT_NAME**).
+> - For details about the return value type, see [TiffMetadata](arkts-apis-image-TiffMetadata.md).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name| Value| Description|
+| ---- | -- | ---- |
+| DOCUMENT_NAME | 'TiffDocumentName' | Document or image name.|
+| PHOTOMETRIC_INTERPRETATION | 'TiffPhotometricInterpretation' | Interpretation mode of pixel colors (such as RGB or grayscale).|
+| ORIENTATION | 'TiffOrientation' | Image orientation.<br>- **1**: "Top-left" (Image not rotated)<br>- **2**: "Top-right" (Image flipped horizontally)<br>- **3**: "Bottom-right" (Image rotated by 180°)<br>- **4**: "Bottom-left" (Image flipped vertically)<br>- **5**: "Left-top" (Image flipped horizontally and then rotated clockwise by 270°)<br>- **6**: "Right-top" (Image rotated clockwise by 90°)<br>- **7**: "Right-bottom" (Image flipped horizontally and then rotated clockwise by 90°)<br>- **8**: "Left-bottom" (Image rotated clockwise by 270°)<br>If an undefined value is read, `Unknown Value x` is returned, where `x` indicates the original value of the tag.|
+| RESOLUTION_UNIT | 'TiffResolutionUnit' | Unit of **XResolution** (horizontal resolution) and **YResolution** (vertical resolution). The value can be **Inch** or **Centimeter**.|
+| COPYRIGHT | 'TiffCopyright' | Copyright notice of the image.|
+| DATE_TIME | 'TiffDateTime' | Date and time associated with the image (usually the last modification time).|
+| IMAGE_DESCRIPTION | 'TiffImageDescription' | Image description.|
+| Y_RESOLUTION | 'TiffYResolution' | Vertical resolution (number of pixels per resolution unit).|
+| X_RESOLUTION | 'TiffXResolution' | Horizontal resolution (number of pixels per resolution unit).|
+| WHITE_POINT | 'TiffWhitePoint' | Chromaticity coordinates of the white point, the reference for "white", in the color space of the image.|
+| TILE_LENGTH | 'TiffTileLength' | Height of each image tile. The unit is px.|
+| TRANSFER_FUNCTION | 'TiffTransferFunction' | Transfer function for the image, which is usually used for color correction.|
+| TILE_WIDTH | 'TiffTileWidth' | Width of each image tile. The unit is px.|
+| MAKE | 'TiffMake' | Capture device manufacturer.|
+| MODEL | 'TiffModel' | Capture device model name or ID.|
+| HOST_COMPUTER | 'TiffHostComputer' | Host or system used for image processing.|
+| COMPRESSION | 'TiffCompression' | Compression scheme used for TIFF image data.<br>- **1**: no compression.<br>- **5**: LZW (dictionary-based lossless compression algorithm)<br>- **7**: JPEG baseline.<br>- **8**: DEFLATE (lossless compression algorithm based on LZ77 and Huffman)|
+| SOFTWARE | 'TiffSoftware' | Name and version number of the software used to create the image.|
+| PRIMARY_CHROMATICITIES | 'TiffPrimaryChromaticities' | Chromaticity coordinates of the RGB primaries in the image.|
+| ARTIST | 'TiffArtist' | Person who created the image.|
 
 ## ImageFormat<sup>9+</sup>
 
@@ -617,3 +723,4 @@ Enumerates the XMAGE color modes.
 | BRIGHT | 1    | Bright.|
 | SOFT   | 2    | Soft focus.|
 | MONO   | 3    | Monochrome.|
+<!--no_check-->
