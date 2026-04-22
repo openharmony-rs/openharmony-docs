@@ -369,3 +369,28 @@ export default class EntryAbility extends UIAbility {
 | ------------------ | --- | ---------------------------------------- |
 | DEVICE_COLLABORATION | 0  | 多设备协同表，各设备的数据将被隔离存储在独立的分布式表中，而非写入本地表，分布式表名为在原来表名前拼接对端设备的DeviceID标识符。|
 | SINGLE_VERSION  | 1   | 单版本表，数据通过分布式数据管理框架直接写入对端设备的本地表中。|
+
+## SyncResultCode
+
+描述设备同步状态的枚举。请使用枚举名称而非枚举值。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+| 名称                | 值   | 说明                                    |
+| ------------------ | --- | ---------------------------------------- |
+| SUCCESS | 0  | 表示同步成功。|
+| FAIL  | 1   | 表示同步失败。|
+| OFFLINE | 2  | 表示远端设备离线。|
+| INVALID_ARGS  | 3  | 表示参数无效。|
+| DISTRIBUTED_TABLE_NOT_SET | 4  | 表示本端设备或远端设备未设置分布式表。|
+| TABLE_FIELD_MISMATCH  | 5   | 表示对端设备与本端设备本地表的同步字段不一致。|
+| DISTRIBUTED_SCHEMA_MISMATCH | 6  | 表示对端设备与本端设备分布式表的Schema字段不一致，或者存在一个分布式表没有配置Schema。|
+| BUSY  | 7   | 表示数据库繁忙。|
+| CORRUPTED | 8  | 表示数据库损坏。|
+| TIMEOUT  | 9   | 表示同步操作因超时失败。常见原因包括：对端设备数据库未创建、连接中断或网络抖动导致丢包。|
+| SCHEMA_CHANGED | 10  | 表示在同步过程中表结构已更改。|
+| CONSTRAINT_VIOLATION  | 11   | 表示同步数据时违反约束条件。|
