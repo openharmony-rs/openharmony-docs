@@ -453,9 +453,26 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                                | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
+| processedStreamInfo<sup>24+</sup> | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 处理后的音频流信息。 |
 | micInStreamInfo                          | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)                      | 否 | 否 | 麦克风音频流信息。   |
 | capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
 | ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
+
+## AudioCapturerMicInData<sup>24+</sup>
+
+音频采集器数据，包含处理后的音频数据和未经任何处理的麦克风输入（mic-in）音频数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
+| data | ArrayBuffer | 否 | 否 | 处理后的音频数据缓冲区。 |
+| micInData | ArrayBuffer | 否 | 否 | 麦克风输入音频数据缓冲区。 |
+| ecData | ArrayBuffer | 否 | 是 | 回声参考音频数据缓冲区。若采集器配置未设置ecStreamInfo，该字段可能为空，详情参见[AudioCapturerMicInConfig](#audiocapturermicinconfig23)。 |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -5649,6 +5666,13 @@ let audioEcStreamInfo: audio.AudioStreamInfo = {
   encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
 };
 
+let audioProcessedStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
 let audioCapturerInfo: audio.AudioCapturerInfo = {
   source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT, // 音源类型：Mic音频源。SourceType需为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT。
   capturerFlags: 0 // 音频采集器标志。
@@ -5662,9 +5686,10 @@ let audioMicInStreamInfo: audio.AudioStreamInfo = {
 };
 
 let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
+  processedStreamInfo: audioProcessedStreamInfo,
+  micInStreamInfo: audioMicInStreamInfo,
   ecStreamInfo: audioEcStreamInfo,
-  capturerInfo: audioCapturerInfo,
-  micInStreamInfo: audioMicInStreamInfo
+  capturerInfo: audioCapturerInfo
 };
 
 let audioCapturer: audio.AudioCapturer | null = null;
@@ -5675,4 +5700,91 @@ audio.createMicInAudioCapturer(audioCapturerMicInConfig).then((data) => {
 }).catch((err: BusinessError) => {
   console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
+```
+
+## AudioCapturer<sup>8+</sup>
+
+音频采集。在使用以下接口前，需先通过[audio.createMicInAudioCapturer](#audiocreatemicinaudiocapturer23)获取AudioCapturer实例。
+
+### onReadMicInData<sup>24+</sup>
+
+onReadMicInData(callback: Callback\<AudioCapturerMicInData>): void
+
+监听Mic-In音频数据读取回调。此回调的优先级高于`onReadData`回调；如果同时订阅两者，仅会触发此回调。当有可供读取的音频缓冲区时触发。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| callback | Callback<[AudioCapturerMicInData](#audiocapturermicindata24)> | 是 | 回调函数，返回读取到的音频数据缓冲区。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Caller is not a system application. |
+| 6800103 | Operation not permitted at running state. |
+
+**示例：**
+
+```ts
+let readMicInDataCallback = (data: audio.AudioCapturerMicInData) => {
+  console.info(`processed data length: ${data.data.byteLength}`);
+  console.info(`mic-in data length: ${data.micInData.byteLength}`);
+  console.info(`echo reference data length: ${data.ecData?.byteLength ?? 0}`);
+};
+
+audioCapturer.onReadMicInData(readMicInDataCallback);
+```
+
+### offReadMicInData<sup>24+</sup>
+
+offReadMicInData(callback?: Callback\<AudioCapturerMicInData>): void
+
+取消监听Mic-In音频数据读取回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| callback | Callback<[AudioCapturerMicInData](#audiocapturermicindata24)> | 否 | 回调函数，返回读取到的音频数据缓冲区。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted at running state. |
+
+**示例：**
+
+```ts
+let readMicInDataCallback = (data: audio.AudioCapturerMicInData) => {
+  console.info(`mic-in data length: ${data.micInData.byteLength}`);
+};
+
+audioCapturer.onReadMicInData(readMicInDataCallback);
+
+// 取消该事件的所有监听。
+audioCapturer.offReadMicInData();
+
+// 取消指定回调的监听。
+audioCapturer.offReadMicInData(readMicInDataCallback);
 ```
