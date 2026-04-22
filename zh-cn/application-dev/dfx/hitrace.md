@@ -579,7 +579,7 @@ $ hitrace --get_level
 
 ## trace文件名说明
 
-使用hitrace命令行工具采集二进制格式trace信息时，可以指定文件路径(目前仅支持设定路径为/data/local/tmp)。默认保存在/data/log/hitrace路径下，hitrace自动生成文件名并将绝对路径显示在命令行窗口。
+使用hitrace命令行工具采集二进制格式trace信息时，可以指定文件路径（目前仅支持设定路径为/data/local/tmp）。默认保存在/data/log/hitrace路径下，hitrace自动生成文件名并将绝对路径显示在命令行窗口。
 
 快照模式下生成的trace文件名以trace开头，录制模式下生成的trace文件名以record开头，后面为本地时间和boot time（从开机时间开始的时间戳）。
 
