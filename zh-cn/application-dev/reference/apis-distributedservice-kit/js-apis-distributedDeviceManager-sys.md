@@ -386,7 +386,7 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 
   | 参数名      | 类型                             | 必填 | 说明                            |
   | -------- | ------------------------------------ | ---- | ------------------------------ |
-| callback | Callback&lt;[ReplyResult](#replyresult23)&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
+  | callback | Callback&lt;[ReplyResult](#replyresult23)&gt; | 是  | 指示要注册的设备管理器 UI 状态回调，返回UI状态。        |
 
 **错误码：**
 
