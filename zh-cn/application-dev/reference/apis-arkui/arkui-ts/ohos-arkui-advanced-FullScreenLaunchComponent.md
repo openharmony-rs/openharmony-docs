@@ -60,7 +60,12 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 ## 示例
 本示例展示组件使用方法和扩展的原子化服务。实际运行时请使用开发者自己的原子化服务appId。
 
+FullScreenLaunchComponent组件需要由使用方调用。在提供方完成本地的安装后，即可实现在使用方应用或者元服务中全屏嵌入式拉起提供方的效果。
+
+**使用方**
+
 ArkTS-Dyn示例：
+
 ```ts
 // 使用方入口界面Index.ets内容如下:
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
@@ -102,7 +107,9 @@ function ColumChild() {
   }
 }
 ```
+
 ArkTS-Sta示例：
+
 ```ts
 import { Entry, ReceiveCallback, Text, Column, Component, Button, Row, Builder, TerminationInfo } from '@ohos.arkui.component';
 import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
