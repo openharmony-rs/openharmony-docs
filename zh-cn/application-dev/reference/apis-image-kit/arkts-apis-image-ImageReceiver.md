@@ -233,7 +233,7 @@ on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| type     | string               | 是   | 注册事件的类型，固定为'imageArrival'，接收图片时触发。 |
+| type     | string               | 是   | 注册事件的类型，固定为'imageArrival'，接收图片到达时触发。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数，当注册事件触发成功，err为undefined，否则为错误对象。                                        |
 
 **示例：**
