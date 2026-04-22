@@ -229,10 +229,11 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the installation operation.     |
 | 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
-| 29700004 | The API is not supported on this device.     |
+| 29700004 | To ensure user security, the current device does not support this API. When certType is set to CA_CERT, this API can be invoked only on 2in1 devices. This error code is returned on other devices. |
 | 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
 
 **示例**：
@@ -428,6 +429,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
