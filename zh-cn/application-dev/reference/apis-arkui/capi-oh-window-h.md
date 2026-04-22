@@ -702,7 +702,7 @@ int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_Fr
 | 参数项 | 描述 |
 | -- | -- |
 | [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
-| bool* isFirstDrawFrame | 作为出参使用，表示当前帧是否为首帧，ture表示是首帧，false表示不是首帧。 |
+| bool* isFirstDrawFrame | 作为出参使用，表示当前帧是否为首帧，true表示是首帧，false表示不是首帧。 |
 
 **返回：**
 
