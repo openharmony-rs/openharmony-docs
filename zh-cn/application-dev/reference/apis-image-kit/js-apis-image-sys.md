@@ -162,37 +162,36 @@ createWideGamutSdrPixelMap(): Promise\<PixelMap>
 
 **示例：**
 ```ts
- 	 async function CreateWideGamutSdrPixelMap(context: Context) {
- 	   // 此处'sdr.jpg'仅作示例，请开发者自行替换。
- 	   let filePath: string = context.filesDir + "/sdr.jpg";
- 	   let sdrImageSource = image.createImageSource(filePath);
- 	   let pixelmap = sdrImageSource.createWideGamutSdrPixelMap();
- 	   if (pixelmap != undefined) {
- 	     console.info('Succeeded in creating sdr pixelMap object.');
- 	   } else {
- 	     console.error('Failed to create pixelMap.');
- 	   }
- 	 
- 	   // 此处'singleChannelGainmapFilePath.jpg'仅作示例，请开发者自行替换。
- 	   let singleChannelGainmapFilePath: string = context.filesDir + "/singleChannelGainmapFilePath.jpg";
- 	   let singleChannelGainmapImageSource = image.createImageSource(singleChannelGainmapFilePath);
- 	   let singleChannelGainmapPixelmap = singleChannelGainmapImageSource.createWideGamutSdrPixelMap();
- 	   if (singleChannelGainmapPixelmap != undefined) {
- 	     console.info('Succeeded in creating sdr pixelMap object by using singleChannelGainmapImageSource.');
- 	   } else {
- 	     console.error('Failed to create pixelMap.');
- 	   }
- 	   // 此处'threeChannelGainmapFilePath.jpg'仅作示例，请开发者自行替换。
- 	   let threeChannelGainmapFilePath: string = context.filesDir + "/threeChannelGainmapFilePath.jpg";
- 	   let threeChannelGainmapImageSource = image.createImageSource(threeChannelGainmapFilePath);
- 	   let threeChannelGainmapPixelmap = threeChannelGainmapImageSource.createWideGamutSdrPixelMap();
- 	   if (threeChannelGainmapPixelmap != undefined) {
- 	     console.info('Succeeded in creating sdr pixelMap using CM_DISPLAY_BT2020_SRGB.');
- 	   } else {
- 	     console.error('Failed to create pixelMap.');
- 	   }
- 	 }
- 	 ```
+async function CreateWideGamutSdrPixelMap(context: Context) {
+  // 此处'sdr.jpg'仅作示例，请开发者自行替换。
+  let filePath: string = context.filesDir + "/sdr.jpg";
+  let sdrImageSource = image.createImageSource(filePath);
+  let pixelmap = sdrImageSource.createWideGamutSdrPixelMap();
+  if (pixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap object.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+
+  // 此处'singleChannelGainmapFilePath.jpg'仅作示例，请开发者自行替换。
+  let singleChannelGainmapFilePath: string = context.filesDir + "/singleChannelGainmapFilePath.jpg";
+  let singleChannelGainmapImageSource = image.createImageSource(singleChannelGainmapFilePath);
+  let singleChannelGainmapPixelmap = singleChannelGainmapImageSource.createWideGamutSdrPixelMap();
+  if (singleChannelGainmapPixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap object by using singleChannelGainmapImageSource.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+  // 此处'threeChannelGainmapFilePath.jpg'仅作示例，请开发者自行替换。
+  let threeChannelGainmapFilePath: string = context.filesDir + "/threeChannelGainmapFilePath.jpg";
+  let threeChannelGainmapImageSource = image.createImageSource(threeChannelGainmapFilePath);
+  let threeChannelGainmapPixelmap = threeChannelGainmapImageSource.createWideGamutSdrPixelMap();
+  if (threeChannelGainmapPixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap using CM_DISPLAY_BT2020_SRGB.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+}
 ```
 
 ### isJpegProgressive<sup>22+</sup>
