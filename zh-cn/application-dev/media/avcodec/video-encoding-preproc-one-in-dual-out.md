@@ -33,34 +33,43 @@
 |------|----------|
 | 1 | **Secondary 数量**：每个 Primary 同时最多挂载 **1 个** Secondary |
 | 2 | **创建顺序**：必须先创建 Primary，再从 Primary 派生 Secondary |
-| 3 | **生命周期关系**：**Primary 的生命周期必须长于 Secondary**。若先销毁 Primary，系统会自动先销毁 Secondary 再释放 Primary。建议按"先 Secondary 后 Primary"的顺序销毁 |
+| 3 | **生命周期关系**：Primary 是 Secondary 的所有者（Owner），Secondary 不得脱离 Primary 独立存在。<br>- **推荐销毁顺序**：先 `Destroy(Secondary)` → 再 `Destroy(Primary)`，销毁后立即将对应指针赋值 `nullptr`<br>- **容错机制**：若违反顺序先 Destroy Primary，系统会级联释放关联的 Secondary，但仍应显式遵循正确顺序 |
 | 4 | **重建能力**：Secondary 销毁后，可以从同一个 Primary 重新创建新的 Secondary |
 
 ### 3.2 接口可用性约束
 
 | 接口 | 主编码器 | 副编码器 | 备注 |
 |------|:--------:|:--------:|------|
-| **CreatePrimaryWithPreproc** | ✅ | N/A | 主入口 |
-| **CreateSecondaryFromPrimary** | ✅ 可调用 | ❌ 不允许 | 仅 Primary 可调用 |
-| **RegisterCallback** | ✅ | ✅ | 各自独立注册 |
-| **RegisterParameterCallback** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持随帧参数 |
-| **Configure** | ✅ | ✅ | 各自独立配置（分辨率、码率、前处理等均可不同） |
-| **Prepare** | ✅ | ✅ | 各自准备资源 |
-| **GetSurface** | ✅ **仅限此调用者** | ❌ NOT_PERMIT | 副编码器调用返回错误 |
-| **Start / Stop / Flush / Reset** | ✅ | ✅ | 各自独立控制 |
-| **SetParameter** | ✅ | ✅ | 运行时动态调整 |
-| **NotifyEndOfStream** | ✅ | ✅ | Surface 模式专用 |
-| **FreeOutputBuffer** | ✅ | ✅ | 各自释放各自的 output buffer |
-| **PushInputData/PushInputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持 Buffer 模式 |
-| **QueryInputBuffer/QueryOutputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持同步模式 |
-| **GetInputDescription** | ✅ | ✅ | 含前处理元数据信息 |
-| **Destroy** | ✅ | ✅ | 先销毁 Secondary，再销毁 Primary |
+| **OH_VideoEncoder_CreatePrimaryWithPreproc** | ✅ | N/A | 创建主编码器的唯一入口 |
+| **OH_VideoEncoder_CreateSecondaryFromPrimary** | ✅ | ❌ NOT_PERMIT | 仅 Primary 句柄可调用 |
+| **OH_VideoEncoder_RegisterCallback** | ✅ | ✅ | 各自独立注册 |
+| **OH_VideoEncoder_RegisterParameterCallback** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持随帧参数 |
+| **OH_VideoEncoder_PushInputParameter** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持随帧参数 |
+| **OH_VideoEncoder_Configure** | ✅ | ✅ | 各自独立配置（分辨率、码率、前处理等均可不同） |
+| **OH_VideoEncoder_GetSurface** | ✅ **仅限此调用者** | ❌ NOT_PERMIT | 副编码器调用返回错误 |
+| **OH_VideoEncoder_Prepare** | ✅ | ✅ | 各自准备资源，参考普通编码器 |
+| **OH_VideoEncoder_Start** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
+| **OH_VideoEncoder_Stop** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
+| **OH_VideoEncoder_Flush** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
+| **OH_VideoEncoder_Reset** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
+| **OH_VideoEncoder_SetParameter** | ✅ | ✅ | 运行时动态调整 |
+| **OH_VideoEncoder_NotifyEndOfStream** | ✅ | ✅ | Surface 模式专用 |
+| **OH_VideoEncoder_FreeOutputBuffer** | ✅ | ✅ | 各自释放各自的 output buffer |
+| **OH_VideoEncoder_PushInputData** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持 Buffer 模式 |
+| **OH_VideoEncoder_PushInputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持 Buffer 模式 |
+| **OH_VideoEncoder_QueryInputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持同步模式 |
+| **OH_VideoEncoder_QueryOutputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持同步模式 |
+| **OH_VideoEncoder_GetInputDescription** | ✅ | ✅ | 含前处理元数据信息 |
+| **OH_VideoEncoder_GetOutputDescription** | ✅ | ✅ | |
+| **OH_VideoEncoder_IsValid** | ✅ | ✅ | |
+| **OH_VideoEncoder_Destroy** | ✅ | ✅ | 先销毁 Secondary，再销毁 Primary |
 
 ### 3.5 配置约束
 
 | 约束项 | 说明 |
 |--------|------|
-| **Surface 共享** | 主/副编码器共享同一个 Consumer Surface，仅需从 Primary 获取一次 |
+| **Surface 共享** | 主/副编码器共享同一个 Consumer Surface，仅需从 `GetSurface` 获取一次并绑定到数据源（Camera/XComponent）
+| **Window 生命周期** | `OH_VideoEncoder_GetSurface` 获取的 window 实例需由开发者负责释放，在所有编码器 Destroy 之后调用 `OH_NativeWindow_DestroyNativeWindow(window)` 销毁 |
 | **前处理独立性** | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥 |
 | **回调独立性** | 两路的 `onNewOutputBuffer` 回调在不同线程中触发，需各自释放 FreeOutputBuffer |
 

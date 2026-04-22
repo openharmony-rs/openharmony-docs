@@ -4,7 +4,7 @@
 
 ## 1. 功能概述
 
-编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的主编码器或者通过`OH_VideoEncoder_CreateSecondaryFromPrimary`创建的副编码器支持以下三种前处理功能：
+编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的主编码器支持以下三种前处理功能：
 
 | 功能 | 说明 | 典型场景 | 引入版本 |
 |------|------|----------|--------|
@@ -38,7 +38,7 @@
 
 | 约束项 | 说明 |
 |--------|------|
-| **支持的 MIME 类型** | 和普通编码器支持范围一致，可通过 `OH_AVCapability_GetVideoEncoderCapability` 查询指定 MIME 类型的详细能力信息 |
+| **支持的 MIME 类型** | 和普通视频编码器支持范围一致，可通过 `OH_AVCodec_GetCapability` 查询是否支持指定 MIME 类型编码器 |
 | **创建方式** | 必须通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建，不支持普通创建方式 |
 | **数据通路** | **仅支持 Surface 异步模式**，Buffer 模式和同步模式均不支持（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
 | **随帧参数** | 不支持 `RegisterParameterCallback` 接口（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
@@ -77,7 +77,7 @@
 |------|----------|
 | 1 | **前置条件**：调用方必须已设置原始帧率（`OH_MD_KEY_FRAME_RATE`） |
 | 2 | **精度要求**：数值精度保留到小数点后 **2 位**（采用**四舍五入**方式） |
-| 3 | **值为 0.0**：丢帧功能被禁用 |
+| 3 | **值为 0.00**：丢帧功能被禁用 |
 | 4 | **合法正值**：设置为大于 0 且小于原始帧率的正数时，将按设定帧率进行丢帧 |
 | 5 | **非法值**：设置为负数或大于等于原始帧率的值时，返回 `AV_ERR_INVALID_VAL` |
 | 6 | **可组合性**：可与降采样参数**同时使用** |
@@ -237,26 +237,29 @@ if (inputDesc != nullptr) {
 ## 6. API 参考
 ### 标准编解码 API 可用性
 
-对于通过 `CreatePrimaryWithPreproc` 创建的编码器，以下标准 API 的可用性如下：
+对于通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的编码器，以下标准 API 的可用性如下：
 
 | 接口 | 是否可用 | 备注 |
 |------|:--------:|------|
-| `RegisterCallback` | ✅ | 推荐（SetCallback 已废弃） |
-| `RegisterParameterCallback` | ❌ | 返回 AV_ERR_OPERATE_NOT_PERMIT |
-| `Configure` | ✅ | 含前处理参数 |
-| `Prepare` | ✅ | 准备内部资源 |
-| `GetSurface` | ✅（仅主编码器） | 副编码器调用返回 NOT_PERMIT |
-| `Start` | ✅ | |
-| `Stop` | ✅ | |
-| `Flush` | ✅ | |
-| `Reset` | ✅ | 重置到 Initialized 状态 |
-| `SetParameter` | ✅ | 运行时动态调整前处理等参数 |
-| `NotifyEndOfStream` | ✅ | Surface 模式专用 |
-| `FreeOutputBuffer` | ✅ | 回调中必须调用 |
-| `GetInputDescription` | ✅ | 包含前处理元数据 |
-| `GetOutputDescription` | ✅ | |
-| `IsValid` | ✅ | |
-| `Destroy` | ✅ | 销毁编码器实例 |
-| `PushInputData/PushInputBuffer` | ❌ | Buffer 模式不支持 |
-| `QueryInputBuffer/QueryOutputBuffer` | ❌ | 同步模式不支持 |
+| `OH_VideoEncoder_RegisterCallback` | ✅ | |
+| `OH_VideoEncoder_RegisterParameterCallback` | ❌ | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
+| `OH_VideoEncoder_PushInputParameter` | ❌ | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
+| `OH_VideoEncoder_Configure` | ✅ | 含前处理参数 |
+| `OH_VideoEncoder_GetSurface` | ✅ | |
+| `OH_VideoEncoder_Prepare` | ✅ | 准备内部资源 |
+| `OH_VideoEncoder_Start` | ✅ | |
+| `OH_VideoEncoder_Stop` | ✅ | |
+| `OH_VideoEncoder_Flush` | ✅ | |
+| `OH_VideoEncoder_Reset` | ✅ | 重置到 Initialized 状态 |
+| `OH_VideoEncoder_SetParameter` | ✅ | 运行时动态调整前处理等参数 |
+| `OH_VideoEncoder_NotifyEndOfStream` | ✅ | Surface 模式专用 |
+| `OH_VideoEncoder_FreeOutputBuffer` | ✅ | |
+| `OH_VideoEncoder_GetInputDescription` | ✅ | 包含前处理元数据 |
+| `OH_VideoEncoder_GetOutputDescription` | ✅ | |
+| `OH_VideoEncoder_IsValid` | ✅ | |
+| `OH_VideoEncoder_Destroy` | ✅ | 销毁编码器实例 |
+| `OH_VideoEncoder_PushInputData` | ❌ | Buffer 模式不支持 |
+| `OH_VideoEncoder_PushInputBuffer` | ❌ | Buffer 模式不支持 |
+| `OH_VideoEncoder_QueryInputBuffer` | ❌ | 同步模式不支持 |
+| `OH_VideoEncoder_QueryOutputBuffer` | ❌ | 同步模式不支持 |
 

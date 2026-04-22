@@ -72,8 +72,6 @@
 | [typedef void (\*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)](#oh_videoencoder_onneedinputparameter) | OH_VideoEncoder_OnNeedInputParameter | 配置随帧参数，当需要设置index对应帧的编码参数时，可以通过该接口设置。只在Surface模式生效。 |
 | [OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)](#oh_videoencoder_createbymime) | - | 根据MIME类型创建视频编码器实例，推荐使用。 |
 | [OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)](#oh_videoencoder_createbyname) | - | 根据视频编码器名称创建视频编码器实例。使用此接口的前提是知道编码器的确切名称，编码器的名称可以通过能力查询获取。 |
-| [OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec)](#oh_videoencoder_createprimarywithpreproc) | - | 创建支持前处理的主视频编码器实例，可用于配置降采样、裁剪、丢帧等前处理参数，并可从该主编码器派生副编码器实现一入二出双路编码。 |
-| [OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)](#oh_videoencoder_createsecondaryfromprimary) | - | 从主编码器创建副视频编码器实例，与主编码器共享输入源，可独立配置编码参数和前处理参数。 |
 | [OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)](#oh_videoencoder_destroy) | - | 清理编码器内部资源，销毁编码器实例。不能重复销毁。 |
 | [OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videoencoder_setcallback) | - | 设置OH_AVCodecCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。(API11废弃) |
 | [OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videoencoder_registercallback) | - | 注册OH_AVCodecCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。 |
@@ -203,72 +201,6 @@ OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | 成功则返回一个指向视频编码实例的指针。<br> 如果输入是不支持编码器名称或者内存资源不足，则返回NULL。 |
-
-### OH_VideoEncoder_CreatePrimaryWithPreproc()
-
-```c
-OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec)
-```
-
-**描述**
-
-创建支持前处理的主视频编码器实例。该编码器支持以下能力：
-1. 前处理功能（降采样、裁剪、丢帧）。
-2. 从该主编码器创建副编码器实现一入二出双路编码。
-
-通过该接口创建的编码器仅支持Surface模式，不支持Buffer模式和同步模式。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。
-
-**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| const char *mime | MIME类型字符串，不可为NULL。必须是支持的类型。 |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) **codec | 双指针，用于接收创建的编码器实例，不可为NULL。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>AV_ERR_INVALID_VAL：mime为NULL / codec为NULL / MIME类型不支持。<br>AV_ERR_NO_MEMORY：内存分配失败。 |
-
-### OH_VideoEncoder_CreateSecondaryFromPrimary()
-
-```c
-OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)
-```
-
-**描述**
-
-从主编码器创建副视频编码器实例。副编码器具有以下特性：
-1. 与主编码器共享输入源。
-2. 可独立配置编码参数。
-3. 可使用不同的前处理参数。
-4. 可独立启动/停止（不依赖主编码器的启停状态）。
-5. 生命周期必须短于主编码器。
-6. 一个主编码器同时只能拥有一个副编码器。
-
-必须在主编码器创建成功之后才能创建。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。销毁顺序建议先Destroy Secondary再Destroy Primary。
-
-**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *primary | 主编码器句柄，必须由[OH_VideoEncoder_CreatePrimaryWithPreproc](#oh_videoencoder_createprimarywithpreproc)创建，不可为NULL。 |
-| [OH_AVCodec](capi-codecbase-oh-avcodec.md) **codec | 双指针，用于接收创建的副编码器实例，不可为NULL。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>AV_ERR_INVALID_VAL：primary为NULL / codec为NULL / primary不是有效的主编码器。<br>AV_ERR_OPERATE_NOT_PERMIT：主编码器已存在关联的副编码器。<br>AV_ERR_NO_MEMORY：内存分配失败。 |
 
 ### OH_VideoEncoder_Destroy()
 
