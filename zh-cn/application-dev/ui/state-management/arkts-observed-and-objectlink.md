@@ -194,9 +194,7 @@ struct Parent {
    // 错误写法，Test未被@Observed装饰，编译报错
    @ObjectLink test: Test;
    ```
-
-   <!-- @[Test_Info_Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
-   
+     
    ``` TypeScript
    @Observed
    class Info {
@@ -217,8 +215,6 @@ struct Parent {
    // 错误写法，编译报错
    @ObjectLink count: CountInfo = new CountInfo(10);
    ```
-
-   <!-- @[Info_Initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
    
    ``` TypeScript
    @Observed
@@ -575,8 +571,6 @@ struct Parent {
 
 使用\@Observed观察二维数组的变化。可以声明一个被\@Observed装饰的继承Array的子类。
 
-
-<!-- @[Two_dimensional_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) -->
 
 ``` TypeScript
 @Observed
