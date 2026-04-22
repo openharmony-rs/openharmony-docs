@@ -26,9 +26,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | 设置指定窗口是否显示状态栏。 |
-| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | 设置指定窗口的状态栏内容颜色。 |
-| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | 设置指定窗口是否显示导航栏。 |
+| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | 设置主窗口是否显示状态栏。 |
+| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | 设置主窗口的状态栏内容颜色。 |
+| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | 设置主窗口是否显示导航栏。 |
 | [int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)](#oh_windowmanager_getwindowavoidarea) | - | 获取指定窗口的避让区域。 |
 | [int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)](#oh_windowmanager_iswindowshown) | - | 判断指定窗口是否显示。 |
 | [int32_t OH_WindowManager_ShowWindow(int32_t windowId)](#oh_windowmanager_showwindow) | - | 显示指定窗口。 |
@@ -67,7 +67,7 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 
 **描述**
 
-设置指定窗口是否显示状态栏。
+设置主窗口是否显示状态栏。
 
 **起始版本：** 15
 
@@ -76,7 +76,7 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
+| int32_t windowId | 主窗口id。传入非主窗口id时调用无效。 |
 | bool enabled | 设置状态栏是否显示。true表示设置状态栏显示，false表示设置状态栏隐藏。 |
 | bool enableAnimation | 设置是否开启状态栏的显隐动画。true表示开启状态栏的显隐动画，false表示关闭状态栏的显隐动画。 |
 
@@ -94,7 +94,7 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 
 **描述**
 
-设置指定窗口的状态栏内容颜色。
+设置主窗口的状态栏内容颜色。
 
 **起始版本：** 15
 
@@ -103,7 +103,7 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
+| int32_t windowId | 主窗口id。传入非主窗口id时调用无效。 |
 | int32_t color | 要设置的颜色值，格式为ARGB。 |
 
 **返回：**
@@ -120,7 +120,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **描述**
 
-设置指定窗口是否显示导航栏。
+设置主窗口是否显示导航栏。<!--RP2--><!--RP2End-->
 
 **起始版本：** 15
 
@@ -129,7 +129,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
+| int32_t windowId | 主窗口id。传入非主窗口id时调用无效。 |
 | bool enabled | 设置导航栏是否显示。true表示设置导航栏显示，false表示设置导航栏隐藏。 |
 | bool enableAnimation | 设置是否开启导航栏的显隐动画。true表示开启导航栏的显隐动画，false表示关闭导航栏的显隐动画。 |
 
