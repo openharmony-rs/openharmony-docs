@@ -137,6 +137,8 @@ You can use the on-screen awareness feature through **capList** or **groupId**.
     |UiImage|Obtains the information about sub-images on a page.|
     |JumpContext|Highlights and jumps to a specified context.|
     |QuickSnap|Obtains the information about a single snapshot.<br> **Usage specifications**: This capability is used only in the **trigger** API. It takes effect only when **capList** is set to **QuickSnap**. For other APIs, error code 401 is returned.|
+    |UiTree|Retrieve JSON tree information within the page|
+    |InjectEvent|Event injection|
 
   * Capabilities supported by groupId<br>
   
@@ -563,6 +565,7 @@ capList capabilities supported by the capture API
 | ---- | ------ |
 |UiImage|Obtains the information about sub-images on a page.|
 |QuickSnap|Obtains screenshot information.|
+|UiTree|Retrieve JSON tree information within the page|
 
 **Return value**
 
@@ -622,6 +625,7 @@ capList capabilities supported by the interact API
 |capList Capability|**Function**|
 | ---- | ------ |
 |JumpContext|Highlights and jumps to a specified context.|
+|InjectEvent|Event injection|
 
 **Return value**
 
