@@ -244,4 +244,4 @@ struct Index {
 }
 ```
 
-![](figures/FullScreenLaunchComponentDemo1.jpg)
+![](figures/FullScreenLaunchComponentDemo1.png)
