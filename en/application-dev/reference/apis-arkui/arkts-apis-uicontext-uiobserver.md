@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -491,7 +491,7 @@ Listens for page state changes in the [Router](arkts-apis-uicontext-router.md).
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates page state changes in the [Router](arkts-apis-uicontext-router.md).|
-| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | Yes  | Callback used to return the result. It returns the current page state using a [RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) object.                |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>        | Yes  | Callback used to return the current page state using a [RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) object.                |
 
 **Example**
 
@@ -580,7 +580,7 @@ Listens for screen pixel density changes.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'densityUpdate'** indicates the pixel density changes of the screen.|
-| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | Yes  | Callback used to return the result. It returns the updated screen pixel density using a [DensityInfo](./js-apis-arkui-observer.md#densityinfo12) object.                |
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | Yes  | Callback used to return the updated screen pixel density using a [DensityInfo](./js-apis-arkui-observer.md#densityinfo12) object.                |
 
 **Example**
 
@@ -805,7 +805,7 @@ Listens for [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationSwitch'**, which indicates [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch events.|
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the result. It returns the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
 
 **Example**
 
@@ -906,7 +906,7 @@ Listens for [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationSwitch'**, which indicates [Navigation](arkui-ts/ts-basic-components-navigation.md) page switch events.|
 | observerOptions | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12)        | Yes  | Observer configuration options.  |
-| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the result. It returns the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
+| callback | Callback\<observer.[NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the page switch event information using the [NavDestinationSwitchInfo](js-apis-arkui-observer.md#navdestinationswitchinfo12) object.                |
 
 **Example**
 
