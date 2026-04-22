@@ -59,7 +59,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | focusable            | boolean                                                            | 否   | 否   | 表示元素是否可聚焦。true表示元素可聚焦，false表示元素不可聚焦，默认值为false。 |
 | hintText             | string                                                             | 否   | 否   | 提示文本。 |
 | inputType            | number                                                             | 否   | 否   | 输入文本的类型。默认值为0。 |
-| inspectorKey         | string                                                             | 否   | 否   | 检查键。 |
+| inspectorKey         | string                                                             | 否   | 否   | 表示元素的别名。 |
 | isActive             | boolean                                                            | 否   | 否   | 表示元素是否处于活动状态。true表示元素处于活动状态，false表示元素不处于活动状态，默认值为true。 |
 | isEnable             | boolean                                                            | 否   | 否   | 表示元素是否启用。true表示元素已启用，false表示元素未启用，默认值为false。 |
 | isHint               | boolean                                                            | 否   | 否   | 表示元素是否为提示状态。true表示元素处于提示状态，false表示元素不处于提示状态，默认值为false。 |
@@ -82,7 +82,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | startIndex           | number                                                             | 否   | 否   | 在屏幕上的第一个项目的列表索引。默认值为0。 |
 | text                 | string                                                             | 否   | 否   | 元素的文本。 |
 | textLengthLimit      | number                                                             | 否   | 否   | 元素文本的最大长度限制。 |
-| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否   | 否   | 文本被读取时的移动单位。 |
+| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否   | 否   | 文本被读取时的移动粒度。 |
 | triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | 否   | 否   | 触发元素事件的动作。 |
 | type                 | [WindowType](#windowtype)                                          | 否   | 否   | 元素的窗口类型。 |
 | valueMax             | number                                                             | 否   | 否   | 最大值。默认值为0。 |
@@ -92,7 +92,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | textType<sup>12+</sup>             | string                                                             | 否   | 否   | 元素的无障碍文本类型，由组件accessibilityTextHint属性配置。 |
 | offset<sup>12+</sup>             | number              | 否   | 否   | 对于可滚动类控件，如List、Grid，内容区相对控件的顶部坐标滚动的像素偏移量，单位为像素（px）。默认值为0。 |
 | hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | 否   | 否   | 元素的可触摸区域。 |
-| customComponentType<sup>18+</sup>             | string                                                             | 否   | 是   | 自定义组件类型。|
+| customComponentType<sup>18+</sup>             | string                                                             | 否   | 是   | 自定义组件类型。与元素的[AccessibilityRoleType枚举说明](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明)类型所对应。|
 | accessibilityNextFocusId<sup>18+</sup>             | number                | 否   | 是   | 下一个要聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElementInfo对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
 | accessibilityPreviousFocusId<sup>18+</sup>             | number                | 否   | 是   | 上一个聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElementInfo对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
 | extraInfo<sup>18+</sup>             | string     | 否  | 是   | 扩展属性，用于定义一些特定组件的属性，包含：<br>- CheckboxGroupSelectedStatus：表示CheckboxGroup组件的选中状态，其中取值0表示已选中，取值1表示部分选中，取值2表示未选中。<br>- Row：Grid组件中聚焦item的行信息，表示该item在第几行。<br>- Column：Grid组件中聚焦的item的列，表示该item在第几列。<br>- ListItemIndex：List组件中聚焦item的行信息，表示当前该item在第几行。<br>- SideBarContainerStates：表示可展开类组件（SideBarContainer、Select）的展开状态，其中取值0表示收起态，取值1表示展开态。<br>- ToggleType：表示Toggle组件的具体类型，其中取值0表示Checkbox，取值1表示Switch，取值2表示Button。<br>- BindSheet：表示BindSheet组件的状态，其中取值0表示状态高，取值1表示状态中，取值2表示状态低。<br>- hasRegisteredHover：表示组件是否注册了onAccessibilityHover事件回调，取值为1表示组件注册了事件回调，若未注册不会使用该字段。<br>- direction：表示list组件的布局方向，其中取值"vertical"表示竖向，取值"horizontal"表示横向。<br>- expandedState：表示list组件中listItem的展开状态，其中取值"expanded"表示展开态，取值"collapsed"表示收起态。<br>- componentTypeDescription：组件类型详细信息，对componentType的补充描述。|
@@ -193,7 +193,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let targetNames = ['com.ohos.xyz'];
 axContext.setTargetBundleName(targetNames).then(() => {
-  console.info(`Succeeded in set target bundle names, targetNames is ${targetNames}`);
+  console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -238,7 +238,7 @@ try {
       console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
       return;
     }
-    console.info(`Succeeded in set target bundle names, targetNames is ${targetNames}`);
+    console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
   });
 } catch (error) {
   console.error(`failed to set target bundle names, Because ${JSON.stringify(error)}`);
@@ -287,7 +287,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getFocusElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.info(`Succeeded in get focus element,${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
 })
@@ -334,7 +334,7 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get focus element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -381,7 +381,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get focus element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -428,7 +428,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getWindowRootElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
 });
@@ -475,7 +475,7 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -522,7 +522,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -566,7 +566,7 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getWindows().then((data: AccessibilityElement[]) => {
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
 });
@@ -610,7 +610,7 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
     console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -654,7 +654,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
     console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -704,7 +704,7 @@ for (let i = 0; i < 10; i++) {
   gesturePath.points.push(gesturePoint);
 }
 axContext.injectGesture(gesturePath).then(() => {
-  console.info(`Succeeded in inject gesture,gesturePath is ${gesturePath}`);
+  console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
 });
@@ -753,7 +753,7 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
     console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in inject gesture,gesturePath is ${gesturePath}`);
+  console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 });
 ```
 ## AccessibilityExtensionContext.injectGestureSync<sup>(deprecated)</sup>
@@ -798,7 +798,7 @@ axContext.injectGestureSync(gesturePath);
 
 ## AccessibilityElement
 
-无障碍节点元素, 在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
+无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -830,7 +830,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例
 rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
-  console.info(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
 });
@@ -866,7 +866,7 @@ rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) =>
     console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -915,7 +915,7 @@ let attributeName: ElementAttributeKeys = 'bundleName';
 
 // rootElement是AccessibilityElement的实例
 rootElement.attributeValue(attributeName).then((data: string) => {
-  console.info(`Succeeded in get attribute value by name, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute value by name, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
 });
@@ -963,7 +963,7 @@ rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => 
     console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get attribute value, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute value, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -992,7 +992,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例
 rootElement.actionNames().then((data: string[]) => {
-  console.info(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -1025,7 +1025,7 @@ rootElement.actionNames((err: BusinessError, data: string[]) => {
     console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 })
 ```
 
@@ -1072,7 +1072,7 @@ let actionName = 'action';
 
 // rootElement是AccessibilityElement的实例
 rootElement.performAction(actionName).then(() => {
-  console.info(`Succeeded in perform action,actionName is ${actionName}`);
+  console.info(`succeeded in performing action,actionName is ${actionName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1086,7 +1086,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement是AccessibilityElement的实例
 // Action描述中无明确要求的，均为无参数Action
 rootElement.performAction('click').then(() => {
-  console.info(`Succeeded in perform action.`);
+  console.info(`succeeded in performing action.`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1104,7 +1104,7 @@ rootElement.performAction('setSelection', {
   selectTextEnd: '8',   // 表示选择结束位置
   selectTextInForWard: true   // true表示为前光标，false表示为后光标
 }).then(() => {
-  console.info(`Succeeded in perform action`);
+  console.info(`succeeded in performing action`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1118,7 +1118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 rootElement.performAction('setCursorPosition', {
   offset: '1'   // 表示光标的设置位置
 }).then(() => {
-  console.info(`Succeeded in perform action`);
+  console.info(`succeeded in performing action`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1165,7 +1165,7 @@ rootElement.performAction(actionName, (err: BusinessError) => {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in perform action, actionName is ${actionName}`);
+  console.info(`succeeded in performing action, actionName is ${actionName}`);
 });
 ```
 
@@ -1212,7 +1212,7 @@ rootElement.performAction(actionName, parameters, (err: BusinessError) => {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in perform action,actionName is ${actionName}, parameters is ${parameters}`);
+  console.info(`succeeded in performing action,actionName is ${actionName}, parameters is ${parameters}`);
 });
 ```
 
@@ -1258,7 +1258,7 @@ let condition = 'keyword';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('content', condition).then((data: AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1305,7 +1305,7 @@ rootElement.findElement('content', condition, (err: BusinessError, data: Accessi
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1352,7 +1352,7 @@ let condition: FocusType = 'normal';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('focusType', condition).then((data: AccessibilityElement) => {
-  console.info(`Succeeded in find element,${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1400,7 +1400,7 @@ rootElement.findElement('focusType', condition, (err: BusinessError, data: Acces
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1447,7 +1447,7 @@ let condition: FocusDirection = 'up';
 
 // rootElement是AccessibilityElement的实例
 rootElement.findElement('focusDirection', condition).then((data: AccessibilityElement) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1495,6 +1495,6 @@ rootElement.findElement('focusDirection', condition, (err: BusinessError, data: 
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```

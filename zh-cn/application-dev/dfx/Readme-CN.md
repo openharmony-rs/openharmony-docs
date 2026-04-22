@@ -17,6 +17,7 @@
   - [AppFreeze（应用冻屏）检测](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [任务超时检测](apptask-timeout-guidelines.md)
   - [应用终止检测](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
+  - [页面切换日志](pageswitch-log.md) 
 - 日志打印<!--hilog-dev-->
   - [使用HiLog打印日志（ArkTS）](hilog-guidelines-arkts.md)
   - [使用HiLog打印日志（C/C++）](hilog-guidelines-ndk.md)

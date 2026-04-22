@@ -30,6 +30,14 @@
 
 - [WebPMetadata](arkts-apis-image-WebPMetadata.md)类，以Key-Value的形式存储图像的WebP图像元数据。WebP图像元数据的Key可参考[WebPPropertyKey](arkts-apis-image-e.md#webppropertykey24)。
 
+- [GifMetadata](arkts-apis-image-GifMetadata.md)类，以Key-Value的形式存储图像的GIF图像元数据。GIF图像元数据的Key可参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+
+- [JfifMetadata](arkts-apis-image-JfifMetadata.md)类，以Key-Value的形式存储图像的JFIF图像元数据。JFIF图像元数据的Key可参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
+
+- [TiffMetadata](arkts-apis-image-TiffMetadata.md)类，以Key-Value的形式存储图像的TIFF图像元数据。TIFF图像元数据的Key可参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
+
+- [PngMetadata](arkts-apis-image-PngMetadata.md)类，以Key-Value的形式存储图像的PNG图像元数据。PNG图像元数据的Key可参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
+
 - [ImageReceiver](arkts-apis-image-ImageReceiver.md)类，作为图片的消费者，用于从Surface中接收、读取图片。
 
 - [ImageCreator](arkts-apis-image-ImageCreator.md)类，作为图片的生产者，用于将图片写入到Surface中。

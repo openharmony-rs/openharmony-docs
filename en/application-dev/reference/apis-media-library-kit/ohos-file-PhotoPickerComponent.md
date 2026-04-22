@@ -14,7 +14,8 @@ Once embedded, users can directly select images or videos within the **PhotoPick
 
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component does not support [same-layer rendering](../../../application-dev/web/web-same-layer.md).
 
 ## Modules to Import
 
@@ -105,7 +106,7 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | isSlidingSupported<sup>23+</sup>         | boolean                         | No  | Yes| Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.<br>The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-
+| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -212,6 +213,159 @@ Callback to be invoked when an item in a **PhotoPickerComponent** is clicked.
 | itemInfo    | [ItemInfo](#iteminfo) | Yes   | Type of the clicked item, which can be a thumbnail item or a camera item.|
 | clickType  | [ClickType](#clicktype) | Yes| Enumerates the click operation types.|
 
+**Example**:
+
+```ts
+import {
+    ClickResult,
+    ClickType,
+    DataType,
+    ItemInfo,
+    ItemClickedNotifyCallback,
+    PhotoPickerComponent,
+    PickerController,
+    PickerOptions,
+} from '@kit.MediaLibraryKit';
+import { router } from '@kit.ArkUI';
+
+
+const DOMAIN = 0x0000;
+const TAG: string = 'clickedNotifyDemo';
+
+interface Checks {
+    isOnClicked: boolean;
+    isOnClickedNotify: boolean;
+}
+
+export interface ClickResultEx {
+    uri: string,
+    isSelected: boolean,
+}
+
+@Entry
+@Component
+struct PickerPage {
+@State pickerController: PickerController = new PickerController();
+private pickerOptions: PickerOptions = new PickerOptions();
+@State currentUri: string = '';
+@State currentState: number = 0;
+@State clickedUris: Map<string, ClickResultEx> = new Map();
+private isOnClicked: boolean = false;
+private isOnClickedNotify: boolean = false;
+
+    onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
+        return true;
+    };
+    // When an item is clicked, the code checks whether the corresponding URI is valid. An invalid URI is ignored.
+    // Then, the code checks whether the URI already exists in clickedUris. If not, it creates a record and sets the isSelected property to true.
+    // If yes, the code updates the isSelected property of the record to true.
+    // After the data is saved, clicking the setClickResult button will call addData(SET_ITEM_CLICK_RESULT) to set the corresponding item to the selected state.
+    onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
+        if (!itemInfo.uri) {
+            return;
+        }
+
+        let clickResult = this.clickedUris.get(itemInfo.uri);
+        if (!clickResult) {
+            clickResult = {
+                uri: itemInfo.uri,
+                isSelected: true,
+            };
+        } else {
+            clickResult.isSelected = true;
+        }
+        this.clickedUris.set(itemInfo.uri, clickResult);
+    };
+
+    aboutToAppear(): void {
+        let params = router.getParams() as Checks;
+
+        this.pickerOptions.isSlidingSelectionSupported = true;
+        this.pickerOptions.isSearchSupported = false;
+        this.isOnClicked = params.isOnClicked;
+        // Obtain parameters from the index.ets page.
+        this.isOnClickedNotify = params.isOnClickedNotify;
+        this.pickerOptions.maxPhotoSelectNumber = 500;
+    }
+
+    // Obtain the URIs from this.clickedUris, which will be used when pickerController.addData() is called to set the item to be selected.
+    getClickedUris(): ClickResult[] {
+        let uris: ClickResultEx[] = [];
+        this.clickedUris.forEach((uri, index) => {
+            uris.push(uri)
+        })
+        return uris;
+    }
+
+    build() {
+        Column() {
+            Row() {
+                // Call the photo picker component.
+                PhotoPickerComponent({
+                    pickerOptions: this.pickerOptions,
+                    pickerController: this.pickerController,
+                    onItemClicked: this.isOnClicked ? this.onClicked : undefined,
+                    onItemClickedNotify: this.isOnClickedNotify ? this.onClickedNotify : undefined,
+                    onSelect: (uri: string) => {},
+                    onDeselect: (uri: string) => {}
+                })
+            }.height('50%')
+
+            Row() {
+                Column() {
+                    Text('Selected assets')
+                    ForEach(this.getClickedUris(), (uri: ClickResult) => {
+                        Row() {
+                            // You can remove or add a selection.
+                            Checkbox({ name: "OnClick" })
+                                .select(uri.isSelected)
+                                .onChange((checked: boolean) => {
+                                    let clickResult = this.clickedUris.get(uri.uri);
+                                    if (!clickResult) {
+                                        clickResult = {
+                                            uri: uri.uri,
+                                            isSelected: checked
+                                        };
+                                    } else {
+                                        clickResult.isSelected = checked;
+                                    }
+                                    if (uri.uri !== 'abnormal') {
+                                        this.clickedUris.set(uri.uri, clickResult);
+                                    }
+                                }).margin({ right: 5 })
+                            Text(uri.uri.slice(-30)).margin({right: 5}).width(150)
+                            // Remove the selected item from this.clickeduris.
+                            Button('Delete').onClick(() => {
+                                this.clickedUris.delete(uri.uri);
+                            })
+                            // The following code is an example of an exception scenario. When an abnormal URI is passed, the item selected by Picker does not take effect.
+                            Button('Abnormal').onClick(() => {
+                                let clickResult = this.clickedUris.get(uri.uri);
+                                if (clickResult) {
+                                    let oldClickUri = clickResult.uri;
+                                    clickResult.uri = 'abnormal'
+                                    this.clickedUris.set(oldClickUri, clickResult)
+                                }
+                            })
+                        }.width('100%')
+                    })
+                }
+            }.height('20%')
+
+            Row() {
+                // Send URI (SET_ITEM_CLICK_RESULT).
+                Button('Set ClickResult')
+                    .onClick(() => {
+                        this.pickerController.addData(DataType.SET_ITEM_CLICK_RESULT, this.getClickedUris())
+                    })
+            }.height('10%')
+        }
+    .height('100%')
+            .width('100%')
+    }
+}
+```
+
 ## ScrollStopAtEndCallback<sup>23+</sup>
 
 type ScrollStopAtEndCallback = () => void
@@ -225,7 +379,7 @@ Callback to be invoked when the user stops scrolling and is positioned at the en
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## PhotoBrowserChangeStartCallback<sup>23+</sup>
- 	 
+
 type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
 Callback to be invoked when the moving photo effect of the **PhotoPickerComponent** is enabled or disabled.
@@ -277,7 +431,7 @@ Callback to be invoked when an error occurs in the **PhotoPickerComponent**.
 | Name| Type                           | Mandatory| Description|
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | pickerError  | [PickerError](#pickererror23) | Yes| Basic information about the error.|
- 	 
+
 ## PickerController
 
 Defines an instance used to send data to the **PhotoPickerComponent**.
@@ -343,7 +497,7 @@ Sends removal configuration data to the **PhotoPickerComponent**. The [DataType]
 
 setMaxSelected(maxSelected: MaxSelected): void
 
-Sets the maximum number of images, videos, or images and videos that can be selected on a real-time basis.
+Sets the maximum number of images, videos, or images and videos that can be selected in real time.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -433,7 +587,7 @@ Saves files in a URI list. Generally, this API is used together with [replacePho
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | Yes| URIs of the images or videos in the application sandbox path. Generally, **trustedUris** comes from **newUri** of new images generated by [replacePhotoPickerPreview](#replacephotopickerpreview15).|
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | Yes| URIs of the new files in Gallery.            |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.<br>By default, the values of **title**, **fileNameExtension**, and **photoType** of **mediaItem** corresponding to **trustedUris** are used, and the value of **subtype** is fixed to **DEFAULT**.            |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>1. If a **subtype** option is passed, the configuration does not take effect. Only **DEFAULT** images can be saved.<br>By default, the values of **title**, **fileNameExtension**, and **photoType** of **mediaItem** corresponding to **trustedUris** are used, and the value of **subtype** is fixed to **DEFAULT**.<br>2. This parameter does not take effect when [SaveMode](#savemode15) is set to **OVERWRITE**.            |
 | saveMode | [SaveMode](#savemode15)           | No| Mode for saving the files.<br>By default, the **SAVE_AS** mode is used to save the files as new files.            |
 
 ### updatePickerOptions<sup>22+</sup>
@@ -569,7 +723,7 @@ Represents information about the photo browser page.
 
 ## AnimatorParams
 
-Animation parameters for entering or exiting the photo browser page.
+Defines animation parameters for entering or exiting the photo browser page.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -673,9 +827,10 @@ Describes the updatable attributes of the **PhotoPickerComponent**. These attrib
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | No  | Yes| Playback mode of the moving photo. The maximum array length is 2. If this limit is exceeded, the first two elements are used, and the extra ones are automatically ignored.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| backgroundOpacity<sup>24+</sup>         | number                         | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
- ## PickerError<sup>23+</sup>
- 	 
+## PickerError<sup>23+</sup>
+
 Describes the function name, error code, and message of the error returned when an error occurs during the use of the **PhotoPickerComponent** component.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -747,7 +902,7 @@ This capability can be configured since API version 20. If this capability is se
 
 ## SelectMode
 
-Enumerates the select modes.
+Enumerates the selection modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -962,7 +1117,7 @@ struct PickerDemo {
       return true; // If true is returned, the system camera is started. If false is returned, the app processes its services.
     } else {
       if (clickType === ClickType.SELECTED) {
-        // The application performs its own service logic (not time-consuming operations, such as opening a large file using OpenSync).
+        // The application performs its own service logic (not time-consuming operations, such as opening a large file using openSync).
         if (uri) {
           this.selectUris.push(uri);
           this.pickerOptions.preselectedUris = [...this.selectUris];

@@ -222,9 +222,11 @@ No memory space.
 
 **Description**
 
-This error code is reported when a memory allocation error occurs.
+This error code is returned if a memory allocation error occurs due to insufficient memory space.
 
 **Possible Causes**
+
+The memory space is insufficient.
 
 A memory allocation error occurs.
 

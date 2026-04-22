@@ -245,7 +245,7 @@ struct Index {
 
 禁用拖拽方式主要分为两类：
 
-1. 网页侧通过w3c css、js进行拦截/禁用。
+1. 网页侧通过W3C CSS、JS进行拦截/禁用。
 2. 应用侧通过Web组件runJavaScriptExt接口注入JS进行拦截/禁用。
 
 H5示例1:

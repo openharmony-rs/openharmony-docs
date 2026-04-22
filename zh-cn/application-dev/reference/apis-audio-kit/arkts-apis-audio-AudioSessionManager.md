@@ -948,7 +948,7 @@ setAudioSessionBehavior(behavior: number): void
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------|
 | 6800101 | Parameter verification failed. |
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted in the current state. |
 
 **示例：**
 

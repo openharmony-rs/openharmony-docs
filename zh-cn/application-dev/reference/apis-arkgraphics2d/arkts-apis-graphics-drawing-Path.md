@@ -113,8 +113,8 @@ moveTo(x: number, y: number) : void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x      | number | 是   | 起始点的x轴坐标，该参数为浮点数。 |
-| y      | number | 是   | 起始点的y轴坐标，该参数为浮点数。 |
+| x      | number | 是   | 起始点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | number | 是   | 起始点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -147,8 +147,8 @@ lineTo(x: number, y: number) : void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x      | number | 是   | 目标点的x轴坐标，该参数为浮点数。 |
-| y      | number | 是   | 目标点的y轴坐标，该参数为浮点数。 |
+| x      | number | 是   | 目标点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | number | 是   | 目标点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -182,12 +182,12 @@ arcTo(x1: number, y1: number, x2: number, y2: number, startDeg: number, sweepDeg
 
 | 参数名   | 类型   | 必填 | 说明                       |
 | -------- | ------ | ---- | -------------------------- |
-| x1       | number | 是   | 矩形左上角的x坐标，该参数为浮点数。 |
-| y1       | number | 是   | 矩形左上角的y坐标，该参数为浮点数。 |
-| x2       | number | 是   | 矩形右下角的x坐标，该参数为浮点数。 |
-| y2       | number | 是   | 矩形右下角的y坐标，该参数为浮点数。 |
-| startDeg | number | 是   | 起始的角度。角度的起始方向（0°）为x轴正方向。 |
-| sweepDeg | number | 是   | 扫描的度数，为正数时顺时针扫描，为负数时逆时针扫描。实际扫描的度数为该入参对360取模的结果。 |
+| x1       | number | 是   | 矩形左上角的x坐标，该参数为浮点数。单位为物理像素px。 |
+| y1       | number | 是   | 矩形左上角的y坐标，该参数为浮点数。单位为物理像素px。 |
+| x2       | number | 是   | 矩形右下角的x坐标，该参数为浮点数。单位为物理像素px。 |
+| y2       | number | 是   | 矩形右下角的y坐标，该参数为浮点数。单位为物理像素px。 |
+| startDeg | number | 是   | 起始的角度。角度的起始方向（0°）为x轴正方向。单位为度。 |
+| sweepDeg | number | 是   | 扫描的度数，为正数时顺时针扫描，为负数时逆时针扫描。实际扫描的度数为该入参对360取模的结果。单位为度。 |
 
 **错误码：**
 
@@ -221,10 +221,10 @@ quadTo(ctrlX: number, ctrlY: number, endX: number, endY: number): void
 
 | 参数名 | 类型   | 必填 | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| ctrlX  | number | 是   | 控制点的x坐标，该参数为浮点数。 |
-| ctrlY  | number | 是   | 控制点的y坐标，该参数为浮点数。 |
-| endX   | number | 是   | 目标点的x坐标，该参数为浮点数。 |
-| endY   | number | 是   | 目标点的y坐标，该参数为浮点数。 |
+| ctrlX  | number | 是   | 控制点的x坐标，该参数为浮点数。单位为物理像素px。 |
+| ctrlY  | number | 是   | 控制点的y坐标，该参数为浮点数。单位为物理像素px。 |
+| endX   | number | 是   | 目标点的x坐标，该参数为浮点数。单位为物理像素px。 |
+| endY   | number | 是   | 目标点的y坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -258,10 +258,10 @@ conicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: number
 
 | 参数名 | 类型   | 必填 | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| ctrlX  | number | 是   | 控制点的x坐标，该参数为浮点数。 |
-| ctrlY  | number | 是   | 控制点的y坐标，该参数为浮点数。 |
-| endX   | number | 是   | 目标点的x坐标，该参数为浮点数。 |
-| endY   | number | 是   | 目标点的y坐标，该参数为浮点数。 |
+| ctrlX  | number | 是   | 控制点的x坐标，该参数为浮点数。单位为物理像素px。 |
+| ctrlY  | number | 是   | 控制点的y坐标，该参数为浮点数。单位为物理像素px。 |
+| endX   | number | 是   | 目标点的x坐标，该参数为浮点数。单位为物理像素px。 |
+| endY   | number | 是   | 目标点的y坐标，该参数为浮点数。单位为物理像素px。 |
 | weight | number | 是   | 表示曲线权重，决定了曲线的形状。值越大，曲线越接近控制点。小于等于0时，效果与[lineTo](#lineto)相同；值为1时，效果与[quadTo](#quadto)相同。该参数为浮点数。 |
 
 **错误码：**
@@ -295,12 +295,12 @@ cubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: nu
 
 | 参数名 | 类型   | 必填 | 说明                        |
 | ------ | ------ | ---- | --------------------------- |
-| ctrlX1 | number | 是   | 第一个控制点的x坐标，该参数为浮点数。 |
-| ctrlY1 | number | 是   | 第一个控制点的y坐标，该参数为浮点数。 |
-| ctrlX2 | number | 是   | 第二个控制点的x坐标，该参数为浮点数。 |
-| ctrlY2 | number | 是   | 第二个控制点的y坐标，该参数为浮点数。 |
-| endX   | number | 是   | 目标点的x坐标，该参数为浮点数。 |
-| endY   | number | 是   | 目标点的y坐标，该参数为浮点数。 |
+| ctrlX1 | number | 是   | 第一个控制点的x坐标，该参数为浮点数。单位为物理像素px。 |
+| ctrlY1 | number | 是   | 第一个控制点的y坐标，该参数为浮点数。单位为物理像素px。 |
+| ctrlX2 | number | 是   | 第二个控制点的x坐标，该参数为浮点数。单位为物理像素px。 |
+| ctrlY2 | number | 是   | 第二个控制点的y坐标，该参数为浮点数。单位为物理像素px。 |
+| endX   | number | 是   | 目标点的x坐标，该参数为浮点数。单位为物理像素px。 |
+| endY   | number | 是   | 目标点的y坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -334,8 +334,8 @@ rMoveTo(dx: number, dy: number): void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| dx     | number | 是   | 路径新起始点相对于当前路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy     | number | 是   | 路径新起始点相对于当前路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| dx     | number | 是   | 路径新起始点相对于当前路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy     | number | 是   | 路径新起始点相对于当前路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -368,8 +368,8 @@ rLineTo(dx: number, dy: number): void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| dx     | number | 是   | 目标点相对于当前路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy     | number | 是   | 目标点相对于当前路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| dx     | number | 是   | 目标点相对于当前路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy     | number | 是   | 目标点相对于当前路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -402,10 +402,10 @@ rQuadTo(dx1: number, dy1: number, dx2: number, dy2: number): void
 
 | 参数名 | 类型   | 必填 | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| dx1  | number | 是   | 控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy1  | number | 是   | 控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| dx2   | number | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy2   | number | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| dx1  | number | 是   | 控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy1  | number | 是   | 控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dx2   | number | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy2   | number | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -438,10 +438,10 @@ rConicTo(ctrlX: number, ctrlY: number, endX: number, endY: number, weight: numbe
 
 | 参数名 | 类型   | 必填 | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| ctrlX  | number | 是   | 控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| ctrlY  | number | 是   | 控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| endX   | number | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| endY   | number | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| ctrlX  | number | 是   | 控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlY  | number | 是   | 控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endX   | number | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endY   | number | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 | weight | number | 是   | 表示曲线的权重，决定了曲线的形状，越大越接近控制点。若小于等于0则等同于使用[rLineTo](#rlineto12)添加一条到结束点的线段，若为1则等同于[rQuadTo](#rquadto12)，该参数为浮点数。 |
 
 **错误码：**
@@ -475,12 +475,12 @@ rCubicTo(ctrlX1: number, ctrlY1: number, ctrlX2: number, ctrlY2: number, endX: n
 
 | 参数名 | 类型   | 必填 | 说明                        |
 | ------ | ------ | ---- | --------------------------- |
-| ctrlX1 | number | 是   | 第一个控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| ctrlY1 | number | 是   | 第一个控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| ctrlX2 | number | 是   | 第二个控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| ctrlY2 | number | 是   | 第二个控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
-| endX   | number | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| endY   | number | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| ctrlX1 | number | 是   | 第一个控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlY1 | number | 是   | 第一个控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlX2 | number | 是   | 第二个控制点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| ctrlY2 | number | 是   | 第二个控制点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endX   | number | 是   | 目标点相对于路径终点的x轴偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| endY   | number | 是   | 目标点相对于路径终点的y轴偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -553,9 +553,9 @@ addCircle(x: number, y: number, radius: number, pathDirection?: PathDirection): 
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| x   | number | 是   | 表示圆心的x轴坐标，该参数为浮点数。 |
-| y   | number | 是   | 表示圆心的y轴坐标，该参数为浮点数。 |
-| radius   | number | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。 |
+| x   | number | 是   | 表示圆心的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| y   | number | 是   | 表示圆心的y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| radius   | number | 是   | 表示圆形的半径，该参数为浮点数，小于等于0时不会有任何效果。单位为物理像素px。 |
 | pathDirection   | [PathDirection](arkts-apis-graphics-drawing-e.md#pathdirection12)  | 否   | 表示路径方向，默认为顺时针方向。 |
 
 **错误码：**
@@ -762,8 +762,8 @@ contains(x: number, y: number): boolean
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x      | number | 是   | x轴上坐标点，该参数必须为浮点数。 |
-| y      | number | 是   | y轴上坐标点，该参数必须为浮点数。 |
+| x      | number | 是   | x轴上坐标点，该参数必须为浮点数。单位为物理像素px。 |
+| y      | number | 是   | y轴上坐标点，该参数必须为浮点数。单位为物理像素px。 |
 
 **返回值：**
 
@@ -803,8 +803,8 @@ setLastPoint(x: number, y: number): void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x      | number | 是   | 指定点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| y      | number | 是   | 指定点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| x      | number | 是   | 指定点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。单位为物理像素px。 |
+| y      | number | 是   | 指定点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。单位为物理像素px。 |
 
 **示例：**
 
@@ -821,6 +821,36 @@ console.info('isEmpty:', isEmpty);
 path.setLastPoint(50, 50);
 isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
+```
+
+## getLastPoint
+
+getLastPoint(): common2D.Point
+
+获取路径的最后一个点的坐标。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型                                               | 说明                   |
+| -------------------------------------------------- | ---------------------- |
+| [common2D.Point](js-apis-graphics-common2D.md#point12) | 路径的最后一个点坐标。如果路径为空，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+const path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+let lastPoint = path.getLastPoint();
+console.info('lastPoint.x:', lastPoint?.x);
+console.info('lastPoint.y:', lastPoint?.y);
 ```
 
 ## setFillType<sup>12+</sup>
@@ -960,8 +990,8 @@ offset(dx: number, dy: number): Path
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| dx     | number        | 是   | x轴方向偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。 |
-| dy     | number        | 是   | y轴方向偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。 |
+| dx     | number        | 是   | x轴方向偏移量，正数往x轴正方向偏移，负数往x轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
+| dy     | number        | 是   | y轴方向偏移量，正数往y轴正方向偏移，负数往y轴负方向偏移，该参数为浮点数。单位为物理像素px。 |
 
 **返回值：**
 
@@ -1167,7 +1197,7 @@ getLength(forceClosed: boolean): number
 
 | 类型  | 说明 |
 | ------ | ---- |
-| number | 路径长度。|
+| number | 路径长度。单位为物理像素px。|
 
 **示例：**
 
@@ -1193,7 +1223,7 @@ getPositionAndTangent(forceClosed: boolean, distance: number, position: common2D
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | forceClosed | boolean | 是   | 表示是否按照闭合路径测量，true表示测量时路径会被强制视为已闭合，false表示会根据路径的实际闭合状态测量。                 |
-| distance | number | 是   | 表示与路径起始点的距离，小于0时会被视作0，大于路径长度时会被视作路径长度。该参数为浮点数。               |
+| distance | number | 是   | 表示与路径起始点的距离，小于0时会被视作0，大于路径长度时会被视作路径长度。该参数为浮点数。单位为物理像素px。               |
 | position | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是   | 存储获取到的距离路径起始点distance处的点的坐标。                  |
 | tangent | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是   | 存储获取到的距离路径起始点distance处的点的切线值，tangent.x表示该点切线的余弦值，tangent.y表示该点切线的正弦值。                 |
 
@@ -1243,8 +1273,8 @@ getSegment(forceClosed: boolean, start: number, stop: number, startWithMoveTo: b
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | forceClosed | boolean | 是   | 表示是否按照闭合路径测量，true表示测量时路径会被强制视为已闭合，false表示会根据路径的实际闭合状态测量。                 |
-| start | number | 是   | 表示与路径起始点的距离，距离路径起始点start距离的位置即为截取路径片段的起始点，小于0时会被视作0，大于等于stop时会截取失败。该参数为浮点数。               |
-| stop | number | 是   | 表示与路径起始点的距离，距离路径起始点stop距离的位置即为截取路径片段的终点，小于等于start时会截取失败，大于路径长度时会被视作路径长度。该参数为浮点数。                  |
+| start | number | 是   | 表示与路径起始点的距离，距离路径起始点start距离的位置即为截取路径片段的起始点，小于0时会被视作0，大于等于stop时会截取失败。该参数为浮点数。单位为物理像素px。               |
+| stop | number | 是   | 表示与路径起始点的距离，距离路径起始点stop距离的位置即为截取路径片段的终点，小于等于start时会截取失败，大于路径长度时会被视作路径长度。该参数为浮点数。单位为物理像素px。                  |
 | startWithMoveTo | boolean | 是   | 表示是否在目标路径执行[moveTo](#moveto)移动到截取路径片段的起始点位置。true表示执行，false表示不执行。                |
 | dst | [Path](arkts-apis-graphics-drawing-Path.md) | 是   | 目标路径，截取成功时会将得到的路径片段追加到目标路径上，截取失败时不做改变。               |
 
@@ -1309,7 +1339,7 @@ getMatrix(forceClosed: boolean, distance: number, matrix: Matrix, flags: PathMea
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | forceClosed | boolean | 是   | 表示是否按照闭合路径测量，true表示测量时路径会被强制视为已闭合，false表示会根据路径的实际闭合状态测量。                  |
-| distance | number | 是   | 表示与路径起始点的距离，小于0时会被视作0，大于路径长度时会被视作路径长度。该参数为浮点数。                  |
+| distance | number | 是   | 表示与路径起始点的距离，小于0时会被视作0，大于路径长度时会被视作路径长度。该参数为浮点数。单位为物理像素px。                  |
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 矩阵对象，用于存储得到的矩阵。                  |
 | flags | [PathMeasureMatrixFlags](arkts-apis-graphics-drawing-e.md#pathmeasurematrixflags12) | 是   | 矩阵信息维度枚举。                  |
 
@@ -1578,7 +1608,7 @@ approximate(acceptableError: number): Array\<number>
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| acceptableError | number | 是 | 表示路径上每条线段的可接受误差。该参数为浮点数，不应小于0，当参数小于0时报错。 |
+| acceptableError | number | 是 | 表示路径上每条线段的可接受误差。该参数为浮点数，不应小于0，当参数小于0时报错。单位为物理像素px。 |
 
 **返回值：**
 
@@ -1693,6 +1723,48 @@ if (path.isInterpolate(other)) {
   console.info('isInterpolate return true');
 } else {
   console.info('isInterpolate return false');
+}
+```
+
+## isEqual
+
+isEqual(path: Path): boolean
+
+判断当前路径与另一条路径是否相等。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                            |
+| -------- | -------------------------------------------- | ---- | ------------------------------- |
+| path | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 另一条路径对象。 |
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前路径与另一条路径是否相等的结果。true表示路径相等，false表示路径不相等。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+let other: drawing.Path = new drawing.Path();
+other.moveTo(0, 0);
+other.lineTo(100, 100);
+if (path.isEqual(other)) {
+  console.info('isEqual return true');
+} else {
+  console.info('isEqual return false');
 }
 ```
 

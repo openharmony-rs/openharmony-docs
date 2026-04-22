@@ -6,7 +6,7 @@
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
-卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
+卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md#方式二独立包方式创建卡片)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
 > **说明：**
 >
 >- 卡片五元组是确认卡片唯一的要素信息。五元组分别为bundleName、moduleName、abilityName、formName、formDimension。其中bundleName是[app.json5配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中bundleName配置项、moduleName是[module.json5配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)中的name配置项、abilityName是[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中的name配置项、formName是[配置文件字段说明](#配置文件字段说明)中的name配置项、formDimension对应的是[配置文件字段说明](#配置文件字段说明)中的supportDimensions配置项。
@@ -143,7 +143,7 @@
 
    | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
    | -------- | -------- | -------- | -------- |
-   | designWidth | 标识页面设计基准宽度。以此为基准，根据实际设备宽度来缩放元素大小。 | 数值 | 可缺省，缺省值为720px。 |
+   | designWidth | 标识页面设计基准宽度。以此为基准，根据实际设备宽度来缩放元素大小。取值范围大于等于0小于2^16，单位：px | 数值 | 可缺省，缺省值为720px。 |
    | autoDesignWidth | 标识页面设计基准宽度是否自动计算。当配置为true时，designWidth将会被忽略，设计基准宽度由设备宽度与屏幕密度计算得出。 | 布尔值 | 可缺省，缺省值为false。 |
 
 ### funInteractionParams标签

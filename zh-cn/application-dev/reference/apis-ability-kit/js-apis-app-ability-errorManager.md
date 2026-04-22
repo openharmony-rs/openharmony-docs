@@ -740,6 +740,63 @@ const errorHandler: errorManager.ErrorHandler = (reason: Error) => {
 oldHandler = errorManager.setDefaultErrorHandler(errorHandler);
 ```
 
+## errorManager.setDefaultResourceUsageObserver<sup>24+</sup>
+
+setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver
+
+设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。
+
+如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
+
+若接口参数为空，后续注册的观察者将无法与前序已注册的观察者建立关联，从而中断链式调用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+ 
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| defaultObserver | [ResourceUsageObserver](#resourceusageobserver24) | 否 | 新注册的资源观察者，默认值为空。|
+
+**返回值**：
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ResourceUsageObserver](#resourceusageobserver24) | 返回上一次注册的资源观察者。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000205      | The API is not called in the main thread. |
+
+**示例**：
+    
+```ts
+import { errorManager } from '@kit.AbilityKit';
+import { process } from '@kit.ArkTS';
+
+let oldObserver: errorManager.ResourceUsageObserver;
+const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType, resourceSize, detailInfo) => {
+  // 自定义的resourceUsageObserver实现逻辑
+  console.info('[Observer] Resource usage observer.');
+  if (oldObserver) {
+    oldObserver(resourceType, resourceSize, detailInfo);
+  } else {
+    // 建议增加判空操作，如果为空采用同步退出方式
+    const processManager = new process.ProcessManager();
+    processManager.exit(0);
+  }
+};
+oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver);
+```
+
 ## ErrorObserver
 
 type ErrorObserver = _ErrorObserver.default
@@ -855,5 +912,43 @@ type ErrorHandler = (errObject: Error) => void
 |--------| ------------- | ---- | --- |
 | errObject | Error   | 是   | 有关异常事件名字、消息、错误堆栈信息的对象。 |
 
+## ResourceUsageObserver<sup>24+</sup>
+
+type ResourceUsageObserver = (resourceType: ResourceType, resourceSize: number, detailInfo?: Record<string, number>) => void
+
+定义应用资源使用情况的观察者回调函数，作为[errorManager.setDefaultResourceUsageObserver](#errormanagersetdefaultresourceusageobserver24)的入参，用于监听各类资源占用变化，并支持应用执行自定义资源处理逻辑。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数**：
+
+| 参数名  | 类型          | 必填 | 说明 |
+|--------| ------------- | ---- | --- |
+| resourceType | [ResourceType](#resourcetype24)   | 是   | 表示应用资源超基线的类型。 |
+| resourceSize | number   | 是   | 表示应用资源超基线的资源使用量。 |
+| detailInfo | Record<string, number>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key为小写内存类型，value为对应细分项资源大小；<br>细分项的key包含arkts、native、ion、gpu、ashmem和other。 |
+
+## ResourceType<sup>24+</sup>
+
+应用资源超基线的类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+| 名称  | 值  | 说明   |
+| ---- | --- | ------ |
+| PSS_MEMORY     | 1   | 表示应用当前超基线的资源是PSS的内存。 |
+| ION_MEMORY     | 2   | 表示应用当前超基线的资源是ION的内存。 |
+| ASHMEM_MEMORY  | 3   | 表示应用当前超基线的资源是ASHMEM的内存。 |
+| GPU_MEMORY     | 4   | 表示应用当前超基线的资源是GPU的内存。 |
+| FD             | 5   | 表示应用当前超基线的资源是FD的数量。 |
+| THREAD         | 6   | 表示应用当前超基线的资源是THREAD的数量。 |
 
 

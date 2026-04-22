@@ -224,7 +224,7 @@ Web同层渲染的配置。
 
 ## OnHttpErrorReceiveEvent<sup>12+</sup>
 
-定义网页收到加载资源加载HTTP错误时触发。
+定义网页收到资源加载HTTP错误时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -845,7 +845,7 @@ Web组件进入全屏回调事件的详情。
 
 ## OnPdfScrollEvent<sup>20+</sup>
 
-定义PDF页面滚动到底时触发的函数。
+定义PDF页面滚动到底时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

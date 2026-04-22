@@ -42,7 +42,7 @@ Sets the data source for a network on-demand resource. Only network metadata ([f
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| url | string       | Yes  | URL of the media resource.<br>1. The video formats MP4, MPEG-TS, and MKV are supported.<br>2. The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported.<br>**Example of supported URLs**:<br>1. HTTP: http\://xx<br>2. HTTPS: https\://xx<br>Note: HLS/DASH and live streaming resources cannot be set.|
+| url | string       | Yes  | URL of the media resource.<br>1. The video formats MP4, MPEG-TS, and MKV are supported.<br>2. The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported.<br>**Example of supported URLs**:<br>1. HTTP: http://xx<br>2. HTTPS: https://xx<br>Note: HLS/DASH and live streaming resources are not supported.|
 | headers | Record\<string, string> | No  | Custom HTTP headers for accessing the network resource. The default value is empty.|
 
 **Example**
@@ -54,7 +54,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     let url = "http://xx";
@@ -120,7 +120,7 @@ let param: media.PixelMapParams = {
 };
 // Obtain the thumbnail.
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -133,6 +133,80 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   }
 });
 ```
+
+## fetchFrameByTimeWithTimeout
+
+fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number): Promise\<image.PixelMap | undefined>
+
+Obtains a video thumbnail. You can set the maximum timeout interval (**timeoutMs**) for obtaining the thumbnail. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**Parameters**
+
+| Name  | Type                                        | Mandatory| Description                               |
+| -------- | -------------------------------------------- | ---- | ----------------------------------- |
+| timeUs | number                   | Yes  | Time of the video for which a thumbnail is to be obtained, in μs.|
+| options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the time passed in and the video frame.|
+| param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | Yes  | Format parameters of the thumbnail to be obtained.|
+| timeoutMs | number                   | Yes  | Timeout interval for obtaining the thumbnail. The value range is (0, 20000], in milliseconds.<br>If the thumbnail is not obtained within the specified timeout interval, error code 5400104 is returned.|
+
+**Return value**
+
+| Type          | Description                                    |
+| -------------- | ---------------------------------------- |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined> | Promise used to return the video thumbnail.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Returned by promise. |
+| 5400104  | Operation timeout. |
+| 5400106  | Unsupported format. Returned by promise.  |
+| 5400108  | Parameter check failed. Returned by promise. |
+| 5411012  | Http cleartext traffic is not permitted. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+let pixelMap: image.PixelMap | undefined = undefined;
+
+// Initialize input parameters.
+let timeUs: number = 0;
+let timeoutMs: number = 3000;
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+let param: media.PixelMapParams = {
+  width: 300,
+  height: 300
+};
+// Obtain the thumbnail.
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
+      pixelMap = pixelMap;
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
+    });
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message:${error.message}`);
+  }
+});
+```
+
 ## fetchFramesByTimes<sup>23+</sup>
 
 fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, callback: OnFrameFetched): void
@@ -144,7 +218,7 @@ Obtains video thumbnails in batches. This API uses an asynchronous callback to r
 > - The given video resource is decoded first, and then image frames are extracted from each time point in the **timesUs** array based on the provided **options** and **param**.
 > - When each image extraction is complete, the system calls the callback function and passes the extraction result. Note that the execution order of the callback function may be inconsistent with the time points in the **timesUs** array.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -187,11 +261,84 @@ async function fetchFramesByTimesDemo() {
   };
   // Obtain the thumbnail.
   let avMetadataExtractor = await media.createAVMetadataExtractor();
-  if (avMetadataExtractor !== null) {
+  if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
         console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+        return;
+      }
+      if (frameInfo != undefined && frameInfo.image != undefined) {
+        let pixelMap = frameInfo.image;
+      }});
+  }
+}
+```
+
+## fetchFramesByTimesWithTimeout
+
+fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number, callback: OnFrameFetched): void
+
+Obtains video thumbnails in batches. You can set the maximum timeout interval (**timeoutMs**) for obtaining each thumbnail. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - The given video resource is decoded first, and then image frames are extracted from each time point in the **timesUs** array based on the provided **options** and **param**.
+> - When each image extraction is complete, the system calls the callback function and passes the extraction result. Note that the execution order of the callback function may be inconsistent with the time points in the **timesUs** array.
+> - The **timeoutMs** parameter indicates the maximum timeout interval for obtaining each thumbnail frame, not the entire batch thumbnail extraction process.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**Parameters**
+
+| Name  | Type                                        | Mandatory| Description                               |
+| -------- | -------------------------------------------- | ---- | ----------------------------------- |
+| timesUs | number[]                   | Yes  | Set of time points of all thumbnails to be obtained in the video.<br>The unit is microsecond (μs), and the value range of the array length is (0, 4096].|
+| queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the time passed in and the video frame.|
+| param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | Yes  | Format parameters of the thumbnail to be obtained.|
+| timeoutMs | number                  | Yes  | Timeout interval for obtaining each thumbnail. The value range is (0, 20000], in milliseconds.<br>If a thumbnail is not obtained within the specified timeout interval, error code 5400104 is returned.|
+| callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | Yes  | Thumbnail information to be returned and possible exception types.<br>For details about the exception types, see the returned error code information.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Returned by callback. |
+| 5400104  | Fetch timeout. Returned by callback. |
+| 5400106  | Unsupported format. Returned by callback. |
+| 5400105  | Service died. |
+| 5400108  | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
+| 5411012  | Http cleartext not permitted. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+async function fetchFramesByTimesDemo() {
+  // Initialize input parameters.
+  let timesUs: number[] = [0];
+  let timeoutMs: number = 3000;
+  let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+  let param: media.PixelMapParams = {
+    width: 300,
+    height: 300
+  };
+  // Obtain the thumbnail.
+  let avMetadataExtractor = await media.createAVMetadataExtractor();
+  if (avMetadataExtractor) {
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+      if (err) {
+        console.error(`fetchFramesByTimes callback failed, code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
@@ -207,7 +354,7 @@ cancelAllFetchFrames(): void
 
 Cancels the ongoing task of obtaining thumbnails in batches. (The thumbnails that have been obtained are not affected.)
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -219,7 +366,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();
@@ -309,6 +456,62 @@ async function test() {
     console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to fetch Metadata, error message:${error.message}`);
+  });
+}
+```
+
+## fetchMetadataWithTimeout
+
+fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
+
+Obtains the media metadata. You can set the maximum timeout interval (**timeoutMs**) for obtaining the metadata. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**Parameters**
+
+| Name  | Type                                        | Mandatory| Description                               |
+| -------- | -------------------------------------------- | ---- | ----------------------------------- |
+| timeoutMs | number | Yes| Timeout interval for obtaining media metadata. The value range is (0, 20000], in milliseconds.<br>If no metadata is returned within the specified timeout interval, error code 5400104 is returned.|
+
+**Return value**
+
+| Type          | Description                                    |
+| -------------- | ---------------------------------------- |
+| Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11) \| undefined>  | Promise used to return the audio and video metadata object (**AVMetadata**) asynchronously.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Returned by promise. |
+| 5400104  | Operation timeout. Returned by promise. |
+| 5400106  | Unsupported format. Returned by promise.  |
+| 5400108  | Parameter check failed. Returned by promise.  |
+| 5411012  | Http cleartext traffic is not permitted. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  // Create an AVMetadataExtractor instance.
+  let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+  let timeoutMs = 3000;
+  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata | undefined) => {
+    if (metadata) {
+      console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to fetch Metadata, code: ${error.code}, message: ${error.message}`);
   });
 }
 ```

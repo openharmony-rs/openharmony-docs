@@ -106,7 +106,7 @@ getSuggestedName(): string
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| string | 返回建议文件名。 |
+| string | 返回建议选择的文件名。 |
 
 ## getDefaultPath<sup>23+</sup>
 
@@ -120,7 +120,7 @@ getDefaultPath(): string
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| string | 返回默认路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为OpenHarmony系统下的`download`和`images`，请参考[获取并使用公共目录](../../file-management/request-dir-permission.md)。 |
+| string | 返回默认起始路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为OpenHarmony系统下的`download`和`images`，请参考[获取并使用公共目录](../../file-management/request-dir-permission.md)。 |
 
 ## getDescriptions<sup>23+</sup>
 
@@ -140,7 +140,7 @@ getDescriptions(): Array\<string\>
 
 isAcceptAllOptionExcluded(): boolean
 
-获取文件选择器是否支持选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
+获取文件选择器是否包含选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -154,7 +154,7 @@ isAcceptAllOptionExcluded(): boolean
 
 getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
 
-获取文件types信息。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。
+获取文件类型信息。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -166,11 +166,11 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | 渲染进程异常退出。         |
+| ProcessAbnormalTermination | 0 | 渲染进程异常退出，可能原因包括：渲染进程启动超时、达到进程数量上限导致系统回收旧渲染进程、多个页签同时关闭等。     |
 | ProcessWasKilled           | 1 | 收到SIGKILL，或被手动终止。 |
 | ProcessCrashed             | 2 | 渲染进程崩溃退出，如段错误。    |
 | ProcessOom                 | 3 | 程序内存不足。           |
-| ProcessExitUnknown         | 4 | 其他原因。             |
+| ProcessExitUnknown         | 4 | 其他原因，比如渲染进程孵化失败。        |
 
 ## SslError<sup>9+</sup>
 

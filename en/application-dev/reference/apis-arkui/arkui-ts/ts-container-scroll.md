@@ -664,7 +664,7 @@ Callback triggered before scrolling.
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| void \| [OffsetResult](#offsetresult11) |  If **OffsetResult** is returned, the scrolling will be performed with the offsets specified. Otherwise, the scrolling will be performed with the offsets determined by **(xOffset, yOffset)**.|
+| void \| [OffsetResult](#offsetresult11)|  If **OffsetResult** is returned, the scrolling will be performed with the offsets specified. Otherwise, the scrolling will be performed with the offsets determined by **(xOffset, yOffset)**.|
 
 ## OnScrollEdgeCallback<sup>18+</sup>
 
@@ -889,7 +889,7 @@ Obtains the current scroll offset.
 | -------- | -------- |
 |  [OffsetResult<sup>11+</sup>](#offsetresult11) | Current scroll offset.|
 
-### offset<sup>23+<sup>
+### offset<sup>23+</sup>
 
 offset(): OffsetResult | undefined
 
@@ -903,7 +903,7 @@ Obtains the current scroll offset. Except for **undefined** in the API declarati
 
 | Type | Description|
 | -------- | -------- |
-|  [OffsetResult](#offsetresult11) \| undefined | Current scroll offset. If the scroller is not bound to a component, this API returns **undefined**.|
+|  [OffsetResult](#offsetresult11) \| undefined| Current scroll offset. If the scroller is not bound to a component, this API returns **undefined**.|
 
 ### scrollToIndex
 
@@ -1102,6 +1102,24 @@ For details about the error codes, see [Scrollable Component Error Codes](../err
 | ------- | -------- |
 | 100004   | Controller not bound to a component. |
 
+### getFrameNode
+
+getFrameNode(): FrameNode | undefined
+
+Obtains the **FrameNode** bound to the current **Scroller**.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.0
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+| [FrameNode](../js-apis-arkui-frameNode.md) \| undefined | If the scroller has been bound to a scrolling component such as **Scroll**, **List**, **Grid**, or **WaterFlow**, the **FrameNode** of the corresponding component is returned. Otherwise, **undefined** is returned.|
+
 ## OffsetResult<sup>11+</sup>
 
 Represents the offset values resulting from a scroll operation.
@@ -1210,7 +1228,7 @@ Provides parameters for scrolling to a specific position in a scrollable contain
 | --------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
 | xOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | No  | No| Horizontal scroll offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the x-axis.<br>Value range: Values less than 0 are treated as 0, and scrolling occurs without animation. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | yOffset<sup>10+</sup>   | number&nbsp;\|&nbsp;string                                   | No  | No| Vertical scroll offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the y-axis.<br>Value range: Values less than 0 are treated as 0, and scrolling occurs without animation. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12)&nbsp;\|&nbsp;boolean | No  | Yes| Animation configuration, which includes the following:<br>- **ScrollAnimationOptions**: custom animation settings.<br>- **boolean**: whether to enable the default spring animation.<br>Default value:<br>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br>boolean:&nbsp;false<br>**NOTE**<br>Currently, the **List**, **Scroll**, **Grid**, and **WaterFlow** support the **Boolean** type and **ICurve**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12)&nbsp;\|&nbsp;boolean| No  | Yes| Animation configuration, which includes the following:<br>- **ScrollAnimationOptions**: custom animation settings.<br>- **boolean**: whether to enable the default spring animation.<br>Default value:<br>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br>boolean:&nbsp;false<br>**NOTE**<br>Currently, the **List**, **Scroll**, **Grid**, and **WaterFlow** support the **Boolean** type and **ICurve**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | canOverScroll<sup>20+</sup>   | boolean                                   | No  | Yes| Whether the scroll target position is allowed to stay beyond the boundary. This setting only takes effect when the component's **edgeEffect** is set to **EdgeEffect.Spring**.<br>**true**: The scroll position can stay beyond the boundary. **false**: The scroll position cannot stay beyond the boundary.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## UIScrollEvent<sup>19+</sup>
@@ -1927,7 +1945,7 @@ struct ScrollExample1 {
               this.contentHeight = this.scroller.contentSize().height;
             } catch (error) {
               let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
             }
           })
         // Display the obtained content size.
