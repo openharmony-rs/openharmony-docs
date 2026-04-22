@@ -1578,6 +1578,7 @@ Represents a custom policy.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | No| No| JSON string of an enterprise custom policy. The length cannot exceed 4 MB.|
+| options<sup>26+</sup> | [DlpFileQueryOptions](#dlpfilequeryoptions26) | No| Yes| Query options for DLP files.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1743,12 +1744,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 
+```
 
-## dlpPermission.queryDlpPolicy<sup>21+</sup>
+## DlpFileQueryOptions<sup>26+</sup>
 
-queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
+Represents query options for DLP files.
 
-Parses the file header in a DLP file to obtain the DLP plaintext policy. This API uses a promise to return the result.
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| classificationLabel | string | No| Yes| User-defined classification label for an enterprise DLP file.|
+
+## dlpPermission.queryOpenedEnterpriseDlpFiles<sup>26+</sup>
+
+queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
+
+Queries the list of URIs of DLP files that have been opened and matched the specified options. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1758,13 +1774,13 @@ Parses the file header in a DLP file to obtain the DLP plaintext policy. This AP
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | Yes| FD of the file to be decrypted.|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | No| Query options for DLP files.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the JSON string of the DLP policy.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of URIs of the target DLP files that have been opened.|
 
 **Error codes**
 
@@ -1773,35 +1789,75 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
-| 19100003 | Credential task time out. |
-| 19100004 | Credential service error. |
-| 19100005 | Credential authentication server error. |
-| 19100008 | The file is not a DLP file. |
-| 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
-| 19100013 | The user does not have the permission. |
 
 **Example**
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ExampleFunction(dlpFilePath: string) {
-  let dlpFd : number | undefined = undefined;
-  try {
-    dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
-    let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
-    console.info('DLP policy:' + policy);
-  } catch(err) {
-    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
-  } finally {
-    if (dlpFd) {
-      fileIo.closeSync(dlpFd);
-    }
-  }
+try {
+  let options: dlpPermission.DlpFileQueryOptions = {
+    classificationLabel: 'label1'
+  };
+  let uris: Array<string> = await dlpPermission.queryOpenedEnterpriseDlpFiles(options);
+  console.info('Opened DLP file URIs:' + JSON.stringify(uris));
+} catch(err) {
+  console.error('error', (err as BusinessError).code, (err as BusinessError).message);
+}
+```
+
+## dlpPermission.closeOpenedEnterpriseDlpFiles<sup>26+</sup>
+
+closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt;
+
+Closes all currently open DLP files that match the specified options. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions26) | No| Query options for DLP files.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let options: dlpPermission.DlpFileQueryOptions = {
+    classificationLabel: 'label1'
+  };
+  await dlpPermission.closeOpenedEnterpriseDlpFiles(options);
+  console.info('Successfully closed DLP files.');
+} catch(err) {
+  console.error('error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
