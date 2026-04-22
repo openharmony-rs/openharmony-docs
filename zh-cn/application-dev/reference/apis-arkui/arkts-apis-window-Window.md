@@ -8178,6 +8178,65 @@ try {
 }
 ```
 
+## setTouchableAreas
+
+setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
+
+设置当前窗口的可触摸区域，使用Promise异步回调。
+
+默认情况下，整个窗口区域都是可触摸的；可触摸区域外的触摸事件将被透传至下层。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+**参数：**
+
+| 参数名       | 类型                          | 必填 | 说明                           |
+| :----------- | :---------------------------- | :--- | :----------------------------- |
+| rects | Array&lt;[Rect](arkts-apis-window-i.md#rect7)&gt; | 是   | 窗口可触摸区域。可触摸区域最大个数不能超过10个，否则抛错误码1300016，且范围不能超出窗口区域。 |
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                               |
+| 1300002  | This window state is abnormal.    |
+| 1300003  | This window manager service works abnormally.                                                                      |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const touchableRects: Array<window.Rect> = [
+  { left: 100, top: 100, width: 200, height: 200 },
+  { left: 0, top: 50, width: 150, height: 200 }
+];
+try {
+  windowClass.setTouchableAreas(touchableRects).then(() => {
+    console.info('Succeeded in setting the touchable areas.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the touchable areas. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## keepKeyboardOnFocus<sup>11+</sup>
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
