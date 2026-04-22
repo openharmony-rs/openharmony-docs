@@ -41,7 +41,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | 创建PackingOptions结构体的指针。 |
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取MIME类型。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。|
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取MIME类型。该接口获取到的format.data缺少字符串结束符'\0'，请谨慎使用。|
 | [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | 获取编解码参数中的MIME类型。输出的format.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | 设置MIME类型。 |
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | 获取编码质量。 |
@@ -128,7 +128,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 
 **描述**
 
-获取MIME类型。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。
+获取MIME类型。该接口获取到的format.data缺少字符串结束符'\0'，请谨慎使用。
 
 **起始版本：** 12
 
@@ -138,7 +138,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 图像格式。可传入一个空指针和零大小，系统将分配内存，但必须在使用后释放内存。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 图像格式。可传入一个空指针和零大小，系统将分配内存，但必须在使用后释放内存。调用此函数获取的format.data不包含字符串结束符'\0',需要在使用时特别防止缓冲区溢出。 |
 
 **返回：**
 
