@@ -1,8 +1,8 @@
 # EnterpriseAdminExtensionAbility开发指南
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 

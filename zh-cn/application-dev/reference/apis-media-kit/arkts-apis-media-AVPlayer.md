@@ -228,7 +228,7 @@ async function test(){
 
 setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
-流媒体预下载资源设置，下载url对应的流媒体数据，并暂存在内存中。使用Promise异步回调。
+流媒体预下载资源设置，下载URL对应的流媒体数据并暂存在内存中，此接口只能在idle状态下调用。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -276,11 +276,15 @@ async function test(){
 }
 ```
 
-## getTrackSelectionFilter<sup>24+</sup>
+## getTrackSelectionFilter
 
 getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
 
 获取播放器当前配置的轨道选择过滤器。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -288,7 +292,7 @@ getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<[TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter24)> | Promise对象，返回当前配置的轨道选择过滤器。 |
+| Promise\<[TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter)> | Promise对象，返回当前配置的轨道选择过滤器。 |
 
 **错误码：**
 
@@ -312,11 +316,15 @@ async function test() {
 
 ```
 
-## setTrackSelectionFilter<sup>24+</sup>
+## setTrackSelectionFilter
 
 setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 
 为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -324,7 +332,7 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| filter | [TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter24) | 是   | 轨道选择过滤器。 |
+| filter | [TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter) | 是   | 轨道选择过滤器。 |
 
 **返回值：**
 
@@ -1642,7 +1650,9 @@ async function  test(){
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
-使用AVPlayer播放多音视频轨资源时，选择指定轨道播放，使用Promise异步回调。
+使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1652,8 +1662,8 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| index | number | 是   | 多音视频资源的轨道索引，可通过[getTrackDescription](#gettrackdescription9-1)接口获取当前资源的所有轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)。 |
-| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换视频轨道模式，默认为SMOOTH模式，**仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API version 24开始支持HLS协议网络流视频。 |
+| index | number | 是   | 多音视频资源的轨道索引。该值必须为整数。<br>取值约束：可通过[getTrackDescription](#gettrackdescription9-1)接口返回的音视频轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)中读取的key为MD_KEY_TRACK_INDEX所对应的值。<br>每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
+| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换轨道的模式。<br>取值约束：该模式仅适用于视频轨道的切换。<br>默认值：SMOOTH模式，在片段末尾进行切换，以确保视频播放的连续性。**仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API版本26.0.0开始支持HLS协议网络流视频。 |
 
 **返回值：**
 
@@ -1843,7 +1853,9 @@ seek(timeMs: number, mode?:SeekMode): void
 
 > **注意：**
 >
-> 从API version 24开始，直播场景支持seek。
+> 从API版本26.0.0开始，直播场景支持seek。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1853,7 +1865,7 @@ seek(timeMs: number, mode?:SeekMode): void
 
 | 参数名 | 类型                   | 必填 | 说明                                                         |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| timeMs | number                 | 是   | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](#属性)]。<br>当模式为[SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。 |
+| timeMs | number                 | 是   | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](#属性)]。<br>当模式为[SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode   | [SeekMode](arkts-apis-media-e.md#seekmode8) | 否   | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
 **示例：**
@@ -2168,7 +2180,7 @@ async function test(){
 }
 ```
 
-## getLoadedTimeRanges<sup>24+</sup>
+## getLoadedTimeRanges
 
 getLoadedTimeRanges(): Promise\<Array\<Range>>
 
@@ -2178,6 +2190,10 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 >
 > - 对于本地媒体资源，返回的时间区间为0到整个媒体时长。
 > - 对于网络媒体资源，返回本地已缓存的时间区间段的列表。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2193,14 +2209,14 @@ getLoadedTimeRanges(): Promise\<Array\<Range>>
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded getLoadedTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getLoadedTimeRanges, error message is :' + err.message);
+    console.error('Failed to getLoadedTimeRanges, error message is: ' + err.message);
   });
 }
 ```
 
-## getSeekableTimeRanges<sup>24+</sup>
+## getSeekableTimeRanges
 
 getSeekableTimeRanges(): Promise\<Array\<Range>>
 
@@ -2210,6 +2226,8 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 >
 > - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。
 > - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2227,18 +2245,22 @@ getSeekableTimeRanges(): Promise\<Array\<Range>>
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded getSeekableTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getSeekableTimeRanges, error message is :' + err.message);
+    console.error('Failed to getSeekableTimeRanges, error message is: ' + err.message);
   });
 }
 ```
 
-## seekToDefaultPosition<sup>24+</sup>
+## seekToDefaultPosition
 
 seekToDefaultPosition(): void
 
 跳转到播放源的默认接入点。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2253,13 +2275,13 @@ seekToDefaultPosition(): void
 **示例：**
 
 ```ts
-async function  test(){
+async function test(){
   let avPlayer = await media.createAVPlayer();
   try {
     avPlayer.seekToDefaultPosition()
-    console.info('Succeeded seekToDefaultPosition.');
+    console.info('Succeeded in calling seekToDefaultPosition.');
   } catch (err) {
-    console.error('Failed to seekToDefaultPosition, error message is :' + err.message);
+    console.error('Failed to seekToDefaultPosition, error message is: ' + err.message);
   }
 }
 ```
@@ -2475,7 +2497,9 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 >
 > - 当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。
 > - 调用此接口时，需确保已设置音频渲染信息AVPlayer.audioRendererInfo，audioRendererInfo的usage参数必须是[STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)其中之一。
-
+> - 该接口不支持高清通路的响度设置。
+> - 音频流的时延模式必须是普通时延。
+> - 该接口错误信息通过[on('error')](#onerror9)回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2490,16 +2514,6 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
 | Promise\<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                   |
-| -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by promise. e.g. The function is called in an incorrect state, or the stream usage of audioRendererInfo is not one of [STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).|
-| 5400105  | Service died. |
-| 5400108  | Parameter check failed. Returned by promise. |
 
 **示例：**
 
@@ -3519,7 +3533,10 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 
 动态开启/关闭超分算法，可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
 
-在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
+> **说明：**
+>
+> - 在调用[prepare()](#prepare9)前先通过[PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12)使能超分。
+> - 默认目标分辨率为1920x1080，单位为像素。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3552,6 +3569,13 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+  avPlayer.fdSrc = fileDescriptor
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  avPlayer.setPlaybackStrategy(playStrategy);
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
   avPlayer.setSuperResolution(true);
 }
@@ -3600,6 +3624,14 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+  avPlayer.fdSrc = fileDescriptor
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  avPlayer.setPlaybackStrategy(playStrategy);
+  avPlayer.setSuperResolution(true);
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
   avPlayer.setVideoWindowSize(1920, 1080);
 }
@@ -3816,5 +3848,64 @@ offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.offMetricsEvent();
+}
+```
+
+## onTimedMetaData
+
+onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
+
+注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如监听插播的元数据信息。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 是   | 回调函数，返回上报基于时间的元数据。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onTimedMetaData((data: media.AVTimedMetaData) => {
+  });
+}
+```
+
+## offTimedMetaData
+
+offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
+
+取消注册监听器以检测基于时间的元数据。目前只支持HLS的#EXT-X-DATERANGE和DASH的Event Stream信息，例如取消监听插播的元数据信息。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | 否   | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offTimedMetaData();
 }
 ```

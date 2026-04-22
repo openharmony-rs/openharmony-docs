@@ -543,6 +543,7 @@
     - [PluginComponent (系统接口)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (系统接口)](arkui-ts/ts-container-ui-extension-component-sys.md)
     - [UnionEffectContainer (系统接口)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
+    - [DistortionComponent (系统接口)](arkui-ts/ts-container-distortioncomponent-sys.md)
   <!--DelEnd-->
   - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
     <!--Del-->
@@ -649,6 +650,7 @@
     - [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)
     - [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)
     - [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)
+    - [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)
     - [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)
     - [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)
     - [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)
@@ -760,6 +762,7 @@
     - [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md)
     - [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md)
     - [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md)
+    - [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md)
     - [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)
     - [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)
     - [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md)
@@ -776,6 +779,7 @@
     - [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)
     - [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)
     - [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md)
+    - [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)
     - [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md)

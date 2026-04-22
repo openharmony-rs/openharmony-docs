@@ -725,6 +725,8 @@ static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold:
 
 虚拟机是通过统计存活对象大小来判断是否达到内存预警阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -765,6 +767,8 @@ static offVMHeapMemoryPressure(): void
 
 取消已注册的内存预警回调函数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例：**
@@ -778,6 +782,8 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 ## HeapMemoryThreshold<sup>24+</sup>
 
 堆内存预警阈值配置，用于指定触发回调的堆内存预警阈值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

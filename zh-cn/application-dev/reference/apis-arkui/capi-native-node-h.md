@@ -1,8 +1,8 @@
 # native_node.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -176,6 +176,8 @@
 | [int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)](#oh_arkui_nativemodule_getpagerootnodehandlebycontext) | - | 获得指定的UIContext对应窗口中的页面根节点。 |
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | 注册组件尺寸与区域变化的监听事件。可在任意时机对有效的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)组件节点调用该函数。新注册的回调会替换该事件此前已注册的回调，并从下一帧开始生效。当回调不再需要时，请调用[OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent)进行注销。否则，回调会在节点释放时自动注销。 |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) | - | 解除组件上的尺寸与区域变化监听回调绑定。 |
+| [ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_getgesturecollectinterceptinfo) | - | 从指定的ArkUI_NodeEvent对象中获取ArkUI_GestureCollectInterceptInfo对象。<br>**起始版本：** 26.0.0 |
+
 ### 宏定义
 
 | 名称 | 描述 |
@@ -332,6 +334,7 @@ enum ArkUI_NodeEventType
 | NODE_ON_CUSTOM_OVERFLOW_SCROLL = 34 | 定义[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)节点内容滚动事件。该事件在组件内容发生滚动时触发。<br> 当事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：正在滚动的子组件id。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：节点滚动的偏移量，单位为px。<br>**起始版本：** 24 |
 | NODE_ON_STACK_OVERFLOW_SCROLL = 35 | 定义[ARKUI_NODE_STACK](capi-native-node-h.md#arkui_nodetype)节点内容滚动事件。该事件在组件内容发生滚动时触发。<br> 当事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：正在滚动的子组件id。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：节点滚动的偏移量，单位为px。<br>**起始版本：** 24 |
 | NODE_ON_NEED_SOFTKEYBOARD = 36 | 用于设置事件回调。当组件获得焦点时，获焦组件触发该事件。<br> 当事件回调发生时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型值为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)不包含参数。<br> 系统会根据回调函数返回值判断是否需要键盘。<br> 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)接口设置是否需要键盘。<br> 返回值中index为0的value.i32表示是否需要键盘。<br> 取值为0：不需要键盘；取值为1：需要键盘。<br>**起始版本：** 24 |
+| NODE_ON_GESTURE_COLLECT_INTERCEPT = 37 | 当该节点及更高优先级节点上的事件和手势收集完成后，执行该回调。该回调用于干预事件和手势的收集结果。<br> 事件回调发生时，可从事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获取[ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)对象。<br>**起始版本：** 26.0.0 |
 | NODE_TEXT_ON_DETECT_RESULT_UPDATE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT = 1000 | 文本设置TextDataDetectorConfig且识别成功时，触发onDetectResultUpdate回调。触发该事件的条件：文本设置TextDataDetectorConfig且识别成功后。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)。<br> [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)中包含1个参数：<br> <b>ArkUI_StringAsyncEvent.pStr</b>：表示文本识别的结果，Json格式。  |
 | NODE_TEXT_SPAN_ON_LONG_PRESS = 1001 | Span组件长按事件。组件被长按时触发此回调。<br> 事件回调发生时，可从事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获取[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)。<br>**起始版本：** 20   |
 | NODE_TEXT_ON_TEXT_SELECTION_CHANGE = 1002 | 定义文本选择位置变化时触发的事件。当事件回调发生时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含两个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：文本选择区域的起始位置。 <br> <b>ArkUI_NodeComponentEvent.data[1].i32</b>：文本选择区域的结束位置。 <br><br>**起始版本：** 26.0.0 |
@@ -3657,3 +3660,27 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_N
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo()
+
+```c
+ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo(ArkUI_NodeEvent* nodeEvent)
+```
+
+**描述**
+
+从指定的ArkUI_NodeEvent对象中获取ArkUI_GestureCollectInterceptInfo对象。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* nodeEvent | 表示指向ArkUI_NodeEvent对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)* | 返回指向ArkUI_GestureCollectInterceptInfo对象的指针。仅在回调期间有效，无需释放。<br>如果传入的参数无效，或者不是手势收集拦截信息，则返回`null`。 |

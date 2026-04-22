@@ -1,8 +1,8 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 - [ArkUI简介](arkui-overview.md)
@@ -21,6 +21,7 @@
       - 自定义组件复用<!--arkts-component-reusable-->
         - [\@Reusable装饰器：V1组件复用](state-management/arkts-reusable.md)   
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md) 
+        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
@@ -152,8 +153,8 @@
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
     - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）
-  - 表单选择<!--arkts-form-selection-->
-    - [表单与选择组件概述](arkts-forms-overview.md)
+  - 按钮与选择<!--arkts-form-selection-->
+    - [按钮与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
     - [弧形按钮 (ArcButton)](arkts-advanced-components-arcbutton.md)（圆形屏幕推荐使用）
     - [单选框 (Radio)](arkts-common-components-radio-button.md)
@@ -291,7 +292,7 @@
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
       - [使用Text组件](ndk-use-text-component.md)
-      - [使用属性字符串的文本绘制与显示](ndk-styled-string.md)
+      - [使用属性字符串](ndk-styled-string.md)
       - [输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
       - [使用滑动选择器Picker](ndk-picker.md)

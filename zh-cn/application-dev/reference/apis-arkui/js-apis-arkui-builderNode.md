@@ -5215,6 +5215,253 @@ struct MyComponent {
 该示例演示了在自定义组件中截获鼠标事件并进行坐标转换的完整流程。组件通过[onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse)回调读取当前触点坐标x/y，再结合FrameNode.[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)得到的偏移量，调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)将相对坐标转换为像素坐标，更新[MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)的windowX/windowY、displayX/displayY。选择不同的手势竞争策略[CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24)，最后通过rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24)将转换后的鼠标事件分发给子节点进行处理。
 
 ```ts
+
+import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
+
+// 自定义参数传递的类
+class Params {
+  text: string = 'this is a text'
+  uiContext: UIContext | null = null
+}
+
+@Component
+struct node22 {
+  @State case1Index: number = 0;
+  private nodeController2: MyNodeController2 = new MyNodeController2();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController2)
+          .height(400)
+          .width(500)
+        Column()
+          .width(500)
+          .height(400)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController2.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Component
+struct node33 {
+  private nodeController3: MyNodeController3 = new MyNodeController3();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController3)
+          .height(200)
+          .width(500)
+        Column()
+          .width(500)
+          .height(200)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController3.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  Column(){
+    Button("Layer1")
+      .width('100%')
+      .height(100)
+    node22()
+
+  }
+  .width(500)
+  .height(600)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder2(params: Params) {
+  Column(){
+    Button("Layer2")
+      .width('100%')
+      .height(100)
+    node33()
+  }
+  .width(500)
+  .height(400)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder3(params: Params) {
+  Column(){
+    Button("Layer3")
+      .width('100%')
+      .height(50)
+      .gesture(
+        TapGesture()
+          .tag("TapGesture")
+          .onAction((event:GestureEvent) => {
+            params.uiContext?.showAlertDialog(
+              {
+                title: 'onTapGestureLayer3',
+                message: ''
+              }
+            );
+          })
+      )
+  }
+  .width(500)
+  .height(200)
+  .backgroundColor(Color.Gray)
+}
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // 读取本地x、y与BuilderNode相对于父组件的偏移量，转换为像素坐标
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController2 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder2);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // 读取本地x、y与BuilderNode相对于父组件的偏移量，转换为像素坐标
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController3 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder3);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // 读取本地x、y与BuilderNode相对于父组件的偏移量，转换为像素坐标
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  private nodeController: MyNodeController = new MyNodeController();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController)
+          .height(600)
+          .width(500)
+        Column()
+          .width(500)
+          .height(600)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+          .gesture(
+            TapGesture()
+              .tag("TapGesture")
+              .onAction((event:GestureEvent) => {
+                let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
+                promptAction.showToast({
+                  message: 'onTapGestureOut',
+                  duration: 10000
+                })
+              })
+          )
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+```
+
+### 示例17（BuilderNode中带竞争策略的触摸事件）
+
+从API version 24开始，新增postInputEventWithStrategy接口。
+
+该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)回调中，遍历[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的changedTouches和touches数组，对每个触点的x/y加上组件偏移量并调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)转换为像素，更新每个触点的windowX/windowY、displayX/displayY。选择不同的手势竞争策略[CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24)，最后同样通过rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24)将转换后的触摸事件分发给子节点处理。
+
+```ts
 import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
 
 // 自定义参数传递的类
@@ -5340,7 +5587,7 @@ class MyNodeController extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // 读取本地x、y与buildNode相对于父组件的偏移量，转换为像素坐标
+    // 读取本地x、y与BuilderNode相对于父组件的偏移量，转换为像素坐标
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
@@ -5380,7 +5627,7 @@ class MyNodeController2 extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // 读取本地x、y与buildNode相对于父组件的偏移量，转换为像素坐标
+    // 读取本地x、y与BuilderNode相对于父组件的偏移量，转换为像素坐标
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
@@ -5420,7 +5667,7 @@ class MyNodeController3 extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // 读取本地x、y与buildNode相对于父组件的偏移量，转换为像素坐标
+    // 读取本地x、y与BuilderNode相对于父组件的偏移量，转换为像素坐标
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;
@@ -5475,253 +5722,6 @@ struct MyComponent {
                 promptAction.showToast({
                   message: 'onTapGestureOut',
                   duration: 1000
-                })
-              })
-          )
-      }.offset({ top: 100 })
-    }
-  }
-}
-
-```
-
-
-### 示例17（BuilderNode中带竞争策略的触摸事件）
-
-从API version 24开始，新增postInputEventWithStrategy接口。
-
-该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)回调中，遍历[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的changedTouches和touches数组，对每个触点的x/y加上组件偏移量并调用[vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12)转换为像素，更新每个触点的windowX/windowY、displayX/displayY。选择不同的手势竞争策略[CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24)，最后同样通过rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24)将转换后的触摸事件分发给子节点处理。
-
-```ts
-import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
-
-// 自定义参数传递的类
-class Params {
-  text: string = 'this is a text'
-  uiContext: UIContext | null = null
-}
-
-@Component
-struct node22 {
-  @State case1Index: number = 0;
-  private nodeController2: MyNodeController2 = new MyNodeController2();
-  build() {
-    Row(){
-      Stack() {
-        NodeContainer(this.nodeController2)
-          .height(400)
-          .width(500)
-        Column()
-          .width(500)
-          .height(400)
-          .backgroundColor(Color.Transparent)
-          .onMouse((event) => {
-            if (event != undefined) {
-              this.nodeController2.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
-            }
-          })
-      }.offset({ top: 100 })
-    }
-  }
-}
-
-@Component
-struct node33 {
-  private nodeController3: MyNodeController3 = new MyNodeController3();
-  build() {
-    Row(){
-      Stack() {
-        NodeContainer(this.nodeController3)
-          .height(200)
-          .width(500)
-        Column()
-          .width(500)
-          .height(200)
-          .backgroundColor(Color.Transparent)
-          .onMouse((event) => {
-            if (event != undefined) {
-              this.nodeController3.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
-            }
-          })
-      }.offset({ top: 100 })
-    }
-  }
-}
-
-@Builder
-function ButtonBuilder(params: Params) {
-  Column(){
-    Button("Layer1")
-      .width('100%')
-      .height(100)
-    node22()
-
-  }
-  .width(500)
-  .height(600)
-  .backgroundColor(Color.Gray)
-}
-
-@Builder
-function ButtonBuilder2(params: Params) {
-  Column(){
-    Button("Layer2")
-      .width('100%')
-      .height(100)
-    node33()
-  }
-  .width(500)
-  .height(400)
-  .backgroundColor(Color.Gray)
-}
-
-@Builder
-function ButtonBuilder3(params: Params) {
-  Column(){
-    Button("Layer3")
-      .width('100%')
-      .height(50)
-      .gesture(
-        TapGesture()
-          .tag("TapGesture")
-          .onAction((event:GestureEvent) => {
-            params.uiContext?.showAlertDialog(
-              {
-                title: 'onTapGestureLayer3',
-                message: ''
-              }
-            );
-          })
-      )
-  }
-  .width(500)
-  .height(200)
-  .backgroundColor(Color.Gray)
-}
-
-// 继承NodeController实现自定义UI控制器
-class MyNodeController extends NodeController {
-  private rootNode: BuilderNode<[Params]> | null = null;
-  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
-    return this.rootNode.getFrameNode();
-  }
-
-  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
-    if (this.rootNode == null) {
-      return false;
-    }
-    // 读取本地x、y与buildNode相对于父组件的偏移量，转换为像素坐标
-    let node: FrameNode | null = this.rootNode.getFrameNode();
-    let offsetX: number | null | undefined = node?.getPositionToParent().x;
-    let offsetY: number | null | undefined = node?.getPositionToParent().y;
-
-    let mouseEvent = event as MouseEvent;
-    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
-      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
-      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
-    }
-    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
-    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
-    return result;
-  }
-}
-
-class MyNodeController2 extends NodeController {
-  private rootNode: BuilderNode<[Params]> | null = null;
-  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder2);
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
-    return this.rootNode.getFrameNode();
-  }
-
-  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
-    if (this.rootNode == null) {
-      return false;
-    }
-    // 读取本地x、y与buildNode相对于父组件的偏移量，转换为像素坐标
-    let node: FrameNode | null = this.rootNode.getFrameNode();
-    let offsetX: number | null | undefined = node?.getPositionToParent().x;
-    let offsetY: number | null | undefined = node?.getPositionToParent().y;
-
-    let mouseEvent = event as MouseEvent;
-    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
-      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
-      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
-    }
-    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
-    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
-    return result;
-  }
-}
-
-class MyNodeController3 extends NodeController {
-  private rootNode: BuilderNode<[Params]> | null = null;
-  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder3);
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
-    return this.rootNode.getFrameNode();
-  }
-
-  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
-    if (this.rootNode == null) {
-      return false;
-    }
-    // 读取本地x、y与buildNode相对于父组件的偏移量，转换为像素坐标
-    let node: FrameNode | null = this.rootNode.getFrameNode();
-    let offsetX: number | null | undefined = node?.getPositionToParent().x;
-    let offsetY: number | null | undefined = node?.getPositionToParent().y;
-    let mouseEvent = event as MouseEvent;
-    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
-      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
-      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
-    }
-    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
-    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
-    return result;
-  }
-}
-
-@Entry
-@Component
-struct MyComponent {
-  private nodeController: MyNodeController = new MyNodeController();
-  build() {
-    Row(){
-      Stack() {
-        NodeContainer(this.nodeController)
-          .height(600)
-          .width(500)
-        Column()
-          .width(500)
-          .height(600)
-          .backgroundColor(Color.Transparent)
-          .onMouse((event) => {
-            if (event != undefined) {
-              this.nodeController.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
-            }
-          })
-          .gesture(
-            TapGesture()
-              .tag("TapGesture")
-              .onAction((event:GestureEvent) => {
-                let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
-                promptAction.showToast({
-                  message: 'onTapGestureOut',
-                  duration: 10000
                 })
               })
           )
@@ -5788,7 +5788,7 @@ class MyNodeController extends NodeController {
     if (this.rootNode == null) {
       return false;
     }
-    // 读取本地x、y与buildNode相对于父组件的偏移量，转换为像素坐标
+    // 读取本地x、y与BuilderNode相对于父组件的偏移量，转换为像素坐标
     let node: FrameNode | null = this.rootNode.getFrameNode();
     let offsetX: number | null | undefined = node?.getPositionToParent().x;
     let offsetY: number | null | undefined = node?.getPositionToParent().y;

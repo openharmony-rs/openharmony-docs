@@ -5569,6 +5569,20 @@ Allows an application to query whether the page is in the standby state and acce
 
 **Valid since**: 23
 
+## ohos.permission.RESTORE_END_NOTIFICATION
+ 	 
+Allows a system application to subscribe to the restore end event of the backup framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**since**: 23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 Allows an application to obtain the local account authorization.
@@ -5727,9 +5741,9 @@ Allows an application to obtain and set the car scenario mode.
 
 **Valid since**: 26.0.0
 
-## ohos.permission.ENCRYPT_VOLUME_MANAGER
- 	 
-Allows an application to call the API of storage manager for managing volume encryption.
+## ohos.permission.ASSET_CACHE_MANAGER
+
+Allows an application to deliver, control, and query tasks through the asset cache service management APIs.
 
 **Permission level**: system_basic
 
@@ -5737,21 +5751,7 @@ Allows an application to call the API of storage manager for managing volume enc
 
 **Enable via ACL**: true
 
-**Supported devices**: General
-
-**Since**: 24
-
-## ohos.permission.ODD_MANAGER
-
-Allows an application to call the API of storage manager for managing optical disc burning.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: General
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
 
@@ -5768,3 +5768,59 @@ Allows an application and a service to access the device-side model deployment m
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.ACCESS_SUPPORT_FEEDBACK
+
+Allows a system application to open the Feedback screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_SUPPORT_HELP
+
+Allows a system application to launch the intelligent customer service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+Allows a system application to use the unified management capabilities of the digital certificate service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+Allows an application to enable the outdoor exploration service to provide the altitude subscription capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones
+
+**Since**: 26.0.0

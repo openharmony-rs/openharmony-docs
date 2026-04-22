@@ -253,7 +253,7 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## getAuxiliaryPictureinfo<sup>13+</sup>
+## getAuxiliaryPictureInfo<sup>13+</sup>
 
 getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
@@ -283,7 +283,7 @@ async function GetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## setAuxiliaryPictureinfo<sup>13+</sup>
+## setAuxiliaryPictureInfo<sup>13+</sup>
 
 setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 

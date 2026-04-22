@@ -1349,6 +1349,24 @@ The UIAbility is prohibited from launching itself via App Linking.
 - 如果允许使用App Linking拉起当前UIAbility，开发者需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)将[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的allowSelfRedirect字段设置为true。
 - 如果不允许使用App Linking拉起当前UIAbility，开发者需要通过catch捕获该错误码并进行处理。
 
+## 16000150 发送请求失败
+
+**错误信息**
+
+Failed to send request to system service.
+
+**错误描述**
+
+当向系统服务发送请求失败时，方法将返回该错误码。
+
+**可能原因**
+
+设置快照使能状态或者重建快照时，发送请求失败。
+
+**处理步骤**
+
+请尝试重新调用接口或者重启设备。
+
 ## 16000151 无效wantAgent对象
 
 **错误信息**

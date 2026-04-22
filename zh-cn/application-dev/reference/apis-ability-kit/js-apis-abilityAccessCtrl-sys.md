@@ -24,7 +24,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 管理访问控制模块的实例。
 
-AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)或[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取tokenID。
+AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14)或[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取tokenID。
 
 ### grantUserGrantedPermission
 
@@ -34,7 +34,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -42,7 +42,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被授予的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
@@ -50,7 +50,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -91,7 +91,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -99,10 +99,10 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被授予的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当授予应用user_grant权限成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。授予应用user_grant权限，当授予权限成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -145,7 +145,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -153,7 +153,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
@@ -161,7 +161,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -210,10 +210,10 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当撤销应用user_grant权限成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。撤销应用user_grant权限，当撤销权限成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -256,7 +256,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise&lt;num
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS or ohos.permission.GRANT_SENSITIVE_PERMISSIONS or ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS or ohos.permission.GRANT_SENSITIVE_PERMISSIONS or ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -264,14 +264,14 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise&lt;num
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 查询的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回查询结果。 |
+| Promise&lt;number&gt; | Promise对象。返回查询结果。 |
 
 **错误码：**
 
@@ -311,7 +311,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG。
+**需要权限：** ohos.permission.DISABLE_PERMISSION_DIALOG
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -326,7 +326,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -366,7 +366,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -380,7 +380,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)&gt; | Promise对象，返回指定权限的弹窗开关状态值。 |
+| Promise&lt;[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)&gt; | Promise对象。返回指定权限的弹窗开关状态值。 |
 
 **错误码：**
 
@@ -411,7 +411,7 @@ atManager.getPermissionRequestToggleStatus(permission).then((res) => {
     console.info('getPermissionRequestToggleStatus: The toggle status is open');
   }
 }).catch((err: BusinessError) => {
-console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -429,7 +429,7 @@ getVersion(): Promise&lt;number&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回查询到的版本号。 |
+| Promise&lt;number&gt; | Promise对象。返回查询到的版本号。 |
 
 **错误码：**
 
@@ -447,7 +447,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let promise = atManager.getVersion();
 promise.then((data: number) => {
-    console.info(`getVersion promise: data->${data}`);
+  console.info(`getVersion promise: data->${data}`);
 });
 ```
 
@@ -459,7 +459,7 @@ getPermissionsStatus(tokenID: number, permissionList: Array&lt;Permissions&gt;):
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -467,14 +467,14 @@ getPermissionsStatus(tokenID: number, permissionList: Array&lt;Permissions&gt;):
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionList | Array&lt;Permissions&gt;   | 是   | 待获取权限状态的权限名列表，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)&gt;&gt; | Promise对象，返回查询到的权限状态列表。 |
+| Promise&lt;Array&lt;[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)&gt;&gt; | Promise对象。返回查询到的权限状态列表。 |
 
 **错误码：**
 
@@ -516,7 +516,7 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -527,7 +527,7 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 | type               | string                | 是   | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。  |
 | tokenIDList        | Array&lt;number&gt;   | 是   | 订阅的tokenID列表，为空时表示订阅所有的应用的权限状态变化。 |
 | permissionList | Array&lt;Permissions&gt;   | 是   | 订阅的权限名列表，为空时表示订阅所有的权限状态变化，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 是 | 回调函数，返回订阅指定tokenID与指定权限名状态变更事件的对象。|
+| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 是 | 回调函数。订阅指定tokenID与指定权限名状态变更事件的回调。|
 
 **错误码：**
 
@@ -548,16 +548,18 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
-let tokenIDList: Array<number> = [appInfo.accessTokenId];
-let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
-    atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.debug(`receive permission state change, data: ${data}`);
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+  let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
+  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
+
+  atManager.on('permissionStateChange', tokenIDList, permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
     });
 } catch(err) {
-    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -571,7 +573,7 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -582,7 +584,7 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 | type               | string         | 是   | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。  |
 | tokenIDList        | Array&lt;number&gt;   | 是   | 取消订阅的tokenID列表，为空时表示取消订阅所有的应用的权限状态变化，必须与[on](#on9)的输入一致。 |
 | permissionList | Array&lt;Permissions&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#on9)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
-| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 否 | 回调函数，返回取消订阅指定tokenID与指定权限名状态变更事件的对象。|
+| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 否 | 回调函数。返回取消订阅指定tokenID与指定权限名状态变更事件的对象。|
 
 **错误码：**
 
@@ -601,14 +603,14 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let appInfo: bundleManager.ApplicationInfo = bundleManager.getApplicationInfoSync('com.example.myapplication', 0, 100);
-let tokenIDList: Array<number> = [appInfo.accessTokenId];
-let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 try {
-    atManager.off('permissionStateChange', tokenIDList, permissionList);
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+  let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
+  let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
+  atManager.off('permissionStateChange', tokenIDList, permissionList);
 } catch(err) {
-    console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -628,13 +630,13 @@ requestPermissionOnApplicationSetting(tokenID: number): Promise&lt;void&gt;
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过该应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 
 **返回值：**
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -669,7 +671,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -677,7 +679,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被授予的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
@@ -685,7 +687,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -726,7 +728,7 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -734,7 +736,7 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | number              | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 | killProcess | boolean | 否 | 是否终止应用进程。<br>- true表示终止应用进程。<br>- false表示不终止应用进程。<br>- 默认值为true。<br>**起始版本**：26.0.0 |
@@ -743,7 +745,7 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -809,7 +811,7 @@ requestPermissionsFromUserWithWindowId(context: Context, windowId: number, permi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象，返回包含接口的结果。 |
+| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象。返回包含接口的结果。 |
 
 **错误码：**
 
@@ -858,10 +860,9 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
-
 
 **参数：**
 
@@ -873,7 +874,7 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise对象，返回查询到的权限状态信息列表。 |
+| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise对象。返回查询到的权限状态信息列表。 |
 
 **错误码：**
 
@@ -915,7 +916,7 @@ queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;Perm
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -923,13 +924,13 @@ queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;Perm
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenIDList | Array&lt;number&gt;   | 是   | 待查询的应用tokenID列表，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。该参数不能为空，且长度不能超过1024。 |
+| tokenIDList | Array&lt;number&gt;   | 是   | 待查询的应用tokenID列表，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数不能为空，且长度不能超过1024。 |
 
 **返回值：**
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise对象，返回查询到的权限状态信息列表。 |
+| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise对象。返回查询到的权限状态信息列表。 |
 
 **错误码：**
 
@@ -983,6 +984,8 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
 ## PermissionRequestToggleStatus<sup>12+</sup>
 
 表示指定权限对应的弹窗开关状态的枚举。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Security.AccessToken
 

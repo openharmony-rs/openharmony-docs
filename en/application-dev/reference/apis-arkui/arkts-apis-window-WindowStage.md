@@ -13,6 +13,8 @@
 > - The initial APIs of this interface are supported since API version 9.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
+>
+> - When an API of this module is called, an error will be thrown if parameter verification fails, permission verification fails, or the system status is abnormal. It is recommended that you use try-catch to capture errors at the outermost layer when calling APIs of this module. This helps prevent application crashes caused by API call failures.
 
 Implements a window manager, which manages each basic window unit, that is, [Window](arkts-apis-window-Window.md) instance.
 
@@ -531,7 +533,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name  | Type                                           | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. |
+| path     | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window.|
 | callback | AsyncCallback&lt;void&gt;                       | Yes  | Callback used to return the result.                                                  |
 
@@ -594,7 +596,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name | Type                                           | Mandatory| Description                                                        |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.|
+| path    | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window. This parameter is left blank by default.|
 
 **Return value**
@@ -661,7 +663,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name  | Type                     | Mandatory| Description                |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.|
+| path     | string                    | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
 
 **Error codes**
@@ -1080,7 +1082,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 
 Unsubscribes from the WindowStage lifecycle change event.
 
-This API stops the listener for WindowStage lifecycle changes that was started with the [on('windowStageEvent')](#onwindowstageevent9) API.
+This API stops the listener for WindowStage lifecycle changes initiated by the [on('windowStageEvent')](#onwindowstageevent9) API.
 
 If you call this API without having previously called [on('windowStageEvent')](#onwindowstageevent9), the call does not cause an error and the program keeps running as usual.
 
@@ -1287,7 +1289,7 @@ Subscribes to the click event on the close button in the three-button navigation
 
 If the event is subscribed to multiple times, only the most recently subscribed-to event takes effect.
 
-The callback function in this API is executed synchronously. For asynchronous close events of the main window, refer to [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15).
+The callback function in this API is executed synchronously. For details about listening for asynchronous close events of the main window, please refer to [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15).
 
 If there is an existing event subscribed to by calling [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15), only the [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15) API will be responded to.
 
@@ -1921,6 +1923,166 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### setImageForRecent
+
+setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+
+Sets the image displayed in the multitasking view and on dock hover. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> Before calling this API, you are advised to complete page loading via [loadContent](#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1). If this API is called before the application completes page loading, the intended functionality does not take effect. As a result, only the application's launch page is displayed in the multitasking view.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Required permission**: ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+**Parameters**
+
+| Name     | Type   | Mandatory| Description                                                        |
+| ----------- | ------- | ---- | ------------------------------------------------------------ |
+| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Custom image resource, which can be a resource ID or PixelMap. If you want to pass a resource ID, store the image in the **resources/base/media** directory and obtain its resource ID using the **$r** resource access method. For example, to obtain the resource ID of the **startIcon** image, use **$r("app.media.startIcon").id**.|
+| value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | Yes| Fill mode of the custom image.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4); // Create an ArrayBuffer object to store image pixels. The size of the object is (height × width × 4) bytes.
+      let pixelMap: image.PixelMap;
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
+      }
+      image.createPixelMap(color, {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      }).then((data) => {
+        pixelMap = data;
+        console.info(`Succeeded in creating pixelMap`);
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info(`Succeeded in setting image for recent`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to set image for recent.`);
+        }
+      })
+
+      let imgResourceId = $r("app.media.startIcon").id
+      try {
+        let promise2 = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
+        promise2.then(() => {
+          console.info(`Succeeded in setting image for recent`);
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to set image for recent.`);
+      }
+    });
+  }
+};
+```
+
+### removeImageForRecent
+
+removeImageForRecent(): Promise&lt;void&gt;
+
+Removes the image that the application has set to be displayed in the multitasking view and on dock hover. The change will be effective the next time you check the application widget in the multitasking view. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Required permission**: ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    try {
+      let promise = windowStage.removeImageForRecent();
+      promise.then(() => {
+        console.info(`Succeeded in removing image for recent`);
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to remove image for recent.`);
+    }
+  }
+};
+```
+
 ## setSupportedWindowModes<sup>15+</sup>
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
@@ -1943,7 +2105,7 @@ Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on
 
 | Name   | Type   | Mandatory| Description                                         |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | Yes  | Supported window modes.<br>- **FULL_SCREEN**: full-screen mode.<br>- **FLOATING**: floating window mode.<br>- **SPLIT**: split-screen mode. **FULL_SCREEN** or **FLOATING** must be used together. Configuring only **SPLIT** is not supported.<br> Note: The values of the **SupportWindowMode** field in the array should not conflict with the values of the **supportWindowMode** field under [abilities](../../quick-start/module-configuration-file.md#abilities) of the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to this UIAbility, or with the values of the **supportWindowModes** field in [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions). In case of a conflict, the window support mode set by this parameter will take precedence.|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | Yes  | Supported window modes.<br>- **FULL_SCREEN**: full-screen mode.<br>- **FLOATING**: floating window mode.<br>- **SPLIT**: split-screen mode. **FULL_SCREEN** or **FLOATING** must be used together. Configuring only **SPLIT** is not supported.<br> Note: The values of the **SupportWindowMode** field in the array should not conflict with the value of the **supportWindowMode** field under [abilities](../../quick-start/module-configuration-file.md#abilities) or **supportWindowModes** attribute in [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) of the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to this UIAbility. In case of a conflict, the window support mode set by this parameter will take precedence.|
 
 **Return value**
 
