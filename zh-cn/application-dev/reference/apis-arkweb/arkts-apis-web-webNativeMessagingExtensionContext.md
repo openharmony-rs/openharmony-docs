@@ -122,12 +122,12 @@ import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility'
 import WebNativeMessagingExtensionAbility from "@ohos.web.WebNativeMessagingExtensionAbility"
 import Want from '@ohos.app.ability.Want'
 import { BusinessError } from '@ohos.base'
-```
+
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onConnectNative(info: ConnectionInfo): void {
     const abilityWant: Want = {
-      bundleName: 'com.example.mybundle',
-      abilityName: 'MainAbility'
+    bundleName: 'com.example.mybundle',
+    abilityName: 'MainAbility'
     };
     try {
         const context = this.context; // 获取 WebNativeMessagingExtensionContext 实例
