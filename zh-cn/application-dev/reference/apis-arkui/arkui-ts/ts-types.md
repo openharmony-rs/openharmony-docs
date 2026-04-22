@@ -8,7 +8,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## Resource
 
@@ -754,6 +756,30 @@ Callback<T,V = void> = (data: T) => V;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ModifierKeyStateGetter<sup>23+</sup>
+
+type ModifierKeyStateGetter = (keys: Array\<string>) => boolean
+
+修饰键状态查询函数类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| keys | Array\<string> | 是 | 需要查询的修饰键列表。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 修饰键状态。true表示按下，false表示未按下。 |
 
 ## DividerStyleOptions<sup>12+</sup>
 

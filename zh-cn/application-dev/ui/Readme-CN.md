@@ -288,6 +288,7 @@
     <!--DelEnd-->
   - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
     - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
+      - [UI接口适配](arkts-sta-deprecated-ui-apis.md)
       - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
       - [UI组件适配（路由与导航）](arkts-sta-deprecated-router-and-navigation.md)
       - [UI组件适配（滚动与滑动）](arkts-sta-deprecated-scroll-and-swipe.md)

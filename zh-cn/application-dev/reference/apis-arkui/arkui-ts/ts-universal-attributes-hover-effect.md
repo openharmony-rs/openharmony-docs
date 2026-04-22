@@ -16,7 +16,9 @@
 
 ## hoverEffect
 
-hoverEffect(value: HoverEffect): T
+ArkTS-Dyn: hoverEffect(value: HoverEffect): T
+
+ArkTS-Sta: hoverEffect(value: HoverEffect | undefined): this
 
 设置组件的鼠标悬浮态显示效果。当未设置hoverEffect时，组件默认鼠标悬浮态效果为HoverEffect.Auto。对于应用了悬浮态效果的组件，当鼠标悬浮于组件上并按下时，悬浮态效果会消失；当鼠标松开时，悬浮态效果会恢复。
 
@@ -24,35 +26,7 @@ hoverEffect(value: HoverEffect): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[hoverEffect<sup>23+</sup>](#hovereffect23)。
-
 **ArkTS-Dyn起始版本：** 8
-
-**参数：**
-
-| 参数名 | 类型                                             | 必填 | 说明                                                         |
-| ------ | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [HoverEffect](ts-appendix-enums.md#hovereffect8) | 是   | 设置当前组件悬浮态下的悬浮效果。|
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| T | 返回当前组件。 |
-
-## hoverEffect<sup>23+</sup>
-
-hoverEffect(value: HoverEffect | undefined): this
-
-设置组件的鼠标悬浮态显示效果。当未设置hoverEffect时，组件默认鼠标悬浮态效果为HoverEffect.Auto。对于应用了悬浮态效果的组件，当鼠标悬浮于组件上并按下时，悬浮态效果会消失；当鼠标松开时，悬浮态效果会恢复。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[hoverEffect](#hovereffect)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -60,13 +34,13 @@ hoverEffect(value: HoverEffect | undefined): this
 
 | 参数名 | 类型                                             | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [HoverEffect](ts-appendix-enums.md#hovereffect8) \| undefined | 是   | 设置当前组件悬浮态下的悬浮效果。|
+| value  | ArkTS-Dyn: [HoverEffect](ts-appendix-enums.md#hovereffect8) <br/>ArkTS-Sta: [HoverEffect](ts-appendix-enums.md#hovereffect8) \| undefined | 是   | 设置当前组件悬浮态下的悬浮效果。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 
