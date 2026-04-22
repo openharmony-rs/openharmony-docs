@@ -127,6 +127,77 @@ ImageSource的所有方法均不支持并发调用。
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
+### createWideGamutSdrPixelMap<sup>20+</sup>
+
+createWideGamutSdrPixelMap(): Promise\<PixelMap>
+
+使用更广的色域解码SDR图片。使用Promise异步回调。
+
+> **说明：**
+>
+>- 对SDR图片源，使用图片自带色彩空间解码。
+>- 对带有单通道增益图的HDR图片源，解码图片的基础图（SDR图），忽略增益图。
+>- 对带有3通道增益图的HDR图片源，使用CM_DISPLAY_BT2020_SRGB色彩空间解码。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**返回值：**
+
+| 类型                             | 说明                        |
+| -------------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7700101  | Bad source.                                                  |
+| 7700102  | Unsupported MIME type.                                       |
+| 7700103  | Image too large.                                             |
+| 7700301  | Decoding failed.                                             |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+import { common } from '@kit.AbilityKit';
+import image from '@ohos.multimedia.image';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+let filePath: string = context.filesDir + "/sdr.jpg";
+let sdrImageSource = image.createImageSource(filePath);
+let pixelmap = imageSource.createWideGamutSdrPixelMap();
+if (pixelmap != undefined) {
+  console.info('Succeeded in creating sdr pixelMap object.');
+} else {
+  console.error('Failed to create pixelMap.');
+}
+
+let singleChannelGainmapFilePath: string = context.filesDir + "/singleChannelGainmapFilePath.jpg";
+let singleChannelGainmapImageSource = image.createImageSource(singleChannelGainmapFilePath);
+let singleChannelGainmapPixelmap = singleChannelGainmapImageSource.createWideGamutSdrPixelMap();
+if (singleChannelGainmapPixelmap != undefined) {
+  console.info('Succeeded in creating sdr pixelMap object by using singleChannelGainmapImageSource.');
+} else {
+  console.error('Failed to create pixelMap.');
+}
+
+let threeChannelGainmapFilePath: string = context.filesDir + "/threeChannelGainmapFilePath.jpg";
+let threeChannelGainmapImageSource = image.createImageSource(threeChannelGainmapFilePath);
+let threeChannelGainmapPixelmap = threeChannelGainmapImageSource.createWideGamutSdrPixelMap();
+if (threeChannelGainmapPixelmap != undefined) {
+  console.info('Succeeded in creating a sdr pixelMap using CM_DISPLAY_BT2020_SRGB.');
+} else {
+  console.error('Failed to create pixelMap.');
+}
+```
+
 ### isJpegProgressive<sup>22+</sup>
 
 isJpegProgressive(): Promise\<boolean>
