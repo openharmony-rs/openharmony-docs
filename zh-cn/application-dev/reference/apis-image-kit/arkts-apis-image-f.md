@@ -331,7 +331,7 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<Pi
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-建议使用[createPixelMapFromPixels](#createpixelmapfrompixels)代替。
+从API版本26.0.0开始，建议使用[createPixelMapFromPixels](#imagecreatepixelmapfrompixels)代替，以获得更完善的异常处理能力。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -377,7 +377,7 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: As
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-建议使用[createPixelMapFromPixels](#createpixelmapfrompixels)代替。
+从API版本26.0.0开始，建议使用[createPixelMapFromPixels](#imagecreatepixelmapfrompixels)代替，以获得更完善的异常处理能力。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -852,7 +852,7 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-建议使用[createPixelMapFromPixelsSync](#createpixelmapfrompixelssync)代替。
+从API版本26.0.0开始，建议使用[createPixelMapFromPixelsSync](#imagecreatepixelmapfrompixelssync)代替，以获得更完善的异常处理能力。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -966,6 +966,8 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 通过图像属性创建空白PixelMap，同步返回PixelMap结果。
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
+从API版本26.0.0开始，建议使用[createEmptyPixelMap](#imagecreateemptypixelmap)代替，以获得更完善的异常处理能力。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
