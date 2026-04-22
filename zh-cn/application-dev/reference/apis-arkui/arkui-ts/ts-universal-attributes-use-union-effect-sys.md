@@ -48,6 +48,10 @@ useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T
 
 不设置该属性时，默认不使用祖先组件UnionEffectContainer的融合效果。
 
+> **说明：**
+>
+> 多次调用该接口传入[GravityCenterOptions](#gravitycenteroptions)参数时，仅最后一次设置的引力中心参数生效。
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。

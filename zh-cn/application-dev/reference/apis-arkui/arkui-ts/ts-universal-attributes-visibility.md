@@ -44,7 +44,6 @@ ArkTS-Sta: visibility(value: Visibility | undefined): this
 | -------- | -------- |
 | ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
-
 ## 示例
 
  该示例通过配置visibility的不同值，实现不同的显隐控制效果。

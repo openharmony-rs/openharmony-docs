@@ -279,11 +279,16 @@
       - [UI组件适配（路由与导航）](arkts-sta-deprecated-router-and-navigation.md)
       - [UI组件适配（滚动与滑动）](arkts-sta-deprecated-scroll-and-swipe.md)
       - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
+      - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
   - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
     - UI构建互操作<!--ui-arkts-sta-interop-dyn-build-->
       - [在ArkTS-Sta中使用ArkTS-Dyn的组件导航（Navigation）](arkts-sta-interop-dyn-navigation.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的资源（Resource）](arkts-sta-interop-dyn-resource.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的组件导航（Navigation）](arkts-dyn-interop-sta-navigation.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](arkts-dyn-interop-sta-animator.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](arkts-dyn-interop-sta-resource.md)
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)

@@ -113,6 +113,7 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称            | 类型                         | 只读 | 可选        | 说明                                                     |
 | ------------------- | ------------------------- | ------ | -------- | -------------------------------------------------------- |
 | x                   | ArkTS-Dyn: number<br/>ArkTS-Sta: double                               | 否 | 否 | 点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。onClick的[distanceThreshold](ts-universal-events-click.md#onclick12)设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23     |
