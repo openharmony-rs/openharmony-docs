@@ -635,6 +635,7 @@ try {
 } catch (err) {
   console.error(`Failed to enable self device admin. Code: ${err.code}, message: ${err.message}`);
 }
+```
 
 ## ManagedEvent
 
