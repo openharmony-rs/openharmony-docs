@@ -1796,7 +1796,9 @@ try {
 
 ## window.createSubWindowAndBindParent<sup>24+</sup>
 
-createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
+ArkTS-Dyn: createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
+
+ArkTS-Sta: createSubWindowAndBindParent(name: string, parentId: int, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
 
 创建一个子窗，并绑定父窗。使用Promise异步回调。
 
@@ -1812,12 +1814,16 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                                |
 | -------- | ----------------------- | -- |---------------------------------------------------|
 | name | string | 是 | 窗口名称。|
-| parentId | number | 是 | 指定父窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
+| parentId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 指定父窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
 | ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 当前应用上下文信息。|
 | parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | 是 | 回调函数。返回绑定父窗的生命周期变化。|
 
@@ -1842,6 +1848,8 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -1860,6 +1868,35 @@ export default class EntryAbility extends UIAbility {
         console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
         windowClass = data;
       }).catch((err: BusinessError) => {
+        console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    const parentWindowEventListener = (windowId: int, event: window.WindowEventType) => {
+      // ...
+    }
+    try {
+      let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
+      promise.then((data) => {
+        console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
+        windowClass = data;
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {
