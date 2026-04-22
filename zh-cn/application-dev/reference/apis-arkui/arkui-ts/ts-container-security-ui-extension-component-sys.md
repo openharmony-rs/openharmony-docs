@@ -294,3 +294,213 @@ off(type: 'syncReceiverRegister', callback?: Callback\<SecurityUIExtensionProxy\
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，取消订阅扩展Ability发生同步注册回调。 |
 | callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 否 | 指定取消订阅的回调。为空代表取消订阅所有扩展Ability同步注册后触发回调。 |
+
+## 示例
+
+### 示例（SecurityUIExtensionComponent基础使用）
+
+本示例展示`SecurityUIExtensionComponent`组件的基础使用方式，包括使用方加载远程UIExtensionAbility、双向数据通信和生命周期管理。示例应用的`bundleName`为"com.example.securityuidemo"，被拉起的`UIExtensionAbility`为"SecurityUIExtProvider"。
+
+- 使用方入口界面`ets/pages/Index.ets`内容如下：
+
+```ts
+import { Want, ComponentContent } from '@kit.ArkUI';
+
+class Params {
+}
+
+@Builder
+function LoadingBuilder(params: Params) {
+  Column() {
+    LoadingProgress()
+      .color(Color.Blue)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '等待接收数据';
+  @State visible: Visibility = Visibility.Hidden;
+  @State wid: number = 300;
+  @State hei: number = 300;
+  private proxy: SecurityUIExtensionProxy | null = null;
+  private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
+
+  aboutToDisappear(): void {
+    this.proxy?.off('syncReceiverRegister');
+    this.proxy?.off('asyncReceiverRegister');
+  }
+
+  build() {
+    Column() {
+      Text(this.message).fontSize(20).margin({ bottom: 10 })
+
+      SecurityUIExtensionComponent(
+        {
+          bundleName: 'com.example.securityuidemo',
+          abilityName: 'SecurityUIExtProvider',
+          parameters: {
+            'ability.want.params.uiExtensionType': 'sys/commonUI'
+          }
+        } as Want,
+        {
+          placeholder: this.initPlaceholder,
+          dpiFollowStrategy: SecurityDpiFollowStrategy.FOLLOW_HOST_DPI
+        }
+      )
+        .width(this.wid)
+        .height(this.hei)
+        .border({ width: 2, color: Color.Blue })
+        .onRemoteReady((proxy: SecurityUIExtensionProxy) => {
+          console.info('onRemoteReady');
+          this.proxy = proxy;
+          this.proxy.on('asyncReceiverRegister', (proxy1: SecurityUIExtensionProxy) => {
+            console.info('asyncReceiverRegister callback');
+          });
+          this.proxy.on('syncReceiverRegister', (proxy2: SecurityUIExtensionProxy) => {
+            console.info('syncReceiverRegister callback');
+          });
+        })
+        .onReceive((data: Record<string, Object>) => {
+          this.message = JSON.stringify(data);
+          console.info('onReceive: ' + JSON.stringify(data));
+        })
+        .onError((error: BusinessError) => {
+          console.error('onError: code = ' + error.code);
+        })
+        .onTerminated((info: TerminationInfo) => {
+          console.info('onTerminated: code = ' + info.code + ', want = ' + JSON.stringify(info.want));
+        })
+
+      Button('向UIExtensionAbility发送数据').margin({ top: 10 }).onClick(() => {
+        if (this.proxy) {
+          this.proxy.send({ data: 'Hello from SecurityUIExtensionComponent' });
+          try {
+            let result = this.proxy.sendSync({ data: 'Sync Hello' });
+            console.info('sendSync result: ' + JSON.stringify(result));
+          } catch (err) {
+            console.error('sendSync failed: ' + JSON.stringify(err));
+          }
+        }
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+- 提供方扩展Ability文件`ets/uiextensionability/SecurityUIExtProvider.ets`内容如下：
+
+```ts
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+const TAG: string = '[SecurityUIExtProvider]';
+
+export default class SecurityUIExtProvider extends UIExtensionAbility {
+  onCreate() {
+    console.info(TAG, `onCreate`);
+  }
+
+  onForeground() {
+    console.info(TAG, `onForeground`);
+  }
+
+  onBackground() {
+    console.info(TAG, `onBackground`);
+  }
+
+  onDestroy() {
+    console.info(TAG, `onDestroy`);
+  }
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    let param: Record<string, UIExtensionContentSession> = {
+      'session': session
+    };
+    let storage: LocalStorage = new LocalStorage(param);
+    session.loadContent('pages/extension', storage);
+  }
+
+  onSessionDestroy(session: UIExtensionContentSession) {
+    console.info(TAG, `onSessionDestroy`);
+  }
+}
+```
+
+- 提供方扩展Ability入口页面文件`ets/pages/extension.ets`内容如下：
+
+```ts
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+
+let storage = new LocalStorage();
+
+@Entry(storage)
+@Component
+struct Extension {
+  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  @State message: string = '';
+
+  onPageShow() {
+    if (this.session) {
+      this.session.setReceiveDataCallback((data: Record<string, Object>) => {
+        this.message = JSON.stringify(data);
+        console.info('receiveData: ' + JSON.stringify(data));
+      });
+
+      this.session.setReceiveDataForResultCallback((data: Record<string, Object>): Record<string, Object> => {
+        this.message = JSON.stringify(data);
+        console.info('receiveDataForResult: ' + JSON.stringify(data));
+        return { result: 'Handled' };
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      Text('SecurityUIExtensionAbility页面').fontSize(20).fontWeight(FontWeight.Bold)
+      Text(this.message).fontSize(16).margin({ top: 10 })
+      Button('向使用方发送数据').margin({ top: 10 }).onClick(() => {
+        if (this.session) {
+          this.session.sendData({ data: 'Hello from UIExtensionAbility' });
+        }
+      })
+      Button('退出').margin({ top: 10 }).onClick(() => {
+        if (this.session) {
+          this.session.terminateSelf();
+        }
+        storage.clear();
+      })
+      Button('退出并返回结果').margin({ top: 10 }).onClick(() => {
+        if (this.session) {
+          this.session.terminateSelfWithResult({
+            resultCode: 0,
+            want: {
+              bundleName: 'com.example.securityuidemo',
+              parameters: { result: 123456 }
+            }
+          });
+        }
+        storage.clear();
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+- 在`module.json5`配置文件的"extensionAbilities"标签下增加`SecurityUIExtProvider`配置：
+
+```json
+{
+  "name": "SecurityUIExtProvider",
+  "srcEntry": "./ets/uiextensionability/SecurityUIExtProvider.ets",
+  "type": "sys/commonUI",
+  "exported": true
+}
+```
