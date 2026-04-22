@@ -103,6 +103,8 @@
    > 
    > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
 
+    **示例一：播放网络媒体资源**
+
     ```ts
     let url = 'https://xxx.xxx.xxx.mp3';
     if (avPlayer == null) {
@@ -110,6 +112,17 @@
     }
     avPlayer.url = url;
     ```
+
+    **示例二：应用沙箱文件播放**
+
+    ```ts
+    let fdPath = 'fd://';
+    let path = `${this.context.filesDir}/${this.fileName}`;
+    let file = await fs.open(path);
+    fdPath = fdPath + file.fd;
+    this.avPlayer.url = url;
+```
+
 4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
 
     为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。

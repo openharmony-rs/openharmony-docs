@@ -47,31 +47,6 @@ import { media } from '@kit.MediaKit';
 | height<sup>9+</sup>                                 | number                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | playlistLoopMode<sup>26+</sup>                         | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。 |
 
-**示例一：播放网络媒体资源**
-
-```ts
-let url = 'https://xxx.xxx.xxx.mp4';
-let avPlayer = await media.createAVPlayer();
-if (avPlayer == null) {
-  return;
-}
-avPlayer.url = url;
-```
-
-**示例二：应用沙箱文件播放**
-
-```ts
-let fdPath = 'fd://';
-let path = `${this.context.filesDir}/${this.fileName}`;
-let file = await fs.open(path);
-fdPath = fdPath + file.fd;
-let avPlayer = await media.createAVPlayer();
-if (avPlayer == null) {
-  return;
-}
-this.avPlayer.url = url;
-```
-
 ## on('stateChange')<sup>9+</sup>
 
 on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
