@@ -1,9 +1,9 @@
 # Repeat：可复用的循环渲染
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
 > **说明：**
