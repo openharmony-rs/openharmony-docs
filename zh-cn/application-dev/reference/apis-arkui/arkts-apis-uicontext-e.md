@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -19,11 +19,11 @@
 
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
-| OFFSET | 0    | 上抬模式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| RESIZE | 1    | 压缩模式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| OFFSET_WITH_CARET<sup>14+</sup>  | 2 | 上抬模式，输入框光标位置发生变化时候也会触发避让。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| RESIZE_WITH_CARET<sup>14+</sup>  | 3 | 压缩模式，输入框光标位置发生变化时候也会触发避让。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| NONE<sup>14+</sup>  | 4 | 不避让键盘。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| OFFSET | 0    | 上抬模式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| RESIZE | 1    | 压缩模式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| OFFSET_WITH_CARET<sup>14+</sup>  | 2 | 上抬模式，输入框光标位置发生变化时候也会触发避让。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14 <br>**ArkTS-Sta起始版本：** 23|
+| RESIZE_WITH_CARET<sup>14+</sup>  | 3 | 压缩模式，输入框光标位置发生变化时候也会触发避让。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14 <br>**ArkTS-Sta起始版本：** 23|
+| NONE<sup>14+</sup>  | 4 | 不避让键盘。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23|
 
 ## SwiperDynamicSyncSceneType<sup>12+</sup>
 
@@ -32,6 +32,10 @@
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
@@ -46,6 +50,10 @@
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
 | ANIMATION | 1   | 动画过渡场景。 |
@@ -57,6 +65,10 @@
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 值 |说明 |
 | -------- | ------- | -------- |
@@ -71,6 +83,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
 | WILL_START | 0 | 手势已被系统成功识别，将立即触发onActionStart或onAction回调。若手势绑定了onActionStart，则在onActionStart处触发；若手势绑定了onAction，则在onAction处触发；若两者同时绑定，则优先在onActionStart处触发；若两者均未绑定，则不会触发任何回调。某些容器有内置手势绑定了回调（如滚动类容器），默认支持上述回调触发机制，无需显式绑定即可触发回调。 |
@@ -83,6 +99,10 @@
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
@@ -100,6 +120,10 @@ UIContext对象的解析策略。
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
@@ -124,7 +148,30 @@ UIContext对象的解析策略。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
 | ENABLED | 0 | 接续。 |
 | DISABLED | 1 | 不接续。 |
+
+## TextSelectionClearPolicy
+
+文本选择清除策略枚举。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 0 | 触摸到文本组件外部时，保留文本选中和手柄。 |
+| CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 1 | 触摸到文本组件外部时，清除文本选中和手柄。 |

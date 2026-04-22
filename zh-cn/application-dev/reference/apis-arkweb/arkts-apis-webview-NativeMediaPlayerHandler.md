@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的参数。应用通过该对象，将播放器的状态报告给ArkWeb内核。
+[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的参数。应用通过该对象，将播放器的状态通知给 ArkWeb 内核。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -24,6 +26,10 @@ handleStatusChanged(status: PlaybackStatus): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+ 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -36,17 +42,23 @@ handleStatusChanged(status: PlaybackStatus): void
 
 ## handleVolumeChanged<sup>12+</sup>
 
-handleVolumeChanged(volume: number): void
+ArkTS-Dyn: handleVolumeChanged(volume: number): void
+
+ArkTS-Sta: handleVolumeChanged(volume: double): void;
 
 当播放器的音量发生变化时，调用该方法将音量通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| volume | number | 是 | 播放器的音量，取值范围：[0, 1.0]。|
+| volume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放器的音量，取值范围：[0, 1.0]。 |
 
 **示例：**
 
@@ -60,6 +72,10 @@ handleMutedChanged(muted: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -72,17 +88,23 @@ handleMutedChanged(muted: boolean): void
 
 ## handlePlaybackRateChanged<sup>12+</sup>
 
-handlePlaybackRateChanged(playbackRate: number): void
+ArkTS-Dyn: handlePlaybackRateChanged(playbackRate: number): void
 
-当播放器的播放速度发生变化时，调用该方法将播放速度通知给 ArkWeb 内核。
+ArkTS-Sta: handlePlaybackRateChanged(playbackRate: double): void;
+
+当播放器的播放速率发生变化时，调用该方法将播放速率通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| playbackRate | number | 是 | 播放速率，取值范围：[0, +∞) |
+| playbackRate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率，取值范围：[0, +∞) |
 
 **示例：**
 
@@ -90,17 +112,23 @@ handlePlaybackRateChanged(playbackRate: number): void
 
 ## handleDurationChanged<sup>12+</sup>
 
-handleDurationChanged(duration: number): void
+ArkTS-Dyn: handleDurationChanged(duration: number): void
+
+ArkTS-Sta: handleDurationChanged(duration: double): void;
 
 当播放器解析出媒体的总时长时，调用该方法将媒体的总时长通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| duration | number | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞) |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞) |
 
 **示例：**
 
@@ -108,17 +136,23 @@ handleDurationChanged(duration: number): void
 
 ## handleTimeUpdate<sup>12+</sup>
 
-handleTimeUpdate(currentPlayTime: number): void
+ArkTS-Dyn: handleTimeUpdate(currentPlayTime: number): void
+
+ArkTS-Sta: handleTimeUpdate(currentPlayTime: double): void;
 
 当媒体的播放进度发生变化时，调用该方法将媒体的播放进度通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| currentPlayTime | number | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration]  |
+| currentPlayTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration]  |
 
 **示例：**
 
@@ -126,17 +160,23 @@ handleTimeUpdate(currentPlayTime: number): void
 
 ## handleBufferedEndTimeChanged<sup>12+</sup>
 
-handleBufferedEndTimeChanged(bufferedEndTime: number): void
+ArkTS-Dyn: handleBufferedEndTimeChanged(bufferedEndTime: number): void
+
+ArkTS-Sta: handleBufferedEndTimeChanged(bufferedEndTime: double): void;
 
 当媒体的缓冲时长发生变化时，调用该方法将媒体的缓冲时长通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| bufferedEndTime | number | 是 | 媒体缓冲的时长。<br>单位：秒，取值范围：[0, duration] |
+| bufferedEndTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体缓冲的时长。<br>单位：秒，取值范围：[0, duration] |
 
 **示例：**
 
@@ -146,9 +186,13 @@ handleBufferedEndTimeChanged(bufferedEndTime: number): void
 
 handleEnded(): void
 
-当媒体播放结束时，调用该方法通知给 ArkWeb 内核。
+当媒体播放结束时，调用该方法将播放结束事件通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -161,6 +205,10 @@ handleNetworkStateChanged(state: NetworkState): void
 当播放器的网络状态发生变化时，调用该方法将播放器的网络状态通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -180,6 +228,10 @@ handleReadyStateChanged(state: ReadyState): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -198,6 +250,10 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -212,9 +268,13 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 handleSeeking(): void
 
-当播放器进入 seek 状态时，调用该方法通知 ArkWeb 内核。
+当播放器进入seek状态时，调用该方法将seek进入事件通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -224,9 +284,13 @@ handleSeeking(): void
 
 handleSeekFinished(): void
 
-当播放器 seek 完成后，调用该方法通知 ArkWeb 内核。
+当播放器seek完成后，调用该方法将seek完成事件通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -236,9 +300,13 @@ handleSeekFinished(): void
 
 handleError(error: MediaError, errorMessage: string): void
 
-当播放器发生错误时， 调用该方法通知 ArkWeb 内核。
+当播放器发生错误时，调用该方法将错误通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -253,18 +321,24 @@ handleError(error: MediaError, errorMessage: string): void
 
 ## handleVideoSizeChanged<sup>12+</sup>
 
-handleVideoSizeChanged(width: number, height: number): void
+ArkTS-Dyn: handleVideoSizeChanged(width: number, height: number): void
 
-当播放器解析出视频的尺寸时， 调用该方法通知 ArkWeb 内核。
+ArkTS-Sta: handleVideoSizeChanged(width: double, height: double): void;
+
+当播放器解析出视频的尺寸时， 调用该方法将视频尺寸通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| width  | number | 是 | 视频的宽，单位为像素，取值范围：[0, +∞) |
-| height | number | 是 | 视频的高，单位为像素，取值范围：[0, +∞) |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的宽，单位：像素，取值范围：[0, +∞) |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的高，单位：像素，取值范围：[0, +∞) |
 
 **示例：**
 

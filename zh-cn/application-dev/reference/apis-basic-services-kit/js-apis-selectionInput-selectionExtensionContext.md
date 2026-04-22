@@ -13,13 +13,14 @@ SelectionExtensionContext是[SelectionExtensionAbility](./js-apis-selectionInput
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块仅支持PC/2in1设备。
 
 ## 导入模块
 
 ```ts
-import { SelectionExtensionContext } from '@kit.BasicServicesKit';
+import SelectionExtensionContext from '@ohos.selectionInput.SelectionExtensionContext';
 ```
 
 ## SelectionExtensionContext
@@ -27,6 +28,10 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 ### startAbility
 
@@ -38,11 +43,15 @@ startAbility(want: Want): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 想要被拉起的应用信息，包括Ability名称、Bundle名称等。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 想要被拉起的应用信息，包括Ability名称、Bundle名称等。 |
 
 **返回值：**
 
@@ -79,6 +88,7 @@ startAbility(want: Want): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
@@ -109,10 +119,52 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       this.context.startAbility(wantAbility).then(() => {
         console.info(`startAbility success`);
       }).catch((err: BusinessError) => {
-        console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
+        console.error(`startAbility error: ${err.code}, error message ${err.message}`);
       })
     } catch (err) {
-      console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
+      console.error(`startAbility error: ${err.code}, error message ${err.message}`);
+    }
+    return new SelectionAbilityStub('remote');
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import SelectionExtensionAbility from '@ohos.selectionInput.SelectionExtensionAbility';
+import rpc from '@ohos.rpc';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class SelectionAbilityStub extends rpc.RemoteObject {
+  constructor(des: string) {
+    super(des);
+  }
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption
+  ): boolean | Promise<boolean> {
+    console.info(`onRemoteMessageRequest code: ${code}`);
+    return true;
+  }
+}
+
+class SelectionExtAbility extends SelectionExtensionAbility {
+  onConnect(want: Want): rpc.RemoteObject {
+    try {
+      let wantAbility: Want = {
+        bundleName: "com.selection.selectionapplication",
+        abilityName: "EntryAbility",
+      };
+      this.context.startAbility(wantAbility).then(() => {
+        console.info(`startAbility success`);
+      }).catch((err) => {
+        console.error(`startAbility error: ${err.code}, error message ${err.message}`);
+      })
+    } catch (err) {
+      console.error(`startAbility error: ${err.code}, error message ${err.message}`);
     }
     return new SelectionAbilityStub('remote');
   }

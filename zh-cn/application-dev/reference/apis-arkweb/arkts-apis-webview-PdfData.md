@@ -10,6 +10,8 @@ createPdf函数输出数据流类。
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 14开始支持。
@@ -25,6 +27,10 @@ pdfArrayBuffer(): Uint8Array
 获取网页生成的数据流。完整示例代码参考[createPdf](./arkts-apis-webview-WebviewController.md#createpdf14)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

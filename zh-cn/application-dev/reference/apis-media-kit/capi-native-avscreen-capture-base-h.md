@@ -257,6 +257,10 @@ enum OH_AVScreenCaptureStateCode
 | OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8 | 进入隐私界面。 |
 | OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9 | 隐私界面退出。 |
 | OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10 | 系统用户切换，录屏中断。 |
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11 | 录屏已由用户暂停。<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12 | 录屏已由用户恢复。<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13 | 录屏已由应用程序暂停。<br>**起始版本：** 26.0.0 |
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14 | 录屏已由应用程序恢复。<br>**起始版本：** 26.0.0 |
 
 ### OH_AVScreenCaptureBufferType
 
@@ -332,7 +336,7 @@ enum OH_AVScreenCapture_FillMode
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0 | 保持图像原始宽高比匹配目标图像大小，若比例不一致可能存在黑边。 |
-| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | 图像拉伸匹配目标图像大小，若比例不一致图像变形。 |
+| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | 图像拉伸匹配目标图像大小，若比例不一致可能会导致图像变形。 |
 
 ### OH_ScreenCaptureHighlightMode
 

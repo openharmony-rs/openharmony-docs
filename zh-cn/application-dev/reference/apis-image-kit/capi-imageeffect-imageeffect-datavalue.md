@@ -32,6 +32,6 @@ typedef union ImageEffect_DataValue {...} ImageEffect_DataValue
 | char charValue | 字节值，对应[EFFECT_DATA_TYPE_CHAR](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
 | long longValue | 长整型值，对应[EFFECT_DATA_TYPE_LONG](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
 | bool boolValue | 布尔值，对应[EFFECT_DATA_TYPE_BOOL](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
-| void* ptrValue | 指针值，对应[EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
+| void *ptrValue | 指针值，对应[EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype)。 |
 
 

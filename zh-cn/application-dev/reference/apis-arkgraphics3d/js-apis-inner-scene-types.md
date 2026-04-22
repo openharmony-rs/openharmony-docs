@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
 
 ## 导入模块
@@ -24,10 +25,14 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | 否 | 否 | x轴分量，取值范围是实数。 |
-| y | number | 否 | 否 | y轴分量，取值范围是实数。|
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | x轴分量，取值范围是实数。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | y轴分量，取值范围是实数。 |
 
 ## Vec3
 
@@ -35,11 +40,15 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | 否 | 否 | x轴分量，取值范围是实数。 |
-| y | number | 否 | 否 | y轴分量，取值范围是实数。 |
-| z | number | 否 | 否 | z轴分量，取值范围是实数。 |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | x轴分量，取值范围是实数。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | y轴分量，取值范围是实数。 |
+| z | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | z轴分量，取值范围是实数。 |
 
 ## Vec4
 
@@ -47,12 +56,16 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | 否 | 否 | x轴分量，取值范围是实数。 |
-| y | number | 否 | 否 | y轴分量，取值范围是实数。 |
-| z | number | 否 | 否 | z轴分量，取值范围是实数。 |
-| w | number | 否 | 否 | w轴分量，取值范围是实数。 |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | x轴分量，取值范围是实数。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | y轴分量，取值范围是实数。 |
+| z | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | z轴分量，取值范围是实数。 |
+| w | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | w轴分量，取值范围是实数。 |
 
 ## Quaternion
 
@@ -60,18 +73,26 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | 否 | 否 | x轴分量，取值范围是实数。 |
-| y | number | 否 | 否 | y轴分量，取值范围是实数。 |
-| z | number | 否 | 否 | z轴分量，取值范围是实数。 |
-| w | number | 否 | 否 | w轴分量，取值范围是实数。 |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | x轴分量，取值范围是实数。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | y轴分量，取值范围是实数。 |
+| z | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | z轴分量，取值范围是实数。 |
+| w | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | w轴分量，取值范围是实数。 |
 
 ## Aabb
 
 轴对齐边界盒，主要用于判断空间中的物体是否重叠。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -84,12 +105,16 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| r | number | 否 | 否 | 红色分量，取值范围是[0, 1]。 |
-| g | number | 否 | 否 | 绿色分量，取值范围是[0, 1]。 |
-| b | number | 否 | 否 | 蓝色分量，取值范围是[0, 1]。 |
-| a | number | 否 | 否 | 透明度分量，取值范围是[0, 1]。 |
+| r | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 红色分量，取值范围是[0, 1]。 |
+| g | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 绿色分量，取值范围是[0, 1]。 |
+| b | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 蓝色分量，取值范围是[0, 1]。 |
+| a | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 透明度分量，取值范围是[0, 1]。 |
 
 ## Rect
 
@@ -97,18 +122,26 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | 否 | 否 | 矩形左下角x轴分量，单位为世界坐标系下的场景单位（比如cm、m、km等），取值为任意实数，具体范围依赖场景坐标系设置。 |
-| y | number | 否 | 否 | 矩形左下角y轴分量，单位为世界坐标系下的场景单位（比如cm、m、km等），取值为任意实数，具体范围依赖场景坐标系设置。 |
-| width | number | 否 | 否 | 矩形宽度，单位为世界坐标系下的场景单位（比如cm、m、km等），有效取值范围大于0。 |
-| height | number | 否 | 否 | 矩形高度，单位为世界坐标系下的场景单位（比如cm、m、km等），有效取值范围大于0。 |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形左下角x轴分量，单位为世界坐标系下的场景单位（比如cm、m、km等），取值为任意实数，具体范围依赖场景坐标系设置。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形左下角y轴分量，单位为世界坐标系下的场景单位（比如cm、m、km等），取值为任意实数，具体范围依赖场景坐标系设置。 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形宽度，单位为世界坐标系下的场景单位（比如cm、m、km等），有效取值范围大于0。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 矩形高度，单位为世界坐标系下的场景单位（比如cm、m、km等），有效取值范围大于0。 |
 
 ## RenderingPipelineType<sup>21+</sup>
 
 渲染管线类型枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -123,17 +156,21 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| CUSTOM | 0 | 自定义几何体类型。 |
-| CUBE | 1 | 立方体类型。 |
-| PLANE | 2 | 平面类型。 |
-| SPHERE | 3 | 球体类型。 |
-| CYLINDER<sup>23+</sup> | 4 | 圆柱体类型。|
+| CUSTOM | 0 | 自定义几何体类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| CUBE | 1 | 立方体类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| PLANE | 2 | 平面类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| SPHERE | 3 | 球体类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| CYLINDER<sup>23+</sup> | 4 | 圆柱体类型。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## GeometryDefinition<sup>18+</sup>
 
 几何类型定义抽象类，用于解释特定几何类型的属性。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -144,6 +181,10 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 图元拓扑枚举，在顶点处理过程中，指定顶点的不同处理方式。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -156,11 +197,15 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | topology | [PrimitiveTopology](#primitivetopology18)| 否 | 是 | 三角形图元的解析方式，默认值为TRIANGLE_LIST。 |
 | vertices | [Vec3](#vec3)[] | 否 | 否 | 模型的顶点数组。 |
-| indices | number[] | 否 | 是 | 顶点索引数组，数组中元素的取值范围大于等于0，默认值为undefined。 |
+| indices | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 顶点索引数组，数组中元素的取值范围大于等于0，默认值为undefined。 |
 | normals | [Vec3](#vec3)[] | 否 | 是 | 顶点数组对应的法向量数组，默认值为undefined。 |
 | uvs | [Vec2](#vec2)[] | 否 | 是 | 顶点数组对应的UV坐标数组，默认值为undefined。 |
 | colors | [Color](#color)[] | 否 | 是 | 顶点数组对应的颜色数组，默认值为undefined。 |
@@ -170,6 +215,10 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 立方体几何类型，继承自[GeometryDefinition](#geometrydefinition18)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -181,6 +230,10 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | size | [Vec2](#vec2) | 否 | 否 | 平面的宽、高，表示平面的大小，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
@@ -191,10 +244,14 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| radius | number | 否 | 否 | 球体半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
-| segmentCount | number | 否 | 否 | 在球体上以经纬度分割的段数，取值范围是大于等于3的正整数。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 球体半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
+| segmentCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 在球体上以经纬度分割的段数，取值范围是大于等于3的正整数。 |
 
 ## CylinderGeometry<sup>23+</sup>
 
@@ -202,15 +259,19 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| radius | number | 否 | 否 | 圆柱体的底面半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
-| height | number | 否 | 否 | 圆柱体的高度，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
-| segmentCount | number | 否 | 否 | 圆柱体圆周方向的分段面数量，取值范围是大于等于3的正整数，若设为浮点数将自动向下取整。该数值直接影响圆柱体侧面的光滑度：数值越大，侧面包含的面片数量越多，视觉上越接近光滑曲面；数值越小，侧面会呈现明显的多边形轮廓。注意数值过大会延长几何创建耗时，还可能导致线程阻塞。|
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 圆柱体的底面半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 圆柱体的高度，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
+| segmentCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 圆柱体圆周方向的分段面数量，取值范围是大于等于3的正整数，若设为浮点数将自动向下取整。该数值直接影响圆柱体侧面的光滑度：数值越大，侧面包含的面片数量越多，视觉上越接近光滑曲面；数值越小，侧面会呈现明显的多边形轮廓。注意数值过大会延长几何创建耗时，还可能导致线程阻塞。|
 
 > **说明：**
 >
-> 开发者需保证上述三个参数设置正确，否则无法创建圆柱体并可能引发未定义行为。
+>开发者需保证上述三个参数设置正确，否则无法创建圆柱体并可能引发不可预期的行为。
 
 以radius=0.5，height=1，segmentCount=20为例，生成圆柱体的网格以及UV布局如下：
 
@@ -221,6 +282,10 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 相机矩阵，它是一个将三维世界坐标映射到二维图像坐标的数学工具。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -237,6 +302,10 @@ type Position3 = Vec3
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型  | 说明 |
 | ---- | ---- |
 | [Vec3](#vec3) | 类型为三维向量，单位为世界坐标系下的场景单位（比如cm、m、km等），可取任意值。 |
@@ -249,6 +318,10 @@ type Rotation3 = Vec3
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型  | 说明 |
 | ---- | ---- |
 | [Vec3](#vec3) | 类型为三维向量，单位为弧度（rad），可取任意值。 |
@@ -260,6 +333,10 @@ type Scale3 = Vec3
 用于表示3维空间中物体的缩放，是[Vec3](#vec3)类型。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | ---- | ---- |

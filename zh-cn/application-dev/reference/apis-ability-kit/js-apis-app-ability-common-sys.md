@@ -107,6 +107,42 @@ UIServiceHostProxy二级模块。
 | --- | --- |
 | [_UIServiceHostProxy.default](js-apis-inner-application-uiservicehostproxy-sys.md) | UIServiceHostProxy二级模块。 |
 
+## AgentProxy<sup>24+</sup>
+
+type AgentProxy = _AgentProxy
+
+AgentProxy二级模块。
+
+[AgentProxy](../apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)用于从客户端向[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端发送数据或安全认证请求。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentProxy](../apis-ability-kit/js-apis-inner-application-agentProxy-sys.md) | 用于从客户端向[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端发送数据或安全认证请求。 |
+
+## AgentExtensionConnectCallback<sup>24+</sup>
+
+type AgentExtensionConnectCallback = _AgentExtensionConnectCallback
+
+AgentExtensionConnectCallback二级模块。
+
+[AgentExtensionConnectCallback](../apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)中提供了回调接口给开发者来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentExtensionConnectCallback](../apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md) | 提供回调接口给开发者来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。 |
+
 **示例：**
 
 ```ts
@@ -128,4 +164,6 @@ let connectOptions: common.ConnectOptions;
 let autoFillExtensionContext: common.AutoFillExtensionContext;
 let uiServiceExtensionContext: common.UIServiceExtensionContext;
 let uiServiceHostProxy: common.UIServiceHostProxy;
+let agentProxy: common.AgentProxy;
+let agentExtensionConnectCallback: common.AgentExtensionConnectCallback;
 ```

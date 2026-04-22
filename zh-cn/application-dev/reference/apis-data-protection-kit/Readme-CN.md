@@ -11,6 +11,7 @@
   - [@ohos.security.identifySensitiveContent (识别敏感内容)](js-apis-identifySensitiveContent.md)
   <!--Del-->
   - [@ohos.dlpPermission (数据防泄漏)(系统接口)](js-apis-dlppermission-sys.md)
+  - [@ohos.dlpSetDlpFeature (设置数据防泄漏入口)(系统接口)](js-apis-dlpsetdlpfeature-sys.md)
   <!--DelEnd-->
 - C API<!--data-protection-c-->
   - 模块<!--data-protection-module-->

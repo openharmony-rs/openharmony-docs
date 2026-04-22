@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[List](ts-container-list.md)。
@@ -27,6 +29,10 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                     | 必填   | 说明                           |
@@ -41,6 +47,10 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      |  值  | 说明                                       |
 | ------- | ------ | ---------------------------------------- |
 | DEFAULT | 0 | 默认效果，列表滚动到边缘以后继续拖动，拖拽方向上的列表项间距缩小，<br/>拖拽反方向上的列表项间距扩大。 |
@@ -54,13 +64,17 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                                       | 只读   | 可选 | 说明                                       |
 | ------------ | ---------------------------------------- | ---- | -- | ---------------------------------------- |
-| minSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最小间距。                            |
-| maxSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最大间距。                            |
+| minSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最小间距。<br/>单位：与Length一致。                            |
+| maxSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最大间距。<br/>单位：与Length一致。                          |
 | conductivity | number                                   | 否    | 是 | 设置链式联动动效传导系数。取值范围[0,1]，数值越大，动效传导范围越远。<br/>默认值：0.7 |
 | intensity    | number                                   | 否    | 是 | 设置链式联动动效效果强度。取值范围[0,1]，数值越大，动效效果越明显。<br/>默认值：0.3 |
 | edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10枚举说明) | 否    | 是 | 设置链式联动动效边缘效果。<br/>默认值：ChainEdgeEffect.DEFAULT |
-| stiffness    | number                                   | 否    | 是 | 设置链式联动动效效果刚度。<br/>默认值：228 |
-| damping      | number                                   | 否    | 是 | 设置链式联动动效效果阻尼。<br/>默认值：30 |
+| stiffness    | number                                   | 否    | 是 | 设置链式联动动效效果刚度。<br/>取值范围[0, +∞)<br/>默认值：228 |
+| damping      | number                                   | 否    | 是 | 设置链式联动动效效果阻尼。<br/>取值范围[0, +∞)<br/>默认值：30 |
 

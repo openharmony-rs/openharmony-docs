@@ -10,11 +10,15 @@
 
 >  **说明：**
 >
->  从API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## accessibilityGroup
 
-accessibilityGroup(value: boolean):T
+ArkTS-Dyn: accessibilityGroup(value: boolean):T
+
+ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -28,21 +32,27 @@ accessibilityGroup(value: boolean):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityGroup<sup>14+</sup>
 
-accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions):T
+ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions):T
+
+ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: AccessibilityOptions): this
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -64,22 +74,28 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                                    | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isGroup              | boolean                                                 | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
-| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 是   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>stateController和actionController可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。|
+| isGroup              | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 无障碍分组，设置为true时表示该组件及其所有子组件为一整个可以选中的组件，无障碍服务将不再关注其子组件内容，会合并子组件的文本与无障碍信息，并将其发送至无障碍服务；设置为false表示不启用无障碍分组。<br/>默认值：false |
+| accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14对象说明) | 否   | accessibilityPreferred设置为true时，使应用优先拼接无障碍文本进行朗读；设置为false时，应用进行屏幕朗读时不会优先使用无障碍文本。<br/>stateController和actionController可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityText
 
-accessibilityText(value: string):T
+ArkTS-Dyn: accessibilityText(value: string):T
+
+ArkTS-Sta: accessibilityText(text: string | undefined): this
 
 设置无障碍文本。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -89,21 +105,27 @@ accessibilityText(value: string):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 无障碍文本，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：“”<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置[accessibilityGroup](#accessibilitygroup14)的accessibilityPreferred。 |
+| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍文本，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：“”<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置[accessibilityGroup](#accessibilitygroup14)的accessibilityPreferred。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityText<sup>12+</sup>
 
-accessibilityText(text: Resource):T
+ArkTS-Dyn: accessibilityText(text: Resource):T
+
+ArkTS-Sta: accessibilityText(text: Resource | string | undefined): this
 
 设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -117,22 +139,28 @@ accessibilityText(text: Resource):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                                                                                                   |
 | ------ | ------ | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| text  | [Resource](ts-types.md#resource) | 是   | 无障碍文本引用资源，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
+| text  | ArkTS-Dyn: [Resource](ts-types.md#resource) <br/>ArkTS-Sta: [Resource](ts-types.md#resource) \| string \| undefined | 是   | 无障碍文本引用资源，当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>**说明：**<br/>若组件既拥有文本属性，又拥有无障碍文本属性，则组件被选中时，仅播报无障碍文本内容。<br/>若组件设置了无障碍分组属性为true，但是既没有无障碍文本属性，也没有文本属性，会对其子节点的组件进行文本拼接（深度优先）。<br/>不对无障碍文本属性进行拼接，如需优先拼接无障碍文本，则需设置accessibilityGroup的accessibilityPreferred。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 
 ## accessibilityDescription
 
-accessibilityDescription(value: string):T
+ArkTS-Dyn: accessibilityDescription(value: string):T
+
+ArkTS-Sta: accessibilityDescription(description: string | undefined): this
 
 设置无障碍说明。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -142,21 +170,27 @@ accessibilityDescription(value: string):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：“” |
+| description  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：“” |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityDescription<sup>12+</sup>
 
-accessibilityDescription(description: Resource):T
+ArkTS-Dyn: accessibilityDescription(description: Resource):T
+
+ArkTS-Sta: accessibilityDescription(description: Resource | string | undefined): this
 
 设置无障碍说明，支持通过[Resource](ts-types.md#resource)引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -170,11 +204,15 @@ accessibilityDescription(description: Resource):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                                                                                                                                                    |
 | ------ | ------ | ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| description  | [Resource](ts-types.md#resource) | 是   | 无障碍说明引用资源，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。 |
+| description  | ArkTS-Dyn: [Resource](ts-types.md#resource) <br/>ArkTS-Sta: [Resource](ts-types.md#resource) \| string \| undefined | 是   | 无障碍说明引用资源，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。 |
 
 **返回值：**
 
@@ -184,7 +222,9 @@ accessibilityDescription(description: Resource):T
 
 ## accessibilityLevel
 
-accessibilityLevel(value: string):T
+ArkTS-Dyn: accessibilityLevel(value: string):T
+
+ArkTS-Sta: accessibilityLevel(value: string | undefined): this
 
 设置无障碍重要性。该属性用于控制某个组件是否可被无障碍辅助服务所识别。
 
@@ -194,21 +234,28 @@ accessibilityLevel(value: string):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityVirtualNode<sup>11+</sup>
 
-accessibilityVirtualNode(builder: CustomBuilder):T
+ArkTS-Dyn: accessibilityVirtualNode(builder: CustomBuilder):T
+
+ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined): this
 
 设置无障碍虚拟子节点。对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。如使用画布组件[Canvas](./ts-components-canvas-canvas.md)时，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
 
@@ -222,21 +269,27 @@ accessibilityVirtualNode(builder: CustomBuilder):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| builder  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 无障碍虚拟子节点，使开发者可以对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。 |
+| builder  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 无障碍虚拟子节点，使开发者可以对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityChecked<sup>13+</sup>
 
-accessibilityChecked(isCheck: boolean):T
+ArkTS-Dyn: accessibilityChecked(isCheck: boolean):T
+
+ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
 
 无障碍节点是否选中的状态维护，用于支持多选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
@@ -250,21 +303,28 @@ accessibilityChecked(isCheck: boolean):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| isCheck | boolean | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. 使用该接口设置true或false后，会默认修改该组件的checkable属性为true。<br/>2. accessibilityChecked属性代表组件是多选模式，而[accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。如使用当前接口设置组件为多选模式（设置为true、false），则需要保证未使用accessibilitySelected函数设置属性为true或者false，如果已设置，需使用accessibilitySelected函数设置accessibilitySelected属性为undefined模式。 |
+| isCheck | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. 使用该接口设置true或false后，会默认修改该组件的checkable属性为true。<br/>2. accessibilityChecked属性代表组件是多选模式，而[accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13)属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。如使用当前接口设置组件为多选模式（设置为true、false），则需要保证未使用accessibilitySelected函数设置属性为true或者false，如果已设置，需使用accessibilitySelected函数设置accessibilitySelected属性为undefined模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilitySelected<sup>13+</sup>
 
-accessibilitySelected(isSelect: boolean):T
+ArkTS-Dyn: accessibilitySelected(isSelect: boolean):T
+
+ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined): this
 
 无障碍节点是否选中的状态维护，用于支持单选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
@@ -278,21 +338,28 @@ accessibilitySelected(isSelect: boolean):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelect | boolean | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)属性代表组件是多选模式，而accessibilitySelected属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。<br/>如使用当前接口设置组件为单选模式（true、false），则需要保证未使用accessibilityChecked函数设置属性为true或者false；<br/>如果已设置，需使用accessibilityChecked函数设置accessibilityChecked属性为undefined模式。 |
+| isSelect | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 用于表示组件是否被选中。<br/>支持的值为：<br/>true：当前组件被选中。<br/>false：当前组件未被选中。<br/>undefined：由组件自行确定选中状态。<br/>默认值：undefined <br/>**说明：**<br/>1. [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13)属性代表组件是多选模式，而accessibilitySelected属性代表组件是单选模式，组件不能同时存在两种选择模式，会造成无障碍状态冲突，导致屏幕朗读等无障碍辅助应用无法正确识别选中状态。<br/>如使用当前接口设置组件为单选模式（true、false），则需要保证未使用accessibilityChecked函数设置属性为true或者false；<br/>如果已设置，需使用accessibilityChecked函数设置accessibilityChecked属性为undefined模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityRole<sup>18+</sup>
 
-accessibilityRole(role: AccessibilityRoleType):T
+ArkTS-Dyn: accessibilityRole(role: AccessibilityRoleType):T
+
+ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 
 设置无障碍组件类型，特定组件类型有特定的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
 
@@ -302,17 +369,21 @@ accessibilityRole(role: AccessibilityRoleType):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| role | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 是   | 屏幕朗读播报的组件类型，如按钮、图表。具体类型可由开发者自定义。 |
+| role | ArkTS-Dyn: [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) <br/>ArkTS-Sta: [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) \| undefined | 是   | 屏幕朗读播报的组件类型，如按钮、图表。具体类型可由开发者自定义。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## AccessibilityRoleType<sup>18+</sup>枚举说明
 
@@ -323,6 +394,10 @@ accessibilityRole(role: AccessibilityRoleType):T
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值  | 说明             |
 | ---- | ---- | ------------------ |
@@ -454,7 +529,9 @@ accessibilityRole(role: AccessibilityRoleType):T
 
 ## accessibilityNextFocusId<sup>18+</sup>
 
-accessibilityNextFocusId(nextId: string):T
+ArkTS-Dyn: accessibilityNextFocusId(nextId: string):T
+
+ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
 
 指定屏幕朗读扫动走焦过程中组件的下一个焦点。
 
@@ -464,21 +541,27 @@ accessibilityNextFocusId(nextId: string):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| nextId | string | 是   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
+| nextId | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityDefaultFocus<sup>18+</sup>
 
-accessibilityDefaultFocus(focus: boolean):T
+ArkTS-Dyn: accessibilityDefaultFocus(focus: boolean):T
+
+ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
 
 为页面设置屏幕朗读初始焦点。
 
@@ -488,21 +571,27 @@ accessibilityDefaultFocus(focus: boolean):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| focus  | boolean | 是   | 为页面设置屏幕朗读初始焦点。值为true则表示该组件为当前页默认首焦点，值为false或其他值无效。 |
+| focus  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 为页面设置屏幕朗读初始焦点。值为true则表示该组件为当前页默认首焦点，值为false或其他值无效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityUseSamePage<sup>18+</sup>
 
-accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
+ArkTS-Dyn: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
+
+ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefined): this
 
 设置当前组件和宿主应用为同page模式。
 
@@ -514,17 +603,21 @@ accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                             |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| pageMode | [AccessibilitySamePageMode](#accessibilitysamepagemode18枚举说明) | 是   | 当前跨进程嵌入式显示的组件和宿主应用的同page模式。 |
+| pageMode | ArkTS-Dyn: [AccessibilitySamePageMode](#accessibilitysamepagemode18枚举说明) <br/>ArkTS-Sta: [AccessibilitySamePageMode](#accessibilitysamepagemode18枚举说明) \| undefined | 是   | 当前跨进程嵌入式显示的组件和宿主应用的同page模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## AccessibilitySamePageMode<sup>18+</sup>枚举说明
 
@@ -536,6 +629,10 @@ accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值   | 说明                                                         |
 | ----------- | ---- | ------------------------------------------------------------ |
 | SEMI_SILENT | 0    | 跨进程嵌入式显示的组件拉起来的进程的page事件中如果是首次加载页面或者该事件页面的根节点发送的page事件会被忽略。 |
@@ -543,7 +640,9 @@ accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
 
 ## accessibilityScrollTriggerable<sup>18+</sup>
 
-accessibilityScrollTriggerable(isTriggerable: boolean):T
+ArkTS-Dyn: accessibilityScrollTriggerable(isTriggerable: boolean):T
+
+ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined): this
 
 设置无障碍节点是否支持屏幕朗读滚动操作。当屏幕朗读在扫动走焦时，若容器内当前页面无可聚焦的组件，会发起一次自动滚动操作。
 
@@ -553,27 +652,34 @@ accessibilityScrollTriggerable(isTriggerable: boolean):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
+<!--Table: auto; 10%; 10%; auto-->
 | 参数名         |  类型    | 必填 | 说明                                                         |
 | -------------- | ------- | ---- | ------------------------------------------------------------ |
-| isTriggerable  | boolean | 是   | 用于表示组件是否支持该能力。<br/>支持的值为：<br/>true：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，需要自动滚动操作。<br/>false：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，不需要自动滚动操作。<br/>undefined：还原默认值。<br/>默认值：true。<br/>**说明：**<br/>1. 该属性不影响原先无障碍节点属性[ElementAttributeValues](../../apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues)中的scrollable。<br/>2. 组件最终在屏幕朗读下的滚动逻辑由屏幕朗读最终根据该属性和组件是否支持scroll来决定。<br/>3. 该属性为通用属性，所有基础组件均可配置。建议配置的滚动组件类型，如[List](./ts-container-list.md)，[Grid](./ts-container-grid.md)，[Scroll](./ts-container-scroll.md)，[WaterFlow](./ts-container-waterflow.md)等。|
+| isTriggerable  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 用于表示组件是否支持该能力。<br/>支持的值为：<br/>true：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，需要自动滚动操作。<br/>false：屏幕朗读焦点切换而容器内当前页面无可聚焦的组件时，不需要自动滚动操作。<br/>undefined：还原默认值。<br/>默认值：true。<br/>**说明：**<br/>1. 该属性不影响原先无障碍节点属性[ElementAttributeValues](../../apis-accessibility-kit/js-apis-inner-application-accessibilityExtensionContext.md#elementattributevalues)中的scrollable。<br/>2. 组件最终在屏幕朗读下的滚动逻辑由屏幕朗读最终根据该属性和组件是否支持scroll来决定。<br/>3. 该属性为通用属性，所有基础组件均可配置。建议配置的滚动组件类型，如[List](./ts-container-list.md)，[Grid](./ts-container-grid.md)，[Scroll](./ts-container-scroll.md)，[WaterFlow](./ts-container-waterflow.md)等。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityTextHint<sup>12+</sup>
 
-accessibilityTextHint(value: string):T
+ArkTS-Dyn: accessibilityTextHint(value: string):T
+
+ArkTS-Sta: accessibilityTextHint(value: string | undefined): this
 
 设置组件的文本提示信息，供无障碍辅助应用查询。
 
 >**说明：**
 >
-> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。该接口为组件通用属性设置，通过该属性接口进行配置的文本内容仅会被车机的无障碍服务所监听并响应，因此该接口仅在与车机交互的场景下生效<!--RP1--><!--RP1End-->。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -581,21 +687,27 @@ accessibilityTextHint(value: string):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         |  类型    | 必填 | 说明                                                         |
 | -------------- | ------- | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 组件的文本提示信息，供无障碍辅助应用查询。 |
+| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 是   | 组件的文本提示信息，供无障碍辅助应用查询。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityFocusDrawLevel<sup>19+</sup>
 
-accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
+ArkTS-Dyn: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
+
+ArkTS-Sta: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel | undefined): this
 
 无障碍焦点绿框的绘制层级设置功能。
 
@@ -612,21 +724,27 @@ accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| drawLevel | [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) | 是   | 无障碍绘制能力，默认情况下绘制聚焦节点本身。 |
+| drawLevel | ArkTS-Dyn: [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) <br/>ArkTS-Sta: [FocusDrawLevel](ts-appendix-enums.md#focusdrawlevel19) \| undefined | 是   | 无障碍绘制能力，默认情况下绘制聚焦节点本身。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityStateDescription<sup>23+</sup>
 
-accessibilityStateDescription(description: string | Resource | undefined): T
+ArkTS-Dyn: accessibilityStateDescription(description: string | Resource | undefined): T
+
+ArkTS-Sta: accessibilityStateDescription(description: string | Resource | undefined): this
 
 设置组件的状态播报文本，用于屏幕朗读场景下清晰说明组件当前的实时状态。屏幕朗读时会优先播报该状态文本。
 
@@ -635,6 +753,10 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -646,11 +768,13 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## accessibilityActionOptions<sup>23+</sup>
 
-accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
+ArkTS-Dyn: accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
+
+ArkTS-Sta: accessibilityActionOptions(option: AccessibilityActionOptions | undefined): this
 
 设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
 
@@ -659,6 +783,10 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -670,7 +798,7 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## 示例
 

@@ -1,10 +1,10 @@
 # 企业设备管理错误码
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
@@ -668,6 +668,28 @@ The application has not been added to the Dock.
 
 请检查需要从快捷栏中移除的应用包名是否填写正确。
 
+## 9201017 启用SIM或停用SIM卡失败
+
+**错误信息**
+
+SIM card activation or deactivation failed.
+
+**错误描述**
+
+启用SIM或停用SIM卡失败。
+
+**可能原因**
+
+该错误码表示启用SIM或停用SIM卡失败，可能原因如下。
+
+1. 未关闭飞行模式。
+2. 未插入SIM卡。
+
+**处理步骤**
+
+1. 检查飞行模式是否关闭。
+2. 检查是否插入SIM卡。
+
 ## 9201018 指定应用不持支操作
 
 **错误信息**
@@ -703,3 +725,43 @@ The location is inoperable.
 **处理步骤**
 
 该位置不可添加应用，请将应用添加到其他位置。
+
+## 9201020 设置默认数据流量卡失败
+
+**错误信息**
+
+set default data sim failed.
+
+**错误描述**
+
+设置默认数据流量卡失败。
+
+**可能原因**
+
+该错误码表示设置默认数据流量卡失败，可能原因如下。
+
+1. 未关闭飞行模式。
+2. 未插入SIM卡。
+
+**处理步骤**
+
+1. 检查飞行模式是否关闭。
+2. 检查是否插入SIM卡。
+
+## 9201021 设备存在锁屏密码
+
+**错误信息**
+
+A lock screen password has been set for the device.
+
+**错误描述**
+
+当企业设备管理员添加禁用滑动解锁能力的策略时，会产生此错误码。
+
+**可能原因**
+
+设备已经存在锁屏密码，存在锁屏密码时，设备需要校验密码才能进入桌面。
+
+**处理步骤**
+
+删除锁屏密码。

@@ -1,10 +1,10 @@
 # @ohos.enterprise.systemManager （系统管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供系统管理能力。
 
@@ -210,8 +210,8 @@ try {
 let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
-  "installStartTime": 1716281049, // // 时间戳
-  "installEndTime": 1716343200, // // 时间戳
+  "installStartTime": 1716281049, // 时间戳
+  "installEndTime": 1716343200, // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);

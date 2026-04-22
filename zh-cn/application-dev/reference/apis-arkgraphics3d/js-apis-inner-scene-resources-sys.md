@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
 > - 页面仅包含本模块的系统接口，其他公开接口参见[SceneResources](js-apis-inner-scene-resources.md)。
 
@@ -27,7 +28,7 @@ import { MaterialType, UnlitShadowAlphaMaterial } from '@kit.ArkGraphics3D';
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| UNLIT_SHADOW_ALPHA<sup>23+</sup> | 100 | 仅对阴影进行绘制，当材质开启[Blend](js-apis-inner-scene-resources.md#blend20)属性，与背景融合模拟透明材质效果。<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| UNLIT_SHADOW_ALPHA<sup>23+</sup> | 100 | 仅对阴影进行绘制，当材质开启[Blend](js-apis-inner-scene-resources.md#blend20)属性，与背景融合模拟透明材质效果。<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 ## UnlitShadowAlphaMaterial<sup>23+</sup>
 
@@ -38,6 +39,10 @@ import { MaterialType, UnlitShadowAlphaMaterial } from '@kit.ArkGraphics3D';
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |

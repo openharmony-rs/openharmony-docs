@@ -50,6 +50,7 @@ rotate(options: Optional\<RotateOptions>): T
 
 **参数：** 
 
+<!--Table: 10%; auto; 10%; auto-->
 | 参数名  | 类型                                               | 必填 | 说明                                                         |
 | ------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[RotateOptions](#rotateoptions对象说明)> | 是   | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行旋转（坐标系如下图所示）。其中，(x,&nbsp;y,&nbsp;z）指定一个矢量，作为旋转轴。<br/>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。<br/>默认值: 在x、y、z都不指定时，x、y、z的默认值分别为0、0、1。指定了x、y、z任何一个值时，x、y、z中未指定的值默认为0。<br/>{<br/>centerX:&nbsp;'50%',<br/>centerY:&nbsp;'50%',<br/>centerZ:&nbsp;0,<br/>perspective:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)。<br/>当options的值为undefined时，恢复为无旋转效果。 |
@@ -122,6 +123,7 @@ translate(translate: Optional\<TranslateOptions>): T
 
 **参数：** 
 
+<!--Table: 10%; auto; 10%; auto-->
 | 参数名    | 类型                                                     | 必填 | 说明                                                         |
 | --------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | translate | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TranslateOptions](#translateoptions对象说明)> | 是   | 可使组件在以组件左上角为坐标原点的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中进行移动（坐标系如下图所示）。其中，x，y，z的值分别表示在对应轴移动的距离，值为正时表示向对应轴的正向移动，值为负时表示向对应轴的反向移动。移动距离支持数字和字符串（比如'10px'，'10%'）两种类型。<br/>默认值:<br/>{<br/>x:&nbsp;0,<br/>y:&nbsp;0,<br/>z:&nbsp;0<br/>}<br/>单位：vp<br/>![coordinates](figures/coordinates.png)<br/>**说明：**<br/>z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。<br/>![coordinateNode](figures/coordinateNote.png)<br/>当translate的值为undefined时，恢复为无平移效果。 |

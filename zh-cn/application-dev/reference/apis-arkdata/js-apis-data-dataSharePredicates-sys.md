@@ -16,6 +16,8 @@
 
 > **说明：** 
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
@@ -41,9 +43,13 @@ contains(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -73,9 +79,13 @@ beginsWith(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -105,9 +115,13 @@ endsWith(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -137,9 +151,13 @@ isNull(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -168,9 +186,13 @@ isNotNull(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -199,9 +221,13 @@ unlike(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -231,9 +257,13 @@ glob(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -263,9 +293,13 @@ distinct(): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -288,9 +322,13 @@ groupBy(fields: Array&lt;string&gt;): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -319,9 +357,13 @@ indexedBy(field: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -350,9 +392,13 @@ prefixKey(prefix: string): DataSharePredicates
 
 目前仅KVDB支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -381,9 +427,13 @@ inKeys(keys: Array&lt;string&gt;): DataSharePredicates
 
 目前仅KVDB支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
