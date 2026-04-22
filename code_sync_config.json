@@ -21125,18 +21125,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets",
-				"functions":[
-					{
-						"end_line":30,
-						"name":"Test_Info_Observed",
-						"start_line":15
-					},
-					{
-						"end_line":51,
-						"name":"Info_Initialization",
-						"start_line":36
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets",
@@ -21161,11 +21150,6 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets",
 				"functions":[
-					{
-						"end_line":61,
-						"name":"Two_dimensional_array",
-						"start_line":57
-					},
 					{
 						"end_line":55,
 						"name":"Delayed_change",
