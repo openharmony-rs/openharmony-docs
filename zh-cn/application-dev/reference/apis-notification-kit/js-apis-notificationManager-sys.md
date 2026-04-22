@@ -6647,9 +6647,9 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
 
 ## notificationManager.snoozeNotification
 
-snoozeNotification(hashCode: string, delayTime: long): Promise\<void\>
+snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 
-通知稍后提醒。此接口允许设置通知稍后提醒，在指定时间间隔后再次发出提醒。使用Promise异步回调。
+通知稍后提醒。此接口允许设置通知在指定时间间隔后再次发出提醒。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
