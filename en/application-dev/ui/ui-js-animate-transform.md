@@ -147,7 +147,7 @@ Decrease the y-coordinate over a time frame to make the ball bounce back. Gradua
   25%{
     transform: translate(20px,500px);
   }
-  /* Let the ball fall. */
+  /* Start ball falling. */
   35%{
     transform: translate(30px,900px);
   }
@@ -429,7 +429,7 @@ text{
 
 ## Setting matrix
 
-The **matrix** attribute defines a transformation matrix with six input parameters: **scaleX**, **skewY**, **skewX**, **scaleY**, **translateX**, and **translateY**. In the following example, the matrix attribute is set to matrix(1,0,0,1,0,200) to move and tilt the component.
+The **matrix** attribute defines a transformation matrix with six parameters: **scaleX**, **skewY**, **skewX**, **scaleY**, **translateX**, and **translateY**. In the following example, **matrix** is set to **matrix(1,0,0,1,0,200)** to skew and translate the component.
 
 ```html
 <!-- xxx.hml -->
@@ -582,7 +582,6 @@ You can set multiple **transform** attributes at the same time to apply differen
 ![en-us_image_0000001220554911](figures/en-us_image_0000001220554911.gif)
 
 > **NOTE**
->
 > - When multiple **transform** attributes are set, the later one overwrites the previous one. To apply multiple transform styles at the same time, use the shorthand notation; that is, write multiple style values in one **transform**, for example, **transform: scale(1) rotate(0) translate(0,0)**.
 >
 > - When using the shorthand notation, note that the animation effect varies according to the sequence of the style values.

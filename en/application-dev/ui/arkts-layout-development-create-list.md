@@ -792,9 +792,9 @@ In the example of the message list, the **end** parameter is set to a custom del
          .width(40)
          .height(40)
      }
-     // ···
+     // ...
      .onClick(() => {
-       // this.messages is the list data source, which can be constructed as required. A specified data item can be deleted from the data source upon click.
+       // this.arr is the list data source, which can be constructed as required. A specified data item can be deleted from the data source upon click.
        this.arr.splice(index, 1);
      })
    }
@@ -894,7 +894,7 @@ The process of implementing the addition feature is as follows:
    <!-- @[define_the_data_to_be_done](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDo.ets) -->
    
    ``` TypeScript
-   //ToDo.ets
+   // ToDo.ets
    import { util } from '@kit.ArkTS';
    
    export class ToDo {
@@ -1071,9 +1071,9 @@ The process of implementing the deletion feature is as follows:
    
    ``` TypeScript
    Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-   // ···
+     // ...
    }
-   // ···
+   // ...
    .gesture(
      GestureGroup(GestureMode.Exclusive,
        LongPressGesture()
@@ -1310,10 +1310,10 @@ The process of implementing the collapsing and expanding effect of list items is
      @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
      @State selection: string | null = null;
    
-   // ...
+   // ···
    
      build() {
-       // ...
+       // ···
              Column() {
                List({ space: 10 }) {
                  ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
@@ -1354,7 +1354,7 @@ The process of implementing the collapsing and expanding effect of list items is
              .height('100%')
              .justifyContent(FlexAlign.Start)
              .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
-           // ...
+           // ···
      }
    }
    ```
@@ -1527,7 +1527,7 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
        } else {
          // Handle upward swipes.
        }
-     // ···
+       // ...
      })
      ```
 
@@ -1561,7 +1561,7 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
        if (rect) {
          // Calculate the remaining visible portion of the current item.
          let leftRect = rect.y + rect.height;
-         // Determine the scroll end point.
+         // End point.
          let mainPosition = -velocity * DEFAULT_FRICTION / FRICTION_SCALE;
          if (leftRect + mainPosition > 0.75 * this.listHeight) {
            this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);

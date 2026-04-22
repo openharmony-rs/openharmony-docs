@@ -25,7 +25,7 @@ The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation
 
 
   <!-- @[NavigationModeAuto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeAuto.ets) -->
-  
+
   ``` TypeScript
   Navigation() {
     // ···
@@ -66,7 +66,7 @@ The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation
 
 
   <!-- @[NavigationModeSplit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeSplit.ets) -->
-  
+
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0000;
@@ -235,7 +235,7 @@ Located on the top of the page, the title bar displays the page name and operati
 
 
   <!-- @[NavigationTitleModeMini](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeMini.ets) -->
-  
+
   ``` TypeScript
   Navigation() {
     // ···
@@ -253,7 +253,7 @@ Located on the top of the page, the title bar displays the page name and operati
 
 
   <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
-  
+
   ``` TypeScript
   Navigation() {
     // ···
@@ -270,7 +270,7 @@ The menu bar is in the upper right corner of the **Navigation** component. You c
 ![menu-bar-2](figures/menu-bar-2.jpg)
 
    <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
-   
+
    ``` TypeScript
    let toolTmp: NavigationMenuItem  = {
      'value': 'func',
@@ -287,7 +287,7 @@ The menu bar is in the upper right corner of the **Navigation** component. You c
 You can also reference images in the **resources** folder.
 
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
-   
+
    ``` TypeScript
    let toolTmp: NavigationMenuItem  = {
      'value': 'func',
@@ -306,7 +306,7 @@ You can also reference images in the **resources** folder.
 ![menu-bar](figures/menu-bar.jpg)
 
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
-   
+
    ``` TypeScript
    let toolTmp: NavigationMenuItem  = {
      'value': 'func',
@@ -331,7 +331,7 @@ Use the [toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-compone
 ![free3](figures/free3.jpg)
 
    <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
-   
+
    ``` TypeScript
    let toolTmp: ToolbarItem = {
      'value': 'func',
@@ -359,7 +359,7 @@ Since API version 12, the navigation controller can be inherited. You can custom
 > 2. When the application is in the background, calling stack operation APIs of **NavPathStack** will trigger a refresh upon the application's return to the foreground.
 
    <!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
+
    ``` TypeScript
    @Entry
    @Component
@@ -392,7 +392,7 @@ Since API version 12, the navigation controller can be inherited. You can custom
       ``` TypeScript
       this.pageStack.pushPathByName('pageTwo', 'PageTwo Param');
       ```
- 
+
 2. Navigation with a return callback: An **onPop** callback is added during navigation to obtain return information and process it upon page popping.
 
       <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
@@ -439,26 +439,26 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** implements the page return feature through pop-related APIs, including [pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10), [popToName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoname10), [popToIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoindex10), and [clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10).
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // Return to the previous page.
    this.pathStack.pop();
    ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // Navigate back to the previous pageOne page.
    this.pathStack.popToName('temp4-pageOne');
    ```
 
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) --> 
-   
+
    ``` TypeScript
    // Navigate back to the page at index 0.
    this.pathStack.popToIndex(0);
    ```
    <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Return to the root home page (clear all pages in the stack).
    this.pageStack.clear();
@@ -469,7 +469,7 @@ Since API version 12, the navigation controller can be inherited. You can custom
 NavPathStack provides replace-related APIs (such as [replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11), [replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11), and [replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)) to implement the page replacement functionality.
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Replace the top page of the stack with pageTwo.
    this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
@@ -477,7 +477,7 @@ NavPathStack provides replace-related APIs (such as [replacePath](../reference/a
    ```
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    const DOMAIN = 0x0000;
    // Replacement with an error code: Upon failure, an asynchronous callback is triggered to provide the error code information.
@@ -495,19 +495,19 @@ NavPathStack provides replace-related APIs (such as [replacePath](../reference/a
 NavPathStack uses the Remove APIs (such as [removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11), [removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11) and [removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)) to delete a specific page from the navigation stack.
 
    <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Remove all pages whose name is pageTwo from the stack.
    this.pageStack.removeByName('pageTwo');
    ```
    <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Remove the page with the specified index.
    this.pageStack.removeByIndexes([1]);
    ```
    <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Remove the page with the specified ID.
    this.pageStack.removeByNavDestinationId('1');
@@ -518,13 +518,13 @@ NavPathStack uses the Remove APIs (such as [removeByName](../reference/apis-arku
 **NavPathStack** provides move-related APIs (such as [moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10) and [moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)) to move a specific page to the top of the navigation stack.
 
    <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Move the page named pageTwo to the top of the stack.
    this.pageStack.moveToTop('pageTwo');
    ```
    <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Move the page at index 1 to the top of the stack.
    this.pageStack.moveIndexToTop(1);
@@ -535,7 +535,7 @@ NavPathStack uses the Remove APIs (such as [removeByName](../reference/apis-arku
 The [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11) callback is triggered when a [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) page is first created, allowing you to obtain parameters associated with that page.
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Page01 {
@@ -557,7 +557,7 @@ The [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestinatio
 To receive parameters passed when navigating back, you can use the [onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15) API of the **NavDestination** component.
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    class NavParam {
      desc: string = 'navigation-param'
@@ -577,7 +577,7 @@ To receive parameters passed when navigating back, you can use the [onResult](..
            console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
            return;
          }
-         console.info('TestTag', 'param not instance of NavParam');;
+         console.info('TestTag', 'param not instance of NavParam');
        })
      }
    }
@@ -586,7 +586,7 @@ To receive parameters passed when navigating back, you can use the [onResult](..
 For other service scenarios, you can proactively call the getter APIs of **NavPathStack** (such as [getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10), [getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10), [getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10), and [getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)) to obtain parameters from specific pages.
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // Obtain all page names in the stack.
    this.pageStack.getAllPathName();
@@ -600,22 +600,17 @@ For other service scenarios, you can proactively call the getter APIs of **NavPa
 
 ### Route Interception
 
-**NavPathStack** provides the [setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12) API to set callbacks for page navigation interception of **Navigation**. This API requires passing in a [NavigationInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationinterception12) object, which contains three callback functions described below.
-
-| Name      | Description                                                |
-| ------------ | ------------------------------------------------------ |
-| willShow   | Callback invoked before a page transition, allowing for stack operations, which take effect immediately for the current transition.      |
-| didShow    | Callback invoked after a page transition. Stack operations in this callback take effect on the next transition.|
-| modeChange | Callback invoked when the display mode of the **Navigation** component switches between single-column and split-column. |
+**NavPathStack** provides the [setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12) API to set callbacks for page navigation interception of **Navigation**. This API requires passing in a [NavigationInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationinterception12) object, which contains multiple callbacks such as **willShow** and **didShow**. Different callbacks are invoked at different time. You can select a proper time based on the service requirements.
 
 > **NOTE**
 >
-> Regardless of which callback is invoked, the navigation stack has already changed when the callback is executed.
+> - Regardless of which callback is invoked, the navigation stack has already changed when the callback is executed.
+> - The **interception** callback is triggered earlier than the **willShow** callback and also support interception and redirection. The difference is that the intercepted page is not created when the **interception** callback is triggered, but the intercepted page is created and then destroyed when the **willShow** callback is triggered.
 
-You can implement route interception and redirection capabilities by modifying the navigation stack within the **willShow** callback.
+Take the **willShow** callback as an example. You can modify the navigation stack in the callback to implement route interception and redirection.
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
+
    ``` TypeScript
    const DOMAIN = 0x0000;
    this.pageStack.setInterception({
@@ -820,7 +815,7 @@ To facilitate the decoupling of components from pages, custom components within 
 
 ## Page Transition
 
-The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component provides default transition animations. These animations are activated when operations are performed using the navigation controller, producing different transition effects. (Note that for pages in [dialog](arkts-base-dialog-overview.md) mode, the default transition animations are available only since API version 13.) The **Navigation** component also offers advanced features such as disabling the default transitions and implementing custom transitions as well as shared element transitions. The default animation duration is determined by physical curve parameters and varies across different devices.
+The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component provides default transition animations. These animations are activated when operations are performed using the navigation controller, producing different transition effects. Note that for pages in dialog mode, the default transition animations are available only since API version 13. The **Navigation** component also offers advanced features such as disabling the default transitions and implementing custom transitions as well as shared element transitions. The default animation duration is determined by physical curve parameters and varies across different devices.
 
 ### Disabling Transitions
 
@@ -966,21 +961,7 @@ Different routing modes meet different requirements. Usability and scalability s
 
 The system routing table is an implementation of dynamic routing. [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) supports the system routing table for dynamic routing since API version 12. Each service module ([HSP](../quick-start/in-app-hsp.md) or [HAR](../quick-start/har-package.md)) requires an individual **router_map.json** file. When routing is triggered, the application only needs to pass the name of the page that needs to be routed through the routing API provided by **NavPathStack**. The system then automatically completes the dynamic loading of the target module, page component construction, and route redirection. This way, module decoupling is achieved at the development level. The system routing table supports the Emulator but not the Previewer. The main steps are as follows:
 
-1. Add routing table configuration to the [module.json5](../quick-start/module-configuration-file.md) file of the target module.
-
-    <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
-    
-    ``` JSON5
-    {
-      "module": {
-        // ···
-        "routerMap": "$profile:router_map",
-        // ···
-      }
-    }
-    ```
-
-2. Create the **router_map.json** file in **resources/base/profile** of the project directory. Add the following configuration information:
+1. Create the **router_map.json** file in **resources/base/profile** of the project directory. Add the following configuration information:
    
      ```json
      {
@@ -997,6 +978,19 @@ The system routing table is an implementation of dynamic routing. [Navigation](.
      }
      ```
 
+2. Add routing table configuration to the [module.json5](../quick-start/module-configuration-file.md) file of the target module.
+
+    <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    {
+      "module": {
+        // ···
+        "routerMap": "$profile:router_map",
+        // ···
+      }
+    }
+    ```
     The configuration is described as follows.
 
    | Item| Description|
@@ -1440,62 +1434,64 @@ export struct PageTwo {
 
 
 ### Creating Route Navigation
+
 The implementation procedure is as follows:
 
-1. Configure {"routerMap": "$profile:router_map"} in the project configuration file [module.json5](../quick-start/module-configuration-file.md).
+1. In the **router_map.json** file, define the global routing table. The navigation controller **NavPathStack** can push the corresponding page information onto the stack based on the name in the routing table.
 
-2. In the **router_map.json** file, define the global routing table. The navigation controller **NavPathStack** can push the corresponding page information onto the stack based on the name in the routing table.
-```ts
-{
-  "routerMap" : [
-    {
-      "name" : "WLAN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Bluetooth",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Personal Hotspot",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Connect & Share",
-      "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
-      "buildFunction" : "PageTwoBuilder"
-    },
-    {
-      "name" : "Projection",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Print",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "VPN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Private DNS",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "NFC",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    }
-  ]
-}
-```
+   ```
+   {
+     "routerMap" : [
+       {
+         "name" : "WLAN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Bluetooth",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Personal Hotspot",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Connect & Share",
+         "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
+         "buildFunction" : "PageTwoBuilder"
+       },
+       {
+         "name" : "Projection",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Print",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "VPN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Private DNS",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "NFC",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       }
+     ]
+   }
+   ```
 
-![en-us_image_0000001588458252](figures/arkts-navigation-transition_1.gif)
-<!--RP2--><!--RP2End-->
+2. Configure **{"routerMap": "$profile:router_map"}** in the project configuration file [module.json5](../quick-start/module-configuration-file.md).
+
+   ![en-us_image_0000001588458252](figures/arkts-navigation-transition_1.gif)
+   <!--RP2--><!--RP2End-->

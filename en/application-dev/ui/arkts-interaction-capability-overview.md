@@ -34,7 +34,7 @@ Basic events typically begin with a start marker and end with an end marker, wit
 
 Some basic events do not follow this pattern. For example, key events only have **Down** and **Up** states, with **Down** events reported continuously during sustained presses.
 
-For pointer events, the system ensures that components participating in the response receive the complete event sequence, facilitating proper start/end timing management. For non-pointer events, this guarantee is not provided due to potential focus changes during the event sequence.
+For pointer events, the system ensures that components participating in the response receive the complete event sequence, facilitating proper start/end timing management. For non-pointer events, this guarantee is not provided and the start and end may be dispatched to different components due to potential focus changes during the event sequence.
 
 ## Gesture System
 

@@ -144,7 +144,7 @@ With the global [animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arku
 
 ## Using Component Appearance/Disappearance Transitions
 
-Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSLATE**, **SCALE**, **ROTATE**, or **MOVE**) to configure transition effects for components, enhancing user experience when components are added to or removed from containers. The [NODE_TRANSFORM_CENTER](../reference/apis-arkui/capi-native-node-h.md) property sets the center point for animations including **NODE_SCALE_TRANSITION** and **NODE_ROTATE_ROTATE**.  
+Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSLATE**, **SCALE**, **ROTATE**, or **MOVE**) to configure transition effects for components, enhancing the user experience when components are added to or removed from containers. The [NODE_TRANSFORM_CENTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) property sets the center point for animations including **NODE_SCALE_TRANSITION** and **NODE_ROTATE_ROTATE**.  
 
 1. Design an interactive UI with a button to manage the addition and removal of transition nodes. For details about how to obtain and use the ArkUI_NodeContentHandle node, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
@@ -287,7 +287,7 @@ column->SetWidth(NUM_300);
 column->SetHeight(NUM_250);
 // Create a text node with content "This is a keyframe animation."
 auto textNode = std::make_shared<ArkUITextNode>();
-textNode->SetTextContent("This is a keyframe animation");
+textNode->SetTextContent("This is a keyframe animation.");
 // Set width to 120 (NUM_120 = 120).
 textNode->SetWidth(NUM_120);
 // Set height to 120 (NUM_120 = 120).
@@ -407,7 +407,7 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
     column->SetHeight(NUM_250); // NUM_250 = 250
     // Create a text node with content "This is an animator animation."
     auto textNode = std::make_shared<ArkUITextNode>();
-    textNode->SetTextContent("This is an animator animation");
+    textNode->SetTextContent("This is Animator animation.");
     textNode->SetWidth(NUM_120); // NUM_120 = 120
     textNode->SetHeight(NUM_50); // NUM_50 = 50
     // Create createButton to initialize animator parameters.
