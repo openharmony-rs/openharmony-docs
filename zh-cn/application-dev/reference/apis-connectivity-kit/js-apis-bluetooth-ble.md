@@ -1583,7 +1583,7 @@ try {
 
 removeAllServices(): void
 
-删除server端所有通过[addService](#addservice)添加的服务。
+删除server端所有服务。
 
 **起始版本：** 26.0.0
 
