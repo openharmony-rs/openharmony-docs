@@ -16,7 +16,7 @@
 
 ## accessibilityGroup
 
-ArkTS-Dyn: accessibilityGroup(value: boolean):T
+ArkTS-Dyn: accessibilityGroup(value: boolean): T
 
 ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
 
@@ -50,7 +50,7 @@ ArkTS-Sta: accessibilityGroup(value: boolean | undefined): this
 
 ## accessibilityGroup<sup>14+</sup>
 
-ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions):T
+ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T
 
 ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: AccessibilityOptions): this
 
@@ -93,7 +93,7 @@ ArkTS-Sta: accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions
 
 ## accessibilityText
 
-ArkTS-Dyn: accessibilityText(value: string):T
+ArkTS-Dyn: accessibilityText(value: string): T
 
 ArkTS-Sta: accessibilityText(text: string | undefined): this
 
@@ -123,7 +123,7 @@ ArkTS-Sta: accessibilityText(text: string | undefined): this
 
 ## accessibilityText<sup>12+</sup>
 
-ArkTS-Dyn: accessibilityText(text: Resource):T
+ArkTS-Dyn: accessibilityText(text: Resource): T
 
 ArkTS-Sta: accessibilityText(text: Resource | string | undefined): this
 
@@ -158,7 +158,7 @@ ArkTS-Sta: accessibilityText(text: Resource | string | undefined): this
 
 ## accessibilityDescription
 
-ArkTS-Dyn: accessibilityDescription(value: string):T
+ArkTS-Dyn: accessibilityDescription(value: string): T
 
 ArkTS-Sta: accessibilityDescription(description: string | undefined): this
 
@@ -188,7 +188,7 @@ ArkTS-Sta: accessibilityDescription(description: string | undefined): this
 
 ## accessibilityDescription<sup>12+</sup>
 
-ArkTS-Dyn: accessibilityDescription(description: Resource):T
+ArkTS-Dyn: accessibilityDescription(description: Resource): T
 
 ArkTS-Sta: accessibilityDescription(description: Resource | string | undefined): this
 
@@ -222,7 +222,7 @@ ArkTS-Sta: accessibilityDescription(description: Resource | string | undefined):
 
 ## accessibilityLevel
 
-ArkTS-Dyn: accessibilityLevel(value: string):T
+ArkTS-Dyn: accessibilityLevel(value: string): T
 
 ArkTS-Sta: accessibilityLevel(value: string | undefined): this
 
@@ -253,7 +253,7 @@ ArkTS-Sta: accessibilityLevel(value: string | undefined): this
 
 ## accessibilityVirtualNode<sup>11+</sup>
 
-ArkTS-Dyn: accessibilityVirtualNode(builder: CustomBuilder):T
+ArkTS-Dyn: accessibilityVirtualNode(builder: CustomBuilder): T
 
 ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined): this
 
@@ -287,7 +287,7 @@ ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined): this
 
 ## accessibilityChecked<sup>13+</sup>
 
-ArkTS-Dyn: accessibilityChecked(isCheck: boolean):T
+ArkTS-Dyn: accessibilityChecked(isCheck: boolean): T
 
 ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
 
@@ -322,7 +322,7 @@ ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
 
 ## accessibilitySelected<sup>13+</sup>
 
-ArkTS-Dyn: accessibilitySelected(isSelect: boolean):T
+ArkTS-Dyn: accessibilitySelected(isSelect: boolean): T
 
 ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined): this
 
@@ -357,7 +357,7 @@ ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined): this
 
 ## accessibilityRole<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityRole(role: AccessibilityRoleType):T
+ArkTS-Dyn: accessibilityRole(role: AccessibilityRoleType): T
 
 ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 
@@ -529,7 +529,7 @@ ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 
 ## accessibilityNextFocusId<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityNextFocusId(nextId: string):T
+ArkTS-Dyn: accessibilityNextFocusId(nextId: string): T
 
 ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
 
@@ -559,7 +559,7 @@ ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
 
 ## accessibilityDefaultFocus<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityDefaultFocus(focus: boolean):T
+ArkTS-Dyn: accessibilityDefaultFocus(focus: boolean): T
 
 ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
 
@@ -589,7 +589,7 @@ ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
 
 ## accessibilityUseSamePage<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
+ArkTS-Dyn: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T
 
 ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefined): this
 
@@ -640,7 +640,7 @@ ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefi
 
 ## accessibilityScrollTriggerable<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityScrollTriggerable(isTriggerable: boolean):T
+ArkTS-Dyn: accessibilityScrollTriggerable(isTriggerable: boolean): T
 
 ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined): this
 
@@ -671,7 +671,7 @@ ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined): t
 
 ## accessibilityTextHint<sup>12+</sup>
 
-ArkTS-Dyn: accessibilityTextHint(value: string):T
+ArkTS-Dyn: accessibilityTextHint(value: string): T
 
 ArkTS-Sta: accessibilityTextHint(value: string | undefined): this
 
@@ -705,7 +705,7 @@ ArkTS-Sta: accessibilityTextHint(value: string | undefined): this
 
 ## accessibilityFocusDrawLevel<sup>19+</sup>
 
-ArkTS-Dyn: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
+ArkTS-Dyn: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T
 
 ArkTS-Sta: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel | undefined): this
 
