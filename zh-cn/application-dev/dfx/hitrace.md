@@ -662,7 +662,7 @@ $ hitrace --dump_bgsrv -o /data/local/test
 2026/03/27 17:25:58 error: illegal path
 ```
 
-**可能原因&amp;解决方法**
+**可能原因&解决方法**
 
 illegal path表示指定的路径非法，可能的原因包括：
 
