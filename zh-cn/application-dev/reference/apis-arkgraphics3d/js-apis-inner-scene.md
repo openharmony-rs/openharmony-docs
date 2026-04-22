@@ -198,6 +198,44 @@ function createImageResource(): Promise<Image> {
 }
 ```
 
+### createImageStream
+createImageStream(params: SceneResourceParameters): Promise\<ImageStream>
+
+根据指定场景名称参数创建流图片，使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| params | [SceneResourceParameters](#sceneresourceparameters) | 是 | 创建流图片的参数。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<[ImageStream](js-apis-inner-scene-resources.md#imagestream)> | Promise对象，返回创建的流图片。 |
+
+**示例：**
+```ts
+import { ImageStream, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
+
+function createImageStreamResource(): Promise<ImageStream> {
+  const renderContext: RenderContext | null = Scene.getDefaultRenderContext();
+  if (!renderContext) {
+    return Promise.reject(new Error("RenderContext is null"));
+  }
+  const renderResourceFactory: RenderResourceFactory = renderContext.getRenderResourceFactory();
+  let imageStreamParams: SceneResourceParameters = {
+    name: "sampleImageStream"
+  };
+  return renderResourceFactory.createImageStream(imageStreamParams);
+}
+```
+
 ### createMesh<sup>20+</sup>
 
 createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise\<MeshResource>

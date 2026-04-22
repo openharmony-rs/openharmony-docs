@@ -8,10 +8,10 @@
 
 ## 使用场景
 
-ArkWeb（方舟Web）提供了Web组件，用于在应用程序中显示Web页面内容。常见使用场景包括：
-- 应用集成Web页面：应用可以在页面中使用Web组件，嵌入Web页面内容，以降低开发成本，提升开发、运维效率。
+ArkWeb（方舟Web）提供了Web组件，用于在应用中显示Web页面内容。常见使用场景包括：
+- 应用集成Web页面：应用可以在界面中使用Web组件，嵌入Web页面内容，以降低开发成本，提升开发、运维效率。
 
-- 浏览器网页浏览场景：浏览器类应用可以使用Web组件，打开三方网页，使用无痕模式浏览Web页面，设置广告拦截等。
+- 浏览器网页浏览场景：浏览器类应用可以使用Web组件，打开三方Web网页，使用无痕浏览模式浏览Web页面，设置广告拦截等。
 
 - 小程序：小程序类宿主应用可以使用Web组件，渲染小程序的页面，实现同层渲染，视频托管等小程序的功能。
 
@@ -37,7 +37,7 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 ## 需要权限
 
-使用Web组件访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+使用Web组件访问在线Web网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
   ```ts
   "requestPermissions":[
@@ -51,14 +51,14 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 - 可依据ArkWeb内核版本在相关网站查询W3C标准的支持情况。例如：https://developer.mozilla.org/en-US/ 和 https://webassembly.org/features/ 。
 
-- Web内核版本：ArkWeb基于谷歌Chromium内核开发，系统版本与Chromium版本的对应关系如表格所示。
+- ArkWeb内核版本：ArkWeb基于谷歌Chromium内核开发，系统版本与Chromium版本的对应关系如表格所示。
 
   | 系统版本 | Chromium版本 |
   | --- | --- |
   | OpenHarmony 4.0及之前 | M99 |
   | OpenHarmony 4.1-5.1 | M114 |
   | OpenHarmony 6.0 | M132（默认，推荐使用，请参考[M114->M132差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_114_132.md)）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)） |
-  | OpenHarmony开发套件（基于API 23） | M132 |
+  | OpenHarmony开发套件（基于API23） | M132 |
   | OpenHarmony 7.0 | M144（默认，推荐使用，请参考[M132->M144差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_132_144.md)） |
 <!--RP3--><!--RP3End-->
 

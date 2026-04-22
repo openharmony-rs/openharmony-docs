@@ -84,7 +84,7 @@ const TAG: string = '[AppServiceExtAbility]';
 export default class AgentExt extends AgentExtensionAbility {
   // 创建AgentExtensionAbility
   onCreate(want: Want) {
-    hilog.info(0x0000, TAG, `onConnect, want: ${want.abilityName}, bundlename: ${want.bundleName}`);
+    hilog.info(0x0000, TAG, `onCreate, want: ${want.abilityName}, bundlename: ${want.bundleName}`);
   }
 }
 ```

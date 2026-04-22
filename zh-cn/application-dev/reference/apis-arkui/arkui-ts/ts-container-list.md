@@ -518,7 +518,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>单位：vp <br/>设置异常值如负数、非数字Resource时，按默认值处理。|
+| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>参数类型为number时单位为vp。 <br/>设置异常值如负数、非数字Resource时，按默认值处理。|
 
 ### contentEndOffset<sup>11+</sup>
 
@@ -554,7 +554,7 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>单位：vp <br/>设置异常值如负数、非数字Resource时，按默认值处理。|
+| offset  | number \| [Resource](ts-types.md#resource) | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>参数类型为number时单位为vp。 <br/>设置异常值如负数、非数字Resource时，按默认值处理。|
 
 ### childrenMainSize<sup>12+</sup>
 
@@ -705,6 +705,26 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 | ------ | ------ | ---- | -------------------------------------------------- |
 | supported  | boolean \| undefined | 是   | 当前List组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
 
+### backPressBehavior
+
+backPressBehavior(behavior: ListBackPressBehavior | undefined)
+
+设置List组件的系统返回键行为。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                               |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| behavior  | [ListBackPressBehavior](#listbackpressbehavior) \| undefined | 是   | List组件的系统返回键行为选项。当前支持通过[ListBackPressBehavior](#listbackpressbehavior)参数，配置系统返回键生效时，是否收起已展开的ListItem的划出组件。<br/>设置为undefined时，恢复默认行为，即系统返回键生效时，收起已展开的ListItem的划出组件。|
+
 ## ListItemAlign<sup>9+</sup>枚举说明
 
 设置子组件在List交叉轴方向的对齐方式。
@@ -761,6 +781,22 @@ ListItemGroup吸顶或吸底效果枚举。
 | ------ | ------ | ---------------------------------------- |
 | NORMAL   | 0 | 默认列表限位动画速度，通常用于列表项尺寸较大，划一下滚动一个列表项场景。            |
 | SLOW  | 1 | 列表限位动画速度较慢，通常用于列表项尺寸较小，划一下滚动多个列表项场景。 |
+
+## ListBackPressBehavior
+
+定义List组件的系统返回键行为。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称             | 类型    | 只读 | 可选 | 说明  |
+| ---------------- | ------- | -- | -- | ------------------------------------------------------------------------------------------- |
+| closeSwipeAction | boolean | 否 | 是 | 系统返回键生效时是否收起ListItem的划出组件。<br/>true表示收起ListItem的划出组件；false表示不收起ListItem的划出组件。<br/>默认值：true |
 
 ## CloseSwipeActionOptions<sup>11+</sup>对象说明
 

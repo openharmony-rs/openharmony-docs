@@ -256,7 +256,7 @@ Defines a VPN observer object. It is used to listen for VPN-related events. Befo
 
 onAuthorizationResult(callback: Callback\<boolean\>): void
 
-Registers a listener for the user authorization result. The authorization result is displayed in a dialog box after [vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver) is called. The notification is sent only when the user taps the dialog box, and only the result of the current VPN is received. If you do not need to listen for the authorization result, call [offAuthorizationResult](#offauthorizationresult) to cancel the registration.
+Registers a listener for the user authorization result. The authorization result is displayed in a dialog box after [startVpnExtensionAbility](#vpnextensionstartvpnextensionability) is called. The notification is sent only when the user taps the dialog box, and only the result of the current VPN is received. If you do not need to listen for the authorization result, call [offAuthorizationResult](#offauthorizationresult) to cancel the registration.
 
 >**NOTE**
 >
@@ -757,6 +757,7 @@ Defines the VPN configuration.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
+<!--Table: 19%; 20%; 8%; 8%; 45%-->
 | Name            | Type                                     | Read-only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs. Before API version 23, a maximum of 64 IP addresses are supported. Starting from API version 23, a maximum of 2000 IP addresses are supported.                                 |

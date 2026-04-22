@@ -994,11 +994,11 @@ Allows an application to register and deregister the crypto extension.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices | tablets | phones
 
 **Since**: 22
 
-**Changelog**: Since API version 24, this permission is also available on tablets.
+**Changelog**: This permission is also available on tablets since API version 24 and on phones since API version 26.0.0.
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
@@ -1132,7 +1132,7 @@ Allow an application to use the accessory connection service for pairing and aut
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 26.0.0
+**Since**: 24
 
 ## ohos.permission.CHECK_CALL_LOG
 
@@ -1201,5 +1201,19 @@ Allows an application to use float views.
 **Authorization mode**: user_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets 
+
+**Since**: 26.0.0
+
+## ohos.permission.GET_CALL_TRANSFER_INFO
+
+Allows an application to get call forwarding status.
+
+<!--RP80--><!--RP80End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0

@@ -95,3 +95,20 @@ In this callback function, the parameter type is [RotationChangeInfo](arkts-apis
 | Type| Description|
 | -------------------------------- | ------------------------------------ |
 | U | Value of type [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void.|  |
+
+## WindowEventListener<sup>24+</sup>
+
+type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
+
+Callback function for window lifecycle event notifications.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | ---- | ------------------ |
+| windowId | number  | Yes | ID of the window whose lifecycle changes.|
+| event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | Yes| Window lifecycle event type.|

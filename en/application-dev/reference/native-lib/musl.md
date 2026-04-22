@@ -1,5 +1,10 @@
 # musl libc
-
+<!--Kit: NDK-->	 
+<!--Subsystem: arkcompiler-->	 
+<!--Owner: @da_wei_li11-->	 
+<!--Designer: @liyiming13-->	 
+<!--Tester: @zsw_zhushiwei-->	 
+<!--Adviser: @fang-jinxu-->
 ## Overview
 The C standard library (libc) provides standard header files and common library implementations (such as input/output processing and string handling) in C language programming.
 
@@ -11,19 +16,19 @@ For details about the differences between musl and glibc, see [Functional differ
 
 C11 is implemented by [libc, libm, and libdl](https://en.cppreference.com/w/c/header). 
 
-- libc: provides thread-related interfaces and a majority of standard interfaces.
+libc: provides thread-related interfaces and a majority of standard interfaces.
 
-- libm: provides mathematical library interfaces. Currently, OpenHarmony provides a link to libm, and the interfaces are defined in libc.
+libm: provides mathematical library interfaces. Currently, OpenHarmony provides a link to libm, and the interfaces are defined in libc.
 
-- libdl: provides dynamic linker interfaces such as dlopen. Currently, OpenHarmony provides a link to libdl, and the interfaces are defined in libc.
+libdl: provides dynamic linker interfaces such as dlopen. Currently, OpenHarmony provides a link to libdl, and the interfaces are defined in libc.
 
 ## musl Version
 
-- 1.2.0
+1.2.0
 
-- 1.2.3 since OpenHarmony 4.0
+1.2.3 since OpenHarmony 4.0
 
-- 1.2.5 since OpenHarmony 5.0
+1.2.5 since OpenHarmony 5.0
 
 ## Supported Capabilities
 OpenHarmony provides header files and library interfaces that align with C99, C11, and POSIX standards, though not fully compliant. It supports Armv7-A, Arm64, and x86_64 architectures.
@@ -35,9 +40,9 @@ To better accommodate the basic features of OpenHarmony devices, such as high pe
 2. **dlclose()** can be used to unload a dynamic library. This capability is not supported by musl.
 3. The symbol-versioning is supported.
 4. **dlopen()** can directly load uncompressed files in a .zip package.
-
+<!--Del-->
 ### Debugging Capabilities
-The libc provides dynamic enabling of debug logging (disabled by default). The debug logs help you learn about exceptions of the libc. With this function, you only need to set **param**, which eliminates the need for rebuilding the libc. However, you are advised not to enable debug logging in official versions because it affects the running performance.
+The libc provides dynamic enabling of debug logging (enabled by default). The debug logs help you learn about exceptions of the libc. With this function, you only need to set **param**, which eliminates the need for rebuilding the libc. However, you are advised not to enable debug logging in official versions because it affects the running performance.
 
 **Functionality of musl.log**
 
@@ -63,6 +68,7 @@ param set musl.log.ld.app.{app_name} true
 param set musl.log.ld.all true
 param set musl.log.ld.app.{app_name} false
 ```
+<!--DelEnd-->
 ## musl API Difference
 
 | API         | Description                                                                                        |

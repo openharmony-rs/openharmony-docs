@@ -1,10 +1,10 @@
 # Mdm Kit（企业设备管理服务）<!--mdm-api-->
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS API<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager（账户管理）](js-apis-enterprise-accountManager.md)

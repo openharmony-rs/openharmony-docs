@@ -25,7 +25,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -38,7 +38,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -50,7 +50,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -65,7 +65,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -80,7 +80,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -99,7 +99,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -114,14 +114,14 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | capList   | string[] | 否   | 是   | 表示能力集合, 包含页面内容、页面链接、文本选择等能力。 具体能力项见下表。|
 | groupId | string | 否 | 是 | 业务分组ID。按业务场景预设的一组能力集合。可统一订阅业务场景。具体分组ID见下表。|
 
-**参数约束说明**：<br>
+参数约束说明：<br>
 用户可通过能力项（capList）或分组 ID（groupId）使用屏上感知功能。
 * 逻辑关系：capList 与 groupId 互为补充必填项, 至少需提供其一，且不为空。<br>
 * 校验规则：调用接口时，系统会单独检测capList和groupId。<br>
@@ -153,7 +153,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
@@ -165,7 +165,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
@@ -189,11 +189,11 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| itemInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、截屏和其它实体信息。|
+| itemInfo   | Record<string, Object> | 是   | 否   | 感知结果实体信息，包括内容、链接、截屏和其它实体信息。|
 
 ## EntityInfo<sup>23+</sup>
 
@@ -201,12 +201,12 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| entityName   | string | 否   | 否   | 感知结果实体名称，固定内容。 |
-| entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其它实体。|
+| entityName   | string | 是   | 否   | 感知结果实体名称，固定内容。 |
+| entityInfo   | Record<string, Object> | 是   | 否   | 感知结果实体信息，包括内容、链接、图像和其它实体。|
 
 ## OnscreenAwarenessInfo<sup>23+</sup>
 
@@ -214,27 +214,27 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| resultCode  | number | 否   | 否   | 返回码，默认0 表示成功。 |
-| timestamp   | number | 否   | 否   | 表示进入特定页面的时间戳。 |
-| uid   | string | 否   | 是   | 表示应用UID。 |
-| bundleName  | string | 否   | 是   | 应用包名。 |
-| appName  | string | 否   | 是   | 应用名称。 |
-| miniProgramId | string | 否   | 是   | 小程序ID，如微信、支付宝等三方应用小程序ID。|
-| miniProgramName | string | 否   | 是  | 小程序名称，三方应用小程序名称。 |
-| appIndex   | number | 否   | 是   | 应用索引。 |
-| pageId     | string | 否   | 是   | 应用页面ID。 |
-| sampleId   | string | 否   | 是   | 采集记录ID。 |
-| collectStrategy   | number | 否   | 是   | 页面采集策略，是 [CollectStrategy](#collectstrategy23) 的按位或运算组合。 |
-| displayId   | number | 否   | 是   | 屏幕ID。 |
-| windowId    | number | 否   | 是   | 窗口ID。 |
-| languageInfo | string | 否 | 是 | 页面语言信息。|
-| pageTags | string[] | 否 | 是 | 页面标签信息。|
-| items  | [AwarenessItem](#awarenessitem23)[] | 否   | 是   | 数据项信息。|
-| entityInfo  | [EntityInfo](#entityinfo23)[] | 否   | 是   | 实体信息。|
+| resultCode  | number | 是   | 否   | 返回码，默认0 表示成功。 |
+| timestamp   | number | 是   | 否   | 表示进入特定页面的时间戳。 |
+| uid   | string | 是    | 是   | 表示应用UID。 |
+| bundleName  | string | 是    | 是   | 应用包名。 |
+| appName  | string | 是    | 是   | 应用名称。 |
+| miniProgramId | string |是    | 是   | 小程序ID，如微信、支付宝等三方应用小程序ID。|
+| miniProgramName | string | 是    | 是  | 小程序名称，三方应用小程序名称。 |
+| appIndex   | number | 是    | 是   | 应用索引。 |
+| pageId     | string | 是   | 是   | 应用页面ID。 |
+| sampleId   | string | 是    | 是   | 采集记录ID。 |
+| collectStrategy   | number | 是    | 是   | 页面采集策略，是 [CollectStrategy](#collectstrategy23) 的按位或运算组合。 |
+| displayId   | number | 是    | 是   | 屏幕ID。 |
+| windowId    | number | 是    | 是   | 窗口ID。 |
+| languageInfo | string | 是  | 是 | 页面语言信息。|
+| pageTags | string[] | 是  | 是 | 页面标签信息。|
+| items  | [AwarenessItem](#awarenessitem23)[] | 是    | 是   | 数据项信息。|
+| entityInfo  | [EntityInfo](#entityinfo23)[] | 是    | 是   | 实体信息。|
 
 ## ReadingScreenPermissionStatus<sup>23+</sup>
 
@@ -242,12 +242,12 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| readingState  | number | 否   | 否   | 表示是否允许读屏。<br>0：不允许读屏。<br>1：允许读屏。 |
-| readingCode   | number | 否   | 否   | 如果屏幕无法读取，将返回相应的状态码。 |
+| readingState  | number | 是    | 否   | 表示是否允许读屏。<br>0：不允许读屏。<br>1：允许读屏。 |
+| readingCode   | number | 是    | 是   | 如果屏幕无法读取，将返回相应的状态码。 |
 
 
 ## onScreen.getPageContent
@@ -260,7 +260,7 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -314,7 +314,7 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -385,7 +385,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -448,7 +448,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个感知信息项。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 否   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个感知信息项。|
 
 **错误码**：
 
@@ -558,7 +558,8 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-|capture接口的capList支持的能力列表|功能说明|
+capture接口支持的capList能力列表
+|capList能力列表|功能说明|
 | ---- | ------ |
 |UiImage|获取页面内子图信息|
 |QuickSnap|获取截屏信息|
@@ -617,7 +618,8 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-|interact接口支持的capList能力列表|功能说明|
+interact接口支持的capList能力列表
+|capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
 
@@ -686,7 +688,8 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-|groupId支持能力列表|对应子项能力|功能说明|
+apperceive接口支持的groupId能力列表
+|groupId能力列表|对应子项能力|功能说明|
 | ---- | ------ | ------|
 |SmartEdge|Acticle|获取阅读场景感知信息|
 |SmartEdge|ShortVideo|获取短视频场景的感知信息|
@@ -738,7 +741,7 @@ onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionS
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -786,7 +789,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 是   | 需取消的回调函数。省略则移除该事件的所有回调。|
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 否   | 需取消的回调函数。省略则移除该事件的所有回调。|
 
 **错误码**：
 
