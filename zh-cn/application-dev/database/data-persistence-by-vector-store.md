@@ -340,11 +340,18 @@ SQL语句中的函数，如下所示：
      const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
      const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
      resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
-     while (resultSet!.goToNextRow()) {
-       let id = resultSet.getValue(0);
-       let dis = resultSet.getValue(1);
+     while (resultSet?.goToNextRow()) {
+       let id = resultSet?.getValue(0);
+       let dis = resultSet?.getValue(1);
      }
-   
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
+
+   try {
      // 不使用参数绑定
      const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
      resultSet = await store!.querySql(QUERY_SQL1);
@@ -352,7 +359,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    
    // 子查询
@@ -365,7 +372,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    
    // 聚合查询
@@ -375,7 +382,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    
    // 多表查询
@@ -386,7 +393,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    ```
 
@@ -401,11 +408,18 @@ SQL语句中的函数，如下所示：
      const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
      const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
      resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0 as long, vectorValue2]);
-     while (resultSet!.goToNextRow()) {
-       let id = resultSet.getValue(0);
-       let dis = resultSet.getValue(1);
+     while (resultSet?.goToNextRow()) {
+       let id = resultSet?.getValue(0);
+       let dis = resultSet?.getValue(1);
      }
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
    
+   try {
      // 不使用参数绑定
      const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
      resultSet = await store!.querySql(QUERY_SQL1);
@@ -413,7 +427,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    
    // 子查询
@@ -426,7 +440,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    
    // 聚合查询
@@ -436,7 +450,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    
    // 多表查询
@@ -447,7 +461,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    ```
 
@@ -465,7 +479,7 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    } finally {
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-     resultSet!.close();
+     resultSet?.close();
    }
    ```
    
