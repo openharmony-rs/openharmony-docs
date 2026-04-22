@@ -11669,9 +11669,9 @@ async function example(context: Context) {
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     predicates.orderByAsc("file_id");
-    let coundAndSize : number[] =
+    let countAndSize : number[] =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCountAndSize(predicates);
-    console.info('count: ' + coundAndSize[0] + ', size: ' + coundAndSize[1]);
+    console.info('count: ' + countAndSize[0] + ', size: ' + countAndSize[1]);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }

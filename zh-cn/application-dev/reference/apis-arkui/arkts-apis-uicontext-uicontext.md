@@ -4813,3 +4813,50 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 | 类型 | 说明 |
 | -------- | ---- |
 | [InputEventInterceptResult](#inputeventinterceptresult) | 事件拦截结果。 |
+
+## setTextSelectionClearPolicy
+
+setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
+
+设置文本组件的文本选择清除策略。未通过该接口设置时，默认策略为TextSelectionClearPolicy.KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                      | 必填 | 说明                                   |
+| ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
+| policy  | [TextSelectionClearPolicy](arkts-apis-uicontext-e.md#textselectionclearpolicy) | 是   | 文本选择清除策略。 |
+
+**示例：**
+
+```ts
+import { TextSelectionClearPolicy } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
+        .copyOption(CopyOptions.LocalDevice)
+      Button('Set Clear Policy')
+        .onClick(() => {
+          this.getUIContext()?.setTextSelectionClearPolicy(TextSelectionClearPolicy.CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

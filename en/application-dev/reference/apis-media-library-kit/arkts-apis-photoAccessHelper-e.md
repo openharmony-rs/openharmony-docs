@@ -103,7 +103,7 @@ Enumerates the keys available for image or video files.
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | URI of the file.<br>**Note**:<br>Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
 | PHOTO_TYPE    | 'media_type'           | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
-| DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The file name length ranges from 1 to 255.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ]<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
+| DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The file name length ranges from 1 to 255.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ].<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
 | SIZE          | 'size'                | File size, in bytes. The size of a moving photo includes the total size of the image and video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
 | DATE_ADDED    | 'date_added'          | Unix timestamp when the file was created, in seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 20.        |
 | DATE_MODIFIED | 'date_modified'       | Unix timestamp when the file content (not the file name) was last modified, in seconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -129,6 +129,7 @@ Enumerates the keys available for image or video files.
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs.|
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | Aspect ratio of the image or video.<br> **Model restriction**: This API can be used only in the stage model.|
 | CHANGE_TIME<sup>23+</sup>  | 'change_time' | Time when the photo is changed.|
+| LOCAL_ASSET_SIZE | 'local_asset_size' | Actual size of the local file.<br>- This property indicates only the size of the local file. The default value **0** indicates a cloud file or an unidentified local file.<br>- This property changes when the local file is a dynamic photo and the mode changes. For example, when a dynamic photo in Gallery is in the disabled state, this property indicates only the size of the cover frame.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## AlbumKeys
 
@@ -428,11 +429,11 @@ Enumerates the predicates.
 | NOT_BETWEEN    | 14   | Matches fields outside a specified range,<br>excluding both endpoints (open interval). It uses the first two elements of the **value** array, where the first element is the lower boundary and the second is the upper boundary. For example, in the array [1, 2, 3, 4], the first two elements are used, with 1 as the lower boundary and 2 as the upper boundary.|
 
 ## GridLevel<sup>23+</sup>
- 	  	 
+    
 Enumerates the levels of grid columns after Picker is started.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
- 	
+    
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -456,3 +457,38 @@ Enumerates the grid pinch mode types.
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
 | FULL_FUNCTION_GRID | 0 | Users are allowed to pinch the grid, and then select it or click it to operate the large image.|
+
+
+## AvailabilityStatus
+
+Enumerates the availability status of the media library.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| AVAILABLE |  'available' |  The media library is available.|
+| UNAVAILABLE |  'unavailable' |  The media library is unavailable.|
+
+## MediaAssetPermissionState
+
+Enumerates the permission states for reading media library assets.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| URI_FORMAT_ERROR | 0 | The URI format is incorrect or the URI is not a media library URI.|
+| FILE_NOT_EXIST | 1 | The asset does not exist. The asset may be hidden, moved to the recycle bin, or permanently deleted.|
+| READ_PERMISSION | 2 | The application has the read permission when obtaining the asset.|
+| NO_READ_PERMISSION | 3 | The application does not have the read permission when obtaining the asset.|

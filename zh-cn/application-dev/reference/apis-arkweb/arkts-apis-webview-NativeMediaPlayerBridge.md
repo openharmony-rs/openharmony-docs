@@ -121,7 +121,7 @@ setMuted(muted: boolean): void
 
 setPlaybackRate(playbackRate: number): void
 
-设置播放速度。
+设置播放速率。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -129,7 +129,7 @@ setPlaybackRate(playbackRate: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| playbackRate | number | 是 | 播放倍率。<br>取值范围: [0, 10.0]，其中1表示原速播放。 |
+| playbackRate | number | 是 | 播放速率。<br>取值范围：[0, 10.0]，其中1表示原速播放。 |
 
 **示例：**
 

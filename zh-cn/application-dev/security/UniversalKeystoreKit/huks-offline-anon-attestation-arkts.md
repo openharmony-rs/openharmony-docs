@@ -20,7 +20,7 @@
 
 2. 初始化参数集。
 
-   [HuksParam[]](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)中的HuksParam字段参数必须包含[HUKS_TAG_ATTESTATION_CHALLENGE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性,可选参数包含[HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，[HUKS_TAG_ATTESTATION_ID_ALIAS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性。
+   [HuksParam[]](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)中的HuksParam字段参数必须包含[HUKS_TAG_ATTESTATION_CHALLENGE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性,可选参数包含[HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)、[HUKS_TAG_ATTESTATION_ID_ALIAS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性。
 
 3. 生成非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
@@ -29,7 +29,7 @@
 ## 开发案例
 
 ``` TypeScript
-import huks from '@ohos.security.huks';
+import { huks } from "@kit.UniversalKeystoreKit";
 import { BusinessError } from "@kit.BasicServicesKit";
 
 function StringToUint8Array(str: String) {
@@ -80,6 +80,6 @@ async function AnonAttestKeyOfflineTest() {
   await huks.anonAttestKeyItemOffline(testKeyAlias, gCommonParam).then((data) => {
     console.info("anonAttestKeyItemOffline success")
   }).catch((error: BusinessError) =>
-  console.error(`anonAttestKeyItemOffline error ${JSON.stringify(error)}`))
+    console.error(`anonAttestKeyItemOffline error ${JSON.stringify(error)}`))
 }
 ```
