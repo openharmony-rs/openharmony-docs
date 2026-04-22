@@ -8,7 +8,7 @@
 
 ## Overview
 
-Opaque SCSI device structure.
+Defines the opaque SCSI device structure.
 
 **Since**: 18
 

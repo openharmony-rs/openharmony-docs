@@ -23,5 +23,5 @@ Defines the raw device information.
 | Name| Description|
 | -- | -- |
 | uint32_t busType | Bus type.|
-| uint16_t vendor | Provider ID.|
+| uint16_t vendor | Vendor ID.|
 | uint16_t product | Product ID.|
