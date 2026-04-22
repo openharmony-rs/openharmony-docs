@@ -1846,6 +1846,92 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 });
 
 ```
+### openEventEditPage
+
+openEventEditPage(id: number): Promise\<void>
+
+通过日程id获取Calendar下符合查询或编辑条件的日程实例，使用Promise异步回调。使用该接口，系统日历可以进行查询和修改日程。
+
+**需要权限**： 从API version 26开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR，ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+
+**系统能力**： SystemCapability.Applications.CalendarData
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**参数**：
+
+| 参数名      | 类型                        | 必填   | 说明         |
+| ----------- | --------------------------- |------|------------|
+| id    | number | 是    | 日历中已存在的日程id。    |
+
+**返回值**：
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
+
+| 错误码ID    | 错误信息                        |
+|----------| ------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 23900001 | Parameter value error. |
+| 23900005 | Invalid parameters. |
+
+**示例**：
+
+```typescript
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { BusinessError } from '@kit.BasicServicesKit';
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+let calendar : calendarManager.Calendar | undefined = undefined;
+const date = new Date();
+const event: calendarManager.Event = {
+  title: 'MyEvent',
+  type: calendarManager.EventType.NORMAL,
+  startTime: date.getTime(),
+  endTime: date.getTime() + 60 * 60 * 1000,
+  location: {
+    location: 'location_2',
+    longitude: 102.101,
+    latitude: 100.99
+  },
+  recurrenceRule: {
+    recurrenceFrequency: calendarManager.RecurrenceFrequency.YEARLY,
+    count: 10000,
+    interval: 2
+  },
+  isAllDay:false,
+  description:'MyEvent'
+  };
+  this.calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
+    console.info(`Succeed in getting calendar`);
+    if (err) {
+      console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+      calendar = data;
+      let eventId: number = 0;
+      await calendar?.addEvent(event).then((dataId: number) => {
+        console.info(`Succeeded in adding event, id -> ${dataId}`);
+        eventId = dataId;
+      }).catch((err: BusinessError) => {
+        // 检查权限是否已成功申请或者参数是否正确。
+        console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
+      });
+      calendar?.openEventEditPage(eventId).then(() => {
+        console.info(`Succeeded in opening EventEditPage`);
+      }).catch((err: BusinessError) => {
+      // 检查参数是否正确。
+      console.error(`Failed openEventEditPage, Code is ${err.code}, message is ${err.message}`);
+    });
+  }
+});
+```
 
 ## CalendarAccount
 
