@@ -1312,9 +1312,9 @@ avRecorder.getAVRecorderConfig((err: BusinessError, config: media.AVRecorderConf
 
 ## getAVRecorderConfig<sup>11+</sup>
 
-ArkTS-Dyn: getAVRecorderConfig(): Promise\<AVRecorderConfig>;
+ArkTS-Dyn: getAVRecorderConfig(): Promise\<AVRecorderConfig>
 
-ArkTS-Sta: getAVRecorderConfig(): Promise\<AVRecorderConfig | undefined>;
+ArkTS-Sta: getAVRecorderConfig(): Promise\<AVRecorderConfig | undefined>
 
 获取实时的配置参数。使用Promise异步回调。
 
@@ -1370,6 +1370,10 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onStateChange23)。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
@@ -1406,6 +1410,10 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offStateChange23)。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -1432,6 +1440,10 @@ on(type: 'error', callback: ErrorCallback): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onError23)。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1479,6 +1491,10 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offError23)。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -1503,6 +1519,10 @@ on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioCapturerChange](#onAudioCapturerChange23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1542,6 +1562,10 @@ off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeIn
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioCapturerChange](#offAudioCapturerChange23)。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -1566,6 +1590,10 @@ on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPhotoAssetAvailable](#onPhotoAssetAvailable23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1626,6 +1654,10 @@ off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsse
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPhotoAssetAvailable](#offPhotoAssetAvailable23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -1650,6 +1682,8 @@ onAudioCapturerChange(callback: Callback<audio.AudioCapturerChangeInfo>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioCapturerChange')](#onAudioCapturerChange11)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1689,6 +1723,8 @@ offAudioCapturerChange(callback?: Callback<audio.AudioCapturerChangeInfo>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioCapturerChange')](#offAudioCapturerChange11)。
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -1714,6 +1750,8 @@ onPhotoAssetAvailable(callback: Callback<photoAccessHelper.PhotoAsset>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('photoAssetAvailable')](#onPhotoAssetAvailable12)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1778,6 +1816,8 @@ offPhotoAssetAvailable(callback?: Callback<photoAccessHelper.PhotoAsset>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('photoAssetAvailable')](#offPhotoAssetAvailable12)。
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -1801,6 +1841,8 @@ onStateChange(callback: OnAVRecorderStateChangeHandler): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onStateChange9)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1836,6 +1878,8 @@ offStateChange(callback?: OnAVRecorderStateChangeHandler): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#offStateChange9)。
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -1859,6 +1903,8 @@ onError(callback: ErrorCallback): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onError9)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1902,6 +1948,8 @@ offError(callback?: ErrorCallback): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offError9)。
 
 **ArkTS-Sta起始版本：** 23
 

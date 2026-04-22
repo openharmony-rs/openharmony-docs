@@ -495,6 +495,8 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
+**ArkTS-Dyn起始版本：** 6
+
 | 名称    | 值   | 说明                                                         |
 | ------- | ---- | ------------------------------------------------------------ |
 | DEFAULT | 0    | 默认编码格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](#codecmimetype8)中的AUDIO_AAC替代。 |
@@ -513,6 +515,8 @@ Codec MIME类型枚举。
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |

@@ -840,12 +840,14 @@ createAudioRecorder(): AudioRecorder
 
 创建音频录制的实例来控制音频的录制。一台设备只允许创建一个录制实例。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[createAVRecorder](#mediacreateavrecorder9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值:**
 
