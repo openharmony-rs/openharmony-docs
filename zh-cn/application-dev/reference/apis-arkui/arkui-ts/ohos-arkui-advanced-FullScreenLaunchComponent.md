@@ -58,12 +58,9 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 > - 若原子化服务通过调用[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)退出，上述回调函数的入参中，"code"取默认值"0"，"want"为"undefined"。
 
 ## 示例
-
 本示例展示组件使用方法和扩展的原子化服务。实际运行时请使用开发者自己的原子化服务appId。
 
-FullScreenLaunchComponent组件需要由使用方调用。在提供方完成本地的安装后，即可实现在使用方应用或者元服务中全屏嵌入式拉起提供方的效果。
-
-**使用方**
+ArkTS-Dyn示例：
 ```ts
 // 使用方入口界面Index.ets内容如下:
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
@@ -77,17 +74,17 @@ struct Index {
     Row() {
       Column() {
         FullScreenLaunchComponent({
-          content: ColumnChild,
+          content: ColumChild,
           appId: this.appId,
           options: {},
           onTerminated: (info) => {
-            console.info(`onTerminated code: ${info.code.toString()}`);
+            console.info("onTerminated code: " + info.code.toString());
           },
           onError: (err) => {
-            console.error(`onError code: ${err.code}, message: ${err.message}`);
+            console.error("onError code: " + err.code + ", message: ", err.message);
           },
           onReceive: (data) => {
-            console.info(`onReceive, data: ${JSON.stringify(data)}`);
+            console.info("onReceive, data: " + JSON.stringify(data));
           }
         }).width("80vp").height("80vp")
       }
@@ -98,10 +95,57 @@ struct Index {
 }
 
 @Builder
-function ColumnChild() {
+function ColumChild() {
   Column() {
     Image($r('app.media.startIcon'))
     Text('test')
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import { Entry, ReceiveCallback, Text, Column, Component, Button, Row, Builder, TerminationInfo } from '@ohos.arkui.component';
+import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
+import { State } from '@ohos.arkui.stateManagement';
+import AtomicServiceOptions from '@ohos.app.ability.AtomicServiceOptions';
+import { ErrorCallback, Callback, BusinessError, RecordData} from '@ohos.base';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State appId: string = '6917573653426122083'; // 原子化服务appId
+
+  build() {
+    Row() {
+      Column() {
+        FullScreenLaunchComponent({
+          content: ColumChild,
+          appId: this.appId,
+          options: {} as AtomicServiceOptions,
+          onTerminated: (info: TerminationInfo) => {
+            console.info("onTerminated code: " + info.code.toString());
+          } as Callback<TerminationInfo>,
+          onError: (err: BusinessError) => {
+            console.error("onError code: " + err.code + ", message: ", err.message);
+          } as ErrorCallback<BusinessError>,
+          onReceive: (data: Record<string, RecordData>) => {
+            console.info("onReceive data: " + JSON.stringify(data));
+          } as ReceiveCallback
+        })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent')
+      .width('100%')
+      .height('100%')
   }
 }
 ```
