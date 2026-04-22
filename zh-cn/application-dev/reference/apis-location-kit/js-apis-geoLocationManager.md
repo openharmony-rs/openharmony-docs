@@ -3166,7 +3166,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.findMatchingWlan} due to limited device capabilities.          |
 |3301100 | The location switch is off.                                           |
-|3301800 | Failed to start WiFi scanning.                                        |
+|3301800 | Failed to start WLAN scanning.                                        |
 
 **示例**
 
@@ -3178,7 +3178,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
     let rssiThreshold: number = -70;
     let needStartScan: boolean = true;
     geoLocationManager.findMatchingWlan(wlanBssidArray, rssiThreshold, needStartScan).then((res) => {
-      console.info("Wlan Bssid Matched Result:" + JSON.stringify(res));
+      console.info("WLAN Bssid Matched Result:" + JSON.stringify(res));
     })
   } catch (error) {
     console.error("findMatchingWlan: errCode" + error.code + ", errMessage" + error.message);
