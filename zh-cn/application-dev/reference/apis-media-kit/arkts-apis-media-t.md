@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## SoundPool<sup>10+</sup>
 
@@ -17,6 +18,10 @@ type SoundPool = _SoundPool
 音频池，提供了系统声音的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
@@ -29,6 +34,10 @@ type PlayParameters = _PlayParameters
 表示音频池播放参数设置。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
