@@ -1242,6 +1242,8 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
 
+单应用添加地理围栏上限为100，超过上限将移除剩余地理围栏中存活时间最短的围栏。
+
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
