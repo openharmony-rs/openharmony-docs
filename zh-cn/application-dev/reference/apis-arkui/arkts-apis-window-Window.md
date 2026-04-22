@@ -8334,7 +8334,7 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange23)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8426,7 +8426,7 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange23)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8911,7 +8911,7 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSubWindowClose](#onsubwindowclose23)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9009,7 +9009,7 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSubWindowClose](#offsubwindowclose23)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9108,7 +9108,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose23)。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9243,7 +9243,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose23)。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -13527,7 +13527,7 @@ setWindowDecorVisible(isVisible: boolean): void
 
 设置窗口标题栏不可见后，当主窗口进入全屏沉浸状态时，此时鼠标Hover到上方窗口标题栏热区上会显示悬浮标题栏。若想禁用悬浮标题栏显示，请使用[setTitleAndDockHoverShown()](#settitleanddockhovershown14)接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -13613,7 +13613,7 @@ getWindowDecorVisible(): boolean
 
 查询窗口标题栏是否可见。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -13674,7 +13674,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 设置窗口标题，使用Promise异步回调。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -13750,7 +13750,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 禁止/使能主窗或子窗标题栏默认移动窗口和双击最大化的功能，当禁用标题栏默认移动窗口和双击最大化的功能时，可使用[startMoving()](#startmoving14)在应用热区中发起拖拽移动，使用[maximize()](#maximize12)实现最大化功能。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -14062,7 +14062,7 @@ ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 由于系统像素转换可能存在精度误差，设置后调用[getWindowDecorHeight()](#getwindowdecorheight11)获取的值可能与设置的值存在1vp的差异。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -14125,7 +14125,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 设置装饰栏按钮样式，仅对主窗和子窗生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -14228,7 +14228,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 获取装饰栏按钮样式，仅对主窗和子窗生效。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -14296,7 +14296,7 @@ ArkTS-Sta: getWindowDecorHeight(): int
 
 由于系统像素转换可能存在精度误差，调用[setWindowDecorHeight()](#setwindowdecorheight11)设置的值与获取的值可能存在1vp的差异。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -14356,7 +14356,7 @@ getTitleButtonRect(): TitleButtonRect
 
 获取主窗口或启用装饰的子窗口的标题栏上的最小化、最大化、关闭按钮矩形区域。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -14787,7 +14787,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 设置主窗标题栏上的最大化、最小化、关闭按钮是否可见。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -17437,7 +17437,7 @@ isInFreeWindowMode(): boolean
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -17477,7 +17477,7 @@ on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -17521,7 +17521,7 @@ onFreeWindowModeChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -17564,7 +17564,7 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -17614,7 +17614,7 @@ offFreeWindowModeChange(callback?: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Sta起始版本：** 23
 
