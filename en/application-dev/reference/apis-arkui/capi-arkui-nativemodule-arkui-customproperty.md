@@ -1,8 +1,8 @@
 # ArkUI_CustomProperty
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
 
 ## Overview
 
-Defines a struct for the custom property information.
+Defines custom property information.
 
 **Since**: 14
 

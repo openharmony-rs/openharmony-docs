@@ -1,4 +1,10 @@
 # AbilityBase_Want
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ```c
 typedef struct AbilityBase_Want AbilityBase_Want
@@ -6,7 +12,7 @@ typedef struct AbilityBase_Want AbilityBase_Want
 
 ## Overview
 
-Declares a Want structure.
+Declares a **Want** object.
 
 **Since**: 20
 

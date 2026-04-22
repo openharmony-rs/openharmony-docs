@@ -1,4 +1,10 @@
 # ArkUI_AttributeItem
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ```c
 typedef struct {...} ArkUI_AttributeItem
@@ -6,7 +12,7 @@ typedef struct {...} ArkUI_AttributeItem
 
 ## Overview
 
-Defines the general input parameter structure of the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) function. Individual attribute-setting API can use appropriate member variables within it to store parameter data of specific types.
+Defines the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) function. This is a general input parameter struct. Individual attribute-setting API can use appropriate member variables within it to store parameter data of specific types.
 
 **Since**: 12
 

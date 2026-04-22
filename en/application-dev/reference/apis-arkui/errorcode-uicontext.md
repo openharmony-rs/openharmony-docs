@@ -1,8 +1,8 @@
 # UI Context Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -94,7 +94,7 @@ This error code is reported when the function is incorrectly called from a non-m
 
 **Possible Causes**
 
-The function must be called from the main thread.
+The function is called from the non-main thread.
 
 **Solution**
 

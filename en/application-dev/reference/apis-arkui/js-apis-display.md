@@ -288,8 +288,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 try {
@@ -336,8 +334,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts 
-import { display } from '@kit.ArkUI';
-
 try {
   let brightNessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
@@ -374,7 +370,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let promise = display.getAllDisplayPhysicalResolution();
 promise.then((resolutionObjects) => {
@@ -416,8 +411,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();
@@ -453,8 +446,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 
 displayClass = display.getPrimaryDisplaySync();
@@ -488,7 +479,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> = [];
 display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
@@ -530,7 +520,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: Array<display.Display> =[];
 let promise: Promise<Array<display.Display>> = display.getAllDisplays();
@@ -644,8 +633,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isFoldable();
 ```
@@ -676,8 +663,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldStatus = display.getFoldStatus();
 console.info(`Succeeded in obtaining fold status. Data: ${data}`);
 ```
@@ -710,8 +695,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldDisplayMode = display.getFoldDisplayMode();
 console.info(`Succeeded in obtaining fold display mode. Data: ${data}`);
 ```
@@ -744,8 +727,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let data: display.FoldCreaseRegion = display.getCurrentFoldCreaseRegion();
 console.info(`Succeeded in obtaining current fold crease region. Data: ${JSON.stringify(data)}`);
 ```
@@ -826,7 +807,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-
 // Unregister all the callbacks that have been registered through on().
 display.off('foldStatusChange');
 
@@ -983,6 +963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // Unregister all the callbacks that have been registered through on().
 display.off('foldAngleChange');
@@ -1060,6 +1041,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // Unregister all the callbacks that have been registered through on().
 display.off('captureStatusChange');
@@ -1097,8 +1079,6 @@ For details about the error codes, see [Display Error Codes](errorcode-display.m
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let ret: boolean = false;
 ret = display.isCaptured();
 ```
@@ -1181,6 +1161,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // Unregister all the callbacks that have been registered through on().
 display.off('foldDisplayModeChange');
@@ -1459,8 +1440,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let relativePosition: display.RelativePosition = {
   displayId: 0,
   position: {
@@ -1513,8 +1492,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let position: display.Position = {
     x: 100,
     y: 200
@@ -1804,7 +1781,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let displayClass: display.Display | null = null;
 try {
@@ -1852,7 +1828,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -1899,7 +1874,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
 
 let callback: Callback<display.Rect> = (data: display.Rect) => {
   console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
@@ -1938,8 +1912,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { display } from '@kit.ArkUI';
-
 let displayClass: display.Display | null = null;
 try {
   displayClass = display.getDefaultDisplaySync();

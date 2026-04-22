@@ -1,8 +1,8 @@
 # Render Node Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -127,11 +127,12 @@ The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is 
 **Description**
 
 This error code is reported when the RenderNode is obtained from a FrameNode and its corresponding FrameNode has been unadopted or destroyed.
+
 Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
 
-The FrameNode from which the RenderNode is obtained has been unadopted or disposed, making all operations except release invalid.
+After a RenderNode is obtained from an adopted FrameNode, if the adopted FrameNode is unadopted or destructed, the RenderNode cannot perform any read or write operation except release.
 
 **Solution**
 
@@ -146,6 +147,7 @@ The node is not adopted.
 **Description**
 
 This error code is reported when an attempt is made to obtain a RenderNode from a node that is not in the adopted state.
+
 Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
@@ -155,4 +157,3 @@ The node is not adopted, making its RenderNode inaccessible.
 **Solution**
 
 Use the **adoptChild** API to have the node adopted by another node before obtaining its RenderNode.
-<!--no_check-->

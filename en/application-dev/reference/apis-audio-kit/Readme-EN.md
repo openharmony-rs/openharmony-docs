@@ -83,5 +83,5 @@
 - Error Codes<!--audio-arkts-errcode-->
   - [Audio Error Codes](errorcode-audio.md)
   <!--Del-->
-  - [Ringtone Error Codes](errorcode-ringtone.md)
+  - [Ringtone Error Codes](errorcode-audio-ringtone-sys.md)
   <!--DelEnd-->

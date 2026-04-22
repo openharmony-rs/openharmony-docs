@@ -1,8 +1,8 @@
 # Auxiliary Node Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @HelloCrease-->
 
@@ -18,7 +18,7 @@ The node has already been adopted.
 
 **Description**
 
-This error code is reported when the node has been accepted as an auxiliary node and cannot be mounted as a child node.<br>
+This error code is reported when the node has been accepted as an auxiliary node and an attempt is made to mount the node as a child node.<br>
 Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
@@ -37,7 +37,7 @@ This node already has a parent node.
 
 **Description**
 
-This error code is reported when the node already has a parent node and cannot be accepted by other nodes.<br>
+This error code is reported when the node already has a parent node and other nodes attempt to accept the node.<br>
 Adoption: establishes a parent-child-like relationship where the parent node provides lifecycle callbacks to the child without actually adding it as a regular child node. The adopted node does not receive events from the parent or respond to events like normal child nodes.
 
 **Possible Causes**
@@ -111,4 +111,4 @@ Adoption: establishes a parent-child-like relationship where the parent node pro
 
 **Solution**
 
-If the node is not accepted as an affiliated node by the target node, there is no need to perform the removal operation for this node.
+If the node is not an auxiliary node accepted by the target node, no removal operation is required.
