@@ -32,8 +32,8 @@ import { media } from '@kit.MediaKit';
 
 | 名称   | 类型    | 只读   | 可选   | 说明                |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url       | string                        | 否   | 否   | 资源URL，需要应用程序打开的资源路径。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| header    | Record<string, string>        | 否   | 是   | 网络请求标头，如果存在，需要应用在下载数据时将头信息设置到HTTP请求中。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| url       | string                        | 否   | 否   | 资源URL，需要应用程序打开的资源路径。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| header    | Record<string, string>        | 否   | 是   | 网络请求标头，如果存在，需要应用在下载数据时将头信息设置到HTTP请求中。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## respondData<sup>18+</sup>
 
@@ -134,6 +134,10 @@ ArkTS-Sta: finishLoading(uuid: long, state: LoadingRequestError): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
