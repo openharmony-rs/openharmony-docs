@@ -274,7 +274,7 @@ try {
 }
 ```
 
-## inputConsumer.offKey<sup>26+</sup>
+## inputConsumer.offKey
 
 offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
