@@ -121,7 +121,7 @@
     let file = await fs.open(path);
     fdPath = fdPath + file.fd;
     this.avPlayer.url = url;
-```
+   ```
 
 4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
 
