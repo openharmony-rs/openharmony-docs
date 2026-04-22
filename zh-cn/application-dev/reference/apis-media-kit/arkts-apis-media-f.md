@@ -209,7 +209,7 @@ ArkTS-Sta: createAVTranscoder(): Promise\<AVTranscoder | undefined>
 >
 > 可创建的视频转码实例不能超过2个。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -591,7 +591,7 @@ ArkTS-Dyn: createMediaSourceWithUrl(url: string, headers?: Record\<string, strin
 ArkTS-Sta: createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource | undefined
 创建流媒体预下载媒体来源实例方法。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -659,7 +659,7 @@ ArkTS-Dyn: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaS
 ArkTS-Sta: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource | undefined
 创建流媒体多码率媒体来源实例方法，当前仅支持HTTP-FLV协议格式多码率。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -697,7 +697,7 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -733,7 +733,7 @@ createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | und
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -247,7 +247,7 @@ ArkTS-Sta: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => lon
 >
 > 客户端在处理完请求后应立刻返回。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -297,7 +297,7 @@ ArkTS-Sta: type SourceReadCallback = (uuid: long, requestedOffset: long, request
 >
 > 客户端在处理完请求后应立刻返回。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -334,7 +334,7 @@ ArkTS-Sta: type SourceCloseCallback = (uuid: long) => void
 >
 > 客户端在处理完请求后应立刻返回。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
