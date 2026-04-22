@@ -8348,7 +8348,7 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 子窗口调用该接口时，设置子窗口模态属性是否启用。启用子窗口模态属性后，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态属性被禁用。
 
-子窗口之外的窗口调用该接口时，会报错。独立子窗调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。其他类型窗口调用该接口时会报错。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8427,7 +8427,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal12)。
 
-子窗口之外的窗口调用该接口时，会报错。独立子窗调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。其他类型窗口调用该接口时会报错。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8831,7 +8831,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 
 创建主窗口、子窗口或悬浮窗下的子窗口，使用Promise异步回调。
 
-独立子窗仅支持在主窗下创建，在其他类型窗口创建返回1300004错误码。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)仅支持在主窗下创建，在其他类型窗口创建返回1300004错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8898,7 +8898,7 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 
 如果该子窗口处于获焦状态，且新的父窗口的子窗口存在层级更高的模态子窗口，则焦点会转移给该模态子窗口。
 
-独立子窗仅支持迁移至主窗口下，迁移至其他类型窗口返回1300009错误码。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)仅支持迁移至主窗口下，迁移至其他类型窗口返回1300009错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9004,7 +9004,7 @@ try {
 
 setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVisible: boolean, isCloseButtonVisible?: boolean): void
 
-设置标题栏上的最大化、最小化、关闭按钮是否可见。仅对主窗和独立子窗生效。
+设置标题栏上的最大化、最小化、关闭按钮是否可见。仅对主窗和[独立子窗](../../windowmanager/window-terminology.md#独立子窗)生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -9171,7 +9171,7 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
 
-独立子窗调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -9232,7 +9232,7 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
 
-独立子窗调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10439,7 +10439,7 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置子窗或模态窗口（即WindowType为TYPE_DIALOG的窗口）的布局信息（position和size）是否跟随主窗，使用Promise异步回调。
 
-1、只支持主窗的一级子窗或模态窗口使用该接口。独立子窗不支持调用，接口调用返回1300004错误码。
+1、只支持主窗的一级子窗或模态窗口使用该接口。其中[独立子窗](../../windowmanager/window-terminology.md#独立子窗)不支持调用，接口调用返回1300004错误码。
 
 2、当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
 
@@ -10529,7 +10529,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 该接口调用生效后，[setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled17)接口调用不生效。
 
-独立子窗不支持调用，调用返回1300004错误码。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)不支持调用，调用返回1300004错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10762,7 +10762,7 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 通过该接口改变子窗口的显示层级时，不会发生焦点切换。推荐使用[shiftAppWindowFocus()](arkts-apis-window-f.md#windowshiftappwindowfocus11)进行焦点切换。
 
-独立子窗调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10834,7 +10834,7 @@ getSubWindowZLevel(): number
 
 获取当前子窗口层级级别。不支持主窗、系统窗调用。
 
-独立子窗调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
