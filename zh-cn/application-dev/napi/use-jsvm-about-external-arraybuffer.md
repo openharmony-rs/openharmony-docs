@@ -10,7 +10,7 @@
 
 ArrayBuffer是JavaScript中的一种数据类型，用于表示通用的、固定长度的原始二进制数据缓冲区。它提供了一种在JavaScript中有效地表示和操作原始二进制数据的方式。
 
-在某些场景下，应用已有一块外部内存（如从文件映射、硬件缓冲区、或其他Native模块分配的内存），希望将其包装为JavaScript的ArrayBuffer对象，以便在JS层进行读写操作。JSVM-API提供了[OH_JSVM_CreateArrayBufferFromExternalMemory](../reference/common/capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口来满足这类场景。
+在某些场景下，应用已有一块外部内存（如从文件映射、硬件缓冲区、或其他Native模块分配的内存），希望将其包装为JavaScript的ArrayBuffer对象，以便在JS层进行读写操作。从API Version 26.0.0开始，JSVM-API提供了[OH_JSVM_CreateArrayBufferFromExternalMemory](../reference/common/capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口来满足这类场景。
 
 ## 基本概念
 
@@ -87,12 +87,14 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_create_arraybuffer_from_external_memory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutExternalArraybuffer/createarraybufferfromexternalmemory/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #define JSVM_EXPERIMENTAL  // 必须在include jsvm.h之前定义，否则无法调用实验接口
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+#include <cstdlib>
+#include <cstring>
+// ...
 
 // 模拟从外部模块获取图像像素数据（RGBA，4像素）
 static void *LoadPixelData(size_t *outSize)
@@ -185,7 +187,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createArrayBufferFromExternal", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 createArrayBufferFromExternal();
 )JS";
 ```
