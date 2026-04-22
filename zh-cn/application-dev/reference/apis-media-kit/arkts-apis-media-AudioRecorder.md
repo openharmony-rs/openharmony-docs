@@ -13,8 +13,6 @@
 
 音频录制管理类，用于录制音频媒体。在调用AudioRecorder的方法前，需要先通过[createAudioRecorder()](arkts-apis-media-f.md#mediacreateaudiorecorderdeprecated) 构建一个AudioRecorder实例。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 ## 导入模块
 
 ```ts
