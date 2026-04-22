@@ -94,7 +94,7 @@ ArkTS-Sta: createAVPlayer(): Promise\<AVPlayer | undefined>
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| ArkTS-Dyn:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta:Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md) \| undefined> | Promise对象。成功时异步返回AVPlayer实例，可用于音视频播放。失败时返回null。 |
+| ArkTS-Dyn: Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)><br>ArkTS-Sta: Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md) \| undefined> | Promise对象。成功时异步返回AVPlayer实例，可用于音视频播放。失败时返回null。 |
 
 **错误码：**
 
@@ -749,10 +749,10 @@ createAudioPlayer(): AudioPlayer
 
 同步方式创建音频播放实例。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
 
