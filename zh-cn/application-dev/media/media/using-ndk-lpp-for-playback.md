@@ -178,10 +178,10 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
 1. 新建工程。下载[示例工程](https://gitcode.com/HarmonyOS_Samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample)，并将示例工程的以下资源复制到对应目录。
 
-   ```
+   ```txt
    lpp_demo-sample/entry/src/main/          
    ├── cpp                                # Native层
-   │   ├── capabilities                    # 能力接口和实现
+   │   ├── capabilities                   # 能力接口和实现
    │   │   ├── include                    # 能力接口
    │   │   ├── demuxer.cpp                # 解封装实现
    │   │   ├── lpp_audio_streamer.cpp     # 低功耗音频流实现
