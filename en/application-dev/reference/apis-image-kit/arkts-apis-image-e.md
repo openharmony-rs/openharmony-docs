@@ -723,3 +723,4 @@ Enumerates the XMAGE color modes.
 | BRIGHT | 1    | Bright.|
 | SOFT   | 2    | Soft focus.|
 | MONO   | 3    | Monochrome.|
+<!--no_check-->
