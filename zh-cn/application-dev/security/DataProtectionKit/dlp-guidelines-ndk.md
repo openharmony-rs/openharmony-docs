@@ -25,7 +25,7 @@
 |DLP_ErrCode OH_DLP_CleanSandboxAppConfig()  |清理沙箱应用配置信息。  |
 
 
-##  开发步骤
+## 开发步骤
 
 1. 在CMakeLists.txt中导入数据防泄漏的共享库，并链接该库。
    ``` c++
