@@ -37,7 +37,7 @@ Text(content?: string | Resource , value?: TextOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| content | string \| [Resource](ts-types.md#resource) | No| Text content. This parameter takes effect when the child component [Span](ts-basic-components-span.md) is not included and [styled string](ts-universal-styled-string.md) is not set.<br>Default value: **' '**<br>**NOTE**<br>Priority of displayed content: Styled string > Content of the **Span** component > Text content of the **Text** component.|
+| content | string \| [Resource](ts-types.md#resource) | No| Plain text. This parameter takes effect when the child component [Span](ts-basic-components-span.md) is not included and [styled string](ts-universal-styled-string.md) is not set.<br>Default value: **' '**<br>**NOTE**<br>Priority of displayed content: Styled string > Content of the **Span** component > Text content of the **Text** component.|
 | value<sup>11+</sup> | [TextOptions](#textoptions11) | No| Initialization options of the component.|
 
 ## Attributes
@@ -46,20 +46,20 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 **Layout and Alignment**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
 | baselineOffset | Sets the offset of the text baseline.|
-| halfLeading<sup>12+</sup> | Sets whether half leading is enabled.|
+| halfLeading<sup>12+</sup> | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.|
 | textAlign | Sets the horizontal alignment mode of the text.|
 | textContentAlign<sup>21+</sup> | Sets the vertical alignment of the text content area within the component.|
-| textVerticalAlign<sup>20+</sup> | Sets the vertical alignment of text paragraphs.|
+| textVerticalAlign<sup>20+</sup> | Sets the vertical alignment of the text.|
 
 **Font Style**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
-| decoration | Sets the color, type, and style of the text decoration.|
-| font<sup>10+</sup> | Sets the text style,|
+| decoration | Style and color of the text decorative line.|
+| font<sup>10+</sup> | Sets the text style.|
 | font<sup>12+</sup> | Sets the font style, with support for font settings.|
 | fontColor | Sets the font color.|
 | fontFamily | Sets the font family.|
@@ -71,21 +71,21 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 | letterSpacing | Sets the letter spacing for a text style.|
 | shaderStyle<sup>20+</sup> | Applies gradient or solid color effects to text.|
 | textCase | Sets the text case.|
-| textShadow<sup>10+</sup> | Sets the text shadow.|
+| textShadow<sup>10+</sup> | Text shadow.|
 
 **Text Overflow, Line Break, and Line Wrapping**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
 | ellipsisMode<sup>11+</sup> | Sets the ellipsis position.|
 | lineBreakStrategy<sup>12+</sup> | Sets the line break rule.|
 | marqueeOptions<sup>18+</sup> | Sets the marquee effect for text.|
-| textOverflow | Sets the display mode when the text is too long.|
+| textOverflow | Sets the display mode for overflowing text.|
 | wordBreak<sup>11+</sup> | Sets the word break rule.|
 
 **Line and Paragraph**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
 | enableAutoSpacing<sup>20+</sup> | Sets whether to enable automatic spacing between Chinese and Western characters.|
 | lineHeight | Sets the text line height.|
@@ -101,7 +101,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 **Font Adaptation**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
 | heightAdaptivePolicy<sup>10+</sup> | Sets the font size adjustment strategy for adaptive text layout.|
 | maxFontScale<sup>12+</sup> | Sets the maximum font scale factor for text.|
@@ -111,10 +111,10 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 **Text Selection and Copy**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
 | caretColor<sup>14+</sup> | Sets the color of the text selection handle, also known as the caret, in the text box.|
-| copyOption<sup>9+</sup> | Sets whether copy and paste is allowed.|
+| copyOption<sup>9+</sup> | Sets whether copy and paste operations are allowed.|
 | draggable<sup>9+</sup> | Sets the drag effect of the selected text.|
 | selectedBackgroundColor<sup>14+</sup> | Sets the background color of the selected text.|
 | selection<sup>11+</sup> | Sets text selection.|
@@ -130,17 +130,17 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 **Custom Menu**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
-| bindSelectionMenu<sup>11+</sup> | Sets the custom context menu on text selection.|
-| editMenuOptions<sup>12+</sup> | Sets the extended options of the custom context menu on selection.|
+| bindSelectionMenu<sup>11+</sup> | Sets the custom selection menu.|
+| editMenuOptions<sup>12+</sup> | Sets the extended options for the custom menu.|
 
 **Other Functionality**
 
-| Attribute| Description|
+| Attributes| Description|
 |------|------|
 | contentTransition<sup>20+</sup> | Text animation effect.|
-| enableHapticFeedback<sup>13+</sup> | Specifies whether to enable haptic feedback.|
+| enableHapticFeedback<sup>13+</sup> | Sets whether to enable haptic feedback.|
 | privacySensitive<sup>12+</sup> | Sets whether to enable privacy mode on widgets.|
 
 The following describes the details of each API.
@@ -153,7 +153,7 @@ Sets the offset of the text baseline.
 
 Percentage values follow default display behavior.
 
-Positive values shift the text upwards, while negative values shift it downwards.
+A positive value moves the content upwards, while a negative value moves it downwards.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -165,23 +165,23 @@ Positive values shift the text upwards, while negative values shift it downwards
 
 | Name| Type                      | Mandatory| Description                            |
 | ------ | -------------------------- | ---- | -------------------------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Offset of the text baseline.<br>Default value: **0**<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Offset of the text baseline.<br>Default value: **0**<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
 
 ### bindSelectionMenu<sup>11+</sup>
 
 bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: TextResponseType, options?: SelectionMenuOptions)
 
-Sets the custom context menu on text selection.
+Sets the custom selection menu.
 
-The duration required for a long-press gesture is 600 ms for **bindSelectionMenu** and 800 ms for **bindContextMenu**. When both **bindSelectionMenu** and **bindContextMenu** are set and both are configured to be triggered by a long-press gesture, **bindSelectionMenu** is triggered first.
+The long-press response duration of **bindSelectionMenu** is 600 ms while that of [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is 800 ms. When both are bound and their triggering methods are set to long press, **bindSelectionMenu** takes precedence.
 
-If the custom menu is too long, embed a [Scroll](./ts-container-scroll.md) component to prevent the keyboard from being blocked.
+When the custom menu is too long, it is recommended that nest a [Scroll](./ts-container-scroll.md) component inside to prevent the keyboard from being obscured.
 
 > **NOTE**
 >
 > This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 >
->  When [editMenuOptions](#editmenuoptions12) is used for configuring the context menu on text selection, the system's default style and trigger conditions are preserved.
+>  When [editMenuOptions](#editmenuoptions12) is used for configuring the text selection menu, the system's default style and trigger conditions are preserved.
 >
 >  In contrast, when [bindSelectionMenu](#bindselectionmenu11) is used, both the menu style and the trigger conditions are fully customizable.
 
@@ -234,7 +234,7 @@ Applies a transition animation to text content. Supports numeric flip animation 
 
 copyOption(value: CopyOptions)
 
-Sets whether copy and paste is allowed.
+Sets whether copy and paste operations are allowed.
 
 Since API version 20, copied text from the **Text** component includes HTML-formatted content in the pasteboard.
 
@@ -244,7 +244,7 @@ Since API version 20, copied text from the **Text** component includes HTML-form
 
 When **copyOption** is set to **CopyOptions.InApp** or **CopyOptions.LocalDevice**:
 
-- A long press on the text will display a context menu that offers the copy and select-all options.
+- A long press on the text will display a menu that offers the copy and select-all options.
 
 - By default, selected text is draggable. To disable dragging, set **draggable** to **false**.
 
@@ -252,7 +252,7 @@ When **copyOption** is set to **CopyOptions.InApp** or **CopyOptions.LocalDevice
 
 The **Text** component listens for **onClick**, which is a non-bubbling event. To allow parent components to respond to clicks within the **Text** area, use [parallelGesture](ts-gesture-settings.md#parallelgesture) on the parent. For implementation guidance, see [Example 7: Setting Text Recognition](#example-7-setting-text-recognition).
 
-Because widgets do not have the long press event, the context menu will not be displayed when users long press text.
+Because widgets do not have the long press event, the menu will not be displayed when users long press text.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -264,7 +264,7 @@ Because widgets do not have the long press event, the context menu will not be d
 
 | Name| Type                                            | Mandatory| Description                                                      |
 | ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | Yes  | Whether copy and paste is allowed.<br>Default value: **CopyOptions.None**|
+| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | Yes  | Whether copy and paste operations are allowed.<br>Default value: **CopyOptions.None**|
 
 ### dataDetectorConfig<sup>11+</sup>
 
@@ -288,7 +288,7 @@ This API must be used together with [enableDataDetector](#enabledatadetector11).
 
 decoration(value: DecorationStyleInterface)
 
-Sets the color, type, and style of the text decoration.
+Style and color of the text decorative line.
 
 >  **NOTE**
 >
@@ -306,7 +306,7 @@ Sets the color, type, and style of the text decoration.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decoration.<br>Default value:<br>{<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
+| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decorative line.<br>Default value:<br>{<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
 
 ### draggable<sup>9+</sup>
 
@@ -332,13 +332,13 @@ If set to **true**, **draggable** must be used in conjunction with [CopyOptions]
 
 editMenuOptions(editMenu: EditMenuOptions)
 
-Sets the extended options of the custom context menu on selection, including the text content, icon, and callback.
+Sets the extended options for the custom menu, including the text content, icon, and callback.
 
-When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or [disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the context menu on selection, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](./ts-text-common.md#oncreatemenu12) callback of **editMenuOptions**.
+When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or [disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the text selection menu, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](./ts-text-common.md#oncreatemenu12) callback of **editMenuOptions**.
 
 >  **NOTE**
 >
->  When [editMenuOptions](#editmenuoptions12) is used for configuring the context menu on text selection, the system's default style and trigger conditions are preserved.
+>  When [editMenuOptions](#editmenuoptions12) is used for configuring the text selection menu, the system's default style and trigger conditions are preserved.
 >
 >  In contrast, when [bindSelectionMenu](#bindselectionmenu11) is used, both the menu style and the trigger conditions are fully customizable.
 
@@ -350,7 +350,7 @@ When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemen
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | Yes  | Extended options of the custom context menu on selection.|
+| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | Yes  | Extended options of the custom menu.|
 
 ### ellipsisMode<sup>11+</sup>
 
@@ -386,30 +386,30 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**|
 
 ### enableDataDetector<sup>11+</sup>
 
 enableDataDetector(enable: boolean)
 
-Enables recognition for special entities within the text. When enableDataDetector is set to true, special entities are recognized.
+Sets whether to enable special entity detection within the text. Special entities are detected when **enableDataDetector** is set to **true**.
 
-The recognized entities are in blue with blue underlines.
+The style of detected entities is as follows: the font color is changed to blue, and a blue underline is added.
 
-``` ts	
-color: '#ff007dff'	
-decoration:{	
-  type: TextDecorationType.Underline,	
-  color: '#ff007dff',	
-  style: TextDecorationStyle.SOLID	
-}	
+```ts
+color: '#ff007dff'
+decoration:{
+  type: TextDecorationType.Underline,
+  color: '#ff007dff',
+  style: TextDecorationStyle.SOLID
+}
 ```
 
 > **NOTE**
 >
-> - This API takes effect only when the underlying device has the text recognition capability.
+> - This API takes effect only when the device has an underlying text detection capability.
 > 
-> - When [textOverflow](#textoverflow) is set to TextOverflow.MARQUEE, special text entities are not identified.
+> - When [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE**, text special entity detection is not performed.
 <!--RP2--><!--RP2End-->
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -420,15 +420,15 @@ decoration:{
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean | Yes  | Whether to enable text recognition.<br>**true**: Enable text recognition. **false**: Disable text recognition.<br>Default value: **false**.|
+| enable  | boolean | Yes  | Whether to enable text recognition.<br>**true**: Enable text recognition. **false**: Disable text recognition.<br>Default value: **false**|
 
 ### enableHapticFeedback<sup>13+</sup>
 
 enableHapticFeedback(isEnabled: boolean)
 
-Specifies whether to enable haptic feedback.
+Sets whether to enable haptic feedback.
 
-To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.
+To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** permission under **requestPermissions** in the [module.json5](../../../quick-start/module-configuration-file.md) file of the project.
 
 ```json
 "requestPermissions": [
@@ -450,7 +450,7 @@ To enable haptic feedback, you must declare the ohos.permission.VIBRATE permissi
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| isEnabled | boolean | Yes  | Whether to enable haptic feedback.<br>**true** to enable, **false** otherwise.<br>Default value: **true**.|
+| isEnabled | boolean | Yes  | Whether to enable haptic feedback.<br>**true** to enable, **false** otherwise.<br>Default value: **true**|
 
 ### enableSelectedDataDetector<sup>22+</sup>
 
@@ -470,15 +470,13 @@ This feature is only effective when [CopyOptions](ts-appendix-enums.md#copyoptio
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | Yes  | Whether to enable entity recognition for selected text.<br>**true**: Enable entity recognition. **false**: Disable entity recognition. Default value: **true**.|
+| enable  | boolean \| undefined | Yes  | Whether to enable entity recognition for selected text.<br>**true**: Entity recognition is enabled. **false**: Entity recognition is disabled. Default value: **true**|
 
 ### font<sup>10+</sup>
 
 font(value: Font)
 
-Sets the text style,
-
-covering the font size, font width, font family, and font style.
+Sets the text style, covering the font size, font width, font family, and font style.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -508,7 +506,7 @@ It is only effective for the **Text** component, not for its child components.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| fontValue | [Font](ts-types.md#font) | Yes | Text style.|
+| fontValue | [Font](ts-types.md#font) | Yes | Sets the text style.|
 | options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font settings.|
 
 ### fontColor
@@ -527,7 +525,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'#e6182431'**.<br>Default value on wearable devices: **'#c5ffffff'**.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'#e6182431'**<br>Default value for wearables: **'#c5ffffff'**|
 
 ### fontFamily
 
@@ -573,7 +571,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 >
 >  When multiple **Text** components are placed in the [Row](ts-container-row.md) container with no specific layout or space allocation settings configured, the components are laid out based on the maximum size of the container. To make sure the sum of the components' main axis sizes does not exceed the main axis size of the container, you can set [layoutWeight](ts-universal-attributes-size.md#layoutweight) or use the [flex layout](ts-universal-attributes-flex-layout.md).
 >
->  The system's default font supports the following liga ligatures: Th, fb, ff, fb, ff, ffh, ffi, ffk, ffl, fh, fi, fk, fl, rf, rt, rv, rx, ry. These ligatures may interfere with the expected rendering of spans and styled strings. To avoid such inconsistencies, consider disabling the liga feature.
+>  The system's default font supports the following ligatures: Th, fb, ff, fb, ffb, ffh, ffi, ffk, ffl, fh, fi, fk, fl, rf, rt, rv, rx, ry. These ligatures may cause unexpected effects of spans and styled strings. Disabling the ligature feature can avoid this issue.
 >
 >  Text rendering behavior is closely tied to the font file in use. For instance, the system's default font supports 8-punctuation compression only for left-side punctuation marks. Right-side punctuation, including exclamation marks, enumeration commas, and question marks, is not affected by this feature.
 
@@ -613,7 +611,7 @@ Sets the text size.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. This parameter cannot be set in percentage.<br>Default value: **16fp**.<br>Default value on wearable devices: **15fp**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. This parameter cannot be set in percentage.<br>Default value: **16fp**<br>Default value on wearable devices: **15fp**|
 
 ### fontStyle
 
@@ -647,9 +645,10 @@ Sets the font weight. If the value is too large, the text may be clipped dependi
 
 **Parameters**
 
+<!--Table: 10%; 25%; 10%; 55%-->
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**.<br>Default value on wearable devices: **FontWeight.Regular**.<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Normal**<br>Default value on wearable devices: **FontWeight.Regular**<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
 
 ### fontWeight<sup>12+</sup>
 
@@ -669,14 +668,14 @@ It is only effective for the **Text** component, not for its child components.<!
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes | Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>The Resource type is supported since API version 20.|
-| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font settings.<br>If enableVariableFontWeight is set to false, variable font weight adjustment is disabled. If weight is set to an integer multiple of 100 within the range of [100, 900], the font weight is the value of weight. If weight is set to a non-multiple of 100, the default value 400 is used.<br>If enableVariableFontWeight is set to true, variable font weight adjustment is enabled. If weight is set to any integer within the range of [100, 900], the font weight is the value of weight.|
+| weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes | Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
+| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12) | No | Font setting options.<br>When **enableVariableFontWeight** in **options** is set to **false**, variable font weight adjustment is disabled. If **weight** is set to a value at intervals of 100 within [100, 900], the font weight uses the specified value. If **weight** is set to a value that is not a multiple of 100, the default value **400** is used.<br>When **enableVariableFontWeight** in **options** is set to **true**, variable font weight adjustment is enabled. If **weight** is set to any integer within [100, 900], the font weight uses the specified value.|
 
 ### halfLeading<sup>12+</sup>
 
 halfLeading(halfLeading: boolean)
 
-Sets whether half leading is enabled.
+Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -686,7 +685,7 @@ Sets whether half leading is enabled.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | boolean | Yes | Sets whether half leading is enabled.<br>Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite.<br>Default value: **false**|
+| halfLeading | boolean | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.<br>Default value: **false**|
 
 ### heightAdaptivePolicy<sup>10+</sup>
 
@@ -698,7 +697,7 @@ The available modes are as follows:
 
 - **MAX_LINES_FIRST**: prioritizes using the [maxLines](#maxlines) attribute to control text height. If the **maxLines** setting results in a layout beyond the layout constraints, the text will shrink to a font size between [minFontSize](#minfontsize) and [maxFontSize](#maxfontsize) to allow for more content to be shown.
 
-- **MIN_FONT_SIZE_FIRST**: prioritizes using the **minFontSize** attribute to control text height. If the text fits on one line at **minFontSize**, the system attempts to increase the font size within the range of **minFontSize** and **maxFontSize** to display the text as large as possible on one line. If the text cannot fit into a single line even at **minFontSize**, it sticks with **minFontSize**.
+- **MIN_FONT_SIZE_FIRST**: prioritizes using the **minFontSize** attribute to control text height. If the text fits on one line at **minFontSize**, the system attempts to increase the font size between **minFontSize** and **maxFontSize** to fill the line with the largest available font size. If the text cannot fit on a single line even at **minFontSize**, it sticks with **minFontSize**.
 
 - **LAYOUT_CONSTRAINT_FIRST**: prioritizes using layout constraints to control text height. If the resultant layout is beyond the layout constraints, the text will shrink to a font size between **minFontSize** and **maxFontSize** to respect the layout constraints. If the text still extends beyond the layout constraints after shrinking to **minFontSize**, the lines that exceed the constraints are deleted.
 
@@ -718,7 +717,7 @@ letterSpacing(value: number | ResourceStr)
 
 Sets the letter spacing for a text style.
 
-If the value specified is a percentage or 0, the default value is used. When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+If the value specified is a percentage or **0**, the default value is used. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
 Negative values compress text. Excessive compression may reduce content area to zero, hiding content.
 
@@ -734,7 +733,7 @@ This setting applies to every character, including those at line endings.
 
 | Name| Type                      | Mandatory| Description          |
 | ------ | -------------------------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Default value: **0**<br>Unit: [fp](ts-pixel-units.md)<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Default value: **0**<br>Unit: [fp](ts-pixel-units.md)<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
 
 ### lineBreakStrategy<sup>12+</sup>
 
@@ -758,11 +757,11 @@ lineHeight(value: number | string | Resource)
 
 Sets the text line height.
 
-If the value is less than or equal to **0**, the line height is unrestricted and adapts to the font size. When the value is a number, the unit is fp. When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+If the value is less than or equal to **0**, the line height is unrestricted and adapts to the font size. When the value is a number, the unit is fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
 >  **NOTE**
 >  
->  If certain characters have significantly taller glyphs than others on the same line, layout anomalies such as clipping, overlap, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
+>  If certain characters have significantly taller glyphs than others in the same line, layout anomalies such as clipping, overlapping, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -780,13 +779,13 @@ If the value is less than or equal to **0**, the line height is unrestricted and
 
 lineHeightMultiple(value: number | undefined)
 
-Sets the text line height in multiple mode.
+Sets the line height of text in multiple mode.
 
-Sets the line height to the product of the input parameter (value) and the font height (fontHeight).
+The line height equals the input parameter **value** multiplied by **fontHeight**.
 
 >  **NOTE**
 >  
->  When both this parameter and [lineHeight](ts-basic-components-text.md#lineheight) are set, only lineHeightMultiple takes effect.
+>  When both this API and [lineHeight](ts-basic-components-text.md#lineheight) are set, only **lineHeightMultiple** takes effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -798,7 +797,7 @@ Sets the line height to the product of the input parameter (value) and the font 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number&nbsp;\|&nbsp;undefined | Yes  | Multiple of the line height.<br>The value cannot be less than 0.<br>If the value is less than or equal to 0, the value 0 is used. If the value is 0, the default line height is used. A decimal value is supported.|
+| value  | number&nbsp;\|&nbsp;undefined | Yes  | Multiplier for the line height.<br>Value range: ≥ 0<br>Values ≤ 0 are treated as **0**. When the value is set to **0**, the default line height is used. Decimal values are supported.|
 
 ### lineSpacing<sup>12+</sup>
 
@@ -831,7 +830,7 @@ Sets the line spacing for text. When **LineSpacingOptions** is not specified, li
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
 | value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Line spacing. Values less than or equal to 0 are treated as the default value **0**.|
-| options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20) | No  | Line spacing configuration options.<br>Default value: **{ onlyBetweenLines: false }**.|
+| options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20) | No  | Line spacing configuration options.<br>Default value: **{ onlyBetweenLines: false }**|
 
 ### marqueeOptions<sup>18+</sup>
 
@@ -849,7 +848,7 @@ The **marqueeOptions** settings take effect only when **textOverflow** is set to
 
 | Name| Type                                      | Mandatory| Description                                      |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextMarqueeOptions](#textmarqueeoptions18)> | Yes| Marquee animation properties such as enable/disable, step size, loop count, and direction.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextMarqueeOptions](#textmarqueeoptions18)> | Yes| Marquee animation properties such as enable/disable, step size, loop count, and direction.|
 
 ### maxFontScale<sup>12+</sup>
 
@@ -873,13 +872,13 @@ maxFontSize(value: number | string | Resource)
 
 Sets the maximum font size.
 
-When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
 For the setting to take effect, this attribute must be used together with [minFontSize](#minfontsize) and [maxLines](#maxlines), or layout constraint settings.
 
-When adaptive font sizing is used, the **fontSize** settings do not take effect.
+When the adaptive font size is used, the **fontSize** settings do not take effect.
 
-If the value of **maxFontSize** is less than or equal to 0 or is less than the value of **minFontSize**, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not explicitly set, its default value will apply.
+If the value of **maxFontSize** is less than or equal to 0 or is less than the value of **minFontSize**, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not set, the default value will apply.
 
 Since API version 18, adaptive font sizing is supported on child components and styled strings, and text segments without an explicitly defined font size will automatically adjust based on the available space.
 
@@ -899,9 +898,9 @@ Since API version 18, adaptive font sizing is supported on child components and 
 
 maxLineHeight(value: LengthMetrics | undefined)
 
-Maximum line height of the text. If the value is less than or equal to 0, the maximum line height is not limited.
+Sets the maximum line height of text. If the value is less than or equal to 0, the maximum line height is unrestricted.
 
-If maxLineHeight is less than minLineHeight, maxLineHeight takes effect based on the value of minLineHeight.
+If **maxLineHeight** is less than **minLineHeight**, **maxLineHeight** takes effect using the value of **minLineHeight**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -913,13 +912,13 @@ If maxLineHeight is less than minLineHeight, maxLineHeight takes effect based on
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | Yes  | Maximum line height of the text. The value cannot be a percentage.<br>If the value is less than or equal to 0, the value is processed as 0. If the value is 0, the maximum line height is not limited.|
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | Yes  | Maximum line height of text. Percentage values are not supported.<br>Values less than or equal to 0 are treated as **0**. When the value is set to **0**, the maximum line height is unrestricted.|
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
 selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
-Sets the background style of the text when it is dragged.
+Sets the drag preview style for selected text.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -929,13 +928,13 @@ Sets the background style of the text when it is dragged.
 
 | Name| Type                                            | Mandatory| Description                                                      |
 | ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23) \| undefined | Yes  | Background style of the text when it is dragged.<br>If this parameter is set to undefined, the background color follows the theme. In light mode, the background color is white. In dark mode, the background color is black.|
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23) \| undefined| Yes  | Drag preview style for selected text.<br>If this parameter is set to **undefined**, the drag preview follows the theme: white in light mode and black in dark mode.|
 
 ### maxLines
 
 maxLines(value: number)
 
-Sets the maximum number of lines in the text.
+Sets the maximum number of lines for text.
 
 By default, text is automatically folded. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use [textOverflow](#textoverflow) to specify how it is displayed.
 
@@ -949,7 +948,7 @@ By default, text is automatically folded. If this attribute is specified, the te
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| value  | number | Yes  | Maximum number of lines in the text.<br>**NOTE**<br>Value range: [0, *INT32_MAX*]<br>If this parameter is set to **0**, no text content is displayed.|
+| value  | number | Yes  | Maximum number of lines of the text.<br>**NOTE**<br>Value range: [0, *INT32_MAX*]<br>If this parameter is set to **0**, no text content is displayed.|
 
 ### minFontScale<sup>12+</sup>
 
@@ -965,7 +964,7 @@ Sets the minimum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font scale factor for text.<br>Value range: [0, 1].<br>**NOTE**<br>Values less than 0 are treated as 0, and values greater than 1 are treated as 1. Other invalid values do not take effect by default.|
+| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font scale factor for text.<br>Value range: [0, 1]<br>**NOTE**<br>Values less than 0 are treated as 0, and values greater than 1 are treated as 1. Other invalid values do not take effect by default.|
 
 ### minFontSize
 
@@ -973,13 +972,13 @@ minFontSize(value: number | string | Resource)
 
 Sets the minimum font size.
 
-When the value is a string, it can represent a numeric value with or without units, for example, **"10"** or **"10fp"**.
+For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
 For the setting to take effect, this attribute must be used together with [maxFontSize](#maxfontsize) and [maxLines](#maxlines), or layout constraint settings.
 
-When adaptive font sizing is used, the **fontSize** settings do not take effect.
+When the adaptive font size is used, the **fontSize** settings do not take effect.
 
-If the value of **minFontSize** is less than or equal to 0, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not explicitly set, its default value will apply.
+If the value of **minFontSize** is less than or equal to 0, the adaptive font sizing feature is disabled. In such cases, the [fontSize](#fontsize) attribute is used instead. If **fontSize** is not set, the default value will apply.
 
 Since API version 18, adaptive font sizing is supported on child components and styled strings, and text segments without an explicitly defined font size will automatically adjust based on the available space.
 
@@ -999,7 +998,7 @@ Since API version 18, adaptive font sizing is supported on child components and 
 
 minLineHeight(value: LengthMetrics | undefined)
 
-Sets the minimum line height of the text. If the value is less than or equal to 0, the default value 0 is used.
+Sets the minimum line height of text. If the value is less than or equal to 0, the default value **0** is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -1011,19 +1010,19 @@ Sets the minimum line height of the text. If the value is less than or equal to 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | Yes  | Minimum line height of the text. The value cannot be a percentage.<br>If the value is less than or equal to 0, the value 0 is used.|
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | Yes  | Minimum line height of text. Percentage values are not supported.<br>Values less than or equal to 0 are treated as **0**.|
 
 ### minLines<sup>22+</sup>
 
 minLines(minLines: Optional\<number>)
 
-Sets the minimum number of lines in the text.
+Sets the minimum number of lines for text.
 
-If the actual text height is less than the height corresponding to the minimum number of lines, the height corresponding to the minimum number of lines is displayed.
+If the actual text height is less than the height for the minimum number of lines, the component uses the height corresponding to the minimum number of lines.
 
-When this parameter and [maxLines](#maxlines) are configured at the same time, the minimum line height cannot exceed the maximum line height.
+When this API and [maxLines](#maxlines) are both set, the minimum line height cannot exceed the maximum line height.
 
-If [constraintSize](ts-universal-attributes-size.md#constraintsize) is set for the text, the height of the component is within the [constraintSize](ts-universal-attributes-size.md#constraintsize) constraint.
+If [constraintSize](ts-universal-attributes-size.md#constraintsize) is set for the text, the component height is confined within the [constraintSize](ts-universal-attributes-size.md#constraintsize) bounds.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -1035,13 +1034,13 @@ If [constraintSize](ts-universal-attributes-size.md#constraintsize) is set for t
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| minLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Minimum number of lines of the text.<br>Value range: [0, *INT32_MAX*]<br>If the value is less than 0, the value 0 is used.|
+| minLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | Yes  | Minimum number of lines of the text.<br>Value range: [0, *INT32_MAX*]<br>Values less than 0 are clamped to **0**.|
 
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
 
-Sets whether to add spacing at the beginning and end of a line to avoid text truncation. If this API is not called, no spacing is added by default.
+Sets whether to add spacing to the first and last lines to avoid text truncation. If this attribute is not set, no spacing is added by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -1051,13 +1050,13 @@ Sets whether to add spacing at the beginning and end of a line to avoid text tru
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| include | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to add spacing at the beginning and end of a line to avoid text truncation.<br>The value true indicates that spacing is added at the beginning and end of a line, and the value false indicates that spacing is not added at the beginning and end of a line.|
+| include | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines.|
 
 ### fallbackLineSpacing<sup>23+</sup>
 
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
-For multi-line text overlapping, the line height can be automatically adjusted based on the actual text height. This API takes effect only when the line height is less than the actual text height. If this API is not called, the line height is not automatically adjusted based on the actual text height by default.
+Adapts the line height to the actual text height for overlapped multi-line text. This API takes effect only when the line height is less than the actual text height. If this API is not set, the line height does not adapt to the actual text height by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -1067,7 +1066,7 @@ For multi-line text overlapping, the line height can be automatically adjusted b
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the line height is automatically adjusted based on the actual text height.<br>The value true indicates that the line height is automatically adjusted based on the actual text height, and the value false indicates that the line height is not automatically adjusted based on the actual text height.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the line height adapts to the actual text height.<br>**true**: Line height adapts to the actual text height. **false**: Line height does not adapt to the actual text height.|
 
 ### optimizeTrailingSpace<sup>20+</sup>
 
@@ -1093,19 +1092,19 @@ When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrai
 
 | Name          | Type            | Mandatory| Description                                           |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| optimize         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to optimize trailing spaces.<br>**true** to optimize, **false** otherwise.<br>Default value: **false**.|
+| optimize         | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to optimize trailing spaces.<br>**true** to optimize, **false** otherwise.<br>Default value: **false**|
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
 compressLeadingPunctuation(enabled: Optional\<boolean>)
 
-Whether to enable the compression of punctuation marks at the beginning of a line.
+Sets whether to enable leading punctuation compression.
 
 > **NOTE**
 >
-> - By default, punctuation marks at the beginning of a line are not compressed.
+> - Leading punctuation is not compressed by default.
 >
-> - For details about the punctuation marks that can be compressed, see the punctuation range of line head compression in [ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle).
+> - For the range of punctuation marks that support leading compression, see [ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle).
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -1115,7 +1114,27 @@ Whether to enable the compression of punctuation marks at the beginning of a lin
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable the compression of punctuation at the beginning of a line.<br>The value true indicates that the compression of punctuation at the beginning of a line is enabled, and the value false indicates that the compression of punctuation at the beginning of a line is disabled.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled.|
+
+### orphanCharOptimization
+
+orphanCharOptimization(enabled: Optional\<boolean>)
+
+Sets whether to enable orphan character optimization during text typesetting. If this attribute is not set, orphan character optimization is disabled by default.
+
+Orphan character optimization improves the text layout by handling the orphan character (the first Chinese character of the last line of a paragraph) more efficiently. When enabled, it adjusts line breaks to avoid orphan characters as much as possible. This feature takes effect only when [wordBreak](#wordbreak11) is not **BREAK_ALL** and [locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle) of the first [TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle) of the text to be typeset is either **"zh-Hans"** or **"zh-Hant"**.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name          | Type            | Mandatory| Description                                           |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes| Whether to enable orphan character optimization for the last line of the paragraph.<br>**true**: Orphan character optimization is enabled. **false**: Orphan character optimization is disabled.<br>When the value is **undefined** or **null**, orphan character optimization is disabled.|
 
 ### privacySensitive<sup>12+</sup>
 
@@ -1133,7 +1152,7 @@ Sets whether to enable privacy mode on widgets.
 
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| supported | boolean | Yes  | Whether to enable privacy mode on widgets.<br>Default value: **false**. The value **true** means to enable privacy mode, in which case text is obscured as hyphens (-).<br>**NOTE**<br>The value **null** means not to enable privacy mode on widgets.<br>The card framework must support the private mode. The privacy mask type can be configured through [obscured](./ts-universal-attributes-obscured.md#obscured).|
+| supported | boolean | Yes  | Whether to enable privacy mode on widgets.<br>Default value: **false**. The value **true** means to enable privacy mode, in which case text is obscured with hyphens (-).<br>**NOTE**<br>The value **null** means not to enable privacy mode on widgets.<br>Enabling privacy mode requires support from the widget framework. You can use [obscured](./ts-universal-attributes-obscured.md#obscured) to set how the component content is obscured.|
 
 ### selectedBackgroundColor<sup>14+</sup>
 
@@ -1157,17 +1176,17 @@ selection(selectionStart: number, selectionEnd: number)
 
 Sets text selection.
 
-The selected text is highlighted, and selection handles are displayed with a context menu.
+The selected text is highlighted, with selection handles and the text selection menu displayed.
 
-If [copyOption](#copyoption9) is set to CopyOptions.None, the setting of the selection attribute does not take effect.
+If [copyOption](#copyoption9) is set to **CopyOptions.None**, the setting of the **selection** attribute does not take effect.
 
-If [textOverflow](#textoverflow) is set to TextOverflow.MARQUEE, the setting of the selection attribute does not take effect.
+If [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE**, the setting of the **selection** attribute does not take effect.
 
 If the value of **selectionStart** is greater than or equal to that of **selectionEnd**, no text will be selected. The value range is [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value is less than 0, the value **0** will be used. If the value is greater than **textSize**, **textSize** will be used.
 
-If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is set to false, the text that exceeds the parent component can be selected.
+If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is set to **false**, the text outside the parent component can be selected.
 
-You can obtain the position change result of the selected area through the [onTextSelectionChange](#ontextselectionchange11) API.
+You can obtain the selection range change result through the [onTextSelectionChange](#ontextselectionchange11) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1192,6 +1211,7 @@ Applies gradient or solid color effects to text. Supports [RadialGradientStyle](
 
 **Parameters**
 
+<!--Table: 10%; auto; 10%; auto-->
 | Name    | Type                                        | Mandatory                            | Description                              |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
 | shader | [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | Yes| Shader effect.<br>Based on the input, the system applies a radial gradient ([RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)), linear gradient ([LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)), or solid color ([ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)).<br>**NOTE**<br>If [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20) is used and the **center** parameter (from [RadialGradientOptions](./ts-universal-attributes-gradient-color.md#radialgradientoptions18)) is outside the component bounds, setting **repeating** to **true** enhances the gradient effect.|
@@ -1200,7 +1220,7 @@ Applies gradient or solid color effects to text. Supports [RadialGradientStyle](
 
 textAlign(value: TextAlign)
 
-Sets the horizontal alignment mode of the text.
+Sets the horizontal alignment of the text.
 
 The text takes up the full width of the **Text** component.
 
@@ -1228,7 +1248,7 @@ When **textAlign** is set to **TextAlign.JUSTIFY**, the [wordBreak](#wordbreak11
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | [TextAlign](ts-appendix-enums.md#textalign) | Yes  | Horizontal alignment of the text.<br>Default value: **TextAlign.Start**.<br>Default value on wearable devices: **TextAlign.Center**.|
+| value  | [TextAlign](ts-appendix-enums.md#textalign) | Yes  | Horizontal alignment of the text.<br>Default value: **TextAlign.Start**<br>Default value on wearable devices: **TextAlign.Center**|
 
 ### textCase
 
@@ -1264,13 +1284,13 @@ This API takes effect only when the height of the text content exceeds the compo
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | Yes  | Vertical alignment of the text.<br>If the value is **undefined** or invalid, alignment defaults to **Center**.|
+| textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | Yes  | Vertical alignment of the text.<br>If the value is **undefined** or invalid, alignment defaults to **Center**.|
 
 ### textDirection<sup>23+</sup>
 
 textDirection(direction: TextDirection | undefined)
 
-Sets the text layout direction. If this API is not called, the text layout direction complies with the component layout direction by default.
+Specifies the text layout direction. If this attribute is not set, the default text layout direction follows the component layout direction.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -1280,7 +1300,7 @@ Sets the text layout direction. If this API is not called, the text layout direc
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | Yes  | Text layout direction.<br>If this parameter is set to undefined, the TextDirection.DEFAULT is used. That is, the text layout direction complies with the component layout direction.|
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | Yes  | Text layout direction.<br>If this parameter is set to **undefined**, the text layout direction follows the component layout direction as defined by **TextDirection.DEFAULT**.|
 
 ### textIndent<sup>10+</sup>
 
@@ -1296,13 +1316,13 @@ Sets the indent of the first line text.
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Indent of the first line text.<br>Default value: **0**|
+| value  | [Length](ts-types.md#length) | Yes  | Indent of the first line text.<br>Default value: **0**<br>Unit: [fp](ts-pixel-units.md)|
 
 ### textOverflow
 
 textOverflow(options: TextOverflowOptions)
 
-Sets the display mode when the text is too long.
+Sets the display mode for overflowing text.
 
 When [TextOverflowOptions](#textoverflowoptions18) is set to **TextOverflow.None**, **TextOverflow.Clip**, or **TextOverflow.Ellipsis**:
 
@@ -1312,9 +1332,9 @@ When [TextOverflowOptions](#textoverflowoptions18) is set to **TextOverflow.None
 
 - This must be used with [maxLines](#maxlines) for the settings to take effect.
 
-- Line breaking behavior is controlled by [wordBreak](#wordbreak11). By default, it uses **WordBreak.BREAK_WORD**, which truncates by word (for example, English text is truncated word-by-word). To truncate by character, set **wordBreak** to **WordBreak.BREAK_ALL**.
+- Line breaking behavior is controlled by [wordBreak](#wordbreak11). By default, it uses **WordBreak.BREAK_WORD**, which breaks text by word (for example, English text is broken at word boundaries). To break text by character, set **wordBreak** to **WordBreak.BREAK_ALL**.
 
-- Line wrapping behavior is governed by [lineBreakStrategy](#linebreakstrategy12), which takes effect only when [wordBreak](#wordbreak11) is not **WordBreak.BREAK_ALL**. Hyphens are not supported.
+- Line wrapping behavior is governed by [lineBreakStrategy](#linebreakstrategy12) which takes effect only when [wordBreak](#wordbreak11) is not **WordBreak.BREAK_ALL**. Hyphens are not supported.
 
 - Since API version 11, it is recommended that you configure both [textOverflow](#textoverflow) and [wordBreak](#wordbreak11) to control truncation behavior. For details, see [Example 4](#example-4-setting-text-wrapping-and-line-breaking)<!--RP1--><!--RP1End-->.
 
@@ -1368,7 +1388,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 Sets the text shadow.
 
-The intelligent color obtaining mode is not supported for the type, fill, and color fields in the ShadowOptions object.
+Intelligent color extraction is not supported for the **type**, **fill**, and **color** fields of the **ShadowOptions** object.
 
 Since API version 11, this API supports input parameters in an array to implement multiple text shadows.
 
@@ -1388,9 +1408,12 @@ Since API version 11, this API supports input parameters in an array to implemen
 
 textVerticalAlign(textVerticalAlign: Optional\<TextVerticalAlign>)
 
-Sets the vertical alignment of text paragraphs.
+Sets the vertical alignment of the text.
 
-When this and is used together with [halfLeading](#halfleading12), **halfLeading** does not take effect.
+> **NOTE**
+>
+> - When this API and [halfLeading](#halfleading12) are both set, **halfLeading** does not take effect.
+> - The effect of this attribute is noticeable only when the same font size is used in a paragraph and [lineHeight](#lineheight) is set, or when different font sizes are mixed in a paragraph. Otherwise, the effect is the same regardless of whether this attribute is set or which enum value is used. The **SuperscriptStyle** in [TextStyle](ts-universal-styled-string.md#textstyle) takes effect only when the value of [TextVerticalAlign](ts-text-common.md#textverticalalign20) is set to **TextVerticalAlign.BASELINE**. In other vertical alignment modes, the superscript and subscript texts are displayed in the same way as the normal text.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1400,7 +1423,7 @@ When this and is used together with [halfLeading](#halfleading12), **halfLeading
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textVerticalAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)> | Yes  | Vertical alignment of text paragraphs.<br>Default value: **TextVerticalAlign.BASELINE**.|
+| textVerticalAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)> | Yes  | Vertical alignment of the text.<br>Default value: **TextVerticalAlign.BASELINE**|
 
 ### wordBreak<sup>11+</sup>
 
@@ -1408,9 +1431,9 @@ wordBreak(value: WordBreak)
 
 Sets the word break rule.
 
-By default, when **wordBreak** is not called or is set to **WordBreak.BREAK_WORD**, text is truncated by word. For example, English text is broken at word boundaries.
+By default, when **wordBreak** is not called or is set to **WordBreak.BREAK_WORD**, text is broken by word. (for example, English text is broken at word boundaries).
 
-To truncate by character, with the excess part displayed as an ellipsis (...), use **WordBreak.BREAK_ALL** in combination with **{overflow: TextOverflow.Ellipsis}** and **maxLines**.
+To break text by character, with the excess part displayed as an ellipsis (...), use **WordBreak.BREAK_ALL** in combination with **{overflow: TextOverflow.Ellipsis}** and **maxLines**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1480,7 +1503,7 @@ Defines the configuration object for text overflow behavior.
 
 | Name| Type                                                        | Read-Only| Optional| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- |---- | ------------------------------------------------------------ |
-| overflow<sup>7+</sup>  | [TextOverflow](ts-appendix-enums.md#textoverflow) | No| No | Display mode when the text is too long.<br>Default value: **TextOverflow.Clip**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| overflow<sup>7+</sup>  | [TextOverflow](ts-appendix-enums.md#textoverflow) | No| No | Display mode of overflowing text.<br>Default value: **TextOverflow.Clip**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Events
 
@@ -1501,6 +1524,26 @@ Called when data is copied to the pasteboard, which is displayed when the text b
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
 | value  | string | Yes  | Text that is copied.|
+
+### onWillCopy
+
+onWillCopy(callback: Callback\<string, boolean>)
+
+Called before the copy operation is performed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description            |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | Yes  | The string type indicates the text to be copied.<br>The boolean type indicates whether the text can be copied. The value **true** means yes and **false** means no.|
 
 ### onTextSelectionChange<sup>11+</sup>
 
@@ -1565,7 +1608,7 @@ controller: TextController = new TextController()
 
 closeSelectionMenu(): void
 
-Closes the custom or default context menu on selection.
+Closes the custom or default text selection menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1624,17 +1667,17 @@ Sets the text selection area, which will be highlighted.
 
 >  **NOTE**
 > 
-> If [copyOption](#copyoption9) is set to CopyOptions.None, setting setTextSelection does not take effect.
+> If [copyOption](#copyoption9) is set to **CopyOptions.None**, the setting of **setTextSelection** does not take effect.
 > 
-> If [textOverflow](#textoverflow) is set to TextOverflow.MARQUEE, setting setTextSelection does not take effect.
+> If [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE**, the setting of **setTextSelection** does not take effect.
 > 
 > If the value of **selectionStart** is greater than or equal to that of **selectionEnd**, no text will be selected. The value range is [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value is less than 0, the value **0** will be used. If the value is greater than **textSize**, **textSize** will be used.
 > 
 > If the selection range falls within a truncated or invisible area, selection is ignored. When truncation is disabled, selection can extend beyond the parent component's bounds.
 >
-> If the device is a PC or 2-in-1 device, the menu is not displayed even if options is set to MenuPolicy.SHOW.
+> On PC or 2-in-1 devices, calling **setTextSelection** does not show the menu even if **options** is set to **MenuPolicy.SHOW**.
 >
-> When the selected area of an emoji is truncated, if the start position of the emoji is included in the specified text selection area, the emoji is selected.
+> When an emoji is truncated by the selection range, the emoji is selected if its start position is within the specified text selection range.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -1644,9 +1687,9 @@ Sets the text selection area, which will be highlighted.
 
 | Name | Type  | Mandatory  | Description |
 | ------- | ------ | ---- | ----- |
-| selectionStart | number \| undefined | Yes   | Start position of the text selection area.<br>Value range: [0, +∞). If the value is a negative number or undefined, 0 is used.|
-| selectionEnd   | number \| undefined | Yes   | End position of the text selection range.<br>The value range is [0, +∞). If the value is a negative number or undefined, 0 is used.|
-| options | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12) | No   | Configuration options for text selection.<br>Default value: MenuPolicy.DEFAULT in SelectionOptions|
+| selectionStart | number \| undefined | Yes   | Start position of the text selection range.<br>Value range: [0, +∞). Negative values and **undefined** are treated as **0**.|
+| selectionEnd   | number \| undefined | Yes   | End position of the text selection range.<br>Value range: [0, +∞). Negative values and **undefined** are treated as **0**.|
+| options | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12) | No   | Configuration options for text selection.<br>Default value: **MenuPolicy.DEFAULT** in **SelectionOptions**|
 
 ## TextMarqueeOptions<sup>18+</sup>
 
@@ -1658,13 +1701,13 @@ Describes the initialization options of the **Marquee** component.
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | No | No| Whether to start the marquee.<br>**true**: Start the marquee. **false**: Do not start the marquee.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | step               | number                                          | No | Yes| Step length of the scrolling animation text.<br>Default value: **4.0** (in vp)<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                        |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes| Spacing between two marquee rounds. If the unit of **LengthMetrics** is **PERCENT**, the current setting does not take effect and the default value is used.<br>Default value: 48.0vp<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes| Spacing between two marquee rounds. If the unit of **LengthMetrics** is **PERCENT**, the current setting does not take effect and the default value is used.<br>Default value: **48.0vp**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | loop               | number                                          | No | Yes| Number of times the marquee will scroll. If the value is less than or equal to **0**, the marquee will scroll continuously.<br>Default value: **-1**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                         |
-| fromStart          | boolean                                         | No | Yes| Whether the text scrolls from the start.<br>**true** to scroll from the start, **false** to scroll in reverse.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| delay              | number                                          | No | Yes| Time interval between scroll movements.<br>Default value: **0**<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
-| fadeout            | boolean                                         | No | Yes| Whether to apply a fade-out effect when the text is too long.<br>**true** to apply a fade-out effect when the text is too long, **false** otherwise.<br>With this parameter set to **true**: When the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied; If both ends have partially visible text, both ends will have the fade-out effect applied; The **clip** attribute is automatically locked to **true** and cannot be set to **false**.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18) | No | Yes| Sets the start policy of the marquee. This attribute takes effect only when start is set to true.<br>Default value: **MarqueeStartPolicy.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
-| marqueeUpdatePolicy<sup>23+</sup> | [MarqueeUpdatePolicy](#marqueeupdatepolicy23) | No | Yes| Scrolling strategy of the marquee after its attributes are updated.<br>This attribute takes effect when the marquee is in the playing state and the text content width exceeds the marquee component width.<br>Default value: MarqueeUpdatePolicy.DEFAULT<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| fromStart          | boolean                                         | No | Yes| Whether the text scrolls from the start.<br>**true** to scroll from the start, **false** to scroll in reverse.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| delay              | number                                          | No | Yes| Time interval between scroll movements.<br>Default value: **0**<br>Unit: millisecond<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
+| fadeout            | boolean                                         | No | Yes| Whether to apply a fade-out effect when the text is too long.<br>**true** to apply a fade-out effect when the text is too long, **false** otherwise.<br>When this parameter is set to **true**: if the text content exceeds the display range, a fade-out effect is applied to the edges of the partially visible text; if text is partially visible at both ends, the fade-out effect is applied to both ends. The **clip** attribute is automatically locked to **true** and cannot be set to **false**.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18) | No | Yes| Policy for starting the marquee. This attribute takes effect only when **start** is set to **true**.<br>Default value: **MarqueeStartPolicy.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| marqueeUpdatePolicy<sup>23+</sup> | [MarqueeUpdatePolicy](#marqueeupdatepolicy23) | No | Yes| Scrolling policy of the marquee after its attributes are updated.<br>This attribute takes effect when the marquee is in the playing state and the text width exceeds the width of the marquee component.<br>Default value: **MarqueeUpdatePolicy.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## MarqueeStartPolicy<sup>18+</sup>
 
@@ -1681,7 +1724,7 @@ Enumerates the marquee scrolling modes.
 
 ## MarqueeUpdatePolicy<sup>23+</sup>
 
-Scrolling strategy of the marquee after its attributes are updated.
+Sets the scrolling policy of the marquee after its attributes are updated.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -1689,8 +1732,8 @@ Scrolling strategy of the marquee after its attributes are updated.
 
 | Name      | Value     | Description                    |
 | ---------- | ------------------------ | ------------------------ |
-| DEFAULT | 0 | Starts the marquee effect from the start position after the attributes of the marquee component are updated.    |
-| PRESERVE_POSITION  | 1 | Keeps the current position and runs the marquee effect after the attributes of the marquee component are updated.|
+| DEFAULT | 0 | Restarts the marquee from the start position after the attributes of the marquee component are updated.    |
+| PRESERVE_POSITION  | 1 | Resumes the marquee from the current position after the attributes of the marquee component are updated.|
 
 ## MarqueeState<sup>18+</sup>
 
@@ -1790,7 +1833,7 @@ struct TextExample1 {
 
 ### Example 2: Setting the Text Style
 
-This example showcases various text styles using the following attributes: [decoration](#decoration), [letterSpacing](#letterspacing), [textCase](#textcase), [fontFamily](#fontfamily), [textShadow](#textshadow10) (available since API version 10), **fontStyle**, [textIndent](#textindent10) (available since API version 10), and [fontWeight](#fontweight12) (available since API version 12, supports setting continuous font weight adjustment configuration items).
+This example showcases various text styles using the following attributes: [decoration](#decoration), [letterSpacing](#letterspacing), [textCase](#textcase), [fontFamily](#fontfamily), [textShadow](#textshadow10) (available since API version 10), **fontStyle**, [textIndent](#textindent10) (available since API version 10), and [fontWeight](#fontweight12) (available since API version 12, supporting variable font weight setting options).
 
 ```ts
 // xxx.ets
@@ -1907,9 +1950,15 @@ struct TextExample2 {
 ```
 ![textExp2](figures/textExp2.gif)
 
-### Example 3: Setting Text Overflow
+### Example 3: Setting Ellipsis for Overflow Text
 
-This example demonstrates how to use the [maxLines](#maxlines), [textOverflow](#textoverflow), and [ellipsisMode](#ellipsismode11) (available since API version 11) attributes to clip text with an ellipsis and control its position. Marquee mode can be configured via [marqueeOptions](#marqueeoptions18) (available since API version 18), with the [onMarqueeStateChange](#onmarqueestatechange18) callback (available since API version 18) triggered at specific marquee animation stages.
+This example demonstrates how to clip text with an ellipsis and adjust its position using the [maxLines](#maxlines), [textOverflow](#textoverflow), and [ellipsisMode](#ellipsismode11) attributes. The **MULTILINE_START** and **MULTILINE_CENTER** enums are used to implement the effect of displaying ellipsis at the beginning and in the middle of a line for single-line and multi-line text. In addition, you can set the options for the marquee effect using [marqueeOptions](#marqueeoptions18) and the [onMarqueeStateChange](#onmarqueestatechange18) callback that is invoked when the marquee animation reaches the specified state.
+
+The [ellipsisMode](#ellipsismode11) attribute is added to set the display mode for overflow text since API version 11.
+
+The [marqueeOptions](#marqueeoptions18) attribute is added to set the marquee effect options and the [onMarqueeStateChange](#onmarqueestatechange18) callback is also added since API version 18.
+
+The **MULTILINE_START** and **MULTILINE_CENTER** enums are added to the [EllipsisMode](ts-appendix-enums.md#ellipsismode11) attribute since API version 24.
 
 ```ts
 // xxx.ets
@@ -1918,7 +1967,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Extend(Text)
 function style() {
   .textAlign(TextAlign.Center)
-  .fontSize(12)
+  .fontSize(15)
   .border({ width: 1 })
   .padding(10)
   .width('100%')
@@ -1929,28 +1978,34 @@ function style() {
 @Component
 struct TextExample3 {
   @State text: string =
-    'The text component is used to display a piece of textual information.Support universal attributes and universal text attributes.';
+    'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.' +
+      'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.';
   @State ellipsisModeIndex: number = 0;
-  @State ellipsisMode: EllipsisMode[] = [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END];
-  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END'];
+  @State ellipsisMode: EllipsisMode[] =
+    [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER]; // MULTILINE_START and MULTILINE_CENTER are added since API version 24.
+  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END', 'MULTILINE_START',
+    'MULTILINE_CENTER'];
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
       // Set the display mode when the text is too long.
-      Text('TextOverflow+maxLines').fontSize(9).fontColor(0xCCCCCC)
+      Text('TextOverflow+maxLines').fontSize(12).fontColor(Color.Black)
       // Clip the text when the value of maxLines is exceeded.
       Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
         .textOverflow({ overflow: TextOverflow.Clip })
         .maxLines(1)
         .style()
 
-      // Show an ellipsis (...) when the value of maxLines is exceeded.
+      // Show an ellipsis when the value of maxLines is exceeded.
       Text('This is set textOverflow to Ellipsis text content This is set textOverflow to Ellipsis text content.')
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .maxLines(1)
         .style()
 
-      Text('marquee').fontSize(9).fontColor(0xCCCCCC)
+      Text('marquee').fontSize(12).fontColor(Color.Black)
       // Set the text to continuously scroll when text overflow occurs.
       Text('This is the text with the text overflow set marquee')
         .textOverflow({ overflow: TextOverflow.MARQUEE })
@@ -1959,12 +2014,12 @@ struct TextExample3 {
           start: true,
           fromStart: true,
           step: 6,
-          spacing: LengthMetrics.vp(48), // Added from API version 23.
+          spacing: LengthMetrics.vp(48), // Added since API version 23.
           loop: -1,
           delay: 0,
           fadeout: false,
           marqueeStartPolicy: MarqueeStartPolicy.DEFAULT,
-          marqueeUpdatePolicy: MarqueeUpdatePolicy.DEFAULT // Added from API version 23.
+          marqueeUpdatePolicy: MarqueeUpdatePolicy.DEFAULT // Added since API version 23.
         })
         .onMarqueeStateChange((state: MarqueeState) => {
           if (state == MarqueeState.START) {
@@ -1976,12 +2031,18 @@ struct TextExample3 {
           }
         })
 
-      Text('ellipsisMode').fontSize(9).fontColor(0xCCCCCC)
       // Set the position of the ellipsis (...) for text truncation.
+      Text('ellipsisMode (single-line text)').fontSize(12).fontColor(Color.Black)
       Text(this.text)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
         .maxLines(1)
+        .style()
+      Text('ellipsisMode (multi-line text)').fontSize(12).fontColor(Color.Black)
+      Text(this.text)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+        .maxLines(3)
         .style()
 
       Row() {
@@ -2086,7 +2147,9 @@ struct TextExample4 {
 
 ### Example 5: Setting Text Selection and Copy
 
-This example demonstrates text selection functionality, copy callback triggering, draggable text selection, and customization of caret and selection colors using the following APIs: [selection](#selection11) (available since API version 11), [onCopy](#oncopy11) (available since API version 11), [draggable](#draggable9) (available since API version 9), [caretColor](#caretcolor14) (available since API version 14), and [selectedBackgroundColor](#selectedbackgroundcolor14) (available since API version 14).
+This example demonstrates how to set text selection, invoke a copy callback, make text selection draggable, modify the selection handle and background colors, and intercept a system copy operation using the following APIs: [selection](#selection11) (available since API version 11), [onCopy](#oncopy11) (available since API version 11), [draggable](#draggable9) (available since API version 9), [caretColor](#caretcolor14) (available since API version 14), [selectedBackgroundColor](#selectedbackgroundcolor14) (available since API version 14), and [onWillCopy](#onwillcopy).
+
+The [onWillCopy](#onwillcopy) API is added since API version 26.0.0.
 
 ```ts
 // xxx.ets
@@ -2112,6 +2175,11 @@ struct TextExample5 {
           .onCopy((value: string) => {
             this.onCopy = value;
           })
+          // onWillCopy is supported since API version 26.0.0.
+          .onWillCopy((value: string) => {
+            this.onCopy = value;
+            return false;
+          })
           .draggable(true)
           .caretColor(Color.Red)
           .selectedBackgroundColor(Color.Grey)
@@ -2128,7 +2196,7 @@ struct TextExample5 {
   }
 }
 ```
-
+![](figures/setTextSelection.gif)
 
 ### Example 6: Setting Text Adaptation and Font Scale Factor Limits
 
@@ -2177,7 +2245,7 @@ struct TextExample6 {
 
 ### Example 7: Setting Text Recognition
 
-This example implements text recognition capabilities using the [enableDataDetector](#enabledatadetector11) and [dataDetectorConfig](#datadetectorconfig11) APIs, available since API version 11. If [enableDataDetector](#enabledatadetector11) is set to **true** and [dataDetectorConfig](#datadetectorconfig11) is not set, the system identifies all entity types and changes the font color of the identified entities to blue and adds blue underlines.
+This example implements text recognition capabilities using the [enableDataDetector](#enabledatadetector11) and [dataDetectorConfig](#datadetectorconfig11) APIs, available since API version 11. When [enableDataDetector](#enabledatadetector11) is set to **true** and [dataDetectorConfig](#datadetectorconfig11) is not specified, the system detects all entity types, applies the blue font color to these entities, and adds blue underlines to them.
 
 ```ts
 // xxx.ets
@@ -2188,7 +2256,7 @@ struct TextExample7 {
   @State url: string = 'www.********.com';
   @State email: string = '***@example.com';
   @State address: string = 'XX (province) XX (city) XX (county) XXXX';
-  @State datetime: string = 'XX-XX-XX XXXX';
+  @State datetime: string = 'YYYY-MM-DD HH:mm';
   @State enableDataDetector: boolean = true;
   @State types: TextDataDetectorType[] = [];
 
@@ -2196,11 +2264,11 @@ struct TextExample7 {
     Row() {
       Column() {
         Text(
-          'Phone number:' + this.phoneNumber + '\n' +
-            'URL:' + this.url + '\n' +
-            'Email:' + this.email + '\n' +
-            'Address:' + this.address + '\n' +
-            'Time:' + this.datetime
+          'Phone number: ' + this.phoneNumber + '\n' +
+            'URL: ' + this.url + '\n' +
+            'Email: ' + this.email + '\n' +
+            'Address: ' + this.address + '\n' +
+            'Time: ' + this.datetime
         )
           .fontSize(16)
           .copyOption(CopyOptions.InApp)
@@ -2214,8 +2282,8 @@ struct TextExample7 {
           .padding(10)
           .width('100%')
         Text(
-          'Phone number:' + this.phoneNumber + '\n' +
-            'Time:' + this.datetime
+          'Phone number: ' + this.phoneNumber + '\n' +
+            'Time: ' + this.datetime
         )
           .fontSize(16)
           .copyOption(CopyOptions.LocalDevice)
@@ -2223,9 +2291,9 @@ struct TextExample7 {
           .borderWidth(1)
           .padding(10)
           .width('100%')
-        TextInput({ text: 'TextInput is the content of the text box.' })
+        TextInput({ text: 'TextInput content' })
           .copyOption(CopyOptions.LocalDevice)
-        TextArea({ text: 'TextArea is the content of the text box.' })
+        TextArea({ text: 'TextArea content' })
           .copyOption(CopyOptions.LocalDevice)
         Search()
           .copyOption(CopyOptions.LocalDevice)
@@ -2271,22 +2339,22 @@ struct TextExample8 {
         .copyOption(CopyOptions.InApp)
         .bindSelectionMenu(TextSpanType.IMAGE, this.LongPressImageCustomMenu, TextResponseType.LONG_PRESS, {
           onDisappear: () => {
-            console.info(`Callback when the custom menu is closed`);
+            console.info(`Callback invoked when the custom menu disappears`);
           },
           onAppear: () => {
-            console.info(`Callback when the custom menu is displayed`);
+            console.info(`Callback invoked when the custom menu appears`);
           },
           onMenuShow: () => {
-            console.info(`Callback invoked when the custom context menu on selection is shown`);
+            console.info(`Callback invoked when the custom menu is shown`);
           },
           onMenuHide: () => {
-            console.info(`Callback invoked when the custom context menu on selection is hidden`);
+            console.info(`Callback invoked when the custom menu is hidden`);
           }
         })
         .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK)
         .bindSelectionMenu(TextSpanType.MIXED, this.SelectMixCustomMenu, TextResponseType.SELECT)
         .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
-          console.info(`Callback when the text selection changes, selectionStart: ${selectionStart}, selectionEnd: ${selectionEnd}`);
+          console.info(`Callback invoked when the text selection changes, selectionStart: ${selectionStart}, selectionEnd: ${selectionEnd}`);
         })
         .borderWidth(1)
         .borderColor(Color.Red)
@@ -2368,7 +2436,7 @@ function MenuStyles() {
 
 ### Example 9: Setting Text Features and Line Spacing
 
-This example demonstrates text feature configuration and line spacing effects using the [fontFeature](#fontfeature12) and [lineSpacing](#linespacing12) APIs, available since API version 12. The **onlyBetweenLines** property in [LineSpacingOptions](ts-text-common.md#linespacingoptions20) (available since API version 20) controls whether line spacing applies only between lines.
+This example demonstrates text feature and line spacing effects using the [fontFeature](#fontfeature12) and [lineSpacing](#linespacing12) APIs, available since API version 12. The **onlyBetweenLines** property in [LineSpacingOptions](ts-text-common.md#linespacingoptions20) (available since API version 20) controls whether line spacing applies only between lines.
 
 ```ts
 // xxx.ets
@@ -2464,12 +2532,12 @@ struct TextExample10 {
         Text(this.lineCount)
 
         Text('GlyphPositionAtCoordinate').fontSize(15).fontColor(0xCCCCCC).width('90%').padding(10)
-        Button("Relative Component Coordinates [150,50]")
+        Button("Relative Component Coordinate [150, 50]")
           .onClick(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager();
             let position: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50);
             this.glyphPositionAtCoordinate =
-              "Relative component coordinates [150,50] glyphPositionAtCoordinate position: " + position.position + " affinity: " +
+              "Relative component coordinate [150, 50] glyphPositionAtCoordinate position: " + position.position + " affinity: " +
               position.affinity;
           })
           .margin({ bottom: 20, top: 10 })
@@ -2543,7 +2611,7 @@ struct TextExample11 {
 
 ### Example 12: Setting Custom Menu Extensions
 
-This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can also be configured through the [onPrepareMenu](ts-text-common.md#properties-1) callback (available since API version 20).
+This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can be configured through the [onPrepareMenu](ts-text-common.md#properties-1) callback (available since API version 20).
 
 ```ts
 // xxx.ets
@@ -2655,7 +2723,7 @@ struct TextExample13 {
 
 ### Example 14: Configuring Automatic Spacing Between Chinese and Western Text
 
-This example shows how to configure automatic spacing between Chinese and Western characters using the [enableAutoSpacing](#enableautospacing20) attribute, available since API version 20.
+This example demonstrates how to configure automatic spacing between Chinese and Western characters using the [enableAutoSpacing](#enableautospacing20) attribute, available since API version 20.
 
 ```ts
 // xxx.ets
@@ -2666,10 +2734,10 @@ struct TextExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        Text('Automatic Spacing Between Chinese and Western Characters')
+        Text('中文 Text')
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
-        Text('Automatic Spacing Between Chinese and Western Characters')
+        Text('中文Text')
           .enableAutoSpacing(false)
       }.height('100%')
     }
@@ -2745,7 +2813,7 @@ struct ShaderColorStyle {
   }
 }
 ```
-![en-us_image_0000001219864149](figures/gradientcolor.png)
+![zh-cn_image_0000001219864149](figures/gradientcolor.png)
 
 ### Example 16: Configuring Trailing Space Optimization
 
@@ -2869,9 +2937,9 @@ struct TextContentAlignExample {
 
 ![Text_Content_Align](figures/TextContentAlign.png)
 
-### Example 20: Setting Multiple Line Height and Maximum and Minimum Line Heights
+### Example 20: Setting Line Height Multiplier and Maximum/Minimum Line Heights
 
-In API version 22 and later versions, the [lineHeightMultiple](#lineheightmultiple22) attribute is used to set the line height in multiple mode, and the [minLineHeight](#minlineheight22) and [maxLineHeight](#maxlineheight22) attributes are used to set the minimum and maximum line heights.
+This example demonstrates how to use [lineHeightMultiple](#lineheightmultiple22) to set the line height in multiple mode and use [minLineHeight](#minlineheight22) and [maxLineHeight](#maxlineheight22) to set the minimum and maximum line heights, all available since API version 22.
 
 ```ts
 import { LengthUnit } from '@kit.ArkUI';
@@ -2914,7 +2982,7 @@ struct Index {
 
 ### Example 21: Setting the Minimum Number of Lines for Text Display
 
-This example shows how to set the minimum number of lines using the [minLines](#minlines22) attribute, available since API version 22.
+This example demonstrates how to set the minimum number of lines using the [minLines](#minlines22) attribute, available since API version 22.
 
 ```ts
 
@@ -2945,9 +3013,9 @@ struct TextExample1 {
 
 ![textMinlines](figures/textMinlines.png)
 
-### Example 22: Setting the Text Selection Area and Highlighting the Text
+### Example 22: Setting and Highlighting the Text Selection Range
 
-In API version 23 and later versions, this example uses [setTextSelection](#settextselection23) in [TextController](#textcontroller11) to set the text selection area and highlight the text.
+This example demonstrates how to set and highlight the text selection range using [setTextSelection](#settextselection23) in [TextController](#textcontroller11), available since API version 23.
 
 ```ts
 
@@ -2955,7 +3023,7 @@ In API version 23 and later versions, this example uses [setTextSelection](#sett
 @Component
 struct Index {
   controller: TextController = new TextController();
-  @State textStr: string = 'Hello World! Hello, world!
+  @State textStr: string = 'Hello World!';
 
   build() {
     Scroll() {
@@ -2980,7 +3048,7 @@ struct Index {
 
 ### Example 23: Setting Leading Punctuation Compression
 
-This example uses the [compressLeadingPunctuation](#compressleadingpunctuation23) API to set leading punctuation compression. If a punctuation mark with a space on its left appears at the start of a line, the punctuation mark will be compressed to the left boundary.
+This example demonstrates how to set leading punctuation compression using the [compressLeadingPunctuation](#compressleadingpunctuation23) API. If a punctuation mark with a leading space appears at the start of a line, the punctuation mark will be compressed to the left boundary.
 
 The **compressLeadingPunctuation** API is supported since API version 23.
 
@@ -2991,13 +3059,13 @@ The **compressLeadingPunctuation** API is supported since API version 23.
 struct Index {
   build() {
     Column(){
-      Text("[Leading punctuation compression] enabled")
+      Text("\u300CLeading punctuation compression enabled")
         .compressLeadingPunctuation(true)
         .margin(5)
         .border({ width: 1 })
         .fontSize(30)
         .width("90%")
-      Text("[Leading punctuation compression] disabled")
+      Text("\u300CLeading punctuation compression disabled")
         .compressLeadingPunctuation(false)
         .border({ width: 1 })
         .fontSize(30)
@@ -3006,11 +3074,11 @@ struct Index {
   }
 }
 ```
-
+![textCompressLeadingPunctuation](figures/textCompressLeadingPunctuation.gif)
 
 ### Example 24: Setting Adaptive Spacing
 
-In this example, the [includeFontPadding](#includefontpadding23) API is used to add the spacing between the first and last lines, and the [fallbackLineSpacing](#fallbacklinespacing23) API is used to set the adaptive line spacing.
+This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
 
 The [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are supported since API version 23.
 
@@ -3040,14 +3108,14 @@ struct Index {
       Scroll() {
         Column() {
           // --- Buttons related to IncludeFontPadding ---
-          Button('Set includePadding: ' this.include)
+          Button('Set includePadding: ' + this.include)
             .onClick(() => {
               this.include = this.include === false ? true : false;
             })
             .margin({ bottom: 10 })
 
-          // --- Buttons related to FallbackLineSpacing ---
-          Button('Set fallbackLineSpacing: ' this.fallback)
+          // --- Button related to FallbackLineSpacing ---
+          Button('Set fallbackLineSpacing: ' + this.fallback)
             .onClick(() => {
               this.fallback = this.fallback === false ? true : false;
             })
@@ -3074,7 +3142,7 @@ struct Index {
 
 ### Example 25: Setting the Drag Preview Style for Text Being Dragged
 
-This example uses the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API to set the drag preview style for text being dragged.
+This example demonstrates how to set the drag preview style for text being dragged using the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API.
 
 The **selectedDragPreviewStyle** API is supported since API version 23.
 
@@ -3101,7 +3169,7 @@ struct TextTest {
 
 ### Example 26: Setting the Text Layout Direction
 
-This example uses the [textDirection](#textdirection23) API to set the text layout direction.
+This example demonstrates how to set the text layout direction using the [textDirection](#textdirection23) API.
 
 The **textDirection** API is supported since API version 23.
 
@@ -3110,22 +3178,22 @@ The **textDirection** API is supported since API version 23.
 @Entry
 @Component
 struct TextExample {
-  @State text: string = 'Text text layout direction example';
+  @State text: string = 'Text layout direction example';
 
   build() {
     Column({ space: 3 }) {
-      Text('Text text layout direction DEFAULT')
+      Text('Text layout direction: DEFAULT')
         .fontSize(12).width('90%').margin(5)
       Text(this.text)
         .width('95%')
         .borderWidth(1)
-      Text('Text text layout direction: RTL')
+      Text('Text layout direction: RTL')
         .fontSize(12).width('90%').margin(5)
       Text(this.text)
         .width('95%')
         .borderWidth(1)
         .textDirection(TextDirection.RTL)
-      Text('Text text layout direction: RTL, text horizontal alignment: LEFT')
+      Text('Text layout direction: RTL, text horizontal alignment: LEFT')
         .fontSize(12).width('90%').margin(5)
       Text(this.text)
         .width('95%')
@@ -3139,4 +3207,118 @@ struct TextExample {
 }
 ```
 
+![textTextDirection](figures/textTextDirection.PNG)
 
+### Example 27: Obtaining Text Information Corresponding to Specified Coordinates and Range
+
+The [getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24), [getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24), and [getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24) APIs are supported since API version 24. This example shows how to use the [getLayoutManager](#getlayoutmanager12) API to call the text layout manager object to obtain text information. It also demonstrates how to use the [getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24) API in [LayoutManager](ts-text-common.md#layoutmanager12) to obtain position information for the coordinate, the [getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24) API to obtain the glyph index range and actual character index range based on the character index range, and the [getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24) API to obtain the character index range and actual glyph index range based on the glyph index range.
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample10 {
+  @State start: number = 10;
+  @State end: number = 20;
+  textController: TextController = new TextController();
+  textStr: string = "Hello World";
+  @State str1: string = ""
+  @State str2: string = ""
+  @State str3: string = ""
+  @State str4: string = ""
+  textStyleAttrs: TextStyle =
+    new TextStyle({ fontWeight: FontWeight.Bolder, fontSize: LengthMetrics.vp(24), fontStyle: FontStyle.Italic });
+  titleParagraphStyleAttr: ParagraphStyle =
+    new ParagraphStyle({ paragraphSpacing: LengthMetrics.px(50), textIndent: LengthMetrics.vp(15) });
+  mutableStyledString: MutableStyledString =
+    new MutableStyledString("Styled string TextStyle test\nStyled string test\nStyled string TextStyle test");
+
+  build() {
+    Column() {
+      Text(this.textStr, { controller: this.textController }) {
+        Span("Hello World 123 \n")
+        Span("Hello World 456 \n")
+        Span("Hello World 789 \n")
+      }
+      .fontSize(25)
+      .borderWidth(1)
+
+      Text(this.str1)
+      Text(this.str2)
+      Text(this.str3)
+      Text(this.str4)
+
+      Button("Add Styled String").onClick (() => {
+        this.textController.setStyledString(this.mutableStyledString)
+      })
+
+      Button("Glyph Info at [150, 50]")
+        .onClick(() => {
+          let layoutManager: LayoutManager = this.textController.getLayoutManager();
+          let position1: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50);
+          this.str1 = "Glyph info at [150, 50]. glyphPosition position: " + position1.position +
+            " affinity: " +
+          position1.affinity;
+
+          let position2: PositionWithAffinity =
+            layoutManager.getCharacterPositionAtCoordinate(150, 50) as PositionWithAffinity;
+          this.str2 = "Glyph info at [150, 50]. characterPosition position: " + position2.position +
+            " affinity: " +
+          position2.affinity;
+
+          let range1: TextRange = { start: this.start, end: this.end };
+          let ranges1: Array<TextRange> = layoutManager.getGlyphRangeForCharacterRange(range1) as Array<TextRange>
+          this.str3 = "getGlyphRangeForCharacterRange. Glyph range: " + ranges1[0].start + " " + ranges1[0].end + "\n" 
+            "getGlyphRangeForCharacterRange. Actual character range: " + ranges1[1].start + " " + ranges1[1].end
+
+          let range2: TextRange = { start: this.start, end: this.end };
+          let ranges2: Array<TextRange> = layoutManager.getCharacterRangeForGlyphRange(range2) as Array<TextRange>
+          this.str4 = "getCharacterRangeForGlyphRange. Character range: " + ranges2[0].start + " " + ranges2[0].end + "\n" +
+            "getCharacterRangeForGlyphRange. Actual glyph range: " + ranges2[1].start + " " + ranges2[1].end
+        })
+        .margin({ bottom: 20, top: 10 })
+    }.justifyContent(FlexAlign.Center).width("100%").height("100%")
+  }
+}
+```
+
+![textRangePosition](figures/textRange_Position.gif)
+
+### Example 28: Enabling/Disabling Orphan Character Optimization During Text Typesetting
+
+This example demonstrates how to use the [orphanCharOptimization](#orphancharoptimization) API to enable/disable orphan word optimization, ensuring no orphan character appears in the last line of a paragraph.
+
+The **orphanCharOptimization** API is supported since API version 26.0.0.
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本aaaaaaaaaaaaa';
+
+  build() {
+    Column({ space: 3 }) {
+      Text('Text disables orphan character optimization.')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+      Text('Text enables orphan character optimization.')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .fontSize(20)
+        .width('456')
+        .borderWidth(1)
+        .orphanCharOptimization(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![textOrphanCharOptimization](figures/textOrphanCharOptimization.png)
