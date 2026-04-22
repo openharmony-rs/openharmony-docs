@@ -884,7 +884,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：手动设置授权（manual_settings）
 
-**支持设备**：PC/2in1
+**支持设备**：PC/2in1 | TV
 
 **起始版本**：22
 
