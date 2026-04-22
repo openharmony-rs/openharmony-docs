@@ -211,6 +211,7 @@ DeviceManager 服务进程退出信息。
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
+| 无 | - | - | 该类型不包含成员。 |
 
 ## BindTargetResult<sup>23+</sup>
 
@@ -871,7 +872,7 @@ ArkTS-Sta参数：
   | ---------- | --------------------------------------------------- | ----- | ------------ |
   | deviceId   | string                                              | 是    | 设备标识。长度范围1~255字符。   |
   | bindParam  | Record&lt;string, int &#124; string&gt;                             | 是    | 认证参数。由开发者自行决定传入的键值对。默认会携带以下key值：<br /> bindType 此值是绑定的类型，必填。<br /> - 1：PIN码。<br /> targetPkgName 绑定目标的包名。<br /> appName 尝试绑定目标的应用程序名称。<br /> appOperation 应用程序要绑定目标的原因。<br /> customDescription 操作的详细说明。   |
-  | callback   | AsyncCallback&lt;[BindTargetResult](#BindTargetResult23)&gt; | 是    | 认证结果回调。 |
+  | callback   | AsyncCallback&lt;[BindTargetResult](#bindtargetresult23)&gt; | 是    | 认证结果回调。 |
 
 **错误码：**
 
@@ -1075,7 +1076,7 @@ onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DeviceStateChangeResult](#DeviceStateChangeResult23)&gt; | 是    | 指示要注册的设备状态回调，返回设备状态和设备信息。      |
+  | callback | Callback&lt;[DeviceStateChangeResult](#devicestatechangeresult23)&gt; | 是    | 指示要注册的设备状态回调，返回设备状态和设备信息。      |
 
 **错误码：**
 
@@ -1169,7 +1170,7 @@ offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('deviceStateChange')](#offdeviceStateChange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('deviceStateChange')](#offdevicestatechange)。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1181,7 +1182,7 @@ offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
 
   | 参数名       | 类型                                     | 必填   | 说明                          |
   | -------- | ---------------------------------------- | ---- | ---- |
-  | callback | Callback&lt;[DeviceStateChangeResult](#DeviceStateChangeResult23)&gt; | 否    | 指示要取消注册的设备状态回调，返回设备状态和设备信息。 |
+  | callback | Callback&lt;[DeviceStateChangeResult](#devicestatechangeresult23)&gt; | 否    | 指示要取消注册的设备状态回调，返回设备状态和设备信息。 |
 
 **错误码：**
 
@@ -1274,7 +1275,7 @@ onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('discoverSuccess')](#ondiscoverSuccess)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('discoverSuccess')](#ondiscoversuccess)。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1286,7 +1287,7 @@ onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
 
   | 参数名       | 类型                                     | 必填   | 说明                         |
   | -------- | ---------------------------------------- | ---- | -------------------------- |
-  | callback | Callback&lt;[DiscoverySuccessResult](#DiscoverySuccessResult23)&gt; | 是    | 注册设备发现的回调方法。               |
+  | callback | Callback&lt;[DiscoverySuccessResult](#discoverysuccessresult23)&gt; | 是    | 注册设备发现的回调方法。               |
 
 **错误码：**
 
@@ -1379,7 +1380,7 @@ offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('discoverSuccess')](#offdiscoverSuccess)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('discoverSuccess')](#offdiscoversuccess)。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1391,7 +1392,7 @@ offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DiscoverySuccessResult](#discoverysuccessresult)&gt; | 否    | 指示要取消注册的设备发现回调，返回设备状态和设备信息。              |
+  | callback | Callback&lt;[DiscoverySuccessResult](#discoverysuccessresult23)&gt; | 否    | 指示要取消注册的设备发现回调，返回设备状态和设备信息。              |
 
 **错误码：**
 
@@ -1491,7 +1492,7 @@ onDeviceNameChange(callback: Callback&lt;DeviceNameChangeResult&gt;): void
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DeviceNameChangeResult](#DeviceNameChangeResult23)&gt; | 是    | 注册设备名称改变的回调方法。                 |
+  | callback | Callback&lt;[DeviceNameChangeResult](#devicenamechangeresult23)&gt; | 是    | 注册设备名称改变的回调方法。                 |
 
 **错误码：**
 
@@ -1591,7 +1592,7 @@ offDeviceNameChange(callback?: Callback&lt;DeviceNameChangeResult&gt;): void
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DeviceNameChangeResult](#DeviceNameChangeResult23)&gt; | 否    | 指示要取消注册设备名称改变的回调方法。                 |
+  | callback | Callback&lt;[DeviceNameChangeResult](#devicenamechangeresult23)&gt; | 否    | 指示要取消注册设备名称改变的回调方法。                 |
 
 **错误码：**
 
@@ -1691,7 +1692,7 @@ onDiscoverFailure(callback: Callback&lt;DiscoveryFailureResult&gt;): void
 
   | 参数名       | 类型                                     | 必填   | 说明                |
   | -------- | ---------------------------------------- | ---- | ----------------- |
-  | callback | Callback&lt;[DiscoveryFailureResult](#DiscoveryFailureResult23)&gt; | 是    | 注册设备发现失败的回调方法。 |
+  | callback | Callback&lt;[DiscoveryFailureResult](#discoveryfailureresult23)&gt; | 是    | 注册设备发现失败的回调方法。 |
 
 **错误码：**
 
@@ -1791,7 +1792,7 @@ offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | callback | Callback&lt;[DiscoveryFailureResult](#DiscoveryFailureResult23)&gt; | 否    | 指示要取消注册的设备发现失败回调。                       |
+  | callback | Callback&lt;[DiscoveryFailureResult](#discoveryfailureresult23)&gt; | 否    | 指示要取消注册的设备发现失败回调。                       |
 
 **错误码：**
 
@@ -1887,7 +1888,7 @@ onServiceDie(callback: Callback&lt;ServiceDieData&gt;): void
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | callback | Callback&lt;[ServiceDieData](#ServiceDieData23)&gt; | 是    | 注册serviceDie的回调方法。                       |
+  | callback | Callback&lt;[ServiceDieData](#servicediedata23)&gt; | 是    | 注册serviceDie的回调方法。                       |
 
 **错误码：**
 
@@ -1983,7 +1984,7 @@ offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | callback | Callback&lt;[ServiceDieData](#ServiceDieData23)&gt; | 否    | 取消注册serviceDie的回调方法。                     |
+  | callback | Callback&lt;[ServiceDieData](#servicediedata23)&gt; | 否    | 取消注册serviceDie的回调方法。                     |
 
 **错误码：**
 
