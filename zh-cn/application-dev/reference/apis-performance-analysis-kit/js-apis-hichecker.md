@@ -59,11 +59,15 @@ addCheckRule(rule: bigint): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 添加一条规则
-hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
-// 添加多条规则
-// hichecker.addCheckRule(
-//     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+try {
+    // 添加一条规则
+    hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
+    // 添加多条规则
+    // hichecker.addCheckRule(
+    //     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+} catch (err) {
+    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+}
 ```
 
 ## hichecker.removeCheckRule<sup>9+</sup>
@@ -91,11 +95,15 @@ removeCheckRule(rule: bigint): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 删除一条规则
-hichecker.removeCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
-// 删除多条规则
-// hichecker.removeCheckRule(
-//     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+try {
+    // 删除一条规则
+    hichecker.removeCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
+    // 删除多条规则
+    // hichecker.removeCheckRule(
+    //     hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+} catch (err) {
+    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+}
 ```
 
 ## hichecker.containsCheckRule<sup>9+</sup>
@@ -129,12 +137,16 @@ containsCheckRule(rule: bigint): boolean
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 添加一条规则
-hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+try {
+    // 添加一条规则
+    hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
 
-// 查询是否包含
-hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS); // return true;
-hichecker.containsCheckRule(hichecker.RULE_CAUTION_PRINT_LOG); // return false;
+    // 查询是否包含
+    hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS); // return true;
+    hichecker.containsCheckRule(hichecker.RULE_CAUTION_PRINT_LOG); // return false;
+} catch (err) {
+    console.error(`code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+}
 ```
 
 ## hichecker.addRule<sup>(deprecated)</sup>
