@@ -162,8 +162,8 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |UiImage|获取页面内子图信息|
     |JumpContext|高亮跳转到指定上下文|
     |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
-    |UiTree|获取页面内json树信息<br> **起始版本：**26.0.0|
- 	 |InjectEvent|注入事件<br> **起始版本：**26.0.0|
+    |UiTree|获取页面内json树信息<br> **起始版本：** 26.0.0|
+ 	|InjectEvent|注入事件<br> **起始版本：** 26.0.0|
 
   * groupId支持能力列表<br>
   
@@ -640,7 +640,7 @@ capture接口支持的capList能力列表
 | ---- | ------ |
 |UiImage|获取页面内子图信息|
 |QuickSnap|获取截屏信息|
-|UiTree|获取页面json树信息<br> **起始版本：**26.0.0|
+|UiTree|获取页面json树信息<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
@@ -700,7 +700,7 @@ interact接口支持的capList能力列表
 |capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
-|InjectEvent|注入事件<br> **起始版本：**26.0.0|
+|InjectEvent|注入事件<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
