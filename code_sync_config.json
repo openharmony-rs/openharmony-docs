@@ -23991,6 +23991,66 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportObjectProperty.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"monitor_wildcard_support_object_property",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportNestedObject.ets",
+				"functions":[
+					{
+						"end_line":96,
+						"name":"monitor_wildcard_support_nested_object",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportArray.ets",
+				"functions":[
+					{
+						"end_line":138,
+						"name":"monitor_wildcard_support_array",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportDate.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"monitor_wildcard_support_date",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportMap.ets",
+				"functions":[
+					{
+						"end_line":93,
+						"name":"monitor_wildcard_support_map",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportSet.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"monitor_wildcard_support_set",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
