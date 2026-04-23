@@ -246,7 +246,7 @@
 | [int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventdowntime) | - | 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。|
 | [Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)](#oh_input_settoucheventtooltype) | - | 设置触屏输入事件的工具类型。|
 | [Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventtooltype) | - | 获取触屏输入事件的工具类型。 |
-| [Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)](#oh_input_bindinputdevicetodisplay) | - | 绑定指定输入设备到指定屏幕。 |
+| [Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)](#oh_input_bindinputdevicetodisplay) | - | 绑定指定输入设备到指定屏幕。|
 
 ## 枚举类型说明
 
@@ -4300,6 +4300,7 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 **描述**
 
 获取当前屏幕上鼠标的坐标点。
+
 从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。
 
 **设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
