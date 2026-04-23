@@ -96,7 +96,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 ]
 ```
 
-调用方应用需要在module.json5中申请对应的权限。
+调用方应用需要在module.json5中申请对应的权限。启动其他应用中的组件时，调用方应用必须获取该组件所要求的权限。
 
 ```json5
 "requestPermissions": [
