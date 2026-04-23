@@ -401,6 +401,9 @@ OH_Preferences_ErrCode
 int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)
 ```
 
+**描述**
+
+校验当前平台是否支持对应存储模式。
 
 **起始版本：** 18
 
