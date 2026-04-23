@@ -346,8 +346,6 @@ try {
 }
 ```
 
----
-
 ## 新增类型定义
 
 ### KeyCommandCallback
@@ -366,8 +364,6 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
 | keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
-
----
 
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
@@ -503,8 +499,6 @@ struct Index {
 | ------------------------------ | ----------- | ---------------- |
 | FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 |
 
----
-
 ## 新增枚举
 
 ### KeyCommandTriggerType
@@ -522,5 +516,3 @@ struct Index {
 | PRESSED | 1 | 首次按下触发。当最终按键首次按下时触发回调，自动重复按下不触发。 |
 | REPEAT_PRESSED | 2 | 重复按下触发。当最终按键每次按下时都触发回调，包括自动重复按下。 |
 | ALL_RELEASED | 3 | 按下按键或抬起按键时均会触发回调。包括自动重复按下的按键。 |
-
----
