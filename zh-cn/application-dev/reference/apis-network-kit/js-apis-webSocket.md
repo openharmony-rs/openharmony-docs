@@ -1538,6 +1538,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
+| 2302007   | Websocket port already occupied.           |
 | 2302999   | Websocket other unknown error.             |
 
 **示例：**
