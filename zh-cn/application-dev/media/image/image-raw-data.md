@@ -22,7 +22,7 @@
    <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
@@ -50,7 +50,7 @@
      function getFileFd(context: Context, fileName: string): number | undefined {
        try {
          const filePath: string = context.cacheDir + '/' + fileName;
-         const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+         const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
          const fd: number = file?.fd;
          return fd;
        } catch (err) {
