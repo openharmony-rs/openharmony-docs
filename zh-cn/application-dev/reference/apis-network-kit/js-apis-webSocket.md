@@ -2614,8 +2614,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 | 名称 | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | -----| ------------------------------------------------------------ |
-| status   | int |  是 | 否   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
-| message | string |  是 | 否   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
+| status   | int |  否 | 否   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
+| message | string |  否 | 否   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
 
 ## ResponseHeaders<sup>12+</sup>
 ArkTS-Dyn: type ResponseHeaders = {
