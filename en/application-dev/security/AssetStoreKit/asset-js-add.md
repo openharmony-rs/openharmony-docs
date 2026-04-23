@@ -9,7 +9,7 @@
 
 ## Available APIs
 
-You can use [add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd), an asynchronous API, or [addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12), a synchronous API, to add an asset.
+You can use [add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd) or [addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12) (synchronous API) to add an asset.
 
 The following table describes the attributes of **AssetMap** for adding an asset.
 
@@ -59,7 +59,7 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 > **NOTE**
 >
-> The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to add an asset to a group, see [Adding an Asset to a Group](asset-js-group-access-control.md#adding-an-asset-to-a-group).
 

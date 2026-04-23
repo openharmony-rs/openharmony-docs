@@ -231,7 +231,7 @@ This document provides API sample code. For details about how to create a projec
 
    Prerequisites for using this API: The DLP file needs to be checked.
 
-    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->  
     
     ``` TypeScript
     isCurrentDlpFile() {
@@ -253,12 +253,11 @@ This document provides API sample code. For details about how to create a projec
         console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
         hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
       }).finally(() => {
-          fs.closeSync(file);
+        fileIo.closeSync(file);
       });
     }
     ```
-
-
+    
 8. Subscribe to or unsubscribe from the DLP file open event.
 
     <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->

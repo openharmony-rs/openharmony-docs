@@ -9,7 +9,7 @@
 
 The certificate framework shields the differences between third-party certificate algorithm libraries. It provides the capabilities of parsing and validating a certificate, certificate extensions, and a certificate revocation list (CRL), and validating a certificate chain.
 
-You can use the APIs provided by the certificate framework to easily complete your development.
+You can use the APIs provided by the certificate framework to achieve rapid development.
 
 > **NOTE**
 > The certificate framework provides the capabilities of processing certificates and CRL data, but does not provide the capabilities of generating or issuing certificates or CRLs. Certificates and CRLs are issued by a certificate authority (CA) rather than a single application.
@@ -65,6 +65,13 @@ You can use the certificate framework to implement the following functionalities
 - [Certificate and CRL Collection Development](create-get-cert-crl-object.md)
 - [Certificate Chain Development](create-verify-certchain-object.md)
 - [Creating a TrustAnchor Object Array from a p12 File](create-trustanchor-from-p12.md)
+- [Using the Prebuilt CA Certificate to Validate a Certificate Chain](verify-certchain-by-systemca.md)
+- [Certificate Signing with CMS](create-cms-sign-object.md)
+- [Certificate Encapsulation with CMS](create-cms-enveloped-object.md)
+- [Certificate Signature Verification with CMS](create-cms-verify-object.md)
+- [Certificate Decapsulation with CMS](create-cms-decapsulation-object.md)
+- [Creating and Parsing a Certificate with PKCS #12](create-parse-pkcs12.md)
+- [Online Validation of Certificate Revocation Status of a Certificate Chain](create-verify-cerchainvalidator-revocation-object.md)
 
 The following table lists the classes provided by the certificate framework. Based on the classes, you can learn the related APIs.
 
