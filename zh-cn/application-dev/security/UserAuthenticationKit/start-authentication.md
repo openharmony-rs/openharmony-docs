@@ -105,12 +105,12 @@ initiatingUserAuthentication1() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // 订阅认证结果
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.off('result');
@@ -122,7 +122,7 @@ initiatingUserAuthentication1() {
     });
     // 启动认证
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
@@ -161,12 +161,12 @@ initiatingUserAuthentication2() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // 订阅认证结果
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.off('result');
@@ -178,7 +178,7 @@ initiatingUserAuthentication2() {
     });
     // 启动认证
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
@@ -217,12 +217,12 @@ initiatingUserAuthentication3() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // 订阅认证结果
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.off('result');
@@ -234,7 +234,7 @@ initiatingUserAuthentication3() {
     });
     // 启动认证
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
@@ -272,12 +272,12 @@ initiatingUserAuthentication4() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // 订阅认证结果
     userAuthInstance.on('result', {
       onResult: (result: userAuth.UserAuthResult) => {
         try {
-          Logger.info('userAuthInstance callback');
+          Logger.info('userAuthInstance callback.');
           this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
           // 可在认证结束或其他业务需要场景，取消订阅认证结果。
           userAuthInstance.off('result');
@@ -289,7 +289,7 @@ initiatingUserAuthentication4() {
     });
     // 启动认证
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
