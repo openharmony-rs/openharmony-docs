@@ -282,7 +282,9 @@ static toHtml(styledString: StyledString): string
 
 ### replaceString
 
-replaceString(start: number , length: number , other: string): void
+ArkTS-Dyn: replaceString(start: number, length: number, other: string): void
+
+ArkTS-Sta: replaceString(start: int, length: int, other: string): void
 
 替换指定范围的字符串。
 
@@ -290,12 +292,16 @@ replaceString(start: number , length: number , other: string): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 指定范围的下标。 |
-| length | number | 是   | 指定范围的长度。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围的下标。 |
+| length | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围的长度。 |
 | other | string | 是   | 替换的新文本内容。<br/>**说明：** <br/>替换的字符串使用的是start位置字符的样式。 |
 
 **错误码**：
@@ -308,7 +314,9 @@ replaceString(start: number , length: number , other: string): void
 
 ### insertString
 
-insertString(start: number , other: string): void
+ArkTS-Dyn: insertString(start: number, other: string): void
+
+ArkTS-Sta: insertString(start: int, other: string): void
 
 插入字符串。
 
@@ -316,11 +324,15 @@ insertString(start: number , other: string): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 插入位置的下标。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 插入位置的下标。 |
 | other | string | 是   | 插入的新文本内容。<br/>**说明：** <br/>插入的字符串使用的是start-1位置字符的样式。若start-1位置字符未设置样式，则使用start位置字符样式。 |
 
 **错误码**：
@@ -333,7 +345,9 @@ insertString(start: number , other: string): void
 
 ### removeString
 
-removeString(start: number , length: number): void
+ArkTS-Dyn: removeString(start: number, length: number): void
+
+ArkTS-Sta: removeString(start: int, length: int): void
 
 移除指定范围的字符串。
 
@@ -343,12 +357,16 @@ removeString(start: number , length: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 指定范围的下标。 |
-| length | number | 是   | 指定范围的长度。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围的下标。 |
+| length | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围的长度。 |
 
 **错误码**：
 
@@ -367,6 +385,10 @@ replaceStyle(spanStyle: SpanStyle): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -392,6 +414,10 @@ setStyle(spanStyle: SpanStyle): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
@@ -408,7 +434,9 @@ setStyle(spanStyle: SpanStyle): void
 
 ### removeStyle
 
-removeStyle(start: number , length: number , styledKey: StyledStringKey): void
+ArkTS-Dyn: removeStyle(start: number, length: number, styledKey: StyledStringKey): void
+
+ArkTS-Sta: removeStyle(start: int, length: int, styledKey: StyledStringKey): void
 
 清除指定范围内容的指定类型样式。
 
@@ -420,12 +448,16 @@ removeStyle(start: number , length: number , styledKey: StyledStringKey): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 指定范围开始位置的下标。 |
-| length | number | 是   | 指定范围的长度。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围开始位置的下标。 |
+| length | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围的长度。 |
 | styledKey | [StyledStringKey](#styledstringkey枚举说明) | 是   | 样式类型枚举值。 |
 
 **错误码**：
@@ -438,7 +470,9 @@ removeStyle(start: number , length: number , styledKey: StyledStringKey): void
 
 ### removeStyles
 
-removeStyles(start: number , length: number): void
+ArkTS-Dyn: removeStyles(start: number, length: number): void
+
+ArkTS-Sta: removeStyles(start: int, length: int): void
 
 清除指定范围内容的所有样式。
 
@@ -450,12 +484,16 @@ removeStyles(start: number , length: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 指定范围开始位置的下标。 |
-| length | number | 是   | 指定范围的长度。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围开始位置的下标。 |
+| length | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围的长度。 |
 
 **错误码**：
 
@@ -477,9 +515,15 @@ clearStyles(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### replaceStyledString
 
-replaceStyledString(start: number , length: number , other: StyledString): void
+ArkTS-Dyn: replaceStyledString(start: number, length: number, other: StyledString): void
+
+ArkTS-Sta: replaceStyledString(start: int, length: int, other: StyledString): void
 
 替换指定范围为新的属性字符串。
 
@@ -487,12 +531,16 @@ replaceStyledString(start: number , length: number , other: StyledString): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 指定范围开始位置的下标。 |
-| length | number | 是   | 指定范围的长度。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围开始位置的下标。 |
+| length | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定范围的长度。 |
 | other | [StyledString](#styledstring) | 是   | 新的属性字符串对象。 |
 
 **错误码**：
@@ -505,7 +553,9 @@ replaceStyledString(start: number , length: number , other: StyledString): void
 
 ### insertStyledString
 
-insertStyledString(start: number , other: StyledString): void
+ArkTS-Dyn: insertStyledString(start: number, other: StyledString): void
+
+ArkTS-Sta: insertStyledString(start: int, other: StyledString): void
 
 在指定位置插入新的属性字符串。
 
@@ -513,11 +563,15 @@ insertStyledString(start: number , other: StyledString): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| start | number | 是   | 开始插入位置的下标。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 开始插入位置的下标。 |
 | other | [StyledString](#styledstring) | 是   | 新的属性字符串对象。|
 
 **错误码**：
@@ -538,6 +592,10 @@ appendStyledString(other: StyledString): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
@@ -555,6 +613,10 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型  | 说明   |
 | ------ | ---------- |
@@ -616,6 +678,9 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                                     | 只读 | 可选 | 说明                                                                                                                              |
 | ----------- | ---------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -638,6 +703,10 @@ constructor(value?: TextStyleInterface)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -647,6 +716,10 @@ constructor(value?: TextStyleInterface)
 ## TextStyleInterface对象说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                                                          | 必填 | 说明                                                                                                                                                                                                                                                                                                 |
 | ----------- | ------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -675,6 +748,10 @@ constructor(value?: GestureStyleInterface)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -685,11 +762,15 @@ constructor(value?: GestureStyleInterface)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
 | onClick | Callback\<[ClickEvent](ts-universal-events-click.md#clickevent对象说明)> | 否   | 设置点击事件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
 | onLongPress | Callback\<[GestureEvent](./ts-gesture-settings.md#gestureevent对象说明)> | 否   | 设置长按事件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23|
-| onTouch<sup>20+</sup> | ArkTS-Dyn: Callback\<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)><br/>ArkTS-Sta: Callback\<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)> \| undefined | 否   | 设置触摸事件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23|
+| onTouch<sup>20+</sup> | ArkTS-Dyn: Callback\<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)><br/>ArkTS-Sta: Callback\<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)> \| undefined | 否   | 设置触摸事件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 24|
 
 ## DecorationOptions<sup>20+</sup>
 
@@ -698,6 +779,8 @@ constructor(value?: GestureStyleInterface)
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
 
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
@@ -712,6 +795,10 @@ constructor(value?: GestureStyleInterface)
 ### 属性
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型              | 只读   |可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
@@ -731,6 +818,10 @@ constructor(value: DecorationStyleInterface)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -747,6 +838,10 @@ constructor(value: DecorationStyleInterface, options?: DecorationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -759,6 +854,10 @@ constructor(value: DecorationStyleInterface, options?: DecorationOptions)
 文本装饰线样式接口对象说明。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
@@ -779,6 +878,10 @@ constructor(value: DecorationStyleInterface, options?: DecorationOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
 | baselineOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否 | 获取属性字符串的文本基线偏移量。<br/>单位：[vp](ts-pixel-units.md) |
@@ -792,6 +895,10 @@ constructor(value: LengthMetrics)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -825,6 +932,10 @@ constructor(value: LengthMetrics)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -856,6 +967,10 @@ constructor(lineHeight: LengthMetrics)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -891,6 +1006,10 @@ ShadowOptions对象中不支持fill字段。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -907,6 +1026,10 @@ ShadowOptions对象中不支持fill字段。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
 | value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  是  |  否  | 获取属性字符串的图片数据源。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -915,8 +1038,8 @@ ShadowOptions对象中不支持fill字段。
 | objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  是  |  是  | 获取属性字符串的图片缩放类型。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
-| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  是  |  是  | 获取属性字符串的图片尺寸。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>返回number类型值的单位为`vp`。<br/>当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。<br/>**ArkTS-Dyn起始版本：** 21<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
+| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  是  |  是  | 获取属性字符串的图片尺寸。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>返回number类型值的单位为`vp`。<br/>当ImageAttachment尺寸设置为负数值或undefined时，返回为undefined。<br/>**ArkTS-Dyn起始版本：** 21<br/>**ArkTS-Sta起始版本：** 24<br/>**模型约束（仅ArkTS-Sta）：** 此接口仅可在Stage模型下使用。 |
 
 ### constructor
 
@@ -927,6 +1050,10 @@ constructor(value: ImageAttachmentInterface)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -944,11 +1071,39 @@ constructor(attachment: Optional\<AttachmentType\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
+**ArkTS-Dyn起始版本：** 15
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[constructor](#constructor23)。
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
 | attachment | Optional<[AttachmentType](#attachmenttype15)> | 是   | PixelMap类型或[ResourceStr](ts-types.md#resourcestr)类型图片设置项。 |
+
+### constructor<sup>23+</sup>
+
+constructor(value: AttachmentType | undefined)
+
+图片对象的构造函数。
+
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[constructor](#constructor15)。
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明   |
+| ------- | --------------------------------- | ---- | --------------------------------- |
+| value | [AttachmentType](#attachmenttype15) \| undefined| 是   | PixelMap类型或[ResourceStr](ts-types.md#resourcestr)类型图片设置项。 |
 
 ## AttachmentType<sup>15+</sup>
 
@@ -959,6 +1114,10 @@ type AttachmentType = ImageAttachmentInterface | ResourceImageAttachmentOptions
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型  | 说明   |
 | ------ | ---------- |
@@ -975,6 +1134,10 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型  | 说明   |
 | ------ | ---------- |
 | [ColorFilter](ts-types.md#colorfilter9) | ColorFilter类型图片颜色滤镜设置项。 |
@@ -983,6 +1146,10 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 ## ImageAttachmentInterface对象说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
@@ -1013,20 +1180,18 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 
 ResourceStr类型图片设置项。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型                              | 必填 | 说明   |
-| ------- | --------------------------------- | ---- | --------------------------------- |
-| resourceValue | Optional<[ResourceStr](ts-types.md#resourcestr)> |  是  | 设置图片数据源。 |
-| size | [SizeOptions](ts-types.md#sizeoptions) | 否   | 设置图片大小。 |
-| verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否   | 设置图片基于文本的对齐方式。<br/>默认值：ImageSpanAlignment.BOTTOM |
-| objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否   | 设置图片的缩放类型。<br/>默认值：ImageFit.Cover |
-| layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否   | 设置图片布局。 |
-| colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 设置属性字符串的图片颜色滤镜效果。 |
-| syncLoad  | boolean |  否  | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>默认值：false |
-| supportSvg2<sup>22+</sup>  | boolean |  否  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| 名称  | 类型                              | 只读 | 可选 | 说明   |
+| ------- | --------------------------------- | ---- | ---- |--------------------------------- |
+| resourceValue | ArkTS-Dyn: Optional<[ResourceStr](ts-types.md#resourcestr)> <br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined |  否  | 否 | 设置图片数据源。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23  |
+| size | [SizeOptions](ts-types.md#sizeoptions) | 否   | 是 | 设置图片大小。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否   | 是 | 设置图片基于文本的对齐方式。<br/>默认值：ImageSpanAlignment.BOTTOM<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否  | 是  | 设置图片的缩放类型，当前枚举类型不支持ImageFit.MATRIX。<br/>默认值：ImageFit.Cover<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否  | 是  | 设置图片布局。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br/>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## CustomSpan
 
@@ -1093,11 +1258,19 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 ## CustomSpanMeasureInfo对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
@@ -1108,6 +1281,10 @@ invalidate(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
@@ -1120,12 +1297,16 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| x | number |  是  | 自定义绘制Span相对于挂载组件的偏移。<br/>单位：[px](ts-pixel-units.md) |
-| lineTop | number |  是  | 自定义绘制Span相对于Text组件的上边距。<br/>单位：[px](ts-pixel-units.md) |
-| lineBottom | number |  是  | 自定义绘制Span相对于Text组件的下边距。<br/>单位：[px](ts-pixel-units.md) |
-| baseline | number |  是  | 自定义绘制Span的所在行的基线偏移量。<br/>单位：[px](ts-pixel-units.md) |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  | 自定义绘制Span相对于挂载组件的偏移。<br/>单位：[px](ts-pixel-units.md) |
+| lineTop | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  | 自定义绘制Span相对于Text组件的上边距。<br/>单位：[px](ts-pixel-units.md) |
+| lineBottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  | 自定义绘制Span相对于Text组件的下边距。<br/>单位：[px](ts-pixel-units.md) |
+| baseline | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  | 自定义绘制Span的所在行的基线偏移量。<br/>单位：[px](ts-pixel-units.md) |
 
 ## ParagraphStyle
 
@@ -1151,7 +1332,7 @@ invalidate(): void
 | leadingMargin   | ArkTS-Dyn: number \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11)<br/>ArkTS-Sta: double \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 是    | 是   | 获取属性字符串文本段落的缩进。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | paragraphSpacing<sup>19+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 是   | 获取属性字符串文本段落的段落间距。单位VP。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 | textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
-| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) | 是  |  是  | 获取文本方向。 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
 
 >  **说明：**
@@ -1170,6 +1351,10 @@ constructor(value?: ParagraphStyleInterface)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明   |
@@ -1179,6 +1364,10 @@ constructor(value?: ParagraphStyleInterface)
 ## ParagraphStyleInterface对象说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
@@ -1190,7 +1379,7 @@ constructor(value?: ParagraphStyleInterface)
 | leadingMargin   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 否    | 设置文本段落的缩进。不支持百分比。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | paragraphSpacing<sup>19+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 设置文本段落的段落间距。<br/>段落间距默认大小为0。不支持百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 | textVerticalAlign<sup>20+</sup>   | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 设置文本段落在垂直方向的对齐方式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
-| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 否    | 设置文本段落的自定义缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 否    | 设置文本段落的自定义缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  否  | 设置文本方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## UserDataSpan
@@ -1202,6 +1391,10 @@ constructor(value?: ParagraphStyleInterface)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 ## LeadingMarginSpan<sup>22+</sup>
 
@@ -1258,7 +1451,7 @@ abstract getLeadingMargin(): LengthMetrics
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
@@ -1274,6 +1467,10 @@ abstract getLeadingMargin(): LengthMetrics
 ## StyledStringKey枚举说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明                           |
 | ------ | --- | ----------------------------- |
@@ -1303,6 +1500,10 @@ abstract getLeadingMargin(): LengthMetrics
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
 | textBackgroundStyle  |  [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明)  |  是  | 否 | 获取属性字符串的文本背景颜色。<br />默认值：<br />{<br /> color: Color.Transparent,<br />  radius: 0<br />} |
@@ -1316,6 +1517,10 @@ constructor(textBackgroundStyle: TextBackgroundStyle)
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1337,6 +1542,10 @@ constructor(textBackgroundStyle: TextBackgroundStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
 | url  | string |  是  |  否 | 获取属性字符串的超链接内容。 |
@@ -1350,6 +1559,10 @@ constructor(url: string)
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
