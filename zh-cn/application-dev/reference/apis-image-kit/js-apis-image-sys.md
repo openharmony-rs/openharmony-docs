@@ -187,7 +187,7 @@ async function CreateWideGamutSdrPixelMap(context: Context) {
   let threeChannelGainmapImageSource = image.createImageSource(threeChannelGainmapFilePath);
   let threeChannelGainmapPixelmap = threeChannelGainmapImageSource.createWideGamutSdrPixelMap();
   if (threeChannelGainmapPixelmap != undefined) {
-    console.info('Succeeded in creating sdr pixelMap using CM_DISPLAY_BT2020_SRGB.');
+    console.info('Succeeded in creating sdr pixelMap using DISPLAY_BT2020_SRGB.');
   } else {
     console.error('Failed to create pixelMap.');
   }
