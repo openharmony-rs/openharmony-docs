@@ -39,7 +39,7 @@ ArkTS-Sta: static createImageLattice(xDivs: Array\<int>, yDivs: Array\<int>, fXC
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -107,7 +107,7 @@ static createImageLattice(xDivs: Array\<number>, yDivs: Array\<number>, fXCount:
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[createImageLatticeWithArrayInt](#createimagelatticewitharrayint22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[createImageLatticeWithArrayInt](#createimagelatticewitharrayint23)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -155,7 +155,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-## createImageLatticeWithArrayInt<sup>22+</sup>
+## createImageLatticeWithArrayInt<sup>23+</sup>
 
 static createImageLatticeWithArrayInt(xDivs: Array\<int>, yDivs: Array\<int>, fXCount: int, fYCount: int, fBounds?: common2D.Rect | null, fRectTypes?: Array\<RectType> | null, fColors?: Array\<int> | null): Lattice | undefined
 
@@ -167,7 +167,7 @@ static createImageLatticeWithArrayInt(xDivs: Array\<int>, yDivs: Array\<int>, fX
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
