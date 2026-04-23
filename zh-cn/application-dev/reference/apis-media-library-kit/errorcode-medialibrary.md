@@ -125,6 +125,28 @@ Invalid input parameter.
 
 检查传入参数是否在PhotoKeys枚举范围之内。
 
+## 23800201 不支持的操作类型
+
+**错误信息**
+
+Unsupported operation type.
+
+**错误描述**
+
+不支持的操作类型。
+
+**可能原因**
+
+1. 当前相册不支持设置传入的[AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute)。
+
+2. 当前[AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute)不支持传入的[AlbumOperationType](js-apis-photoAccessHelper-sys.md#albumoperationtype)。
+
+3. 存在其他限制。
+
+**处理步骤**
+
+检查设置相册属性的类型及其适用场景，并结合日志定位具体原因。
+
 ## 23800202 非法场景调用错误
 
 **错误信息**
