@@ -667,7 +667,7 @@ let wantTemp: Want = {
 let tokenId: number = 586874394;
 try {
   let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
-  console.info(`Succeeded in getting password policy, result : ${result}`);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
   console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
