@@ -145,7 +145,7 @@ OH_AVFormat_Destroy(format);
 ```cpp
 static OH_AVCodec *g_secondary = nullptr;
 
-// ⚠️ 必须在 Primary Configure 之后才能创建 Secondary
+// ⚠️ 必须在 Primary 成功创建之后才能创建 Secondary
 ret = OH_VideoEncoder_CreateSecondaryFromPrimary(g_primary, &g_secondary);
 if (ret != AV_ERR_OK || g_secondary == nullptr) {
     // 异常处理
