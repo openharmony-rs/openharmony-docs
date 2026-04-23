@@ -842,7 +842,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件的响应式布局策略。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

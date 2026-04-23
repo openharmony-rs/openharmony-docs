@@ -94,7 +94,7 @@ ArkTS-Sta: refreshOffset(value: double | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | nuArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefinedmber |  是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。|
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined |  是 | 下拉偏移量。<br/>单位：vp<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。<br/>取值为undefined时，按默认值处理。|
 
 ### pullToRefresh<sup>12+</sup>
 
@@ -116,7 +116,7 @@ ArkTS-Sta: pullToRefresh(value: boolean | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true <br/>取值为undefined时，按默认值处理。|
 
 ### pullUpToCancelRefresh<sup>23+</sup>
 
@@ -140,7 +140,7 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 
 ### pullDownRatio<sup>12+</sup>
 
-ArkTS-Dyn: pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>)
+ArkTS-Dyn: pullDownRatio(ratio: Optional\<number>)
 
 ArkTS-Sta: pullDownRatio(ratio: double | undefined)
 
@@ -228,7 +228,7 @@ ArkTS-Sta: onRefreshing(callback: (() => void) | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined | 是 | 进入刷新状态时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined | 是 | 进入刷新状态时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onOffsetChange<sup>12+</sup>
 
@@ -254,7 +254,7 @@ ArkTS-Sta: onOffsetChange(callback: Callback\<double> | undefined)
 
 | 参数名 | 类型                                    | 必填 | 说明       |
 | ------ | --------------------------------------- | ---- | ---------- |
-| callback  | ArkTS-Dyn: Callback\<number><br/>ArkTS-Sta: Callback\<double>&nbsp;\|&nbsp;undefined | 是   | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。<br/>单位：vp |
+| callback  | ArkTS-Dyn: Callback\<number><br/>ArkTS-Sta: Callback\<double>&nbsp;\|&nbsp;undefined | 是   | 回调函数，用于监听下拉距离的变化。当下拉距离发生变化时触发，回调参数为当前的下拉距离。<br/>单位：vp <br/>取值为undefined时，不使用回调函数。|
 
 
 ## RefreshStatus枚举说明
