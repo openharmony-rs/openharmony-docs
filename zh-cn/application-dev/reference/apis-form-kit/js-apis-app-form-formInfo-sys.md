@@ -36,7 +36,6 @@ import { formInfo } from '@kit.FormKit';
 | isStandbySupported<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否支持在灵动显示界面展示。<br/>-&nbsp;true：支持灵动显示。<br/>-&nbsp;false：不支持灵动显示。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | isStandbyAdapted<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否已适配灵动显示规则。<br/>-&nbsp;true：已适配灵动显示。<br/>-&nbsp;false：未适配灵动显示。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | isPrivacySensitive<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否是隐私敏感卡片。<br/>-&nbsp;true：是隐私敏感卡片。<br/>-&nbsp;false：不是隐私敏感卡片。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| isFontScaleFollowSystem | boolean  | 否    | 是     | 卡片的字体缩放是否跟随系统，默认值为true。<br/>-&nbsp;true：字体缩放跟随系统。<br/>-&nbsp;false：字体缩放不会跟随系统。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0 |
 
 ##  FormParam
 
