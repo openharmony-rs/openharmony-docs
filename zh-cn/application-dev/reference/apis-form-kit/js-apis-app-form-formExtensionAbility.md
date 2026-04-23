@@ -314,7 +314,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onAcquireFormState?(want: Want): formInfo.FormState
 
-卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态(该方法可以选择性重写)。
+卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
