@@ -3601,7 +3601,7 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  let url:string = 'http://abc.bcd.efg/aa/test.mp4';    //此处仅为示意，请替换为真实资源文件url
+  let url: string = 'http://abc.bcd.efg/aa/test.mp4';    //此处仅为示意，请替换为真实资源文件url
   avPlayer.url = url;
   let playStrategy : media.PlaybackStrategy = {
       enableSuperResolution: true
