@@ -6,8 +6,9 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-从API version 23开始，系统新增支持共享目录配置功能。在[应用文件分享](share-app-file.md)场景中，开发者可配置共享目录范围，防止应用敏感数据泄露。  
-从API版本26.0.0开始，系统新增支持应用捐献沙箱目录给系统的能力，在手机和平板上实现如捐献路径文管中可见的用户体验。
+从API version 23开始，系统新增支持共享目录配置功能。在[应用文件分享](share-app-file.md)场景中，开发者可配置共享目录范围，防止应用敏感数据泄露。
+
+从API版本26.0.0开始，系统新增应用捐献沙箱目录至操作系统的能力，在手机、平板设备中可实现捐献路径在文件管理器中可见的交互体验。
 
 ## 开发步骤
 
@@ -34,15 +35,15 @@
    | 属性名称 | 含义 | 数据类型 | 必填 |
    | -------- | -------- | -------- | -------- |
    | scopes | 允许共享的范围，详见scopes标签说明。 | 对象数组 | 否 |
-   | sharingOSPath | 应用捐献给操作系统的沙箱目录。无该字段代表不捐献目录给操作系统，这样在系统应用如文管/filePicker中将不可见，填写要求是上面scopes列表中一个对象的path值。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
-   | sharingOSSubpath | 应用捐献给操作系统的沙箱目录的子目录。sharingOSPath有值时必填，长度不超过32，将"sharingOSPath"+"sharingOSSubpath"拼接后的路径，作为捐献给操作系统的目录，""空串代表就是scopes中的path，有字符则以/开头，不允许有'.'、'..'、'\0'字符。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
-   | sharingOSPermission | 应用捐献给操作系统的沙箱目录的访问权限。sharingOSPath有值时必填，单选["r"、"r+w"]；要求sharingOSPermission的权限是上面scopes列表中路径匹配的对象的permission的子集。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
+   | sharingOSPath | 应用捐献给操作系统的沙箱目录，取值必须为scopes列表中已配置的path值。未配置该字段则表示不向操作系统捐献目录，系统应用如文件管理器、FilePicker等将无法查看应用捐献的沙箱目录。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
+   | sharingOSSubpath | 应用捐献给操作系统的沙箱目录的子目录。仅当 sharingOSPath配置时必填，长度不超过32，将"sharingOSPath"+"sharingOSSubpath"拼接后的路径，作为捐献给操作系统的目录，""空串代表直接捐献sharingOSPath，有字符则以/开头，不允许有'.'、'..'、'\0'字符。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
+   | sharingOSPermission | 应用捐献给操作系统的沙箱目录的访问权限。仅当sharingOSPath配置时必填，权限必须是scopes中对应路径permission的子集，不可超出原配置权限。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
 
    > **说明：**
    >
    > 应用更新时如涉及配置变更，将依据新配置进行管控，已分享文件的临时权限不受影响。
    > 
-   > 应用捐献沙箱目录给操作系统时，sharingOSPath、sharingOSSubpath和sharingOSPermission为必填项
+   > 应用向操作系统捐献沙箱目录时，sharingOSPath、sharingOSSubpath、sharingOSPermission三项为必填配置
 
    **scopes标签说明**
 
