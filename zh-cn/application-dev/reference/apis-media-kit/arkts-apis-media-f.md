@@ -255,6 +255,7 @@ media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
 ArkTS-Dyn: createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor>): void
 
 ArkTS-Sta: createAVMetadataExtractor(callback: AsyncCallback\<AVMetadataExtractor | undefined>): void
+
 创建AVMetadataExtractor实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
@@ -298,6 +299,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 ArkTS-Dyn: createAVMetadataExtractor(): Promise\<AVMetadataExtractor>
 
 ArkTS-Sta: createAVMetadataExtractor(): Promise\<AVMetadataExtractor | undefined>
+
 创建AVMetadataExtractor实例。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
@@ -343,6 +345,7 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 ArkTS-Dyn: createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool>): void
 
 ArkTS-Sta: createSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo, callback: AsyncCallback\<SoundPool | undefined>): void
+
 创建音频池实例。使用callback异步回调。
 
 > **说明：**
@@ -399,6 +402,7 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 ArkTS-Dyn: createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool>
 
 ArkTS-Sta: createSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise\<SoundPool | undefined>
+
 创建音频池实例。使用Promise异步回调。
 
 > **说明：**
@@ -502,6 +506,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 ArkTS-Dyn: createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator>): void
 
 ArkTS-Sta: createAVImageGenerator(callback: AsyncCallback\<AVImageGenerator | undefined>): void
+
 创建AVImageGenerator实例。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
@@ -545,6 +550,7 @@ media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGene
 ArkTS-Dyn: createAVImageGenerator(): Promise\<AVImageGenerator>
 
 ArkTS-Sta: createAVImageGenerator(): Promise\<AVImageGenerator | undefined>
+
 创建AVImageGenerator对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
@@ -590,6 +596,7 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
 ArkTS-Dyn: createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource
 
 ArkTS-Sta: createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaSource | undefined
+
 创建流媒体预下载媒体来源实例方法。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
@@ -658,6 +665,7 @@ async function test(context: Context){
 ArkTS-Dyn: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource
 
 ArkTS-Sta: createMediaSourceWithStreamData(streams: Array\<MediaStream>): MediaSource | undefined
+
 创建流媒体多码率媒体来源实例方法，当前仅支持HTTP-FLV协议格式多码率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
@@ -696,15 +704,15 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
 
 通过文件描述符创建媒体源。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -734,15 +742,15 @@ createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | und
 
 通过自定义数据源创建媒体源。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
