@@ -5736,13 +5736,65 @@ onReadMicInData(callback: Callback\<AudioCapturerMicInData>): void
 **示例：**
 
 ```ts
-let readMicInDataCallback = (data: audio.AudioCapturerMicInData) => {
-  console.info(`processed data length: ${data.data.byteLength}`);
-  console.info(`mic-in data length: ${data.micInData.byteLength}`);
-  console.info(`echo reference data length: ${data.ecData?.byteLength ?? 0}`);
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioEcStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
 };
 
-audioCapturer.onReadMicInData(readMicInDataCallback);
+let audioProcessedStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioMicInStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT,
+  capturerFlags: 0
+};
+
+let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
+  processedStreamInfo: audioProcessedStreamInfo,
+  micInStreamInfo: audioMicInStreamInfo,
+  ecStreamInfo: audioEcStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let readMicInDataCallback: Callback<audio.AudioCapturerMicInData> =
+  (data: audio.AudioCapturerMicInData): void => {
+    let ecDataLength: number = data.ecData ? data.ecData.byteLength : 0;
+    console.info(`processed data length: ${data.data.byteLength}`);
+    console.info(`mic-in data length: ${data.micInData.byteLength}`);
+    console.info(`echo reference data length: ${ecDataLength}`);
+  };
+
+async function registerReadMicInDataCallback(): Promise<void> {
+  try {
+    let audioCapturer: audio.AudioCapturer | null =
+      await audio.createMicInAudioCapturer(audioCapturerMicInConfig);
+    if (audioCapturer === null) {
+      console.error('AudioCapturer Created : ERROR : audioCapturer is null');
+      return;
+    }
+    audioCapturer.onReadMicInData(readMicInDataCallback);
+    console.info('Succeeded in registering onReadMicInData callback.');
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to create AudioCapturer. Code: ${error.code}, message: ${error.message}`);
+  }
+}
 ```
 
 ### offReadMicInData<sup>24+</sup>
@@ -5776,15 +5828,50 @@ offReadMicInData(callback?: Callback\<AudioCapturerMicInData>): void
 **示例：**
 
 ```ts
-let readMicInDataCallback = (data: audio.AudioCapturerMicInData) => {
-  console.info(`mic-in data length: ${data.micInData.byteLength}`);
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioMicInStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
 };
 
-audioCapturer.onReadMicInData(readMicInDataCallback);
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT,
+  capturerFlags: 0
+};
 
-// 取消该事件的所有监听。
-audioCapturer.offReadMicInData();
+let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
+  micInStreamInfo: audioMicInStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
 
-// 取消指定回调的监听。
-audioCapturer.offReadMicInData(readMicInDataCallback);
+let readMicInDataCallback: Callback<audio.AudioCapturerMicInData> =
+  (data: audio.AudioCapturerMicInData): void => {
+    console.info(`mic-in data length: ${data.micInData.byteLength}`);
+  };
+
+async function unregisterReadMicInDataCallback(): Promise<void> {
+  try {
+    let audioCapturer: audio.AudioCapturer | null =
+      await audio.createMicInAudioCapturer(audioCapturerMicInConfig);
+    if (audioCapturer === null) {
+      console.error('AudioCapturer Created : ERROR : audioCapturer is null');
+      return;
+    }
+
+    audioCapturer.onReadMicInData(readMicInDataCallback);
+
+    // 取消指定回调的监听。
+    audioCapturer.offReadMicInData(readMicInDataCallback);
+
+    // 取消该事件的所有监听。
+    audioCapturer.offReadMicInData();
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to create AudioCapturer. Code: ${error.code}, message: ${error.message}`);
+  }
+}
 ```
