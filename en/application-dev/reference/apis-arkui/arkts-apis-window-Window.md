@@ -5893,7 +5893,7 @@ Sets whether the main window displays a shadow. This API uses a promise to retur
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: In versions earlier than <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices. Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, and on tablets only when the [freeform window](../../windowmanager/window-terminology.md#freeform-windows) mode is enabled. Error code 801 is returned on other devices.
+**Device behavior differences**: In versions earlier than <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices. Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, and on tablets only when the [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode is enabled. Error code 801 is returned on other devices.
 
 **Required permissions**: ohos.permission.SET_WINDOW_TRANSPARENT
 
