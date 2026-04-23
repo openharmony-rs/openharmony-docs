@@ -2777,7 +2777,9 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
 
 ## connection.getConnectOwnerUid<sup>23+</sup>
 
-getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<number>
+ArkTS-Dyn: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<number>
+
+ArkTS-Sta: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<in>
 
 用于查询发起指定网络连接的应用UID。使用Promise异步回调。
 
@@ -2839,7 +2841,9 @@ connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
 
 ## connection.getConnectOwnerUidSync<sup>23+</sup>
 
-getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): number
+ArkTS-Dyn: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): number
+
+ArkTS-Sta:  getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): int
 
 用于查询发起指定网络连接的应用UID。使用同步方式返回。
 
