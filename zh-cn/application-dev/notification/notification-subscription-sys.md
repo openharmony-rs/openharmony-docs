@@ -99,6 +99,33 @@
      onDestroy: () => {
        hilog.info(DOMAIN_NUMBER, TAG, `onDestroy callback.`);
      },
+     onDoNotDisturbChanged: (mode) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onDoNotDisturbChanged callback. mode: ${JSON.stringify(mode)}`);
+     },
+     onEnabledNotificationChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledNotificationChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onBadgeChanged: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onBadgeChanged callback. data: ${JSON.stringify(data)}`);
+     },
+     onBatchCancel: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onBatchCancel callback. data: ${JSON.stringify(data)}`);
+     },
+     onEnabledPriorityChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledPriorityChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onEnabledPriorityByBundleChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledPriorityByBundleChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onSystemUpdate: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onSystemUpdate callback. data: ${JSON.stringify(data)}`);
+     },
+     onEnabledSilentReminderChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledSilentReminderChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onBadgeEnabledChanged: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onBadgeEnabledChanged callback. data: ${JSON.stringify(data)}`);
+     },
    };
    ```
    
