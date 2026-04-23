@@ -28,8 +28,8 @@ typedef struct UsbControlRequestSetup {...} __attribute__((aligned(8))) UsbContr
 | -- | -- |
 | uint8_t bmRequestType | 请求类型。 |
 | uint8_t bRequest | 具体的请求。 |
-| uint16_t wValue | 根据具体请求不同，其代表的含义也不同。 |
-| uint16_t wIndex | 根据具体请求不同，其代表的含义也不同，通常用来传递索引或者偏移量。 |
+| uint16_t wValue | 具体的请求不同，其代表的含义不一样。 |
+| uint16_t wIndex | 具体的请求不同，其代表的含义不一样，通常用来传递索引或者偏移量。 |
 | uint16_t wLength | 如果有数据阶段的传输，其代表传输的字节个数。 |
 
 

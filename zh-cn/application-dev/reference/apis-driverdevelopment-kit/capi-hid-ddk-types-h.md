@@ -197,8 +197,8 @@ enum Hid_KeyCode
 | HID_KEY_NUMPAD_7 = 71 | 数字键7 |
 | HID_KEY_NUMPAD_8 = 72 | 数字键8 |
 | HID_KEY_NUMPAD_9 = 73 | 数字键9 |
-| HID_KEY_NUMPAD_DIVIDE = 70 | 数字小键盘除号键 |
-| HID_KEY_NUMPAD_MULTIPLY = 55 | 数字小键盘乘号键 |
+| HID_KEY_NUMPAD_DIVIDE = 70 | 数字小键盘上的斜杠键（/） |
+| HID_KEY_NUMPAD_MULTIPLY = 55 | 数字小键盘上的星号键（*） |
 | HID_KEY_NUMPAD_SUBTRACT = 74 | 数字键- |
 | HID_KEY_NUMPAD_ADD = 78 | 数字键+ |
 | HID_KEY_NUMPAD_DOT = 83 | 数字键. |
