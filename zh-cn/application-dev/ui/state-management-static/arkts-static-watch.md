@@ -130,7 +130,7 @@ struct CountModifier {
 
 ### 通过propertyName判断具体属性变化
 
-当\@Watch装饰interface类型，或被[`@Observed`](./arkts-static-observed-and-objectlink.md)/[`@Track`](./arkts-static-track.md)装饰的class类型时，interface或class中不同的成员属性的修改，会将对应的状态变量名传入回调方法，而非属性名。详细见以下示例代码：
+当\@Watch装饰interface类型，或被[\@Observed](./arkts-static-observed-and-objectlink.md)/[\@Track](./arkts-static-track.md)装饰的class类型时，interface或class中不同的成员属性的修改，会将对应的状态变量名传入回调方法，而非属性名。详细见以下示例代码：
 
 ```ts
 'use static'
