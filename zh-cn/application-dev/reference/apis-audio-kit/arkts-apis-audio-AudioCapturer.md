@@ -1416,18 +1416,17 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
-
 ## setMuteHint<sup>24</sup>
 
 setMuteHint(mute: boolean): Promise&lt;void&gt;
 
-应用将当前录音流的自身静音状态传递给框架。该方法不会触发录音流静音，仅在部分场景用于优化设备功耗和内部处理策略。使用Promise异步回调。
+应用将当前录音流的自身静音状态传递给系统音频模块。<!--RP1-->该接口不会触发录音流静音，当前仅在部分PC设备上用于优化设备功耗。<!--RP1End-->使用Promise异步回调。
 
 > **说明：**
 >
-> - 该接口用于向框架上报应用自身的静音状态，不会改变录音流的实际静音状态。
+> - 该接口用于向系统音频模块上报应用自身的静音状态，不会改变录音流的实际静音状态。
 > - 该接口仅在录音流处于运行态时允许调用，否则返回错误码6800103。
-> - 流级muteHint设置仅对运行态录音流优先级生效；同一录音流同时设置流级和会话级muteHint时，流级[setMuteHint](#setmutehint24)优先级更高，以流级设置值为准。
+> - 同一录音流同时设置流级静音提示接口（该接口）和会话级静音提示接口[AudioSessionManager.setCapturerMuteHint](arkts-apis-audio-AudioSessionManager.md#setCapturerMuteHin24)时，流级[setMuteHint](#setmutehint24)优先级更高，数值以流级设置值为准。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1437,7 +1436,7 @@ setMuteHint(mute: boolean): Promise&lt;void&gt;
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
 | ---------- |---------------- | ------ |---------------------------------------------------------|
-| mute | boolean  | 是  | 应用自身给底层框架上报的静音状态。true表示应用将当前流静音，false表示取消静音。 |
+| mute | boolean  | 是  | 应用自身给系统音频模块上报的静音状态。true表示应用将当前流静音，false表示取消静音。 |
 
 **返回值：**
 
