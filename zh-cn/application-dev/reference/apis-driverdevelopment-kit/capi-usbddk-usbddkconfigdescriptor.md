@@ -12,7 +12,7 @@ typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
 
 ## 概述
 
-配置描述符，封装了标准配置描述符及其包含的接口和未解析的额外描述符数据。
+配置描述符。
 
 **起始版本：** 10
 

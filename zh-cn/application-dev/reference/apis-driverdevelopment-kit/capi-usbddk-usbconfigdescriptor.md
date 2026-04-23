@@ -12,7 +12,7 @@ typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescri
 
 ## 概述
 
-标准配置描述符，对应USB协议中Standard Configuration Descriptor。
+标准配置描述符。
 
 **起始版本：** 10
 
