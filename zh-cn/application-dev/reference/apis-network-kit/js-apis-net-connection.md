@@ -3631,9 +3631,9 @@ netCon.unregister((error: BusinessError|null) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本:** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:** 23
 
 ### 属性
 
@@ -4159,9 +4159,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本:** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:** 23
 
 | 名称                  | 值   | 说明                   |
 | ------------------------ | ---- | ---------------------- |
@@ -4179,9 +4179,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本:** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:** 23
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
@@ -4360,9 +4360,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:** 23
 
 ### 属性
 
@@ -4377,9 +4377,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:**  23
 
 ### 属性
 
