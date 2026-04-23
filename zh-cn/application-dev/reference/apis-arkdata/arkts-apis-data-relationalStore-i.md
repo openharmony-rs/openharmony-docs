@@ -226,8 +226,7 @@ import { window } from '@kit.ArkUI';
 import { fileIo } from '@kit.CoreFileKit'
 
 export default class EntryAbility extends UIAbility {
-  async onWindowStageCreate(windowStage: window.WindowStage) {
-    let rdbStore: relationalStore.RdbStore | undefined = undefined;
+  onWindowStageCreate(windowStage: window.WindowStage) {
     const STORE_CONFIG: relationalStore.StoreConfig = {
       name: "testTokenize.db",
       securityLevel: relationalStore.SecurityLevel.S1,
@@ -235,7 +234,7 @@ export default class EntryAbility extends UIAbility {
     let bundleCodeDir = this.context.bundleCodeDir;
     // libdistributeddb_extension.so为实现的fts5可加载分词器扩展编译成的so名称
     let soPath = bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so";
-    let res = await fileIo.access(soPath);
+    let res = fileIo.access(soPath);
     if (!res) {
       console.error("Dynamic library not accessible");
       return;
@@ -244,8 +243,8 @@ export default class EntryAbility extends UIAbility {
 
     // 将pluginLibs配置为需要加载的动态库拓展路径。
     STORE_CONFIG.pluginLibs = [soPath];
-    try {
-      rdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
+    relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+      console.info('Get RdbStore successfully.');
       // 使用自定义分词器创建fts5虚拟表，tokenize后面是实现的分词器名称
       await rdbStore.executeSql("CREATE VIRTUAL TABLE IF NOT EXISTS pages USING fts5(title, keywords, body, tokenize=koowork_tokenizer);");
       console.info("CREATE VIRTUAL TABLE OK");
@@ -259,9 +258,10 @@ export default class EntryAbility extends UIAbility {
       }
       resultSet.close();
       await rdbStore.close();
-    } catch (err) {
-      console.error("RdbStore failed, err: code=" + err.code + " message=" + err.message);
-    }
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
+    });
   }
 }
 ```
