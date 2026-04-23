@@ -194,7 +194,7 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，支持triggerType参数。 |
-| callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合键选项和按键事件数据。 |
+| callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合键选项和按键事件数据。<br/>ArkTS-Dyn起始版本: 26.0.0<br/>ArkTS-Sta起始版本：26.0.0 |
 
 **错误码**：
 
@@ -289,7 +289,7 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，需与订阅时传入的keyOptions一致。 |
-| callback | [KeyCommandCallback](#keycommandcallback) | 否 | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
+| callback | [KeyCommandCallback](#keycommandcallback) | 否 | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。<br/>ArkTS-Dyn起始版本: 26.0.0<br/>ArkTS-Sta起始版本：26.0.0 |
 
 **错误码**：
 
@@ -348,8 +348,6 @@ try {
 }
 ```
 
----
-
 ## 新增类型定义
 
 ### KeyCommandCallback
@@ -367,9 +365,7 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
-| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
-
----
+| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。<br/>ArkTS-Dyn起始版本: 26.0.0<br/>ArkTS-Sta起始版本：26.0.0 |
 
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
@@ -493,7 +489,7 @@ struct Index {
 | isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
 | finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
-| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。默认值为0，表示使用isFinalKeyDown和isRepeat的传统模式。设置为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)时，启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。<br>**起始版本：** 26.0.0|
+| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。默认值为0，表示使用isFinalKeyDown和isRepeat的传统模式。设置为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)时，启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。<br/>ArkTS-Dyn起始版本: 26.0.0<br/>ArkTS-Sta起始版本：26.0.0 |
 
 ## shieldMode<sup>11+</sup>
 
@@ -505,15 +501,15 @@ struct Index {
 | ------------------------------ | ----------- | ---------------- |
 | FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 |
 
----
-
 ## 新增枚举
 
 ### KeyCommandTriggerType
 
 按键命令触发类型枚举，用于指定组合按键的触发时机。
 
-**起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -524,5 +520,3 @@ struct Index {
 | PRESSED | 1 | 首次按下触发。当最终按键首次按下时触发回调，自动重复按下不触发。 |
 | REPEAT_PRESSED | 2 | 重复按下触发。当最终按键每次按下时都触发回调，包括自动重复按下。 |
 | ALL_RELEASED | 3 | 按下按键或抬起按键时均会触发回调。包括自动重复按下的按键。 |
-
----
