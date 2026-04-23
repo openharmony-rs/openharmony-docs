@@ -48,7 +48,6 @@
 | onConnect?: ()&nbsp;=&gt;&nbsp;void                                 | 订阅成功回调。           |
 | onDisconnect?: ()&nbsp;=&gt;&nbsp;void                              | 取消订阅回调。           |
 | onDestroy?: ()&nbsp;=&gt;&nbsp;void                                  | 与通知子系统断开回调。   |
-| onDoNotDisturbDateChange<sup>(deprecated)</sup>?: (mode:&nbsp;notification.DoNotDisturbDate<sup>(deprecated)</sup>)&nbsp;=&gt;&nbsp;void | 免打扰时间选项变更回调（从API11起已废弃）。 |
 | onDoNotDisturbChanged?: (mode:&nbsp;notificationManager.DoNotDisturbDate)&nbsp;=&gt;&nbsp;void           | 免打扰时间选项变更回调。 |
 | onEnabledNotificationChanged?: (callbackData:&nbsp;EnabledNotificationCallbackData)&nbsp;=&gt;&nbsp;void | 通知开关变更回调。       |
 | onBadgeChanged?: (data:&nbsp;BadgeNumberCallbackData)&nbsp;=&gt;&nbsp;void                               | 应用角标个数变化回调。   |
