@@ -99,7 +99,7 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
    <!-- @[allocator_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/AllocateMemory.ets) -->   
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { common } from '@kit.AbilityKit';
    ```
