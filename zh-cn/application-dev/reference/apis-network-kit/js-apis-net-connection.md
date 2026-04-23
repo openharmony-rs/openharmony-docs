@@ -4537,12 +4537,12 @@ TCP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
-| tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
-| tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
-| tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
-| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
+| tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
+| tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的进程UID，默认值为0。 |
+| tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的用户会UID，默认值为0。 |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 否 |TCP网络状态，默认值为0。  |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -4560,9 +4560,9 @@ UDP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
-| udpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| udpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
-| udpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
+| udpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| udpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该UDP端口的进程UID，默认值为0。 |
+| udpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该UDP端口的用户会UID，默认值为0。 |
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -4579,5 +4579,5 @@ UDP端口状态信息。
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的UDP信息。   |
