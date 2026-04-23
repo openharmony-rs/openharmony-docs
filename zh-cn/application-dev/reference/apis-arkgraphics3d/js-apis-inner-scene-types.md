@@ -152,13 +152,13 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 ## ShadowAlgorithmType<sup>26+</sup>
 
-阴影算法枚举值。
+阴影算法的枚举值。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| PCF | 0 | 可变百分比近距离阴影过滤。按屏幕空间逐像素进行过滤。 |
+| PCF | 0 | 百分比邻近过滤算法。 |
 
 ## CustomGeometry<sup>18+</sup>
 

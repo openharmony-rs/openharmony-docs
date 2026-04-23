@@ -930,24 +930,24 @@ function registerResourcePath(): void {
 
 ## SoftShadowConfig<sup>26+</sup>
 
-几何类型定义抽象类，用于解释特定几何类型的属性。
+软阴影配置抽象基类，用于控制阴影渲染的算法类型及其参数配置。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| shadowAlgorithmType | [ShadowAlgorithmType](#geometrytype18)| 是 | 否 | 阴影算法的枚举值。 |
+| shadowAlgorithmType | [ShadowAlgorithmType](js-apis-inner-scene-types.md#ShadowAlgorithmType26)| 是 | 否 | 阴影算法的枚举值。 |
 
 ## PCFConfig<sup>26+</sup>
 
-PCF阴影设置，继承自[GeometryDefinition](#geometrydefinition18)。
+PCF（Percentage Closer Filtering，百分比邻近过滤）软阴影配置类，继承自[SoftShadowConfig](#SoftShadowConfig26)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| shadowSampleRadius | number | 否 | 是 | 采样半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
-| shadowSampleCount | number | 否 | 否 | 采样次数。 |
+| shadowSampleRadius | number | 否 | 是 | 采样半径，决定了阴影边缘模糊的范围，半径越大，阴影边缘越柔和。采样半径过大会导致阴影过度模糊，失去阴影形状特征。默认值 5.0<br>取值范围：>= 0<br>- 设置为 0 时，将不进行 PCF 采样，无阴影效果。<br>- 传入 undefined 将恢复默认值 5.0。 |
+| shadowSampleCount | number | 否 | 是 | 采样数量，决定了每个像素采样阴影图的次数，数量越多，阴影质量越高，但性能开销越大。默认值 16<br>取值范围：0 ~ 64<br>- 超出此范围的值会被自动限制到最近的有效边界值（例如 65 实际按 64 处理）<br>- 设置为 0 时，将不进行 PCF 采样，无阴影效果。<br>- 传入 undefined 恢复默认值 16 |
 
 ## RenderConfiguration<sup>23+</sup>
 
@@ -958,7 +958,7 @@ PCF阴影设置，继承自[GeometryDefinition](#geometrydefinition18)。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | shadowResolution| [Vec2](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 表示全局阴影贴图分辨率，单位为像素（px）。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的值需要大于0才能正确生效。如果输入值为浮点数则自动截取整数部分；如果输入值小于或等于0则无视该输入，维持原有配置。 |
-| softShadowConfig| [SoftShadowConfig](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 用于控制软阴影算法类型的配置。 |
+| softShadowConfig| [SoftShadowConfig](#SoftShadowConfig26) | 否 | 是 | 软阴影配置参数，用于控制阴影渲染的算法类型及其具体配置。<br>当值为 undefined 或不设置该参数时，使用默认的硬阴影算法（无阴影柔化效果）<br>当设置为有效的 SoftShadowConfig 对象（如 PCFConfig）时，启用对应的软阴影算法 |
 
 ## RenderParameters<sup>15+</sup>
 
