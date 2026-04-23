@@ -73,15 +73,15 @@ Internal program error.
 
 内部异常，请稍后重试
 
-## 23900005 内部程序错误
+## 23900005 该日程不支持编辑
 
 **错误信息**
 
-Invalid parameters.
+This event cannot be edited.
 
 **错误描述**
 
-无效参数。
+该日程不支持编辑。
 
 **可能原因**
 
