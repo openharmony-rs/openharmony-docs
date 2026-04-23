@@ -98,7 +98,7 @@ options include:
   --file_size            Sets the size of the raw trace (KB). The default file size is 102400 KB.
                          Only effective in raw trace mode
   --total_size           Sets the total size of all traces (KB). The default total size is 2048 × 1024 KB.
-  						 Only effective in raw trace mode
+                         Only effective in raw trace mode
   --trace_level level    Set the system parameter "persist.hitrace.level.threshold", which can control
                          the level threshold of tracing. Valid values for "level" include
                          D or Debug, I or Info, C or Critical, M or Commercial.
@@ -458,11 +458,11 @@ $ hitrace --dump_bgsrv
  **使用样例2**：
  
  
- ```shell
- $ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
- 2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
- 2025/06/04 16:50:35 DumpSnapshot done, output:
-      /data/local/tmp/test.sys
+```shell
+$ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
+2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
+2025/06/04 16:50:35 DumpSnapshot done, output:
+     /data/local/tmp/test.sys
 ```
 
 在结束捕获时，可以使用下面的命令停止采集。
@@ -503,13 +503,13 @@ $ hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 ```
 
 **使用样例2**：
- 
- ```shell
+
+```shell
 $ hitrace --trace_begin --record sched app -o /data/local/tmp --total_size 1024000
 2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
 2025/06/04 17:03:37 args: tags:sched, app bufferSize:18432 overwrite:1 totalSize:1024000
 2025/06/04 17:03:37 trace capturing.
- ```
+```
 
 
 采集结束时，使用以下命令停止采集，命令行窗口会显示生成的文件的绝对路径。
@@ -656,11 +656,11 @@ $ hitrace --dump_bgsrv
  
  执行hitrace命令后报错，命令行窗口显示"illegal path"。
  
- ```shell
+```shell
 $ hitrace --dump_bgsrv -o /data/local/test
 2026/03/27 17:25:58 hitrace enter, running_state is SNAPSHOT_DUMP
 2026/03/27 17:25:58 error: illegal path
- ```
+```
 
  **可能原因&解决方法**
  
