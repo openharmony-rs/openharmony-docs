@@ -102,7 +102,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_FOUR_FINGER_SWIPE_LEFT  |67| 表示四指向左滑动的手势。|
 | TYPE_FOUR_FINGER_SWIPE_RIGHT  |68| 表示四指向右滑动的手势。|
 | TYPE_PAGE_ACTIVE<sup>23+</sup> |69| 表示页面发生变化。 |
-| TYPE_NOTIFICATION_UPDATE<sup>26+</sup> |70| 表示通知发生变化。 |
+| TYPE_NOTIFICATION_UPDATE<sup>26+</sup> |70| 表示通知发生变化。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AccessibilityAction
 
