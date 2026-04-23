@@ -31,9 +31,12 @@
   辅助窗口包括子窗口、全局悬浮窗、模态窗口、画中画和闪控球。
   其中子窗口分为独立子窗、非独立子窗。
 
-  - 独立子窗
-  从API版本26.0.0开始，在创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的[zLevelAboveParentLoosened](../reference/apis-arkui/arkts-apis-window-i.md#zlevelaboveparentloosened)为true为独立子窗。独立子窗在自由窗口模式，前后台生命周期不跟随主窗的前后台生命周期，仅销毁跟随主窗的销毁，独立子窗与主窗进行层级排布。独立子窗在非自由窗口模式，前后台生命周以及销毁生命周期均跟随主窗生命周期，独立子窗层级与非独立子窗一致高于主窗。
-  - 非独立子窗：默认创建的子窗均为非独立子窗。
+  - 独立子窗：
+  
+    从API版本26.0.0开始，支持在创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。独立子窗在自由窗口状态下，不跟随主窗进前后台，仅跟随主窗一起销毁，独立子窗与主窗进行层级排布。独立子窗在非自由窗口状态，跟随主窗进前后台和销毁，独立子窗与非独立子窗进行层级排布。
+  - 非独立子窗：
+  
+    默认创建的子窗均为非独立子窗。在创建子窗时[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened默认为false，此时创建的子窗为非独立子窗。
 ## 悬浮窗
 
 悬浮窗分为智慧多窗悬浮窗和全局悬浮窗。

@@ -1891,7 +1891,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
 
-[独立子窗](../../windowmanager/window-terminology.md#独立子窗)不支持调用，调用返回1300004错误码。
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口将返回1300004错误码。
 
 > **说明：**
 >
@@ -1987,7 +1987,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
 
-[独立子窗](../../windowmanager/window-terminology.md#独立子窗)不支持调用，调用返回1300004错误码。
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口将返回1300004错误码。
 
 > **说明：**
 >
@@ -2883,7 +2883,7 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3101,7 +3101,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3178,7 +3178,7 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3425,7 +3425,7 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-[独立子窗](../../windowmanager/window-terminology.md#独立子窗)调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4016,7 +4016,9 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-设置标题栏上的最大化、最小化、分屏按钮是否可见。仅对主窗和[独立子窗](../../windowmanager/window-terminology.md#独立子窗)生效。
+设置标题栏上的最大化、最小化、分屏按钮是否可见。
+
+仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口，其他窗口调用时将返回1300004错误码。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
