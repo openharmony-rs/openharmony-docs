@@ -1605,7 +1605,7 @@ if(path.buildFromSvgString(svgStr)) {
 }
 ```
 
-## convertToSvgString
+## convertToSvgString<sup>26+</sup>
 
 convertToSvgString(): string
 
@@ -1638,7 +1638,7 @@ let svgString = path.convertToSvgString();
 console.info("svgString: ", svgString);
 ```
 
-## getPointData
+## getPointData<sup>26+</sup>
 
 getPointData(): Array<common2D.Point>
 
@@ -1683,7 +1683,7 @@ console.info("pointData[0].x: ", pointData[0].x);
 console.info("pointData[0].y: ", pointData[0].y);
 ```
 
-## getVerbData
+## getVerbData<sup>26+</sup>
 
 getVerbData(): Array\<PathIteratorVerb\>
 
@@ -1728,9 +1728,11 @@ console.info("verbData[0]: ", verbData[0]);
 console.info("verbData[1]: ", verbData[1]);
 ```
 
-## getConicWeightData
+## getConicWeightData<sup>26+</sup>
 
-getConicWeightData(): Array\<number>
+ArkTS-Dyn: getConicWeightData(): Array\<number\>
+
+ArkTS-Sta: getConicWeightData(): Array\<double\>
 
 获取路径的圆锥曲线权重数据。
 
@@ -1757,7 +1759,7 @@ getConicWeightData(): Array\<number>
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| Array\<number> | 类型为浮点数（取值范围为非负数）。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。|
+| ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<double\> | 类型为浮点数（取值范围为非负数）。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。|
 
 **示例：**
 ```ts
@@ -1765,7 +1767,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let path: drawing.Path = new drawing.Path();
 path.moveTo(0, 0);
 path.conicTo(100, 100, 200, 0, 0.5);
-let conicWeightData: Array<double> = path.getConicWeightData();
+let conicWeightData: Array<number> = path.getConicWeightData();
 console.info("conicWeightData size: ", conicWeightData.length);
 console.info("conicWeightData[0]: ", conicWeightData[0]);
 ```
