@@ -594,7 +594,9 @@ connection.getDefaultNet((error: BusinessError|null, netHandle: connection.NetHa
 
 ## connection.setAppNet<sup>9+</sup>
 
-setAppNet(netHandle: NetHandle): Promise\<void\>
+ArkTS-Dyn: setAppNet(netHandle: NetHandle): Promise\<void\>
+
+ArkTS-Sta: setAppNet(netHandle: NetHandle): Promise\<void\>
 
 将App异步绑定到特定的网络，绑定后App只能通过netHandle对应的网络访问网络。使用Promise方式作为异步方法。
 
@@ -2779,7 +2781,7 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
 
 ArkTS-Dyn: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<number>
 
-ArkTS-Sta: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<in>
+ArkTS-Sta: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<int>
 
 用于查询发起指定网络连接的应用UID。使用Promise异步回调。
 
