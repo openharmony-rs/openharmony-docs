@@ -1173,7 +1173,7 @@ isHdHapticSupported(): boolean
 
 | 类型    | 说明                                                      |
 | ------- | --------------------------------------------------------- |
-| boolean | 返回对象，当返回true表示支持高清振动，返回false不支持。 |
+| boolean | 是否支持高清振动，true为支持，false为不支持。 |
 
 **错误码**：
 
@@ -1378,7 +1378,7 @@ build(): VibratorPattern;
 
 ## EffectId
 
-预置的振动效果。在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的时候需要使用此参数类型。此参数值种类多样，'haptic.clock.timer'为其中一种。[HapticFeedback<sup>12+</sup>](#hapticfeedback12)展示了几种常用的EffectId值。
+预置的振动效果。在调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的时候需要使用此参数类型。此参数值种类多样，'haptic.clock.timer'为其中一种。[HapticFeedback<sup>12+</sup>](#hapticfeedback12)展示了几种常用的EffectId值。
 
 > **说明**
 > 
@@ -1392,7 +1392,7 @@ build(): VibratorPattern;
 
 ## HapticFeedback<sup>12+</sup>
 
-简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的示例代码。
+简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1)接口下发[VibratePreset](#vibratepreset9)形式振动的示例代码。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1407,7 +1407,7 @@ build(): VibratorPattern;
 
 ## VibratorStopMode
 
-停止振动的模式。在调用[vibrator.stopVibration9+](#vibratorstopvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口时，需要使用此参数类型指定停止的振动模式。停止模式和[VibrateEffect9+](#vibrateeffect9)中下发的模式为对应关系。
+停止振动的模式。在调用[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9)或[vibrator.stopVibration<sup>9+</sup>](#vibratorstopvibration9-1)接口时，需要使用此参数类型指定停止的振动模式。停止模式和[VibrateEffect<sup>9+</sup>](#vibrateeffect9)中下发的模式为对应关系。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1420,7 +1420,7 @@ build(): VibratorPattern;
 
 type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFromPattern
 
-马达振动效果，支持以下四种：在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。
+马达振动效果，支持以下四种：在调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1446,7 +1446,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 ## VibratePreset<sup>9+</sup>
 
-预置振动类型。当调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)时，[VibrateEffect9+](#vibrateeffect9)参数的值可以为VibratePreset，表示触发预置振动类型。
+预置振动类型。当调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1)时，[VibrateEffect<sup>9+</sup>](#vibrateeffect9)参数的值可以为VibratePreset，表示触发预置振动类型。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1459,7 +1459,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 ## VibrateFromFile<sup>10+</sup>
 
-自定义振动类型。仅部分设备支持。当设备不支持此振动类型时，返回设备不支持错误码。当调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)时，[VibrateEffect9+](#vibrateeffect9)参数的值可以为VibrateFromFile，表示触发自定义振动类型。
+自定义振动类型。仅部分设备支持。当设备不支持此振动类型时，返回设备不支持错误码。当调用[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9)或[vibrator.startVibration<sup>9+</sup>](#vibratorstartvibration9-1)时，[VibrateEffect<sup>9+</sup>](#vibrateeffect9)参数的值可以为VibrateFromFile，表示触发自定义振动类型。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1528,7 +1528,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | 名称   | 类型                       | 只读 | 可选 | 说明                                                 |
 | ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
 | time   | number                     | 否   | 否   | 振动绝对起始时间，单位ms。                                   |
-| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否   | 否   | 振动事件数组。 |
 
 ## ContinuousParam<sup>18+</sup>
 
@@ -1564,7 +1564,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | 名称    | 类型            | 只读 | 可选 | 说明                                                 |
 | ------- | --------------- | ---- | ---- | ---------------------------------------------------- |
 | type    | 'pattern'       | 否   | 否   | 值为“pattern”，根据组合模式触发电机振动。            |
-| pattern | VibratorPattern | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+| pattern | VibratorPattern | 否   | 否   | [build](#build18)方法返回的[VibratorPattern](#vibratorpattern18)对象。 |
 
 ## VibrateAttribute<sup>9+</sup>
 
