@@ -1514,7 +1514,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
