@@ -2025,3 +2025,79 @@ path.setFillType(drawing.PathFillType.WINDING);
 path.toggleInverseFillType();
 console.info("path fillType = ", path.getFillType());
 ```
+
+## getLastPoint<sup>26+</sup>
+
+getLastPoint(): common2D.Point | undefined
+
+获取路径的最后一个点的坐标。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**返回值：**
+
+| 类型                                               | 说明                   |
+| -------------------------------------------------- | ---------------------- |
+| [common2D.Point](js-apis-graphics-common2D.md#point12) \| undefined | 路径的最后一个点坐标。如果路径为空，则返回undefined。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+const path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+let lastPoint = path.getLastPoint();
+console.info('lastPoint.x:', lastPoint?.x);
+console.info('lastPoint.y:', lastPoint?.y);
+```
+
+## isEqual<sup>26+</sup>
+
+isEqual(path: Path): boolean
+
+判断当前路径与另一条路径是否相等。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26
+
+**ArkTS-Sta起始版本：** 26
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                            |
+| -------- | -------------------------------------------- | ---- | ------------------------------- |
+| path | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 另一条路径对象。 |
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前路径与另一条路径是否相等的结果。true表示路径相等，false表示路径不相等。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+let other: drawing.Path = new drawing.Path();
+other.moveTo(0, 0);
+other.lineTo(100, 100);
+if (path.isEqual(other)) {
+  console.info('isEqual return true');
+} else {
+  console.info('isEqual return false');
+}
+```
