@@ -299,3 +299,21 @@ export default class EntryAbility extends UIAbility {
 | --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | changed   | ArkTS-Dyn: number<br>ArkTS-Sta: long                                                         | 是   | 否   | 表示受影响的行数量。                                         |
 | resultSet | [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 是 | 否 | 表示受影响数据的结果集。默认返回1024行，最大支持32766行，超出部分将被丢弃。 |
+
+## SyncResult
+
+表示设备同步结果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+| 名称      | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| device   | string                                                         | 是   | 否   | 表示同步的设备ID，可通过[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)等接口获取所有可信设备ID列表。                                         |
+| code | [SyncResultCode](arkts-apis-data-relationalStore-e.md#syncresultcode) | 是 | 否 | 表示同步结果的状态码。 |
+| message | string | 是 | 否 | 表示同步结果的信息。 |
