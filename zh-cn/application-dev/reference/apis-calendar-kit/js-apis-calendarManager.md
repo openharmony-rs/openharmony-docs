@@ -1912,8 +1912,8 @@ const event: calendarManager.Event = {
     description: 'MyEvent'
   };
 calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calendar) => {
-    console.info(`Succeed in getting calendar`);
     if (err) {
+      // 检查权限是否已成功申请。
       console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
     } else {
       console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
