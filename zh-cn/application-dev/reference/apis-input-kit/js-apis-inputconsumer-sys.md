@@ -185,7 +185,9 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 - 本接口回调参数为KeyCommandCallback类型，同时接收KeyOptions和KeyEvent对象。
 - 本接口采用事件消费机制，可通过事件消费阻止按键事件向后传递。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -194,7 +196,7 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，支持triggerType参数。 |
-| callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合键选项和按键事件数据。<br/>ArkTS-Dyn起始版本: 26.0.0<br/>ArkTS-Sta起始版本：26.0.0 |
+| callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合键选项和按键事件数据。 |
 
 **错误码**：
 
@@ -280,7 +282,9 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
 取消订阅系统快捷键。使用callback异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -289,7 +293,7 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，需与订阅时传入的keyOptions一致。 |
-| callback | [KeyCommandCallback](#keycommandcallback) | 否 | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。<br/>ArkTS-Dyn起始版本: 26.0.0<br/>ArkTS-Sta起始版本：26.0.0 |
+| callback | [KeyCommandCallback](#keycommandcallback) | 否 | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
 **错误码**：
 
@@ -356,7 +360,9 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 
 按键命令回调函数类型，当快捷键注册条件满足时触发的回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -365,7 +371,7 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
-| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。<br/>ArkTS-Dyn起始版本: 26.0.0<br/>ArkTS-Sta起始版本：26.0.0 |
+| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
 
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
