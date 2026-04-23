@@ -141,6 +141,7 @@ struct Parent {
 
   build() {
     Column() {
+      // 通过UIUtils.makeBinding()方法和Binding类，实现@Builder函数中状态变量的刷新
       this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
       Button('Click me')
         .onClick(() => {
@@ -181,6 +182,7 @@ struct Parent {
 
   build() {
     Column() {
+      // 按键值对写法进行传值，传入的参数发生变化，会引起citeLocalBuilder内的UI刷新
       this.citeLocalBuilder({ paramString: this.variableValue })
       Button('Click me').onClick(() => {
         this.variableValue = 'Hi World';
@@ -228,6 +230,7 @@ struct Parent {
 
   build() {
     Column() {
+      // 按引用传递参数，传入的参数发生变化，会引起citeLocalBuilder内的UI刷新
       this.citeLocalBuilder({ paramString: this.variableValue })
       Button('Click me').onClick(() => {
         this.variableValue = 'Hi World';
@@ -338,6 +341,8 @@ struct Parent {
 
   build() {
     Column() {
+      // 按值传递参数
+      // 改变@State修饰的label值时，@LocalBuilder函数内的值不会发生改变
       this.citeLocalBuilder(this.label)
     }
   }

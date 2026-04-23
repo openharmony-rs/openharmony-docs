@@ -366,6 +366,7 @@ struct ArrayTypesChild {
         .onClick(() => {
           this.items.push(this.items.length + 1);
         })
+      // 子组件的数组类型可以同步回父组件
       Button(`Button2: replace whole item`)
         .margin(12)
         .width(312)
@@ -430,6 +431,7 @@ struct MapSampleChild {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // 子组件的Map类型可以同步回父组件
       Button('child init map').onClick(() => {
         this.value = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
       })
@@ -488,6 +490,7 @@ struct SetSampleChild {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // 子组件的Set类型可以同步回父组件
       Button('init set').onClick(() => {
         this.message = new Set([0, 1, 2, 3, 4]);
       })
@@ -536,6 +539,7 @@ struct DateComponent {
 
   build() {
     Column() {
+      // 子组件的Date类型可以同步回父组件
       Button(`child increase the year by 1`)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
@@ -601,6 +605,7 @@ struct ChangeVariables {
     Column() {
       Text(`sourceNumber of the parent component:` + this.sourceNumber)
       ChangeVariablesChild({ sourceNumber: this.sourceNumber })
+      // sourceNumber的修改不会影响到父组件中的变量改变
       Button('Change sourceNumber in Parent Component')
         .onClick(() => {
           this.sourceNumber++;
@@ -642,6 +647,7 @@ struct ChangeVariablesChild {
 ``` TypeScript
 @Component
 struct UnionChild {
+  // @Link支持联合类型
   @Link name: string | undefined;
 
   build() {

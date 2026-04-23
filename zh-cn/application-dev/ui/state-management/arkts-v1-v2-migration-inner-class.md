@@ -160,6 +160,7 @@ struct UserProfile {
     Column() {
       Text(`Name: ${this.user.name}`)
       Text(`Age: ${this.user.age}`)
+      // 点击Button更新user.age，触发UI刷新
       Button('increase age')
         .onClick(() => {
           this.user.age++;
@@ -173,8 +174,10 @@ V2迁移策略：使用\@ObservedV2和\@Trace。
 <!-- @[Migration_Class_Attribute_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationClassAttributeV2.ets) -->
 
 ``` TypeScript
+// V2使用@ObservedV2代替V1的@Observed
 @ObservedV2
 class User {
+  // V2使用@Trace代替V1的@Track
   @Trace public name: string;
   @Trace public age: number;
 

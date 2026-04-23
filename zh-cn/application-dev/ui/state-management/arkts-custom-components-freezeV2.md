@@ -70,6 +70,7 @@ export struct Page1 {
         .onClick(() => {
           this.bookTest.name = 'The Old Man and the Sea';
         })
+      // 点击Button，路由跳转到页面2
       Button('go to next page').fontSize(25)
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({ url: 'pages/freeze/template1/Page2' });
@@ -95,6 +96,7 @@ struct Page2 {
   build() {
     Column() {
       Text('This is the page2').fontSize(25)
+      // 点击Button，路由跳转回页面1
       Button('Back')
         .onClick(() => {
           this.getUIContext().getRouter().back();
@@ -145,6 +147,7 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
+        // 点击Button修改message，可见的TabContent触发onMessageUpdated回调
         Button('change message').onClick(() => {
           this.message++;
         })
@@ -539,6 +542,7 @@ struct PageA {
       Navigation(this.pageInfo) {
         Child()
 
+        // 点击Button，跳转页面至PageB
         Button('Go to next page').fontSize(30)
           .onClick(() => {
             this.pageInfo.pushPathByName('PageB', null);
@@ -596,6 +600,7 @@ struct PageB {
       Column() {
         Text('This is the PageB')
 
+        // 点击Button，页面跳转回PageA
         Button('Back').fontSize(30)
           .onClick(() => {
             this.pathStack.pop();
@@ -777,6 +782,7 @@ struct PageOneStack1 {
   build() {
     NavDestination() {
       Column() {
+        // NavDestination中创建TabContent
         TabsComponent()
 
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })

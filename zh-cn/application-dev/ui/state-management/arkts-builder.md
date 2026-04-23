@@ -82,6 +82,7 @@ struct BuilderDemo {
 <!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) --> 
 
 ``` TypeScript
+// 全局自定义构建函数showTextBuilder
 @Builder
 function showTextBuilder() {
   Text('Hello World')
@@ -225,6 +226,7 @@ struct ParameterValue {
 
   build() {
     Column() {
+      // 按值传递参数，状态变量的改变不会引起overBuilderByValue内的UI刷新
       overBuilderByValue(this.label)
     }
   }
@@ -287,6 +289,7 @@ struct PrivateBuilder {
           .borderRadius(20)
           .textAlign(TextAlign.Center)
         this.builder()
+        // 点击Button更新builderValue，用于更新文本显示
         Button('Click to change the builderValue')
           .onClick(() => {
             this.builderValue = 'builderValue was clicked';
@@ -379,6 +382,7 @@ struct ParentDemo {
         tmpValue: this.objParam.tmpValue,
         arrayTmpValue: this.objParam.arrayTmpValue
       })
+      // 点击Button更新objParam，触发overBuilder内组件的刷新
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'Hello World';
         this.objParam.numValue = 1;
@@ -442,6 +446,7 @@ struct ParentSample {
       Text('UI Rendered via @Builder')
         .fontSize(20)
       this.privateBuilder()
+      // 点击Button更新label，触发Text组件的刷新
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'strValue Hello World';
         this.label = 'label Hello World';
@@ -1331,6 +1336,9 @@ struct PageBuilderCorrectUsage {
   aboutToAppear(): void {
     this.progressTimer = setInterval(() => {
       if (this.builderParams.count < 100) {
+        // builderParams是被@ObservedV2装饰的ParamTmpClass类
+        // count属性被@Trace装饰
+        // count变化会引起UI刷新
         this.builderParams.count += 5;
         this.mapValue.set('name', this.builderParams.count);
         this.setValue.add(this.builderParams.count);
@@ -1917,6 +1925,7 @@ struct Child2 {
   }
 
   provideWatch() {
+    // 正确写法，不在@Watch函数中使用@Builder函数
     console.info(`content value has changed.`);
   }
 

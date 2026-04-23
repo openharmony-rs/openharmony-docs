@@ -82,6 +82,7 @@
 ``` TypeScript
 @ComponentV2
 struct ChildComponent {
+  // @Once装饰的onceParam仅初始化同步一次
   @Param @Once onceParam: string = '';
 
   build() {
@@ -94,7 +95,7 @@ struct ChildComponent {
 @Entry
 @ComponentV2
 struct MyComponent {
-// ···
+  // ...
   @Local message: string = 'Hello World';
 
   build() {
@@ -126,6 +127,7 @@ class Info {
 }
 @ComponentV2
 struct Child {
+  // @Once与@Param结合使用时，可以在本地修改，并能够触发UI刷新
   @Param @Once onceParamNum: number = 0;
   @Param @Once @Require onceParamInfo: Info;
 

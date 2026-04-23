@@ -116,6 +116,7 @@ struct PageTwo {
         .onClick(() => {
           this.getUIContext().getRouter().back();
         })
+      // 点击Button修改storageLink，观察页面1隐藏时会不会触发first回调
       Button('second page storageLink + 2').fontSize(30)
         .onClick(() => {
           this.storageLink += 2;
@@ -165,6 +166,7 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
+        // 点击Button修改message，触发可见TabContent的onMessageUpdated回调
         Button('change message').onClick(() => {
           this.message++;
         })
@@ -618,6 +620,7 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
+    // 输出recycled提示，确认组件进入复用池
     hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
 

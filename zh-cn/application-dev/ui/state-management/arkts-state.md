@@ -69,6 +69,7 @@
   <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
   
   ``` TypeScript
+  // 声明Person类
   class Person {
     public value: string;
   
@@ -77,6 +78,7 @@
     }
   }
   
+  // 声明Model类
   class Model {
     public value: string;
     public name: Person;
@@ -172,6 +174,7 @@
    
    @Component
    struct Child {
+     // 子组件count本地默认值为0；父组件传入undefined时，框架会保留该本地默认值
      @State count: number | undefined = 0;
    
      build() {

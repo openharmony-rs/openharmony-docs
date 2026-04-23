@@ -92,6 +92,7 @@
   <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) -->
   
   ``` TypeScript
+  // @Extend装饰的方法支持function参数
   @Extend(Text)
   function makeMeClick(onClick: () => void) {
     .backgroundColor(Color.Blue)
@@ -122,6 +123,7 @@
   <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) -->
   
   ``` TypeScript
+  // 将状态变量作为@Extend参数，状态变化驱动Text样式刷新
   @Extend(Text)
   function fancy(fontSize: number) {
     .fontColor(Color.Blue)
@@ -212,6 +214,7 @@ struct FancyUse {
 
   build() {
     Row({ space: 10 }) {
+      // Text组件重复设置样式
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
         .fontWeight(500)
@@ -234,6 +237,7 @@ struct FancyUse {
 <!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
 
 ``` TypeScript
+// 使用@Extend封装Text样式组合，便于复用
 @Extend(Text)
 function fancyText(weightValue: number, color: Color) {
   .fontStyle(FontStyle.Italic)
@@ -253,6 +257,7 @@ struct FancyUse {
 
   build() {
     Row({ space: 10 }) {
+      // 调用@Extend封装的fancyText复用样式
       Text(`${this.label}`)
         .fancyText(100, Color.Blue)
       Text(`${this.label}`)

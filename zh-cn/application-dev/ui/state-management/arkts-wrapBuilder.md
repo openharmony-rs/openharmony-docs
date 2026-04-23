@@ -87,6 +87,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
      .fontSize(size)
  }
  
+ // 使用wrapBuilder封装myBuilder，并赋值给globalBuilder变量
  let globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
  
  @Entry
@@ -97,7 +98,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
    build() {
      Row() {
        Column() {
-         globalBuilder.builder(this.message, 50)
+         globalBuilder.builder(this.message, 50);
        }
        .width('100%')
      }
@@ -134,6 +135,7 @@ const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0),
 struct IndexItem {
   @Builder
   IndexItem() {
+    // IndexItem使用ForEach进行不同@Builder函数的渲染
     ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
       item.builder('Hello World', 30);
     })
@@ -221,7 +223,8 @@ struct Parent {
 
   build() {
     Column() {
-      wBuilder.builder({ paramA2: this.label.paramA2 })
+      // 引用传递参数，label.paramA2的改变会引起overBuilder内的UI刷新
+      wBuilder.builder({ paramA2: this.label.paramA2 });
       Button('Click me').onClick(() => {
         this.label.paramA2 = 'ArkUI';
       })
