@@ -58,13 +58,13 @@
 
 在CMake脚本中链接动态库。
 
-```
+```c
 target_link_libraries(sample PUBLIC liblowpower_avsink.so)
 ```
 
 头文件引入。
 
-```
+```c++
 #include "multimedia/player_framework/lowpower_audio_sink_base.h"
 #include "multimedia/player_framework/lowpower_audio_sink.h"
 #include "multimedia/player_framework/lowpower_video_sink.h"
@@ -73,19 +73,19 @@ target_link_libraries(sample PUBLIC liblowpower_avsink.so)
 
 开发者使用系统日志能力时，需引入如下头文件：
 
-```
+```c++
 #include <hilog/log.h>
 ```
 
 并需要在CMake脚本中链接如下动态库：
 
-```
+```c
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
 使用该模块时，需要链接的库如下所示：解封装、基础解码、显示渲染等能力。
 
-```
+```c
 set(BASE_LIBRARY
     libnative_media_codecbase.so libnative_media_core.so libnative_media_vdec.so libnative_window.so
     libnative_media_venc.so libnative_media_acodec.so libnative_media_avdemuxer.so libnative_media_avsource.so
@@ -100,7 +100,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      根据实际情况，应用可使用自研解封装或可通过[OH_AVSource_CreateWithDataSource()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithdatasource)/[OH_AVSource_CreateWithFD()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithfd)/[OH_AVSource_CreateWithURI()](../../reference/apis-avcodec-kit/capi-native-avsource-h.md#oh_avsource_createwithuri)来创建[OH_AVSource](../../reference/apis-avcodec-kit/capi-avsource-oh-avsource.md) ，通过`OH_AVSource`调用[OH_AVDemuxer_CreateWithSource()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#oh_avdemuxer_createwithsource)，创建解封装器，获取视频的元信息。
 
-    ```
+    ```c++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
     demuxer_ = OH_AVDemuxer_CreateWithSource(source_);
     int32_t ret = GetTrackInfo(sourceFormat, info);
@@ -108,7 +108,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
 2.  根据视频元信息，调用  [OH_LowPowerAudioSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_createbymime)或[OH_LowPowerVideoSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_createbymime)来创建播放器。
 
-    ```
+    ```c++
     lppVideoStreamer_ = OH_LowPowerVideoSink_CreateByMime(codecMime.c_str());
     lppAudioStreamer_ = OH_LowPowerAudioSink_CreateByMime(codecMime.c_str());
     ```
@@ -117,7 +117,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      调用[OH_LowPowerAudioSinkCallback_Create](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_create)或[OH_LowPowerVideoSinkCallback_Create](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosinkcallback_create)创建[OH_LowPowerAudioSinkCallback](../../reference/apis-media-kit/capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)或[OH_LowPowerVideoSinkCallback](../../reference/apis-media-kit/capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)的回调函数的整合，通过setListener函数向该结构体添加对应的回调函数，完成registerCallback的一次性注册。
 
-    ```
+    ```c++
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
     OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_, LppCallback::OnDataNeeded, lppUserData);
     OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_, LppCallback::OnPositionUpdated, lppUserData);
@@ -128,7 +128,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      根据之前通过解封装获得的元信息，创建并配置[OH_AVFormat](../../reference/apis-avcodec-kit/capi-core-oh-avformat.md)。通过configure接口 [OH_LowPowerAudioSink_Configure](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure) / [OH_LowPowerVideoSink_Configure](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_configure)进行播放器的配置，详细参数可参考示例代码。视频流需要使用[OH_LowPowerVideoSink_SetVideoSurface](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setvideosurface)接口来设置显示窗口。
 
-    ```
+    ```c++
     OH_AVFormat *format = OH_AVFormat_Create();
      
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
@@ -144,7 +144,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      准备播放前，需要调用[OH_LowPowerVideoSink_SetSyncAudioSink](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)设置音画同步绑定。然后调用prepare方法，[OH_LowPowerAudioSink_Prepare](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)或[OH_LowPowerVideoSink_Prepare](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare)进入'准备'阶段。
 
-    ```
+    ```c++
     OH_LowPowerVideoSink_Prepare(lppVideoStreamer_);
     ```
 
@@ -152,7 +152,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      调用[OH_LowPowerAudioSink_Start](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerVideoSink_StartRenderer](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startrenderer)开始渲染。视频流需要在渲染开始前调用[OH_LowPowerVideoSink_StartDecoder](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startdecoder)开始解码或调用[ OH_LowPowerVideoSink_RenderFirstFrame](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_renderfirstframe)开始解码并送显首帧'接口'进入解码。
 
-    ```
+    ```c++
     OH_LowPowerVideoSink_StartDecoder(lppVideoStreamer_);
     OH_LowPowerVideoSink_StartRenderer(lppVideoStreamer_);
     ```
