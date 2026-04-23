@@ -54,10 +54,10 @@
 | onBadgeChanged?: (data:&nbsp;BadgeNumberCallbackData)&nbsp;=&gt;&nbsp;void                               | 应用角标个数变化回调。   |
 | onBatchCancel?: (data:&nbsp;Array&lt;SubscribeCallbackData&gt;)&nbsp;=&gt;&nbsp;void                               | 批量删除回调。   |
 | onEnabledPriorityChanged?: (callbackData:&nbsp;EnabledPriorityNotificationCallbackData)&nbsp;=&gt;&nbsp;void                               | 通知优先级总开关状态变化回调。   |
-| onEnabledPriorityByBundleChanged?: (callbackData:&nbsp;EnabledPriorityNotificationByBundleCallbackData)&nbsp;=&gt;&nbsp;void                               | 通知优先级总开关状态变化回调。   |
+| onEnabledPriorityByBundleChanged?: (callbackData:&nbsp;EnabledPriorityNotificationByBundleCallbackData)&nbsp;=&gt;&nbsp;void                               | 应用通知优先级开关状态变化的回调。   |
 | onSystemUpdate?: SystemUpdateCallback            | 系统属性值变化回调。   |
 | onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback   | 应用通知静默提醒的使能状态变化回调。   |
-| onBadgeEnabledChanged?: BadgeEnabledChangedCallback   | 应用通知静默提醒的使能状态变化回调。   |
+| onBadgeEnabledChanged?: BadgeEnabledChangedCallback   | 应用角标的使能状态变化回调。   |
 
 
 ## 开发步骤
