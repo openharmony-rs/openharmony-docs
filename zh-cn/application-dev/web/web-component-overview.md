@@ -57,9 +57,9 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
   | --- | --- |
   | OpenHarmony 4.0及之前 | M99 |
   | OpenHarmony 4.1-5.1 | M114 |
-  | OpenHarmony 6.0 | M132（默认，推荐使用，请参考[M114->M132差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_114_132.md)）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)） |
+  | OpenHarmony 6.0 | M132（默认，推荐使用，请参考[M114->M132差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_114_132.md)）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)） |
   | OpenHarmony开发套件（基于API23） | M132 |
-  | OpenHarmony 7.0 | M144（默认，推荐使用，请参考[M132->M144差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_132_144.md)） |
+  | OpenHarmony 7.0 | M144（默认，推荐使用，请参考[M132->M144差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_132_144.md)）<br>M132（可选，若应用需切换为此内核，请参考[M132内核在OpenHarmony 7.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)） |
 <!--RP3--><!--RP3End-->
 
 <!--RP4--><!--RP4End-->
