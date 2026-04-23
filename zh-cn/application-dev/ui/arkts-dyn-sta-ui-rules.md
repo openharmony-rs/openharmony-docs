@@ -464,7 +464,7 @@ function fancy(this: TextAttribute, fontSize: number): TextAttribute {
 struct Index {
   build() {
     Column() {
-      Text('Test').fancy(50.0)
+      Text('Test').fancy(50)
     }
   }
 }
@@ -543,7 +543,7 @@ function animatableWidth(this: TextAttribute, width: number): TextAttribute {
 @Entry
 @Component
 struct Index {
-  @State textWidth: number = 80.0;
+  @State textWidth: number = 80;
 
   build() {
     Column() {
@@ -552,10 +552,10 @@ struct Index {
         .animation({ duration: 2000, curve: Curve.Ease })
       Button("Play")
         .onClick((e: ClickEvent) => {
-          this.textWidth = this.textWidth == 80.0 ? 160.0 : 80.0;
+          this.textWidth = this.textWidth == 80 ? 160 : 80;
         })
     }.width("100%")
-    .padding(10.0)
+    .padding(10)
   }
 }
 ```
@@ -620,8 +620,8 @@ import {
 // 使用`@Styles`装饰器装饰的函数需要参照下列代码进行修改
 function cardStyle(instance: CommonMethod): void {
   instance.backgroundColor(Color.Red);
-  instance.borderRadius(8.0);
-  instance.padding(8.0);
+  instance.borderRadius(8);
+  instance.padding(8);
 }
 
 @Entry
@@ -685,8 +685,8 @@ struct Index {
   // 使用`@Styles`装饰器装饰的函数需要参照下列代码进行修改
   cardStyles: CustomStyles = (instance: CommonMethod): void => {
     instance.backgroundColor(Color.Blue);
-    instance.borderRadius(8.0);
-    instance.padding(8.0);
+    instance.borderRadius(8);
+    instance.padding(8);
   }
 
   build() {
@@ -762,7 +762,7 @@ struct Index {
         .stateStyles({
           normal: (instance: CommonMethod): void => {
             instance.backgroundColor(Color.Red);
-            instance.borderWidth(8.0);
+            instance.borderWidth(8);
           },
           pressed: (instance: CommonMethod): void => {
             instance.backgroundColor(Color.Green);
@@ -1119,7 +1119,7 @@ struct Index {
 
   @Builder
   CustomKeyboardBuilder() {
-    Text('使用自定义键盘').fontSize(100.0)
+    Text('使用自定义键盘').fontSize(100)
   }
   
   build() {
@@ -1605,7 +1605,7 @@ import {
 
 class User {
   name: string = "";
-  age: number = 0.0;
+  age: number = 0;
 }
 
 @Entry
@@ -2020,7 +2020,7 @@ struct Index {
   @Local dataArr: Array<string> = [];
 
   aboutToAppear(): void {
-    for (let i: number = 0.0; i < 50.0; i++) {
+    for (let i: int = 0; i < 50; i++) {
       this.dataArr.push(`data_${i}`);
     }
   }
@@ -2031,14 +2031,14 @@ struct Index {
         Repeat<string>(this.dataArr)
           .each((ri: RepeatItem<string>) => {
             ListItem() {
-              Text('each_' + ri.item).fontSize(30.0)
+              Text('each_' + ri.item).fontSize(30)
             }
           })
           .virtualScroll({ disableVirtualScroll: true })
       }
-      .cachedCount(2.0)
+      .cachedCount(2)
       .height('70%')
-      .border({ width: 1.0 })
+      .border({ width: 1 })
     }
   }
 }
