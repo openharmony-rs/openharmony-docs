@@ -309,9 +309,9 @@ ArkTS-Sta: type SourceReadCallback = (uuid: long, requestedOffset: long, request
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	资源句柄的标识。 |
-| requestedOffset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	当前媒体数据相对于资源起始位置的偏移量。 |
-| requestedLength | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
+| uuid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 资源句柄的标识。 |
+| requestedOffset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 当前媒体数据相对于资源起始位置的偏移量。 |
+| requestedLength | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
 
 **示例：**
 
