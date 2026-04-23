@@ -8,6 +8,8 @@
 
 >**说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -33,6 +35,10 @@ type PixelMap = PixelMap
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                | 只读 | 可选 | 说明                   |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
 | types | [ImageAnalyzerType[]](#imageanalyzertype12) | 否 | 否 | 图像AI分析类型。|
@@ -44,6 +50,10 @@ type PixelMap = PixelMap
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值    | 说明           |
 | -------- | ----- | -------- |
@@ -59,10 +69,14 @@ type PixelMap = PixelMap
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                | 只读 | 可选 | 说明                   |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
 | types | [ImageAnalyzerType[]](#imageanalyzertype12) | 否 | 是 | 图像AI分析类型。 |
-| aiController | [ImageAnalyzerController](#imageanalyzercontroller12) | 否 | 是 | 图像AI分析控制器。 |
+| aiController | ArkTS-Dyn: [ImageAnalyzerController](#imageanalyzercontroller12)<br>ArkTS-Sta: [ImageAnalyzerController](#imageanalyzercontroller12) \| ESValue | 否 | 是 | 图像AI分析控制器，需要对应组件的enableAnalyzer接口（例如Image组件的[enableAnalyzer](ts-basic-components-image.md#enableanalyzer11)接口）设置为true才能生效。<br>ArkTS-Sta：目前只支持ESValue类型。 |
 
 > **说明：**
 >
@@ -78,6 +92,10 @@ type PixelMap = PixelMap
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### constructor<sup>12+</sup>
 
 constructor()
@@ -88,6 +106,10 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### getImageAnalyzerSupportTypes<sup>12+</sup>
 
 getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
@@ -97,6 +119,10 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值:**
 
