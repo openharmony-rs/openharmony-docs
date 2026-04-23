@@ -49,9 +49,13 @@ type AVPlayerState = 'idle' | 'initialized' | 'prepared' | 'playing' | 'paused' 
 
 [AVPlayer](arkts-apis-media-AVPlayer.md)的状态机，可通过state属性主动获取当前状态，也可通过监听[stateChange](arkts-apis-media-AVPlayer.md#onstatechange9)事件上报当前状态，状态机之间的切换规则，可参考[音频播放开发指导](../../media/media/using-avplayer-for-playback.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 |              类型               | 说明                                                         |
 | :-----------------------------: | :----------------------------------------------------------- |
@@ -67,19 +71,25 @@ type AVPlayerState = 'idle' | 'initialized' | 'prepared' | 'playing' | 'paused' 
 
 ## OnTrackChangeHandler<sup>12+</sup>
 
-type OnTrackChangeHandler = (index: number, isSelected: boolean) => void
+ArkTS-Dyn: type OnTrackChangeHandler = (index: number, isSelected: boolean) => void
+
+ArkTS-Sta: type OnTrackChangeHandler = (index: int, isSelected: boolean) => void
 
 track变更事件回调方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
-| index  | number | 是 | 当前变更的track索引。     |
+| index  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 当前变更的track索引。     |
 | isSelected | boolean | 是 | 当前变更的track索引是否被选中。true表示处于选中状态，false表示处于非选中状态。 |
 
 ## OnAVPlayerStateChangeHandle<sup>12+</sup>
@@ -88,9 +98,13 @@ type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeRea
 
 播放状态机切换事件回调方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -101,37 +115,49 @@ type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeRea
 
 ## OnBufferingUpdateHandler<sup>12+</sup>
 
-type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: number) => void
+ArkTS-Dyn: type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: number) => void
+
+ArkTS-Sta: type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: int) => void
 
 播放缓存事件回调方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | infoType  | [BufferingInfoType](arkts-apis-media-e.md#bufferinginfotype8) | 是 | 缓存时间类型。     |
-| value  | number | 是 | 缓存时间类型的值。     |
+| value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 缓存时间类型的值。     |
 
 ## OnVideoSizeChangeHandler<sup>12+</sup>
 
-type OnVideoSizeChangeHandler = (width: number, height: number) => void
+ArkTS-Dyn: type OnVideoSizeChangeHandler = (width: number, height: number) => void
+
+ArkTS-Sta: type OnVideoSizeChangeHandler = (width: int, height: int) => void
 
 视频播放宽高变化事件回调方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
-| width  | number | 是 | 视频宽度，单位为像素（px）。|
-| height | number | 是 | 视频高度，单位为像素（px）。|
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 视频宽度，单位为像素（px）。|
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 视频高度，单位为像素（px）。|
 
 ## OnSuperResolutionChanged <sup>18+</sup>
 
@@ -143,9 +169,13 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 * 目前超分算法最高仅支持30帧及以下的视频。若视频帧率超过30帧，或者在倍速播放等场景下导致输入帧率超出超分算法处理能力，超分会自动关闭。
 * 目前超分算法支持输入分辨率范围为[320x320, 1920x1080]，单位为像素。若播放过程中输入视频分辨率超出此范围，超分算法会自动关闭。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -155,36 +185,48 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 ## OnSeiMessageHandle<sup>18+</sup>
 
-type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+ArkTS-Dyn: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+
+ArkTS-Sta: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: int) => void
 
 获取SEI信息，使用场景：订阅SEI信息事件，回调返回SEI详细信息。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   |   类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | messages | Array\<[SeiMessage](arkts-apis-media-i.md#seimessage18)> | 是  | SEI信息。 |
-| playbackPosition | number | 否  | 获取当前播放位置（单位：毫秒）。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 获取当前播放位置（单位：毫秒）。 |
 
 ## OnPlaybackRateDone<sup>20+</sup>
 
-type OnPlaybackRateDone = (rate: number) => void
+ArkTS-Dyn: type OnPlaybackRateDone = (rate: number) => void
+
+ArkTS-Sta: type OnPlaybackRateDone = (rate: double) => void
 
 播放速率设置完成事件回调方法。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
-| rate | number | 是 | 播放速率。 |
+| rate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率。 |
 
 ## OnFrameFetched<sup>23+</sup>
 
@@ -370,7 +412,11 @@ type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVPlayerState](#avplayerstate9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
+
+**ArkTS-Dyn起始版本：** 6
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
@@ -389,7 +435,11 @@ type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | '
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayerState](#avplayerstate9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 | 类型     | 说明           |
 | -------- | -------------- |

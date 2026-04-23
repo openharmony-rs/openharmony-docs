@@ -28,14 +28,18 @@
 
 音视频文件资源描述，用于DataSource播放方式，使用场景：应用在未获取完整音视频资源时，允许用户创建播放实例并开始播放，达到提前播放的目的。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| fileSize     | number | 否  | 否  | 待播放文件大小（字节），-1代表大小未知。如果fileSize设置为-1，播放模式类似于直播，不能进行seek及setSpeed操作，不能设置loop属性，因此不能重新播放。 |
-| callback | (buffer: ArrayBuffer, length: number, pos?: number) => number | 否  | 否  | 用户设置的回调函数，用于填写数据。<br>- buffer: 表示被填写的内存，必选。<br>- length: 表示被填写内存的最大长度，必选。<br>- pos：表示填写的数据在资源文件中的位置，可选。当fileSize设置为-1时，该参数禁止被使用。 <br>- 返回值，number类型，返回填充数据的长度。返回-1表示到达流的末尾，返回-2表示遇到不可恢复的错误。|
+| fileSize     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否  | 待播放文件大小（字节），-1代表大小未知。如果fileSize设置为-1，播放模式类似于直播，不能进行seek及setSpeed操作，不能设置loop属性，因此不能重新播放。 |
+| callback | ArkTS-Dyn: (buffer: ArrayBuffer, length: number, pos?: number) => number<br>ArkTS-Sta: (buffer: ArrayBuffer, length: long, pos?: long) => int | 否  | 否  | 用户设置的回调函数，用于填写数据。<br>- buffer: 表示被填写的内存，必选。<br>- length: 表示被填写内存的最大长度，必选。<br>- pos：表示填写的数据在资源文件中的位置，可选。当fileSize设置为-1时，该参数禁止被使用。 <br>- 返回值：<br>ArkTS-Dyn：number类型。<br>ArkTS-Sta：int类型。<br>返回填充数据的长度。返回-1表示到达流的末尾，返回-2表示遇到不可恢复的错误。|
 
 ## SubtitleInfo<sup>12+</sup>
 
@@ -450,12 +454,16 @@ async function setupPlayer() {
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| timeStamp | number | 否   | 否   | 事件发生时的系统时间。 |
-| playbackPosition | number | 否   | 否   | 事件发生时的播放进度位置。 |
-| details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| timeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 事件发生时的系统时间。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 事件发生时的播放进度位置。 |
+| details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## VideoSize
 
