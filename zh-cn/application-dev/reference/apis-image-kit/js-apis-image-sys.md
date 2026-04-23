@@ -137,7 +137,7 @@ createWideGamutSdrPixelMap(): Promise\<PixelMap>
 >
 >- 对SDR图片源，按图片自带的色彩空间解码，输出SDR图。
 >- 对带有单通道GainMap的HDR图片源，解码其基础图（SDR图），忽略GainMap。
->- 对带有3通道GainMap的HDR图片源，解码其基础图（SDR图），并将输出SDR图的色域扩展为[ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#ColorSpace).DISPLAY_BT2020_SRGB。
+>- 对带有3通道GainMap的HDR图片源，解码其基础图（SDR图），并将输出SDR图的色域扩展为[colorspace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#ColorSpace).DISPLAY_BT2020_SRGB。
 
 **系统接口：** 此接口为系统接口。
 
