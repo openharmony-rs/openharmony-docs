@@ -362,7 +362,7 @@ removeBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node)
 
 ### getDefaultBoidsSimWorld
 
-static getDefaultBoidsSimWorld(scene: [Scene](js-apis-inner-scene.md#scene)): [BoidsSimWorld](#boidssimworld) \| null
+static getDefaultBoidsSimWorld(scene: [Scene](js-apis-inner-scene.md)): [BoidsSimWorld](#boidssimworld) \| null
 
 获取与指定场景关联的群组模拟世界实例。
 
@@ -375,7 +375,7 @@ static getDefaultBoidsSimWorld(scene: [Scene](js-apis-inner-scene.md#scene)): [B
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| scene | [Scene](js-apis-inner-scene.md#scene) | 是 | 目标场景对象。 |
+| scene | [Scene](js-apis-inner-scene.md) | 是 | 目标场景对象。 |
 
 **返回值：**
 | 类型 | 说明 |
