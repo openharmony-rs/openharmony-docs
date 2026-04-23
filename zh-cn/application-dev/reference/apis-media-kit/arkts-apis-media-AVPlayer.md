@@ -3569,9 +3569,8 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
-  avPlayer.fdSrc = fileDescriptor
+  let url:string = 'http://xxx.xxx.xxx/xx/xxx.mp4';
+  avPlayer.url = url;
   let playStrategy : media.PlaybackStrategy = {
       enableSuperResolution: true
   };
@@ -3624,9 +3623,8 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
-  avPlayer.fdSrc = fileDescriptor
+  let url:string = 'http://xxx.xxx.xxx/xx/xxx.mp4';
+  avPlayer.url = url;
   let playStrategy : media.PlaybackStrategy = {
       enableSuperResolution: true
   };
