@@ -154,9 +154,7 @@ See the [alternative solution of the **Files** permission group](app-permission-
 
 Allows an application to access the **Desktop** directory and its subdirectories in the user directory.
 
-<!--RP15-->
 Currently, only applications on 2-in-1 devices and tablets can request this permission.
-<!--RP15End-->
 
 **Permission level**: system_basic
 
@@ -224,9 +222,11 @@ Allows an application to intercept input events.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: general devices
+
 **Since**: 11
 
-**Changelog**: The permission level is system_core in API version 11, and is changed to system_basic since API version 12.
+**Changelog**: The permission level is system_core in API version 11, and is changed to system_basic since API version 12. Since API version 26.0.0, this permission is available on all devices.
 
 ## ohos.permission.INPUT_MONITORING
 
@@ -874,7 +874,7 @@ With this permission, the application can enable communication between browser e
 
 **Since**: 21
 
-**Changelog**: Since API version 24, this permission is also available on phones and tablets.
+**Changelog**: Since API version 24, this permission is also available on mobile phones and tablets.
 
 ## ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -998,7 +998,7 @@ Allows an application to register and deregister the crypto extension.
 
 **Since**: 22
 
-**Changelog**: This permission is also available on tablets since API version 24 and on phones since API version 26.0.0.
+**Changelog**: This permission is also available on tablets since API version 24 and on mobile phones since API version 26.0.0.
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
@@ -1026,7 +1026,7 @@ When the mouse hovers over an application icon in the Dock or recent tasks are v
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0
 
@@ -1042,7 +1042,7 @@ With this permission, the application can set the background color of the main w
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0
 
@@ -1178,7 +1178,7 @@ Allows an application to inject input events to control the device.
 
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
 
-Allows an application to apply for a continuous task of the special scenario type.
+Allows an application to apply for a continuous task of the special type.
 
 <!--RP76--><!--RP76End-->
 
@@ -1192,7 +1192,7 @@ Allows an application to apply for a continuous task of the special scenario typ
 
 ## ohos.permission.FLOAT_VIEW
 
-Allows an application to use float views.
+Allows an application to use floating windows. 
 
 <!--RP78--><!--RP78End-->
 
@@ -1200,13 +1200,13 @@ Allows an application to use float views.
 
 **Authorization mode**: user_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
 
 ## ohos.permission.GET_CALL_TRANSFER_INFO
 
-Allows an application to get call forwarding status.
+Allows an application to query the call forwarding status.
 
 <!--RP80--><!--RP80End-->
 
