@@ -664,7 +664,7 @@ $ hitrace --dump_bgsrv -o /data/local/test
 
 **可能原因&解决方法**
 
-illegal path表示指定的路径非法，可能的原因包括：
+illegal path 表示指定的路径非法，可能的原因包括：
 
 1. 采集二进制格式trace时，使用-o参数指定输出的文件路径不是/data/local/tmp或其包含的路径。
 
