@@ -650,7 +650,7 @@ $ hitrace --dump_bgsrv
 
 2. 磁盘空间已满时，不会生成新的trace文件，建议释放磁盘空间，确保空闲空间大于500MB，然后重新采集。
 
-### 执行hitrace命令后报错“illegal path”
+### 执行hitrace命令后报错"illegal path"
 
 **现象描述**
 
