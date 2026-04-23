@@ -97,16 +97,16 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | accessibilityPreviousFocusId<sup>18+</sup>             | number                | 否   | 是   | 上一个聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElementInfo对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
 | extraInfo<sup>18+</sup>             | string     | 否  | 是   | 扩展属性，用于定义一些特定组件的属性，包含：<br>- CheckboxGroupSelectedStatus：表示CheckboxGroup组件的选中状态，其中取值0表示已选中，取值1表示部分选中，取值2表示未选中。<br>- Row：Grid组件中聚焦item的行信息，表示该item在第几行。<br>- Column：Grid组件中聚焦的item的列，表示该item在第几列。<br>- ListItemIndex：List组件中聚焦item的行信息，表示当前该item在第几行。<br>- SideBarContainerStates：表示可展开类组件（SideBarContainer、Select）的展开状态，其中取值0表示收起态，取值1表示展开态。<br>- ToggleType：表示Toggle组件的具体类型，其中取值0表示Checkbox，取值1表示Switch，取值2表示Button。<br>- BindSheet：表示BindSheet组件的状态，其中取值0表示状态高，取值1表示状态中，取值2表示状态低。<br>- hasRegisteredHover：表示组件是否注册了onAccessibilityHover事件回调，取值为1表示组件注册了事件回调，若未注册不会使用该字段。<br>- direction：表示list组件的布局方向，其中取值"vertical"表示竖向，取值"horizontal"表示横向。<br>- expandedState：表示list组件中listItem的展开状态，其中取值"expanded"表示展开态，取值"collapsed"表示收起态。<br>- componentTypeDescription：组件类型详细信息，对componentType的补充描述。|
 | accessibilityScrollable<sup>18+</sup>             | boolean                 | 否   | 是   | 表示无障碍模式下元素是否滚动，优先级高于scrollable。其中，true表示可滚动，false表示不可滚动，默认值为true。|
-| isEssential<sup>26+</sup>             | boolean              | 否   | 否   | 表示元素对用户是否是必需的。true表示元素是必需的，false表示元素不是必需的，默认值为false。 |
-| belongTreeId<sup>26+</sup>             | number              | 否   | 否   | 表示元素所属的组件树ID。默认值为-1。 |
-| childrenTreeId<sup>26+</sup>             | number              | 否   | 否   | 表示元素的子组件树ID。默认值为-1。 |
-| currentItem<sup>26+</sup>             | [AccessibilityGrid](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilitygrid20)              | 否   | 否   | 表示当前元素所在网格中的位置。 |
-| span<sup>26+</sup>             | Array&lt;[AccessibilitySpan](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityspan20)&gt;              | 否   | 否   | 表示元素在网格布局中所跨越的行列范围数组。 |
-| childrenIds<sup>26+</sup>             |      Array&lt;number&gt;         | 否   | 否   | 表示元素的子组件ID。 |
-| parentId<sup>26+</sup>             | number              | 否   | 否   | 表示元素的父组件ID。默认值为-1。 |
-| mainWindowId<sup>26+</sup>             | number              | 否   | 否   | 表示元素的主窗口ID。默认值为-1。 |
-| accessibilityVisible<sup>26+</sup>             | boolean              | 否   | 否   | 表示元素的无障碍可见性。true表示元素是无障碍可见的，false表示元素是无障碍不可见的，默认值为true。 |
-| navDestinationId<sup>26+</sup>             | number              | 否   | 否   | 表示元素所关联的导航目标ID。默认值为-1。 |
+| isEssential             | boolean              | 否   | 否   | 表示元素对用户是否是必需的。true表示元素是必需的，false表示元素不是必需的，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| belongTreeId             | number              | 否   | 否   | 表示元素所属的组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| childrenTreeId             | number              | 否   | 否   | 表示元素的子组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| currentItem             | [AccessibilityGrid](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilitygrid20)              | 否   | 否   | 表示当前元素所在网格中的位置。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| span             | Array&lt;[AccessibilitySpan](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityspan20)&gt;              | 否   | 否   | 表示元素在网格布局中所跨越的行列范围数组。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| childrenIds             |      Array&lt;number&gt;         | 否   | 否   | 表示元素的子组件ID。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| parentId             | number              | 否   | 否   | 表示元素的父组件ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| mainWindowId             | number              | 否   | 否   | 表示元素的主窗口ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| accessibilityVisible             | boolean              | 否   | 否   | 表示元素的无障碍可见性。true表示元素是无障碍可见的，false表示元素是无障碍不可见的，默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| navDestinationId             | number              | 否   | 否   | 表示元素所关联的导航目标ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FocusDirection
 
