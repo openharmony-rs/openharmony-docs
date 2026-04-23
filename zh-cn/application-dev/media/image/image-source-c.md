@@ -293,7 +293,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          OH_LOG_INFO(LOG_APP, "ModifyImageProperty value: %{public}s.", setValue.data);
      
          Image_ErrorCode errCode = OH_ImageSourceNative_ModifyImageProperty(g_thisImageSource->source, &setKey, &setValue);
-         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_ModifyImageProperty");
+         return GetJsResult(env, errCode);
      }
      ```
 
