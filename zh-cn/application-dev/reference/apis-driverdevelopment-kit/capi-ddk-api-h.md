@@ -78,7 +78,7 @@ DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 | 参数项                                              | 描述 |
 |--------------------------------------------------| -- |
 | [DDK_Ashmem](capi-baseddk-ddk-ashmem.md) *ashmem | 要映射的共享内存指针。 |
-| const uint8_t ashmemMapType                      | 共享内存的保护权限值。取值参考标准内存保护常量，例如：1（PROT_READ，可读）、2（PROT_WRITE，可写）、3（PROT_READ \| PROT_WRITE，可读写）。 |
+| const uint8_t ashmemMapType                      | 共享内存的保护权限值。 |
 
 **返回：**
 

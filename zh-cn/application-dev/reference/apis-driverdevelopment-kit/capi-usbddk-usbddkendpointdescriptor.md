@@ -12,7 +12,7 @@ typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
 
 ## 概述
 
-端点描述符，封装了标准端点描述符以及未解析的额外描述符数据。
+端点描述符。
 
 **起始版本：** 10
 

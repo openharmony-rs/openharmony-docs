@@ -12,7 +12,7 @@ typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
 
 ## 概述
 
-接口描述符，封装了标准接口描述符及其包含的端点描述符和未解析的额外描述符数据。
+接口描述符。
 
 **起始版本：** 10
 
