@@ -1319,9 +1319,9 @@ type BusinessError\<T = void> = BusinessError\<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 20
 
 | 类型  | 说明   |
 | ---- | ------ |
