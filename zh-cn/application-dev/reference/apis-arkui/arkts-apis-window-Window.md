@@ -1709,9 +1709,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setWindowContainerModalColor
 
-ArkTS-Dyn: setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
-
-ArkTS-Sta: setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
+setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
 设置主窗口容器在焦点态和非焦点态时的背景色。该接口需在调用[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)后使用。
 
