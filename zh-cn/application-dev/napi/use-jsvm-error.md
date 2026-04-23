@@ -50,7 +50,7 @@ cpp部分代码：
 
 ```cpp
 // hello.cpp
-// 捕获清除并打印错误,该函数作为公共函数，在本文档后续样例中不再声明和定义
+// 捕获清除并打印错误，该函数作为公共函数，在本文档后续样例中不再声明和定义
 static void GetLastErrorAndClean(JSVM_Env env) {
     // 调用OH_JSVM_GetAndClearLastException接口获取并清除最后一个未处理的异常。即使存在挂起的JavaScript异常，也可以调用此API
     JSVM_Value result = nullptr;
@@ -121,7 +121,7 @@ static JSVM_Value JsVmThrowError(JSVM_Env env, JSVM_CallbackInfo info)
         OH_JSVM_ThrowError(env, "-1", "has Error");
     } else if (argc == 1) {
         size_t length = 0;
-        // 通过入参获取到javaScript侧传入的字符串长度。
+        // 通过入参获取到JavaScript侧传入的字符串长度。
         OH_JSVM_GetValueStringUtf8(env, argv[0], nullptr, 0, &length);
         char *buffer = new char[length + 1];
         // 获取入参的字符串内容。

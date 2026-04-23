@@ -476,7 +476,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -522,7 +522,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
@@ -702,7 +702,7 @@ struct Index {
 
 print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes, context: Context): Promise&lt;PrintTask&gt;
 
-打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。
+打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。当前支持的文件类型：".pdf"。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -711,7 +711,7 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。打印侧会通过[onStartLayoutWrite](#onstartlayoutwrite11)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印文件。 |
+| jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。当前仅支持".pdf"文件类型。打印侧会通过[onStartLayoutWrite](#onstartlayoutwrite11)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印文件。 |
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | 是 | 表示三方应用实现的[PrintDocumentAdapter](#printdocumentadapter11)接口实例。 |
 | printAttributes | [PrintAttributes](#printattributes11) | 是 | 表示打印参数。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
@@ -1705,7 +1705,7 @@ print.connectPrinter(printerId).then(() => {
 })
 ```
 
-## startPrint<sup>23+</sup>
+## print.startPrint<sup>23+</sup>
 
 startPrint(job: PrintJobData): Promise&lt;void&gt;
 
@@ -1742,11 +1742,11 @@ startPrint(job: PrintJobData): Promise&lt;void&gt;
 ```ts
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import fs from "@ohos.file.fs";
+import { fileIo } from '@kit.CoreFileKit';
 
 let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
-let file: fs.File;
-file = fs.openSync(tempPath, 4);
+let file: fileIo.File;
+file = fileIo.openSync(tempPath, 4);
 
 let printJobData: print.PrintJobData = {
     printerId: "printerId",
@@ -1816,7 +1816,7 @@ print.startPrint(printJobData).then(() => {
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
 | pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
 | jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
-| fdList | Array&lt;number&gt; | 否 | 是 | 表示待打印文件fd列表。 |
+| fdList | number[]; | 否 | 是 | 表示待打印文件fd列表。 |
 | binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
 | printQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示打印质量。 |
 | mediaType | string | 否 | 是 | 表示打印纸张类型。 |
@@ -1824,5 +1824,5 @@ print.startPrint(printJobData).then(() => {
 | isAutoRotate | boolean | 否 | 是 | 表示是否自动旋转页面。true表示自动旋转页面，false表示不自动旋转页面。默认值为true。 |
 | isReverse | boolean | 否 | 是 | 表示是否逆序打印。true表示逆序打印，false表示顺序打印。默认值为false。 |
 | isCollate | boolean | 否 | 是 | 表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。 |
-| isSequential | boolean | 否 | 是 | 表示是否按照页面顺序打印。 |
+| isSequential | boolean | 否 | 是 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。 |
 | options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |

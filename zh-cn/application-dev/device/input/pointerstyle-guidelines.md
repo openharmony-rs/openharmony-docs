@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 场景介绍
 
@@ -86,7 +86,7 @@ Text("Click to display pointer")
 
 ## 设置鼠标光标样式
 
-当开发者设计取色器特性时，可以将鼠标光标样式切换为取色器样式，完成取色后，设置鼠标光标样式为默认样式，该接口设置和查询当前应用内指定窗口的光标样式，总共可设置43种光标样式，具体参考[光标样式](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。
+当开发者设计取色器特性时，可以将鼠标光标样式切换为取色器样式，完成取色后，设置鼠标光标样式为默认样式，该接口设置和查询当前应用内指定窗口的光标样式，总共可设置49种光标样式，具体参考[光标样式](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。
 
 ### 开发步骤
 

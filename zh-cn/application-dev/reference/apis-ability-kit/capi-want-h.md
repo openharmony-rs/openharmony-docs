@@ -100,7 +100,7 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 销毁want成功。<br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - element参数无效。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 销毁want成功。<br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want参数无效。 |
 
 ### OH_AbilityBase_SetWantElement()
 
@@ -268,7 +268,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 
 **描述**
 
-设置Want中URI字符串，URI可参考[Want中URI描述](js-apis-app-ability-want.md)。
+设置Want中URI字符串，URI可参考[Want](js-apis-app-ability-want.md#want)中的uri描述。
 
 **起始版本：** 17
 
@@ -277,7 +277,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Want指针。 |
-| const char* uri | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息。URI可参考[Want中URI描述](js-apis-app-ability-want.md)。 |
+| const char* uri | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息。URI可参考[Want](js-apis-app-ability-want.md#want)中的uri描述。 |
 
 **返回：**
 
@@ -293,7 +293,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 
 **描述**
 
-获取Want中URI字符串。URI可参考[Want中URI描述](js-apis-app-ability-want.md)。
+获取Want中URI字符串。URI可参考[Want](js-apis-app-ability-want.md#want)中的uri描述。
 
 **起始版本：** 17
 
@@ -302,7 +302,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want | Want指针。 |
-| char* uri | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息。URI可参考[Want中URI描述](js-apis-app-ability-want.md)。 |
+| char* uri | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息。URI可参考[Want](js-apis-app-ability-want.md#want)中的uri描述。 |
 | size_t uriSize | URI字符串长度。如果uriSize小于实际需要获取的URI长度，则会报[ABILITY_BASE_ERROR_CODE_PARAM_INVALID](capi-ability-base-common-h.md#abilitybase_errorcode)错误。 |
 
 **返回：**

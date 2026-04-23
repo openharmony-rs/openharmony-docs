@@ -29,7 +29,7 @@ Defines the rotation effect object for a component during transition.
 | float x | X-component of the rotation vector.|
 | float y | Y-component of the rotation vector.|
 | float z | Z-component of the rotation vector.|
-| float angle | Rotation angle.|
+| float angle | Rotation angle. The value range is (-∞, +∞). A positive angle indicates a clockwise rotation, and a negative angle indicates a counterclockwise rotation.|
 | float centerX | X-coordinate of the center point, in vp.|
 | float centerY | Y-coordinate of the center point, in vp.|
 | float centerZ | Z-component of the 3D rotation center point, in px.|

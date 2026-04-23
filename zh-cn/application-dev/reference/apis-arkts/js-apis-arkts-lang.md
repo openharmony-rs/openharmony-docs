@@ -21,11 +21,11 @@ import { lang } from '@kit.ArkTS';
 ```
 
 ## lang.ISendable
-是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有任何必须的方法和属性。
+是所有[Sendable](../../arkts-utils/arkts-sendable.md#基础概念)类型（除`null`和`undefined`）的父类型。自身没有任何必须的方法和属性。
 
-ISendable类型的对象是ArkTS中的Object类型的实例。
+ArkTS中，ISendable类型的对象是Object类型的实例，遵循其基本特征，同时支持跨线程传递。
 
-ISendable主要用在开发者自定义Sendable数据结构的场景中，ArkTS语言标准库中的容器类型隐式地继承并实现了ISendable。
+ISendable主要用在开发者自定义Sendable数据结构的场景中，ArkTS语言标准库中的容器类型（如[Array](arkts-apis-arkts-collections-Array.md)、[Map](arkts-apis-arkts-collections-Map.md)、[Set](arkts-apis-arkts-collections-Set.md)等）隐式地继承并实现了ISendable。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 

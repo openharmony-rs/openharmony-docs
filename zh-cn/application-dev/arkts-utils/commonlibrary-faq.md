@@ -9,7 +9,7 @@
 
 ## 解析大文件xml发生内存溢出（Out of Memory）
 
-由于ArkTS侧提供的XML解析接口暂不支持流式解析模式，建议通过Native工程调用第三方C/C++库来实现。推荐使用**libxml2**库，该库具有成熟稳定、性能优越的特点，能够完美支持SAX等流式解析方式，有效降低内存占用。
+由于ArkTS侧提供的XML解析接口暂不支持流式解析模式，建议通过Native工程调用第三方C/C++库来实现。推荐使用**libxml2**库，该库具有成熟稳定、性能优越的特点，能够支持SAX等流式解析方式，有效降低内存占用。
 
 具体实施步骤如下：
 1. **创建Native工程**：在OpenHarmony项目中创建C++模块。
@@ -67,11 +67,11 @@ xmlCleanupParser();
 export class testClass {
     // 初始值设置为0
     private timeoutId: number = 0;
-    private interbalId: number = 0;
+    private intervalId: number = 0;
 
     // 在某些情况下没有调用setTimeout设置定时器就调用了clearAnimation函数删除了定时器，就会导致timeoutId为0的定时器被删除
     clearAnimation(): void {
-        clearInterval(this.interbalId);
+        clearInterval(this.intervalId);
         clearTimeout(this.timeoutId);
     }
 }

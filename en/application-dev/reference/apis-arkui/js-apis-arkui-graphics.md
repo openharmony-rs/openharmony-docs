@@ -1,9 +1,9 @@
 # Graphics
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Graphics** module provides APIs for defining attributes of a custom node.
@@ -277,7 +277,7 @@ class MyRenderNode extends RenderNode {
 
 const renderNode = new MyRenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -306,6 +306,7 @@ struct Index {
   }
 }
 ```
+![](figures/canvas_demo.png)
 
 ## Edges\<T><sup>12+</sup>
 
@@ -814,7 +815,7 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
     // Error codes 401 and 180003 of the ArkUI subsystem may be returned.
     // 61 157 180
     sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
-    console.info('current color is '+sourceColor.color+ ' r:'+sourceColor.red +' g:'+sourceColor.green+' b:'+sourceColor.blue+ ' a :'+sourceColor.alpha );
+    console.info(`current color is ${sourceColor.color} r:${sourceColor.red} g:${sourceColor.green} b:${sourceColor.blue} a :${sourceColor.alpha}`);
   } catch (error) {
     console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
     (error as BusinessError).message);
@@ -844,13 +845,13 @@ struct ColorMetricsSample {
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.rgba(0,74,175,255).color)
+        .backgroundColor(ColorMetrics.rgba(0, 74, 175, 255).color)
         .margin(10)
       Button("ColorMetrics colorWithSpace")
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB,  0.4392, 0.4392, 0.4392).color)
+        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB, 0.4392, 0.4392, 0.4392).color)
         .margin(10)
     }
     .width('100%')
@@ -887,7 +888,7 @@ Sets the semi-axis lengths for the x-axis and y-axis of the rounded corners.
 
 | Type                                        | Description              |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | Semi-axis lengths for the x-axis and y-axis of the rounded corners.|
+| [Corners](#cornerst12)\<[Vector2](#vector2)> | Semi-axis lengths for the x-axis and y-axis of the rounded corners.|
 
 ## BorderRadiuses<sup>12+</sup>
 
@@ -901,7 +902,7 @@ Sets the uniform radius of the four corners.
 
 | Type                           | Description              |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | Uniform radius of the four corners.|
+| [Corners](#cornerst12)\<number> | Uniform radius of the four corners.|
 
 ## Rect<sup>12+</sup>
 
@@ -968,8 +969,8 @@ Describes the shape mask.
 
 | Name           | Type   | Read-Only| Optional| Description                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> A color with only the transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RednerNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
-| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br>  A color with only the transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RednerNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
+| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> A color with only the transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
+| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br>  A color with only the transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
 | strokeWidth     | number | No  | No  | Sets the stroke width for the mask, in px. The default value is **0**.  |
 
 ### constructor<sup>12+</sup>
@@ -1010,11 +1011,21 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const mask = new ShapeMask();
-    mask.setRectShape({ left: 0, right: uiContext.vp2px(150), top: 0, bottom: uiContext.vp2px(150) });
+    mask.setRectShape({
+      left: 0,
+      right: uiContext.vp2px(150),
+      top: 0,
+      bottom: uiContext.vp2px(150)
+    });
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1039,6 +1050,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRectShape_demo.png)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1106,6 +1118,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRoundRectShape_demo.png)
 
 ### setCircleShape<sup>12+</sup>
 
@@ -1139,7 +1152,12 @@ class MyNodeController extends NodeController {
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1164,6 +1182,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCircleShape_demo.png)
 
 ### setOvalShape<sup>12+</sup>
 
@@ -1222,6 +1241,7 @@ struct Index {
   }
 }
 ```
+![](figures/setOvalShape_demo.png)
 
 ### setCommandPath<sup>12+</sup>
 
@@ -1249,7 +1269,12 @@ mask.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
 mask.fillColor = 0X55FF0000;
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeMask = mask;
 
@@ -1281,6 +1306,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCommandPath_demo.png)
 
 ## ShapeClip<sup>12+</sup>
 
@@ -1327,7 +1353,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.shapeClip = clip;
 const shapeClip = renderNode.shapeClip;
 
@@ -1355,6 +1381,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
+        .margin({ bottom: 20 })
       Button("setRectShape")
         .onClick(() => {
           shapeClip.setRectShape({
@@ -1365,10 +1392,11 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/setRectShape_demo2.gif)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1614,7 +1642,12 @@ const clip = new ShapeClip();
 clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeClip = clip;
 
@@ -1643,7 +1676,7 @@ struct Index {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
       Button("setCommandPath")
-        .onClick(()=>{
+        .onClick(() => {
           renderNode.shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
         })
     }
@@ -1671,7 +1704,7 @@ Generates an **edgeColors** object with the specified edge color for all edges.
 
 | Type                    | Description                                  |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | **edgeColors** object whose edge colors are all at the specified value.|
+| [Edges](#edgest12)\<number> | **edgeColors** object whose edge colors are all at the specified value.|
 
 **Example**
 
@@ -1680,9 +1713,9 @@ import { RenderNode, FrameNode, NodeController, edgeColors } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = edgeColors(0xFF0000FF);
+renderNode.borderColor = edgeColors(0xff519db4);
 
 
 class MyNodeController extends NodeController {
@@ -1708,10 +1741,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeColors_demo.png)
 
 ## edgeWidths<sup>12+</sup>
 
@@ -1733,7 +1767,7 @@ Generates an **edgeWidths** object with the specified edge width for all edges.
 
 | Type                    | Description                                  |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | **edgeWidths** object whose edge widths are all at the specified value.|
+| [Edges](#edgest12)\<number> | **edgeWidths** object whose edge widths are all at the specified value.|
 
 **Example**
 
@@ -1741,10 +1775,20 @@ Generates an **edgeWidths** object with the specified edge width for all edges.
 import { RenderNode, FrameNode, NodeController, edgeWidths } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = edgeWidths(8);
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.borderColor = {
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
+};
 
 
 class MyNodeController extends NodeController {
@@ -1770,10 +1814,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeWidths_demo.png)
 
 ## borderStyles<sup>12+</sup>
 
@@ -1803,10 +1848,25 @@ Generates a border style object with the specified border style color for all bo
 import { RenderNode, FrameNode, NodeController, borderStyles } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xffd5d5d5;
+renderNode.borderWidth = {
+  left: 8,
+  top: 8,
+  right: 8,
+  bottom: 8
+};
+renderNode.borderColor = {
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
+};
 renderNode.borderStyle = borderStyles(BorderStyle.Dotted);
 
 
@@ -1833,10 +1893,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/borderStyles_demo.png)
 
 ## borderRadiuses<sup>12+</sup>
 
@@ -1863,11 +1924,16 @@ Generates a **borderRadiuses** object with the specified radius for all border c
 **Example**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, borderRadiuses }  from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, borderRadiuses } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xff519db4;
 renderNode.borderRadius = borderRadiuses(32);
 
 
@@ -1894,7 +1960,8 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/borderRadiuses_demo.png)

@@ -511,7 +511,7 @@ getAudioTime(): Promise<number\>
 
 | 类型             | 说明                          |
 | :--------------- | :---------------------------- |
-| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始），单位为纳秒。 |
+| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始）。<br>单位为纳秒。 |
 
 **示例：**
 
@@ -637,7 +637,7 @@ getBufferSize(callback: AsyncCallback<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                 |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。 |
+| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
 **示例：**
 
@@ -665,7 +665,7 @@ getBufferSize(): Promise<number\>
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| Promise<number\> | Promise对象，返回缓冲区大小。 |
+| Promise<number\> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
@@ -691,7 +691,7 @@ getBufferSizeSync(): number
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| number | 返回缓冲区大小。 |
+| number | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 
@@ -780,7 +780,7 @@ on(type: 'audioInterrupt', callback: Callback\<InterruptEvent>): void
 
 AudioCapturer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。
 
-调用此方法后，如果AudioCapturer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+调用此方法后，如果AudioCapturer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -1223,6 +1223,8 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 监听音频数据读取回调事件（当需要读取音频流数据时触发）。使用callback异步回调。
 
 回调函数仅用来读取音频数据，请勿在回调函数中调用AudioCapturer相关接口。
+
+为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

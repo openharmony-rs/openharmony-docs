@@ -1109,7 +1109,7 @@ Clips a rectangle.<br>This API may return an error code. For details, call [OH_D
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object.|
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | Pointer to an **OH_Drawing_Rect** object.|
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see @{link OH_Drawing_CanvasClipOp}.|
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop).|
 | bool doAntiAlias | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite.|
 
 ### OH_Drawing_CanvasClipRoundRect()
@@ -1133,7 +1133,7 @@ Clips a rounded rectangle.<br>This API may return an error code. For details, ca
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object.|
 | const [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | Pointer to an **OH_Drawing_RoundRect** object.|
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see @{link OH_Drawing_CanvasClipOp}.|
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop).|
 | bool doAntiAlias | Whether to perform anti-aliasing. The value **true** means to perform anti-aliasing, and **false** means the opposite.|
 
 ### OH_Drawing_CanvasClipPath()
@@ -1157,7 +1157,7 @@ Clips a path.<br>This API may return an error code. For details, call [OH_Drawin
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to an **OH_Drawing_Canvas** object.|
 | const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | Pointer to an **OH_Drawing_Path** object.|
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see @{link OH_Drawing_CanvasClipOp}.|
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop).|
 | bool doAntiAlias | Whether to enable anti-aliasing. The value **true** means to enable anti-aliasing, and **false** means the opposite.|
 
 ### OH_Drawing_CanvasClipRegion()
@@ -1181,7 +1181,7 @@ Clips a rectangle.
 | -- | -- |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object.|
 | const [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)* region | Pointer to the [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) object.|
-| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see @{link OH_Drawing_CanvasClipOp}.|
+| [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop) clipOp | Clip mode. For details about the available options, see [OH_Drawing_CanvasClipOp](#oh_drawing_canvasclipop).|
 
 **Returns**
 

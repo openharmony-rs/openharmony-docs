@@ -39,6 +39,7 @@ getNativeHeapSize(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
+console.info(`nativeHeapSize = ${nativeHeapSize}`);
 ```
 
 ## hidebug.getNativeHeapAllocatedSize
@@ -61,6 +62,7 @@ getNativeHeapAllocatedSize(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
+console.info(`nativeHeapAllocatedSize = ${nativeHeapAllocatedSize}`);
 ```
 
 ## hidebug.getNativeHeapFreeSize
@@ -82,6 +84,7 @@ getNativeHeapFreeSize(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let nativeHeapFreeSize: bigint = hidebug.getNativeHeapFreeSize();
+console.info(`nativeHeapFreeSize = ${nativeHeapFreeSize}`);
 ```
 
 ## hidebug.getPss
@@ -107,6 +110,7 @@ getPss(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let pss: bigint = hidebug.getPss();
+console.info(`pss = ${pss}`);
 ```
 
 ## hidebug.getVss<sup>11+</sup>
@@ -129,6 +133,7 @@ getVss(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let vss: bigint = hidebug.getVss();
+console.info(`vss = ${vss}`);
 ```
 
 ## hidebug.getSharedDirty
@@ -155,6 +160,7 @@ getSharedDirty(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let sharedDirty: bigint = hidebug.getSharedDirty();
+console.info(`sharedDirty = ${sharedDirty}`);
 ```
 
 ## hidebug.getPrivateDirty<sup>9+</sup>
@@ -180,6 +186,7 @@ getPrivateDirty(): bigint
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let privateDirty: bigint = hidebug.getPrivateDirty();
+console.info(`privateDirty = ${privateDirty}`);
 ```
 
 ## hidebug.getCpuUsage<sup>9+</sup>
@@ -206,6 +213,7 @@ getCpuUsage(): number
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let cpuUsage: number = hidebug.getCpuUsage();
+console.info(`cpuUsage = ${cpuUsage}`);
 ```
 
 ## hidebug.getServiceDump<sup>9+</sup>
@@ -224,7 +232,7 @@ getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
 | -------- | ------ | ---- |----------------------------|
 | serviceid | number | 是   | 基于用户输入的service id获取系统服务信息。 |
 | fd | number | 是   | 文件描述符，接口会向该fd写入数据。         |
-| args | Array&lt;string&gt; | 是   | 系统服务的dump接口参数列表。string长度的最大值为254。 |
+| args | Array&lt;string&gt; | 是   | 系统服务的dump接口参数列表。string长度的最大值为254。超出部分将会被截断。 |
 
 **错误码**：
 
@@ -572,6 +580,7 @@ let limitSize: number = 1024 * 1024;
 
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
@@ -611,6 +620,7 @@ let flag: hidebug.TraceFlag = hidebug.TraceFlag.MAIN_THREAD;
 let limitSize: number = 1024 * 1024;
 try {
   let fileName: string = hidebug.startAppTraceCapture(tags, flag, limitSize);
+  console.info(`fileName = ${fileName}`);
   // code block
   // ...
   // code block
@@ -640,6 +650,8 @@ getAppMemoryLimit(): MemoryLimit
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appMemoryLimit:hidebug.MemoryLimit = hidebug.getAppMemoryLimit();
+console.info(`rssLimit: ${appMemoryLimit.rssLimit}, vssLimit: ${appMemoryLimit.vssLimit},` +
+  `vmHeapLimit: ${appMemoryLimit.vmHeapLimit}, vmTotalHeapSize: ${appMemoryLimit.vmTotalHeapSize}`);
 ```
 
 ## hidebug.getSystemCpuUsage<sup>12+</sup>
@@ -690,7 +702,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 > **注意**：
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 打开设置中的开发者选项后，在开发者选项列表中找到“系统资源泄漏日志”并启用，重启设备后接口生效。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -701,7 +713,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 | 参数名   | 类型   | 必填 | 说明                                                                                                                                                                      |
 | -------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | type | string |  是  | 泄漏资源类型，共四种：<br/>- pss_memory（native内存）<br/>- js_heap（js堆内存）<br/>- fd（文件描述符）<br/>- thread（线程）                                                                            |
-| value | number |  是  | 对应泄漏资源类型的最大值，范围：<br/>- pss_memory类型：`[1024, 4 * 1024 * 1024]`（单位：KB）<br/>- js_heap类型：`[85, 95]`（分配给JS堆内存上限的85%~95%）<br/>- fd类型：`[10, 10000]`<br/>- thread类型：`[1, 1000]` |
+| value | number |  是  | 对应泄漏资源类型的最大值，范围：<br/>- pss_memory类型：`[1024, 4 * 1024 * 1024]`（单位：KB）<br/>- js_heap类型：`[85, 95]`（分配给JS堆内存上限的85%~95%）<br/>- fd类型：`[10, 10000]`<br/>- thread类型：`[1, 1000]`。超出范围会导致功能失效。 |
 | enableDebugLog | boolean |  是  | 是否启用外部调试日志。外部调试日志请仅在灰度版本（正式版本发布之前，先向一小部分用户推出的测试版本）中启用，因为收集调试日志会占用大量的cpu资源和内存资源，可能会引起应用流畅性问题。<br/>true：启用外部调试日志。<br/>false：禁用外部调试日志。                                     |
 
 **错误码**：
@@ -790,7 +802,7 @@ getAppNativeMemInfoWithCache(forceRefresh?: boolean): NativeMemInfo
 
 > **注意**：
 >
-> 由于读取 `/proc/{pid}/smaps_rollup` 比较耗时，建议不在主线程中使用该接口。可以通过 `@ohos.taskpool` 或 `@ohos.worker` 开启异步线程，以避免应用卡顿。
+> 由于读取 `/proc/{pid}/smaps_rollup` 比较耗时，建议不在主线程中使用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -950,6 +962,8 @@ VM内存信息。
 
 ## hidebug.tags<sup>12+</sup>
 
+### 常量
+
 支持trace使用场景的标签，用户可通过[hitrace](../../dfx/hitrace.md)抓取指定标签的trace内容。
 
 > **注意**：
@@ -1108,7 +1122,7 @@ getGraphicsMemory(): Promise&lt;number&gt;
 **示例**：
 
 ```ts
-import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 hidebug.getGraphicsMemory().then((ret: number) => {

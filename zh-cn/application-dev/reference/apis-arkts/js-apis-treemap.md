@@ -81,7 +81,7 @@ comparator的参数说明：
 **示例：**
 
 ```ts
-//默认构造
+// 默认构造
 let treeMap = new TreeMap<number, number>();
 ```
 
@@ -105,7 +105,7 @@ for (let item of treeMap) {
 ```
 
 ```ts
-//当插入自定义类型时，则必须要提供比较函数。
+// 当插入自定义类型时，则必须要提供比较函数。
 class TestEntry{
   public id: number = 0;
 }
@@ -725,7 +725,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?:
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callbackFn | function | 是 | 回调函数。 |
-| thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
+| thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为undefined。 |
 
 callbackFn的参数说明：
 | 参数名 | 类型 | 必填 | 说明 |

@@ -31,10 +31,10 @@ import { media } from '@kit.MediaKit';
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. hls网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>[通过XComponent创建surfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 视频循环播放属性，默认false，设置为true表示循环播放，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>直播场景不支持loop设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | 否   | 是   | 视频缩放模式，默认VIDEO_SCALE_TYPE_FIT，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | 否   | 是   | 音频焦点模型，默认SHARE_MODE，动态属性。<br/>只允许在**prepared**/**playing**/**paused**/**completed**状态下设置。<br/>在第一次调用[play()](#play9)之前设置， 以便此后中断模式生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -68,6 +68,7 @@ on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听播放状态机AVPlayerState切换的事件。
   avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
     switch (state) {
       case 'idle':
@@ -120,13 +121,14 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 | 参数名 | 类型   | 必填 | 说明                                                  |
 | ------ | ------ | ---- | ----------------------------------------------------- |
 | type   | string | 是   | 状态机切换事件回调类型，取消注册的事件：'stateChange' |
-| callback<sup>12+</sup>   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 否   | 状态机切换事件回调方法。 |
+| callback<sup>12+</sup>   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 否   | 状态机切换事件回调方法。如果填写该参数，仅取消注册此回调的方法，否则取消注册stateChange事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收播放状态机AVPlayerState切换的事件。
   avPlayer.off('stateChange');
 }
 ```
@@ -184,6 +186,7 @@ on(type: 'error', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听AVPlayer的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。
   avPlayer.on('error', (error: BusinessError) => {
     console.info('error happened,and error message is :' + error.message);
     console.info('error happened,and error code is :' + error.code);
@@ -206,7 +209,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | 是   | 错误事件回调类型，取消注册的事件：'error' |
-| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 错误事件回调方法，使用播放器的过程中发生错误，会提供错误码ID和错误信息。 |
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 错误事件回调方法，使用播放器的过程中发生错误，会提供错误码ID和错误信息。如果填写该参数，仅取消注册此回调方法，否则取消注册error事件的所有回调方法。 |
 
 **示例：**
 
@@ -215,6 +218,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再监听AVPlayer的错误事件。
   avPlayer.off('error');
 }
 ```
@@ -1456,6 +1460,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收seek生效的事件回调。
   avPlayer.on('seekDone', (seekDoneTime:number) => {
     console.info('seekDone called,and seek time is:' + seekDoneTime);
   });
@@ -1477,13 +1482,14 @@ off(type: 'seekDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                 |
 | ------ | ------ | ---- | ---------------------------------------------------- |
 | type   | string | 是   | seek生效的事件回调类型，取消注册的事件：'seekDone'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。如果填写该参数，仅取消注册此回调的方法，否则取消注册seekDone事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收seek生效的事件回调。
   avPlayer.off('seekDone');
 }
 ```
@@ -1540,6 +1546,7 @@ on(type: 'speedDone', callback: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setSpeed生效事件回调。
   avPlayer.on('speedDone', (speed:number) => {
     console.info('speedDone called,and speed value is:' + speed);
   });
@@ -1561,13 +1568,14 @@ off(type: 'speedDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                      |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | 是   | setSpeed生效的事件回调类型，取消注册的事件：'speedDone'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。 |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。如果填写该参数，仅取消注册此回调方法，否则取消注册speedDone事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setSpeed生效事件回调。
   avPlayer.off('speedDone');
 }
 ```
@@ -1658,6 +1666,7 @@ on(type: 'playbackRateDone', callback: OnPlaybackRateDone): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setPlaybackRate生效的事件。
   avPlayer.on('playbackRateDone', (rate:number) => {
     console.info('playbackRateDone called,and rate value is:' + rate);
   });
@@ -1679,13 +1688,14 @@ off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void
 | 参数名 | 类型   | 必填 | 说明                                                      |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | 是   | setPlaybackRate生效的事件回调类型，取消注册的事件：'playbackRateDone'。 |
-| callback | [OnPlaybackRateDone](arkts-apis-media-t.md#onplaybackratedone20) | 否   |  setPlaybackRate生效的事件回调方法，上报设置后的播放速率。如填写该参数，则仅取消注册此回调方法，否则取消注册playbackRateDone事件的所有回调方法。 |
+| callback | [OnPlaybackRateDone](arkts-apis-media-t.md#onplaybackratedone20) | 否   |  setPlaybackRate生效的事件回调方法，上报设置后的播放速率。如果填写该参数，仅取消注册此回调方法，否则取消注册playbackRateDone事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setPlaybackRate生效的事件。
   avPlayer.off('playbackRateDone');
 }
 ```
@@ -1739,6 +1749,7 @@ on(type: 'bitrateDone', callback: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setBitrate生效事件回调。
   avPlayer.on('bitrateDone', (bitrate:number) => {
     console.info('bitrateDone called,and bitrate value is:' + bitrate);
   });
@@ -1760,13 +1771,14 @@ off(type: 'bitrateDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | setBitrate生效的事件回调类型，取消注册的事件：'bitrateDone'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | setBitrate生效的事件回调方法，上报生效的比特率。             |
+| callback<sup>12+</sup> | Callback\<number> | 否   | setBitrate生效的事件回调方法，上报生效的比特率。如果填写该参数，仅取消注册此回调方法，否则取消注册bitrateDone事件的所有回调方法。           |
 
 **示例：**
 
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setBitrate生效事件回调。
   avPlayer.off('bitrateDone');
 }
 ```
@@ -1793,6 +1805,7 @@ on(type: 'availableBitrates', callback: Callback\<Array\<number>>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，播放状态切换prepared状态时，接收到HLS/DASH协议网络流可用的比特率列表回调。
   avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
     console.info('availableBitrates called,and availableBitrates length is:' + bitrates.length);
   });
@@ -1814,13 +1827,14 @@ off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | HLS/DASH协议网络流可用比特率上报事件回调类型，取消注册的事件：'availableBitrates'。 |
-| callback<sup>12+</sup> | Callback\<Array\<number>> | 否   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。 |
+| callback<sup>12+</sup> | Callback\<Array\<number>> | 否   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。如果填写该参数，仅取消注册此回调方法，否则取消注册availableBitrates事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收HLS/DASH协议网络流可用的比特率列表回调。
   avPlayer.off('availableBitrates');
 }
 ```
@@ -1850,6 +1864,7 @@ import { drm } from '@kit.DrmKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收mediaKeySystemInfoUpdate事件回调。
   avPlayer.on('mediaKeySystemInfoUpdate', (mediaKeySystemInfo: Array<drm.MediaKeySystemInfo>) => {
     for (let i = 0; i < mediaKeySystemInfo.length; i++) {
       console.info('mediaKeySystemInfoUpdate happened uuid: ' + mediaKeySystemInfo[i]["uuid"]);
@@ -1874,13 +1889,14 @@ off(type: 'mediaKeySystemInfoUpdate', callback?: Callback\<Array\<drm.MediaKeySy
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 版权保护信息更新上报事件回调类型，取消注册的事件：'mediaKeySystemInfoUpdate'。 |
-| callback | Callback\<Array\<drm.[MediaKeySystemInfo](../apis-drm-kit/arkts-apis-drm-i.md#mediakeysysteminfo)>> | 否   | 版权保护信息更新上报事件回调方法，上报版权保护信息数组。如填写该参数，则仅取消注册此回调方法，否则取消注册mediaKeySystemInfoUpdate事件的所有回调方法。 |
+| callback | Callback\<Array\<drm.[MediaKeySystemInfo](../apis-drm-kit/arkts-apis-drm-i.md#mediakeysysteminfo)>> | 否   | 版权保护信息更新上报事件回调方法，上报版权保护信息数组。如果填写该参数，仅取消注册此回调方法，否则取消注册mediaKeySystemInfoUpdate事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收mediaKeySystemInfoUpdate事件回调。
   avPlayer.off('mediaKeySystemInfoUpdate');
 }
 ```
@@ -1986,6 +2002,7 @@ on(type: 'volumeChange', callback: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setVolume生效的事件回调。
   avPlayer.on('volumeChange', (vol: number) => {
     console.info('volumeChange called,and new volume is :' + vol);
   });
@@ -2007,13 +2024,14 @@ off(type: 'volumeChange', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | setVolume生效的事件回调类型，取消注册的事件：'volumeChange'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | setVolume生效的事件回调方法，上报生效的媒体音量。            |
+| callback<sup>12+</sup> | Callback\<number> | 否   | setVolume生效的事件回调方法，上报生效的媒体音量。如果填写该参数，仅取消注册此回调方法，否则取消注册volumeChange事件的所有回调方法。            |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setVolume生效的事件。
   avPlayer.off('volumeChange');
 }
 ```
@@ -2040,6 +2058,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收endOfStream事件回调。
   avPlayer.on('endOfStream', () => {
     console.info('endOfStream called');
   });
@@ -2061,13 +2080,14 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 资源播放至结尾的事件回调类型，取消注册的事件：'endOfStream'。 |
-| callback<sup>12+</sup> | Callback\<void> | 否   | 资源播放至结尾的事件回调方法。                               |
+| callback<sup>12+</sup> | Callback\<void> | 否   | 资源播放至结尾的事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册endOfStream事件的所有回调方法。                               |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收endOfStream事件回调。
   avPlayer.off('endOfStream');
 }
 ```
@@ -2082,6 +2102,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 >
 >- 直播场景不支持timeUpdate上报。
 >- 操作（seek）时必须等待seekdone结束才能根据timeUpdate来更新进度条。
+>- 在pause状态下，缓冲结束时播放器会上报timeUpdate事件。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2099,6 +2120,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收资源播放当前时间事件回调。
   avPlayer.on('timeUpdate', (time:number) => {
     console.info('timeUpdate called,and new time is :' + time);
   });
@@ -2157,13 +2179,14 @@ off(type: 'timeUpdate', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | type   | string | 是   | 时间更新的回调类型，取消注册的事件：'timeUpdate'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回当前时间。             |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回当前时间。如果填写该参数，仅取消注册此回调方法，否则取消注册timeUpdate事件的所有回调方法。             |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收资源播放当前时间事件回调。
   avPlayer.off('timeUpdate');
 }
 ```
@@ -2195,6 +2218,7 @@ on(type: 'durationUpdate', callback: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收资源播放资源的时长事件回调。
   avPlayer.on('durationUpdate', (duration: number) => {
     console.info('durationUpdate called,new duration is :' + duration);
   });
@@ -2216,13 +2240,14 @@ off(type: 'durationUpdate', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
 | type   | string | 是   | 时长更新的回调类型，取消注册的事件：'durationUpdate'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回资源时长。        |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回资源时长。如果填写该参数，仅取消注册此回调方法，否则取消注册durationUpdate事件的所有回调方法。        |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收资源播放资源的时长事件回调。
   avPlayer.off('durationUpdate');
 }
 ```
@@ -2249,6 +2274,7 @@ on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收音视频缓存更新事件回调。
   avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
     console.info('bufferingUpdate called,and infoType value is:' + infoType + ', value is :' + value);
   });
@@ -2270,13 +2296,14 @@ off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void
 | 参数名 | 类型   | 必填 | 说明                                                      |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | 是   | 播放缓存事件回调类型，取消注册的事件：'bufferingUpdate'。 |
-| callback | [OnBufferingUpdateHandler](arkts-apis-media-t.md#onbufferingupdatehandler12) | 否   | 播放缓存事件回调方法。 |
+| callback | [OnBufferingUpdateHandler](arkts-apis-media-t.md#onbufferingupdatehandler12) | 否   | 播放缓存事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册bufferingUpdate事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收资源播放资源的时长事件回调。
   avPlayer.off('bufferingUpdate');
 }
 ```
@@ -2303,6 +2330,7 @@ on(type: 'startRenderFrame', callback: Callback\<void>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收视频播放开始首帧渲染的更新事件回调。
   avPlayer.on('startRenderFrame', () => {
     console.info('startRenderFrame called');
   });
@@ -2324,13 +2352,14 @@ off(type: 'startRenderFrame', callback?: Callback\<void>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 视频播放开始首帧渲染事件回调类型，取消注册的事件：'startRenderFrame'。 |
-| callback<sup>12+</sup> | Callback\<void> | 否   | 视频播放开始首帧渲染事件回调方法。                   |
+| callback<sup>12+</sup> | Callback\<void> | 否   | 视频播放开始首帧渲染事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册startRenderFrame事件的所有回调方法。                   |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收视频播放开始首帧渲染的更新事件回调。
   avPlayer.off('startRenderFrame');
 }
 ```
@@ -2357,6 +2386,7 @@ on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听视频播放宽高变化事件，仅视频播放支持该订阅事件，默认只在prepared状态上报一次。
   avPlayer.on('videoSizeChange', (width: number, height: number) => {
     console.info('videoSizeChange called,and width is:' + width + ', height is :' + height);
   });
@@ -2378,13 +2408,14 @@ off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 视频播放宽高变化事件回调类型，取消注册的事件：'videoSizeChange'。 |
-| callback<sup>12+</sup> | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | 否   | 视频播放宽高变化事件回调方法。    |
+| callback<sup>12+</sup> | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | 否   | 视频播放宽高变化事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册videoSizeChange事件的所有回调方法。    |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再监听视频播放宽高变化事件。
   avPlayer.off('videoSizeChange');
 }
 ```
@@ -2413,6 +2444,7 @@ import { audio } from '@kit.AudioKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 监听音频焦点变化事件，多个音视频资源同时播放时，会根据音频焦点模型audio.InterruptMode触发此事件。
   avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
     console.info('audioInterrupt called,and InterruptEvent info is:' + info);
   });
@@ -2434,13 +2466,14 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 音频焦点变化事件回调类型，取消注册的事件：'audioInterrupt'。 |
-| callback<sup>12+</sup> | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | 否   | 音频焦点变化事件回调方法。             |
+| callback<sup>12+</sup> | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | 否   | 音频焦点变化事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册audioInterrupt事件的所有回调方法。             |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收音频焦点变化事件回调。
   avPlayer.off('audioInterrupt');
 }
 ```
@@ -2479,6 +2512,7 @@ import { audio } from '@kit.AudioKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 开始监听音频流输出设备变化及原因。
   avPlayer.on('audioOutputDeviceChangeWithInfo', (data: audio.AudioStreamDeviceChangeInfo) => {
     console.info(`${JSON.stringify(data)}`);
   });
@@ -2500,7 +2534,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 | 参数名   | 类型                       | 必填 | 说明                                        |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
 | type     | string                     | 是   | 事件回调类型，支持的事件为：'audioOutputDeviceChangeWithInfo'。 |
-| callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 否   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。 |
+| callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 否   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。如果填写该参数，仅取消注册此回调方法，否则取消注册audioOutputDeviceChangeWithInfo事件的所有回调方法。 |
 
 **错误码：**
 
@@ -2515,6 +2549,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收音频流输出设备变化事件。
   avPlayer.off('audioOutputDeviceChangeWithInfo');
 }
 ```
@@ -2629,6 +2664,7 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 订阅获取外挂字幕的事件，当有外挂字幕时，会触发事件。
   avPlayer.on('subtitleUpdate', async (info: media.SubtitleInfo) => {
     if (info) {
       let text = (!info.text) ? '' : info.text
@@ -2657,13 +2693,14 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | 是   | 事件回调类型，支持的事件为：'subtitleUpdate'。 |
-| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | 否   | 取消外挂字幕事件的回调方法。 |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | 否   | 取消外挂字幕事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册subtitleUpdate事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收获取外挂字幕的事件。
   avPlayer.off('subtitleUpdate');
 }
 ```
@@ -2690,6 +2727,7 @@ on(type: 'trackChange', callback: OnTrackChangeHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 订阅获取轨道变更的事件，当播放的轨道变更时，会触发事件回调。
   avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
     console.info('trackChange info: index=' + index + ' isSelect=' + isSelect);
   });
@@ -2711,13 +2749,14 @@ off(type: 'trackChange', callback?: OnTrackChangeHandler): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | 是   | 事件回调类型，支持的事件为：'trackChange'。 |
-| callback | [OnTrackChangeHandler](arkts-apis-media-t.md#ontrackchangehandler12) | 否   | 取消轨道变更事件的回调方法。 |
+| callback | [OnTrackChangeHandler](arkts-apis-media-t.md#ontrackchangehandler12) | 否   | 取消轨道变更事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册trackChange事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收轨道变更的事件。
   avPlayer.off('trackChange');
 }
 ```
@@ -2744,6 +2783,7 @@ on(type: 'trackInfoUpdate', callback: Callback\<Array\<MediaDescription>>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 订阅获取轨道信息更新的事件，当播放的轨道有更新时，会触发事件回调。
   avPlayer.on('trackInfoUpdate', (info: Array<media.MediaDescription>) => {
     if (info) {
       for (let i = 0; i < info.length; i++) {
@@ -2773,13 +2813,14 @@ off(type: 'trackInfoUpdate', callback?: Callback\<Array\<MediaDescription>>): vo
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | 是   | 事件回调类型，支持的事件为：'trackInfoUpdate'。 |
-| callback | Callback\<Array\<[MediaDescription](arkts-apis-media-i.md#mediadescription8)>> | 否   | 取消轨道信息更新事件的回调方法。 |
+| callback | Callback\<Array\<[MediaDescription](arkts-apis-media-i.md#mediadescription8)>> | 否   | 取消轨道信息更新事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册trackInfoUpdate事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收轨道信息更新的事件。
   avPlayer.off('trackInfoUpdate');
 }
 ```
@@ -2804,6 +2845,7 @@ on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 订阅音频最大电平值，音频资源播放时定时上报。
   avPlayer.on('amplitudeUpdate', (value: Array<number>) => {
     console.info(`amplitudeUpdate called,and amplitudeUpdate = ${value}`);
   });
@@ -2823,13 +2865,14 @@ off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 事件回调类型，支持的事件为：'amplitudeUpdate'。 |
-| callback | Callback\<Array\<number>> | 否   | 取消音频最大电平值更新事件回调方法。 |
+| callback | Callback\<Array\<number>> | 否   | 取消音频最大电平值更新事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册amplitudeUpdate事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收获取音频最大电平值事件上报。
   avPlayer.off('amplitudeUpdate');
 }
 ```
@@ -2860,6 +2903,7 @@ import { util } from '@kit.ArkTS';
 async function test(){
   let avPlayer = await media.createAVPlayer();
 
+  // 监听后，开始接收seiMessageReceived事件回调。
   avPlayer.on('seiMessageReceived', [5], (messages: Array<media.SeiMessage>, playbackPosition?: number) =>
   {
     console.info('seiMessageReceived playbackPosition ' + playbackPosition);
@@ -2893,13 +2937,14 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件回调类型，支持的事件为：'seiMessageReceived'。 |
 | payloadTypes | Array\<number> | 否   | SEI信息的订阅负载类型。 |
-| callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 否   | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。 |
+| callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 否   | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。如果填写该参数，仅取消注册此回调方法，否则取消注册seiMessageReceived事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收seiMessageReceived事件回调。
   avPlayer.off('seiMessageReceived');
 }
 ```
@@ -3018,6 +3063,7 @@ on(type:'superResolutionChanged', callback: OnSuperResolutionChanged): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 订阅监听超分算法开启/关闭事件。
   avPlayer.on('superResolutionChanged', (enabled: boolean) => {
     console.info('superResolutionChanged called, and enabled is:' + enabled);
   });
@@ -3039,13 +3085,14 @@ off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string | 是 | 事件回调类型，支持的事件为：'superResolutionChanged'，当超分算法开启/关闭状态变化时，触发该事件。 |
-| callback | [OnSuperResolutionChanged](arkts-apis-media-t.md#onsuperresolutionchanged-18) | 否 | 超分开关事件回调方法。 |
+| callback | [OnSuperResolutionChanged](arkts-apis-media-t.md#onsuperresolutionchanged-18) | 否 | 超分开关事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册superResolutionChanged事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收超分算法开启/关闭事件。
   avPlayer.off('superResolutionChanged');
 }
 ```

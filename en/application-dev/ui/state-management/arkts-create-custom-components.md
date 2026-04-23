@@ -66,15 +66,22 @@ struct ParentComponent {
 
 To fully understand the preceding example, a knowledge of the following concepts is essential:
 
-- [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
-
-- [Member Functions/Variables](#member-functionsvariables)
-
-- [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
-
-- [build()](#build)
-
-- [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
+- [Creating a Custom Component](#creating-a-custom-component)
+  - [Basic Usage of Custom Components](#basic-usage-of-custom-components)
+  - [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
+    - [struct](#struct)
+    - [@Component](#component)
+    - [@ComponentV2](#componentv2)
+    - [build()](#build)
+    - [@Entry](#entry)
+    - [@Reusable](#reusable)
+  - [Member Functions/Variables](#member-functionsvariables)
+  - [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
+  - [build()](#build-1)
+  - [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
+  - [Constraints](#constraints)
+    - [V1 custom components do not support static code blocks.](#v1-custom-components-do-not-support-static-code-blocks)
+    - [Mixing @Component and @ComponentV2](#mixing-component-and-componentv2)
 
 
 ## Basic Structure of a Custom Component
@@ -502,7 +509,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   }
   ```
 
-- Directly changing a state variable is not allowed. The following example should be avoided. For details, see [Changing State Variables in build() Is Forbidden](./arkts-state.md#changing-state-variables-in-build-is-forbidden).
+- Directly changing a state variable is not allowed. The following example should be avoided.
 
   ```ts
   @Component
