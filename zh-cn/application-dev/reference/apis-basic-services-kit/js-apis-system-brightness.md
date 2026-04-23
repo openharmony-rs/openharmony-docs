@@ -347,7 +347,7 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 设置屏幕是否保持常亮状态，开启常亮模式推荐在onShow()阶段调用。
 > **注意：**
 >
-> 在Lite Wearable上，该接口仅能阻止系统无活动超时熄屏（自动），无法阻止用户主动操作（如盖屏）、常亮时刻结束等导致的灭屏。
+> 在Lite Wearable上，该接口仅能阻止系统无活动超时灭屏（自动），无法阻止用户主动操作（如盖屏）、常亮时刻结束等导致的灭屏。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
