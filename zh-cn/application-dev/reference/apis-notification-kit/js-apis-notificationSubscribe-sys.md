@@ -252,7 +252,7 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |
-| 202      | Not system application to call the interface.                                      |
+| 202      | The caller is not a system application.     |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -329,7 +329,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 202      | The caller is not a system application.     |  
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
