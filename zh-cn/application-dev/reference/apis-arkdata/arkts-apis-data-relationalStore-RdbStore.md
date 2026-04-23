@@ -5186,7 +5186,7 @@ cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): P
 
 > **说明：**
 >
-> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中仅支持以下谓词，其中数据字段类型[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数和string。
+> [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig)中仅支持以下谓词，其中数据字段类型[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数。
 > 
 > - [equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)
 > - [notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)
