@@ -28812,9 +28812,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":38,
 						"name":"workSchedulerExtension",
-						"start_line":28
+						"start_line":21
 					}
 				]
 			},
@@ -28822,14 +28822,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets",
 				"functions":[
 					{
-						"end_line":149,
+						"end_line":42,
 						"name":"startWork",
-						"start_line":124
+						"start_line":21
 					},
 					{
-						"end_line":160,
+						"end_line":65,
 						"name":"stopWork",
-						"start_line":125
+						"start_line":46
 					}
 				]
 			}
