@@ -291,8 +291,8 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 | Name  | Type  | Read-Only| Optional| Description                                                                           |
 |--------|--------|------|------|---------------------------------------------------------------------------------|
-| width  | number | No  | Yes  | Width of the thumbnail. The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
-| height | number | No  | Yes  | Height of the thumbnail. The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
 
 ## OutputSize<sup>20+</sup>
 
@@ -302,8 +302,8 @@ Describes the output size of the video thumbnail fetched.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | No  | Yes  | Width of the thumbnail.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
-| height | number | No  | Yes  | Height of the thumbnail.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
 
 ## FrameInfo<sup>23+</sup>
 

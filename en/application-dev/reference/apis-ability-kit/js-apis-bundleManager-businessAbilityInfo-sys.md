@@ -1,5 +1,12 @@
 # BusinessAbilityInfo (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The module provides basic information about a business ability.
 
 > **NOTE**

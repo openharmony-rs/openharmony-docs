@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 
-AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-apis-media-f.md#mediacreateavrecorder9) to create an AVRecorder instance.
+AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling the methods of the AVRecorder class, you need to call the [createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9) API to create an **AVRecorder** instance.
 
 For details about the audio and video recording demo, see [Audio Recording](../../media/media/using-avrecorder-for-recording.md) and [Video Recording](../../media/media/video-recording.md).
 
@@ -15,7 +15,7 @@ For details about the audio and video recording demo, see [Audio Recording](../.
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 9.
-> To use the camera to record videos, the camera module is required. For details about how to use the APIs provided by the camera module, see [Camera Management](../apis-camera-kit/arkts-apis-camera.md).
+> - The camera module is required for video recording. For details about how to use the camera module API, see [Camera Management](../apis-camera-kit/arkts-apis-camera.md).
 
 ## Modules to Import
 
@@ -39,9 +39,7 @@ Sets audio and video recording parameters. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.MICROPHONE
 
-This permission is required only if audio recording is involved.
-
-To use the camera to record videos, the camera module is required. For details about how to use the APIs provided by the camera module, see [Camera Management](../apis-camera-kit/arkts-apis-camera.md).
+If audio recording is not involved, the **ohos.permission.MICROPHONE** permission is not required.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -50,7 +48,7 @@ To use the camera to record videos, the camera module is required. For details a
 | Name  | Type                                  | Mandatory| Description                                 |
 | -------- | -------------------------------------- | ---- | ------------------------------------- |
 | config   | [AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9) | Yes  | Audio and video recording parameters to set.           |
-| callback | AsyncCallback\<void>                   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void>                   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -110,9 +108,8 @@ Sets audio and video recording parameters. This API uses a promise to return the
 
 **Required permissions:** ohos.permission.MICROPHONE
 
-This permission is required only if audio recording is involved.
+If audio recording is not involved, the **ohos.permission.MICROPHONE** permission is not required.
 
-To use the camera to record videos, the camera module is required. For details about how to use the APIs provided by the camera module, see [Camera Management](../apis-camera-kit/arkts-apis-camera.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -189,7 +186,7 @@ The caller obtains the surface buffer from this surface and fills in the corresp
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 
-This API can be called only after the [prepare()](#prepare9) API is called.
+The **getInputSurface** API can be called only after the [prepare](#prepare9) API is successfully called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -213,6 +210,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let surfaceID: string; // The surfaceID is transferred to the camera API to create a videoOutput instance.
 
 avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
@@ -236,7 +234,7 @@ The caller obtains the surface buffer from this surface and fills in the corresp
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
 
-This API can be called only after the [prepare()](#prepare9-1) API is called.
+The **getInputSurface** API can be called only after the [prepare](#prepare9-1) API is successfully called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -260,6 +258,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let surfaceID: string; // The surfaceID is transferred to the camera API to create a videoOutput instance.
 
 avRecorder.getInputSurface().then((surfaceId: string) => {
@@ -277,7 +276,7 @@ updateRotation(rotation: number): Promise\<void>
 
 Updates the video rotation angle. This API uses a promise to return the result.
 
-This API can be called only after the [prepare()](#prepare9-1) event is triggered and before the [start()](#start9) API is called.
+The **updateRotation** API can be called only after the [prepare](#prepare9-1) API is successfully called and before the [start](#start9) API is called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -367,7 +366,7 @@ start(callback: AsyncCallback\<void>): void
 
 Starts video recording. This API uses an asynchronous callback to return the result.
 
-For audio-only recording, this API can be called only after the [prepare()](#prepare9) API is called. For video-only recording, this API can be called only after the [getInputSurface()](#getinputsurface9) API is called.
+For audio-only recording, the **start** API can be called only after the [prepare](#prepare9) API is successfully called. For video-only recording and audio and video recording, the **start** API can be called only after the [getInputSurface](#getinputsurface9) API is successfully called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -407,7 +406,7 @@ start(): Promise\<void>
 
 Starts video recording. This API uses a promise to return the result.
 
-For audio-only recording, this API can be called only after the [prepare()](#prepare9-1) API is called. For video-only recording, this API can be called only after the [getInputSurface()](#getinputsurface9-1) API is called.
+For audio-only recording, the **start** API can be called only after the [prepare](#prepare9-1) API is successfully called. For video-only recording and audio and video recording, the **start** API can be called only after the [getInputSurface](#getinputsurface9-1) API is successfully called.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -448,7 +447,7 @@ pause(callback: AsyncCallback\<void>): void
 
 Pauses video recording. This API uses an asynchronous callback to return the result.
 
-This API can be called only after the [start()](#start9) API is called. You can call [resume()](#resume9) to resume recording.
+The **pause** API can be called only after the [start](#start9) API is successfully called. You can resume recording by calling the [resume](#resume9) API.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -488,7 +487,7 @@ pause(): Promise\<void>
 
 Pauses video recording. This API uses a promise to return the result.
 
-This API can be called only after the [start()](#start9-1) API is called. You can call [resume()](#resume9-1) to resume recording.
+The **pause** API can be called only after the [start](#start9-1) API is successfully called. You can resume recording by calling the [resume](#resume9-1) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -529,7 +528,7 @@ resume(callback: AsyncCallback\<void>): void
 
 Resumes video recording. This API uses an asynchronous callback to return the result.
 
-This API can be called only after the [pause()](#pause9) API is called.
+The **resume** API can be called only after the [pause](#pause9) API is successfully called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -569,7 +568,7 @@ resume(): Promise\<void>
 
 Resumes video recording. This API uses a promise to return the result.
 
-This API can be called only after the [pause()](#pause9-1) API is called.
+The **resume** API can be called only after the [pause](#pause9-1) API is successfully called.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -610,9 +609,9 @@ stop(callback: AsyncCallback\<void>): void
 
 Stops video recording. This API uses an asynchronous callback to return the result.
 
-This API can be called only after the [start()](#start9) or [pause()](#pause9) API is called.
+The stop API can be called only after the [start](#start9) or [pause](#pause9) API is successfully called.
 
-For audio-only recording, you can call [prepare()](#prepare9) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare9) and [getInputSurface()](#getinputsurface9) again for re-recording.
+For audio-only recording, you can call [prepare](#prepare9) again for re-recording. For video-only recording or audio and video recording, you can call [prepare](#prepare9) and [getInputSurface](#getinputsurface9) again for re-recording.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -652,9 +651,9 @@ stop(): Promise\<void>
 
 Stops video recording. This API uses a promise to return the result.
 
-This API can be called only after the [start()](#start9-1) or [pause()](#pause9-1) API is called.
+The stop API can be called only after the [start](#start9-1) or [pause](#pause9-1) API is successfully called.
 
-For audio-only recording, you can call [prepare()](#prepare9-1) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare9-1) and [getInputSurface()](#getinputsurface9-1) again for re-recording.
+For audio-only recording, you can call [prepare](#prepare9-1) again for re-recording. For video-only recording or audio and video recording, you can call [prepare](#prepare9-1) and [getInputSurface](#getinputsurface9-1) again for re-recording.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -695,7 +694,7 @@ reset(callback: AsyncCallback\<void>): void
 
 Resets audio and video recording. This API uses an asynchronous callback to return the result.
 
-For audio-only recording, you can call [prepare()](#prepare9) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare9) and [getInputSurface()](#getinputsurface9) again for re-recording.
+For audio-only recording, you can call [prepare](#prepare9) again for re-recording. For video-only recording or audio and video recording, you can call [prepare](#prepare9) and [getInputSurface](#getinputsurface9) again for re-recording.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -734,7 +733,7 @@ reset(): Promise\<void>
 
 Resets audio and video recording. This API uses a promise to return the result.
 
-For audio-only recording, you can call [prepare()](#prepare9-1) again for re-recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare9-1) and [getInputSurface()](#getinputsurface9-1) again for re-recording.
+For audio-only recording, you can call [prepare](#prepare9-1) again for re-recording. For video-only recording or audio and video recording, you can call [prepare](#prepare9-1) and [getInputSurface](#getinputsurface9-1) again for re-recording.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -849,7 +848,7 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback\<audio.AudioCapturerChangeIn
 
 Obtains the information about the current audio capturer. This API uses an asynchronous callback to return the result.
 
-This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
+This API can be called only after the [prepare](#prepare9) API is successfully called. If this API is called after the [stop](#stop9) API is successfully called, an error will be reported.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -893,7 +892,7 @@ getCurrentAudioCapturerInfo(): Promise\<audio.AudioCapturerChangeInfo>
 
 Obtains the information about the current audio capturer. This API uses a promise to return the result.
 
-This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
+This API can be called only after the [prepare](#prepare9) API is successfully called. If this API is called after the [stop](#stop9) API is successfully called, an error will be reported.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -936,7 +935,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback\<number>): void
 
 Obtains the maximum amplitude of the current audio capturer. This API uses an asynchronous callback to return the result.
 
-This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
+This API can be called only after the [prepare](#prepare9) API is successfully called. If this API is called after the [stop](#stop9) API is successfully called, an error will be reported.
 
 The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
 
@@ -980,7 +979,7 @@ getAudioCapturerMaxAmplitude(): Promise\<number>
 
 Obtains the maximum amplitude of the current audio capturer. This API uses a promise to return the result.
 
-This API can be called only after the [prepare()](#prepare9) API is called. If this API is called after [stop()](#stop9) is successfully called, an error is reported.
+This API can be called only after the [prepare](#prepare9) API is successfully called. If this API is called after the [stop](#stop9) API is successfully called, an error will be reported.
 
 The return value is the maximum amplitude within the duration from the time the maximum amplitude is obtained last time to the current time. For example, if you have obtained the maximum amplitude at 1s and you call this API again at 2s, then the return value is the maximum amplitude within the duration from 1s to 2s.
 
@@ -1250,7 +1249,7 @@ avRecorder.off('stateChange');
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to AVRecorder errors. This event is used only for error prompt and does not require the user to stop recording control. If the [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) is also switched to error, call [reset()](#reset9) or [release()][release()](#release9) to exit the recording. This API uses an asynchronous callback to return the result.
+Subscribes to AVRecorder errors. This event is used only for error prompt and does not require the user to stop recording control. If the [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) is also switched to error, call [reset](#reset9) or [release][release()](#release9) to exit the recording. This API uses an asynchronous callback to return the result.
 
 An application can subscribe to only one AVRecorder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 

@@ -6929,6 +6929,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
 ### setEffectMode<sup>12+</sup>
 
 setEffectMode(mode: MovingPhotoEffectMode): void
@@ -12632,3 +12633,4 @@ Enumerates the risk types of images.
 | APPROVED |  1 |  Approved images. |
 | SUSPICIOUS |  2 |  Suspicious images. |
 | REJECTED |  3 |  Rejected images. |
+

@@ -134,7 +134,7 @@ Sets the QoS level for the calling thread.
 
 | Type| Description|
 | -- | -- |
-| int | **0** is returned if the operation is successful; a negative value is returned otherwise.|
+| int | **0** is returned if the operation is successful; **-1** is returned if level is out of range or internal error failed.|
 
 **Reference**
 
@@ -157,7 +157,7 @@ Cancels the QoS level of the calling thread.
 
 | Type| Description|
 | -- | -- |
-| int | **0** is returned if the operation is successful; a negative value is returned otherwise.|
+| int | **0** is returned if the operation is successful; **-1** is returned if level is out of range or internal error failed.|
 
 **Reference**
 
@@ -186,7 +186,7 @@ Obtains the QoS level of the calling thread.
 
 | Type| Description|
 | -- | -- |
-| int | **0** is returned if the operation is successful; a negative value is returned otherwise.|
+| int | **0** is returned if the operation is successful; **-1** is returned if level is out of range or internal error failed.|
 
 **Reference**
 

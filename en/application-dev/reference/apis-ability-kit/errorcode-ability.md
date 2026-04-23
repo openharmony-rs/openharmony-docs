@@ -27,8 +27,8 @@ The ability to query does not exist.
 
 **Solution**
 
-1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
-2. Check whether the application corresponding to **bundleName** in **want** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **Want** are correct.
+2. Check whether the application corresponding to **bundleName** in **Want** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
     ```bash
     hdc shell bm dump -a
     ```
@@ -54,7 +54,7 @@ This error code is reported when the ability type of the called party does not m
 
 **Solution**
 
-1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **Want** are correct.
 2. Check whether the ability type of the called party (server) matches the called API. For ServiceExtensionAbility, use <!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) to start the ability or <!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to the ability. In addition, ensure that **type** of **extensionAbilities** in the [module.json5 configuration file](../../quick-start/module-configuration-file.md) is set to **service** (matching the API).
 3. If the ability type of the called party (server) is appService, configure the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION) in the **module.json5** configuration file on the server.
 
@@ -654,7 +654,6 @@ The [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#
 
 Configure the **multiAppMode** field in the **app.json5** file by referring to [Creating an Application Multi-Instance](../../quick-start/multiInstance.md). After app clone mode is enabled, call the [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12) API.
 
-<!--Del-->
 ## 16000072 Multi-App Mode Is Not Supported
 
 **Error Message**
@@ -667,11 +666,18 @@ This error code is reported when the application does not support multi-app mode
 
 **Possible Causes**
 
-The **getRunningMultiAppInfo()** API is called to query the information about an application that does not support multi-app mode.
+When calling Ability startup APIs such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) and [startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult), this error code is returned if the target application does not support multi-app mode.
+
+<!--Del-->
+This error code is returned if [getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) is called to query multi-app mode information of an application that does not support multi-app mode.
+<!--DelEnd-->
 
 **Solution**
 
-When calling **getCurrentAppCloneIndex()**, ensure that the application supports multi-app mode.
+When calling Ability startup APIs such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) and [startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult), ensure that the target application supports multi-app mode and configure [multiAppMode](../../quick-start/app-configuration-file.md#multiappmode) tag in the **app.json5** file to enable the application clone function.
+
+<!--Del-->
+Ensure that the application to be queried supports multi-app mode when [getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) is called.
 <!--DelEnd-->
 
 ## 16000073 appCloneIndex Is Invalid
@@ -706,13 +712,13 @@ This error code is reported when the **backToCallerAbilityWithResult** API attem
 
 **Possible Causes**
 
-1. **requestCode** is not obtained from the **CALLER_REQUEST_CODE** field in **want**.
+1. **requestCode** is not obtained from the **CALLER_REQUEST_CODE** field in **Want**.
 
 2. The caller corresponding to **requestCode** has been destroyed or the result has been returned.
 
 **Solution**
 
-1. Check whether **requestCode** is obtained from **CALLER_REQUEST_CODE** in **want**.
+1. Check whether **requestCode** is obtained from **CALLER_REQUEST_CODE** in **Want**.
 
 2. Check whether the caller has been destroyed or the result has been returned.
 
@@ -1435,7 +1441,7 @@ The caller has been released.
 
 **Solution**
 
-1. Register a valid caller again.
+1. Recreate a valid caller instance.
 2. Check whether the ability corresponding to the context is still running when **context.startAbility** is called. This error code is thrown when the ability has been destructed.
 3. If **startAbility()** and **terminateSelf()** are called consecutively, ensure that a success or failure callback for **startAbility()** is received before calling **terminateSelf()**.
 
@@ -2212,7 +2218,7 @@ The root type of the JSON schema for **Parameters** is not object.
 
 **Solution**
 
-Ensure that the top-level definition of the JSON schema for parameters is {"type": "object"}.
+Ensure that the top-level definition of the JSON schema for **Parameters** is {"type":"object"}.
 
 ## 10110008 Class Property Missing Required Field
 
