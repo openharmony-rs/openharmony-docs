@@ -346,9 +346,7 @@ try {
 }
 ```
 
-## 新增类型定义
-
-### KeyCommandCallback
+## KeyCommandCallback
 
 type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 
@@ -499,9 +497,7 @@ struct Index {
 | ------------------------------ | ----------- | ---------------- |
 | FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 |
 
-## 新增枚举
-
-### KeyCommandTriggerType
+## KeyCommandTriggerType
 
 按键命令触发类型枚举，用于指定组合按键的触发时机。
 
