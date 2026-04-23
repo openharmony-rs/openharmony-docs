@@ -1850,13 +1850,17 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 openEventEditPage(id: number): Promise\<void>
 
-通过日程id获取Calendar下符合查询或编辑条件的日程实例，使用Promise异步回调。使用该接口，系统日历可以进行查询和修改日程。
+通过日程id获取Calendar下符合查看或编辑条件的日程实例，使用Promise异步回调。
 
-**需要权限**： 从API version 26开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR，ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+使用该接口，系统日历可以进行查看和编辑日程。申请到READ_WHOLE_CALENDAR权限和WRITE_WHOLE_CALENDAR权限的三方应用可以查询和编辑[editEvent()](#editevent12)创建的日程，申请到READ_CALENDAR权限和WRITE_CALENDAR权限的三方应用可以查询和编辑[addEvent()](#addevent)创建的日程。
+
+**起始版本**：26.0.0
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **参数**：
 
@@ -1872,11 +1876,10 @@ openEventEditPage(id: number): Promise\<void>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 | 23900001 | Parameter value error. |
 | 23900005 | Invalid parameters. |
 
@@ -1888,49 +1891,56 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarMgr } from '../entryability/EntryAbility';
 import { calendarManager } from '@kit.CalendarKit';
 
-let calendar : calendarManager.Calendar | undefined = undefined;
+let calendar: calendarManager.Calendar | undefined = undefined;
 const date = new Date();
 const event: calendarManager.Event = {
-  title: 'MyEvent',
-  type: calendarManager.EventType.NORMAL,
-  startTime: date.getTime(),
-  endTime: date.getTime() + 60 * 60 * 1000,
-  location: {
-    location: 'location_2',
-    longitude: 102.101,
-    latitude: 100.99
-  },
-  recurrenceRule: {
-    recurrenceFrequency: calendarManager.RecurrenceFrequency.YEARLY,
-    count: 10000,
-    interval: 2
-  },
-  isAllDay:false,
-  description:'MyEvent'
+    title: 'MyEvent',
+    type: calendarManager.EventType.NORMAL,
+    startTime: date.getTime(),
+    endTime: date.getTime() + 60 * 60 * 1000,
+    location: {
+      location: 'location_2',
+      longitude: 88.88,
+      latitude: 66.66
+    },
+    recurrenceRule: {
+      recurrenceFrequency: calendarManager.RecurrenceFrequency.YEARLY,
+      count: 10000,
+      interval: 2
+    },
+    isAllDay: false,
+    description: 'MyEvent'
   };
-  this.calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calendar) => {
-    console.info(`Succeed in getting calendar`);
+  this.calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calendar) => {
+    console.info(`STRAWBERRY Succeed in getting calendar`);
     if (err) {
-      console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
+      console.error(`STRAWBERRY Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
     } else {
       console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
       calendar = data;
       let eventId: number = 0;
       await calendar?.addEvent(event).then((dataId: number) => {
-        console.info(`Succeeded in adding event, id -> ${dataId}`);
+        console.info(`STRAWBERRY Succeeded in adding event id-> ${dataId}`);
         eventId = dataId;
       }).catch((err: BusinessError) => {
         // 检查权限是否已成功申请或者参数是否正确。
-        console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
+        console.error(`STRAWBERRY Failed to add event. Code: ${err.code}, message: ${err.message}`);
+      });
+      // 根据id进行查询
+      const filterId = calendarManager.EventFilter.filterById([eventId]);
+      calendar?.getEvents(filterId).then((data: calendarManager.Event[]) => {
+        console.info(`STRAWBERRY Succeeded in getting event: ${JSON.stringify(data)}`);
+      }).catch((err: BusinessError) => {
+        // 检查参数是否正确。
+        console.error(`STRAWBERRY Failed to get event, Code is ${err.code}, message is ${err.message}`);
       });
       calendar?.openEventEditPage(eventId).then(() => {
-        console.info(`Succeeded in opening EventEditPage`);
+        console.info(`STRAWBERRY Succeeded in opening EventEditPage`);
       }).catch((err: BusinessError) => {
-      // 检查参数是否正确。
-      console.error(`Failed openEventEditPage, Code is ${err.code}, message is ${err.message}`);
-    });
-  }
-});
+        console.error(`STRAWBERRY Failed openEventEditPage, Code is ${err.code}, message is ${err.message}`);
+      });
+    }
+ });
 ```
 
 ## CalendarAccount
