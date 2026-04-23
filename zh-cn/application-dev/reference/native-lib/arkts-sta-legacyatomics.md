@@ -1,3 +1,10 @@
+<!--Kit: ArkTS-->
+<!--Subsystem: Utils-->
+<!--Owner: @MofengMa-->
+<!--Designer: @MofengMa-->
+<!--Tester: @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
+
 # Atomics (基于typedArray的原子类型接口)
 
 基于typedArray的Atomics类型接口，通过对基于ArrayBuffer构建的typedArray执行原子操作，确保对共享数据的并发操作安全。
@@ -458,7 +465,11 @@ static notify(typedArray: Int32Array | BigInt64Array, index: number, count?: num
 
 唤醒一些在等待typedArray[index]的Waiter。count可以指定唤醒Waiter的个数。  
 调用Atomics.wait(typedArray, index, value)会在typedArray[index]处产生一个Waiter。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
+Atomics.wait会阻塞当前线程，直到被Atomics.notify唤醒、超时或返回"not-equal"。因此，wait任务和notify任务不能依赖同一线程按先wait后notify的顺序执行，notify应由其他可运行的线程或任务触发。
+
+wait和notify配合使用时，应注意以下使用事项：
+- Atomics.wait为同步阻塞操作。进入等待后，当前线程不会继续执行后续语句，直到被唤醒、超时或返回"not-equal"。
+- 与EAWorker或taskpool混合使用时，推荐将wait放在专用worker或任务中执行，并由主线程、其他EAWorker或其他仍可运行的任务执行notify。
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
@@ -477,7 +488,7 @@ wait等待时会将控制权让出，切换到其他任务执行，因此wait任
 | ----------- | --------------------------- |
 | "Index out of bounds" | 访问typedArray越界。<br>可能原因：index超出typedArray的边界。<br>处理步骤：确保传入的index在typedArray的范围内。如果无法保证，建议捕获RangeError异常。 |
 
-**示例：**  
+**示例1：正确使用wait-notify：**  
 ```ts
 function FuncWait(arr: BigInt64Array): void {
     let re = Atomics.wait(arr, 0, 0n, 3000)
@@ -491,7 +502,7 @@ function FuncNotify(arr: BigInt64Array): void {
     Atomics.notify(arr, 0)
 }
 
-function testMain(): void {
+function testMian(): void {
     let buf = new ArrayBuffer(1024)
     let arr: BigInt64Array = new BigInt64Array(buf, 0)
 
@@ -499,9 +510,29 @@ function testMain(): void {
     let re = Atomics.wait(arr, 0, 1n)
     console.info("Atomics result: " + re) //not-equal
 
-    let p1 = launch<void, (arr: BigInt64Array) => void>(FuncWait, arr)
+    let p1 = launch<void>(() => {
+        FuncWait(arr)
+    })
     FuncNotify(arr)
     p1.Await()
+}
+```
+
+**示例2：同一线程中先wait后notify造成死锁：**
+```ts
+function wrongUsage(): void {
+    let buffer = new ArrayBuffer(4)
+    let arr = new Int32Array(buffer, 0, 1)
+
+    Atomics.store(arr, 0, 0)
+
+    let result = Atomics.wait(arr, 0, 0)
+    console.info("wait result: " + result) 
+
+    // 只有wait返回后才能执行到这里，此时已经无法唤醒前面的wait。
+    Atomics.store(arr, 0, 1)
+    let notified = Atomics.notify(arr, 0)
+    console.info("notify result: " + notified)
 }
 ```
 
@@ -720,7 +751,7 @@ static wait(typedArray: Int32Array, index: number, value: number, timeout?: numb
 
 验证typedArray[index]是否等于value。如果不相等就直接返回"not-equal"。如果相等则进行等待状态。  
 当处于等待状态时，若收到notify信号，则结束等待并返回"ok"；如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
+Atomics.wait会阻塞当前线程，直到被Atomics.notify唤醒、超时或返回"not-equal"。因此，wait任务和notify任务不能依赖同一线程按先wait后notify的顺序执行，notify应由其他可运行的线程或任务触发。
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
@@ -762,7 +793,9 @@ function testMain(): void {
     let re = Atomics.wait(arr, 0, 1)
     console.info("Atomics result: " + re) //not-equal
 
-    let p1 = launch<void, (arr: Int32Array) => void>(FuncWait, arr)
+    let p1 = launch<void>(() => {
+        FuncWait(arr)
+    })
     FuncNotify(arr)
     p1.Await()
 }
@@ -773,7 +806,7 @@ static wait(typedArray: BigInt64Array, index: nubmer, value: bigint, timeout?: n
 
 验证typedArray[index]是否等于value。如果不相等就直接返回"not-equal"。如果相等则进行等待状态。  
 当处于等待状态时，若收到notify信号，则结束等待并返回"ok"；如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
+Atomics.wait会阻塞当前线程，直到被Atomics.notify唤醒、超时或返回"not-equal"。因此，wait任务和notify任务不能依赖同一线程按先wait后notify的顺序执行，notify应由其他可运行的线程或任务触发。
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
@@ -815,7 +848,9 @@ function testMain(): void {
     let re = Atomics.wait(arr, 0, 1n)
     console.info("Atomics result: " + re) //not-equal
 
-    let p1 = launch<void, (arr: BigInt64Array) => void>(FuncWait, arr)
+    let p1 = launch<void>(() => {
+        FuncWait(arr)
+    })
     FuncNotify(arr)
     p1.Await()
 }
@@ -827,7 +862,16 @@ async static waitAsync(typedArray: Int32Array | BigInt64Array, index: number, va
 
 等待共享内存的特定位置，与wait不同，不会阻塞调用者。  
 等待结果可通过返回值获得。  
-wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
+Atomics.waitAsync不会阻塞调用者，可通过返回的Promise获取等待结果。
+
+waitAsync与wait的区别及建议如下：
+- Atomics.wait为同步阻塞操作，调用后会阻塞当前线程，直到被唤醒、超时或返回"not-equal"。
+- Atomics.waitAsync不会阻塞当前线程，而是返回Promise，并在等待结束后通过Promise返回结果。
+- 如果当前线程后续还需要执行setTimeout、Promise回调、测试框架清理逻辑或notify，应优先使用Atomics.waitAsync。
+- 如果使用Atomics.wait，必须确保负责notify的代码运行在其他仍可调度的线程、EAWorker或任务中。
+- 在taskpool中验证等待唤醒语义时，推荐优先使用waitAsync；只有在明确需要验证同步阻塞等待行为时，再使用wait。
+- waitAsync适用于需要“注册等待后继续执行当前线程其余逻辑”的场景；wait适用于专用线程上的同步等待场景。
+
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
@@ -850,41 +894,41 @@ wait等待时会将控制权让出，切换到其他任务执行，因此wait任
 **示例：**  
 ```ts
 function FuncWaitAsync(arr: Int32Array): void {
-    Atomics.store(arr, 0, 0)
+    Atomics.store(arr, 0, 0);
 
-    let re: Promise<string> = Atomics.waitAsync(arr,0, 1n)
+    let re: Promise<string> = Atomics.waitAsync(arr, 0, 1);
     re.then((value: string): void => {
-        console.info(value) // not-equal
+        console.info(value); // not-equal
     }, (err: Error): void => {
-        console.info("Test failed. The promise shouldn`t be rejected.")
+        console.info("Test failed. The promise shouldn't be rejected.");
     });
 
-    let re2 = Atomics.waitAsync(arr, 0, 0n, 2000)
+    let re2 = Atomics.waitAsync(arr, 0, 0, 2000);
     re2.then((value: string): void => {
-        console.info(value) // timed-out
+        console.info(value); // timed-out
     }, (err: Error): void => {
-        console.info("Test failed. The promise shouldn`t be rejected.")
+        console.info("Test failed. The promise shouldn't be rejected.");
     });
 
-    let re3 = Atomics.waitAsync(arr, 0, 0n, 10000)
+    let re3 = Atomics.waitAsync(arr, 0, 0, 10000)
     re3.then((value: string): void => {
-        console.info(value) // ok
+        console.info(value); // ok
     }, (err: Error): void => {
-        console.info("Test failed. The promise shouldn`t be rejected.")
+        console.info("Test failed. The promise shouldn't be rejected.");
     });
 }
 
 function FuncNotify(arr: Int32Array): void {
     setTimeout(() => {
-        Atomics.notify(arr, 0)
+        Atomics.notify(arr, 0);
     }, 5000);
 }
 
 function testMain(): void {
     let buf = new ArrayBuffer(1024);
-    let arr: Int32Array = new Int32Array(buf, 0);
-    FuncWaitAsync(arr)
-    FuncNotify(arr)
+    let arr: Int32Array = new Int32Array(buf, 0, 1);
+    FuncWaitAsync(arr);
+    FuncNotify(arr);
 }
 ```
 
