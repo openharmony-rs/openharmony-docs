@@ -1937,7 +1937,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
       calendar?.openEventEditPage(eventId).then(() => {
         console.info(`Succeeded in opening EventEditPage`);
       }).catch((err: BusinessError) => {
-        console.error(`Failed openEventEditPage, Code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to open eventeditpage, Code is ${err.code}, message is ${err.message}`);
       });
     }
  });
