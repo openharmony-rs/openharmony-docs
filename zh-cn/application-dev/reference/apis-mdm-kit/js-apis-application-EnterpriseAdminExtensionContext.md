@@ -76,7 +76,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
-需要在module.json5中配置被启动组件的信息。"permissions"为可选字段，需根据实际情况进行替换或者不填。
+需要在module.json5中配置被启动组件的信息。permissions为可选字段，需根据实际情况进行替换或者不填。
 
 ```json5
 "abilities": [
