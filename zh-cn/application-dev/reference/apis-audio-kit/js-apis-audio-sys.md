@@ -5666,13 +5666,6 @@ let audioEcStreamInfo: audio.AudioStreamInfo = {
   encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
 };
 
-let audioProcessedStreamInfo: audio.AudioStreamInfo = {
-  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-  channels: audio.AudioChannel.CHANNEL_2, // 通道。
-  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-};
-
 let audioCapturerInfo: audio.AudioCapturerInfo = {
   source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT, // 音源类型：Mic音频源。SourceType需为SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT。
   capturerFlags: 0 // 音频采集器标志。
@@ -5686,10 +5679,9 @@ let audioMicInStreamInfo: audio.AudioStreamInfo = {
 };
 
 let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
-  processedStreamInfo: audioProcessedStreamInfo,
-  micInStreamInfo: audioMicInStreamInfo,
   ecStreamInfo: audioEcStreamInfo,
-  capturerInfo: audioCapturerInfo
+  capturerInfo: audioCapturerInfo,
+  micInStreamInfo: audioMicInStreamInfo,
 };
 
 let audioCapturer: audio.AudioCapturer | null = null;
@@ -5701,10 +5693,6 @@ audio.createMicInAudioCapturer(audioCapturerMicInConfig).then((data) => {
   console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
 ```
-
-## AudioCapturer<sup>8+</sup>
-
-音频采集。在使用以下接口前，需先通过[audio.createMicInAudioCapturer](#audiocreatemicinaudiocapturer23)获取AudioCapturer实例。
 
 ### onReadMicInData<sup>24+</sup>
 
