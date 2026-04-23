@@ -1912,32 +1912,32 @@ const event: calendarManager.Event = {
     description: 'MyEvent'
   };
   this.calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calendar) => {
-    console.info(`STRAWBERRY Succeed in getting calendar`);
+    console.info(`Succeed in getting calendar`);
     if (err) {
-      console.error(`STRAWBERRY Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
     } else {
       console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
       calendar = data;
       let eventId: number = 0;
       await calendar?.addEvent(event).then((dataId: number) => {
-        console.info(`STRAWBERRY Succeeded in adding event id-> ${dataId}`);
+        console.info(`Succeeded in adding event id-> ${dataId}`);
         eventId = dataId;
       }).catch((err: BusinessError) => {
         // 检查权限是否已成功申请或者参数是否正确。
-        console.error(`STRAWBERRY Failed to add event. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
       });
       // 根据id进行查询
       const filterId = calendarManager.EventFilter.filterById([eventId]);
       calendar?.getEvents(filterId).then((data: calendarManager.Event[]) => {
-        console.info(`STRAWBERRY Succeeded in getting event: ${JSON.stringify(data)}`);
+        console.info(`Succeeded in getting event: ${JSON.stringify(data)}`);
       }).catch((err: BusinessError) => {
         // 检查参数是否正确。
-        console.error(`STRAWBERRY Failed to get event, Code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to get event, Code is ${err.code}, message is ${err.message}`);
       });
       calendar?.openEventEditPage(eventId).then(() => {
-        console.info(`STRAWBERRY Succeeded in opening EventEditPage`);
+        console.info(`Succeeded in opening EventEditPage`);
       }).catch((err: BusinessError) => {
-        console.error(`STRAWBERRY Failed openEventEditPage, Code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed openEventEditPage, Code is ${err.code}, message is ${err.message}`);
       });
     }
  });
