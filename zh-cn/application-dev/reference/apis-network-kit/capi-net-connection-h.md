@@ -422,6 +422,53 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 | -- | -- |
 | int32_t | 0 - 成功。<br>          2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
 
+### OH_NetConn_RegisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)
+```
+
+**描述**
+
+注册自定义DNS解析器。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | 指向自定义DNS解析器的指针。  |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          401 - 参数错误。<br>         2101008 - 解析器已存在。 |
+
+### OH_NetConn_UnregisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
+```
+
+**描述**
+
+取消注册自定义DNS解析器。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          2100003 - 内部错误。 |
+
 ### OH_NetConn_BindSocket()
 
 ```c
