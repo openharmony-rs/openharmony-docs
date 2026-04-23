@@ -5681,7 +5681,7 @@ let audioMicInStreamInfo: audio.AudioStreamInfo = {
 let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
   ecStreamInfo: audioEcStreamInfo,
   capturerInfo: audioCapturerInfo,
-  micInStreamInfo: audioMicInStreamInfo,
+  micInStreamInfo: audioMicInStreamInfo
 };
 
 let audioCapturer: audio.AudioCapturer | null = null;
