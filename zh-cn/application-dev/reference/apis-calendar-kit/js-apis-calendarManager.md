@@ -1911,7 +1911,7 @@ const event: calendarManager.Event = {
     isAllDay: false,
     description: 'MyEvent'
   };
-  this.calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calendar) => {
+calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calendar) => {
     console.info(`Succeed in getting calendar`);
     if (err) {
       console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
