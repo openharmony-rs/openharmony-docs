@@ -1,4 +1,4 @@
-﻿# Interface (Window)
+# Interface (Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
