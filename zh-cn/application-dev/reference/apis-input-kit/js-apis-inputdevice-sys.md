@@ -62,15 +62,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置键盘重复延迟
             inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError) => {
               if (error) {
-                console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set keyboard repeat delay success`);
+              console.info(`Succeeded in setting keyboard repeat delay.`);
             });
           } catch (error) {
-            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -123,13 +124,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置按键重复延迟350ms
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
-              console.info(`Set keyboard repeat delay success`);
+              console.info(`Succeeded in setting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -176,15 +178,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复延迟
             inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: number) => {
               if (error) {
-                console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get keyboard repeat delay success`);
+              console.info(`Succeeded in getting keyboard repeat delay.`);
             });
           } catch (error) {
-            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -231,13 +234,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复延迟
             inputDevice.getKeyboardRepeatDelay().then((delay: number) => {
-              console.info(`Get keyboard repeat delay success`);
+              console.info(`Succeeded in getting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -285,15 +289,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 按键重复速率60ms/次
             inputDevice.setKeyboardRepeatRate(60, (error: BusinessError) => {
               if (error) {
-                console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set keyboard repeat rate success`);
+              console.info(`Succeeded in setting keyboard repeat rate.`);
             });
           } catch (error) {
-            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -346,13 +351,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 按键重复速率60ms/次
             inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.info(`Set keyboard repeat rate success`);
+              console.info(`Succeeded in setting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -399,15 +405,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复速率
             inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: number) => {
               if (error) {
-                console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get keyboard repeat rate success`);
+              console.info(`Succeeded in getting keyboard repeat rate.`);
             });
           } catch (error) {
-            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -454,13 +461,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复速率
             inputDevice.getKeyboardRepeatRate().then((rate: number) => {
-              console.info(`Get keyboard repeat rate success`);
+              console.info(`Succeeded in getting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -519,13 +527,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置设备ID为0
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
-              console.info(`Set input device enable success`);
+              console.info(`Succeeded in setting input device enabled.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set device enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set input device enable error`);
+            console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

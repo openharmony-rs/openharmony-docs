@@ -57,15 +57,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置鼠标指针可见性
             pointer.setPointerVisible(true, (error: BusinessError) => {
               if (error) {
-                console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set pointer cursor visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set pointer visible success`);
+              console.info(`Succeeded in setting pointer cursor visible.`);
             });
           } catch (error) {
-            console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer cursor visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -116,13 +117,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置鼠标指针可见性
             pointer.setPointerVisible(false).then(() => {
-              console.info(`Set pointer visible success`);
+              console.info(`Succeeded in setting pointer cursor visible.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set pointer cursor, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer cursor, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -165,10 +167,11 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 同步设置鼠标指针可见性
             pointer.setPointerVisibleSync(false);
-            console.info(`Set pointer visible success`);
+            console.info(`Succeeded in setting pointer cursor visible.`);
           } catch (error) {
-            console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set pointer cursor visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -212,15 +215,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 查询鼠标指针是否可见
             pointer.isPointerVisible((error: BusinessError, visible: boolean) => {
               if (error) {
-                console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get pointer visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Succeeded in getting pointer visible, visible: ${JSON.stringify(visible)}.`);
             });
           } catch (error) {
-            console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -256,13 +260,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 查询鼠标指针是否可见
             pointer.isPointerVisible().then((visible: boolean) => {
-              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Succeeded in getting pointer visible, visible: ${JSON.stringify(visible)}.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get pointer, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -298,9 +303,9 @@ struct Index {
         .onClick(() => {
           try {
             let visible: boolean = pointer.isPointerVisibleSync();
-            console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+            console.info(`Succeeded in getting pointer visible, visible: ${JSON.stringify(visible)}.`);
           } catch (error) {
-            console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer visible, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -345,22 +350,24 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          // 获取应用内最近一个窗口
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
             if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+              console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.info(`Invalid windowId`);
+              console.info(`Invalid windowId.`);
               return;
             }
             try {
+              // 获取鼠标指针样式
               pointer.getPointerStyle(windowId, (error: BusinessError, style: pointer.PointerStyle) => {
-                console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
+                console.info(`Succeeded in getting pointer style, style: ${JSON.stringify(style)}.`);
               });
             } catch (error) {
-              console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -411,24 +418,26 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          // 获取应用内最近一个窗口
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
             if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+              console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.info(`Invalid windowId`);
+              console.info(`Invalid windowId.`);
               return;
             }
             try {
+              // 获取鼠标指针样式
               pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
-                console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
+                console.info(`Succeeded in getting pointer style, style: ${JSON.stringify(style)}.`);
               }).catch((error: BusinessError) => {
-                console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
             } catch (error) {
-              console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -480,9 +489,9 @@ struct Index {
           let windowId = -1;
           try {
             let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
-            console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
+            console.info(`Succeeded in getting pointer style, style: ${JSON.stringify(style)}.`);
           } catch (error) {
-            console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -528,22 +537,24 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          // 获取应用内最近一个窗口
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
             if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+              console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.info(`Invalid windowId`);
+              console.info(`Invalid windowId.`);
               return;
             }
             try {
+              // 设置鼠标指针样式
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS, error => {
-                console.info(`Set pointer style success`);
+                console.info(`Succeeded in setting pointer style.`);
               });
             } catch (error) {
-              console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -594,24 +605,26 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          // 获取应用内最近一个窗口
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
             if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+              console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.info(`Invalid windowId`);
+              console.info(`Invalid windowId.`);
               return;
             }
             try {
+              // 设置鼠标指针样式
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
-                console.info(`Set pointer style success`);
+                console.info(`Succeeded in setting pointer style.`);
               }).catch((error: BusinessError) => {
-               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
             } catch (error) {
-              console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -656,21 +669,23 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          // 获取应用内最近一个窗口
           window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
             if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+              console.error(`Failed to obtain the top window, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               return;
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.info(`Invalid windowId`);
+              console.info(`Invalid windowId.`);
               return;
             }
             try {
+              // 同步设置鼠标指针样式
               pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
-              console.info(`Set pointer style success`);
+              console.info(`Succeeded in setting pointer style.`);
             } catch (error) {
-              console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             }
           });
         })
@@ -818,19 +833,20 @@ struct Index {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            // 创建PixelMap
             svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
                   pointer.setCustomCursor(windowId, pixelMap).then(() => {
-                    console.info(`setCustomCursor success`);
+                    console.info(`Succeeded in setting custom cursor.`);
                   });
                 } catch (error) {
-                  console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                  console.error(`Failed to set custom cursor, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 }
               });
             }).catch((error: BusinessError) => {
-                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to create pixel map promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
           });
         })
@@ -913,20 +929,23 @@ struct Index {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            // 创建PixelMap
             svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+              // 获取应用内最近一个窗口
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
+                  // 设置自定义光标
                   pointer.setCustomCursor(windowId, { pixelMap: pixelMap, focusX: 25, focusY: 25 },
                     { followSystem: false }).then(() => {
-                    console.info(`setCustomCursor success`);
+                    console.info(`Succeeded in setting custom cursor.`);
                   });
                 } catch (error) {
-                  console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                  console.error(`Failed to set custom cursor, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 }
               });
             }).catch((error: BusinessError) => {
-                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to create pixel map promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
           });
         })
@@ -980,19 +999,23 @@ struct Index {
             $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer = svgFileData.buffer;
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
+            // 光标图片宽高
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            // 创建PixelMap
             svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+              // 获取应用内最近一个窗口
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
+                  // 同步设置自定义光标
                   pointer.setCustomCursorSync(windowId, pixelMap, 25, 25);
-                  console.info(`setCustomCursorSync success`);
+                  console.info(`Succeeded in setting custom cursor sync.`);
                 } catch (error) {
-                  console.error(`setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                  console.error(`Failed to set custom cursor sync, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 }
               });
             }).catch((error: BusinessError) => {
-              console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to create pixel map promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           });
         }
