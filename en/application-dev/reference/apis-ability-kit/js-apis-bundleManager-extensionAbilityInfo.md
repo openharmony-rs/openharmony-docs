@@ -9,7 +9,6 @@
 The module defines the ExtensionAbility information. An application can obtain its own ExtensionAbility information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY** passed in to [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
 > **NOTE**
->
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -22,6 +21,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name                | Type                                                        | Read-Only| Optional| Description                                                |
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ---------------------------------------------------- |
 | bundleName           | string                                                       | Yes  | No  | Bundle name.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -33,7 +33,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | exported            | boolean                                                      | Yes  | No  | Whether the ExtensionAbility can be called by other applications. **true** if the ExtensionAbility can be called by other applications, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | extensionAbilityType | [bundleManager.ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | Yes  | No  | Type of the ExtensionAbility.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | permissions          | Array\<string>                                               | Yes  | No  | Permissions required for other bundles to call the ExtensionAbility.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| applicationInfo      | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md)  | Yes  | No  | Application information. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY**, and **GET_BUNDLE_INFO_WITH_APPLICATION** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| applicationInfo      | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md)  | Yes  | No  | Application configuration information <!--Del-->. The information can be obtained by passing in **GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION** to the **extensionAbilityFlags** parameter of [queryExtensionAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo) <!--DelEnd-->.<br>This field is not returned when the [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) or [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) is used to obtain ExtensionAbilityInfo information. You can obtain the related information by obtaining the [bundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1).appInfo object.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | metadata             | Array\<[Metadata](js-apis-bundleManager-metadata.md)>        | Yes  | No  | Metadata of the ExtensionAbility. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY**, and **GET_BUNDLE_INFO_WITH_METADATA** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | enabled              | boolean                                                      | Yes  | No  | Whether the ExtensionAbility is enabled. **true** if enabled, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | readPermission       | string                                                       | Yes  | No  | Permission required for reading data from the ExtensionAbility.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
