@@ -3207,7 +3207,7 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件过滤选项。默认不进行过滤。 |
+| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件列出选项。默认为空，表示不递归、不限制列出数量、不进行过滤。 |
 
 **返回值：**
 
@@ -3272,7 +3272,7 @@ listFileExtSync(path: string, options?: ListFileExtOptions): string[]
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件过滤选项。默认不进行过滤。 |
+| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件列出选项。默认为空，表示不递归、不限制列出数量、不进行过滤。 |
 
 **返回值：**
 
@@ -6409,9 +6409,9 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| recursion | boolean | 否 | 是 | 是否递归子目录下的文件名，默认为false。<br>true：返回该目录下所有符合过滤条件的文件的相对路径（以/开头）。<br>false：返回当前目录下满足过滤要求的文件名及目录名。 |
+| recursion | boolean | 否 | 是 | 是否递归子目录下的文件名，默认为false。<br>false：返回当前目录下满足过滤要求的文件名及目录名。<br>true：返回该目录下所有符合过滤条件的文件的相对路径，相对路径以“/”开头。 |
 | listNum | number | 否 | 是 | 列出文件名数量，默认为0，表示列出所有文件。 |
-| fileFilter | [FileFilter](#filefilter) | 否 | 是 | 自定义文件名过滤的规则。 |
+| fileFilter | [FileFilter](#filefilter) | 否 | 是 | 自定义文件名过滤的规则，默认为空，表示不进行过滤。 |
 
 ## ListFileOptions<sup>11+</sup>
 
