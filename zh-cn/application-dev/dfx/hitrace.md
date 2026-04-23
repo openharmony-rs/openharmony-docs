@@ -456,8 +456,8 @@ $ hitrace --dump_bgsrv
 ```
 
  **使用样例2**：
- 	 
- 	 
+ 
+ 
  ```shell
  $ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
  2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
@@ -503,7 +503,7 @@ $ hitrace --trace_begin --record -b 204800 --file_size 102400 app graphic
 ```
 
 **使用样例2**：
- 	 
+ 
  ```shell
 $ hitrace --trace_begin --record sched app -o /data/local/tmp --total_size 1024000
 2025/06/04 17:03:37 hitrace enter, running_state is RECORDING_LONG_BEGIN_RECORD
@@ -651,11 +651,11 @@ $ hitrace --dump_bgsrv
 
 
  ### 执行hitrace命令后报错"illegal path"
- 	 
+ 
  **现象描述**
- 	 
+ 
  执行hitrace命令后报错，命令行窗口显示"illegal path"。
- 	 
+ 
  ```shell
 $ hitrace --dump_bgsrv -o /data/local/test
 2026/03/27 17:25:58 hitrace enter, running_state is SNAPSHOT_DUMP
@@ -663,9 +663,9 @@ $ hitrace --dump_bgsrv -o /data/local/test
  ```
 
  **可能原因&解决方法**
- 	 
+ 
  illegal path 表示指定的路径非法，可能的原因包括：
- 	 
+ 
  1. 采集二进制格式trace时，使用-o参数指定输出的文件路径不是/data/local/tmp或其子目录。
  
   2. 录制模式下，使用-o参数指定输出的文件路径不是/data/local/tmp或其子目录。
