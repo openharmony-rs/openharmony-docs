@@ -1881,7 +1881,7 @@ openEventEditPage(id: number): Promise\<void>
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 23900001 | Parameter value error. |
-| 23900005 | Invalid parameters. |
+| 23900005 | This event cannot be edited. |
 
 **示例**：
 
