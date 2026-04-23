@@ -10,9 +10,11 @@
 
 > **说明：**
 >
-> 该组件从API version 11开始支持。后续版本如有新增内容将采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[Stack](ts-container-stack.md)。
+> - 该组件从API version 11开始支持。后续版本如有新增内容将采用上角标单独标记该内容的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[Stack](ts-container-stack.md)。
 
 ## 属性
 
@@ -26,9 +28,13 @@ pointLight(value: PointLightStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
-| 参数名 | 类型                                                         | 必填 | 说明         |
-| ------ | ------------------------------------------------------------ | ---- | ------------ |
-| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | 是   | 点光源样式。 |
+| 参数名 | 参数类型                                                         | 只读 | 可选 | 说明         |
+| ------ | ------------------------------------------------------------ | ---- |---- | ------------ |
+| value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | 否 | 否   | 点光源样式。 |
 
