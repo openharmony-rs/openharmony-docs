@@ -43,7 +43,7 @@
    >
    > 应用更新时如涉及配置变更，将依据新配置进行管控，已分享文件的临时权限不受影响。
    > 
-   > 应用向操作系统捐献沙箱目录时，sharingOSPath、sharingOSSubpath、sharingOSPermission三项为必填配置
+   > 应用向操作系统捐献沙箱目录时，sharingOSPath、sharingOSSubpath、sharingOSPermission三项为必填配置。
 
    **scopes标签说明**
 
