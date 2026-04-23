@@ -290,6 +290,7 @@ struct StorageLinkComponent {
   build() {
     Column() {
       Text('@StorageLink接口初始化，@StorageLink取值')
+      // linkA为null时，点击后会切换为1；linkA为1时，点击后会切换为null
       Text(`${this.linkA}`).fontSize(20).onClick(() => {
         this.linkA ? this.linkA = null : this.linkA = 1;
       })
@@ -411,6 +412,7 @@ struct DateSample {
         .onClick(() => {
           AppStorage.setOrCreate('date', new Date('2023-07-08'));
         })
+      // 点击Button更新selectedDate年份数据，触发视图刷新
       Button('increase the year by 1')
         .margin(10)
         .onClick(() => {
@@ -460,6 +462,7 @@ struct MapSample {
           Text(`${item[1]}`).fontSize(30)
           Divider()
         })
+        // 点击Button初始化message
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
@@ -508,6 +511,7 @@ struct SetSample {
             .fontSize(30)
           Divider()
         })
+        // 点击Button初始化memberSet
         Button('init set')
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -969,6 +973,7 @@ struct PageStorageProp {
       Button('change')
         .onClick(() => {
           AppStorage.setOrCreate('propA', false);
+          // 输出当前this.propA的值
           hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
         })
     }

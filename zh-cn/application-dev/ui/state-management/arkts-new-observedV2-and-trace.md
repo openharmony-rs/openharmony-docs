@@ -69,6 +69,7 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
+            // 嵌套类对象属性变化无法观测
             this.father.son.age++;
           })
       }
@@ -107,6 +108,7 @@ class Son {
 
 @Component
 struct Child {
+  // @Observed对象与@ObjectLink一起使用，实现对嵌套类对象属性的观测能力
   @ObjectLink son: Son;
 
   build() {
@@ -517,6 +519,7 @@ const TAG = 'ArktsObservedV2AndTrace';
 
 @ObservedV2
 class GrandFather {
+  // 被@Trace装饰的属性具有被观测变化的能力
   @Trace public age: number = 0;
 
   constructor(age: number) {
@@ -644,6 +647,8 @@ struct Index {
           .fontSize(40)
       })
 
+      // numberArr是@Trace装饰的数组
+      // 使用数组API操作numberArr时，可以观测到对应的变化
       Button('push')
         .onClick(() => {
           this.arr.numberArr.push(50);
@@ -663,7 +668,6 @@ struct Index {
         .onClick(() => {
           this.arr.numberArr.splice(1, 0, 60);
         })
-
 
       Button('unshift')
         .onClick(() => {
@@ -707,6 +711,7 @@ let nextId: number = 0;
 
 @ObservedV2
 class Person {
+  // @Trace装饰Person类中的age属性，使age可以被观测
   @Trace public age: number = 0;
 
   constructor(age: number) {
@@ -794,6 +799,7 @@ struct MapSample {
             .fontSize(30)
           Divider()
         })
+        // 被@Trace装饰的Map类型属性可以观测到调用API带来的变化
         Button('init map')
           .onClick(() => {
             this.info.memberMap = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
@@ -848,6 +854,7 @@ struct SetSample {
             .fontSize(30)
           Divider()
         })
+        // 被@Trace装饰的Set类型属性可以观测到调用API带来的变化
         Button('init set')
           .onClick(() => {
             this.info.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -893,6 +900,7 @@ struct DateSample {
 
   build() {
     Column() {
+      // @Trace装饰的Date类型属性可以观测调用API带来的变化
       Button('set selectedDate to 2023-07-08')
         .margin(10)
         .onClick(() => {

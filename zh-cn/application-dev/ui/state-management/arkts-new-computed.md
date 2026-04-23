@@ -263,8 +263,8 @@ get varName(): T {
    点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
    <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
@@ -294,6 +294,7 @@ get varName(): T {
        Column() {
          Text(this.name1.fullName)
          Text(this.name1.fullName)
+         // 点击Button改变lastName，触发fullName重新计算，且只被计算一次
          Button('changed lastName').onClick(() => {
            this.name1.lastName += 'a';
          })

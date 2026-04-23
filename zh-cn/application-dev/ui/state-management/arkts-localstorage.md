@@ -950,6 +950,7 @@ struct NavigationContentMsgStack {
 ``` TypeScript
 @Component
 struct LocalStorageLinkComponent {
+  // LocalStorage支持联合类型
   @LocalStorageLink('LinkA') linkA: number | null = null;
   @LocalStorageLink('LinkB') linkB: number | undefined = undefined;
 
@@ -1083,6 +1084,7 @@ struct LocalDateSample {
 
   build() {
     Column() {
+      // 更新Date类型变量，触发UI刷新
       Button('set selectedDate to 2023-07-08')
         .margin(10)
         .onClick(() => {
@@ -1137,6 +1139,7 @@ struct LocalMapSample {
           Text(`${item[1]}`).fontSize(30)
           Divider()
         })
+        // 初始化Map类型变量，触发UI刷新
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
@@ -1184,6 +1187,7 @@ struct LocalSetSample {
             .fontSize(30)
           Divider()
         })
+        // 初始化Set类型变量，触发UI刷新
         Button('init set')
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -1236,6 +1240,7 @@ struct Test {
       Text(`count value: ${this.count}`)
       Button('change')
         .onClick(() => {
+          // 自定义组件外改变状态变量，触发UI刷新
           model.call('count', this.count + 1);
         })
     }

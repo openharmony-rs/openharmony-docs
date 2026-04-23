@@ -101,6 +101,7 @@ struct Child {
     Column() {
       Text(`${this.title}`)
         .fontColor(this.fontColor)
+      // 使用changeFactory更改父组件中的变量type
       Button('change to Title Two')
         .onClick(() => {
           this.changeFactory(2);
@@ -132,6 +133,7 @@ struct Child2 {
       Text(`Child index: ${this.index}`)
         .onClick(() => {
           this.changeIndex(20);
+          // 输出子组件this.index，验证调用@Event后值不会立即同步回子组件
           hilog.info(DOMAIN, TAG, `after changeIndex ${this.index}`);
         })
     }
@@ -148,6 +150,7 @@ struct Index2 {
         index: this.index,
         changeIndex: (val: number) => {
           this.index = val;
+          // 输出父组件的index，用于对比子组件侧日志
           hilog.info(DOMAIN, TAG, `in changeIndex ${this.index}`);
         }
       })

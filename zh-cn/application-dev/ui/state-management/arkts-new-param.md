@@ -84,6 +84,7 @@ struct Index {
 
 @Component
 struct Child {
+  // V1版本接受外部传入的装饰器汇总
   @ObjectLink region: Region;
   @Prop regionProp: Region;
   @Prop infoProp: Info;
@@ -255,6 +256,7 @@ struct Child {
         Text(`${this.numArr[2]}`)
         Text(`${this.dimensionTwo[0][0]}`)
         Text(`${this.dimensionTwo[1][1]}`)
+        // 装饰的变量为简单类型数组时，可观察到数组项变化
         Button('change array item')
           .onClick(() => {
             this.numArr[0]++;
@@ -262,6 +264,7 @@ struct Child {
             this.dimensionTwo[0][0] = 0;
             this.dimensionTwo[1][1] = 0;
           })
+        // 装饰的变量为简单类型数组时，可观察到数组整体变化
         Button('change whole array')
           .onClick(() => {
             this.numArr = [5, 4, 3, 2, 1];

@@ -366,6 +366,7 @@
    
    @Component
    struct Child {
+     // 父组件传入undefined时，@Provide装饰的变量仍使用本地默认值进行初始化
      @Provide count: number | undefined = 0;
    
      build() {
@@ -530,6 +531,7 @@ struct Child {
           .fontSize(30)
         Divider()
       })
+      // message被@Consume装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
       Button('Consume init Map')
         .onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
@@ -563,6 +565,7 @@ struct MapSample {
   build() {
     Row() {
       Column() {
+        // message被@Provide装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
         Button('Provide init Map')
           .onClick(() => {
             this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c'], [4, 'd']]);
@@ -598,6 +601,7 @@ struct Child {
           .fontSize(30)
         Divider()
       })
+      // message被@Consume装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
       Button('Consume init set')
         .onClick(() => {
           this.message = new Set([0, 1, 2, 3, 4]);
@@ -628,6 +632,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
+        // message被@Provide装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
         Button('Provide init set')
           .onClick(() => {
             this.message = new Set([0, 1, 2, 3, 4, 5]);
@@ -654,6 +659,7 @@ struct Child {
 
   build() {
     Column() {
+      // selectedDate被@Consume装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button(`child increase the day by 1`)
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
@@ -679,6 +685,7 @@ struct Parent {
 
   build() {
     Column() {
+      // selectedDate被@Provide装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('parent increase the day by 1')
         .margin(10)
         .onClick(() => {
@@ -764,6 +771,7 @@ allowOverride：\@Provide重写选项。
 ``` TypeScript
 @Component
 struct MyComponent {
+  // 使用allowOverride参数重写同名的@Provide
   @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 10;
 
   build() {
@@ -845,6 +853,7 @@ struct GrandParent {
 ``` TypeScript
 @Component
 struct MyComponent {
+  // @Consume装饰的变量设置默认值
   @Consume('withDefault') defaultValue: number = 10;
 
   build() {

@@ -810,6 +810,7 @@ struct Index {
 
   build() {
     Column({ space: 10 }) {
+      // 点击Button切换condition，删除/创建ReusableV2Component
       Button('Delete/Create Repeat')
         .width('60%')
         .onClick(() => {

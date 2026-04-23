@@ -82,6 +82,7 @@
   
     build() {
       Column() {
+        // 使用父组件自定义构建函数初始化子组件@BuilderParam装饰的方法
         Child({ customBuilderParam: this.componentBuilder })
       }
     }
@@ -482,6 +483,7 @@ struct HelloWorldPage {
   @State pathStack: NavPathStack = new NavPathStack();
 
   build() {
+    // 用于跳转的子页面
     NavDestination() {
       Column() {
         Text(this.message)
@@ -865,6 +867,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // childBuilder被@Require装饰，必须从外部初始化
       ChildPage({ childBuilder: globalBuilder })
     }
   }
@@ -936,6 +939,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // 正确写法
       ChildPage({ childBuilder: globalBuilder })
     }
   }

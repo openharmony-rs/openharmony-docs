@@ -184,6 +184,7 @@ struct Father {
       Button(`father click`).onClick(() => {
         this.message += '*';
       })
+      // 父组件@State装饰的message传给子组件的message
       Son({ message: this.message })
     }
   }
@@ -219,6 +220,7 @@ struct Father {
   
   @Component
   struct Child {
+    // 父组件传入undefined时，@Prop装饰的变量仍使用本地默认值进行初始化
     @Prop count: number | undefined = 0;
   
     build() {
@@ -405,6 +407,7 @@ class Book {
 
 @Component
 struct ReaderComp {
+  // 父组件@State装饰的book传入子组件@Prop装饰的book
   @Prop book: Book = new Book('', 0);
 
   build() {
@@ -424,6 +427,7 @@ struct Library {
 
   build() {
     Column() {
+      // 父组件将同一book分别传给两个ReaderComp
       ReaderComp({ book: this.book })
       ReaderComp({ book: this.book })
     }
@@ -530,6 +534,7 @@ struct Library {
           if (this.allBooks.length > 0) {
             this.allBooks.shift();
           } else {
+            // allBooks为空时输出提示信息
             hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
@@ -849,6 +854,7 @@ struct Child {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // value被@Prop装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
       Button('child init map').onClick(() => {
         this.value = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
       })
@@ -907,6 +913,7 @@ struct Child {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // message被@Prop装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
       Button('init set').onClick(() => {
         this.message = new Set([0, 1, 2, 3, 4]);
       })
@@ -955,6 +962,7 @@ struct DateComponent {
 
   build() {
     Column() {
+      // selectedDate被@Prop装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('child update the new date')
         .margin(10)
         .onClick(() => {

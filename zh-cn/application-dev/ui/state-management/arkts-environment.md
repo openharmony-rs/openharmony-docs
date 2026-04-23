@@ -40,6 +40,7 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
       let window = windowStage.getMainWindow();
       window.then(window => {
         let uiContext = window.getUIContext();
+        // Environment在UIContext.runScopedTask里调用明确上下文
         uiContext.runScopedTask(() => {
           Environment.envProp('languageCode', 'en');
         });

@@ -1070,6 +1070,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
   const DOMAIN = 0x0000;
   
+  // Model层：TaskListModel负责加载任务列表
   export default class TaskListModel {
     public tasks: TaskModel[] = [];
   

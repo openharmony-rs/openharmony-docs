@@ -160,6 +160,7 @@ struct IncorrectReuseComponent {
       IncorrectReuseComponentChild({ num: this.num })
       Button('plus')
         .onClick(() => {
+          // 每次点击增加10
           this.num += 10;
         })
     }
@@ -302,6 +303,7 @@ struct Index {
           this.showBranchA = !this.showBranchA;
         })
       if (this.showBranchA) {
+        // 组件结构存在差异，需要通过reuseId进行区分
         ReusableComponent({ flag: true })
       }
       Button('show/hide branch B')
@@ -309,6 +311,7 @@ struct Index {
           this.showBranchB = !this.showBranchB;
         })
       if (this.showBranchB) {
+        // 组件结构存在差异，需要通过reuseId进行区分
         ReusableComponent({ flag: false })
       }
     }

@@ -64,6 +64,7 @@ struct Index {
 
   build() {
     Column() {
+      // 典型错误，会导致appfreeze
       Text(`${this.message++}`)
       Text(`${this.message++}`)
     }
@@ -284,6 +285,7 @@ struct Index {
     Column() {
       ConsumerChild({ dataObj: this.dataObjFromList })
       Button('change to self').onClick(() => {
+        // 把相同的类实例赋值给一个Class类型的状态变量，会触发刷新
         this.dataObjFromList = this.list[0];
       })
     }
@@ -340,6 +342,8 @@ struct Index {
     Column() {
       ConsumerChild({ dataObj: this.dataObjFromList })
       Button('change to self').onClick(() => {
+        // DataObj被@Observed装饰，list[0]也是Proxy类型
+        // 再次赋值相同的对象时，不会触发刷新
         this.dataObjFromList = this.list[0];
       })
     }
@@ -722,6 +726,7 @@ struct Index {
       Button('Click to print log')
         .onClick(() => {
           for (let i = 0; i < 10; i++) {
+            // 循环逻辑中频繁读取状态变量
             hilog.info(0x0000, 'TAG', '%{public}s', this.message);
           }
         })
@@ -757,6 +762,7 @@ struct Index {
     Column() {
       Button('Click to print log')
         .onClick(() => {
+          // 正确做法，在循环逻辑外读取状态变量
           let logMessage: string = this.message;
           for (let i = 0; i < 10; i++) {
             hilog.info(0x0000, 'TAG', '%{public}s', logMessage);
@@ -1240,6 +1246,7 @@ struct Page {
           hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
+        // ForEach中生成的item是一个常量，点击改变item中的内容时没有办法观测到UI刷新
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
             Text('Hello World')
@@ -1313,6 +1320,7 @@ struct Page {
           hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
+        // 使用@ObjectLink接受传入的item，TextComponent组件内的textStyle变量具有了被观测的能力
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
             TextComponent({ textStyle: item })

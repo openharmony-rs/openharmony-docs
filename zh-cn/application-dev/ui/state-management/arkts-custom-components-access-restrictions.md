@@ -125,6 +125,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct LinkComponentChild {
+      // 正确用法
       @State stateValue: string = 'Hello';
       @Prop propValue: string = 'Hello';
       @Provide provideValue: string = 'Hello';
@@ -218,6 +219,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct PublicCorrectComponentChild {
+      // 正确用法
       @LocalStorageProp('sessionLocalProp') localPropValue: string = 'Hello';
       @LocalStorageLink('sessionLocalLink') localLinkValue: string = 'Hello';
       @StorageProp('sessionProp') storagePropValue: string = 'Hello';
@@ -290,6 +292,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     @Entry
     @Component
     struct PrivateWithLinkAccessRestrictions {
+      // 正确用法
       @State linkValue: string = 'Hello';
       @State objectLinkValue: PrivateComponentObj = new PrivateComponentObj();
     
@@ -377,6 +380,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct ProtectedCorrectComponentChild {
+      // 正确用法
       regularValue: string = 'Hello';
     
       build() {
@@ -447,6 +451,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     
     @Component
     struct PrivateCorrectComponentChild {
+      // 正确用法
       @Require @Prop propValue: string = 'Hello';
     
       build() {

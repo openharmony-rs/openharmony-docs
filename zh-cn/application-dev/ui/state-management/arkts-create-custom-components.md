@@ -59,6 +59,7 @@ struct HelloComponent {
 struct ParentComponent {
   build() {
     Column() {
+      // 多次创建HelloComponent，实现自定义组件的重用
       Text('ArkUI message')
       HelloComponent({ message: 'Hello World!' })
       Divider()
@@ -321,6 +322,7 @@ struct Parent {
   build() {
     Column() {
       Text(`${this.cnt}`)
+      // 父组件中的函数传递给子组件
       Son({ submitArrow: this.submit })
     }
   }
@@ -594,6 +596,7 @@ struct ChildComponent {
 struct MyComponent {
   build() {
     Row() {
+      // 属性设置给ChildComponent而不是ChildComponent中的Button
       ChildComponent()
         .width(200)
         .height(300)
@@ -808,6 +811,7 @@ export default class ExtraAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/ExtraIndex', (err) => {
       if (err.code) {
+        // ExtraIndex加载失败，输出报错信息
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }

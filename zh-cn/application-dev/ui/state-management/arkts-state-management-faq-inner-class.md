@@ -56,6 +56,8 @@ export class TestModel {
 
   constructor() {
     this.model = new Model(() => {
+      // 此时TestModel实例尚未被代理封装，this指向TestModel实例本身
+      // this.isSuccess的修改无法触发Index中Text的UI刷新
       this.isSuccess = true;
       hilog.info(0xFF00, 'testTag', '%{public}s', `this.isSuccess: ${this.isSuccess}`);
     })
@@ -109,6 +111,7 @@ export class TestModel {
   public model: Model = new Model(() => {
   })
 
+  // 状态变量的修改放在类的普通方法中
   query() {
     this.model.callback = () => {
       this.isSuccess = true;
@@ -259,6 +262,7 @@ struct Index {
   }
 
   isRenderText(index: number): number {
+    // 日志打印，观察使用简单属性数组导致冗余刷新
     hilog.info(DOMAIN_NUMBER, TAG, `index ${index} is rendered`);
     return 1;
   }
@@ -1113,6 +1117,7 @@ class Ancestor {
   }
 
   public loadData() {
+    // 这里创建的Child[]类型的数组tempList并没有能被观测的能力
     let tempList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
     this.childList = tempList;
   }
@@ -1202,6 +1207,7 @@ struct CompAncestor {
     Column() {
       CompList({ childList: this.ancestor.childList })
       Row() {
+        // 点击Button对ancestor执行清空数据
         Button('Clear')
           .onClick(() => {
             this.ancestor.clearData();
@@ -1300,6 +1306,7 @@ class Ancestor {
   }
 
   public loadData() {
+    // 临时的数组tempList修改为具有被观测能力的ChildList类
     let tempList = new ChildList();
     for (let i = 1; i < 6; i++) {
       tempList.push(new Child(i));
