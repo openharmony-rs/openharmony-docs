@@ -71,7 +71,7 @@ try {
   locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
   console.info(`Succeeded in setting location patch tag.`);
 } catch(err) {
-  console.error(`Failed to get location patch tag. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## locationManager.getLocationPolicy
