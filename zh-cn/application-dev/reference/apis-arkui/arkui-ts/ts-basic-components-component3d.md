@@ -161,7 +161,7 @@ shaderInputBuffer(buffer: Array&lt;number&gt;)
 
 renderWidth(value: Dimension)
 
-设置3D渲染分辨率的宽度。渲染分辨率的长宽可以不同于控件的长宽，若渲染分辨率与控件分辨率长宽不一致时会上采样或下采样到控件长宽。
+设置3D渲染分辨率的宽度。渲染分辨率的宽高可以不同于控件的宽高，若渲染分辨率与控件分辨率宽高不一致时会上采样或下采样到控件宽高。
 
 不调用此属性时默认渲染分辨率。
 
@@ -181,7 +181,7 @@ renderWidth(value: Dimension)
 
 renderHeight(value: Dimension)
 
-设置3D渲染分辨率的长度。渲染分辨率的长宽可以不同于控件的长宽，若渲染分辨率与控件分辨率长宽不一致时会上采样或下采样到控件长宽。
+设置3D渲染分辨率的高度。渲染分辨率的宽高可以不同于控件的宽高，若渲染分辨率与控件分辨率宽高不一致时会上采样或下采样到控件宽高。
 
 不调用此属性时默认渲染分辨率。
 
@@ -195,7 +195,7 @@ renderHeight(value: Dimension)
 
 | 参数名 | 类型                                 | 必填 | 说明                 |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | 是   | 3D渲染分辨率的长度，当前仅支持设置Dimension.Percentage，取值范围是[0, 100%]。 |
+| value  | [Dimension](ts-types.md#dimension10) | 是   | 3D渲染分辨率的高度，当前仅支持设置Dimension.Percentage，取值范围是[0, 100%]。 |
 
 ## 事件
 
