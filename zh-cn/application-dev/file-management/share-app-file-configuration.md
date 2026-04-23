@@ -36,7 +36,7 @@
    | -------- | -------- | -------- | -------- |
    | scopes | 允许共享的范围，详见scopes标签说明。 | 对象数组 | 否 |
    | sharingOSPath | 应用捐献给操作系统的沙箱目录，取值必须为scopes列表中已配置的path值。未配置该字段则表示不向操作系统捐献目录，系统应用如文件管理器、FilePicker等将无法查看应用捐献的沙箱目录。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
-   | sharingOSSubpath | 应用捐献给操作系统的沙箱目录的子目录。仅当 sharingOSPath配置时必填，长度不超过32，将"sharingOSPath"+"sharingOSSubpath"拼接后的路径，作为捐献给操作系统的目录，""空串代表直接捐献sharingOSPath，有字符则以/开头，不允许有'.'、'..'、'\0'字符。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
+   | sharingOSSubpath | 应用捐献给操作系统的沙箱目录的子目录。仅当sharingOSPath配置时必填，长度不超过32，将"sharingOSPath"+"sharingOSSubpath"拼接后的路径，作为捐献给操作系统的目录，""空串代表直接捐献sharingOSPath，有字符则以/开头，不允许有'.'、'..'、'\0'字符。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
    | sharingOSPermission | 应用捐献给操作系统的沙箱目录的访问权限。仅当sharingOSPath配置时必填，权限必须是scopes中对应路径permission的子集，不可超出原配置权限。<br/>**起始版本：** 26.0.0 | 字符串 | 否 |
 
    > **说明：**
