@@ -91,7 +91,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|  undefined| 是   | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的棕色 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|  undefined| 是   | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的棕色。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedColor
 
@@ -113,7 +113,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupColor
 
@@ -135,7 +135,7 @@ ArkTS-Sta: popupColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedBackgroundColor
 
@@ -157,7 +157,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupBackground
 
@@ -179,7 +179,7 @@ ArkTS-Sta: popupBackground(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF，显示为白色。<br />API version 12及以后：#66808080，显示为半透明的灰色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF，显示为白色。<br />API version 12及以后：#66808080，显示为半透明的灰色。<br/>取值为undefined时，按默认值处理。 |
 
 ### usingPopup
 
@@ -201,7 +201,7 @@ ArkTS-Sta: usingPopup(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------- | ---- | -------------------------------------- |
-| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined | 是   | 是否显示提示弹窗。<br/>默认值：false <br/>true：显示提示弹窗。<br/>false：不显示提示弹窗。 |
+| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined | 是   | 是否显示提示弹窗。<br/>默认值：false <br/>true：显示提示弹窗。<br/>false：不显示提示弹窗。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedFont
 
@@ -223,7 +223,7 @@ ArkTS-Sta: selectedFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 选中项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 选中项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### popupFont
 
@@ -245,7 +245,7 @@ ArkTS-Sta: popupFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗一级索引文本样式。<br/>默认值：<br/>{<br/>size:'24.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗一级索引文本样式。<br/>默认值：<br/>{<br/>size:'24.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### font
 
@@ -267,7 +267,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 未选中索引项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 未选中索引项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### itemSize
 
@@ -289,7 +289,7 @@ ArkTS-Sta: itemSize(value: string | double | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;number  <br/>  ArkTS-Sta: string&nbsp;\|&nbsp;double \| undefined| 是   | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br/>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右[padding](ts-universal-attributes-size.md#padding)，索引项高度最大为（组件高度-上下[padding](ts-universal-attributes-size.md#padding)）/索引项个数。传入值小于等于0时，按照默认值处理。<br/>默认值：16.0<br/>单位：vp |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;number  <br/>  ArkTS-Sta: string&nbsp;\|&nbsp;double \| undefined| 是   | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br/>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右[padding](ts-universal-attributes-size.md#padding)，索引项高度最大为（组件高度-上下[padding](ts-universal-attributes-size.md#padding)）/索引项个数。传入值小于等于0时，按照默认值处理。<br/>默认值：16.0<br/>单位：vp<br/>取值为undefined时，按默认值处理。 |
 
 ### alignStyle
 
@@ -311,8 +311,8 @@ ArkTS-Sta: alignStyle(value: IndexerAlign | undefined, offset?: Length | undefin
 
 | 参数名               | 类型                                  | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                | ArkTS-Dyn: [IndexerAlign](#indexeralign枚举说明)  <br/>  ArkTS-Sta: [IndexerAlign](#indexeralign枚举说明) \| undefined| 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值: IndexerAlign.END。 |
-| offset<sup>10+</sup> | ArkTS-Dyn: [Length](ts-types.md#length) <br/>  ArkTS-Sta: [Length](ts-types.md#length) \| undefined          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与popupPosition同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。 |
+| value                | ArkTS-Dyn: [IndexerAlign](#indexeralign枚举说明)  <br/>  ArkTS-Sta: [IndexerAlign](#indexeralign枚举说明) \| undefined| 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值: IndexerAlign.END。<br/>取值为undefined时，按默认值处理。 |
+| offset<sup>10+</sup> | ArkTS-Dyn: [Length](ts-types.md#length) <br/>  ArkTS-Sta: [Length](ts-types.md#length) \| undefined          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与popupPosition同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。<br/>取值为undefined时，按默认值处理。 |
 
 ### selected<sup>8+</sup>
 
@@ -336,7 +336,7 @@ ArkTS-Sta: selected(index: int | Bindable\<int> | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | ArkTS-Dyn: number  <br/>  ArkTS-Sta: int \| Bindable<int\> \| undefined| 是   | 选中项索引值。<br/>默认值：0 |
+| index  | ArkTS-Dyn: number  <br/>  ArkTS-Sta: int \| Bindable<int\> \| undefined| 是   | 选中项索引值。<br/>默认值：0<br/>取值为undefined时，按默认值处理。 |
 
 ### popupPosition<sup>8+</sup>
 
@@ -358,7 +358,7 @@ ArkTS-Sta: popupPosition(value: Position | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明                                                         |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Position](ts-types.md#position) <br/>  ArkTS-Sta: [Position](ts-types.md#position) \| undefined| 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0} |
+| value  | ArkTS-Dyn: [Position](ts-types.md#position) <br/>  ArkTS-Sta: [Position](ts-types.md#position) \| undefined| 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0}<br/>取值为undefined时，按默认值处理。 |
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -380,7 +380,7 @@ ArkTS-Sta: popupSelectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                  |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431<br/>取值为undefined时，按默认值处理。 |
 
 ### popupUnselectedColor<sup>10+</sup>
 
@@ -402,7 +402,7 @@ ArkTS-Sta: popupUnselectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                    |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431<br/>取值为undefined时，按默认值处理。 |
 
 ### popupItemFont<sup>10+</sup>
 
@@ -424,7 +424,7 @@ ArkTS-Sta: popupItemFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗二级索引项文本样式。 <br/>默认值：<br/>{<br/>size:24,<br/>weight:FontWeight.Medium<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗二级索引项文本样式。 <br/>默认值：<br/>{<br/>size:24,<br/>weight:FontWeight.Medium<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### popupItemBackgroundColor<sup>10+</sup>
 
@@ -446,7 +446,7 @@ ArkTS-Sta: popupItemBackgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                            |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF，显示为白色。<br />API version 12及以后：#00000000，显示为透明色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF，显示为白色。<br />API version 12及以后：#00000000，显示为透明色。<br/>取值为undefined时，按默认值处理。 |
 
 ### autoCollapse<sup>11+</sup>   
 
@@ -476,7 +476,7 @@ ArkTS-Sta: autoCollapse(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined| 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false，不使用自适应折叠模式。<br />API version 12及之后：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。 |
+| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined| 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false，不使用自适应折叠模式。<br />API version 12及之后：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupItemBorderRadius<sup>12+</sup>   
 
@@ -498,7 +498,7 @@ ArkTS-Sta: popupItemBorderRadius(value: double | undefined)
 
 | 参数名 |   类型   | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \|undefined| 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 |
+| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \|undefined| 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。<br/>取值为undefined时，按默认值处理。 |
 
 ### itemBorderRadius<sup>12+</sup>   
 
@@ -520,7 +520,7 @@ ArkTS-Sta: itemBorderRadius(value: double | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \| undefined | 是   | 设置索引项背板圆角半径。<br/>默认值：8vp<br/>不支持百分比，小于0时按照0设置。<br/>索引条背板圆角自适应变化（索引项圆角半径+4vp）。 |
+| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \| undefined | 是   | 设置索引项背板圆角半径。<br/>默认值：8vp<br/>不支持百分比，小于0时按照0设置。<br/>索引条背板圆角自适应变化（索引项圆角半径+4vp）。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupBackgroundBlurStyle<sup>12+</sup>   
 
@@ -542,7 +542,7 @@ ArkTS-Sta: popupBackgroundBlurStyle(value: BlurStyle | undefined)
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)  <br/>  ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined| 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR。 |
+| value  | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)  <br/>  ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined| 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR<br/>取值为undefined时，按默认值处理。 |
 
 ### popupTitleBackground<sup>12+</sup>   
 
@@ -564,7 +564,7 @@ ArkTS-Sta: popupTitleBackground(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 设置提示弹窗一级索引项背景颜色。<br/>默认值：<br/>提示弹窗只有一个索引项：#00FFFFFF。<br/>提示弹窗有多个索引项：#0c182431。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 设置提示弹窗一级索引项背景颜色。<br/>默认值：<br/>提示弹窗只有一个索引项：#00FFFFFF。<br/>提示弹窗有多个索引项：#0c182431。<br/>取值为undefined时，按默认值处理。 |
 
 ### enableHapticFeedback<sup>12+</sup>
 
@@ -586,7 +586,7 @@ ArkTS-Sta: enableHapticFeedback(value: boolean | undefined)
 
 | 参数名         | 类型                                                  | 必填 | 说明                         |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | ArkTS-Dyn: boolean<br/>  ArkTS-Sta: boolean \| undefined | 是  | 是否支持触控反馈。<br/>true：支持触控反馈。<br/>false：不支持触控反馈。<br/>默认值：true<br/>开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启振动权限，配置如下：<br/>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]  |
+| value | ArkTS-Dyn: boolean<br/>  ArkTS-Sta: boolean \| undefined | 是  | 是否支持触控反馈。<br/>默认值：true<br/>true：开启触控反馈；false：不开启触控反馈。<br/>取值为undefined时，按默认值处理。<br/>开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启振动权限，配置如下：<br/>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -604,7 +604,7 @@ attributeModifier(modifier: AttributeModifier\<AlphabetIndexerAttribute> | Attri
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<AlphabetIndexerAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier\<AlphabetIndexerAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## IndexerAlign枚举说明
 
@@ -665,7 +665,7 @@ ArkTS-Sta: onSelect(callback: OnAlphabetIndexerSelectCallback | undefined)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18)  <br/>  ArkTS-Sta: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) \| undefined| 是   | 索引项选中事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18)  <br/>  ArkTS-Sta: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) \| undefined| 是   | 索引项选中事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onRequestPopupData<sup>8+</sup>
 
@@ -687,7 +687,7 @@ ArkTS-Sta: onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallbac
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) <br/>  ArkTS-Sta: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) \| undefined| 是   | 设置提示弹窗二级索引项内容事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) <br/>  ArkTS-Sta: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) \| undefined| 是   | 设置提示弹窗二级索引项内容事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onPopupSelect<sup>8+</sup>
 
@@ -709,7 +709,7 @@ ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefi
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 提示弹窗二级索引选中事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 提示弹窗二级索引选中事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
 
