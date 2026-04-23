@@ -145,6 +145,8 @@ try {
 
 ## Updater
 
+一个用于执行在线更新的静态类。
+
 ### checkNewVersion
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
@@ -1892,6 +1894,8 @@ try {
 
 ## Restorer
 
+一个用于执行恢复操作的静态类。
+
 ### factoryReset
 
 factoryReset(callback: AsyncCallback\<void>): void
@@ -2139,6 +2143,8 @@ try {
 ```
 
 ## LocalUpdater
+
+一个用于执行本地更新的静态类。
 
 ### verifyUpgradePackage
 
