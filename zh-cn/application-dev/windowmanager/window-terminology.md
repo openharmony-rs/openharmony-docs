@@ -33,7 +33,7 @@
 
   - 独立子窗：
   
-    从API版本26.0.0开始，支持在创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。独立子窗在自由窗口状态下，不跟随主窗进前后台，仅跟随主窗一起销毁，独立子窗与主窗进行层级排布。独立子窗在非自由窗口状态，跟随主窗进前后台和销毁，独立子窗与非独立子窗进行层级排布。
+    从API版本26.0.0开始，支持在创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。独立子窗在[自由窗口](#自由窗口)状态下，不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
   - 非独立子窗：
   
     默认创建的子窗均为非独立子窗。在创建子窗时[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened默认为false，此时创建的子窗为非独立子窗。
