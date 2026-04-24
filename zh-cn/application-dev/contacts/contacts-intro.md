@@ -37,8 +37,9 @@ Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的�
 1. 导入相关的联系人模块。
 
    <!-- @[contacts_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
+   import { common, abilityAccessCtrl, Permissions, PermissionRequestResult } from '@kit.AbilityKit';
    import { contact } from '@kit.ContactsKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -46,18 +47,17 @@ Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的�
 2. 调用联系人接口，拉起联系人列表，用户点击对应的联系人后返回。
 
    <!-- @[contacts_selectContactsByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    contact.selectContacts({
-     isMultiSelect:false
-   },(err: BusinessError, data) => {
-       if (err) {
-         console.error('selectContact callback, errCode:' + err.code + ', errMessage:' + err.message);
-           return;
-       }
-       console.info(`selectContact callback: success data->${JSON.stringify(data)}`);
+     isMultiSelect: false
+   }, (err: BusinessError, data) => {
+     if (err) {
+       console.error('selectContact callback, errCode:' + err.code + ', errMessage:' + err.message);
+       return;
+     }
+     console.info('selectContact callback: success data->${JSON.stringify(data)}');
    });
-
    ```
 
 3. 完成操作，返回想要的data数据。
@@ -81,50 +81,28 @@ Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的�
 3. 执行对应联系人的权限操作。
 
    <!-- @[contacts_addContactByPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
-   // 示例代码
-   import { common, abilityAccessCtrl, Permissions, PermissionRequestResult } from '@kit.AbilityKit';
-   import { contact } from '@kit.ContactsKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   @Entry
-   @Component
-   struct Contact {
-     addContactByPermissions() {
-       // 在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-       const permissions: Array<Permissions> = ['ohos.permission.WRITE_CONTACTS'];
-       const contactInfo: contact.Contact = {
-         name: { fullName: '王小明' },
-         phoneNumbers: [{ phoneNumber: '13912345678' }]
-       }
-       abilityAccessCtrl.createAtManager().requestPermissionsFromUser(context, permissions).then((result:   PermissionRequestResult) => {
-         if (result.authResults[0] !== 0) { // 0 表示请求权限成功，其他任何非零值表示请求失败
-           console.error('request contact permissions failed');
-           return;
-         }
-         contact.addContact(context, contactInfo).then((data) => {
-           console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
-         }).catch((err: BusinessError) => {
-           console.error(`Failed to add Contact. Code: ${err.code}, message: ${err.message}`);
-         });
-       })
-     }
-
-     build() {
-       Row() {
-         Column() {
-           Button('添加联系人')
-             .onClick(() => {
-               this.addContactByPermissions();
-             })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
+   
+   ``` TypeScript
+   // 在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const permissions: Permissions[] = ['ohos.permission.WRITE_CONTACTS'];
+   const contactInfo: contact.Contact = {
+     name: { fullName: '王小明' },
+     phoneNumbers: [{ phoneNumber: '13912345678' }]
    }
+   abilityAccessCtrl.createAtManager()
+     .requestPermissionsFromUser(context, permissions)
+     .then((result: PermissionRequestResult) => {
+       if (result.authResults[0] !== 0) { // 0 表示请求权限成功，其他任何非零值表示请求失败
+         console.error('request contact permissions failed');
+         return;
+       }
+       contact.addContact(context, contactInfo).then((data) => {
+         console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to add Contact. Code: ${err.code}, message: ${err.message}`);
+       });
+   })
    ```
 
 

@@ -20,42 +20,22 @@
 
 <!-- @[contacts_addContactByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
 
-```js
-import { common } from '@kit.AbilityKit';
-import { contact } from '@kit.ContactsKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-    
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          let contactInfo: contact.Contact = {
-            name: {
-              fullName: 'xxx'
-            },
-            phoneNumbers: [{
-              phoneNumber: '138xxxxxx'
-            }]
-          }
-          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          let promise = contact.addContactViaUI(context, contactInfo);
-          promise.then((data) => {
-              console.info(`Succeeded in add Contact via UI.data->${JSON.stringify(data)}`);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to add Contact via UI. Code: ${err.code}, message: ${err.message}`);
-            });
-        })
-    }
-  }
+``` TypeScript
+let contactInfo: contact.Contact = {
+  name: {
+    fullName: 'xxx'
+  },
+  phoneNumbers: [{
+    phoneNumber: '138xxxxxx'
+  }]
 }
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let promise = contact.addContactViaUI(context, contactInfo);
+promise.then((data) => {
+  console.info(`Succeeded in add Contact via UI.data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to add Contact via UI. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## 使用picker更新联系人信息
@@ -64,41 +44,21 @@ struct Index {
 
 <!-- @[contacts_updateContactByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
 
-```js
-import { common } from '@kit.AbilityKit';
-import { contact } from '@kit.ContactsKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-    
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          let contactInfo: contact.Contact = {
-            id: 1,
-            name: {
-              fullName: 'xxx'
-            },
-            phoneNumbers: [{
-              phoneNumber: '138xxxxxx'
-            }]
-          }
-          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          let promise = contact.saveToExistingContactViaUI(context, contactInfo);
-          promise.then((data) => {
-              console.info(`Succeeded in save to existing Contact via UI.data->${JSON.stringify(data)}`);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to save to existing Contact via UI. Code: ${err.code}, message: ${err.message}`);
-            });
-        })
-    }
-  }
+``` TypeScript
+let contactInfo: contact.Contact = {
+  id: 1,
+  name: {
+    fullName: 'xxx'
+  },
+  phoneNumbers: [{
+    phoneNumber: '138xxxxxx'
+  }]
 }
-``` 
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let promise = contact.saveToExistingContactViaUI(context, contactInfo);
+promise.then((data) => {
+  console.info(`Succeeded in save to existing Contact via UI.data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to save to existing Contact via UI. Code: ${err.code}, message: ${err.message}`);
+});
+```
