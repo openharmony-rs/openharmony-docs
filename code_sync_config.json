@@ -51733,5 +51733,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/network/native-httpinterceptor-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":158,
+						"name":"HttpInterceptor_build_project",
+						"start_line":16
+					},
+					{
+						"end_line":175,
+						"name":"HttpInterceptor_extern_c",
+						"start_line":160
+					},
+					{
+						"end_line":192,
+						"name":"HttpInterceptor_napi_module",
+						"start_line":177
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"HttpInterceptor_defining_function_types",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"HttpInterceptor_C_full_example",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
