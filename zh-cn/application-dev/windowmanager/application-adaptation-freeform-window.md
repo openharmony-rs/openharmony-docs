@@ -237,7 +237,7 @@
 
 示意图中，windowRect为窗口尺寸，drawableRect为可绘制区域尺寸，decorHeight为标题栏高度，单位为vp，density为本窗口所处屏幕的系统显示大小缩放系数。
 
-![window](figures/window.PNG)
+![window](figures/window.png)
 
 典型场景及对应方案如下：
 
@@ -254,7 +254,7 @@
 
 如果应用希望在窗口内有更大的可绘制区域，可以通过隐藏标题栏，并适配窗口三键的位置和尺寸。
 
-![button](figures/button.PNG)
+![button](figures/button.png)
 
 典型场景及对应方案如下：
 
