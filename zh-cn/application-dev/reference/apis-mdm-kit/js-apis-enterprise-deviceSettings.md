@@ -551,8 +551,8 @@ let wantTemp: Want = {
 try {
   const rawList: Array<number> = deviceSettings.getHiddenSettingsMenu(wantTemp) as Array<number>;
   for (const item of rawList) {
-      const menu: deviceSettings.SettingsMenu = item as deviceSettings.SettingsMenu;
-      console.info(`Valid SettingsMenu item: ${item} -> ${menu}`);
+    const menu: deviceSettings.SettingsMenu = item as deviceSettings.SettingsMenu;
+    console.info(`Valid SettingsMenu item: ${item} -> ${menu}`);
   }
   console.info('Succeeded in getting hidden settings menu.');
 } catch (err) {
