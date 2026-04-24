@@ -4,7 +4,7 @@
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
@@ -38,6 +38,7 @@ Provides the enumerated variables, structures, and macros used in USB DDK APIs.
 | [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | \_\_attribute\_\_((aligned(8))) UsbRequestPipe | Defines a USB request pipe.|
 | [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | Device memory map created by calling **OH_Usb_CreateDeviceMemMap**. A buffer using the device memory map can provide better performance.|
 | [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | Defines the device ID list, which is used to store the device IDs and device quantity obtained using **OH_Usb_GetDevices**.|
+| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Usb_NonRootHubArray | Defines the non-root hub list, which is used to store the non-root hub IDs and quantity obtained using **OH_Usb_GetNonRootHubs**.|
 
 ### Enums
 

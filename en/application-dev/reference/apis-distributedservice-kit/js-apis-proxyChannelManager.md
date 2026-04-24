@@ -4,7 +4,7 @@
 <!--Owner: @huangkai71-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 DSoftBus provides stable and reliable underlying channels for cross-device communication. This module is developed based on DSoftBus. It supports efficient data exchange between phones and wearables, providing users with a seamless device interconnection experience. During collaboration between the phone application and watch application, if the phone application is not running in the foreground, its downlink messages are forwarded to the notification server and then sent to the watch through the proxy module. The core functions of this module include proxy channel management, data route management, application state awareness and wakeup, and link state monitoring.
 
@@ -67,6 +67,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.[since 26] |
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
 | 32390006 | Parameter error.|
@@ -139,6 +140,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.[since 26] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -205,6 +207,7 @@ For details about the following error codes, see [Proxy Channel Management Error
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.[since 26] |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
