@@ -446,7 +446,7 @@ export struct TextPickerCNDialogExample {
 
 列表选择弹窗中，title字段的字体最大放大倍数为2。
 
-该示例通过配置width、height、transition等接口，定义了弹窗的样式以及弹出动效。
+该示例通过配置[width](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)、[height](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)、[transition](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)等接口，定义了弹窗的样式以及弹出动效。
 
 <!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
 
@@ -536,7 +536,7 @@ export struct showActionSheetExample {
 
 警告弹窗中，title和subtitle字段的字体最大放大倍数为2。
 
-该示例通过配置width、height、transition等接口，定义了多个按钮弹窗的样式以及弹出动效。
+该示例通过配置[width](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[height](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[transition](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)等接口，定义了多个按钮弹窗的样式以及弹出动效。
 
 <!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
 
