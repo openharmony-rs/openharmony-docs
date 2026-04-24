@@ -86,9 +86,9 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
 <!-- @[web_createpdf_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets) -->
 
-ArkTS-Sta示例：
 ``` TypeScript
 // xxx.ets
 'use static'
@@ -205,9 +205,9 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
 <!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/CreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
 
-ArkTS-Sta示例：
 ``` TypeScript
 // xxx.ets
 'use static'
