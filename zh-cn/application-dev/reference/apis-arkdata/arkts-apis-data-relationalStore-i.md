@@ -129,7 +129,7 @@
 | schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | 否   |   否   | 表示端云同步过程。                                 |
 | code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | 否   |   否   | 表示端云同步过程的状态。                              |
 | details  | Record<string, [TableDetails](#tabledetails10)> | 否   |   否   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
-| message | string | 否 | 是   | 同步状态的详情消息。通过message信息查看详细的失败原因。默认值为空。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| message | string | 否 | 是   | 同步状态的详细消息。通过message信息查看详细的失败原因。默认值为空。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CloudSyncConfig
 
