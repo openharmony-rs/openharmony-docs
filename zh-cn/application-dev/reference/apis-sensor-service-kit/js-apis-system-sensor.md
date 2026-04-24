@@ -501,6 +501,10 @@ Sensor.unsubscribeOnBodyState();
 
 获取设备佩戴状态。
 
+> **说明**：
+>
+> 除Lite Wearable外，从API Version8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#sensoronsensortypesensor_type_id_wear_detectiondeprecated)替代。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **参数**：
