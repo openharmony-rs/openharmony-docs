@@ -139,7 +139,7 @@ ArkTS-Dyn示例：
   }
   ```
 
-<!-- @[apply_geolocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/ApplyGeolocation.ets) -->
+  <!-- @[apply_geolocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/ApplyGeolocation.ets) -->
 
 ArkTS-Sta示例：
    ```ts

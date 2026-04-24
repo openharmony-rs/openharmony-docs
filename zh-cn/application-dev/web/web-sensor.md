@@ -110,7 +110,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
    }
    ```
 
-<!-- @[web_sensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/WebSensor/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[web_sensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/WebSensor/entry/src/main/ets/pages/Index.ets) -->
 
    ArkTS-Sta示例：
    ```ts
