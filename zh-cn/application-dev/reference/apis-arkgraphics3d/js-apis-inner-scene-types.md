@@ -152,7 +152,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 ## ShadowAlgorithmType
 
-阴影算法的枚举值。
+阴影算法的枚举类型。
 
 **起始版本：** 26.0.0
 
