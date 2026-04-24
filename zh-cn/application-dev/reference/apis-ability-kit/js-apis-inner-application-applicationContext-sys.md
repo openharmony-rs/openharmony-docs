@@ -37,9 +37,13 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 
 支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从OnCreate继续完成UIExtensionAbility的生命周期。
 
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**系统接口**：此接口为系统接口。
+**参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
