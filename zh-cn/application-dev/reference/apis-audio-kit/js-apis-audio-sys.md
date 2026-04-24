@@ -5810,7 +5810,7 @@ offReadMicInData(callback?: Callback\<AudioCapturerMicInData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| callback | Callback<[AudioCapturerMicInData](#audiocapturermicindata24)> | 否 | 回调函数，返回读取到的音频数据缓冲区。 |
+| callback | Callback<[AudioCapturerMicInData](#audiocapturermicindata24)> | 否 | 需要取消监听的回调函数，默认值为空。不传入时，表示取消该事件的所有监听。 |
 
 **错误码：**
 
