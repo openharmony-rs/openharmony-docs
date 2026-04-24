@@ -10,7 +10,8 @@
 伴随设备是用户在主设备上添加的身份认证凭据，在满足条件的情况下能够与主设备交互进行用户身份鉴权。伴随设备应用场景，例如：手表作为伴随设备解锁手机、 耳机作为伴随设备让语音指令在手机上可以免解锁执行等。
 
 > **说明：**
-> 
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 
@@ -36,6 +37,10 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | ----------- | ---- | ---------- |
 | DEFAULT | 0 | 默认业务ID。 |
@@ -51,6 +56,10 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | ----------------- | ----- | ------------------------------------------------------------ |
 | UNIFIED_DEVICE_ID | 1 | 统一设备ID。 |
@@ -65,6 +74,10 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ----------- | ---- | ---------- |
@@ -82,11 +95,15 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
-| deviceIdType | number | 否 | 否 | 设备ID类型。可以在[DeviceIdType](#deviceidtype)基础上自定义扩展。 |
+| deviceIdType | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 设备ID类型。可以在[DeviceIdType](#deviceidtype)基础上自定义扩展。 |
 | deviceId | string | 否 | 否 | 设备ID。 |
-| deviceUserId | number | 否 | 否 | 设备用户ID。 |
+| deviceUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 设备用户ID。 |
 
 ## DeviceStatus
 
@@ -98,6 +115,10 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------------------- | ------------------------- | ---- | ---- | ---------------------- |
 | deviceKey | [DeviceKey](#devicekey) | 否 | 否 | 设备标识信息。 |
@@ -105,7 +126,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | deviceModelInfo | string | 否 | 否 | 设备模型信息。 |
 | deviceName | string | 否 | 否 | 设备名。 |
 | isOnline | boolean | 否 | 否 | 设备在线状态，true：设备处于在线状态； false：设备处于离线状态。 |
-| supportedBusinessIds | number[] | 否 | 否 | 设备支持的业务ID列表。 |
+| supportedBusinessIds | ArkTS-Dyn: number[]<br />ArkTS-Sta: int[] | 否 | 否 | 设备支持的业务ID列表。 |
 
 ## TemplateStatus
 
@@ -117,14 +138,18 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------------ | ------------------------------- | ---- | ---- | -------------------- |
 | templateId | Uint8Array | 否 | 否 | 模板ID。 |
 | isConfirmed | boolean | 否 | 否 | 数据确认状态，true：数据是实时数据；false：数据是缓存数据。 |
 | isValid | boolean | 否 | 否 | 模板是否有效，true：模板有效；false：模板无效。 |
-| localUserId | number | 否 | 否 | 本地用户ID。 |
+| localUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 否 | 否 | 本地用户ID。 |
 | addedTime | Date | 否 | 否 | 模板添加时间。格式为Unix时间戳，即自1970年1月1日起经过的毫秒数。 |
-| enabledBusinessIds | number[] | 否 | 否 | 支持的业务ID列表。 |
+| enabledBusinessIds | ArkTS-Dyn: number[]<br />ArkTS-Sta: int[] | 否 | 否 | 支持的业务ID列表。 |
 | deviceStatus | [DeviceStatus](#devicestatus) | 否 | 否 | 设备的状态信息。 |
 
 ## TemplateStatusCallback
@@ -138,6 +163,10 @@ type TemplateStatusCallback = (templateStatusList: TemplateStatus[]) => void
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -156,6 +185,10 @@ type ContinuousAuthStatusCallback = (isAuthPassed: boolean, authTrustLevel?: Use
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -176,6 +209,10 @@ type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -191,6 +228,10 @@ type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ---------- | ---- | ---- | -------------------------------------------- |
@@ -213,6 +254,10 @@ getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -257,6 +302,10 @@ onTemplateChange(callback: TemplateStatusCallback): void
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -303,6 +352,10 @@ offTemplateChange(callback?: TemplateStatusCallback): void
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -351,6 +404,10 @@ onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -396,6 +453,10 @@ offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -443,6 +504,10 @@ onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatu
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -500,6 +565,10 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -543,7 +612,9 @@ try {
 
 ## companionDeviceAuth.getStatusMonitor
 
-getStatusMonitor(localUserId: number): StatusMonitor
+ArkTS-Dyn: getStatusMonitor(localUserId: number): StatusMonitor
+
+ArkTS-Sta: getStatusMonitor(localUserId: int): StatusMonitor
 
 获取状态监听器，用于后续查询和订阅伴随模板信息等。
 
@@ -555,11 +626,15 @@ getStatusMonitor(localUserId: number): StatusMonitor
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ---- | ---- | ------------ |
-| localUserId | number | 是 | 本地用户ID。 |
+| localUserId | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是 | 本地用户ID。 |
 
 **返回值：**
 
@@ -615,6 +690,10 @@ try {
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------------- | --------------------------- | ---- | ---- | ------------------------------------------ |
 | deviceKeys | [DeviceKey](#devicekey)[] | 否 | 否 | 设备信息列表。|
@@ -622,7 +701,9 @@ try {
 
 ## DeviceSelectCallback
 
-type DeviceSelectCallback = (selectPurpose: number) => DeviceSelectResult
+ArkTS-Dyn: type DeviceSelectCallback = (selectPurpose: number) => DeviceSelectResult
+
+ArkTS-Sta: type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResult
 
 伴随设备选择回调。
 
@@ -632,11 +713,15 @@ type DeviceSelectCallback = (selectPurpose: number) => DeviceSelectResult
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------- | ---- | ---- | ------------------------------------------------------------ |
-| selectPurpose | number | 是 | 指定选择目的。具体取值参见[SelectPurpose](#selectpurpose)，业务可自定义。 |
+| selectPurpose | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是 | 指定选择目的。具体取值参见[SelectPurpose](#selectpurpose)，业务可自定义。 |
 
 **返回值：**
 
@@ -657,6 +742,10 @@ registerDeviceSelectCallback(callback: DeviceSelectCallback): void
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -722,6 +811,10 @@ unregisterDeviceSelectCallback(): void
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
@@ -748,7 +841,9 @@ try {
 
 ## companionDeviceAuth.updateEnabledBusinessIds
 
-updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: number[]): Promise&lt;void&gt;
+ArkTS-Dyn: updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: number[]): Promise&lt;void&gt;
+
+ArkTS-Sta: updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: int[]): Promise&lt;void&gt;
 
 用于更新指定伴随设备模板支持的业务范围。使用Promise异步回调。
 
@@ -760,12 +855,16 @@ updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: number[]): 
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------------ | ---------- | ---- | ------------------------ |
 | templateId | Uint8Array | 是 | 目标模板ID。 |
-| enabledBusinessIds | number[] | 是 | 模板支持的业务ID集合。 |
+| enabledBusinessIds | ArkTS-Dyn: number[]<br />ArkTS-Sta: int[] | 是 | 模板支持的业务ID集合。 |
 
 **返回值：**
 

@@ -17,6 +17,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -50,7 +51,13 @@ UserAuthIcon({
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -60,14 +67,44 @@ UserAuthIcon({
 | widgetParam    | [userAuth.WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | 是   | 用户认证界面配置相关参数。                                      |
 | iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | 否   | 设置icon的高度，宽高比1:1，默认64fp，不支持百分比字符串。              |
 | iconColor      | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | 否   | 设置icon的颜色，默认值：$r('sys.color.ohos_id_color_activated')。|
-| onIconClick    | ()=>void                                                      | 否   | 用户点击icon回调接口。                                         |
-| onAuthResult   | (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void| 是   | 用户认证结果信息回调接口。<br>应用需要申请`ohos.permission.ACCESS_BIOMETRIC`权限，否则应用将仅展示图标，无法正常拉起身份认证控件。  |
+| onIconClick    | ArkTS-Dyn: ()=>void <br> ArkTS-Sta: [ClickCallbackFunc](#clickcallbackfunc23)       | 否   | 用户点击icon回调接口。                                         |
+| onAuthResult   | ArkTS-Dyn: (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void <br> ArkTS-Sta: [userAuth.AuthCallbackOnResultFunc](js-apis-useriam-userauth.md#AuthCallbackOnResultFunc23)      | 是   | 用户认证结果信息回调接口。<br>应用需要申请`ohos.permission.ACCESS_BIOMETRIC`权限，否则应用将仅展示图标，无法正常拉起身份认证控件。  |
+
+### build<sup>23+</sup>
+
+build(): void
+
+用于创建UserAuthIcon对象的构造函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
 
 ## 事件
 
 不支持通用事件。
 
+## ClickCallbackFunc<sup>23+</sup>
+
+type ClickCallbackFunc = () => void
+
+回调函数，用户点击后通过该方法通知应用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
+
 ## 示例
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -87,6 +124,49 @@ struct Index {
   widgetParam: userAuth.WidgetParam = {
     title: '请进行身份认证'
   };
+
+  build() {
+    Row() {
+      Column() {
+        UserAuthIcon({
+          authParam: this.authParam,
+          widgetParam: this.widgetParam,
+          iconHeight: 200,
+          iconColor: Color.Blue,
+          onIconClick: () => {
+            console.info('The user clicked the icon.');
+          },
+          onAuthResult: (result: userAuth.UserAuthResult) => {
+            console.info(`Get user auth result, result = ${result.result}`);
+          }
+        })
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import userAuth from '@ohos.userIAM.userAuth';
+import UserAuthIcon from '@ohos.userIAM.userAuthIcon';
+
+@Entry
+@Component
+struct Index {
+  rand: cryptoFramework.Random = cryptoFramework.createRandom();
+  len: int = 16;
+  randData: Uint8Array = this.rand.generateRandomSync(this.len).data;
+  authParam: userAuth.AuthParam = {
+    challenge: this.randData,
+    authType: [userAuth.UserAuthType.FACE, userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3
+  } as userAuth.AuthParam;
+  widgetParam: userAuth.WidgetParam = {
+    title: '请进行身份认证'
+  } as userAuth.WidgetParam;
 
   build() {
     Row() {
