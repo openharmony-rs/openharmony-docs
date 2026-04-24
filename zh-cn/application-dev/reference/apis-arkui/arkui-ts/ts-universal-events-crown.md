@@ -46,7 +46,7 @@ ArkTS-Sta: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt; | 
 **参数：** 
 | 参数名      | 类型                             | 必填     | 说明                                      |
 | ---------- | -------------------------------- | ------- | ----------------------------------------- |
-| handler      | ArkTS-Dyn: Optional&lt;Callback&lt;[CrownEvent](#crownevent对象说明)&gt;&gt; <br/>ArkTS-Sta: Callback&lt;[CrownEvent](#crownevent对象说明)&gt; \|&nbsp;undefined | 是       | 获得[CrownEvent](#crownevent对象说明)对象。   |
+| handler      | ArkTS-Dyn: Optional&lt;Callback&lt;[CrownEvent](#crownevent对象说明)&gt;&gt; <br/>ArkTS-Sta: Callback&lt;[CrownEvent](#crownevent对象说明)&gt; \|&nbsp;undefined | 是       | 获得[CrownEvent](#crownevent对象说明)对象。<br/>传入undefined时无效果。   |
 
 
 **返回值：**
