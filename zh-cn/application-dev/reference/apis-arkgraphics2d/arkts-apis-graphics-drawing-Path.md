@@ -1605,7 +1605,7 @@ if(path.buildFromSvgString(svgStr)) {
 }
 ```
 
-## convertToSvgString<sup>26+</sup>
+## convertToSvgString
 
 convertToSvgString(): string
 
@@ -1638,7 +1638,7 @@ let svgString = path.convertToSvgString();
 console.info("svgString: ", svgString);
 ```
 
-## getPointData<sup>26+</sup>
+## getPointData
 
 getPointData(): Array<common2D.Point>
 
@@ -1683,7 +1683,7 @@ console.info("pointData[0].x: ", pointData[0].x);
 console.info("pointData[0].y: ", pointData[0].y);
 ```
 
-## getVerbData<sup>26+</sup>
+## getVerbData
 
 getVerbData(): Array\<PathIteratorVerb\>
 
@@ -1728,7 +1728,7 @@ console.info("verbData[0]: ", verbData[0]);
 console.info("verbData[1]: ", verbData[1]);
 ```
 
-## getConicWeightData<sup>26+</sup>
+## getConicWeightData
 
 ArkTS-Dyn: getConicWeightData(): Array\<number\>
 
@@ -2048,7 +2048,7 @@ path.toggleInverseFillType();
 console.info("path fillType = ", path.getFillType());
 ```
 
-## getLastPoint<sup>26+</sup>
+## getLastPoint
 
 getLastPoint(): common2D.Point | undefined
 
@@ -2058,9 +2058,9 @@ getLastPoint(): common2D.Point | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
