@@ -912,3 +912,108 @@ struct Index {
 }
 
 ```
+## UI并行化创建组件树接口ParallelizeUI如何确保多线程读写安全(API 23)
+
+ParallelizeUI通过在非UI线程并行创建UI组件树来提升性能。由于此特性，开发者需要特别注意多线程环境下的数据读写安全问题。
+
+**解决措施**
+
+1. 需要依赖外部的状态变量更新UI，请使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)通过状态变量或非状态变量来构造用于并行创建UI的参数。
+
+    ```ts
+    // ArkTS-Sta示例
+    import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+    class Param {
+      str: string;
+      constructor(str: string) {
+        this.str = str;
+      }
+    }
+
+    @Entry
+    @Component
+    struct Index {
+      @State str: string = 'Hello';
+      build() {
+        Column() {
+          // 使用ParallelizeUI<T>传递外部状态变量来构造参数
+          ParallelizeUI<Param>(undefined, () => { return new Param(this.str); }, (param: Param) => {
+            Text(param.str)
+              .fontSize(50)
+          })
+          Text('World')
+            .fontSize(50)
+        }.height('100%')
+        .width('100%')
+      }
+    }
+    ```
+
+2. 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。例如并发哈希表、并发集合、异步锁和阻塞队列等。如下示例展示了使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全。
+
+    ```ts
+    // ArkTS-Sta示例
+    import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+    import { State } from '@ohos.arkui.stateManagement';
+    import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+    @Entry
+    @Component
+    struct Index {
+      build() {
+        Column() {
+          // 使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全
+          let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
+          concurrentHashMap.set(1, "one");
+          concurrentHashMap.set(2, "two");
+          ParallelizeUI(undefined) {
+            let val_0 = concurrentHashMap.get(1); // "one"
+            let val_1 = concurrentHashMap.get(2); // "two"
+            Text(val_0)
+              .fontSize(50)
+          }
+        }.height('100%')
+        .width('100%')
+      }
+    }
+    ```
+
+3. 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全，例如[ArkTS共享容器](../arkts-utils/arkts-collections-introduction.md)和[异步锁](../arkts-utils/arkts-async-lock-introduction.md)等。如下示例展示了使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全。
+
+   ```ts
+   // ArkTS-Sta示例
+   import { Entry, Text, Column, Component } from '@ohos.arkui.component';
+   import { State } from '@ohos.arkui.stateManagement';
+   import { ParallelizeUI } from '@ohos.arkui.Parallelize';
+
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Column() {
+         // 使用ConcurrentHashMap并发容器来确保多线程环境下的数据读写安全
+         let concurrentHashMap = new containers.ConcurrentHashMap<number, string>();
+         concurrentHashMap.set(1, "one");
+         concurrentHashMap.set(2, "two");
+         ParallelizeUI(undefined) {
+           let val_0 = concurrentHashMap.get(1); // "one"
+           let val_1 = concurrentHashMap.get(2); // "two"
+           Text(val_0)
+             .fontSize(50)
+         }
+       }.height('100%')
+       .width('100%')
+     }
+   }
+   ```
+
+## 如何解决List&Grid并行创建子组件显示时间延后的问题(API 23)
+
+**解决措施**
+
+如果List&Grid的列表结构复杂、每个列表项包含组件较多，会因嵌套层级较深导致组件负载加重、绘制耗时增长。List&Grid并行化创建子组件的方案本质是基于分帧并行的实现，通过将主线程内原本要创建的全部组件拆分到子线程并行创建，解决在转场或列表滑动时，列表项需一次性创建全部组件的性能问题。
+
+List&Grid使用并行化加载子组件时，子组件在子线程创建完成后，需要在主线程完成挂载及显示。在此过程中应避免在主线程插入长时任务，否则会导致List&Grid的子组件显示时间延后，造成页面整体完成时间延迟。

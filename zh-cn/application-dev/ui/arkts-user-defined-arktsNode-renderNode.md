@@ -118,7 +118,7 @@ RenderNode中可以设置渲染相关的属性，包括：[backgroundColor](../r
 > 
 > - 若未传入参数或者传入参数为非法值则查询获得的为默认值。
 >
-> - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中具体属性设置是由状态管理实现的，属性更新的时序开发者不可控，BuilderNode和FrameNode中同时设置RenderNode属性可能会导致RenderNode属性设置与预期不相符。
+> - 不建议对[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)中的RenderNode进行修改操作。BuilderNode中具体属性设置是由状态管理实现的，属性更新的时序开发者不可控，BuilderNode和FrameNode中同时设置RenderNode属性可能会导致RenderNode属性设置与预期不相符。
 
 <!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
 
@@ -593,7 +593,7 @@ export struct CustomDrawCanvas {
 
 **Node-API调用示例：**
 
-C++侧可通过Node-API来获取Canvas，并进行后续的自定义绘制操作。
+C++侧可通过Node-API来获取[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)，并进行后续的自定义绘制操作。完整代码请参考[配套示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode)。
 
 <!-- @[native_bridge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/NativeBridge.cpp) -->
 
@@ -766,7 +766,7 @@ export struct CustomDrawCanvasNative {
 
 ## 设置标签
 
-开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，这有助于在节点Inspector中更清晰地区分各节点。
+开发者可利用[label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12)接口向RenderNode设置标签信息，这有助于在节点[inspector](./arkts-inspector-overview.md)中更清晰地区分各节点。
 
 <!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
 

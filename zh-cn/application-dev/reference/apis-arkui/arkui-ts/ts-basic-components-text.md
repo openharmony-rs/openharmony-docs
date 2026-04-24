@@ -74,6 +74,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | fontStyle | 设置字体样式。 |
 | fontWeight | 设置文本的字体粗细。 |
 | fontWeight<sup>12+</sup> | 设置文本字重，支持设置字体配置项。 |
+| fontVariations | 设置可变字体属性。 |
 | letterSpacing | 设置文本字符间距。 |
 | shaderStyle<sup>20+</sup> | 设置文本渐变或纯色效果。 |
 | textCase | 设置文本大小写。 |
@@ -765,6 +766,28 @@ fontWeight(weight: int | FontWeight | ResourceStr | undefined, options?: FontSet
 | weight  | int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>Wearable设备上默认值为：FontWeight.Regular <br>从API version 20开始，支持Resource类型。 |
 | options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明)&nbsp;\|&nbsp;undefined | 否   | 字体设置选项。 |
 
+### fontVariations
+
+ArkTS-Dyn: fontVariations(fontVariations: Array&lt;FontVariation&gt;)
+
+ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined)
+
+设置可变字体的属性。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 参数名 | 类型                                          | 必填 | 说明                                          |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| fontVariations | ArkTS-Dyn: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; <br/>ArkTS-Sta: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; \| undefined | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。<br/>设置为undefined时的效果等同于未设置fontVariations属性时的效果。<br/>fontVariations属性的优先级高于[fontWeight](#fontweight12)。 |
+
 ### halfLeading<sup>12+</sup>
 
 ArkTS-Dyn: halfLeading(halfLeading: boolean)
@@ -891,7 +914,7 @@ ArkTS-Sta: lineHeightMultiple(value: double | undefined)
 
 >  **说明：**
 >  
->  当和[lineHeight](ts-basic-components-text.md#lineheight)同时设置时，仅lineHeightMultiple生效。
+>  当lineHeightMultiple使用有效值和[lineHeight](ts-basic-components-text.md#lineheight)或[lineSpacing](ts-basic-components-text.md#linespacing12)同时设置时，仅lineHeightMultiple生效。lineHeightMultiple小于0时，lineHeightMultiple不生效，使用[lineHeight](ts-basic-components-text.md#lineheight)和[lineSpacing](ts-basic-components-text.md#linespacing12)设置行高和行间距。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -903,7 +926,7 @@ ArkTS-Sta: lineHeightMultiple(value: double | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 使用倍数行高的倍数数值。<br>取值范围：不小于0。<br/>设置的值不大于0时按0处理，设置为0时，使用默认行高高度，支持小数输入。<br/>值为undefined时，使用默认行高高度。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 使用行高的倍数数值。<br>取值范围：[0, +∞)<br/>**说明：**<br/>- 设置的值小于0时，lineHeightMultiple不生效。<br/>- 设置的值等于0时，等效于设置为1，表现为行高没有变化。<br/>- 支持小数输入。<br/>- 值为undefined时，使用默认行高高度。 |
 
 ### lineSpacing<sup>12+</sup>
 
@@ -3563,3 +3586,59 @@ struct TextExample {
 该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textOrphanCharOptimization](figures/textOrphanCharOptimization.png)
+
+### 示例29（设置可变字体的属性）
+
+该示例通过[fontVariations](#fontvariations)接口设置可变字体的属性。
+
+从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text('Hello World !')
+        // wght代表可变字体的字重属性
+        .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text('Hello World !')
+        // wght代表可变字体的字重属性
+        .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
+![textFontVariations](figures/FontVariations.gif)
