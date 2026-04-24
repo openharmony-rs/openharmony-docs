@@ -1,4 +1,4 @@
-# 使用Taihe进行overload相关开发
+# 使用Taihe进行重载相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanzixuan330-->
@@ -24,7 +24,7 @@ function sum_two(a: i32, b: i32): i32;
 function sum_arr(a: Array<i32>): i32;
 ```
 
-重载的注解如上述样例所示，使用`@rename("{sts_name}")` 。
+重载的注解如上述样例所示，使用`@rename("{sts_name}")`。
 
 使用该注解后，实现侧的函数名仍为Taihe IDL文件声明的函数名。
 
