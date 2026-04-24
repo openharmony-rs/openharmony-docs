@@ -1825,7 +1825,9 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 
 | 名称          | 类型                               | 只读  | 可选  | 说明                |
@@ -1961,7 +1963,7 @@ ArkTS-Dyn: flush(callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：**  11
+**ArkTS-Dyn起始版本：**  9
 
 **ArkTS-Sta起始版本：**  23
 
@@ -2277,7 +2279,7 @@ type HttpProxy = connection.HttpProxy
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：**  12
+**ArkTS-Dyn起始版本：**  10
 
 **ArkTS-Sta起始版本：**  23
 
