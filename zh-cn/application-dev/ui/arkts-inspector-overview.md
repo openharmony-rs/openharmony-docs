@@ -53,7 +53,6 @@ struct ComponentPage {
         .id('TEXT')
       Button('content').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
-        // 获取组件树中包含content属性的组件信息
         let inspectorStr = uiContext.getFilteredInspectorTree(['content']);
         hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr));
@@ -61,7 +60,6 @@ struct ComponentPage {
       })
       Button('isLayoutInspector').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
-        // 获取组件树中包含isLayoutInspector属性的组件信息
         let inspectorStr = uiContext.getFilteredInspectorTree(['isLayoutInspector']);
         hilog.info(0x0000,`InsTree : ${inspectorStr}`, 'InsTree');
         inspectorStr = JSON.stringify(JSON.parse(inspectorStr).content);
@@ -70,7 +68,6 @@ struct ComponentPage {
       Button('getFilteredInspectorTreeById').onClick(() => {
         const uiContext: UIContext = this.getUIContext();
         try {
-          // 根据组件id获取指定组件及其子组件的属性
           let inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['id', 'src']);
           hilog.info(0x0000,`result1: ${inspectorStr}`, 'result1');
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
@@ -121,7 +118,6 @@ struct ImageExample {
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  // 创建组件观察者，监听指定id组件的布局和绘制事件
   listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
   listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
 
@@ -142,7 +138,6 @@ struct ImageExample {
     let offFuncDraw = onDrawComplete; // 绑定当前js对象
     let offFuncDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
 
-    // 注册布局完成、绘制完成、子组件绘制完成回调
     this.listenerForImage.on('layout', funcLayout);
     this.listenerForImage.on('draw', funcDraw);
     this.listenerForRow.on('drawChildren', funcDrawChildren);
@@ -179,17 +174,14 @@ struct ComponentPage {
           hilog.info(0x0000,`Text is clicked`, 'isClicked');
         })
       Button('getInspectorByKey').onClick(() => {
-        // 获取指定id的组件的所有属性
         let result = getInspectorByKey('TEXT');
         hilog.info(0x0000,`result is ${result}`, 'result');
       })
       Button('getInspectorTree').onClick(() => {
-        // 获取组件树及组件属性
         let result = getInspectorTree();
         hilog.info(0x0000,`result is ${JSON.stringify(result)}`, 'result');
       })
       Button('sendEventByKey').onClick(() => {
-        // 给指定id的组件发送事件
         sendEventByKey('TEXT', 10, '');
       })
     }
