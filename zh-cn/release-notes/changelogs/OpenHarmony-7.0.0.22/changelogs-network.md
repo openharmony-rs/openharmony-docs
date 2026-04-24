@@ -8,7 +8,7 @@
 
 **变更原因**
 
-getUidRxBytes、getUidTxBytes 接口需要添加权限管控。
+getUidRxBytes、getUidTxBytes接口需要添加权限管控。
 
 **变更影响**
 
