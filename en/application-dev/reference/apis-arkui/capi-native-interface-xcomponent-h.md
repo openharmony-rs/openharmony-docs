@@ -60,7 +60,7 @@ Declares the APIs for accessing Native XComponent features.
  	  	 
 | Name| Description|
 | -------- | -------- |
-| OH_NATIVE_XCOMPONENT_OBJ ("__NATIVE_XCOMPONENT_OBJ__") | Native **XComponent** instance.|
+| OH_NATIVE_XCOMPONENT_OBJ ("\_\_NATIVE_XCOMPONENT_OBJ\_\_") | Native **XComponent** instance.|
 | OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | Maximum number of identifiable touch points in a touch event.|
 
 ### Functions
