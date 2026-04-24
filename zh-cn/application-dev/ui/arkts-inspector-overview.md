@@ -97,6 +97,8 @@ struct ComponentPage {
 
 下述示例，展示了布局回调的基本用法。
 
+ArkTS1.1示例：
+
 <!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
 
 ``` TypeScript
@@ -211,6 +213,8 @@ struct ImageExample {
 - [sendEventByKey](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#sendeventbykey9)，给指定id的组件发送事件。
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
+
+ArkTS1.1示例：
 
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
