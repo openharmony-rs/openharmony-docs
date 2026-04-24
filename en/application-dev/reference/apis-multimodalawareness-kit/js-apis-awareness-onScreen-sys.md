@@ -121,12 +121,12 @@ Defines onscreen awareness capabilities (including but not limited to awareness 
 | capList   | string[] | No  | Yes  | Capability list, including the capabilities for obtaining page content, page link, and text selection information. The following table describes the specific capabilities.|
 | groupId | string | No| Yes| Service group ID. A group of capabilities preset based on service scenarios. Service scenarios can be subscribed to in a unified manner. The following table describes the specific group IDs.|
 
-**Parameter constraints**:<br>
+Parameter restrictions:<br>
 You can use the on-screen awareness feature through **capList** or **groupId**.
 * Logical relationship: **capList** and **groupId** are mutually supplementary and mandatory. At least one of them must be provided and cannot be empty.<br>
 * Verification rule: When the API is called, the system checks **capList** and **groupId** separately.<br>
 * Capability list: Use the on-screen awareness feature by **capList** or **groupId**. The definitions are as follows.
-  * List of supported capabilities by **capList**<br>
+  * Capabilities supported by capList<br>
 
     |Capability|**Function**|
     | ---- | ------ |
@@ -138,7 +138,7 @@ You can use the on-screen awareness feature through **capList** or **groupId**.
     |JumpContext|Highlights and jumps to a specified context.|
     |QuickSnap|Obtains the information about a single snapshot.<br> **Usage specifications**: This capability is used only in the **trigger** API. It takes effect only when **capList** is set to **QuickSnap**. For other APIs, error code 401 is returned.|
 
-  * Capabilities supported by **groupId**<br>
+  * Capabilities supported by groupId<br>
   
     |Capability|Sub-capability|**Function**|
     | ---- | ------ | ------|
@@ -193,7 +193,7 @@ Provides page information, which includes:
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| itemInfo   | Record<string, Object> | No  | No  | Entity information of the awareness result, including the content, links, screenshots, and other entity information.|
+| itemInfo   | Record<string, Object> | Yes  | No  | Entity information of the awareness result, including the content, links, screenshots, and other entity information.|
 
 ## EntityInfo<sup>23+</sup>
 
@@ -205,8 +205,8 @@ Provides entity information perceived, including content, links, images, and oth
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| entityName   | string | No  | No  | Name of the perceived entity, which is fixed.|
-| entityInfo   | Record<string, Object> | No  | No  | Entity information of the awareness result, including the content, links, images, and other entity information.|
+| entityName   | string | Yes  | No  | Name of the perceived entity, which is fixed.|
+| entityInfo   | Record<string, Object> | Yes  | No  | Entity information of the awareness result, including the content, links, images, and other entity information.|
 
 ## OnscreenAwarenessInfo<sup>23+</sup>
 
@@ -218,23 +218,23 @@ Returns the list of onscreen awareness information.
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| resultCode  | number | No  | No  | Return code. The default value **0** indicates success.|
-| timestamp   | number | No  | No  | Timestamp for accessing a specified page.|
-| uid   | string | No  | Yes  | Application UID.|
-| bundleName  | string | No  | Yes  | Application bundle name.|
-| appName  | string | No  | Yes  | Application name.|
-| miniProgramId | string | No  | Yes  | Applet ID, for example, the ID of WeChat or Alipay.|
-| miniProgramName | string | No  | Yes | Name of a third-party mini program.|
-| appIndex   | number | No  | Yes  | Application index.|
-| pageId     | string | No  | Yes  | Application page ID.|
-| sampleId   | string | No  | Yes  | Collection record ID.|
-| collectStrategy   | number | No  | Yes  | Page collection policy, which is the bitwise OR operation combination of [CollectStrategy](#collectstrategy23).|
-| displayId   | number | No  | Yes  | Display ID.|
-| windowId    | number | No  | Yes  | Window ID.|
-| languageInfo | string | No| Yes| Page language information.|
-| pageTags | string[] | No| Yes| Page tag information.|
-| items  | [AwarenessItem](#awarenessitem23)[] | No  | Yes  | Data item information.|
-| entityInfo  | [EntityInfo](#entityinfo23)[] | No  | Yes  | Entity information.|
+| resultCode  | number | Yes  | No  | Return code. The default value **0** indicates success.|
+| timestamp   | number | Yes  | No  | Timestamp for accessing a specified page.|
+| uid   | string | Yes   | Yes  | Application UID.|
+| bundleName  | string | Yes   | Yes  | Application bundle name.|
+| appName  | string | Yes   | Yes  | Application name.|
+| miniProgramId | string |Yes   | Yes  | Applet ID, for example, the ID of WeChat or Alipay.|
+| miniProgramName | string | Yes   | Yes | Name of a third-party mini program.|
+| appIndex   | number | Yes   | Yes  | Application index.|
+| pageId     | string | Yes  | Yes  | Application page ID.|
+| sampleId   | string | Yes   | Yes  | Collection record ID.|
+| collectStrategy   | number | Yes   | Yes  | Page collection policy, which is the bitwise OR operation combination of [CollectStrategy](#collectstrategy23).|
+| displayId   | number | Yes   | Yes  | Display ID.|
+| windowId    | number | Yes   | Yes  | Window ID.|
+| languageInfo | string | Yes | Yes| Page language information.|
+| pageTags | string[] | Yes | Yes| Page tag information.|
+| items  | [AwarenessItem](#awarenessitem23)[] | Yes   | Yes  | Data item information.|
+| entityInfo  | [EntityInfo](#entityinfo23)[] | Yes   | Yes  | Entity information.|
 
 ## ReadingScreenPermissionStatus<sup>23+</sup>
 
@@ -246,8 +246,8 @@ Returns the status of the permission for reading screen information.
 
 | Name| Type  | Read-Only| Optional| Description                                    |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| readingState  | number | No  | No  | Whether screen reading is allowed.<br>**0**: no<br>**1**: yes|
-| readingCode   | number | No  | No  | If the screen information cannot be read, the corresponding status code will be returned.|
+| readingState  | number | Yes   | No  | Whether screen reading is allowed.<br>**0**: no<br>**1**: yes|
+| readingCode   | number | Yes   | Yes  | If the screen information cannot be read, the corresponding status code will be returned.|
 
 
 ## onScreen.getPageContent
@@ -448,7 +448,7 @@ Disables proactive awareness on screen content and unsubscribes from a screen aw
 | Name  | Type                            | Mandatory| Description              |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list.|
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Yes  | Callback to unregister. If this parameter is not passed, all callbacks of the awareness capability are unregistered. The returned onscreen awareness information list **OnscreenAwarenessInfo[]** contains a maximum of two awareness information items.|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | No  | Callback to unregister. If this parameter is not passed, all callbacks of the awareness capability are unregistered. The returned onscreen awareness information list **OnscreenAwarenessInfo[]** contains a maximum of two awareness information items.|
 
 **Error codes**
 
@@ -558,7 +558,7 @@ Proactively triggers screen content awareness to obtain page information.
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
 
-**capList** capabilities supported by the **capture** API
+capList capabilities supported by the capture API
 |capList Capability|**Function**|
 | ---- | ------ |
 |UiImage|Obtains the information about sub-images on a page.|
@@ -618,7 +618,7 @@ Proactively triggers screen behavior interaction to identify screen behaviors an
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
 
-**capList** capabilities supported by the **interact** API
+capList capabilities supported by the interact API
 |capList Capability|**Function**|
 | ---- | ------ |
 |JumpContext|Highlights and jumps to a specified context.|
@@ -688,7 +688,7 @@ Proactively triggers screen content awareness to obtain the screen content for s
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | Yes  | Onscreen awareness capability list. For details, see the following supported capability list.|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| No  | Onscreen awareness parameter list.|
 
-**groupId** capabilities supported by the **apperceive** API
+groupId capabilities supported by the apperceive API
 |groupId Capability|Sub-capability|**Function**|
 | ---- | ------ | ------|
 |SmartEdge|Acticle|Obtains the information about awareness in a reading scenario.|
@@ -789,7 +789,7 @@ Disables the screen content access permission monitoring.
 
 | Name  | Type                            | Mandatory| Description              |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | Yes  | Callback to unregister. If this parameter is not passed, all callbacks of the event are unregistered.|
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | No  | Callback to unregister. If this parameter is not passed, all callbacks of the event are unregistered.|
 
 **Error codes**
 

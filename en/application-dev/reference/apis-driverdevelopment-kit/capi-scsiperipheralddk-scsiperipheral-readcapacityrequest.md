@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_ReadCapacityRequest {...} ScsiPeripheral_ReadCapac
 
 ## Overview
 
-Request structure of the **read capacity** command.
+Defines the request structure of the **read capacity** command.
 
 **Since**: 18
 

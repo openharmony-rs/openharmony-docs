@@ -1132,7 +1132,7 @@ Allow an application to use the accessory connection service for pairing and aut
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 26.0.0
+**Since**: 24
 
 ## ohos.permission.CHECK_CALL_LOG
 
@@ -1201,5 +1201,33 @@ Allows an application to use float views.
 **Authorization mode**: user_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets 
+
+**Since**: 26.0.0
+
+## ohos.permission.GET_CALL_TRANSFER_INFO
+
+Allows an application to get call forwarding status.
+
+<!--RP80--><!--RP80End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.kernel.AS_LDK_DRIVER
+
+Allows an application to install the PCIe driver.
+
+<!--RP77--><!--RP77End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0

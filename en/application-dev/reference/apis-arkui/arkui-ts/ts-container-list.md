@@ -19,7 +19,7 @@ Lazy loading of **List** loads the child components in the visible area as requi
 
 If a scrollable component is nested in a **List** component, their scrolling directions are the same, and the main axis size is not set for the **List** component, the **List** component loads all child components. As a result, lazy loading does not take effect. In this scenario, you are advised to use the [ListItemGroup](ts-container-listitemgroup.md) component to optimize the performance.
 
-Preloading in **List** refers to loading not only the child components within the visible area but also some invisible child components outside the visible area during idle time. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when lazy loading is used. You can set the number of components to be preloaded for the **List** component using [cachedCount](#cachedcount). By default, child components equivalent to one screen above and below the visible area are preloaded (up to a maximum of 16 rows). The preloading capabilities vary when the **List** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+Preloading in **List** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when lazy loading is used. You can set the number of components to be preloaded for the **List** component using [cachedCount](#cachedcount). By default, child components equivalent to one screen above and below the visible area are preloaded (up to a maximum of 16 rows). The preloading capabilities vary when the **List** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
 
  - When the **List** component is used together with **ForEach** and **cachedCount** is set, in addition to laying out child components within the visible area, child components within the range of **cachedCount** outside the visible area are pre-laid out during idle time.
 
@@ -91,6 +91,7 @@ Defines the options of the **List** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | Name      | Type                                   | Read-Only| Optional| Description                                                    |
 | ------------ | ------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | initialIndex<sup>7+</sup> | number | No| Yes| Index of the item to be displayed at the start when the list is initially loaded.<br>Default value: **0**<br>**NOTE**<br>If the set value is a negative number or is greater than the index of the last item in the list, the value is invalid. In this case, the default value will be used.<br>Since API version 14, if the **scrollToIndex** or **scrollEdge** API without animation in **Scroller** is called after the **List** component is created but before its first layout (for example, in the [onAttach](ts-universal-events-show-hide.md#onattach12) event of the **List** component), the value will override the value of **initialIndex**.<br>After **initialIndex** is set, the list starts layout from the child component corresponding to **initialIndex**. The child components before **initialIndex** are not involved in layout and the exact size cannot be calculated. Therefore, the total scroll offset of the list obtained through the [currentOffset](ts-container-scroll.md#currentoffset) API is estimated and may have errors. You can set [childrenMainSize](#childrenmainsize12) to ensure the accuracy of the total scrolling offset of a list.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -145,7 +146,7 @@ When a list item has [polymorphic styles](ts-universal-attributes-polymorphic-st
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ListDividerOptions](#listdivideroptions18) \|&nbsp;null | Yes  | Style of the divider for the list items.<br>Default value: **null**|
+| value  | [ListDividerOptions](#listdivideroptions18) \|&nbsp;null| Yes  | Style of the divider for the list items.<br>Default value: **null**|
 
 ### scrollBar
 
@@ -242,7 +243,7 @@ Default behavior: The **count** parameter is of the **number** type by default, 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22) | Yes  | Number of preloaded **ListItem** components if the parameter is of the **number** type.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum preloading range.|
+| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22)| Yes  | Number of preloaded **ListItem** components if the parameter is of the **number** type.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum preloading range.|
 | show  | boolean | Yes  | Whether to display the preloaded list items.<br>**true**: yes<br>**false**: no|
 
 ### edgeEffect
@@ -750,7 +751,7 @@ Enumerates the alignment modes of list items when scrolling ends.
 
 ## ScrollSnapAnimationSpeed<sup>22+</sup>
 
-Enumerates speeds of the snap animation for list scrolling.
+Enumerates the speeds of the snap animation for list scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -787,6 +788,7 @@ Defines the divider style of the list or list item group.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | Name    | Type    | Read-Only| Optional| Description                  |
 | ------- | -------- | ---- | -- | ---------------------- |
 | strokeWidth<sup>7+</sup> | [Length](ts-types.md#length) | No  | No| Width of the divider.<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number, a percentage, or a value greater than or equal to the length of the list content area, the value **0** will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -977,7 +979,7 @@ Automatic scrolling of the list cannot be triggered when a list item is dragged 
 
 | Name   | Type                                                     | Mandatory| Description                  |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
-| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | Yes  | Callback triggered when the dragging of a list item starts.<br> In API version 22 and earlier versions, the parameter type is (event: ItemDragInfo, itemIndex: number) => (() => any) \| void. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23).|
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | Yes  | Callback triggered when the dragging of a list item starts.<br> In API version 22 and earlier versions, the parameter type is **(event: ItemDragInfo, itemIndex: number) => (() => any) \| void**. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23).|
 
 ### onItemDragEnter<sup>8+</sup>
 
@@ -1295,7 +1297,7 @@ type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end:
 
 Triggered when a child component enters or leaves the list display area.
 
-If the values of **start** and **end** are both **-1**, the **List** component becomes empty.
+When the **List** component changes from having child components to being empty, the values of the reported **start** and **end** parameters remain the same as those when the component had child components last time.
 
 If the values of **start** and **end** are both **0**, the **List** component contains only one child component.
 

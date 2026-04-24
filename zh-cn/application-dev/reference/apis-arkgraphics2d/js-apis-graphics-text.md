@@ -1519,6 +1519,49 @@ struct Index {
 }
 ```
 
+### setParagraphCachesEnabled
+
+setParagraphCachesEnabled(enable: boolean): void
+
+设置是否启用排版段落缓存。排版段落缓存可以加速重复文本的排版速度，但会占用额外的内存。未调用此接口前，系统默认开启排版段落缓存。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                       |
+| ----- | ------- | ---- | ----------------------------------------- |
+| enable | boolean | 是   | 是否启用排版段落缓存。true表示启用，false表示禁用。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('启用段落缓存').onClick(() => {
+        text.FontCollection.getGlobalInstance().setParagraphCachesEnabled(true);
+      })
+      Button('禁用段落缓存').onClick(() => {
+        text.FontCollection.getGlobalInstance().setParagraphCachesEnabled(false);
+      })
+    }
+  }
+}
+```
+
+
+
 ## ParagraphStyle
 
 段落样式。
@@ -1544,6 +1587,9 @@ struct Index {
 | includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | orphanCharOptimization | boolean | 否 | 是 | 设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak)为非BREAK_ALL并且待排版文本首个[TextStyle](#textstyle)的[locale](#textstyle)为“zh-Hans”或“zh-Hant”时生效。true表示使能孤字优化，false表示不使能孤字优化，默认值为false。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| firstLineHeadIndent | number | 否 | 是 | 设置段落首行缩进，缩进值需大于等于0，默认值为0。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| tailIndents | Array\<number> | 否 | 是 | 设置行尾缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| headIndents | Array\<number> | 否 | 是 | 设置行首缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |
@@ -2412,6 +2458,44 @@ paragraph.updateDecoration({
   decorationStyle: text.TextDecorationStyle.WAVY,
   decorationThicknessScale: 2.0,
 });
+```
+
+### getVisibleTextRanges
+
+getVisibleTextRanges(): Array\<Range\>
+
+获取段落中在屏幕上可见的文本范围。不包含因最大行数（[ParagraphStyle](#paragraphstyle)的maxLines属性）截断或省略号模式（[EllipsisMode](#ellipsismode)）替换而未显示的文本。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                          | 说明          |
+| ----------------------------- | -------------- |
+| Array\<[Range](#range)\> | 段落可见文本范围数组，范围为UTF-16编码单元索引。|
+
+返回的范围取决于段落的具体截断情况（如是否设置最大行数或省略号等）：
+
+| 场景 | 说明 |
+| - | - |
+| 文本未被截断 | 范围包含全部已排版文本 |
+| 仅设置maxLines截断（未设置省略号） | 范围为实际显示的文本，即第一行至第maxLines行末尾的文本。 |
+| 尾部省略（[EllipsisMode.END](#ellipsismode)） | 范围为省略号之前的文本。 |
+| 头部省略（[EllipsisMode.START](#ellipsismode)） | 范围为省略号之后的文本。 |
+| 中部省略（[EllipsisMode.MIDDLE](#ellipsismode)） | 第一个范围为省略号之前的文本，第二个范围为省略号之后的文本。 |
+| 多行头部省略（[EllipsisMode.MULTILINE_START](#ellipsismode)） | 同中部省略，返回省略号前后的文本范围。 |
+| 多行中部省略（[EllipsisMode.MULTILINE_MIDDLE](#ellipsismode)） | 同中部省略，返回省略号前后的文本范围。 |
+
+**示例：**
+
+```ts
+let visibleRanges = paragraph.getVisibleTextRanges();
 ```
 
 ### getCharacterRangeForGlyphRange<sup>24+</sup>

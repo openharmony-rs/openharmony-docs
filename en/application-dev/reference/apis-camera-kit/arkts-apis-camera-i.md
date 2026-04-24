@@ -31,7 +31,7 @@ Describes the camera device information.
 | lensFocalLength<sup>24+</sup> | number | Yes| Yes| Actual focal length of the lens.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 | minimumFocusDistance<sup>24+</sup> | number | Yes| Yes| Minimum focus distance of the camera.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 | lensDistortion<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens distortion parameters.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens internal parameter calibration parameters.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens intrinsic calibration parameters.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 | sensorPhysicalSize<sup>24+</sup> | Array\<number\> | Yes| Yes| Physical dimensions (width and height) of the sensor.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 | sensorPixelArraySize<sup>24+</sup> | Array\<number\> | Yes| Yes| Pixel array dimensions (width and height, in pixels) of the sensor.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 | sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | Yes| Yes| Arrangement mode of the sensor color filter.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
@@ -85,7 +85,7 @@ Describes the frame rate range.
 
 | Name     | Type                         | Read-only| Optional| Description           |
 | -------- | ----------------------------- |----- |---| -------------- |
-| min      | number                        |  Yes | No| Minimum frame rate, in fps.     |
+| min      | number                        |  Yes | No| Minimum frame rate, in frames per second (fps).     |
 | max      | number                        |  Yes | No| Maximum frame rate, in fps.     |
 
 ## VideoProfile
@@ -98,7 +98,7 @@ Describes the video configuration information. It inherits from [Profile](#profi
 
 | Name                      | Type                                     | Read-only| Optional| Description       |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | Yes |  No | Frame rate range, in units of frames per second (FPS).|
+| frameRateRange            | [FrameRateRange](arkts-apis-camera-i.md#frameraterange)         | Yes |  No | Frame rate range, in fps.|
 
 ## CameraOutputCapability
 
@@ -180,8 +180,8 @@ Describes the geolocation information.
 
 | Name         | Type  | Read-only| Optional |Description        |
 | ------------ | ------ | ---- |-----|------------ |
-| latitude     | number |  No | No  |Latitude, in degrees, within the range [-90, 90].   |
-| longitude    | number |  No | No  |Longitude, in degrees, within the range [-180, 180].   |
+| latitude     | number |  No | No  |Latitude, in degrees, within the range [–90, 90].   |
+| longitude    | number |  No | No  |Longitude, in degrees, within the range [–180, 180].   |
 | altitude     | number |  No | No  |Altitude, in meters.   |
 
 ## PhotoCaptureSetting
@@ -235,7 +235,7 @@ Describes the capture start information.
 | Name      | Type   | Read-only| Optional| Description      |
 | ---------- | ------ | ---- | ---- | --------- |
 | captureId  | number | No  | No  | ID of this capture action.|
-| time       | number | No  | No  | Estimated duration when the sensor captures frames at the bottom layer in a single capture. If **–1** is reported, there is no estimated duration.   |
+| time       | number | No  | No  | Estimated duration when the sensor captures frames at the bottom layer in a single capture. If **-1** is reported, there is no estimated duration.   |
 
 ## CaptureEndInfo
 
@@ -306,7 +306,7 @@ Describes the smooth zoom information.
 
 | Name    | Type       |   Read-only  |   Optional  | Description      |
 | -------- | ---------- | -------- | -------- | ---------- |
-| duration |   number   |   No    |    No   | Total duration of smooth zoom, in ms.|
+| duration |   number   |   No    |    No   | Total duration of smooth zoom, in milliseconds.|
 
 ## ControlCenterStatusInfo<sup>20+</sup>
 

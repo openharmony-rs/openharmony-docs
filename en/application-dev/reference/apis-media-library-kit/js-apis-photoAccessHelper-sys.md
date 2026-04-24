@@ -2056,7 +2056,7 @@ Starts asynchronous asset analysis. This API uses an asynchronous callback to re
 
 | Name   | Type               | Mandatory| Description                                                        |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| config    | [AnalysisConfig](#analysisconfig24) | Yes  | Asset analysis configuration. The **uris** in the **config** parameter are obtained from the [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) object.|
+| config    | [AnalysisConfig](#analysisconfig24) | Yes  | Asset analysis configuration. The **uris** in the **config** parameter is obtained from the [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) object.|
 | callback  | Callback&lt;[AnalysisResult](#analysisresult24)&gt; | Yes  | Callback used to return the asset analysis result.|
 
 **Return value**
@@ -3879,7 +3879,7 @@ Checks whether the specified media data is ready.
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| mediaDataKey | string | Yes  | Media data type to be queried.<br>Currently, the **date_added_year** value is supported, indicating whether the adding time (year, month, and day) of the asset is ready.|
+| mediaDataKey | string | Yes  | Media data type to be checked.<br>Currently, the **date_added_year** value is supported, indicating whether the adding time (year, month, and day) of the asset is ready.|
 
 **Return value**
 
@@ -7265,6 +7265,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
 ### setEffectMode<sup>12+</sup>
 
 setEffectMode(mode: MovingPhotoEffectMode): void
@@ -12225,6 +12226,8 @@ Defines the key information about an image or video file.
 | DATE_ADDED_DAY<sup>24+</sup>   | 'date_added_day'  | Date when an asset is added.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | PACKAGE_NAME<sup>23+</sup> | 'package_name' | Package name of a file.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | PHOTO_RISK_STATUS<sup>23+</sup> | 'photo_risk_status' | Image risk control<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| THUMB_STATUS<sup>24+</sup>  | 'thumb_status' | Thumbnail status.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| LCD_FILE_SIZE<sup>24+</sup>  | 'lcd_file_size' | Size of the LCD image.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 
 
 ## AlbumKeys
@@ -13344,3 +13347,4 @@ Enumerates the states of a file memory link.
 | DEFAULT |  0 |  Whether the file has a memory link cannot be determined.|
 | HAS_NO_LINK |  1 |  The file does not have a memory link. |
 | HAS_LINK |  2 |  The file has a memory link. |
+

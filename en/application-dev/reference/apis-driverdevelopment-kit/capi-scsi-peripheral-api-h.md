@@ -34,9 +34,9 @@ Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device
 | [int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request,ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response)](#oh_scsiperipheral_inquiry) | Queries basic information about the SCSI device.|
 | [int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request,ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response)](#oh_scsiperipheral_readcapacity10) | Obtains the capacity information about the SCSI device.|
 | [int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeripheral_RequestSenseRequest *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_requestsense) | Obtains sense data, that is, information returned by the SCSI device to the host to report the device status, error information, and diagnosis information.|
-| [int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_read10) | Reads data from a specified logical block.|
-| [int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_write10) | Writes data to a specified logical block of a device.|
-| [int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_verify10) | Verifies a specified logical block.|
+| [int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_read10) | Reads data from the specified logical block(s).|
+| [int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_write10) | Writes data to the specified logical block(s) of a device.|
+| [int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_verify10) | Verifies the specified logical block(s).|
 | [int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPeripheral_Request *request,ScsiPeripheral_Response *response)](#oh_scsiperipheral_sendrequestbycdb) | Sends SCSI commands in CDB mode.|
 | [int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t size,ScsiPeripheral_DeviceMemMap **devMmap)](#oh_scsiperipheral_createdevicememmap) | Creates a buffer. To avoid resource leakage, use [OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap) to destroy a buffer after use.|
 | [int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap)](#oh_scsiperipheral_destroydevicememmap) | Destroys a buffer. To prevent resource leakage, destroy a buffer in time after use.|
@@ -266,7 +266,7 @@ int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORe
 
 **Description**
 
-Reads data from a specified logical block.
+Reads data from the specified logical block(s).
 
 **Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -295,7 +295,7 @@ int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IOR
 
 **Description**
 
-Writes data to a specified logical block of a device.
+Writes data to the specified logical block(s) of a device.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -324,7 +324,7 @@ int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_Ve
 
 **Description**
 
-Verifies a specified logical block.
+Verifies the specified logical block(s).
 
 **Required permissions**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 

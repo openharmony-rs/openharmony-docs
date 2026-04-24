@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_Device ScsiPeripheral_Device
 
 ## Overview
 
-Opaque SCSI device structure.
+Defines the opaque SCSI device structure.
 
 **Since**: 18
 

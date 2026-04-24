@@ -22,7 +22,7 @@ DSoftBus provides stable and reliable underlying channels for cross-device commu
 >
 > **Model restriction**: This API can be used only in the stage model.
 
-## Importing modules
+## Modules to Import
 
 ```js
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
