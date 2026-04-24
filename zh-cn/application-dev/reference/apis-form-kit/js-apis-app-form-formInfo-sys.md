@@ -408,4 +408,4 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
 
 | 名称        |  值   | 说明         |
 | ----------- | ---- | ------------ |
-| SHAKE | 1   | yaoy。 |
+| SHAKE | 1   | 摇一摇。 |
