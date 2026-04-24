@@ -41,17 +41,19 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+>**说明：** 
+>
+> - 分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
+>
+> - ArkTS-Dyn: @Prop、ArkTs-Sta: @PropRef装饰的属性为可选参数，仅当与@Require装饰器联合使用时，才必须在构造时传入对应参数。
+
 | 名称            | 类型                                      | 必填 | 装饰器类型  | 说明                                                         |
 | --------------- | --------------------------------------------- | ---- | ----------- | ------------------------------------------------------------ |
 | options         | [SegmentButtonOptions](#segmentbuttonoptions) | 是   | @ObjectLink | 分段按钮选项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | selectedIndexes | number[]                                      | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/>**说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onItemClicked<sup>13+</sup> | Callback\<number\> | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是 | @Prop | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| enableStateAnimation<sup>24+</sup>       | boolean   | 是 | @Prop| 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-
->**说明：** 
->
->分段按钮不支持[通用属性](ts-component-general-attributes.md)。分段按钮使用当前区域可使用的最大宽度作为组件宽度，并且根据按钮个数平均分配每个按钮宽度；分段按钮高度根据按钮内容（文本及图片）自动适应，其最小高度为28vp。
+| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |
+| enableStateAnimation<sup>24+</sup>       | boolean   | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
 
 ## SegmentButtonOptions
 
@@ -1233,6 +1235,8 @@ struct Index {
 
 从API version 24开始，[SegmentButton](#segmentbutton-1)新增enableStateAnimation属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 import { SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions } from '@kit.ArkUI';
 
@@ -1267,6 +1271,91 @@ struct Index12 {
             .fontWeight(FontWeight.Bold)
 
           Row({ space: 10 }) {
+            Button('false')
+              .onClick(() => {
+                this.enableStateAnimationIndex = 0;
+              })
+
+            Button('true')
+              .onClick(() => {
+                this.enableStateAnimationIndex = 1;
+              })
+          }
+          .width('100%')
+          .justifyContent(FlexAlign.Center)
+          .margin({ bottom: 10 })
+
+          // enableStateAnimation为true时，切换选中项会触发按钮切换动画。enableStateAnimation为false时，动画仅在手动点击切换选中项时生效，非点击类操作修改选中项均无动画。
+          SegmentButton({
+            options: this.singleSelectTextCapsuleOptions,
+            selectedIndexes: this.textCapsuleSingleSelected,
+            enableStateAnimation: this.enableStateAnimation[this.enableStateAnimationIndex] // 开启属性动画。
+          })
+
+          Button('change selectedIndexes')
+            .onClick(() => {
+              // 对选中项的索引值进行自增操作，若超出最大索引则重置为0。
+              this.currentSelectedIndex = this.currentSelectedIndex < 2 ? this.currentSelectedIndex + 1 : 0;
+              this.textCapsuleSingleSelected = [this.currentSelectedIndex];
+            })
+        }.width('90%')
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Row,
+  RowOptions,
+  Column,
+  ColumnOptions,
+  Button,
+  FontWeight,
+  State,
+  SegmentButton,
+  SegmentButtonOptions,
+  SegmentButtonItemTuple,
+  Text,
+  FlexAlign
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index12 {
+  @State singleSelectTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [
+      { text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }
+    ] as SegmentButtonItemTuple,
+    multiply: false
+  });
+
+  @State textCapsuleSingleSelected: Int[] = [0]; // 单选按钮的选中索引值，默认选中第一个。
+
+  enableStateAnimation: boolean[] = [false, true];
+  @State enableStateAnimationIndex: Int = 0;
+  @State currentSelectedIndex: Int = 0; // 切换选中项的索引计数器。
+
+  build() {
+    Row() {
+      Column() {
+        Column({ space: 25 } as ColumnOptions) {
+          // 动画仅在手动点击切换选中项时生效，非点击类操作修改选中项均无动画。
+          SegmentButton({
+            options: this.singleSelectTextCapsuleOptions,
+            selectedIndexes: this.textCapsuleSingleSelected // 未开启属性动画。
+          })
+
+          Text('enableStateAnimation: ' + this.enableStateAnimation[this.enableStateAnimationIndex])
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+
+          Row({ space: 10 } as RowOptions) {
             Button('false')
               .onClick(() => {
                 this.enableStateAnimationIndex = 0;
