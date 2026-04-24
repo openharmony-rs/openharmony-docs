@@ -49471,7 +49471,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets",
 				"functions":[
 					{
-						"end_line":27,
+						"end_line":26,
 						"name":"specified_customized_ringtone_header",
 						"start_line":16
 					},
@@ -49496,9 +49496,9 @@
 						"start_line":102
 					},
 					{
-						"end_line":55,
+						"end_line":53,
 						"name":"specified_customized_ringtone_publish_notification",
-						"start_line":35
+						"start_line":33
 					}
 				]
 			}
