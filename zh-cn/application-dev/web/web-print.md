@@ -139,29 +139,29 @@ ArkTS-Dyn示例：
   <!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/WebPrint/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
 
 ArkTS-Sta示例：
-  ``` TypeScript
-  // xxx.ets
-  'use static'
-  import { $rawfile, Entry, Row, Column, Component, Web } from '@kit.ArkUI';
-  import { webview } from '@kit.ArkWeb';
+``` TypeScript
+// xxx.ets
+'use static'
+import { $rawfile, Entry, Row, Column, Component, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct Index {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-    build() {
-      Row() {
-        Column() {
-          Web({ src: $rawfile('print.html'), controller: this.controller })
-            .javaScriptAccess(true)
-        }
-        .width('100%')
+  build() {
+    Row() {
+      Column() {
+        Web({ src: $rawfile('print.html'), controller: this.controller })
+          .javaScriptAccess(true)
       }
-      .height('100%')
+      .width('100%')
     }
+    .height('100%')
   }
-  ```
+}
+```
 
 ## 通过调用应用侧接口拉起打印
 应用侧通过调用[createWebPrintDocumentAdapter](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebprintdocumentadapter11)创建打印适配器，通过将适配器传入打印的print接口调起打印。
