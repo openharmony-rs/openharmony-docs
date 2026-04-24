@@ -285,3 +285,61 @@ AlphabetIndexer变更前后的效果图：
      systemMaterial: uiMaterial.Material.empty
    });
    ```
+
+## cl.arkui.3 鼠标事件rawDeltaX和rawDeltaY的返回值变更
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+鼠标事件rawDeltaX和rawDeltaY的返回值的含义为鼠标设备在二维平面的物理移动偏移量，其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示，上报由鼠标硬件本身决定。当前实现返回值并非是原始移动数据，而是原始移动数据缩小了X倍，X为系统的显示大小比例。因此需要变更返回值使其符合本身的含义。
+
+**变更影响**
+
+此变更涉及应用适配。
+
+- 变更前：rawDeltaX和rawDeltaY的返回值并非鼠标硬件的原始移动数据，而是原始数据缩小了X倍，X为系统的显示大小比例。
+  
+- 变更后：rawDeltaX和rawDeltaY的返回值为鼠标硬件的原始移动数据。
+
+**起始API Level**
+
+15
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.20开始。
+
+**变更的接口/组件**
+
+[rawDeltaX](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)、[rawDeltaY](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)、[OH_ArkUI_MouseEvent_GetRawDeltaX](../../../application-dev/reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_mouseevent_getrawdeltax)和[OH_ArkUI_MouseEvent_GetRawDeltaY](../../../application-dev/reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_mouseevent_getrawdeltay)。
+
+**适配指导**
+
+开发者如果想要恢复变更前的效果，可以使用[px2vp](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#px2vp12)接口获取变更之前的值。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct MouseEventExample {
+  @State mouseText: string = '';
+
+  build() {
+    Column({ space: 20 }) {
+      Button('onMouse')
+        .width(180).height(80)
+        .fontSize(24)
+        .onMouse((event: MouseEvent): void => {
+          if (event) {
+            this.mouseText = 'rawDeltaX = ' + this.getUIContext().px2vp(event.rawDeltaX) +
+              '\nrawDeltaY = ' + this.getUIContext().px2vp(event.rawDeltaY);
+          }
+        })
+      Text(this.mouseText)
+    }.padding({ top: 30 }).width('100%')
+  }
+}
+```
