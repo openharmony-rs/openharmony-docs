@@ -945,11 +945,12 @@ struct NavigationContentMsgStack {
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) -->
+<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) --> 
 
 ``` TypeScript
 @Component
 struct LocalStorageLinkComponent {
+  // LocalStorage支持联合类型
   @LocalStorageLink('LinkA') linkA: number | null = null;
   @LocalStorageLink('LinkB') linkB: number | undefined = undefined;
 
@@ -1073,7 +1074,7 @@ struct Index {
 
 在下面的示例中，\@LocalStorageLink装饰的selectedDate类型为Date，点击Button改变selectedDate的值，UI会随之刷新。
 
-<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) -->
+<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1083,6 +1084,7 @@ struct LocalDateSample {
 
   build() {
     Column() {
+      // 更新Date类型变量，触发UI刷新
       Button('set selectedDate to 2023-07-08')
         .margin(10)
         .onClick(() => {
@@ -1121,7 +1123,7 @@ struct LocalDateSample {
 
 在下面的示例中，\@LocalStorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，UI会随之刷新。
 
-<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) -->
+<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1137,6 +1139,7 @@ struct LocalMapSample {
           Text(`${item[1]}`).fontSize(30)
           Divider()
         })
+        // 初始化Map类型变量，触发UI刷新
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
@@ -1168,7 +1171,7 @@ struct LocalMapSample {
 
 在下面的示例中，\@LocalStorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，UI会随之刷新。
 
-<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) -->
+<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1184,6 +1187,7 @@ struct LocalSetSample {
             .fontSize(30)
           Divider()
         })
+        // 初始化Set类型变量，触发UI刷新
         Button('init set')
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -1210,7 +1214,7 @@ struct LocalSetSample {
 
 ### 自定义组件外改变状态变量
 
-<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->
+<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) --> 
 
 ``` TypeScript
 let storageChange = new LocalStorage();
@@ -1236,6 +1240,7 @@ struct Test {
       Text(`count value: ${this.count}`)
       Button('change')
         .onClick(() => {
+          // 自定义组件外改变状态变量，触发UI刷新
           model.call('count', this.count + 1);
         })
     }

@@ -1,7 +1,7 @@
 # 自定义组件生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926; @huyisuo-->
+<!--Owner: @jiyujia926; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
