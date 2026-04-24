@@ -191,7 +191,7 @@ Obtains all trusted devices. This API uses an asynchronous callback to return th
 
   | Name      | Type                                    | Mandatory  | Description                   |
   | -------- | ---------------------------------------- | ---- | --------------------- |
-  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the Array<DeviceBasicInfo> obtained; otherwise, **err** is an error object.|
+  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the Array<DeviceBasicInfo>； obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
