@@ -1797,9 +1797,9 @@ function DemoExtractAlphaPixelMap(pixelMap: image.PixelMap) {
 }
 ```
 
-## extractAlphaPixelMap
+## extractAlphaPixelMapSync
 
-extractAlphaPixelMap(): PixelMap
+extractAlphaPixelMapSync(): PixelMap
 
 提取PixelMap的Alpha通道数据，并生成一个仅包含Alpha通道信息的ALPHA_U8格式的PixelMap。生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。
 
