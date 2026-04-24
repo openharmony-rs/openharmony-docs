@@ -4425,7 +4425,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称         |           类型            | 只读 | 可选 |        说明         |
 | ------------ | -----------------|-------- |---- |-------------------- |
 | address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |	
-| prefixLength | int                    | 否 | 否  |链路地址前缀的长度。  |
+| prefixLength | ArkTS-Dyn: number<br>ArkTS-Sta: int                   | 否 | 否  |链路地址前缀的长度。  |
 
 ## NetAddress
 
