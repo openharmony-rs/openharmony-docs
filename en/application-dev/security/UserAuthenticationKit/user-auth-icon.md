@@ -27,4 +27,4 @@ The following figure shows the use of **userAuthIcon** for fingerprint authentic
 
 ## Example
 
-For details, see [@ohos.userIAM.userAuthIcon](../../reference/apis-user-authentication-kit/ohos-useriam-userauthicon.md).
+For details about the parameters and usage, see [@ohos.userIAM.userAuthIcon (Embedded User Authentication Icons)](../../reference/apis-user-authentication-kit/ohos-useriam-userauthicon.md).

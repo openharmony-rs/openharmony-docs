@@ -11,7 +11,7 @@ A user authentication is required before an application accesses a critical func
 
 ## Available APIs
 
-For details about the parameters, return values, and error codes, see [User Authentication](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10).
+For details about the parameters, return values, and error codes, see [userAuth.getUserAuthInstance](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10).
 
 | API| Description| 
 | -------- | -------- |
@@ -76,7 +76,7 @@ The user authentication widget supports the following types of authentication:
 
 2. Set [AuthParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10) (including the challenge, [UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8), and [AuthTrustLevel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtrustlevel8)), configure [WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10), and use [getUserAuthInstance](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10) to obtain a **UserAuthInstance** instance.
 
-3. Use [UserAuthInstance.on](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on10) to subscribe to the authentication result.
+3. Call [UserAuthInstance.on('result')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onresult10-1) to subscribe to the authentication result.
 
 4. Use [UserAuthInstance.start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10) to start authentication. The authentication result [UserAuthResult](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthresult10) is returned through [IAuthCallback](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#iauthcallback10). If the authentication is successful, [UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8) and token information (**AuthToken**) are returned.
 
@@ -87,48 +87,47 @@ The user authentication widget supports the following types of authentication:
 <!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication1() {
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      // Set authentication parameters.
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      };
-      // Set the authentication page.
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-      };
-      // Obtain an authentication object.
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // Subscribe to the authentication result.
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
-            // Unsubscribe from the authentication result if required.
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // Start authentication.
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication1() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    // Set authentication parameters.
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // Set the authentication page.
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // Obtain an authentication object.
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully');
+    // Subscribe to the authentication result.
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback');
+          this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
+          // Unsubscribe from the authentication result if required.
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // Start authentication.
+    userAuthInstance.start();
+    Logger.info('auth start successfully');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 
@@ -139,53 +138,52 @@ Initiate facial authentication at ATL3 or higher, and enable the device unlock r
 <!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication2() {
-    // Set authentication parameters.
-    let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-      reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-      reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-    };
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-        reuseUnlockResult: reuseUnlockResult,
-      };
-      // Set the authentication page.
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-      };
-      // Obtain an authentication object.
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // Subscribe to the authentication result.
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
-            // Unsubscribe from the authentication result if required.
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // Start authentication.
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication2() {
+  // Set authentication parameters.
+  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
+    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
+    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
+  };
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      reuseUnlockResult: reuseUnlockResult,
+    };
+    // Set the authentication page.
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // Obtain an authentication object.
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully');
+    // Subscribe to the authentication result.
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback');
+          this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
+          // Unsubscribe from the authentication result if required.
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // Start authentication.
+    userAuthInstance.start();
+    Logger.info('auth start successfully');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 
@@ -196,112 +194,111 @@ Initiate facial authentication at ATL3 or higher, and enable the device unlock r
 <!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication3() {
-    // Set authentication parameters.
-    let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-      reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
-      reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-    };
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-        reuseUnlockResult: reuseUnlockResult,
-      };
-      // Set the authentication page.
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-      };
-      // Obtain an authentication object.
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // Subscribe to the authentication result.
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
-            // Unsubscribe from the authentication result if required.
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // Start authentication.
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication3() {
+  // Set authentication parameters.
+  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
+    reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
+    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
+  };
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      reuseUnlockResult: reuseUnlockResult,
+    };
+    // Set the authentication page.
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // Obtain an authentication object.
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully');
+    // Subscribe to the authentication result.
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback');
+          this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
+          // Unsubscribe from the authentication result if required.
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // Start authentication.
+    userAuthInstance.start();
+    Logger.info('auth start successfully');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 
 **Example 4**
 
-Start the user authentication widget in modal application mode.
+Start the user authentication widget in application modal dialog mode.
 
 > **NOTE**
-> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10) is configured), and if other windows need to be displayed after the authentication result is received, the application should obtain the flag message for releasing the widget pop-up window first, and subscribe to the widget release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on20) API.
+> On PCs/2-in-1 devices, if an application initiates authentication in application modal dialog mode (that is, a valid **uiContext** is passed when [widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10) is configured), and if other dialogs need to be displayed after the authentication result is received, the application should obtain the flag message for releasing the widget dialog first, and subscribe to the widget release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onauthtip20) API.
 
 <!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication4() {
-    // Set authentication parameters.
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      };
-      // Set the authentication page.
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-        uiContext: this.getUIContext().getHostContext()
-      };
-      // Obtain an authentication object.
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // Subscribe to the authentication result.
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
-            // Unsubscribe from the authentication result if required.
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // Start authentication.
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication4() {
+  // Set authentication parameters.
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // Set the authentication page.
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+      uiContext: this.getUIContext().getHostContext()
+    };
+    // Obtain an authentication object.
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully');
+    // Subscribe to the authentication result.
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback');
+          this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
+          // Unsubscribe from the authentication result if required.
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // Start authentication.
+    userAuthInstance.start();
+    Logger.info('auth start successfully');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 
 ## Sample Code
 
   - [Initiating authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+<!--no_check-->

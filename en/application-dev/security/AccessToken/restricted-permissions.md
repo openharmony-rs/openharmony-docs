@@ -19,7 +19,7 @@ To change the APL of a normal application to system_basic or system_core, modify
 
 Modify the **"bundle-info"** &gt; **"apl"** field in the file.
 
-```json
+```json5
 "bundle-info" : {
     // ...
     "apl": "system_basic",
@@ -154,9 +154,7 @@ See the [alternative solution of the **Files** permission group](app-permission-
 
 Allows an application to access the **Desktop** directory and its subdirectories in the user directory.
 
-<!--RP15-->
 Currently, only applications on 2-in-1 devices and tablets can request this permission.
-<!--RP15End-->
 
 **Permission level**: system_basic
 
@@ -648,7 +646,7 @@ Allows an application to customize the icon and text of **SaveButton**.
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 20
 
@@ -662,7 +660,7 @@ Allows an application to query **Ability** information based on the URI or **Fil
 
 **Authorization mode**: system_grant
 
-**Device**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 20
 
@@ -676,7 +674,7 @@ Allows an application to use the Native Development Kit (NDK) of the passkey ser
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 
@@ -690,7 +688,7 @@ Allows an application to use the global float ball.
 
 **Authorization mode**: system_grant
 
-**Device**: phones | tablets
+**Supported devices**: phones | tablets
 
 **Since**: 20
 
@@ -706,7 +704,7 @@ With this permission, the application can obtain the current screen peeping stat
 
 **Authorization mode**: system_grant
 
-**Device**: phones
+**Supported devices**: phones
 
 **Since**: 18
 
@@ -724,7 +722,7 @@ With this permission, the application can obtain the device name on the **About*
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 
@@ -737,7 +735,7 @@ Allows an atomic service to request differentiated storage space.
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 <!--DelEnd-->
@@ -752,7 +750,7 @@ Allows an application to request continuous tasks of special types, such as comp
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 20
 
@@ -768,7 +766,7 @@ With this permission, the application can initiate operations such as multi-netw
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
 
@@ -782,7 +780,7 @@ Allows an application to detect the network and obtain the TraceRoute informatio
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 20
 
@@ -822,7 +820,7 @@ With this permission, the application can choose the target applications for sys
 
 **Authorization mode**: system_grant
 
-**Device**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 21
 
@@ -868,7 +866,7 @@ Allows an application to read notifications published by the system or installed
 
 **Authorization mode**: system_grant
 
-**Device**: phones | tablets
+**Supported devices**: phones | tablets
 
 **Since**: 22
 
@@ -900,7 +898,7 @@ This permission is applicable only to network connection or identification, not 
 
 **Authorization mode**: system_grant
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 22
 
@@ -946,6 +944,6 @@ Allows an application to register and deregister the crypto extension.
 
 **Authorization mode**: system_grant
 
-**Device**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 22

@@ -1,4 +1,4 @@
-# Removing Assets (ArkTS)
+# Removing an Asset (ArkTS)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
@@ -9,7 +9,7 @@
 
 ## Available APIs
 
-You can use [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove), an asynchronous API, or [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12), a synchronous API, to remove assets. If the asset alias is specified, the specified asset will be removed. If no asset alias is specified, all assets will be removed.
+You can use [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove) or [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12) (synchronous API) to remove an asset.
 
 The following table describes the attributes of **AssetMap** for removing an asset.
 
@@ -44,7 +44,7 @@ The following table describes the attributes of **AssetMap** for removing an ass
 
 > **NOTE**
 >
-> The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to remove an asset from a group, see [Removing an Asset from a Group](asset-js-group-access-control.md#removing-an-asset-from-a-group).
 >

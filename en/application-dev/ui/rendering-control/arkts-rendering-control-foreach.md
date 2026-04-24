@@ -18,7 +18,7 @@ For details about API parameters, see [ForEach](../../reference/apis-arkui/arkui
 
 During **ForEach** rendering, the system generates a unique and persistent key for each array element to identify the corresponding component. When the key changes, the ArkUI framework considers that the array element has been replaced or modified and creates a component based on the new key.
 
-**ForEach** provides a parameter named **keyGenerator**, which is a function that allows you to customize key generation rules. If no **keyGenerator** function is defined, the ArkUI framework uses the default key generation format **(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }**.
+**ForEach** provides a parameter named **keyGenerator**, which is a function that allows you to customize key generation rules. If no **keyGenerator** function is defined, the ArkUI framework uses the default key generation function **(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }**.
 
 The ArkUI framework follows specific rules for key generation in **ForEach**, which are primarily related to the **itemGenerator** function and the second parameter **index** of the **keyGenerator** function. The specific key generation rule judgment logic is shown in the following figure.
 
@@ -29,7 +29,7 @@ The ArkUI framework follows specific rules for key generation in **ForEach**, wh
 >
 > 1. The ArkUI framework issues runtime warnings for duplicate keys. If duplicate keys exist during UI re-rendering, the framework may not work properly. For details, see [Unexpected Rendering Results](#unexpected-rendering-results).
 > 2. Do not use the data item **index** as the key, as this can cause [unexpected rendering results](#unexpected-rendering-results) and [reduced rendering performance](#reduced-rendering-performance).
-> 3. If the **index** parameter is declared in the **itemGenerator** function but omitted from the **keyGenerator** function, the framework automatically appends the index to the **keyGenerator** function's return value to form the final key. This behavior can lead to the duplicate key issues described previously. To avoid this issue, ensure the **index** parameter is explicitly declared in the **keyGenerator** function.
+> 3. If the **index** parameter is declared in the **itemGenerator** function but omitted from the **keyGenerator** function, the framework automatically appends the index to the **keyGenerator** function's return value to form the final key. This behavior can lead to the issues described in the second item above. To avoid this issue, ensure the **index** parameter is explicitly declared in the **keyGenerator** function.
 
 Key value generation example:
 
@@ -77,7 +77,7 @@ struct ChildItem {
 }
 ```
 
-In the preceding example, when the component generation function declares **index**, you are advised to do the same thing in the key generation function to avoid reduced rendering performance and unexpected rendering results. In addition, it is recommended that you use UI-related data attributes in the key generation function. In this example, the data attribute **str** is related to the UI display, so you can use **str** as the return value of the key generation function.
+In the preceding example, when the component generation function declares **index**, you are advised to do the same thing in the key generation function to avoid reduced rendering performance and unexpected rendering results. In addition, it is recommended that you use UI-related data attributes in the key generation function. In this example, the data attribute **str** is related to the UI display, so you are advised to use **str** as the return value of the key generation function.
 
 ## Component Creation Rules
 
@@ -235,7 +235,7 @@ This example demonstrates that [\@State](../state-management/arkts-state.md) can
 
 ### Static Data Source
 
-If the data source remains unchanged, it can of a primitive data type. For example, when implementing loading states, you can render skeleton screens using a static list.
+If the data source remains unchanged, it can be of a primitive data type. For example, when implementing loading states, you can render skeleton screens using a static list.
 
 <!-- @[article_skeleton_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleSkeletonView.ets) -->
 
@@ -402,9 +402,9 @@ struct ArticleCardChangeSource {
 }
 ```
 
-The following figure shows the initial screen (on the left) and the screen after a pull-to-refresh gesture (on the right).
+The following figure shows the initial screen (on the left) and the screen after swipe-up (on the right).
 
-**Figure 6** Effect when the data source is changed 
+**Figure 6** Effect when the items in the data source array are changed
 ![ForEach-DataSourceArrayChange](figures/ForEach-DataSourceArrayChange.png)
 
 In this example, the **ArticleCardChangeSource** component serves as a child component of the **ArticleListViewChangeSource** component and receives an **ArticleChangeSource** object through the [\@Prop](../state-management/arkts-prop.md) decorator to render article cards.
@@ -592,7 +592,7 @@ If the two lines in the **onMove** event handler are commented out, the effect o
 
 - To ensure key uniqueness for object data, use a unique **id** property from the object data as the key.
 - Do not use the data item **index** as the key, as this can cause [unexpected rendering results](#unexpected-rendering-results) and [reduced rendering performance](#reduced-rendering-performance). If **index** must be used (for example, for conditional rendering based on **index**), be aware that data source changes will cause **ForEach** to re-create components, incurring a performance cost.
-- For arrays of primitive data types, which do not have a unique ID property: If using the data item itself as the key, ensure that no duplicate values exist. For mutable data sources, convert the array to objects with unique ID properties, then use the ID as the key.
+- For arrays of primitive data types, data items do not have a unique ID property. If using the data item itself as the key, ensure that no duplicate values exist. For mutable data sources, convert the array to objects with unique ID properties, then use the ID as the key.
 - The **index** parameter serves as a fallback to ensure key uniqueness. When modifying a data item, since the **item** parameter in **itemGenerator** is immutable, use **index** to update the data source and trigger UI re-rendering.
 - Within [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), and [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) scrollable containers, avoid using **ForEach** together with [LazyForEach](./arkts-rendering-control-lazyforeach.md).
 - When dealing with a large number of child components, **ForEach** can lead to performance issues such as lag or jank. In such cases, consider using [LazyForEach](./arkts-rendering-control-lazyforeach.md) instead. For details about the best practice, see [Performance Optimization Using LazyForEach](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-lazyforeach-optimization).
@@ -654,7 +654,7 @@ When **ForEach** is used for initial rendering, the created keys are **0**, **1*
 
 After a new item is inserted, the data source **simpleList** changes to ['one','new item', 'two', 'three']. The ArkUI framework detects changes in the length of the @State decorated data source and triggers **ForEach** for re-rendering.
 
-**ForEach** traverses items in the new data source. When it reaches array item **one**, it generates key **0** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **new item**, it generates key **1** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **two**, it generates key **2** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **three**, it generates key **3** for the item, and because no same key exists, a new component **three** is created.
+**ForEach** traverses items in the new data source. When it reaches array item **one**, it generates key **0** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **new item**, it generates key **1** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **two**, it generates key **2** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **three**, it generates key **3** for the item, and because no same key exists, a new component **three** is created and rendered.
 
 In the preceding example, the final key generation rule includes **index**. While the expected rendering result is **['one','new item', 'two', 'three']**, the actual rendering result is **['one', 'two', 'three', 'three']**. Therefore, to avoid unexpected rendering results, avoid using index-based keys for **ForEach**.
 
@@ -724,7 +724,7 @@ After a new item is inserted, **ForEach** creates the corresponding **ReducedChi
 
 1. During initial rendering, **ForEach** generates keys **0__one**, **1__two**, and **2__three**.
 2. After a new item is inserted, the data source **simpleList** changes to ['one','new item', 'two', 'three']. The ArkUI framework detects changes in the length of the @State decorated data source and triggers **ForEach** for re-rendering.
-3. **ForEach** traverses items in the new data source. When it reaches array item **one**, it generates key **0__one** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **new item**, it generates key **1__new item** for the item, and because no same key exists, a new component **new item** is created. When **ForEach** reaches array item **two**, it generates key **2__two** for the item, and because no same key exists, a new component **two** is created. When **ForEach** reaches array item **three**, it generates key **3__three** for the item, and because no same key exists, a new component **three** is created.
+3. **ForEach** traverses items in the new data source. When it reaches array item **one**, it generates key **0__one** for the item, and because the same key already exists, no new component is created. When **ForEach** reaches array item **new item**, it generates key **1__new item** for the item, and because no same key exists, a new component **new item** is created and rendered. When **ForEach** reaches array item **two**, it generates key **2__two** for the item, and because no same key exists, a new component **two** is created and rendered. When **ForEach** reaches array item **three**, it generates key **3__three** for the item, and because no same key exists, a new component **three** is created and rendered.
 
 Although the UI rendering results in this example meet expectations, **ForEach** will re-create components for the inserted item and all subsequent items every time a new item is inserted into the middle of the array. When the data source is large or components are complex, this inability to reuse components leads to performance degradation. Therefore, avoid omitting the third parameter (**KeyGenerator**) and do not use the data index (**index**) as the key.
 
@@ -866,7 +866,7 @@ struct ArticleCardChangeData {
 ![ForEach-StateVarNoRender](figures/ForEach-StateVarNoRender.PNG)
 
 ### Unnecessary Memory Consumption
-If no **keyGenerator** function is defined, the ArkUI framework uses the default key generation format **(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }**. When **item** is a complex object, serializing it to a JSON string results in a long string that consumes more memory.
+If no **keyGenerator** function is defined, the ArkUI framework uses the default key generation function **(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }**. When **item** is a complex object, serializing it to a JSON string results in a long string that consumes more memory.
 
 <!-- @[non_necessary_mem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/NonNecessaryMem.ets) -->
 
@@ -904,7 +904,7 @@ struct NonNecessaryMemory {
           Text(item.key)
         }
       }
-        // If the keyGenerator function is not defined, the ArkUI framework uses the default key value generation function.
+        // If the keyGenerator function is not defined, the ArkUI framework uses the default key generation function.
         , (item: MemoryData) => {
           return item.key;
         }
@@ -948,7 +948,7 @@ struct GenerationKeyExample {
         ForEach(this.simpleList, (item: KeyData) => {
           GenerationKeyChildItem({ item: item.content.toString() })
         }
-          // If the keyGenerator function is not defined, the ArkUI framework uses the default key value generation function.
+          // If the keyGenerator function is not defined, the ArkUI framework uses the default key generation function.
           // KeyData's bigint content fails JSON serialization.
           , (item: KeyData) => item.content.toString()
         )
