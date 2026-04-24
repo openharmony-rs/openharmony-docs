@@ -40,11 +40,11 @@ ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array
 
 | 类型    | 说明                 |
 | ------- | -------------------- |
-| null<sup>10+</sup>    | 表示值类型为空。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23   |
+| null    | 表示值类型为空。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23   |
 | ArkTS-Dyn: number<br>ArkTS-Sta: long \| double | 表示值类型为数字。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23   |
 | string  | 表示值类型为字符串。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23  |
 | boolean | 表示值类型为布尔值。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| Uint8Array<sup>10+</sup>           | 表示值类型为Uint8类型的数组。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23            |
+| Uint8Array           | 表示值类型为Uint8类型的数组。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23            |
 | Asset<sup>10+</sup>  | 表示值类型为附件[Asset](arkts-apis-data-relationalStore-i.md#asset10)。<br/>当字段类型是Asset时，在创建表的sql语句中，类型应当为：ASSET。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 | Assets<sup>10+</sup> | 表示值类型为附件数组[Assets](#assets10)。<br/>当字段类型是Assets时，在创建表的sql语句中，类型应当为：ASSETS。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 | Float32Array<sup>12+</sup> | 表示值类型为浮点数组。<br/>当字段类型是Float32Array时，在创建表的sql语句中，类型应当为：floatvector(128)。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
