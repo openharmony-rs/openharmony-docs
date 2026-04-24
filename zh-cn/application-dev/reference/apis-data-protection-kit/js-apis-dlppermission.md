@@ -59,13 +59,13 @@ let uri = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file).then((res: boolean) => {
-	console.info(JSON.stringify(res));
+    console.info(JSON.stringify(res));
 }).catch((error: BusinessError)=> {
-	console.error(error.message);
+    console.error(error.message);
 }).finally(()=> {
-	if (file !== undefined) {
-		fileIo.closeSync(file);
-	}
+    if (file !== undefined) {
+        fileIo.closeSync(file);
+    }
 });
 ```
 
