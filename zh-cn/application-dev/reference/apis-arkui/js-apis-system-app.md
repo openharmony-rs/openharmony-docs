@@ -32,6 +32,10 @@ static getInfo(): AppResponse
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 3
+
 **返回值：**
 
 | 参数类型 | 说明 |
@@ -161,6 +165,10 @@ static terminate(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 3
 
 **示例：**
 
@@ -299,6 +307,10 @@ setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../a
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -343,6 +355,10 @@ static setImageFileCacheSize(value: number): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -418,6 +434,10 @@ export default class Req {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  以下各项对应的系统能力有所不同，详见下表。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 3
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |-------- |
