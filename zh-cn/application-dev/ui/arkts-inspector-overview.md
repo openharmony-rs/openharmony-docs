@@ -29,7 +29,6 @@ ArkUI提供@ohos.arkui.UIContext([UIContext](../reference/apis-arkui/arkts-apis-
 <!-- @[uiContextTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage.ets) --> 
 
 ``` TypeScript
-'use static'
 import { UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
