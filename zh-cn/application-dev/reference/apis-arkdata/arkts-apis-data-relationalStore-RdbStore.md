@@ -3443,7 +3443,7 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回null。 |
+| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回sql执行后的结果。 |
 
 **错误码：**
 
@@ -4921,7 +4921,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-手动执行对所有分布式表的端云同步，使用callback异步回调。使用该接口需要实现云服务功能。
+手动执行对所有分布式表的端云同步，使用callback异步回调。使用该接口需要实现[端云服务](js-apis-data-cloudData.md)功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -4963,7 +4963,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行对所有分布式表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
+手动执行对所有分布式表的端云同步，使用Promise异步回调。使用该接口需要实现[端云服务](js-apis-data-cloudData.md)功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5010,7 +5010,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-手动执行对指定表的端云同步，使用callback异步回调。使用该接口需要实现云服务功能。
+手动执行对指定表的端云同步，使用callback异步回调。使用该接口需要实现[端云服务](js-apis-data-cloudData.md)功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5055,7 +5055,7 @@ if (store != undefined) {
 
 cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
-手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
+手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现[端云服务](js-apis-data-cloudData.md)功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

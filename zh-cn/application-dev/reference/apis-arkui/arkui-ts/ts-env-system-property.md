@@ -32,6 +32,7 @@ import { uiObserver } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
+  // @Env读取系统环境变量
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
   build() {}
