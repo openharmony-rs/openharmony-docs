@@ -17,4 +17,6 @@
     - [SceneResources (系统接口)](js-apis-inner-scene-resources-sys.md)
     <!--DelEnd-->
     - [ScenePostProcessSettings](js-apis-inner-scene-post-process-settings.md)
+    <!--Del-->
     - [SceneBoidsSim（系统接口）](js-apis-inner-scene-boids-sim-sys.md)
+    <!--DelEnd-->

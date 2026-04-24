@@ -8,9 +8,6 @@
 
 本模块提供3D图形中群组模拟动画的类型及操作方法。
 
-> **说明：** 
-> - 本模块首批接口从API version 26开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
-
 ## 导入模块
 
 ```ts
@@ -22,9 +19,13 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 群组模拟参数，用于配置每个个体的行为属性。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -51,9 +52,13 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 引力场参数，用于配置场景中的引力场。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -64,9 +69,13 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 斥力场参数，用于配置场景中的斥力场。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -79,9 +88,13 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 ### 属性
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -93,9 +106,13 @@ play(): void
 
 开始或恢复群组模拟。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ### pause
 
@@ -103,9 +120,13 @@ pause(): void
 
 暂停群组模拟。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ### stop
 
@@ -113,19 +134,27 @@ stop(): void
 
 停止群组模拟并重置状态。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ### addBoidsSimComponent
 
-addBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [BoidsSimParameters](#boidssimparameters)): void
+addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
 在指定结点上添加群组行为组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -135,13 +164,17 @@ addBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [Bo
 
 ### setBoidsSimComponent
 
-setBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [BoidsSimParameters](#boidssimparameters)): void
+setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
 更新指定结点上的群组行为组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -151,13 +184,17 @@ setBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [Bo
 
 ### addBoidsSimGravityComponent
 
-addBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [BoidsSimGravityParameters](#boidssimgravityparameters)): void
+addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 在指定结点上添加引力场组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -167,13 +204,17 @@ addBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node), par
 
 ### setBoidsSimGravityComponent
 
-setBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [BoidsSimGravityParameters](#boidssimgravityparameters)): void
+setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 更新指定结点上的引力场组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -183,13 +224,17 @@ setBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node), par
 
 ### addBoidsSimRepulsionComponent
 
-addBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [BoidsSimRepulsionParameters](#boidssimrepulsionparameters)): void
+addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void
 
 在指定结点上添加斥力场组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -199,13 +244,17 @@ addBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node), p
 
 ### setBoidsSimRepulsionComponent
 
-setBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [BoidsSimRepulsionParameters](#boidssimrepulsionparameters)): void
+setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void
 
 更新指定结点上的斥力场组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -215,13 +264,17 @@ setBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node), p
 
 ### getBoidsSimComponent
 
-getBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): [BoidsSimParameters](#boidssimparameters) \| null
+getBoidsSimComponent(node: Node): BoidsSimParameters \| null
 
 获取指定结点上的群组行为参数。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -235,13 +288,17 @@ getBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): [BoidsSim
 
 ### getBoidsSimGravityComponent
 
-getBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): [BoidsSimGravityParameters](#boidssimgravityparameters) \| null
+getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters \| null
 
 获取指定结点上的引力场参数。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -255,13 +312,17 @@ getBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): [B
 
 ### getBoidsSimRepulsionComponent
 
-getBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) \| null
+getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters \| null
 
 获取指定结点上的斥力场参数。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -275,13 +336,17 @@ getBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): 
 
 ### removeBoidsSimComponent
 
-removeBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): void
+removeBoidsSimComponent(node: Node): void
 
 移除指定结点上的群组行为组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -290,13 +355,17 @@ removeBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): void
 
 ### removeBoidsSimGravityComponent
 
-removeBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): void
+removeBoidsSimGravityComponent(node: Node): void
 
 移除指定结点上的引力场组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -305,13 +374,17 @@ removeBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node)):
 
 ### removeBoidsSimRepulsionComponent
 
-removeBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): void
+removeBoidsSimRepulsionComponent(node: Node): void
 
 移除指定结点上的斥力场组件。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -324,13 +397,17 @@ removeBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node)
 
 ### getDefaultBoidsSimWorld
 
-static getDefaultBoidsSimWorld(scene: [Scene](js-apis-inner-scene.md)): [BoidsSimWorld](#boidssimworld) \| null
+static getDefaultBoidsSimWorld(scene: Scene): BoidsSimWorld \| null
 
 获取与指定场景关联的群组模拟世界实例。
 
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
