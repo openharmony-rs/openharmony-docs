@@ -169,6 +169,6 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
        OH_LOG_INFO(LOG_APP, "ModifyImageProperty value: %{public}s.", setValue.data);
    
        Image_ErrorCode errCode = OH_ImageSourceNative_ModifyImageProperty(g_thisImageSource->source, &setKey, &setValue);
-       return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_ModifyImageProperty");
+       return GetJsResult(env, errCode);
    }
    ```
