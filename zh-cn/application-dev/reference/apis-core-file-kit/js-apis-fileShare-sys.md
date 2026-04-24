@@ -394,7 +394,7 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 ## fileShare.revokeSharedDirectoryPermission
 
-grantSharedDirectoryPermission(): Promise&lt;void&gt;
+revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 撤消应用的捐献目录访问权限。
 
