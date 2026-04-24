@@ -398,7 +398,9 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
  	 
 场景动效卡片触发类型枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
