@@ -60,13 +60,13 @@ let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file).then((res: boolean) => {
 	console.info(JSON.stringify(res));
-}).catch((error： BusinessError)=> {
+}).catch((error: BusinessError)=> {
 	console.error(error.message);
 }).finally(()=> {
 	if (file !== undefined) {
 		fileIo.closeSync(file);
 	}
-})
+});
 ```
 
 ## dlpPermission.isDLPFile
@@ -147,10 +147,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
     dlpPermission.getDLPPermissionInfo().then((res: dlpPermission.DLPPermissionInfo) => {
-		console.info('res', JSON.stringify(res));
-	}).catch((error)=> {
-		console.error(error);
-	})
+      console.info('res', JSON.stringify(res));
+    }).catch((error: BusinessError)=> {
+      console.error(JSON.stringify(error));
+    })
   }
 });
 ```
@@ -374,9 +374,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.isInSandbox().then((res) => { // 是否在沙箱内。
-	console.info('res', res);
-}).catch((error)=> {
-	console.error(error);
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -449,9 +449,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.getDLPSupportedFileTypes().then((res) => { // 获取支持DLP的文件类型。
-	console.info('res', JSON.stringify(res));
-}).catch((error)=> {
-	console.error(error);
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -532,12 +532,12 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-dlpPermission.isInSandbox().then(async (res) => {
-	if (inSandbox) {
-        await dlpPermission.setRetentionState([uri]); // 设置沙箱保留。
-    }
-}).catch((error)=> {
-	console.error(error);
+dlpPermission.isInSandbox().then(async (inSandbox) => {
+  if (inSandbox) {
+    await dlpPermission.setRetentionState([uri]); // 设置沙箱保留。
+  }
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 }); // 是否在沙箱内。
 ```
 
@@ -575,18 +575,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
-	if (inSandbox) {
-        dlpPermission.setRetentionState([uri], (err, res) => {
-            if (err != undefined) {
-                console.error('setRetentionState error,', err.code, err.message);
-            } else {
-                console.info('setRetentionState success');
-                console.info('res', JSON.stringify(res));
-            }
-        }); // 设置沙箱保留。
-    }
-}).catch((error)=> {
-	console.error(error);
+  if (inSandbox) {
+    dlpPermission.setRetentionState([uri], (err, res) => {
+      if (err != undefined) {
+        console.error('setRetentionState error,', err.code, err.message);
+      } else {
+        console.info('setRetentionState success');
+        console.info('res', JSON.stringify(res));
+      }
+    }); // 设置沙箱保留。
+  }
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -628,9 +628,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.cancelRetentionState([uri]).then((res) => { // 取消沙箱保留。
-	console.info('res', res);
-}).catch((error)=> {
-	console.error(error);
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -713,9 +713,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.getRetentionSandboxList().then((res) => { // 获取沙箱保留列表。
-	console.info('res', JSON.stringify(res));
-}).catch((error)=> {
-	console.error(error);
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -831,9 +831,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.getDLPFileAccessRecords().then((res) => { // 获取DLP访问列表。
-	console.info('res', JSON.stringify(res));
-}).catch((error)=> {
-	console.error(error);
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -974,10 +974,10 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.setSandboxAppConfig('configInfo').then((res) => { // 设置沙箱应用配置信息。
-	console.info('res', res);
-}).catch((error)=> {
-	console.error(error);
-})
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.cleanSandboxAppConfig<sup>11+<sup>
@@ -1011,9 +1011,9 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.cleanSandboxAppConfig().then((res) => { // 清理沙箱应用配置信息。
-	console.info('res', res);
-}).catch((error)=> {
-	console.error(error);
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 });
 ```
 
@@ -1046,10 +1046,10 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.getSandboxAppConfig().then((res) => { // 获取沙箱应用配置信息。
-	console.info('res', res);
-}).catch((error)=> {
-	console.error(error);
-})
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
@@ -1139,31 +1139,27 @@ interface Policy {
   ruleConflictAlg: number;
 }
 
-try {
-  let attributeValues: Array<string> = [ '1' ];
-  let attribute: Attribute = {
-    attributeId: 'DeviceHealthyStatus',
-    attributeValues: attributeValues,
-    valueType: 0,
-    opt: 2
-  }; // 属性信息。
-  let rule: Rule = {
-    ruleId: 'ruleId',
-    attributes: [ attribute ]
-  }; // 规则。
-  let policy: Policy = {
-    rules: [ rule ],
-    policyId: 'policyId',
-    ruleConflictAlg: 0
-  }; // 策略。
-  let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-    policyString: JSON.stringify(policy)
-  };
-  dlpPermission.setEnterprisePolicy(enterprisePolicy);
-  console.info('set enterprise policy success');
-} catch (err) {
-  console.error('error:' + err.code + err.message); // 失败报错。
-}
+let attributeValues: Array<string> = [ '1' ];
+let attribute: Attribute = {
+  attributeId: 'DeviceHealthyStatus',
+  attributeValues: attributeValues,
+  valueType: 0,
+  opt: 2
+}; // 属性信息。
+let rule: Rule = {
+  ruleId: 'ruleId',
+  attributes: [ attribute ]
+}; // 规则。
+let policy: Policy = {
+  rules: [ rule ],
+  policyId: 'policyId',
+  ruleConflictAlg: 0
+}; // 策略。
+let enterprisePolicy: dlpPermission.EnterprisePolicy = {
+  policyString: JSON.stringify(policy)
+};
+dlpPermission.setEnterprisePolicy(enterprisePolicy);
+console.info('set enterprise policy success');
 ```
 
 ## ActionFlagType
@@ -1313,28 +1309,28 @@ let dlpFd: number | undefined = undefined;
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_ONLY).fd;
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
 let dlpProperty: dlpPermission.DLPProperty = {
-   ownerAccount: 'zhangsan',
-   ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
-   authUserList: [],
-   contactAccount: 'zhangsan',
-   offlineAccess: true,
-   ownerAccountID: 'xxxxxxx',
-   everyoneAccessList: []
- };
+  ownerAccount: 'zhangsan',
+  ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
+  authUserList: [],
+  contactAccount: 'zhangsan',
+  offlineAccess: true,
+  ownerAccountID: 'xxxxxxx',
+  everyoneAccessList: []
+};
 let customProperty: dlpPermission.CustomProperty = {
   enterprise: 'customProperty'
 };
 dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty).then((res) => {
-	console.info('Successfully generate DLP file for enterprise.');
-}).catch((error)=> {
-	console.error(error);
+  console.info('Successfully generate DLP file for enterprise.');
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 }).finally(()=>{
-	if (dlpFd) {
-        fileIo.closeSync(dlpFd);
-    }
-    if (plaintextFd) {
-        fileIo.closeSync(plaintextFd);
-    }
+  if (dlpFd) {
+    fileIo.closeSync(dlpFd);
+  }
+  if (plaintextFd) {
+    fileIo.closeSync(plaintextFd);
+  }
 });
 ```
 
@@ -1390,21 +1386,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
-let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt"; 
-let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp"; 
+let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
 dlpPermission.decryptDlpFile(dlpFd, plaintextFd).then((res) => {
-	console.info('Successfully decrypt DLP file.');
-}).catch((error)=> {
-	console.error(error);
+  console.info('Successfully decrypt DLP file.');
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 }).finally(()=>{
-	if (dlpFd) {
-        fileIo.closeSync(dlpFd);
-    }
-    if (plaintextFd) {
-        fileIo.closeSync(plaintextFd);
-    }
+  if (dlpFd) {
+    fileIo.closeSync(dlpFd);
+  }
+  if (plaintextFd) {
+    fileIo.closeSync(plaintextFd);
+  }
 });
 ```
 
@@ -1455,17 +1451,17 @@ import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let dlpFd : number | undefined = undefined;
-let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp"; 
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
-dlpPermission.queryDlpPolicy(dlpFd).then((res) => {
-	console.info('DLP policy:' + policy);
-}).catch((error)=> {
-	console.error(error);
+dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
+  console.info('DLP policy:' + policy);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
 }).finally(()=>{
-	if (dlpFd) {
-        fileIo.closeSync(dlpFd);
-    }
-})
+  if (dlpFd) {
+    fileIo.closeSync(dlpFd);
+  }
+});
 ```
 
 ## ActionType<sup>21+</sup>
