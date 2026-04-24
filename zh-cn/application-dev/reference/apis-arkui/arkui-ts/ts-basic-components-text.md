@@ -806,7 +806,7 @@ lineHeightMultiple(value: number | undefined)
 
 >  **说明：**
 >  
->  当和[lineHeight](ts-basic-components-text.md#lineheight)同时设置时，仅lineHeightMultiple生效。
+>  当lineHeightMultiple使用有效值和[lineHeight](ts-basic-components-text.md#lineheight)或[lineSpacing](ts-basic-components-text.md#linespacing12)同时设置时，仅lineHeightMultiple生效。lineHeightMultiple小于0时，lineHeightMultiple不生效，使用[lineHeight](ts-basic-components-text.md#lineheight)和[lineSpacing](ts-basic-components-text.md#linespacing12)设置行高和行间距。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -818,7 +818,7 @@ lineHeightMultiple(value: number | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number&nbsp;\|&nbsp;undefined | 是   | 使用倍数行高的倍数数值。<br>取值范围：不小于0。<br/>设置的值不大于0时按0处理，设置为0时，使用默认行高高度，支持小数输入。 |
+| value  | number&nbsp;\|&nbsp;undefined | 是   | 使用行高的倍数数值。<br>取值范围：[0, +∞)<br/>**说明：**<br/>- 设置的值小于0时，lineHeightMultiple不生效。<br/>- 设置的值等于0时，等效于设置为1，表现为行高没有变化。<br/>- 支持小数输入。 |
 
 ### lineSpacing<sup>12+</sup>
 
