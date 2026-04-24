@@ -51,8 +51,8 @@ ComposeTitleBar({item?: ComposeTitleBarMenuItem, title: ResourceStr, subtitle?: 
 | -------- | -------- | -------- | -------- |
 | item | [ComposeTitleBarMenuItem](#composetitlebarmenuitem) | 否 | 用于左侧头像的单个菜单项目。 |
 | title | [ResourceStr](ts-types.md#resourcestr) | 是 | 标题。 |
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 副标题。<br/>默认不设置或设置为undefined，副标题不显示。 |
-| menuItems | Array&lt;[ComposeTitleBarMenuItem](#composetitlebarmenuitem)&gt; | 否 | 右侧菜单项目列表。<br/>默认不设置或设置为undefined，右侧菜单项目列表不显示。 |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 副标题。<br/>不设置（默认）或设置为undefined，副标题不显示。 |
+| menuItems | Array&lt;[ComposeTitleBarMenuItem](#composetitlebarmenuitem)&gt; | 否 | 右侧菜单项目列表。<br/>不设置（默认）或设置为undefined，右侧菜单项目列表不显示。 |
 
 > **说明：**
 > 
@@ -68,8 +68,8 @@ ComposeTitleBar({item?: ComposeTitleBarMenuItem, title: ResourceStr, subtitle?: 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- |---|---| -------- |
 | value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。<br/>默认不设置或设置为undefined，图标标签描述不显示。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/>**ArkTS-Sta起始版本：** 23 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。<br/>不设置（默认）或设置为undefined，Symbol图标不显示。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。<br/>不设置（默认）或设置为undefined，图标标签描述不显示。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 13 <br/>**ArkTS-Sta起始版本：** 23 |
 | isEnabled | boolean | 否 | 是 | 是否启用，默认禁用。<br> isEnabled为true时，表示为启用。<br> isEnabled为false时，表示为禁用。<br>item属性不支持触发isEnabled属性。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 触发时的动作闭包，item属性不支持触发action事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | accessibilityLevel<sup>18+</sup>       | string  | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换'yes'。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
