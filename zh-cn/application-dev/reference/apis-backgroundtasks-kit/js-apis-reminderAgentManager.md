@@ -1046,7 +1046,7 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | actionButton | [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) | 否 | 是 | 弹出的提醒通知中显示的按钮。<br>针对三方应用：最多支持两个按钮。<br>针对系统应用：从API version 10开始最多支持三个按钮，API version 10之前的版本最多支持两个按钮。 |
 | wantAgent | [WantAgent](#wantagent) | 否 | 是 | 点击通知后需要跳转的目标ability信息。 |
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | 否 | 是 | 提醒到达时，全屏显示自动拉起目标的ability信息。如果设备正在使用中，则弹出一个通知横幅框。 <br> 说明：该接口为预留接口，暂不支持使用。|
-| ringDuration | number | 否 | 是 | 指明响铃时长。<br> 单位：s，默认1s，范围：[0, 1800]。<br>值为0时：跟随系统设置中的通知铃声。 <br>值大于0时：如果设置了[ReminderRequest.customRingUri](#reminderrequest)，则在指定的通道[ReminderRequest.ringChannel](#reminderrequest)上响铃。否则使用代理提醒默认的自定义提示音。 |
+| ringDuration | number | 否 | 是 | 指明响铃时长。<br> 单位：s，默认1s，范围：[0, 1800]。<br>值为0时：跟随系统设置中的通知铃声。 <br>值大于0时：如果设置了[ReminderRequest.customRingUri](#reminderrequest)，则在指定的通道[ReminderRequest.ringChannel](#reminderrequest)上响铃。否则使用代理提醒默认的自定义提示音。<br>响铃同时会触发振动，从API版本26.0.0开始，支持长振动，振动时长与响铃时长一致。API版本26.0.0之前版本，响铃时会快速振动一次。|
 | snoozeTimes | number | 否 | 是 | 指明延时提醒次数，默认0次（不适用于倒计时提醒类型）。 |
 | timeInterval | number | 否 | 是 | 执行延时提醒间隔。<br> 单位：s，最少30s（不适用于倒计时提醒类型）。 |
 | title | string | 否 | 是 | 指明提醒标题。 |
@@ -1109,6 +1109,8 @@ ReminderRequestTimer extends ReminderRequest
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。<br> 单位：s |
+| repeatInterval | number | 否 | 是 | 重复周期，无默认值，未赋值时，无重复周期。需和repeatCount一起使用。<br/>单位：s，范围：[86400, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 |
+| repeatCount | number | 否 | 是 | 重复次数，默认值为0，无限次重复。需和repeatInterval一起使用。<br/>范围：[0, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 |
 
 
 ## LocalDateTime

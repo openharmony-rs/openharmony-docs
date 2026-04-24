@@ -127,9 +127,10 @@ struct BuilderDemo {
 示例：
 
 **ArkTS-Dyn:**
-<!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) --> 
+<!-- @[global_custom_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets) -->  
 
 ``` TypeScript
+// 全局自定义构建函数showTextBuilder
 @Builder
 function showTextBuilder() {
   Text('Hello World')
@@ -372,7 +373,7 @@ struct Parent {
 调用\@Builder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@Builder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
 
 **ArkTS-Dyn:**
-<!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) -->
+<!-- @[by_value_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterValue.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -389,6 +390,7 @@ struct ParameterValue {
 
   build() {
     Column() {
+      // 按值传递参数，状态变量的改变不会引起overBuilderByValue内的UI刷新
       overBuilderByValue(this.label)
     }
   }
@@ -442,7 +444,7 @@ struct Parent {
 创建私有的`@Builder`函数，在`Column`中使用`this.builder()`调用。通过[`aboutToAppear`](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)生命周期函数和按钮的点击事件更新`builderValue`，实现UI的动态渲染。
 
 **ArkTS-Dyn:**
-<!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) -->
+<!-- @[using_custom_builder_function_in_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/InCustomComponent.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -479,6 +481,7 @@ struct PrivateBuilder {
           .borderRadius(20)
           .textAlign(TextAlign.Center)
         this.builder()
+        // 点击Button更新builderValue，用于更新文本显示
         Button('Click to change the builderValue')
           .onClick(() => {
             this.builderValue = 'builderValue was clicked';
@@ -556,7 +559,7 @@ struct PrivateBuilder {
 创建全局的`@Builder`函数，并在`Column`中通过`overBuilder()`方式调用。传递参数时，可以使用对象字面量形式，无论是简单类型还是复杂类型，值的任何变化都会触发UI界面的刷新。
 
 **ArkTS-Dyn:**
-<!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) --> 
+<!-- @[global_custom_builder_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets) -->  
 
 ``` TypeScript
 class ChildTmp {
@@ -629,6 +632,7 @@ struct ParentDemo {
         tmpValue: this.objParam.tmpValue,
         arrayTmpValue: this.objParam.arrayTmpValue
       })
+      // 点击Button更新objParam，触发overBuilder内组件的刷新
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'Hello World';
         this.objParam.numValue = 1;
@@ -754,7 +758,7 @@ struct Parent {
 在该场景中，`@Builder`被用来展示Text组件，不会参与动态UI刷新。Text组件中值的变化是通过使用装饰器的特性，监听到值的改变触发的UI刷新，而不是通过`@Builder`的能力触发的。
 
 **ArkTS-Dyn:**
-<!-- @[changing_by_the_decorator_triggers_ui_rerendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingByDecorator.ets) -->
+<!-- @[changing_by_the_decorator_triggers_ui_rerendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingByDecorator.ets) --> 
 
 ``` TypeScript
 class ChildrenTmp {
@@ -794,6 +798,7 @@ struct ParentSample {
       Text('UI Rendered via @Builder')
         .fontSize(20)
       this.privateBuilder()
+      // 点击Button更新label，触发Text组件的刷新
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'strValue Hello World';
         this.label = 'label Hello World';
@@ -2567,7 +2572,7 @@ struct PageBuilder {
 在@ComponentV2装饰器装饰的自定义组件中，只有使用@ObservedV2装饰的ParamTmpClass类和使用@Trace装饰的count属性才能触发UI刷新。
 
 **ArkTS-Dyn:**
-<!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) --> 
+<!-- @[dynamic_rerendering_with_component_v2_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicCorrectUsage.ets) -->  
 
 ``` TypeScript
 @ObservedV2
@@ -2617,6 +2622,9 @@ struct PageBuilderCorrectUsage {
   aboutToAppear(): void {
     this.progressTimer = setInterval(() => {
       if (this.builderParams.count < 100) {
+        // builderParams是被@ObservedV2装饰的ParamTmpClass类
+        // count属性被@Trace装饰
+        // count变化会引起UI刷新
         this.builderParams.count += 5;
         this.mapValue.set('name', this.builderParams.count);
         this.setValue.add(this.builderParams.count);
@@ -3561,7 +3569,7 @@ struct Child1 {
 Button按钮会出现UI异常的情况，开发者需要避免在\@Watch函数中使用\@Builder函数。
 
 【正例】
-<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) -->
+<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -3577,6 +3585,7 @@ struct Child2 {
   }
 
   provideWatch() {
+    // 正确写法，不在@Watch函数中使用@Builder函数
     console.info(`content value has changed.`);
   }
 

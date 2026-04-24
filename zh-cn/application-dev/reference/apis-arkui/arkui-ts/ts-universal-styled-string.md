@@ -719,6 +719,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | strokeWidth<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md)。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br/>默认返回字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 获取可变字体的属性数组。<br/>默认值：空数组，表示未设置可变字体的属性。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 `fontWeight`参数与返回值的关系如下：
 | 参数        | 返回值 |
@@ -770,6 +771,7 @@ constructor(value?: TextStyleInterface)
 | strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是percent，当前设置不生效，处理为0。<br/>设置值小于0时为实心字，大于0时为空心字。<br/>默认值为0。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值为字体颜色，设置异常值时取字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 可变字体的属性。<br/>默认值：空数组，表示未设置可变字体的属性。<br/>fontVariations属性的优先级高于fontWeight。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## GestureStyle
 
@@ -2833,7 +2835,7 @@ struct styled_string_html_convert_demo {
       }).margin(5)
 
       // 按钮3:将HTML转换回SpanString
-      Button("Convert HTML to SpanString").onClick(async () => {
+      Button("Convert HTML back to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML back to SpanString successfully.";
@@ -3381,3 +3383,101 @@ struct html_convert_demo {
 }
 ```
 ![html_convert_demo](figures/html_convert_demo.png)
+
+### 示例19（设置可变字体的属性）
+
+该示例通过[TextStyle](#textstyle)的fontVariations属性设置可变字体的属性。
+ 
+从API版本26.0.0开始，[TextStyle](#textstyle)新增了fontVariations属性。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct StyledStringExample {
+  controller: TextController = new TextController();
+  @State weightValue: number = 400;
+
+  aboutToAppear() {
+    let textStyle = new TextStyle({
+      // wght代表可变字体的字重属性
+      fontVariations: [{ axis: 'wght', value: this.weightValue }]
+    });
+    let styledString = new StyledString('Hello World !', [{
+      styledKey: StyledStringKey.FONT,
+      styledValue: textStyle
+    }]);
+    this.controller.setStyledString(styledString);
+  }
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.controller })
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+          let textStyle = new TextStyle({
+            // wght代表可变字体的字重属性
+            fontVariations: [{ axis: 'wght', value: this.weightValue }]
+          });
+          let styledString = new StyledString('Hello World !', [{
+            styledKey: StyledStringKey.FONT,
+            styledValue: textStyle
+          }]);
+          this.controller.setStyledString(styledString);
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, State, StyleOptions, StyledString, StyledStringKey, Text, TextController, TextStyle,  Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StyledStringExample {
+  controller: TextController = new TextController();
+  @State weightValue: double = 400;
+
+  aboutToAppear() {
+    let textStyle = new TextStyle({
+      // wght代表可变字体的字重属性
+      fontVariations: [{ axis: 'wght', value: this.weightValue }]
+    });
+    let styledString = new StyledString('Hello World !', [{
+      styledKey: StyledStringKey.FONT,
+      styledValue: textStyle
+    }]);
+    this.controller.setStyledString(styledString);
+  }
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.controller })
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+          let textStyle = new TextStyle({
+            // wght代表可变字体的字重属性
+            fontVariations: [{ axis: 'wght', value: this.weightValue }]
+          });
+          let styledString = new StyledString('Hello World !', [{
+            styledKey: StyledStringKey.FONT,
+            styledValue: textStyle
+          }]);
+          this.controller.setStyledString(styledString);
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![StyledStringFontVariations](figures/FontVariations.gif)

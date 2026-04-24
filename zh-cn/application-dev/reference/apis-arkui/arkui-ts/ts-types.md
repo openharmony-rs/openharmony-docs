@@ -229,6 +229,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型 |只读|可选| 说明             |
 | ------ | ---- |------|------| ---------------- |
 | top    | [ResourceColor](#resourcecolor) | 否|是    | 组件上边框颜色。 |
@@ -247,6 +251,10 @@
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 |只读|可选| 说明             |
 | ------ | ---- |------|------| ---------------- |
@@ -579,6 +587,10 @@ Navigation路由的构造方式类型。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型                   | 只读   |   可选                             | 说明                                                         |
 | ------ | ----------------------|----------------- | --------------------- | ------------------------------------------------------------ |
 | width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11对象说明)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
@@ -593,6 +605,10 @@ Navigation路由的构造方式类型。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                         | 只读 | 可选   | 说明      |
 | ------ | ---------------------------- | -- | -- | ------- |
@@ -611,6 +627,10 @@ Navigation路由的构造方式类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                         | 只读 | 可选   | 说明       |
 | ----------- | -------------------- | -------- | ---- | -------- |
 | topLeft     | [Dimension](ts-types.md#dimension10) | 否 | 是   | 左上角圆角半径。 |
@@ -627,6 +647,10 @@ Navigation路由的构造方式类型。
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                                     | 只读 | 可选  | 说明      |
 | ------ | ---------------------------------------- | -- | -- | ------- |
@@ -868,7 +892,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+定义一个适用于[WaterFlow](./ts-container-waterflow.md)、[Grid](./ts-container-grid.md)、[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件的响应式布局策略。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

@@ -14,7 +14,9 @@
 
 ## customProperty
 
-customProperty(name: string, value: Optional\<Object>): T
+ArkTS-Dyn: customProperty(name: string, value: Optional\<Object>): T
+
+ArkTS-Sta: customProperty(name: string, value: CustomProperty): this
 
 设置组件的自定义属性。
 
@@ -26,19 +28,40 @@ API版本26.0.0之前，[自定义组件](../../../ui/state-management/arkts-cre
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name  | string | 是   | 自定义属性的名称。 |
-| value  | [Optional](#optionalt)\<Object> | 是   | 自定义属性的值。 |
+| value  | ArkTS-Dyn: [Optional](#optionalt)\<Object><br/>ArkTS-Sta: [CustomProperty](#customproperty23) | 是   | 自定义属性的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
+## CustomProperty<sup>23+</sup>
+
+type CustomProperty = undefined | null | Object | Record\<string, CustomProperty> | Array\<CustomProperty>
+
+自定义属性的值。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 |说明   |
+| ------ | ------------------- |
+| Object | 自定义属性Object类型。|
+| undefined \| null | 自定义属性值为undefined或null。 |
+| Record\<string, CustomProperty> \| Array\<CustomProperty>| 自定义属性类型为`Record<string, CustomProperty>`，表示键为字符串、值为CustomProperty类型的对象。|
 
 ## Optional\<T>
 
@@ -51,6 +74,10 @@ type Optional\<T> = T | undefined
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |

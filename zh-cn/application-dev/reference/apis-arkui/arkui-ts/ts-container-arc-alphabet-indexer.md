@@ -10,8 +10,13 @@
 
 >  **说明：**
 >
->  - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件仅可在Stage模型下使用。
+>
+> - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
 
 
 ## 导入模块
@@ -335,10 +340,6 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。<br/>取值为undefined时，提示弹窗的背景模糊材质为BlurStyle.NONE，无模糊效果。 |
 
->  **说明：**
->
->  当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过[popupBackground](#popupbackground)设置背景色。
-
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -383,9 +384,9 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 ## OnSelectCallback
 
-ArkTS-Dyn: type OnSelectCallback =  (index: number) => void
+ArkTS-Dyn: type OnSelectCallback = (index: number) => void
 
-ArkTS-Sta: type OnSelectCallback =  (index: int) => void
+ArkTS-Sta: type OnSelectCallback = (index: int) => void
 
 定义[onSelect](#onselect)中使用的回调类型。
 

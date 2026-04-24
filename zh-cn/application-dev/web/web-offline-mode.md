@@ -946,8 +946,8 @@ struct Index {
 应用有多个UI页面都需要显示Web内容时，建议复用离线Web组件，减少组件创建和销毁的性能消耗以及创建多个Web组件的内存占用。
 
 **复用方法**：
-1. 离线Web组件不再被使用时，调用WebController的loadUrl方法加载about:blank空页面，为下次其他UI页面复用这个离线Web组件做准备。
-2. 新UI页面复用这个离线Web组件时，再调用WebController的loadUrl方法加载需要的Web页面。
+1. 离线Web组件不再被使用时，调用WebviewController的loadUrl方法加载about:blank空页面，为下次其他UI页面复用这个离线Web组件做准备。
+2. 新UI页面复用这个离线Web组件时，再调用WebviewController的loadUrl方法加载需要的Web页面。
 
 ### 释放离线Web组件
 

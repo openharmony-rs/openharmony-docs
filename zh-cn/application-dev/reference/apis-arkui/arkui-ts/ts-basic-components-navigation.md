@@ -174,8 +174,8 @@ ArkTS-Sta: title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | Na
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup><br/>/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9) \| undefined | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。 |
-| options<sup>11+</sup> | ArkTS-Dyn: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup><br/>ArkTS-Sta: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> \| undefined | 否   | 标题栏选项。 包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
+| value   | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup><br/>/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9) \| undefined | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。<br/>取值为undefined时，无标题。 |
+| options<sup>11+</sup> | ArkTS-Dyn: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup><br/>ArkTS-Sta: [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> \| undefined | 否   | 标题栏选项。 包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。<br/>取值为undefined时，按NavigationTitleOptions中的默认值处理。                                                 |
 
 ### menus
 
@@ -185,7 +185,7 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 > **说明：**
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -196,10 +196,6 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[menus](#menus23)。
 
 **ArkTS-Dyn起始版本：** 8
-
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **参数：** 
 
@@ -217,7 +213,7 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 >
 > - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 >
-> - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> - 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -252,14 +248,14 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefined, option
 
 > **说明：**
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| items    | Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 页面右上角菜单。 |
-| options  | [NavigationMenuOptions](#navigationmenuoptions19) \| undefined | 否   | 菜单选项。 |
+| items    | Array<[NavigationMenuItem](#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 页面右上角菜单。<br/>取值为undefined时，按navigationmenuitem中的默认值处理。 |
+| options  | [NavigationMenuOptions](#navigationmenuoptions19) \| undefined | 否   | 菜单选项。<br/>取值为undefined时，按NavigationMenuOptions中的默认值处理。 |
 
 ### titleMode
 
@@ -281,7 +277,7 @@ ArkTS-Sta: titleMode(value: NavigationTitleMode | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                      |
 | ------ | --------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | ArkTS-Dyn: [NavigationTitleMode](#navigationtitlemode枚举说明)<br/>ArkTS-Sta: [NavigationTitleMode](#navigationtitlemode枚举说明) \| undefined | 是   | 页面标题栏显示模式。<br/>默认值：NavigationTitleMode.Free |
+| value  | ArkTS-Dyn: [NavigationTitleMode](#navigationtitlemode枚举说明)<br/>ArkTS-Sta: [NavigationTitleMode](#navigationtitlemode枚举说明) \| undefined | 是   | 页面标题栏显示模式。<br/>取值为undefined时，按默认值处理。<br/>默认值：NavigationTitleMode.Free |
 
 ### toolbarConfiguration<sup>10+</sup>
 
@@ -295,7 +291,7 @@ ArkTS-Sta: toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder 
 >
 > - 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 >
-> - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> - 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -310,8 +306,8 @@ ArkTS-Sta: toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder 
 <!--Table: 10%; 20%; 8%; 62%-->
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | ArkTS-Dyn: &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 工具栏内容，使用Array&lt;[ToolbarItem](#toolbaritem10)&gt;设置的工具栏有如下特性：<br/>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏模式时，如果为[Split](#navigationmode9枚举说明)模式，仍按照竖屏模式显示，如果为[Stack](#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，不具备以上功能。 |
-| options<sup>11+</sup> | ArkTS-Dyn: [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup><br/>ArkTS-Sta: [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup> \| undefined | 否   | 工具栏选项。 包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。                                                |
+| value   | ArkTS-Dyn: &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 工具栏内容，使用Array&lt;[ToolbarItem](#toolbaritem10)&gt;设置的工具栏有如下特性：<br/>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏模式时，如果为[Split](#navigationmode9枚举说明)模式，仍按照竖屏模式显示，如果为[Stack](#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，不具备以上功能。<br/>取值为undefined时，无工具栏。 |
+| options<sup>11+</sup> | ArkTS-Dyn: [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup><br/>ArkTS-Sta: [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup> \| undefined | 否   | 工具栏选项。 包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。<br/>取值为undefined时，按NavigationToolbarOptions中的默认值处理。                                                |
 
 ### hideToolBar
 
@@ -333,7 +329,7 @@ ArkTS-Sta: hideToolBar(value: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 |说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### hideToolBar<sup>13+</sup>
 
@@ -355,8 +351,8 @@ ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
-| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐工具栏。<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>传入参数非法时，按false处理。 |
+| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏工具栏。<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
+| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐工具栏。<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### hideTitleBar
 
@@ -378,7 +374,7 @@ ArkTS-Sta: hideTitleBar(value: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### hideTitleBar<sup>13+</sup>
 
@@ -400,8 +396,8 @@ ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
-| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐标题栏。<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>传入参数非法时，按false处理。 |
+| hide  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
+| animated  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置是否使用动画显隐标题栏。<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### hideBackButton
 
@@ -423,7 +419,7 @@ ArkTS-Sta: hideBackButton(value: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏中的返回键。<br/>true：隐藏返回键。<br/>false：显示返回键。<br/>传入参数非法时，按false处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否隐藏标题栏中的返回键。<br/>true：隐藏返回键；false：显示返回键。<br/>传入参数非法时，按false处理。 |
 
 ### navBarWidth<sup>9+</sup>
 
@@ -447,7 +443,7 @@ ArkTS-Sta: navBarWidth(value: Length | Bindable\<Length> | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                      |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| Bindable\<Length> \| undefined | 是   | 导航页宽度。<br/>默认值：240<br/>单位：vp<br/>undefined：行为不做处理，导航页宽度与默认值保持一致。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| Bindable\<Length> \| undefined | 是   | 导航页宽度。<br/>取值为undefined时，按默认值处理。<br/>默认值：240<br/>单位：vp |
 
 ### navBarPosition<sup>9+</sup>
 
@@ -469,7 +465,7 @@ ArkTS-Sta: navBarPosition(value: NavBarPosition | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                          |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | ArkTS-Dyn: [NavBarPosition](#navbarposition9枚举说明)<br/>ArkTS-Sta: [NavBarPosition](#navbarposition9枚举说明) \| undefined | 是   | 导航页位置。<br/>默认值：NavBarPosition.Start |
+| value  | ArkTS-Dyn: [NavBarPosition](#navbarposition9枚举说明)<br/>ArkTS-Sta: [NavBarPosition](#navbarposition9枚举说明) \| undefined | 是   | 导航页位置。<br/>取值为undefined时，按默认值处理。<br/>默认值：NavBarPosition.Start |
 
 ### mode<sup>9+</sup>
 
@@ -501,7 +497,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 
 > **说明：**
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -529,7 +525,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -556,7 +552,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier | undefi
 
 > **说明：**
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -570,8 +566,8 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier | undefi
 
 | 参数名             | 类型                                                         | 必填 | 说明                     |
 | ------------------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| icon              | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 标题栏中返回键图标。 |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) \| undefined | 否   | 需要播报的内容。 |
+| icon              | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 标题栏中返回键图标。<br/>取值为undefined时，显示返回键图标。 |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) \| undefined | 否   | 需要播报的内容。<br/>取值为undefined时，无播报内容。 |
 
 ### hideNavBar<sup>9+</sup>
 
@@ -595,7 +591,7 @@ ArkTS-Sta: hideNavBar(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| value  |ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined| 是   | 是否隐藏导航页。<br/>true：隐藏导航页；false：显示导航页。<br/>传入参数非法时，按false处理。|
+| value  |ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined| 是   | 是否隐藏导航页。<br/>true：隐藏导航页；false：显示导航页。<br/>传入参数非法时，按false处理。<br/>取值为undefined时，按默认值处理。|
 
 ### navDestination<sup>10+</sup>
 
@@ -671,7 +667,7 @@ ArkTS-Sta: minContentWidth(value: Dimension | undefined)
 
 | 参数名  | 类型                                 | 必填 | 说明                                                         |
 | ------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined  | 是   | 导航页内容区最小宽度。<br/>默认值：360<br/>单位：vp<br/>undefined：行为不做处理，导航页内容区最小宽度与默认值保持一致。<br/>Auto模式断点计算：默认600vp，minNavBarWidth(240vp) + minContentWidth (360vp) |
+| value | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined  | 是   | 导航页内容区最小宽度。<br/>默认值：360<br/>单位：vp<br/>取值为undefined时，按默认值处理。<br/>Auto模式断点计算：默认600vp，minNavBarWidth(240vp) + minContentWidth (360vp) |
 
 ### ignoreLayoutSafeArea<sup>12+</sup>
 
@@ -702,8 +698,8 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | ArkTS-Dyn: Array \<[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)><br/>ArkTS-Sta: Array \<[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> \| undefined  | 否   | 配置扩展安全区域的类型。<br />默认值：<br />[LayoutSafeAreaType.SYSTEM] |
-| edges  | ArkTS-Dyn: Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)><br/>ArkTS-Sta: Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> \| undefined| 否   | 配置扩展安全区域的方向。<br /> 默认值：<br />[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。|
+| types  | ArkTS-Dyn: Array \<[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)><br/>ArkTS-Sta: Array \<[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> \| undefined  | 否   | 配置扩展安全区域的类型。<br/>取值为undefined时，按默认值处理。<br />默认值：<br />[LayoutSafeAreaType.SYSTEM] |
+| edges  | ArkTS-Dyn: Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)><br/>ArkTS-Sta: Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> \| undefined| 否   | 配置扩展安全区域的方向。<br/>取值为undefined时，按默认值处理。<br /> 默认值：<br />[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。|
 
 ### systemBarStyle<sup>12+</sup>
 
@@ -739,7 +735,7 @@ ArkTS-Sta: systemBarStyle(style: SystemBarStyle | undefined)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt;<br/>ArkTS-Sta: SystemBarStyle \| undefined | 是   | 系统状态栏样式。 |
+| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt;<br/>ArkTS-Sta: SystemBarStyle \| undefined | 是   | 系统状态栏样式。<br/>取值为undefined时，无样式。 |
 
 ### recoverable<sup>14+</sup>
 
@@ -753,7 +749,7 @@ ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 >
 > 1. 使用该接口需要先设置Navigation的通用属性[id](ts-universal-attributes-component-id.md#id)，否则该接口无效。
 > 2. 该接口需要配合NavDestination的[recoverable](./ts-basic-components-navdestination.md#recoverable14)接口使用。
-> 3. 恢复的过程中不可序列化的信息，例如不可序列化的参数与用户设置的onPop等，会被丢弃，无法恢复。
+> 3. 恢复的过程中不可序列化的信息，例如不可序列化的参数与用户设置的[onPop](#pushdestinationbyname11-1)等，会被丢弃，无法恢复。
 > 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考[示例18](#示例18设置navigation可恢复)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -908,6 +904,24 @@ ArkTS-Sta: enableVisibilityLifecycleWithContentCover(isEnabled: boolean | undefi
 | ------ | -------------- | ---- | ------------------ |
 | isEnabled  |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined| 是   |是否启用NavDestination页面onShown、onHidden生命周期与全模态的联动触发。<br/>默认值：true<br/>true：全模态拉起时，会触发当前NavDestination页面的onHidden生命周期；全模态关闭时会触发当前NavDestination页面的onShown生命周期<br/>false：NavDestination页面onHidden、onShown生命周期不会因为全模态的拉起、关闭而触发。|
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<NavigationAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置Navigation组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier\<NavigationAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ### subTitle<sup>(deprecated)</sup>
 
 subTitle(value: string)
@@ -982,7 +996,7 @@ ArkTS-Sta: onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; vo
 
 | 参数名    | 类型                                                | 必填 | 说明       |
 | --------- | --------------------------------------------------- | ---- | ---------- |
-| callback | ArkTS-Dyn: (titleMode: [NavigationTitleMode](#navigationtitlemode枚举说明)) =&gt; void<br/>ArkTS-Sta: (titleMode: NavigationTitleMode) =&gt; void \| undefined| 是   | 返回标题模式。 |
+| callback | ArkTS-Dyn: (titleMode: [NavigationTitleMode](#navigationtitlemode枚举说明)) =&gt; void<br/>ArkTS-Sta: (titleMode: NavigationTitleMode) =&gt; void \| undefined| 是   | 返回标题模式。取值为undefined时，不使用回调函数。 |
 
 ### onNavBarStateChange<sup>9+</sup>
 
@@ -990,7 +1004,7 @@ ArkTS-Dyn: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void)
 
 ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undefined)
 
-导航页显示状态切换时触发该回调。
+导航页显示状态切换时触发该回调。取值为undefined时，不使用回调函数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1012,7 +1026,7 @@ ArkTS-Dyn: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void)
 
 ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | undefined)
 
-当Navigation首次显示或者单双栏状态发生变化时触发该回调。
+当Navigation首次显示或者单双栏状态发生变化时触发该回调。取值为undefined时，不使用回调函数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1034,7 +1048,7 @@ ArkTS-Dyn: customNavContentTransition(delegate:(from: NavContentInfo, to: NavCon
 
 ArkTS-Sta: customNavContentTransition(delegate:((from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition | undefined) | undefined)
 
-自定义转场动画回调。
+自定义转场动画回调。取值为undefined时，不使用回调函数。
 
 >**说明：**
 >
@@ -1079,9 +1093,9 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 > **说明：**
 >
 > 1.连续调用多个导航控制器操作方法时，中间过程会被忽略，显示最终的栈操作结果。<br/>
-> 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以使用NEW_INSTANCE模式。
+> 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以设置[NavigationOption](#navigationoptions12)中的launchMode属性值为LaunchMode.NEW_INSTANCE模式。
 >
-> 2.不建议开发者通过监听生命周期的方式管理自己的导航控制器。
+> 2.不建议开发者通过监听页面生命周期的方式管理自己的导航控制器。
 >
 > 3.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
@@ -1162,7 +1176,7 @@ ArkTS-Sta: pushPathByName(name: string, param: Object | null | undefined, animat
 | 参数名    | 类型      | 必填   | 说明                    |
 | ----- | ------- | ---- | --------------------- |
 | name  | string  | 是    | NavDestination页面名称。   |
-| param | ArkTS-Dyn: unknown<br/>ArkTS-Sta: Object \| null \| undefined | 是    | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。 |
+| param | ArkTS-Dyn: unknown<br/>ArkTS-Sta: Object \| null \| undefined | 是    | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。<br/>取值为undefined时，页面信息无效。 |
 | animated<sup>11+</sup> | boolean | 否    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true |
 
 ### pushPathByName<sup>11+</sup>
@@ -1868,7 +1882,7 @@ ArkTS-Sta: getParamByName(name: string): Array\<Object | null | undefined>
 
 | 类型              | 说明                                |
 | --------------- | --------------------------------- |
-| ArkTS-Dyn: Array<unknown\><br/>ArkTS-Sta: Array<Object \| null \| undefined>  | 返回全部名为name的NavDestination页面的参数信息，unknown可以是用户自定义的类型。 |
+| ArkTS-Dyn: Array<unknown\><br/>ArkTS-Sta: Array<Object \| null \| undefined>  | 返回全部名为name的NavDestination页面的参数信息，unknown可以是用户自定义的类型。<br/>取值为undefined时，页面信息无效。 |
 
 ### getIndexByName<sup>10+</sup>
 
@@ -2053,9 +2067,9 @@ ArkTS-Sta: constructor(name: string, param: Object | null | undefined, onPop?: C
 | 参数名    | 类型      | 必填   | 说明                   |
 | ----- | ------- | ---- | --------------------- |
 | name  | string  | 是    | NavDestination页面名称。该名称匹配开发者设置的路由表中的name，包括以下两种：<br/>1. 自定义路由表，开发者通过[navDestination](#navdestination10)方法传递。<br/>2. 系统路由表，通过routerMap中的name设置，可参考[示例2](#示例2使用导航控制器方法)。|
-| param | ArkTS-Dyn: unknown<br/>ArkTS-Sta: Object \| null \| undefined| 是    | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。 |
+| param | ArkTS-Dyn: unknown<br/>ArkTS-Sta: Object \| null \| undefined| 是    | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。<br/>取值为undefined时，页面信息无效。 |
 | onPop<sup>11+</sup> | Callback\<[PopInfo](#popinfo11)> | 否 | NavDestination页面触发[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)时返回的回调。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。 |
-| isEntry<sup>12+</sup> | boolean | 否 | 标记NavDestination是否为入口页面。<br/>true：NavDestination是入口页面；false：NavDestination不是入口页面。<br/>默认值：false <br/>标记清理时机：1. 在当前navDestination页面触发一次全局返回事件。2. 应用退至后台。<br/>**说明：**<br/>入口NavDestination不响应应用内的全局back事件，直接触发应用间的全局back事件。 |
+| isEntry<sup>12+</sup> | boolean | 否 | 标记NavDestination是否为入口页面。<br/>true：NavDestination是入口页面；false：NavDestination不是入口页面。<br/>默认值：false <br/>标记清理时机：1. 在当前navDestination页面触发一次全局返回事件。2. 应用退至后台。<br/>**说明：**<br/>入口NavDestination不响应应用内的全局back事件，直接触发应用间的全局back事件 |
 
 ### 属性
 
@@ -2067,7 +2081,7 @@ NavPathInfo参数信息。
 | 名称    | 类型      | 只读 | 可选 | 说明                   |
 | ----- | ------- | ---- | ---- | --------------------- |
 | name  | string  | 否    | 否    | NavDestination页面名称。该名称匹配开发者设置的路由表中的name，包括以下两种：<br/>1. 自定义路由表，开发者通过[navDestination](#navdestination10)方法传递。<br/>2. 系统路由表，通过routerMap中的name设置，可参考[示例2](#示例2使用导航控制器方法)。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10  |
-| param |ArkTS-Dyn: unknown<br/>ArkTS-Sta: Object \| null \| undefined| 否    | 是    | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| param | unknown| 否    | 是    | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
 | onPop<sup>11+</sup> | Callback\<[PopInfo](#popinfo11)> | 否 | 是    | NavDestination页面触发[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)时返回的回调。仅[pop](#pop11)、[popToName](#poptoname11)、[popToIndex](#poptoindex11)中设置result参数后触发。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11  |
 | isEntry<sup>12+</sup> | boolean | 否 | 是    | 标记NavDestination是否为入口页面。<br/>true：NavDestination是入口页面；false：NavDestination不是入口页面。<br/>默认值：false <br/>标记清理时机：1. 在当前navDestination页面触发一次全局back事件。2. 应用退至后台。<br/>**说明：**<br/>入口NavDestination不响应应用内的全局back事件，直接触发应用间的全局back事件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12 |
 | navDestinationId<sup>19+</sup>  | string  | 否    | 是    | NavDestination页面唯一标识符，该id由系统默认生成且全局唯一，通过[getPathStack](#getpathstack19)接口可读取，但不可以主动赋新值。 <br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 19    |
@@ -2222,7 +2236,7 @@ set isEntry(isEntry: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|------|-----|
-| isEntry | boolean \| undefined | 是 | 是否为入口页面。<br/>true：是页面入口；false：不是页面入口。 |
+| isEntry | boolean \| undefined | 是 | 是否为入口页面。<br/>true：是页面入口；false：不是页面入口 |
 
 ### navDestinationId<sup>23+</sup>
 
@@ -2273,7 +2287,7 @@ get navDestinationId(): string | undefined
 |-------|-------|------|------|-------|
 | name | string | 否 | 是 | NavDestination名称，如果为根视图(NavBar)，则返回值为undefined。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | index |  ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 否 | NavDestination在NavPathStack中的序号， 如果为根视图(NavBar)，则返回值为 -1。<br/>取值范围：[-1, +∞)。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23  |
-| mode | [NavDestinationMode](ts-basic-components-navdestination.md#navdestinationmode枚举说明11) | 否 | 是 | NavDestination的模式，如果是根视图(NavBar)，则返回值为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| mode | [NavDestinationMode](ts-basic-components-navdestination.md#navdestinationmode枚举说明11) | 否 | 是 | NavDestination的模式，如果是根视图(NavBar)，则返回值为undefined。<br/>默认值：NavDestinationMode.STANDARD<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | param<sup>12+</sup> | Object | 否 | 是 | NavDestination页面加载的参数。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | navDestinationId<sup>12+</sup> | string | 否 | 是 | NavDestination的唯一标识符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
@@ -2287,7 +2301,7 @@ get navDestinationId(): string | undefined
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------|-----|-----|-----|------|
-| timeout | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 动画超时结束时间。<br> 单位：ms。<br/>取值范围：[0, +∞)。<br> 默认值：可交互动画无默认值，不可交互动画默认超时时间为1000ms。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
+| timeout | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 动画超时结束时间。<br/>取值范围：[0, +∞)。<br/>默认值：可交互动画无默认值，不可交互动画默认超时时间为1000ms。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23<br/>单位：ms|
 | transition | (transitionProxy:[NavigationTransitionProxy](#navigationtransitionproxy-11)) =&gt; void | 否 | 否 | 自定义转场动画执行回调。<br> transitionProxy：自定义转场动画代理对象。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
 | onTransitionEnd | (success:boolean)&nbsp;=>&nbsp;void | 否 | 是 | 转场完成回调。<br> success：转场是否成功。 <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
 | isInteractive<sup>12+</sup> | boolean | 否 | 是 | 本次转场动画是否为可交互转场。<br/>true：本次转场动画是可交互转场；false：本次转场动画不是可交互转场。<br> 默认值：false<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
@@ -2314,7 +2328,7 @@ NavigationTransitionProxy参数信息。
 |------|-------|-----|-----|-------|
 | from | [NavContentInfo](#navcontentinfo11) | 否 |否 | 退场页面信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | to | [NavContentInfo](#navcontentinfo11) | 否 | 否 | 进场页面信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| isInteractive<sup>12+</sup> | boolean | 否 | 是 | 是否为可交互转场动画。<br> 默认值：false。<br/>true：本次转场动画是可交互转场。<br/>false：本次转场动画不是可交互转场。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| isInteractive<sup>12+</sup> | boolean | 否 | 是 | 是否为可交互转场动画。<br> 默认值：false<br/>true：本次转场动画是可交互转场；false：本次转场动画不是可交互转场。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | cancelTransition<sup>23+</sup> | [VoidCallback](./ts-types.md#voidcallback12) | 否 | 否 | 取消本次交互转场，恢复到页面跳转前的路由栈(不支持取消不可交互转场动画)。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | updateTransition<sup>23+</sup> | [UpdateTransitionCallback](#updatetransitioncallback23)| 否 | 否 | 更新交互转场动画进度(不可交互动画不支持动画进度设置)。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 
@@ -2368,7 +2382,7 @@ updateTransition?(progress: number): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|------|-----|
-| progress | number | 是 | 设置交互转场动画进度百分比。取值范围：[0, 1] |
+| progress | number | 是 | 设置交互转场动画进度百分比。取值范围：[0, 1]<br/>单位：百分比 |
 
 ## NavigationInterception<sup>12+</sup>
 
@@ -2407,7 +2421,7 @@ Navigation页面跳转前和页面跳转后的拦截回调。
 | from | [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) \| [NavBar](#navbar12) | 是 |  页面跳转之前的栈顶页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
 | to | [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) \| [NavBar](#navbar12) | 是 | 页面跳转之后的栈顶页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
 | operation | [NavigationOperation](#navigationoperation11枚举说明) | 是 | 当前页面跳转类型。 |
-| isAnimated | boolean | 是 | 页面跳转是否有动画。<br/>true：页面跳转有动画。<br/>false：页面跳转没有动画。 |
+| isAnimated | boolean | 是 | 页面跳转是否有动画。<br/>true：页面跳转有动画；false：页面跳转没有动画。 |
 
 ### InterceptionModeCallback<sup>12+</sup>
 
@@ -2451,7 +2465,7 @@ Navigation页面跳转前的拦截回调。
 | to | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
 | pathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 是 | 页面栈。 |
 | operation | [NavigationOperation](#navigationoperation11枚举说明) | 是 | 当前页面跳转类型。 |
-| isAnimated | boolean | 是 | 页面跳转是否有动画。<br/>true：页面跳转有动画。<br/>false：页面跳转没有动画。 |
+| isAnimated | boolean | 是 | 页面跳转是否有动画。<br/>true：页面跳转有动画；false：页面跳转没有动画。 |
 
 ## UpdateTransitionCallback<sup>23+</sup>
 
@@ -2469,7 +2483,7 @@ type UpdateTransitionCallback = (progress: double) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|------|-----|
-| progress | double | 是 | 设置交互转场动画进度百分比。取值范围 0-1。|
+| progress | double | 是 | 设置交互转场动画进度百分比。取值范围 0-1。<br/>单位：百分比 |
 
 ## NavBar<sup>12+</sup>
 

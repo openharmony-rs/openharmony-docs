@@ -38,6 +38,10 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                          | 必填   | 说明     |
@@ -85,6 +89,10 @@ getRestorer(): Restorer
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                    | 说明     |
@@ -119,6 +127,10 @@ getLocalUpdater(): LocalUpdater
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                            | 说明     |
@@ -145,6 +157,8 @@ try {
 
 ## Updater
 
+提供系统在线更新功能的工具类。
+
 ### checkNewVersion
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
@@ -154,6 +168,10 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -177,7 +195,6 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
 try {
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: "com.ohos.ota.updateclient",
@@ -205,6 +222,10 @@ checkNewVersion(): Promise\<CheckResult>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值：**
@@ -227,7 +248,6 @@ checkNewVersion(): Promise\<CheckResult>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
 try {
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: "com.ohos.ota.updateclient",
@@ -247,7 +267,6 @@ try {
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
 }
-
 ```
 
 ###  getNewVersionInfo
@@ -259,6 +278,10 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -309,6 +332,10 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -361,6 +388,10 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -426,6 +457,10 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -499,6 +534,10 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -550,6 +589,10 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -603,6 +646,10 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -660,6 +707,10 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -724,6 +775,10 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -773,6 +828,10 @@ getTaskInfo(): Promise\<TaskInfo>
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -825,6 +884,10 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -888,6 +951,10 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -959,6 +1026,10 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1020,6 +1091,10 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1090,6 +1165,10 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1151,6 +1230,10 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1221,6 +1304,10 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1282,6 +1369,10 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1352,6 +1443,10 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1413,6 +1508,10 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1483,6 +1582,10 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1532,6 +1635,10 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1584,6 +1691,10 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1640,6 +1751,10 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1704,6 +1819,10 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -1752,6 +1871,10 @@ terminateUpgrade(): Promise\<void>
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -1803,6 +1926,10 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -1851,6 +1978,10 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -1892,6 +2023,8 @@ try {
 
 ## Restorer
 
+提供设备恢复出厂设置功能的工具类。
+
 ### factoryReset
 
 factoryReset(callback: AsyncCallback\<void>): void
@@ -1901,6 +2034,10 @@ factoryReset(callback: AsyncCallback\<void>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
@@ -1942,6 +2079,10 @@ factoryReset(): Promise\<void>
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
@@ -1987,6 +2128,10 @@ forceFactoryReset(): Promise\<void>
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.FORCE_FACTORY_RESET
 
 **返回值：**
@@ -2027,15 +2172,15 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 通过覆写等方式，深度清除用户数据分区、操作系统分区。使用 Promise 异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
@@ -2087,15 +2232,15 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 获取深度恢复出厂设置信息。使用 Promise 异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
@@ -2144,6 +2289,8 @@ try {
 
 ## LocalUpdater
 
+提供本地固件更新功能的工具类。
+
 ### verifyUpgradePackage
 
 verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: AsyncCallback\<void>): void
@@ -2153,6 +2300,10 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -2202,6 +2353,10 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -2260,6 +2415,10 @@ applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: Asy
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
@@ -2307,6 +2466,10 @@ applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<voi
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.UPDATE_SYSTEM
 
@@ -2364,6 +2527,10 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -2408,6 +2575,10 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -2451,6 +2622,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                          | 只读 | 可选 | 说明     |
 | ------------ | ----------------------------- | ---- | ---- | ------ |
 | upgradeApp   | string                        | 否 | 否 | 调用方包名。  |
@@ -2463,6 +2638,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                | 只读 | 可选 |  说明   |
 | ------- | ----------------------------------- | ---- | ---- | ---- |
@@ -2477,6 +2656,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                | 类型                              | 只读 | 可选 | 说明     |
 | ----------------- | --------------------------------- | ---- | ---- | ------ |
 | isExistNewVersion | boolean                              | 否 | 否 | 是否有新版本。<br>true表示有新版本，false表示没有新版本。|
@@ -2489,6 +2672,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                     | 只读 | 可选 | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |---- |
@@ -2503,6 +2690,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型   | 只读 | 可选 | 说明   |
 | ------------- | ------ | ---- | ---- | ---- |
 | versionDigest | string | 否 | 否 | 版本摘要。 |
@@ -2514,6 +2705,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                | 只读 | 可选 | 说明       |
 | --------------- | ----------------------------------- | ---- | ---- | -------- |
@@ -2535,6 +2730,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                    | 只读 | 可选 | 说明     |
 | -------- | --------------------------------------- | ---- | ---- | ------ |
 | format   | [DescriptionFormat](#descriptionformat) | 否 | 否 | 描述文件格式。 |
@@ -2547,6 +2746,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
 | --------------- | ----------------------------------- | ---- | ---- | ------ |
@@ -2561,6 +2764,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型                                | 只读 | 可选 | 说明     |
 | --------------- | ----------------------------------- | ---- | ---- | ------ |
 | descriptionType | [DescriptionType](#descriptiontype) | 否 | 否 | 描述文件类型。 |
@@ -2573,6 +2780,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                     | 只读 | 可选 | 说明    |
 | ----------------- | ---------------------------------------- | ---- | ---- | ----- |
@@ -2588,6 +2799,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                | 只读 | 可选   | 说明   |
 | ------------ | ------------------- | ---- | ---- | ---- |
 | allowNetwork | [NetType](#nettype) | 否  | 否 | 网络类型。 |
@@ -2601,6 +2816,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                | 只读 | 可选 | 说明   |
 | ------------ | ------------------- | ---- | ---- | ---- |
 | allowNetwork | [NetType](#nettype) | 否 | 否 | 网络类型。 |
@@ -2612,6 +2831,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型 | 只读 | 可选 | 说明       |
 | ----------------- | ---- | ---- |---- | -------- |
@@ -2625,6 +2848,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型            | 只读 | 可选 | 说明   |
 | ----- | --------------- | ---- | ---- |---- |
 | order | [Order](#order) | 否 | 否 | 升级指令。 |
@@ -2637,6 +2864,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                            | 只读 | 可选 | 说明   |
 | ------ | ------------------------------- | ---- | ---- | ---- |
 | status | [UpgradeStatus](#upgradestatus) | 否 | 否 | 异常状态。 |
@@ -2648,6 +2879,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                    | 只读 | 可选 | 说明      |
 | ------------------- | --------------------------------------- | ---- | ---- | ------- |
@@ -2663,6 +2898,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型   | 只读 | 可选 | 说明 |
 | ----- | ------ | ---- | ---- | ---- |
 | start | int | 否 | 否 | 开始时间。 |
@@ -2675,6 +2914,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                  | 只读 | 可选 | 说明 |
 | --------- | --------------------- | ---- | ------ |------ |
@@ -2689,6 +2932,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                  | 只读 | 可选 | 说明 |
 | -------- | --------------------- | ---- | ---- | ---- |
 | eventId  | [EventId](#eventid)   | 否 | 否 | 事件ID。 |
@@ -2701,6 +2948,10 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                     | 只读 | 可选 | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- | ---- |
@@ -2733,6 +2984,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                            | 只读 | 可选  | 说明   |
 | ------------- | ------------------------------- | ---- | ---- | ---- |
 | eventClassify | [EventClassify](#eventclassify) | 否  | 否  | 事件类型。 |
@@ -2746,6 +3001,10 @@ try {
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
 | fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
@@ -2755,15 +3014,15 @@ try {
 
 恢复出厂设置策略。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
@@ -2774,15 +3033,15 @@ try {
 
 恢复出厂设置信息。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
@@ -2792,15 +3051,15 @@ try {
 
 恢复出厂设置范围。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
@@ -2817,6 +3076,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                    | 必填   | 说明   |
 | --------- | ----------------------- | ---- | ---- |
 | eventInfo | [EventInfo](#eventinfo) | 是    | 事件信息。 |
@@ -2828,6 +3091,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值      | 说明   |
 | ------ | -------- | ---- |
@@ -2841,6 +3108,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值  | 说明   |
 | -------- | ---- | ---- |
 | FIRMWARE | 1    | 固件。   |
@@ -2853,6 +3124,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 值  | 说明   |
 | ---- | ---- | ---- |
 | OTA  | 1    | 固件。   |
@@ -2864,6 +3139,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值        | 说明   |
 | -------- | ---------- | ---- |
@@ -2878,6 +3157,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
 | COLD          | 1    | 冷升级。  |
@@ -2891,6 +3174,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
@@ -2907,6 +3194,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值  | 说明   |
 | ------- | ---- | ---- |
 | CONTENT | 0    | 内容。   |
@@ -2920,6 +3211,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值  | 说明   |
 | ---------- | ---- | ---- |
 | STANDARD   | 0    | 标准格式。 |
@@ -2932,6 +3227,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值  | 说明        |
 | ----------------- | ---- | --------- |
@@ -2949,6 +3248,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 值  | 说明    |
 | -------------------- | ---- | ----- |
 | DOWNLOAD             | 1    | 下载。    |
@@ -2964,6 +3267,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值  | 说明   |
 | ---------------- | ---- | ---- |
@@ -2986,6 +3293,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值        | 说明   |
 | ---- | ---------- | ---- |
 | TASK | 0x01000000 | 任务事件。 |
@@ -2997,6 +3308,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Update.UpdateService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值        | 说明     |
 | ---------------------- | ---------- | ------ |
