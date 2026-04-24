@@ -220,7 +220,7 @@ struct TestCase6 {
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新。且persistedDate的值被持久化存储。
 
-<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) -->
+<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedDate', new Date());
@@ -267,6 +267,7 @@ struct PersistedDate {
           .width('60%')
           .height('5%')
           .onClick(() => {
+            // 改变persistedDate的值，视图会随之刷新
             this.updateDate();
           })
 
@@ -282,7 +283,7 @@ struct PersistedDate {
 
 在下面的示例中，@StorageLink装饰的persistedMapString类型为Map\<number, string\>，点击Button改变persistedMapString的值，视图会随之刷新。且persistedMapString的值被持久化存储。
 
-<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) -->
+<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedMapString', new Map<number, string>([]));
@@ -320,6 +321,7 @@ struct PersistedMap {
           .width('60%')
           .height('5%')
           .onClick(() => {
+            // 点击Button改变persistedMapString的值，视图会随之刷新
             this.persistMapString();
           })
 
@@ -334,7 +336,7 @@ struct PersistedMap {
 
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) -->
+<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedSet', new Set<number>([]));
@@ -393,6 +395,7 @@ struct PersistedSet {
           .width('60%')
           .height('5%')
           .onClick(() => {
+            // 点击Button改变persistedSet的值，视图会随之刷新
             this.clearSet();
           })
 

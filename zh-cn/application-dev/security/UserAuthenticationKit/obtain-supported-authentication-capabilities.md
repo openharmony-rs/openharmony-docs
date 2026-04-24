@@ -34,7 +34,7 @@ obtainingSupported() {
   try {
     // 查询认证能力是否支持
     userAuth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL3);
-    Logger.info('current auth trust level is supported');
+    Logger.info('current auth trust level is supported.');
     return true;
   } catch (error) {
     const err: BusinessError = error as BusinessError;
