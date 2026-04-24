@@ -104,7 +104,9 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 ### 接口说明
 
-startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void;
+ArkTS-Dyn: startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void;
+
+ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, filterOptions?: Record&lt;string, int | string&gt;): void;
 
 发现周边同局域网或者开启蓝牙的设备。详细信息参见：[startDiscovering](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)。
 
@@ -192,6 +194,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
    }
    ```
 
+   ArkTS-Sta场景下，`discoverParam`和`filterOptions`可使用`Record<string, int | string>`类型。
 
 ## 设备绑定开发指导
 
@@ -201,7 +204,9 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 ### 接口说明
 
-bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void;
+ArkTS-Dyn: bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}&gt;): void;
+
+ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | string&gt; , callback: AsyncCallback&lt;BindTargetResult&gt;): void;
 
 设备绑定。详细信息参见：[bindTarget](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#bindtarget)。
 
@@ -251,6 +256,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
    }
    ```
 
+   ArkTS-Sta场景下，`bindParam`可使用`Record<string, int | string>`类型，`callback`返回类型为`distributedDeviceManager.BindTargetResult`。
 
 
 ## 设备信息查询开发指导
@@ -306,9 +312,11 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 ### 接口说明
 
-on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void;
+ArkTS-Dyn: on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void;
 
-设备上下线监听。详细信息参见：[on('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)。
+ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void;
+
+设备上下线监听。详细信息参见：[on('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)和[onDeviceStateChange](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange23)。
 
 ### 开发步骤
 
@@ -365,4 +373,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
      }
    }
    ```
+
+   ArkTS-Sta场景下，可调用`onDeviceStateChange`注册设备状态回调，回调参数类型为`distributedDeviceManager.DeviceStateChangeResult`。
+
 
