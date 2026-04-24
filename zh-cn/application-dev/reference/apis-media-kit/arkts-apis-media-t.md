@@ -238,6 +238,10 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
@@ -284,7 +288,9 @@ type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChan
 
 ## SourceOpenCallback<sup>18+</sup>
 
-type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
+ArkTS-Dyn: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
+
+ArkTS-Sta: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => long
 
 由应用实现此回调函数，应用需处理传入的资源打开请求，并返回所打开资源对应的唯一句柄。
 
@@ -292,9 +298,13 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 >
 > 客户端在处理完请求后应立刻返回。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -306,7 +316,7 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 | 类型   | 说明                 |
 | -------- | -------------------- |
-| number  | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/> - request对象对应句柄唯一。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: long  | 当前资源打开请求的句柄。大于0表示请求成功，小于或等于0表示请求失败。<br/> request对象对应句柄唯一。|
 
 **示例：**
 
@@ -328,7 +338,9 @@ let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLo
 
 ## SourceReadCallback<sup>18+</sup>
 
-type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => void
+ArkTS-Dyn: type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => void
+
+ArkTS-Sta: type SourceReadCallback = (uuid: long, requestedOffset: long, requestedLength: long) => void
 
 由应用实现此回调函数，应用需记录读取请求，并在数据充足时通过对应的MediaSourceLoadingRequest对象的[respondData](arkts-apis-media-MediaSourceLoadingRequest.md#responddata18)方法推送数据。
 
@@ -336,17 +348,21 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 >
 > 客户端在处理完请求后应立刻返回。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid | number | 是  |  资源句柄的标识。 |
-| requestedOffset | number | 是  |  当前媒体数据相对于资源起始位置的偏移量。 |
-| requestedLength | number | 是  |  当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
+| uuid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 资源句柄的标识。 |
+| requestedOffset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 当前媒体数据相对于资源起始位置的偏移量。 |
+| requestedLength | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 当前请求的长度。值为-1时，表示到达资源末尾，此时推送完成后需通过[finishLoading](arkts-apis-media-MediaSourceLoadingRequest.md#finishloading18)方法通知播放器推送结束。 |
 
 **示例：**
 
@@ -359,7 +375,9 @@ let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffse
 
 ## SourceCloseCallback<sup>18+</sup>
 
-type SourceCloseCallback = (uuid: number) => void
+ArkTS-Dyn: type SourceCloseCallback = (uuid: number) => void
+
+ArkTS-Sta: type SourceCloseCallback = (uuid: long) => void
 
 由应用实现此回调函数，应用应释放相关资源。
 
@@ -367,15 +385,19 @@ type SourceCloseCallback = (uuid: number) => void
 >
 > 客户端在处理完请求后应立刻返回。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid      | number | 是  | 资源句柄的标识。 |
+| uuid      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 资源句柄的标识。 |
 
 **示例：**
 
@@ -399,9 +421,45 @@ type PlaybackMetrics = Record\<PlaybackMetricsKey, Object>
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型   | 说明                                                         |
 |------ | ------------------------------------------------------------ |
 | Record\<[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23), Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23)。 |
+
+## PlaybackInfo<sup>23+</sup>
+
+type PlaybackInfo = Record<string, Object>
+
+通过key-value方式获取播放信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
+
+## MediaDescription<sup>23+</sup>
+
+type MediaDescription = Record<string, Object>
+
+通过key-value方式获取播放信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)。 |
 
 ## AudioState<sup>(deprecated)</sup>
 
