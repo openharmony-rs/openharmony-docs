@@ -5192,7 +5192,7 @@ cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): P
 > - [endWrap](arkts-apis-data-relationalStore-RdbPredicates.md#endwrap)
 > - [or](arkts-apis-data-relationalStore-RdbPredicates.md#or)
 > - [and](arkts-apis-data-relationalStore-RdbPredicates.md#and)
-> - 以下谓词的数据字段类型[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数string：
+> - 以下谓词的数据字段类型[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)仅支持number类型的整数和string：
 >   - [equalTo](arkts-apis-data-relationalStore-RdbPredicates.md#equalto)
 >   - [notEqualTo](arkts-apis-data-relationalStore-RdbPredicates.md#notequalto)
 >   - [in](arkts-apis-data-relationalStore-RdbPredicates.md#in)
