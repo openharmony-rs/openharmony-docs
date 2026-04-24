@@ -5831,6 +5831,26 @@ Allows an application to trigger the Always On Display (AOD) mode or exit it, an
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+
+Allows a system application to use Skills.
+
+With this permission, an application can:
+
+- Query information about Skill packages.
+- Listen for events such as the installation, update, and uninstallation of Skill packages.
+- Access the sandbox directory where Skill packages are installed.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: General
+
+**Since**: 26.0.0
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 Allows an application and a service to access the device-side model deployment management.

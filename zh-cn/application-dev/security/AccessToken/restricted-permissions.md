@@ -1238,6 +1238,26 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_SKILL
+    
+允许应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+<!--RP87--><!--RP87End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.kernel.AS_LDK_DRIVER
 
 允许应用安装PCIe驱动。
