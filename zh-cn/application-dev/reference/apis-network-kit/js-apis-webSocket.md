@@ -2525,6 +2525,8 @@ localServer.offWebSocketServerError();
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 6
 
 **ArkTS-Sta起始版本：** 23
