@@ -179,6 +179,7 @@
 |---------------------------------------|--------|----|----------------------------|
 | abilityName                           | 字符串 | 是  | 场景动效LiveFormExtensionAbility名称。|
 | <!--DelRow-->disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。 |
+| triggerTypes                           | 字符串数组 | 否  | 场景动效触发类型，支持的取值包括shake(摇一摇)。|
 
 <!--RP2-->
    ```json5
@@ -193,6 +194,9 @@
               "PULL_DOWN_SEARCH",
               "LONG_CLICK",
               "DRAG"
+            ],
+            "triggerTypes": [
+              "shake"
             ]
          }          
        }

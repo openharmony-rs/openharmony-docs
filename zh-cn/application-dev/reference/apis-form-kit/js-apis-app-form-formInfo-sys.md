@@ -231,6 +231,7 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | 否 | 否  | 场景动效 extensionAbility 名称，如卡片提供方LiveFormExtensionAbility名称。                                     |
 | disabledDesktopBehaviors | string | 否 | 是  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，不同行为通过 \| 拼接，例如SWIPE_DESKTOP\|PULL_DOWN_SEARCH。缺省表示不禁用任何行为。 |
+| triggerTypes    | Array&lt;[SceneAnimationTriggerType](#sceneanimationtriggertype)&gt;      | 否    | 是     | 场景动效卡片触发类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
@@ -392,3 +393,19 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
     return true;
   };
 ```
+
+## SceneAnimationTriggerType
+ 	 
+场景动效卡片触发类型枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称        |  值   | 说明         |
+| ----------- | ---- | ------------ |
+| SHAKE | 1   | 摇一摇。 |
