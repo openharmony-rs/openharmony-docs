@@ -1,4 +1,10 @@
 # @ohos.graphics.hdrCapability (HDR能力)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @dizuo1-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供HDR（高动态显示范围）能力涉及到的相关枚举类型。
 
