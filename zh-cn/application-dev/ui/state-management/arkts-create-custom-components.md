@@ -1,7 +1,7 @@
 # 创建自定义组件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926; @huyisuo-->
+<!--Owner: @jiyujia926; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -51,7 +51,7 @@ struct HelloComponent {
 
 可以在其他自定义组件的`build()`函数中多次创建`HelloComponent`，以实现自定义组件的重用。
 
-<!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->
+<!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -59,6 +59,7 @@ struct HelloComponent {
 struct ParentComponent {
   build() {
     Column() {
+      // 多次创建HelloComponent，实现自定义组件的重用
       Text('ArkUI message')
       HelloComponent({ message: 'Hello World!' })
       Divider()
@@ -306,7 +307,7 @@ struct ParentComponent {
 
 以下示例代码将父组件中的函数传递给子组件，并在子组件中调用。
 
-<!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  -->
+<!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  --> 
 
 ``` TypeScript
 @Entry
@@ -320,6 +321,7 @@ struct Parent {
   build() {
     Column() {
       Text(`${this.cnt}`)
+      // 父组件中的函数传递给子组件
       Son({ submitArrow: this.submit })
     }
   }
@@ -578,7 +580,7 @@ struct Son {
 
 自定义组件通过“.”链式调用设置通用样式。
 
-<!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) -->
+<!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) --> 
 
 ``` TypeScript
 @Component
@@ -593,6 +595,7 @@ struct ChildComponent {
 struct MyComponent {
   build() {
     Row() {
+      // 属性设置给ChildComponent而不是ChildComponent中的Button
       ChildComponent()
         .width(200)
         .height(300)
@@ -793,7 +796,7 @@ struct ComponentUnderBuilderNode {
 }
 ```
 
-<!-- @[EnableCustomComponentCrossAbility_ExtraAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets) -->
+<!-- @[EnableCustomComponentCrossAbility_ExtraAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets) --> 
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -807,6 +810,7 @@ export default class ExtraAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/ExtraIndex', (err) => {
       if (err.code) {
+        // ExtraIndex加载失败，输出报错信息
         hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         return;
       }
