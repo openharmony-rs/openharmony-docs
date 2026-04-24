@@ -46,7 +46,7 @@ console.info(arr.length); // 1
 
 ## $_get
 
-`$_get(index: int): T | undefined`
+\$_get(index: int): T | undefined
 
 获取索引index处的值。
 
@@ -71,7 +71,7 @@ console.log(arr[1]) // undefined
 
 ## $_set
 
-`$_set(index: int, value: T): void`
+\$_set(index: int, value: T): void
 
 设置索引index处的值为value。
 
@@ -88,7 +88,7 @@ const arr = new SparseArray<int>();
 arr[0] = 42
 console.info(arr[0]); // 42
 arr[1] = 22
-console.infor(arr[1]) // 22
+console.info(arr[1]) // 22
 ```
 
 ## constructor
@@ -246,7 +246,7 @@ from\<T>(iterable: ArrayLike\<T> | Iterable\<T>): SparseArray\<T>
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | :--------- | :--------- | :--------- | :--------- |
-| iterable | ArrayLike\<T> | 是 | 要转换为稀疏数组的ArrayLike对象或可迭代对象。|
+| iterable | ArrayLike\<T> \| Iterable\<T> | 是 | 要转换为稀疏数组的ArrayLike对象或可迭代对象。|
 
 **返回值：**
 | 类型 | 说明 |
@@ -271,7 +271,7 @@ from\<T, U>(iterable: ArrayLike\<T> | Iterable\<T>, mapfn: (v: T, k: int) => U):
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | :--------- | :--------- | :--------- | :--------- |
-| iterable | ArrayLike\<T> | 是 | 要转换为稀疏数组的ArrayLike对象或可迭代对象。|
+| iterable | ArrayLike\<T> \| Iterable\<T> | 是 | 要转换为稀疏数组的ArrayLike对象或可迭代对象。|
 | mapfn | (v: T, k: int) => U | 是 | 用于映射每个元素的函数。|
 
 **返回值：**
@@ -382,7 +382,7 @@ console.info(deleted.toString());  // "30,40,50"
 
 splice(start: int, deleteCount: int | undefined, ...items: T[]): SparseArray\<T>
 
-通过删除或替换现有元素以及原地添加新元素来更改稀疏数组的内容，返回值为被删除的元素，如果被删除的部分含有空洞，也会存入新的数组中
+通过删除或替换现有元素以及原地添加新元素来更改稀疏数组的内容，返回值为被删除的元素，如果被删除的部分含有空洞，也会存入新的数组中。
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -410,7 +410,7 @@ console.info(newArray.toString()); // "10,undefined"
 
 findIndex(predicate: (value: T, index: int, array: SparseArray\<T>) => boolean): int
 
-返回稀疏数组中满足提供的测试函数的第一个元素的索引。否则返回 -1。在查找过程中会跳过空洞位置，只对实际存在的元素进行测试。
+返回稀疏数组中满足提供的测试函数的第一个元素的索引，否则返回 -1。在查找过程中会跳过空洞位置，只对实际存在的元素进行测试。
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -521,7 +521,7 @@ includes(val: T, fromIndex?: int): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
 | val | T | 是 | 需要查找的元素值。|
-| fromIndex | int | 否 | 从该索引处开始查找val。默认值为0。|
+| fromIndex | int | 否 | 从该索引处开始查找val，默认值为0。|
 
 **返回值：**
 | 类型 | 说明 |
@@ -549,7 +549,7 @@ indexOf(val: T, fromIndex: int = 0): int
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
 | val | T | 是 | 需要查找的元素值。|
-| fromIndex | int | 否 | 从该索引处开始查找val。默认值为0。|
+| fromIndex | int | 否 | 从该索引处开始查找val，默认值为0。|
 
 **返回值：**
 | 类型 | 说明 |
@@ -806,7 +806,7 @@ some(predicate: (value: T, index: int, array: SparseArray\<T>) => boolean): bool
 **返回值：**
 | 类型 | 说明 |
 | :--- | :--- |
-| boolean | 如果回调函数对任何稀疏数组元素进行执行返回了true，则some函数返回 true；否则为 false。|
+| boolean | 如果回调函数对任何稀疏数组元素进行执行返回了true，则some函数返回 true，否则为 false。|
 
 **示例：**
 
