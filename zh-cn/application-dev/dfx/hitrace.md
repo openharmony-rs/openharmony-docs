@@ -455,9 +455,7 @@ $ hitrace --dump_bgsrv
     /data/log/hitrace/trace_20250604164454@613340-339960.sys
 ```
 
- **使用样例2**：
- 
- 
+**使用样例2**：
 ```shell
 $ hitrace --dump_bgsrv -o /data/local/tmp/test.sys
 2025/06/04 16:50:34 hitrace enter, running_state is SNAPSHOT_DUMP
