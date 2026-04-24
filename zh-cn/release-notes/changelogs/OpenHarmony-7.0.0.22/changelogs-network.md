@@ -1,6 +1,6 @@
 # 网络管理变更说明
 
-## cl.network.1 getUidRxBytes、getUidTxBytes 接口权限变更
+## cl.network.1 getUidRxBytes、getUidTxBytes接口权限变更
 
 **访问级别**
 
