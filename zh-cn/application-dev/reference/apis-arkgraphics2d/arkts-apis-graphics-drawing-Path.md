@@ -2080,7 +2080,7 @@ console.info('lastPoint.x:', lastPoint?.x);
 console.info('lastPoint.y:', lastPoint?.y);
 ```
 
-## isEqual<sup>26+</sup>
+## isEqual
 
 isEqual(path: Path): boolean
 
@@ -2090,9 +2090,9 @@ isEqual(path: Path): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
