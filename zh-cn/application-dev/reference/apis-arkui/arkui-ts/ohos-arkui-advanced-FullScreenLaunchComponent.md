@@ -1,10 +1,10 @@
 # FullScreenLaunchComponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @dutie123-->
-<!--Designer: @dutie123-->
-<!--Tester: @fredyuan0912-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @autojuan-->
+<!--Designer: @autojuan-->
+<!--Tester: @wonlee-->
+<!--Adviser: @hu-zhiqiong-->
 
 全屏启动原子化服务组件，当被拉起方授权使用方可以嵌入式运行原子化服务时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。
 
@@ -39,13 +39,13 @@ import { FullScreenLaunchComponent } from '@kit.ArkUI';
 
 FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo> })
 
-**装饰器类型：**\@Component
+**装饰器类型：**[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| content | Callback\<void> | 是 | \@BuilderParam | 可以使用组件组合来自定义拉起原子化服务前的占位图标，实现类似大桌面应用图标的效果。点击占位组件后，将拉起原子化服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| content | Callback\<void> | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 可以使用组件组合来自定义拉起原子化服务前的占位图标，实现类似大桌面应用图标的效果。点击占位组件后，将拉起原子化服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | appId | string | 是 | - |  需要拉起的原子化服务appId，appId是原子化服务的唯一标识。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<!--RP1--><!--RP1End-->|
 | options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | - | 拉起原子化服务参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onError<sup>18+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -64,6 +64,7 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 FullScreenLaunchComponent组件需要由使用方调用。在提供方完成本地的安装后，即可实现在使用方应用或者元服务中全屏嵌入式拉起提供方的效果。
 
 **使用方**
+
 ```ts
 // 使用方入口界面Index.ets内容如下:
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
@@ -105,6 +106,7 @@ function ColumnChild() {
   }
 }
 ```
+
 **组件提供方**
 
 原子化服务提供方需要修改两个文件：
@@ -117,7 +119,7 @@ import { window } from '@kit.ArkUI';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends EmbeddableUIAbility {
-  storage = new LocalStorage();
+  storage = new LocalStorage(); // 初始化示例，用于存储窗口和窗口阶段的信息
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
   }
@@ -149,6 +151,7 @@ export default class EntryAbility extends EmbeddableUIAbility {
 ```
 
 - 提供方扩展Ability入口页面文件：/src/main/ets/pages/Index.ets。
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -158,6 +161,7 @@ const DOMAIN = 0x0000;
 @Entry
 @Component
 struct Index {
+  // 用于存储本地数据
   private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
 
   build() {
@@ -198,6 +202,7 @@ struct Index {
     .height('100%')
   }
 
+  // 设置窗口系统栏的显示状态
   testSetSystemBarEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setWindowSystemBarEnable(["status"])
@@ -208,6 +213,7 @@ struct Index {
     })
   }
 
+  // 启用或禁用手势返回功能
   testSetGestureBackEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setGestureBackEnabled(true)
@@ -218,6 +224,7 @@ struct Index {
     })
   }
 
+  // 启用沉浸式模式
   testSetImmersiveEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     try {
@@ -227,6 +234,7 @@ struct Index {
     }
   }
 
+  // 设置特定的系统栏的显示状态
   testSetSpecificSystemBarEnabled() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setSpecificSystemBarEnabled('navigationIndicator', false, false)
@@ -238,3 +246,5 @@ struct Index {
   }
 }
 ```
+
+![](figures/FullScreenLaunchComponentDemo1.png)
