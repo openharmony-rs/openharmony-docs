@@ -5702,8 +5702,7 @@ onReadMicInData(callback: Callback\<AudioCapturerMicInData>): void
 
 > **说明：**
 >
-> - 此回调的优先级高于`onReadData`回调。
-> - 如果同时订阅两者，仅会触发此回调。
+> - 此回调的优先级高于`onReadData`回调。如果同时订阅两者，仅会触发此回调。
 > - 当有可供读取的音频缓冲区、可继续读取更多音频数据时，会触发此回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -5766,7 +5765,7 @@ let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
   capturerInfo: audioCapturerInfo
 };
 
-// data表示处理后的音频数据，micInData表示原始Mic-In音频数据，
+// data表示处理后的音频数据，micInData表示原始Mic-In音频数据。
 // ecData表示回声参考音频数据；如果未配置ecStreamInfo，该字段可能为空。
 let readMicInDataCallback: Callback<audio.AudioCapturerMicInData> =
   (data: audio.AudioCapturerMicInData): void => {
