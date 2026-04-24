@@ -42,36 +42,57 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
 ## 开发示例
 
 - 获取文件系统数据分区剩余空间大小。
-  
+
+  ArkTS-Dyn示例：
+
   ```ts
   import { statfs } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
-  
+
   ```
   <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
 
-   ``` TypeScript
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   let path = context.filesDir;
-   statfs.getFreeSize(path, (err: BusinessError, number: number) => {
-     if (err) {
-       console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
-     } else {
-       console.info(`Invoke getFreeSize succeeded, size is ${number}`);
-     }
-   });
-   ```
+  ``` TypeScript
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.filesDir;
+  statfs.getFreeSize(path, (err: BusinessError, freeSize: number) => {
+    if (err) {
+      console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getFreeSize succeeded, freeSize is ${freeSize}`);
+    }
+  });
+  ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { statfs } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { common } from '@kit.AbilityKit';
+
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.filesDir;
+  statfs.getFreeSize(path, (err: BusinessError | null, freeSize: long | undefined) => {
+    if (err) {
+      console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getFreeSize succeeded, freeSize is ${freeSize}`);
+    }
+  });
+  ```
 
 - 获取当前应用的存储空间大小。
-  
+
+  ArkTS-Dyn示例：
+
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-  
+
   ``` TypeScript
   storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
     if (err) {
@@ -82,75 +103,151 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   });
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats): void => {
+    if (err) {
+      console.error(`Invoke getCurrentBundleStats failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getCurrentBundleStats succeeded, appsize is ${bundleStats.appSize}`);
+    }
+  });
+  ```
 
 - 异步获取内置存储的总空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-  
+
   ``` TypeScript
-  storageStatistics.getTotalSize().then((number: number) => {
-    console.info(`getTotalSize successfully, number is ${number}`);
+  storageStatistics.getTotalSize().then((totalSize: number) => {
+    console.info(`getTotalSize successfully, totalSize is ${totalSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getTotalSize failed with error, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let totalSize: long = 0;
+  storageStatistics.getTotalSize().then((totalSize) => {
+    console.info("getTotalSize successfully:" + totalSize);
+   }).catch((err: BusinessError): void => {
+    console.error(`getTotalSize failed with error, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 - 同步获取内置存储的总空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-  
+
   ``` TypeScript
   try {
-    let number = storageStatistics.getTotalSizeSync();
-    console.info(`getTotalSizeSync successfully, number is ${number}`);
+    let totalSize = storageStatistics.getTotalSizeSync();
+    console.info(`getTotalSizeSync successfully, totalSize is ${totalSize}`);
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`getTotalSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let totalSize = storageStatistics.getTotalSizeSync();
+    console.info("getTotalSizeSync successfully:" + totalSize);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getTotalSizeSync failed: Code: ${error.code}, Message: ${error.message}`);
+  }
+  ```
 
 - 异步获取内置存储的可用空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-  
+
   ``` TypeScript
-  storageStatistics.getFreeSize().then((number: number) => {
-    console.info(`getFreeSize successfully, number is ${number}`);
+  storageStatistics.getFreeSize().then((freeSize: number) => {
+    console.info(`getFreeSize successfully, freeSize is ${freeSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let freeSize: long = 0;
+  storageStatistics.getFreeSize().then((freeSize) => {
+    console.info("getFreeSize successfully:" + freeSize);
+  }).catch((err: BusinessError): void => {
+    console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 - 同步获取内置存储的可用空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-  
+
   ``` TypeScript
   try {
-    let number = storageStatistics.getFreeSizeSync();
-    console.info(`getFreeSizeSync successfully, number is ${number}`);
+    let freeSize = storageStatistics.getFreeSizeSync();
+    console.info(`getFreeSizeSync successfully, freeSize is ${freeSize}`);
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`getFreeSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let freeSize = storageStatistics.getFreeSizeSync();
+    console.info("getFreeSizeSync successfully:" + freeSize);
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getFreeSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
+  }
+  ```

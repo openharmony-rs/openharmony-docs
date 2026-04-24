@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## sharedTransition
 
@@ -49,14 +51,18 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型      | 只读 |  可选     | 说明                                                     |
-| ----------------- | -------------|------- | ------- | --------------------------------------------------------------|
-| duration          |     number   |  否  |    是          | 描述共享元素转场动效播放时长。<br>默认值：1000 <br>单位：毫秒<br/>取值范围：[0, +∞) |
-| curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
-| delay          |     number   |  否  |  是         | 延迟播放时间。<br/>取值范围：[0, +∞)<br>默认值：0 <br>单位：毫秒 |
-| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md#motionpathoptions)  |  否   |  是        | 运动路径信息。 |
-| zIndex          |     number   |  否   |   是           | 设置Z轴。<br/>取值范围：(-∞, +∞)<br>默认值：0 |
-| type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  否  |  是 | 动画类型。<br>默认值：SharedTransitionEffectType.Exchange |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ------| ------- | ------- | --------|
+| duration          |    ArkTS-Dyn: number<br/>ArkTS-Sta: int  |  否 | 是 | 描述共享元素转场动效播放时长。<br>默认值：1000 <br>单位：毫秒<br/>取值范围：[0, +∞) |
+| curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup>  |否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
+| delay          |    ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 延迟播放时间。<br/>取值范围：[0, +∞)<br>默认值：0 <br>单位：毫秒 |
+| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md)  | 否 | 是 | 运动路径信息。 |
+| zIndex          |     ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是    | 设置Z轴。<br/>取值范围：(-∞, +∞)<br>默认值：0 |
+| type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   | 否 | 是  | 动画类型。<br>默认值：SharedTransitionEffectType.Exchange |
 
 
 ## 示例

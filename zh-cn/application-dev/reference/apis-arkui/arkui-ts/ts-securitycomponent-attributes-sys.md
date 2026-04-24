@@ -18,9 +18,9 @@
 
 ## key
 
-ArkTS-Dyn: key(value: string)
+ArkTS-Dyn: key(value: string): T
 
-ArkTS-Sta: key(value: string | undefined)
+ArkTS-Sta: key(value: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。与[id](ts-securitycomponent-attributes.md#id15)同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。
 
@@ -44,5 +44,4 @@ ArkTS-Sta: key(value: string | undefined)
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回安全控件的属性。 |
-
+| ArkTS-Dyn: T <br> ArkTS-Sta: this | 返回安全控件的属性。 |

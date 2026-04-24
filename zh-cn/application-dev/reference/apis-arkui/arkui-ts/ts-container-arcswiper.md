@@ -173,7 +173,7 @@ ArkTS-Dyn: disableSwipe(disabled: Optional\<boolean>)
 
 ArkTS-Sta: disableSwipe(disabled: boolean | undefined)
 
-禁用组件滑动切换功能。未通过该接口设置时，默认不禁用组件滑动切换功能。
+是否禁用组件滑动切换功能。未通过该接口设置时，默认不禁用组件滑动切换功能。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -187,7 +187,7 @@ ArkTS-Sta: disableSwipe(disabled: boolean | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                               |
 | ------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| disabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean></br>ArkTS-Sta: boolean \| undefined | 是   | 禁用组件滑动切换功能。设置为true禁用，false不禁用。<br/>取值为undefined时，不禁用组件滑动切换功能。 |
+| disabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean></br>ArkTS-Sta: boolean \| undefined | 是   | 是否禁用组件滑动切换功能。设置为true禁用，false不禁用。<br/>取值为undefined时，不禁用组件滑动切换功能。 |
 
 ### digitalCrownSensitivity
 
@@ -667,7 +667,7 @@ ArkTS-Sta: onAnimationStart(handler: AnimationStartHandler | undefined)
 
 | 参数名  | 类型                                                                 | 必填 | 说明                                                   |
 | ------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------ |
-| handler | ArkTS-Dyn: Optional\<[AnimationStartHandler](#animationstarthandler)></br>ArkTS-Sta: [AnimationStartHandler](#animationstarthandler) \| undefined | 是   | 切换动画开始时的回调。<br/>取值为undefined时，无回调。 |
+| handler | ArkTS-Dyn:[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationStartHandler](#animationstarthandler)></br>ArkTS-Sta: [AnimationStartHandler](#animationstarthandler) \| undefined | 是   | 切换动画开始时的回调。<br/>取值为undefined时，无回调。 |
 
 ### onAnimationEnd
 
@@ -691,7 +691,7 @@ ArkTS-Sta: onAnimationEnd(handler: AnimationEndHandler | undefined)
 
 | 参数名  | 类型                                                             | 必填 | 说明                                                         |
 | ------- | ---------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| handler | ArkTS-Dyn: Optional\<[AnimationEndHandler](#animationendhandler)></br>ArkTS-Sta: [AnimationEndHandler](#animationendhandler) \| undefined | 是   | 切换动画结束时触发该回调。<br/>取值为undefined时，无回调。 |
+| handler | ArkTS-Dyn:[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationEndHandler](#animationendhandler)></br>ArkTS-Sta: [AnimationEndHandler](#animationendhandler) \| undefined | 是   | 切换动画结束时触发该回调。<br/>取值为undefined时，无回调。 |
 
 ### onGestureSwipe
 
@@ -713,7 +713,7 @@ ArkTS-Sta: onGestureSwipe(handler: GestureSwipeHandler | undefined)
 
 | 参数名  | 类型                                                             | 必填 | 说明                                                                 |
 | ------- | ---------------------------------------------------------------- | ---- | -------------------------------------------------------------------- |
-| handler | ArkTS-Dyn: Optional\<[GestureSwipeHandler](#gestureswipehandler)></br>ArkTS-Sta: [GestureSwipeHandler](#gestureswipehandler) \| undefined | 是   | 在页面跟手滑动过程中，逐帧触发该回调。<br/>取值为undefined时，无回调。 |
+| handler | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[GestureSwipeHandler](#gestureswipehandler)></br>ArkTS-Sta: [GestureSwipeHandler](#gestureswipehandler) \| undefined | 是   | 在页面跟手滑动过程中，逐帧触发该回调。<br/>取值为undefined时，无回调。 |
 
 ### customContentTransition
 
@@ -737,7 +737,7 @@ ArkTS-Sta: customContentTransition(transition: SwiperContentAnimatedTransition |
 
 | 参数名     | 类型                                                                                         | 必填 | 说明                                                                   |
 | ---------- | -------------------------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------------- |
-| transition | ArkTS-Dyn: Optional\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)></br>ArkTS-Sta: [SwiperContentAnimatedTransition](#swipercontentanimatedtransition) \| undefined | 是   | ArcSwiper自定义切换动画相关信息。<br/>取值为undefined时，无回调。 |
+| transition | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)></br>ArkTS-Sta: [SwiperContentAnimatedTransition](#swipercontentanimatedtransition) \| undefined | 是   | ArcSwiper自定义切换动画相关信息。<br/>取值为undefined时，无回调。 |
 
 ## SwiperContentAnimatedTransition
 
@@ -781,7 +781,7 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 | selectedIndex | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 当前选中页面的索引。 |
 | index | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 视窗内页面的索引。 |
 | position | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
-| mainAxisLength | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | index对应页面在主轴方向上的长度。 |
+| mainAxisLength | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
 
 ### finishTransition
 
