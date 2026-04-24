@@ -193,7 +193,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 ## ShadowAlgorithmType
 
-阴影算法的枚举值。
+阴影算法的枚举类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
