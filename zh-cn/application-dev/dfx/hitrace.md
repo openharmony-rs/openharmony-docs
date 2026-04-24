@@ -666,4 +666,4 @@ $ hitrace --dump_bgsrv -o /data/local/test
  
  1. 采集二进制格式trace时，使用-o参数指定输出的文件路径不是/data/local/tmp或其子目录。
  
-  2. 录制模式下，使用-o参数指定输出的文件路径不是/data/local/tmp或其子目录。
+ 2. 录制模式下，使用-o参数指定输出的文件路径不是/data/local/tmp或其子目录。
