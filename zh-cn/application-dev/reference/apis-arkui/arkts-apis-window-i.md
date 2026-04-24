@@ -280,7 +280,7 @@
 | ------ | -------- | ---- | ---- | ---------- |
 | systemDensity  | number   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。 |
 | defaultDensity | number   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 |
-| customDensity | number   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
+| customDensity | number   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗、模态窗、全局悬浮窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
 
 ## WindowLayoutInfo<sup>15+</sup>
 
@@ -347,7 +347,7 @@
 | windowId | number | 否   | 否   | 窗口ID。   |
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。   |
 | isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-apis-window-Window.md#isfocused12)接口一致。   |
-| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。|
+| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸，其中的宽高是未经缩放计算过的原始值。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。|
 
 ## TransitionAnimation<sup>20+</sup>
 
