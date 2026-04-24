@@ -5082,12 +5082,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
   (store as relationalStore.RdbStore).createTransaction().then(async (transaction: relationalStore.Transaction) => {
-    transaction.execute("DELETE FROM test WHERE age = ? OR age = ?", [21 as long, 20 as long]).then(() => {
-      transaction.commit();
-    }).catch((e) => {
-      transaction.rollback();
+    try {
+      await transaction.execute("DELETE FROM test WHERE age = ? OR age = ?", [21 as long, 20 as long]);
+      await transaction.commit();
+    } catch (e) {
+      await transaction.rollback();
       console.error(`execute sql failed, code is ${e.code},message is ${e.message}`);
-    });
+    }
   }).catch((err) => {
     console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   });

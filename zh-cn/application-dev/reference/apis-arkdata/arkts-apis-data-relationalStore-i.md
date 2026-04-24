@@ -234,13 +234,16 @@ export default class EntryAbility extends UIAbility {
     let bundleCodeDir = this.context.bundleCodeDir;
     // libdistributeddb_extension.so为实现的fts5可加载分词器扩展编译成的so名称
     let soPath = bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so";
-    let res = fileIo.access(soPath);
-    if (!res) {
-      console.error("Dynamic library not accessible");
-      return;
-    }
-    console.info("Dynamic library found and accessible");
-
+    fileIo.access(soPath).then((res) => {
+      if (!res) {
+        console.error("Dynamic library not accessible");
+        return;
+      }
+      console.info("Dynamic library found and accessible");
+    }).catch((err: Error) => {
+      let businessError = err as BusinessError;
+      console.error(`Access dynamic library failed, code is ${businessError.code}, message is ${businessError.message}`);
+    });
     // 将pluginLibs配置为需要加载的动态库拓展路径。
     STORE_CONFIG.pluginLibs = [soPath];
     relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
