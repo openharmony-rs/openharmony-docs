@@ -406,12 +406,14 @@ ArkTS-Sta: connectServiceExtensionAbility(context: AgentExtensionContext, want: 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common, Want, AgentExtensionAbility, agentManager, bundleManager } from '@kit.AbilityKit';
 import { JSON } from '@kit.ArkTS';
 import { rpc } from '@kit.IPCKit';
 
-let TAG = "DemoAgentForConnect"
+let TAG = 'DemoAgentForConnect';
 
 export default class DemoAgentForConnect extends AgentExtensionAbility {
 
@@ -425,6 +427,42 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
           console.info(`${TAG} onDisconnect ${JSON.stringify(elementName)}`);
         },
         onFailed(code: number) {
+          console.info(`${TAG} onFailed... ${code}`);
+        }
+      };
+      console.info(`${TAG} start connect`);
+      const connectId = agentManager.connectServiceExtensionAbility(this.context, want, options);
+      console.info(`${TAG} connect end, connectId=${connectId} `);
+      return connectId;
+    } catch (err) {
+      console.error(`${TAG} connectServiceExtensionAbility failed.`);
+    }
+    return -1;
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { common, Want, AgentExtensionAbility, agentManager } from '@kit.AbilityKit';
+
+let TAG = 'DemoAgentForConnect';
+
+export default class DemoAgentForConnect extends AgentExtensionAbility {
+
+  connectService(want: Want): long {
+    try {
+      let options: common.ConnectOptions = {
+        onConnect: (elementName, remote) => {
+          console.info(`${TAG} onConnect ${JSON.stringify(elementName)}`);
+        },
+        onDisconnect: (elementName) => {
+          console.info(`${TAG} onDisconnect ${JSON.stringify(elementName)}`);
+        },
+        onFailed: (code) => {
           console.info(`${TAG} onFailed... ${code}`);
         }
       };
