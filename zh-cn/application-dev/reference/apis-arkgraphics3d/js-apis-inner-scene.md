@@ -932,131 +932,30 @@ function registerResourcePath(): void {
 
 软阴影配置抽象基类，用于控制阴影渲染的算法类型及其参数配置。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-### get shadowAlgorithmType
-
-get shadowAlgorithmType(): ShadowAlgorithmType;
-
-获取阴影渲染算法类型。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| [ShadowAlgorithmType](js-apis-inner-scene-types.md#shadowalgorithmtype) | 阴影算法的枚举值。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowAlgorithmType | [ShadowAlgorithmType](js-apis-inner-scene-types.md#shadowalgorithmtype)| 是 | 否 | 阴影算法的枚举值。 |
 
 ## PCFConfig
 
 PCF（Percentage Closer Filtering，百分比邻近过滤）软阴影配置类，继承自[SoftShadowConfig](#softshadowconfig)。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-### get shadowSampleRadius
-
-get shadowSampleRadius(): number | undefined;
-
-获取阴影边缘采样半径。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| number \| undefined | 采样半径。默认值 5.0 |
-
-### set shadowSampleRadius
-
-set shadowSampleRadius(value: number | undefined);
-
-设置阴影边缘采样半径。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| value | number \| undefined | 是 | 采样半径，决定了阴影边缘模糊的范围，半径越大，阴影边缘越柔和。采样半径过大会导致阴影过度模糊，失去阴影形状特征。默认值 5.0<br>取值范围：>= 0<br>- 设置为 0 时，将不进行 PCF 采样，无阴影效果。<br>- 传入 undefined 将恢复默认值 5.0。 |
-
-**示例：**
-
-``` ts
-import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
-
-function testShadowSampleRadius() {
-  // todo...
-}
-```
-
-### get shadowSampleCount
-
-get shadowSampleCount(): number | undefined;
-
-获取阴影图采样数量。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| number \| undefined | 采样数量。默认值 16 |
-
-### set shadowSampleCount
-
-set shadowSampleCount(value: number | undefined);
-
-设置阴影图采样数量。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| value | number \| undefined | 是 | 采样数量，决定了每个像素采样阴影图的次数，数量越多，阴影质量越高，但性能开销越大。默认值 16<br>取值范围：0 ~ 64<br>- 超出此范围的值会被自动限制到最近的有效边界值（例如 65 实际按 64 处理）<br>- 设置为 0 时，将不进行 PCF 采样，无阴影效果。<br>- 传入 undefined 恢复默认值 16 |
-
-**示例：**
-
-``` ts
-import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
-
-function testShadowSampleCount() {
-  // todo...
-}
-```
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowSampleRadius | number | 否 | 是 | 采样半径，决定了阴影边缘模糊的范围，半径越大，阴影边缘越柔和。采样半径过大会导致阴影过度模糊，失去阴影形状特征。默认值 5.0<br>取值范围：>= 0<br>- 设置为 0 时，将不进行 PCF 采样，无阴影效果。<br>- 传入 undefined 将恢复默认值 5.0。 |
+| shadowSampleCount | number | 否 | 是 | 采样数量，决定了每个像素采样阴影图的次数，数量越多，阴影质量越高，但性能开销越大。默认值 16<br>取值范围：0 ~ 64<br>- 超出此范围的值会被自动限制到最近的有效边界值（例如 65 实际按 64 处理）<br>- 设置为 0 时，将不进行 PCF 采样，无阴影效果。<br>- 传入 undefined 恢复默认值 16 |
 
 ## RenderConfiguration<sup>23+</sup>
 
