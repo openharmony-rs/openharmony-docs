@@ -58,11 +58,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let uri = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
-dlpPermission.isDLPFile(file).then((res) => {
-	console.info(res);
-}).catch((error)=> {
-	console.error(error);
-}).finally(()=>{
+dlpPermission.isDLPFile(file).then((res: boolean) => {
+	console.info(JSON.stringify(res));
+}).catch((error： BusinessError)=> {
+	console.error(error.message);
+}).finally(()=> {
 	if (file !== undefined) {
 		fileIo.closeSync(file);
 	}
