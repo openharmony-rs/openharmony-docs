@@ -132,7 +132,7 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
 
 为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
 
-图片框架对解码单张图片设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)时及时释放，以避免进程被系统终止。
+图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)时及时释放，以避免进程被系统终止。
 
 应用可使用[onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)监听系统内存变化情况。
 
