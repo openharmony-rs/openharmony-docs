@@ -1514,7 +1514,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1538,6 +1538,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
+| 2302007   | Websocket port already occupied.           |
 | 2302999   | Websocket other unknown error.             |
 
 **示例：**
@@ -2524,18 +2525,16 @@ localServer.offWebSocketServerError();
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 6
-
-**ArkTS-Sta起始版本：** 23
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 |  只读  | 可选 | 说明                                                         |
 | ------ | ------ |------ | ---- | ------------------------------------------------------------ |
-| header | ArkTS-Dyn: Object<br>ArkTS-Sta: Record\<string, string> |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| caPath<sup>11+</sup> | string |  否  |  是  | 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持格式为pem的文本证书。 |
-| clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。 |
-| proxy<sup>12+</sup> | ProxyConfiguration |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。 |
-| protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为""。              |
-| skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
+| header | ArkTS-Dyn: Object<br>ArkTS-Sta: Record\<string, string> |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
+| caPath<sup>11+</sup> | string |  否  |  是  | 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持格式为pem的文本证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| proxy<sup>12+</sup> | ProxyConfiguration |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为""。    <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23          |
+| skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## ClientCert<sup>11+</sup>
 
@@ -2614,8 +2613,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 | 名称 | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | -----| ------------------------------------------------------------ |
-| status   | int |  是 | 否   | 结果状态，订阅onOpen事件得到的打开连接的状态码。 |
-| message | string |  是 | 否   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。 |
+| status   | int |  否 | 否   | 结果状态，订阅onOpen事件得到的打开连接的状态码。<br>**ArkTS-Sta起始版本：** 23 |
+| message | string |  否 | 否   | 结果信息，订阅onOpen事件得到的打开连接的结果信息。<br>**ArkTS-Sta起始版本：** 23 |
 
 ## ResponseHeaders<sup>12+</sup>
 ArkTS-Dyn: type ResponseHeaders = {
