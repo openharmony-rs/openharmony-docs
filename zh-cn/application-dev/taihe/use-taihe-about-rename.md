@@ -145,18 +145,18 @@ loadLibrary("rename_example");
 function main() {
     // 函数：ArkTS侧使用新名称
     let res = rename_example.newFoo(1, 2);
-    console.log("newFoo(1, 2) = " + res);  // 3
+    console.info("newFoo(1, 2) = " + res);  // 3
 
     // Enum：类型和成员均使用新名称
     let c: rename_example.Color = rename_example.Color.red;
 
     // Struct：类型和字段使用新名称
     let p = rename_example.createPoint(10, 20);
-    console.log("Point.xPos = " + p.xPos);  // 10
+    console.info("Point.xPos = " + p.xPos);  // 10
 
     // Interface：类型使用新名称
     let g: rename_example.Greeter = rename_example.createGreeter("Taihe");
-    console.log(g.greetRenamed());  // Hello from Taihe
+    console.info(g.greetRenamed());  // Hello from Taihe
 }
 ```
 

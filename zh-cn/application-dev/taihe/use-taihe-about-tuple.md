@@ -57,8 +57,8 @@ Color convert_color(Color const& color) {
 ```typescript
 let color1: [int, int, int] = [0x39, 0xC5, 0xBB];
 let color2: [int, int, int] = convert_color(color1);
-console.log(`Color1 is ${color1[0]} ${color1[1]} ${color1[2]}`);
-console.log(`Color2 is ${color2[0]} ${color2[1]} ${color2[2]}`);
+console.info(`Color1 is ${color1[0]} ${color1[1]} ${color1[2]}`);
+console.info(`Color2 is ${color2[0]} ${color2[1]} ${color2[2]}`);
 ```
 
 输出结果如下：

@@ -127,14 +127,14 @@ export function futureResultWithCallback(ms: long, val: string, completer: Async
 import {BusinessError} from "@ohos.base";
 import * as hello from "hello";
 
-console.log("Calling futureResultWithCallback...");
+console.info("Calling futureResultWithCallback...");
 hello.futureResultWithCallback(
     1000, "InitialValue",
     // 消费者：该回调函数将接收到C++侧生产者通过completer发送的异步结果
     (err: BusinessError|null, res: String|undefined) => {
-        console.log("Callback Result: " + res);
+        console.info("Callback Result: " + res);
     });
-console.log("Waiting for callback...");
+console.info("Waiting for callback...");
 ```
 
 输出结果：
@@ -199,12 +199,12 @@ export function futureResultReturnsPromise(ms: long, val: string): Promise<strin
 ```typescript
 import * as hello from "hello";
 
-console.log("Calling futureResultReturnsPromise...");
+console.info("Calling futureResultReturnsPromise...");
 let x = hello.futureResultReturnsPromise(1000, "InitialValue");
-console.log("Waiting for result...");
+console.info("Waiting for result...");
 // 消费者：在Promise上注册回调，当C++侧的future完成时会自动触发这个回调
 x.then((s: String) => {
-    console.log("Promise Result: " + s);
+    console.info("Promise Result: " + s);
 });
 ```
 
@@ -303,7 +303,7 @@ class UserTypeWithCallbackImpl implements hello.UserTypeWithCallback {
 
 let x = hello.processFutureString1(new UserTypeWithCallbackImpl());
 x.then((s: String) => {
-    console.log("Reverse Callback Result: " + s);
+    console.info("Reverse Callback Result: " + s);
 });
 ```
 
@@ -392,7 +392,7 @@ class UserTypeReturnsPromiseImpl implements hello.UserTypeReturnsPromise {
 
 let y = hello.processFutureString2(new UserTypeReturnsPromiseImpl());
 y.then((s: String) => {
-    console.log("Reverse Promise Result: " + s);
+    console.info("Reverse Promise Result: " + s);
 });
 ```
 
