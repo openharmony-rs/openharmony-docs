@@ -157,7 +157,7 @@ try {
 
 ## Updater
 
-一个用于执行在线更新的静态类。
+提供系统在线更新功能的工具类。
 
 ### checkNewVersion
 
@@ -2023,7 +2023,7 @@ try {
 
 ## Restorer
 
-一个用于执行恢复操作的静态类。
+提供设备恢复出厂设置功能的工具类。
 
 ### factoryReset
 
@@ -2289,7 +2289,7 @@ try {
 
 ## LocalUpdater
 
-一个用于执行本地更新的静态类。
+提供本地固件更新功能的工具类。
 
 ### verifyUpgradePackage
 
