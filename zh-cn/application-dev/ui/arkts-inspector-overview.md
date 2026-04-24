@@ -97,7 +97,7 @@ struct ComponentPage {
 
 下述示例，展示了布局回调的基本用法。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 <!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
 
@@ -157,7 +157,7 @@ struct ImageExample {
 }
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ``` TypeScript
 'use static'
@@ -216,7 +216,7 @@ struct ImageExample {
 
 下述示例，展示了getInspectorByKey、getInspectorTree和sendEventByKey的基本用法。
 
-ArkTS1.1示例：
+ArkTS-Dyn示例：
 
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
@@ -254,7 +254,7 @@ struct ComponentPage {
 
 ```
 
-ArkTS1.2示例：
+ArkTS-Sta示例：
 
 ``` TypeScript
 'use static'
