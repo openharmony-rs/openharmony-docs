@@ -25,6 +25,7 @@
 
 以查询PIN认证类型的认证冻结状态为例：
 
+ArkTS-Dyn
 <!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -46,6 +47,11 @@ async obtainingAuthLockState() : Promise<string> {
 }
 ```
 
+ArkTS-Sta
+<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+
+
 ## 示例代码
 
-  - [查询指定认证类型的认证冻结状态](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询指定认证类型的认证冻结状态(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询指定认证类型的认证冻结状态(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta)

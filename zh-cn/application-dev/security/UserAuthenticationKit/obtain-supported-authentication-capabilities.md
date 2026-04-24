@@ -27,6 +27,7 @@
 
 以查询设备是否支持认证可信等级≥ATL3的人脸认证功能为例：
 
+ArkTS-Dyn
 <!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -44,7 +45,11 @@ obtainingSupported() {
 }
 ```
 
+ArkTS-Sta
+<!-- @[obtain_supported_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+
 
 ## 示例代码
 
-  - [查询支持的认证能力](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询支持的认证能力(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询支持的认证能力(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta)

@@ -11,6 +11,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.userIAM.userAuth (用户认证)](js-apis-useriam-userauth.md)。
@@ -27,9 +28,13 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | number | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**系统接口**: 此接口为系统接口。|
+| userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。|
 | credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID。<br>**系统接口**: 此接口为系统接口。<br>**模型约束**: 此接口仅可在Stage模型下使用。|
 
 ## WindowModeType<sup>10+</sup>
@@ -37,6 +42,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 用户认证界面的显示类型。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -51,6 +60,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | windowMode           | [WindowModeType](#windowmodetype10) | 否   | 是   | 代表用户认证界面的显示类型，默认值为WindowModeType.DIALOG_BOX。<br>**系统接口**: 此接口为系统接口。 |
@@ -60,6 +73,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 用户身份认证的通知类型。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -76,6 +93,10 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -141,7 +162,13 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 
 身份认证控件订阅来自用户认证框架的命令。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCommand](#oncommand23)。
+
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **系统接口：** 此接口为系统接口。
 
@@ -183,13 +210,72 @@ try {
 }
 ```
 
+### onCommand<sup>23+</sup>
+
+onCommand(callback: IAuthWidgetCallback): void
+
+身份认证控件订阅来自用户认证框架的命令。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on10)。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                          | 必填 | 说明                                                         |
+| -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 是   | 组件管理接口的回调函数，用于用户认证框架向身份认证控件发送命令。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@ohos.base';
+
+const userAuthWidgetMgrVersion = 1;
+try {
+  let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
+  console.info('get userAuthWidgetMgr instance successfully.');
+  userAuthWidgetMgr.onCommand({
+    sendCommand: (cmdData: string) => {
+      console.info(`The cmdData is ${cmdData}`);
+    }
+  })
+  console.info('subscribe authentication event successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
 ### off<sup>10+</sup>
 
 off(type: 'command', callback?: IAuthWidgetCallback): void
 
 身份认证控件取消订阅来自用户认证框架的命令。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCommand](#offcommand23)。
+
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **系统接口：** 此接口为系统接口。
 
@@ -231,9 +317,64 @@ try {
 }
 ```
 
+### offCommand<sup>23+</sup>
+
+offCommand(callback?: IAuthWidgetCallback): void
+
+身份认证控件取消订阅来自用户认证框架的命令。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off10)。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                          | 必填 | 说明                                                         |
+| -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 否   | 组件管理接口的回调函数，用于用户认证框架向身份认证控件发送命令。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| 12500002 | General operation error. |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@ohos.base';
+
+const userAuthWidgetMgrVersion: int = 1;
+try {
+  let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
+  console.info('get userAuthWidgetMgr instance successfully.');
+  userAuthWidgetMgr.offCommand({
+    sendCommand: (cmdData: string) => {
+      console.info(`The cmdData is ${cmdData}`);
+    }
+  })
+  console.info('cancel subscribe authentication event successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
 ## userAuth.getUserAuthWidgetMgr<sup>10+</sup>
 
-getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
+ArkTS-Dyn: getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
+
+ArkTS-Sta: getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 
 获取UserAuthWidgetMgr对象，用于执行用户身份认证。
 
@@ -245,13 +386,17 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| version | number | 是   | 表示认证组件的版本。 |
+| version | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示认证组件的版本。 |
 
 **返回值：**
 
@@ -272,11 +417,29 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let userAuthWidgetMgrVersion = 1;
+let userAuthWidgetMgrVersion: number = 1;
+try {
+  let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
+  console.info('get userAuthWidgetMgr instance success');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@ohos.base';
+
+let userAuthWidgetMgrVersion: int = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
   console.info('get userAuthWidgetMgr instance successfully.');
@@ -286,9 +449,39 @@ try {
 }
 ```
 
+## AuthWidgetCallbackSendCommandFunc<sup>23+</sup>
+
+type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
+
+回调函数，身份认证框架向控件发送命令。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                               |
+| ------- | ------ | ---- | ---------------------------------- |
+| cmdData | string | 是   | 用户身份认证框架向控件发送的命令。 |
+
 ## IAuthWidgetCallback<sup>10+</sup>
 
 认证组件通过该回调获取用户认证框架发送的命令。
+
+### 属性
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称         | 类型   | 只读 | 可选 | 说明                 |
+| ------------ | ---------- | ---- | ---- | -------------------- |
+| sendCommand  | [AuthWidgetCallbackSendCommandFunc](#authwidgetcallbacksendcommandfunc23) | 否 | 否   | 用于用户认证框架向组件发送命令。  |
 
 ### sendCommand<sup>10+</sup>
 
@@ -296,7 +489,11 @@ sendCommand(cmdData: string): void
 
 回调函数，用于用户认证框架向组件发送命令。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **系统接口：** 此接口为系统接口。
 
@@ -307,6 +504,8 @@ sendCommand(cmdData: string): void
 | cmdData | string | 是   | 用户身份认证框架向控件发送的命令。 |
 
 **示例：**
+
+ArkTS-Dyn**示例：**
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -328,19 +527,47 @@ try {
 }
 ```
 
+ArkTS-Sta**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@ohos.base';
+
+const userAuthWidgetMgrVersion = 1;
+try {
+  let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
+  console.info('get userAuthWidgetMgr instance successfully.');
+  userAuthWidgetMgr.onCommand({
+    sendCommand: (cmdData: string) => {
+      console.info(`The cmdData is ${cmdData}`);
+    }
+  })
+  console.info('subscribe authentication event successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
 ## UserAuthType<sup>8+</sup>
 
 表示身份认证的凭据类型枚举。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。<br>**系统接口：** 此接口为系统接口。 |
+| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。 |
 
 **示例：**
 
 发起用户认证，采用认证可信等级≥ATL3的隐私密码认证，获取认证结果。
+
+ArkTS-Dyn**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -377,6 +604,43 @@ try {
 }
 ```
 
+ArkTS-Sta**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { userAuth } from '@kit.UserAuthenticationKit';
+
+try {
+  const rand = cryptoFramework.createRandom();
+  const len: int = 16;
+  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  const authParam: userAuth.AuthParam = {
+    challenge: randData,
+    authType: [userAuth.UserAuthType.PRIVATE_PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+  };
+  const widgetParam: userAuth.WidgetParam = {
+    title: '请输入密码',
+  };
+
+  const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+  console.info('get userAuth instance successfully.');
+  // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
+  userAuthInstance.onResult({
+    onResult: (result) => {
+      console.info(`userAuthInstance callback result = ${result.result}`);
+    }
+  });
+  console.info('auth on successfully.');
+  userAuthInstance.start();
+  console.info('auth start successfully.');
+} catch (error) {
+  const err: BusinessError = error as BusinessError;
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+}
+```
+
 ## userAuth.queryReusableAuthResult<sup>20+</sup>
 
 queryReusableAuthResult(authParam: AuthParam): Uint8Array
@@ -386,6 +650,10 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -422,7 +690,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();
-  const len: number = 16;
+  const len = 16;
   const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
   const reuseUnlockResult: userAuth.ReuseUnlockResult = {
     reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
@@ -448,10 +716,14 @@ try {
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **系统接口：** 此接口为系统接口。
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。|
-| AUTH_TOKEN_EXPIRED<sup>18+</sup>      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。|
-| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。|
+| AUTH_TOKEN_CHECK_FAILED | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| AUTH_TOKEN_EXPIRED      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|

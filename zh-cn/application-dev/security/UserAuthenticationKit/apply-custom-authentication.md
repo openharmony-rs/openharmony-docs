@@ -40,6 +40,7 @@
 
 当前示例仅展示如何配置界面和选择切换到自定义认证界面。具体拉起的页面及对应页面的实现，请开发者自行实现，代码插入位置可参考注释提示。
 
+ArkTS-Dyn
 <!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -96,8 +97,12 @@ applyingCustomAuthentication() {
 }
 ```
 
+ArkTS-Sta
+<!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+
 
 ## 示例代码
 
-  - [切换自定义认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [切换自定义认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [切换自定义认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta)
   

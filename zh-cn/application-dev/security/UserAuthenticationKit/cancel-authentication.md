@@ -29,6 +29,7 @@
 
 示例代码为发起认证可信等级≥ATL3的人脸+锁屏口令认证后，取消认证请求：
 
+ArkTS-Dyn
 <!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -75,7 +76,11 @@ cancelingUserAuthentication() {
 }
 ```
 
+ArkTS-Sta
+<!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+
 
 ## 示例代码
 
-  - [认证过程中取消认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [认证过程中取消认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [认证过程中取消认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta)

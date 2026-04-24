@@ -25,6 +25,7 @@
 
 以查询用户人脸注册凭据的状态为例：
 
+ArkTS-Dyn
 <!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -41,7 +42,11 @@ obtainingEnrolledCredentialInformation() {
 }
 ```
 
+ArkTS-Sta
+<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+
 
 ## 示例代码
 
-  - [查询用户注册凭据的状态](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询用户注册凭据的状态(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询用户注册凭据的状态(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication-Sta)
