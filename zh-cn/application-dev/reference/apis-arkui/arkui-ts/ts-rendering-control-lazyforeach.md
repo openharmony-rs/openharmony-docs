@@ -1,4 +1,4 @@
-# LazyForEach
+# LazyForEach (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->

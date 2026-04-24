@@ -50,6 +50,8 @@ abstract class Content {
 
 <!-- @[contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
 
+ArkTS-Dyn示例：
+
 ``` TypeScript
 import nativeNode from 'libentry.so'; // 开发者自己实现的so
 import { NodeContent } from '@kit.ArkUI';
@@ -71,6 +73,40 @@ struct Parent {
       // 显示nodeContent管理器里存放的Native侧的组件
       ContentSlot(this.nodeContent);
       // ...
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+
+import { Column, ContentSlot, Entry, Component } from '@ohos.arkui.component';
+import { Content, NodeContent } from '@ohos.arkui.node';
+
+class Native {
+  static {
+    loadLibrary("entry")
+  }
+
+  native createNativeNode(content: NodeContent): void;
+}
+@Entry
+@Component
+struct Parent {
+  private nodeContent: Content = new NodeContent();
+  private nativeNode: Native = new Native();
+
+  aboutToAppear() {
+    // 通过C-API创建节点，并添加到管理器nodeContent上。
+    this.nativeNode.createNativeNode(this.nodeContent as NodeContent);
+  }
+
+  build() {
+    Column() {
+      // 显示nodeContent管理器里存放的Native侧的组件。
+      ContentSlot(this.nodeContent)
     }
   }
 }
