@@ -183,7 +183,7 @@ WIFI7连接类型。
 | OH_WIFI_LINK_DISCONNECT = -1 | 未连接。 |
 | OH_WIFI_LINK_DEFAULT_LINK = 0 | 默认连接。 |
 | OH_WIFI_LINK_WIFI7_SINGLE_LINK = 1 | WIFI7单链连接。 |
-| OH_WIFI_LINK_WIFI7_MLSR = 2 | WIFI7 MLSR（Multi-Link Operation，多链路单射频）。 |
+| OH_WIFI_LINK_WIFI7_MLSR = 2 | WIFI7 MLSR（Multi-Link Single Radio，多链路单射频）。 |
 | OH_WIFI_LINK_WIFI7_EMLSR = 3 | WIFI7 EMLSR（Enhanced Multi-Link Single Radio，增强型多链路单射频）。 |
 | OH_WIFI_LINK_WIFI7_STR = 4 | WIFI7 STR（Simultaneous Transmit and Receive，同时发送与接收）。 |
 | OH_WIFI_LINK_WIFI7_LEGACY = 5 | WIFI7 传统模式。 |
