@@ -28,10 +28,10 @@ PersistentStorage允许的类型和值有：
 
 - `number, string, boolean, enum` 等简单类型，对于简单类型，开发者无需传入[toJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#tojsontypet)和[fromJson](../../reference/apis-arkui/arkui-ts/ts-state-management-Static.md#fromjsontypet)方法即可实现持久化。
 - 对于以下复杂类型，开发者必须传入toJson和fromJson才能实现数据持久化：
-- 支持Map类型，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。且更新的值被持久化存储。详见[装饰Map类型变量](#装饰map类型变量)。
-- 支持Set类型，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。且更新的值被持久化存储。详见[装饰Set类型变量](#装饰set类型变量)。
-- 支持Date类型，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。且更新的值被持久化存储。详见[装饰Date类型变量](#装饰date类型变量)。
-- 支持class类型，class需要被@Observed装饰才能够持久化。
+- 支持[Map](#装饰map类型变量)类型，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。且更新的值被持久化存储。详见[装饰Map类型变量](#装饰map类型变量)。
+- 支持[Set](#装饰set类型变量)类型，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。且更新的值被持久化存储。详见[装饰Set类型变量](#装饰set类型变量)。
+- 支持[Date](#装饰date类型变量)类型，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。且更新的值被持久化存储。详见[装饰Date类型变量](#装饰date类型变量)。
+- 支持class类型，class需要被[@Observed](./arkts-static-observed-and-objectlink.md)装饰才能够持久化。
 - [支持联合类型](#支持联合类型)。
 
 持久化数据是一个相对缓慢的操作，应用程序应避免以下情况：
