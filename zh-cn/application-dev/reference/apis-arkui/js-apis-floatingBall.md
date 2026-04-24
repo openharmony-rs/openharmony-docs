@@ -49,7 +49,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Phone设备、Tablet设备非电脑模式下可正常调用，在其他设备或电脑模式下调用返回801错误码。
 
 **参数：**
 
