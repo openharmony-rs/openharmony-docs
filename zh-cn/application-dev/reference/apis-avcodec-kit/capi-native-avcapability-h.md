@@ -205,6 +205,7 @@ OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_
 获取指定编解码器类型的能力列表。此功能会根据提供的编解码器类型检索出系统支持的所有匹配的编解码器能力。
 
 >**说明：** 
+> 
 >编解码器能力列表的内存由系统底层全局维护，调用者无需管理其生命周期，不得手动分配或释放此内存。
 
 **起始版本：** 24
