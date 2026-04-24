@@ -100,7 +100,6 @@ struct ComponentPage {
 <!-- @[uiContextInspector_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ImagePage.ets) --> 
 
 ``` TypeScript
-'use static'
 import { inspector } from '@kit.ArkUI';
 
 @Entry
@@ -168,7 +167,6 @@ struct ImageExample {
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
 ``` TypeScript
-'use static'
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
