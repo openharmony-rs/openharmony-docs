@@ -279,7 +279,7 @@ struct TestStorageProp {
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->
+<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) --> 
 
 ``` TypeScript
 @Component
@@ -290,6 +290,7 @@ struct StorageLinkComponent {
   build() {
     Column() {
       Text('@StorageLink接口初始化，@StorageLink取值')
+      // linkA为null时，点击后会切换为1；linkA为1时，点击后会切换为null
       Text(`${this.linkA}`).fontSize(20).onClick(() => {
         this.linkA ? this.linkA = null : this.linkA = 1;
       })
@@ -396,7 +397,7 @@ struct ArraySample {
 
 在下面的示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
-<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) -->
+<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -411,6 +412,7 @@ struct DateSample {
         .onClick(() => {
           AppStorage.setOrCreate('date', new Date('2023-07-08'));
         })
+      // 点击Button更新selectedDate年份数据，触发视图刷新
       Button('increase the year by 1')
         .margin(10)
         .onClick(() => {
@@ -444,7 +446,7 @@ struct DateSample {
 
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) -->
+<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -460,6 +462,7 @@ struct MapSample {
           Text(`${item[1]}`).fontSize(30)
           Divider()
         })
+        // 点击Button初始化message
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
@@ -492,7 +495,7 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
-<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) -->
+<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -508,6 +511,7 @@ struct SetSample {
             .fontSize(30)
           Divider()
         })
+        // 点击Button初始化memberSet
         Button('init set')
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -969,6 +973,7 @@ struct PageStorageProp {
       Button('change')
         .onClick(() => {
           AppStorage.setOrCreate('propA', false);
+          // 输出当前this.propA的值
           hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
         })
     }
