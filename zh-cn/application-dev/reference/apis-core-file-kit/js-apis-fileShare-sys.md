@@ -21,23 +21,23 @@
 import  { fileShare } from '@kit.CoreFileKit';
 ```
 
-## SharedDirectoryInfo<sup>26+</sup>
- 	 
-应用向系统共享的目录信息。
+## SharedDirectoryInfo
 
-**ArkTS-Dyn起始版本：** 26
- 	 
-**ArkTS-Sta起始版本：** 26
+应用捐献给系统的目录信息。
 
-**系统接口：** 此接口为系统接口。  
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
 | bundleName | string | 是   | 否 | 应用程序的包名。                                       |
-| path | string | 是   | 否 | 应用程序共享目录的路径 |
-| permissionMode | OperationMode | 是   | 否 | 应用程序共享目录的权限，例如 { OperationMode.READ_MODE } |
+| path | string | 是   | 否 | 应用程序捐献给系统的目录 |
+| permissionMode | number | 是   | 否 | 应用程序共享目录的权限，例如 { OperationMode.READ_MODE } |
 
 ## fileShare.grantUriPermission
 
@@ -290,8 +290,8 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
   }
   ```
 
-## fileShare.getSharedDirectoryInfo<sup>26+</sup>
- 	 
+## fileShare.getSharedDirectoryInfo
+
 ArkTS-Dyn: getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 ArkTS-Sta: getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
@@ -302,9 +302,9 @@ ArkTS-Sta: getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26
- 	 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -331,18 +331,37 @@ ArkTS-Sta: getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileShare } from '@kit.CoreFileKit';
   
-  async function getSharedDirectoryInfo() {
+   private async getSharedDirectoryInfoTest(): Promise<void> {
     try {
-      
+      let result: fileShare.SharedDirectoryInfo[] = await fileShare.getSharedDirectoryInfo();
+      console.log("result length = " + result.length);
+      result.forEach((info: fileShare.SharedDirectoryInfo) => {
+        console.log("getSharedDirectoryInfo bundle=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+      });
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`getSharedDirectoryInfo exception = code is ${err.code}, message is ${err.message}`);
     }
-    catch (error) {
-      
-    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 20, scroller: this.scroller }) {
+        ListItem() {
+          Button("getSharedDirectoryInfo").width('100%').onClick((event: ClickEvent) => {
+            console.info("getSharedDirectoryInfo")
+            this.getSharedDirectoryInfoTest();
+          })
+        }
+      }
+      .height('100%')
+      .width('100%')
+    }.margin('20vp')
   }
   ```
 
 
-## fileShare.grantSharedDirectoryPermission<sup>26+</sup>
+## fileShare.grantSharedDirectoryPermission
 
 ArkTS-Dyn: grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
@@ -354,9 +373,9 @@ ArkTS-Sta: grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26
- 	 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -383,21 +402,37 @@ ArkTS-Sta: grantSharedDirectoryPermission(): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileShare } from '@kit.CoreFileKit';
   
-  async function grantSharedDirectoryPermission() {
+  private async grantShared(): Promise<void> {
     try {
-      
+      await fileShare.grantSharedDirectoryPermission();
+      console.info("grantSharedDirectoryPermission success")
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`grantSharedDirectoryPermission exception = code is ${err.code}, message is ${err.message}`);
     }
-    catch (error) {
-      
-    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 20, scroller: this.scroller }) {
+        ListItem() {
+          Button("grantSharedDirectoryPermission").width('100%').onClick((event: ClickEvent) => {
+            console.info("grantSharedDirectoryPermission")
+            this.grantShared();
+          })
+        }
+      }
+      .height('100%')
+      .width('100%')
+    }.margin('20vp')
   }
   ```
 
-## fileShare.revokeSharedDirectoryPermission<sup>26+</sup>
+## fileShare.revokeSharedDirectoryPermission
 
-ArkTS-Dyn: grantSharedDirectoryPermission(): Promise&lt;void&gt;
+ArkTS-Dyn: revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
-ArkTS-Sta: grantSharedDirectoryPermission(): Promise&lt;void&gt;
+ArkTS-Sta: revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 撤销应用共享目录的权限
 
@@ -405,9 +440,9 @@ ArkTS-Sta: grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26
- 	 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -434,12 +469,28 @@ ArkTS-Sta: grantSharedDirectoryPermission(): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileShare } from '@kit.CoreFileKit';
   
-  async function revokeSharedDirectoryPermission() {
+  private async revokeShared(): Promise<void> {
     try {
-      
+      await fileShare.revokeSharedDirectoryPermission();
+      console.info("revokeSharedDirectoryPermission success")
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`revokeSharedDirectoryPermission exception = code is ${err.code}, message is ${err.message}`);
     }
-    catch (error) {
-      
-    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 20, scroller: this.scroller }) {
+        ListItem() {
+          Button("revokeSharedDirectoryPermission").width('100%').onClick((event: ClickEvent) => {
+            console.info("revokeSharedDirectoryPermission")
+            this.revokeShared();
+          })
+        }
+      }
+      .height('100%')
+      .width('100%')
+    }.margin('20vp')
   }
   ```
