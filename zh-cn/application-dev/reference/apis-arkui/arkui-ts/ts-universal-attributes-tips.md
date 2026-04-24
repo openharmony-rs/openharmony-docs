@@ -40,7 +40,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 弹窗信息内容。 |
+| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 弹窗信息内容。设置为undefined时，默认不显示信息内容。 |
 | options  | [TipsOptions](#tipsoptions类型说明) | 否   | 配置悬浮气泡的参数。<br/>默认值：<br/>{<br/>appearingTime: 700,<br/>disappearingTime: 300,<br/>appearingTimeWithContinuousOperation: 300,<br/>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br/>arrowPointPosition: ArrowPointPosition.CENTER,<br/>arrowWidth: 16,arrowHeight: 8,<br/>showAtAnchor: TipsAnchorType.TARGET<br/>} |
 
 **返回值：**
@@ -90,7 +90,7 @@ type TipsMessageType = ResourceStr | StyledString
 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 ### 示例1（悬浮气泡的显示和消失）
 
-此示例为bindTips通过绑定Button产生悬浮气泡。
+此示例为[bindTips](#bindtips)通过绑定[Button](./ts-basic-components-button.md)，在悬停态时产生悬浮气泡。
 
 ArkTS-Dyn示例：
 
@@ -145,7 +145,7 @@ struct TipsExample {
 ![](figures/tips01.gif)
 ### 示例2（多个悬浮气泡的显示和消失）
 
-此示例展示了如何使用bindTips配置多个悬浮气泡依次显示和消失。
+此示例展示了如何使用[bindTips](#bindtips)配置多个悬浮气泡依次显示和消失。
 
 ArkTS-Dyn示例：
 
