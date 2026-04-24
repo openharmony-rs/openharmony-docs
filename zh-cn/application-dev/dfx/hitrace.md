@@ -652,7 +652,7 @@ $ hitrace --dump_bgsrv
  
  **现象描述**
  
- 执行hitrace命令后报错，命令行窗口显示"illegal path"。
+ 执行hitrace命令后报错，命令行窗口显示“illegal path”。
  
 ```shell
 $ hitrace --dump_bgsrv -o /data/local/test
