@@ -14,7 +14,9 @@ getUidRxBytes、getUidTxBytes 接口需要添加权限管控。
 
 此变更涉及应用适配。
 
-若接口传入的Uid为自身应用Uid，则无需申请权限，接口行为与变更前一致；若接口传入的Uid非自身应用Uid时，需要申请ohos.permission.GET_NETWORK_STATS权限，其授权方式为system_grant，当前只允许MDM应用申请。
+变更前：应用可通过本接口传入指定Uid查询其上下行流量数据。
+
+变更后：若接口传入的Uid为自身应用Uid，则无需申请权限，接口行为与变更前一致；若接口传入的Uid非自身应用Uid时，需要申请ohos.permission.GET_NETWORK_STATS权限，其授权方式为system_grant，当前只允许MDM应用申请。
 
 
 **起始 API Level**
