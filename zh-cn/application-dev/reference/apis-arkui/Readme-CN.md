@@ -83,7 +83,8 @@
     - [@ohos.arkui.uiMaterial (系统材质)(系统接口)](arkts-apis-uimaterial-sys.md)
     <!--DelEnd-->
     - arkui<!--ui-interface-arkui-->
-      - [BuilderNode](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Dyn)](js-apis-arkui-builderNode.md)
+      - [BuilderNode (ArkTS-Sta)](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
@@ -553,9 +554,13 @@
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
-    - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
-    - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
-    - [Repeat](arkui-ts/ts-rendering-control-repeat.md)
+    - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
+    - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
+    - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)
+    - [LazyForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-lazyforeach.md)
+    - [LazyForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-lazyforeach-sta.md)
+    - [Repeat (ArkTS-Dyn)](arkui-ts/ts-rendering-control-repeat.md)
+    - [Repeat (ArkTS-Sta)](arkui-ts/ts-rendering-control-repeat-sta.md)
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
