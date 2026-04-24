@@ -28,6 +28,10 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
@@ -99,6 +103,10 @@ startRecording(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                             |
@@ -152,6 +160,10 @@ stopRecording(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                              |
@@ -203,7 +215,9 @@ pauseRecording(): Promise\<void>
 
 暂停录屏。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -261,7 +275,9 @@ resumeRecording(): Promise\<void>
 
 恢复录屏。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -315,7 +331,9 @@ if (avScreenCaptureRecorder != undefined) {
 
 ## skipPrivacyMode<sup>12+</sup>
 
-skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
+ArkTS-Dyn: skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
+
+ArkTS-Sta: skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
 
 录屏时，应用可对本应用的隐私窗口做安全豁免。使用Promise异步回调。
 
@@ -323,11 +341,15 @@ skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| windowIDs | Array\<number> | 是   | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| windowIDs | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> | 是   | 需要豁免隐私的窗口列表，包括主窗口id和子窗口id，窗口属性获取方法可以参考[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 
@@ -382,6 +404,10 @@ setMicEnabled(enable: boolean): Promise\<void>
 设置麦克风开关。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -442,6 +468,10 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
@@ -496,17 +526,23 @@ if (avScreenCaptureRecorder != undefined) {
 
 ## excludePickerWindows<sup>22+</sup>
 
-excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
+ArkTS-Dyn: excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
+
+ArkTS-Sta: excludePickerWindows(excludedWindows: Array\<int>): Promise\<void>
 
 设置在Picker中隐藏的窗口列表，在下一次显示Picker时生效。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| excludedWindows | Array\<number> | 是   | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
+| excludedWindows | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> | 是   | 需要在Picker中隐藏的窗口列表，窗口属性获取方法可以参考[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。 |
 
 **返回值：**
 
@@ -569,6 +605,10 @@ presentPicker(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                              |
@@ -622,6 +662,10 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                              |
@@ -673,7 +717,13 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 
 订阅录屏状态切换的事件，当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -716,7 +766,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 订阅AVScreenCaptureRecorder的错误事件，用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -769,7 +825,13 @@ if (avScreenCaptureRecorder != undefined) {
 
 取消订阅状态切换回调事件。用户可以指定填入状态切换的回调方法来取消订阅。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -810,7 +872,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 取消订阅错误回调事件。用户可以指定填入错误回调方法来取消订阅。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -843,4 +911,129 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.off('error');
 }
+```
+
+## onStateChange<sup>23+</sup>
+
+onStateChange(callback: Callback\<AVScreenCaptureStateCode>): void
+
+订阅录屏状态切换的事件。使用callback异步回调。
+
+当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback |Callback<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)>  | 是   | 状态切换事件回调方法，表示切换到的状态。 |
+
+**示例：**
+
+```ts
+avScreenCaptureRecorder.onStateChange((state: media.AVScreenCaptureStateCode) => {
+    console.info('avScreenCaptureRecorder stateChange to ' + state);
+});
+```
+
+## onError<sup>23+</sup>
+
+onError(callback: ErrorCallback): void
+
+订阅AVScreenCaptureRecorder的错误事件。使用callback异步回调。
+
+用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型          | 必填 | 说明                                    |
+| -------- | ------------- | ---- | --------------------------------------- |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 录屏错误事件回调方法。                  |
+
+**错误码：**  
+
+以下错误码的详细介绍请参见[通用错误码](arkts-apis-media-e.md)和[媒体错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 201      | permission denied.     |
+| 5400103  | IO error. Return by ErrorCallback. |
+| 5400105  | Service died. Return by ErrorCallback. |
+
+**示例：**
+
+```ts
+avScreenCaptureRecorder.onError((err: BusinessError) => {
+    console.error('avScreenCaptureRecorder error:' + err.message);
+});
+```
+
+## offStateChange<sup>23+</sup>
+
+ offStateChange(callback?: Callback\<AVScreenCaptureStateCode>): void
+
+取消订阅状态切换回调事件。使用callback异步回调。
+
+用户可以指定填入状态切换的回调方法来取消订阅。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#offstatechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback |Callback<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)>  | 否   | 状态切换事件回调方法，表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
+
+**示例：**
+
+```ts
+avScreenCaptureRecorder.offStateChange();
+```
+## offError<sup>23+</sup>
+
+offError(callback?: ErrorCallback): void
+ 
+取消订阅错误回调事件。使用callback异步回调。
+
+用户可以指定填入错误回调方法来取消订阅。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror12)。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                       |
+| -------- | -------- | ---- | ---------------------------------------------------------- |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
+
+**示例：**
+
+```ts
+avScreenCaptureRecorder.offError();
 ```
