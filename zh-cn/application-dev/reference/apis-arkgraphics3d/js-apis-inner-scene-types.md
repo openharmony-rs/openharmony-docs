@@ -191,6 +191,22 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | TRIANGLE_LIST | 0 | 由不相交的顶点集合构成不同的三角形。 |
 | TRIANGLE_STRIP | 1 | 每个顶点和前一个三角形的一条边构成新的三角形。 |
 
+## ShadowAlgorithmType
+
+阴影算法的枚举值。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 值 | 说明 |
+| ---- | ---- | ---- |
+| PCF | 0 | 百分比邻近过滤算法。 |
+
 ## CustomGeometry<sup>18+</sup>
 
 自定义几何类型，继承自[GeometryDefinition](#geometrydefinition18)。
