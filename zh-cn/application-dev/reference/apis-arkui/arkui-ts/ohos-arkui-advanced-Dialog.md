@@ -208,6 +208,8 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 
 ## ButtonOptions
 
+按钮的样式参数，用于设置弹出框按钮属性。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                      | 类型                                                         | 只读 | 可选 | 说明                                                                                                                             |
