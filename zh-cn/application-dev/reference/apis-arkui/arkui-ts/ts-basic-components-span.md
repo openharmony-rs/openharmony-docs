@@ -17,6 +17,8 @@
 >  不支持[通用属性](ts-component-general-attributes.md)。若需设置通用属性，应使用[Text](ts-basic-components-text.md)进行设置，或改用[属性字符串](ts-universal-styled-string.md)中的[CustomSpan](ts-universal-styled-string.md#customspan)自行绘制。
 >
 >  [通用事件](ts-component-general-events.md)只支持点击事件[onClick](ts-universal-events-click.md#onclick)和悬浮事件[onHover](ts-universal-events-hover.md#onhover)。
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 
 ## 子组件
@@ -34,6 +36,10 @@ Span(value: string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -47,7 +53,9 @@ Span(value: string | Resource)
 
 ### decoration
 
-decoration(value: DecorationStyleInterface)
+ArkTS-Dyn: decoration(value: DecorationStyleInterface)
+
+ArkTS-Sta: decoration(value: DecorationStyleInterface | undefined)
 
 设置文本装饰线样式及其颜色。
 
@@ -57,11 +65,15 @@ decoration(value: DecorationStyleInterface)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型      | 必填 | 说明     |
 | ------ | -------- | ---- | -------------- |
-| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | 是   | 文本装饰线样式对象。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**说明：** <br/>style参数不支持卡片能力。 |
+| value  | ArkTS-Dyn: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface)<br/>ArkTS-Sta: [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) \| undefined | 是   | 文本装饰线样式对象。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**说明：** <br/>style参数不支持卡片能力。 |
 
 >  **说明：**
 >
@@ -71,7 +83,9 @@ decoration(value: DecorationStyleInterface)
 
 ### letterSpacing
 
-letterSpacing(value: number | ResourceStr)
+ArkTS-Dyn: letterSpacing(value: number | ResourceStr)
+
+ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
 设置文本字符间距。取值小于0，字符聚集重叠，取值大于0且随着数值变大，字符间距越来越大，稀疏分布。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
@@ -81,15 +95,21 @@ letterSpacing(value: number | ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型     | 必填 |  说明   |
 | ------ | ------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本字符间距。<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### textCase
 
-textCase(value: TextCase)
+ArkTS-Dyn: textCase(value: TextCase)
+
+ArkTS-Sta: textCase(value: TextCase | undefined)
 
 设置文本大小写。
 
@@ -99,15 +119,21 @@ textCase(value: TextCase)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明   |
 | ------ | ------- | ---- | ------- |
-| value  | [TextCase](ts-appendix-enums.md#textcase) | 是   | 文本大小写。<br/>默认值：TextCase.Normal |
+| value  | ArkTS-Dyn: [TextCase](ts-appendix-enums.md#textcase)<br/>ArkTS-Sta: [TextCase](ts-appendix-enums.md#textcase) \| undefined | 是   | 文本大小写。<br/>默认值：TextCase.Normal |
 
 ### fontColor
 
-fontColor(value: ResourceColor)
+ArkTS-Dyn: fontColor(value: ResourceColor)
+
+ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 设置字体颜色。
 
@@ -117,15 +143,21 @@ fontColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>默认值：'e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 字体颜色。<br/>默认值：'e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
 
 ### fontSize
 
-fontSize(value: number | string | Resource)
+ArkTS-Dyn: fontSize(value: number | string | Resource)
+
+ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 设置字体大小。
 
@@ -135,15 +167,21 @@ fontSize(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br/>Wearable设备上默认值为：15fp |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体大小。fontSize为number类型时，使用fp单位。字体默认大小16fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br/>Wearable设备上默认值为：15fp |
 
 ### fontStyle
 
-fontStyle(value: FontStyle)
+ArkTS-Dyn: fontStyle(value: FontStyle)
+
+ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 设置字体样式。
 
@@ -153,15 +191,21 @@ fontStyle(value: FontStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
+| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle)<br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined | 是   | 字体样式。<br/>默认值：FontStyle.Normal |
 
 ### fontWeight
 
-fontWeight(value: number | FontWeight | ResourceStr)
+ArkTS-Dyn: fontWeight(value: number | FontWeight | ResourceStr)
+
+ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
@@ -169,13 +213,19 @@ fontWeight(value: number | FontWeight | ResourceStr)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br>值为undefined时，保持FontWeight.Normal效果。 <br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### fontWeight<sup>24+</sup>
 
@@ -200,7 +250,9 @@ fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWe
 
 ### fontFamily
 
-fontFamily(value: string | Resource)
+ArkTS-Dyn: fontFamily(value: string | Resource)
+
+ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 设置字体列表。
 
@@ -210,11 +262,15 @@ fontFamily(value: string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体列表。<br>默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。<br>默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
 
 > **说明：**
 >
@@ -222,7 +278,9 @@ fontFamily(value: string | Resource)
 
 ### lineHeight<sup>10+</sup>
 
-lineHeight(value: Length)
+ArkTS-Dyn: lineHeight(value: Length)
+
+ArkTS-Sta: lineHeight(value: Length | undefined)
 
 设置文本行高。
 
@@ -230,15 +288,21 @@ lineHeight(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
-| value  | [Length](ts-types.md#length) | 是   | 文本行高。 <br/> number类型时单位为fp。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为fp。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。|
 
 ### font<sup>10+</sup>
 
-font(value: Font)
+ArkTS-Dyn: font(value: Font)
+
+ArkTS-Sta: font(value: Font | undefined)
 
 设置文本样式。包括字体大小、字体粗细、字体族和字体风格。
 
@@ -246,11 +310,15 @@ font(value: Font)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  | [Font](ts-types.md#font) | 是   | 文本样式。 |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 文本样式。 |
 
 ### font<sup>24+</sup>
 
@@ -273,7 +341,9 @@ font(value: Font, fontConfigs?: FontConfigs)
 
 ### textShadow<sup>11+</sup>
 
-textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
+ArkTS-Dyn: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
+
+ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefined)
 
 设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段, 不支持智能取色模式。
 
@@ -281,11 +351,15 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----- | ---- | --- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
+| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br/>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> \| undefined | 是   | 文字阴影效果。 |
 
 ## 事件
 
@@ -303,6 +377,10 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ### textBackgroundStyle<sup>11+</sup>
 
 textBackgroundStyle(style: TextBackgroundStyle): T
@@ -312,6 +390,10 @@ textBackgroundStyle(style: TextBackgroundStyle): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -352,6 +434,10 @@ baselineOffset(value: LengthMetrics): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型     | 只读 | 可选 | 说明         |
 | ------ | ------- | ---- | ---- | ------------ |
@@ -644,4 +730,3 @@ struct SpanExample {
 ```
 
 ![SpanBaselineOffset](figures/SpanBaselineOffset.png)
-

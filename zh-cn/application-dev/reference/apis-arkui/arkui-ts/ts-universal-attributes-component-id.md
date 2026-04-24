@@ -10,6 +10,8 @@ id为组件的唯一标识，在整个应用内唯一。本模块提供组件标
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 若同一个组件设置了多个id或者key，最后设置的生效。
@@ -17,7 +19,9 @@ id为组件的唯一标识，在整个应用内唯一。本模块提供组件标
 
 ## id
 
-id(value: string): T
+ArkTS-Dyn: id(value: string): T
+
+ArkTS-Sta: id(value: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。当未设置id时，组件默认id为空。
 
@@ -27,21 +31,27 @@ id(value: string): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value  | string   |  是  | 组件的唯一标识，唯一性由使用者保证。 |
+| value  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined   |  是  | 组件的唯一标识，唯一性由使用者保证。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## key<sup>12+</sup>
 
-key(value: string): T
+ArkTS-Dyn: key(value: string): T
+
+ArkTS-Sta: key(value: string | undefined): this
 
 组件的唯一标识，唯一性由使用者保证。
 
@@ -51,17 +61,21 @@ key(value: string): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | 是 | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br/> |
+| value   | ArkTS-Dyn: string<br/>ArkTS-Sta: string&nbsp;\|&nbsp;undefined   | 是 | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br/> |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 基于组件标识的拓展能力
 
@@ -76,6 +90,12 @@ getInspectorByKey(id: string): string
 此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用此接口。由于耗时长，不建议测试之外的场景使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数:**
 
@@ -123,6 +143,12 @@ getInspectorTree(): Object
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值:**
 
 | 类型     | 说明                            |
@@ -162,6 +188,12 @@ sendEventByKey(id: string, action: number, params: string): boolean
 此接口仅用于对应用的测试。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数:**
 
@@ -210,6 +242,12 @@ sendTouchEvent(event: TouchObject): boolean
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数:**
 
 | 参数名      | 类型            | 必填  | 说明                                                         |
@@ -232,6 +270,12 @@ sendKeyEvent(event: KeyEvent): boolean
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数:**
 
 | 参数名    | 类型     | 必填      | 说明                                                         |
@@ -253,6 +297,12 @@ sendMouseEvent(event: MouseEvent): boolean
 此接口仅用于对应用的测试。由于耗时长，不建议使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

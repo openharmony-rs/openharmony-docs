@@ -1528,18 +1528,24 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
-  | 参数名  | 类型     | 必填   | 说明                                       |
-  | ---- | ------ | ---- | ---------------------------------------- |
-  | networkId   | string | 是    | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。                             |
-  | listeners | [DfsListeners](#fileiodfslisteners12) | 是    | 分布式文件系统状态监听器。                |
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| networkId | string                            | 是   | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[deviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。 |
+| listeners | [DfsListeners](#dfslisteners12) | 是   | 分布式文件系统状态监听器。                                                                                                                                                                                                          |
 
 **返回值：**
 
-  | 类型     | 说明                                       |
-  | ------ | ---------------------------------------- |
-  | Promise&lt;void&gt;| Promise对象。无返回值。                             |
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -1547,28 +1553,53 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+ArkTS-Dyn示例：
 
-  let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
-  let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  if (deviceInfoList && deviceInfoList.length > 0) {
-    console.info(`Succeeded in getting available device list.`);
-    let networkId = deviceInfoList[0].networkId;
-    let listeners: fileIo.DfsListeners = {
-      onStatus(networkId, status) {
-        console.info('onStatus');
-      }
-    };
-    fileIo.connectDfs(networkId, listeners).then(() => {
-      console.info("Succeeded in connecting dfs.");
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to connectDfs. Code: ${err.code}, message: ${err.message}`);
-    });
-  }
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
+let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
+let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+if (deviceInfoList && deviceInfoList.length > 0) {
+  console.info('Succeeded in getting available device list');
+  let networkId = deviceInfoList[0].networkId;
+  let listeners: fileIo.DfsListeners = {
+    onStatus(networkId, status) {
+      console.info('onStatus');
+    }
+  };
+  fileIo.connectDfs(networkId, listeners).then(() => {
+    console.info('Succeeded in connecting dfs');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to connectDfs. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+
+let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
+let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+if (deviceInfoList && deviceInfoList.length > 0) {
+  console.info('Succeeded in getting available device list');
+  let networkId = deviceInfoList[0].networkId!;
+  let listeners: fileIo.DfsListeners = {
+    onStatus: (networkId: string, status: int) => {
+      console.info('connectDfs onStatus ' + networkId + ' ' + status);
+    }
+  };
+  fileIo.connectDfs(networkId!, listeners).then(() => {
+    console.info('Succeeded in connecting dfs');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to connectDfs. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
 ## fileIo.disconnectDfs<sup>12+</sup>
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
@@ -1579,17 +1610,23 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
-  | 参数名  | 类型     | 必填   | 说明                                       |
-  | ---- | ------ | ---- | ---------------------------------------- |
-  | networkId   | string | 是    | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。                            |
+
+| 参数名    | 类型   | 必填 | 说明                                                                                                                                                                                                                                |
+| --------- | ------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| networkId | string | 是   | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。 |
 
 **返回值：**
 
-  | 类型     | 说明                                       |
-  | ------ | ---------------------------------------- |
-  | Promise&lt;void&gt;| Promise对象。无返回值。                             |
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 **错误码：**
 
@@ -1597,22 +1634,43 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+ArkTS-Dyn示例：
 
-  let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
-  let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  if (deviceInfoList && deviceInfoList.length > 0) {
-    console.info(`Succeeded in getting available device list.`);
-    let networkId = deviceInfoList[0].networkId;
-    fileIo.disconnectDfs(networkId).then(() => {
-      console.info("Succeeded in disconnecting dfs.");
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
-    })
-  }
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+
+let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
+let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+if (deviceInfoList && deviceInfoList.length > 0) {
+  console.info('Succeeded in getting available device list');
+  let networkId = deviceInfoList[0].networkId;
+  fileIo.disconnectDfs(networkId).then(() => {
+    console.info('Succeeded in disconnecting dfs');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
+  })
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+
+let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
+let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+if (deviceInfoList && deviceInfoList.length > 0) {
+  console.info('Succeeded in getting available device list');
+  let networkId = deviceInfoList[0].networkId!;
+  fileIo.disconnectDfs(networkId!).then(() => {
+    console.info('Succeeded in disconnecting dfs');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
+  })
+}
+```
 
 ## fileIo.setxattr<sup>12+</sup>
 
@@ -4720,6 +4778,141 @@ for (let i = 0; i < filenames.length; i++) {
 }
 ```
 
+## fileIo.listFileExt
+
+listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
+
+列出目录下所有文件名，支持递归列出和自定义文件名过滤。使用Promise异步回调。
+
+可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----- |
+| path | string | 是 | 目录的应用沙箱路径。 |
+| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件列出选项。默认为空，表示不递归、不限制列出数量、不进行过滤。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;string[]&gt; | Promise对象，返回文件名数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 13900002 | No such file or directory. |
+| 13900011 | Out of memory. |
+| 13900018 | Not a directory. |
+| 13900020 | Invalid argument. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, ListFileExtOptions, FileFilter } from '@kit.CoreFileKit';
+
+let filter: FileFilter = {
+  filter: (name: string): boolean => {
+    return name.endsWith('.txt');
+  }
+};
+let options: ListFileExtOptions = {
+  recursion: false,
+  listNum: 0,
+  fileFilter: filter
+};
+fileIo.listFileExt(pathDir, options).then((filenames: Array<string>) => {
+  console.info(`Succeeded in listing file.`);
+  for (let i = 0; i < filenames.length; i++) {
+    console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
+  }
+}).catch((error: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## fileIo.listFileExtSync
+
+listFileExtSync(path: string, options?: ListFileExtOptions): string[]
+
+以同步方式列出目录下所有文件名，支持递归列出和自定义文件名过滤。
+
+可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----- |
+| path | string | 是 | 目录的应用沙箱路径。 |
+| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件列出选项。默认为空，表示不递归、不限制列出数量、不进行过滤。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| string[] | 返回文件名数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 13900002 | No such file or directory. |
+| 13900011 | Out of memory. |
+| 13900018 | Not a directory. |
+| 13900020 | Invalid argument. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, ListFileExtOptions, FileFilter } from '@kit.CoreFileKit';
+
+let filter: FileFilter = {
+  filter: (name: string): boolean => {
+    return name.endsWith('.txt');
+  }
+};
+let options: ListFileExtOptions = {
+  recursion: false,
+  listNum: 0,
+  fileFilter: filter
+};
+try {
+  let filenames = fileIo.listFileExtSync(pathDir, options);
+  console.info(`Succeeded in listing file.`);
+  for (let i = 0; i < filenames.length; i++) {
+    console.info(`Succeeded in listing file, file name: ${filenames[i]}`);
+  }
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to list file. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## fileIo.lseek<sup>11+</sup>
 
 ArkTS-Dyn: lseek(fd: number, offset: number, whence?: WhenceType): number
@@ -7093,13 +7286,18 @@ onCancel(): Promise&lt;string&gt;
 
 取消拷贝事件监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
-  | 类型                   | 说明         |
-  | --------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise对象。最后一个拷贝的文件路径。 |
+
+| 类型                  | 说明                                  |
+| --------------------- | ------------------------------------- |
+| Promise&lt;string&gt; | Promise对象。最后一个拷贝的文件路径。 |
 
 **错误码：**
 
@@ -8344,26 +8542,69 @@ console.info(`Succeeded in unlocking file.`);
 fileIo.closeSync(file);
 ```
 
-## fileIo.DfsListeners<sup>12+</sup>
+## DfsListenerCallback<sup>23+</sup>
+
+type DfsListenerCallback = (networkId: string, status: int) => void
+
+DFSListener回调函数。用于通知链路状态变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                               | 必填 | 说明                                                                                                                                                                                                                                    |
+| --------- | ---------------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| networkId | string                             | 是   | 设备的网络Id。                                                                                                                                                                                                                          |
+| status    | int | 是   | 分布式文件系统的状态码（以connectDfs回调onStatus的特定错误码作为入参）。触发场景为connectDfs调用过程中出现对端设备异常，对应错误码为：<br/>- [13900046](errorcode-filemanagement.md#13900046-软件造成连接中断)：软件造成连接中断。 |
+
+## DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-### onStatus<sup>12+</sup>
+**ArkTS-Dyn起始版本：** 12
 
-onStatus(networkId: string, status: number): void;
+**ArkTS-Sta起始版本：** 23
 
-事件回调类。参数由[connectDfs](#fileioconnectdfs12)传入。
+### 属性
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
+**ArkTS-Sta起始版本：** 23
+
+| 名称        | 类型                               | 只读 | 可选 | 说明                             |
+| ----------- | ---------------------------------- | ---- | ---- | -------------------------------- |
+| onStatus<sup>23+</sup>    | [DfsListenerCallback](#dfslistenercallback23)  | 否   | 否   | 事件回调类。用于通知链路状态变化。    |
+
+### onStatus<sup>12+</sup>
+
+onStatus(networkId: string, status: number): void
+
+事件回调类。参数由[connectDfs](#fileioconnectdfs12)传入。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
-  | 参数名  | 类型     | 必填   | 说明                              |
-  | ---- | ------ | ---- | ---------------------------------------- |
-  | networkId   | string | 是    | 设备的网络Id。                             |
-  | status | number | 是    | 分布式文件系统的状态码（以connectDfs回调onStatus的特定错误码作为入参）。触发场景为connectDfs调用过程中出现对端设备异常，对应错误码为：<br/>-&nbsp;[13900046](errorcode-filemanagement.md#13900046-软件造成连接中断)：软件造成连接中断。|
+| 参数名    | 类型                               | 必填 | 说明                                                                                                                                                                                                                                    |
+| --------- | ---------------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| networkId | string                             | 是   | 设备的网络Id。                                                                                                                                                                                                                          |
+| status    | number | 是   | 分布式文件系统的状态码（以connectDfs回调onStatus的特定错误码作为入参）。触发场景为connectDfs调用过程中出现对端设备异常，对应错误码为：<br/>- [13900046](errorcode-filemanagement.md#13900046-软件造成连接中断)：软件造成连接中断。 |
 
 ## RandomAccessFile<sup>10+</sup>
 
@@ -9031,6 +9272,44 @@ open接口flags参数常量。文件打开标签。
 | SYNC       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0o4010000 | 以同步IO的方式打开文件。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | UNCACHE | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0o10000000000    | 读写文件不进行页缓存。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0 |
 
+## FileFilter
+
+文件名过滤器接口，可通过该接口自定义文件名过滤规则。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+### filter
+
+filter(name: string): boolean
+
+用于[listFileExt](#fileiolistfileext)或[listFileExtSync](#fileiolistfileextsync)接口的文件过滤，判断指定文件名是否应包含在返回的文件列表中。
+
+> **说明**：
+>
+> 该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| name | string | 是 | 待过滤的文件名或文件相对路径。递归模式下为文件的相对路径，相对路径以“/”开头。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 表示是否包含在返回的文件列表中。true：包含该文件；false：不包含该文件。 |
+
 ## Filter<sup>10+</sup>
 
 文件过滤配置项，支持listFile接口使用。
@@ -9194,6 +9473,24 @@ open接口flags参数常量。文件打开标签。
 | offset   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | length   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。                                                           |
 | encoding | string                             | 否   | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。                                                                                                                |
+
+## ListFileExtOptions
+
+可选项类型，支持listFileExt接口使用。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| recursion | boolean | 否 | 是 | 是否递归子目录下的文件名，默认为false。<br>false：返回当前目录下满足过滤要求的文件名及目录名。<br>true：返回该目录下所有符合过滤条件的文件的相对路径，相对路径以“/”开头。 |
+| listNum | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 列出文件名数量，默认为0，表示列出所有文件。 |
+| fileFilter | [FileFilter](#filefilter) | 否 | 是 | 自定义文件名过滤的规则，默认为空，表示不进行过滤。 |
 
 ## ListFileOptions<sup>11+</sup>
 

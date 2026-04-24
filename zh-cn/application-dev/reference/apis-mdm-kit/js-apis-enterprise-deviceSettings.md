@@ -564,7 +564,7 @@ try {
 
 setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
-设置开关的状态。支持设置星闪、蓝牙、Wi-Fi的状态为开启或关闭，设置完毕后，用户可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口解除该开关禁用策略。
+设置开关的状态。支持设置星闪、蓝牙、Wi-Fi的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启(用户可手动开启、关闭)、关闭(用户可手动开启、关闭)、强制开启(用户不可手动关闭)三个状态可以随意切换，也不存在冲突。
 
 **起始版本：** 26.0.0
 
@@ -574,13 +574,15 @@ setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名   | 类型                                           | 必填   | 说明                                  |
 | ------- | ---------------------------------------------- | ---- |------------------------------------------------------------|
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。   |
 | key     | [SwitchKey](#switchkey)                        | 是      | 开关的名称，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口设置以下开关：星闪、蓝牙、Wi-Fi。 |
-| status  | [SwitchStatus](#switchstatus)                  | 是      | 开关的状态，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口设置以下状态：ON、OFF。 |
+| status  | [SwitchStatus](#switchstatus)                  | 是      | 开关的状态，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口设置以下状态：ON、OFF。设置为FORCE_ON状态时会报错误码9200002。 |
 
 **错误码**：
 
@@ -712,3 +714,4 @@ try {
 | ----| ---- | ----------|----------|
 | ON  | 0    | 开启状态。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
 | OFF | 1    | 关闭状态。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
+| FORCE_ON  | 2    | 强制开启状态。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS |

@@ -2068,7 +2068,7 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -2200,7 +2200,7 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -2761,7 +2761,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2874,7 +2874,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2975,7 +2975,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -3291,7 +3291,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -3402,6 +3402,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
 
 从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，该接口在支持并处于自由窗口状态的设备中可正常调用且立即生效；在支持但不处于自由窗口状态的设备中可正常调用，切换为自由窗口状态时生效；在不支持自由窗口状态的设备中返回801错误码。
+
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23

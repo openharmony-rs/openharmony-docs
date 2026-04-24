@@ -327,6 +327,10 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
 退出所有已加入的session，使用callback方式异步回调。
 
+**需要权限：**
+- API版本20+：不需要权限
+- API版本9-19：ohos.permission.DISTRIBUTED_DATASYNC
+ 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **ArkTS-Dyn起始版本：** 9
@@ -385,7 +389,7 @@ setSessionId(sessionId?: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 

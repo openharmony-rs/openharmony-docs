@@ -10,6 +10,8 @@
 
 >  **说明：** 
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > 
 > - 如果开发者有其他功能需求，可以使用[自定义组件](../../../ui/state-management/arkts-create-custom-components.md)。例如自定义组件<!--RP1-->[CustomPatternLock](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/CustomPatternLock)<!--RP1End-->，通过[Canvas](ts-components-canvas-canvas.md)组件实现了图案密码锁功能，开发者可在此基础上自行进行功能扩展。
@@ -28,6 +30,10 @@ PatternLock(controller?: PatternLockController)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名     | 类型                                        | 必填 | 说明 |
@@ -40,7 +46,9 @@ PatternLock(controller?: PatternLockController)
 
 ### sideLength
 
-sideLength(value: Length)
+ArkTS-Dyn: sideLength(value: Length)
+
+ArkTS-Sta: sideLength(value: Length | undefined)
 
 设置组件的宽度和高度（宽高相同）。当设置为0或负数时，组件不显示。
 
@@ -52,15 +60,21 @@ sideLength(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明               |
 | ------ | ---------------------------- | ---- | ------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 组件的宽度和高度。默认值：288vp |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 组件的宽度和高度。默认值：288vp<br/>设置undefined时按默认值处理。 |
 
 ### circleRadius
 
-circleRadius(value: Length)
+ArkTS-Dyn: circleRadius(value: Length)
+
+ArkTS-Sta: circleRadius(value: Length | undefined)
 
 设置宫格中圆点的半径。设置为0或负数时，取默认值。
 
@@ -68,14 +82,20 @@ circleRadius(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                         | 必填 | 说明                               |
 | ------ | ---------------------------- | ---- | ---------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   |宫格中圆点的半径。<br/>默认值：6vp<br/>取值范围：(0, sideLength/11]。设置小于等于0的值时，按默认值处理；超过最大值时，按最大值处理。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   |宫格中圆点的半径。<br/>默认值：6vp<br/>取值范围：(0, sideLength/11]。设置小于等于0的值时，按默认值处理；超过最大值时，按最大值处理。<br/>设置undefined时按默认值处理。|
 
 ### backgroundColor
-backgroundColor(value: ResourceColor)
+ArkTS-Dyn: backgroundColor(value: ResourceColor)
+
+ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 设置背景颜色。
 
@@ -87,15 +107,21 @@ backgroundColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                       |
 | ------ | ------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 背景颜色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 背景颜色。 |
 
 ### regularColor
 
-regularColor(value: ResourceColor)
+ArkTS-Dyn: regularColor(value: ResourceColor)
+
+ArkTS-Sta: regularColor(value: ResourceColor | undefined)
 
 设置宫格圆点在“未选中”状态的填充颜色。
 
@@ -103,15 +129,21 @@ regularColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                       |
 | ------ | ------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 宫格圆点在“未选中”状态的填充颜色。<br/>默认值：'#ff182431' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在“未选中”状态的填充颜色。<br/>默认值：'#ff182431'<br/>设置undefined时按默认值处理。|
 
 ### selectedColor
 
-selectedColor(value: ResourceColor)
+ArkTS-Dyn: selectedColor(value: ResourceColor)
+
+ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 设置宫格圆点在“选中”状态的填充颜色。
 
@@ -119,15 +151,21 @@ selectedColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                     |
 | ------ | ------------------------------------------ | ---- | -------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 宫格圆点在“选中”状态的填充颜色。<br/>默认值：'#ff182431' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在“选中”状态的填充颜色。<br/>默认值：'#ff182431'<br/>设置undefined时按默认值处理。 |
 
 ### activeColor
 
-activeColor(value: ResourceColor)
+ArkTS-Dyn: activeColor(value: ResourceColor)
+
+ArkTS-Sta: activeColor(value: ResourceColor | undefined)
 
 设置宫格圆点在“激活”状态的填充颜色，“激活”状态为手指经过圆点但还未选中的状态。
 
@@ -135,15 +173,21 @@ activeColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                                     |
 | ------ | ------------------------------------------ | ---- | -------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 宫格圆点在“激活”状态的填充颜色。<br/>默认值：'#ff182431' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 宫格圆点在“激活”状态的填充颜色。<br/>默认值：'#ff182431'<br/>设置undefined时按默认值处理。|
 
 ### pathColor
 
-pathColor(value: ResourceColor)
+ArkTS-Dyn: pathColor(value: ResourceColor)
+
+ArkTS-Sta: pathColor(value: ResourceColor | undefined)
 
 设置连线的颜色。
 
@@ -151,15 +195,21 @@ pathColor(value: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                 |
 | ------ | ------------------------------------------ | ---- | ------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 连线的颜色。<br/>默认值：'#33182431' |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 连线的颜色。<br/>默认值：'#33182431'<br/>设置undefined时按默认值处理。 |
 
 ### pathStrokeWidth
 
-pathStrokeWidth(value: number | string)
+ArkTS-Dyn: pathStrokeWidth(value: number | string)
+
+ArkTS-Sta: pathStrokeWidth(value: double | string | undefined)
 
 设置连线的宽度。设置为0或负数时连线不显示。
 
@@ -167,15 +217,21 @@ pathStrokeWidth(value: number | string)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                          |
 | ------ | -------------------------- | ---- | ----------------------------- |
-| value  | number&nbsp;\|&nbsp;string | 是   | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，设置为0或负数时连线不显示，超过最大值按最大值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，设置为0或负数时连线不显示，超过最大值按最大值处理。<br/>设置undefined时按默认值处理。 |
 
 ### autoReset
 
-autoReset(value: boolean)
+ArkTS-Dyn: autoReset(value: boolean)
+
+ArkTS-Sta: autoReset(value: boolean | undefined)
 
 设置在完成密码输入后再次在组件区域按下时是否重置组件状态。
 
@@ -183,15 +239,21 @@ autoReset(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 在完成密码输入后再次在组件区域按下时是否重置组件状态。<br/>true：完成密码输入后再次在组件区域按下时重置组件状态（即清除之前输入的密码）；false：完成密码输入后再次在组件区域按下时不重置组件状态。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 在完成密码输入后再次在组件区域按下时是否重置组件状态。<br/>true：完成密码输入后再次在组件区域按下时重置组件状态（即清除之前输入的密码）；false：完成密码输入后再次在组件区域按下时不重置组件状态。<br/>默认值：true<br/>设置undefined时按默认值处理。 |
 
 ### activateCircleStyle<sup>12+</sup>
 
-activateCircleStyle(options: Optional\<CircleStyleOptions\>)
+ArkTS-Dyn: activateCircleStyle(options: Optional\<CircleStyleOptions\>)
+
+ArkTS-Sta: activateCircleStyle(options: CircleStyleOptions | undefined)
 
 设置宫格圆点在“激活”状态下的背景圆环样式。
 
@@ -199,15 +261,21 @@ activateCircleStyle(options: Optional\<CircleStyleOptions\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| options  | Optional\<[CircleStyleOptions](#circlestyleoptions12对象说明)\> | 是   | 宫格圆点在“激活”状态的背景圆环样式。|
+| options  | ArkTS-Dyn: Optional\<[CircleStyleOptions](#circlestyleoptions12对象说明)\> <br/>ArkTS-Sta: [CircleStyleOptions](#circlestyleoptions12对象说明) \| undefined | 是   | 宫格圆点在“激活”状态的背景圆环样式。 |
 
 ### skipUnselectedPoint<sup>15+</sup>
 
-skipUnselectedPoint(skipped: boolean)
+ArkTS-Dyn: skipUnselectedPoint(skipped: boolean)
+
+ArkTS-Sta: skipUnselectedPoint(skipped: boolean | undefined)
 
 设置未选中的宫格圆点在密码路径经过时是否自动选中。
 
@@ -215,11 +283,15 @@ skipUnselectedPoint(skipped: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| skipped  | boolean | 是   | 未选中的宫格圆点在密码路径经过时是否自动选中。<br/>true：跳过选中密码路径经过的宫格圆点；false：自动选中密码路径经过的宫格圆点。默认值：false。|
+| skipped  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 未选中的宫格圆点在密码路径经过时是否自动选中。<br/>true：跳过选中密码路径经过的宫格圆点；false：自动选中密码路径经过的宫格圆点。默认值：false。<br/>设置undefined时按默认值处理。|
 
 ## 事件
 
@@ -235,15 +307,43 @@ onPatternComplete(callback: (input: Array\<number\>) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onPatternComplete](#onpatterncomplete23)。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：** 
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| input  | Array\<number\> | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
+| input  | Array\<number\> | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。 |
+
+### onPatternComplete<sup>23+</sup>
+
+onPatternComplete(callback: Callback<Array\<int\>> | undefined)
+
+密码输入结束时触发该回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onPatternComplete](#onpatterncomplete)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型            | 必填 | 说明                                                         |
+| ------ | --------------- | ---- | ------------------------------------------------------------ |
+| callback  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<Array\<int>> \| undefined | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点从左往右依次为3、4、5，第三行圆点从左往右依次为6、7、8）。 |
 
 ### onDotConnect<sup>11+</sup>
 
-onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\>)
+ArkTS-Dyn: onDotConnect(callback: Callback\<number\>)
+
+ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 
 密码输入选中宫格圆点时触发该回调。
 
@@ -257,11 +357,15 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| callback  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 是   | 密码输入选中宫格圆点时触发该回调。 |
+| callback  |ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> <br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> \| undefined | 是   | 密码输入选中宫格圆点时触发该回调。<br/>设置为undefined时不会执行回调。 |
 
 ## CircleStyleOptions<sup>12+</sup>对象说明
 
@@ -272,10 +376,10 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：'#33182431'。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：[circleRadius](#circleradius)的1.833倍（即11/6）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>true：显示波浪效果；false：不显示波浪效果。<br/>默认值：true。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br/>默认值：false。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：'#33182431'。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：[circleRadius](#circleradius)的1.833倍（即11/6）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
+| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>true：显示波浪效果；false：不显示波浪效果。<br/>默认值：true。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
+| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br/>默认值：false。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## PatternLockController
 
@@ -297,6 +401,10 @@ PatternLockController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### reset
 
 reset()
@@ -306,6 +414,10 @@ reset()
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### setChallengeResult<sup>11+</sup>
 
@@ -317,9 +429,11 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 11
 
-| 参数名 | 类型                                                         | 必填 | 说明           |
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | result | [PatternLockChallengeResult](#patternlockchallengeresult11枚举说明) | 是   | 图案密码状态。包括正确和错误状态。 |
 
@@ -330,6 +444,10 @@ setChallengeResult(result: PatternLockChallengeResult): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值    | 说明           |
 | ------- | ----- | -------------- |

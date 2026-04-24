@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## useEffect
@@ -22,6 +24,12 @@ useEffect(value: boolean): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -44,6 +52,12 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -68,6 +82,12 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -81,6 +101,33 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
+## useEffect<sup>23+</sup>
+
+useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): this
+
+用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)，[useEffect<sup>14+</sup>](#effecttype14)和[useEffect<sup>18+</sup>](#useeffect18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                                         | 必填 | 说明                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| useEffect  | boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false |
+| effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
+
 ## EffectType<sup>14+</sup>
 
 使用效果模板种类的枚举值。
@@ -88,6 +135,10 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |

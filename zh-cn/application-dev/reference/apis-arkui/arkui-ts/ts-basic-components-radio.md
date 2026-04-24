@@ -10,15 +10,15 @@
 
 >  **说明：**
 >
->  API version 12开始，Radio选中默认样式由RadioIndicatorType.DOT变为RadioIndicatorType.TICK。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
-
+>  - API version 12开始，Radio选中默认样式由RadioIndicatorType.DOT变为RadioIndicatorType.TICK。
+>
+>  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
 无
-
 
 ## 接口
 
@@ -32,7 +32,7 @@ Radio(options: RadioOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名  | 类型                                  | 必填 | 说明               |
 | ------- | ------------------------------------- | ---- | ------------------ |
@@ -45,11 +45,11 @@ Radio(options: RadioOptions)
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| value | string | 否 | 否 | 当前单选框的值。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| group | string | 否 | 否 | 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12枚举说明) | 否 | 是 | 配置单选框的选中样式。未设置时按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件为中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| -------- | -------- | ---- | ---- | -------- |
+| value | string | 否 | 否 | 当前单选框的值。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| group | string | 否 | 否 | 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12枚举说明) | 否 | 是 | 配置单选框的选中样式。未设置时按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件为中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## RadioIndicatorType<sup>12+</sup>枚举说明
 
@@ -61,11 +61,15 @@ Radio(options: RadioOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 值           | 说明                           |
-| --------------- | -------------------------------- | -------------------------------- |
-| TICK            | 0           | 选中样式为系统默认TICK图标。  |
+| --------------- | ----- | -------------------------------- |
+| TICK            | 0           | 选中样式为系统默认TICK图标。 |
 | DOT             | 1            | 选中样式为系统默认DOT图标。   |
-| CUSTOM          | 2         | 选中样式为indicatorBuilder中的内容。|
+| CUSTOM          | 2         | 选中样式为indicatorBuilder中的内容。 |
 
 ## 属性
 
@@ -87,15 +91,43 @@ checked(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[checked<sup>23+</sup>](#checked23)。
+
+**ArkTS-Dyn起始版本：** 8
+
+**参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | 是   | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
+### checked<sup>23+</sup>
+
+checked(isChecked: boolean | undefined | Bindable\<boolean\>)
+
+设置单选框的选中状态。与[checked](#checked)相比，isChecked参数新增了对undefined类型的支持。
+
+该属性支持Bindable双向绑定变量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[checked](#checked)和[checked<sup>18+</sup>](#checked18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| isChecked | boolean \| undefined \|Bindable\<boolean\> | 是   | 单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+
 ### checked<sup>18+</sup>
 
-checked(isChecked: Optional\<boolean>)
+checked(isChecked: Optional\<boolean\>)
 
 设置单选框的选中状态。与[checked](#checked)相比，isChecked参数新增了对undefined类型的支持。
 
@@ -107,7 +139,13 @@ checked(isChecked: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[checked<sup>23+</sup>](#checked23).
+
+**ArkTS-Dyn起始版本：** 18
+
+**参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -115,7 +153,9 @@ checked(isChecked: Optional\<boolean>)
 
 ### radioStyle<sup>10+</sup>
 
-radioStyle(value?: RadioStyle)
+ArkTS-Dyn: radioStyle(value?: RadioStyle)
+
+ArkTS-Sta: radioStyle(value?: RadioStyle | undefined)
 
 设置单选框选中状态和非选中状态的样式。 
 
@@ -125,15 +165,19 @@ radioStyle(value?: RadioStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                               |
 | ------ | ----------------------------------- | ---- | ---------------------------------- |
-| value  | [RadioStyle](#radiostyle10对象说明) | 否   | 单选框选中状态和非选中状态的样式。 <br/> 未设置时，则按照RadioStyle中各参数的默认值配置。 |
+| value  | ArkTS-Dyn: [RadioStyle](#radiostyle10对象说明)<br/>ArkTS-Sta: [RadioStyle](#radiostyle10对象说明) \| undefined | 否   | 单选框选中状态和非选中状态的样式。 <br/> 未设置时，则按照RadioStyle中各参数的默认值配置。 |
 
 ### contentModifier<sup>12+</sup>
 
-contentModifier(modifier: ContentModifier\<RadioConfiguration>)
+contentModifier(modifier: ContentModifier\<RadioConfiguration\>)
 
 定制Radio内容区的方法。
 
@@ -141,15 +185,21 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[contentModifier<sup>23+</sup>](#contentmodifier23)。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明) | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier\<RadioConfiguration\>](#radioconfiguration12对象说明) | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### contentModifier<sup>18+</sup>
 
-contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
+contentModifier(modifier: Optional\<ContentModifier\<RadioConfiguration\>\>)
 
 定制Radio内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。
 
@@ -157,11 +207,59 @@ contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[contentModifier<sup>23+</sup>](#contentmodifier23)。
+
+**ArkTS-Dyn起始版本：** 18
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<RadioConfiguration\>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+
+### contentModifier<sup>23+</sup>
+
+contentModifier(modifier: ContentModifier\<RadioConfiguration\> | undefined)
+
+定制Radio内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[contentModifier<sup>12+</sup>](#contentmodifier12)和[contentModifier<sup>18+</sup>](#contentmodifier18)。
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<RadioAttribute\> | AttributeModifier\<CommonMethod\> | undefined)
+
+定制Radio属性区的方法。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[RadioAttribute](ts-basic-components-radio.md#属性)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | 在Radio组件上，定制属性区的方法。<br/>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ## 事件
 
@@ -179,6 +277,12 @@ onChange(callback: (isChecked: boolean) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：** 
 
 | 参数名    | 类型    | 必填 | 说明                             |
@@ -187,7 +291,7 @@ onChange(callback: (isChecked: boolean) => void)
 
 ### onChange<sup>18+</sup>
 
-onChange(callback: Optional\<OnRadioChangeCallback>)
+onChange(callback: Optional\<OnRadioChangeCallback\>)
 
 单选框选中状态改变时触发的回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
@@ -197,11 +301,37 @@ onChange(callback: Optional\<OnRadioChangeCallback>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRadioChangeCallback](#onradiochangecallback18)> | 是   | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+
+### onChange<sup>23+</sup>
+
+onChange(callback: OnRadioChangeCallback | undefined)
+
+单选框选中状态改变时触发的回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onChange](#onchange)和[onChange<sup>18+</sup>](#onchange18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [OnRadioChangeCallback](#onradiochangecallback18) \| undefined | 是   | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## OnRadioChangeCallback<sup>18+</sup>
 
@@ -212,6 +342,10 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -227,25 +361,33 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                   | 类型                                       | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| checkedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 开启状态底板颜色。<br/>默认值：`$r('sys.color.ohos_id_color_text_primary_activated')` |
-| uncheckedBorderColor   | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 关闭状态描边颜色。<br/>默认值：`$r('sys.color.ohos_id_color_switch_outline_off')` |
+| checkedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 开启状态底板颜色。<br/>默认值：`$r('sys.color.ohos_id_color_text_primary_activated')`                      |
+| uncheckedBorderColor   | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 关闭状态描边颜色。<br/>默认值：`$r('sys.color.ohos_id_color_switch_outline_off')`                       |
 | indicatorColor         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 开启状态内部圆饼颜色。从API version 12开始，indicatorType设置为RadioIndicatorType.TICK和RadioIndicatorType.DOT时，支持修改内部颜色。indicatorType设置为RadioIndicatorType.CUSTOM时，不支持修改内部颜色。<br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
 
 ## RadioConfiguration<sup>12+</sup>对象说明
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型    | 只读 | 可选  |  说明              |
 | ------ | ------ |-------------------------------- |-------------------------------- |-------------------------------- |
 | value | string | 否 | 否 |当前单选框的值。 |
 | checked | boolean| 否 | 否 | 设置单选框的选中状态。<br/>默认值：false<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
-| triggerChange |Callback\<boolean>|否|否|触发单选框选中状态变化。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| triggerChange |Callback\<boolean\>|否|否|触发单选框选中状态变化。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
 
 ## 示例

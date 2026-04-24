@@ -10,18 +10,20 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  当前有两种方式触发组件的transition：
->  1. 当组件插入或删除时（如if条件改变、ForEach新增删除组件），会递归的触发所有新插入/删除的组件的transition效果。
->  2. 当组件[visibility](ts-universal-attributes-visibility.md#visibility)属性在可见和不可见（Visibility.Hidden或Visibility.None）之间改变时，只触发该组件的transition效果。在Visibility.Visible与Visibility.None之间切换时，若直接设置为Visibility.None，会导致组件布局大小为0，此时无法观察到transition效果。而当在动画中修改visibility属性为Visibility.None时，组件布局为0是带动画的，将呈现transition与布局动画的叠加效果，形成双动画的复合表现。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 当前有两种方式触发组件的transition：
+>    1. 当组件插入或删除时（如if条件改变、ForEach新增删除组件），会递归的触发所有新插入/删除的组件的transition效果。
+>    2. 当组件[visibility](ts-universal-attributes-visibility.md#visibility)属性在可见和不可见（Visibility.Hidden或Visibility.None）之间改变时，只触发该组件的transition效果。在Visibility.Visible与Visibility.None之间切换时，若直接设置为Visibility.None，会导致组件布局大小为0，此时无法观察到transition效果。而当在动画中修改visibility属性为Visibility.None时，组件布局为0是带动画的，将呈现transition与布局动画的叠加效果，形成双动画的复合表现。
 
 
 ## transition
 
 transition(value: TransitionOptions | TransitionEffect): T
 
-组件插入显示和删除隐藏的过渡效果。
+设置组件插入时显示和删除时隐藏的过渡效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,11 +31,17 @@ transition(value: TransitionOptions | TransitionEffect): T
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[transition<sup>23+</sup>](#transition23)。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- |  ---- | -------- |
-| value | [TransitionOptions](#transitionoptionsdeprecated)<sup>(deprecated)</sup> \| [TransitionEffect](#transitioneffect10对象说明)  | 是 | 设置组件插入显示和删除隐藏的过渡效果。<br/>**说明：** <br/>详细描述见[TransitionOptions](#transitionoptionsdeprecated)和[TransitionEffect](#transitioneffect10对象说明)对象说明。|
+| value | [TransitionOptions](#transitionoptionsdeprecated)<sup>(deprecated)</sup> \| [TransitionEffect](#transitioneffect10对象说明)  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述见[TransitionOptions](#transitionoptionsdeprecated)和[TransitionEffect](#transitioneffect10对象说明)对象说明。|
 
 **返回值：**
 
@@ -41,11 +49,38 @@ transition(value: TransitionOptions | TransitionEffect): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
+## transition<sup>23+</sup>
+
+transition(value: TransitionEffect | undefined): this
+
+设置组件插入时显示和删除时隐藏的过渡效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[transition](#transition)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- |  ---- | -------- |
+| value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
+
+
 ## transition<sup>12+</sup>
 
 transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallback&gt;): T
 
-组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
+设置组件插入时显示和删除时隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
 
 >**说明：**
 >
@@ -56,6 +91,12 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[transition<sup>23+</sup>](#transition23-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -70,6 +111,42 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 | -------- | -------- |
 | T | 返回当前组件。 |
 
+>  **说明：**
+>  当前有两种方式触发组件的transition：
+>  1. 当组件插入或删除时（如if条件改变、ForEach新增删除组件），会递归的触发所有新插入/删除的组件的transition效果。
+>  2. 当组件[Visibility](ts-universal-attributes-visibility.md)属性在可见和不可见之间改变时，只触发该组件的transition效果。
+
+## transition<sup>23+</sup>
+
+transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;TransitionFinishCallback&gt; | undefined): this
+
+设置组件插入时显示和删除时隐藏的过渡效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[transition<sup>12+</sup>](#transition12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- |  ---- | -------- |
+| value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| this | 返回当前组件。 |
+
+>  **说明：**
+>  当前有两种方式触发组件的transition：
+>  1. 当组件插入或删除时（如if条件改变、ForEach新增删除组件），会递归的触发所有新插入/删除的组件的transition效果。
+>  2. 当组件[Visibility](ts-universal-attributes-visibility.md)属性在可见和不可见之间改变时，只触发该组件的transition效果。
+
 ## TransitionEdge<sup>10+</sup>
 
 转场边缘类型。
@@ -80,7 +157,11 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 值 | 说明     |
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     |  值  |  说明     |
 | ------ | ------ | ------ |
 | TOP    | 0 | 窗口的上边缘。 |
 | BOTTOM | 1 | 窗口的下边缘。 |
@@ -96,6 +177,10 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -128,6 +213,12 @@ translate(options: TranslateOptions): TransitionEffect\<"translate">
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[translate<sup>23+</sup>](#translate23)。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明           |
@@ -139,6 +230,32 @@ translate(options: TranslateOptions): TransitionEffect\<"translate">
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [TransitionEffect](#transitioneffect10对象说明)\<"translate"> | 当前动画平移效果。 |
+
+### translate<sup>23+</sup>
+
+translate(options: TranslateOptions): TransitionEffect
+
+设置组件转场时的平移效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[translate<sup>10+</sup>](#translate10)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| options  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions对象说明)      | 是   | 组件转场时的平移效果，为插入时起点和删除时终点的值。<br/>-x：横向的平移距离。<br/>-y：纵向的平移距离。<br/>-z：竖向的平移距离。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [TransitionEffect](#transitioneffect10对象说明) | 当前动画平移效果。 |
 
 ### rotate<sup>10+</sup>
 
@@ -152,6 +269,12 @@ rotate(options: RotateOptions): TransitionEffect\<"rotate">
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[rotate<sup>23+</sup>](#rotate23)。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明           |
@@ -163,6 +286,32 @@ rotate(options: RotateOptions): TransitionEffect\<"rotate">
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [TransitionEffect](#transitioneffect10对象说明)\<"rotate"> | 当前动画旋转效果。 |
+
+### rotate<sup>23+</sup>
+
+rotate(options: RotateOptions): TransitionEffect
+
+设置组件转场时的旋转效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[rotate<sup>10+</sup>](#rotate10)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| options  | [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions对象说明)      | 是   | 组件转场时的旋转效果，为插入时起点和删除时终点的值。<br/>-x：横向的旋转向量分量。<br/>-y：纵向的旋转向量分量。<br/>-z：竖向的旋转向量分量。<br/>-&nbsp;centerX、centerY指旋转中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为旋转中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br/>-centerZ指z轴锚点，即3D旋转中心点的z轴分量，centerZ默认值是0。<br/>-perspective指视距，不支持perspective属性做转场动画。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [TransitionEffect](#transitioneffect10对象说明) | 当前动画旋转效果。 |
 
 ### scale<sup>10+</sup>
 
@@ -176,6 +325,12 @@ scale(options: ScaleOptions): TransitionEffect\<"scale">
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[scale<sup>23+</sup>](#scale23)。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明           |
@@ -187,6 +342,32 @@ scale(options: ScaleOptions): TransitionEffect\<"scale">
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [TransitionEffect](#transitioneffect10对象说明)\<"scale"> | 当前动画缩放效果。 |
+
+### scale<sup>23+</sup>
+
+scale(options: ScaleOptions): TransitionEffect
+
+设置组件转场时的缩放效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[scale<sup>10+</sup>](#scale10)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [TransitionEffect](#transitioneffect10对象说明) | 当前动画缩放效果。 |
 
 ### opacity<sup>10+</sup>
 
@@ -200,6 +381,12 @@ opacity(alpha: number): TransitionEffect\<"opacity">
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[opacity<sup>23+</sup>](#opacity23)。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明           |
@@ -211,6 +398,32 @@ opacity(alpha: number): TransitionEffect\<"opacity">
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [TransitionEffect](#transitioneffect10对象说明)\<"opacity"> | 当前动画透明度效果。 |
+
+### opacity<sup>23+</sup>
+
+opacity(alpha: double): TransitionEffect
+
+设置组件转场时的透明度效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[opacity<sup>10+</sup>](#opacity10)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| alpha  | double      | 是   | 组件转场时的透明度效果，为插入时起点和删除时终点的值。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置小于0的非法值按0处理，大于1的非法值按1处理。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [TransitionEffect](#transitioneffect10对象说明) | 当前动画透明度效果。 |
 
 ### move<sup>10+</sup>
 
@@ -224,6 +437,12 @@ move(edge: TransitionEdge): TransitionEffect\<"move">
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[move<sup>23+</sup>](#move23)。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数：**
 
 | 参数名 | 类型                                   | 必填 | 说明           |
@@ -236,6 +455,32 @@ move(edge: TransitionEdge): TransitionEffect\<"move">
 | ------ | ------------------------ |
 | [TransitionEffect](#transitioneffect10对象说明)\<"move"> | 当前动画从屏幕边缘滑入和滑出的效果。 |
 
+### move<sup>23+</sup>
+
+move(edge: TransitionEdge): TransitionEffect
+
+设置组件转场时从屏幕边缘滑入和滑出的效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[move<sup>10+</sup>](#move10)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| edge  | [TransitionEdge](#transitionedge10)     | 是   | 组件转场时从屏幕边缘滑入和滑出的效果，本质为平移效果，为插入时起点和删除时终点的值。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [TransitionEffect](#transitioneffect10对象说明) | 当前动画从屏幕边缘滑入和滑出的效果。 |
+
 ### asymmetric<sup>10+</sup>
 
 asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect\<"asymmetric">
@@ -247,6 +492,12 @@ asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEff
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[move<sup>23+</sup>](#move23)。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -261,6 +512,33 @@ asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEff
 | ------ | ------------------------ |
 | [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric"> | 当前动画非对称的转场效果。 |
 
+### asymmetric<sup>23+</sup>
+
+asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect
+
+设置非对称的转场效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[move<sup>10+</sup>](#move10)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| appear  | [TransitionEffect](#transitioneffect10对象说明)      | 是   | 指定出现的转场效果。<br/>如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
+| disappear  | [TransitionEffect](#transitioneffect10对象说明)      | 是   | 指定消失的转场效果。<br/>如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [TransitionEffect](#transitioneffect10对象说明) | 当前动画非对称的转场效果。 |
+
 ### constructor<sup>10+</sup>
 
 constructor(type: Type, effect: Effect)
@@ -272,6 +550,10 @@ constructor(type: Type, effect: Effect)
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -291,6 +573,10 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -316,6 +602,10 @@ animation(value: AnimateParam): TransitionEffect
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明           |
@@ -340,6 +630,10 @@ type TransitionFinishCallback = (transitionIn: boolean) => void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

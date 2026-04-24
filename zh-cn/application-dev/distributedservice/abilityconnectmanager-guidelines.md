@@ -114,71 +114,15 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 **导入AbilityConnectionManager模块文件**
 
-**ArkTS-Dyn示例：**
-
 <!-- @[import_abilityConnectionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-**ArkTS-Sta示例：**
-
-<!-- @[sta_import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { util } from '@kit.ArkTS';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-```
-
-
 **发现设备**
 
 设备A上的应用，需要发现并选择设备B的networkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[分布式设备管理开发指南](devicemanager-guidelines.md)进行开发。
-
-**ArkTS-Sta示例：**
-
-  <!-- @[sta_deviceManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  let dmInstance: distributedDeviceManager.DeviceManager | null = null;
-
-  function initDeviceManager(): void {
-    try {
-      dmInstance = distributedDeviceManager.createDeviceManager('com.example.staticCollabSample');
-      hilog.info(0x0000, 'testTag', 'Device manager created');
-    } catch (err) {
-      hilog.error(0x0000, 'testTag', 'Create device manager failed');
-    }
-  }
-
-  function getRemoteDeviceId(): string | undefined {
-    initDeviceManager();
-    if (dmInstance === null) {
-      hilog.error(0x0000, 'testTag', 'Device manager is null');
-      return undefined;
-    }
-
-    const dm = dmInstance as distributedDeviceManager.DeviceManager;
-    const listResult: distributedDeviceManager.DeviceBasicInfo[] = dm.getAvailableDeviceListSync();
-    if (listResult.length === 0) {
-      hilog.info(0x0000, 'testTag', 'No available devices');
-      return undefined;
-    }
-    const networkId = listResult[0].networkId;
-    if (networkId === undefined || networkId === null) {
-      hilog.info(0x0000, 'testTag', 'No network ID found');
-      return undefined;
-    }
-    hilog.info(0x0000, 'testTag', 'Found device');
-    return networkId;
-  }
-  ```
-
 
 **应用间创建会话并进行连接**
 
@@ -187,50 +131,6 @@ import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 **1.设备A**
 
 应用主动调用createAbilityConnectionSession()接口创建会话，获得sessionId。之后调用connect()方法启动ability会话连接（此时设备B上应用会被拉起）。
-
-**ArkTS-Sta示例：**
-
-  <!-- @[sta_createSession](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  function createSession(): void {
-    const remoteDeviceId = getRemoteDeviceId();
-    if (remoteDeviceId === undefined) {
-      hilog.error(0x0000, 'testTag', 'No remote device available');
-      return;
-    }
-
-    const peerInfo: abilityConnectionManager.PeerInfo = {
-      deviceId: remoteDeviceId,
-      bundleName: 'com.example.staticCollabSample',
-      moduleName: 'entry',
-      abilityName: 'EntryAbility',
-      serviceName: 'collabService'
-    };
-
-    const connectOption: abilityConnectionManager.ConnectOptions = {
-      needSendData: true,
-      startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND
-    };
-
-    try {
-      const context = this.getUIContext().getHostContext();
-      if (context !== undefined && context !== null) {
-        this.sessionId = abilityConnectionManager.createAbilityConnectionSession(
-          'collabTest',
-          context,
-          peerInfo,
-          connectOption
-        );
-        hilog.info(0x0000, 'testTag', 'Session created');
-      }
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', 'Create session failed');
-    }
-  }
-  ```
 
 <!-- @[source_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
@@ -315,79 +215,6 @@ function getRemoteDeviceId(): string | undefined {
 
 设备A的应用调用connect()后，设备B的应用会通过协同的方式被拉起，拉起时会触发协同生命周期函数onCollaborate()，可在该接口中配置createAbilityConnectionSession()接口以及acceptConnect()接口的调用。
 
-**ArkTS-Sta示例：**
-
-  <!-- @[sta_collab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
-  ```ts
-  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { AppStorage } from '@kit.ArkUI';
-
-  const TAG: string = 'CollabSample_EntryAbility';
-
-  export default class EntryAbility extends UIAbility {
-    onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-      hilog.info(0x0000, TAG, 'onCollaborate called');
-      let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>;
-      this.handleCollaborate(param);
-      return AbilityConstant.CollaborateResult.ACCEPT;
-    }
-
-    handleCollaborate(collabParam: Record<string, Object>): void {
-      hilog.info(0x0000, TAG, 'handleCollaborate called');
-      let sessionId: int = this.createSessionFromWant(collabParam);
-      if (sessionId === -1) {
-        hilog.error(0x0000, TAG, 'Failed to create session');
-        return;
-      }
-      this.registerSessionEvent(sessionId);
-      const collabToken = collabParam['ohos.dms.collabToken'] as string;
-      abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-        AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, TAG, 'Accept connect success');
-      }, (err: Error) => {
-        hilog.error(0x0000, TAG, 'Accept connect failed');
-      });
-    }
-
-    createSessionFromWant(collabParam: Record<string, Object>): int {
-      hilog.info(0x0000, TAG, 'createSessionFromWant called');
-      let sessionId: int = -1;
-      let peerInfo: abilityConnectionManager.PeerInfo = {
-        bundleName: '',
-        moduleName: '',
-        abilityName: '',
-        deviceId: '',
-        serviceName: ''
-      };
-      const peerInfo1 = collabParam['PeerInfo'];
-      if (peerInfo1 == undefined) {
-        return sessionId;
-      }
-      const peerInfo1Record = peerInfo1 as Record<string, string>;
-      peerInfo.bundleName = peerInfo1Record!['bundleName'] ?? '';
-      peerInfo.moduleName = peerInfo1Record!['moduleName'] ?? '';
-      peerInfo.abilityName = peerInfo1Record!['abilityName'] ?? '';
-      peerInfo.deviceId = peerInfo1Record!['deviceId'] ?? '';
-      peerInfo.serviceName = peerInfo1Record!['serviceName'] ?? '';
-
-      let options: abilityConnectionManager.ConnectOptions = {
-      }
-      options.needSendData = true;
-
-      try {
-        sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
-        AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, TAG, 'createSession sessionId is' + sessionId);
-      } catch (error) {
-        hilog.error(0x0000, TAG, 'createSession error');
-      }
-      return sessionId;
-    }
-  }
-  ```
-
 <!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -434,6 +261,36 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
 
+<!--RP1-->
+**ArkTS-Dyn示例：**
+
+<!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+  registerSessionEvent(sessionId: number) {
+    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<boolean>('isConnected', true);
+      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+    });
+    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
+      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
+      AppStorage.setOrCreate<boolean>('isConnected', false);
+      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+    })
+    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+      if (callbackInfo.msg == 'startStream') {
+        hilog.info(0x0000, 'testTag', 'startStream');
+      }
+    })
+    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
+      let decoder = util.TextDecoder.create('utf-8');
+      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
+      AppStorage.setOrCreate<string>('receiveMessage', str);
+    })
+  }
+```
+
 **ArkTS-Sta示例：**
 
   <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
@@ -478,33 +335,6 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
     });
   }
   ```
-<!--RP1-->
-<!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-  registerSessionEvent(sessionId: number) {
-    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<boolean>('isConnected', true);
-      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
-    });
-    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
-      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
-      AppStorage.setOrCreate<boolean>('isConnected', false);
-      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
-    })
-    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
-      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
-      if (callbackInfo.msg == 'startStream') {
-        hilog.info(0x0000, 'testTag', 'startStream');
-      }
-    })
-    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
-      let decoder = util.TextDecoder.create('utf-8');
-      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
-      AppStorage.setOrCreate<string>('receiveMessage', str);
-    })
-  }
-```
 
 
 <!--RP1End-->  
@@ -515,8 +345,6 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendMessage()方法给对端应用发送文本信息。
 
-**ArkTS-Dyn示例：**
-
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -528,43 +356,10 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
   })
   ```
 
-**ArkTS-Sta示例：**
-
-  <!-- @[sta_sendMessage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
-  })
-  ```
 **2.发送字节流数据**
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据。
 
-**ArkTS-Dyn示例：**
-
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { util } from '@kit.ArkTS';
-
-  let textEncoder = util.TextEncoder.create("utf-8");
-  const arrayBuffer  = textEncoder.encodeInto("data send success");
-
-  abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
-  })
-  ```
-
-**ArkTS-Sta示例：**
-
-  <!-- @[sta_sendData](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -584,26 +379,6 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 业务协同完毕后需及时结束协同状态。若是后续短期内还有协同需要，可调用disconnect()方法断开应用间的连接，保留sessionId，以便下次继续使用该sessionId进行连接。若是短期无需使用协同业务，可直接调用destroyAbilityConnectionSession()接口销毁会话，此时会自动断开连接。
 
-**ArkTS-Dyn示例：**
-
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
-  if (this.sessionId == -1) {
-    hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-  return;
-  }
-  abilityConnectionManager.disconnect(this.sessionId);
-
-  hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
-  abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
-  ```
-
-**ArkTS-Sta示例：**
-
-  <!-- @[sta_disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/pages/Index.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';

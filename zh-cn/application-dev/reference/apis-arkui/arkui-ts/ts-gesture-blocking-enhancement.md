@@ -10,11 +10,15 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## shouldBuiltInRecognizerParallelWith
 
-shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T
+ArkTS-Dyn: shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T
+
+ArkTS-Sta: shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback | undefined): this
 
 提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
 
@@ -22,16 +26,21 @@ shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
+
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [ShouldBuiltInRecognizerParallelWithCallback](#shouldbuiltinrecognizerparallelwithcallback) | 是   |  系统内置手势与响应链上其他组件的手势设置并行关系的回调事件，当该组件进行触摸碰撞测试时，会触发用户定义的回调来形成手势并行关系。 |
+| callback      | ArkTS-Dyn: [ShouldBuiltInRecognizerParallelWithCallback](#shouldbuiltinrecognizerparallelwithcallback)<br/>ArkTS-Sta: [ShouldBuiltInRecognizerParallelWithCallback](#shouldbuiltinrecognizerparallelwithcallback)&nbsp;\|&nbsp;undefined | 是   |  系统内置手势与响应链上其他组件的手势设置并行关系的回调事件，当该组件进行触摸碰撞测试时，会触发用户定义的回调来形成手势并行关系。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## ShouldBuiltInRecognizerParallelWithCallback
 
@@ -42,6 +51,10 @@ type ShouldBuiltInRecognizerParallelWithCallback = (current: GestureRecognizer, 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -58,7 +71,9 @@ type ShouldBuiltInRecognizerParallelWithCallback = (current: GestureRecognizer, 
 
 ## onGestureRecognizerJudgeBegin<sup>13+</sup>
 
-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exposeInnerGesture: boolean): T
+ArkTS-Dyn: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exposeInnerGesture: boolean): T
+
+ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback | undefined, exposeInnerGesture: boolean | undefined): this
 
 给组件绑定自定义手势识别器判定回调。
 
@@ -69,21 +84,28 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exp
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
+
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback) | 是     |  给组件绑定自定义手势识别器判定回调，当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
-| exposeInnerGesture   | boolean         | 是    | 暴露内部手势标识。<br/>默认值：false<br/>**说明：** <br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](ts-container-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)相同。 |
+| callback      | ArkTS-Dyn: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)<br/>ArkTS-Sta: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)&nbsp;\|&nbsp;undefined | 是     |  给组件绑定自定义手势识别器判定回调，当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
+| exposeInnerGesture   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined         | 是    | 暴露内部手势标识。<br/>默认值：false<br/>**说明：** <br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](ts-container-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)相同。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onGestureRecognizerJudgeBegin
 
-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T
+ArkTS-Dyn: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T
+
+ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback | undefined): this
 
 给组件绑定自定义手势识别器判定回调。
 
@@ -91,16 +113,21 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
+
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback) | 是     |  自定义手势识别器判定回调。当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
+| callback      | ArkTS-Dyn: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)<br/>ArkTS-Sta: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)&nbsp;\|&nbsp;undefined | 是     |  自定义手势识别器判定回调。当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## GestureRecognizerJudgeBeginCallback
 
@@ -108,18 +135,16 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 自定义手势识别器判定回调类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。 |
-| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将要响应的识别器对象。 |
-| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。 |
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。|
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将要响应的识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](./ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24|
 
 **返回值：**
 
@@ -129,7 +154,9 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 ## onTouchTestDone<sup>20+</sup>
 
-onTouchTestDone(callback: TouchTestDoneCallback): T
+ArkTS-Dyn: onTouchTestDone(callback: TouchTestDoneCallback): T
+
+ArkTS-Sta: onTouchTestDone(callback: TouchTestDoneCallback | undefined): this;
 
 提供在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，指定手势识别器是否参与后续处理的能力。
 
@@ -137,17 +164,21 @@ onTouchTestDone(callback: TouchTestDoneCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [TouchTestDoneCallback](#touchtestdonecallback20) | 是   |  回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。 |
+| callback      | ArkTS-Dyn: [TouchTestDoneCallback](#touchtestdonecallback20)<br/>ArkTS-Sta: [TouchTestDoneCallback](#touchtestdonecallback20) \| undefined | 是   |  回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。<br/>参数设置undefined时不设置回调。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## TouchTestDoneCallback<sup>20+</sup>
 
@@ -158,6 +189,10 @@ type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<Gestu
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
