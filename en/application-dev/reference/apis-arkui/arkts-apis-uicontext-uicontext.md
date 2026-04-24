@@ -1,8 +1,8 @@
 # Class (UIContext)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@ Implements a **UIContext** instance.
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> - The following APIs must be called through a corresponding UIContext instance. There are three ways to obtain a **UIContext** instance: (1) using the [getUIContext()](arkts-apis-window-Window.md#getuicontext10) method from ohos.window; (2) using the built‑in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of a custom component; (3) using static methods of the UIContext class such as [getCallingScopeUIContext](#getcallingscopeuicontext22). In this document, the **UIContext** instance is represented by **uiContext**.
+> - The following APIs must be called through a corresponding UIContext instance. There are three ways to obtain a **UIContext** instance: (1) using the [getUIContext()](arkts-apis-window-Window.md#getuicontext10) method from ohos.window; (2) using the built-in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of a custom component; (3) using static methods of the UIContext class such as [getCallingScopeUIContext](#getcallingscopeuicontext22). In this document, the **UIContext** instance is represented by **uiContext**.
 
 **Example**
 
@@ -132,7 +132,7 @@ struct Index {
           let resolvedUIContext = UIContext.resolveUIContext();
           let contextByAtomicInterface = GetUIContextByAtomicInterface();
           hilog.info(0x00, 'testTag',
-            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
           this.message = 'Welcome';
         })
     }
@@ -350,7 +350,7 @@ Obtains a UIContext instance along with its resolution strategy using a predefin
 > 3. If a UI instance has switched to the focused state, and the most recently focused UI instance has not been destroyed, the UIContext of that most recently focused instance is returned.
 > 4. If a UI instance has switched to the foreground state, and the most recently foreground UI instance has not been destroyed, the UIContext of that most recently foreground instance is returned.
 > 5. If multiple UI instances exist, the UIContext with the largest unique instance ID is returned.
-> 6. f none of the above conditions are met, an invalid UIContext instance is returned.
+> 6. If none of the above conditions are met, an invalid UIContext instance is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -398,7 +398,7 @@ Checks whether the UI instance corresponding to this **UIContext** object is val
 
 | Type           | Description         |
 | ------------- | ----------- |
-| boolean | Whether the UI instance corresponding to the current **UIContext** object is valid. The value **true** means that the UI instance is valid, and **false** means the opposite.|
+| boolean | Whether the UI instance corresponding to the current **UIContext** object is valid. The value **true** indicates yes, and the value **false** indicates no.|
 
 **Example**
 
@@ -498,7 +498,7 @@ Obtains the **ComponentUtils** object.
 
 **Example**
 
-See the example for [getComponentUtils](js-apis-arkui-componentUtils.md).
+For the complete example, see [Example 1: Obtaining the ComponentUtils Object](js-apis-arkui-componentUtils.md#example-1-obtaining-the-componentutils-object).
 
 ## getUIInspector
 
@@ -588,7 +588,7 @@ struct Index {
 
 getId(): number
 
-Obtains the unique ID of the backend instance.
+Obtains the unique ID of a UI instance object. In multi-instance scenarios, you can use this unique ID to distinguish between different UI instance objects for easier management.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -826,7 +826,7 @@ struct AnimateToImmediatelyExample {
 
 animateTo(value: AnimateParam, event: () => void): void
 
-Applies a transition animation for state changes.
+Adds transition animations for state changes in closure code.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -840,7 +840,7 @@ Applies a transition animation for state changes.
 > - For properties that component transitions do not support, refer to [Example 2: Enabling a Component to Disappear After the Animation](./arkui-ts/ts-explicit-animation.md#example-2-enabling-a-component-to-disappear-after-the-animation), which uses **animateTo** to achieve the effect of the component disappearing after the animation finishes.
 > - In certain scenarios, using animateTo with [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
 > - When a UIAbility switches from the foreground to the background, any limited iteration animations that are currently running will end immediately, thereby triggering the [onFinish animation completion callback](arkui-ts/ts-explicit-animation.md#animateparam).
-> - If transition animations are turned off in Developer options, animations end on the current frame, and the **onFinish** callback is executed immediately. Avoid placing timing‑dependent functional logic inside this callback.
+> - If transition animations are turned off in Developer options, animations end on the current frame, and the **onFinish** callback is executed immediately. Avoid placing timing-dependent functional logic inside this callback.
 
 **Parameters**
 
@@ -1019,13 +1019,13 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("cacheDir='"+this.uiContext?.getHostContext()?.cacheDir+"'")
+        Text("cacheDir='" + this.uiContext?.getHostContext()?.cacheDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
-        Text("bundleCodeDir='"+this.uiContext?.getHostContext()?.bundleCodeDir+"'")
+        Text("bundleCodeDir='" + this.uiContext?.getHostContext()?.bundleCodeDir + "'")
           .fontSize(25)
-          .border({ color:Color.Red, width:2 })
+          .border({ color: Color.Red, width: 2 })
           .padding(50)
       }
       .width('100%')
@@ -1286,7 +1286,7 @@ Shows an alert dialog box.
 
 | Name    | Type                                      | Mandatory  | Description                 |
 | ------- | ---------------------------------------- | ---- | ------------------- |
-| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm)&nbsp;\|&nbsp;[AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons)&nbsp;\|&nbsp;[AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10) | Yes   | Shows an **AlertDialog** component in the given settings.|
+| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm)&nbsp;\|&nbsp;[AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons)&nbsp;\|&nbsp;[AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10)| Yes   | Shows an **AlertDialog** component in the given settings.|
 
 
 **Example**
@@ -1623,7 +1623,7 @@ struct TextPickerDialogExample {
 
 showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt): void
 
-Shows a text picker dialog box in the given settings. This API extends **showTextPickerDialog** by adding support for the **TextPickerDialogOptionsExt** parameter.
+Shows a text picker dialog box in the given settings. Compared to API version 11, the **TextPickerDialogOptionsExt** parameter is now supported.
 
 >  **NOTE**
 >
@@ -1790,8 +1790,8 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("run task").onClick(()=>{
-          this.uiContext.runScopedTask(()=>{
+        Button("run task").onClick(() => {
+          this.uiContext.runScopedTask(() => {
             // do something
           })
         })
@@ -1937,7 +1937,7 @@ Obtains the **DragController** object, which can be used to create and initiate 
 
 |Type|Description|
 |----|----|
-|[DragController](js-apis-arkui-dragController.md)| **DragController** object.|
+|[DragController](arkts-apis-uicontext-dragcontroller.md)| **DragController** object.|
 
 **Example**
 
@@ -2052,6 +2052,7 @@ Obtains the component tree and component attributes. This API has a long process
 
 **Parameters**
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | Name | Type           | Mandatory| Description                                                        |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | filters | Array\<string\> | No  | List of component attributes used for filtering. Currently, only the following filter fields are supported:<br>**"id"**: unique ID of the component.<br>**"src"**: source of the resource.<br>**"content"**: information or data contained in the element, component, or object.<br>**"editable"**: whether the component is editable.<br>**"scrollable"**: whether the component is scrollable.<br>**"selectable"**: whether the component is selectable.<br>**"focusable"**: whether the component is focusable.<br>**"focused"**: whether the component is currently focused.<br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out.<br>The following filter field is supported since API version 20:<br>**"isLayoutInspector"**: whether the component tree contains [custom components](../../ui/state-management/arkts-create-custom-components.md). If **filters** is omitted or does not contain **"isLayoutInspector"**, the returned component tree will not include custom component details.<br>Other filter fields are used only in testing scenarios.|
@@ -2238,7 +2239,7 @@ Obtains a [CursorController](arkts-apis-uicontext-cursorcontroller.md) object, w
 
 **Example**
 
-See the example for [CursorController](arkts-apis-uicontext-contextmenucontroller.md).
+See the example for [CursorController](arkts-apis-uicontext-cursorcontroller.md).
 
 ## getContextMenuController<sup>12+</sup>
 
@@ -2306,11 +2307,11 @@ Converts a value in units of vp to a value in units of px.
 
 Conversion formula: px value = vp value × pixel density
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 > **NOTE**
 >
-> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 >
 > 2. When a UI instance has not been created yet, the **vp2px** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
@@ -2364,11 +2365,11 @@ Converts a value in units of px to a value in units of vp.
 
 Conversion formula: vp value = px value/pixel density
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 > **NOTE**
 >
-> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 >
 > 2. When a UI instance has not been created yet, the **px2vp** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
@@ -2422,13 +2423,13 @@ Converts a value in units of fp to a value in units of px.
 
 Conversion formula: px value = fp value × pixel density × font scale factor
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 Font scale factor: system font scaling coefficient ([Configuration.fontScale](arkui-ts/ts-types.md#configuration)).
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2480,13 +2481,13 @@ Converts a value in units of px to a value in units of fp.
 
 Conversion formula: fp value = px value/pixel density/font scale factor
 
-Pixel density: effective pixel density of the current window, which is typically the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 Font scale factor: system font scaling coefficient ([Configuration.fontScale](arkui-ts/ts-types.md#configuration)).
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2540,7 +2541,7 @@ Conversion formula: px value = lpx value × (actual screen width/logical width),
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2594,7 +2595,7 @@ Conversion formula: lpx value = px value/(actual screen width/logical width), wh
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2853,7 +2854,7 @@ Registers a callback that is executed when the next frame is rendered.
 **Example**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2902,7 +2903,7 @@ Registers a callback to be executed on the next frame after a delay.
 **Example**
 
 ```ts
-import {FrameCallback } from '@kit.ArkUI';
+import { FrameCallback } from '@kit.ArkUI';
 
 class MyFrameCallback extends FrameCallback {
   private tag: string;
@@ -2962,14 +2963,14 @@ import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
 @Component
 struct Frame {
   @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
-  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: SwiperDynamicSyncScene[] = [];
 
   build() {
     Column() {
       Text("Animation "+ JSON.stringify(this.ANIMATION))
       Text("Gesture "+ JSON.stringify(this.GESTURE))
-      Row(){
+      Row() {
         Swiper() {
           Text("one")
           Text("two")
@@ -2980,7 +2981,7 @@ struct Frame {
         .id("dynamicSwiper")
         .backgroundColor(Color.Blue)
         .autoPlay(true)
-        .onAppear(()=>{
+        .onAppear(() => {
           this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
         })
       }
@@ -3702,7 +3703,7 @@ See the example for [TextMenuController](arkts-apis-uicontext-textmenucontroller
 
 ## createUIContextWithoutWindow<sup>17+</sup>
 
-static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext) : UIContext | undefined
+static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext): UIContext | undefined
 
 Creates a UI instance that does not depend on a window and returns its UI context. The created UI instance is a singleton.
 
@@ -3747,7 +3748,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
   }
 
   // ......
@@ -3775,7 +3776,7 @@ import { UIContext } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let uiContext : UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
+    let uiContext: UIContext | undefined = UIContext.createUIContextWithoutWindow(this.context);
     UIContext.destroyUIContextWithoutWindow();
   }
 
@@ -3870,14 +3871,14 @@ Sets the pixel rounding mode for this page.
 // EntryAbility.ets
 import { UIContext } from '@kit.ArkUI';
 
-export default class EntryAbility extends UIAbility{
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
 
-      windowStage.loadContent('pages/Index', (err, data) => {
-        let uiContext :UIContext = windowStage.getMainWindowSync().getUIContext();
-        uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
-      });
-    }
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.setPixelRoundMode(PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH);
+    });
+  }
 }
 ```
 
@@ -3941,9 +3942,9 @@ For details about the error codes, see UI Context Error Codes.
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
-| 100101 | The parameter value cannot be less than 0. |
-| 100102 | The parameter value cannot be a floating-point number. |
-| 100103 | The function cannot be called from a non-main thread. |
+| 100101 | The parameter is less than 0. |
+| 100102 | The parameter value cannot be a floating point number. |
+| 100103 | The function cannot be called from a non main thread. |
 
 **Example**
 
@@ -4084,13 +4085,17 @@ See the example of the [bind](arkts-apis-uicontext-magnifier.md#bind) API in [Ma
 
 setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
-Sets whether the input context persists when switching custom keyboards..
+Sets whether the custom keyboard remains persistent during input field switches.
+
+When enabled, the customer keyboard will remain displayed without being dismissed and re-launched during input field switches.
+
+When disabled, the customer keyboard will dismiss and re-launch during input field switches.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -4206,3 +4211,652 @@ struct Index {
 ```
 
 ![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)
+
+## getPageRootNode<sup>24+</sup>
+
+getPageRootNode(): FrameNode | null
+
+Obtains the root node of the page corresponding to the UIContext.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                      | Description           |
+| ---------------------------------------- | ------------- |
+| [FrameNode](js-apis-arkui-frameNode.md#framenode-1)  \| null | FrameNode of the root node of the page or **null**.<br>If no valid FrameNode is available, **null** is returned.<br>If no page is loaded in the window, **null** is returned.|
+
+**Error codes**
+
+For details about the error codes, see [UI Context Error Codes](./errorcode-uicontext.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 120007       | The UIContext is not available.   |
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  private arr: number[] = [1, 2, 3];
+  @State pageRootNode: FrameNode | null = null;
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'NavDestinationTitle1') {
+      pageOneTmp();
+    } else if (name === 'NavDestinationTitle2') {
+      pageTwoTmp();
+    } else if (name === 'NavDestinationTitle3') {
+      pageThreeTmp();
+    }
+  }
+
+  onPageShow(): void {
+    setTimeout(() => {
+      this.pageRootNode = this.getUIContext()?.getPageRootNode();
+      console.info('NavigationExample' + JSON.stringify(this.getUIContext().getPageRootNode()));
+    })
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        Text(`CurrentPageRootNode info: Tag ${this.pageRootNode?.getNodeType()}, NodeId: ${this.pageRootNode?.getUniqueId()}`)
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('Page' + item)
+                .width('100%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .margin({ top: 12 })
+      }
+      .title('Main Title')
+      .mode(NavigationMode.Stack)
+      .navDestination(this.pageMap)
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+
+@Component
+export struct pageOneTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  aboutToDisappear(): void {
+    console.info('pageOneTmp', 'aboutToDisappear')
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('pageOneTmp')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId: ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle1')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // Pop the top entry of the route stack.
+      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct pageTwoTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('pageTwoTmp')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId: ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle2')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // Pop the top entry of the route stack.
+      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct pageThreeTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('pageThreeTmp')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId: ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle3')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // Pop the top entry of the route stack.
+      console.info('pop' + 'return value' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
+
+![getCurrentPageRootNode](arkui-ts/figures/getCurrentPageRootNode.jpg)
+
+## isEasySplit<sup>24+</sup>
+
+isEasySplit(): boolean
+
+Obtains the split view state in compatibility mode of the current UI instance.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type  | Description              |
+| ------ | ------------------ |
+| boolean | Split view state in compatibility mode of the current UI instance. The value **true** indicates that the split view mode is active, and the value **false** indicates that the split view mode is inactive.|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State isEasySplit: boolean = false;
+
+  build() {
+    Column() {
+      Text(`${this.isEasySplit ? 'current is easy split mode' : 'current is not easy split mode'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check EasySplit')
+        .onClick(() => {
+          this.isEasySplit = this.getUIContext()?.isEasySplit();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## enableEventPassthrough
+
+enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
+
+Enables or disables event passthrough. Event passthrough indicates that an event is directly delivered to a component without [resampling](../../ui/arkts-interaction-development-guide-touch-screen.md#resampling-and-historical-points) during event distribution. If this API is not called, event passthrough is disabled by default.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                   |
+| --------- | ------------------- | ---- | --------------------------------------- |
+| enabled   | boolean             | Yes  |Whether to enable event passthrough. The value **true** indicates yes, and the value **false** indicates no.       |
+| eventType | [RawInputEventType](./arkui-ts/ts-appendix-enums.md#rawinputeventtype)   | Yes  | Original input event type for which to enable or disable event passthrough.           |
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## addLocalInputEventMonitor
+
+addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): InputEventMonitor
+
+Registers a local input event listener.
+
+> **NOTE**
+>
+> - Do not perform time-consuming operations (such as complex calculations or network requests) in the callback. Otherwise, stuttering may occur.
+> - This listener is valid only in the current UIContext (that is, the current window) and does not respond to other UIContext instances.
+> - The returned **InputEventMonitor** object is a unique identifier created by the system. You cannot construct or forge this object. You must retain its reference for subsequent unregistration.
+> - If an invalid parameter is passed, **undefined** is returned, indicating that the listener fails to be registered.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | ---- | ---- |
+| eventMask | number | Yes| Event type mask, which specifies event types to listen for via bitwise operations. For details about the values and their meanings, see [InputEventSubTypeMask](arkui-ts/ts-appendix-enums.md#inputeventsubtypemask).|
+| listener | [InputEventListener](#inputeventlistener) | Yes| Callback function of the event listener.|
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| [InputEventMonitor](#inputeventmonitor) | Unique identifier object of the listener, which is used for subsequent unregistration.|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct InputEventMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    // Listen for mouse left button down events.
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        if (wrapper.isMouseEvent()) {
+          const event = wrapper.asMouseEvent()!;
+          console.info(`Mouse down at (${event.windowX}, ${event.windowY})`);
+          return { action: InputEventInterceptAction.CONTINUE };  // Allow the event to continue propagating.
+        }
+        return { action: InputEventInterceptAction.BLOCK };  // Prevents event propagating.
+      }
+    );
+  }
+  aboutToDisappear() {
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Text('Input Event Monitor Sample')
+        .fontSize(20)
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## removeLocalInputEventMonitor
+
+removeLocalInputEventMonitor(monitor: InputEventMonitor): void
+
+Removes the local input event listener.
+
+> **NOTE**
+>
+> - Only the **InputEventMonitor** object returned by [addLocalInputEventMonitor](#addlocalinputeventmonitor) can be removed.
+> - You cannot manually construct an object to unregister the listener.
+> - If an invalid object is passed, the system ignores it silently.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | ---- | ---- |
+| monitor | [InputEventMonitor](#inputeventmonitor) | Yes| Listener identifier object, which is returned by [addLocalInputEventMonitor](#addlocalinputeventmonitor).|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct RemoveMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        return { action: InputEventInterceptAction.CONTINUE };
+      }
+    );
+  }
+  aboutToDisappear() {
+    // Remove the listener when destroying the component.
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Button('Remove Monitor')
+        .onClick(() => {
+          if (this.monitor && this.uiContext) {
+            this.uiContext.removeLocalInputEventMonitor(this.monitor);
+            this.monitor = null;
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## InputEventInterceptResult
+
+Input event interception result API, used for the listener callback [InputEventListener](#inputeventlistener) to return whether to intercept input events.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | ---- | ---- | ---- |
+| action | [InputEventInterceptAction](arkui-ts/ts-appendix-enums.md#inputeventinterceptaction) | No| No| Input event interception action.<br>**CONTINUE**: Allow events to continue propagating to the UI framework.<br>**BLOCK**: Prevent events from propagating to the UI framework.|
+
+## InputEventMonitor
+
+Identifier object of the input event listener.
+
+This object is created and returned by the system and serves as the unique identifier of the listener.
+
+> **NOTE**
+>
+> - The object is an empty object and does not contain any accessible members.
+> - You cannot construct this object. You can obtain it only through the [addLocalInputEventMonitor](#addlocalinputeventmonitor) API.
+> - This object is used for identify verification during unregistration.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+## RawInputEventWrapper
+
+Wrapper class for original input events.
+
+It provides a unified API to access different types of input events, ensuring type safety and backward compatibility.
+
+This class wraps the original **MouseEvent**, **TouchEvent**, or **KeyEvent** object and provides type-safe methods for accessing it
+
+This class is abstract. You cannot create instances of it directly. The system automatically creates an instance and passes the callback function when the input event listener is triggered.
+
+> **NOTE**
+>
+> The listener is executed before the event is dispatched to the specific component. Therefore, some fields in the event cannot provide valid values, such as the triggering object [target](arkui-ts/ts-universal-events-click.md#eventtarget8), coordinates relative to the component [(x, y)](arkui-ts/ts-universal-mouse-key.md#mouseevent), [stopPropagation](arkui-ts/ts-universal-events-touch.md#touchevent) method, [preventDefault](arkui-ts/ts-universal-events-touch.md#touchevent) and [getHistoricalPoints](arkui-ts/ts-universal-events-touch.md#gethistoricalpoints10) of TouchEvent, and [metaKey](arkui-ts/ts-universal-events-key.md#keyevent) and [getModifierKeyState](arkui-ts/ts-universal-events-key.md#getmodifierkeystate12) of KeyEvent.
+
+**Example**
+
+```ts
+const listener: InputEventListener = (wrapper: RawInputEventWrapper) => {
+  // Use type judgment & obtain the event object.
+  if (wrapper.isMouseEvent()) {
+    const mouseEvent = wrapper.asMouseEvent()!;
+    console.info(`Mouse: (${mouseEvent.windowX}, ${mouseEvent.windowY})`);
+    return { action: InputEventInterceptAction.CONTINUE };
+  }
+  if (wrapper.isTouchEvent()) {
+    const touchEvent = wrapper.asTouchEvent()!;
+    console.info(`Touch: ${touchEvent.touches.length} points`);
+    return { action: InputEventInterceptAction.CONTINUE };
+  }
+  if (wrapper.isKeyEvent()) {
+    const keyEvent = wrapper.asKeyEvent()!;
+    console.info(`Key: ${keyEvent.keyText}`);
+    return { action: InputEventInterceptAction.CONTINUE };
+  }
+  return { action: InputEventInterceptAction.CONTINUE };
+};
+```
+
+### isMouseEvent
+
+isMouseEvent(): boolean
+
+Checks whether an event is a mouse event.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| boolean | Whether an event is a mouse event. If yes, **true** is returned; if no, **false** is returned.|
+
+### isTouchEvent
+
+isTouchEvent(): boolean
+
+Checks whether an event is a touch event.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| boolean | Whether an event is a touch event. If yes, **true** is returned; if no, **false** is returned.|
+
+### isKeyEvent
+
+isKeyEvent(): boolean
+
+Checks whether an event is a key event.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| boolean | Whether an event is a key event. If yes, **true** is returned; if no, **false** is returned.|
+
+### asMouseEvent
+
+asMouseEvent(): MouseEvent | null
+
+Obtains a mouse event.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent) \| null | Mouse event. For a mouse event, the event object is returned. In other cases, **null** is returned.|
+
+### asTouchEvent
+
+asTouchEvent(): TouchEvent | null
+
+Obtains a touch event.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) \| null | Touch event. For a touch event, the event object is returned. In other cases, **null** is returned.|
+
+### asKeyEvent
+
+asKeyEvent(): KeyEvent | null
+
+Obtains a key event.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| [KeyEvent](arkui-ts/ts-universal-events-key.md#keyevent) \| null | Key event. For a key event, the event object the returned. In other cases, **null** is returned.|
+
+## InputEventListener
+
+type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptResult
+
+Callback function type of the input event listener.
+
+> **NOTE**
+>
+> - **RawInputEventWrapper** is an abstract class. You cannot use the `new` operator to create an instance of this class.
+> - The system automatically creates an instance when the event is triggered and passes this parameter to the callback function.
+> - Currently, the callback parameter **event** only wraps the following original input event types: [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent), [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), and [KeyEvent](arkui-ts/ts-universal-events-key.md#keyevent) You can use [asMouseEvent](#asmouseevent), [asTouchEvent](#astouchevent), [asKeyEvent](#askeyevent) to obtain the corresponding event object.
+> - Do not perform time-consuming operations (such as complex calculations or network requests) in the callback. Otherwise, stuttering may occur.
+> - If the listener executes synchronously on the UI thread, it will directly block the event processing flow. You are advised to perform only simple judgment and calculation.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | ---- | ---- |
+| event | [RawInputEventWrapper](#rawinputeventwrapper) | Yes| Input event wrapper, which is automatically created and transferred by the system. You do not need to manually create it.|
+
+**Return value**
+
+| Type| Description|
+| -------- | ---- |
+| [InputEventInterceptResult](#inputeventinterceptresult) | Event interception result.|
+
+## setTextSelectionClearPolicy
+
+setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
+
+Sets the text selection clearing policy for the text component. If this API is not called, the default policy TextSelectionClearPolicy.KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH is used.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                     | Mandatory| Description                                  |
+| ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
+| policy  | [TextSelectionClearPolicy](arkts-apis-uicontext-e.md#textselectionclearpolicy) | Yes  | Text selection clearing policy.|
+
+**Example**
+
+```ts
+import { TextSelectionClearPolicy } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
+        .copyOption(CopyOptions.LocalDevice)
+      Button('Set Clear Policy')
+        .onClick(() => {
+          this.getUIContext()?.setTextSelectionClearPolicy(TextSelectionClearPolicy.CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
