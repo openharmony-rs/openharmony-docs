@@ -13,7 +13,7 @@
 
 ## 旋转策略配置适配差异化设备
 
-当前设备形态多种多样，包括直板机、折叠机、三折叠、阔折叠等多类设备。如果应用的旋转策略仅按照其中一类设备设配，可能导致在其他设备上的体验下降。为了消除新增设备类型带来的额外适配工作，所以需要采用与设备类型无关的方式来进行旋转策略配置。
+当前设备形态多种多样，包括直板机、折叠机、三折叠、阔折叠等多类设备。如果应用的旋转策略仅按照其中一类设备适配，可能导致在其他设备上的体验下降。为了消除新增设备类型带来的额外适配工作，所以需要采用与设备类型无关的方式来进行旋转策略配置。
 
 开发者可根据自身业务梳理不同设备形态下对旋转的诉求，如果单一策略（如：FOLLOW_DESKTOP、AUTO_ROTATION_UNSPECIFIED）能满足需求，推荐使用单一策略。若单一策略不能满足，可参考断点机制，实现差异化适配。
 
@@ -57,7 +57,7 @@ struct Index {
       displayWidth = displayHeight;
       displayHeight = temp;
     }
-    // 建议使用单一策略如"follow_desktop"来应对设备的差异化,如单一策略无法满足需求，可参考断点机制，屏蔽设备差异
+    // 建议使用单一策略如"FOLLOW_DESKTOP"来应对设备的差异化，如单一策略无法满足需求，可参考断点机制，屏蔽设备差异
     // 此处是举的特殊示例，原则上支持横屏的应用，旋转策略应该是支持4个方向可旋转，此处是为了说明断点的使用方式，才举此例
     // 600为宽度断点枚举值其中的的边界值， 0.8为高宽比断点枚举值其中的边界值
     if (displayWidth >= 600 && heightBp < 0.8) {
@@ -89,7 +89,7 @@ struct Index {
 
 开发者可通过以下两种方式实现视频播放界面的横竖屏切换：
 
-- 通过[调用窗口管理的setPreferredOrientation()接口]((https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section188583141719))设置主窗口方向。
+- 通过[调用窗口管理的setPreferredOrientation()接口](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section188583141719)设置主窗口方向。实现方式参考[通过窗口旋转实现横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section188583141719)。
 
 - 通过跳转到不同显示方向的页面来设置视频窗口方向。实现方式参考[通过页面跳转实现横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section161651074615)。
 
@@ -123,7 +123,7 @@ struct Index {
 
 1. 获取目标屏幕方向。调用[getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取屏幕方向。  
 
-2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)可以把屏幕方向[display.Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)转换为窗口方向[orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19) 。
+2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)可以把屏幕方向[display.Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)转换为窗口方向[orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)。
 
 3. 将窗口方向转换为旋转策略。窗口方向还需要进一步转换为系统可识别的旋转策略窗口[Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)，才能传给setPreferredOrientation()。
 
