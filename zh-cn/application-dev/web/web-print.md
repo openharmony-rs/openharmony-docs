@@ -136,6 +136,8 @@ ArkTS-Dyn示例：
   }
   ```
 
+<!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/WebPrint/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
+
 ArkTS-Sta示例：
 ``` TypeScript
 // xxx.ets
@@ -191,6 +193,8 @@ struct WebComponent {
   }
 }
 ```
+
+<!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/WebPrint/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) -->
 
 ArkTS-Sta示例：
 ``` TypeScript
