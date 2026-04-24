@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -357,6 +357,17 @@ HiDebug提供修改转储堆快照级别的接口。
 | 接口名 | 描述 |
 | -------- | -------- |
 | hidebug.setProcDumpInSharedOOM | 当发生JS OOM的内存类型为SharedHeap，如果应用已经调用过该接口，且传参为true，那么转储的堆快照将会由线程级别变成进程级别。通过[订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)获取对应日志。<br/>该接口仅影响SharedHeap发生OOM时转储的堆快照，不影响其他情况下转储的堆快照。<br/>当应用需要定位JS泄漏问题时，建议总是调用该接口并传参为true。<br/>**说明**：从API version 24开始，支持该接口。 |
+
+## 采集进程资源调用栈
+
+从API version 24开始，HiDebug新增资源采集功能，支持按需采集应用进程资源分配栈至沙箱，覆盖文件描述符、线程、Native/GPU内存及全局句柄等类别，辅助定位资源泄漏。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+|--------|------|
+| OH_HiDebug_StartProfiler | 按指定类型启动资源分配栈信息采集，须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
+| OH_HiDebug_StopProfiler | 停止资源分配栈信息采集，须与OH_HiDebug_StartProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 ## 其他
 

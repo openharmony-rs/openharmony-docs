@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Macro 继承自 [MacroQuery](arkts-apis-camera-MacroQuery.md)。
+Macro继承自[MacroQuery](arkts-apis-camera-MacroQuery.md)。
 
 提供使能微距能力的接口。
 

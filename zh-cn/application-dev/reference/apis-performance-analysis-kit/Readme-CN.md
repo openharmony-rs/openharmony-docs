@@ -55,6 +55,7 @@
     - [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md)
     - [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md)
     - [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md)
+    - [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md)
     - [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md)
     - [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md)
     - [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)

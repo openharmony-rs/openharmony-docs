@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -78,53 +78,7 @@ this.objLink= ...
 
 ### 观察变化
 
-API version 19之前，\@Observed装饰的类，如果其属性为非简单类型，如class、Object、Array、Map、Set和Date，那么这些属性也需要被\@Observed装饰，否则将观察不到这些属性的变化或内置类型的API调用。API version 19及以后，也可以通过使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来观察嵌套类属性的变化。
-
-<!-- @[Observe_the_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
-
-``` TypeScript
-class Child {
-  public num: number;
-
-  constructor(num: number) {
-    this.num = num;
-  }
-}
-
-@Observed
-class Parent {
-  public child: Child;
-  public count: number;
-
-  constructor(child: Child, count: number) {
-    this.child = child;
-    this.count = count;
-  }
-}
-```
-
-以上示例中，Parent被\@Observed装饰，其成员变量的赋值的变化是可以被观察到的，但对于Child，没有被\@Observed装饰，其属性的修改不能被观察到。若想观察Child的属性修改变化，示例请参考[嵌套对象](#嵌套对象)。
-
-
-<!-- @[Modify_and_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
-
-``` TypeScript
-@ObjectLink parent: Parent;
-
-build() {
-  Column() {
-    Button('click me')
-      .onClick(() => {
-        // 赋值变化可以被观察到
-        this.parent.child = new Child(5);
-        this.parent.count = 5;
-        // Child没有被@Observed装饰，其属性的变化观察不到
-        this.parent.child.num = 5;
-      // ···
-      })
-  }
-}
-```
+API version 19之前，如果需要观察嵌套场景的变化，如嵌套类，二维数组，对象数组等，那么内层的数据类型也需要被\@Observed装饰。API version 19及以后，也可以通过使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来使内层数据可观察。内层数据需要传递给\@ObjectLink，使其在UI上可观察。示例请参考[嵌套对象](#嵌套对象)。
 
 \@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
 
@@ -497,8 +451,9 @@ struct Index {
 
 上述示例中：
 
-- 点击`change bag.book.name`，Index组件中的Text组件不刷新，因为该变化属于第二层的变化，\@State无法观察到第二层的变化。然而，Book被\@Observed装饰，Book的属性name可以被\@ObjectLink观察到，所以BookCard组件中Text组件可以刷新。
-- 点击`change book.name`，Bookcard组件中的Text组件刷新，因为该变化在BooKCard中属于第一层的变化，亦可被\@ObjectLink观察到。
+- 对于Index组件内状态变量`@State bag: Bag`，`bag.book`是第一层，`bag.book.name`是第二层。因此，当点击`change bag.book.name`直接修改`this.bag.book.name`时，Index中的`Text('Index: ${this.bag.book.name}')`不会刷新，因为\@State只能观察到第一层属性变化，不能直接观察嵌套对象内部属性`name`的变化。
+- 对于BookCard组件内状态变量`@ObjectLink book: Book`，`Book`被\@Observed装饰，且`book`被\@ObjectLink接收。`book.name`变化可以被`@ObjectLink`观察，因此无论是在父组件Index中点击`change bag.book.name`，还是在子组件BookCard中点击`change book.name`，BookCard中的`Text('BookCard: ${this.book.name}')`都会刷新。
+- \@State负责感知外层对象`Bag`的第一层变化，`@Observed + @ObjectLink`负责感知内层对象`Book`的属性变化。
 
 ### 对象数组
 

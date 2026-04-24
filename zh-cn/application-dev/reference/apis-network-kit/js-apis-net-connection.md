@@ -2541,7 +2541,7 @@ console.info(result);  // 预期结果：www.example.com
 
 getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 
-获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPV4和IPV6。  
+获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPv4和IPv6。  
 
 > **说明：**
 >
@@ -3458,17 +3458,17 @@ TCP状态。
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
-| ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
-| SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
-| SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
-| FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
-| FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
-| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
-| CLOSE       | 7  | 初始/关闭状态，无连接。 |
-| CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
-| LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
-| LISTEN      | 10 | 服务端监听，等待客户端连接。 |
-| CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
+| TCP_ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
+| TCP_SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
+| TCP_SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
+| TCP_FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
+| TCP_FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
+| TCP_TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
+| TCP_CLOSE       | 7  | 初始/关闭状态，无连接。 |
+| TCP_CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
+| TCP_LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
+| TCP_LISTEN      | 10 | 服务端监听，等待客户端连接。 |
+| TCP_CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
 
 ## HttpProxy<sup>10+</sup>
 
@@ -3592,8 +3592,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 | 路由信息。                                                                                          |
 | dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。                                                              |
 | mtu           | number                              | 否 | 否 | 最大传输单元。                                                                                        |
-| isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。 |
-| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。 |
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## RouteInfo
 
@@ -3708,12 +3708,12 @@ TCP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
-| tcpLocalPort  | number | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
-| tcpRemotePort | number | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpUid        | number | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
-| tcpPid        | number | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
-| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
+| tcpLocalPort  | number | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]。 |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址。  |
+| tcpRemotePort | number | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]。 |
+| tcpUid        | number | 否 | 否 |监听该TCP端口的用户UID。 |
+| tcpPid        | number | 否 | 否 |监听该TCP端口的进程PID。 |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 否 |TCP网络状态。  |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -3727,9 +3727,9 @@ UDP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
-| udpLocalPort  | number | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| udpUid        | number | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
-| udpPid        | number | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
+| udpLocalPort  | number | 否 | 否 |UDP网络本地端口，取值范围\[0, 65535]。 |
+| udpUid        | number | 否 | 否 |监听该UDP端口的用户UID。 |
+| udpPid        | number | 否 | 否 |监听该UDP端口的进程PID。 |
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -3742,5 +3742,5 @@ UDP端口状态信息。
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的UDP信息。   |

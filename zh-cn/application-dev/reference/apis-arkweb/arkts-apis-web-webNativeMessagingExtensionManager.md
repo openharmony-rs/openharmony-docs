@@ -44,7 +44,7 @@ Native Messaging的错误列表。
 | ------------- | -- |----------------------------------------- |
 | PERMISSION_DENY | 17100203 | Permission denied due to missing ohos.permission.WEB_NATIVE_MESSAGING. |
 | WANT_CONTENT_ERROR | 17100202 | The want content is invalid. |
-| INNER_ERROR | 17100201 | Inner error for native messaging.Error code: |
+| INNER_ERROR | 17100201 | Inner error for native messaging. |
 
 ## WebExtensionConnectionCallback
 
@@ -80,7 +80,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -139,7 +139,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -199,7 +199,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -276,7 +276,7 @@ export default class EntryAbility extends UIAbility {
           parameters: {
             'ohos.arkweb.messageReadPipe': { 'type': 'FD', 'value': 333 }, //假设此处为合法pipefd
             'ohos.arkweb.messageWritePipe': { 'type': 'FD', 'value': 444 }, //假设此处为合法pipefd
-            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' //此处需要插件URI
+            'ohos.arkweb.extensionOrigin': 'chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/' // 此处需要插件URI
           },
         };
 
@@ -318,7 +318,7 @@ disconnectNative(connectionId: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| connectionId | number | 是 | 连接的标识ID。 |
+| connectionId | number | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由[connectNative](#webnativemessagingextensionmanagerconnectnative)方法返回。建立连接后需要通过disconnectNative释放。 |
 
 **返回值:**
 

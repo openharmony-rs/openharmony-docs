@@ -22,7 +22,7 @@ onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | unde
 
 输入框组件使用该接口并将返回值设置为`false`时，点击输入框将不会拉起键盘。
 
-Web组件使用该方法时，如果返回值为`true`，Web组件会判断组件中是否有可编辑节点，如果有可编辑节点才会保留键盘，如果返回值为`false`，无论否有可编辑节点，键盘都不会保留。
+Web组件使用该方法时，如果返回值为`true`，Web组件会判断组件中是否有可编辑节点，如果有可编辑节点才会保留键盘，如果返回值为`false`，无论是否有可编辑节点，键盘都不会保留。
 
 XComponent组件使用该方法时，如果返回值为`true`且XComponent组件使用[OH_NativeXComponent_SetNeedSoftKeyboard](../capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard)设置了需要键盘，才会保留键盘，如果返回值为`false`，无论组件如何设置，键盘都不会保留。
 
@@ -48,7 +48,7 @@ XComponent组件使用该方法时，如果返回值为`true`且XComponent组件
 
 ## OnNeedSoftkeyboardCallback
 
-OnNeedSoftkeyboardCallback = () => boolean
+type OnNeedSoftkeyboardCallback = () => boolean
 
 当绑定该方法的组件判断是否需要键盘时，将触发此回调。
 

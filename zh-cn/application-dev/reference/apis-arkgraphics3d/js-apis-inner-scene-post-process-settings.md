@@ -8,15 +8,18 @@
 
 本模块提供3D图形中的色调映射等图像后处理方法。
 
-> **说明：** 
+> **说明：**
+> 
 > - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
 
 ## 导入模块
+
 ```ts
 import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSettings } from '@kit.ArkGraphics3D';
 ```
 
 ## ToneMappingType
+
 色调映射类型枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -28,6 +31,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | FILMIC | 2 | FILMIC类型。 |
 
 ## ToneMappingSettings
+
 色调映射设置。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -38,6 +42,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | exposure | number | 否 | 是 | 曝光度，取值大于0，默认值为undefined。 |
 
 ## BloomSettings<sup>18+</sup>
+
 泛光设置。当[RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21)为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -50,6 +55,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | scatter | number | 否 | 是 | 扩散量，取值范围大于0，默认值为1.0。 |
 
 ## VignetteSettings<sup>22+</sup>
+
 边缘暗角设置。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -60,6 +66,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | intensity | number | 否 | 是 | 作用强度，取值范围为[0, 1]，取值为0时无暗角效果，取值为1时为最大暗角强度，默认值为0.4。 |
 
 ## ColorFringeSettings<sup>22+</sup>
+
 色晕设置。当[RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21)为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -69,7 +76,8 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 | intensity | number | 否 | 是 | 作用强度，取值范围为0到1之间，默认值为0.2。 |
 
 ## PostProcessSettings
-后处理设置。
+
+后处理设置，用于配置相机渲染后的图像处理效果，包括色调映射、泛光、边缘暗角和色晕等，作为[Camera](js-apis-inner-scene-nodes.md#camera)的postProcess属性来使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 

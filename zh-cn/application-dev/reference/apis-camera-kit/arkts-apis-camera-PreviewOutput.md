@@ -704,8 +704,8 @@ addDeferredSurface(surfaceId: string): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function preview(cameraManager: camera.CameraManager, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): void {
-  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraDevice);
+async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraInfo);
   let previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
   let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
   let session: camera.Session  = cameraManager.createSession(mode);

@@ -15,6 +15,8 @@
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
+>
+> - 本模块接口被调用时，若出现参数校验失败、权限校验失败、系统状态异常等情况，会抛出错误。建议调用本模块接口时在最外层通过try-catch捕获错误，避免调用失败导致应用崩溃。
 
 ## 导入模块
 
@@ -363,6 +365,8 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -420,6 +424,8 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -480,6 +486,10 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
 | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
 | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
+
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -544,6 +554,9 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
 | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -608,6 +621,8 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 > **说明：**
 >
 > - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -667,6 +682,8 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 > **说明：**
 >
 > - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -731,6 +748,10 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 > **说明：**
 >
 > - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> 
+> - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2327,7 +2348,11 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;voi
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+- 设备支持sensor旋转且未处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：立即生效。
+- 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：调用不生效不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。
+- 其他情况：不生效不报错。
 
 **参数：**
 
@@ -2397,7 +2422,11 @@ setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+- 设备支持sensor旋转且未处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：立即生效。
+- 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态：调用不生效不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。
+- 其他情况：不生效不报错。
 
 **参数：**
 
@@ -3315,7 +3344,7 @@ try {
 
 on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发。
+开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
@@ -3404,7 +3433,7 @@ try {
 
 on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发。
+开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
@@ -3493,7 +3522,7 @@ try {
 
 on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘显示动画完成的监听。此监听在固定态软键盘显示动画完成或软键盘由悬浮态切换至固定态时触发。
+开启固定态软键盘显示动画完成的监听。此监听在固定态软键盘显示动画完成或软键盘由悬浮态切换至固定态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
@@ -3579,7 +3608,7 @@ try {
 
 on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘隐藏动画完成的监听。此监听在固定态软键盘隐藏动画完成或软键盘由固定态切换至悬浮态时触发。
+开启固定态软键盘隐藏动画完成的监听。此监听在固定态软键盘隐藏动画完成或软键盘由固定态切换至悬浮态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[输入法服务](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
@@ -7672,6 +7701,12 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
 
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize9)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
+>
+> - 非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束，其他类型窗口仍受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -7731,6 +7766,12 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 
 未调用setWindowLimits配置过WindowLimits时，使用[getWindowLimits](#getwindowlimits11)或[getWindowLimitsVP](#getwindowlimitsvp22)可获取系统限制。
+
+> **说明：**
+>
+> - [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize9)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
+>
+> - 非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束，其他类型窗口仍受[WindowLimits](arkts-apis-window-i.md#windowlimits11)约束。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -7895,17 +7936,15 @@ try {
     }
     return array;
   });
-  let promise = windowClass.setWindowMask(windowMask);
-  promise.then(() => {
+  windowClass.setWindowMask(windowMask).then(() => {
     console.info('Succeeded in setting the window mask.');
-    promise = windowClass.clearWindowMask();
-    promise.then(() => {
+    windowClass?.clearWindowMask().then(() => {
       console.info('Succeeded in clearing the window mask.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to clear window mask. Cause code: ${err.code}, message: ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to set window mask. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -10316,11 +10355,11 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 该相对位置通过一级子窗与主窗之间锚点的偏移量表示，子窗和主窗使用的窗口锚点相同。
 
-1、只支持非最大化一级子窗使用该接口。
+1. 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。
 
-2、当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，除非传入false再次调用该接口，否则效果将持续。
+2. 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，除非传入false再次调用该接口，否则效果将持续。
 
-3、当子窗调用该接口后，再调用[moveWindowTo()](#movewindowto9)、[maximize()](#maximize12)修改窗口位置或大小的接口将不生效。
+3. 当子窗调用该接口后，再调用[moveWindowTo()](#movewindowto9)、[maximize()](#maximize12)修改窗口位置或大小的接口将不生效。
 
 该接口调用生效后，[setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled17)接口调用不生效。
 

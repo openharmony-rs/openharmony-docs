@@ -30,7 +30,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | WIFI_RSSI           | 1    | 表示WIFI强度。      |
 | ULTRASOUND          | 2    | 表示超声强度。      |
 | NEAR_LINK           | 3    | 表示星闪强度。  |
-| BLE_WIFI_RSSI       | 4    | 表示蓝牙和WIFI强度。|
+| WIFI_BLE_RSSI       | 4    | 表示WIFI和蓝牙强度。|
 
 ## spatialAwareness.ReportingMode
 

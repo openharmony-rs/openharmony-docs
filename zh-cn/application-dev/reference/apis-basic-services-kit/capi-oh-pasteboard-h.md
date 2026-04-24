@@ -218,8 +218,7 @@ typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progress
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项[Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)设置为NONE时才会上报此信息。 |
-
+| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项[Pasteboard_ProgressIndicator](#pasteboard_progressindicator)设置为PASTEBOARD_NONE时才会上报此信息。 |
 ### Pasteboard_Notify()
 
 ```c
