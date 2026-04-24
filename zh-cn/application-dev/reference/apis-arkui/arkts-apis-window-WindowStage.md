@@ -1945,7 +1945,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持智慧多窗悬浮窗模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
 
 **返回值：**
 
@@ -2013,7 +2013,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持智慧多窗悬浮窗模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中属性的supportWindowModes字段取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中属性的supportWindowModes字段取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
 | grayOutMaximizeButton | boolean | 是 | 是否显示并将主窗口的最大化按钮置灰。true表示显示并将主窗口的最大化按钮置灰，此时最大化按钮不可用；false表示不显示主窗口的最大化按钮。此参数配置仅在supportedWindowModes不支持FULL_SCREEN时生效。 |
 
 **返回值：**
