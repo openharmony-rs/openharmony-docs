@@ -168,26 +168,13 @@ isParticipant(): boolean
 | ------------------- | ----------------------------------------------------------- |
 | boolean | 标识此设备现在是否正在参与灰度活动，true表示正在参与，false表示未参与。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function      |
-
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
-try {
-  hiRetrieval.isParticipant();
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
+let isParticipant = hiRetrieval.isParticipant();
 ```
 
 ## hiRetrieval.getLastParticipationTimestamp
@@ -212,26 +199,13 @@ ArkTS-Sta: getLastParticipationTimestamp(): long
 | ------------------- | ----------------------------------------------------------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 上一次参与应用灰度活动的UNIX时间戳，单位为毫秒。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function      |
-
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
-try {
-  let ts = hiRetrieval.getLastParticipationTimestamp();
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
+let ts = hiRetrieval.getLastParticipationTimestamp();
 ```
 
 ## hiRetrieval.run
@@ -290,24 +264,11 @@ getCurrentConfig(): HiRetrievalConfig
 | ------------------- | ------------------------------------------------------------ |
 | [HiRetrievalConfig](#hiretrievalconfig) | 当前应用灰度活动配置。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function      |
-
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
-try {
-  let cfg = hiRetrieval.getCurrentConfig();
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
+let cfg = hiRetrieval.getCurrentConfig();
 ```

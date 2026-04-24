@@ -451,8 +451,8 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) =&gt; v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uploadedSize | long | 是 | 当前已上传文件大小，单位为字节（B）。 |
-| totalSize | long | 是 | 上传文件的总大小，单位为字节（B）。 |
+| uploadedSize | number | 是 | 当前已上传文件大小，单位为字节（B）。 |
+| totalSize | number | 是 | 上传文件的总大小，单位为字节（B）。 |
 
 **错误码：**
 
@@ -1405,11 +1405,15 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Upload
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| path | string | 否 | 否 | 文件路径。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23                                         |
-| responseCode | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 上传任务返回码。返回0表示上传任务成功，返回其它值表示上传任务失败，具体请参见message参数中的上传任务结果描述信息。<br/>此处推荐使用[request.agent.create](#requestagentcreate10-1)创建上传任务，并获取标准错误码处理异常分支。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
-| message | string | 否 | 否 | 上传任务结果描述信息。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23                           |
+| path | string | 否 | 否 | 文件路径。                                         |
+| responseCode | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 上传任务返回码。返回0表示上传任务成功，返回其它值表示上传任务失败，具体请参见message参数中的上传任务结果描述信息。<br/>此处推荐使用[request.agent.create](#requestagentcreate10-1)创建上传任务，并获取标准错误码处理异常分支。 |
+| message | string | 否 | 否 | 上传任务结果描述信息。                           |
 
 其中，responseCode包含的返回码值如下。
 
@@ -1434,12 +1438,16 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| filename | string | 否 | 否 | multipart提交时，请求头中的文件名。<br/>**ArkTS-Dyn起始版本：**  6 <br/>**ArkTS-Sta起始版本：**  23 |
-| name | string | 否 | 否 | multipart提交时，表单项目的名称，缺省为file。<br/>**ArkTS-Dyn起始版本：**  6 <br/>**ArkTS-Sta起始版本：**  23 |
-| uri | string | 否 | 否 | 文件的本地存储路径。<br/>仅支持"internal://cache/"，即调用方（传入的context）对应的缓存路径context.cacheDir。<br/>示例：internal://cache/path/to/file.txt <br/>**ArkTS-Dyn起始版本：**  6 <br/>**ArkTS-Sta起始版本：**  23 |
-| type | string | 否 | 否 | 文件的内容类型，默认根据文件名或路径的后缀获取。<br/>**ArkTS-Dyn起始版本：**  6 <br/>**ArkTS-Sta起始版本：**  23 |
+| filename | string | 否 | 否 | multipart提交时，请求头中的文件名。 |
+| name | string | 否 | 否 | multipart提交时，表单项目的名称，缺省为file。 |
+| uri | string | 否 | 否 | 文件的本地存储路径。<br/>仅支持"internal://cache/"，即调用方（传入的context）对应的缓存路径context.cacheDir。<br/>示例：internal://cache/path/to/file.txt  |
+| type | string | 否 | 否 | 文件的内容类型，默认根据文件名或路径的后缀获取。 |
 
 
 ## RequestData
@@ -1447,10 +1455,14 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| name | string | 否 | 否 | 表示表单元素的名称。<br/>**ArkTS-Dyn起始版本：**  6 <br/>**ArkTS-Sta起始版本：**  23 |
-| value | string | 否 | 否 | 表示表单元素的值。<br/>**ArkTS-Dyn起始版本：**  6 <br/>**ArkTS-Sta起始版本：**  23 |
+| name | string | 否 | 否 | 表示表单元素的名称。 |
+| value | string | 否 | 否 | 表示表单元素的值。 |
 
 ## request.downloadFile<sup>9+</sup>
 
@@ -1823,8 +1835,8 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) =&gt; v
 
 | 参数名 | 类型 | 必填 | 说明                                                                      |
 | -------- | -------- | -------- |----------------------------------|
-| receivedSize | long | 是 | 当前下载的进度，单位为字节（B）。                |
-| totalSize | long | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+| receivedSize | number | 是 | 当前下载的进度，单位为字节（B）。                |
+| totalSize | number | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
 
 **错误码：**
 
@@ -1927,8 +1939,8 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) =&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                                                      |
 | -------- | -------- | -------- |------------------------------------|
-| receivedSize | long | 是 | 当前下载的进度，单位为字节（B）。           |
-| totalSize | long | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+| receivedSize | number | 是 | 当前下载的进度，单位为字节（B）。           |
+| totalSize | number | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
 
 
 **错误码：**
@@ -2576,7 +2588,7 @@ on(type: 'fail', callback: (err: number) =&gt; void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| err | int | 是 | 下载失败的错误码，错误原因见[下载任务的错误码](#常量)。 |
+| err | number | 是 | 下载失败的错误码，错误原因见[下载任务的错误码](#常量)。 |
 
 **错误码：**
 
@@ -4094,19 +4106,23 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| downloadId | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 下载任务id。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| failedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载失败原因，可以是任何[下载任务的错误码](#常量)常量。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| fileName | string | 否 | 否 | 下载的文件名。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| filePath | string | 否 | 否 | 存储文件的URI。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| pausedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 会话暂停的原因，可以是任何[下载任务暂停原因](#常量)常量。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| status | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载状态码，可以是任何[下载任务状态码](#常量)常量。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| targetURI | string | 否 | 否 | 下载文件的URI。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| downloadTitle | string | 否 | 否 | 下载任务名称。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| downloadTotalBytes | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 下载的文件的总大小，单位为字节（B）。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| description | string | 否 | 否 | 待下载任务的描述信息。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| downloadedBytes | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 实时下载大小，单位为字节（B）。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
+| downloadId | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 下载任务id。 |
+| failedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载失败原因，可以是任何[下载任务的错误码](#常量)常量。 |
+| fileName | string | 否 | 否 | 下载的文件名。 |
+| filePath | string | 否 | 否 | 存储文件的URI。 |
+| pausedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 会话暂停的原因，可以是任何[下载任务暂停原因](#常量)常量。 |
+| status | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载状态码，可以是任何[下载任务状态码](#常量)常量。 |
+| targetURI | string | 否 | 否 | 下载文件的URI。 |
+| downloadTitle | string | 否 | 否 | 下载任务名称。 |
+| downloadTotalBytes | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 下载的文件的总大小，单位为字节（B）。 |
+| description | string | 否 | 否 | 待下载任务的描述信息。 |
+| downloadedBytes | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
 ## request.agent<sup>10+</sup>
 
@@ -4277,15 +4293,15 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| INITIALIZED | 0x00 |表示通过配置信息（[Config](#requestagentconfig10)）创建的任务已初始化。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| WAITING | 0x10 |表示任务缺少运行或重试的资源，又或是网络状态不匹配。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| RUNNING | 0x20 |表示任务正在运行中。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| RETRYING | 0x21 |表示任务至少失败一次，现在正在再次处理中。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| PAUSED | 0x30 |表示任务暂停，通常后续会恢复任务。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| STOPPED | 0x31 |表示任务停止。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| COMPLETED | 0x40 |表示任务完成。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| FAILED | 0x41 |表示任务失败。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| REMOVED | 0x50 |表示任务移除。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| INITIALIZED | 0x00 |表示通过配置信息（[Config](#requestagentconfig10)）创建的任务已初始化。 |
+| WAITING | 0x10 |表示任务缺少运行或重试的资源，又或是网络状态不匹配。 |
+| RUNNING | 0x20 |表示任务正在运行中。 |
+| RETRYING | 0x21 |表示任务至少失败一次，现在正在再次处理中。 |
+| PAUSED | 0x30 |表示任务暂停，通常后续会恢复任务。 |
+| STOPPED | 0x31 |表示任务停止。 |
+| COMPLETED | 0x40 |表示任务完成。 |
+| FAILED | 0x41 |表示任务失败。 |
+| REMOVED | 0x50 |表示任务移除。 |
 
 
 ## request.agent.Progress<sup>10+</sup>
@@ -4313,10 +4329,6 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 定义任务失败的原因。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 > **说明：**
 >
@@ -4524,12 +4536,12 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| gauge        | boolean                                       | 否 | 是  | 后台任务的进度通知策略。 <br/>- true，显示进度、成功、失败通知。 <br/>- false，仅显示成功、失败通知。<br/>默认为false。<br/>**ArkTS-Dyn起始版本：**  15 <br/>**ArkTS-Sta起始版本：**  23 |
-| notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 否  | 通知栏自定义设置。默认值为`{}`                    <br/>**ArkTS-Dyn起始版本：**  15 <br/>**ArkTS-Sta起始版本：**  23 |
+| gauge        | boolean                                       | 否 | 是  | 后台任务的进度通知策略。 <br/>- true，显示进度、成功、失败通知。 <br/>- false，仅显示成功、失败通知。<br/>默认为false。 |
+| notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 否  | 通知栏自定义设置。默认值为`{}`                     |
 
 ## request.agent.WaitingReason<sup>20+</sup>
 
@@ -4539,14 +4551,14 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值    | 说明                       |
 | -------- |------|--------------------------|
-| TASK_QUEUE_FULL | 0x00 | 表示任务因任务队列已满而进入等待状态。     <br/>**ArkTS-Dyn起始版本：**  20 <br/>**ArkTS-Sta起始版本：**  23 |
-| NETWORK_NOT_MATCH | 0x01 | 表示任务因所需网络条件不满足而进入等待状态。  <br/>**ArkTS-Dyn起始版本：**  20 <br/>**ArkTS-Sta起始版本：**  23 |
-| APP_BACKGROUND | 0x02 | 表示任务因应用长时间处于后台而进入等待状态。  <br/>**ArkTS-Dyn起始版本：**  20 <br/>**ArkTS-Sta起始版本：**  23 |
-| USER_INACTIVATED | 0x03 | 表示任务因所属用户处于非激活状态而进入等待状态。<br/>**ArkTS-Dyn起始版本：**  20 <br/>**ArkTS-Sta起始版本：**  23 |
+| TASK_QUEUE_FULL | 0x00 | 表示任务因任务队列已满而进入等待状态。      |
+| NETWORK_NOT_MATCH | 0x01 | 表示任务因所需网络条件不满足而进入等待状态。   |
+| APP_BACKGROUND | 0x02 | 表示任务因应用长时间处于后台而进入等待状态。   |
+| USER_INACTIVATED | 0x03 | 表示任务因所属用户处于非激活状态而进入等待状态。 |
 
 ## request.agent.MinSpeed<sup>20+</sup>
 

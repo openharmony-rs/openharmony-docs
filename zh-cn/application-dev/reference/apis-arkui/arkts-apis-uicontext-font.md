@@ -30,6 +30,10 @@ registerFont(options: font.FontOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明          |
@@ -81,6 +85,10 @@ getSystemFontList(): Array\<string>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明        |
@@ -126,13 +134,17 @@ getFontByName(fontName: string): font.FontInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型     | 必填   | 说明      |
 | -------- | ------ | ---- | ------- |
 | fontName | string | 是    | 系统的字体名。 |
 
-**返回值：** 
+**返回值：**
 
 | 类型                                      | 说明           |
 | ----------------------------------------- | -------------- |

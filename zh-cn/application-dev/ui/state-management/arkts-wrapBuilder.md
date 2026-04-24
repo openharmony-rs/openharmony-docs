@@ -1,4 +1,4 @@
-# wrapBuilder：封装全局@Builder
+# wrapBuilder：封装全局@Builder（ArkTS-Dyn）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->

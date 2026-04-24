@@ -1354,17 +1354,26 @@ Worker线程向宿主线程发送插队消息，消息中的[Sendable对象](../
 // worker文件路径为：entry/src/main/ets/workers/Worker.ets
 // Worker.ets
 
-import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 import { Priority } from '@ohos.worker';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   workerPort.postMessage("1");
   workerPort.postMessage("2");
+  // 方式1：使用可选链操作符（推荐，最简洁）
   workerPort.postMessageAtFront?.("3-idle", Priority.IDLE);
   workerPort.postMessageAtFront?.("4-immediate", Priority.IMMEDIATE);
-  workerPort.postMessageAtFront?.("5-low", Priority.LOW);
-  workerPort.postMessageAtFront?.("6-high", Priority.HIGH);
+
+  // 方式2：使用非空断言，直接调用（需要确定它一定存在）
+  workerPort.postMessageAtFront!("5-low", Priority.LOW);
+
+  // 方式3：判断方法存在后再使用
+  if (workerPort.postMessageAtFront) {
+    workerPort.postMessageAtFront("6-high", Priority.HIGH);
+  } else {
+    workerPort.postMessageWithSharedSendable("6-high");
+  }
 }
 ```
 
@@ -1392,6 +1401,36 @@ workerInstance.onmessage = (e: MessageEvents) => {
   // result is: 5-low
   // result is: 3-idle
   console.info("result is: " + res);
+}
+```
+
+如果传递的参数是对象字面量的话，需要[显式标注对象字面量的类型](../../quick-start/typescript-to-arkts-migration-guide.md#需要显式标注对象字面量的类型)。
+
+<!--code_no_check-->
+```ts
+import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
+import { Priority } from '@ohos.worker';
+
+class ClassA {
+  public obj: string = ''
+}
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  // 使用可选链操作符调用接口，传递字面量对象时会编译报错，需要显式标注对象字面量的类型。
+  // workerPort.postMessageAtFront?.({obj: 'obj'}, Priority.HIGH);
+
+  let a: ClassA = { obj: 'obj' };
+  workerPort.postMessageAtFront?.(a, Priority.HIGH);
+
+  // 使用非空断言，直接调用。可以直接传递对象字面量。
+  workerPort.postMessageAtFront!({ obj: 'obj' }, Priority.HIGH);
+  // 判断方法存在后再使用。可以直接传递对象字面量。
+  if (workerPort.postMessageAtFront) {
+    workerPort.postMessageAtFront({ obj: 'obj' }, Priority.HIGH);
+  } else {
+    workerPort.postMessageWithSharedSendable({ obj: 'obj' });
+  }
 }
 ```
 

@@ -43,6 +43,8 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_TAG_EXTRA_DATA | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200003    | 外部数据，在通用查询场景，表示返回的数据。 |
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose定义](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
+| HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。<br>**起始版本：** 26.0.0 |
+| HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。<br>**起始版本：** 26.0.0 |
 
 ## HuksExternalCryptoParam
 
@@ -66,7 +68,6 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_PIN_NO_AUTH | 0 | Ukey PIN未认证。 |
 | HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED | 1 | Ukey PIN认证成功。 |
 | HUKS_EXT_CRYPTO_PIN_LOCKED  | 2 | Ukey PIN已锁定。 |
-
 
 ## huksExternalCrypto.registerProvider
 
@@ -332,4 +333,274 @@ async function testFunction() : Promise<void>
     console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
   }
 }
+```
+
+## huksExternalCrypto.clearUkeyPinAuthState
+
+clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
+
+清除指定资源ID的PIN码认证状态。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| resourceId | string | 是   | 资源ID。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
+| 12000011 | The cached resource ID not found. |
+| 12000012 | Device environment or input parameters are abnormal. This may occur if the process function is null, or due to other issues. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | The input parameters are invalid. Possible causes: 1. The resourceId length is invalid. |
+| 12000020 | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
+| 12000024 | The provider or UKey is busy. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+huksExternalCrypto.clearUkeyPinAuthState(testResourceId)
+    .then(() => {
+      console.info('promise: clearUkeyPinAuthState success.');
+    });
+```
+
+## huksExternalCrypto.getResourceId
+
+getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&lt;string&gt;
+
+获取密钥扩展能力的资源ID。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| providerName | string | 是   | 提供者名称，建议包含厂商信息，全局唯一，长度最大为128字节。 |
+| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是   | 获取资源ID所需的属性参数。必选TAG包括：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag)。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<string> | Promise对象，返回资源ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000002 | The ability name or bundle name parameter is missing. |
+| 12000005 | IPC communication failed. |
+| 12000011 | The cached resource ID not found. |
+| 12000012 | Device environment or input parameters are abnormal. This may occur if the process function is null, or due to other issues. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | The input parameters are invalid. Possible causes: 1. The params contains invalid tags or invalid value types. |
+| 12000020 | The provider operation failed. |
+| 12000024 | The provider or UKey is busy. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const providerName = "testProviderName";
+const abilityName = "CryptoExtension";
+const bundleName = "com.example.cryptoapplication";
+// 资源信息，格式和内容由厂商自定义
+const resourceInfo = "vendor_defined_resource_info";
+
+const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+    value: StringToUint8Array(abilityName)
+  },
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
+    value: StringToUint8Array(bundleName)
+  },
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
+    value: StringToUint8Array(resourceInfo)
+  }
+];
+
+huksExternalCrypto.getResourceId(providerName, extProperties)
+    .then((resourceId) => {
+      console.info(`promise: getResourceId success, resourceId: ${resourceId}`);
+    });
+```
+
+## huksExternalCrypto.openResource
+
+openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt;void&gt;
+
+打开指定资源ID的资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 打开的资源必须使用[closeResource](#huksexternalcryptocloseresource)关闭。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
+| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给[Extension Ability](js-apis-CryptoExtensionAbility.md)的输入参数。不传入时，不向Extension Ability传递额外参数。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
+| 12000011 | The cached resource ID is not found. This may happen because the resource ID has not been opened. |
+| 12000012 | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
+| 12000014 | The memory is insufficient. |
+| 12000017 | The resource with the resource ID is already open. |
+| 12000018 | Input parameters are invalid. Possible causes: 1. The resourceId length is invalid. 2. The parameters contain invalid tags or invalid value types. |
+| 12000020 | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
+| 12000024 | The provider or UKey is busy. |
+| 12000025 | The opened resources exceed the limit. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+huksExternalCrypto.openResource(testResourceId)
+    .then(() => {
+      console.info('promise: openResource success.');
+    });
+```
+
+## huksExternalCrypto.closeResource
+
+closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt;void&gt;
+
+关闭指定资源ID的资源。使用Promise异步回调。
+
+该接口会回调[onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| resourceId | string | 是   | 资源ID。可通过[证书选择接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
+| params | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给[Extension Ability](js-apis-CryptoExtensionAbility.md)的输入参数。不传入时，不向Extension Ability传递额外参数。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
+| 12000012 | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | Input parameters are invalid. Possible causes: 1. The resourceId length is invalid. 2. The parameters contain invalid tags or invalid value types. |
+| 12000020 | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
+| 12000024 | The provider or UKey is busy. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+huksExternalCrypto.closeResource(testResourceId)
+    .then(() => {
+      console.info('promise: closeResource success.');
+    });
 ```
