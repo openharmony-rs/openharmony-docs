@@ -33,7 +33,7 @@ ArkTS-Sta: setProcessPriority(pid: int, priority: ProcessPriority): Promise&lt;v
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -83,7 +83,7 @@ ArkTS-Sta: resetProcessPriority(pid: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -275,7 +275,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   |  值      | 说明                                                                             |
 |----------------------| -------- |--------------------------------------------------------------------------------|
