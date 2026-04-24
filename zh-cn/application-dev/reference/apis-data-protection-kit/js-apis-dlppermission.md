@@ -924,16 +924,18 @@ import { common, Want } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 
 let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext。
-let want: Want = {
-  "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
-  "parameters": {
-    "displayName": "1.txt"
-  }
-}; // 请求参数。
-dlpPermission.startDLPManagerForResult(context, want).then((res) => {
-  console.info('res.resultCode', res.resultCode);
-  console.info('res.want', JSON.stringify(res.want));
-}); // 打开DLP权限管理应用。
+    if (context !== undefined) {
+        let want: Want = {
+    "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+    "parameters": {
+        "displayName": "1.txt"
+    }
+    }; // 请求参数。
+    dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+    console.info('res.resultCode', res.resultCode);
+    console.info('res.want', JSON.stringify(res.want));
+    }); // 打开DLP权限管理应用。
+}
 ```
 
 ## dlpPermission.setSandboxAppConfig<sup>11+<sup>
@@ -1139,27 +1141,31 @@ interface Policy {
   ruleConflictAlg: number;
 }
 
-let attributeValues: Array<string> = [ '1' ];
-let attribute: Attribute = {
-  attributeId: 'DeviceHealthyStatus',
-  attributeValues: attributeValues,
-  valueType: 0,
-  opt: 2
-}; // 属性信息。
-let rule: Rule = {
-  ruleId: 'ruleId',
-  attributes: [ attribute ]
-}; // 规则。
-let policy: Policy = {
-  rules: [ rule ],
-  policyId: 'policyId',
-  ruleConflictAlg: 0
-}; // 策略。
-let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-  policyString: JSON.stringify(policy)
-};
-dlpPermission.setEnterprisePolicy(enterprisePolicy);
-console.info('set enterprise policy success');
+try {
+    let attributeValues: Array<string> = [ '1' ];
+    let attribute: Attribute = {
+        attributeId: 'DeviceHealthyStatus',
+        attributeValues: attributeValues,
+        valueType: 0,
+        opt: 2
+    }; // 属性信息。
+    let rule: Rule = {
+        ruleId: 'ruleId',
+        attributes: [ attribute ]
+    }; // 规则。
+    let policy: Policy = {
+        rules: [ rule ],
+        policyId: 'policyId',
+        ruleConflictAlg: 0
+    }; // 策略。
+    let enterprisePolicy: dlpPermission.EnterprisePolicy = {
+        policyString: JSON.stringify(policy)
+    };
+    dlpPermission.setEnterprisePolicy(enterprisePolicy);
+    console.info('set enterprise policy success'); 
+} catch (err) { 
+    console.error('error:' + err.code + err.message); // 失败报错。 
+}
 ```
 
 ## ActionFlagType
