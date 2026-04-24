@@ -135,6 +135,8 @@ Enumerates the device states.
 
 Provides APIs to obtain information about trusted devices and local devices. Before calling any API in **DeviceManager**, you must use **createDeviceManager** to create a **DeviceManager** instance, for example, **dmInstance**.
 
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
 ### getAvailableDeviceListSync
 
 getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
@@ -189,7 +191,7 @@ Obtains all trusted devices. This API uses an asynchronous callback to return th
 
   | Name      | Type                                    | Mandatory  | Description                   |
   | -------- | ---------------------------------------- | ---- | --------------------- |
-  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Yes   | Callback used to return the list of trusted devices.|
+  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the Array<DeviceBasicInfo> obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -235,7 +237,7 @@ Obtains all trusted devices. This API uses a promise to return the result.
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Promise used to return the result.|
+  | Promise&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Promise used to return the basic information about a distributed device.|
 
 **Error codes**
 

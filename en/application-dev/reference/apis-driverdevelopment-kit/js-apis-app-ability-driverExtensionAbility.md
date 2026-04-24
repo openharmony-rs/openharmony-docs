@@ -4,7 +4,7 @@
 <!--Owner: @lixinsheng2-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **DriverExtensionAbility** module provides the ExtensionAbility related to drivers. It provides lifecycle callbacks to be invoked when a driver is created, destroyed, connected, or disconnected.
 
@@ -22,6 +22,8 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 ## DriverExtensionAbility
 
 ### Properties
+
+**DriverExtensionAbility** class, which contains the definition of driver lifecycle callbacks.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -85,7 +87,7 @@ Called when this DriverExtensionAbility is destroyed to clear resources.
 
 onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>
 
-Called following **onCreate()** when a DriverExtensionAbility is started by calling **connectAbility()**. A **RemoteObject** object is returned for communication between the server and client.
+Called following [onCreate](../apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate). A [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) object is returned for communication between the server and client.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -101,7 +103,7 @@ Called following **onCreate()** when a DriverExtensionAbility is started by call
 
 | Type| Description|
 | -------- | -------- |
-| rpc.RemoteObject \| Promise<rpc.RemoteObject> | **RemoteObject** object used for communication between the server and client, or promise used to return the value.|
+| rpc.[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) \| Promise<rpc.[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)> | A **RemoteObject** object is returned for communication between the server and client, or a **Promise** object returns the **RemoteObject** object used for communication.|
 
 **Example**
 
@@ -127,7 +129,7 @@ Called following **onCreate()** when a DriverExtensionAbility is started by call
   }
   ```
 
-If the returned **RemoteObject** object depends on an asynchronous API, you can use the asynchronous lifecycle.
+If the returned [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) object depends on an asynchronous API, you can use the asynchronous lifecycle.
 
   ```ts
   import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
@@ -160,7 +162,7 @@ If the returned **RemoteObject** object depends on an asynchronous API, you can 
 
 onDisconnect(want: Want): void | Promise\<void>
 
-Called when a client is disconnected from this DriverExtensionAbility.
+Called when a client is disconnected from this **DriverExtensionAbility**.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -176,7 +178,7 @@ Called when a client is disconnected from this DriverExtensionAbility.
 
 | Type| Description|
 | -------- | -------- |
-| void \| Promise\<void> | Empty value, or promise used to return the value.|
+| void \| Promise\<void> | The return value is **void** or a **Promise** object returns no value.|
 
 **Example**
 
@@ -205,12 +207,11 @@ After the **onDisconnect** lifecycle callback is executed, the application may e
   }
   ```
 
-
 ### onDump
 
 onDump(params: Array\<string>): Array\<string>
 
-Dumps client information.
+Dumps client information. You are advised not to dump sensitive information.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -247,7 +248,6 @@ type DriverExtensionContext = _DriverExtensionContext;
 
 **System capability**: SystemCapability.Driver.ExternalDevice
 
-
 | Type| Description|
-| -------- | -------- | 
+| -------- | -------- |
 | _DriverExtensionContext | **DriverExtensionAbility** context, which is inherited from **ExtensionContext**. For details about how to use the context, see [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md).|
