@@ -59,7 +59,7 @@ struct Index {
     }
     // 建议使用单一策略如"FOLLOW_DESKTOP"来应对设备的差异化，如单一策略无法满足需求，可参考断点机制，屏蔽设备差异
     // 此处是举的特殊示例，原则上支持横屏的应用，旋转策略应该是支持4个方向可旋转，此处是为了说明断点的使用方式，才举此例
-    // 600为宽度断点枚举值其中的的边界值， 0.8为高宽比断点枚举值其中的边界值
+    // 600为宽度断点枚举值其中的边界值， 0.8为高宽比断点枚举值其中的边界值
     if (displayWidth >= 600 && heightBp < 0.8) {
       this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.LANDSCAPE);
       this.currentOrientation = 'LANDSCAPE';
