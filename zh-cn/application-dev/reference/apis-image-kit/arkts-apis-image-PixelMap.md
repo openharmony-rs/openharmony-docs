@@ -42,7 +42,9 @@ readAllPixelsToBuffer(dst: ArrayBuffer): Promise\<void\>
 
 读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -100,7 +102,9 @@ readAllPixelsToBufferSync(dst: ArrayBuffer): void
 
 读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -284,7 +288,9 @@ readPixelsToArea(area: PositionArea): Promise\<void\>
 > - RGBA的区域计算公式：读取区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
 > - YUV的区域计算公式：读取区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -379,7 +385,9 @@ readPixelsToAreaSync(area: PositionArea): void
 > - RGBA的区域计算公式：读取区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
 > - YUV的区域计算公式：读取区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -656,7 +664,9 @@ writePixelsFromArea(area: PositionArea): Promise\<void\>
 > - RGBA的区域计算公式：写入区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
 > - YUV的区域计算公式：写入区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -768,7 +778,9 @@ writePixelsFromAreaSync(area: PositionArea): void
 > - RGBA的区域计算公式：写入区域（Region.size {width * height}）* 4（1倍R分量 + 1倍G分量 + 1倍B分量 + 1倍A分量）
 > - YUV的区域计算公式：写入区域（Region.size {width * height}）* 1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1071,7 +1083,9 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void\>
 
 读取缓冲区内的图像像素数据，并将其写入整个PixelMap。缓冲区中的像素数据必须是整个PixelMap的像素数据，且像素格式必须与PixelMap相同。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1138,7 +1152,9 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 读取缓冲区内的图像像素数据，并将其写入整个PixelMap。缓冲区中的像素数据必须是整个PixelMap的像素数据，且像素格式必须与PixelMap相同。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1519,11 +1535,15 @@ function GetDensity(pixelMap: image.PixelMap) {
 
 ## setOpacity
 
-setOpacity(value: number): Promise\<void\>
+ArkTS-Dyn: setOpacity(value: number): Promise\<void\>
+
+ArkTS-Sta: setOpacity(value: double): Promise\<void\>
 
 设置PixelMap的不透明度，指定的不透明度值将被应用于所有像素，不受原图不透明度的影响。YUV格式的图像不支持设置不透明度。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1537,7 +1557,7 @@ setOpacity(value: number): Promise\<void\>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------------------- |
-| value    | number               | 是   | 不透明度值。取值范围是(0.0, 1.0]，1.0表示完全不透明，数值越接近0.0则透明度越高。                           |
+| value    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度值。取值范围是(0.0, 1.0]，1.0表示完全不透明，数值越接近0.0则透明度越高。         |
 
 **返回值：**
 
@@ -1576,11 +1596,15 @@ function DemoSetOpacity(pixelMap: image.PixelMap) {
 
 ## setOpacitySync
 
-setOpacitySync(value: number): void
+ArkTS-Dyn: setOpacitySync(value: number): void
+
+ArkTS-Sta: setOpacitySync(value: double): void
 
 设置PixelMap的不透明度，指定的不透明度值将被应用于所有像素，不受原图不透明度的影响。YUV格式的图像不支持设置不透明度。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1594,7 +1618,7 @@ setOpacitySync(value: number): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------------------- |
-| value    | number               | 是   | 不透明度值。取值范围是(0.0, 1.0]，1.0表示完全不透明，数值越接近0.0则透明度越高。                           |
+| value    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 不透明度值。取值范围是(0.0, 1.0]，1.0表示完全不透明，数值越接近0.0则透明度越高。         |
 
 **错误码：**
 
@@ -1753,7 +1777,9 @@ extractAlphaPixelMap(): Promise\<PixelMap\>
 
 提取PixelMap的Alpha通道数据，并生成一个仅包含Alpha通道信息的ALPHA_U8格式的PixelMap。生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1797,13 +1823,15 @@ function DemoExtractAlphaPixelMap(pixelMap: image.PixelMap) {
 }
 ```
 
-## extractAlphaPixelMap
+## extractAlphaPixelMapSync
 
-extractAlphaPixelMap(): PixelMap
+extractAlphaPixelMapSync(): PixelMap
 
 提取PixelMap的Alpha通道数据，并生成一个仅包含Alpha通道信息的ALPHA_U8格式的PixelMap。生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1963,7 +1991,9 @@ function CreateAlphaPixelmapSync(pixelMap:image.PixelMap) {
 
 ## applyScale
 
-applyScale(x: number, y: number, level?: AntiAliasingLevel): Promise\<void\>
+ArkTS-Dyn: applyScale(x: number, y: number, level?: AntiAliasingLevel): Promise\<void\>
+
+ArkTS-Sta: applyScale(x: double, y: double, level?: AntiAliasingLevel): Promise\<void\>
 
 根据指定的宽高缩放倍数和缩放算法对PixelMap进行缩放。使用Promise异步回调。
 
@@ -1972,7 +2002,9 @@ applyScale(x: number, y: number, level?: AntiAliasingLevel): Promise\<void\>
 > - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 缩放倍数 = 缩放后的图像尺寸 / 缩放前的图像尺寸。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1986,8 +2018,8 @@ applyScale(x: number, y: number, level?: AntiAliasingLevel): Promise\<void\>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                      |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | number               | 是   | 宽度的缩放倍数。取值不能为0。                                                               |
-| y        | number               | 是   | 高度的缩放倍数。取值不能为0。                                                               |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                             |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                             |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值是AntiAliasingLevel.NONE。 |
 
 **返回值：**
@@ -2027,7 +2059,9 @@ function DemoApplyScale(pixelMap: image.PixelMap) {
 
 ## applyScaleSync
 
-applyScaleSync(x: number, y: number, level?: AntiAliasingLevel): void
+ArkTS-Dyn: applyScaleSync(x: number, y: number, level?: AntiAliasingLevel): void
+
+ArkTS-Sta: applyScaleSync(x: double, y: double, level?: AntiAliasingLevel): void
 
 根据指定的宽高缩放倍数和缩放算法对PixelMap进行缩放。
 
@@ -2036,7 +2070,9 @@ applyScaleSync(x: number, y: number, level?: AntiAliasingLevel): void
 > - 建议宽高的缩放倍数取正数，否则会产生翻转效果。
 > - 缩放倍数 = 缩放后的图像尺寸 / 缩放前的图像尺寸。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2050,8 +2086,8 @@ applyScaleSync(x: number, y: number, level?: AntiAliasingLevel): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                      |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | number               | 是   | 宽度的缩放倍数。取值不能为0。                                                               |
-| y        | number               | 是   | 高度的缩放倍数。取值不能为0。                                                               |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 宽度的缩放倍数。取值不能为0。                                             |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 高度的缩放倍数。取值不能为0。                                             |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。该参数对于ASTC格式的PixelMap不生效。默认值是AntiAliasingLevel.NONE。 |
 
 **错误码：**
@@ -2626,7 +2662,9 @@ function CloneSync(pixelMap: image.PixelMap) {
 
 ## applyTranslate
 
-applyTranslate(x: number, y: number): Promise\<void\>
+ArkTS-Dyn: applyTranslate(x: number, y: number): Promise\<void\>
+
+ArkTS-Sta: applyTranslate(x: number, y: number): Promise\<void\>
 
 根据指定的横向和纵向距离对PixelMap进行平移。使用Promise异步回调。
 
@@ -2635,7 +2673,9 @@ applyTranslate(x: number, y: number): Promise\<void\>
 > - 平移后的图片尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 > - 建议平移后的图片尺寸不要超过屏幕的宽高。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2649,8 +2689,8 @@ applyTranslate(x: number, y: number): Promise\<void\>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                      |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| x        | number               | 是   | 横向平移的距离。单位为像素（px）。                                                         |
-| y        | number               | 是   | 纵向平移的距离。单位为像素（px）。                                                         |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。单位为像素（px）。                                       |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。单位为像素（px）。                                       |
 
 **返回值：**
 
@@ -2689,7 +2729,9 @@ function DemoApplyTranslate(pixelMap: image.PixelMap) {
 
 ## applyTranslateSync
 
-applyTranslateSync(x: number, y: number): void
+ArkTS-Dyn: applyTranslateSync(x: number, y: number): void
+
+ArkTS-Sta: applyTranslateSync(x: number, y: number): void
 
 根据指定的横向和纵向距离对PixelMap进行平移。
 
@@ -2698,7 +2740,9 @@ applyTranslateSync(x: number, y: number): void
 > - 平移后的图片尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 > - 建议平移后的图片尺寸不要超过屏幕的宽高。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2712,8 +2756,8 @@ applyTranslateSync(x: number, y: number): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                      |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| x        | number               | 是   | 横向平移的距离。单位为像素（px）。                                                         |
-| y        | number               | 是   | 纵向平移的距离。单位为像素（px）。                                                         |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 横向平移的距离。单位为像素（px）。                                       |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 纵向平移的距离。单位为像素（px）。                                       |
 
 **错误码：**
 
@@ -2880,7 +2924,9 @@ function TranslateSync(pixelMap:image.PixelMap) {
 
 ## applyRotate
 
-applyRotate(angle: number): Promise\<void\>
+ArkTS-Dyn: applyRotate(angle: number): Promise\<void\>
+
+ArkTS-Sta: applyRotate(angle: double): Promise\<void\>
 
 根据指定的角度对PixelMap进行旋转。YUV格式仅支持90°倍数的旋转角。使用Promise异步回调。
 
@@ -2889,7 +2935,9 @@ applyRotate(angle: number): Promise\<void\>
 > - 图像旋转角度的取值范围为[0, 360]。超出取值范围时，将根据圆周360°自动矫正。例如，-100°与260°效果相同。
 > - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：旋转45°时，输出图像尺寸为原图像的√2倍。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2903,7 +2951,7 @@ applyRotate(angle: number): Promise\<void\>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                      |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| angle    | number               | 是   | 旋转的角度。单位为角度。                                                                   |
+| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 旋转的角度。单位为角度。                                                |
 
 **返回值：**
 
@@ -2942,7 +2990,9 @@ function DemoApplyRotate(pixelMap: image.PixelMap) {
 
 ## applyRotateSync
 
-applyRotateSync(angle: number): void
+ArkTS-Dyn: applyRotateSync(angle: number): void
+
+ArkTS-Sta: applyRotateSync(angle: double): void
 
 根据指定的角度对PixelMap进行旋转。YUV格式仅支持90°倍数的旋转角。
 
@@ -2951,7 +3001,9 @@ applyRotateSync(angle: number): void
 > - 图像旋转角度的取值范围为[0, 360]。超出取值范围时，将根据圆周360°自动矫正。例如，-100°与260°效果相同。
 > - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：旋转45°时，输出图像尺寸为原图像的√2倍。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2965,7 +3017,7 @@ applyRotateSync(angle: number): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                      |
 | -------- | -------------------- | ---- | --------------------------------------------------------------------------------------- |
-| angle    | number               | 是   | 旋转的角度。单位为角度。                                                                   |
+| angle    | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 旋转的角度。单位为角度。                                                |
 
 **错误码：**
 
@@ -3139,7 +3191,9 @@ applyFlip(horizontal: boolean, vertical: boolean): Promise\<void\>
 
 根据指定的条件对PixelMap进行翻转。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3197,7 +3251,9 @@ applyFlipSync(horizontal: boolean, vertical: boolean): void
 
 根据指定的条件对PixelMap进行翻转。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3379,7 +3435,9 @@ applyCrop(region: Region): Promise\<void\>
 
 根据指定的区域信息对PixelMap进行裁剪。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3446,7 +3504,9 @@ applyCropSync(region: Region): void
 
 根据指定的区域信息对PixelMap进行裁剪。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
