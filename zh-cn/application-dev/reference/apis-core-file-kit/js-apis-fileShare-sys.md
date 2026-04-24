@@ -294,9 +294,9 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_SHARED_FILE
-
 **系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -349,9 +349,9 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_SHARED_FILE
-
 **系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -400,9 +400,9 @@ revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_SHARED_FILE
-
 **系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
