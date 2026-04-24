@@ -1,4 +1,3 @@
-# @ohos.sensor (传感器)
 # @ohos.sensor (传感器)(系统接口)
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
