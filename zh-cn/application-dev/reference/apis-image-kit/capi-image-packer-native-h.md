@@ -138,7 +138,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 图像格式。format无需手动初始化，系统将分配内存，但必须在使用后释放内存。<br> 该接口获取到的format.data缺少字符串结束符'\0'，需要检查实际数据长度是否超出了申请缓冲区的长度。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | 图像格式。format无需手动初始化，系统将分配内存，但必须在使用后释放内存。<br>该接口获取到的format.data缺少字符串结束符'\0'，需要检查实际数据长度是否超出了申请缓冲区的长度。 |
 
 **返回：**
 
