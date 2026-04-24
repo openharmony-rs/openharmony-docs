@@ -56,7 +56,7 @@ struct Page {
 }
 ```
 
-访问HSP包的资源示例可参考[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。
+访问HSP包的资源示例可参考[访问跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。
 
 ## $rawfile
 
