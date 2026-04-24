@@ -888,7 +888,7 @@ if (100 < a.length) {
 
 **规则解释：**
 
-ArkTS-Sta中数组和元组是不同的类型，元组不支持Array拥有的接口和属性。
+ArkTS-Sta中数组和元组是不同的类型，元组和Array拥有的接口和属性行为不完全一致。
 
 **变更原因：**
  
@@ -917,8 +917,8 @@ getTuple([1, 3.14, true]); // 传入元组
 type Point = (number | boolean)[]; // 违反规则
 const p: Point = [3, 5, true];
 
-let a: [number, string] = [1, "a"];
-console.info("length=" + a.length); // 可以通过.length获取元组长度
+const tuple3: [null, string, undefined] = [null, 'str', undefined];
+console.info(tuple3.toString()) // 打印“,str,”。
 ```
 
 ArkTS-Sta
@@ -938,8 +938,8 @@ getTuple([1, 3.14, true]);
 type Point = [number, number, boolean]; // 使用元组
 const p: Point = [3, 5, true];
 
-let a: [number, string] = [1, "a"];
-console.info("length=" + 2); // 元组不支持.length接口，元组长度固定，直接输入长度
+const tuple3: [null, string, undefined] = [null, 'str', undefined];
+console.info(tuple3.toString()) // 打印“null,str,undefined”。
 ```
 
 ## 函数类型转换及兼容原则
@@ -4348,8 +4348,7 @@ console.info(typeof (1 || 1)); // 输出：int
 ArkTS-Dyn
 ```typescript
 abstract class C {
-  abstract foo1();
-  abstract foo1();
+  abstract foo1(): void;
   abstract foo1(): boolean;
   abstract foo1(): number;
 }
@@ -4358,10 +4357,9 @@ abstract class C {
 ArkTS-Sta
 ```typescript
 abstract class C {
-  abstract foo1();
-  abstract foo2();
-  abstract foo3(): boolean;
-  abstract foo4(): number;
+  abstract foo1(): void;
+  abstract foo2(): boolean;
+  abstract foo3(): number;
 }
 ```
 
@@ -4451,15 +4449,20 @@ arg_rest_int_function(1, 2, 3) === 1; // 报错
 arg_rest_int_function(0) === 0; // 报错
 ```
 
-## `return this`使用限制
+## 构造函数内禁止显式返回具体的值
 
 **场景描述：**
 
-在ArkTS-Dyn中，在类的`constructor`里可以使用`return this`，而在ArkTS-Sta中这种写法会报错。
+构造函数返回值无意义，ArkTS-Sta中构造函数禁止显式返回具体的值，可以使用不带任何表达式的空return语句。
+
+**适配建议：**
+
+使用不带任何表达式的空return语句。
 
 **示例：**
 
 ArkTS-Dyn
+
 ```typescript
 class Base {
   constructor() {
@@ -4469,30 +4472,37 @@ class Base {
 ```
 
 ArkTS-Sta
+
 ```typescript
 class Base {
   constructor() {
-    return this; // 报错
+    return;
   }
 }
 ```
 
-## this关键字作用域限制
+## 不能在全局域中使用this
 
 **场景描述：**
 
-在ArkTS-Dyn中，可以在`class`之外使用`this`，ArkTS-Sta只能在`class`内部使用。
+ArkTS-Sta不能在全局域中使用this。
+
+**适配建议：**
+
+在全局域中使用this无意义，使用undefined替代。
 
 **示例：**
 
 ArkTS-Dyn
+
 ```typescript
 let that = this;
 ```
 
 ArkTS-Sta
+
 ```typescript
-let that = this; // 报错
+let that = undefined;
 ```
 
 ## 默认导出访问方式变更
@@ -4529,7 +4539,7 @@ import * as AAA from "./tt";
 console.info(AAA.default + ''); // 报错
 ```
 
-## ArkTS-Sta多个剩余参数不能同时传入一个函数
+## 多个剩余参数不能同时传入一个函数
 
 **场景描述：**
 
@@ -4569,7 +4579,7 @@ function testRestParameter(...args: number[]) {
 testRestParameter(...arr1.concat(arr2, arr3)); // 将多个参数合并再传入
 ```
 
-## ArkTS-Sta在数字相乘超过int时会溢出
+## 数字相乘超过int时会溢出
 
 **场景描述：**
 
@@ -4814,6 +4824,152 @@ class Person {
 }
 
 let p1: Person = {}; // 可以省略有默认值的字段
+```
+
+## 禁止全局对象冗余可选链
+
+**场景描述：**
+
+ArkTS-Sta不支持全局对象冗余可选链使用。
+
+**适配建议：**
+
+不适用可选链。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+String?.(42)
+```
+
+ArkTS-Sta
+
+```typescript
+String(42)
+```
+
+## interface的属性不能省略类型
+
+**场景描述：**
+
+ArkTS-Sta中interface的属性不能省略类型。
+
+**适配建议：**
+
+为interface的属性显式标注类型。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+interface I {
+  f1;
+  f2;
+}
+```
+
+ArkTS-Sta
+
+```typescript
+interface I {
+  f1: Any;
+  f2: Any;
+}
+```
+
+## 默认参数必须要有类型标注
+
+**场景描述：**
+
+ArkTS-Sta中默认参数必须要有类型标注。
+
+**适配建议：**
+
+为默认参数添加类型标注。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+function foo(a = 'str'): string {
+  return a;
+}
+```
+
+ArkTS-Sta
+
+```typescript
+function foo(a: string = 'str'): string {
+  return a;
+}
+```
+
+## 递归lambda需要显式类型标注
+
+**场景描述：**
+
+循环递归lambda需要显式类型标注。
+
+**适配建议：**
+
+为循环递归lambda添加返回值类型标注。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+let foo = () => {
+  foo()
+}
+```
+
+ArkTS-Sta
+
+```typescript
+let foo = (): void => {
+  foo()
+}
+```
+
+## get方法无法通过字面量创建
+
+**场景描述：**
+
+get方法无法通过字面量创建。
+
+**适配建议：**
+
+使用字段为对象字面量赋值。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+class Base {
+  field: number = 100;
+}
+const obj = {
+  get field() {
+    return 10
+  }
+} as Base;
+```
+
+ArkTS-Sta
+
+```typescript
+class Base {
+  field: number = 100;
+}
+const obj = {
+  field: 10
+} as Base;
 ```
 
 ## 术语解释
