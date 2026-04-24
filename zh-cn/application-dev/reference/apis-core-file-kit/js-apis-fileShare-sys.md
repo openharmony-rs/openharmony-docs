@@ -19,9 +19,11 @@
 import  { fileShare } from '@kit.CoreFileKit';
 ```
 
-## SharedDirectoryInfo<sup>26+</sup>
+## SharedDirectoryInfo
 
-应用向系统共享的目录信息。
+应用捐献给系统的目录信息。
+
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。  
 
@@ -284,11 +286,13 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
   }
   ```
 
-## fileShare.getSharedDirectoryInfo<sup>26+</sup>
+## fileShare.getSharedDirectoryInfo
 
 getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
-获取应用程序的共享沙箱目录
+获取所有应用的捐献沙箱目录
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
@@ -300,7 +304,7 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 |类型|说明|
 | ------ | ------ |
-| Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt; | Promise对象。返回SharedDirectoryInfo数组。 |
+| Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt; | Promise对象，返回SharedDirectoryInfo数组。 |
 
 **错误码：**
 
@@ -337,11 +341,13 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
   ```
 
 
-## fileShare.grantSharedDirectoryPermission<sup>26+</sup>
+## fileShare.grantSharedDirectoryPermission
 
 grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
-为应用共享目录提供权限授予功能
+授予对应用捐献目录的访问权限
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
@@ -353,7 +359,7 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 |类型|说明|
 | ------ | ------ |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -386,11 +392,13 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
   }
   ```
 
-## fileShare.revokeSharedDirectoryPermission<sup>26+</sup>
+## fileShare.revokeSharedDirectoryPermission
 
 grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
-撤销应用共享目录的权限
+撤消应用的捐献目录访问权限。
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
@@ -402,7 +410,7 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 |类型|说明|
 | ------ | ------ |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
