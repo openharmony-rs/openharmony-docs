@@ -35,7 +35,7 @@ SelectionMenu(options: SelectionMenuOptions): void
 
 入参为空时，文本选择菜单组件SelectionMenu内容区大小及组件大小为零。表现例如，富文本组件[RichEditor](ts-basic-components-richeditor.md)使用[bindSelectionMenu](ts-basic-components-richeditor.md#bindselectionmenu)接口绑定一个SelectionMenu的右键菜单，则右键富文本组件区域时无任何菜单弹出。
 
-**装饰器类型：**\@Builder
+**装饰器类型：**[\@Builder](../../../ui/state-management/arkts-builder.md)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
