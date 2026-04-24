@@ -20,7 +20,7 @@ inspector针对UI组件的布局或绘制送显完成，还提供了注册与取
 
 3. 不支持获取组件的方法、事件。
 
-## UIContext查询组件树和组件信息能力(ArkTS1.1)
+## UIContext查询组件树和组件信息能力（ArkTS-Dyn）
 
 ArkUI提供@ohos.arkui.UIContext([UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md))扩展能力，通过[getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)获取组件树及组件属性，通过[getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)获取指定的组件及其子组件的属性。支持设置过滤条件进行查询。
 
