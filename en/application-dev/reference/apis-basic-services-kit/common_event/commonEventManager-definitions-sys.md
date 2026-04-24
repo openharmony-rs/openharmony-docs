@@ -20,7 +20,6 @@ Common event types are defined in [Support enumeration of the ohos.commonEventMa
 
 ## Ability Kit
 
-
 ### COMMON_EVENT_BOOT_COMPLETED
 
 Indicates that the boot is complete and the system is loaded.
@@ -33,9 +32,7 @@ When the specified user finishes the boot process on the device, the common even
 
 **Required permissions**: ohos.permission.RECEIVER_STARTUP_COMPLETED (for system applications only)
 
-
-**Value**: "usual.event.BOOT_COMPLETED"
-
+**Value**: usual.event.BOOT_COMPLETED
 
 
 ### COMMON_EVENT_PACKAGE_INSTALLATION_STARTED<sup>12+</sup>
@@ -50,7 +47,7 @@ When a new application starts to be installed by a specified user on the device,
 
 **Required permissions**: none
 
-**Value**: "usual.event.PACKAGE_INSTALLATION_STARTED"
+**Value**: usual.event.PACKAGE_INSTALLATION_STARTED
 
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
@@ -65,7 +62,7 @@ This common event is sent when the bundle management resource data is updated in
 
 **Required permissions**: ohos.permission.GET_BUNDLE_RESOURCES
 
-**Value**: "usual.event.BUNDLE_RESOURCES_CHANGED"
+**Value**: usual.event.BUNDLE_RESOURCES_CHANGED
 
 
 ### COMMON_EVENT_DEFAULT_APPLICATION_CHANGED<sup>19+</sup>
@@ -80,14 +77,14 @@ This common event is sent when the default application for opening a file change
 
 **Required permissions**: ohos.permission.CHANGE_DEFAULT_APPLICATION
 
-**Value**: "usual.event.DEFAULT_APPLICATION_CHANGED"
+**Value**: usual.event.DEFAULT_APPLICATION_CHANGED
 
 
 ### COMMON_EVENT_SHORTCUT_CHANGED<sup>20+</sup>
 
 Indicates that the application shortcut has changed.
 
-This common event is sent when the shortcut is changed (for example, when [setShortcutVisibleForSelf](../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself) of the shortcutManager module is successfully called).
+This common event is sent when the shortcut is changed (for example, when [shortcutManager.setShortcutVisibleForSelf](../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself) of the shortcutManager module is successfully called).
 
 **System API**: This is a system API.
 
@@ -95,12 +92,12 @@ This common event is sent when the shortcut is changed (for example, when [setSh
 
 **Required permissions**: ohos.permission.MANAGE_SHORTCUTS
 
-**Value**: "usual.event.SHORTCUT_CHANGED"
+**Value**: usual.event.SHORTCUT_CHANGED
 
 
 ### COMMON_EVENT_KIOSK_MODE_ON<sup>20+</sup>
 
-Indicates that the kiosk mode is enabled. When this mode is on, the common event service is triggered to publish this system common event.  
+Indicates that the kiosk mode is enabled. When this mode is on, the common event service is triggered to publish this system common event.
 
 **System API**: This is a system API.
 
@@ -124,7 +121,22 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 **Value**: usual.event.KIOSK_MODE_OFF
 
 
-## Background Tasks Kit 
+### COMMON_EVENT_APP_FIRST_LAUNCH<sup>24+</sup>
+
+Indicates that when the application is launched for the first time after installation, the common event service is triggered to publish this system common event.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.INSTALL_BUNDLE (for system applications only)
+
+**Value**: usual.event.APP_FIRST_LAUNCH
+
+
+## Background Tasks Kit
 
 ### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+</sup>
 
@@ -142,7 +154,7 @@ System applications can call JavaScript APIs to apply for removing resource usag
 
 **Required permissions**: none
 
-**Value**: "usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED"
+**Value**: usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED
 
 ## Basic Services Kit - Customization
 
@@ -158,13 +170,14 @@ This common event is sent when the system updates the device configuration direc
 
 **Required permissions**: none
 
-**Value**: "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
+**Value**: usual.event.CUSTOM_CONFIG_POLICY_UPDATED
+
 
 ### COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED<sup>20+</sup>
 
 Indicates that the roaming area of a device is updated.
 
-When the attributes such as network injection, persistent Connection, and GPS location of a device change, the system identifies the roaming area and updates the parameters if the roaming area changes. After the update is complete, this common event is sent.
+When the attributes such as network injection, persistent connection, and GPS location of a device change, the system identifies the roaming area and updates the parameters if the roaming area changes. After the update is complete, this common event is sent.
 
 **System API**: This is a system API.
 
@@ -172,7 +185,7 @@ When the attributes such as network injection, persistent Connection, and GPS lo
 
 **Required permissions**: none
 
-**Value**: "usual.event.CUSTOM_ROAMING_REGION_UPDATED"
+**Value**: usual.event.CUSTOM_ROAMING_REGION_UPDATED
 
 ## Basic Services Kit - Power Supply
 
@@ -188,7 +201,7 @@ When the system charging type changes, the common event service is triggered to 
 
 **Required permissions**: none
 
-**Value**: "usual.event.CHARGE_TYPE_CHANGED"
+**Value**: usual.event.CHARGE_TYPE_CHANGED
 
 
 ### COMMON_EVENT_USER_ADDED
@@ -197,7 +210,7 @@ Indicates that a user has been added to the system.
 
 When a system account is created, the common event service is triggered to publish this event carrying the system account ID.
 
-The system APIs related to this common event are **createOsAccount** and **createOsAccountForDomain**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system APIs related to this common event are **createOsAccount** and **createOsAccountForDomain**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -205,7 +218,7 @@ The system APIs related to this common event are **createOsAccount** and **creat
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (for system applications only)
 
-**Value**: "usual.event.USER_ADDED"
+**Value**: usual.event.USER_ADDED
 
 
 ### COMMON_EVENT_USER_REMOVED
@@ -214,7 +227,7 @@ Indicates that a user has been removed from the system.
 
 When a system account is removed, the common event service is triggered to publish this event carrying the system account ID.
 
-The system API related to this common event is **removeOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system API related to this common event is **removeOsAccount**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -222,16 +235,16 @@ The system API related to this common event is **removeOsAccount**. For details,
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (for system applications only)
 
-**Value**: "usual.event.USER_REMOVED"
+**Value**: usual.event.USER_REMOVED
 
 
 ### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
 
-Indicates that the status of the domain account status changes.
+Indicates that the domain account status changes.
 
 When a domain user account is authenticated, deleted, or has the token updated, the common event service is triggered to publish this event carrying the system account ID, domain name, and account status.
 
-The system APIs related to this common event are **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system APIs related to this common event are **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -239,7 +252,7 @@ The system APIs related to this common event are **removeOsAccount**, **DomainAc
 
 **Required permissions**: ohos.permission.GET_LOCAL_ACCOUNTS (for system applications only)
 
-**Value**: "usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED"
+**Value**: usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED
 
 
 ### COMMON_EVENT_USER_SWITCHED
@@ -248,7 +261,7 @@ Indicates that a user switchover is complete.
 
 When a system account is switched, the common event service is triggered to publish this event carrying the system account ID.
 
-The system API related to this common event is **activateOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system API related to this common event is **activateOsAccount**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -256,7 +269,7 @@ The system API related to this common event is **activateOsAccount**. For detail
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (before API version 21); ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (since API version 21)
 
-**Value**: "usual.event.USER_SWITCHED"
+**Value**: usual.event.USER_SWITCHED
 
 
 ### COMMON_EVENT_USER_LOCKING
@@ -269,7 +282,7 @@ Before a user is locked, the common event service is triggered to publish this e
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Value**: "usual.event.USER_LOCKING"
+**Value**: usual.event.USER_LOCKING
 
 
 ### COMMON_EVENT_USER_LOCKED
@@ -282,13 +295,12 @@ After a user is locked, the common event service is triggered to publish this ev
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Value**: "usual.event.USER_LOCKED"
+**Value**: usual.event.USER_LOCKED
 
 
 ## Core File Kit
 
-This topic lists the system common events provided by the file management subsystem to applications. For details about how to subscribe to system common events, see [@ohos.commonEventManager](../js-apis-commonEventManager.md).
-
+This topic lists the system common events provided by the file management subsystem to applications. For details about how to subscribe to system common events, see [@ohos.commonEventManager (Common Event)](../js-apis-commonEventManager.md).
 
 ### COMMON_EVENT_VOLUME_REMOVED
 
@@ -302,8 +314,7 @@ This common event is triggered when an external storage device is removed.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
-**Value**: "usual.event.data.VOLUME_REMOVED"
-
+**Value**: usual.event.data.VOLUME_REMOVED
 
 
 ### COMMON_EVENT_VOLUME_UNMOUNTED
@@ -318,7 +329,7 @@ This common event is triggered when an external storage device is successfully u
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
-**Value**: "usual.event.data.VOLUME_UNMOUNTED"
+**Value**: usual.event.data.VOLUME_UNMOUNTED
 
 
 ### COMMON_EVENT_VOLUME_MOUNTED
@@ -333,7 +344,7 @@ This common event is triggered when an external storage device is successfully m
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
-**Value**: "usual.event.data.VOLUME_MOUNTED"
+**Value**: usual.event.data.VOLUME_MOUNTED
 
 
 ### COMMON_EVENT_VOLUME_BAD_REMOVAL
@@ -348,7 +359,7 @@ This common event is triggered when an external storage device is directly remov
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
-**Value**: "usual.event.data.VOLUME_BAD_REMOVAL"
+**Value**: usual.event.data.VOLUME_BAD_REMOVAL
 
 
 ### COMMON_EVENT_VOLUME_EJECT
@@ -363,7 +374,7 @@ This common event is triggered when the user calls the **unmount** API on a moun
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
-**Value**: "usual.event.data.VOLUME_EJECT"
+**Value**: usual.event.data.VOLUME_EJECT
 
 
 ### COMMON_EVENT_RESTORE_START<sup>13+</sup>
@@ -378,7 +389,8 @@ When a data migration application starts the backup and restore framework to per
 
 **Required permissions**: ohos.permission.START_RESTORE_NOTIFICATION
 
-**Value**: "usual.event.RESTORE_START"
+**Value**: usual.event.RESTORE_START
+
 
 ### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
@@ -393,6 +405,7 @@ When the sync root update is complete, the common event service is triggered to 
 **Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO (for system applications only)
 
 **Value**: usual.event.CLOUD_DISK_STATE_CHANGED
+
 
 ## Media Kit
 
@@ -456,9 +469,6 @@ When the device receives a cell broadcast message, the common event service is t
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
 **Value**: usual.event.SMS_CB_RECEIVE_COMPLETED
-
-
-
 
 
 ### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+</sup>
@@ -553,7 +563,7 @@ When the roaming status of the default primary SIM card changes, the common even
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
-Indicates that the default primary SIM card for the voice service has been updated. 
+Indicates that the default primary SIM card for the voice service has been updated.
 
 When the default primary SIM card for the voice service is updated, the common event service is triggered to publish this event.
 
@@ -704,6 +714,7 @@ When an STK Alpha identifier is sent, the common event service is triggered to p
 
 **Value**: usual.event.STK_ALPHA_IDENTIFIER
 
+
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 
 (Reserved, not supported yet) Indicates that a WAP push message is received.
@@ -717,3 +728,4 @@ When the device receives a WAP push message, the common event service is trigger
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
 **Value**: usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED
+<!--no_check-->

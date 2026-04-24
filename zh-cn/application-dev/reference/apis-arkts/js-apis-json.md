@@ -1,8 +1,8 @@
 # @ohos.util.json (JSON解析与生成)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -197,7 +197,7 @@ console.info(rstStrSpace);
   "name": "John",
   "age": 30
 }
-*/
+ */
 
 let rstStrStar = JSON.stringify(person, ["name", "age"], '  &&');
 console.info(rstStrStar);
@@ -207,7 +207,7 @@ console.info(rstStrStar);
   &&"name": "John",
   &&"age": 30
 }
-*/
+ */
 
 let bigIntObj = BigInt(112233445566778899n);
 console.info(JSON.stringify(bigIntObj));
@@ -276,7 +276,7 @@ console.info(JSON.stringify(inputObj, replacer, '  '));
   "age": 30,
   "city": "CHONGQING"
 }
-*/
+ */
 ```
 
 ## JSON.has

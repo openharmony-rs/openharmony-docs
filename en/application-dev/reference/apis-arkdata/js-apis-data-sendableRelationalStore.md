@@ -162,7 +162,7 @@ Converts the asset data that cannot be passed across threads into the data that 
 
 | Name| Type                                  | Mandatory| Description                       |
 | ------ | -------------------------------------- | ---- | :-------------------------- |
-| asset  | [NonSendableAsset](#nonsendablebucket) | Yes  | Asset data that cannot be passed across threads.|
+| asset  | [NonSendableAsset](#nonsendableasset) | Yes  | Asset data that cannot be passed across threads.|
 
 **Return value**
 
@@ -211,7 +211,7 @@ Converts the asset data that can be passed across threads into the data that can
 
 | Type                                  | Description                       |
 | -------------------------------------- | --------------------------- |
-| [NonSendableAsset](#nonsendablebucket) | Asset data that cannot be passed across threads.|
+| [NonSendableAsset](#nonsendableasset) | Asset data that cannot be passed across threads.|
 
 **Error codes**
 
@@ -319,7 +319,7 @@ const values = sendableRelationalStore.toSendableValues(array);
 
 ## Asset
 
-Represent the asset (such as a document, image, or video). **Asset** inherits from [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable) and is used to implement cross-thread transfer of asset data. The asset data does not support **Datashare** APIs. Use [sendableRelationalStore.toSendableAsset](#sendablerelationalstoretosendableasset) to create an **Asset** instance.
+Represents the asset (such as a document, image, or video). **Asset** inherits from [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable) and is used to implement cross-thread transfer of asset data. The asset data does not support **Datashare** APIs. Use [sendableRelationalStore.toSendableAsset](#sendablerelationalstoretosendableasset) to create an **Asset** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -515,5 +515,3 @@ struct Index {
   }
 }
 ```
-
- <!--no_check--> 
