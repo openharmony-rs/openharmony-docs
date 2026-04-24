@@ -1,4 +1,4 @@
-# 使用Taihe进行异步相关开发
+# 使用Taihe进行高层异步相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanzixuan330-->
@@ -8,7 +8,9 @@
 
 ## 简介
 
-在Taihe中使用注解`@async`将声明的函数或方法转换为Async版，使用注解`@promise`将声明的函数或方法转换为Promise版。
+> 注意：本文档介绍的是使用`@async`和`@promise`注解来将C++侧的同步函数自动转换为ArkTS侧的异步函数的方式。对于需要在C++侧实现真正的异步逻辑（如跨线程、异步I/O等）的场景，请参考[使用Taihe进行底层异步相关开发](use-taihe-about-async-types.md)。
+
+在Taihe中使用注解`@async`将声明的函数或方法转换为接收`AsyncCallback`的异步版本，使用注解`@promise`将声明的函数或方法转换为返回`Promise`的异步版本。
 
 ## 基本概念
 
@@ -37,27 +39,25 @@ native function _taihe_addAsync_native(a: int, b: int): int;
 native function _taihe_addPromise_native(a: int, b: int): int;
 native function _taihe_addSync_native(a: int, b: int): int;
 export function add(a: int, b: int, callback: _taihe_AsyncCallback<int>): void {
-    taskpool.execute((): int => {
-        return _taihe_addAsync_native(a, b);
-    })
-    .then((ret: Any): void => {
-        callback(null, ret as int);
-    })
-    .catch((ret: Any): void => {
-        callback(ret as _taihe_BusinessError, undefined);
-    });
+    launch() {
+        try {
+            let res = _taihe_addAsync_native(a, b);
+            callback(null, res);
+        } catch (err) {
+            callback(err as _taihe_BusinessError, undefined);
+        }
+    }
 }
 export function add(a: int, b: int): Promise<int> {
     return new Promise<int>((resolve, reject): void => {
-        taskpool.execute((): int => {
-            return _taihe_addPromise_native(a, b);
-        })
-        .then((ret: Any): void => {
-            resolve(ret as int);
-        })
-        .catch((ret: Any): void => {
-            reject(ret as Error);
-        });
+        launch() {
+            try {
+                let res = _taihe_addPromise_native(a, b);
+                resolve(res);
+            } catch (err) {
+                reject(err as Error);
+            }
+        }
     });
 }
 export function addSync(a: int, b: int): int {

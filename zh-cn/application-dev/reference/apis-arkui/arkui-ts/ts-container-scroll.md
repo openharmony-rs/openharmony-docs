@@ -78,7 +78,7 @@ ArkTS-Sta: scrollable(value: ScrollDirection | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                            |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
-| value  | ArkTS-Dyn: [ScrollDirection](#scrolldirection枚举说明)<br/>ArkTS-Sta: [ScrollDirection](#scrolldirection枚举说明) \| undefined | 是   | 滚动方向。<br/>默认值：ScrollDirection.Vertical |
+| value  | ArkTS-Dyn: [ScrollDirection](#scrolldirection枚举说明)<br/>ArkTS-Sta: [ScrollDirection](#scrolldirection枚举说明) \| undefined | 是   | 滚动方向。<br/>默认值：ScrollDirection.Vertical<br/>取值为undefined时，按默认值处理。 |
 
 当滚动方向设置为[ScrollDirection.FREE](#scrolldirection枚举说明)时，Scroll组件仅支持部分能力，见[自由滚动模式下支持的能力](#scrolldirection枚举说明)。
 
@@ -104,7 +104,7 @@ ArkTS-Sta: scrollBar(barState: BarState | undefined)
 
 | 参数名   | 类型                                      | 必填 | 说明                                   |
 | -------- | ----------------------------------------- | ---- | -------------------------------------- |
-| barState | ArkTS-Dyn: [BarState](ts-appendix-enums.md#barstate)<br/>ArkTS-Sta: [BarState](ts-appendix-enums.md#barstate) \| undefined | 是   | 滚动条状态。<br/>默认值：BarState.Auto |
+| barState | ArkTS-Dyn: [BarState](ts-appendix-enums.md#barstate)<br/>ArkTS-Sta: [BarState](ts-appendix-enums.md#barstate) \| undefined | 是   | 滚动条状态。<br/>默认值：BarState.Auto<br/>取值为undefined时，按默认值处理。 |
 
 ### scrollBarColor
 
@@ -146,7 +146,7 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色默认颜色   |
+| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色为默认颜色。   |
 
 ### scrollBarWidth
 
@@ -168,7 +168,7 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double \| string \| undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double \| string \| undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp<br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。|
 
 ### scrollSnap<sup>10+</sup>
 
@@ -192,7 +192,7 @@ ArkTS-Sta: scrollSnap(value: ScrollSnapOptions | undefined)
 
 | 参数名 | 类型                                      | 必填 | 说明                       |
 | ------ | ----------------------------------------- | ---- | -------------------------- |
-| value  | ArkTS-Dyn: [ScrollSnapOptions](#scrollsnapoptions10对象说明)<br/>ArkTS-Sta: [ScrollSnapOptions](#scrollsnapoptions10对象说明) \| undefined | 是   | Scroll组件的限位滚动模式。 |
+| value  | ArkTS-Dyn: [ScrollSnapOptions](#scrollsnapoptions10对象说明)<br/>ArkTS-Sta: [ScrollSnapOptions](#scrollsnapoptions10对象说明) \| undefined | 是   | Scroll组件的限位滚动模式。<br/>取值为undefined时，按默认值处理。 |
 
 ### edgeEffect
 
@@ -214,8 +214,8 @@ ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOp
 
 | 参数名                | 类型                                              | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| edgeEffect            | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect)<br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect) \| undefined     | 是   | Scroll组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.None |
-| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)<br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \| undefined | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true } |
+| edgeEffect            | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect)<br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect) \| undefined     | 是   | Scroll组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.None<br/>取值为undefined时，按默认值处理。 |
+| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)<br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \| undefined | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true }<br/>取值为undefined时，按默认值处理。 |
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -237,7 +237,7 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true<br/>取值为undefined时，按默认值处理。 |
 
 > **说明：** 
 >
@@ -263,7 +263,7 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 | 参数名 | 类型                                                  | 必填 | 说明           |
 | ------ | ----------------------------------------------------- | ---- | -------------- |
-| value  | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/>ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| undefined | 是   | 嵌套滚动选项。<br/>默认值：{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }<br/>Scroll设置[enablePaging](#enablepaging11)或者[scrollSnap](#scrollsnap10)，并同时设置父组件优先的嵌套滚动时，嵌套滚动不生效。|
+| value  | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/>ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| undefined | 是   | 嵌套滚动选项。<br/>默认值：{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }<br/>Scroll设置[enablePaging](#enablepaging11)或者[scrollSnap](#scrollsnap10)，并同时设置父组件优先的嵌套滚动时，嵌套滚动不生效。<br/>取值为undefined时，按默认值处理。|
 
 ### friction<sup>10+</sup>
 
@@ -285,7 +285,7 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: number \| [Resource](ts-types.md#resource) \| undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
+| value  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource)<br/>ArkTS-Sta: number \| [Resource](ts-types.md#resource) \| undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### enablePaging<sup>11+</sup>
 
@@ -307,7 +307,7 @@ ArkTS-Sta: enablePaging(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否支持划动翻页。设置为true支持滑动翻页，false不支持。 <br/>默认值：false |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否支持划动翻页。设置为true支持滑动翻页，false不支持。 <br/>默认值：false<br/>取值为undefined时，按默认值处理。 |
 
 ### initialOffset<sup>12+</sup>
 
@@ -329,7 +329,7 @@ ArkTS-Sta: initialOffset(value: OffsetOptions | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | ArkTS-Dyn: [OffsetOptions](#offsetoptions12对象说明)<br/>ArkTS-Sta: [OffsetOptions](#offsetoptions12对象说明) \| undefined  | 是   |当输入的大小为百分比时，初始滚动偏移量为Scroll组件主轴方向大小与百分比数值之积。|
+| value  | ArkTS-Dyn: [OffsetOptions](#offsetoptions12对象说明)<br/>ArkTS-Sta: [OffsetOptions](#offsetoptions12对象说明) \| undefined  | 是   |当输入的大小为百分比时，初始滚动偏移量为Scroll组件主轴方向大小与百分比数值之积。<br/>取值为undefined时，按默认值处理。|
 
 ### maxZoomScale<sup>20+</sup>
 
@@ -520,7 +520,7 @@ ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | ArkTS-Dyn: [OnScrollFrameBeginCallback](#onscrollframebegincallback18)<br/>ArkTS-Sta: [OnScrollFrameBeginCallback](#onscrollframebegincallback18) \| undefined | 是   | 每帧滚动开始回调函数。 |
+| event   | ArkTS-Dyn: [OnScrollFrameBeginCallback](#onscrollframebegincallback18)<br/>ArkTS-Sta: [OnScrollFrameBeginCallback](#onscrollframebegincallback18) \| undefined | 是   | 每帧滚动开始回调函数。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onScroll<sup>(deprecated)</sup>
 
@@ -589,7 +589,7 @@ ArkTS-Sta: onWillScroll(handler: ScrollOnWillScrollCallback | undefined)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| handler | ArkTS-Dyn: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12)<br/>ArkTS-Sta: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12) \| undefined | 是   | Scroll滚动前触发的回调。 |
+| handler | ArkTS-Dyn: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12)<br/>ArkTS-Sta: [ScrollOnWillScrollCallback](#scrollonwillscrollcallback12) \| undefined | 是   | Scroll滚动前触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onDidScroll<sup>12+</sup>
 
@@ -617,7 +617,7 @@ ArkTS-Sta: onDidScroll(handler: ScrollOnScrollCallback | undefined)
 
 | 参数名  | 类型                                                      | 必填 | 说明                   |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| handler | ArkTS-Dyn: [ScrollOnScrollCallback](#scrollonscrollcallback12)<br/>ArkTS-Sta: [ScrollOnScrollCallback](#scrollonscrollcallback12) \| undefined | 是   | Scroll滚动时触发的回调。 |
+| handler | ArkTS-Dyn: [ScrollOnScrollCallback](#scrollonscrollcallback12)<br/>ArkTS-Sta: [ScrollOnScrollCallback](#scrollonscrollcallback12) \| undefined | 是   | Scroll滚动时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onScrollEdge
 
@@ -643,7 +643,7 @@ ArkTS-Sta: onScrollEdge(event: OnScrollEdgeCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | ArkTS-Dyn: [OnScrollEdgeCallback](#onscrolledgecallback18)<br/>ArkTS-Sta: [OnScrollEdgeCallback](#onscrolledgecallback18) \| undefined | 是   | 滚动到的边缘位置。<br/>当Scroll设置为水平方向滚动时，上报[Edge.Center](ts-appendix-enums.md#edge)表示水平方向起始位置，上报[Edge.Baseline](ts-appendix-enums.md#edge)表示水平方向末尾位置。由于[Edge.Center](ts-appendix-enums.md#edge)和[Edge.Baseline](ts-appendix-enums.md#edge)枚举值已经废弃，推荐使用[onReachStart](ts-container-scrollable-common.md#onreachstart11)、[onReachEnd](ts-container-scrollable-common.md#onreachend11)事件监听是否滚动到边界。 |
+| event   | ArkTS-Dyn: [OnScrollEdgeCallback](#onscrolledgecallback18)<br/>ArkTS-Sta: [OnScrollEdgeCallback](#onscrolledgecallback18) \| undefined | 是   | 滚动到的边缘位置。<br/>当Scroll设置为水平方向滚动时，上报[Edge.Center](ts-appendix-enums.md#edge)表示水平方向起始位置，上报[Edge.Baseline](ts-appendix-enums.md#edge)表示水平方向末尾位置。由于[Edge.Center](ts-appendix-enums.md#edge)和[Edge.Baseline](ts-appendix-enums.md#edge)枚举值已经废弃，推荐使用[onReachStart](ts-container-scrollable-common.md#onreachstart11)、[onReachEnd](ts-container-scrollable-common.md#onreachend11)事件监听是否滚动到边界。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onScrollEnd<sup>(deprecated)</sup>
 
@@ -693,7 +693,7 @@ ArkTS-Sta: onScrollStart(event: VoidCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 滚动开始回调。 |
+| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 滚动开始回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onScrollStop<sup>9+</sup>
 
@@ -719,7 +719,7 @@ ArkTS-Sta: onScrollStop(event: VoidCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 滚动停止回调。 |
+| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | 滚动停止回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onDidZoom<sup>20+</sup>
 
@@ -741,7 +741,7 @@ ArkTS-Sta: onDidZoom(event: ScrollOnDidZoomCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   |  ArkTS-Dyn: [ScrollOnDidZoomCallback](#scrollondidzoomcallback20)<br/>ArkTS-Sta: [ScrollOnDidZoomCallback](#scrollondidzoomcallback20)&nbsp;\|&nbsp;undefined | 是   | 每帧缩放完成时回调。<br/>当设置为undefined时，重置该事件回调。 |
+| event   |  ArkTS-Dyn: [ScrollOnDidZoomCallback](#scrollondidzoomcallback20)<br/>ArkTS-Sta: [ScrollOnDidZoomCallback](#scrollondidzoomcallback20)&nbsp;\|&nbsp;undefined | 是   | 每帧缩放完成时回调。<br/>当设置为undefined时，重置该事件回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onZoomStart<sup>20+</sup>
 
@@ -763,7 +763,7 @@ ArkTS-Sta: onZoomStart(event: VoidCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 缩放开始回调。<br/>当设置为undefined时，重置该事件回调。 |
+| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 缩放开始回调。<br/>当设置为undefined时，重置该事件回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onZoomStop<sup>20+</sup>
 
@@ -785,7 +785,7 @@ ArkTS-Sta: onZoomStop(event: VoidCallback | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明               |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 缩放停止回调。<br/>当设置为undefined时，重置该事件回调。 |
+| event   | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 缩放停止回调。<br/>当设置为undefined时，重置该事件回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ## ScrollOnScrollCallback<sup>12+</sup>
 
@@ -936,7 +936,7 @@ Scroll每帧缩放完成时触发的回调。
 
 ## Scroller
 
-可滚动容器组件的控制器，可以将此组件绑定至容器组件，然后通过它控制容器组件的滚动。同一个控制器不可以控制多个容器组件，目前支持绑定到ArcList、ArcScrollBar、List、Scroll、ScrollBar、Grid、WaterFlow上。
+可滚动容器组件的控制器，可以将此组件绑定至容器组件，然后通过它控制容器组件的滚动。同一个控制器不可以控制多个容器组件，目前支持绑定到[ArcList](./ts-container-arclist.md)、[ArcScrollBar](./ts-basic-components-arcscrollbar.md)、[List](./ts-container-list.md)、Scroll、[ScrollBar](./ts-basic-components-scrollbar.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)上。
 
 >**说明：**
 >
@@ -1439,7 +1439,7 @@ getFrameNode(): FrameNode | undefined
 
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
-| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。 |
+| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。<br/>默认值：0<br/>单位：vp |
 
 ## ScrollPageOptions<sup>14+</sup>对象说明
 

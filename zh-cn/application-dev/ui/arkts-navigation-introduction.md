@@ -47,13 +47,13 @@
 | 页面返回                                      | 支持                                  | 支持                                   |
 | 页面返回传参                                  | 支持                                  | 支持                                   |
 | 返回指定路由                                  | 支持                                  | 支持                                   |
-| 页面返回弹窗                                  | 支持，通过路由拦截实现。                | showAlertBeforeBackPage              |
-| 路由替换                                      | replacePath & replacePathByName       | replaceUrl & replaceNameRoute          |
-| 路由栈清理                                    | clear                                 | clear                                  |
-| 清理指定路由                                  | removeByIndexes & removeByName        | 不支持                                 |
+| 页面返回弹窗                                  | 支持，通过路由拦截实现。                | [showAlertBeforeBackPage](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)              |
+| 路由替换                                      | [replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11) & [replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)       | [replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl) & [replaceNameRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute)          |
+| 路由栈清理                                    | [clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10)                                 | [clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear)                                  |
+| 清理指定路由                                  | [removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11) & [removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11)        | 不支持                                 |
 | 转场动画                                      | 支持                                  | 支持                                   |
 | 自定义转场动画                                | 支持                                  | 支持，动画类型受限。                     |
-| 屏蔽转场动画                                  | 支持全局和单次。                        | 支持，设置pageTransition方法duration为0。 |
+| 屏蔽转场动画                                  | 支持全局和单次。                        | 支持，设置[pageTransition](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)方法duration为0。 |
 | geometryTransition共享元素动画                | 支持（NavDestination之间共享）。        | 不支持                                 |
 | 页面生命周期监听                              | [UIObserver.on('navDestinationUpdate')](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onnavdestinationupdate11) | [UIObserver.on('routerPageUpdate')](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onrouterpageupdate11)     |
 | 获取页面栈对象                                | 支持                                  | 不支持                                 |
