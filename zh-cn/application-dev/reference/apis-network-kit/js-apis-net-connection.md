@@ -2843,7 +2843,7 @@ connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
 
 ArkTS-Dyn: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): number
 
-ArkTS-Sta:  getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): int
+ArkTS-Sta: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): int
 
 用于查询发起指定网络连接的应用UID。使用同步方式返回。
 
