@@ -10,8 +10,6 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.fileshare (文件分享)](js-apis-fileShare-sys.md)。
 
@@ -298,13 +296,13 @@ ArkTS-Sta: getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;
 
 获取应用程序的共享沙箱目录
 
-**需要权限：** ohos.permission.ACCESS_SHARED_FILE
-
-**系统接口：** 此接口为系统接口。
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -327,38 +325,60 @@ ArkTS-Sta: getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileShare } from '@kit.CoreFileKit';
-  
-   private async getSharedDirectoryInfoTest(): Promise<void> {
-    try {
-      let result: fileShare.SharedDirectoryInfo[] = await fileShare.getSharedDirectoryInfo();
-      console.log("result length = " + result.length);
-      result.forEach((info: fileShare.SharedDirectoryInfo) => {
-        console.log("getSharedDirectoryInfo bundle=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
-      });
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`getSharedDirectoryInfo exception = code is ${err.code}, message is ${err.message}`);
-    }
-  }
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
 
-  build() {
-    Column() {
-      List({ space: 20, scroller: this.scroller }) {
-        ListItem() {
-          Button("getSharedDirectoryInfo").width('100%').onClick((event: ClickEvent) => {
-            console.info("getSharedDirectoryInfo")
-            this.getSharedDirectoryInfoTest();
-          })
-        }
-      }
-      .height('100%')
-      .width('100%')
-    }.margin('20vp')
+async function getSharedDirectoryInfo() {
+  try {
+    fileShare.getSharedDirectoryInfo().then((infos: Array<fileShare.SharedDirectoryInfo>) => {
+      infos.forEach((info: fileShare.SharedDirectoryInfo) => {
+        console.log("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+      });
+    }).catch((err: BusinessError) => {
+      console.log("getSharedDirectoryInfo err : " + JSON.stringify(err))
+    });
   }
-  ```
+  catch (error) {
+    console.info('getSharedDirectoryInfo error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+  
+private async getSharedDirectoryInfoTest(): Promise<void> {
+  try {
+    let result: fileShare.SharedDirectoryInfo[] = await fileShare.getSharedDirectoryInfo();
+    console.log("result length = " + result.length);
+    result.forEach((info: fileShare.SharedDirectoryInfo) => {
+      console.log("getSharedDirectoryInfo bundle=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getSharedDirectoryInfo exception = code is ${err.code}, message is ${err.message}`);
+  }
+}
+
+build() {
+  Column() {
+    List({ space: 20, scroller: this.scroller }) {
+      ListItem() {
+        Button("getSharedDirectoryInfo").width('100%').onClick((event: ClickEvent) => {
+          console.info("getSharedDirectoryInfo")
+          this.getSharedDirectoryInfoTest();
+        })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }.margin('20vp')
+}
+```
 
 
 ## fileShare.grantSharedDirectoryPermission
@@ -369,13 +389,13 @@ ArkTS-Sta: grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 为应用共享目录提供权限授予功能
 
-**需要权限：** ohos.permission.ACCESS_SHARED_FILE
-
-**系统接口：** 此接口为系统接口。
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -398,35 +418,55 @@ ArkTS-Sta: grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileShare } from '@kit.CoreFileKit';
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
   
-  private async grantShared(): Promise<void> {
-    try {
-      await fileShare.grantSharedDirectoryPermission();
-      console.info("grantSharedDirectoryPermission success")
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`grantSharedDirectoryPermission exception = code is ${err.code}, message is ${err.message}`);
-    }
+async function grantSharedDirectoryPermission() {
+  try {
+    fileShare.grantSharedDirectoryPermission().then(() => {
+      console.log("grantSharedDirectoryPermission success")
+    }).catch((err: BusinessError) => {
+      console.log("grantSharedDirectoryPermission err : " + JSON.stringify(err))
+    });
   }
+  catch (error) {
+    console.info('grantSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
 
-  build() {
-    Column() {
-      List({ space: 20, scroller: this.scroller }) {
-        ListItem() {
-          Button("grantSharedDirectoryPermission").width('100%').onClick((event: ClickEvent) => {
-            console.info("grantSharedDirectoryPermission")
-            this.grantShared();
-          })
-        }
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+private async grantShared(): Promise<void> {
+  try {
+    await fileShare.grantSharedDirectoryPermission();
+    console.info("grantSharedDirectoryPermission success")
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`grantSharedDirectoryPermission exception = code is ${err.code}, message is ${err.message}`);
+    }
+ }
+
+build() {
+  Column() {
+    List({ space: 20, scroller: this.scroller }) {
+      ListItem() {
+        Button("grantSharedDirectoryPermission").width('100%').onClick((event: ClickEvent) => {
+          console.info("grantSharedDirectoryPermission")
+          this.grantShared();
+        })
       }
-      .height('100%')
-      .width('100%')
-    }.margin('20vp')
-  }
-  ```
+    }
+    .height('100%')
+    .width('100%')
+  }.margin('20vp')
+}
+```
 
 ## fileShare.revokeSharedDirectoryPermission
 
@@ -436,13 +476,13 @@ ArkTS-Sta: revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 撤销应用共享目录的权限
 
-**需要权限：** ohos.permission.ACCESS_SHARED_FILE
-
-**系统接口：** 此接口为系统接口。
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -465,32 +505,52 @@ ArkTS-Sta: revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileShare } from '@kit.CoreFileKit';
-  
-  private async revokeShared(): Promise<void> {
-    try {
-      await fileShare.revokeSharedDirectoryPermission();
-      console.info("revokeSharedDirectoryPermission success")
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`revokeSharedDirectoryPermission exception = code is ${err.code}, message is ${err.message}`);
-    }
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+ 	   
+async function revokeSharedDirectoryPermission() {
+  try {
+    fileShare.revokeSharedDirectoryPermission().then(() => {
+      console.log("revokeSharedDirectoryPermission success")
+    }).catch((err: BusinessError) => {
+      console.log("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
+    });
   }
+  catch (error) {
+    console.info('revokeSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
 
-  build() {
-    Column() {
-      List({ space: 20, scroller: this.scroller }) {
-        ListItem() {
-          Button("revokeSharedDirectoryPermission").width('100%').onClick((event: ClickEvent) => {
-            console.info("revokeSharedDirectoryPermission")
-            this.revokeShared();
-          })
-        }
-      }
-      .height('100%')
-      .width('100%')
-    }.margin('20vp')
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+private async revokeShared(): Promise<void> {
+  try {
+    await fileShare.revokeSharedDirectoryPermission();
+    console.info("revokeSharedDirectoryPermission success")
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`revokeSharedDirectoryPermission exception = code is ${err.code}, message is ${err.message}`);
   }
-  ```
+}
+
+build() {
+  Column() {
+    List({ space: 20, scroller: this.scroller }) {
+      ListItem() {
+        Button("revokeSharedDirectoryPermission").width('100%').onClick((event: ClickEvent) => {
+          console.info("revokeSharedDirectoryPermission")
+          this.revokeShared();
+        })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }.margin('20vp')
+}
+```
