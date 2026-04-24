@@ -108,20 +108,22 @@ struct ImageExample {
   build() {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-        Row() {
-          // 请将$r('app.media.app_icon')替换为实际资源文件
-          Image($r('app.media.app_icon'))
+        Row({ space: 5 }) {
+          // 请将$r('app.media.startIcon')替换为实际资源文件
+          Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
-    }.height(320).width(360)
+    }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
   // 创建组件观察者，监听指定id组件的布局和绘制事件
-  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -141,14 +143,14 @@ struct ImageExample {
     let offFuncDrawChildren = onDrawChildrenComplete; // 绑定当前js对象
 
     // 注册布局完成、绘制完成、子组件绘制完成回调
-    this.listener.on('layout', funcLayout);
-    this.listener.on('draw', funcDraw);
-    this.listener.on('drawChildren', funcDrawChildren);
+    this.listenerForImage.on('layout', funcLayout);
+    this.listenerForImage.on('draw', funcDraw);
+    this.listenerForRow.on('drawChildren', funcDrawChildren);
 
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // this.listener.off('layout', offFuncLayout)
-    // this.listener.off('draw', offFuncDraw)
-    // this.listener.off('drawChildren', offFuncDrawChildren)
+    // this.listenerForImage.off('layout', offFuncLayout)
+    // this.listenerForImage.off('draw', offFuncDraw)
+    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
   }
 }
 ```
@@ -165,8 +167,6 @@ struct ImageExample {
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
 ``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
 @Entry
 @Component
 struct ComponentPage {
