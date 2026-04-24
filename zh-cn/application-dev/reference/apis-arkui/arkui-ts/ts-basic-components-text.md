@@ -68,6 +68,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | fontStyle | 设置字体样式。 |
 | fontWeight | 设置文本的字体粗细。 |
 | fontWeight<sup>12+</sup> | 设置文本字重，支持设置字体配置项。 |
+| fontVariations | 设置可变字体的属性。**起始版本：** 26.0.0 |
 | letterSpacing | 设置文本字符间距。 |
 | shaderStyle<sup>20+</sup> | 设置文本渐变或纯色效果。 |
 | textCase | 设置文本大小写。 |
@@ -672,6 +673,24 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
 | weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是  | 设置文本字重。number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 | options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明) | 否  | 设置字体配置项。<br/>当options的参数enableVariableFontWeight取值false时，禁用可变字重调节，weight取值为[100, 900]范围内的整百数值时，字重取值为weight。weight是非整百数值时，字重取默认值400。<br/>当options的参数enableVariableFontWeight取值true时，启用可变字重调节，weight取值为[100, 900]范围内任意整数时，字重取值为weight。 |
+
+### fontVariations
+
+fontVariations(fontVariations: Array&lt;FontVariation&gt;)
+
+设置可变字体的属性。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 参数名 | 类型                                          | 必填 | 说明                                          |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。fontVariations属性的优先级高于[fontWeight](#fontweight12)。 |
 
 ### halfLeading<sup>12+</sup>
 
@@ -3325,3 +3344,33 @@ struct TextExample {
 该效果图会因设备尺寸差异有显示区别，仅供参考。
 
 ![textOrphanCharOptimization](figures/textOrphanCharOptimization.png)
+
+### 示例29（设置可变字体的属性）
+
+该示例通过[fontVariations](#fontvariations)接口设置可变字体的属性。
+
+从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text('Hello World !')
+        // wght代表可变字体的字重属性
+        .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
+![textFontVariations](figures/FontVariations.gif)
