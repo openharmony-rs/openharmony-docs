@@ -24,30 +24,28 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| initialVelocity | [Vec3](js-apis-inner-scene-types.md#vec3) \| null | 否 | 是 | 每个个体的初始速度向量。默认值为(0, 0, 0)。 |
-| initialPosition | [Vec3](js-apis-inner-scene-types.md#vec3) \| null | 否 | 是 | 每个个体的初始位置。未设置时保留当前实体位置。默认值为(NaN, NaN, NaN)。 |
-| initialRotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) \| null | 否 | 是 | 每个个体的初始旋转。未设置时保留当前实体旋转。默认值为(NaN, NaN, NaN, NaN)。 |
-| boundaryMinPos | [Vec3](js-apis-inner-scene-types.md#vec3) \| null | 否 | 是 | 约束个体运动范围的轴对齐包围盒最小角点。当boundaryMinPos的任一分量大于或等于boundaryMaxPos对应分量时，该个体视为无边界约束。默认值为(0, 0, 0)。 |
-| boundaryMaxPos | [Vec3](js-apis-inner-scene-types.md#vec3) \| null | 否 | 是 | 约束个体运动范围的轴对齐包围盒最大角点。默认值为(0, 0, 0)。 |
-| maxVelocityMag | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 个体每模拟帧可达到的最大速度。取值 >= 0。 |
-| maxAccelerationMag | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 个体每模拟帧可达到的最大加速度。取值 >= 0。 |
-| maxTurnRate | [Vec3](js-apis-inner-scene-types.md#vec3) \| null | 否 | 是 | 每模拟帧每轴最大转向速率（弧度）。每个分量取值 >= 0。 |
-| separationWeight | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 分离规则权重。个体在separationDistance范围内受邻近个体排斥的强度。取值 >= 0。 |
-| separationDistance | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 分离规则的感知半径。仅严格在该距离内的邻近个体对分离力有贡献（边界处力为零）。取值 >= 0。 |
-| alignmentWeight | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 对齐规则权重。个体在alignmentDistance范围内朝向邻近个体平均航向的强度。取值 >= 0。 |
-| alignmentDistance | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 对齐规则的感知半径。在该距离内（含边界）的邻近个体对对齐力有贡献。取值 >= 0。 |
-| cohesionWeight | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 凝聚规则权重。个体在cohesionDistance范围内朝向邻近个体平均位置吸引的强度。取值 >= 0。 |
-| cohesionDistance | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 凝聚规则的感知半径。在该距离内（含边界）的邻近个体对凝聚力有贡献。取值 >= 0。 |
-| boundaryWeight | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 边界约束力权重。个体在boundaryDistance范围内被边界墙推回的强度。取值 >= 0。 |
-| boundaryDistance | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 边界约束力生效距离。个体距边界墙面在该距离内时受到排斥力。取值 >= 0。 |
-| gravityWeight | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 引力场对该个体的吸引强度。取值 >= 0。 |
-| repulsionWeight | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 斥力场对该个体的排斥强度。取值 >= 0。 |
+| initialVelocity | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 每个个体的初始速度向量。默认值为(0, 0, 0)。 |
+| initialPosition | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 每个个体的初始位置。未设置时保留当前实体位置。默认值为(NaN, NaN, NaN)。 |
+| initialRotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 每个个体的初始旋转。未设置时保留当前实体旋转。默认值为(NaN, NaN, NaN, NaN)。 |
+| boundaryMinPos | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 约束个体运动范围的轴对齐包围盒最小角点。当boundaryMinPos的任一分量大于或等于boundaryMaxPos对应分量时，该个体视为无边界约束。默认值为(0, 0, 0)。 |
+| boundaryMaxPos | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 约束个体运动范围的轴对齐包围盒最大角点。默认值为(0, 0, 0)。 |
+| maxVelocityMag | number | 否 | 是 | 个体每模拟帧可达到的最大速度。取值 >= 0。 |
+| maxAccelerationMag | number | 否 | 是 | 个体每模拟帧可达到的最大加速度。取值 >= 0。 |
+| maxTurnRate | [Vec3](js-apis-inner-scene-types.md#vec3) | 否 | 是 | 每模拟帧每轴最大转向速率（弧度）。每个分量取值 >= 0。 |
+| separationWeight | number | 否 | 是 | 分离规则权重。个体在separationDistance范围内受邻近个体排斥的强度。取值 >= 0。 |
+| separationDistance | number | 否 | 是 | 分离规则的感知半径。仅严格在该距离内的邻近个体对分离力有贡献（边界处力为零）。取值 >= 0。 |
+| alignmentWeight | number | 否 | 是 | 对齐规则权重。个体在alignmentDistance范围内朝向邻近个体平均航向的强度。取值 >= 0。 |
+| alignmentDistance | number | 否 | 是 | 对齐规则的感知半径。在该距离内（含边界）的邻近个体对对齐力有贡献。取值 >= 0。 |
+| cohesionWeight | number | 否 | 是 | 凝聚规则权重。个体在cohesionDistance范围内朝向邻近个体平均位置吸引的强度。取值 >= 0。 |
+| cohesionDistance | number | 否 | 是 | 凝聚规则的感知半径。在该距离内（含边界）的邻近个体对凝聚力有贡献。取值 >= 0。 |
+| boundaryWeight | number | 否 | 是 | 边界约束力权重。个体在boundaryDistance范围内被边界墙推回的强度。取值 >= 0。 |
+| boundaryDistance | number | 否 | 是 | 边界约束力生效距离。个体距边界墙面在该距离内时受到排斥力。取值 >= 0。 |
+| gravityWeight | number | 否 | 是 | 引力场对该个体的吸引强度。取值 >= 0。 |
+| repulsionWeight | number | 否 | 是 | 斥力场对该个体的排斥强度。取值 >= 0。 |
 
 ## BoidsSimGravityParameters
 
@@ -55,14 +53,12 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 引力场的作用半径。仅严格在该距离内的个体受到吸引（边界处力为零）。取值 >= 0。 |
-| accelerationMag | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 施加于个体、方向指向引力场实体的吸引加速度大小。取值 >= 0。 |
+| radius | number | 否 | 是 | 引力场的作用半径。仅严格在该距离内的个体受到吸引（边界处力为零）。取值 >= 0。 |
+| accelerationMag | number | 否 | 是 | 施加于个体、方向指向引力场实体的吸引加速度大小。取值 >= 0。 |
 
 ## BoidsSimRepulsionParameters
 
@@ -70,14 +66,12 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 斥力场的作用半径。仅严格在该距离内的个体受到排斥（边界处力为零）。取值 >= 0。 |
-| accelerationMag | ArkTS-Dyn: number<br>ArkTS-Sta: double \| null | 否 | 是 | 施加于个体、方向远离斥力场实体的排斥加速度大小。取值 >= 0。 |
+| radius | number | 否 | 是 | 斥力场的作用半径。仅严格在该距离内的个体受到排斥（边界处力为零）。取值 >= 0。 |
+| accelerationMag | number | 否 | 是 | 施加于个体、方向远离斥力场实体的排斥加速度大小。取值 >= 0。 |
 
 ## BoidsSimWorld
 
@@ -87,9 +81,7 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -103,9 +95,7 @@ play(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 ### pause
 
@@ -115,9 +105,7 @@ pause(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 ### stop
 
@@ -127,9 +115,7 @@ stop(): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 ### addBoidsSimComponent
 
@@ -139,9 +125,7 @@ addBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [Bo
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -157,9 +141,7 @@ setBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node), param: [Bo
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -175,9 +157,7 @@ addBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node), par
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -193,9 +173,7 @@ setBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node), par
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -211,9 +189,7 @@ addBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node), p
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -229,9 +205,7 @@ setBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node), p
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -247,9 +221,7 @@ getBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): [BoidsSim
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -269,9 +241,7 @@ getBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): [B
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -291,9 +261,7 @@ getBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): 
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -313,9 +281,7 @@ removeBoidsSimComponent(node: [Node](js-apis-inner-scene-nodes.md#node)): void
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -330,9 +296,7 @@ removeBoidsSimGravityComponent(node: [Node](js-apis-inner-scene-nodes.md#node)):
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -347,9 +311,7 @@ removeBoidsSimRepulsionComponent(node: [Node](js-apis-inner-scene-nodes.md#node)
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -368,9 +330,7 @@ static getDefaultBoidsSimWorld(scene: [Scene](js-apis-inner-scene.md)): [BoidsSi
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 26
-
-**ArkTS-Sta起始版本：** 26
+**起始版本：** 26.0.0
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
