@@ -155,6 +155,54 @@ struct ImageExample {
 }
 ```
 
+ArkTS1.2示例：
+
+``` TypeScript
+'use static'
+import { inspector } from '@ohos.arkui.inspector';
+import { Column, Row, Image, Flex, FlexDirection, ItemAlign, $r, Text, Component, Entry } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row() {
+          Image($r('app.media.app_icon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+      }
+    }.height(320).width(360)
+  }
+
+  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+
+  aboutToAppear() {
+    let onLayoutComplete: () => void = (): void => {
+      // 补充待实现的功能
+    };
+    let onDrawComplete: () => void = (): void => {
+      // 补充待实现的功能
+    };
+    let FuncLayout = onLayoutComplete; // 绑定当前js对象
+    let FuncDraw = onDrawComplete; // 绑定当前js对象
+    let OffFuncLayout = onLayoutComplete; // 绑定当前js对象
+    let OffFuncDraw = onDrawComplete; // 绑定当前js对象
+
+    this.listener.on('layout', FuncLayout);
+    this.listener.on('draw', FuncDraw);
+
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+  }
+}
+```
+
 ## 组件标识属性的扩展能力
 
 通过getInspectorByKey、getInspectorTree、sendEventByKey提供组件标识属性扩展能力，具体如下：
@@ -198,4 +246,105 @@ struct ComponentPage {
   }
 }
 
+```
+
+ArkTS1.2示例：
+
+``` TypeScript
+'use static'
+import { memo, __memo_context_type, __memo_id_type } from '@ohos.arkui.stateManagement';
+import {
+  Text,
+  Column,
+  Component,
+  ClickEvent,
+  UserView,
+  $r,
+  Row,
+  Builder
+} from '@ohos.arkui.component';
+import hilog from '@ohos.hilog';
+import inspector from '@ohos.arkui.inspector';
+import { RecordData } from '@ohos.base';
+
+@Component
+struct MyStateSample {
+  private listener: inspector.ComponentObserver | undefined = undefined;
+
+  build() {
+    Row() {
+      Column() {
+        Text("hello getInspectorByKey")
+          .id("TEXT1")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT1 is clicked");
+            }
+          )
+      }
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin getInspectorByKey");
+          let res = inspector.getInspectorByKey("TEXT1");
+          hilog.info(0x0000, 'testTag', res);
+        }
+      )
+
+      Column() {
+        Text("hello getInspectorTree")
+          .id("TEXT2")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT2 is clicked");
+            }
+          )
+      }
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin getInspectorTree");
+          let res: RecordData = inspector.getInspectorTree();
+          hilog.info(0x0000, 'testTag', JSON.stringify(res));
+        }
+      )
+
+      Column() {
+        Text("hello sendEventByKey")
+          .id("TEXT3")
+          .onClick(
+            (ev: ClickEvent) => {
+              hilog.info(0x0000, 'testTag', "TEXT3 is clicked");
+            }
+          )
+      }
+      .onClick(
+        (ev: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', "begin sendEventByKey");
+          // TEXT3 is clicked 会被打印。
+          inspector.sendEventByKey("TEXT3", 10, "");
+        }
+      )
+    }
+    .height('100%')
+  }
+}
+
+@Builder
+function ColumChild() {
+  Column() {
+    Text('FullScreenLaunchComponent').width('100%')
+      .height('100%')
+  }
+}
+
+export class ComExampleTrivialApplication extends UserView {
+  getBuilder() {
+    hilog.info(0x0000, 'testTag', 'getBuilder');
+    let wrapper = @memo () =>
+    {
+      hilog.info(0x0000, 'testTag', 'MyStateSample');
+      MyStateSample(undefined)
+    }
+    return wrapper
+  }
+}
 ```
