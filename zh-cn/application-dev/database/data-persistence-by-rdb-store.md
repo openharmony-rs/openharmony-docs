@@ -382,7 +382,7 @@
        hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in creating fts table.');
      } catch (error) {
        const err = error as BusinessError;
-       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to creating fts table. code: ${err.code}, message: ${err.message}.`);
+       hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to create fts table. code: ${err.code}, message: ${err.message}.`);
      }
    }
    if (store !== undefined) {

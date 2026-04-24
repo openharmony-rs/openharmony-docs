@@ -652,7 +652,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     当不再使用附加数据时，可调用OH_Rdb_Detach分离附加数据库。
 
     <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    
     ``` C++
     char attachStoreTableCreateSql[] = "CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
         "NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)";
@@ -667,17 +667,17 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Rdb_SetStoreName(attachDbConfig, "RdbAttach.db");
     OH_Rdb_SetSecurityLevel(attachDbConfig, OH_Rdb_SecurityLevel::S3);
     OH_Rdb_SetBundleName(attachDbConfig, "com.example.nativedemo");
-
+    
     int errCode1 = 0;
     // 创建附加示例数据库 RdbAttach.db
     OH_Rdb_Store *attachStore = OH_Rdb_CreateOrOpen(attachDbConfig, &errCode1);
-    
+        
     if (attachStore == NULL) {
         OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode1);
         OH_Rdb_DestroyConfig(attachDbConfig);
         return;
     }
-    
+        
     if (errCode1 != OH_Rdb_ErrCode::RDB_OK) {
         OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode1);
         OH_Rdb_DestroyConfig(attachDbConfig);
@@ -694,7 +694,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     valueBucket->putText(valueBucket, "NAME", "Lisa");
     valueBucket->putInt64(valueBucket, "AGE", 18); // The value of AGE is 18
-    valueBucket->putReal(valueBucket, "SALARY", 100.5); // The value of AGE is 100.5
+    valueBucket->putReal(valueBucket, "SALARY", 100.5); // The value of SALARY is 100.5
     uint8_t arr[] = {1, 2, 3, 4, 5};
     int len = sizeof(arr) / sizeof(arr[0]);
     valueBucket->putBlob(valueBucket, "CODES", arr, len);
@@ -702,7 +702,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_LOG_INFO(LOG_APP, "Insert data result: %{public}d", rowId);
     valueBucket->destroy(valueBucket);
     OH_Rdb_CloseStore(attachStore);
-
+    // ...
     // 附加数据库
     size_t attachedNumber = 0;
     // The maximum waiting time allowed for attaching databases is 10
