@@ -5569,6 +5569,20 @@ Allows an application to query whether the page is in the standby state and acce
 
 **Valid since**: 23
 
+## ohos.permission.RESTORE_END_NOTIFICATION
+ 	 
+Allows a system application to subscribe to the restore end event of the backup framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**since**: 23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 Allows an application to obtain the local account authorization.

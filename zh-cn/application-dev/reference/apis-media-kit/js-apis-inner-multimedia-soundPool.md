@@ -769,7 +769,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.stop(streamID).then(() => {
       console.info('Succeeded in stopping soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to stop soundpool Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to stop soundpool Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -777,7 +777,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setLoop
 
-setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
+setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void
 
 设置循环模式。使用callback异步回调。
 
