@@ -92,7 +92,7 @@ clip(value: boolean | undefined): this
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean \| undefined | 是   | 参数为boolean类型，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。 |
+| value  | boolean \| undefined | 是   | 参数为boolean类型，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。<br/>当value的值为undefined时，恢复为不对子组件超出当前组件范围外的区域进行裁剪。 |
 
 **返回值：**
 
@@ -230,7 +230,7 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当value的值为undefined时，会重置为当前值。 |
 
 **返回值：**
 
@@ -376,7 +376,7 @@ mask(value: ProgressMask | undefined): this
 
 | 参数名 | 类型                            | 必填 | 说明                                                 |
 | ------ | ------------------------------- | ---- | ---------------------------------------------------- |
-| value  | [ProgressMask](#progressmask10) \| undefined | 是   | 在当前组件上加上可动态设置进度、最大值和颜色的遮罩。 |
+| value  | [ProgressMask](#progressmask10) \| undefined | 是   | 在当前组件上加上可动态设置进度、最大值和颜色的遮罩。<br/>当value的值为undefined时，恢复为无进度遮罩效果。 |
 
 **返回值：**
 
@@ -490,7 +490,7 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 在当前组件上加上指定形状的遮罩。 |
+| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 在当前组件上加上指定形状的遮罩。<br/>当value的值为undefined时，会重置为当前值。 |
 
 **返回值：**
 
@@ -578,7 +578,7 @@ updateProgress(value: number): void
 
 | 参数名 | 类型 | 必填 | 说明           |
 | ------ | -------- | ---- | ------------------ |
-| value  | number   | 是   | 进度遮罩的当前值。 |
+| value  | number   | 是   | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
 
 ### updateProgress<sup>23+</sup>
 
@@ -598,7 +598,7 @@ updateProgress(value: double): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ---------- | ------ | ------ | --------- |
-| value  | double   | 否 | 否 | 进度遮罩的当前值。 |
+| value  | double   | 否 | 否 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
 
 ### updateColor<sup>10+</sup>
 

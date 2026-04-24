@@ -200,7 +200,7 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [OutlineStyle](#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明)<br/>  ArkTS-Sta: [OutlineStyle](#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明) \| undefined | 是   | 设置元素的外描边样式。<br/>默认值：OutlineStyle.SOLID |
+| value  | [OutlineStyle](#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明) \| undefined | 是   | 设置元素的外描边样式。<br/>默认值：OutlineStyle.SOLID<br/>当value的值为undefined时，恢复为无外描边样式的效果。 |
 
 **返回值：**
 
@@ -286,7 +286,7 @@ outlineWidth(value: Dimension | EdgeOutlineWidths | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明) \| undefined | 是   | 设置元素的外描边宽度，不支持百分比。 <br/>默认值：0。<br/>当width的值为undefined时，恢复为无外描边宽度的效果。 |
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明) \| undefined | 是   | 设置元素的外描边宽度，不支持百分比。 <br/>默认值：0。<br/>当value的值为undefined时，恢复为无外描边宽度的效果。 |
 
 ## outlineColor
 
@@ -366,7 +366,7 @@ outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors | undefined
 
 | 参数名 | 类型                                                         | 必填 | 说明                                             |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)<sup>12+</sup><br/> \| undefined | 是   | 设置元素的外描边颜色。<br/>默认值：Color.Black |
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)<sup>12+</sup><br/> \| undefined | 是   | 设置元素的外描边颜色。<br/>默认值：Color.Black<br/>当value的值为undefined时，恢复为描边颜色为Color.Black的效果。 |
 
 **返回值：**
 
@@ -453,7 +453,7 @@ outlineRadius(value: Dimension | OutlineRadiuses | undefined): this
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11对象说明) \| undefined | 是   | 设置元素的外描边圆角半径，不支持百分比。<br/>默认值：0。<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11对象说明) \| undefined | 是   | 设置元素的外描边圆角半径，不支持百分比。<br/>默认值：0。<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。<br/>当value的值为undefined时，恢复为外描边圆角半径为0的效果。 |
 
 **返回值：**
 
