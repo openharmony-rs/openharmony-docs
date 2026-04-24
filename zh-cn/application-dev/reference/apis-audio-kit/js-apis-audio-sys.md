@@ -472,7 +472,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
 | data | ArrayBuffer | 否 | 否 | 处理后的音频数据缓冲区。 |
 | micInData | ArrayBuffer | 否 | 否 | 麦克风输入音频数据缓冲区。 |
-| ecData | ArrayBuffer | 否 | 是 | 回声参考音频数据缓冲区。若采集器配置未设置ecStreamInfo，该字段可能为空，详情参见[AudioCapturerMicInConfig](#audiocapturermicinconfig23)。 |
+| ecData | ArrayBuffer | 否 | 是 | 回声参考音频数据缓冲区。<br>如果采集器配置未设置ecStreamInfo，则该字段为空，详情请参考[AudioCapturerMicInConfig](#audiocapturermicinconfig23)。 |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -5698,7 +5698,13 @@ audio.createMicInAudioCapturer(audioCapturerMicInConfig).then((data) => {
 
 onReadMicInData(callback: Callback\<AudioCapturerMicInData>): void
 
-监听Mic-In音频数据读取回调。此回调的优先级高于`onReadData`回调；如果同时订阅两者，仅会触发此回调。当有可供读取的音频缓冲区时触发。
+订阅Mic-In音频数据读取回调。使用callback异步回调。
+
+> **说明：**
+>
+> - 此回调的优先级高于`onReadData`回调。
+> - 如果同时订阅两者，仅会触发此回调。
+> - 当有可供读取的音频缓冲区、可继续读取更多音频数据时，会触发此回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5760,6 +5766,8 @@ let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
   capturerInfo: audioCapturerInfo
 };
 
+// data表示处理后的音频数据，micInData表示原始Mic-In音频数据，
+// ecData表示回声参考音频数据；如果未配置ecStreamInfo，该字段可能为空。
 let readMicInDataCallback: Callback<audio.AudioCapturerMicInData> =
   (data: audio.AudioCapturerMicInData): void => {
     let ecDataLength: number = data.ecData ? data.ecData.byteLength : 0;
@@ -5770,12 +5778,14 @@ let readMicInDataCallback: Callback<audio.AudioCapturerMicInData> =
 
 async function registerReadMicInDataCallback(): Promise<void> {
   try {
+    // 先创建Mic-In采集器实例，再注册数据读取回调。
     let audioCapturer: audio.AudioCapturer | null =
       await audio.createMicInAudioCapturer(audioCapturerMicInConfig);
     if (audioCapturer === null) {
       console.error('AudioCapturer Created : ERROR : audioCapturer is null');
       return;
     }
+    // 注册成功后，当有可读取的音频缓冲区时会触发readMicInDataCallback。
     audioCapturer.onReadMicInData(readMicInDataCallback);
     console.info('Succeeded in registering onReadMicInData callback.');
   } catch (err) {
