@@ -187,3 +187,101 @@ struct ComponentB {
   }
 }
 ```
+
+## cl.arkui.2 Dialog、Toast、AlphabetIndexer和文本选择菜单默认开启沉浸式系统材质
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+ArkUI组件支持对接沉浸式系统材质功能，为减少应用适配成本，部分高频组件默认开启沉浸式系统材质功能。组件范围为所有的弹出框Dialog、Toast、AlphabetIndexer和文本选择菜单。
+
+**变更影响**
+
+此变更为不兼容变更，涉及应用适配。
+
+- 变更前：所有组件默认均不开启沉浸式系统材质。
+
+- 变更后：Dialog、Toast、AlphabetIndexer和文本选择菜单默认开启沉浸式系统材质。
+
+**起始 API Level**
+
+12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.20开始。
+
+**变更的接口/组件**
+
+涉及接口：
+
+- [showAlertDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)
+- [showActionSheet](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)
+- [showActionMenu](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11)
+- [showDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)
+- [openCustomDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)
+- [自定义弹窗 (CustomDialog)](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+- [showToast](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)
+- [openToast](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opentoast18)
+- [AlphabetIndexer](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)
+- [文本选择菜单](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)
+
+沉浸式系统材质效果和设备算力相关，详见[系统材质](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md)。变更前后的效果图如下。
+
+Dialog变更前后的效果图：
+
+![uiMaterialDialog](./figures/uiMaterialDialog.png)
+
+Toast变更前后的效果图：
+
+![uiMaterialToast](./figures/uiMaterialToast.png)
+
+AlphabetIndexer变更前后的效果图：
+
+![uiMaterialIndexer](./figures/uiMaterialIndexer.png)
+
+文本选择菜单变更前后的效果图：
+
+![uiMaterialText](./figures/uiMaterialTextMenu.png)
+
+
+**适配指导**
+
+1. 当开发者主动为上述组件配置了背景色、背景模糊、阴影和边框样式时，沉浸式系统材质不会默认生效，如开发者期望沉浸式系统材质生效，建议删除自定义的背景色、背景模糊、阴影和边框样式设置。
+
+2. 如果开发者不期望开启沉浸式系统材质功能，可通过应用级开关能力，强制禁止应用内所有组件使用沉浸式系统材质。
+
+   在[module.json5](../../../application-dev/quick-start/module-configuration-file.md)文件中配置metadata（仅在entry类型的module中配置生效），将value设置为"disable"即可禁用所有组件的沉浸式系统材质。
+
+   ``` ts
+   {
+     "module": {
+       // ...
+       "type": "entry",
+       // ...
+       "metadata": [{
+         "name": "ohos.arkui.UIMaterial.state",
+         "value": "disable"
+       }]
+       // ...
+     }
+   }
+   ```
+   更多配置说明参见[MaterialState](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)。
+
+3. 如果开发者仅想关闭部分组件的沉浸式系统材质，可通过组件提供的组件级接口关闭指定组件的沉浸式系统材质功能。
+
+   为需要关闭材质的组件设置[systemMaterial](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为uiMaterial.Material.[empty](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md#empty)。
+
+   ``` ts
+   import { uiMaterial } from '@kit.ArkUI';
+
+   this.getUIContext().getPromptAction().showToast({
+     message: 'Toast Content',
+     // 关闭指定组件的沉浸式系统材质
+     systemMaterial: uiMaterial.Material.empty
+   });
+   ```
