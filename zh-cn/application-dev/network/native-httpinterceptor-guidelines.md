@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-从API version 24版本开始，通过HTTP全局拦截器，开发者可以监控HTTP流量，实现日志记录功能。
+从API version 24开始，通过HTTP全局拦截器，开发者可以监控HTTP流量，实现日志记录功能。
 
 ## 接口说明
 
@@ -359,27 +359,27 @@ libhttp_interceptor.so
 
    - 点击`Add Response Interceptor`按钮，添加一个HTTP全局只读响应拦截器。
 
-![netmanager-1.png](./figures/httpinterceptor-resut1.png)
+![netmanager-1.png](./figures/httpinterceptor-result1.png)
 
    - 点击`Start Interceptors`按钮，启用组ID为1的所有拦截器。
 
-![netmanager-2.png](./figures/httpinterceptor-resut2.png)
+![netmanager-2.png](./figures/httpinterceptor-result2.png)
 
    - 点击`Send HTTP Request`按钮，拦截器会捕获响应并打印相关信息到日志。
 
-![netmanager-3.png](./figures/httpinterceptor-resut3.png)
+![netmanager-3.png](./figures/httpinterceptor-result3.png)
 
    - 点击`Stop Interceptors`按钮，停用组ID为1的所有拦截器。
 
-![netmanager-4.png](./figures/httpinterceptor-resut4.png)
+![netmanager-4.png](./figures/httpinterceptor-result4.png)
 
    - 点击`Remove Interceptor`按钮，移除之前添加的拦截器。
 
-![netmanager-5.png](./figures/httpinterceptor-resut5.png)
+![netmanager-5.png](./figures/httpinterceptor-result5.png)
 
    - 点击`Remove All Interceptors`按钮，删除组ID为1的所有拦截器。
 
-![netmanager-6.png](./figures/httpinterceptor-resut6.png)
+![netmanager-6.png](./figures/httpinterceptor-result6.png)
 
 ## 相关实例
 
