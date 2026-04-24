@@ -1346,6 +1346,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
+let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt"; 
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp"; 
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
 await dlpPermission.decryptDlpFile(dlpFd, plaintextFd);
@@ -1405,6 +1407,7 @@ import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let dlpFd : number | undefined = undefined;
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp"; 
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
 let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
 console.info('DLP policy:' + policy);
