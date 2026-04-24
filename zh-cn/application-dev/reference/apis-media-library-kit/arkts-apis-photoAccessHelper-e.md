@@ -491,3 +491,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | FILE_NOT_EXIST | 1 | 资产不存在。资产可能被隐藏、放入回收站或被永久删除。|
 | READ_PERMISSION | 2 | 应用在获取资产时有读权限。 |
 | NO_READ_PERMISSION | 3 | 应用在获取资产时没有读权限。 |
+
+## PreferredCompatibleMode
+
+枚举，根据配置的资产兼容性执行转码。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  根据配置的资产兼容性功能执行转码。|
+| CURRENT |  1 |  不进行转码。资产将以其原始格式返回。|
+| COMPATIBLE |  2 |  所有资产都被转码为最广泛兼容的格式(如JPEG)。|

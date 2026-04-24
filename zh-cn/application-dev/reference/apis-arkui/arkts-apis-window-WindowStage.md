@@ -1854,7 +1854,7 @@ onWindowStageLifecycleEvent(callback: Callback&lt;WindowStageLifecycleEventType&
 >
 > 1.前者无法保证状态切换间的顺序，对于状态间的顺序有要求的情况下不推荐使用，推荐使用本接口；
 >
-> 2.当前接口不提供WindowStage的获焦失焦状态监听，对于windowStage获焦失焦状态有监听需求的情况下，推荐使用[onWindowEvent](arkts-apis-window-Window.md#onwindowevent10)；
+> 2.当前接口不提供WindowStage的获焦失焦状态监听，对于windowStage获焦失焦状态有监听需求的情况下，推荐使用[onWindowEvent](arkts-apis-window-Window.md#onwindowevent23)；
 >
 > 3.其他系统机制及其生命周期状态切换的详细说明，请参考[主窗口的生命周期](../../windowmanager/window-overview.md#主窗口的生命周期)。
 
@@ -2068,7 +2068,7 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -2127,9 +2127,9 @@ onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose15)方法。
+触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)方法。
 
-如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose15)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose15)接口。
+如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2200,7 +2200,7 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：**
 
@@ -2329,7 +2329,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2429,7 +2429,7 @@ setCustomDensity(density: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -2761,7 +2761,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2874,7 +2874,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2975,7 +2975,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -3059,6 +3059,230 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setImageForRecent
+
+ArkTS-Dyn: setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+
+ArkTS-Sta: setImageForRecent(imageResource: long | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
+
+设置应用在多任务中和Dock栏悬停时显示的图片，使用Promise异步回调。
+
+> **说明：**
+>
+> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----------- | ------- | ---- | ------------------------------------------------------------ |
+| imageResource | ArkTS-Dyn: number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)<br>ArkTS-Sta: long \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 应用自定义的图片资源，可传入资源id或PixelMap位图。传入资源id时，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。 |
+| value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window, ImageFit } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let imageResource = $r('app.media.startIcon').id;
+      try {
+        let promise = windowStage.setImageForRecent(imageResource, ImageFit.Fill);
+        promise.then(() => {
+          console.info('Succeeded in setting image for recent.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        let err = exception as BusinessError;
+        console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window, ImageFit } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err?.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4);
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i + 1] = 0;
+        bufferArr[i + 2] = 122;
+        bufferArr[i + 3] = 255;
+      }
+      image.createPixelMap(color, {
+        editable: true,
+        pixelFormat: image.PixelMapFormat.RGBA_8888,
+        size: { height: 512, width: 512 }
+      }).then((pixelMap: image.PixelMap) => {
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info('Succeeded in setting image for recent.');
+          }).catch((err: Error) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          let err = exception as BusinessError;
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+        }
+      }).catch((err: Error) => {
+        console.error(`Failed to create pixelMap. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    });
+  }
+}
+```
+
+## removeImageForRecent
+
+removeImageForRecent(): Promise&lt;void&gt;
+
+移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      let promise = windowStage.removeImageForRecent();
+      promise.then(() => {
+        console.info('Succeeded in removing image for recent.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      let promise = windowStage.removeImageForRecent();
+      promise.then(() => {
+        console.info('Succeeded in removing image for recent.');
+      }).catch((err: Error) => {
+        console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      let err = exception as BusinessError;
+      console.error(`Failed to remove image for recent. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
+```
+
 ## setSupportedWindowModes<sup>15+</sup>
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
@@ -3067,7 +3291,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -3178,6 +3402,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
 
 从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，该接口在支持并处于自由窗口状态的设备中可正常调用且立即生效；在支持但不处于自由窗口状态的设备中可正常调用，切换为自由窗口状态时生效；在不支持自由窗口状态的设备中返回801错误码。
+
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23

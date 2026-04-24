@@ -42,7 +42,7 @@ ArkTS-Sta: type WindowAnimationCurveParam = Array&lt;double&gt;
 
 动画曲线参数。不同曲线类型[WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)，对应的WindowAnimationCurveParam参数含义不同。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

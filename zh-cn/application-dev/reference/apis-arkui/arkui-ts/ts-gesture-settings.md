@@ -10,13 +10,17 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 可以通过gesture、priorityGesture和parallelGesture给组件绑定手势识别，手势识别成功后可以通过事件回调通知组件。可以通过[触摸热区](ts-universal-attributes-touch-target.md)指定可识别手势的区域。gesture、priorityGesture和parallelGesture当前不支持使用三目运算符（条件? 表达式1 : 表达式2）切换手势绑定。
 
 ## gesture
 
-gesture(gesture: GestureType, mask?: GestureMask): T
+ArkTS-Dyn: gesture(gesture: GestureType, mask?: GestureMask): T
+
+ArkTS-Sta: gesture(gesture: GestureType, mask?: GestureMask): this
 
 绑定手势。
 
@@ -27,6 +31,10 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -39,11 +47,13 @@ gesture(gesture: GestureType, mask?: GestureMask): T
 
 | 类型     | 说明        |
 | ------ | --------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## priorityGesture
 
-priorityGesture(gesture: GestureType, mask?: GestureMask): T
+ArkTS-Dyn: priorityGesture(gesture: GestureType, mask?: GestureMask): T
+
+ArkTS-Sta: priorityGesture(gesture: GestureType, mask?: GestureMask): this
 
 绑定优先识别手势。
 
@@ -59,6 +69,10 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
@@ -70,11 +84,13 @@ priorityGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 类型     | 说明        |
 | ------ | --------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## parallelGesture
 
-parallelGesture(gesture: GestureType, mask?: GestureMask): T
+ArkTS-Dyn: parallelGesture(gesture: GestureType, mask?: GestureMask): T
+
+ArkTS-Sta: parallelGesture(gesture: GestureType, mask?: GestureMask): this
 
 绑定可与子组件手势同时触发的手势。手势事件为非冒泡事件。父组件设置parallelGesture时，父子组件相同的手势事件都可以触发，实现类似冒泡效果。
 
@@ -86,6 +102,10 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
@@ -97,7 +117,7 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 类型     | 说明        |
 | ------ | --------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## SourceType枚举说明<sup>8+</sup>
 
@@ -107,11 +127,11 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 名称 | 值 | 说明 |
 | ---- | --- | -------- |
-| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Mouse | 1 | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| TouchScreen | 2 | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| KEY<sup>22+</sup> | 4 | 按键。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| JOYSTICK<sup>22+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| Mouse | 1 | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| TouchScreen | 2 | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| KEY<sup>22+</sup> | 4 | 按键。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| JOYSTICK<sup>22+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SourceTool枚举说明<sup>9+</sup>
 
@@ -121,12 +141,12 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 | 名称 | 值 | 说明 |
 | -------- | - | --------- |
-| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Finger | 1 | 手指输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Pen | 2 | 手写笔输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| MOUSE<sup>12+</sup> | 7 | 鼠标输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| TOUCHPAD<sup>12+</sup> | 9 | 触控板输入。触控板单指输入被视为鼠标输入操作。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| JOYSTICK<sup>12+</sup> | 10 | 手柄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| Finger | 1 | 手指输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| Pen | 2 | 手写笔输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| MOUSE<sup>12+</sup> | 7 | 鼠标输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| TOUCHPAD<sup>12+</sup> | 9 | 触控板输入。触控板单指输入被视为鼠标输入操作。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| JOYSTICK<sup>12+</sup> | 10 | 手柄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 

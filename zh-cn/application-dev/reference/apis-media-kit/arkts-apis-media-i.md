@@ -28,14 +28,18 @@
 
 音视频文件资源描述，用于DataSource播放方式，使用场景：应用在未获取完整音视频资源时，允许用户创建播放实例并开始播放，达到提前播放的目的。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 只读 | 可选  | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| fileSize     | number | 否  | 否  | 待播放文件大小（字节），-1代表大小未知。如果fileSize设置为-1，播放模式类似于直播，不能进行seek及setSpeed操作，不能设置loop属性，因此不能重新播放。 |
-| callback | (buffer: ArrayBuffer, length: number, pos?: number) => number | 否  | 否  | 用户设置的回调函数，用于填写数据。<br>- buffer: 表示被填写的内存，必选。<br>- length: 表示被填写内存的最大长度，必选。<br>- pos：表示填写的数据在资源文件中的位置，可选。当fileSize设置为-1时，该参数禁止被使用。 <br>- 返回值，number类型，返回填充数据的长度。返回-1表示到达流的末尾，返回-2表示遇到不可恢复的错误。|
+| fileSize     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否  | 待播放文件大小（字节），-1代表大小未知。如果fileSize设置为-1，播放模式类似于直播，不能进行seek及setSpeed操作，不能设置loop属性，因此不能重新播放。 |
+| callback | ArkTS-Dyn: (buffer: ArrayBuffer, length: number, pos?: number) => number<br>ArkTS-Sta: (buffer: ArrayBuffer, length: long, pos?: long) => int | 否  | 否  | 用户设置的回调函数，用于填写数据。<br>- buffer: 表示被填写的内存，必选。<br>- length: 表示被填写内存的最大长度，必选。<br>- pos：表示填写的数据在资源文件中的位置，可选。当fileSize设置为-1时，该参数禁止被使用。 <br>- 返回值：<br>ArkTS-Dyn：number类型。<br>ArkTS-Sta：int类型。<br>返回填充数据的长度。返回-1表示到达流的末尾，返回-2表示遇到不可恢复的错误。|
 
 ## SubtitleInfo<sup>12+</sup>
 
@@ -450,45 +454,57 @@ async function setupPlayer() {
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| timeStamp | number | 否   | 否   | 事件发生时的系统时间。 |
-| playbackPosition | number | 否   | 否   | 事件发生时的播放进度位置。 |
-| details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | 否   | 否   | 指标事件的类型。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| timeStamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 事件发生时的系统时间。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 事件发生时的播放进度位置。 |
+| details | Record\<string, Object> | 否   | 否   | 事件的详细信息，不同指标事件类型包含的信息不同。<br/>包含卡顿时间（duration: number）和卡顿的媒体类型（media: [MediaType](arkts-apis-media-e.md#mediatype8)）。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
-## VideoSize<sup>24+</sup>
+## VideoSize
 
 描述视频尺寸。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | 否   | 是   | 视频分辨率的宽度。<br>该值必须为正整数（大于0）。 |
-| height | number | 否   | 是   | 视频分辨率的高度。<br>该值必须为正整数（大于0）。 |
+| width  | number | 否   | 是   | 视频分辨率的宽度。<br>取值约束：该值必须为正整数。<br>单位为像素。 |
+| height | number | 否   | 是   | 视频分辨率的高度。<br>取值约束：该值必须为正整数。<br>单位为像素。 |
 
-## TrackSelectionFilter<sup>24+</sup>
+## TrackSelectionFilter
 
 描述轨道选择的过滤条件。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| maxVideoBitrate | number | 否   | 是   | 允许的视频最大比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
-| minVideoBitrate | number | 否   | 是   | 允许的视频最小比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
-| maxVideoFrameRate | number | 否   | 是   | 允许的视频最大帧率，单位为赫兹（Hz）。<br>该值必须为正整数（大于0）。 |
-| minVideoFrameRate | number | 否   | 是   | 允许的视频最小帧率，单位为赫兹（Hz）。<br>该值必须为正整数（大于0）。 |
-| maxVideoResolution | [VideoSize](#videosize24) | 否   | 是   | 允许的视频最大分辨率。 |
-| minVideoResolution | [VideoSize](#videosize24) | 否   | 是   | 允许的视频最小分辨率。 |
-| preferredVideoMimeTypes | Array\<string> | 否   | 是   | 视频轨道的首选MIME类型，按优先级排序；空值表示接受任意类型。 |
-| maxAudioBitrate | number | 否   | 是   | 允许的音频最大比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
-| minAudioBitrate | number | 否   | 是   | 允许的音频最小比特率，单位为比特/秒。<br>该值必须为正整数（大于0）。 |
-| maxAudioChannels | number | 否   | 是   | 允许的音频最大通道数。<br>该值必须为正整数（大于0）。 |
-| preferredAudioMimeTypes | Array\<string> | 否   | 是   | 音频轨道的首选MIME类型，按优先级排序；空值表示接受任意类型。 |
-| preferredAudioLanguages | Array\<string> | 否   | 是   | 音频轨道的首选语言，使用符合IETF BCP 47标准的语言标签，按优先级排序；空值表示接受任意类型。 |
-| preferredSubtitleLanguages | Array\<string> | 否   | 是   | 字幕轨道的首选语言，使用符合IETF BCP 47标准的语言标签，按优先级排序；空值表示接受任意类型。 |
+| maxVideoBitrate | number | 否   | 是   | 允许的视频最大比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则视频最大比特率不受限制。 |
+| minVideoBitrate | number | 否   | 是   | 允许的视频最小比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则视频最小比特率不受限制。 |
+| maxVideoFrameRate | number | 否   | 是   | 允许的视频最大帧率。<br>单位为帧/秒。<br>该值必须为正整数，如果未指定此参数，则视频最大帧率不受限制。 |
+| minVideoFrameRate | number | 否   | 是   | 允许的视频最小帧率。<br>单位为帧/秒。<br>该值必须为正整数，如果未指定此参数，则视频最小帧率不受限制。 |
+| maxVideoResolution | [VideoSize](#videosize) | 否   | 是   | 允许的视频最大分辨率。如果未指定此参数，则视频最大分辨率不受限制。 |
+| minVideoResolution | [VideoSize](#videosize) | 否   | 是   | 允许的视频最小分辨率。如果未指定此参数，则视频最小分辨率不受限制。 |
+| preferredVideoMimeTypes | Array\<string> | 否   | 是   | 视频轨道的首选MIME类型。多个MIME按数组顺序排列，优先级依次递减。<br>取值约束：格式为MIME字符串或HLS/DASH中的编解码器字符串。<br>如果未指定或设置为空数组，则MIME类型不受限制。 |
+| maxAudioBitrate | number | 否   | 是   | 允许的音频最大比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则音频最大比特率不受限制。 |
+| minAudioBitrate | number | 否   | 是   | 允许的音频最小比特率。<br>单位为比特/秒。<br>该值必须为正整数，如果未指定此参数，则音频最小比特率不受限制。 |
+| maxAudioChannels | number | 否   | 是   | 允许的音频最大通道数。该值必须为正整数，如果未指定此参数，则音频通道数不受限制。 |
+| preferredAudioMimeTypes | Array\<string> | 否   | 是   | 音频轨道的首选MIME类型。多个MIME按数组顺序排列，优先级依次递减。<br>取值约束：格式为MIME字符串或HLS/DASH中的编解码器字符串。<br>如果未指定此参数或设置为空数组，则音频的MIME类型不受限制。 |
+| preferredAudioLanguages | Array\<string> | 否   | 是   | 音频轨道的首选语言。多个语言按数组顺序排列，优先级依次递减。<br>取值约束：语言字符串符合IETF BCP 47标准定义。<br>如果未指定此参数或设置为空数组，则音频语言不受限制。 |
+| preferredSubtitleLanguages | Array\<string> | 否   | 是   | 字幕轨道的首选语言。多个语言按数组顺序排列，优先级依次递减。<br>取值约束：语言字符串符合IETF BCP 47标准定义。<br>如果未指定此参数或设置为空数组，则字幕语言不受限制。 |
 
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
@@ -510,3 +526,21 @@ async function setupPlayer() {
 | uri                                 | string                                       | 否   | 否   | 音频输出URI：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/zh-cn_image_url.png) <br/>文件需要由调用者创建，并赋予适当的权限。<br/>**说明：** 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorderConfig](#avrecorderconfig9)中的url替代。 |
 | audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 容器编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的audioCodec替代。 |
 | fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 是   | 音频编码格式。<br/>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用[AVRecorderProfile](#avrecorderprofile9)中的fileFormat替代。 |
+
+## AVTimedMetaData
+
+描述基于时间的元数据的信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| id  | string | 否   | 是   | 基于时间的元数据的唯一标记。<br>该标记在视频源的数据信息中须保持唯一。 |
+| classify | string | 否   | 是   | 基于时间的元数据的分类标签。 |
+| start | number | 否   | 否   | 基于时间的元数据相对整个媒体起始时间的偏移值。<br>取值限定为整数。<br>单位：毫秒。 |
+| duration | number | 否   | 否   | 基于时间的元数据的持续时长。<br>取值限定为整数。<br>单位：毫秒。 |
+| contents | Record<string, object> | 否   | 否   | 基于时间的元数据对应的键值对集合。 |

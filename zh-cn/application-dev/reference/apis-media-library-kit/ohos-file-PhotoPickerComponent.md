@@ -1036,7 +1036,7 @@ Picker的颜色模式。
 | SQUARE_RATIO        | 0   | 1:1比例显示。    |
 | ORIGINAL_SIZE_RATIO | 1   | 原图宽高比显示。 |
 
-## 示例
+## 示例一（PhotoPickerComponent组件的使用）
 
 ```ts
 // xxx.ets
@@ -1254,6 +1254,238 @@ struct PickerDemo {
         }
       }
     }
+  }
+}
+```
+
+## 示例二（使用PhotoPickerComponent实现抽屉组件效果）
+
+从API version 23开始，可以通过[PickerOptions](#pickeroptions)的isSlidingSupported、[PhotoPickerComponent](#photopickercomponent)的onScrollStopAtStart和onScrollStopAtEnd回调来实现抽屉效果。
+
+```ts
+// xxx.ets
+import { display } from '@kit.ArkUI';
+import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
+const enum DrawerState {
+  // 展开状态。
+  Expanding,
+  // 收缩状态。
+  Collapsing,
+  // 滑动状态。
+  Sliding
+}
+
+@Entry
+@Component
+struct Drawer {
+  @State pickerController: PickerController = new PickerController();
+  private pickerOptions: PickerOptions = new PickerOptions();
+  // 屏幕高度，单位为vp。
+  @State screenHeight: number = 0;
+  // 抽屉高度，单位为vp。
+  @State drawerHeight: number = 0;
+  // 抽屉的偏移量，单位为vp。
+  @State offsetY: number = 0;
+  // 抽屉是否展开。
+  @State isExpanded: boolean = false;
+  // 拖拽起始位置，单位为vp。
+  private startY: number = 0;
+  // 当前拖拽的偏移量，单位为vp。
+  private currentOffset: number = 0;
+  // 自定义抽屉高度在整个屏幕的占比。
+  private drawerRatio: number = 0.8;
+  // 自定义初始化时隐藏抽屉的占比。
+  private hideRatio: number = 0.8;
+  // 初始化为收缩状态。
+  private drawerState: DrawerState = DrawerState.Collapsing;
+  // 手势响应阈值，判断手势是否为向下。
+  private pullingDownThreshold: number = -5;
+
+  aboutToAppear(): void {
+    // 获取屏幕高度。
+    this.screenHeight = px2vp(display.getDefaultDisplaySync().height);
+    // 获取抽屉高度，示例为屏幕高度的0.8倍，可自定义修改。
+    this.drawerHeight = this.screenHeight * this.drawerRatio;
+    // 初始时抽屉在底部（隐藏高度），示例为隐藏抽屉的0.8倍。
+    this.offsetY = this.drawerHeight * this.hideRatio;
+    // 初始化时Picker不支持滑动。
+    this.pickerOptions.isSlidingSupported = false;
+    // 无边缘回弹。
+    this.pickerOptions.edgeEffect = EdgeEffect.None;
+    // 不展示搜索框。
+    this.pickerOptions.isSearchSupported = false;
+  }
+
+  private scrollStopAtStart() {
+    // 状态变更为展开状态，同时设置宫格不能滑动。
+    this.drawerState = DrawerState.Expanding;
+    this.pickerController.updatePickerOptions({
+    isSlidingSupported: false
+  })
+  }
+
+  private toggleDrawer() {
+    if (this.isExpanded) {
+      this.hideDrawer();
+    } else {
+      this.showDrawer();
+    }
+  }
+
+  private hideDrawer() {
+    animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = false;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Collapsing;
+      this.offsetY = this.drawerHeight * 0.8;
+    })
+  }
+
+  private showDrawer() {
+    animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = true;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Expanding;
+      this.offsetY = 0;
+    })
+  }
+
+  build() {
+    RelativeContainer() {
+      // 主内容区域。
+      Column() {
+        Text('主页面内容')
+          .fontSize(24)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Text('这是一个使用RelativeContainer实现的底部抽屉效果')
+          .fontSize(16)
+          .fontColor('#666')
+          .margin({ bottom: 30 })
+          .textAlign(TextAlign.Center)
+          .width('80%')
+
+        Button(this.isExpanded ? '收起抽屉' : '展开抽屉')
+          .onClick(() => {
+            this.toggleDrawer();
+          })
+      }
+      .width('100%')
+      .padding(20)
+      .alignItems(HorizontalAlign.Center)
+      .backgroundColor('#f5f5f5')
+      .borderRadius(10)
+      .alignRules({
+        top: { anchor: '__container__', align: VerticalAlign.Top },
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+      })
+      .height('100%')
+
+      if (this.isExpanded) {
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#80000000')
+          .alignRules({
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+          })
+          .onClick(() => {
+            this.hideDrawer();
+          })
+      }
+
+      Column() {
+        Row()
+          .width(50)
+          .height(5)
+          .backgroundColor('#CCC')
+          .borderRadius(3)
+          .margin({ top: 12, bottom: 8 })
+
+        Text('抽屉菜单')
+          .fontSize(18)
+          .fontWeight(FontWeight.Medium)
+          .margin({ bottom: 10 })
+
+        Divider()
+          .width('90%')
+          .margin({ bottom: 10 })
+
+        PhotoPickerComponent({
+          pickerOptions: this.pickerOptions,
+          pickerController: this.pickerController,
+          onScrollStopAtStart: this.scrollStopAtStart
+        })
+          .layoutWeight(1)
+          .width('100%')
+      }
+      .width('100%')
+      .height(this.drawerHeight)
+      .backgroundColor(Color.White)
+      .borderRadius({ topLeft: 20, topRight: 20 })
+      .shadow({ radius: 10, color: '#33000000' })
+      .alignRules({
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+        bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+      })
+      .translate({ y: this.offsetY })
+      .gesture(
+        PanGesture({ direction: PanDirection.Vertical })
+          // 记录抽屉开始拖拽的位置。
+          .onActionStart((event: GestureEvent) => {
+            this.startY = event.fingerList[0].globalY || 0;
+            this.currentOffset = this.offsetY;
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            // 如果是Picker滑动状态，不改变抽屉的高度，直接返回。
+            if (this.drawerState === DrawerState.Sliding) {
+              return;
+            }
+            // 如果抽屉的状态是展开或者收缩则需要通过手势来进一步改变抽屉状态。
+            // 计算移动距离。
+            const deltaY = event.fingerList[0].globalY - this.startY || 0;
+            // 当抽屉处于展开状态且用户向下滑动时，开启宫格滑动功能并将抽屉状态切换为滑动状态。
+            if (this.drawerState === DrawerState.Expanding && deltaY < this.pullingDownThreshold) {
+              this.pickerController.updatePickerOptions({
+                isSlidingSupported: true
+              })
+              this.drawerState = DrawerState.Sliding
+            }
+            let newOffset = this.currentOffset + deltaY;
+            if (newOffset < 0) {
+              newOffset = 0;
+            }
+            this.offsetY = newOffset;
+          })
+          .onActionEnd(()=>{
+            // 手势结束，根据位置自动展开或收起。
+            if (this.offsetY > this.drawerHeight / 2) {
+              // 滑动超过抽屉高度一半，抽屉状态置为收缩状态。
+              this.hideDrawer();
+            } else {
+              // 滑动不到抽屉高度一半，抽屉状态置为展开状态。
+              this.showDrawer();
+            }
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#E0E0E0')
   }
 }
 ```

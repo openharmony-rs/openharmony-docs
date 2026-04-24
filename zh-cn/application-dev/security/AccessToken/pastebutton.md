@@ -42,7 +42,9 @@
    应用安全控件的接口时，分为传参和不传参两种情况。不传参时，默认创建包含图标、文本和背景的按钮；传参时，根据传入的参数创建按钮，不包含未配置的元素。
 
    当前示例使用了默认参数。具体详情，请参见[PasteButton控件](../../reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md)。此外，所有安全控件均继承了[安全控件通用属性](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md)，可用于自定义样式。
-   
+
+   ArkTS-Dyn示例：
+
    <!-- @[use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->    
    
    ``` TypeScript
@@ -81,3 +83,52 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   import {
+     Entry,
+     Column,
+     Component,
+     ClickEvent,
+     PasteButton,
+     Row,
+     PasteButtonOnClickResult,
+     TextInput,
+     ColumnOptions,
+   } from '@ohos.arkui.component'
+   import { State } from '@ohos.arkui.stateManagement'
+   import { BusinessError } from '@ohos.base'
+   import pasteboard from '@ohos.pasteboard'
+
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = '';
+
+     build() {
+       Row() {
+         Column({ space: 10 } as ColumnOptions) {
+           TextInput({ placeholder: '请输入验证码', text: this.message })
+             .onChange((val: string) => {
+               this.message = val;
+             })
+           PasteButton()
+             .padding({top: 12, bottom: 12, left: 24, right: 24})
+             .onClick((event: ClickEvent, result: PasteButtonOnClickResult, error?: BusinessError<void>) => {
+               if (PasteButtonOnClickResult.SUCCESS === result) {
+                 pasteboard.getSystemPasteboard().getData().then((pasteData) => {
+                   this.message = pasteData.getPrimaryText();
+                 }).catch((err: Error) => {
+                   let businessError = err as BusinessError;
+                   console.error(`Failed to get paste data. Code is ${businessError.code}, message is ${businessError.message}`);
+                 })
+               }
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```

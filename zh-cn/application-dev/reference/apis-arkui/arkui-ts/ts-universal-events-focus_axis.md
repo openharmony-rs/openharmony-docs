@@ -10,11 +10,15 @@
 
 >  **说明：**
 >
->  本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## onFocusAxisEvent
 
-onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
+ArkTS-Dyn: onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
+
+ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 给组件绑定焦点轴事件回调。绑定该方法的组件获焦后，游戏手柄上的摇杆、十字键等的操作会触发该回调。
 
@@ -22,17 +26,21 @@ onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | Callback\<[FocusAxisEvent](#focusaxisevent对象说明)> | 是   | 焦点轴事件回调。 |
+| event  | ArkTS-Dyn: Callback\<[FocusAxisEvent](#focusaxisevent对象说明)><br/>ArkTS-Sta: Callback\<[FocusAxisEvent](#focusaxisevent对象说明)> \| undefined | 是   | 焦点轴事件回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## FocusAxisEvent对象说明
 
@@ -42,9 +50,13 @@ onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                      | 类型                  | 只读    |  可选   |         说明                 |
 | ------------------------------------- | ---------------------------------------     | ------------- | ------------- | ------------------------- |
-| axisMap                               | Map<[AxisModel](ts-appendix-enums.md#axismodel15), number>      |  否    |  否     | 焦点轴事件的轴值表。          |
+| axisMap                               | ArkTS-Dyn: Map<[AxisModel](ts-appendix-enums.md#axismodel15), number><br/>ArkTS-Sta: Map<[AxisModel](ts-appendix-enums.md#axismodel15), double>      |  否    |  否     | 焦点轴事件的轴值表。          |
 | stopPropagation                       | Callback\<void>                      |     否         |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。            |
 
 ## 示例

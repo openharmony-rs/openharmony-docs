@@ -24,6 +24,10 @@ getUIContext(): UIContext
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                      | 说明                    |
@@ -62,7 +66,9 @@ struct MyComponent {
 
 ## getUniqueId<sup>12+</sup>
 
-getUniqueId(): number
+ArkTS-Dyn: getUniqueId(): number
+
+ArkTS-Sta: getUniqueId(): int
 
 获取当前组件的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
@@ -70,11 +76,15 @@ getUniqueId(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| number | 返回当前Component的UniqueId。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回当前Component的UniqueId。 |
 
 **示例：**
 
@@ -96,15 +106,15 @@ struct MyComponent {
 
 queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
-查询自定义组件所属的NavDestination信息，仅当自定义组件在NavDestination的内部时才生效。
+查询自定义组件所属的[NavDestination](ts-basic-components-navdestination.md)信息，仅当自定义组件在NavDestination的内部时才生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 11
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -145,7 +155,9 @@ struct MyComponent {
 
 ## queryNavDestinationInfo<sup>18+</sup>
 
-queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
+ArkTS-Dyn: queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
+
+ArkTS-Sta: queryNavDestinationInfo(isInner: boolean | undefined): NavDestinationInfo | undefined
 
 查询当前自定义组件距离最近的NavDestination信息（要求该NavDestination是Navigation的导航页或子页），isInner为true表示向内查找，false表示向外查找。
 
@@ -153,15 +165,15 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 18
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
+| isInner  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
 
 **返回值：**
 
@@ -295,15 +307,15 @@ NavDestinationInfo实例对象。
 
 queryNavigationInfo(): NavigationInfo | undefined
 
-查询自定义组件所属的Navigation信息。
+查询自定义组件所属的[Navigation](ts-basic-components-navigation.md)信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 12
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -379,9 +391,9 @@ queryRouterPageInfo(): RouterPageInfo | undefined;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 12
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -434,6 +446,10 @@ getDialogController(): PromptActionDialogController | undefined
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -516,6 +532,10 @@ type PromptActionDialogController = promptAction.DialogController
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明                         |
 | ------------------------------------------------------------ | ---------------------------- |

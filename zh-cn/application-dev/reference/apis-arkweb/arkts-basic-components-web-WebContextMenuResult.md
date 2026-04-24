@@ -290,7 +290,7 @@ ArkTS-Sta中使用ArkTS-Dyn的WebContextMenuResult对象。
 
 saveImage(): void
 
-保存一个上下文菜单相关的图片操作，调用后将触发下载流程。
+保存上下文菜单相关的图片，调用后将触发下载流程。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-仅在Tabs中使用，对应一个切换页签的内容视图。
+仅在[Tabs](ts-container-tabs.md)中使用，对应一个切换页签的内容视图。
 
 >  **说明：**
 >
@@ -120,7 +120,7 @@ ArkTS-Sta: tabBar(content: ComponentContentBase | SubTabBarStyle | BottomTabBarS
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) <br/> ArkTS-Sta: ComponentContentBase&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) \| undefined |  是 | TabBar上显示内容。<br/>ComponentContent/ComponentContentBase： 组件内容的实体封装，可以设置自定义内容。<br/>SubTabBarStyle：&nbsp;子页签样式。<br/>BottomTabBarStyle：&nbsp;底部页签和侧边页签样式，底部样式没有下划线效果。<br/>string： 字符串类型。<br/>Resource： 资源引用类型，引入系统资源或者应用资源中的字符串。<br/>CustomBuilder： 构造器，内部可以传入组件。<br/>TabBarOptions： 设置页签内的图片和文字内容。 |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) <br/> ArkTS-Sta: ComponentContentBase&nbsp;\|<br/>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br/>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br/>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br/>[TabBarOptions](#tabbaroptions18对象说明) \| undefined |  是 | TabBar上显示内容。<br/>ComponentContent/ComponentContentBase： 组件内容的实体封装，可以设置自定义内容。<br/>SubTabBarStyle：&nbsp;子页签样式。<br/>BottomTabBarStyle：&nbsp;底部页签和侧边页签样式，底部样式没有下划线效果。<br/>string： 字符串类型。<br/>Resource： 资源引用类型，引入系统资源或者应用资源中的字符串。<br/>CustomBuilder： 构造器，内部可以传入组件。<br/>TabBarOptions： 设置页签内的图片和文字内容。<br/>取值为undefined时，无显示内容。 |
 
 >  **说明：**
 >
@@ -148,7 +148,7 @@ attributeModifier(modifier: AttributeModifier\<TabContentAttribute> | AttributeM
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<TabContentAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier\<TabContentAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## TabBarOptions<sup>18+</sup>对象说明
 
@@ -549,7 +549,7 @@ padding(padding: LocalizedPadding): SubTabBarStyle
 
 id(value: string): SubTabBarStyle
 
-设置子页签的[id](ts-universal-attributes-component-id.md#id)。
+设置子页签的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -563,7 +563,7 @@ id(value: string): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | 是   | 子页签的[id](ts-universal-attributes-component-id.md#id)。 |
+| value | string | 是   | 子页签的id。 |
 
 **返回值：**
 
@@ -585,7 +585,7 @@ id(value: string): SubTabBarStyle
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | --------- | ----------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF，浅蓝色。 |
 | height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 | width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 <br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
 | borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
@@ -603,7 +603,7 @@ id(value: string): SubTabBarStyle
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------------------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF，浅蓝色。 |
 | height | [Length](ts-types.md#length) | 否 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：(0, +∞)。 |
 | width | [Length](ts-types.md#length) | 否 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：(0, +∞)。 <br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
 | borderRadius | [Length](ts-types.md#length) | 否 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
@@ -866,7 +866,7 @@ symmetricExtensible(value: boolean): BottomTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | boolean | 是   | 底部页签的图片、文字是否可以对称借用左右底部页签的空余位置中的最小值。<br/>默认值：false，底部页签的图片、文字不可以对称借用左右底部页签的空余位置中的最小值。 |
+| value | boolean | 是   | 底部页签的图片、文字是否可以对称借用左右底部页签的空余位置中的最小值。<br/>true：可以对称借用；false：不可以对称借用。<br/>默认值：false，底部页签的图片、文字不可以对称借用左右底部页签的空余位置中的最小值。 |
 
 **返回值：**
 
@@ -894,7 +894,7 @@ labelStyle(value: LabelStyle): BottomTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [LabelStyle](#labelstyle10对象说明)| 是   | 度部页签的label文本和字体的样式。 |
+| value | [LabelStyle](#labelstyle10对象说明)| 是   | 底部页签的label文本和字体的样式。 |
 
 **返回值：**
 
@@ -914,7 +914,7 @@ labelStyle(style: TabBarLabelStyle): BottomTabBarStyle
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[labelStyle<sup>10+</sup>](#labelstyle10-1)。
 
-**ArkTSAT-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -946,7 +946,7 @@ id(value: string): BottomTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | 是   | 设置底部页签的[id](ts-universal-attributes-component-id.md#id)。 |
+| value | string | 是   | 设置底部页签的id。 |
 
 **返回值：**
 
@@ -1039,7 +1039,7 @@ set normal(normal: SymbolGlyphModifier)
 
 get selected(): SymbolGlyphModifier | undefined
 
-获取symbol图标图标在选中态样式。
+获取symbol图标在选中态样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1053,11 +1053,11 @@ get selected(): SymbolGlyphModifier | undefined
 
 | 类型 | 说明 |
 | ------ | ---- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | symbol图标在选中态样式。。 |
+| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | symbol图标在选中态样式。<br/>值为undefined时，无样式。 |
 
 set selected(selected: SymbolGlyphModifier | undefined)
 
-设置symbol图标图标在选中态样式。
+设置symbol图标在选中态样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1071,7 +1071,7 @@ set selected(selected: SymbolGlyphModifier | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是 | symbol图标在选中态样式。<br/>默认值：fontColor：#ff007dff，renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY，fontSize：24vp |
+| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是 | symbol图标在选中态样式。<br/>默认值：fontColor：#ff007dff，renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY，fontSize：24vp<br/>取值为undefined时，按默认值处理。 |
 
 ## LayoutMode<sup>10+</sup>枚举说明
 
@@ -1118,7 +1118,7 @@ ArkTS-Dyn: onWillShow(event: VoidCallback)
 
 ArkTS-Sta: onWillShow(event: VoidCallback | undefined)
 
-逻辑回调，TabContent将要显示的时候触发该回调。场景包括TabContent首次显示，TabContent切换，页面切换，窗口前后台切换。
+逻辑回调，TabContent将要显示的时候触发该回调。场景包括TabContent首次显示，TabContent切换，页面切换，窗口前后台切换。取值为undefined时，不使用回调函数。
 
 >  **说明：**
 >
@@ -1136,7 +1136,7 @@ ArkTS-Sta: onWillShow(event: VoidCallback | undefined)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: VoidCallback \| undefined   | 是   | TabContent将要显示的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: VoidCallback \| undefined   | 是   | TabContent将要显示的回调函数。<br/>取值为undefined时，不使用回调函数。        |
 
 ### onWillHide<sup>12+</sup>
 
@@ -1144,7 +1144,7 @@ ArkTS-Dyn: onWillHide(event: VoidCallback)
 
 ArkTS-Sta: onWillHide(event: VoidCallback | undefined)
 
-逻辑回调，TabContent将要隐藏的时候触发该回调。场景包括TabContent切换，页面切换，窗口前后台切换。
+逻辑回调，TabContent将要隐藏的时候触发该回调。场景包括TabContent切换，页面切换，窗口前后台切换。取值为undefined时，不使用回调函数。
 
 >  **说明：**
 >
@@ -1162,13 +1162,17 @@ ArkTS-Sta: onWillHide(event: VoidCallback | undefined)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: VoidCallback \| undefined    | 是   | TabContent将要隐藏的回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: VoidCallback \| undefined    | 是   | TabContent将要隐藏的回调函数。<br/>取值为undefined时，不使用回调函数。        |
 
 ## 示例
 
 ### 示例1（自定义页签切换联动）
 
-本示例通过onAnimationStart、onChange实现切换时自定义tabBar和TabContent的联动。
+本示例通过[onAnimationStart](ts-container-tabs.md#onanimationstart11)、[onChange](ts-container-tabs.md#onchange)实现切换时自定义tabBar和TabContent的联动。
+
+> **说明**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
 
 ```ts
 // xxx.ets
@@ -1183,6 +1187,7 @@ struct TabContentExample {
 
   @Builder tabBuilder(index: number) {
     Column() {
+      // common目录与pages同级
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -1288,6 +1293,10 @@ struct TabContentExample {
 
 本示例通过vertical、barPosition实现侧边页签。
 
+> **说明**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+
 ```ts
 // xxx.ets
 @Entry
@@ -1301,6 +1310,7 @@ struct TabContentExample {
 
   @Builder tabBuilder(index: number) {
     Column() {
+      // common目录与pages同级
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -1526,7 +1536,7 @@ struct TabBarStyleExample {
 
 ### 示例4（设置子页签下划线基本属性）
 
-本示例通过SubTabBarStyle中的indicator属性，实现了子页签下划线基本属性的展示。
+本示例通过SubTabBarStyle中的[indicator](#indicator10)属性，实现了子页签下划线基本属性的展示。
 
 ```ts
 // xxx.ets
@@ -1764,7 +1774,7 @@ struct TabsAttr {
 
 ### 示例5（设置子页签文本自适应高度属性）
 
-本示例通过heightAdaptivePolicy实现了子页签文本高度自适应。
+本示例通过[heightAdaptivePolicy](#labelstyle10对象说明)实现了子页签文本高度自适应。
 
 ```ts
 // xxx.ets
@@ -1854,7 +1864,7 @@ struct TabsTextOverflow {
 
 ### 示例6（设置底部页签基本属性）
 
-本示例通过padding、verticalAlign、layoutMode、symmetricExtensible实现了底部页签基本属性的展示。
+本示例通过[padding](#padding10)、[verticalAlign](#verticalalign10)、[layoutMode](#layoutmode10)、[symmetricExtensible](#symmetricextensible10)实现了底部页签基本属性的展示。
 
 ```ts
 // xxx.ets
@@ -2006,9 +2016,13 @@ struct TabContentExample6 {
 
 ### 示例7（设置子页签/底部页签文本颜色）
 
-本示例通过labelStyle中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
+本示例通过[LabelStyle](#labelstyle10对象说明)中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
 
-通过iconStyle中的unselectedColor和selectedColor改变底部页签的图标颜色。
+通过[iconStyle](#iconstyle12)中的unselectedColor和selectedColor改变底部页签的图标颜色。
+
+> **说明**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
 
 ```ts
 // xxx.ets
@@ -2057,6 +2071,7 @@ struct TabBarStyleExample {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
           }
+           // common目录与pages同级
           .tabBar(new BottomTabBarStyle('/common/public_icon_off.svg', 'pink')
             .labelStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
             .iconStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
@@ -2099,88 +2114,9 @@ struct TabBarStyleExample {
 
 ![tabContent](figures/tabContent6.gif)
 
-### 示例8（设置自定义子页签）
+### 示例8（设置底部页签使用symbol图标）
 
-该示例实现了通过ComponentContent设置SubTabBarStyle。
-
-```ts
-// xxx.ets
-import { ComponentContent, UIContext } from '@kit.ArkUI';
-
-class Params {
-  text: string = '';
-
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column() {
-    Text(params.text)
-      .fontSize(20)
-      .fontWeight(FontWeight.Bold)
-      .margin(20)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message1: string = 'tabBar1';
-  @State message2: string = 'tabBar2';
-  context: UIContext = this.getUIContext();
-  private count1 = 0;
-  private count2 = 0;
-  private controller: TabsController = new TabsController();
-  tabBar1: ComponentContent<Params> = new ComponentContent<Params>(this.context, wrapBuilder<[Params]>(buildText), new Params(this.message1));
-  tabBar2: ComponentContent<Params> = new ComponentContent<Params>(this.context, wrapBuilder<[Params]>(buildText), new Params(this.message2));
-
-  build() {
-    Row() {
-      Column() {
-        Button('更新tabBar1').width('90%').margin(20)
-          .onClick((event?: ClickEvent) => {
-            this.count1 += 1;
-            const message1 = 'Update 1_' + this.count1.toString();
-            this.tabBar1.update(new Params(message1));
-          })
-        Button('更新tabBar2').width('90%').margin(20)
-          .onClick((event?: ClickEvent) => {
-            this.count2 += 1;
-            const message2 = 'Update 2_' + this.count2.toString();
-            this.tabBar2.update(new Params(message2));
-          })
-        Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Pink).borderRadius('12vp')
-          }.tabBar(new SubTabBarStyle(this.tabBar1))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Blue).borderRadius('12vp')
-          }.tabBar(SubTabBarStyle.of(this.tabBar2))
-        }
-        .vertical(false)
-        .barWidth(414)
-        .barHeight(96)
-        .width(414)
-        .height(414)
-        .backgroundColor('#F1F3F5')
-        .margin({ top: 20 })
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-![tabContent7](figures/tabContent7.gif)
-
-### 示例9（设置底部页签使用symbol图标）
-
-该示例实现了BottomTabBarStyle图片传入Symbol。
+该示例实现了[BottomTabBarStyle](#bottomtabbarstyle9)图片传入Symbol。
 
 ```ts
 // xxx.ets
@@ -2262,9 +2198,9 @@ struct Index {
 
 ![tabContent8](figures/tabBarSymbol.gif)
 
-### 示例10（通过ComponentContent设置TabBar）
+### 示例9（通过ComponentContent设置TabBar）
 
-该示例实现了通过ComponentContent封装组件内容，设置TabBar。通过ComponentContent的update函数更新TabBar。
+该示例实现了通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)封装组件内容，设置[TabBar](#tabbar18)。通过ComponentContent的[update](../js-apis-arkui-ComponentContent.md#update)函数更新TabBar。
 
 ```ts
 // xxx.ets
@@ -2368,9 +2304,9 @@ struct Index {
 
 ![tabContent9](figures/tabContent9.gif)
 
-### 示例11（通过ComponentContent预加载子节点）
+### 示例10（通过ComponentContent预加载子节点）
 
-该示例实现了通过ComponentContent设置TabBar，使用TabsController的preloadItems预加载子节点。
+该示例实现了通过ComponentContent设置TabBar，使用TabsController的[preloadItems](ts-container-tabs.md#preloaditems12)预加载子节点。
 
 ```ts
 // xxx.ets
@@ -2523,7 +2459,7 @@ struct TabsPreloadItems {
 
 @Component
 struct MyComponent {
-  private color: string = '';
+  @Prop color: string = '';
 
   aboutToAppear(): void {
     console.info('aboutToAppear backgroundColor:' + this.color);
@@ -2544,9 +2480,9 @@ struct MyComponent {
 
 ![tabContent9](figures/tabContent10.gif)
 
-### 示例12（设置子页签indicator为图片）
+### 示例11（设置子页签indicator为图片）
 
-从API version 22开始，本示例通过SubTabBarStyle中的indicator属性，实现了图片格式的子页签下划线风格。
+从API version 22开始，本示例通过SubTabBarStyle中的[indicator](#indicator22)属性，实现了图片格式的子页签下划线风格。
 
 ```ts
 import { DrawableDescriptor } from '@kit.ArkUI';

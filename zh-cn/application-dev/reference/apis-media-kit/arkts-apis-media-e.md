@@ -162,6 +162,10 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                               | 值                                   | 说明                                       |
 | ---------------------------------- | ------------------------------------ | ------------------------------------------ |
 | PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。           |
@@ -232,7 +236,7 @@ Codec MIME类型枚举。
 
 表示视频播放的selectTrack模式枚举。
 
-可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API version 24开始HLS协议视频轨支持该扩展参数）。
+可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API版本26.0.0开始HLS协议视频轨支持该扩展参数）。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -246,36 +250,32 @@ Codec MIME类型枚举。
 
 视频播放的倍速枚举，可通过setSpeed方法作为参数传递下去。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
 | 名称                 | 值   | 说明                           |
 | -------------------- | ---- | ------------------------------ |
-| SPEED_FORWARD_0_75_X | 0    | 表示视频播放正常播速的0.75倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_1_00_X | 1    | 表示视频播放正常播速。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| SPEED_FORWARD_1_25_X | 2    | 表示视频播放正常播速的1.25倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_1_75_X | 3    | 表示视频播放正常播速的1.75倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_2_00_X | 4    | 表示视频播放正常播速的2.00倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_0_50_X<sup>12+</sup> | 5    | 表示视频播放正常播速的0.50倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_1_50_X<sup>12+</sup> | 6    | 表示视频播放正常播速的1.50倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_3_00_X<sup>13+</sup> | 7    | 表示视频播放正常播速的3.00倍。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_0_25_X<sup>12+</sup> | 8    | 表示视频播放正常播速的0.25倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEED_FORWARD_0_125_X<sup>12+</sup> | 9    | 表示视频播放正常播速的0.125倍。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SPEED_FORWARD_0_75_X | 0    | 表示视频播放正常播速的0.75倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_1_00_X | 1    | 表示视频播放正常播速。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23         |
+| SPEED_FORWARD_1_25_X | 2    | 表示视频播放正常播速的1.25倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_1_75_X | 3    | 表示视频播放正常播速的1.75倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_2_00_X | 4    | 表示视频播放正常播速的2.00倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_0_50_X<sup>12+</sup> | 5    | 表示视频播放正常播速的0.50倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_1_50_X<sup>12+</sup> | 6    | 表示视频播放正常播速的1.50倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_3_00_X<sup>13+</sup> | 7    | 表示视频播放正常播速的3.00倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 13<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_0_25_X<sup>12+</sup> | 8    | 表示视频播放正常播速的0.25倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| SPEED_FORWARD_0_125_X<sup>12+</sup> | 9    | 表示视频播放正常播速的0.125倍。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## VideoScaleType<sup>9+</sup>
 
 枚举，视频缩放模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
 
 | 名称                        | 值   | 说明                                              |
 | ----------------------------| ---- | ------------------------------------------------ |
-| VIDEO_SCALE_TYPE_FIT        | 0    | 默认比例类型，视频拉伸至与窗口等大。                |
-| VIDEO_SCALE_TYPE_FIT_CROP   | 1    | 保持视频宽高比缩放至最短边填满窗口，长边超出窗口部分被裁剪。     |
-| VIDEO_SCALE_TYPE_SCALED_ASPECT<sup>20+</sup> | 2    | 保持视频宽高比缩放至长边填满窗口，短边居中对齐，未填满部分留黑。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| VIDEO_SCALE_TYPE_FIT        | 0    | 默认比例类型，视频拉伸至与窗口等大。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                |
+| VIDEO_SCALE_TYPE_FIT_CROP   | 1    | 保持视频宽高比缩放至最短边填满窗口，长边超出窗口部分被裁剪。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23     |
+| VIDEO_SCALE_TYPE_SCALED_ASPECT<sup>20+</sup> | 2    | 保持视频宽高比缩放至长边填满窗口，短边居中对齐，未填满部分留黑。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23  |
 
 ## AudioSourceType<sup>9+</sup>
 

@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  捏合手势触发成功后，抬起手指直至不再满足触发条件。再次满足条件时，可重新触发捏合手势。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 捏合手势触发成功后，抬起手指直至不再满足触发条件。再次满足条件时，可重新触发捏合手势。
 
 
 ## 接口
@@ -26,6 +28,12 @@ PinchGesture(value?: { fingers?: number; distance?: number })
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[PinchGesture<sup>15+</sup>](#pinchgesture15)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -43,6 +51,10 @@ PinchGesture(options?: PinchGestureHandlerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -58,7 +70,9 @@ PinchGesture(options?: PinchGestureHandlerOptions)
 
 ### onActionStart
 
-onActionStart(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onActionStart(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>)
 
 Pinch手势识别成功后触发回调。
 
@@ -66,15 +80,21 @@ Pinch手势识别成功后触发回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  | (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 手势事件回调函数。 |
+| event  | ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 手势事件回调函数。 |
 
 ### onActionUpdate
 
-onActionUpdate(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onActionUpdate(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>)
 
 Pinch手势移动过程中回调。
 
@@ -82,15 +102,21 @@ Pinch手势移动过程中回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 手势事件回调函数。 |
+| event  |  ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 手势事件回调函数。 |
 
 ### onActionEnd
 
-onActionEnd(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onActionEnd(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>)
 
 Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指后，触发回调。
 
@@ -98,11 +124,15 @@ Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                      |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 手势事件回调函数。 |
+| event  |  ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 手势事件回调函数。 |
 
 ### onActionCancel
 
@@ -113,6 +143,12 @@ Pinch手势识别成功，接收到触摸取消事件触发的回调，不返回
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel](#onactioncancel18)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -129,6 +165,10 @@ Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCan
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

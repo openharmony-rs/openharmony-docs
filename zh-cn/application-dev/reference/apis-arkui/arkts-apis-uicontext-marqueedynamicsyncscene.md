@@ -22,6 +22,10 @@
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |
 | type      | [MarqueeDynamicSyncSceneType](./arkts-apis-uicontext-e.md#marqueedynamicsyncscenetype14) | 是   | 否   | Marquee的动态帧率场景。             |

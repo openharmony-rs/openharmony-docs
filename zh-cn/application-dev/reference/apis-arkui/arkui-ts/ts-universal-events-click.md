@@ -10,6 +10,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 点击事件遵循[触摸事件](../arkui-ts/ts-universal-events-touch.md)分发流程，触摸事件支持屏蔽、透传等自定义行为。
@@ -20,7 +22,9 @@
 
 ## onClick<sup>12+</sup>
 
-onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
+ArkTS-Dyn: onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
+
+ArkTS-Sta: onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: double | undefined): this
 
 点击动作触发该回调。
 
@@ -44,12 +48,16 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | Callback\<[ClickEvent](#clickevent)> | 是   | 点击事件的回调函数。 |
-| distanceThreshold  | number | 是   | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。 |
+| event  | ArkTS-Dyn: Callback\<[ClickEvent](#clickevent)> <br/>ArkTS-Sta: Callback\<[ClickEvent](#clickevent)> \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
+| distanceThreshold  | ArkTS-Dyn: number <br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。 |
 
 >  **说明：**
 >
@@ -59,11 +67,13 @@ onClick(event: Callback\<ClickEvent>, distanceThreshold: number): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onClick
 
-onClick(event: (event: ClickEvent) => void): T
+ArkTS-Dyn: onClick(event: (event: ClickEvent) => void): T
+
+ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 点击动作触发该回调。
 
@@ -81,17 +91,21 @@ onClick(event: (event: ClickEvent) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | (event: [ClickEvent](#clickevent)) => void | 是   | 点击事件的回调函数。 |
+| event  | ArkTS-Dyn: (event: [ClickEvent](#clickevent)) => void <br/>ArkTS-Sta: ((event: [ClickEvent](#clickevent)) => void) \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## ClickEvent
 
@@ -99,20 +113,21 @@ onClick(event: (event: ClickEvent) => void): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称            | 类型                         | 只读 | 可选        | 说明                                                     |
 | ------------------- | ------------------------- | ------ | -------- | -------------------------------------------------------- |
-| x                   | number                               | 否 | 否 | 点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。onClick的[distanceThreshold](ts-universal-events-click.md#onclick12)设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
-| y                   | number                               | 否 | 否 | 点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
-| windowX<sup>10+</sup> | number                             | 否 | 否 | 点击位置在当前应用窗口坐标系中的X坐标。onClick的distanceThreshold设置后，点击位置为抬手点。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| windowY<sup>10+</sup> | number                             | 否 | 否 | 点击位置在当前应用窗口坐标系中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayX<sup>10+</sup> | number                            | 否 | 否 | 点击位置在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayY<sup>10+</sup> | number                            | 否 | 否 | 点击位置在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| screenX<sup>(deprecated)</sup> | number                    | 否 | 否 | 点击位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br/>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowX替代。 |
-| screenY<sup>(deprecated)</sup> | number                    | 否 | 否 | 点击位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br/>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowY替代。 |
-| preventDefault<sup>12+</sup>      | () => void | 否 | 否 | 阻止默认事件。<br/> **说明：**&nbsp;该接口仅支持部分组件使用，当前支持组件：RichEditor、Hyperlink，不支持的组件使用时会抛出异常。暂不支持异步调用和提供Modifier接口。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否 | 是 | 表示事件是由左手点击还是右手点击触发。<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| globalDisplayX<sup>20+</sup> | number | 否 | 是 | 点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number | 否 | 是 | 点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| x                   | ArkTS-Dyn: number<br/>ArkTS-Sta: double                               | 否 | 否 | 点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。onClick的[distanceThreshold](ts-universal-events-click.md#onclick12)设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23     |
+| y                   | ArkTS-Dyn: number<br/>ArkTS-Sta: double                               | 否 | 否 | 点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23          |
+| windowX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                            | 否 | 否 | 点击位置在当前应用窗口坐标系中的X坐标。onClick的distanceThreshold设置后，点击位置为抬手点。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                            | 否 | 否 | 点击位置在当前应用窗口坐标系中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                           | 否 | 否 | 点击位置在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                           | 否 | 否 | 点击位置在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| screenX<sup>(deprecated)</sup> | number                    | 否 | 否 | 点击位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br/>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowX替代。<br/>**ArkTS模式：** 该字段仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| screenY<sup>(deprecated)</sup> | number                    | 否 | 否 | 点击位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br/>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowY替代。<br/>**ArkTS模式：** 该字段仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| preventDefault<sup>12+</sup>      | () => void | 否 | 否 | 阻止默认事件。<br/> **说明：**&nbsp;该接口仅支持部分组件使用，当前支持组件：RichEditor、Hyperlink，不支持的组件使用时会抛出异常。暂不支持异步调用和提供Modifier接口。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否 | 是 | 表示事件是由左手点击还是右手点击触发。<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 **错误码：**
 
@@ -132,8 +147,8 @@ onClick(event: (event: ClickEvent) => void): T
 
 | 名称   | 类型                    | 只读 | 可选 | 说明         |
 | ---- | ------------------------- |-----|------| ---------- |
-| area | [Area](ts-types.md#area8) | 否 | 否 | 目标元素的区域信息。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| id<sup>15+</sup> | string | 否 | 是 | 开发者设置的节点[id](ts-universal-attributes-component-id.md#id)。默认值：undefined <br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| area | [Area](ts-types.md#area8) | 否 | 否 | 目标元素的区域信息。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| id<sup>15+</sup> | string | 否 | 是 | 开发者设置的节点[id](ts-universal-attributes-component-id.md#id)。默认值：undefined <br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 
