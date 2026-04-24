@@ -749,7 +749,7 @@ ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 >
 > 1. 使用该接口需要先设置Navigation的通用属性[id](ts-universal-attributes-component-id.md#id)，否则该接口无效。
 > 2. 该接口需要配合NavDestination的[recoverable](./ts-basic-components-navdestination.md#recoverable14)接口使用。
-> 3. 恢复的过程中不可序列化的信息，例如不可序列化的参数与用户设置的onPop等，会被丢弃，无法恢复。
+> 3. 恢复的过程中不可序列化的信息，例如不可序列化的参数与用户设置的[onPop](#pushdestinationbyname11-1)等，会被丢弃，无法恢复。
 > 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考[示例18](#示例18设置navigation可恢复)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -2287,7 +2287,7 @@ get navDestinationId(): string | undefined
 |-------|-------|------|------|-------|
 | name | string | 否 | 是 | NavDestination名称，如果为根视图(NavBar)，则返回值为undefined。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | index |  ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 否 | NavDestination在NavPathStack中的序号， 如果为根视图(NavBar)，则返回值为 -1。<br/>取值范围：[-1, +∞)。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23  |
-| mode | [NavDestinationMode](ts-basic-components-navdestination.md#navdestinationmode枚举说明11) | 否 | 是 | NavDestination的模式，如果是根视图(NavBar)，则返回值为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| mode | [NavDestinationMode](ts-basic-components-navdestination.md#navdestinationmode枚举说明11) | 否 | 是 | NavDestination的模式，如果是根视图(NavBar)，则返回值为undefined。<br/>默认值：NavDestinationMode.STANDARD<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | param<sup>12+</sup> | Object | 否 | 是 | NavDestination页面加载的参数。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | navDestinationId<sup>12+</sup> | string | 否 | 是 | NavDestination的唯一标识符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
