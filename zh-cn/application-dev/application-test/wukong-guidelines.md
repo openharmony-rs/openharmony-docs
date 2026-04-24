@@ -148,7 +148,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
     -k, --spec_insomnia        power on/off event
     -T, --time                 total time of test
     -C, --component            component event
-    -p, --screenshot           get screenshot(only in componment input)
+    -p, --screenshot           get screenshot(only in component input)
     -r, --record               record user operation
     -R, --replay               replay user operation
     -u, --uitest               uitest dumpLayout

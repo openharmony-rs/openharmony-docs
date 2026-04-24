@@ -141,7 +141,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     .then((result) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err: BusinessError) => {
   console.error(`Failed to get raw file content. message: ${err.message}`);
@@ -376,10 +376,10 @@ let policy: securityManager.PasswordPolicy = {
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
 };
 try {
-    securityManager.setPasswordPolicy(wantTemp, policy);
-    console.info(`Succeeded in setting password policy.`);
+  securityManager.setPasswordPolicy(wantTemp, policy);
+  console.info(`Succeeded in setting password policy.`);
 } catch(err) {
-    console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -431,10 +431,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
-    console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -497,10 +497,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    securityManager.setScreenLockDisabledForAccount(wantTemp, true);
-    console.info(`Succeeded in setting screen lock disabled for account.`);
+  securityManager.setScreenLockDisabledForAccount(wantTemp, true);
+  console.info(`Succeeded in setting screen lock disabled for account.`);
 } catch(err) {
-    console.error(`Failed to set screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -555,10 +555,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    let result: boolean = securityManager.isScreenLockDisabledForAccount(wantTemp);
-    console.info(`Succeeded in checking screen lock disabled for account, result : ${result}`);
+  let result: boolean = securityManager.isScreenLockDisabledForAccount(wantTemp);
+  console.info(`Succeeded in checking screen lock disabled for account, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to check screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to check screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -609,10 +609,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
-    securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
-    console.info(`Succeeded in setting clipboard policy.`);
+  securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -666,10 +666,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
-    let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
-    console.info(`Succeeded in getting password policy, result : ${result}`);
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -721,10 +721,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
-    console.info(`Succeeded in setting clipboard policy.`);
+  securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -779,10 +779,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
-    console.info(`Succeeded in getting password policy, result : ${result}`);
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -839,10 +839,10 @@ let bundleName: string = 'com.example.myapplication';
 let source: string = '/data/storage/el1/base/test.png';
 let accountId: number = 100;
 try {
-    securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
-    console.info(`Succeeded in setting set watermarkImage policy.`);
+  securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
+  console.info(`Succeeded in setting set watermarkImage policy.`);
 } catch(err) {
-    console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -892,10 +892,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
-    console.info(`Succeeded in setting cancel watermarkImage policy.`);
+  securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in setting cancel watermarkImage policy.`);
 } catch(err) {
-    console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -946,17 +946,17 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
-      // 需根据实际情况进行替换
-      appIdentifier: '736498586',
-      appIndex: 0,
-      accountId: 100
+  // 需根据实际情况进行替换
+  appIdentifier: '736498586',
+  appIndex: 0,
+  accountId: 100
 };
 let permissionsTemp: Array<string> = ['ohos.permission.CAMERA', 'ohos.permission.LOCATION'];
 try {
-    securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
-    console.info('Succeeded in setting permission managed state.');
+  securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
+  console.info('Succeeded in setting permission managed state.');
 } catch(err) {
-    console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1009,17 +1009,17 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
-      // 需根据实际情况进行替换
-      appIdentifier: '736498586',
-      appIndex: 0,
-      accountId: 100
+  // 需根据实际情况进行替换
+  appIdentifier: '736498586',
+  appIndex: 0,
+  accountId: 100
 };
 let permissionTemp: string = 'ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION';
 try {
-    let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
-    console.info(`Succeeded in getting permission managed state, result : ${result}`);
+  let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
+  console.info(`Succeeded in getting permission managed state, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1082,10 +1082,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
-    console.info(`Succeeded in setting managed policy.`);
+  securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+  console.info(`Succeeded in setting managed policy.`);
 } catch(err) {
-    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1138,10 +1138,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
-    console.info(`Succeeded in getting managed policy, result : ${result}`);
+  let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+  console.info(`Succeeded in getting managed policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

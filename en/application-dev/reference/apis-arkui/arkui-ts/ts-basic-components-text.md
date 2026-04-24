@@ -3322,3 +3322,5 @@ struct TextExample {
 ```
 
 ![textOrphanCharOptimization](figures/textOrphanCharOptimization.png)
+
+<!--no_check-->
