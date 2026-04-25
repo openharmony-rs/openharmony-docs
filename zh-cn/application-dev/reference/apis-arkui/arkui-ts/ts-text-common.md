@@ -100,7 +100,7 @@ ArkTS-Dyn: getCharacterPositionAtCoordinate(x: number, y: number): PositionWithA
 
 ArkTS-Sta: getCharacterPositionAtCoordinate(x: double, y: double): PositionWithAffinity | undefined
 
-获取距给定坐标最近的字符的位置信息。
+获取距离指定坐标最近的字符的位置信息。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
