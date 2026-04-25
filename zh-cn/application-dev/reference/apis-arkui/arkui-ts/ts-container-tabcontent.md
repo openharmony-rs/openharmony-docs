@@ -1365,7 +1365,7 @@ struct TabContentExample {
 
 ### 示例2（自定义侧边页签）
 
-本示例通过vertical、barPosition实现侧边页签。
+本示例通过[vertical](./ts-container-tabs.md#vertical)、[barPosition](./ts-container-tabs.md#barposition9)实现侧边页签。
 
 > **说明**
 >
@@ -1438,7 +1438,7 @@ struct TabContentExample {
 
 ### 示例3（子页签/底部页签/侧边页签样式对比）
 
-本示例使用了SubTabBarStyle、BottomTabBarStyle实现了子页签、底部页签和侧边页签。
+本示例使用了[SubTabBarStyle](#subtabbarstyle9)、[BottomTabBarStyle](#bottomtabbarstyle9)实现了子页签、底部页签和侧边页签。
 
 ```ts
 // xxx.ets
