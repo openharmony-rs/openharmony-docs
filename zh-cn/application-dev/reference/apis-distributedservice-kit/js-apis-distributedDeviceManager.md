@@ -68,7 +68,7 @@ createDeviceManager(bundleName: string): DeviceManager
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
   } catch(err) {
     let e: BusinessError = err as BusinessError;
-    console.error('createDeviceManager errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`createDeviceManager errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -108,7 +108,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
     distributedDeviceManager.releaseDeviceManager(dmInstance);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('release device manager errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`release device manager errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -278,7 +278,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
     let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getAvailableDeviceListSync errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getAvailableDeviceListSync errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -320,14 +320,14 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
     dmInstance.getAvailableDeviceList((err: BusinessError | null,
       data: Array<distributedDeviceManager.DeviceBasicInfo> | undefined) => {
         if (err) {
-          console.error('getAvailableDeviceList errCode:' + err.code + ',errMessage:' + err.message);
+          console.error(`getAvailableDeviceList errCode: ${err.code}, errMessage: ${err.message}`);
           return;
         }
         console.info('get available device info: ' + JSON.stringify(data));
       });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getAvailableDeviceList errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getAvailableDeviceList errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -370,11 +370,11 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
       console.info('get available device info: ' + JSON.stringify(data));
       }).catch((err) => {
         let e: BusinessError = err as BusinessError;
-        console.error('getAvailableDeviceList errCode:' + e.code + ',errMessage:' + e.message);
+        console.error(`getAvailableDeviceList errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getAvailableDeviceList errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getAvailableDeviceList errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -417,7 +417,7 @@ getLocalDeviceNetworkId(): string
     console.info('local device networkId: ' + JSON.stringify(deviceNetworkId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getLocalDeviceNetworkId errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getLocalDeviceNetworkId errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -460,7 +460,7 @@ getLocalDeviceName(): string
     console.info('local device name: ' + JSON.stringify(deviceName));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getLocalDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -509,7 +509,7 @@ ArkTS-Dyn示例：
     console.info('local device type: ' + JSON.stringify(deviceType));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getLocalDeviceType errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getLocalDeviceType errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -523,7 +523,7 @@ ArkTS-Sta示例：
     console.info('local device type: ' + JSON.stringify(deviceType));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getLocalDeviceType errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getLocalDeviceType errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -566,7 +566,7 @@ getLocalDeviceId(): string
     console.info('local device id: ' + JSON.stringify(deviceId));
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getLocalDeviceId errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -618,7 +618,7 @@ getDeviceName(networkId: string): string
     console.info('device name: ' + JSON.stringify(deviceName)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -674,7 +674,7 @@ ArkTS-Dyn示例：
     console.info('device type: ' + JSON.stringify(deviceType)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getDeviceType errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getDeviceType errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -690,7 +690,7 @@ ArkTS-Sta示例：
     console.info('device type: ' + JSON.stringify(deviceType)); 
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getDeviceType errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getDeviceType errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -764,7 +764,7 @@ ArkTS-Dyn示例：
     dmInstance.startDiscovering(discoverParam, filterOptions); // 当有设备发现时，通过discoverSuccess回调通知给应用程序
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('startDiscovering errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`startDiscovering errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -783,7 +783,7 @@ ArkTS-Sta示例：
     dmInstance.startDiscovering(discoverParam, filterOptions); // 当有设备发现时，通过discoverSuccess回调通知给应用程序
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('startDiscovering errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`startDiscovering errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -819,7 +819,7 @@ stopDiscovering(): void
     dmInstance.stopDiscovering();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('stopDiscovering errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`stopDiscovering errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -890,14 +890,14 @@ ArkTS-Dyn示例：
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     dmInstance.bindTarget(deviceId, bindParam, (err: BusinessError, data: Data) => {
       if (err) {
-        console.error('bindTarget errCode:' + err.code + ',errMessage:' + err.message);
+        console.error(`bindTarget errCode: ${err.code}, errMessage: ${err.message}`);
         return;
       }
       console.info('bindTarget result:' + JSON.stringify(data));
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('bindTarget errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`bindTarget errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -919,14 +919,14 @@ ArkTS-Sta示例：
     dmInstance.bindTarget(deviceId, bindParam,
       (err: BusinessError | null, data: distributedDeviceManager.BindTargetResult | undefined) => {
         if (err) {
-          console.error('bindTarget errCode:' + err.code + ',errMessage:' + err.message);
+          console.error(`bindTarget errCode: ${err.code}, errMessage: ${err.message}`);
           return;
         }
         console.info('bindTarget result:' + JSON.stringify(data));
       });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('bindTarget errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`bindTarget errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -970,7 +970,7 @@ unbindTarget(deviceId: string): void
     dmInstance.unbindTarget(deviceId);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('unbindTarget errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`unbindTarget errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1027,7 +1027,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceStateChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceStateChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1072,7 +1072,7 @@ onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceStateChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceStateChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1129,7 +1129,7 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceStateChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceStateChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1174,7 +1174,7 @@ offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceStateChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceStateChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1230,7 +1230,7 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverSuccess errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverSuccess errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1275,7 +1275,7 @@ onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverSuccess errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverSuccess errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1331,7 +1331,7 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverSuccess errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverSuccess errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1376,7 +1376,7 @@ offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverSuccess errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverSuccess errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1427,7 +1427,7 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceNameChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceNameChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1472,7 +1472,7 @@ onDeviceNameChange(callback: Callback&lt;DeviceNameChangeResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceNameChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceNameChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1523,7 +1523,7 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceNameChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceNameChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1568,7 +1568,7 @@ offDeviceNameChange(callback?: Callback&lt;DeviceNameChangeResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('deviceNameChange errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`deviceNameChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1619,7 +1619,7 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverFailure errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverFailure errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1664,7 +1664,7 @@ onDiscoverFailure(callback: Callback&lt;DiscoveryFailureResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverFailure errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverFailure errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1715,7 +1715,7 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverFailure errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverFailure errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1760,7 +1760,7 @@ offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('discoverFailure errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`discoverFailure errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1807,7 +1807,7 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('serviceDie errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`serviceDie errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1852,7 +1852,7 @@ onServiceDie(callback: Callback&lt;ServiceDieData&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('serviceDie errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`serviceDie errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1899,7 +1899,7 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('serviceDie errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`serviceDie errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1944,6 +1944,6 @@ offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('serviceDie errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`serviceDie errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
