@@ -60,7 +60,7 @@
 formHost提供一系列的卡片使用方接口，来操作卡片的更新、删除等行为，具体的API介绍详见[@ohos.app.form.formHost (formHost)(系统接口)](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md)。
 
 ## 卡片使用方示例
-<!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { HashMap, HashSet } from '@kit.ArkTS';
