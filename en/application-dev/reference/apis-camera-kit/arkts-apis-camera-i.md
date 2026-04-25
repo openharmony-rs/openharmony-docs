@@ -383,3 +383,4 @@ Describes the exposure information object.
 | Name     | Type                         | Read-only| Optional| Description           |
 | -------- | ----------------------------- |----- |---| --------------|
 | exposureTime      | number                        |  Yes | Yes| Exposure time, in microseconds.     |
+<!--no_check-->

@@ -105,3 +105,4 @@ function setOISModeCustom(photoSession: camera.PhotoSession, pitch: number, yaw:
   }
 }
 ```
+<!--no_check-->

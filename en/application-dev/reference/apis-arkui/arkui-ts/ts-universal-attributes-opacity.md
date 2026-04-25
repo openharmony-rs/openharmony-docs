@@ -90,3 +90,4 @@ struct OpacityExample {
 ```
 
 ![opacity.png](figures/opacity.png)
+<!--no_check-->

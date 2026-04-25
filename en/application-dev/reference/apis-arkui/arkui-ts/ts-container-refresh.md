@@ -997,3 +997,4 @@ struct RefreshExample {
 ```
 
 ![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)
+<!--no_check-->

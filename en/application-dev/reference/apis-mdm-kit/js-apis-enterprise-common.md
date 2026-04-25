@@ -97,3 +97,4 @@ Startup wizard completion scenario. When the initial switch to a sub-user (only 
 | USER_SETUP | 0  | A sub-user is switched to for the first time and the startup wizard for the sub-user is complete (only on PCs). The callback will not be triggered when the sub-user is switched again.|
 | OTA | 1  | The OTA upgrade is complete.|
 | DEVICE_PROVISION | 2  | The initial startup wizard is complete.|
+<!--no_check-->

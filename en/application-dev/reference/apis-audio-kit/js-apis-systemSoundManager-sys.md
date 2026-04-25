@@ -2493,3 +2493,4 @@ Defines the configuration of a system tone player.
 | Type             | Description           |
 |-----------------|---------------|
 | [_SystemToneOptions](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneoptions) | Configuration of a system tone player.|
+<!--no_check-->

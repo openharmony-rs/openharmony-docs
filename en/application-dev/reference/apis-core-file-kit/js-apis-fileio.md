@@ -4038,3 +4038,4 @@ Checks whether this directory entry is a symbolic link.
   let dir = fileio.opendirSync(pathDir);
   let isSymbolicLink = dir.readSync().isSymbolicLink();
   ```
+<!--no_check-->

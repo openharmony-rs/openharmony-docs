@@ -262,3 +262,4 @@ function getCurrentCustomOISBias(photoSession: camera.PhotoSession, oisAxis: cam
   return bias;
 }
 ```
+<!--no_check-->

@@ -1234,3 +1234,4 @@ struct TextPickerExample {
 ```
 
 ![textpicker](figures/TextPickerDemo11.gif)
+<!--no_check-->

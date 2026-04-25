@@ -1598,3 +1598,4 @@ struct Index {
 ```
 
 ![select-menu-keyboard-avoid](figures/selectKeyboardAvoid.gif)
+<!--no_check-->

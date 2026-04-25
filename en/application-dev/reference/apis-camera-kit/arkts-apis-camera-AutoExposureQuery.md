@@ -157,3 +157,4 @@ function isExposureMeteringModeSupported(photoSession: camera.PhotoSession, aeMe
   return isSupported;
 }
 ```
+<!--no_check-->

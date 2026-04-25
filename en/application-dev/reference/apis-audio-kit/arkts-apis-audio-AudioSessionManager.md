@@ -956,3 +956,4 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioSessionManager.setAudioSessionBehavior(behavior);
 ```
+<!--no_check-->

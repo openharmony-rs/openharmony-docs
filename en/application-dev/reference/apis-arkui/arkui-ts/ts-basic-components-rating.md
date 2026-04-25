@@ -656,3 +656,4 @@ struct RatingExample {
 ```
 
 ![rating1](figures/rating1.gif)
+<!--no_check-->

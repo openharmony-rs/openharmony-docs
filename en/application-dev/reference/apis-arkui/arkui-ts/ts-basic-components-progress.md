@@ -725,3 +725,4 @@ struct ProgressExample {
 }
 ```
 ![linearProgressGradient](figures/arkts-linearProgressGradient.png)
+<!--no_check-->

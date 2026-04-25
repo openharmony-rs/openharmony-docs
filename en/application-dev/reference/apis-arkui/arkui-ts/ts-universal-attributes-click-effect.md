@@ -144,3 +144,4 @@ struct ToggleExample {
 ```
 
 ![clickeffect](figures/clickeffect.gif)
+<!--no_check-->

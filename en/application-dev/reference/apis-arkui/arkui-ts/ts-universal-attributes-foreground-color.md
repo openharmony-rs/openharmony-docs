@@ -123,3 +123,4 @@ struct ForegroundColorInherit {
 ```
 
 ![foregroundColor_circle](figures/foregroundColorInherit.png)
+<!--no_check-->

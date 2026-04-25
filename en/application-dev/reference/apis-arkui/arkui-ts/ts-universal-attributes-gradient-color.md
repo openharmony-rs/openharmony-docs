@@ -380,3 +380,4 @@ struct ColorGradientExample {
 ```
 
 ![en-us_image_0000001219864149](figures/gradientColor3.png)
+<!--no_check-->

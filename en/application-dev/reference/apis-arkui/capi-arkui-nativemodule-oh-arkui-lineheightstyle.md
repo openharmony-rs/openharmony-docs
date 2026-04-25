@@ -19,3 +19,4 @@ Defines a line height style.<br>        [OH_ArkUI_LineHeightStyle_Create](capi-s
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
+<!--no_check-->

@@ -146,3 +146,4 @@ struct ArcListItemExample {
 ```
 
 ![arkts-arclistitem](figures/arkts-arclistitem.png)
+<!--no_check-->

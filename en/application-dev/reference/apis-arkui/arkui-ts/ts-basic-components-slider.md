@@ -1783,3 +1783,4 @@ struct SliderExample {
 ```
 
 ![slider_9](figures/slider_9.png)
+<!--no_check-->

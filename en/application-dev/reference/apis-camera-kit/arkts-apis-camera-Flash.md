@@ -161,3 +161,4 @@ function offFlashStateChange(photoSession: camera.PhotoSession): void {
   photoSession.offFlashStateChange();
 }
 ```
+<!--no_check-->
