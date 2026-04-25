@@ -539,7 +539,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
 'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
-'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive'
+'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate'
 
 无障碍事件类型。
 
@@ -568,6 +568,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。|
 | 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
 | 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
+| 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**起始版本：** 26.0.0 |
 
 ## TextMoveUnit
 
