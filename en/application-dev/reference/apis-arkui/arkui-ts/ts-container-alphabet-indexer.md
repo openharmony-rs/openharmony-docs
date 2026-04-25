@@ -129,7 +129,11 @@ Sets the background color of the selected item.
 
 popupBackground(value: ResourceColor)
 
-Sets the background color for the pop-up window.
+Sets the background color for the pop-up window.<br>
+If this API is not called or the **value** parameter is set to **undefined**:<br>
+In API version 11 and earlier versions, the default background color of the pop-up is **0xFFFFFFFF**, which is white.<br>
+In API versions 12 to 24, the default background color is **#66808080**, which is translucent gray.<br>
+Since API version 26.0.0, if neither **popupBackground** nor [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) is called or the **value** parameter is set to **undefined**, the **THIN** style of **[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)** is displayed by default on devices with high- and mid-level computing power, and the white background is displayed by default on devices with low-level computing power. If **popupBackgroundBlurStyle** is called and the **value** parameter is set to a valid value, the background color of the pop-up is **#66808080** by default, which is translucent gray.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -139,7 +143,7 @@ Sets the background color for the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>Default value:<br>API version 11 and earlier: **0xFFFFFFFF**, which is white.<br>Since API version 12: **#66808080**, which is semi-transparent gray.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>|
 
 ### usingPopup
 
@@ -396,7 +400,7 @@ Sets the radius of the index background border corners in the alphabetic index b
 
 popupBackgroundBlurStyle(value: BlurStyle)
 
-Sets the background blur style of the pop-up window. If this API is not called, the component is regularly blurred by default. The corresponding value is **COMPONENT_REGULAR** in **BlurStyle**.
+Sets the background blur style of the pop-up window. In versions earlier than API version 26.0.0, if this API is not called, the **COMPONENT_REGULAR** value in **BlurStyle** is used by default. Since API version 26.0.0, if neither [popupBackground](#popupbackground) nor **popupBackgroundBlurStyle** is called or the value is **undefined**, the **THIN** style of [ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle) is used by default on devices with high- and mid-level computing power, and the white background is used by default on devices with low-level computing power.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -960,3 +964,4 @@ struct AlphabetIndexerSample {
 ```
 
 ![alphabetIndexerBlurStyleSample](figures/alphabetIndexerBlurStyleSample.gif)
+<!--no_check-->
