@@ -1,9 +1,9 @@
 # NavDestination
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 作为子页面的根容器，用于显示[Navigation](ts-basic-components-navigation.md)的内容区。
@@ -702,7 +702,7 @@ ArkTS-Sta: enableNavigationIndicator(enabled: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。<br/>取值为undefined时，按默认值处理。<br/>true：显示导航条。<br/>false：隐藏导航条。 |
+| enabled  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; <br/>ArkTS-Sta: boolean \| undefined | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。<br/>取值为undefined时，按默认值处理。<br/>true：显示导航条。<br/>false：隐藏导航条。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -1118,7 +1118,7 @@ NavDestination上下文信息。
 | pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 否    | 否 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 否    | 否 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | navDestinationId<sup>12+</sup> | string | 否    | 是 | 当前NavDestination的唯一ID，由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否    | 是 | 当前NavDestination的类型。 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
+| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否    | 是 | 当前NavDestination的类型。 <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### getConfigInRouteMap<sup>12+</sup>
 
@@ -1264,7 +1264,9 @@ NavDestination自定义转场动画的代理函数。
 
 ## Orientation<sup>19+</sup>
 
-type Orientation = Orientation
+ArkTS-Dyn: type Orientation = Orientation
+
+ArkTS-Sta: type Orientation = window.Orientation
 
 Orientation实例对象。
 
@@ -1272,9 +1274,13 @@ Orientation实例对象。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明       |
 | ------ | ---------- |
-| [Orientation](../arkts-apis-window-e.md#orientation9) | 返回Orientation实例对象。 |
+| ArkTS-Dyn: [Orientation](../arkts-apis-window-e.md#orientation9)<br/>ArkTS-Sta: window.Orientation | 返回Orientation实例对象。 |
 
 ## 示例
 

@@ -1,9 +1,9 @@
 # @ohos.arkui.theme(主题换肤)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 支持自定义主题风格，实现App组件风格跟随Theme切换。
@@ -166,9 +166,9 @@ ThemeControl将自定义Theme应用于App组件内，实现App组件风格跟随
 
 ### setDefaultTheme
 
-ArkTS-Dyn: setDefaultTheme(theme: [CustomTheme](#customtheme)): void
+ArkTS-Dyn: setDefaultTheme(theme: CustomTheme): void
 
-ArkTS-Sta: setDefaultTheme(theme: [CustomTheme](#customtheme) | undefined): void
+ArkTS-Sta: setDefaultTheme(theme: CustomTheme | undefined): void
 
 将用户自定义Theme设置应用级默认主题，以实现应用风格跟随Theme切换。
 
@@ -188,7 +188,7 @@ ArkTS-Sta：需确保在页面build前执行。因运行于静态类型上下文
 
 | 参数名       | 类型                           | 必填 | 说明             |
 |--------------|------------------------------|------|----------------|
-| theme | [CustomTheme](#customtheme)  | 是    | 表示设置的自定义主题风格。 |
+| theme | ArkTS-Dyn: [CustomTheme](#customtheme)<br/>ArkTS-Sta: [CustomTheme](#customtheme) \| undefined  | 是    | 表示设置的自定义主题风格。 |
 
 ArkTS-Dyn示例：
 

@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 通过页签进行内容视图切换的容器组件，每个页签对应一个内容视图。
@@ -782,7 +782,7 @@ TabBar布局模式枚举。
 
 ## AnimationMode<sup>12+</sup>枚举说明
 
-点击TabBar页签时切换TabContent的动画形式枚举。
+点击[TabBar](./ts-container-tabcontent.md#tabbar)页签时切换TabContent的动画形式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1500,7 +1500,7 @@ ArkTS-Sta: preloadItems(indices: Array\<int> | undefined): Promise\<void>
 
 | 错误码ID   | 错误信息                                      |
 | --------   | -------------------------------------------- |
-| 401 | Parameter invalid. Possible causes: 1. The parameter type is not Array\<number>; 2. The parameter is an empty array; 3. The parameter contains an invalid index. |
+| 401 | ArkTS-Dyn: Parameter invalid. Possible causes: 1. The parameter type is not Array\<number>; 2. The parameter is an empty array; 3. The parameter contains an invalid index.<br/>ArkTS-Sta: Parameter invalid. Possible causes: 1. The parameter type is not Array\<int>; 2. The parameter is an empty array; 3. The parameter contains an invalid index. |
 
 ### setTabBarTranslate<sup>13+</sup>
 
@@ -2296,7 +2296,7 @@ struct TabsCustomAnimationExample {
 
 ### 示例9（页面切换拦截）
 
-本示例通过onContentWillChange实现了自定义页面手势滑动切换拦截。
+本示例通过[onContentWillChange](#oncontentwillchange12)实现了自定义页面手势滑动切换拦截。
 
 ```ts
 // xxx.ets
@@ -2388,7 +2388,7 @@ struct TabsExample {
 
 ### 示例10（自定义TabBar切换动画）
 
-本示例通过onChange、onAnimationStart、onAnimationEnd、onGestureSwipe等接口实现了自定义TabBar的切换动画。
+本示例通过[onChange](#onchange)、[onAnimationStart](#onanimationstart11)、[onAnimationEnd](#onanimationend11)、[onGestureSwipe](#ongestureswipe11)等接口实现了自定义TabBar的切换动画。
 
 <!--code_no_check-->
 

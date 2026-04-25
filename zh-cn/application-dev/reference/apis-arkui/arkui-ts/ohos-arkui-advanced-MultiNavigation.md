@@ -1,9 +1,9 @@
 # MultiNavigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
@@ -91,7 +91,7 @@ pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void
 | ------| ---------------------------------------------------------- | -- | ----------------------------------------- |
 |   info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  是  | NavDestination页面的信息。                |
 | animated |                           boolean                            |  否  | 是否支持转场动画。<br/>默认值：true<br/>true：支持转场动画。<br/>false：不支持转场动画。          |
-|  policy  |               [SplitPolicy](#splitpolicy枚举说明)                |  否  | 当前入栈页面的策略。默认值：DETAIL_PAGE |
+|  policy  |               [SplitPolicy](#splitpolicy枚举说明)                | 否  | 当前入栈页面的策略。默认值：DETAIL_PAGE |
 
 ### pushPath
 
