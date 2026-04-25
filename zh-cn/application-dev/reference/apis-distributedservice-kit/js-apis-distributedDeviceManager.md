@@ -25,6 +25,7 @@
 
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## distributedDeviceManager.createDeviceManager
@@ -62,8 +63,6 @@ createDeviceManager(bundleName: string): DeviceManager
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -103,8 +102,6 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -275,8 +272,6 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -319,8 +314,6 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -370,8 +363,6 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try{
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -419,8 +410,6 @@ getLocalDeviceNetworkId(): string
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -464,8 +453,6 @@ getLocalDeviceName(): string
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -513,9 +500,8 @@ ArkTS-Dyn类型说明：
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -528,9 +514,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -574,8 +559,6 @@ getLocalDeviceId(): string
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -626,8 +609,6 @@ getDeviceName(networkId: string): string
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     // 设备网络标识，可以从可信设备列表中获取
@@ -682,9 +663,8 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     // 设备网络标识，可以从可信设备列表中获取
@@ -699,9 +679,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     // 设备网络标识，可以从可信设备列表中获取
@@ -759,9 +738,8 @@ ArkTS-Sta参数：
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   interface DiscoverParam {
     discoverTargetType: number;
@@ -791,9 +769,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let discoverParam: Record<string, int | string> = {
@@ -836,8 +813,6 @@ stopDiscovering(): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -894,9 +869,8 @@ ArkTS-Sta参数：
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     deviceId: string = '';
@@ -928,9 +902,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     // 认证的设备信息，可以从发现的结果中获取
@@ -990,8 +963,6 @@ unbindTarget(deviceId: string): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let deviceId = 'XXXXXXXX';
@@ -1038,8 +1009,6 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     action: distributedDeviceManager.DeviceStateChange = 0;
@@ -1095,8 +1064,6 @@ onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1144,8 +1111,6 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     action: distributedDeviceManager.DeviceStateChange = 0;
@@ -1201,8 +1166,6 @@ offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1250,8 +1213,6 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     device: distributedDeviceManager.DeviceBasicInfo = {
@@ -1306,8 +1267,6 @@ onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1355,8 +1314,6 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     device: distributedDeviceManager.DeviceBasicInfo = {
@@ -1411,8 +1368,6 @@ offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1460,8 +1415,6 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     deviceName: string = '';
@@ -1511,8 +1464,6 @@ onDeviceNameChange(callback: Callback&lt;DeviceNameChangeResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1560,8 +1511,6 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     deviceName: string = '';
@@ -1611,8 +1560,6 @@ offDeviceNameChange(callback?: Callback&lt;DeviceNameChangeResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1660,8 +1607,6 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     reason: number = 0;
@@ -1711,8 +1656,6 @@ onDiscoverFailure(callback: Callback&lt;DiscoveryFailureResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1760,8 +1703,6 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     reason: number = 0;
@@ -1811,8 +1752,6 @@ offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1860,8 +1799,6 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1907,8 +1844,6 @@ onServiceDie(callback: Callback&lt;ServiceDieData&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1956,8 +1891,6 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -2003,8 +1936,6 @@ offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
