@@ -102,7 +102,7 @@
     ``` TypeScript
     // 获取沙箱文件uri
     let sandboxFileUri: string = fileUri.getUriFromPath(sandboxFilePath)
-    let soundFile: string = 'uri::' + sandboxFileUri; // 必须以uri::开头, 且路径中不能包含'../'和'/..'
+    let soundFile: string = 'uri::' + sandboxFileUri; // 必须以uri::开头，且路径中不能包含'../'和'/..'
     ```
 3. 发布携带自定义铃声的通知。
 
