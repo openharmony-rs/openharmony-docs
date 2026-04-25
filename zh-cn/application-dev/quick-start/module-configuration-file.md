@@ -100,6 +100,16 @@
     ],
     "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义的配置文件menu.json
     "crossAppSharedConfig": "$profile:shared_config",
+    "skillProfiles": [
+      {
+        "name": "my-skill",
+        "abilityName": "EntryAbility",
+        "srcEntries": [
+          "../../my-skill/scripts/Test.ets"
+        ],
+        "permissions": []
+      }
+    ],
     // ...
   }
 }
