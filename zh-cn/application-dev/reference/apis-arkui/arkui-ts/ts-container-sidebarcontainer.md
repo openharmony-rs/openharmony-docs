@@ -469,6 +469,43 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined| 是   | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>单位：vp<br/>取值为undefined时，按默认值处理。 |
 
+### showSideBarWithGesture
+
+ArkTS-Dyn: showSideBarWithGesture(value: boolean)
+
+ArkTS-Sta: showSideBarWithGesture(value: boolean | undefined)
+
+设置是否支持通过手势滑动来显示或隐藏侧边栏。未通过该接口设置时，不支持通过手势滑动显示或隐藏侧边栏。
+
+> **说明：** 
+>
+> - 手势滑动生效范围为侧边栏+内容区（不含分割线），滑动距离达到100vp时改变侧边栏显示或隐藏状态，最大可滑动距离等于侧边栏宽度。
+>
+> - 当侧边栏位于容器左侧时：
+>   - 侧边栏隐藏时可向右滑动展开侧边栏。
+>   - 侧边栏显示时可向左滑动关闭侧边栏。
+>
+> - 当侧边栏位于容器右侧时：
+>   - 侧边栏隐藏时可向左滑动展开侧边栏。
+>   - 侧边栏显示时可向右滑动关闭侧边栏。
+>
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                 | 必填 | 说明                                                         |
+| ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | ArkTS-Dyn:boolean<br/>ArkTS-Sta:boolean \| undefined | 是   | 设置是否支持通过手势滑动显示或隐藏侧边栏。<br/>true：支持通过手势滑动显示或隐藏侧边栏。<br/>false或undefined：不支持通过手势滑动显示或隐藏侧边栏。 |
+
 ## ButtonStyle对象说明
 
 设置侧边栏控制按钮的样式。
