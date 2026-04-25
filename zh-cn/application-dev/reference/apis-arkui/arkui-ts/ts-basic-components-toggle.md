@@ -171,7 +171,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration\> | un
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier\<ToggleConfiguration\>](#toggleconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier\<ToggleConfiguration\>](#toggleconfiguration12对象说明) \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration\>](#toggleconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration\>](#toggleconfiguration12对象说明) \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## SwitchStyle<sup>12+</sup>对象说明
 

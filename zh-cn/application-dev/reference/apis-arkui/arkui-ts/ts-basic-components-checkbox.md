@@ -108,7 +108,7 @@ select(isSelected: boolean | undefined | Bindable\<boolean\>)
 
 | 参数名     | 类型                                | 必填 | 说明                                                         |
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| isSelected | boolean \| undefined \| Bindable\<boolean\> | 是   | 多选框是否选中。<br/>true：多选框被选中；false：多选框未选中。<br/>默认值：false |
+| isSelected | boolean \| undefined \| Bindable\<boolean\> | 是   | 多选框是否选中。取值为undefined时，按默认值处理。<br/>true：多选框被选中；false：多选框未选中。<br/>默认值：false |
 
 ### select<sup>18+</sup>
 
@@ -330,7 +330,7 @@ mark(value: MarkStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-|  value  | [MarkStyle](ts-types.md#markstyle10对象说明) \| undefined| 是   | 多选框内部图标样式。 从API version 12开始，设置了indicatorBuilder时，按照indicatorBuilder中的内容显示。<br/>默认值：{<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
+|  value  | [MarkStyle](ts-types.md#markstyle10对象说明) \| undefined| 是   | 多选框内部图标样式。 从API version 12开始，设置了indicatorBuilder时，按照indicatorBuilder中的内容显示。取值为undefined时，按默认值处理。<br/>默认值：{<br/>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br/>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br/>size: '20vp'<br/>} |
 
 ### shape<sup>11+</sup>
 
@@ -462,7 +462,7 @@ contentModifier(modifier: ContentModifier\<CheckBoxConfiguration\> | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [ContentModifier\<CheckBoxConfiguration\>](#checkboxconfiguration12对象说明) \| undefined | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration\>](#checkboxconfiguration12对象说明) \| undefined | 是   | 在CheckBox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### attributeModifier<sup>23+</sup>
 
