@@ -475,17 +475,23 @@ media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) =
 
 ## media.createAVScreenCaptureRecorder<sup>12+</sup>
 
-createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
+ArkTS-Dyn: createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder>
+
+ArkTS-Sta: createAVScreenCaptureRecorder(): Promise\<AVScreenCaptureRecorder | undefined>
 
 创建屏幕录制实例，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)> | Promise对象，返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
+| ArkTS-Dyn: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md)><br>ArkTS-Sta: Promise\<[AVScreenCaptureRecorder](arkts-apis-media-AVScreenCaptureRecorder.md) \| undefined> | Promise对象，返回AVScreenCaptureRecorder实例，失败时返回null。可用于进行屏幕录制。 |
 
 **错误码：**
 

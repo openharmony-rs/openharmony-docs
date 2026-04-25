@@ -431,6 +431,10 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                              | 值   | 说明                                         |
 | --------------------------------- | ---- | -------------------------------------------- |
 | SCREEN_RECORD_PRESET_H264_AAC_MP4 | 0    | 使用视频H264编码，音频AAC编码，MP4封装格式。 |
@@ -444,27 +448,31 @@ Codec MIME类型枚举。
 
 | 名称                                     | 值   | 说明                     |
 | ---------------------------------------- | ---- | ------------------------ |
-| SCREENCAPTURE_STATE_STARTED              | 0    | 录屏已开始。             |
-| SCREENCAPTURE_STATE_CANCELED             | 1    | 录屏被取消。             |
-| SCREENCAPTURE_STATE_STOPPED_BY_USER      | 2    | 录屏被用户手动停止。     |
-| SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER | 3    | 录屏被其他录屏打断。     |
-| SCREENCAPTURE_STATE_STOPPED_BY_CALL      | 4    | 录屏被来电打断。         |
-| SCREENCAPTURE_STATE_MIC_UNAVAILABLE      | 5    | 录屏无法使用麦克风收音。 |
-| SCREENCAPTURE_STATE_MIC_MUTED_BY_USER    | 6    | 麦克风被用户关闭。       |
-| SCREENCAPTURE_STATE_MIC_UNMUTED_BY_USER  | 7    | 麦克风被用户打开。       |
-| SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。       |
-| SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。       |
-| SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。       |
-| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | 录屏已被用户暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | 录屏已被用户恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | 录屏已被应用程序暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | 录屏已被应用程序恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_STARTED              | 0    | 录屏已开始。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23             |
+| SCREENCAPTURE_STATE_CANCELED             | 1    | 录屏被取消。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23             |
+| SCREENCAPTURE_STATE_STOPPED_BY_USER      | 2    | 录屏被用户手动停止。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23     |
+| SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER | 3    | 录屏被其他录屏打断。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23     |
+| SCREENCAPTURE_STATE_STOPPED_BY_CALL      | 4    | 录屏被来电打断。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23         |
+| SCREENCAPTURE_STATE_MIC_UNAVAILABLE      | 5    | 录屏无法使用麦克风收音。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| SCREENCAPTURE_STATE_MIC_MUTED_BY_USER    | 6    | 麦克风被用户关闭。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| SCREENCAPTURE_STATE_MIC_UNMUTED_BY_USER  | 7    | 麦克风被用户打开。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | 录屏已被用户暂停。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | 录屏已被用户恢复。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | 录屏已被应用程序暂停。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | 录屏已被应用程序恢复。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
 进行屏幕录制时视频填充模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                              | 值   | 说明                                         |
 | --------------------------------- | ---- | -------------------------------------------- |
@@ -476,6 +484,10 @@ Codec MIME类型枚举。
 表示屏幕录制Picker模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                              | 值   | 说明                                         |
 | --------------------------------- | ---- | -------------------------------------------- |
