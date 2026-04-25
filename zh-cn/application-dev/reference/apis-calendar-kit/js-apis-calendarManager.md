@@ -1897,19 +1897,7 @@ const event: calendarManager.Event = {
     title: 'MyEvent',
     type: calendarManager.EventType.NORMAL,
     startTime: date.getTime(),
-    endTime: date.getTime() + 60 * 60 * 1000,
-    location: {
-      location: 'location_2',
-      longitude: 88.88,
-      latitude: 66.66
-    },
-    recurrenceRule: {
-      recurrenceFrequency: calendarManager.RecurrenceFrequency.YEARLY,
-      count: 10000,
-      interval: 2
-    },
-    isAllDay: false,
-    description: 'MyEvent'
+    endTime: date.getTime() + 60 * 60 * 1000
   };
 calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calendar) => {
     if (err) {
@@ -1925,18 +1913,21 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
       }).catch((err: BusinessError) => {
         // 检查权限是否已成功申请或者参数是否正确。
         console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
+        return;
       });
       // 根据id进行查询
       const filterId = calendarManager.EventFilter.filterById([eventId]);
       calendar?.getEvents(filterId).then((data: calendarManager.Event[]) => {
         console.info(`Succeeded in getting event: ${JSON.stringify(data)}`);
       }).catch((err: BusinessError) => {
-        // 检查参数是否正确。
+        // 检查参数是否正确、传入的id是否存在、权限是否有限制
         console.error(`Failed to get event, Code is ${err.code}, message is ${err.message}`);
+        return;
       });
       calendar?.openEventEditPage(eventId).then(() => {
         console.info(`Succeeded in opening EventEditPage`);
       }).catch((err: BusinessError) => {
+        // 检查传入的id是否存在、权限是否有限制、日程是否支持编辑
         console.error(`Failed to open eventeditpage, Code is ${err.code}, message is ${err.message}`);
       });
     }
