@@ -3183,4 +3183,4 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
   } catch (error) {
     console.error("findMatchingWlan: errCode" + error.code + ", errMessage" + error.message);
   }
-  ```
+      console.info("WLAN BSSID Matched Result:" + JSON.stringify(res));
