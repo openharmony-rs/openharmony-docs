@@ -344,7 +344,7 @@
 
 典型场景及对应方案如下：
 
-应用在页面顶部绘制与窗口三键并排的自定义工具栏，或者是页签栏，可以按以下步骤进行适配。
+应用在页面顶部绘制与窗口三键并排的自定义工具栏或者是页签栏，可以按以下步骤进行适配。
 
 1. 通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏标题栏。
 
