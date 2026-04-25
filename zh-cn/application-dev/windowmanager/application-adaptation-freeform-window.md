@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-自由窗口状态下默认支持窗口大小缩放，且主窗默认存在标题栏，与非自由窗口存在差异，为避免应用在自由窗口状态下出现界面截断、遮挡、或控件叠加等问题，需要应用进行适配。
+[自由窗口](#自由窗口)状态下默认支持窗口大小缩放，且主窗默认存在标题栏，与非自由窗口存在差异，为避免应用在自由窗口状态下出现界面截断、遮挡、或控件叠加等问题，需要应用进行适配。
 
 本章将列举应用可能出现的布局问题，并提供相应的解决方案。
 
@@ -86,7 +86,16 @@
   maxWindowHeight：窗口最大的高度，单位为vp。
 
   ```ts
-  // 主Ability页面（Index.ets）
+  // ets/entryability/EntryAbility.ets
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  export default class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', (err) => {});
+    }
+  }
+
+  // ets/pages/Index.ets
   import { common, StartOptions } from '@kit.AbilityKit';
   @Entry
   @Component
@@ -111,8 +120,23 @@
                 maxWindowWidth: 1500,
                 maxWindowHeight: 1000,
               };
-              // 启动目标Ability
-              this.context.startAbility(want, options)
+              try {
+                // 启动目标Ability
+                this.context.startAbility(want, options, (err: BusinessError) => {
+                  if (err.code) {
+                    // 处理业务逻辑错误
+                    console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+                    return;
+                  }
+                  // 执行正常业务
+                  console.info('startAbility succeed');
+                });
+              } catch (err) {
+                // 处理入参错误异常
+                let code = (err as BusinessError).code;
+                let message = (err as BusinessError).message;
+                console.error(`startAbility failed, code is ${code}, message is ${message}`);
+              }
             })
         }
       }
@@ -120,10 +144,11 @@
       .height('100%')
     }
   }
-  
-  // test ablity WindowTestAbility.ets
+
+  // ets/windowtestability/WindowTestAbility.ets
   import { window } from '@kit.ArkUI';
   import { UIAbility } from '@kit.AbilityKit';
+
   export default class WindowTestAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage): void {
       // Main window is created, set main page for this ability
@@ -134,6 +159,67 @@
         }
         console.log('Succeeded in loading the content.');
       });
+    }
+  }
+
+  // ets/module.json5
+  {
+    "module": {
+      "name": "entry",
+      "type": "entry",
+      "description": "$string:module_desc",
+      "mainElement": "EntryAbility",
+      "deviceTypes": [
+        "phone",
+        "tablet",
+        "2in1"
+      ],
+      "deliveryWithInstall": true,
+      "installationFree": false,
+      "pages": "$profile:main_pages",
+      "abilities": [
+        {
+          "name": "EntryAbility",
+          "srcEntry": "./ets/entryability/EntryAbility.ets",
+          "description": "$string:EntryAbility_desc",
+          "icon": "$media:layered_image",
+          "label": "$string:EntryAbility_label",
+          "startWindowIcon": "$media:startIcon",
+          "startWindowBackground": "$color:start_window_background",
+          "exported": true,
+          "skills": [
+            {
+              "entities": [
+                "entity.system.home"
+              ],
+              "actions": [
+                "ohos.want.action.home"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "WindowTestAbility",
+          "srcEntry": "./ets/windowtestability/WindowTestAbility.ets",
+          "icon": "$media:layered_image",
+          "startWindowIcon": "$media:startIcon",
+          "startWindowBackground": "$color:start_window_background"
+        }
+      ],
+      "extensionAbilities": [
+        {
+          "name": "EntryBackupAbility",
+          "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
+          "type": "backup",
+          "exported": false,
+          "metadata": [
+            {
+              "name": "ohos.extension.backup",
+              "resource": "$profile:backup_config"
+            }
+          ],
+        }
+      ]
     }
   }
   ```
@@ -375,15 +461,15 @@
 
 ## 自由窗口状态下窗口进入全屏显示
 
-在2in1设备或Tablet设备的电脑模式下，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏状态栏、标题栏、dock栏。如果应用需要进入沉浸式全屏显示，隐藏状态栏、标题栏、dock栏，则需要进行适配。
+在2in1设备或Tablet设备的电脑模式下，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、dock栏，则需要进行适配。
 
 典型场景及对应方案如下：
 
-- 对于视频类应用，在自由窗口状态下，部分页面可能需要隐藏状态栏、dock栏、标题栏，实现全屏播放视频的效果。  
+- 对于视频类应用，在自由窗口状态下，部分页面可能需要隐藏dock栏、标题栏，实现全屏播放视频的效果。  
   可以在应用界面增加视频全屏按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口进入全屏显示。
 
-- 播放PPT时，页面需要隐藏并禁止hover状态栏、dock栏、标题栏，以免影响PPT演示效果。  
-  可以在应用界面增加PPT播放按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)进入全屏显示，并禁止hover状态栏、dock栏、标题栏。
+- 播放PPT时，页面需要隐藏并禁止hoverdock栏、标题栏，以免影响PPT演示效果。  
+  可以在应用界面增加PPT播放按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)进入全屏显示，并禁止hoverdock栏、标题栏。
 
 > **说明：**
 > 
