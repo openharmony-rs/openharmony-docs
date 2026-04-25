@@ -1231,3 +1231,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.0
+
+## ohos.permission.PRINTER_DRIVER
+
+允许应用管理打印系统。
+
+<!--RP89--><!--RP89End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
