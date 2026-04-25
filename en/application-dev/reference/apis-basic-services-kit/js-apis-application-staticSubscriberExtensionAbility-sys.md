@@ -26,7 +26,7 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 | Name   | Type                                                        | Read Only| Optional| Description    |
 | ------- | ------------------------------------------------------------ | ---- | ---- | -------- |

@@ -134,30 +134,30 @@ Adds a firewall rule for the system user ID. The supported rule types are IP, Do
 
 > **Description**
 > 
-> 1. The priority of firewall rules is described as follows (there is no requirement on the calling sequence of [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) and [addNetFirewallRule](#netfirewalladdnetfirewallrule)):
->   - Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **DENY** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
->     - Explicit denying rule
->     - Explicit allowing rule
->     - Default denying policy
->   - Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **ALLOW** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
->     - Explicit allowing rule
->     - Explicit denying rule
->     - Default allowing policy
->   - When the IP address rule and domain name rule of the firewall conflict (the IP of the domain name resolution is the same as that in the IP address rule, and the rule behavior conflicts):
->     - If the access is performed using a domain name, the domain name rule has a higher priority than the IP address rule and is not affected by the rule of the IP parsed from the domain name.
->     - If the access is performed using an IP address, the following rules are followed:
->       - If the domain name rule allows the access and the domain name resolution has been performed, the IP address denying rule or the default denying policy will not take effect, and the access using the IP address will be allowed.
->       - If the domain name rule allows the access and the domain name resolution has not been performed, the IP address denying rule or the default denying policy will take effect, and the access using the IP address will be denied.
->       - If the domain name rule denies the access, the IP address allowing rule or the default policy will take effect, and the access using the IP address will be allowed.
+> 1. The priority of firewall rules is described as follows (there is no requirement on the call sequence of [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) and [addNetFirewallRule](#netfirewalladdnetfirewallrule)):
+>    - Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **DENY** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
+>      - Explicit denying rule
+>      - Explicit allowing rule
+>      - Default denying policy
+>    - Call [setNetFirePolicy](#netfirewallsetnetfirewallpolicy) to set the default policy to **ALLOW** and call [addNetFirewallRule](#netfirewalladdnetfirewallrule) to add an explicit rule. The priorities of the rules are as follows:
+>      - Explicit allowing rule
+>      - Explicit denying rule
+>      - Default allowing policy
+>    - When the IP address rule and domain name rule of the firewall conflict (the IP of the domain name resolution is the same as that in the IP address rule, and the rule behavior conflicts):
+>      - If the access is performed using a domain name, the domain name rule has a higher priority than the IP address rule and is not affected by the rule of the IP parsed from the domain name.
+>      - If the access is performed using an IP address, the following rules are followed:
+>        - If the domain name rule allows the access and the domain name resolution has been performed, the IP address denying rule or the default denying policy will not take effect, and the access using the IP address will be allowed.
+>        - If the domain name rule allows the access and the domain name resolution has not been performed, the IP address denying rule or the default denying policy will take effect, and the access using the IP address will be denied.
+>        - If the domain name rule denies the access, the IP address allowing rule or the default policy will take effect, and the access using the IP address will be allowed.
 > 2. Supplementary description of rule types:
->   - When the input parameter **rule.type** of **addNetFirewallRule** is set to **RULE_IP**:
->     - If **rule.action** is set to **RULE_ALLOW** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is allowed.
->     - If **rule.action** is set to **RULE_DENY** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is denied.
->   - If **rule.type** of **addNetFirewallRule** is set to **RULE_DOMAIN** and **rule.domains** is not configured, the rule does not take effect.
+>    - When the input parameter **rule.type** of **addNetFirewallRule** is set to **RULE_IP**:
+>      - If **rule.action** is set to **RULE_ALLOW** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is allowed.
+>      - If **rule.action** is set to **RULE_DENY** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is denied.
+>    - If **rule.type** of **addNetFirewallRule** is set to **RULE_DOMAIN** and **rule.domains** is not configured, the rule does not take effect.
 > 3. Description of the upper limit for adding firewall rules:
->   - A maximum of 1000 firewall rules can be added for a single system user ID. If this limit is exceeded, error code **29400001** is reported.
->   - A maximum of 2000 firewall rules can be added for all system user IDs. If this limit is exceeded, error code **29400001** is reported.
->   - A maximum of 100 fuzzy domain name rules can be added for all system user IDs. If this limit is exceeded, error code **29400005** is reported.
+>    - A maximum of 1000 firewall rules can be added for a single system user ID. If this limit is exceeded, error code **29400001** is reported.
+>    - A maximum of 2000 firewall rules can be added for all system user IDs. If this limit is exceeded, error code **29400001** is reported.
+>    - A maximum of 100 fuzzy domain name rules can be added for all system user IDs. If this limit is exceeded, error code **29400005** is reported.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -541,19 +541,19 @@ Defines a firewall rule.
 | userId      | number                                                      | No|No|System user ID, which must exist.                  |
 | name        | string                                                      | No|No|Rule name. This parameter is mandatory and can contain a maximum of 128 characters.                               |
 | direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | No|No|Rule direction, which can be inbound or outbound.                                        |
-| action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action, which can be allow or deny.                                                        |
+| action      | [FirewallRuleAction](#firewallruleaction)                   | No|No|Action, which can be allowing or denying.                                                        |
 | type        | [NetFirewallRuleType](#netfirewallruletype)                 | No|No|Rule type, which can be IP, Domain, or DNS.                                                   |
 | isEnabled   | boolean                                                     | No|No|Whether to enable the rule. The value **true** means to enable the rule, and the value **false** means the opposite.                                                    |
 | id          | number                                                      | No|Yes| ID of the firewall rule.                                                      |
 | description | string                                                      | No|Yes|Firewall rule description. This parameter is optional and can contain a maximum of 256 characters.                               |
 | appUid      | number                                                      | No|Yes|Application or service UID.                                           |
-| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Local IP addresses. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.        |
-| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Remote IP addresses. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.|
-| protocol    | number                                                      | No| Yes|Protocol, which can be TCP (value **6**) or UDP (value **17**). This parameter is valid only when **ruleType** is set to **RULE_IP**. |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|Local ports. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.  |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|Remote ports. This parameter is valid only when **ruleType** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 ports can be specified.  |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **ruleType** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **ruleType** is set to **RULE_DNS**. This parameter cannot be empty when ruleType is set to RULE_DNS.                |
+| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Local IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.        |
+| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | No|Yes|Remote IP addresses. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.|
+| protocol    | number                                                      | No| Yes|Protocol, which can be TCP (value **6**) or UDP (value **17**). This parameter is valid only when **type** is set to **RULE_IP**. |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|Local ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.  |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|Remote ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 ports can be specified.  |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **type** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **type** is set to **RULE_DNS**. This parameter cannot be empty when **type** is set to **RULE_DNS**.                |
 
 ## RequestParam
 
@@ -684,7 +684,7 @@ Defines the port parameters of a firewall rule.
 
 ## NetFirewallDomainParams
 
-Defines the domain name parameters of a firewall rule. Currently, Chinese domain names are not supported.
+Defines domain name parameters of a firewall rule. Currently, Chinese domain names are not supported.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
