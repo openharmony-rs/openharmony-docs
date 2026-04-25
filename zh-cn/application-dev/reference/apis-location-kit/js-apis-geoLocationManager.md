@@ -3135,7 +3135,7 @@ getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
 
 findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean):Promise&lt;Array&lt;MatchingWlanInfo&gt;&gt;
 
-使用WLAN扫描结果与输入的WLAN bssid列表进行匹配，匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。使用Promise异步回调。
+使用WLAN扫描结果与输入的WLAN BSSID列表进行匹配，匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。使用Promise异步回调。
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
