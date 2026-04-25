@@ -59,7 +59,7 @@ Text(this.message).id('test_text')
         this.customDialogComponent();
       },
       // ···
-      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框	
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
       levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
     })
       .then((dialogId: number) => {
@@ -202,7 +202,7 @@ struct Next {
 
 ``` TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
- 	 
+
 let customDialogId: number = 0;
 
 @Builder
