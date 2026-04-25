@@ -134,7 +134,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                               |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件粗细。<br/>默认值：FontWeight.Normal |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 
@@ -162,7 +162,7 @@ ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolSpan渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE |
+| value  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolSpan渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE<br/>取值为undefined时，按默认值处理。 |
 
 不同渲染策略效果可参考以下示意图。
 
@@ -194,7 +194,7 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                       |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | ArkTS-Dyn: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolSpan动效策略。<br/>默认值：SymbolEffectStrategy.NONE |
+| value  | ArkTS-Dyn: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolSpan动效策略。<br/>默认值：SymbolEffectStrategy.NONE<br/>取值为undefined时，按默认值处理。 |
 
 ### attributeModifier<sup>12+</sup>
 
@@ -216,7 +216,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute> |
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute> \| undefined | 是   | 动态设置组件的属性。 |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute> \| undefined | 是   | 动态设置组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### key<sup>23+</sup>
 
@@ -236,7 +236,7 @@ key(value: string | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：'' |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
 
 ### id<sup>23+</sup>
 
@@ -254,7 +254,7 @@ id(value: string | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：'' |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
 
 ## 事件
 
