@@ -452,7 +452,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -605,7 +605,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -762,7 +762,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -921,7 +921,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1078,7 +1078,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1232,7 +1232,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
