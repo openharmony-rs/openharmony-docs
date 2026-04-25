@@ -10,11 +10,11 @@
 
 **约束限制**
 
-- 如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection接口时，可使用canIUse接口，确认设备是否具有该系统能力：
+- 如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用canIUse接口，确认设备是否具有该系统能力：
 
 ```ts
 if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
-      console.error('this api is not supported on this device');
+      console.error('This api is not supported on this device');
       return;
 }
 ```
