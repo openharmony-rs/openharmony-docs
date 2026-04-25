@@ -679,7 +679,7 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
 
 addDeferredSurface(surfaceId: string): void
 
-配置延迟预览的Surface，可以在[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[Session.start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
+配置延迟预览的Surface，可以在[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
