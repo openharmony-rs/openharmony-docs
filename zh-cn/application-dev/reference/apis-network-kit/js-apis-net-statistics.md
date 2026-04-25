@@ -30,7 +30,7 @@ ArkTS-Sta: getIfaceRxBytes(nic: string, callback: AsyncCallback\<long>): void
 
 获取指定网卡实时下行流量。使用callback异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -88,7 +88,7 @@ ArkTS-Sta: getIfaceRxBytes(nic: string): Promise\<long>
 
 获取指定网卡实时下行流量，使用Promise异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -146,7 +146,7 @@ ArkTS-Sta: getIfaceTxBytes(nic: string, callback: AsyncCallback\<long>): void
 
 获取指定网卡实时上行流量。使用callback异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -204,7 +204,7 @@ ArkTS-Sta: getIfaceTxBytes(nic: string): Promise\<long>
 
 获取指定网卡实时上行流量。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -262,7 +262,7 @@ ArkTS-Sta: getCellularRxBytes(callback: AsyncCallback\<long>): void
 
 获取蜂窝实时下行流量。使用callback异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -318,7 +318,7 @@ ArkTS-Sta: getCellularRxBytes(): Promise\<long>
 
 获取蜂窝实时下行流量。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -369,7 +369,7 @@ ArkTS-Sta: getCellularTxBytes(callback: AsyncCallback\<long>): void
 
 获取蜂窝实时上行流量。使用callback异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -425,7 +425,7 @@ ArkTS-Sta: getCellularTxBytes(): Promise\<long>
 
 获取蜂窝实时上行流量。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -478,7 +478,7 @@ ArkTS-Sta: getAllRxBytes(callback: AsyncCallback\<long>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -535,7 +535,7 @@ ArkTS-Sta: getAllRxBytes(): Promise\<long>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -587,7 +587,7 @@ ArkTS-Sta: getAllTxBytes(callback: AsyncCallback\<long>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -644,7 +644,7 @@ ArkTS-Sta: getAllTxBytes(): Promise\<long>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -694,7 +694,7 @@ ArkTS-Sta: getUidRxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 获取指定应用实时下行流量。使用callback异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -751,7 +751,7 @@ ArkTS-Sta: getUidRxBytes(uid: int): Promise\<long>
 
 获取指定应用实时下行流量。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -808,7 +808,7 @@ ArkTS-Sta: getUidTxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 获取指定应用实时上行流量。使用callback异步回调。
 
-**系统能力**：SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -865,7 +865,7 @@ ArkTS-Sta: getUidTxBytes(uid: int): Promise\<long>
 
 获取指定应用实时上行流量。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -922,7 +922,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 获取指定socket的下行流量信息。使用callback异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -980,7 +980,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int): Promise\<long\>
 
 获取指定socket的下行流量信息。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1046,7 +1046,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 获取指定socket的上行流量信息。使用callback异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1104,7 +1104,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int): Promise\<long\>
 
 获取指定socket的上行流量信息。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1173,7 +1173,7 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 >- 当前只支持获取蜂窝和Wi-Fi流量使用情况。<br>
 >- 当前只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于当前系统时间31天，会返回错误码2103019。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -1229,7 +1229,7 @@ type NetBearType = connection.NetBearType
 
 网络类型。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1243,7 +1243,7 @@ type NetBearType = connection.NetBearType
 
 网络信息。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -1261,7 +1261,7 @@ type NetBearType = connection.NetBearType
 
 获取的历史流量信息。
 
-**系统能力：**SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 22
 
