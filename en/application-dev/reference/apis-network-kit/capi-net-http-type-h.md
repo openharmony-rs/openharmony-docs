@@ -44,7 +44,7 @@ Defines the data structures for the C APIs of the HTTP request module.
 | -- | -- | -- |
 | [Http_ErrCode](#http_errcode) | Http_ErrCode | Enumerates the error codes of an HTTP request.|
 | [Http_ResponseCode](#http_responsecode) | Http_ResponseCode | Enumerates the result codes of an HTTP response.|
-| [Http_AddressFamilyType](#http_addressfamilytype) | Http_AddressFamilyType | Defines the IP address family of the target domain name.|
+| [Http_AddressFamilyType](#http_addressfamilytype) | Http_AddressFamilyType | Enumerates the IP address family of the target domain name.|
 | [Http_HttpProtocol](#http_httpprotocol) | Http_HttpProtocol | Enumerates HTTP protocol versions.|
 | [Http_CertType](#http_certtype) | Http_CertType | Enumerates certificate types.|
 | [Http_ProxyType](#http_proxytype) | Http_ProxyType | Enumerates proxy types.|
@@ -185,7 +185,7 @@ enum Http_AddressFamilyType
 
 **Overview**
 
-Defines the IP address family of the target domain name.
+Enumerates the IP address family of the target domain name.
 
 **Since**: 20
 
@@ -209,7 +209,7 @@ Enumerates HTTP protocol versions.
 
 | Enum| Description|
 | -- | -- |
-| OH_HTTP_NONE = 0 | Following cURL protocol version.|
+| OH_HTTP_NONE = 0 | Protocol version complies with cURL.|
 | OH_HTTP1_1 | HTTP 1.1 version.|
 | OH_HTTP2 | HTTP 2 version.|
 | OH_HTTP3 | HTTP 3 version.|

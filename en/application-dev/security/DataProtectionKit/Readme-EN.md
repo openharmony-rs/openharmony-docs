@@ -7,5 +7,5 @@
 <!--Adviser: @zengyawen-->
 
 - DLP Service<!--dlp-->
-  - [DLP Service Overview](dlp-overview.md)
+  - [About This Kit](dlp-overview.md)
   - [DLP Service Development](dlp-guidelines.md)<!--RP1--><!--RP1End-->

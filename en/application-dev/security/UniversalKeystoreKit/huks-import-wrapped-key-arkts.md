@@ -1,4 +1,4 @@
-# Importing a Key in Ciphertext (ArkTS)
+# Importing a Key in Secure Mode (ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-This topic walks you through on how to import an ECDH key pair. However, the example does not cover the operations such as [key generation](huks-key-generation-overview.md) and [key agreement](huks-key-agreement-overview.md) of the service side.
+This topic walks you through on how to import an ECDH key pair in secure mode. However, the example does not cover the operations such as [key generation](huks-key-generation-overview.md) and [key agreement](huks-key-agreement-overview.md) of the service side.
 
 For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms).
 
@@ -15,23 +15,19 @@ For details about the scenarios and supported algorithm specifications, see [Sup
 
 1. Convert the key to be imported from device A (device from which the key is imported) to [HUKS key material format](huks-concepts.md#key-material-format) **To_Import_Key**. (This step applies only to asymmetric key pairs. If the key to be imported is a symmetric key, skip over this step.)
 
-2. Generate an asymmetric key pair **Wrapping_Key** (public key **Wrapping_Pk** and private key **Wrapping_Sk**) with the purpose of **HUKS_KEY_PURPOSE_UNWRAP** for device B (device to which the key is imported), and export the public key **Wrapping_Pk** of **Wrapping_Key** and save it. The asymmetric key pair **Wrapping_Key** is used for key agreement in the encrypted import process.
+2. Generate an asymmetric key pair **Wrapping_Key** (public key **Wrapping_Pk** and private key **Wrapping_Sk**) for secure import on device B (device to which the key is imported), export the public key **Wrapping_Pk** of **Wrapping_Key**, and send it to device A.
 
-3. Use the same algorithm to generate an asymmetric key pair **Caller_Key** (public key **Caller_Pk** and private key **Caller_Sk**) with the purpose of **HUKS_KEY_PURPOSE_UNWRAP** for device A, and export the public key **Caller_Pk** of **Caller_Key** and save it. The asymmetric key pair **Caller_Key** is used for key agreement in the encrypted import process.
+3. Use the same algorithm to generate an asymmetric key pair **Caller_Key** (public key **Caller_Pk** and private key **Caller_Sk**) on device A, and export the public key **Caller_Pk** of **Caller_Key** and save it. **Caller_Key** is used for key agreement.
 
-4. Generate a symmetric key **Caller_Kek** for device A. This key is used to encrypt **To_Import_Key**.
+4. Generate a symmetric key **Caller_Kek** on device A. This key is used to encrypt **To_Import_Key** to generate **To_Import_Key_Enc**.
 
-5. Perform key agreement with the private key **Caller_Sk** in **Caller_Key** of device A and the public key **Wrapping_Pk** in **Wrapping_Key** of device B to yield a **Shared_Key**.
+5. Perform key agreement with the private key **Caller_Sk** in **Caller_Key** of device A and the public key **Wrapping_Pk** in **Wrapping_Key** of device B to negotiate a **Shared_Key**. Encrypt **Caller_Kek** using **Shared_Key** to generate **Caller_Kek_Enc**.
 
-6. Use **Caller_Kek** to encrypt **To_Import_Key** of device A and generate **To_Import_Key_Enc**.
+6. Encapsulate the key material **Caller_Pk**, **Caller_Kek_Enc**, and **To_Import_Key_Enc** of device A, and send it to device B. For details about the format of the key material to be imported, see [Key Material Format for Secure Import](huks-key-import-overview.md#key-material-format-for-secure-import).
 
-7. Use **Shared_Key** to encrypt **Caller_Kek** of device A and generate **Caller_Kek_Enc**.
+7. Import the encrypted key material to device B.
 
-8. Encapsulate the key material **Caller_Pk**, **Caller_Kek_Enc**, and **To_Import_Key_Enc** of device A, and sends it to device B. For details about the format of the key material to be imported, see [Key Material Format for Encrypted Import](huks-key-import-overview.md#key-material-format-for-encrypted-import).
-
-9. Import the encrypted key material to device B.
-
-10. Delete the intermediate keys (keys used for encrypting the key to import) from devices A and B.
+8. Delete the intermediate keys (keys used for secure import) from devices A and B.
 
 ## Development Cases
 Construct parameter sets for ECDH key agreement, AES-GCM encryption, and wrapped key import.
@@ -620,50 +616,53 @@ async function buildWrappedDataAndImportWrappedKey(plainKey: string) {
 ```
 <!-- -->
 
-Complete process of encrypting the imported key
+Complete secure import process
 <!-- @[encry_the_import_key_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
 
 ``` TypeScript
-/* Simulate the encrypted key import scenario. Import a key from device A (remote device) to device B (local device). */
+/* Simulate the secure key import scenario. Import a key from device A (remote device) to device B (local device). */
 async function ImportWrappedKey() {
   /**
    * 1. If the key to be imported from device A is an asymmetric key pair, convert it into the HUKS key material format To_Import_Key. Skip over this step if the key is a symmetric key.
    * This example uses a 256-bit AES key (symmetric key) as an example.
    */
-
-  /* 2. Device B generates an asymmetric key pair, Wrapping_Key (comprising Wrapping_Pk, the public key, and Wrapping_Sk, the private key) for encrypted import and negotiation.
-   *   Set the key purpose to unwrap, export the public key Wrapping_Pk of Wrapping_Key, and store the public key in the variable huksPubKey.
+  /**
+   * 2. Generate an asymmetric key pair Wrapping_Key (comprising the public key Wrapping_Pk and private key Wrapping_Sk) on device B for secure import and negotiation.
+   * Export the public key Wrapping_Pk of Wrapping_Key and store it in the variable huksPubKey.
    */
   const srcKeyAliasWrap = 'HUKS_Basic_Capability_Import_0200';
   await generateAndExportPublicKey(srcKeyAliasWrap, genWrappingKeyParams, false);
 
-  /* 3. Device A uses the same algorithm as device B to generate an asymmetric key pair Caller_Key (comprising Caller_Pk, the public key, and Caller_Sk, the private key) for encrypted import and agreement.
-   *   Export the public key Caller_Pk of Caller_Key and store the public key in the variable callerSelfPublicKey.
+  /**
+   * 3. Use the same algorithm as device B to generate an asymmetric key pair Caller_Key (comprising the public key Caller_Pk and private key Caller_Sk) on device A for negotiation.
+   * Export the public key Caller_Pk of Caller_Key and store the public key in the variable callerSelfPublicKey.
    */
   await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
 
   /**
-   4. Generate a symmetric key Caller_Kek for device A. This key is used to encrypt To_Import_Key.
-   * 5. Perform key agreement with the private key Caller_Sk in Caller_Key of device A and the public key Wrapping_Pk in Wrapping_Key of device B to yield a Shared_Key.
+   * 4. Generate a symmetric key Caller_Kek for device A. This key is used to encrypt To_Import_Key.
+   * Perform key agreement with the private key **Caller_Sk** in **Caller_Key** of device A and the public key **Wrapping_Pk** in **Wrapping_Key** of device B to yield a **Shared_Key**.
    */
   await importKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey,
     callerAgreeParams);
 
   /**
-   * 6. Use Caller_Kek to encrypt To_Import_Key of device A and generate To_Import_Key_Enc.
-   * 7. Use Shared_Key to encrypt Caller_Kek of device A and generate Caller_Kek_Enc.
+   * 5. Use Caller_Kek to encrypt To_Import_Key of device A and generate To_Import_Key_Enc.
+   * Use **Shared_Key** to encrypt **Caller_Kek** of device A and generate **Caller_Kek_Enc**.
    */
   await encryptImportedPlainKeyAndKek(importedAes192PlainKey);
 
-  /* 8. Encapsulate the key material Caller_Pk, To_Import_Key_Enc, and Caller_Kek_Enc of device A, and send it to device B.
-   In this example, Caller_Pk is placed in callerSelfPublicKey, To_Import_Key_Enc in PlainKeyEncData, and Caller_Kek_Enc in KekEncData.
+  /**
+   * 6. Encapsulate the key materials Caller_Pk, To_Import_Key_Enc, and Caller_Kek_Enc of device A, and send them to device B.
+   * In this example, Caller_Pk is placed in callerSelfPublicKey, To_Import_Key_Enc in PlainKeyEncData, and Caller_Kek_Enc in KekEncData.
+   */
   let wrappedData = await buildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
   importWrappedAes192Params.inData = wrappedData;
 
-  /* 9. Import the encapsulated key material to device B. */
+  /* 7. Import the encapsulated key materials to device B. */
   await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
 
-  /* 10. Delete the intermediate keys (keys used for encrypting the key to import) from devices A and B. */
+  /* 8. Delete the intermediate keys (keys used for secure import) from devices A and B.
   await publicDeleteKeyItemFunc(srcKeyAliasWrap, genWrappingKeyParams);
   await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
   await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
@@ -753,3 +752,4 @@ async function importWrappedKeyExistTest() {
   console.error("importWrappedKeyExistTest success");
 }
 ```
+<!--no_check-->
