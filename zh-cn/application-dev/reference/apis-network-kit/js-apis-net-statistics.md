@@ -11,7 +11,10 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>
+> - 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -21,18 +24,24 @@ import { statistics } from '@kit.NetworkKit';
 
 ## statistics.getIfaceRxBytes
 
-getIfaceRxBytes(nic: string, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getIfaceRxBytes(nic: string, callback: AsyncCallback\<number>): void
 
-获取指定网卡实时下行流量，使用callback异步回调。
+ArkTS-Sta: getIfaceRxBytes(nic: string, callback: AsyncCallback\<long>): void
+
+获取指定网卡实时下行流量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
+
 **参数：**
 
-| 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
-| -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| nic      | string                 | 是   | 指定查询的网卡名。                                                                                                      |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取网卡实时下行流量时，error 为 undefined，stats 为获取到的网卡实时下行流量(单位:字节)；否则为错误对象。    |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| nic      | string                                                       | 是   | 指定查询的网卡名。                                           |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br />ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取网卡实时下行流量时，error为undefined，stats 为获取到的网卡实时下行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
 
@@ -49,6 +58,7 @@ getIfaceRxBytes(nic: string, callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -59,13 +69,30 @@ statistics.getIfaceRxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getIfaceRxBytes("wlan0", (error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getIfaceRxBytes
 
-getIfaceRxBytes(nic: string): Promise\<number>
+ArkTS-Dyn: getIfaceRxBytes(nic: string): Promise\<number>
 
-获取指定网卡实时下行流量，使用 Promise 异步回调。
+ArkTS-Sta: getIfaceRxBytes(nic: string): Promise\<long>
+
+获取指定网卡实时下行流量，使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
@@ -76,7 +103,7 @@ getIfaceRxBytes(nic: string): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回网卡实时下行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br />ArkTS-Sta: Promise\<long> | Promise对象，返回网卡实时下行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -93,6 +120,7 @@ getIfaceRxBytes(nic: string): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -101,20 +129,35 @@ statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getIfaceRxBytes("wlan0").then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getIfaceTxBytes
 
-getIfaceTxBytes(nic: string, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getIfaceTxBytes(nic: string, callback: AsyncCallback\<number>): void
 
-获取指定网卡实时上行流量，使用 callback 异步回调。
+ArkTS-Sta: getIfaceTxBytes(nic: string, callback: AsyncCallback\<long>): void
+
+获取指定网卡实时上行流量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
+
 **参数：**
 
-| 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
-| -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| nic      | string                 | 是   | 指定查询的网卡名。                                                                                                      |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取网卡实时上行流量时，error 为 undefined，stats 为获取到的网卡实时上行流量(单位:字节)；否则为错误对象。    |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| nic      | string                                                       | 是   | 指定查询的网卡名。                                           |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br />ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取网卡实时上行流量时，error为undefined，stats 为获取到的网卡实时上行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
 
@@ -131,6 +174,7 @@ getIfaceTxBytes(nic: string, callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -141,13 +185,30 @@ statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getIfaceTxBytes("wlan0", (error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getIfaceTxBytes
 
-getIfaceTxBytes(nic: string): Promise\<number>
+ArkTS-Dyn: getIfaceTxBytes(nic: string): Promise\<number>
 
-获取指定网卡实时上行流量，使用 Promise 异步回调。
+ArkTS-Sta: getIfaceTxBytes(nic: string): Promise\<long>
+
+获取指定网卡实时上行流量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
@@ -158,7 +219,7 @@ getIfaceTxBytes(nic: string): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回网卡实时上行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br />ArkTS-Sta: Promise\<long> | Promise对象，返回网卡实时上行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -175,6 +236,7 @@ getIfaceTxBytes(nic: string): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -183,19 +245,34 @@ statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getIfaceTxBytes("wlan0").then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getCellularRxBytes
 
-getCellularRxBytes(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getCellularRxBytes(callback: AsyncCallback\<number>): void
 
-获取蜂窝实时下行流量，使用 callback 异步回调。
+ArkTS-Sta: getCellularRxBytes(callback: AsyncCallback\<long>): void
+
+获取蜂窝实时下行流量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取蜂窝实时下行流量时，error 为 undefined，stats 为获取到的蜂窝实时下行流量(单位:字节)；否则为错误对象。    |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取蜂窝实时下行流量时，error为undefined，stats 为获取到的蜂窝实时下行流量(单位:字节)；否则为错误对象。    |
 
 **错误码：**
 
@@ -211,6 +288,7 @@ getCellularRxBytes(callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -221,18 +299,35 @@ statistics.getCellularRxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getCellularRxBytes((error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getCellularRxBytes
 
-getCellularRxBytes(): Promise\<number>
+ArkTS-Dyn: getCellularRxBytes(): Promise\<number>
 
-获取蜂窝实时下行流量，使用 Promise 异步回调。
+ArkTS-Sta: getCellularRxBytes(): Promise\<long>
+
+获取蜂窝实时下行流量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回蜂窝实时下行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回蜂窝实时下行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -248,6 +343,7 @@ getCellularRxBytes(): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -256,19 +352,34 @@ statistics.getCellularRxBytes().then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getCellularRxBytes().then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getCellularTxBytes
 
-getCellularTxBytes(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getCellularTxBytes(callback: AsyncCallback\<number>): void
 
-获取蜂窝实时上行流量，使用 callback 异步回调。
+ArkTS-Sta: getCellularTxBytes(callback: AsyncCallback\<long>): void
+
+获取蜂窝实时上行流量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取蜂窝实时上行流量时，error 为 undefined，stats 为获取到的蜂窝实时上行流量(单位:字节)；否则为错误对象。    |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取蜂窝实时上行流量时，error为undefined，stats 为获取到的蜂窝实时上行流量(单位:字节)；否则为错误对象。    |
 
 **错误码：**
 
@@ -284,6 +395,7 @@ getCellularTxBytes(callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -294,18 +406,35 @@ statistics.getCellularTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getCellularTxBytes((error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getCellularTxBytes
 
-getCellularTxBytes(): Promise\<number>
+ArkTS-Dyn: getCellularTxBytes(): Promise\<number>
 
-获取蜂窝实时上行流量，使用 Promise 异步回调。
+ArkTS-Sta: getCellularTxBytes(): Promise\<long>
+
+获取蜂窝实时上行流量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回蜂窝实时上行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回蜂窝实时上行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -321,6 +450,7 @@ getCellularTxBytes(): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -329,21 +459,36 @@ statistics.getCellularTxBytes().then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getCellularTxBytes().then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getAllRxBytes
 
-getAllRxBytes(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getAllRxBytes(callback: AsyncCallback\<number>): void
 
-获取所有网卡实时下行流量，使用 callback 异步回调。
+ArkTS-Sta: getAllRxBytes(callback: AsyncCallback\<long>): void
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+获取所有网卡实时下行流量。使用callback异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
+
 **参数：**
 
-| 参数名   | 类型                   | 必填 | 说明                                                                                                                          |
-| -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取所有网卡实时下行流量，error 为 undefined，stats 为获取到的所有网卡实时下行流量(单位:字节)；否则为错误对象。    |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br />ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取所有网卡实时下行流量，error为undefined，stats 为获取到的所有网卡实时下行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
 
@@ -358,6 +503,7 @@ getAllRxBytes(callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -368,20 +514,37 @@ statistics.getAllRxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+statistics.getAllRxBytes((error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getAllRxBytes
 
-getAllRxBytes(): Promise\<number>
+ArkTS-Dyn: getAllRxBytes(): Promise\<number>
 
-获取所有网卡实时下行流量，使用 Promise 异步回调。
+ArkTS-Sta: getAllRxBytes(): Promise\<long>
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+获取所有网卡实时下行流量。使用Promise异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回所有网卡实时下行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br />ArkTS-Sta: Promise\<long> | Promise对象，返回所有网卡实时下行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -396,6 +559,7 @@ getAllRxBytes(): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -404,21 +568,36 @@ statistics.getAllRxBytes().then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getAllRxBytes().then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getAllTxBytes
 
-getAllTxBytes(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getAllTxBytes(callback: AsyncCallback\<number>): void
 
-获取所有网卡实时上行流量，使用 callback 异步回调。
+ArkTS-Sta: getAllTxBytes(callback: AsyncCallback\<long>): void
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+获取所有网卡实时上行流量。使用callback异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
+
 **参数：**
 
-| 参数名   | 类型                   | 必填 | 说明                                                                                                                          |
-| -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取所有网卡实时上行流量，error 为 undefined，stats 为获取到的所有网卡实时上行流量(单位:字节)；否则为错误对象。    |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br />ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取所有网卡实时上行流量，error为undefined，stats 为获取到的所有网卡实时上行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
 
@@ -433,6 +612,7 @@ getAllTxBytes(callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -443,20 +623,37 @@ statistics.getAllTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getAllTxBytes((error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getAllTxBytes
 
-getAllTxBytes(): Promise\<number>
+ArkTS-Dyn: getAllTxBytes(): Promise\<number>
 
-获取所有网卡实时上行流量，使用 Promise 异步回调。
+ArkTS-Sta: getAllTxBytes(): Promise\<long>
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+获取所有网卡实时上行流量。使用Promise异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回所有网卡实时上行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br />ArkTS-Sta: Promise\<long> | Promise对象，返回所有网卡实时上行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -471,6 +668,7 @@ getAllTxBytes(): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -479,20 +677,35 @@ statistics.getAllTxBytes().then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getAllTxBytes().then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getUidRxBytes
 
-getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
-获取指定应用实时下行流量，使用 callback 异步回调。
+ArkTS-Sta: getUidRxBytes(uid: int, callback: AsyncCallback\<long>): void
+
+获取指定应用实时下行流量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| uid      | number                 | 是   | 指定查询的应用 uid。                                                                                                    |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取应用实时下行流量时，error 为 undefined，stats 为获取到的应用实时下行流量(单位:字节)；否则为错误对象。    |
+| uid      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的应用 uid。                                                                                                    |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取应用实时下行流量时，error为undefined，stats 为获取到的应用实时下行流量(单位:字节)；否则为错误对象。    |
 
 **错误码：**
 
@@ -508,6 +721,7 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -518,24 +732,41 @@ statistics.getUidRxBytes(20010038, (error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getUidRxBytes(20010038, (error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getUidRxBytes
 
-getUidRxBytes(uid: number): Promise\<number>
+ArkTS-Dyn: getUidRxBytes(uid: number): Promise\<number>
 
-获取指定应用实时下行流量，使用 Promise 异步回调。
+ArkTS-Sta: getUidRxBytes(uid: int): Promise\<long>
+
+获取指定应用实时下行流量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| uid    | number | 是   | 指定查询的应用 uid。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的应用 uid。 |
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回指定应用实时下行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回指定应用实时下行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -551,6 +782,7 @@ getUidRxBytes(uid: number): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -559,20 +791,35 @@ statistics.getUidRxBytes(20010038).then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getUidRxBytes(20010038).then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getUidTxBytes
 
-getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 
-获取指定应用实时上行流量，使用 callback 异步回调。
+ArkTS-Sta: getUidTxBytes(uid: int, callback: AsyncCallback\<long>): void
+
+获取指定应用实时上行流量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| uid      | number                 | 是   | 指定查询的应用 uid。                                                                                                    |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取应用实时上行流量时，error 为 undefined，stats 为获取到的应用实时上行流量(单位:字节)；否则为错误对象。    |
+| uid      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的应用 uid。                                                                                                    |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取应用实时上行流量时，error为undefined，stats 为获取到的应用实时上行流量(单位:字节)；否则为错误对象。    |
 
 **错误码：**
 
@@ -588,6 +835,7 @@ getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -598,24 +846,41 @@ statistics.getUidTxBytes(20010038, (error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getUidTxBytes(20010038, (error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getUidTxBytes
 
-getUidTxBytes(uid: number): Promise\<number>
+ArkTS-Dyn: getUidTxBytes(uid: number): Promise\<number>
 
-获取指定应用实时上行流量，使用 Promise 异步回调。
+ArkTS-Sta: getUidTxBytes(uid: int): Promise\<long>
+
+获取指定应用实时上行流量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**10
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| uid    | number | 是   | 指定查询的应用 uid。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的应用 uid。 |
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回指定应用实时上行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回指定应用实时上行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -631,6 +896,7 @@ getUidTxBytes(uid: number): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { statistics } from '@kit.NetworkKit';
 
@@ -639,21 +905,35 @@ statistics.getUidTxBytes(20010038).then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { statistics } from '@kit.NetworkKit';
+
+statistics.getUidTxBytes(20010038).then((stats: long) => {
+  console.info(JSON.stringify(stats));
+});
+```
 
 ## statistics.getSockfdRxBytes<sup>11+</sup>
 
-getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
+ArkTS-Dyn: getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-获取指定socket的下行流量信息，使用 callback 异步回调。
+ArkTS-Sta: getSockfdRxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
+
+获取指定socket的下行流量信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**22
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | 是   | 指定查询的socket的fd(file description)。                     |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取socket的下行流量时，error 为 undefined，stats 为获取到的该socket的实时下行流量(单位:字节)；否则为错误对象。 |
+| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。                     |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取socket的下行流量时，error为undefined，stats 为获取到的该socket的实时下行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
 
@@ -668,6 +948,7 @@ getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -679,25 +960,43 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+statistics.getSockfdRxBytes(sockfd, (error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getSockfdRxBytes<sup>11+</sup>
 
-getSockfdRxBytes(sockfd: number): Promise\<number\>
+ArkTS-Dyn: getSockfdRxBytes(sockfd: number): Promise\<number\>
 
-获取指定socket的下行流量信息，使用 Promise 异步回调。
+ArkTS-Sta: getSockfdRxBytes(sockfd: int): Promise\<long\>
+
+获取指定socket的下行流量信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。 |
 
 **返回值：**
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | 以 Promise 形式返回获取结果，返回该socket的实时下行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | 以 Promise 形式返回获取结果，返回该socket的实时下行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -712,6 +1011,7 @@ getSockfdRxBytes(sockfd: number): Promise\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -724,20 +1024,40 @@ statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+statistics.getSockfdRxBytes(sockfd).then((stats: long) => {
+  console.info(JSON.stringify(stats));
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(JSON.stringify(businessError));
+});
+```
+
 ## statistics.getSockfdTxBytes<sup>11+</sup>
 
-getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
+ArkTS-Dyn: getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-获取指定socket的上行流量信息，使用 callback 异步回调。
+ArkTS-Sta: getSockfdTxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
+
+获取指定socket的上行流量信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | 是   | 指定查询的socket的fd(file description)。                     |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取socket的上行流量时，error 为 undefined，stats 为获取到的该socket的实时上行流量(单位:字节)；否则为错误对象。 |
+| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。                     |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取socket的上行流量时，error为undefined，stats 为获取到的该socket的实时上行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
 
@@ -752,6 +1072,7 @@ getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -763,25 +1084,43 @@ statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+statistics.getSockfdTxBytes(sockfd, (error: BusinessError|null, stats: long|undefined) => {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(stats));
+});
+```
+
 ## statistics.getSockfdTxBytes<sup>11+</sup>
 
-getSockfdTxBytes(sockfd: number): Promise\<number\>
+ArkTS-Dyn: getSockfdTxBytes(sockfd: number): Promise\<number\>
 
-获取指定socket的上行流量信息，使用 Promise 异步回调。
+ArkTS-Sta: getSockfdTxBytes(sockfd: int): Promise\<long\>
+
+获取指定socket的上行流量信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**11
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。 |
 
 **返回值：**
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | 以 Promise 形式返回获取结果，返回该socket的实时上行流量(单位:字节)。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | 以 Promise 形式返回获取结果，返回该socket的实时上行流量(单位:字节)。 |
 
 **错误码：**
 
@@ -796,6 +1135,7 @@ getSockfdTxBytes(sockfd: number): Promise\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
@@ -807,7 +1147,21 @@ statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
   console.error(JSON.stringify(err));
 });
 ```
-            
+
+ArkTS-Sta示例：
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+statistics.getSockfdTxBytes(sockfd).then((stats: long) => {
+  console.info(JSON.stringify(stats));
+}).catch((err: Error) => {
+  let businessError = err as BusinessError;
+  console.error(JSON.stringify(err));
+});
+```
+
 ## statistics.getSelfTrafficStats<sup>22+</sup>
 
 getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
@@ -820,6 +1174,10 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 >- 当前只支持获取31天之内的流量使用情况，如果参数中传入的时间戳早于当前系统时间31天，会返回错误码2103019。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：**22
+
+**ArkTS-Sta起始版本：**23
 
 **参数：**
 
@@ -873,6 +1231,10 @@ type NetBearType = connection.NetBearType
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：**12
+
+**ArkTS-Sta起始版本：**23
+
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
 | [connection.NetBearType](js-apis-net-connection.md#netbeartype) | 枚举网络类型。    |
@@ -883,12 +1245,17 @@ type NetBearType = connection.NetBearType
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称        | 类型                                                   | 只读 |可选| 说明           |
-|-----------|------------------------------------------------------|----|---|--------------|
-| type      | [NetBearType](#netbeartype12) | 否  | 否|网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
-| startTime | number                                               | 否  |否| 开始时间戳(单位：秒)。 |
-| endTime   | number                                               | 否  |否 |结束时间戳(单位：秒)。 |
-| simId     | number                                               | 否  | 是|SIM卡ID。默认值为uint32_t类型最大值。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
+**ArkTS-Dyn起始版本：**22
+
+**ArkTS-Sta起始版本：**23
+
+| 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
+| -------- | ---------------------- | ---- | -------------------|----------------------------------------- |
+| type      | [NetBearType](#netbeartype12) | 否  |否 |网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
+| startTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 | 开始时间戳(单位：秒)。 |
+| endTime   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 |结束时间戳(单位：秒)。 |
+| simId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 |SIM卡ID。默认值为uint32_t类型最大值。<br>**注意：** 当type为蜂窝网络时，需指定本字段。   |
+
 
 ## NetStatsInfo<sup>22+</sup>
 
@@ -896,9 +1263,13 @@ type NetBearType = connection.NetBearType
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称      | 类型   | 只读 |可选| 说明                      |
-| --------- | ------ | ---- |---| ------------------------ |
-| rxBytes   | number | 否   |否 |流量下行数据(单位：字节)。 |
-| txBytes   | number | 否   |否 |流量上行数据(单位：字节)。 |
-| rxPackets | number | 否   |否 |流量下行包个数。          |
-| txPackets | number | 否   |否 |流量上行包个数。          |
+**ArkTS-Dyn起始版本：**22
+
+**ArkTS-Sta起始版本：**23
+
+| 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
+| -------- | ---------------------- | ---- | --------|---------------------------------------------------- |
+| rxBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量下行数据(单位：字节)。 |
+| txBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行数据(单位：字节)。 |
+| rxPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long |否  | 否 |流量下行包个数。          |
+| txPackets | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行包个数。          |
