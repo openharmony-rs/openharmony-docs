@@ -13,14 +13,6 @@
 
 - 多行文本绘制与显示
 
-- 省略号样式设置
-
-- 文字换行方式设置
-
-- 中文标点连续挤压
-
-- 查询字体资源路径
-
 - 多样式文本绘制与显示
 
 
@@ -220,315 +212,7 @@
 | 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002246563845](figures/zh-cn_image_0000002246563845.png) | 
 | 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts_word_break_hyphen_locale_undefined.jpg](figures/ts_word_break_hyphen_locale_undefined.jpg) | 
 | 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-gb.jpg](figures/ts_word_break_hyphen_local_en-gb.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符”-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
-
-
-## 省略号样式设置
-
-当文本内容超出可显示区域时，可以通过省略号样式设置来控制文本的截断方式。通过[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)中的ellipsis和ellipsisMode属性设置省略号字符串和省略模式，配合[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的maxLines属性限制最大行数，实现不同位置的省略效果。
-
-
-### 接口说明
-
-| 接口名 | 描述 |
-| -------- | -------- |
-| ellipsis: string | 设置省略号字符串。 |
-| ellipsisMode: EllipsisMode | 设置省略号模式。 |
-| maxLines: number | 设置最大显示行数。 |
-
-**EllipsisMode枚举说明**
-
-| 枚举值 | 描述 |
-| -------- | -------- |
-| START | 头部省略。 |
-| MIDDLE | 中部省略。 |
-| END | 尾部省略。 |
-| MULTILINE_START | 多行头部省略。 |
-| MULTILINE_MIDDLE | 多行中部省略。 |
-
-
-### 开发步骤
-
-1. 设置文本样式，包含省略号字符串和省略号模式。
-
-   <!-- @[arkts_ellipsis_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/ellipsis/EllipsisText.ets) -->
-
-   ``` TypeScript
-   // 设置文本样式，包含省略号字符串和省略号模式
-   let myTextStyle: text.TextStyle = {
-     color: {
-       alpha: 255,
-       red: 0,
-       green: 0,
-       blue: 0
-     },
-     fontSize: 40,
-     // 设置省略号字符串
-     ellipsis: '...',
-     // 设置省略号模式为尾部省略
-     ellipsisMode: text.EllipsisMode.END
-   };
-   ```
-
-   <!-- -->
-
-2. 设置段落样式，包含最大行数，并构建和绘制段落。
-
-   <!-- @[arkts_ellipsis_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/ellipsis/EllipsisText.ets) -->
-
-   ``` TypeScript
-   // 设置段落样式，包含最大行数
-   let myParagraphStyle: text.ParagraphStyle = {
-     textStyle: myTextStyle,
-     // 设置最大显示行数为2
-     maxLines: 2
-   };
-   let fontCollection = text.FontCollection.getGlobalInstance();
-   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-   paragraphBuilder.pushStyle(myTextStyle);
-   paragraphBuilder.addText('This is a long text that will be truncated with ellipsis at the end. ' +
-     'When the text exceeds the maximum number of lines, the ellipsis will be shown.');
-   let paragraph = paragraphBuilder.build();
-   paragraph.layoutSync(800);
-   // 绘制尾部省略文本
-   paragraph.paint(canvas, 10, 0);
-   ```
-
-   <!-- -->
-
-3. 也可将ellipsisMode设置为START或MIDDLE，实现头部省略或中部省略效果。
-
-   <!-- @[arkts_ellipsis_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/ellipsis/EllipsisText.ets) -->
-
-   ``` TypeScript
-   // 设置省略号模式为头部省略
-   let textStyleStart: text.TextStyle = {
-     color: {
-       alpha: 255,
-       red: 0,
-       green: 0,
-       blue: 0
-     },
-     fontSize: 40,
-     ellipsis: '...',
-     ellipsisMode: text.EllipsisMode.START
-   };
-   let paragraphStyleStart: text.ParagraphStyle = {
-     textStyle: textStyleStart,
-     maxLines: 2
-   };
-   let builderStart = new text.ParagraphBuilder(paragraphStyleStart, fontCollection);
-   builderStart.pushStyle(textStyleStart);
-   builderStart.addText('This is a long text that will be truncated with ellipsis at the start. ' +
-     'When the text exceeds the maximum number of lines, the ellipsis will be shown at the beginning.');
-   let paragraphStart = builderStart.build();
-   paragraphStart.layoutSync(800);
-   // 绘制头部省略文本
-   paragraphStart.paint(canvas, 10, 120);
-   ```
-
-   <!-- -->
-
-   <!-- @[arkts_ellipsis_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/ellipsis/EllipsisText.ets) -->
-
-   ``` TypeScript
-   // 设置省略号模式为中部省略
-   let textStyleMiddle: text.TextStyle = {
-     color: {
-       alpha: 255,
-       red: 0,
-       green: 0,
-       blue: 0
-     },
-     fontSize: 40,
-     ellipsis: '...',
-     ellipsisMode: text.EllipsisMode.MIDDLE
-   };
-   let paragraphStyleMiddle: text.ParagraphStyle = {
-     textStyle: textStyleMiddle,
-     maxLines: 2
-   };
-   let builderMiddle = new text.ParagraphBuilder(paragraphStyleMiddle, fontCollection);
-   builderMiddle.pushStyle(textStyleMiddle);
-   builderMiddle.addText('This is a long text that will be truncated with ellipsis in the middle. ' +
-     'When the text exceeds the maximum number of lines, the ellipsis will be shown in the middle.');
-   let paragraphMiddle = builderMiddle.build();
-   paragraphMiddle.layoutSync(800);
-   // 绘制中部省略文本
-   paragraphMiddle.paint(canvas, 10, 240);
-   ```
-
-   <!-- -->
-
-
-## 文字换行方式设置
-
-通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的breakStrategy属性可以控制断行策略，影响文本在有限宽度内如何分行。
-
-
-### 接口说明
-
-| 接口名 | 描述 |
-| -------- | -------- |
-| breakStrategy: BreakStrategy | 设置断行策略。 |
-
-**BreakStrategy枚举说明**
-
-| 枚举值 | 描述 |
-| -------- | -------- |
-| GREEDY | 贪婪策略，逐行尽量填充文字。 |
-| HIGH_QUALITY | 高质量策略，优化排版效果。 |
-| BALANCED | 均衡策略，各行宽度尽量均衡。 |
-
-
-### 开发步骤
-
-1. 设置断行策略为均衡策略（BALANCED），使各行宽度尽量均衡。
-
-   <!-- @[arkts_break_strategy_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/breakStrategy/BreakStrategyText.ets) -->
-
-   ``` TypeScript
-   // 设置断行策略为均衡策略（BALANCED）
-   let myTextStyle: text.TextStyle = {
-     color: { alpha: 255, red: 0, green: 0, blue: 0 },
-     fontSize: 40
-   };
-   let myParagraphStyle: text.ParagraphStyle = {
-     textStyle: myTextStyle,
-     // 设置断行策略为均衡策略，各行宽度尽量均衡
-     breakStrategy: text.BreakStrategy.BALANCED
-   };
-   let fontCollection = text.FontCollection.getGlobalInstance();
-   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-   paragraphBuilder.pushStyle(myTextStyle);
-   paragraphBuilder.addText('This is a long text that demonstrates the balanced break strategy. ' +
-     'The lines will be distributed as evenly as possible to avoid wide spacing differences.');
-   let paragraph = paragraphBuilder.build();
-   paragraph.layoutSync(800);
-   paragraph.paint(canvas, 10, 0);
-   ```
-
-   <!-- -->
-
-
-## 中文标点连续挤压
-
-在中文排版中，连续出现的标点符号会占用较多空间。通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的compressHeadPunctuation属性，可以开启标点压缩，减少连续标点占用的空间。
-
-
-### 接口说明
-
-| 接口名 | 描述 |
-| -------- | -------- |
-| compressHeadPunctuation: boolean | 启用/关闭中文标点连续挤压。 |
-
-
-### 开发步骤
-
-1. 开启标点压缩，使连续中文标点占用更少空间。
-
-   <!-- @[arkts_punctuation_compress_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/punctuation/PunctuationText.ets) -->
-
-   ``` TypeScript
-   // 开启标点压缩
-   let myTextStyle: text.TextStyle = {
-     color: { alpha: 255, red: 0, green: 0, blue: 0 },
-     fontSize: 40
-   };
-   let myParagraphStyle: text.ParagraphStyle = {
-     textStyle: myTextStyle,
-     // 开启中文标点连续挤压
-     compressHeadPunctuation: true
-   };
-   let fontCollection = text.FontCollection.getGlobalInstance();
-   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-   paragraphBuilder.pushStyle(myTextStyle);
-   paragraphBuilder.addText('。。。。。你好世界！！！！！你好世界。。。。。。');
-   let paragraph = paragraphBuilder.build();
-   paragraph.layoutSync(800);
-   paragraph.paint(canvas, 10, 0);
-   ```
-
-   <!-- -->
-
-
-## 查询字体资源路径
-
-通过文本引擎提供的接口，可以按类型查询系统字体路径、字体全名列表以及从字体文件获取字体描述符信息，便于开发者了解和使用系统字体资源。
-
-
-### 接口说明
-
-| 接口名 | 描述 |
-| -------- | -------- |
-| text.getFontPathsByType(fontType: SystemFontType): Array&lt;string&gt; | 按类型获取字体路径列表。 |
-| text.getSystemFontFullNamesByType(fontType: SystemFontType): Promise&lt;Array&lt;string&gt;&gt; | 异步按类型获取系统字体全名列表。 |
-| text.getFontDescriptorsFromPath(path: string \| Resource): Promise&lt;Array&lt;FontDescriptor&gt;&gt; | 异步从字体文件获取字体描述符列表。 |
-
-**SystemFontType枚举说明**
-
-| 枚举值 | 描述 |
-| -------- | -------- |
-| ALL | 所有字体。 |
-| GENERIC | 通用字体。 |
-| STYLISH | 风格字体。 |
-| INSTALLED | 已安装字体。 |
-| CUSTOMIZED | 自定义字体。 |
-
-
-### 开发步骤
-
-1. 按类型获取字体路径列表。
-
-   <!-- @[arkts_font_query_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/fontQuery/FontQueryText.ets) -->
-
-   ``` TypeScript
-   // 按类型获取字体路径列表
-   let fontPaths: Array<string> = text.getFontPathsByType(text.SystemFontType.GENERIC);
-   for (let i = 0; i < fontPaths.length; i++) {
-     console.info("MetricsMSG: fontPath[" + i + "]: " + fontPaths[i]);
-   }
-   ```
-
-   <!-- -->
-
-2. 异步获取系统字体全名列表。
-
-   <!-- @[arkts_font_query_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/fontQuery/FontQueryText.ets) -->
-
-   ``` TypeScript
-   // 异步获取系统字体全名列表
-   text.getSystemFontFullNamesByType(text.SystemFontType.GENERIC).then((names: Array<string>) => {
-     for (let i = 0; i < names.length; i++) {
-       console.info("MetricsMSG: fontName[" + i + "]: " + names[i]);
-     }
-   }).catch((err: BusinessError) => {
-     console.error(`Failed to get font names. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
-
-   <!-- -->
-
-3. 异步从字体文件获取描述符信息。
-
-   <!-- @[arkts_font_query_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/fontQuery/FontQueryText.ets) -->
-
-   ``` TypeScript
-   // 异步从字体文件获取描述符
-   if (fontPaths.length > 0) {
-     text.getFontDescriptorsFromPath(fontPaths[0]).then((descriptors: Array<text.FontDescriptor>) => {
-       for (let i = 0; i < descriptors.length; i++) {
-         let desc = descriptors[i];
-         console.info("MetricsMSG: descriptor fullName: " + desc.fullName +
-           ", family: " + desc.fontFamily + ", weight: " + desc.weight);
-       }
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to get font descriptors. Code: ${err.code}, message: ${err.message}`);
-     });
-   }
-   ```
-
-   <!-- -->
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
 
 
 ## 多样式文本绘制与显示
@@ -558,6 +242,14 @@
 - **行高调整：** 调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
 
 - **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
+
+- **省略号样式设置：** 在文本内容超出显示区域时，可以使用省略号截断文本，支持头部、中部、尾部以及多行省略模式。
+
+- **文字换行方式设置：** 文本排版时支持不同的断行策略（贪婪、高质量或均衡），可根据场景选择合适的换行方式。
+
+- **行首标点挤压：** 在排版中，通过开启行首标点挤压功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
+
+- **查询各类型字体资源路径：** 按字体类型查询系统字体的资源路径。
 
 ### 装饰线
 
@@ -606,6 +298,7 @@
 ### 自动间距
 
 使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。例如，在中英文混排场景中，使能自动间距即可在中英文切换的地方自动添加额外间距，提升阅读体验。
+
 关键示例如下：
 ```ts
 let myParagraphStyle: text.ParagraphStyle = {
@@ -695,6 +388,59 @@ let myParagraphStyle: text.ParagraphStyle = {
 ```
 
 具体使用效果可参见下文[示例八](#示例八行间距调整)。
+
+### 省略号样式设置
+
+当文本内容超出可显示区域时，可以通过省略号样式设置来控制文本的截断方式。通过[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的textStyle属性设置省略号字符串（ellipsis）和省略模式（ellipsisMode），配合maxLines属性限制最大行数，实现不同位置的省略效果。需要注意，省略号相关属性需要在ParagraphStyle的textStyle中设置才生效，通过pushStyle设置的省略号属性不会生效。关键代码如下：
+
+```ts
+let myTextStyle: text.TextStyle = {
+  ellipsis: '...',
+  ellipsisMode: text.EllipsisMode.END
+};
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  maxLines: 2
+};
+```
+
+具体使用效果可参见下文[示例九](#示例九省略号样式)。
+
+### 文字换行方式设置
+
+通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的breakStrategy属性可以控制断行策略，影响文本在有限宽度内如何分行，支持GREEDY（贪婪）、HIGH_QUALITY（高质量）和BALANCED（均衡）三种策略。关键代码如下：
+
+```ts
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  breakStrategy: text.BreakStrategy.BALANCED
+};
+```
+
+具体使用效果可参见下文[示例十](#示例十文字换行方式)。
+
+### 行首标点挤压
+
+在中文排版中，行首的标点符号会占用较多空间，导致排版不够紧凑。通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的compressHeadPunctuation属性，可以开启行首标点挤压，将行首标点符号进行挤压处理，提升排版紧凑度。关键代码如下：
+
+```ts
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  compressHeadPunctuation: true
+};
+```
+
+具体使用效果可参见下文[示例十一](#示例十一行首标点挤压)。
+
+### 查询字体资源路径
+
+通过文本引擎提供的接口，可以按类型查询系统字体路径，便于开发者了解和使用系统字体资源。关键代码如下：
+
+```ts
+let fontPaths: Array<string> = text.getFontPathsByType(text.SystemFontType.GENERIC);
+```
+
+具体使用效果可参见下文[示例十二](#示例十二查询字体资源路径)。
 
 ### 示例一（装饰线、字体特征）
 这里以文本样式中的装饰线和字体特征为例，呈现多样式文本的绘制与显示。
@@ -921,7 +667,7 @@ class MyRenderNode extends RenderNode {
     // 绘制文本
     paragraph.paint(canvas, 0, 0);
 
-    //获取全部占位符的数组
+    // 获取全部占位符的数组
     let placeholderRects = paragraph.getRectsForPlaceholders();
     // 获取第一个占位符的左边界
     let left = placeholderRects[0].rect.left;
@@ -1871,3 +1617,55 @@ struct Font08 {
 | -------- | -------- |
 | DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+
+### 示例九（省略号样式）
+这里以省略号样式为例，呈现文本截断省略的绘制与显示。
+
+<!-- @[arkts_ellipsis_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets) -->
+
+具体效果如下所示：
+
+| 省略号模式 | 示意效果 |
+| -------- | -------- |
+| 不开启省略号 | ![zh-cn_image_complexArkTsDemo9_1](figures/zh-cn_image_complexArkTsDemo9_1.png) |
+| 开启头部省略号 | ![zh-cn_image_complexArkTsDemo9_2](figures/zh-cn_image_complexArkTsDemo9_2.png) |
+| 开启中部省略号 | ![zh-cn_image_complexArkTsDemo9_3](figures/zh-cn_image_complexArkTsDemo9_3.png) |
+| 开启尾部省略号 | ![zh-cn_image_complexArkTsDemo9_4](figures/zh-cn_image_complexArkTsDemo9_4.png) |
+| 开启多行头部省略号 | ![zh-cn_image_complexArkTsDemo9_5](figures/zh-cn_image_complexArkTsDemo9_5.png) |
+| 开启多行中部省略号 | ![zh-cn_image_complexArkTsDemo9_6](figures/zh-cn_image_complexArkTsDemo9_6.png) |
+
+### 示例十（文字换行方式）
+这里以均衡断行策略为例，呈现断行策略对文本排版的影响。
+
+<!-- @[arkts_break_strategy_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets) -->
+
+具体效果如下所示：
+
+| 断行策略 | 示意效果 |
+| -------- | -------- |
+| GREEDY | ![zh-cn_image_complexArkTsDemo10_1](figures/zh-cn_image_complexArkTsDemo10_1.png) |
+| BALANCED | ![zh-cn_image_complexArkTsDemo10_2](figures/zh-cn_image_complexArkTsDemo10_2.png) |
+| HIGH_QUALITY | ![zh-cn_image_complexArkTsDemo10_3](figures/zh-cn_image_complexArkTsDemo10_3.png) |
+
+### 示例十一（行首标点挤压）
+这里以行首标点挤压为例，呈现行首标点挤压的排版效果。
+
+<!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
+
+具体效果如下所示：
+
+| 标点挤压设置 | 示意效果 |
+| -------- | -------- |
+| 未开启标点挤压 | ![zh-cn_image_complexArkTsDemo11_1](figures/zh-cn_image_complexArkTsDemo11_1.png) |
+| 开启标点挤压 | ![zh-cn_image_complexArkTsDemo11_2](figures/zh-cn_image_complexArkTsDemo11_2.png) |
+
+### 示例十二（查询字体资源路径）
+这里以查询通用字体路径为例，呈现按类型查询系统字体路径的使用方式。
+
+<!-- @[arkts_font_query_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample12.ets) -->
+
+具体效果如下所示：
+
+| 查询类型 | 示意效果 |
+| -------- | -------- |
+| 按类型查询字体路径 | ![zh-cn_image_complexArkTsDemo12](figures/zh-cn_image_complexArkTsDemo12.png) |
