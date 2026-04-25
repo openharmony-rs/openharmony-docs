@@ -40,7 +40,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | netSpecifier | [NetSpecifier](#netspecifier) | 否   | 需要监听网络的网络特征，缺省则表示监听默认网络。                   |
-| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
+| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，单位为毫秒，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
 
 **返回值：**
 
@@ -256,7 +256,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 
+// exclusionStr以字符串的形式列出不使用代理的主机名，以逗号为分隔符。
 let exclusionStr = "192.168,baidu.com";
+// exclusionArray将exclusionStr以逗号分割为数组。
 let exclusionArray = exclusionStr.split(',');
 connection.setAppHttpProxy({
   host: "192.168.xx.xxx",
@@ -468,7 +470,9 @@ getAppNetSync(): NetHandle
 ```ts
 import { connection } from '@kit.NetworkKit';
 
+// 获取App绑定的网络信息
 let netHandle = connection.getAppNetSync();
+console.info(JSON.stringify(netHandle));
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -780,7 +784,9 @@ getAllNetsSync(): Array&lt;NetHandle&gt;
 ```ts
 import { connection } from '@kit.NetworkKit';
 
+// 获取所有处于连接状态的网络列表
 let netHandle = connection.getAllNetsSync();
+console.info("Succeeded to get netHandle: " + JSON.stringify(netHandle));
 ```
 
 ## connection.getConnectionProperties
@@ -925,16 +931,12 @@ getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let netHandle: connection.NetHandle;
-let connectionproperties: connection.ConnectionProperties;
-
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  netHandle = connection.getDefaultNetSync();
-  connectionproperties = connection.getConnectionPropertiesSync(netHandle);
+  let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
   console.info("Succeeded to get connectionproperties: " + JSON.stringify(connectionproperties));
 });
 ```
@@ -1090,16 +1092,13 @@ getNetCapabilitiesSync(netHandle: NetHandle): NetCapabilities
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let netHandle: connection.NetHandle;
-let getNetCapabilitiesSync: connection.NetCapabilities;
-
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
 
-  getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
+  let getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
   console.info("Succeeded to get net capabilities sync: " + JSON.stringify(getNetCapabilitiesSync));
 });
 ```
@@ -1780,7 +1779,7 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
 
 removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
-删除当前应用程序中对应host的自定义DNS规则。使用callback异步回调。
+删除当前应用程序中对应host的自定义DNS规则（host和对应的IP地址的映射关系）。使用callback异步回调。
 
 > **说明：**
 >
@@ -2786,13 +2785,13 @@ connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultIn
 
 > **说明：**
 >
->（1）设备从无网络状态转变为有网络状态时，将触发netAvailable事件、netCapabilitiesChange事件和netConnectionPropertiesChange事件；
+>（1）设备从无网络状态转变为有网络状态时，将触发[on("netAvailable")](#onnetavailable)事件、[on("netCapabilitiesChange")](#onnetcapabilitieschange)事件和[on("netConnectionPropertiesChange")](#onnetconnectionpropertieschange)事件；
 >
->（2）接收到netAvailable事件后，若设备从有网络状态转变为无网络状态，将触发netLost事件；
+>（2）接收到[on("netAvailable")](#onnetavailable)事件后，若设备从有网络状态转变为无网络状态，将触发[on("netLost")](#onnetlost)事件；
 >
->（3）若未接收到netAvailable事件，则将直接接收到netUnavailable事件；
+>（3）若未接收到[on("netAvailable")](#onnetavailable)事件，则将直接接收到[on("netUnavailable")](#onnetunavailable)事件；
 >
->（4）设备从WiFi网络切换至蜂窝网络时，将先触发netLost事件（WiFi丢失），随后触发netAvailable事件（蜂窝可用）。
+>（4）设备从WiFi网络切换至蜂窝网络时，将先触发[on("netLost")](#onnetlost)事件（WiFi丢失），随后触发[on("netAvailable")](#onnetavailable)事件（蜂窝可用）。
 
 ### register
 
@@ -2802,7 +2801,7 @@ register(callback: AsyncCallback\<void>): void
 
 >**注意：**
 >
->使用完register接口后需要及时调用unregister取消注册。
+>使用完register接口后需要及时调用[unregister](#unregister)取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -2884,7 +2883,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
-订阅网络可用事件。此接口需在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+订阅网络可用事件。此接口需在调用[register](#register)接口之前调用。若无需接收网络状态变化的回调通知，应使用[unregister](#unregister)取消订阅默认的网络状态变化通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2926,7 +2925,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
-订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+订阅网络阻塞状态事件。此接口需要在调用[register](#register)接口之前调用。若无需接收网络状态变化的回调通知，应使用[unregister](#unregister)取消订阅默认的网络状态变化通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2966,7 +2965,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
-订阅网络能力变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络能力变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3008,7 +3007,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPropertyInfo\>): void
 
-订阅网络连接信息变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络连接信息变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3048,7 +3047,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netLost', callback: Callback\<NetHandle>): void
 
-订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络丢失事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3090,7 +3089,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netUnavailable', callback: Callback\<void>): void
 
-订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络不可用事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
