@@ -326,7 +326,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
   volumeManager.unmount(volumeId).then(() => {
     // do something
   }).catch((error: BusinessError) => {
-    console.error("mount failed");
+    console.error("unmount failed");
   });
   ```
 
@@ -339,7 +339,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
   volumeManager.unmount(volumeId).then(() => {
     // do something
   }).catch((error: BusinessError): void => {
-    console.error("mount failed");
+    console.error("unmount failed");
   });
   ```
 
