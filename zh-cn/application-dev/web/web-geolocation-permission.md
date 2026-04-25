@@ -140,6 +140,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+   <!-- @[apply_geolocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/ApplyGeolocation.ets) -->
+
    ```ts
    // xxx.ets
    'use static'
@@ -278,7 +280,10 @@ struct WebComponent {
   }
 }
 ```
+
 ArkTS-Sta示例：
+<!-- @[geolocation_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb-Sta/GeolocationPermissions/entry/src/main/ets/pages/GeolocationPermissions.ets) -->
+
 ```ts
 // xxx.ets
 'use static'
