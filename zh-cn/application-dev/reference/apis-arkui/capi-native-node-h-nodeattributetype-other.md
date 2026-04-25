@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（其他）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @wangyang2022; @yangfan229-->
-<!--Designer: @piggyguy; @wangyang2022; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022; @hehongyang3-->
+<!--Designer: @piggyguy; @wangyang2022; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
