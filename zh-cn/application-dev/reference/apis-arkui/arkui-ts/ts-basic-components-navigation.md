@@ -1,9 +1,9 @@
 # Navigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Navigation组件是路由导航的根视图容器，一般作为Page页面的根容器使用，其内部默认包含了标题栏、内容区和工具栏，其中内容区默认首页显示导航内容（Navigation的子组件）或非首页显示（[NavDestination](ts-basic-components-navdestination.md)的子组件），首页和非首页通过路由进行切换。
@@ -114,10 +114,6 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 设置页面右上角菜单。不设置时不显示菜单项。使用Array<[NavigationMenuItem](#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -137,8 +133,6 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -176,8 +170,6 @@ toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: 
 >**说明：**
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +197,7 @@ hideToolBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏工具栏。<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
+| value  | boolean | 是   | 是否隐藏工具栏。<br>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideToolBar<sup>13+</sup>
 
@@ -221,8 +213,8 @@ hideToolBar(hide: boolean, animated: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | boolean | 是   | 是否隐藏工具栏。<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
-| animated  | boolean | 是   | 设置是否使用动画显隐工具栏。<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>传入参数非法时，按false处理。 |
+| hide  | boolean | 是   | 是否隐藏工具栏。<br>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
+| animated  | boolean | 是   | 设置是否使用动画显隐工具栏。<br>默认值：false<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideTitleBar
 
@@ -238,7 +230,7 @@ hideTitleBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
+| value  | boolean | 是   | 是否隐藏标题栏。<br>默认值：false<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideTitleBar<sup>13+</sup>
 
@@ -254,8 +246,8 @@ hideTitleBar(hide: boolean, animated: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | boolean | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
-| animated  | boolean | 是   | 设置是否使用动画显隐标题栏。<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>传入参数非法时，按false处理。 |
+| hide  | boolean | 是   | 是否隐藏标题栏。<br>默认值：false<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
+| animated  | boolean | 是   | 设置是否使用动画显隐标题栏。<br>默认值：false<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideBackButton
 
@@ -331,7 +323,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 
 > **说明：**
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -353,7 +345,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -382,7 +374,7 @@ hideNavBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| value  | boolean | 是   | 是否隐藏导航页。<br/>true：隐藏导航页；false：显示导航页。<br/>传入参数非法时，按false处理。|
+| value  | boolean | 是   | 是否隐藏导航页。<br>默认值：false<br/>true：隐藏导航页；false：显示导航页。<br/>传入参数非法时，按false处理。|
 
 ### navDestination<sup>10+</sup>
 
@@ -757,9 +749,9 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 > **说明：**
 >
 > 1.连续调用多个导航控制器操作方法时，中间过程会被忽略，显示最终的栈操作结果。<br/>
-> 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以使用NEW_INSTANCE模式。
+> 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以设置[NavigationOption](#navigationoptions12)中的launchMode属性值为LaunchMode.NEW_INSTANCE模式。
 >
-> 2.不建议开发者通过监听生命周期的方式管理自己的导航控制器。
+> 2.不建议开发者通过监听页面生命周期的方式管理自己的导航控制器。
 >
 > 3.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
@@ -1782,7 +1774,7 @@ Navigation首页名字。
 | icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 使能状态，默认使能（false未使能，true使能）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | action | () =&gt; void | 否    | 是    | 当前选项被选中的事件回调。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。 <br>**说明：** <br/>不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## ToolbarItem<sup>10+</sup>
 
@@ -1798,8 +1790,8 @@ Navigation首页名字。
 | action     | () =&gt; void                            | 否    | 是    | 当前选项被选中的事件回调。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
 | status     | [ToolbarItemStatus](#toolbaritemstatus10枚举说明) | 否    | 是    | 工具栏单个选项的状态。<br/>默认值：ToolbarItemStatus.NORMAL<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | activeIcon | ResourceStr                              | 否    | 是    | 工具栏单个选项处于ACTIVE态时的图标资源路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                |
-| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)        | 否    | 是    | 工具栏单个选项的symbol资源（优先级高于icon）。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| activeSymbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)              | 否    | 是    | 工具栏单个选项处于ACTIVE态时的symbol资源（优先级高于activeIcon）。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
+| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)        | 否    | 是    | 工具栏单个选项的symbol资源（优先级高于icon）。 <br/>**说明：** <br/> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| activeSymbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)              | 否    | 是    | 工具栏单个选项处于ACTIVE态时的symbol资源（优先级高于activeIcon）。 <br/>**说明：** <br/> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 
 ## ToolbarItemStatus<sup>10+</sup>枚举说明
 
