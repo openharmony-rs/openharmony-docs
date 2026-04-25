@@ -1637,7 +1637,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 设置主窗口容器在焦点态和非焦点态时的背景色。在Stage模型下，该接口需在调用[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)后使用。
 
-窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。当同时使用该接口和[setWindowBackgroundColor()](#setwindowbackgroundcolor9)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
+窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](#setwindowbackgroundcolor9)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10591,7 +10591,9 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下生效，在其他设备中返回801错误码。
+**设备行为差异：**
+- 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
