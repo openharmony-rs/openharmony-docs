@@ -1,4 +1,4 @@
-# 数据防泄漏服务开发指导
+# 数据防泄漏服务开发指导(ArkTS)
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
