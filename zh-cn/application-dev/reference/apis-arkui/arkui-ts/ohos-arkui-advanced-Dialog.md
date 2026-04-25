@@ -218,7 +218,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 | fontColor                 | [ResourceColor](ts-types.md#resourcecolor)                   | 否 | 是 | 按钮的字体颜色。<br/>默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | buttonStyle<sup>12+</sup> | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否 | 是 | 按钮的样式。<br/>默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | role<sup>12+</sup>        | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明) | 否 | 是 | 按钮的角色。<br/>默认值：ButtonRole.NORMAL<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23  |
-| defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 按钮是否设置默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br/>默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 按钮是否设置默认焦点。<br/>true：按钮是默认焦点<br/>false：按钮不是默认焦点<br/>默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 >  **说明：**
@@ -234,7 +234,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 
 > **说明：**
 >
-> radius默认值为32vp。
+> 气泡圆角半径radius默认值为32vp。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
