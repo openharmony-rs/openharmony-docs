@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
-<!--Designer: @lizihao_73-->
+<!--Designer: @wambers584-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -13,7 +13,7 @@
 
 ## 旋转策略配置适配差异化设备
 
-当前设备形态多种多样，包括直板机、折叠机、三折叠、阔折叠等多类设备。如果应用的旋转策略仅按照其中一类设备适配，可能导致在其他设备上的体验下降。为了消除新增设备类型带来的额外适配工作，所以需要采用与设备类型无关的方式来进行旋转策略配置。
+当前设备形态多种多样，包括直板机、折叠机、三折叠、阔折叠等多类设备。如果应用的旋转策略仅按照其中一类设备适配，可能导致在其他设备上的体验下降。为了消除新增设备类型带来的额外适配工作，所以需要采用与设备类型无关的方式来配置旋转策略。
 
 开发者可根据自身业务梳理不同设备形态下对旋转的诉求，如果单一策略（如：FOLLOW_DESKTOP、AUTO_ROTATION_UNSPECIFIED）能满足需求，推荐使用单一策略。若单一策略不能满足，可参考断点机制，实现差异化适配。
 
@@ -85,11 +85,11 @@ struct Index {
 
 ## 视频类应用横竖屏切换
 
-在视频类应用中，播放详情页通常包括一个正在播放的视频窗口和其他若干推荐视频简介。当用户点击全屏按钮时，推荐隐藏视频组件，并将视频窗口切换至横屏显示，以提供更佳的观看体验。
+视频类应用横竖屏切换是指在视频类应用中，播放界面的详情页采用竖屏方式显示，用户可通过全屏按钮将页面切换至横屏方式显示，从而提供更佳的观看体验。
 
 开发者可通过以下两种方式实现视频播放界面的横竖屏切换：
 
-- 通过[调用窗口管理的setPreferredOrientation()接口](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section188583141719)设置主窗口方向。实现方式参考[通过窗口旋转实现横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section188583141719)。
+- 通过[调用窗口管理的setPreferredOrientation()接口](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section188583141719)设置主窗口方向。
 
 - 通过跳转到不同显示方向的页面来设置视频窗口方向。实现方式参考[通过页面跳转实现横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section161651074615)。
 
@@ -108,7 +108,7 @@ struct Index {
 | 180 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
 | 270 | LANDSCAPE_INVERTED | LANDSCAPE |
 
-三折叠全展开态屏幕角度、屏幕方向、窗口方向对应关系：
+三折叠全展开态屏幕角度、屏幕方向、窗口方向对应关系（在某些特性下，可能会与表中所述不一致，以实际表现为准）：
 
 | 屏幕角度 | 屏幕方向 | 窗口方向 |
 | -------- | -------- | -------- |
@@ -117,13 +117,13 @@ struct Index {
 | 270 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
 | 0 | LANDSCAPE_INVERTED | LANDSCAPE |
 
-直板机窗口方向、屏幕方向和屏幕角度的关系如上表所示，屏幕的orientation与窗口orientation在横屏方向上的定义并不一致。窗口方向的横屏对应屏幕方向的反向横屏；窗口方向的反向横屏则对应屏幕方向的横屏。0度也不总是对应着竖屏，比如在三折叠全展开态和阔折叠展开态上，0度对应的是横屏。如果开发者直接用[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)来判断窗口实际显示的方向，可能会出现应用显示方向错位的问题。因此，不能简单通过屏幕的orientation或rotation来判断窗口的orientation。
+屏幕方向与窗口方向在横屏方向上的定义并不一致。比如在直板机上，窗口方向的横屏对应屏幕方向的反向横屏；窗口方向的反向横屏则对应屏幕方向的横屏。屏幕角度和屏幕方向也不总是一一对应。比如在三折叠全展开态上，屏幕角度为0时，屏幕方向并不是竖屏，而是反向横屏。如果开发者直接用[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)来判断窗口实际显示的方向，可能会出现应用显示方向错位的问题。因此，不能简单通过屏幕的orientation或rotation来判断窗口的orientation。
 
-若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面应用内的锁定按钮固定当前方向），推荐获取到[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)后，再使用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)将屏幕方向转化为窗口方向，具体示例如下：
+若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面锁定当前方向），推荐获取到[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)后，再使用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)将屏幕方向转化为窗口方向，具体示例如下：
 
 1. 获取目标屏幕方向。调用[getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取屏幕方向。  
 
-2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)可以把屏幕方向[display.Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)转换为窗口方向[orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)。
+2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)可以把屏幕方向[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)转换为窗口方向[orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)。
 
 3. 将窗口方向转换为旋转策略。窗口方向还需要进一步转换为系统可识别的旋转策略窗口[Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)，才能传给setPreferredOrientation()。
 
@@ -143,7 +143,7 @@ struct SpecificSceneSetOrientationIndex {
       const displayOrientation = disp.orientation; // 当前屏幕方向（0/1/2/3）
 
       console.info("Current display orientation = " + displayOrientation);
-      // 2.将displayOrientation转换为window Orientation
+      // 2.将displayOrientation转换为windowOrientation
       let windowOrientation: number =
         this.mainWindow.convertOrientationAndRotation(
           window.RotationInfoType.DISPLAY_ORIENTATION,
@@ -169,7 +169,7 @@ struct SpecificSceneSetOrientationIndex {
         default:
           throw new Error("Invalid orientation value");
       }
-      // 4.设置窗口方向
+      // 4.设置旋转策略锁定窗口方向
       this.mainWindow.setPreferredOrientation(orientation, (err) => {
         if (err && err.code) {
           console.error("setPreferredOrientation failed: " + JSON.stringify(err));
