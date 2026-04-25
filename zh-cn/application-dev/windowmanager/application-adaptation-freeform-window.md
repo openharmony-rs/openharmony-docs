@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-[自由窗口](./freeform-window-overview.md#自由窗口)状态下默认支持窗口大小缩放，且主窗默认存在标题栏，与非自由窗口存在差异，为避免应用在自由窗口状态下出现界面截断、遮挡、或控件叠加等问题，需要应用进行适配。
+[自由窗口](./freeform-window-overview.md#自由窗口)状态下默认支持窗口大小缩放，且主窗口默认存在标题栏，与非自由窗口存在差异，为避免应用在自由窗口状态下出现界面截断、遮挡、或控件叠加等问题，需要应用进行适配。
 
 本章将列举应用可能出现的布局问题，并提供相应的解决方案。
 
@@ -224,7 +224,7 @@
   }
   ```
 
-- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#modulejson5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)中的[abilities标签](../quick-start/module-configuration-file.md#abilities%E6%A0%87%E7%AD%BE)限制主窗处于自由窗口状态下的最大和最小尺寸。
+- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#modulejson5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)中的[abilities标签](../quick-start/module-configuration-file.md#abilities%E6%A0%87%E7%AD%BE)限制口处于自由窗口状态下的最大和最小尺寸。
 
   maxWindowWidth：当前UIAbility组件支持的最大的窗口宽度，单位为vp。
 
