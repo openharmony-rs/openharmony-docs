@@ -53,7 +53,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    struct Index {
      @Local message: string = 'Hello World';
      @Local name: string = 'Tom';
-     @Local age: number = 24;
+     // 监听message、name的变化
      @Monitor(['message', 'name'])
      onStrChange(monitor: IMonitor) {
        monitor.dirty.forEach((path: string) => {
@@ -64,6 +64,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
        Column() {
          Button('change string')
            .onClick((e) => {
+             // 修改message、name的值
              this.message += '!';
              this.name = 'Jack';
          })
