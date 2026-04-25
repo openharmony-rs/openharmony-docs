@@ -154,10 +154,10 @@
       // Main window is created, set main page for this ability
       windowStage.loadContent('pages/Index', (err) => {
         if (err.code) {
-          console.log(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+          console.info(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.log('Succeeded in loading the content.');
+        console.info('Succeeded in loading the content.');
       });
     }
   }
@@ -358,7 +358,7 @@
      onWindowStageCreate(windowStage: window.WindowStage): void {
        windowStage.loadContent('pages/Index', (err) => {
          if (err.code) {
-           console.log('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+           console.info('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
            return;
          }
          AppStorage.setOrCreate<window.WindowStage>('windowStage', windowStage);
@@ -465,10 +465,12 @@
 
 典型场景及对应方案如下：
 
-- 对于视频类应用，在自由窗口状态下，部分页面可能需要隐藏Dock栏、标题栏，实现全屏播放视频的效果。  
+- 对于视频类应用，在自由窗口状态下，部分页面可能需要隐藏Dock栏、标题栏，实现全屏播放视频的效果。
+
   可以在应用界面增加视频全屏按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口进入全屏显示。
 
 - 播放PPT时，页面需要隐藏并禁止hover Dock栏、标题栏，以免影响PPT演示效果。  
+
   可以在应用界面增加PPT播放按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)进入全屏显示，并禁止hover Dock栏、标题栏。
 
 > **说明：**
