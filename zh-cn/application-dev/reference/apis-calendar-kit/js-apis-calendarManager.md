@@ -1852,7 +1852,7 @@ openEventEditPage(id: number): Promise\<void>
 
 通过日程id获取Calendar下符合查看或编辑条件的日程实例，使用Promise异步回调。
 
-使用该接口，系统日历可以进行查看和编辑日程。申请到READ_WHOLE_CALENDAR权限和WRITE_WHOLE_CALENDAR权限的三方应用可以查询和编辑[editEvent()](#editevent12)创建的日程，申请到READ_CALENDAR权限和WRITE_CALENDAR权限的三方应用可以查询和编辑[addEvent()](#addevent)创建的日程。
+使用该接口，系统日历可以进行查看和编辑日程。
 
 **起始版本**：26.0.0
 
