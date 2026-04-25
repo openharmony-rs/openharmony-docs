@@ -366,7 +366,7 @@ shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): Promise&lt;
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
-[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
 
 > **说明：**
 >
