@@ -232,7 +232,9 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[off('enableChange')](#offenablechangedeprecated)取消监听，否则可能会导致崩溃。
+> - 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -284,7 +286,10 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[off('styleChange')](#offstylechangedeprecated)取消监听，否则可能会导致崩溃。
+> - 从API version 8开始支持，从API version 12开始废弃。系统不再开放相关功能。
+
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -973,6 +978,11 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
 监听辅助应用启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.off('accessibilityStateChange')](#accessibilityoffaccessibilitystatechange)取消监听，否则可能会导致崩溃。
+
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1016,6 +1026,11 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
 监听触摸浏览功能启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.off('touchGuideStateChange')](#accessibilityofftouchguidestatechange)取消监听，否则可能会导致崩溃。
+
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1056,6 +1071,11 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
 监听屏幕朗读功能启用状态变化事件，使用callback异步回调。
 
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.off('screenReaderStateChange')](#accessibilityoffscreenreaderstatechange18)取消监听，否则可能会导致崩溃。
+
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1092,6 +1112,11 @@ accessibility.on('screenReaderStateChange', (data: boolean) => {
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
 监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.off('touchModeChange')](#accessibilityofftouchmodechange20)取消监听，否则可能会导致崩溃。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1144,6 +1169,11 @@ onAnimationReduceStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听减弱动效功能启用状态变化事件。使用callback异步回调。
 
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.offAnimationReduceStateChange](#accessibilityoffanimationreducestatechange23)取消监听，否则可能会导致崩溃。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
@@ -1183,6 +1213,11 @@ struct Index {
 onFlashReminderStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听闪烁提醒功能启用状态变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.offFlashReminderStateChange](#accessibilityoffflashreminderstatechange23)取消监听，否则可能会导致崩溃。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1224,6 +1259,11 @@ onAudioMonoStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听单声道音频功能启用状态变化事件。使用callback异步回调。
 
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.offAudioMonoStateChange](#accessibilityoffaudiomonostatechange23)取消监听，否则可能会导致崩溃。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
@@ -1263,6 +1303,11 @@ struct Index {
 onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
 
 监听关怀模式启用状态变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[accessibility.offSeniorModeStateChange](#accessibilityoffseniormodestatechange)取消监听，否则可能会导致崩溃。
 
 **起始版本：** 26.0.0
 
