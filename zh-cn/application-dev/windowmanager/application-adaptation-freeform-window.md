@@ -307,7 +307,7 @@
 >
 >   2. 应用使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定自由窗口尺寸限制。
 >
->   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#modulejson5配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制自由窗口的最大和最小尺寸。
+>   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制自由窗口的最大和最小尺寸。
 >
 >   4. 默认系统限制（对于不同产品和窗口类型，windowLimits系统默认限制存在差异）。
 > 
