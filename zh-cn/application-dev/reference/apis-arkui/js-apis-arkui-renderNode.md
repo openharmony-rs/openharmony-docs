@@ -3066,3 +3066,335 @@ struct Index {
 ```
 
 ![](figures/RenderNode_isDisposed.gif)
+
+### backgroundBlur
+
+set backgroundBlur(blurValue: BackgroundBlur | undefined)
+
+设置背景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                           |
+| ------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| blurValue | [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) \| undefined | 是   | 背景模糊效果。undefined表示无背景模糊效果。 |
+
+get backgroundBlur(): BackgroundBlur
+
+获取背景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                         | 说明                                     |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) | 背景模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    let frameNode = new FrameNode(uiContext);
+    frameNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundColor('0xffd5d5d5')
+      .backgroundImage($r('app.media.img')) // 需要替换为开发者所需的图像资源文件。
+      .backgroundImagePosition({ x: 25, y: 25 })
+      .backgroundImageSize({ width: 150, height: 100 });
+    this.rootNode.appendChild(frameNode);
+    let blurRenderNode = frameNode.getRenderNode();
+    // 设置背景模糊效果。
+    if (blurRenderNode != null) {
+      blurRenderNode.backgroundBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      const backgroundBlur = blurRenderNode.backgroundBlur;
+      console.info(`background blur radius: ${backgroundBlur.radius} grayscale: [${backgroundBlur.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/backgroundBlur.png)
+
+### contentBlur
+
+set contentBlur(blurValue: ContentBlur | undefined)
+
+设置内容模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                       | 必填 | 说明                                           |
+| ------- | ---------------------------------------------------------- | ---- | ---------------------------------------------- |
+| blurValue | [ContentBlur](./js-apis-arkui-graphics.md#contentblur) \| undefined | 是   | 内容模糊效果。undefined表示无内容模糊效果。 |
+
+get contentBlur(): ContentBlur
+
+获取内容模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                       | 说明                                     |
+| ---------------------------------------------------------- | ---------------------------------------- |
+| [ContentBlur](./js-apis-arkui-graphics.md#contentblur) | 内容模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置内容模糊效果。
+      myRenderNode.contentBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      renderNode.appendChild(myRenderNode)
+      const contentBlurConfig = myRenderNode.contentBlur;
+      console.info(`content blur radius: ${contentBlurConfig.radius} grayscale: [${contentBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/contentBlur.png)
+
+### foregroundBlur
+
+set foregroundBlur(blurValue: ForegroundBlur | undefined)
+
+设置前景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                           | 必填 | 说明                                         |
+| ------- | -------------------------------------------------------------- | ---- | -------------------------------------------- |
+| blurValue | [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) \| undefined | 是   | 前景模糊效果。undefined表示无前景模糊效果。 |
+
+get foregroundBlur(): ForegroundBlur
+
+获取前景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                           | 说明                                   |
+| -------------------------------------------------------------- | -------------------------------------- |
+| [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) | 前景模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置前景模糊效果。
+      myRenderNode.foregroundBlur = {
+        radius: 20
+      };
+      renderNode.appendChild(myRenderNode);
+      const foregroundBlur = myRenderNode.contentBlur;
+      console.info(`foreground blur radius: ${foregroundBlur.radius}`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/foregroundBlur.png)
