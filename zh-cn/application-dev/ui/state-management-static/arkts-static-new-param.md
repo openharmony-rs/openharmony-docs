@@ -53,7 +53,7 @@ import { Param } from '@kit.ArkUI';
         Text(`${this.flag}`)
         Button('change Local')
           .onClick((e: ClickEvent) => {
-            // 数据源变量修改，会同步给\@Param
+            // 数据源变量修改，会同步给@Param
             this.count++;
             this.message += ' World';
             this.flag = !this.flag;
@@ -162,6 +162,7 @@ import { Param } from '@kit.ArkUI';
         Text(`${this.dimensionTwo[1][1]}`)
         Button('change array item')
           .onClick((e: ClickEvent) => {
+            // 修改数组项的值，变化可观察到
             this.numArr[0]++;
             this.numArr[1] += 2;
             this.dimensionTwo[0][0] = 0;
@@ -169,6 +170,7 @@ import { Param } from '@kit.ArkUI';
           })
         Button('change whole array')
           .onClick((e: ClickEvent) => {
+            // 对数组整体赋值，变化可观察到
             this.numArr = [5, 4, 3, 2, 1];
             this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
           })
@@ -398,8 +400,11 @@ struct Index {
       })
       Button('change')
         .onClick((e: ClickEvent) => {
+          // 对数组项整体赋值，变化同步给子组件的@Param
           this.infoList[0] = new Info('Atom', 40, 27, 90);
+          // @Trace装饰的属性变化可被深度观测
           this.infoList[1].name = 'Bob';
+          // 嵌套类对象整体赋值，变化可被观测
           this.infoList[2].region = new Region(7, 9);
         })
     }
@@ -443,9 +448,11 @@ struct Index {
     Column() {
       Text(`Local ${this.arr}`)
       Button(`change arr[0]: ${this.arr[0]}`).onClick((e: ClickEvent) => {
+        // 修改数组元素，变化可观察到
         this.arr[0]++;
       })
       Button(`push item: ${this.arr.length}`).onClick((e: ClickEvent) => {
+        // 通过push API修改数组，变化可观察到
         this.arr.push(Double.toInt(this.arr.length));
       })
       Button(`pop item`).onClick((e: ClickEvent) => {
@@ -455,6 +462,7 @@ struct Index {
         this.arr.reverse();
       })
       Button(`reset`).onClick((e: ClickEvent) => {
+        // 对数组整体赋值，变化可观察到
         this.arr = [0, 1, 2];
       })
       Child({ arr: this.arr })
@@ -501,11 +509,13 @@ struct ParentComponent {
       Button('parent update the new date')
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 对Date整体赋值，变化可观察到
           this.parentSelectedDate = new Date('2023-07-07');
         })
       Button('increase the year by 1')
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过setFullYear API修改Date，变化可观察到
           this.parentSelectedDate.setFullYear(this.parentSelectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
@@ -534,7 +544,7 @@ struct ParentComponent {
 import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
 @ComponentV2
 struct Child {
-  @Param value: Map<number, string> = new Map<number, string>()
+  @Param value: Map<number, string> = new Map<number, string>();
 
   build() {
     Column() {
@@ -549,26 +559,28 @@ struct Child {
 @Entry
 @ComponentV2
 struct MapSample {
-  @Local message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']])
+  @Local message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
 
   build() {
     Row() {
       Column() {
         Child({ value: this.message })
         Button('init map').onClick((e: ClickEvent) => {
-          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']])
+          // 对Map整体赋值，变化可观察到
+          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
         Button('set new one').onClick((e: ClickEvent) => {
-          this.message.set(4, 'd')
+          // 通过set API修改Map，变化可观察到
+          this.message.set(4, 'd');
         })
         Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear()
+          this.message.clear();
         })
         Button('replace the first one').onClick((e: ClickEvent) => {
-          this.message.set(0, 'aa')
+          this.message.set(0, 'aa');
         })
         Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0)
+          this.message.delete(0);
         })
       }
       .width('100%')
@@ -588,7 +600,7 @@ struct MapSample {
 import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
 @ComponentV2
 struct Child {
-  @Param message: Set<number> = new Set<number>()
+  @Param message: Set<number> = new Set<number>();
 
   build() {
     Column() {
@@ -603,23 +615,25 @@ struct Child {
 @Entry
 @ComponentV2
 struct SetSample {
-  @Local message: Set<number> = new Set<number>([0, 1, 2, 3, 4])
+  @Local message: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
 
   build() {
     Row() {
       Column() {
         Child({ message: this.message })
         Button('init set').onClick((e: ClickEvent) => {
-          this.message = new Set<number>([0, 1, 2, 3, 4])
+          // 对Set整体赋值，变化可观察到
+          this.message = new Set<number>([0, 1, 2, 3, 4]);
         })
         Button('set new one').onClick((e: ClickEvent) => {
-          this.message.add(5)
+          // 通过add API修改Set，变化可观察到
+          this.message.add(5);
         })
         Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear()
+          this.message.clear();
         })
         Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0)
+          this.message.delete(0);
         })
       }
       .width('100%')
@@ -647,6 +661,7 @@ struct Index {
       MyComponent({ count: this.count })
       Button('change')
         .onClick((e: ClickEvent) => {
+          // 将count从number变为null，类型变化可观察到，UI会刷新
           this.count = null;
         })
     }
