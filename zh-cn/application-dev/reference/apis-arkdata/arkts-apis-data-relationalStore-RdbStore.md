@@ -81,9 +81,9 @@ class EntryAbility extends UIAbility {
       if (store != undefined) {
         (store as relationalStore.RdbStore).version = 3;
         // 获取数据库版本
-        console.info(`RdbStore version is ${store.version}`);
+        console.info(`RdbStore version is ${store!.version}`);
         // 获取数据库是否重建
-        console.info(`RdbStore rebuilt is ${store.rebuilt}`);
+        console.info(`RdbStore rebuilt is ${store!.rebuilt}`);
       }
     }).catch((err: Error) => {
       let businessError = err as BusinessError;
@@ -199,7 +199,7 @@ const valueBucket1: relationalStore.ValuesBucket = {
 };
 
 if (store != undefined) {
-  store.insert("EMPLOYEE", valueBucket1, (err, rowId) => {
+  store!.insert("EMPLOYEE", valueBucket1, (err, rowId) => {
     if (err) {
       console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
       return;
@@ -317,7 +317,7 @@ const valueBucket1: relationalStore.ValuesBucket = {
 };
 
 if (store != undefined) {
-  store.insert("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE, (err, rowId) => {
+  store!.insert("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE, (err, rowId) => {
     if (err) {
       console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
       return;
@@ -3868,15 +3868,15 @@ if (store != undefined) {
 ```ts
 // 相似度的计算符号是<->，余弦距离的计算符号是<=>
 const querySql = "select id, repr <-> '[1.5,5.6]' as distance from test ORDER BY repr <-> '[1.5,5.6]' limit 10 offset 1;";
-let resultSet = await store.querySql(querySql);
+let resultSet = await store!.querySql(querySql);
 
 // 聚合查询，其中group by支持多列
 const querySql1 = "select id, repr from test group by id, repr having max(repr<=>'[1.5,5.6]');";
-let resultSet1 = await store.querySql(querySql1);
+let resultSet1 = await store!.querySql(querySql1);
 
 // 子查询，最大支持嵌套32层
 const querySql2 = "select * from test where id in (select id from test1)";
-let resultSet2 = await store.querySql(querySql2);
+let resultSet2 = await store!.querySql(querySql2);
 ```
 
 ## querySql
@@ -4027,7 +4027,7 @@ ArkTS-Dyn示例：
 // 查询id为1，与[1.5, 2.5]相似度小于0.5，且以相似度进行升序排序的前10条数据
 const querySql = "select id, repr <-> ? as distance from test where id = ? and repr <-> ? < 0.5 ORDER BY repr <-> ? limit 10;";
 const vectorValue: Float32Array = new Float32Array([1.5, 2.5]);
-let resultSet = await store.querySql(querySql, [vectorValue, 1, vectorValue, vectorValue]); 
+let resultSet = await store!.querySql(querySql, [vectorValue, 1, vectorValue, vectorValue]); 
 ```
 
 ArkTS-Sta示例：
@@ -4038,7 +4038,7 @@ ArkTS-Sta示例：
 // 查询id为1，与[1.5, 2.5]相似度小于0.5，且以相似度进行升序排序的前10条数据
 const querySql = "select id, repr <-> ? as distance from test where id = ? and repr <-> ? < 0.5 ORDER BY repr <-> ? limit 10;";
 const vectorValue: Float32Array = new Float32Array([1.5, 2.5]);
-let resultSet = await store.querySql(querySql, [vectorValue, 1 as long, vectorValue, vectorValue]); 
+let resultSet = await store!.querySql(querySql, [vectorValue, 1 as long, vectorValue, vectorValue]); 
 ```
 
 ## querySqlSync<sup>12+</sup>
@@ -4725,7 +4725,7 @@ ArkTS-Sta示例：
 ```ts
 let PRIKey: Array<relationalStore.PRIKeyType> = [1 as long, 4 as long, 2 as long, 3 as long];
 if (store != undefined) {
-  store.getModifyTime("EMPLOYEE", "NAME", PRIKey, (err, modifyTime) => {
+  store!.getModifyTime("EMPLOYEE", "NAME", PRIKey, (err, modifyTime) => {
     if (err) {
       console.error(`getModifyTime failed, code is ${err.code}, message is ${err.message}`);
       return;
@@ -5082,12 +5082,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
   (store as relationalStore.RdbStore).createTransaction().then(async (transaction: relationalStore.Transaction) => {
-    transaction.execute("DELETE FROM test WHERE age = ? OR age = ?", [21 as long, 20 as long]).then(() => {
+    try {
+      await transaction.execute("DELETE FROM test WHERE age = ? OR age = ?", [21 as long, 20 as long]);
       await transaction.commit();
-    }).catch((e) => {
+    } catch (e) {
       await transaction.rollback();
       console.error(`execute sql failed, code is ${e.code},message is ${e.message}`);
-    });
+    }
   }).catch((err) => {
     console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   });
@@ -6203,6 +6204,10 @@ if (store != undefined) {
       console.error(`Sync failed, code is ${err.code},message is ${err.message}`);
       return;
     }
+    if (!result) {
+      console.error('Query succeeded but resultSet is null');
+      return;
+    }
     console.info('Sync done.');
     for (let i = 0; i < result.length; i++) {
       console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
@@ -6653,7 +6658,7 @@ let storeObserver = (devices: Array<string>) => {
 
 try {
   if (store != undefined) {
-    store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -6708,7 +6713,7 @@ let storeObserver = (devices: Array<string>) => {
 
 try {
   if (store != undefined) {
-    store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -6728,7 +6733,7 @@ let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
 
 try {
   if (store != undefined) {
-    store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, changeInfos);
+    store!.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, changeInfos);
   }
 } catch (err) {
   console.error(`on dataChange fail, code is ${err.code}, message is ${err.message}`);
@@ -6748,7 +6753,7 @@ try {
   };
 
   if (store != undefined) {
-    await store.insert('test', valueBucket);
+    await store!.insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`insert fail, code is ${err.code}, message is ${err.message}`);
@@ -6801,7 +6806,7 @@ let storeObserver = (devices: Array<string>) => {
 
 try {
   if (store != undefined) {
-    store.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -6821,7 +6826,7 @@ let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
 
 try {
   if (store != undefined) {
-    store.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, changeInfos);
+    store!.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, changeInfos);
   }
 } catch (err) {
   console.error(`on dataChange fail, code is ${err.code}, message is ${err.message}`);
@@ -6841,7 +6846,7 @@ try {
   };
 
   if (store != undefined) {
-    await store.insert('test', valueBucket);
+    await store!.insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`insert fail, code is ${err.code}, message is ${err.message}`);
@@ -6891,7 +6896,7 @@ let storeObserver = () => {
 
 try {
   if (store != undefined) {
-    store.on('storeObserver', false, storeObserver);
+    store!.on('storeObserver', false, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -6940,7 +6945,7 @@ let progressDetail = (progressDetail: relationalStore.ProgressDetails) => {
 
 try {
   if (store != undefined) {
-    store.on('autoSyncProgress', progressDetail);
+    store!.on('autoSyncProgress', progressDetail);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -6987,7 +6992,7 @@ let progressDetail = (progressDetail: relationalStore.ProgressDetails) => {
 
 try {
   if (store != undefined) {
-    store.onAutoSyncProgress(progressDetail);
+    store!.onAutoSyncProgress(progressDetail);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7043,7 +7048,7 @@ let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
 
 try {
   if (store != undefined) {
-    store.on('statistics', sqlExecutionInfo);
+    store!.on('statistics', sqlExecutionInfo);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7062,7 +7067,7 @@ try {
     'CODES': value4
   };
   if (store != undefined) {
-    await store.insert('test', valueBucket);
+    await store!.insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`insert fail, code:${err.code}, message: ${err.message}`);
@@ -7119,7 +7124,7 @@ let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
 
 try {
   if (store != undefined) {
-    store.onStatistics(sqlExecutionInfo);
+    store!.onStatistics(sqlExecutionInfo);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7138,7 +7143,7 @@ try {
     'CODES': value4
   };
   if (store != undefined) {
-    await store.insert('test', valueBucket);
+    await store!.insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`insert fail, code:${err.code}, message: ${err.message}`);
@@ -7182,7 +7187,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.on('sqliteErrorOccurred', exceptionMessage => {
+    store!.on('sqliteErrorOccurred', exceptionMessage => {
       let sqliteCode = exceptionMessage.code;
       let sqliteMessage = exceptionMessage.message;
       let errSQL = exceptionMessage.sql;
@@ -7203,8 +7208,8 @@ try {
     'codes': value,
   };
   if (store != undefined) {
-    await store.executeSql(CREATE_TABLE_TEST);
-    await store.insert('test', valueBucket);
+    await store!.executeSql(CREATE_TABLE_TEST);
+    await store!.insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`Insert fail, code:${err.code}, message: ${err.message}`);
@@ -7247,7 +7252,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.onSqliteErrorOccurred(exceptionMessage => {
+    store!.onSqliteErrorOccurred(exceptionMessage => {
       let sqliteCode = exceptionMessage.code;
       let sqliteMessage = exceptionMessage.message;
       let errSQL = exceptionMessage.sql;
@@ -7268,8 +7273,8 @@ try {
     'codes': value,
   };
   if (store != undefined) {
-    await store.executeSql(CREATE_TABLE_TEST);
-    await store.insert('test', valueBucket);
+    await store!.executeSql(CREATE_TABLE_TEST);
+    await store!.insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`Insert fail, code:${err.code}, message: ${err.message}`);
@@ -7323,7 +7328,7 @@ let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
 
 try {
   if (store != undefined) {
-    store.on('perfStat', sqlExecutionInfo);
+    store!.on('perfStat', sqlExecutionInfo);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7342,7 +7347,7 @@ try {
     'CODES': value4
   };
   if (store != undefined) {
-    const rowId = await store.insert('EMPLOYEE', valueBucket);
+    const rowId = await store!.insert('EMPLOYEE', valueBucket);
     console.info(`Insert success, rowId is: ${rowId}`);
   }
 } catch (err) {
@@ -7396,7 +7401,7 @@ let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
 
 try {
   if (store != undefined) {
-    store.onPerfStat(sqlExecutionInfo);
+    store!.onPerfStat(sqlExecutionInfo);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7415,7 +7420,7 @@ try {
     'CODES': value4
   };
   if (store != undefined) {
-    const rowId = await store.insert('EMPLOYEE', valueBucket);
+    const rowId = await store!.insert('EMPLOYEE', valueBucket);
     console.info(`Insert success, rowId is: ${rowId}`);
   }
 } catch (err) {
@@ -7469,7 +7474,7 @@ let storeObserver = (devices: Array<string>) => {
 try {
   if (store != undefined) {
     // 此处不能使用Lambda表达式
-    store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7477,7 +7482,7 @@ try {
 
 try {
   if (store != undefined) {
-    store.off('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.off('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7532,7 +7537,7 @@ let storeObserver = (devices: Array<string>) => {
 
 try {
   if (store != undefined) {
-    store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7540,7 +7545,7 @@ try {
 
 try {
   if (store != undefined) {
-    store.off('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.off('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7593,7 +7598,7 @@ let storeObserver = (devices: Array<string>) => {
 
 try {
   if (store != undefined) {
-    store.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7601,7 +7606,7 @@ try {
 
 try {
   if (store != undefined) {
-    store.offDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+    store!.offDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7651,7 +7656,7 @@ let storeObserver = () => {
 
 try {
   if (store != undefined) {
-    store.on('storeObserver', false, storeObserver);
+    store!.on('storeObserver', false, storeObserver);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7659,7 +7664,7 @@ try {
 
 try {
   if (store != undefined) {
-    store.off('storeObserver', false, storeObserver);
+    store!.off('storeObserver', false, storeObserver);
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7708,7 +7713,7 @@ let progressDetail = (progressDetail: relationalStore.ProgressDetails) => {
 
 try {
   if (store != undefined) {
-    store.on('autoSyncProgress', progressDetail);
+    store!.on('autoSyncProgress', progressDetail);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7716,7 +7721,7 @@ try {
 
 try {
   if (store != undefined) {
-    store.off('autoSyncProgress', progressDetail);
+    store!.off('autoSyncProgress', progressDetail);
   }
 } catch (err) {
   console.error(`Unregister failed, code is ${err.code}, message is ${err.message}`);
@@ -7763,7 +7768,7 @@ let progressDetail = (progressDetail: relationalStore.ProgressDetails) => {
 
 try {
   if (store != undefined) {
-    store.onAutoSyncProgress(progressDetail);
+    store!.onAutoSyncProgress(progressDetail);
   }
 } catch (err) {
   console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7771,7 +7776,7 @@ try {
 
 try {
   if (store != undefined) {
-    store.offAutoSyncProgress(progressDetail);
+    store!.offAutoSyncProgress(progressDetail);
   }
 } catch (err) {
   console.error(`Unregister failed, code is ${err.code}, message is ${err.message}`);
@@ -7816,7 +7821,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.off('statistics');
+    store!.off('statistics');
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7862,7 +7867,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.offStatistics();
+    store!.offStatistics();
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7906,7 +7911,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.off('sqliteErrorOccurred');
+    store!.off('sqliteErrorOccurred');
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7949,7 +7954,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.offSqliteErrorOccurred();
+    store!.offSqliteErrorOccurred();
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -7992,7 +7997,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.off('perfStat');
+    store!.off('perfStat');
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -8034,7 +8039,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    store.offPerfStat();
+    store!.offPerfStat();
   }
 } catch (err) {
   console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
@@ -9034,7 +9039,7 @@ setLocale(locale: string): Promise\<void>
 ```ts
 try {
   if (store != undefined) {
-    await store.setLocale("zh");
+    await store!.setLocale("zh");
     store!.querySql("SELECT * FROM EMPLOYEE ORDER BY NAME COLLATE LOCALES", (err, resultSet) => {
       if (err) {
         console.error(`Query failed, code: ${err.code}, message: ${err.message}`);
