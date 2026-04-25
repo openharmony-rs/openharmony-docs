@@ -19,6 +19,12 @@
 
 - **字符间距**：测量单个字符之间的水平距离，通常与字形和字体设计有关。
 
+- **限制区域排版**：在限定宽高区域内排版文本，获取实际排版尺寸和适配的字符串范围。
+
+- **字符位置查询**：根据屏幕坐标获取对应的字符位置，可用于文本选择、光标定位等交互场景。
+
+- **字符和字形范围查询**：在字形范围与字符范围之间进行相互转换，用于文本编辑、选择高亮等场景中字形与字符索引的映射。
+
 
 ## 接口说明
 
@@ -31,6 +37,10 @@
 | size_t OH_Drawing_TypographyGetLineCount (OH_Drawing_Typography\* ) | 获取文本行数。 | 
 | OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics (OH_Drawing_Typography\* ) | 获取段落行的度量信息。包含行的高度、宽度、起始坐标等信息。 | 
 | double OH_Drawing_TextStyleGetLetterSpacing (OH_Drawing_TextStyle \*) | 获取文本的字符间距。 | 
+| OH_Drawing_RectSize OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(OH_Drawing_Typography\*, OH_Drawing_RectSize, OH_Drawing_Array\*\*, size_t\*) | 在限定宽高区域内排版文本，返回实际排版尺寸和适配字符串范围。 |
+| OH_Drawing_PositionAndAffinity\* OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(OH_Drawing_Typography\*, double, double, OH_Drawing_TextEncoding) | 根据坐标获取字符位置（支持UTF-8/UTF-16编码）。 |
+| OH_Drawing_Range\* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(OH_Drawing_Typography\*, size_t, size_t, OH_Drawing_Range\*\*, OH_Drawing_TextEncoding) | 根据字形范围获取字符范围。 |
+| OH_Drawing_Range\* OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(OH_Drawing_Typography\*, size_t, size_t, OH_Drawing_Range\*\*, OH_Drawing_TextEncoding) | 根据字符范围获取字形范围。 |
 
 
 ## 开发步骤
@@ -119,3 +129,37 @@
    OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);
    DRAWING_LOGI("第1行 lineMetrics ascender: %{public}f", -lineMetric.ascender);
    ```
+
+6. 在限定宽高区域内排版文本，获取排版结果。使用`OH_Drawing_TypographyLayoutWithConstraintsWithBuffer`接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸，同时通过输出参数返回适配字符串范围数组及其大小。
+
+   > **说明：**
+   >
+   > - `OH_Drawing_RectSize`为结构体类型，包含`width`（宽度）和`height`（高度）两个`double`类型成员。
+   > - 适配字符串范围数组使用完毕后，需调用`OH_Drawing_ReleaseArrayBuffer`释放内存。
+
+   <!-- @[c_text_metrics_layout_with_constraints_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   <!-- @[c_text_metrics_layout_with_constraints_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   <!-- @[c_text_metrics_layout_with_constraints_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+7. 根据坐标获取字符位置信息。使用`OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer`获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
+
+   > **说明：**
+   >
+   > - `OH_Drawing_PositionAndAffinity`对象使用完毕后，需调用`OH_Drawing_DestroyPositionAndAffinity`释放内存。
+   > - 亲和度（Affinity）用于表示光标偏向哪个方向，上游亲和表示光标在当前行的行首，下游亲和表示光标在上一行的行尾。
+
+   <!-- @[c_text_metrics_char_position_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+8. 字形范围与字符范围的相互转换。使用`OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer`根据字形范围获取对应的字符范围，使用`OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer`根据字符范围获取对应的字形范围。
+
+   > **说明：**
+   >
+   > - `OH_Drawing_Range`为结构体类型，包含`start`（起始位置）和`end`（结束位置）两个`size_t`类型成员。
+   > - 对于UTF-8编码，传入和返回的范围表示字节偏移量；对于UTF-16编码，表示UTF-16码元偏移量。
+   > - `OH_Drawing_Range`对象使用完毕后，需调用`OH_Drawing_ReleaseRangeBuffer`释放内存。
+
+   <!-- @[c_text_metrics_glyph_info_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   <!-- @[c_text_metrics_glyph_info_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
