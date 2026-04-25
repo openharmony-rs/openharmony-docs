@@ -1404,8 +1404,8 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| hdrBrightnessRatio   | number | 是   | 否   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max。 <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default。 |
-| grayscaleFactor | [number, number, number] | 是   | 是   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。|
+| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default |
+| grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。|
 
 
 ## Color<sup>20+</sup>
