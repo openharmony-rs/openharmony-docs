@@ -136,9 +136,9 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **系统能力：** SystemCapability.Applications.Contacts
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -200,9 +200,9 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 
 **系统能力：** SystemCapability.Applications.Contacts
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -267,9 +267,9 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 
 **系统能力：** SystemCapability.Applications.Contacts
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本:** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -339,9 +339,9 @@ hasCall\(callback: AsyncCallback\<boolean\>\): void
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -390,9 +390,9 @@ hasCall\(\): Promise\<boolean\>
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -438,9 +438,9 @@ hasCallSync\(\): boolean
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -477,9 +477,9 @@ getCallState\(callback: AsyncCallback\<CallState\>\): void
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -528,9 +528,9 @@ getCallState\(\): Promise\<CallState\>
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -576,9 +576,9 @@ getCallStateSync\(\): CallState
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -614,9 +614,9 @@ hasVoiceCapability\(\): boolean
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -652,9 +652,9 @@ isEmergencyPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<boolean\>\
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -716,9 +716,9 @@ isEmergencyPhoneNumber\(phoneNumber: string, options: EmergencyNumberOptions, ca
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -783,9 +783,9 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -853,9 +853,9 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -917,9 +917,9 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -988,9 +988,9 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1061,9 +1061,9 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string, callback: Asy
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1130,9 +1130,9 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1196,7 +1196,7 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
@@ -1209,9 +1209,9 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 6
+**ArkTS-Dyn起始版本:** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 | 名称               | 值   | 说明                                                         |
 | ------------------ | ---- | ------------------------------------------------------------ |
@@ -1221,6 +1221,30 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 | CALL_STATE_OFFHOOK | 2    | 表示至少有一个呼叫处于拨号、通话中或呼叫保持状态，并且没有新的来电振铃或等待。 |
 | CALL_STATE_ANSWERED<sup>11+</sup> | 3    | 表示来电已经接听。 |
 
+## CCallState
+
+运营商通话状态码。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本:** 23
+
+**ArkTS-Sta起始版本:** 23
+
+| 名称            | 值   | 说明         |
+| --------------- | ---- | ------------ |
+| CCALL_STATE_UNKNOWN        | -1   | 表示呼叫未知。     |
+| CCALL_STATE_ACTIVE         | 0    | 表示通话正在进行中。     |
+| CCALL_STATE_HOLDING        | 1    | 表示呼叫保持。     |
+| CCALL_STATE_DIALING        | 2    | 表示呼叫正在拨号中。     |
+| CCALL_STATE_ALERTING       | 3    | 表示呼叫正在响铃中。     |
+| CCALL_STATE_INCOMING       | 4    | 表示呼叫正在通话中。 |
+| CCALL_STATE_WAITING        | 5    | 表示呼叫等待。     |
+| CCALL_STATE_DISCONNECTED   | 6    | 表示呼叫已断开。     |
+| CCALL_STATE_DISCONNECTING  | 7    | 表示呼叫正在断开。  |
+| CCALL_STATE_IDLE           | 8    | 表示没有正在进行的呼叫。     |
+| CCALL_STATE_ANSWERED       | 9    | 表示呼叫已接通。     |
+
 ## TelCallState<sup>21+</sup>
 
 通话状态码。
@@ -1229,7 +1253,7 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 21
+**ArkTS-Dyn起始版本:** 21
 
 | 名称                     | 值   | 说明                                                         |
 | ------------------------ | ---- | ------------------------------------------------------------ |
@@ -1247,9 +1271,9 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 |  名称  | 类型   | 只读 | 可选 | 说明                                           |
 | ------ | ------ | ---- | ---- | ---------------------------------------------- |
@@ -1261,9 +1285,9 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本:** 23
 
 |    名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
