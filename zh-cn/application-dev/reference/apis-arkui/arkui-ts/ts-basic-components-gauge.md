@@ -225,7 +225,7 @@ ArkTS-Sta: description(value: CustomBuilder | undefined | null)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \|&nbsp;undefined \|&nbsp; null| 是   | 说明内容。<br/>**说明：** <br/>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br/>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br/>设置null或undefined则不显示内容。<br/>不设置则依赖是否设置数据最大最小值。<br/>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br/>若未设置最大最小值，则不显示内容。<br/>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
+| value  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \|&nbsp;undefined \|&nbsp; null| 是   | 说明内容。<br/>**说明：** <br/>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br/>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br/>设置null则不显示内容。<br/>设置undefined等同于不设置。<br/>不设置则依赖是否设置数据最大最小值。<br/>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br/>若未设置最大最小值，则不显示内容。<br/>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
 
 ### trackShadow<sup>11+</sup>
 
@@ -249,7 +249,7 @@ ArkTS-Sta: trackShadow(value: GaugeShadowOptions | undefined | null)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) <br/>ArkTS-Sta: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) \|&nbsp;undefined \|&nbsp; null | 是   | 添加阴影效果，可以指定模糊半径、X轴和Y轴的偏移量。<br/>**说明：** <br/>阴影颜色与圆环颜色一致。<br/>设置null或undefined为不开启投影。 |
+| value  | ArkTS-Dyn: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) <br/>ArkTS-Sta: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) \|&nbsp;undefined \|&nbsp; null | 是   | 添加阴影效果，可以指定模糊半径、X轴和Y轴的偏移量。<br/>**说明：** <br/>阴影颜色与圆环颜色一致。<br/>设置null为不开启投影。<br/>设置undefined时恢复默认阴影效果。 |
 
 ### indicator<sup>11+</sup>
 
@@ -273,7 +273,7 @@ ArkTS-Sta: indicator(value: GaugeIndicatorOptions | undefined | null)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) <br/>ArkTS-Sta: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) \|&nbsp;undefined \|&nbsp; null | 是   | 指针样式。<br/>**说明：** <br/>设置null或undefined则不显示指针。 |
+| value  | ArkTS-Dyn: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) <br/>ArkTS-Sta: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) \|&nbsp;undefined \|&nbsp; null | 是   | 指针样式。<br/>**说明：** <br/>设置null则不显示指针。<br/>设置undefined则显示默认指针样式。 |
 
 ### privacySensitive<sup>12+</sup>
 
@@ -301,7 +301,7 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | ArkTS-Dyn: Optional\<boolean\> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置null或undefined则不敏感。<!--Del--><br/>需要在卡片中使用Gauge，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | ArkTS-Dyn: Optional\<boolean\> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br/>**说明：** <br/>设置undefined则不敏感。<!--Del--><br/>需要在卡片中使用Gauge，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ### contentModifier<sup>12+</sup>
 
@@ -323,7 +323,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<GaugeConfiguration> | unde
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[GaugeConfiguration](#gaugeconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[GaugeConfiguration](#gaugeconfiguration12对象说明)> \|&nbsp;undefined | 是   | 在Gauge组件上定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[GaugeConfiguration](#gaugeconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[GaugeConfiguration](#gaugeconfiguration12对象说明)> \|&nbsp;undefined | 是   | 在Gauge组件上定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示为默认内容。 |
 
 ## GaugeShadowOptions<sup>11+</sup>对象说明
 
@@ -360,7 +360,7 @@ GaugeShadowOptions继承自[MultiShadowOptions](ts-information-display-common.md
 
 ## GaugeConfiguration<sup>12+</sup>对象说明
 
-开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
