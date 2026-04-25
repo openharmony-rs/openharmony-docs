@@ -261,7 +261,29 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
    }
    ```
 
-6. 发现结束或页面退出时，调用停止发现接口释放发现监听。
+6. 发现结束或页面退出时，调用停止发现接口释放发现监听。ArkTS-Dyn场景下可调用[off('discoverSuccess')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoversuccess)和[off('discoverFailure')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoverfailure)取消监听，ArkTS-Sta场景下可调用[offDiscoverSuccess](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoversuccess23)和[offDiscoverFailure](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoverfailure23)取消监听。
+
+   ArkTS-Dyn示例：
+
+   ```ts
+   stopDeviceDiscovery(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     try {
+       this.deviceManager.stopDiscovering();
+       this.deviceManager.off('discoverSuccess');
+       this.deviceManager.off('discoverFailure');
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
 
    ```ts
    stopDeviceDiscovery(): void {
@@ -554,7 +576,23 @@ ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;
    }
    ```
 
-5. 不再监听设备上下线时，可调用[offDeviceStateChange](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange23)取消监听。设备管理实例不再使用时，可调用[releaseDeviceManager](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#distributeddevicemanagerreleasedevicemanager)释放资源。
+5. 不再监听设备上下线时，ArkTS-Dyn场景下可调用[off('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)取消监听，ArkTS-Sta场景下可调用[offDeviceStateChange](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange23)取消监听。设备管理实例不再使用时，可调用[releaseDeviceManager](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#distributeddevicemanagerreleasedevicemanager)释放资源。
+
+   ArkTS-Dyn示例：
+
+   ```ts
+   releaseDeviceManager(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       return;
+     }
+
+     this.deviceManager.off('deviceStateChange');
+     distributedDeviceManager.releaseDeviceManager(this.deviceManager);
+     this.deviceManager = undefined;
+   }
+   ```
+
+   ArkTS-Sta示例：
 
    ```ts
    releaseDeviceManager(): void {
@@ -567,4 +605,3 @@ ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;
      this.deviceManager = undefined;
    }
    ```
-
