@@ -25,6 +25,7 @@
 
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## ReplyResult<sup>23+</sup>
@@ -260,10 +261,9 @@ ArkTS-Sta: replyUiAction(action: int, actionResult: string): void
 **示例：**
 
 ArkTS-Dyn示例：
+
 <!--code_no_check-->
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     /*
@@ -284,9 +284,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     /*
@@ -345,8 +344,6 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 <!--code_no_check-->
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   class Data {
     param: string = '';
@@ -406,8 +403,6 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -459,8 +454,6 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 <!--code_no_check-->
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -507,8 +500,6 @@ offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -557,10 +548,9 @@ ArkTS-Sta: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): voi
 **示例：**
 
 ArkTS-Dyn示例：
+
 <!--code_no_check-->
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let policy = distributedDeviceManager.StrategyForHeartbeat.TEMP_STOP_HEARTBEAT;
@@ -574,9 +564,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let policy: distributedDeviceManager.StrategyForHeartbeat =
@@ -634,8 +623,6 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -695,9 +682,8 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -714,9 +700,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -776,8 +761,6 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -848,9 +831,8 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -867,9 +849,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -933,9 +914,8 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -952,9 +932,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1019,9 +998,8 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 **示例：**
 
 ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1039,9 +1017,8 @@ ArkTS-Dyn示例：
   ```
 
 ArkTS-Sta示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1102,8 +1079,6 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let queryFiler: distributedDeviceManager.NetworkIdQueryFilter = {
@@ -1166,7 +1141,6 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
 
   private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
   getDeviceUdids(deviceIds: Array<string>): void {
@@ -1222,8 +1196,6 @@ restoreLocalDeviceName(): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -1267,8 +1239,6 @@ restoreLocalDeivceName(): void
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
