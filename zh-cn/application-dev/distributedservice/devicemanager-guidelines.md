@@ -131,7 +131,7 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
-   **ArkTS-Dyn示例：**
+   ArkTS-Dyn示例：
 
    <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
@@ -157,7 +157,7 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
    }
    ```
 
-   **ArkTS-Sta示例：**
+   ArkTS-Sta示例：
 
    ```ts
    async createDeviceManager(): Promise<void> {
@@ -182,7 +182,7 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 
 5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
 
-   **ArkTS-Dyn示例：**
+   ArkTS-Dyn示例：
    
    <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
@@ -223,7 +223,7 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
    }
    ```
 
-   **ArkTS-Sta示例：**
+   ArkTS-Sta示例：
 
    ```ts
    type DiscoverySuccessResultData = distributedDeviceManager.DiscoverySuccessResult;
@@ -303,7 +303,7 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
    
 3. 选择不可信设备id，发起设备绑定。
 
-   **ArkTS-Dyn示例：**
+   ArkTS-Dyn示例：
 
    <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
@@ -343,7 +343,7 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
    }
    ```
 
-   **ArkTS-Sta示例：**
+   ArkTS-Sta示例：
 
    ```ts
    type BindTargetResultData = distributedDeviceManager.BindTargetResult;
@@ -481,7 +481,7 @@ ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口，并注册设备上下线回调。
 
-   **ArkTS-Dyn示例：**
+   ArkTS-Dyn示例：
 
    <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
@@ -521,7 +521,7 @@ ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;
    }
    ```
 
-   **ArkTS-Sta示例：**
+   ArkTS-Sta示例：
 
    ```ts
    type DeviceStateChangeResultData = distributedDeviceManager.DeviceStateChangeResult;
