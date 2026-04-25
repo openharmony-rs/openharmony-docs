@@ -60,7 +60,7 @@ motionPath(value: MotionPathOptions | undefined): this
 
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) \| undefined | 是    | 设置组件的运动路径。             |
+| value | [MotionPathOptions](#motionpathoptions) \| undefined | 是    | 设置组件的运动路径。<br/>当value的值为undefined时，使用默认值{ MotionPathOptions: { path: " ", from: 0, to: 1, rotatable: false } }。             |
 
 **返回值：**
 

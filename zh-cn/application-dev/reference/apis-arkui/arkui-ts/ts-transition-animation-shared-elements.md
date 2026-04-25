@@ -16,7 +16,9 @@
 
 ## sharedTransition
 
-sharedTransition(id: string, options?: sharedTransitionOptions): T
+ArkTS-Dyn: sharedTransition(id: string, options?: sharedTransitionOptions): T
+
+ArkTS-Sta: sharedTransition(id: string | undefined, options?: sharedTransitionOptions): this
 
 设置共享元素转场动效。
 
@@ -24,18 +26,22 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-|      id          |  string         | 是                                         |    两个页面中id值相同且不为空字符串的组件即为共享元素，在页面转场时可显示共享元素转场动效。|
-|     options          |  [sharedTransitionOptions](#sharedtransitionoptions)       | 否     |  共享元素转场动画参数。不设置时使用默认转场动画参数。各参数具体默认值参考[sharedTransitionOptions](#sharedtransitionoptions)。 |
+| 参数名 | 类型   | 必填 | 说明              |
+| -------- | ---------- | ------ | --------- |
+|      id          |  ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined         | 是 |   两个页面中id值相同且不为空字符串的组件即为共享元素，在页面转场时可显示共享元素转场动效。当id的值为undefined时，共享元素转场不生效。 |
+|     options          |  [sharedTransitionOptions](#sharedtransitionoptions)       | 否 |  共享元素转场动画参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## sharedTransitionOptions
 
