@@ -143,3 +143,37 @@ WithThemeInterface、setDefaultTheme。
      }
    }
    ```
+
+## cl.arkui.2 ArkUI接口新增仅支持Stage模型的约束
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+ArkUI存在API接口未明确标注所支持的模型标签，导致DevEco Studio和开发者无法准确感知FA模型和Stage模型的支持情况。
+
+**变更影响**
+
+此变更涉及应用适配。
+
+变更前：ArkUI提供的API version 10及以上版本的接口，如果未明确标注模型标签，可在FA模型工程中使用。
+
+变更后：ArkUI提供的API version 10及以上版本的接口，均补充仅支持Stage模型的标签，此时接口无法在FA模型中使用，会产生编译报错。
+
+**起始 API Level**
+
+10
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.22开始。
+
+**变更的接口/组件**
+
+ArkUI API version 10及以上的全量接口。
+
+**适配指导**
+
+推荐使用Stage模型。Stage模型是当前系统主推的应用模型，请参考[Stage模型开发概述](../../../application-dev/application-models/stage-model-development-overview.md)和[FA模型开发概述](../../../application-dev/application-models/fa-model-development-overview.md)了解模型差异，进行应用适配。 
