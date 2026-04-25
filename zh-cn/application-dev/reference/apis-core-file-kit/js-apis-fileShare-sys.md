@@ -334,10 +334,10 @@ async function getSharedDirectoryInfo() {
   try {
     fileShare.getSharedDirectoryInfo().then((infos: Array<fileShare.SharedDirectoryInfo>) => {
       infos.forEach((info: fileShare.SharedDirectoryInfo) => {
-        console.log("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+        console.info("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
       });
     }).catch((err: BusinessError) => {
-      console.log("getSharedDirectoryInfo err : " + JSON.stringify(err))
+      console.info("getSharedDirectoryInfo err : " + JSON.stringify(err))
     });
   }
   catch (error) {
@@ -354,9 +354,9 @@ import { fileShare } from '@kit.CoreFileKit';
 private async getSharedDirectoryInfoTest(): Promise<void> {
   try {
     let result: fileShare.SharedDirectoryInfo[] = await fileShare.getSharedDirectoryInfo();
-    console.log("result length = " + result.length);
+    console.info("result length = " + result.length);
     result.forEach((info: fileShare.SharedDirectoryInfo) => {
-      console.log("getSharedDirectoryInfo bundle=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+      console.info("getSharedDirectoryInfo bundle=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
     });
   } catch (error) {
     let err: BusinessError = error as BusinessError;
@@ -426,9 +426,9 @@ import { fileShare } from '@kit.CoreFileKit';
 async function grantSharedDirectoryPermission() {
   try {
     fileShare.grantSharedDirectoryPermission().then(() => {
-      console.log("grantSharedDirectoryPermission success")
+      console.info("grantSharedDirectoryPermission success")
     }).catch((err: BusinessError) => {
-      console.log("grantSharedDirectoryPermission err : " + JSON.stringify(err))
+      console.info("grantSharedDirectoryPermission err : " + JSON.stringify(err))
     });
   }
   catch (error) {
@@ -513,9 +513,9 @@ import { fileShare } from '@kit.CoreFileKit';
 async function revokeSharedDirectoryPermission() {
   try {
     fileShare.revokeSharedDirectoryPermission().then(() => {
-      console.log("revokeSharedDirectoryPermission success")
+      console.info("revokeSharedDirectoryPermission success")
     }).catch((err: BusinessError) => {
-      console.log("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
+      console.info("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
     });
   }
   catch (error) {
