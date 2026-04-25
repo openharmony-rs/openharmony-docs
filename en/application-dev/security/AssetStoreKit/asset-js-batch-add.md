@@ -115,3 +115,4 @@ Add two assets in batches. Their passwords are demo_pwd1 and demo_pwd2, and alia
      console.error(`Failed to batch add Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
+<!--no_check-->
