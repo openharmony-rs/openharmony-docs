@@ -350,7 +350,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileShare } from '@kit.CoreFileKit';
-  
+
 private async getSharedDirectoryInfoTest(): Promise<void> {
   try {
     let result: fileShare.SharedDirectoryInfo[] = await fileShare.getSharedDirectoryInfo();
@@ -422,7 +422,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileShare } from '@kit.CoreFileKit';
-  
+
 async function grantSharedDirectoryPermission() {
   try {
     fileShare.grantSharedDirectoryPermission().then(() => {
@@ -509,7 +509,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileShare } from '@kit.CoreFileKit';
- 	   
+
 async function revokeSharedDirectoryPermission() {
   try {
     fileShare.revokeSharedDirectoryPermission().then(() => {
