@@ -1874,18 +1874,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 /* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
 let keyUri: string = 'test'; /* USB key证书的uri，可通过getUkeyCertificateList获取 */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
 let ukeyInfo: certificateManager.UkeyInfo = {
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
 };
 try {
   certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
-      console.info('Succeeded in importing USB key certificate.');
+    console.info('Succeeded in importing USB key certificate.');
   }).catch((err: BusinessError): void => {
-      console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
-    console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
