@@ -1920,14 +1920,14 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
       calendar?.getEvents(filterId).then((data: calendarManager.Event[]) => {
         console.info(`Succeeded in getting event: ${JSON.stringify(data)}`);
       }).catch((err: BusinessError) => {
-        // 检查参数是否正确、传入的id是否存在、权限是否有限制
+        // 检查参数是否正确或者传入的id是否存在或者权限是否有限制
         console.error(`Failed to get event, Code is ${err.code}, message is ${err.message}`);
         return;
       });
       calendar?.openEventEditPage(eventId).then(() => {
         console.info(`Succeeded in opening EventEditPage`);
       }).catch((err: BusinessError) => {
-        // 检查传入的id是否存在、权限是否有限制、日程是否支持编辑
+        // 检查传入的id是否存在或者权限是否有限制或者日程是否支持编辑
         console.error(`Failed to open eventeditpage, Code is ${err.code}, message is ${err.message}`);
       });
     }
