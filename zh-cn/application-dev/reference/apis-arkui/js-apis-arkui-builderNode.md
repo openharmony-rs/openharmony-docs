@@ -5827,7 +5827,7 @@ class MyNodeController extends NodeController {
     return this.rootNode.getFrameNode();
   }
 
-  postInputEvent(event: InputEventType, uiContext: UIContext, CompetitionStrategy: competitionStrategy): boolean {
+  postInputEvent(event: InputEventType, uiContext: UIContext, competitionStrategy: CompetitionStrategy): boolean {
     if (this.rootNode == null) {
       return false;
     }
