@@ -1841,48 +1841,51 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
-| - | - | - | - |
-| keyUri | string | 是 | 表示USB key证书的uri。keyUri参数用于标识证书实体，可以通过调用getUkeyCertificateList接口得到。 |
-| cert | Uint8Array | 是 | 表示待导入的证书数据。证书数据格式遵循SKF规范的定义。 |
-| ukeyInfo | UkeyInfo | 是 | 表示USB key证书属性信息。UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN或PURPOSE_ENCRYPT。 |
+| -------- | ------ | ---- | ---- |
+| keyUri | string | 是 | 表示USB key证书的uri。<br>keyUri参数用于标识证书实体，可以通过调用getUkeyCertificateList接口得到，最大长度256字节。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。<br>证书数据格式遵循SKF规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN或PURPOSE_ENCRYPT。 |
 
 **返回值**：
 
 | 类型 | 说明 |
-| - | - |
-| Promise\<void> | Promise对象，无返回结果。 |
+| -------- | -------- |
+| Promise<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
 
 | 错误码ID | 错误信息 |
-| - | - |
-| 201 | Permission verification failed. |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | Indicates that the certificate does not exist. |
-| 17500010 | Indicates that access USB key service failed. |
-| 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
+| 17500002 | The certificate does not exist. |
+| 17500010 | Access USB key service failed. |
+| 17500011 | Parameter validation failed. Possible causes: the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-/* USB凭据提供商，此处省略 */
-let keyUri: string = 'testKeyUri';
-/* 导入的证书数据需要业务赋值，本例数据非证书数据 */
+/* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
+let keyUri: string = 'test'; /* USB key证书的uri，可通过getUkeyCertificateList获取 */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
-/* USB凭据的属性信息，此处省略 */
 let ukeyInfo: certificateManager.UkeyInfo = {
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
-}
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+};
 try {
-    certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
-        console.info('Succeeded in importing usb key certificate.');
-    }).catch((err: BusinessError): void => {
-        console.error(`Failed to get import usb key certificate. Code: ${err.code}, message: ${err.message}`);
-    })
+  certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
+    console.info('Succeeded in importing USB key certificate.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`Failed to get import usb key certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
