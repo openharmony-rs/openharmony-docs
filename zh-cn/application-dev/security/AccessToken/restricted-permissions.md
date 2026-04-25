@@ -1132,7 +1132,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car
 
-**起始版本**：24
+**起始版本**：26.0.0
 
 ## ohos.permission.CHECK_CALL_LOG
 
