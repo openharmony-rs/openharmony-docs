@@ -74,7 +74,7 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 
 ### 示例代码
 
-<!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+<!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -130,7 +130,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 ### 示例代码
 
-<!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+<!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Pasteboard_Sta/Pasteboard_Static_Sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
