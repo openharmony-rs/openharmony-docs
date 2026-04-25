@@ -1504,11 +1504,11 @@ ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&g
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
 
