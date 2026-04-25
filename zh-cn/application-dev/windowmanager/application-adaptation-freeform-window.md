@@ -35,7 +35,7 @@
 
 自适应布局可以保证窗口尺寸在一定范围内变化时，页面的显示是正常的。当窗口尺寸变化较大时，就需要额外借助响应式布局能力（如断点等）调整页面结构以保证显示正常。通常每个断点都需要开发者精心适配，以获得最佳的显示效果，考虑到设计及开发成本等实际因素的限制，应用不可能适配从零到正无穷的所有窗口宽度。
 
-不同设备或不同设备状态，系统默认的自由窗口尺寸的调节范围可能不同。开发者可通过以下三种方式限制自由窗口的最大和最小尺寸。
+不同设备或不同设备状态下，系统默认的自由窗口尺寸的调节范围可能不同。开发者可通过以下三种方式限制自由窗口的最大和最小尺寸。
 
 - 通过[setWindowLimits(windowLimits: WindowLimits)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)接口或[setWindowLimits(windowLimits: WindowLimits, isForcible: boolean)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits15)设置当前应用窗口的尺寸限制。  
 
@@ -319,7 +319,7 @@
 
 但需注意，自由窗口状态下窗口尺寸包含了标题栏区域和窗口内的可绘制区域，当需要计算页面元素相对于窗口的位置时，需要考虑避让标题栏。
 
-**标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域，标题栏默认的高度为37vp。
+**标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域，标题栏默认的高度为37 vp。
 
 示意图中，windowRect为窗口尺寸，drawableRect为可绘制区域尺寸，decorHeight为标题栏高度，单位为vp，density为本窗口所处屏幕的系统显示大小缩放系数。
 
@@ -461,15 +461,15 @@
 
 ## 自由窗口状态下窗口进入全屏显示
 
-在2in1设备或Tablet设备的电脑模式下，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、dock栏，则需要进行适配。
+在2in1设备或Tablet设备的电脑模式下，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、Dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、Dock栏，则需要进行适配。
 
 典型场景及对应方案如下：
 
-- 对于视频类应用，在自由窗口状态下，部分页面可能需要隐藏dock栏、标题栏，实现全屏播放视频的效果。  
+- 对于视频类应用，在自由窗口状态下，部分页面可能需要隐藏Dock栏、标题栏，实现全屏播放视频的效果。  
   可以在应用界面增加视频全屏按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口进入全屏显示。
 
-- 播放PPT时，页面需要隐藏并禁止hoverdock栏、标题栏，以免影响PPT演示效果。  
-  可以在应用界面增加PPT播放按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)进入全屏显示，并禁止hoverdock栏、标题栏。
+- 播放PPT时，页面需要隐藏并禁止hover Dock栏、标题栏，以免影响PPT演示效果。  
+  可以在应用界面增加PPT播放按钮，在按钮的[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12)事件中调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)进入全屏显示，并禁止hover Dock栏、标题栏。
 
 > **说明：**
 > 
