@@ -594,7 +594,9 @@ connection.getDefaultNet((error: BusinessError|null, netHandle: connection.NetHa
 
 ## connection.setAppNet<sup>9+</sup>
 
-setAppNet(netHandle: NetHandle): Promise\<void\>
+ArkTS-Dyn: setAppNet(netHandle: NetHandle): Promise\<void\>
+
+ArkTS-Sta: setAppNet(netHandle: NetHandle): Promise\<void\>
 
 将App异步绑定到特定的网络，绑定后App只能通过netHandle对应的网络访问网络。使用Promise方式作为异步方法。
 
@@ -1764,8 +1766,6 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 
 **需要权限**：ohos.permission.INTERNET
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1811,8 +1811,6 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 使用对应网络解析主机名以获取所有IP地址，使用Promise方式作为异步方法。
 
 **需要权限**：ohos.permission.INTERNET
-
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2777,7 +2775,9 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
 
 ## connection.getConnectOwnerUid<sup>23+</sup>
 
-getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<number>
+ArkTS-Dyn: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<number>
+
+ArkTS-Sta: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress): Promise\<int>
 
 用于查询发起指定网络连接的应用UID。使用Promise异步回调。
 
@@ -2839,7 +2839,9 @@ connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
 
 ## connection.getConnectOwnerUidSync<sup>23+</sup>
 
-getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): number
+ArkTS-Dyn: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): number
+
+ArkTS-Sta: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): int
 
 用于查询发起指定网络连接的应用UID。使用同步方式返回。
 
@@ -3625,9 +3627,9 @@ netCon.unregister((error: BusinessError|null) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本:** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:** 23
 
 ### 属性
 
@@ -3819,6 +3821,8 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 **需要权限**：ohos.permission.INTERNET
 
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -3872,6 +3876,8 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 使用当前NetHandle对应的网络解析主机名获取到的所有IP地址，使用Promise方式作为异步方法。
 
 **需要权限**：ohos.permission.INTERNET
+
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -4153,17 +4159,13 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                  | 值   | 说明                   |
 | ------------------------ | ---- | ---------------------- |
-| NET_CAPABILITY_MMS | 0 | 表示网络可以访问运营商的MMSC（Multimedia&nbsp;Message&nbsp;Service，多媒体短信服务）发送和接收彩信。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NET_CAPABILITY_NOT_METERED | 11 | 表示网络流量未被计费。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| NET_CAPABILITY_MMS | 0 | 表示网络可以访问运营商的MMSC（Multimedia&nbsp;Message&nbsp;Service，多媒体短信服务）发送和接收彩信。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_NOT_METERED | 11 | 表示网络流量未被计费。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 | NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 
@@ -4173,14 +4175,10 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
-
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
-| BEARER_CELLULAR | 0    | 蜂窝网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| BEARER_WIFI     | 1    | Wi-Fi网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| BEARER_CELLULAR | 0    | 蜂窝网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
+| BEARER_WIFI     | 1    | Wi-Fi网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 | BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
@@ -4233,15 +4231,11 @@ TCP状态。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---| --- |------------------------- |
-| host  | string |  否 | 否  | 代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否   | 主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| exclusionList  | Array\<string\> | 否 | 否   | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| host  | string |  否 | 否  | 代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23 |
+| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否   | 主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
+| exclusionList  | Array\<string\> | 否 | 否   | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23 |
 | username<sup>12+</sup>  | string | 否 | 是 | 使用代理的用户名。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | password<sup>12+</sup>  | string | 否 | 是  | 使用代理的用户密码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 
@@ -4354,9 +4348,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:** 23
 
 ### 属性
 
@@ -4371,9 +4365,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本:** 23
 
 ### 属性
 
@@ -4407,13 +4401,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                        | 只读 | 可选|     说明      |
 | -------------- | ---------------|------------ | --- |-------------- |
-| interface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|	
+| interface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
 | iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|	
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|	
@@ -4434,7 +4425,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称         |           类型            | 只读 | 可选 |        说明         |
 | ------------ | -----------------|-------- |---- |-------------------- |
 | address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |	
-| prefixLength | number                    | 否 | 否  |链路地址前缀的长度。  |
+| prefixLength | ArkTS-Dyn: number<br>ArkTS-Sta: int                   | 否 | 否  |链路地址前缀的长度。  |
 
 ## NetAddress
 
@@ -4531,12 +4522,12 @@ TCP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
-| tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
-| tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
-| tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
-| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
+| tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
+| tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的进程UID，默认值为0。 |
+| tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的用户会UID，默认值为0。 |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 否 |TCP网络状态，默认值为0。  |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -4554,9 +4545,9 @@ UDP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
-| udpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| udpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
-| udpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
+| udpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| udpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该UDP端口的进程UID，默认值为0。 |
+| udpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该UDP端口的用户会UID，默认值为0。 |
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -4573,5 +4564,5 @@ UDP端口状态信息。
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24) | 否 | 是 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24) | 否 | 是 | 系统当前监听的UDP信息。   |
