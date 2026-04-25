@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @huangxinwei-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
