@@ -279,7 +279,7 @@ ArkTS-Dyn示例：
     dmInstance.replyUiAction(operation, 'extra');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('replyUiAction errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`replyUiAction errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -301,7 +301,7 @@ ArkTS-Sta示例：
     dmInstance.replyUiAction(operation, 'extra');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('replyUiAction errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`replyUiAction errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -363,7 +363,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`replyResult errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -411,7 +411,7 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('onReplyResult errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`onReplyResult errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -460,7 +460,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
     dmInstance.off('replyResult');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('replyResult errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`replyResult errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -506,7 +506,7 @@ offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
     dmInstance.offReplyResult();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('offReplyResult errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`offReplyResult errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 ### setHeartbeatPolicy<sup>15+</sup>
@@ -559,7 +559,7 @@ ArkTS-Dyn示例：
     dmInstance.setHeartbeatPolicy(policy, delayTime);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('setHeartbeatPolicy errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`setHeartbeatPolicy errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -575,7 +575,7 @@ ArkTS-Sta示例：
     dmInstance.setHeartbeatPolicy(policy, delayTime);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('setHeartbeatPolicy errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`setHeartbeatPolicy errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -630,11 +630,11 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
       console.info('getDeviceProfileInfoList' + JSON.stringify(data));
     }).catch((err) => {
       let e: BusinessError = err as BusinessError;
-      console.error('getDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`getDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -691,11 +691,11 @@ ArkTS-Dyn示例：
     dmInstance.putDeviceProfileInfoList(deviceProfileInfoList).then((data:number) => {
       console.info('put device profile info:' + JSON.stringify(data));
     }).catch((e: BusinessError) => {
-      console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`putDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`putDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -710,11 +710,11 @@ ArkTS-Sta示例：
       console.info('put device profile info:' + JSON.stringify(data));
     }).catch((err) => {
       let e: BusinessError = err as BusinessError;
-      console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`putDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('putDeviceProfileInfoList errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`putDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
   
@@ -779,11 +779,11 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
       console.info('getDeviceIconInfo' + JSON.stringify(data));
     }).catch((err) => {
       let e: BusinessError = err as BusinessError;
-      console.error('getDeviceIconInfo errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`getDeviceIconInfo errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getDeviceIconInfo errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getDeviceIconInfo errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -840,11 +840,11 @@ ArkTS-Dyn示例：
     dmInstance.getLocalDisplayDeviceName(maxNameLength).then((data:string)=>{
       console.info('getLocalDisplayDeviceName name:' + JSON.stringify(data));
     }).catch((e: BusinessError)=>{
-      console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`getLocalDisplayDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getLocalDisplayDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -859,11 +859,11 @@ ArkTS-Sta示例：
       console.info('getLocalDisplayDeviceName name:' + JSON.stringify(data));
     }).catch((err) => {
       let e: BusinessError = err as BusinessError;
-      console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`getLocalDisplayDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getLocalDisplayDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getLocalDisplayDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -923,11 +923,11 @@ ArkTS-Dyn示例：
     dmInstance.setLocalDeviceName(deviceName).then((data:number)=>{
       console.info('setLocalDeviceName name:' + JSON.stringify(data));
     }).catch((e: BusinessError)=>{
-      console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`setLocalDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`setLocalDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -942,11 +942,11 @@ ArkTS-Sta示例：
       console.info('setLocalDeviceName name:' + JSON.stringify(data));
     }).catch((err) => {
       let e: BusinessError = err as BusinessError;
-      console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`setLocalDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('setLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`setLocalDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1008,11 +1008,11 @@ ArkTS-Dyn示例：
     dmInstance.setRemoteDeviceName(deviceId, deviceName).then((data:number)=>{
       console.info('setRemoteDeviceName name:' + JSON.stringify(data));
     }).catch((e: BusinessError)=>{
-      console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`setRemoteDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`setRemoteDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1028,11 +1028,11 @@ ArkTS-Sta示例：
       console.info('setRemoteDeviceName name:' + JSON.stringify(data));
     }).catch((err) => {
       let e: BusinessError = err as BusinessError;
-      console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`setRemoteDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
     });
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`setRemoteDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1090,11 +1090,11 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
       console.info('getDeviceNetworkIdList name:' + JSON.stringify(data));
     }).catch((err) => {
       let e: BusinessError = err as BusinessError;
-      console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
+      console.error(`getDeviceNetworkIdList errCode: ${e.code}, errMessage: ${e.message}`);
     })
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getDeviceNetworkIdList errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getDeviceNetworkIdList errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 ### getIdentificationByDeviceIds<sup>24+</sup>
@@ -1202,7 +1202,7 @@ restoreLocalDeviceName(): void
     dmInstance.restoreLocalDeviceName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`restoreLocalDeviceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1245,6 +1245,6 @@ restoreLocalDeivceName(): void
     dmInstance.restoreLocalDeivceName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`restoreLocalDeivceName errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
