@@ -4369,7 +4369,9 @@ export struct pageThreeTmp {
 
 isEasySplit(): boolean
 
+<!--RP1-->
 获取当前UI实例的兼容模式分栏状态。
+<!--RP1End-->
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -4379,9 +4381,11 @@ isEasySplit(): boolean
 
 **返回值：**
 
+<!--RP2-->
 | 类型   | 说明               |
 | ------ | ------------------ |
 | boolean | 返回当前UI实例的兼容模式分栏状态。true表示处于分栏模式，false表示未处于分栏模式。 |
+<!--RP2End-->
 
 **示例：**
 
