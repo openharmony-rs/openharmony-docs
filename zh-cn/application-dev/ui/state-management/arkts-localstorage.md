@@ -7,10 +7,10 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持[UIAbility](../../application-models/uiability-overview.md)实例内多个页面间状态共享。
+LocalStorage是页面级的UI状态存储，通过[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md)装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持[UIAbility](../../application-models/uiability-overview.md)实例内多个页面间状态共享。
 
 
-本文仅介绍LocalStorage使用场景和相关的装饰器：\@LocalStorageProp和\@LocalStorageLink。
+本文仅介绍LocalStorage使用场景和相关的装饰器：[\@LocalStorageProp](../../reference/apis-arkui/arkui-ts/ts-state-management-localstorageprop.md)和[\@LocalStorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-localstoragelink.md)。
 
 
 在阅读本文档前，需要开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
