@@ -22,9 +22,9 @@
 
 当组件满足以下任意条件时，镜像能力生效：
 
-1. 组件的direction属性设置为Direction.Rtl。
+1. 组件的[direction](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)属性设置为[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction).Rtl。
 
-2. 组件的direction属性设置为Direction.Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右向左。
+2. 组件的[direction](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)属性设置为[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction).Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右向左。
 
 ### 基本概念
 
@@ -47,9 +47,9 @@ ArkUI 如下能力已默认适配镜像：
 
 1. 界面布局、边框设置：关于方向类的通用属性，如果需要支持镜像能力，使用泛化的方向指示词 start/end入参类型替换 left/right、x/y等绝对方向指示词的入参类型，来表示自适应镜像能力。
 
-2. Canvas组件只有限支持文本绘制的镜像能力。
+2. [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件只有限支持文本绘制的镜像能力。
 
-3. XComponent组件不支持组件镜像能力。
+3. [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件不支持组件镜像能力。
 
 ### 界面布局和边框设置
 

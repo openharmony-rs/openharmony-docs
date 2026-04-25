@@ -188,9 +188,11 @@ struct TwoColumns {
   build() {
     RelativeContainer() {
       FoldSplitContainer({
+        // 主要区域回调函数
         primary: () => {
           this.privateRegion()
         },
+        // 次要区域回调函数
         secondary: () => {
           this.secondaryRegion()
         }
@@ -249,12 +251,15 @@ struct ThreeColumns {
   build() {
     RelativeContainer() {
       FoldSplitContainer({
+        // 主要区域回调函数
         primary: () => {
           this.privateRegion()
         },
+        // 次要区域回调函数
         secondary: () => {
           this.secondaryRegion()
         },
+        // 扩展区域回调函数
         extra: () => {
           this.extraRegion()
         }
@@ -380,22 +385,26 @@ struct RadioOption {
 @Entry
 @Component
 struct Index {
+  // 展开态布局配置
   @State expandedRegionLayoutOptions: ExpandedRegionLayoutOptions = {
     horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
     verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1,
     isExtraRegionPerpendicular: true,
     extraRegionPosition: ExtraRegionPosition.TOP
   };
+  // 悬停态布局配置
   @State foldingRegionLayoutOptions: HoverModeRegionLayoutOptions = {
     horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
     showExtraRegion: false,
     extraRegionPosition: ExtraRegionPosition.TOP
   };
+  // 折叠态布局配置
   @State foldedRegionLayoutOptions: FoldedRegionLayoutOptions = {
     verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1
   };
 
   @Builder
+  // 主要区域自定义组件
   MajorRegion() {
     Region({
       title: "折叠态配置",
@@ -442,6 +451,7 @@ struct Index {
   }
 
   @Builder
+  // 次要区域自定义组件
   MinorRegion() {
     Region({
       title: "悬停态配置",
@@ -526,6 +536,7 @@ struct Index {
   }
 
   @Builder
+  // 扩展区域自定义组件
   ExtraRegion() {
     Region({
       title: "展开态配置",
@@ -647,12 +658,15 @@ struct Index {
   build() {
     Column() {
       FoldSplitContainer({
+        // 主要区域回调函数
         primary: () => {
           this.MajorRegion()
         },
+        // 次要区域回调函数
         secondary: () => {
           this.MinorRegion()
         },
+        // 扩展区域回调函数
         extra: () => {
           this.ExtraRegion()
         },
