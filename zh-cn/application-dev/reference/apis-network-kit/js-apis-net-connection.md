@@ -3877,6 +3877,8 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 
 **需要权限**：ohos.permission.INTERNET
 
+**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
