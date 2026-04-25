@@ -1,4 +1,4 @@
-# Removing Assets (ArkTS)
+# Removing Assets in Batches (ArkTS)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
@@ -9,9 +9,9 @@
 
 ## Available APIs
 
-You can use [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove) (asynchronous API) or [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12) (synchronous API) to remove an asset.
+Since version 26.0.0, the system provides the asynchronous API [batchRemove](../../reference/apis-asset-store-kit/js-apis-asset.md#assetbatchremove) for you to remove assets in batches.
 
-The following table describes the attributes of **AssetMap** for removing an asset.
+The following table describes the attributes of **AssetMap** for removing assets in batches.
 
 > **NOTE**
 >
@@ -40,20 +40,24 @@ The following table describes the attributes of **AssetMap** for removing an ass
 | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| No| Whether to delete the encrypted data of service customized supplementary information. The value **true** means to delete the encrypted data of service customized supplementary information; the value **false** means to delete the non-encrypted data of service customized supplementary information. The default value is **false**.|
 | GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be removed belongs. By default, this parameter is not specified.|
 
-## Example
+## Constraints
+
+The assets to be removed in batches must have the same [GROUP_ID](../../reference/apis-asset-store-kit/js-apis-asset.md#tag) and [REQUIRE_ATTR_ENCRYPTED](../../reference/apis-asset-store-kit/js-apis-asset.md#tag) attributes.
+
+A maximum of 100 assets can be removed in batches.
+
+## Development Procedure
 
 > **NOTE**
 >
-> This module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
->
-> For details about how to remove an asset from a group, see [Removing an Asset from a Group](asset-js-group-access-control.md#removing-an-asset-from-a-group).
+> The following is an example of using the batch removal API.
 >
 > Before removing an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
-Remove asset **demo_alias**.
+Remove two assets whose aliases are demo_alias1 and demo_alias2 in batches.
 
 1. Include the header file and define the tool function.
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -67,22 +71,26 @@ Remove asset **demo_alias**.
    ```
 
 2. Develop the desired feature.
-   <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   <!-- @[batch_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
-   let query: asset.AssetMap = new Map();
-   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
+   let assetsToBeRemoved: asset.AssetMap[] = [];
+   let query1: asset.AssetMap = new Map();
+   query1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+   assetsToBeRemoved.push(query1);
+   let query2: asset.AssetMap = new Map();
+   query2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+   assetsToBeRemoved.push(query2);
+   
    try {
-     asset.remove(query).then(() => {
-       console.info(`Succeeded in removing Asset.`);
-       // ...
+     asset.batchRemove(assetsToBeRemoved).then(() => {
+       console.info(`Succeeded in batch removing Asset.`);
      }).catch((err: BusinessError) => {
-       console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-       // ...
-     });
+       console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
+     })
    } catch (error) {
      let err = error as BusinessError;
-     console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-     // ...
+     console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
+<!--no_check-->
