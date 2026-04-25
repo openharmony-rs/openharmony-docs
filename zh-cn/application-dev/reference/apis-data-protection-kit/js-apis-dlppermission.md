@@ -926,15 +926,15 @@ import { UIContext } from '@kit.ArkUI';
 let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext。
 if (context !== undefined) {
     let want: Want = {
-"uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
-"parameters": {
-    "displayName": "1.txt"
-}
-}; // 请求参数。
-dlpPermission.startDLPManagerForResult(context, want).then((res) => {
-console.info('res.resultCode', res.resultCode);
-console.info('res.want', JSON.stringify(res.want));
-}); // 打开DLP权限管理应用。
+        "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+        "parameters": {
+        "displayName": "1.txt"
+        }
+    }; // 请求参数。
+    dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+        console.info('res.resultCode', res.resultCode);
+        console.info('res.want', JSON.stringify(res.want));
+    }); // 打开DLP权限管理应用。
 }
 ```
 
