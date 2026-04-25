@@ -224,7 +224,7 @@
   }
   ```
 
-- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#modulejson5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)中的[abilities标签](../quick-start/module-configuration-file.md#abilities%E6%A0%87%E7%AD%BE)限制主窗口处于自由窗口状态下的最大和最小尺寸。
+- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#modulejson5配置文件)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制主窗口处于自由窗口状态下的最大和最小尺寸。
 
   maxWindowWidth：当前UIAbility组件支持的最大的窗口宽度，单位为vp。
 
@@ -307,7 +307,7 @@
 >
 >   2. 应用使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定自由窗口尺寸限制。
 >
->   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#modulejson5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)中的[abilities标签](../quick-start/module-configuration-file.md#abilities%E6%A0%87%E7%AD%BE)限制自由窗口的最大和最小尺寸。
+>   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#modulejson5配置文件)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制自由窗口的最大和最小尺寸。
 >
 >   4. 默认系统限制（对于不同产品和窗口类型，windowLimits系统默认限制存在差异）。
 > 
@@ -334,7 +334,7 @@
 
 - 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
 
-- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现[自由窗口的沉浸式布局](../windowmanager/window-terminology.md#%E6%B2%89%E6%B5%B8%E5%BC%8F%E5%B8%83%E5%B1%80)。
+- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现[自由窗口的沉浸式布局](../windowmanager/window-terminology.md#沉浸式布局)。
 
 **窗口三键**是指窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。
 
