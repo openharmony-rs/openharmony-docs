@@ -328,10 +328,10 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
     try {
       fileShare.getSharedDirectoryInfo().then((infos: Array<fileShare.SharedDirectoryInfo>) => {
         infos.forEach((info: fileShare.SharedDirectoryInfo) => {
-          console.log("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+          console.info("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
         });
       }).catch((err: BusinessError) => {
-        console.log("getSharedDirectoryInfo err : " + JSON.stringify(err))
+        console.info("getSharedDirectoryInfo err : " + JSON.stringify(err))
       });
     }
     catch (error) {
@@ -381,9 +381,9 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
   async function grantSharedDirectoryPermission() {
     try {
       fileShare.grantSharedDirectoryPermission().then(() => {
-        console.log("grantSharedDirectoryPermission success")
+        console.info("grantSharedDirectoryPermission success")
       }).catch((err: BusinessError) => {
-        console.log("grantSharedDirectoryPermission err : " + JSON.stringify(err))
+        console.info("grantSharedDirectoryPermission err : " + JSON.stringify(err))
       });
     }
     catch (error) {
@@ -432,9 +432,9 @@ revokeSharedDirectoryPermission(): Promise&lt;void&gt;
   async function revokeSharedDirectoryPermission() {
     try {
       fileShare.revokeSharedDirectoryPermission().then(() => {
-        console.log("revokeSharedDirectoryPermission success")
+        console.info("revokeSharedDirectoryPermission success")
       }).catch((err: BusinessError) => {
-        console.log("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
+        console.info("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
       });
     }
     catch (error) {
