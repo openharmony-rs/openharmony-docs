@@ -9008,7 +9008,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 设置标题栏上的最大化、最小化、关闭按钮是否可见。
 
-仅对主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)生效，其他窗口调用时将返回1300004错误码
+仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)，其他窗口调用时将返回1300004错误码
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -10838,7 +10838,7 @@ getSubWindowZLevel(): number
 
 获取当前子窗口层级级别。不支持主窗、系统窗调用。
 
-[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错，返回默认值0。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
