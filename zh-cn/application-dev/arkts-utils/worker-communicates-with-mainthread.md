@@ -19,16 +19,14 @@
    
    ``` TypeScript
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-   import { CopyEntry } from '../Sendable/CopyEntry';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
-   // ...
-   
-   // Worker接收宿主线程的消息，做相应的处理
-   workerPort.onmessage = (e: MessageEvents) => {
-     let obj: CopyEntry[] = e.data;
-     console.info(`The type of the first set of data is ${obj[0].type}.`);
+   workerPort.onmessage = async (e: MessageEvents) => {
+     // ...
+     if (e.data === 'hello world') {
+       workerPort.postMessage('success');
+     }
    }
    ```
    

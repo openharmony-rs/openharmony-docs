@@ -132,7 +132,7 @@
                  try {
                    config.login(this.input);
                  } catch (e) {
-                   console.info('login failed');
+                   console.error('login failed');
                  }
                }
              })
@@ -150,7 +150,7 @@
                  try {
                    config.logout();
                  } catch (e) {
-                   console.info('logout failed');
+                   console.error('logout failed');
                  }
                }
              })
