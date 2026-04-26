@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -170,7 +170,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
@@ -208,7 +208,7 @@ unsubscribe(): Promise\<void\>
 ```ts
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
