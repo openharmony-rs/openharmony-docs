@@ -29,6 +29,10 @@ import { media } from '@kit.MediaKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+ 	 
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -53,9 +57,13 @@ on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 
 监听播放状态机AVPlayerState切换的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -113,9 +121,13 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 
 取消监听播放状态机[AVPlayerState](arkts-apis-media-t.md#avplayerstate9)切换的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -140,9 +152,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 监听[AVPlayer](arkts-apis-media-AVPlayer.md)的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVPlayerState](arkts-apis-media-t.md#avplayerstate9)也切至error状态，用户需要通过[reset()](#reset9)或者[release()](#release9)退出播放操作。若调用[reset()](#reset9)方法后，播放状态仍为error状态，建议直接调用[release()](#release9)方法，退出播放操作。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -233,6 +249,10 @@ setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -761,6 +781,10 @@ setPlaybackStrategy(strategy: PlaybackStrategy): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -806,13 +830,19 @@ player.setPlaybackStrategy(playStrategy);
 
 ## setPlaybackRange<sup>18+</sup>
 
-setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Promise\<void>
+ArkTS-Dyn: setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Promise\<void>
+ 	 
+ArkTS-Sta: setPlaybackRange(startTimeMs: int, endTimeMs: int, mode?: SeekMode) : Promise\<void>
 
 设置播放区间，并通过指定的[SeekMode](arkts-apis-media-e.md#seekmode8)跳转到区间开始位置。设置之后，只播放音视频文件设定区间内的内容。使用Promise异步回调。可在**initialized**/**prepared**/**paused**/**stopped**/**completed**状态下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -862,6 +892,10 @@ prepare(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -907,6 +941,10 @@ prepare(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -949,6 +987,10 @@ setMediaMuted(mediaType: MediaType,  muted: boolean ): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -999,6 +1041,10 @@ play(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -1041,6 +1087,10 @@ play(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -1080,6 +1130,10 @@ pause(callback: AsyncCallback\<void>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1123,6 +1177,10 @@ pause(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -1162,6 +1220,10 @@ stop(callback: AsyncCallback\<void>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1205,6 +1267,10 @@ stop(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -1244,6 +1310,10 @@ reset(callback: AsyncCallback\<void>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1287,6 +1357,10 @@ reset(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -1326,6 +1400,10 @@ release(callback: AsyncCallback\<void>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1369,6 +1447,10 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -1408,6 +1490,10 @@ getTrackDescription(callback: AsyncCallback\<Array\<MediaDescription>>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1451,6 +1537,10 @@ getTrackDescription(): Promise\<Array\<MediaDescription>>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                   | 说明                                              |
@@ -1483,7 +1573,9 @@ async function  test(){
 
 ## getSelectedTracks<sup>12+</sup>
 
-getSelectedTracks(): Promise\<Array\<number>>
+ArkTS-Dyn: getSelectedTracks(): Promise\<Array\<number>>
+ 	 
+ArkTS-Sta: getSelectedTracks(): Promise\<Array\<int>>
 
 获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。使用Promise异步回调。
 
@@ -1491,11 +1583,15 @@ getSelectedTracks(): Promise\<Array\<number>>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| Promise\<Array\<number>> | Promise对象，返回已选择音视频轨道索引数组。 |
+| ArkTS-Dyn: Promise\<Array\<number>><br>ArkTS-Sta: Promise\<Array\<int>> | Promise对象，返回已选择音视频轨道索引数组。 |
 
 **错误码：**
 
@@ -1528,6 +1624,10 @@ getPlaybackInfo(): Promise\<PlaybackInfo>
 获取播放过程信息，可以在prepared/playing/paused状态调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1562,7 +1662,9 @@ media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
 
 ## getPlaybackPosition<sup>18+</sup>
 
-getPlaybackPosition(): number
+ArkTS-Dyn: getPlaybackPosition(): number
+
+ArkTS-Sta: getPlaybackPosition(): int
 
 获取当前播放位置，可以在prepared/playing/paused/completed状态调用。
 
@@ -1570,11 +1672,15 @@ getPlaybackPosition(): number
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| number | 返回当前播放位置的时间，单位：毫秒（ms）。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回当前播放位置的时间，单位：毫秒（ms）。|
 
 **错误码：**
 
@@ -1648,7 +1754,9 @@ async function  test(){
 
 ## selectTrack<sup>12+</sup>
 
-selectTrack(index: number, mode?: SwitchMode): Promise\<void>
+ArkTS-Dyn: selectTrack(index: number, mode?: SwitchMode): Promise\<void>
+
+ArkTS-Sta: selectTrack(index: int, mode?: SwitchMode): Promise\<void>
 
 使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。
 
@@ -1657,6 +1765,10 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1709,13 +1821,19 @@ async function  test(){
 
 ## deselectTrack<sup>12+</sup>
 
-deselectTrack(index: number): Promise\<void>
+ArkTS-Dyn: deselectTrack(index: number): Promise\<void>
+
+ArkTS-Sta: deselectTrack(index: int): Promise\<void>
 
 使用AVPlayer播放多音轨视频时取消指定音视频轨道播放，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1775,6 +1893,10 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
@@ -1821,6 +1943,10 @@ getMediaKeySystemInfos(): Array\<drm.MediaKeySystemInfo>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                                                      | 说明                                                                                                      |
@@ -1847,7 +1973,9 @@ async function  test(){
 
 ## seek<sup>9+</sup>
 
-seek(timeMs: number, mode?:SeekMode): void
+ArkTS-Dyn: seek(timeMs: number, mode?:SeekMode): void
+
+ArkTS-Sta: seek(timeMs: int, mode?:SeekMode): void
 
 跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过[on('seekDone')](#onseekdone9)事件确认是否生效。
 
@@ -1860,6 +1988,10 @@ seek(timeMs: number, mode?:SeekMode): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1902,6 +2034,10 @@ isSeekContinuousSupported() : boolean
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                       |
@@ -1924,9 +2060,15 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 监听seek生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 9
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeekDone](#onseekdone23)。
 
 **参数：**
 
@@ -1953,9 +2095,13 @@ off(type: 'seekDone', callback?: Callback\<number>): void
 
 取消监听seek生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1988,6 +2134,10 @@ setSpeed(speed: PlaybackSpeed): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                             | 必填 | 说明               |
@@ -2008,11 +2158,15 @@ async function  test(){
 
 on(type: 'speedDone', callback: Callback\<number>): void
 
-监听setSpeed生效的事件。
+监听setSpeed生效的事件，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2039,9 +2193,13 @@ off(type: 'speedDone', callback?: Callback\<number>): void
 
 取消监听setSpeed生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2062,7 +2220,9 @@ async function  test(){
 
 ## setPlaybackRate<sup>20+</sup>
 
-setPlaybackRate(rate: number): void
+ArkTS-Dyn: setPlaybackRate(rate: number): void
+ 	 
+ArkTS-Sta: setPlaybackRate(rate: double): void
 
 设置倍速模式。只能在prepared/playing/paused/completed状态调用，取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
 
@@ -2074,11 +2234,15 @@ setPlaybackRate(rate: number): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                             | 必填 | 说明               |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | 是   | 指定播放倍速速率，取值范围为[0.125, 4.0]。 |
+| rate  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 指定播放倍速速率。 |
 
 **错误码：**
 
@@ -2130,9 +2294,15 @@ on(type: 'playbackRateDone', callback: OnPlaybackRateDone): void
 
 监听[setPlaybackRate](#setplaybackrate20)生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 20
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackRateDone](#onPlaybackRateDone23)。
 
 **参数：**
 
@@ -2159,9 +2329,13 @@ off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void
 
 取消监听[setPlaybackRate](#setplaybackrate20)生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2288,13 +2462,19 @@ async function test(){
 
 ## setBitrate<sup>9+</sup>
 
-setBitrate(bitrate: number): void
+ArkTS-Dyn: setBitrate(bitrate: number): void
+
+ArkTS-Sta: setBitrate(bitrate: int): void
 
 设置比特率，以播放所指定比特率的流媒体资源，当前仅对**HLS/DASH协议网络流**有效。默认情况下，AVPlayer会根据网络连接速度选择合适的比特率。只能在prepared/playing/paused/completed状态调用，可以通过[bitrateDone](#onbitratedone9)事件确认是否生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2319,9 +2499,13 @@ on(type: 'bitrateDone', callback: Callback\<number>): void
 
 监听setBitrate生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2348,9 +2532,13 @@ off(type: 'bitrateDone', callback?: Callback\<number>): void
 
 取消监听setBitrate生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2375,9 +2563,13 @@ on(type: 'availableBitrates', callback: Callback\<Array\<number>>): void
 
 监听HLS/DASH协议网络流可用的比特率列表，只会在切换prepared状态后上报。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2404,9 +2596,13 @@ off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
 
 取消监听HLS/DASH协议网络流可用的比特率列表，调用[prepare](#prepare9)后，上报此事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2432,9 +2628,13 @@ on(type: 'mediaKeySystemInfoUpdate', callback: Callback\<Array\<drm.MediaKeySyst
 
 监听mediaKeySystemInfoUpdate事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2466,9 +2666,13 @@ off(type: 'mediaKeySystemInfoUpdate', callback?: Callback\<Array\<drm.MediaKeySy
 
 取消监听mediaKeySystemInfoUpdate事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2489,7 +2693,9 @@ async function test(){
 
 ## setLoudnessGain<sup>21+</sup>
 
-setLoudnessGain(loudnessGain: number): Promise\<void>
+ArkTS-Dyn: setLoudnessGain(loudnessGain: number): Promise\<void>
+ 	  	 
+ArkTS-Sta: setLoudnessGain(loudnessGain: double): Promise\<void>
 
 设置播放器的响度。调用该接口后，响度增益立即生效。使用Promise异步回调。
 
@@ -2534,13 +2740,19 @@ async function test(){
 
 ## setVolume<sup>9+</sup>
 
-setVolume(volume: number): void
+ArkTS-Dyn: setVolume(volume: number): void
+
+ArkTS-Sta: setVolume(volume: double): void
 
 设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](#onvolumechange9)事件确认是否生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2564,9 +2776,13 @@ on(type: 'volumeChange', callback: Callback\<number>): void
 
 监听setVolume生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2593,9 +2809,13 @@ off(type: 'volumeChange', callback?: Callback\<number>): void
 
 取消监听setVolume生效的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2620,9 +2840,13 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 
 监听资源播放至结尾的事件；如果用户设置[loop](#属性)=true，播放会跳转至开头重播；如果用户没有设置loop，会通过[stateChange](#onstatechange9)上报completed状态。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2748,9 +2972,15 @@ off(type: 'timeUpdate', callback?: Callback\<number>): void
 
 取消监听资源播放当前时间。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTimeUpdate](#offTimeUpdate23)。
 
 **参数：**
 
@@ -2780,9 +3010,15 @@ on(type: 'durationUpdate', callback: Callback\<number>): void
 >
 > 直播场景不支持durationUpdate上报。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDurationUpdate](#onDurationUpdate23)。
 
 **参数：**
 
@@ -2809,9 +3045,15 @@ off(type: 'durationUpdate', callback?: Callback\<number>): void
 
 取消监听资源播放资源的时长。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDurationUpdate()](#offDurationUpdate23)。
 
 **参数：**
 
@@ -2836,9 +3078,13 @@ on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler): void
 
 订阅音视频缓存更新事件，仅网络播放支持该订阅事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2892,9 +3138,13 @@ on(type: 'startRenderFrame', callback: Callback\<void>): void
 
 订阅视频播放开始首帧渲染的更新事件，仅视频播放支持该订阅事件，该事件仅代表播放服务将第一帧画面送显示模块，实际效果依赖显示服务渲染性能。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2921,9 +3171,13 @@ off(type: 'startRenderFrame', callback?: Callback\<void>): void
 
 取消监听视频播放开始首帧渲染的更新事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2948,9 +3202,13 @@ on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler): void
 
 监听视频播放宽高变化事件，仅视频播放支持该订阅事件，默认只在prepared状态上报一次，但HLS协议码流会在切换分辨率时上报。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2977,9 +3235,13 @@ off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void
 
 取消监听视频播放宽高变化事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -3004,9 +3266,15 @@ on(type: 'audioInterrupt', callback: Callback\<audio.InterruptEvent>): void
 
 监听音频焦点变化事件，多个音视频资源同时播放时，会根据音频焦点模型[audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)触发此事件。应用需根据不同焦点变化事件作相应处理。具体可参考[处理音频焦点事件](../../media/audio/audio-playback-concurrency.md)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt)](#onAudioInterrupt23)。
 
 **参数：**
 
@@ -3035,9 +3303,15 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 取消监听音频焦点变化事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 9
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt)](#offAudioInterrupt23)。
 
 **参数：**
 
@@ -3064,9 +3338,15 @@ on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback\<audio.AudioStrea
 
 在订阅此监听时，建议参考[响应输出设备变更时合理暂停](../../media/audio/audio-output-device-change.md)自行实现设备连接或者断开时的播放器行为。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 11
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioOutputDeviceChangeWithInfo](#onAudioOutputDeviceChangeWithInfo23)。
 
 **参数：**
 
@@ -3103,9 +3383,15 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 取消订阅监听音频流输出设备变化及原因，使用callback方式返回结果。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 11
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioOutputDeviceChangeWithInfo)](#offAudioOutputDeviceChangeWithInfo23)。
 
 **参数：**
 
@@ -3134,13 +3420,19 @@ async function test(){
 
 ## addSubtitleFromFd<sup>12+</sup>
 
-addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
+ArkTS-Dyn: addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
+
+ArkTS-Sta: addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise\<void>
 
 依据fd为视频添加外挂字幕，当前仅支持与视频资源同时设置（在avplayer设置fdSrc视频资源后设置外挂字幕）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3188,6 +3480,10 @@ addSubtitleFromUrl(url: string): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -3226,9 +3522,15 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 
 订阅获取外挂字幕的事件，当有外挂字幕时，会通过订阅的回调方法通知用户。用户只能订阅一个外挂字幕事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate)](#onSubtitleUpdate23)。
 
 **参数：**
 
@@ -3262,9 +3564,15 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 
 取消订阅获取外挂字幕的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate](#onSubtitleUpdate23)。
 
 **参数：**
 
@@ -3289,9 +3597,15 @@ on(type: 'trackChange', callback: OnTrackChangeHandler): void
 
 订阅获取轨道变更的事件，当播放的轨道变更时，会通过订阅的回调方法通知用户。用户只能订阅一个轨道变更事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTrackChange](#onTrackChange23)。
 
 **参数：**
 
@@ -3318,9 +3632,15 @@ off(type: 'trackChange', callback?: OnTrackChangeHandler): void
 
 取消订阅获取轨道变更的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTrackChange](#offTrackChange23)。
 
 **参数：**
 
@@ -3345,9 +3665,15 @@ on(type: 'trackInfoUpdate', callback: Callback\<Array\<MediaDescription>>): void
 
 订阅获取轨道信息更新的事件，当播放的轨道有更新时，会通过订阅的回调方法通知用户。用户只能订阅一个轨道变更事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTrackInfoUpdate](#onTrackInfoUpdate23)。
 
 **参数：**
 
@@ -3382,9 +3708,15 @@ off(type: 'trackInfoUpdate', callback?: Callback\<Array\<MediaDescription>>): vo
 
 取消订阅获取轨道信息更新的事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 12
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTrackInfoUpdate](#offTrackInfoUpdate23)。
 
 **参数：**
 
@@ -3409,7 +3741,13 @@ on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
 
 订阅音频最大电平值，音频资源播放时定时上报。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 13
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAmplitudeUpdate](#onAmplitudeUpdate23)。       
 
 **参数：**
 
@@ -3436,7 +3774,13 @@ off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
 
 取消订阅获取音频最大电平值事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 13
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAmplitudeUpdate](#offAmplitudeUpdate23)。
 
 **参数：**
 
@@ -3461,9 +3805,15 @@ on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMess
 
 订阅获取SEI信息事件，仅适用于HTTP-FLV直播，视频流中包含SEI信息时上报。需在prepare之前订阅，当用户重复订阅时，以最后一次订阅的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onSeiMessageReceived23)。
 
 **参数：**
 
@@ -3505,9 +3855,15 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 
 取消订阅获取SEI信息事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onSeiMessageReceived23)。
 
 **参数：**
 
@@ -3541,6 +3897,10 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3582,7 +3942,9 @@ async function test(){
 
 ## setVideoWindowSize<sup>18+</sup>
 
-setVideoWindowSize(width: number, height: number) : Promise\<void>
+ArkTS-Dyn: setVideoWindowSize(width: number, height: number) : Promise\<void>
+
+ArkTS-Sta: setVideoWindowSize(width: int, height: int) : Promise\<void>
 
 动态设置超分算法的输出分辨率。可在 'initialized' | 'prepared' | 'playing' | 'paused' | 'completed' | 'stopped' 状态下调用。使用Promise异步回调。
 
@@ -3594,12 +3956,16 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| width    | number | 是   | 超分算法的目标输出视频宽度，取值范围为[320-1920]，单位为像素。 |
-| height    | number | 是   | 超分算法的目标输出视频高度，取值范围为[320-1080]，单位为像素。 |
+| width    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 超分算法的目标输出视频宽度，取值范围为[320-1920]，单位为像素。 |
+| height    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 超分算法的目标输出视频高度，取值范围为[320-1080]，单位为像素。 |
 
 **返回值：**
 
@@ -3641,9 +4007,15 @@ on(type:'superResolutionChanged', callback: OnSuperResolutionChanged): void
 
 订阅监听超分算法开启/关闭事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSuperResolutionChanged](#onSuperResolutionChanged23)。
 
 **参数：**
 
@@ -3670,9 +4042,15 @@ off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void
 
 取消监听超分算法开启/关闭事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 18
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSuperResolutionChanged](#offSuperResolutionChanged23)。
 
 **参数：**
 
@@ -3758,11 +4136,18 @@ async function test(){
 
 ## getPlaybackStatisticMetrics<sup>23+</sup>
 
-getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
+ArkTS-Dyn: getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
 
+ArkTS-Sta: getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
+
+获取当前播放器的统计指标信息。使用Promise异步回调。
 获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**ArkTS-Dyn起始版本：** 23
 
 **返回值：**
 
@@ -3797,11 +4182,17 @@ media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
 
 ## onMetricsEvent<sup>23+</sup>
 
-onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
+ArkTS-Dyn: onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
 
-订阅播放过程中的指标事件。
+ArkTS-Sta: onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
+
+订阅播放过程中的指标事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3828,11 +4219,16 @@ async function test(){
 
 ## offMetricsEvent<sup>23+</sup>
 
-offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
+ArkTS-Dyn: offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 
+ArkTS-Sta: offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 取消订阅播放过程中的指标事件。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
