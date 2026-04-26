@@ -1,8 +1,8 @@
 # @ohos.PiPWindow (画中画窗口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
