@@ -50576,14 +50576,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":82,
 						"name":"taskpool_handle_sync_task",
 						"start_line":16
 					},
 					{
-						"end_line":75,
+						"end_line":81,
 						"name":"worker_handle_associated_sync_task",
-						"start_line":39
+						"start_line":19
 					}
 				]
 			},
@@ -50591,7 +50591,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ts",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":43,
 						"name":"worker_handle_associated_sync_task",
 						"start_line":16
 					}
@@ -50701,7 +50701,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/pixelMapTest.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":33,
 						"name":"example_pass_obj",
 						"start_line":16
 					}
@@ -50716,7 +50716,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":44,
 						"name":"create_worker_execute_multi_task",
 						"start_line":16
 					}
@@ -50741,7 +50741,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerCallGlobalUsage.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":57,
 						"name":"create_worker_obj",
 						"start_line":16
 					}
@@ -50751,7 +50751,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":45,
 						"name":"call_main_method",
 						"start_line":17
 					}
