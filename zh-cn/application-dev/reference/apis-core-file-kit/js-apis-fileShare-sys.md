@@ -312,7 +312,7 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 |类型|说明|
 | ------ | ------ |
-| Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt; | Promise对象。返回SharedDirectoryInfo数组。 |
+| Promise&lt;Array&lt;[SharedDirectoryInfo](#shareddirectoryinfo)&gt;&gt; | Promise对象，返回所有应用捐献的沙箱目录数组。 |
 
 **错误码：**
 
