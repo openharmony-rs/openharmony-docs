@@ -1409,7 +1409,7 @@ class DrawingRenderNode extends RenderNode {
     const font = new drawing.Font();
     font.setSize(20);
     canvas.attachBrush(brush);
-    let glyphsArray : Array<number> = [100， 200， 300];
+    let glyphsArray : Array<number> = [100, 200, 300];
     let positionArray = new Array<common2D.Point>();
     const point1: common2D.Point = { x: 100.0, y: 100.0 };
     const point2: common2D.Point = { x: 200.0, y: 100.0 };
