@@ -1100,7 +1100,7 @@ getPrimaryHtml(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | HTML内容。剪贴板内容对象中没有HTML内容时，ArkTS-Dyn默认返回为undefined， ArkTS-Sta默认返回空字符串。。 |
+| string | HTML内容。剪贴板内容对象中没有HTML内容时，ArkTS-Dyn默认返回为undefined， ArkTS-Sta默认返回空字符串。 |
 
 **示例：**
 
@@ -1302,6 +1302,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 12900002 | The number of records exceeds the upper limit, since 9 - 9. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **示例：**
@@ -3534,6 +3535,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API,since 12 - 13. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12900006 | Settings already exist. |
 
@@ -3570,6 +3572,7 @@ removeAppShareOptions(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API,since 12 - 13. |
 
 **示例：**
 
