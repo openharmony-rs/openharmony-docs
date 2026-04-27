@@ -1603,7 +1603,7 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
   }
 }
 
-let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsulePlugin());
+let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
 ```
 
  
@@ -1638,7 +1638,7 @@ constructor()
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-let dlpConnManager = new dlpPermission.DlpConnManager();
+let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnManager();
 ```
 
 ### registerPlugin<sup>21+</sup>
