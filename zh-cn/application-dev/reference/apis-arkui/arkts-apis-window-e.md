@@ -45,7 +45,9 @@
 
 窗口分屏比例的类型枚举。
 
-该枚举应用于[应用内分屏场景](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support#应用内分屏)。
+<!--Del-->当前OpenHarmony各设备不支持此接口。<!--DelEnd-->
+
+<!--PR1--> <!--PR1End-->
 
 **起始版本：** 26.0.0
 
