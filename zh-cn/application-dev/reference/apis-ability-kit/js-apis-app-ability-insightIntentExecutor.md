@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供意图执行基类，开发者通过本模块对接端侧[意图框架](../../application-models/insight-intent-overview.md)，[通过配置文件开发意图](../../application-models/insight-intent-config-development.md)实现意图的业务逻辑。
 
