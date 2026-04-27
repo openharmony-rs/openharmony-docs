@@ -1031,9 +1031,9 @@ audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', preferredIn
 
 ## getActiveOutputDeviceDescriptors<sup>26+</sup>
 
-getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>
+getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
 
-获取当前音频设备场景下的活跃输出设备描述符。使用Promise异步回调。 活跃策略与系统的音频设备策略相关。
+获取当前音频设备场景下的活跃输出设备描述符，使用Promise异步回调。活跃策略与系统的音频设备策略相关。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -1042,7 +1042,7 @@ getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>
 **返回值：**
 | 类型                                                         | 说明                      |
 | ------------------------------------------------------------ | ------------------------- |
-| Promise<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | Promise对象，返回活跃输出设备描述符列表。 |
+| Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise对象，返回活跃输出设备描述符列表。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
