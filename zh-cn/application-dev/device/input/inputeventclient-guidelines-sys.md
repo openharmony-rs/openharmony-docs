@@ -26,8 +26,6 @@ import { inputEventClient } from '@kit.InputKit';
 | injectEvent({KeyEvent: KeyEvent}): void |按键（包括单个按键和组合键）注入。 |
 | injectMouseEvent(mouseEvent: MouseEventData): void |鼠标/触控板事件注入。 |
 | injectTouchEvent(touchEvent: TouchEventData): void |触屏输入事件注入。|
-| createKeyboardController(): Promise&lt;KeyboardController&gt; |创建键盘控制器,用于模拟按键操作。|
-| createMouseController(): Promise&lt;MouseController&gt; |创建鼠标控制器,用于模拟鼠标操作。|
 
 
 ## 开发步骤
@@ -80,83 +78,3 @@ struct Index {
   }
 }
 ```
-
-## 使用KeyboardController
-
-KeyboardController接口提供了一种简化的方式来模拟按键操作。它自动管理按键状态,并确保按键按下和释放事件的正确顺序。
-
-```js
-import { inputEventClient, KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(async () => {
-          try {
-            // 创建键盘控制器
-            let keyboardController = await inputEventClient.createKeyboardController();
-
-            // 模拟按下和释放'A'键
-            await keyboardController.pressKey(KeyCode.KEYCODE_A);
-            await keyboardController.releaseKey(KeyCode.KEYCODE_A);
-
-            // 模拟组合键(Ctrl+C)
-            await keyboardController.pressKey(KeyCode.KEYCODE_CTRL_LEFT);
-            await keyboardController.pressKey(KeyCode.KEYCODE_C);
-            await keyboardController.releaseKey(KeyCode.KEYCODE_C);
-            await keyboardController.releaseKey(KeyCode.KEYCODE_CTRL_LEFT);
-
-            console.log('按键操作完成');
-          } catch (error) {
-            console.error(`按键操作失败, error: ${JSON.stringify(error, ["code", "message"])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-## 使用MouseController
-
-MouseController接口提供了模拟鼠标操作的功能,包括光标移动、按键按下和轴事件(如滚动)。
-
-```js
-import { inputEventClient, Button, Axis } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(async () => {
-          try {
-            // 创建鼠标控制器
-            let mouseController = await inputEventClient.createMouseController();
-
-            // 将光标移动到显示器0的位置(100, 200)
-            await mouseController.moveTo(0, 100, 200);
-
-            // 模拟左键点击
-            await mouseController.pressButton(Button.LEFT);
-            await mouseController.releaseButton(Button.LEFT);
-
-            // 模拟垂直滚动
-            await mouseController.beginAxis(Axis.VERTICAL_SCROLL, 10);
-            await mouseController.updateAxis(Axis.VERTICAL_SCROLL, 20);
-            await mouseController.updateAxis(Axis.VERTICAL_SCROLL, 30);
-            await mouseController.endAxis(Axis.VERTICAL_SCROLL);
-
-            console.log('鼠标操作完成');
-          } catch (error) {
-            console.error(`鼠标操作失败, error: ${JSON.stringify(error, ["code", "message"])}`);
-          }
-        })
-    }
-  }
-}
-```
-
