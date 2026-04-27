@@ -306,7 +306,7 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 
 > **说明：**
 >
-> 获取活跃的输出设备接口。活跃策略与系统的音频设备策略相关。
+获取活跃的输出设备接口。活跃策略与系统的音频设备策略保持一致。
 
 <!-- @[get_ActiveOutputDeviceDescriptors](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
 
