@@ -2,21 +2,21 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **telephonyManager** module provides the telephony management capability.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
-> - The global restriction policy is provided by **restrictions**. To disable telephony globally, see [@ohos.enterprise.restrictions (Restrictions)](js-apis-enterprise-restrictions.md).
+> The global restriction policy is provided by **restrictions**. To disable telephony globally, see [@ohos.enterprise.restrictions (Restrictions)](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -61,7 +61,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -112,7 +112,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -167,7 +167,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -233,14 +233,14 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.addOutgoingCallPolicyNumbers(wantTemp, policy, numbers);
@@ -301,14 +301,14 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.removeOutgoingCallPolicyNumbers(wantTemp, policy, numbers);
@@ -366,7 +366,7 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -431,14 +431,14 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.addIncomingCallPolicyNumbers(wantTemp, policy, numbers);
@@ -499,20 +499,20 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the value as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: adminManager.Policy = adminManager.Policy.BLOCK_LIST;
   let numbers: Array<string> = [
-    // Replace it as required.
+    // Replace the value as required.
     "13112345678"
   ];
   telephonyManager.removeIncomingCallPolicyNumbers(wantTemp, policy, numbers);
   console.info('Succeeded in removing incoming call policy.');
 } catch (err) {
-  console.error(`Failed to add remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove incoming call policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -564,7 +564,7 @@ import { telephonyManager } from '@kit.MDMKit';
 import { adminManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -614,7 +614,7 @@ import { Want } from '@kit.AbilityKit';
 import { telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace the values as required.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };

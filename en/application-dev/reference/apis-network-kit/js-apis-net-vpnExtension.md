@@ -256,7 +256,7 @@ Defines a VPN observer object. It is used to listen for VPN-related events. Befo
 
 onAuthorizationResult(callback: Callback\<boolean\>): void
 
-Registers a listener for the user authorization result. The authorization result is displayed in a dialog box after [vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver) is called. The notification is sent only when the user taps the dialog box, and only the result of the current VPN is received. If you do not need to listen for the authorization result, call [offAuthorizationResult](#offauthorizationresult) to cancel the registration.
+Registers a listener for the user authorization result. The authorization result is displayed in a dialog box after [startVpnExtensionAbility](#vpnextensionstartvpnextensionability) is called. The notification is sent only when the user taps the dialog box, and only the result of the current VPN is received. If you do not need to listen for the authorization result, call [offAuthorizationResult](#offauthorizationresult) to cancel the registration.
 
 >**NOTE**
 >

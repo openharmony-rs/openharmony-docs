@@ -1227,7 +1227,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### setWindowContainerModalColor
+## setWindowContainerModalColor
 
 setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
@@ -1851,6 +1851,8 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
@@ -1895,6 +1897,8 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **返回值：**
 
@@ -4398,6 +4402,7 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 开启本窗口可见状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+- 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
 - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -4487,6 +4492,7 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
 - 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+- 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
 - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -6124,7 +6130,9 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下生效，在其他设备中返回801错误码。
+**设备行为差异：**
+- 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+- 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)或[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -7776,7 +7784,7 @@ struct Float {
           return;
         }
         windowClass = data;
-        console.info(`succedded in creating the window. Data: ${JSON.stringify(data)}`);
+        console.info(`succeeded in creating the window. Data: ${JSON.stringify(data)}`);
         windowClass.resize(500, 1600).then(() => {
           console.info('Succeeded in changing the window size.');
         }).catch((err: BusinessError) => {
@@ -8067,6 +8075,8 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
+异形窗口蒙层设置不会影响窗口可见状态(可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)或[on('occlusionStateChanged')](arkts-apis-window-Window.md#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
+
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。窗口被销毁场景下错误码返回401。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -8175,6 +8185,65 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## setTouchableAreas
+
+setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
+
+设置当前窗口的可触摸区域，使用Promise异步回调。
+
+默认情况下，整个窗口区域都是可触摸的；可触摸区域外的触摸事件将被透传至下层。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+**参数：**
+
+| 参数名       | 类型                          | 必填 | 说明                           |
+| :----------- | :---------------------------- | :--- | :----------------------------- |
+| rects | Array&lt;[Rect](arkts-apis-window-i.md#rect7)&gt; | 是   | 窗口可触摸区域。可触摸区域最大个数不能超过10个，否则抛错误码1300016，且范围不能超出窗口区域。 |
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                               |
+| 1300002  | This window state is abnormal.    |
+| 1300003  | This window manager service works abnormally.                                                                      |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const touchableRects: Array<window.Rect> = [
+  { left: 100, top: 100, width: 200, height: 200 },
+  { left: 0, top: 50, width: 150, height: 200 }
+];
+try {
+  windowClass.setTouchableAreas(touchableRects).then(() => {
+    console.info('Succeeded in setting the touchable areas.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the touchable areas. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
@@ -10194,7 +10263,7 @@ try {
 
 setWindowShadowRadius(radius: number): void
 
-设置子窗或悬浮窗窗口边缘阴影的模糊半径。
+设置子窗或全局悬浮窗窗口边缘阴影的模糊半径。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10237,7 +10306,7 @@ try {
 
 setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
-设置子窗或悬浮窗的圆角半径值，使用Promise异步回调。
+设置子窗或全局悬浮窗的圆角半径值，使用Promise异步回调。
 
 圆角半径值过大将会导致三键（最大化、最小化、关闭按钮）位置被裁切，且会导致热区不易识别，请根据窗口大小设置合适的圆角半径值。
 
@@ -10299,7 +10368,7 @@ try {
 
 getWindowCornerRadius(): number
 
-该接口用于获取子窗或悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
+该接口用于获取子窗或全局悬浮窗的圆角半径值，在未调用[setWindowCornerRadius()](#setwindowcornerradius17)接口设置窗口圆角半径值时，调用此接口可获取窗口默认圆角半径值。
 
 **系统能力**：SystemCapability.Window.SessionManager
 

@@ -1,7 +1,7 @@
 # @ohos.enterprise.systemManager （系统管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -453,10 +453,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.UpdateResult) => {
-    console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Get update result failed. Code is ${error.code},message is ${error.message}`);
-  });
+  console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get update result failed. Code is ${error.code},message is ${error.message}`);
+});
 ```
 ## systemManager.getUpdateAuthData<sup>19+</sup>
 
@@ -505,10 +505,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
-    console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Get update auth data failed. Code is ${error.code},message is ${error.message}`);
-  });
+  console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get update auth data failed. Code is ${error.code},message is ${error.message}`);
+});
 ```
 
 ## systemManager.addDisallowedNearLinkProtocols<sup>20+</sup>

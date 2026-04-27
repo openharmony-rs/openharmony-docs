@@ -254,29 +254,28 @@ Represents the CN information of a certificate.
 
 Defines the parameters used to match a certificate. If no parameter is specified, all certificates are matched.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
-| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object. |
-| validDate | string    | No |  Yes|Certificate validity period. |
-| issuer | Uint8Array | No | Yes|Certificate issuer, in DER format.|
-| keyUsage | Array\<boolean> | No | Yes|Whether to match the key usage. **true**: yes; **false**: no.|
-| serialNumber | bigint    | No |  Yes|Serial number of the certificate. |
-| subject | Uint8Array | No | Yes|Certificate subject, in DER format.|
-| publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.|
-| publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.|
-| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Subject Alternative Names (SANs) of the certificate.|
-| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all SANs of the certificate. **true**: yes; **false**: no.|
-| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).|
-| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Minimum length of the certification path (chain of trust) that can be built from the certificate to a trusted root CA.|
-| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the certificate.|
-| nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.|
-| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy.|
-| privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.|
-| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Identifier of the public key of the certificate's subject.|
+| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| validDate | string    | No |  Yes|Certificate validity period.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| issuer | Uint8Array | No | Yes|Certificate issuer, in DER format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| keyUsage | Array\<boolean> | No | Yes|Whether to match the key usage. **true**: yes; **false**: no.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serialNumber | bigint    | No |  Yes|Serial number of the certificate.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| subject | Uint8Array | No | Yes|Certificate subject, in DER format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Subject Alternative Names (SANs) of the certificate.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all SANs of the certificate. **true**: yes; **false**: no.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Minimum length of the certification path (chain of trust) that can be built from the certificate to a trusted root CA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the certificate.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Identifier of the public key of the certificate's subject.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| privateKey | string \| Uint8Array | No | Yes|Private key of the certificate. The value can be a string (indicating a PEM-encoded private key) or a Uint8Array (indicating a DER-encoded private key).<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## X509CRLMatchParameters<sup>11+</sup>
 
@@ -4607,7 +4606,6 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -6208,7 +6206,6 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -8054,6 +8051,7 @@ try {
   console.error(`createCertChainValidator failed, errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
+
 ## CertChainValidator
 
 Provides APIs for certificate chain validator operations.
@@ -8202,6 +8200,7 @@ try {
 validate(certChain : CertChainData) : Promise\<void>
 
 Validates an X.509 certificate chain. This API uses a promise to return the result.
+
 The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -8334,7 +8333,7 @@ Provides APIs for operating the revoked certificates.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CrlEntry](#x509crlentry11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry](#x509crlentry11) instead.
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -12623,7 +12622,7 @@ async function getName() {
 
 getName(type: string): Array\<string>
 
-Obtains DNs of the specified type.
+Obtains relative distinguished name (RDN) strings of the specified type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -12633,13 +12632,13 @@ Obtains DNs of the specified type.
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type | string | Yes| Type of the DNs to obtain.|
+| type | string | Yes| Type of the RDNs to obtain. For example, **CN** and **OU**.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| Array\<string> | DNs obtained.|
+| Array\<string> | Array of RDN strings.|
 
 **Error codes**
 
@@ -12680,7 +12679,7 @@ async function getName() {
 
 getName(encodingType: EncodingType): string
 
-Obtains the string of the distinguished names based on the specified encoding type.
+Obtains RDN strings based on the specified encoding format.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -12690,13 +12689,13 @@ Obtains the string of the distinguished names based on the specified encoding ty
 
 | Name      | Type         | Mandatory| Description          |
 | ------------ | ------------- | ---- | -------------- |
-| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding type.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | A string of distinguishable names, separated by commas (,).|
+| string | RDN string. Multiple strings are separated by commas (,).|
 
 **Error codes**
 
@@ -12722,6 +12721,68 @@ async function getName() {
       .then((data) => {
         console.info('createX500DistinguishedName result: success.');
         console.info('createX500DistinguishedName getName: ' + data.getName(cert.EncodingType.ENCODING_UTF8));
+      })
+      .catch((err: BusinessError) => {
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      })
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### getName
+
+getName(type: string, encodingType: EncodingType): Array\<string>
+
+Obtains an array of RDN strings based on the specified type and encoding format.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description          |
+| ------------ | ------ | ---- | -------------- |
+| type | string | Yes| Type of the RDNs to obtain. For example, **CN** and **OU**.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
+
+**Return value**
+
+| Type   | Description                                             |
+| ------- | ------------------------------------------------- |
+| Array\<string> | Array of RDN strings.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | memory malloc failed. |
+| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is invalid. |
+| 19030001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let nameStr = '/CN=Example CA/OU=test cert/O=test/L=XA/ST=SX/C=CN/CN=RSA CA/CN=Test';
+async function getName() {
+  try {
+    cert.createX500DistinguishedName(nameStr)
+      .then((data) => {
+        console.info('createX500DistinguishedName result: success.');
+        console.info('createX500DistinguishedName getName: ' + data.getName("CN", cert.EncodingType.ENCODING_UTF8));
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
@@ -14634,3 +14695,4 @@ async function testCmsDecryptTest() {
   }
 }
 ```
+

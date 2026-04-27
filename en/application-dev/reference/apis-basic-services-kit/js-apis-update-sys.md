@@ -44,7 +44,7 @@ Obtains an **OnlineUpdater** object.
 | ----------- | --------------------------- | ---- | ------ |
 | upgradeInfo | [UpgradeInfo](#upgradeinfo) | Yes   | **OnlineUpdater** object information.|
 
-**Returns**
+**Return value**
 
 | Type                 | Description  |
 | ------------------- | ---- |
@@ -85,7 +85,7 @@ Obtains a **Restorer** object for restoring factory settings.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-**Returns**
+**Return value**
 
 | Type                   | Description    |
 | --------------------- | ------ |
@@ -119,7 +119,7 @@ Obtains a **LocalUpdater** object.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-**Returns**
+**Return value**
 
 | Type                           | Description    |
 | ----------------------------- | ------ |
@@ -207,7 +207,7 @@ Checks whether a new version is available. This API uses a promise to return the
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
-**Returns**
+**Return value**
 
 | Type                                   | Description                 |
 | ------------------------------------- | ------------------- |
@@ -312,7 +312,7 @@ Obtains information about the new version. This API uses a promise to return the
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
-**Returns**
+**Return value**
 
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
@@ -436,7 +436,7 @@ Obtains the description file of the new version. This API uses a promise to retu
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.|
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | Yes   | Options of the description file.|
 
-**Returns**
+**Return value**
 
 | Type                                      | Description                 |
 | ---------------------------------------- | ------------------- |
@@ -553,7 +553,7 @@ Obtains information about the current version. This API uses a promise to return
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
-**Returns**
+**Return value**
 
 | Type                                      | Description                 |
 | ---------------------------------------- | ------------------- |
@@ -669,7 +669,7 @@ Obtains the description file of the current version. This API uses a promise to 
 | ------------------ | ---------------------------------------- | ---- | ------ |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | Yes   | Options of the description file.|
 
-**Returns**
+**Return value**
 
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
@@ -776,7 +776,7 @@ Obtains information about the update task. This API uses a promise to return the
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
-**Returns**
+**Return value**
 
 | Type                             | Description                 |
 | ------------------------------- | ------------------- |
@@ -898,7 +898,7 @@ Downloads the new version. This API uses a promise to return the result.
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.|
 | downloadOptions   | [DownloadOptions](#downloadoptions)     | Yes   | Download options.  |
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -1030,7 +1030,7 @@ Resumes download of the new version. This API uses a promise to return the resul
 | versionDigestInfo     | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.|
 | resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | Yes   | Options for resuming download.|
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -1161,7 +1161,7 @@ Pauses download of the new version. This API uses a promise to return the result
 | versionDigestInfo    | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.|
 | pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | Yes   | Options for pausing download.|
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -1292,7 +1292,7 @@ Updates the version. This API uses a promise to return the result.
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.|
 | upgradeOptions    | [UpgradeOptions](#upgradeoptions)       | Yes   | Update options.  |
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -1423,7 +1423,7 @@ Clears errors. If an exception occurs during version download or installation, t
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.|
 | clearOptions      | [ClearOptions](#clearoptions)           | Yes   | Update options.  |
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -1535,7 +1535,7 @@ Obtains the update policy. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
-**Returns**
+**Return value**
 
 | Type                                      | Description                   |
 | ---------------------------------------- | --------------------- |
@@ -1649,7 +1649,7 @@ Sets the update policy. This API uses a promise to return the result.
 | ------ | ------------------------------- | ---- | ---- |
 | policy | [UpgradePolicy](#upgradepolicy) | Yes   | Update policy.|
 
-**Returns**
+**Return value**
 
 | Type            | Description                 |
 | -------------- | ------------------- |
@@ -1755,7 +1755,7 @@ Terminates the update. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -1945,7 +1945,7 @@ Clears the user data partition. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.FACTORY_RESET
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -1989,7 +1989,7 @@ Clears the user data partition and the file key. This API uses a promise to retu
 
 **Required permissions:** ohos.permission.FORCE_FACTORY_RESET
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -2027,7 +2027,7 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 Clears the user data partition and OS partition by means of overwriting. This API uses a promise to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2043,7 +2043,7 @@ Clears the user data partition and OS partition by means of overwriting. This AP
 | ------------------ | ---------------------------------------- | ---- | -------------- |
 | factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | Yes| Factory reset strategy.        |
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -2085,7 +2085,7 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 Obtains the factory reset information. This API uses a promise to return the result.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2101,7 +2101,7 @@ Obtains the factory reset information. This API uses a promise to return the res
 | ------------------ | ---------------------------------------- | ---- | -------------- |
 | factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | Yes| Factory reset strategy.        |
 
-**Returns**
+**Return value**
 
 | Type                             | Description                 |
 | ------------------------------- | ------------------- |
@@ -2208,7 +2208,7 @@ Verifies the update package. This API uses a promise to return the result.
 | upgradeFile | [UpgradeFile](#upgradefile) | Yes   | Update file.  |
 | certsFile   | string                      | Yes   | Path of the certificate file.|
 
-**Returns**
+**Return value**
 
 | Type            | Description                    |
 | -------------- | ---------------------- |
@@ -2312,7 +2312,7 @@ Installs the update package. This API uses a promise to return the result.
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
 | upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | Update file.                                   |
 
-**Returns**
+**Return value**
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
@@ -2751,7 +2751,7 @@ Represents an update file.
 
 Describes the factory reset strategy.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2768,7 +2768,7 @@ Describes the factory reset strategy.
 
 Describes the information of restoring factory settings.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2784,7 +2784,7 @@ Describes the information of restoring factory settings.
 
 Describes the scope of restoring factory settings.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 

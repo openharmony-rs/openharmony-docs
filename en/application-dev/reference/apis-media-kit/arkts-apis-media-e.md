@@ -132,7 +132,7 @@ Enumerates the media description keys.
 
 Enumerates the results of obtaining thumbnails in batches.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -193,7 +193,7 @@ Enumerates the buffering event types.
 
 Enumerates the interruption modes of the audio files with the same ID in SoundPool.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -415,6 +415,10 @@ Enumerates the screen capture states used in callbacks.
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | The system enters a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | The system exits a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | Screen capture is interrupted by system user switchover.      |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | Screen capture is paused by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | Screen capture is resumed by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | Screen capture is paused by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | Screen capture is resumed by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
@@ -448,6 +452,25 @@ Enumerates the metric events supported by the media service.
 | Name                      | Value  | Description                                  |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | Metric event indicating playback stalling.|
+
+## PlaylistLoopMode
+
+Enumerates the loop modes of playlist playback.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name                      | Value  | Description                                  |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYLIST_LOOP_MODE_ALL | 1    | Loop all.|
+| PLAYLIST_LOOP_MODE_ONE | 2    | Repeat one.|
+| PLAYLIST_LOOP_MODE_SHUFFLE | 3    | Shuffle.|
+| PLAYLIST_LOOP_MODE_NONE | 4    | Loop off.|
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

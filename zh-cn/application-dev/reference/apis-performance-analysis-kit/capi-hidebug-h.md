@@ -52,6 +52,8 @@
 | [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | 对指定的数个线程进行Perf采样，并在调用结束后返回采样栈内容。注意：调用该函数后会阻塞当前线程，直至采样过程完全结束。系统对该接口的调用次数有严格限制，频繁调用超出限额后，将返回[HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode)错误码。 |
 | [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | 将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。 |
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。 |
+| [HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofiler) | - | 异步启动当前进程资源采集功能。<br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。<br>若采集异常，则文件路径为NULL。 |
+| [HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)](#oh_hidebug_stopprofiler) | - | 停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。 |
 
 ## 函数说明
 
@@ -584,4 +586,56 @@ void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
 | -- | -- |
 | uint64_t crashObj | 函数OH_HiDebug_SetCrashObj的返回值。 |
 
+### OH_HiDebug_StartProfiler()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)
+```
+
+**描述**
+
+异步启动当前进程资源采集功能。<br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。<br>若采集异常，则文件路径为NULL。
+
+> **注意：**
+>
+> 1. 当前接口每24小时可调用10次；
+> 2. 采集资源的目标进程仅支持调用接口进程本身；
+> 3. 系统CPU占用率超过70%或内存可用空间少于15%或存储可用空间少于15%时，接口将调用失败并返回对应错误码；
+> 4. 当接口与命令行工具或系统采集任务发生冲突时，将调用失败，并返回相应的错误码；
+> 5. 同一个应用如存在多个进程，此接口最多可同时启动4个；
+> 6. 采集结果将保存在应用沙箱/data/storage/el2/base/files/目录下，文件名为“资源采集类型-进程名-进程号-时间戳.htrace”。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | 资源采集类型。 |
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | 资源采集配置参数。 |
+| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | 资源采集回调结果函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>        HIDEBUG_RES_PROF_SUCCESS：启动资源采集成功。<br>        HIDEBUG_RES_PROF_INVALID_ARG：资源采集参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_DURATION：资源采集最大持续时间参数无效。<br>        HIDEBUG_RES_PROF_INVALID_FILTER_SIZE：资源采集过滤大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH：资源采集最大回栈深度参数无效。<br>        HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL：资源采集统计间隔参数无效。<br>        HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL：资源采集采样大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE：资源采集类型参数无效。<br>        HIDEBUG_RES_PROF_PERMISSION_DENIED：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>        HIDEBUG_RES_PROF_ALREADY_STARTED：资源采集重复启动。<br>        HIDEBUG_RES_PROF_PROCESS_OVERLIMIT：资源采集进程数超出 4 个限制。<br>        HIDEBUG_RES_PROF_CONFLICT：资源采集与命令行工具或系统采集任务冲突。<br>        HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED：资源采集每日配额超出 10 次限制。<br>        HIDEBUG_RES_PROF_CPU_OVERLOADED：系统 CPU 处于高负载状态，CPU 占用率超过 70%。<br>        HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL：内存可用空间紧张，可用空间少于 15%。<br>        HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL：存储可用空间紧张，可用空间少于 15%。<br>        HIDEBUG_RES_PROF_FAILURE：启动资源采集失败。 |
+
+### OH_HiDebug_StopProfiler()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
+```
+
+**描述**
+
+停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>        HIDEBUG_RES_PROF_SUCCESS：已成功停止资源采集。<br>        HIDEBUG_RES_PROF_NOT_STARTED：资源采集未启动，停止失败。<br>        HIDEBUG_RES_PROF_FAILURE：停止资源采集失败。 |
 

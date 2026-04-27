@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **inputMonitor** module implements listening for events of input devices, including the touchscreen, mouse, touchpad, etc.
 
@@ -146,7 +146,7 @@ Enables listening for mouse events. When the mouse pointer moves to the specifie
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **mouse**.|
-| rect     | display.Rect[]             | Yes   | Rectangular area where a callback is triggered. One or two rectangular areas can be specified.|
+| rect     | [display.Rect](../apis-arkui/js-apis-display.md#rect9)[]             | Yes   | Rectangular area where a callback is triggered. One or two rectangular areas can be specified.|
 | receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | Yes   | Callback used to return mouse events asynchronously. |
 
 **Error codes**
@@ -312,7 +312,7 @@ Disables listening for global mouse events. This API uses an asynchronous callba
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **mouse**.|
-| receiver | Callback&lt;MouseEvent&gt; | No   | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | No   | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
 
@@ -436,7 +436,7 @@ struct Index {
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
-on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 Enables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
@@ -489,7 +489,7 @@ struct Index {
 
 ## inputMonitor.off('pinch')<sup>10+</sup>
 
-off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
 Disables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
@@ -576,7 +576,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersSwipe')<sup>10+</sup>
 
-on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 Enables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -629,7 +629,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersSwipe')<sup>10+</sup>
 
-off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
 
 Disables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -716,7 +716,7 @@ struct Index {
 
 ## inputMonitor.on('fourFingersSwipe')<sup>10+</sup>
 
-on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 Enables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -769,7 +769,7 @@ struct Index {
 
 ## inputMonitor.off('fourFingersSwipe')<sup>10+</sup>
 
-off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 Disables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -1142,7 +1142,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersTap')<sup>11+</sup>
 
-on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 Enables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 
@@ -1195,7 +1195,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersTap')<sup>11+</sup>
 
-off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 Disables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 

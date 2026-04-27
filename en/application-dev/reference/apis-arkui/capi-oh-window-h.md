@@ -50,6 +50,12 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | Releases the memory used by the main window screenshot list.|
 | [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - | Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.|
 | [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | Clears the mouse cursor mode previously set for the window.|
+| [int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_FrameMetrics* metrics, bool* isFirstDrawFrame)](#oh_windowmanager_framemetrics_isfirstdrawframe) | - | Checks whether this frame is the first frame.|
+| [int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getinputhandlingduration) | - | Obtains the time consumed for gesture handling in this frame.|
+| [int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getlayoutmeasureduration) | - | Obtains the time consumed for layout measurement in this frame.|
+| [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | Obtains the timestamp when this frame starts.|
+| [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.|
+| [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.|
 
 ## Function Description
 
@@ -453,8 +459,8 @@ Obtains the layout information array of all windows visible on a display. The la
 | Parameter| Description|
 | -- | -- |
 | int64_t displayId | ID of the display. You can obtain a valid display ID by calling the ArkTS API [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) on the window object|
-| [WindowManager_Rect](capi-windowmanager-rect.md)** windowLayoutInfoList | Double pointer to the layout information array of all windows visible.|
-| size_t* windowLayoutInfoSize | Pointer to the length of the layout information array.|
+| [WindowManager_Rect](capi-windowmanager-rect.md)** windowLayoutInfoList | Double pointer to the layout information array of all windows visible. This parameter is used as an output parameter.|
+| size_t* windowLayoutInfoSize | Pointer to the length of the layout information array. This parameter is used as an output parameter.|
 
 **Return value**
 
@@ -527,8 +533,8 @@ Obtains the information about all main windows.
 
 | Parameter| Description|
 | -- | -- |
-| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)** infoList | Double pointer to the main window information list.|
-| size_t* mainWindowInfoSize | Pointer to the size of the main window information list.|
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)** infoList | Double pointer to the main window information list. This parameter is used as an output parameter.|
+| size_t* mainWindowInfoSize | Pointer to the size of the main window information list. This parameter is used as an output parameter.|
 
 **Return value**
 
@@ -570,7 +576,7 @@ Defines the callback used for receiving the main window screenshot list.
 
 | Parameter| Description|
 | -- | -- |
-| [const OH_PixelmapNative](capi-struct.md)** snapshotPixelMapList | Double pointer to the window screenshot list.|
+| [const OH_PixelmapNative](capi-struct.md)** snapshotPixelMapList | Double pointer to the list of window screenshots.|
 |  size_t snapshotListSize | Size of the window screenshot list.|
 
 ### OH_WindowManager_GetMainWindowSnapshot()
@@ -674,3 +680,153 @@ Clears the mouse cursor mode previously set for the window.
 | Type| Description|
 | -- | -- |
 | int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_NO_PERMISSION**: You do not have the permission to call the API.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The device is not supported.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**: The window manager service is abnormal.|
+
+### OH_WindowManager_FrameMetrics_IsFirstDrawFrame()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_FrameMetrics* metrics, bool* isFirstDrawFrame)
+```
+
+**Description**
+
+Checks whether this frame is the first frame.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Pointer to the frame metric data object.|
+| bool* isFirstDrawFrame | Pointer to **isFirstDrawFrame** indicating whether the current frame is the first frame. This parameter is used as an output parameter. **true** indicates that this frame is the first frame, and **false** indicates the opposite.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_FrameMetrics_GetInputHandlingDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)
+```
+
+**Description**
+
+Obtains the time consumed for gesture handling in this frame.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Pointer to the frame metric data object.|
+| uint64_t* duration | Pointer to the time consumed for gesture handling in this frame, in nanoseconds. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)
+```
+
+**Description**
+
+Obtains the time consumed for layout measurement in this frame.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Pointer to the frame metric data object.|
+| uint64_t* duration | Pointer to the time consumed for layout measurement in this frame, in nanoseconds. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_FrameMetrics_GetVsyncTimestamp()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)
+```
+
+**Description**
+
+Obtains the timestamp when this frame starts.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | Pointer to the frame metric data object.|
+| uint64_t* timestamp | Pointer to the timestamp when this frame starts, in nanoseconds. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_RegisterFrameMetricsMeasuredCallback()
+
+```c
+int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)
+```
+
+**Description**
+
+Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID.|
+| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | Callback used to return the result.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window is not created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_UnregisterFrameMetricsMeasuredCallback()
+
+```c
+int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)
+```
+
+**Description**
+
+Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID.|
+| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | Callback used to return the result.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window is not created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
