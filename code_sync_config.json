@@ -51319,6 +51319,16 @@
 						"end_line":128,
 						"name":"ark_napi_create_function",
 						"start_line":124
+					},
+					{
+						"end_line":43,
+						"name":"ark_napi_get_cb_info_header",
+						"start_line":16
+					},
+					{
+						"end_line":55,
+						"name":"ark_napi_call_function_header",
+						"start_line":45
 					}
 				]
 			}
