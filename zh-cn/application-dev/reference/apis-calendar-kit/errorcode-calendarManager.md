@@ -64,9 +64,9 @@ Internal program error.
 **可能原因**
 
 1. dataShare数据库执行错误。
- 	 
+
 2. 空指针错误。
- 	 
+
 3. 数据解析错误。
 
 **处理步骤**
