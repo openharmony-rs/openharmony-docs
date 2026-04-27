@@ -25,6 +25,8 @@ import  { fileShare } from '@kit.CoreFileKit';
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。  
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
@@ -33,7 +35,7 @@ import  { fileShare } from '@kit.CoreFileKit';
 |------|-------|------|-----|------------------------------------------------------|
 | bundleName | string | 是   | 否 | 应用程序的包名。                                       |
 | path | string | 是   | 否 | 应用程序共享的目录 |
-| permissionMode | number | 是   | 否 | 应用程序共享目录的权限，例如 { OperationMode.READ_MODE } |
+| permissionMode | number | 是   | 否 | 应用程序共享目录的权限，可填入[OperationMode](./js-apis-fileShare.md#operationmode11)对应值，例如：OperationMode.READ_MODE  |
 
 ## fileShare.grantUriPermission
 
@@ -290,9 +292,11 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
 
 getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
-获取所有应用的捐献沙箱目录
+获取所有应用捐献的沙箱目录。使用Promise异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -304,7 +308,7 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 |类型|说明|
 | ------ | ------ |
-| Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt; | Promise对象，返回SharedDirectoryInfo数组。 |
+| Promise&lt;Array&lt;[SharedDirectoryInfo]()&gt;&gt; | Promise对象，返回所有应用捐献的沙箱目录数组。 |
 
 **错误码：**
 
@@ -320,34 +324,36 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileShare } from '@kit.CoreFileKit';
-  
-  async function getSharedDirectoryInfo() {
-    try {
-      fileShare.getSharedDirectoryInfo().then((infos: Array<fileShare.SharedDirectoryInfo>) => {
-        infos.forEach((info: fileShare.SharedDirectoryInfo) => {
-          console.info("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
-        });
-      }).catch((err: BusinessError) => {
-        console.info("getSharedDirectoryInfo err : " + JSON.stringify(err))
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function getSharedDirectoryInfo() {
+  try {
+    fileShare.getSharedDirectoryInfo().then((infos: Array<fileShare.SharedDirectoryInfo>) => {
+      infos.forEach((info: fileShare.SharedDirectoryInfo) => {
+        console.info("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
       });
-    }
-    catch (error) {
-      console.info('getSharedDirectoryInfo error, Code: ' + error.code + ', message: ' + error.message);
-    }
+    }).catch((err: BusinessError) => {
+      console.error("getSharedDirectoryInfo err : " + JSON.stringify(err))
+    });
   }
-  ```
+  catch (error) {
+    console.error('getSharedDirectoryInfo error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
 
 
 ## fileShare.grantSharedDirectoryPermission
 
 grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
-授予对应用捐献目录的访问权限
+授予对应用捐献目录的临时访问权限。使用Promise异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -374,31 +380,33 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileShare } from '@kit.CoreFileKit';
-  
-  async function grantSharedDirectoryPermission() {
-    try {
-      fileShare.grantSharedDirectoryPermission().then(() => {
-        console.info("grantSharedDirectoryPermission success")
-      }).catch((err: BusinessError) => {
-        console.info("grantSharedDirectoryPermission err : " + JSON.stringify(err))
-      });
-    }
-    catch (error) {
-      console.info('grantSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
-    }
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function grantSharedDirectoryPermission() {
+  try {
+    fileShare.grantSharedDirectoryPermission().then(() => {
+      console.info("grantSharedDirectoryPermission success")
+    }).catch((err: BusinessError) => {
+      console.error("grantSharedDirectoryPermission err : " + JSON.stringify(err))
+    });
   }
-  ```
+  catch (error) {
+    console.error('grantSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
 
 ## fileShare.revokeSharedDirectoryPermission
 
 revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
-撤消应用的捐献目录访问权限。
+撤消应用的捐献目录临时访问权限。使用Promise异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -425,20 +433,20 @@ revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileShare } from '@kit.CoreFileKit';
-  
-  async function revokeSharedDirectoryPermission() {
-    try {
-      fileShare.revokeSharedDirectoryPermission().then(() => {
-        console.info("revokeSharedDirectoryPermission success")
-      }).catch((err: BusinessError) => {
-        console.info("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
-      });
-    }
-    catch (error) {
-      console.info('revokeSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
-    }
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function revokeSharedDirectoryPermission() {
+  try {
+    fileShare.revokeSharedDirectoryPermission().then(() => {
+      console.info("revokeSharedDirectoryPermission success")
+    }).catch((err: BusinessError) => {
+      console.error("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
+    });
   }
-  ```
+  catch (error) {
+    console.error('revokeSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
