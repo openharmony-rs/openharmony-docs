@@ -1378,14 +1378,14 @@ drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<c
 
 **参数**
 
-| 参数名          | 类型                                        | 必填  | 说明                                                  |
-| ------         | -------------------                         | ---- | -----------                                          |
-| glyphIds       | Array\<number\>                             | 是   | 指示字形ID的数组。                                      |
-| glyphIdOffset  | number                                      | 是   | 指示在绘制字形Ids数组之前要跳过的元素的数量。 取值限定为整数。 |
-| positions      | Array\<common2D.Point\>                     | 是   | 表示位置数组。                                          |
-| positionOffset | number                                      | 是   | 指示在绘制位置数组之前要跳过的元素的数量。取值限定为整数。     |
-| glyphCount     | number                                      | 是   | 指示要绘制的字形的数目。                                  |
-| font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 指示用于绘图的字体。                                     |
+| 参数名          | 类型                                                            | 必填  | 说明                                                  |
+| ------         | -------------------                                             | ---- | -----------                                          |
+| glyphIds       | Array\<number\>                                                 | 是   | 字形ID的数组。                                      |
+| glyphIdOffset  | number                                                          | 是   | 在绘制字形Ids数组之前要跳过的元素的数量。 取值限定为整数。 |
+| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                                          |
+| positionOffset | number                                                          | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数。     |
+| glyphCount     | number                                                          | 是   | 要绘制的字形的数目。                                  |
+| font           | [Font](arkts-apis-graphics-drawing-Font.md)                     | 是   | 用于绘图的字体。                                     |
 
 **错误码：**
 
