@@ -395,7 +395,7 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
 ```
 
 ## SceneAnimationTriggerType
- 	 
+
 场景动效卡片触发类型枚举。
 
 **ArkTS-Dyn起始版本：** 26.0.0
