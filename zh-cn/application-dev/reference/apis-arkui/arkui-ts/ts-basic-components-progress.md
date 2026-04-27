@@ -214,7 +214,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ProgressConfiguration\> | 
 **参数：**
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| modifier | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)><br/> ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)>&nbsp;\|&nbsp;undefined | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)><br/> ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)>&nbsp;\|&nbsp;undefined | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示为默认内容。 |
 
 ### privacySensitive<sup>12+</sup>
 
@@ -242,11 +242,11 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br/> 默认值：false<br/>**说明：** <br/>设置null或undefined表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br/> 默认值：false<br/>**说明：** <br/>设置undefined表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 
-进度条配置。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
+进度条配置。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
