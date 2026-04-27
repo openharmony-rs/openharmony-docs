@@ -24,10 +24,10 @@
 
 function getMediaTypeByMimeType(mimeType: string): string {
   if (mimeType.startsWith('video/')) {
-    return '视频';
+    return 'video';
   } else if (mimeType.startsWith('image/')) {
-    return '图片';
+    return 'image';
   }
-  return '未知';
+  return 'unKnown';
 }
 ```
