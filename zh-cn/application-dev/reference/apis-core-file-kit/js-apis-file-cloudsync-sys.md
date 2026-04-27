@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
@@ -75,7 +75,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-  console.info("syncState：" + pg.state);
+  console.info("syncState: " + pg.state);
 });
 ```
 
@@ -115,7 +115,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 let gallerySync = new cloudSync.GallerySync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("gallery sync state：" + pg.state + "error type:" + pg.error);
+  console.info("gallery sync state: " + pg.state + "error type: " + pg.error);
 }
 
 gallerySync.on('progress', callback);
@@ -158,7 +158,7 @@ off(evt: 'progress'): void
 let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-    console.info("syncState：" + pg.state);
+    console.info("syncState: " + pg.state);
 });
 
 gallerySync.off('progress');
@@ -203,7 +203,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-  console.info("syncState：" + pg.state);
+  console.info("syncState: " + pg.state);
 });
 
 gallerySync.start().then(() => {
@@ -410,7 +410,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 let download = new cloudSync.Download();
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 });
 ```
 
@@ -450,7 +450,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 let download = new cloudSync.Download();
 
 let callback = (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 }
 
 download.on('progress', callback);
@@ -493,7 +493,7 @@ off(evt: 'progress'): void
 let download = new cloudSync.Download();
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state:" + pg.state);
+    console.info("download state: " + pg.state);
 });
 
 download.off('progress');
@@ -544,7 +544,7 @@ let download = new cloudSync.Download();
 let uri: string = "file:///media/Photo/1";
 
 download.on('progress', (pg: cloudSync.DownloadProgress) => {
-  console.info("download state:" + pg.state);
+  console.info("download state: " + pg.state);
 });
 
 download.start(uri).then(() => {
@@ -948,7 +948,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error:" + JSON.stringify(error));
+  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
 }
 ```
 
@@ -1063,7 +1063,7 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-    console.info("optimize space progress:" + data.progress);
+    console.info("optimize space progress: " + data.progress);
   }
 }
 cloudSync.startOptimizeSpace(para, callback).then(() => {
@@ -1106,7 +1106,7 @@ let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
     console.info("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-    console.info("optimize space progress:" + data.progress);
+    console.info("optimize space progress: " + data.progress);
   }
 }
 cloudSync.startOptimizeSpace(para, callback);

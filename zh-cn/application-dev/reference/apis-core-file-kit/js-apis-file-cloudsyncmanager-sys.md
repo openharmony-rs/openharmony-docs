@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 该模块向云盘管理应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件，全量下载等。
@@ -359,9 +359,9 @@ let switches: Record<string, boolean> = {
   'com.example.bundleName2': false
 }
 cloudSyncManager.enableCloud(accountId, switches).then(() => {
-  console.error("enableCloud successfully");
+  console.info("enableCloud successfully.");
 }).catch((err: BusinessError) => {
-  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 

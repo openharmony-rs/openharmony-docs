@@ -29,7 +29,7 @@ import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
 | UNKNOWN | 0 | 未定义类型。 |
-| NODE | 1 | 结点类型。 |
+| NODE | 1 | 节点类型。 |
 | ENVIRONMENT | 2 | 环境类型。 |
 | MATERIAL | 3 | 材质类型。 |
 | MESH | 4 | 网格类型。 |
@@ -422,8 +422,6 @@ onStarted(callback: Callback\<void>): void
 | ---- | ---- | ---- | ---- |
 | callback | Callback\<void> | 是 | 回调函数，返回值为空。 |
 
-动画开始时会执行传入的回调函数。
-
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **示例：**
@@ -682,7 +680,7 @@ getPropertyValue(propertyName: string): Object | null | undefined
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Object \| null \| undefined | 特效属性值，如果获取失败则返回null。 |
+| Object \| null \| undefined | 特效属性值。若当前Effect类型下不存在与传入的propertyName匹配的属性，则获取失败，返回null；若propertyName对应的可选属性未设置，则返回undefined。 |
 
 **示例：**
 

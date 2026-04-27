@@ -1,10 +1,10 @@
 # @ohos.enterprise.systemManager （系统管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供系统管理能力。
 
@@ -210,8 +210,8 @@ try {
 let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
-  "installStartTime": 1716281049, // // 时间戳
-  "installEndTime": 1716343200, // // 时间戳
+  "installStartTime": 1716281049, // 时间戳
+  "installEndTime": 1716343200, // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
@@ -1223,127 +1223,6 @@ try {
 } catch (err) {
   console.error(`Failed to finish log collected. Code is ${err.code}, message is ${err.message}`);
 }
-```
-
-## systemManager.setActivationLockDisabled<sup>24+</sup>
-
-setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
-
-禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->。
-
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型                                                    | 必填 | 说明                   |
-| ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| isDisabled | boolean | 是 | 是否禁用激活锁。true表示禁用，false表示启用。 |
-| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据<!--RP6--><!--RP6End-->，设置启用时为空。|
-
-**返回值：**
-
-| 类型   | 说明                                |
-| ------ | ----------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置禁用/启用失败时，会抛出错误对象。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed. |
-| 9200016  | Service timeout. |
-| 9201011  | The credential of the activation lock is invalid. |
-| 9201012  | Failed to enable or disable the activation lock. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-
-**示例：**
-
-```ts
-import { Want } from '@kit.AbilityKit';
-import { systemManager } from '@kit.MDMKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let credential: string = "XXX";
-let isDisabled: boolean = true;
-systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then(() => {
-  console.info('Succeeded in setting activation lock status.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set activation lock status. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## systemManager.isActivationLockDisabled<sup>24+</sup>
-
-isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
-
-获取设备激活锁禁用状态。
-
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型                                                    | 必填 | 说明                   |
-| ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-
-**返回值：**
-
-| 类型                   | 说明                      |
-| --------------------- | ------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回当前设备激活锁的禁用状态。返回true表示设备激活锁处于禁用状态，查找设备功能无法使用；返回false表示设备激活锁处于启用状态，可以正常使用设备查找功能。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
-| 9200016  | Service timeout. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-
-**示例：**
-
-```ts
-import { Want } from '@kit.AbilityKit';
-import { systemManager } from '@kit.MDMKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-systemManager.isActivationLockDisabled(wantTemp).then(result => {
-  console.info(`Succeeded in getting activation lock status: ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set activation lock status. Code: ${err.code}, message: ${err.message}`);
-});
 ```
 
 ## systemManager.setInstallLocalEnterpriseAppEnabledForAccount<sup>24+</sup>

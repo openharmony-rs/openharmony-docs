@@ -26,14 +26,14 @@ Defines the enum variables and structs used in the HID DDK.
 
 | Name                                                       | typedef Keyword| Description|
 |-----------------------------------------------------------| -- | -- |
-| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | Defines event information.|
-| [Hid_Device](capi-hidddk-hid-device.md)                   | Hid_Device | Defines basic device information.|
-| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | Defines an array of event types.|
-| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | Defines an array of key codes.|
+| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | Represents the event information.|
+| [Hid_Device](capi-hidddk-hid-device.md)                   | Hid_Device | Defines a struct for basic device information.|
+| [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | Defines a struct for an array of event types.|
+| [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | Defines a struct for the key code array.|
 | [Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md)       | Hid_AbsAxesArray | Defines an array of absolute coordinates.|
 | [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md)       | Hid_RelAxesArray | Defines an array of relative coordinates.|
 | [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md)     | Hid_MscEventArray | Defines an array of miscellaneous events.|
-| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | Defines the event properties of a device.|
+| [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | Defines a struct for the event properties of a device.|
 | [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md)           | Hid_RawDevInfo | Defines the raw device information.|
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md)       | Hid_DeviceHandle | Defines the opaque USB HID device structure.|
 
@@ -202,7 +202,7 @@ Enumerates the key codes.
 | HID_KEY_NUMPAD_SUBTRACT = 74 | Minus key (-) on the numeric keypad|
 | HID_KEY_NUMPAD_ADD = 78 | Plus key (+) on the numeric keypad|
 | HID_KEY_NUMPAD_DOT = 83 | Decimal point (.) on the numeric keypad|
-| HID_KEY_SYSRQ = 99 | SYSRQ key|
+| HID_KEY_SYSRQ = 99 | Key print screen|
 | HID_KEY_DELETE = 111 | Delete key|
 | HID_KEY_MUTE = 113 | Mute key|
 | HID_KEY_VOLUME_DOWN = 114 | Volume Down key|

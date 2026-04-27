@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行函数创建和调用
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -134,7 +134,7 @@ static int32_t TEST_FUNC() {
 <!-- @[jsvm_function_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/functioncall/src/main/cpp/hello.cpp) -->
 
 预期的输出
-```
+```txt
 jsvm: jsvm api call function; Hello World!
 jsvm: js source call function; Hello World!
 ```

@@ -37,10 +37,11 @@
 
 如下示例中业务使用TaskPool调用相关同步方法的代码，首先定义并发函数taskpoolFunc，需要注意必须使用[@Concurrent装饰器](taskpool-introduction.md#concurrent装饰器)装饰该函数；其次定义函数mainFunc，该函数功能为创建任务，执行任务并处理任务返回的结果。
 
+<!-- @[taskpool_handle_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) -->
 
-```ts
-// Index.ets
-import { taskpool} from '@kit.ArkTS';
+``` TypeScript
+import { worker } from '@kit.ArkTS';
+import { taskpool } from '@kit.ArkTS';
 
 // 步骤1: 定义并发函数，实现业务逻辑
 @Concurrent
@@ -57,8 +58,8 @@ async function mainFunc(): Promise<void> {
   let task2: taskpool.Task = new taskpool.Task(taskpoolFunc, res1);
   let res2: number = await taskpool.execute(task2) as number;
   // 步骤3: 对任务返回的结果进行操作
-  console.info("taskpool: task res1 is: " + res1);
-  console.info("taskpool: task res2 is: " + res2);
+  console.info('taskpool: task res1 is: ' + res1);
+  console.info('taskpool: task res2 is: ' + res2);
 }
 
 @Entry
@@ -74,15 +75,29 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(async () => {
             mainFunc();
+            let w: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker2.ts');
+            w.onmessage = (): void => {
+              // 接收Worker子线程的结果
+            }
+            w.onerror = (): void => {
+              // 接收Worker子线程的错误信息
+            }
+            // 向Worker子线程发送Set消息
+            w.postMessage({ 'type': 0, 'data': 'data' });
+            // 向Worker子线程发送Get消息
+            w.postMessage({ 'type': 1 });
+            // ...
+            // 根据实际业务，选择时机以销毁线程
+            w.terminate();
+            this.message = 'success';
           })
       }
       .width('100%')
-      .height('100%')
     }
+    .height('100%')
   }
 }
 ```
-<!-- @[taskpool_handle_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) -->
 
 
 ## 使用Worker处理关联的同步任务
@@ -91,10 +106,9 @@ struct Index {
 
 1. 在UI主线程中创建Worker对象并接收Worker线程发送的消息。DevEco Studio支持一键生成Worker。在{moduleName}目录下任意位置，点击鼠标右键 > New > Worker，即可生成Worker的模板文件及配置信息。
 
-    ```ts
-    // Index.ets
-    import { MessageEvents, worker } from '@kit.ArkTS';
+    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) -->
     
+    ``` TypeScript
     @Entry
     @Component
     struct Index {
@@ -106,21 +120,23 @@ struct Index {
             Text(this.message)
               .fontSize(50)
               .fontWeight(FontWeight.Bold)
-              .onClick(() => {
-                let w: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
-                // 向Worker子线程发送Set消息
-                w.postMessage({'type': 0, 'data': 10});
-                // 向Worker子线程发送Get消息
-                w.postMessage({'type': 1});
-                // 接收Worker子线程的结果
-                w.onmessage = (e: MessageEvents): void => {
+              .onClick(async () => {
+                mainFunc();
+                let w: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker2.ts');
+                w.onmessage = (): void => {
                   // 接收Worker子线程的结果
-                  console.info('main thread onmessage, ' + e.data.message);
-                  // 销毁Worker
-                  if (e.data.isTerminate) {
-                    w.terminate();
-                  }
                 }
+                w.onerror = (): void => {
+                  // 接收Worker子线程的错误信息
+                }
+                // 向Worker子线程发送Set消息
+                w.postMessage({ 'type': 0, 'data': 'data' });
+                // 向Worker子线程发送Get消息
+                w.postMessage({ 'type': 1 });
+                // ...
+                // 根据实际业务，选择时机以销毁线程
+                w.terminate();
+                this.message = 'success';
               })
           }
           .width('100%')
@@ -129,55 +145,48 @@ struct Index {
       }
     }
     ```
-    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) -->
 
 
 2. 在Worker线程中绑定Worker对象，同时处理同步任务逻辑。
 
-    ```ts
-    // handle.ts代码，与Worker.ets在同级目录下
-    export default class Handle {
-      id: number = 0;
-    
-      syncGet(): number {
-        return this.id;
-      }
-    
-      syncSet(num: number): boolean {
-        this.id = num;
-        return true;
-      }
-    }
-    ```
     <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/handle.ts) -->
     
-    ```ts
-    // Worker.ets
-    import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS';
-    // 返回句柄
-    import Handle from './handle'; 
+    ``` TypeScript
+    export default class Handle {
+      syncGet() {
+        return;
+      }
     
-    let workerPort : ThreadWorkerGlobalScope = worker.workerPort;
+      syncSet(num: number) {
+        return;
+      }
+    }
+    ```
+
+    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ts) -->
+    
+    ``` TypeScript
+    import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS';
+    import Handle from './handle'; // 返回句柄
+    
+    let workerPort: ThreadWorkerGlobalScope = worker.workerPort;
     
     // 无法传输的句柄，所有操作依赖此句柄
-    let handler: Handle = new Handle();
+    let handler: Handle = new Handle()
     
     // Worker线程的onmessage逻辑
-    workerPort.onmessage = (e : MessageEvents): void => {
+    workerPort.onmessage = (e: MessageEvents): void => {
       switch (e.data.type as number) {
         case 0:
-          let result: boolean = false;
-          result = handler.syncSet(e.data.data);
-          console.info("worker: result is " + result);
-          workerPort.postMessage({'message': 'the result of syncSet() is ' + result, 'isTerminate': false});
+          handler.syncSet(e.data.data);
+          workerPort.postMessage('success set');
           break;
         case 1:
-          let num: number = 0;
-          num = handler.syncGet();
-          console.info("worker: num is " + num);
-          workerPort.postMessage({'message': 'the result of syncGet() is ' + num, 'isTerminate': true});
+          handler.syncGet();
+          workerPort.postMessage('success get');
+          break;
+        default:
           break;
       }
     }
     ```
-    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ts) -->

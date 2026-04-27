@@ -123,6 +123,20 @@
 
 **取值：** "usual.event.KIOSK_MODE_OFF"
 
+### COMMON_EVENT_APP_FIRST_LAUNCH<sup>24+</sup>
+
+在应用安装后首次启动时，事件通知服务将触发并发布系统公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：**ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
+
+**取值：** "usual.event.APP_FIRST_LAUNCH"
+
 
 ## Background Tasks Kit 
 
@@ -424,6 +438,22 @@
 
 **取值：** "usual.event.SCREEN_SHARE"
 
+
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+表示VPN连接状态的公共事件。
+
+当VPN连接或者断开时会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
 
 ## Telephony Kit
 

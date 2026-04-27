@@ -65,7 +65,8 @@ TabSegmentButtonV2({
   buttonBorderRadius?: LengthMetrics, 
   buttonMinHeight?: LengthMetrics, 
   buttonPadding?: LengthMetrics, 
-  languageDirection?: Direction
+  languageDirection?: Direction,
+  enableStateAnimation?: boolean
 })
 ```
 
@@ -109,6 +110,7 @@ TabSegmentButtonV2({
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中选项HM Symbol类型图标的颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中选项的HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_primary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br/>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## CapsuleSegmentButtonV2
@@ -146,7 +148,8 @@ CapsuleSegmentButtonV2({
   buttonBorderRadius?: LengthMetrics,
   buttonMinHeight?: LengthMetrics,
   buttonPadding?: LengthMetrics,
-  languageDirection?: Direction
+  languageDirection?: Direction,
+  enableStateAnimation?: boolean
 })
 ```
 
@@ -190,6 +193,7 @@ CapsuleSegmentButtonV2({
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中的选项中HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br/>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中的选项中HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_on_primary')`<br>值为undefined时，按默认值处理。<br/>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## MultiCapsuleSegmentButtonV2
 
@@ -933,3 +937,98 @@ export struct VCard {
 ```
 
 ![TabSegmentButtonV2OrCapsuleSegmentButtonV2OrMultiCapsuleSegmentButtonV2](figures/TabSegmentButtonV2OrCapsuleSegmentButtonV2OrMultiCapsuleSegmentButtonV2.png)
+
+ ### 示例5（开启SegmentButtonV2的属性动画）
+ 
+ 此示例展示了SegmentButtonV2开启enableStateAnimation后，在通过状态变量修改selectedIndexes的值时，按钮切换也具有动画效果。
+ 
+ 从API version 24开始，[TabSegmentButtonV2](#tabsegmentbuttonv2)和[CapsuleSegmentButtonV2](#capsulesegmentbuttonv2)新增enableStateAnimation属性。
+ 
+ ```ts
+ import { TabSegmentButtonV2, CapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
+ 
+ @Entry
+ @ComponentV2
+ struct SegmentButtonV2Example {
+   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+     { text: '手机' },
+     { text: '平板' },
+     { text: '2in1' },
+     { text: '智能穿戴' },
+   ]);
+   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+     { icon: $r('sys.media.ohos_ic_public_device_phone') },
+     { icon: $r('sys.media.ohos_ic_public_device_pad') },
+     { icon: $r('sys.media.ohos_ic_public_device_matebook') },
+     { icon: $r('sys.media.ohos_ic_public_device_watch') },
+   ]);
+   @Local textSelectedIndex: number = 0;
+   @Local imageSelectedIndex: number = 0;
+   @Local currentSelectedIndex: number = 0; // 切换选中项的索引计数器
+ 
+   build() {
+     Scroll() {
+       Column({ space: 12 }) {
+         VCard({ title: 'TabSegmentButtonV2' }) {
+           TabSegmentButtonV2({
+             items: this.textItems,
+             selectedIndex: this.textSelectedIndex!!,
+             enableStateAnimation: true // 开启TabSegmentButtonV2的属性动画
+           })
+         }
+ 
+         VCard({ title: 'CapsuleSegmentButtonV2' }) {
+           CapsuleSegmentButtonV2({
+             items: this.imageItems,
+             selectedIndex: this.imageSelectedIndex!!,
+             enableStateAnimation: true // 开启CapsuleSegmentButtonV2的属性动画
+           })
+         }
+ 
+         Button('ChangeSelectedIndex').onClick((event: ClickEvent) => {
+           // 通过状态变量自增修改选中项的索引值，若超出最大索引则重置为0
+           this.currentSelectedIndex = this.currentSelectedIndex < 3 ? this.currentSelectedIndex + 1 : 0;
+           this.textSelectedIndex = this.currentSelectedIndex;
+           this.imageSelectedIndex = this.currentSelectedIndex;
+         })
+       }
+       .constraintSize({ minHeight: '100%' })
+       .justifyContent(FlexAlign.Start)
+       .padding(16)
+     }
+     .backgroundColor('#f1f3f5')
+     .width('100%')
+     .height('100%')
+   }
+ }
+ 
+ @Builder
+ function Noop() {
+ }
+ 
+ @Component
+ export struct VCard {
+   @Prop
+   title: ResourceStr;
+   @BuilderParam
+   content: () => void = Noop;
+ 
+   build() {
+     Column({ space: 8 }) {
+       if (this.title) {
+         Text(this.title)
+           .maxLines(1)
+           .textOverflow({ overflow: TextOverflow.Ellipsis })
+           .constraintSize({ maxWidth: '80%' })
+       }
+       this.content()
+     }
+     .backgroundColor(Color.White)
+     .borderRadius(8)
+     .padding(8)
+     .width('100%')
+   }
+ }
+ ```
+ 
+ ![segmentbuttonv2-sample83](figures/segmentbuttonv2-sample83.gif)

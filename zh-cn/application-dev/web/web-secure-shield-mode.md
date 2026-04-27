@@ -59,7 +59,7 @@
 
 - 排查前端代码是否存在MediaDevices.getUserMedia接口调用，该接口用于请求访问流媒体设备，如摄像头和麦克风。在坚盾守护模式下，相关接口调用会抛出异常：“can't use getUserMedia on advancedSecurityMode!”
 
-- 排查前端代码是否存在ServiceWorker相关接口调用，该机制实现离线缓存、网络请求拦截和推送通知等功能，在坚盾守护模式下无法创建。
+- 排查前端代码是否存在Service Worker相关接口调用，该机制实现离线缓存、网络请求拦截和推送通知等功能，在坚盾守护模式下无法创建。
 
 - 在坚盾守护模式下，WebRTC禁止使用非代理UDP传输。应用需验证WebRTC场景下的网络功能和性能。
 

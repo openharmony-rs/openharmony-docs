@@ -5610,6 +5610,20 @@ Allows a system application to obtain AgentCard information.
 
 **Since**: 24
 
+## ohos.permission.ASSET_CACHE_MANAGER
+
+Allows an application to deliver, control, and query tasks through the asset cache service management APIs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24
+
 ## ohos.permission.CONNECT_AGENT
 
 Allows a system application to connect to the Agent.

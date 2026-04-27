@@ -44,7 +44,7 @@ copyImage(): void
 
 copy(): void
 
-执行拷贝文本操作。
+执行复制文本操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -96,7 +96,7 @@ redo(): void
 
 pasteAndMatchStyle(): void
 
-执行一个和上下文菜单相关的粘贴操作，粘贴的内容会匹配目标格式，以纯文本形式呈现。
+执行与此上下文菜单相关的粘贴操作，粘贴的内容会匹配目标格式，以纯文本形式呈现。
 
 > **说明：**
 >
@@ -116,7 +116,7 @@ requestPasswordAutoFill(): void
 
 saveImage(): void
 
-保存一个上下文菜单相关的图片操作，调用后将触发下载流程。
+保存上下文菜单相关的图片，调用后将触发下载流程。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供3D图形中场景资源结点的类型及操作方法。
+本模块提供3D图形中场景资源节点的类型及操作方法。SceneNode是3D场景的基础构建单元，它允许开发者通过层级结构管理场景中的对象，实现高效的场景组织与交互控制。
 
 > **说明：**
 >
@@ -21,7 +21,7 @@ import { LayerMask, NodeType, Container, Node, Geometry, LightType, Light, SpotL
 
 ## LayerMask
 
-用于定义结点的图层掩码。
+用于定义节点的图层掩码。
 
 ### getEnabled
 
@@ -55,7 +55,7 @@ function layerMask(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode_");
       if (node) {
-          // 获取掩码的使能状态
+          // 获取掩码的使能状态，可根据业务需求对返回值进行后续处理
           let enabled: boolean = node.layerMask.getEnabled(1);
       }
     }
@@ -104,16 +104,16 @@ function layerMask(): void {
 
 ## NodeType
 
-结点类型枚举。
+节点类型枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| NODE | 1 | 结点是空结点。 |
-| GEOMETRY | 2 | 几何类型结点。 |
-| CAMERA | 3 | 相机类型结点。 |
-| LIGHT | 4 | 灯光类型结点。 |
+| NODE | 1 | 节点是空节点。 |
+| GEOMETRY | 2 | 几何类型节点。 |
+| CAMERA | 3 | 相机类型节点。 |
+| LIGHT | 4 | 灯光类型节点。 |
 | CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。 |
 
 ## Container\<T>
@@ -146,7 +146,7 @@ function append(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       if (node) {
-        // append 结点，如果node已经在children中，数量不会增加，但操作仍然生效
+        // append 节点，如果node已经在children中，数量不会增加，但操作仍然生效
         result.root?.children.get(0)?.children.append(node);
       }
     }
@@ -160,7 +160,7 @@ function append(): void {
 
 insertAfter(item: T, sibling: T | null): void
 
-在兄弟结点后面插入对象。
+在兄弟节点后面插入对象。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -168,8 +168,8 @@ insertAfter(item: T, sibling: T | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| item | T | 是 | 要插入结点。 |
-| sibling | T \| null | 是 | 兄弟结点。 |
+| item | T | 是 | 要插入节点。 |
+| sibling | T \| null | 是 | 兄弟节点。 |
 
 **示例：**
 
@@ -183,7 +183,7 @@ function insertAfter(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
       if (node) {
-        // insertAfter 结点，如果node已经在children中，数量不会增加，但操作仍然生效
+        // insertAfter 节点，如果node已经在children中，数量不会增加，但操作仍然生效
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
@@ -336,7 +336,7 @@ function count(): void {
 
 ## Node
 
-3D场景由树状层次结构的结点组成，其中每个结点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)。
+3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)。
 
 ### 属性
 
@@ -344,21 +344,21 @@ function count(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| position | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 结点位置，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
-| rotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 否 | 结点旋转角度。 |
-| scale | [Scale3](js-apis-inner-scene-types.md#scale3) | 否 | 否 | 结点缩放。 |
-| visible | boolean | 否 | 否 | 结点是否可见。true表示该节点可见，false表示不可见。 |
-| nodeType | [NodeType](#nodetype) | 是 | 否 | 结点类型。 |
-| layerMask | [LayerMask](#layermask) | 是 | 否 | 结点的图层掩码。 |
-| path | string | 是 | 否 | 结点路径。 |
-| parent | [Node](#node) \| null | 是 | 否 | 结点的父结点，不存在则为空值。 |
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的子结点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子结点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的结点已存在于容器中，容器会先移除该结点再插入，因此数量不会增加，看似“无效”；添加新结点才会真正增加子结点数量。 |
+| position | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 节点位置，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
+| rotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 否 | 节点旋转角度。 |
+| scale | [Scale3](js-apis-inner-scene-types.md#scale3) | 否 | 否 | 节点缩放。 |
+| visible | boolean | 否 | 否 | 节点是否可见。true表示该节点可见，false表示不可见。 |
+| nodeType | [NodeType](#nodetype) | 是 | 否 | 节点类型。 |
+| layerMask | [LayerMask](#layermask) | 是 | 否 | 节点的图层掩码。 |
+| path | string | 是 | 否 | 节点路径。 |
+| parent | [Node](#node) \| null | 是 | 否 | 节点的父节点，不存在则为空值。 |
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 节点的子节点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子节点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的节点已存在于容器中，容器会先移除该节点再插入，因此数量不会增加，看似“无效”；添加新节点才会真正增加子节点数量。 |
 
 ### getNodeByPath
 
 getNodeByPath(path: string): Node | null
 
-根据路径获取结点，如果获取不到则返回空。
+根据路径获取节点，如果获取不到则返回空。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -366,13 +366,13 @@ getNodeByPath(path: string): Node | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 场景结点层次中的路径。每层之间使用'/'符号进行分割。|
+| path | string | 是 | 场景节点层次中的路径。每层之间使用'/'符号进行分割。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [Node](#node) \| null | 返回结点对象。 |
+| [Node](#node) \| null | 返回节点对象。 |
 
 **示例：**
 
@@ -522,19 +522,24 @@ function Raycast(): void {
     });
 }
 
+// 向量减法，返回l - r的结果
 function Sub(l: Vec3, r: Vec3): Vec3 {
   return { x: l.x - r.x, y: l.y - r.y, z: l.z - r.z };
 }
+// 向量点积，返回l和r的内积
 function Dot(l: Vec3, r: Vec3): number {
   return l.x * r.x + l.y * r.y + r.z * l.z;
 }
+// 向量归一化，返回l的单位向量
 function Normalize(l: Vec3): Vec3 {
   let d = Math.sqrt(Dot(l, l));
   return { x: l.x / d, y: l.y / d, z: l.z / d };
 }
+// 向量叉积，返回l和r的叉乘结果
 function Cross(l: Vec3, r: Vec3): Vec3 {
   return { x: (l.y * r.z - l.z * r.y), y: (l.z * r.x - l.x * r.z), z: (l.x * r.y - l.y * r.x) };
 }
+// 四元数标量乘法，返回四元数l乘以标量d的结果
 function Mul(l: Quaternion, d: number): Quaternion {
   return {
     x: l.x * d,
@@ -543,6 +548,7 @@ function Mul(l: Quaternion, d: number): Quaternion {
     w: l.w * d
   };
 }
+// lookAt函数：将节点的位置和朝向设置为从eye位置看向center位置，up为上方向
 function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
 
   let t: number;
