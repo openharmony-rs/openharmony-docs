@@ -1537,7 +1537,7 @@ try {
 
 removeService(serviceUuid: string): void
 
-删除server端已添加的服务。
+删除Server端已添加的服务。
 - 该服务曾通过[addService](#addservice)添加。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
@@ -1583,7 +1583,7 @@ try {
 
 removeAllServices(): void
 
-删除server端所有服务。
+删除Server端所有服务。
 
 **起始版本：** 26.0.0
 
