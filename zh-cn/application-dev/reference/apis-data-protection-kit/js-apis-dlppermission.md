@@ -1588,8 +1588,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { Callback } from '@kit.BasicServicesKit';
 
 export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
-  private accountId: string
-  private accountName: string
+  private accountId: string;
+  private accountName: string;
   constructor() {
     this.accountId = 'accountId';
     this.accountName = 'accountName';
@@ -1685,8 +1685,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { Callback } from '@kit.BasicServicesKit';
 
 export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
-  private accountId: string
-  private accountName: string
+  private accountId: string;
+  private accountName: string;
   constructor() {
     this.accountId = 'accountId';
     this.accountName = 'accountName';
