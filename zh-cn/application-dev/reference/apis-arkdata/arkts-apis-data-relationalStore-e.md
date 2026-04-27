@@ -234,6 +234,7 @@ export default class EntryAbility extends UIAbility {
 | ASSET_DELETE | 4 | 表示资产需要在云端删除。 |
 | ASSET_ABNORMAL    | 5   | 表示资产状态异常。      |
 | ASSET_DOWNLOADING | 6   | 表示资产正在下载到本地设备。 |
+| ASSET_TO_DOWNLOAD | 7 | 表示资产待下载。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SyncMode
 
@@ -353,6 +354,24 @@ export default class EntryAbility extends UIAbility {
 | ON_CONFLICT_IGNORE   | 4    | 表示当冲突发生时，跳过包含违反约束的行并继续处理 SQL 语句的后续行。 |
 | ON_CONFLICT_REPLACE  | 5    | 表示当冲突发生时，在插入或更新当前行之前删除导致约束违例的预先存在的行，并且命令会继续正常执行。 |
 
+## AssetConflictPolicy
+
+资产冲突策略枚举。请使用枚举名称而非枚举值。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+|------|---|--------------------|
+| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照[端云同步模式](arkts-apis-data-relationalStore-e.md#syncmode)执行。 |
+| CONFLICT_POLICY_TIME_FIRST | 1 | 基于时间优先的冲突策略。 |
+| CONFLICT_POLICY_TEMP_PATH | 2 | 基于临时路径的冲突策略。 |
+
 ## Progress<sup>10+</sup>
 
 描述端云同步过程的枚举。请使用枚举名称而非枚举值。
@@ -385,6 +404,7 @@ export default class EntryAbility extends UIAbility {
 | RECORD_LIMIT_EXCEEDED | 5    | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 | NO_SPACE_FOR_ASSET    | 6    | 表示云空间剩余空间小于待同步的资产大小。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23                     |
 | BLOCKED_BY_NETWORK_STRATEGY<sup>12+</sup>    | 7    | 表示端云同步被网络策略限制。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                     |
+| STOP_CLOUD_SYNC    | 8    | 表示端云同步被停止。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。            |
 
 ## TransactionType<sup>14+</sup>
 
