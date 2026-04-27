@@ -643,3 +643,21 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 | 参数项 | 描述 |
 | -- | -- |
 | OH_HiDebug_ProfilingResult\* result | 资源采集回调函数的参数。 |
+
+### OH_HiDebug_MemListenerType
+
+```c
+enum OH_HiDebug_MemListenerType
+```
+
+**描述**
+
+为内存监听回调定义一个枚举
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_HIDEBUG_DO_NOTHING = 0 | 默认值，不需要处理 |
+| OH_HIDEBUG_RUNNING_GC = 1 | gc操作 |
+| OH_HIDEBUG_DUMP_SNAPSHOT = 2 | 导出内存快照 |
