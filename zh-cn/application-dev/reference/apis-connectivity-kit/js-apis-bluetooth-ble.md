@@ -1611,7 +1611,6 @@ removeAllServices(): void
 ```js
 let server: ble.GattServer = ble.createGattServer();
 try {
-    // 调用removeAllServices接口前需要完成server端和client端的配对及连接。
     server.removeAllServices();
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
