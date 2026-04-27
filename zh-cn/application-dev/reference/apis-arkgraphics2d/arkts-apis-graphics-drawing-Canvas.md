@@ -1366,7 +1366,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## drawGlyphs
 
-drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<common2D.Point\>, positionOffset: number, glyphCount: number, font: Font): void
+drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Array\<common2D.Point\>, positionOffset: int, glyphCount: int, font: Font): void
 
 绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
 
@@ -1378,14 +1378,14 @@ drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<c
 
 **参数**
 
-| 参数名          | 类型                                        | 必填  | 说明                                                  |
-| ------         | -------------------                         | ---- | -----------                                          |
-| glyphIds       | Array\<number\>                             | 是   | 字形ID的数组。                                      |
-| glyphIdOffset  | number                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数。 |
-| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                         |
-| positionOffset | number                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数。     |
-| glyphCount     | number                                      | 是   | 要绘制的字形的数目。                                 |
-| font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 用于绘图的字体。                                     |
+| 参数名          | 类型                                      | 必填  | 说明                                             |
+| ------         | -------------------                      | ---- | -----------                                      |
+| glyphIds       | Array\<int\>                             | 是   | 字形ID的数组。                                     |
+| glyphIdOffset  | int                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数。 如果glyphIdOffset小于0，或“glyphIdCount”小于“glyphIdOffset + glyphCount”则抛出错误码25900001。|
+| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                  |
+| positionOffset | int                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数。如果positionOffset小于0，或“positionCount”小于“positionOffset + glyphCount”则抛出错误码25900001。|
+| glyphCount     | int                                      | 是   | 要绘制的字形的数目。                                |
+| font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 用于绘图的字体。                                 |
 
 **错误码：**
 
