@@ -935,10 +935,10 @@ function cancelSerialRight() {
 
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
-| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，单位：比特/秒  |
-| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，默认值为8位，单位：比特  |
+| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，单位：位/秒  |
+| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，默认值为8位，单位：位  |
 | parity   | [Parity](#parity)       |   否   | 是  | 串口奇偶校验，默认值为None，无奇偶校验。 |
-| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，默认值为1位，单位：比特  |
+| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，默认值为1位，单位：位  |
 
 ## SerialPort
 
