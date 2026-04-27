@@ -65,11 +65,9 @@ addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promis
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 401      | The parameter check failed. |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | IO error. Return by promise.              |
 | 5400105  | Service died. Return by promise.          |
-| 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  |The parameter check failed, parameter value out of range.  |
 
 **示例：**
