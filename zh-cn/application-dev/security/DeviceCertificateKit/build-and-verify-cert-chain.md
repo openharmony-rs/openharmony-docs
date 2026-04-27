@@ -30,6 +30,71 @@
 
 <!-- @[certificate_chain_validation_with_custom_trust_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/ValidateCertChainWithCustomTrustAnchor.ets) -->
 
+``` TypeScript
+
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { util } from '@kit.ArkTS';
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
+}
+
+// ...
+
+async function createX509Cert(certData: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(certData),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+  }
+  return x509Cert;
+}
+
+async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
+  try {
+    // 创建证书对象
+    let endEntityCert = await createX509Cert(endEntityCertData);
+    let intermediateCaCert = await createX509Cert(intermediateCaCertData);
+    let rootCaCert = await createX509Cert(rootCaCertData);
+
+    // 构建校验参数
+    let params: cert.X509CertValidatorParams = {
+      // 不信任的中间证书，用于构建证书链
+      untrustedCerts: [intermediateCaCert],
+      // 信任锚证书，用于验证证书链
+      trustedCerts: [rootCaCert],
+      // 不信任系统预置CA证书
+      trustSystemCa: false,
+      date: '20260422121212Z'
+    };
+    // 创建证书链校验器实例
+    let validator = cert.createCertChainValidator('PKIX');
+
+    // 验证endEntityCert
+    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    console.info('validate success, certChain length: ' + result.certChain.length);
+    for (let i = 0; i < result.certChain.length; i++) {
+      let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
+      console.info(`Cert ${i} subject: ${subject}`);
+    }
+  } catch (err) {
+    // 校验失败
+    let error = err as BusinessError;
+    console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  }
+}
+```
+
 ## 场景二：信任系统预置CA证书
 
 当应用需要验证互联网公开证书（如HTTPS网站证书）时，可以使用系统预置的CA证书作为信任锚。通过设置[trustSystemCa](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509certvalidatorparams)为`true`，校验器会使用系统预置CA证书库构建并验证证书链。
