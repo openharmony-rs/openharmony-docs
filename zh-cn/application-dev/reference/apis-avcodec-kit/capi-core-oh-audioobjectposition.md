@@ -5,6 +5,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
+
 ```c
 typedef struct OH_AudioObjectPosition {...} OH_AudioObjectPosition
 ```
