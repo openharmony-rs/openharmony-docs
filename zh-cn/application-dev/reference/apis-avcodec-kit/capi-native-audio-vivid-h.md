@@ -82,9 +82,10 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Create(OH_AudioVividMetaBuilder **builder,
 
 创建Audio Vivid元数据构建器。
 
->**说明：** 
->生命周期管理：**
- * 通过本函数创建的实例不再使用时，必须调用[OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy)手动释放，以避免内存泄漏。
+> **说明：** 
+> 
+> 生命周期管理：
+> * 通过本函数创建的实例不再使用时，必须调用[OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy)手动释放，以避免内存泄漏。
 
 **起始版本：** 26.0.0
 
