@@ -6,11 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-[Media Library Kit](../photoAccessHelper-overview.md)（媒体文件管理服务）提供了媒体资源的管理能力，开发者可以访问和修改相册中的媒体信息。
-
 > **注意：**
 >
-> Media Library Kit仅提供图片和视频的管理能力，不涉及音频文件的管理。
+> [Media Library Kit](../photoAccessHelper-overview.md)仅提供图片和视频的管理能力，不涉及音频文件的管理。
 
 ## 使用mimeType字段来判断资源类型
 
