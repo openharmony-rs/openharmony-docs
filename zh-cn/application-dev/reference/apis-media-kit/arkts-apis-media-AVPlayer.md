@@ -30,7 +30,7 @@ import { media } from '@kit.MediaKit';
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **ArkTS-Dyn起始版本：** 9
- 	 
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
@@ -831,7 +831,7 @@ player.setPlaybackStrategy(playStrategy);
 ## setPlaybackRange<sup>18+</sup>
 
 ArkTS-Dyn: setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Promise\<void>
- 	 
+
 ArkTS-Sta: setPlaybackRange(startTimeMs: int, endTimeMs: int, mode?: SeekMode) : Promise\<void>
 
 设置播放区间，并通过指定的[SeekMode](arkts-apis-media-e.md#seekmode8)跳转到区间开始位置。设置之后，只播放音视频文件设定区间内的内容。使用Promise异步回调。可在**initialized**/**prepared**/**paused**/**stopped**/**completed**状态下使用。
@@ -1574,7 +1574,7 @@ async function  test(){
 ## getSelectedTracks<sup>12+</sup>
 
 ArkTS-Dyn: getSelectedTracks(): Promise\<Array\<number>>
- 	 
+
 ArkTS-Sta: getSelectedTracks(): Promise\<Array\<int>>
 
 获取已选择的音视频轨道索引，可以在prepared/playing/paused状态调用。使用Promise异步回调。
@@ -2120,6 +2120,34 @@ async function  test(){
 }
 ```
 
+## onSeekDone<sup>23+</sup>
+
+onSeekDone(callback: Callback\<int>): void;
+
+监听seek生效的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[on('seekDone')](#onseekdone9)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<int> | 是   | 回调函数。seek生效的事件回调方法，只会上报用户请求的时间位置。[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
+
+**示例：**
+
+```ts
+avPlayer.onSeekDone((seekDoneTime:number) => {
+  console.info('onSeekDone called,and seek time is:' + seekDoneTime);
+});
+```
+
 ## setSpeed<sup>9+</sup>
 
 setSpeed(speed: PlaybackSpeed): void
@@ -2221,7 +2249,7 @@ async function  test(){
 ## setPlaybackRate<sup>20+</sup>
 
 ArkTS-Dyn: setPlaybackRate(rate: number): void
- 	 
+
 ArkTS-Sta: setPlaybackRate(rate: double): void
 
 设置倍速模式。只能在prepared/playing/paused/completed状态调用，取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
@@ -2261,6 +2289,34 @@ async function test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
   avPlayer.setPlaybackRate(2.0);
 }
+```
+
+## onPlaybackRateDone()<sup>23+</sup>
+
+onPlaybackRateDone(callback: OnPlaybackRateDone): void;
+
+监听[setPlaybackRate](#setplaybackrate20)生效的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackRateDone](#onPlaybackratedone20)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [OnPlaybackRateDone](arkts-apis-media-t.md#OnPlaybackRateDone20) | 是   | setPlaybackRate生效的事件回调方法，上报设置后的播放速率。 |
+
+**示例：**
+
+```ts
+avPlayer.onPlaybackRateDone((rate:double) => {
+  console.info('onPlaybackRateDone called,and rate value is:' + rate);
+});
 ```
 
 ## getPlaybackRate<sup>23+</sup>
@@ -2694,7 +2750,7 @@ async function test(){
 ## setLoudnessGain<sup>21+</sup>
 
 ArkTS-Dyn: setLoudnessGain(loudnessGain: number): Promise\<void>
- 	  	 
+
 ArkTS-Sta: setLoudnessGain(loudnessGain: double): Promise\<void>
 
 设置播放器的响度。调用该接口后，响度增益立即生效。使用Promise异步回调。
@@ -3132,6 +3188,126 @@ async function test(){
 }
 ```
 
+## onTimeUpdate<sup>23+</sup>
+
+onTimeUpdate(callback: Callback\<int>): void;
+
+监听资源播放当前时间。使用callback异步回调。
+
+单位为毫秒（ms），用于刷新进度条当前位置，默认间隔100ms时间上报，因用户操作(seek)产生的时间变化会立刻上报。
+
+> **注意：**
+>
+> 直播场景不支持timeUpdate上报。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('timeUpdate')](#onTimeUpdate9)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                           |
+| -------- | -------- | ---- | ---------------------------------------------- |
+| callback | Callback\<int> | 是   | 回调函数。返回当前资源正在播放的时间。       |
+
+**示例：**
+
+```ts
+avPlayer.onTimeUpdate((time:int) => {
+  console.info('onTimeUpdate called,and new time is :' + time);
+});
+```
+
+## offTimeUpdate()<sup>23+</sup>
+
+offTimeUpdate(callback?: Callback\<int>): void;
+
+取消监听资源播放当前时间。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TimeUpdate')](#offTimeUpdate9)。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                               |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| callback | Callback\<int> | 否   | 回调函数。返回当前时间。 |
+
+**示例：**
+
+```ts
+avPlayer.offTimeUpdate();
+```
+
+## onDurationUpdate()<sup>23+</sup>
+
+onDurationUpdate(callback: Callback\<int>): void;
+
+监听资源播放资源的时长。使用callback异步回调。
+
+单位为毫秒（ms），用于刷新进度条长度，默认只在prepared上报一次，同时允许一些特殊码流刷新多次时长。
+
+> **注意：**
+>
+> 直播场景不支持durationUpdate上报。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('durationUpdate')](#onDurationUpdate9)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                               |
+| -------- | -------- | ---- | -------------------------------------------------- |
+| callback | Callback\<int> | 是   | 回调函数。返回资源时长。        |
+
+**示例：**
+
+```ts
+avPlayer.onDurationUpdate((duration: int) => {
+  console.info('onDurationUpdate called,new duration is :' + duration);
+});
+```
+
+## offDurationUpdate()<sup>23+</sup>
+
+offDurationUpdate(callback?: Callback\<int>): void;
+
+取消监听资源播放资源的时长。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('durationUpdate')](#offDurationUpdate9)。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                   |
+| ------ | ------ | ---- | ------------------------------------------------------ |
+| callback | Callback\<int> | 否   | 回调函数。返回资源的当前正在播放的时长。         |
+
+**示例：**
+
+```ts
+avPlayer.offDurationUpdate();
+```
+
 ## on('startRenderFrame')<sup>9+</sup>
 
 on(type: 'startRenderFrame', callback: Callback\<void>): void
@@ -3328,6 +3504,97 @@ async function test(){
   // 取消后，不再接收音频焦点变化事件回调。
   avPlayer.off('audioInterrupt');
 }
+```
+
+
+## onVideoSizeChange()<sup>23+</sup>
+
+onVideoSizeChange(callback: OnVideoSizeChangeHandler): void;
+
+监听视频播放宽高变化事件，使用callback异步回调。
+
+仅视频播放支持该订阅事件，默认只在prepared状态上报一次，但HLS协议码流会在切换分辨率时上报。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**原子化服务API：** 从API version 23 开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onVideoSizeChange9)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | 是   | 视频播放宽高变化事件回调方法。    |
+
+**示例：**
+
+```ts
+avPlayer.onVideoSizeChange((width: number, height: number) => {
+  console.info('onVideoSizeChange called,and width is:' + width + ', height is :' + height);
+});
+```
+
+## offVideoSizeChange()<sup>23+</sup>
+
+offVideoSizeChange(callback?: OnVideoSizeChangeHandler): void;
+
+取消监听视频播放宽高变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('VideoSizeChange')](#offVideoSizeChange9)。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| callback | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | 否   | 视频播放宽高变化事件回调方法。     |
+
+**示例：**
+
+```ts
+avPlayer.offVideoSizeChange();
+```
+
+## onAudioInterrupt()<sup>23+</sup>
+
+onAudioInterrupt(callback: Callback\<audio.InterruptEvent>): void;
+
+监听音频焦点变化事件。使用callback异步回调。
+
+多个音视频资源同时播放时，会根据音频焦点模型[audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)触发此事件。应用需根据不同焦点变化事件作相应处理。具体可参考[处理音频焦点事件](../../media/audio/audio-playback-concurrency.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioInterrupt')](#onAudioInterrupt9)。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                     |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | 是   | 音频焦点变化事件回调方法。                           |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+avPlayer.onAudioInterrupt((info: audio.InterruptEvent) => {
+  console.info('onAudioInterrupt called,and InterruptEvent info is:' + info);
+});
 ```
 
 ## on('audioOutputDeviceChangeWithInfo')<sup>11+</sup>
@@ -4069,6 +4336,440 @@ async function test(){
 }
 ```
 
+
+## onAudioOutputDeviceChangeWithInfo()<sup>23+</sup>
+
+onAudioOutputDeviceChangeWithInfo(callback: Callback<audio.AudioStreamDeviceChangeInfo>): void;
+
+订阅音频流输出设备变化及原因的监听。使用callback异步回调。
+
+在订阅此监听时，建议参考[响应音频流输出设备变更](../../media/audio/audio-output-device-change.md)自行实现设备连接或者断开时的播放器行为。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioOutputDeviceChangeWithInfo')](#onAudioOutputDeviceChangeWithInfo11)。
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 是   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息                                   |
+| -------- | ------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+avPlayer.onAudioOutputDeviceChangeWithInfo((data: audio.AudioStreamDeviceChangeInfo) => {
+  console.info(`${JSON.stringify(data)}`);
+});
+```
+
+## offAudioOutputDeviceChangeWithInfo<sup>23+</sup>
+
+offAudioOutputDeviceChangeWithInfo(callback?: Callback\<audio.AudioStreamDeviceChangeInfo>): void;
+
+取消订阅监听音频流输出设备变化及原因。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AudioOutputDeviceChangeWithInfo')](#offAudioOutputDeviceChangeWithInfo11)。
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 否   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息                                   |
+| -------- | ------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+
+**示例：**
+
+```ts
+avPlayer.offAudioOutputDeviceChangeWithInfo();
+```
+
+## onSubtitleUpdate()<sup>23+</sup>
+
+onSubtitleUpdate(callback: Callback\<SubtitleInfo>): void;
+
+订阅获取外挂字幕的事件。使用callback异步回调。
+
+当有外挂字幕时，会通过订阅的回调方法通知用户。用户只能订阅一个外挂字幕事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SubtitleUpdate')](#onSubtitleUpdate12)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12)> | 是   | 外挂字幕事件回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.onSubtitleUpdate(async (info: media.SubtitleInfo) => {
+  if (info) {
+    let text = (!info.text) ? '' : info.text
+    let startTime = (!info.startTime) ? 0 : info.startTime
+    let duration = (!info.duration) ? 0 : info.duration
+    console.info('onSubtitleUpdate info: text=' + text + ' startTime=' + startTime +' duration=' + duration);
+  } else {
+    console.info('onSubtitleUpdate info is null');
+  }
+});
+```
+
+## offSubtitleUpdate()<sup>23+</sup>
+
+offSubtitleUpdate(callback?: Callback\<SubtitleInfo>): void;
+
+取消订阅获取外挂字幕的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SubtitleUpdate')](#offSubtitleUpdate12)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12)> | 否   | 取消外挂字幕事件的回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.offSubtitleUpdate('subtitleUpdate');
+```
+
+## onTrackChange()<sup>23+</sup>
+
+onTrackChange(callback: OnTrackChangeHandler): void;
+
+订阅获取轨道变更的事件，使用callback异步回调。
+
+当播放的轨道变更时，会通过订阅的回调方法通知用户。用户只能订阅一个轨道变更事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#onTrackChange12)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [OnTrackChangeHandler](arkts-apis-media-t.md#ontrackchangehandler12) | 是   | 轨道变更事件回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.onTrackChange((index: number, isSelect: boolean) => {
+  console.info('onTrackChange info: index=' + index + ' isSelect=' + isSelect);
+});
+```
+
+## offTrackChange()<sup>23+</sup>
+
+offTrackChange(callback?: OnTrackChangeHandler): void;
+
+取消订阅获取轨道变更的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TrackChange')](#offTrackChange12)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [OnTrackChangeHandler](arkts-apis-media-t.md#ontrackchangehandler12) | 否   | 取消轨道变更事件的回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.offTrackChange();
+```
+
+## onTrackInfoUpdate()<sup>23+</sup>
+
+onTrackInfoUpdate(callback: Callback\<Array\<MediaDescription>>): void;
+
+订阅获取轨道信息更新的事件。使用callback异步回调。
+
+当播放的轨道有更新时，会通过订阅的回调方法通知用户。用户只能订阅一个轨道变更事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('TrackInfoUpdate')](#onTrackInfoUpdate12)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[MediaDescription](arkts-apis-media-i.md#mediadescription8)>> | 是   | 轨道信息更新事件回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.onTrackInfoUpdate((info: Array<media.MediaDescription>) => {
+  if (info) {
+    for (let i = 0; i < info.length; i++) {
+      let propertyIndex: Object = info[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+      let propertyType: Object = info[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
+      console.info('track info: index=' + propertyIndex + ' tracktype=' + propertyType);
+    }
+  } else {
+    console.info('track info is null');
+  }
+});
+```
+
+## offTrackInfoUpdate()<sup>23+</sup>
+
+offTrackInfoUpdate(callback?: Callback\<Array\<MediaDescription>>): void;
+
+取消订阅获取轨道变更的事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TrackInfoUpdate')](#offTrackInfoUpdate12)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[MediaDescription](arkts-apis-media-i.md#mediadescription8)>> | 否   | 取消轨道信息更新事件的回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.offTrackInfoUpdate();
+```
+
+## onAmplitudeUpdate()<sup>23+</sup>
+
+onAmplitudeUpdate(callback: Callback\<Array\<double>>): void;
+
+订阅音频最大电平值，音频资源播放时定时上报。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('amplitudeUpdate')](#onAmplitudeUpdate13)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<double>> | 是   | 音频最大电平值更新事件回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.onAmplitudeUpdate((value: Array<double>) => {
+  console.info('onAmplitudeUpdate called,and amplitudeUpdate = ${value}');
+});
+```
+
+## offAmplitudeUpdate()<sup>23+</sup>
+
+offAmplitudeUpdate(callback?: Callback\<Array\<double>>): void;
+
+取消订阅获取音频最大电平值事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AmplitudeUpdate')](#offAmplitudeUpdate13)。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<double>> | 否   | 取消音频最大电平值更新事件回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.offAmplitudeUpdate();
+```
+
+## onSeiMessageReceived()<sup>23+</sup>
+
+onSeiMessageReceived(payloadTypes: Array\<int>, callback: OnSeiMessageHandle): void;
+
+订阅获取SEI信息事件。使用callback异步回调。
+
+仅适用于HTTP-FLV直播，视频流中包含SEI信息时上报。需在prepare之前订阅，当用户重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SeiMessageReceived')](#onSeiMessageReceived18)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| payloadTypes | Array\<int> | 是 | SEI信息的订阅负载类型数组。当前仅支持负载类型为5，即payloadType = 5。|
+| callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 是 | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。 |
+
+**示例：**
+
+```ts
+import util from '@ohos.util';
+
+avPlayer.onSeiMessageReceived([5], (messages: Array<media.SeiMessage>, playbackPosition?: number) =>
+{
+  console.info('seiMessageReceived playbackPosition ' + playbackPosition);
+
+  for (let key = 0; key < messages.length; key++) {
+    console.info('seiMessageReceived messages payloadType ' + messages[key].payloadType + ' payload size ' + messages[key].payload.byteLength);
+
+    let textDecoder = util.TextDecoder.create("utf-8",{ignoreBOM: true});
+    let ab = messages[key]?.payload?.slice(16, messages[key].payload.byteLength);
+    let result: Uint8Array = new Uint8Array(ab);
+    let retStr: string = textDecoder.decodeToString(result);
+    console.info('seiMessageReceived messages payload ' + retStr);
+  }
+});
+```
+
+## offSeiMessageReceived()<sup>23+</sup>
+
+offSeiMessageReceived(payloadTypes?: Array\<int>, callback?: OnSeiMessageHandle): void;
+
+取消订阅获取SEI信息事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SeiMessageReceived')](#offSeiMessageReceived18)。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| payloadTypes | Array\<int> | 否   | SEI信息的订阅负载类型。 |
+| callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 否   | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。 |
+
+**示例：**
+
+```ts
+avPlayer.offSeiMessageReceived();
+```
+
+
+## onSuperResolutionChanged()<sup>23+</sup>
+
+onSuperResolutionChanged(callback: OnSuperResolutionChanged): void;
+
+订阅监听超分算法开启/关闭事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SuperResolutionChanged')](#onSuperResolutionChanged18)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [OnSuperResolutionChanged](arkts-apis-media-t.md#onsuperresolutionchanged-18) | 是 | 超分开关事件回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.onSuperResolutionChanged((enabled: boolean) => {
+  console.info('onSuperResolutionChanged called, and enabled is:' + enabled);
+});
+```
+
+## offSuperResolutionChanged()<sup>23+</sup>
+
+offSuperResolutionChanged(callback?: OnSuperResolutionChanged): void;
+
+取消监听超分算法开启/关闭事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SuperResolutionChanged')](#offSuperResolutionChanged18)。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | [OnSuperResolutionChanged](arkts-apis-media-t.md#onsuperresolutionchanged-18) | 否 | 超分开关事件回调方法。 |
+
+**示例：**
+
+```ts
+avPlayer.offSuperResolutionChanged();
+```
+
 ## onPlaybackContentChanged
 
 onPlaybackContentChanged(callback: Callback\<string>):void;
@@ -4141,6 +4842,7 @@ ArkTS-Dyn: getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
 ArkTS-Sta: getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
 
 获取当前播放器的统计指标信息。使用Promise异步回调。
+
 获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
@@ -4222,6 +4924,7 @@ async function test(){
 ArkTS-Dyn: offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
 
 ArkTS-Sta: offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
+
 取消订阅播放过程中的指标事件。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
