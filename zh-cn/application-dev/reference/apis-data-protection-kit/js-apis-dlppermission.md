@@ -1603,11 +1603,7 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
   }
 }
 
-try {
-  let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
-} catch (error) {
-  console.error('error', error.message);
-}
+let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
 ```
 
  
@@ -1642,11 +1638,7 @@ constructor()
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-try {
-  let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnManager();
-} catch (error) {
-  console.error('error', error.message);
-}
+let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnManager();
 ```
 
 ### registerPlugin<sup>21+</sup>
@@ -1707,11 +1699,8 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
     callback(callbackJson);
   }
 }
-try {
-  let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsulePlugin());
-} catch (error) {
-  console.error('error', error.message);
-}
+  
+let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsulePlugin());
 ```
 
 ### unregisterPlugin<sup>21+</sup>
@@ -1744,9 +1733,5 @@ static unregisterPlugin(): void
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-try {
-  dlpPermission.DlpConnManager.unregisterPlugin();
-} catch (error) {
-  console.error('error', error.message);
-}
+dlpPermission.DlpConnManager.unregisterPlugin();
 ```
