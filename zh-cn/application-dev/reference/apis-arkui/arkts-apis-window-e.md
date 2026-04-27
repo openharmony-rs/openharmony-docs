@@ -45,6 +45,8 @@
 
 窗口分屏比例的类型枚举。
 
+该枚举应用于[应用内分屏场景](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support#应用内分屏)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 | 名称                             | 值   | 说明                                                         |
