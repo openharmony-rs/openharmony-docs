@@ -90,9 +90,13 @@ Codec MIME类型枚举。
 
 高级音频编码（AAC）类型枚举。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值                    | 说明                        |
 | ------------ | --------------------- | --------------------------- |
@@ -309,18 +313,22 @@ Codec MIME类型枚举。
 
 | 名称                      | 值   | 说明                   |
 | ------------------------- | ---- | ---------------------- |
-| AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。 |
-| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
-| AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。 |
-| AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。 |
-| AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。 |
-| AUDIO_SOURCE_TYPE_CAMCORDER<sup>12+</sup>     | 13    | 表示相机录像的音频源。 |
+| AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_CAMCORDER<sup>12+</sup>     | 13    | 表示相机录像的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## VideoSourceType<sup>9+</sup>
 
 表示视频录制中视频源类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                            |
 | ----------------------------- | ---- | ------------------------------- |
@@ -347,6 +355,10 @@ Codec MIME类型枚举。
 表示创建媒体文件模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                            |
 | ----------------------------- | ---- | ------------------------------- |
@@ -398,7 +410,6 @@ Codec MIME类型枚举。
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
-
 | 名称                 | 值   | 说明                           |
 | -------------------- | ---- | ------------------------------ |
 | LOADING_ERROR_SUCCESS | 0    | 由客户端返回，表示已经推送到资源末尾。 |
@@ -537,7 +548,11 @@ Codec MIME类型枚举。
 
 表示音频编码格式的枚举。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称    | 值   | 说明                                                         |
 | ------- | ---- | ------------------------------------------------------------ |
@@ -554,7 +569,11 @@ Codec MIME类型枚举。
 
 表示音频封装格式的枚举。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |
