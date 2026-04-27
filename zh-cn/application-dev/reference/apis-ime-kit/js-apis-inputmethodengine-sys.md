@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -49,7 +50,13 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSizeUpdate](#onsizeupdate23)。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 14
 
 **系统接口：** 此接口为系统接口。
 
@@ -81,7 +88,13 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSizeUpdate](#offsizeupdate23)。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 14
 
 **系统接口：** 此接口为系统接口。
 
@@ -102,9 +115,76 @@ panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngin
 });
 ```
 
+### onSizeUpdate<sup>23+</sup>
+
+onSizeUpdate(callback: SizeUpdateCallback): void
+
+订阅面板尺寸更新（sizeUpdate）事件，当输入法面板尺寸发生变更时触发该事件，并执行指定的回调函数, 使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sizeUpdate')](#onsizeupdate14)。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本：** 23
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| callback | [SizeUpdateCallback](#sizeupdatecallback14) | 是 | 面板尺寸更新时触发的回调函数，入参为面板尺寸信息对象。 |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+panel.onSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, windowSize: ${windowSize}, keyboardArea: ${keyboardArea}`);
+});
+
+```
+
+### offSizeUpdate<sup>23+</sup>
+
+offSizeUpdate(callback?: SizeUpdateCallback): void
+
+取消订阅面板尺寸更新（sizeUpdate）事件，停止监听输入法面板尺寸的变更动作, 使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sizeUpdate')](#offsizeupdate14)。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本：** 23
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| callback | [SizeUpdateCallback](#sizeupdatecallback14) | 否 | 可选参数，需取消的目标回调函数：传入指定回调函数实例时，仅取消该回调的订阅；不传入时，取消所有sizeUpdate事件的订阅。 |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+panel.offSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
+```
+
 ### setShadow<sup>22+</sup>
 
-setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
+ArkTS-Dyn: setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
+
+ArkTS-Sta: setShadow(radius: double, color: string, offsetX: double, offsetY: double): void
 
 设置输入法窗口阴影效果。
 
@@ -114,16 +194,20 @@ setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。 |
+| radius  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。 |
 | color   | string | 是   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#000000`或`#FF000000`。 |
-| offsetX | number | 是   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。    |
-| offsetY | number | 是   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。    |
+| offsetX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。    |
+| offsetY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。    |
 
 **错误码：**
 
@@ -135,16 +219,31 @@ setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
 | 12800013  | window manager service error.      |
 | 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
 
-**示例：**
+**ArkTS-Dyn示例：**
 
 ```ts
 panel.setShadow(20, '#000000', 20, 20);
 ```
+
+**ArkTS-Sta示例：**
+
+```ts
+const shadowRadius: double = 8.0;
+const shadowColor: string = '#80000000';
+const offsetX: double = 2.0;
+const offsetY: double = 2.0;
+panel.setShadow(shadowRadius, shadowColor, offsetX, offsetY);
+```
+
 ## FluidLightMode<sup>20+</sup>
 
 枚举，输入法流光模式。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -171,9 +270,13 @@ panel.setShadow(20, '#000000', 20, 20);
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **系统接口：** 此接口为系统接口。
 
 | 名称   | 类型                                  | 只读 | 可选 | 说明           |
 | ------ | ------------------------------------ | ---- | ---- | -------------- |
-| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 否   | 是   | 流光模式，如果不填充，则默认为NONE。<br>该属性仅系统应用可以使用。 |
+| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 否   | 是   | 流光模式，如果不填充，则默认为NONE。<br>该属性仅系统应用可以使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 <!--no_check-->
