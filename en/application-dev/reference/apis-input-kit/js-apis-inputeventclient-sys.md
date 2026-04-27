@@ -468,4 +468,3 @@ Defines the touch event data.
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | No   |  No| Touch event.  |
 | useGlobalCoordinate<sup>20+</sup> | boolean | No   |  Yes| Whether to use global coordinates to calculate the injected touch event. The default value is **false**. If this parameter is set to **false**, the coordinates of the relative coordinate system with the upper left corner of the specified screen as the origin are used to calculate the injected touch event. If this parameter is set to **true**, the coordinates of the global coordinate system with the upper left corner of the primary screen as the origin are used to calculate the injected touch event.  |
-
