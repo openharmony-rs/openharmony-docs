@@ -1,4 +1,4 @@
-# BoidsSim (系统接口)
+# SceneBoidsSim (系统接口)
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
@@ -91,14 +91,6 @@ import { BoidsSimPlugin, BoidsSimWorld, BoidsSimParameters,
 ## BoidsSimWorld
 
 群组模拟世界对象，用于管理群组模拟的生命周期及组件。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ### 属性
 
