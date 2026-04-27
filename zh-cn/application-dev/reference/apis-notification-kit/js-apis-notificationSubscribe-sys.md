@@ -252,8 +252,8 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |
-| 202      | The caller is not a system application.     |
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface.     |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
 
@@ -329,8 +329,8 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
-| 202      | The caller is not a system application.     |  
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface.     |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
 
