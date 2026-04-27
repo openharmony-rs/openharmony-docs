@@ -349,7 +349,7 @@ async function getSharedDirectoryInfo() {
 
 grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
-授予对应用捐献目录的临时访问权限。使用Promise异步回调。
+授予应用捐献目录的临时访问权限。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
