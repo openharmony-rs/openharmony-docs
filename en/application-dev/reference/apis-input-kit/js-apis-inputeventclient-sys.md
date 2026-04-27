@@ -423,3 +423,49 @@ struct Index {
   }
 }
 ```
+
+## KeyEvent
+
+Defines the key event to inject.
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| isPressed       | boolean | No   |  No| Whether the key is pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.  |
+| keyCode         | number  | No   |  No| Key code. Currently, only the **KEYCODE_BACK** key is supported.|
+| keyDownDuration | number  | No   |  No| Duration for pressing a key, in μs.          |
+| isIntercepted   | boolean | No   |  No| Whether the key event can be intercepted.<br>The value **true** indicates that the key event can be intercepted, and the value **false** indicates the opposite.|
+
+## KeyEventData<sup>11+</sup>
+
+Defines the key event to inject.
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| keyEvent       | [KeyEvent](#keyevent) | No   |  No| Key event to inject.  |
+
+## MouseEventData<sup>11+</sup>
+
+Defines the mouse event data.
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| mouseEvent | [MouseEvent](js-apis-mouseevent.md#mouseevent) | No   |  No| Mouse event.  |
+| useGlobalCoordinate<sup>20+</sup> | boolean | No   |  Yes| Whether to use global coordinates to calculate the injected mouse event. The default value is **false**. If this parameter is set to **false**, the coordinates of the relative coordinate system with the upper left corner of the specified screen as the origin are used to calculate the injected mouse event. If this parameter is set to **true**, the coordinates of the global coordinate system with the upper left corner of the primary screen as the origin are used to calculate the injected mouse event. |
+
+## TouchEventData<sup>11+</sup>
+
+Defines the touch event data.
+
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
+
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | No   |  No| Touch event.  |
+| useGlobalCoordinate<sup>20+</sup> | boolean | No   |  Yes| Whether to use global coordinates to calculate the injected touch event. The default value is **false**. If this parameter is set to **false**, the coordinates of the relative coordinate system with the upper left corner of the specified screen as the origin are used to calculate the injected touch event. If this parameter is set to **true**, the coordinates of the global coordinate system with the upper left corner of the primary screen as the origin are used to calculate the injected touch event.  |
+
