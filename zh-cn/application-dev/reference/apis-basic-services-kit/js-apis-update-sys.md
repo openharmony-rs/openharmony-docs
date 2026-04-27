@@ -2407,7 +2407,8 @@ try {
 ```
 
 ### applyNewVersion
-applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
+
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void>): void
 
 安装升级包。使用callback异步回调。
 
@@ -2459,7 +2460,7 @@ try {
 
 ### applyNewVersion
 
-applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<void>
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>): Promise\<void>
 
 安装升级包。使用Promise异步回调。
 
