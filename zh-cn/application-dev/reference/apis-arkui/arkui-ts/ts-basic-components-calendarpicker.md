@@ -60,7 +60,7 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign](#edgealign23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -85,7 +85,7 @@ edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign](#edgealign23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -106,7 +106,7 @@ edgeAlign(alignType: CalendarAlign | undefined, offset?: Offset)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[edgeAlign](#edgealign)和[edgeAlign](#edgealign18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[edgeAlign](#edgealign)和[edgeAlign<sup>18+</sup>](#edgealign18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -131,7 +131,7 @@ textStyle(value: PickerTextStyle)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle](#textstyle23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -155,7 +155,7 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle](#textstyle23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -163,7 +163,7 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} <br/>当style的值为undefined时，使用默认值。|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} <br/>当style的值为undefined时，使用默认值。 |
 
 ### textStyle<sup>23+</sup>
 
@@ -175,7 +175,7 @@ textStyle(value: PickerTextStyle | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[textStyle](#textstyle)和[textStyle](#textstyle18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[textStyle](#textstyle)和[textStyle<sup>18+</sup>](#textstyle18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -183,13 +183,11 @@ textStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) \| undefined | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} <br/>当value的值为undefined时，使用默认值。 |
 
 ### markToday<sup>19+</sup>
 
-ArkTS-Dyn: markToday(enabled: boolean)
-
-ArkTS-Sta: markToday(enabled: boolean | undefined)
+markToday(enabled: boolean)
 
 设置日历选择器中系统当前日期是否保持高亮显示。
 
@@ -199,7 +197,29 @@ ArkTS-Sta: markToday(enabled: boolean | undefined)
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[markToday<sup>23+</sup>](#marktoday23)。
+
 **ArkTS-Dyn起始版本：** 19
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| enabled | boolean | 是   | 设置日历选择器中系统当前日期是否保持高亮显示。<br/>- true：系统当前日期在日历选择器内保持高亮显示。<br/>- false：系统当前日期在日历选择器内不保持高亮显示。<br/>默认值：false |
+
+### markToday<sup>23+</sup>
+
+markToday(enabled: boolean | undefined)
+
+设置日历选择器中系统当前日期是否保持高亮显示。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[markToday<sup>19+</sup>](#marktoday19)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -207,7 +227,7 @@ ArkTS-Sta: markToday(enabled: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置日历选择器中系统当前日期是否保持高亮显示。<br/>- true：系统当前日期在日历选择器内保持高亮显示。<br/>- false：系统当前日期在日历选择器内不保持高亮显示。<br/>默认值：false |
+| enabled | boolean \| undefined | 是   | 设置日历选择器中系统当前日期是否保持高亮显示。<br/>- true：系统当前日期在日历选择器内保持高亮显示。<br/>- false：系统当前日期在日历选择器内不保持高亮显示。<br/>默认值：false<br/>当enabled的值为undefined时，使用默认值。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -245,7 +265,7 @@ onChange(callback: Callback\<Date>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange](#onchange23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -273,7 +293,7 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange](#onchange23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -293,7 +313,7 @@ onChange(callback: Callback\<Date> | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onChange](#onchange)和[onChange](#onchange18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onChange](#onchange)和[onChange<sup>18+</sup>](#onchange18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -301,7 +321,7 @@ onChange(callback: Callback\<Date> | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 选中的日期值。 |
+| callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
 
 ##  CalendarOptions对象说明
 
@@ -364,10 +384,10 @@ onChange(callback: Callback\<Date> | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型       | 必填        | 说明                            |
-| ----------- | ---------- | ------| --------------------------------- |
-| start | Date | 否    | 设置日期区间的开始日期。 |
-| end | Date | 否    | 设置日期区间的结束日期。 |
+| 名称      | 类型       | 只读 | 可选 | 说明                            |
+| ----------- | ---------- | ---- | ---- | --------------------------------- |
+| start | Date | 否 | 是 | 设置日期区间的开始日期。 |
+| end | Date | 否 | 是 | 设置日期区间的结束日期。 |
 
 ## 示例
 ### 示例1（设置下拉日历弹窗）
