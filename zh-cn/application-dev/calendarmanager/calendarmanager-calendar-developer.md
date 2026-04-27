@@ -154,7 +154,7 @@
     };
     // 日历配置信息
     calendarMgr?.getCalendar(calendarAccounts, (err, data) => {
-      //获取日历账户
+      // 获取日历账户
       if (err) {
         hilog.error(DOMAIN, 'testTag', `Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
       } else {
