@@ -492,7 +492,7 @@ ArkTS-Dyn类型说明：
 
   | 类型                      | 说明              |
   | ------------------------- | ---------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP1-->返回本地设备类型。<!--RP1End--> <br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 23 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP1-->返回本地设备类型。<!--RP1End--> |
 
 **错误码：**
 
@@ -658,7 +658,7 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 
   | 类型                      | 说明              |
   | ------------------------- | ---------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP2-->返回指定设备类型。<!--RP2End--> <br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 23 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP2-->返回指定设备类型。<!--RP2End--> |
 
 **错误码：**
 
@@ -877,7 +877,7 @@ ArkTS-Sta参数：
 | 错误码ID | 错误信息                                                         |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255.  <br /> **ArkTS-Dyn起始版本：** 10|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255. |
 | 11600101 | Failed to execute the function.                                 |
 | 11600103 | Authentication unavailable.                                     |
 
