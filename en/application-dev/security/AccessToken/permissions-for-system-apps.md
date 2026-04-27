@@ -2208,7 +2208,9 @@ Allows a system application to execute distributed intent calls.
 
 **Enable via ACL**: true
 
-**Valid since**: 26
+**Supported devices**: cars | phones | TVs | wearables | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.VERIFY_ACTIVATION_LOCK
 

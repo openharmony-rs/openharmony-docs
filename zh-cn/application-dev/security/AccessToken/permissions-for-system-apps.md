@@ -2208,7 +2208,9 @@
 
 **ACL使能**：true
 
-**起始版本**：26
+**支持设备**：Car | Phone | TV | Wearable | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
 
 ## ohos.permission.VERIFY_ACTIVATION_LOCK
 
