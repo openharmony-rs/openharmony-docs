@@ -434,7 +434,8 @@
   struct Index {
     context = this.getUIContext().getHostContext();
     /* 请将$r('app.string.StyledStringParagraphStyle_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为
-     "段落标题\n正文第一段落开始0123456789正文第一段落结束，通过replaceStyle清空原样式替换新样式。"*/
+     * "段落标题\n正文第一段落开始0123456789正文第一段落结束，通过replaceStyle清空原样式替换新样式。"
+     */
     @State message1: string =
       this.context!.resourceManager.getStringSync($r('app.string.StyledStringParagraphStyle_Text_2').id);
     titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
