@@ -137,6 +137,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | NOTIFICATION_CENTER        | 18   | 显示通知中心。                  |
 | CONTROL_CENTER             | 19   | 显示控制中心。                  |
 | SPAN_CLICK                 | 20   | 对局部文本进行点击操作。             |
+| INJECT_ACTION<sup>26+</sup>| 21   | 表示注入动作。             |
 
 ## FocusMoveResultCode<sup>23+</sup>
 
