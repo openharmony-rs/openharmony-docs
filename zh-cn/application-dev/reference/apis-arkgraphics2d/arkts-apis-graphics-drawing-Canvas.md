@@ -1366,7 +1366,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## drawGlyphs
 
-drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Array\<common2D.Point\>, positionOffset: int, glyphCount: int, font: Font): void
+drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<common2D.Point\>, positionOffset: number, glyphCount: number, font: Font): void
 
 绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
 
@@ -1380,7 +1380,7 @@ drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Array\<common2
 
 | 参数名          | 类型                                      | 必填  | 说明                                             |
 | ------         | -------------------                      | ---- | -----------                                      |
-| glyphIds       | Array\<number\>                             | 是   | 字形ID的数组。                                     |
+| glyphIds       | Array\<number\>                             | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。                                     |
 | glyphIdOffset  | number                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为glyphIds[m]~glyphIds[m+n]的部分。如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。|
 | positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                  |
 | positionOffset | number                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效positions数组范围为positions[m]~positions[m+n]的部分。如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。|
