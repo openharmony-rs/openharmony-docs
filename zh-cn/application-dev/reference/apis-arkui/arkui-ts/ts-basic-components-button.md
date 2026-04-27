@@ -121,7 +121,7 @@ ArkTS-Sta: type(value: ButtonType | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明                                        |
 | ------ | --------------------------------- | ---- | ------------------------------------------- |
-| value  | ArkTS-Dyn: [ButtonType](#buttontype枚举说明) <br/>ArkTS-Sta: [ButtonType](#buttontype枚举说明) \| undefined  | 是   | Button样式。<br/>API version 18及之后，ButtonType的默认值从ButtonType.Capsule变更为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。 |
+| value  | ArkTS-Dyn: [ButtonType](#buttontype枚举说明) <br/>ArkTS-Sta: [ButtonType](#buttontype枚举说明) \| undefined  | 是   | Button样式。<br/>API version 18及之后，ButtonType的默认值从ButtonType.Capsule变更为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。<br/>设置undefined时与默认值保持一致。 |
 
 ### fontSize
 
@@ -145,7 +145,7 @@ ArkTS-Sta: fontSize(value: Length | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本显示字号。<br/>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br/>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br/>**说明**：设置string类型时，不支持百分比。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本显示字号。<br/>默认值：当controlSize为ControlSize.NORMAL时，默认值为`$r('sys.float.Body_L')`。<br/>当controlSize为ControlSize.SMALL时，默认值为`$r('sys.float.Body_S')`。<br/>**说明**：设置string类型时，不支持百分比。<br/>设置undefined时与默认值保持一致。 |
 
 ### fontColor
 
@@ -169,7 +169,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本显示颜色。<br/>默认值：$r('sys.color.font_on_primary')，显示为白色字体。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本显示颜色。<br/>默认值：$r('sys.color.font_on_primary')，显示为白色字体。<br/>设置undefined时与默认值保持一致。 |
 
 ### fontWeight
 
@@ -193,7 +193,7 @@ ArkTS-Sta: fontWeight(value: int&nbsp;|&nbsp;FontWeight&nbsp;|&nbsp;string | und
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string \| undefined | 是   | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br>默认值：500<br/>string类型仅支持number类型取值的字符串形式，例如'400'，以及'bold'、'bolder'、'lighter'、'regular'、'medium'，分别对应FontWeight中相应的枚举值。<br/>当值为异常值或非法值时，字体粗细取值为400。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string \| undefined | 是   | 文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br>默认值：500<br/>string类型仅支持number类型取值的字符串形式，例如'400'，以及'bold'、'bolder'、'lighter'、'regular'、'medium'，分别对应FontWeight中相应的枚举值。<br/>当值为异常值或非法值时，字体粗细取值为400。<br/>设置undefined时与异常值保持一致。 |
 
 ### fontStyle<sup>8+</sup>
 
@@ -217,7 +217,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                            |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
-| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle) <br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined| 是   | 文本的字体样式。<br/>默认值：FontStyle.Normal |
+| value  | ArkTS-Dyn: [FontStyle](ts-appendix-enums.md#fontstyle) <br/>ArkTS-Sta: [FontStyle](ts-appendix-enums.md#fontstyle) \| undefined| 是   | 文本的字体样式。<br/>默认值：FontStyle.Normal <br/>设置undefined时与默认值保持一致。 |
 
 ### stateEffect
 
@@ -241,7 +241,7 @@ ArkTS-Sta: stateEffect(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 按钮按下时是否开启按压态显示效果。<br/>true：开启按压效果；false：关闭按压效果。<br/>默认值：true |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 按钮按下时是否开启按压态显示效果。<br/>true：开启按压效果；false：关闭按压效果。<br/>默认值：true <br/>设置undefined时与默认值保持一致。|
 
 >  **说明：**
 >
@@ -269,7 +269,7 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  <br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。默认字体'HarmonyOS Sans'，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。 |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  <br/>ArkTS-Sta: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 字体列表。默认字体'HarmonyOS Sans'，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。<br/>设置undefined时与默认值保持一致。 |
 
 ### labelStyle<sup>10+</sup>
 
@@ -319,7 +319,7 @@ ArkTS-Sta: buttonStyle(value: ButtonStyleMode | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                                         |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ButtonStyleMode](#buttonstylemode11枚举说明) <br/>ArkTS-Sta: [ButtonStyleMode](#buttonstylemode11枚举说明) \| undefined | 是   | Button组件的样式和重要程度。<br/>默认值：ButtonStyleMode.EMPHASIZED |
+| value  | ArkTS-Dyn: [ButtonStyleMode](#buttonstylemode11枚举说明) <br/>ArkTS-Sta: [ButtonStyleMode](#buttonstylemode11枚举说明) \| undefined | 是   | Button组件的样式和重要程度。<br/>默认值：ButtonStyleMode.EMPHASIZED <br/>设置undefined时与默认值保持一致。|
 
 ### controlSize<sup>11+</sup>
 
@@ -343,7 +343,7 @@ ArkTS-Sta: controlSize(value: ControlSize | undefined)
 
 | 参数名 | 类型                                  | 必填 | 说明                                              |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------- |
-| value  |  ArkTS-Dyn: [ControlSize](#controlsize11枚举说明) <br/>ArkTS-Sta: [ControlSize](#controlsize11枚举说明) \| undefined| 是   | Button组件的尺寸。<br/>默认值：ControlSize.NORMAL |
+| value  |  ArkTS-Dyn: [ControlSize](#controlsize11枚举说明) <br/>ArkTS-Sta: [ControlSize](#controlsize11枚举说明) \| undefined| 是   | Button组件的尺寸。<br/>默认值：ControlSize.NORMAL <br/>设置undefined时与默认值保持一致。|
 
 ### role<sup>12+</sup>
 
@@ -367,7 +367,7 @@ ArkTS-Sta: role(value: ButtonRole | undefined)
 
 | 参数名 | 类型                                | 必填 | 说明                                                 |
 | ------ | ----------------------------------- | ---- | ---------------------------------------------------- |
-| value  | ArkTS-Dyn: [ButtonRole](#buttonrole12枚举说明) <br/>ArkTS-Sta: [ButtonRole](#buttonrole12枚举说明) \| undefined| 是   | 设置Button组件的角色。<br/>默认值：ButtonRole.NORMAL |
+| value  | ArkTS-Dyn: [ButtonRole](#buttonrole12枚举说明) <br/>ArkTS-Sta: [ButtonRole](#buttonrole12枚举说明) \| undefined| 是   | 设置Button组件的角色。<br/>默认值：ButtonRole.NORMAL <br/>设置undefined时与默认值保持一致。|
 
 ### contentModifier<sup>12+</sup>
 
@@ -411,7 +411,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined| 是   | 文本最小的字体缩放倍数。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理，设置的值大于1，按值为1处理，异常值默认不生效。 |
+| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined| 是   | 文本最小的字体缩放倍数。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理，设置的值大于1，按值为1处理，异常值默认不生效。<br/>设置undefined时不生效。 |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -433,7 +433,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined| 是   | 文本最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。<br/>未设置最大缩放倍数时，圆形按钮最大缩放倍数为1倍，胶囊型按钮、普通按钮、圆角矩形按钮最大缩放倍数跟随系统设置。 |
+| scale  | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br/>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined| 是   | 文本最大的字体缩放倍数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。<br/>未设置最大缩放倍数时，圆形按钮最大缩放倍数为1倍，胶囊型按钮、普通按钮、圆角矩形按钮最大缩放倍数跟随系统设置。<br/>设置undefined时不生效。 |
 
 ### attributeModifier<sup>23+</sup>
 
