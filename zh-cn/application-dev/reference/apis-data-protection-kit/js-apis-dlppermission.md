@@ -1744,5 +1744,9 @@ static unregisterPlugin(): void
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.DlpConnManager.unregisterPlugin();
+try {
+  dlpPermission.DlpConnManager.unregisterPlugin();
+} catch (error) {
+  console.error('error', error.message);
+}
 ```
