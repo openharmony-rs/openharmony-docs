@@ -3193,7 +3193,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterExposureStateChangeCallback(const Cam
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session |  Camera_CaptureSession实例。 |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
 | void* context | 指向自定义上下文的指针。 |
 | [OH_CaptureSession_OnExposureStateChange](capi-capture-session-h.md#oh_capturesession_onexposurestatechange) callback | 表示曝光状态改变的回调函数。 |
 
