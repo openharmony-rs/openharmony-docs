@@ -639,3 +639,90 @@ HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
 | -- | -- |
 | [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>        HIDEBUG_RES_PROF_SUCCESS：已成功停止资源采集。<br>        HIDEBUG_RES_PROF_NOT_STARTED：资源采集未启动，停止失败。<br>        HIDEBUG_RES_PROF_FAILURE：停止资源采集失败。 |
 
+### OH_HiDebug_MemDumpListener()
+
+typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)
+
+**描述**
+
+监听时触发的回调函数类型定义。开发者在应用中使用文件描述符（FD）来写入内存数据，这样就可以使用 hidumper 命令导出数据。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t fd | 开发者使用 FD 在应用程序中写入内存数据。 |
+| OH_HiDebug_MemListenerType tag | 回调类型。开发人员根据回调类型处理相关逻辑。 |
+| bool mayReportToOEM | 当值为 true 时，告知开发者该数据将上传给 OEM 厂商。请注意数据隐私和安全问题。 |
+| const char* arg | 回调参数。根据 tag 的值传递不同的参数。 |
+
+**返回值：**
+
+| 返回值 | 描述 |
+| -- | -- |
+| bool | 操作是否成功。true 表示成功，false 表示失败。 |
+
+**注意：**
+
+- 该回调函数由开发者实现，用于在内存转储时写入自定义的内存数据。
+- 当 mayReportToOEM 为 true 时，数据可能被上传给厂商，请确保不包含敏感隐私信息。
+
+### OH_HiDebug_RegisterMemDumpListener()
+
+HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)
+
+**描述**
+
+注册内存导出监听回调函数。当应用的内存水位较高，或者内存信息被 hidumper 手动导出时，第三方应用框架或第三方应用开发者会回调已注册的函数，将应用的内部内存信息转储到 hidumper 中，或者通过商业灰度上传到 OEM 厂商。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | 消费者类型的标识。 |
+| OH_HiDebug_MemDumpListener listener | 触发监听的回调函数。具体参数请参见 OH_HiDebug_MemDumpListener。 |
+
+**返回码：**
+
+| 返回码 | 描述 |
+| -- | -- |
+| HIDEBUG_SUCCESS | 操作成功。 |
+| HIDEBUG_INVALID_ARGUMENT | 参数无效。 |
+
+**注意：**
+
+- 注册成功后，当触发内存导出时，系统会调用传入的 listener 回调。
+- 数据上报给 OEM 厂商时，mayReportToOEM 参数为 true，开发者需注意数据隐私和安全问题。
+- 对应的注销函数为 OH_HiDebug_UnregisterMemDumpListener。
+
+### OH_HiDebug_UnregisterMemDumpListener()
+
+HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
+
+**描述**
+
+注销已经注册成功的内存导出监听。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | 消费者类型的标识。需要与注册时使用的 name 一致。 |
+
+**返回码：**
+
+| 返回码 | 描述 |
+| -- | -- |
+| HIDEBUG_SUCCESS | 操作成功。 |
+| HIDEBUG_INVALID_ARGUMENT | 参数无效。 |
+
+**注意：**
+
+- 注销后，对应的内存导出回调将不再被触发。
+- 建议在不需要监听时及时注销，避免不必要的资源占用。
