@@ -1804,15 +1804,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let options: dlpPermission.DlpFileQueryOptions = {
-    classificationLabel: 'label1'
-  };
-  let uris: Array<string> = await dlpPermission.queryOpenedEnterpriseDlpFiles(options);
-  console.info('Opened DLP file URIs:' + JSON.stringify(uris));
-} catch(err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message);
-}
+let options: dlpPermission.DlpFileQueryOptions = {
+  classificationLabel: 'label1'
+};
+dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) => {
+  console.info("try to query opened enterprise dlp files, result: ", JSON.stringify(uris));
+}).catch((error: BusinessError)=> {
+  console.error(error.message);
+}).finally(()=> {
+  console.info("after query opened enterprise dlp files");
+});
 ```
 
 ## dlpPermission.closeOpenedEnterpriseDlpFiles<sup>26+</sup>
@@ -1861,13 +1862,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let options: dlpPermission.DlpFileQueryOptions = {
-    classificationLabel: 'label1'
-  };
-  await dlpPermission.closeOpenedEnterpriseDlpFiles(options);
-  console.info('Successfully closed DLP files.');
-} catch(err) {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message);
-}
+let options: dlpPermission.DlpFileQueryOptions = {
+  classificationLabel: 'label1'
+};
+dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
+  console.info("try to close opened enterprise dlp files");
+}).catch((error: BusinessError)=> {
+  console.error(error.message);
+}).finally(()=> {
+  console.info("after close opened enterprise dlp files");
+});
 ```
