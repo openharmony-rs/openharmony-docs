@@ -39,7 +39,7 @@
 
 操作菜单中，title字段的字体最大放大倍数为2。
 
-创建并显示操作菜单后，菜单的响应结果会异步返回选中按钮在buttons数组中的索引。
+创建并显示操作菜单后，菜单的响应结果会异步返回选中按钮在[buttons](../reference/apis-arkui/js-apis-promptAction.md#actionmenuoptions)数组中的索引。
 
 <!-- @[fixed_style_pop_up_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets) -->
 
@@ -387,7 +387,7 @@ export struct TimePickerDialogExample {
 
 文本滑动选择器弹窗通过UIContext中的[showTextPickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog)接口实现。
 
-该示例通过设置range的参数类型为TextCascadePickerRangeContent[]，实现3列文本选择器弹窗。当按下确定按钮时，弹窗会通过onAccept返回目前所选中文本和索引值。如需弹窗再次弹出时显示选中的是上一次确定的文本，就要在回调中重新给select进行赋值。
+该示例通过设置[range](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#textpickeroptions对象说明)的参数类型为[TextCascadePickerRangeContent](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#textcascadepickerrangecontent10对象说明)[]，实现3列文本选择器弹窗。当按下确定按钮时，弹窗会通过[onAccept](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptions对象说明)返回目前所选中文本和索引值。如需弹窗再次弹出时显示选中的是上一次确定的文本，就要在回调中重新给select进行赋值。
 
 <!-- @[text_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TextPickerCNDialog.ets) -->
 
