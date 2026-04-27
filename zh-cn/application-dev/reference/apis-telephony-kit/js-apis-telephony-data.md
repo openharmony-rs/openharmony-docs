@@ -102,7 +102,7 @@ console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 
 getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
-获取蜂窝数据业务的上下行状态，使用callback方式作为异步方法。
+获取蜂窝数据业务的上下行箭头状态（信号栏旁边的上下行箭头），使用callback方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -141,7 +141,7 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 
 getCellularDataFlowType(): Promise\<DataFlowType\>
 
-获取蜂窝数据业务的上下行状态，使用Promise方式作为异步方法。
+获取蜂窝数据业务的上下行箭头状态（信号栏旁边的上下行箭头），使用Promise方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -547,7 +547,7 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 异步获取默认移动数据的SIM卡的APN（access point name，接入点名称）信息。
 
-**需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公室可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
+**需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公时可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
