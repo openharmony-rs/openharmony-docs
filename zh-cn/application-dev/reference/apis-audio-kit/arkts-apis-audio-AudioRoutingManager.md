@@ -1028,3 +1028,34 @@ audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo
 
 audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', preferredInputDeviceChangeForCapturerInfoCallback);
 ```
+
+## getActiveOutputDeviceDescriptors<sup>26+</sup>
+getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>
+获取当前音频设备场景下的活跃输出设备描述符。使用Promise异步回调。
+活跃策略与系统的音频设备策略相关。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**系统接口：** 该接口为系统接口。
+
+**返回值：**
+| 类型                                                         | 说明                      |
+| ------------------------------------------------------------ | ------------------------- |
+| Promise<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | Promise对象，返回活跃输出设备描述符列表。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system application. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in getting active output device descriptors, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get active output device descriptors. Code: ${err.code}, message: ${err.message}`);
+});
+```

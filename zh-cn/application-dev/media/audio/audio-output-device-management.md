@@ -298,3 +298,37 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
   // 取消该事件的所有监听。
   audioSessionManager.off('currentOutputDeviceChanged');
 ```
+
+<!--Del-->
+### 获取活跃输出设备信息（仅对系统应用开放）
+
+使用[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getactiveoutputdevicedescriptors26)方法，可以获取当前音频设备场景下的活跃输出设备描述符。
+
+
+> **说明：**
+>
+> 获取活跃的输出设备接口。活跃策略与系统的音频设备策略相关。
+
+
+<!-- @[get_ActiveOutputDeviceDescriptors](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+async function getActiveOutputDeviceDescriptors() {
+  audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting active output device descriptors, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    for (let i = 0; i < audioDeviceDescriptors.length; i++) {
+      console.info(`Active Device ${i} - id: ${audioDeviceDescriptors[i].id}`);
+      console.info(`Active Device ${i} - name: ${audioDeviceDescriptors[i].name}`);
+      console.info(`Active Device ${i} - type: ${audioDeviceDescriptors[i].deviceType}`);
+      console.info(`Active Device ${i} - role: ${audioDeviceDescriptors[i].deviceRole}`);
+      console.info(`Active Device ${i} - address: ${audioDeviceDescriptors[i].address}`);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get active output device descriptors. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+<!--DelEnd-->
