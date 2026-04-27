@@ -29,10 +29,13 @@ API 10
 
 **变更的接口/组件**
 
-statistics.getUidRxBytes(uid: number, callback: AsyncCallback<number>): void
-statistics.getUidRxBytes(uid: number): Promise<number>
-statistics.getUidTxBytes(uid: number, callback: AsyncCallback<number>): void
-statistics.getUidTxBytes(uid: number): Promise<number>
+statistics.getUidRxBytes(uid: number, callback: AsyncCallback\<number\>): void
+  
+statistics.getUidRxBytes(uid: number): Promise\<numbe\>
+  
+statistics.getUidTxBytes(uid: number, callback: AsyncCallback\<number\>): void
+  
+statistics.getUidTxBytes(uid: number): Promise\<number\>
 
 **适配指导**
 
