@@ -1861,9 +1861,9 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate does not exist. |
-| 17500010 | Access USB key service failed. |
-| 17500011 | Parameter validation failed. Possible causes: the parameter format is incorrect or the value range is invalid. |
+| 17500002 | Indicates that the certificate does not exist. |
+| 17500010 | Indicates that access USB key service failed. |
+| 17500011 | Indicates that the input parameters validation failed. |
 
 **示例**：
 
