@@ -96,7 +96,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object \| null | 返回ArkTS对象或null。当入参是null时，返回null。|
+| Object \| null | 返回ArkTS对象或null。当入参字符串为'null'时，返回null。|
 
 **错误码：**
 
