@@ -1087,3 +1087,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：24
+
+## ohos.permission.PRINTER_DRIVER
+
+允许打印驱动应用进行打印机管理。
+
+<!--RP77--><!--RP77End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
