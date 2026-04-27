@@ -80,7 +80,7 @@
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
-   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -113,9 +113,16 @@
      }
    
      onUpdateForm(formId: string): void {
-       // ...
+       // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则提供方需要重写该方法以支持数据更新
        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
-       // ...
+       let obj: Record<string, string> = {
+         'title': 'titleOnUpdateForm',
+         'detail': 'detailOnUpdateForm'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
+         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+       });
      }
    
      onChangeFormVisibility(newStatus: Record<string, number>): void {
@@ -124,15 +131,14 @@
      }
    
      onFormEvent(formId: string, message: string): void {
-       // ...
+       // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-   
        class FormDataClass {
          title: string = 'Title Update.'; // 和卡片布局中对应
          detail: string = 'Description update success.'; // 和卡片布局中对应
        }
    
-       // ...
+       // 请根据业务替换为实际刷新的卡片数据
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
        formProvider.updateForm(formId, formInfo).then(() => {
@@ -168,19 +174,19 @@
    // entry/src/main/resources/zh_CN/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    },
-   	    {
-   	      "name": "update",
-   	      "value": "刷新"
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        },
+        {
+          "name": "update",
+          "value": "刷新"
+        }
       ]
    }
    ```
@@ -337,19 +343,19 @@
 
 5. 资源文件如下。
 
-   ```json
+   ```json5
    // entry/src/main/resources/base/element/string.json
    {
       "string": [
-   	  // ...
-   	    {
-   	      "name": "default_title",
-   	      "value": "Title default."
-   	    },
-   	    {
-   	      "name": "DescriptionDefault",
-   	      "value": "Description default."
-   	    }
+      // ...
+        {
+          "name": "default_title",
+          "value": "Title default."
+        },
+        {
+          "name": "DescriptionDefault",
+          "value": "Description default."
+        }
       ]
    }
    ```

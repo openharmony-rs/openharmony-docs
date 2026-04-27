@@ -54,7 +54,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     let url = "http://xx";
@@ -120,7 +120,7 @@ let param: media.PixelMapParams = {
 };
 // Obtain the thumbnail.
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -142,7 +142,7 @@ Obtains a video thumbnail. You can set the maximum timeout interval (**timeoutMs
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -193,10 +193,10 @@ let param: media.PixelMapParams = {
 };
 // Obtain the thumbnail.
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap) => {
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
       pixelMap = pixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
@@ -218,7 +218,7 @@ Obtains video thumbnails in batches. This API uses an asynchronous callback to r
 > - The given video resource is decoded first, and then image frames are extracted from each time point in the **timesUs** array based on the provided **options** and **param**.
 > - When each image extraction is complete, the system calls the callback function and passes the extraction result. Note that the execution order of the callback function may be inconsistent with the time points in the **timesUs** array.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -261,7 +261,7 @@ async function fetchFramesByTimesDemo() {
   };
   // Obtain the thumbnail.
   let avMetadataExtractor = await media.createAVMetadataExtractor();
-  if (avMetadataExtractor !== null) {
+  if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
@@ -289,7 +289,7 @@ Obtains video thumbnails in batches. You can set the maximum timeout interval (*
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -334,7 +334,7 @@ async function fetchFramesByTimesDemo() {
   };
   // Obtain the thumbnail.
   let avMetadataExtractor = await media.createAVMetadataExtractor();
-  if (avMetadataExtractor !== null) {
+  if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
@@ -354,7 +354,7 @@ cancelAllFetchFrames(): void
 
 Cancels the ongoing task of obtaining thumbnails in batches. (The thumbnails that have been obtained are not affected.)
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -366,7 +366,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();
@@ -468,7 +468,7 @@ Obtains the media metadata. You can set the maximum timeout interval (**timeoutM
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -506,8 +506,10 @@ async function test() {
   // Create an AVMetadataExtractor instance.
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   let timeoutMs = 3000;
-  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata) => {
-    console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+  avMetadataExtractor.fetchMetadataWithTimeout(timeoutMs).then((metadata: media.AVMetadata | undefined) => {
+    if (metadata) {
+      console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
+    }
   }).catch((error: BusinessError) => {
     console.error(`Failed to fetch Metadata, code: ${error.code}, message: ${error.message}`);
   });

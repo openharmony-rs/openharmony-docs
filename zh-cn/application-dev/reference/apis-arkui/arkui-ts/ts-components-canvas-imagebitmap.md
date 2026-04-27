@@ -83,6 +83,25 @@ constructor(data: PixelMap, unit: LengthMetricsUnit)
 | data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 图片的数据源支持PixelMap对象。 |
 | unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是 |  用来配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。 |
 
+## constructor
+
+constructor(data: Resource, unit?: LengthMetricsUnit)
+
+通过Resource创建ImageBitmap对象，支持使用unit配置ImageBitmap对象的单位模式。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型   | 必填  | 说明                                    |
+| ---- | ------ | ---- | ---------------------------------------- |
+| data  | [Resource](ts-types.md#resource) | 是    | 通过资源引用方式设置图片数据源。 |
+| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 |  用来配置ImageBitmap对象的单位模式，配置后无法动态更改。<br>默认值：LengthMetricsUnit.DEFAULT。 |
+
 ## close
 
 close(): void
@@ -248,3 +267,38 @@ workerPort.onmessage = (e: MessageEvents) => {
 ```
 
   ![zh-cn_image_0000001194352442](figures/zh-cn_image_0000001194352442.png)
+
+### 示例4（加载Resource图片）
+
+通过constructor接口创建Resource类型的ImageBitmap对象，用于Canvas绘制。
+
+从API版本26.0.0开始，新增[constructor](#constructor-2)接口。
+
+  ```ts
+  // xxx.ets
+  @Entry
+  @Component
+  struct ImageBitmapResourceExample {
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    // "app.media.example"需要替换为开发者所需的图像资源文件
+    private img: ImageBitmap = new ImageBitmap($r("app.media.example"));
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#ffff00')
+          .onReady(() => { 
+            this.context.drawImage(this.img, 0, 0, 500, 500, 0, 0, 400, 200)
+            this.img.close()
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+  ![zh-cn_image_0000001194352443](figures/zh-cn_image_0000001194352443.png)

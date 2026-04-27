@@ -1,9 +1,9 @@
 # @ohos.file.fileAccess (User File Access and Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **fileAccess** module provides a framework for accessing and operating user files based on [extension](../../application-models/extensionability-overview.md). This module interacts with a variety of file management services, such as the storage management service, and provides a set of unified file access and management APIs for system applications. The storage management service manages both the directories of the built-in storage and resources on external devices, such as shared disks, USB flash drives, and SD cards.
@@ -1142,7 +1142,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 move(sourceFile: string, destFile: string) : Promise&lt;string&gt;
 
-Moves a file or directory. This API returns the result asynchronously through a promise. Currently, this API does not support moving files or folders across devices.
+Moves a file or folder. This API returns the result asynchronously through a promise. Currently, this API does not support moving files across devices.
 
 **System API**: This is a system API.
 
@@ -1155,7 +1155,7 @@ Moves a file or directory. This API returns the result asynchronously through a 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | -- |
 | sourceFile | string | Yes| URI of the source file or directory to move.|
-| destFile | string | Yes| URI of the destination directory, to which the file or folder is moved.|
+| destFile | string | Yes| URI of the destination directory, to which the file is moved.|
 
 **Return value**
 
@@ -1195,7 +1195,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 move(sourceFile: string, destFile: string, callback: AsyncCallback&lt;string&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result. Currently, this API does not support moving files or folders across devices.
+Moves a file or folder. This API uses an asynchronous callback to return the result. Currently, this API does not support moving files or folders across devices.
 
 **System API**: This is a system API.
 
@@ -2359,7 +2359,7 @@ async function UnregisterObserver03() {
 
 moveItem(sourceUri: string, destUri: string, force?: boolean) : Promise&lt;Array&lt;MoveResult&gt;&gt;
 
-Moves a file or directory. This API returns the result asynchronously through a promise.
+Moves a file or folder. This API returns the result asynchronously through a promise.
 
 You can forcibly overwrite the file with the same name in the destination directory.
 
@@ -2461,7 +2461,7 @@ async function moveItemFunc02() {
 
 moveItem(sourceUri: string, destUri: string, callback: AsyncCallback&lt;Array&lt;MoveResult&gt;&gt;) : void
 
-Moves a file or directory. This API uses an asynchronous callback to return the result.
+Moves a file or folder. This API uses an asynchronous callback to return the result.
 
 Currently, this API does not support moving files or folders across devices.
 

@@ -1,8 +1,8 @@
 # 在build-profile.json5中配置arkOptions
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @liyancheng-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @liyancheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @jinqiuheng-->
 

@@ -5,7 +5,7 @@
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
-<!--Adviser: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 The **print** module provides APIs for basic print operations.
 
@@ -36,7 +36,7 @@ Subscribes to the block events of a print job. This API uses an asynchronous cal
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>It means that the print job is blocked.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>The print job is blocked.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is blocked.|
 
 **Error codes**
@@ -80,7 +80,7 @@ Subscribes to the success events of a print job. This API uses an asynchronous c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>It means that the print job is successful.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>The print job is successful.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is successful.|
 
 **Error codes**
@@ -124,8 +124,8 @@ Subscribes to the failure events of a print job. This API uses an asynchronous c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>It means that the print job is failed.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is failed.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>The print job fails.|
+| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job fails.|
 
 **Error codes**
 
@@ -168,7 +168,7 @@ Subscribes to the cancellation events of a print job. This API uses an asynchron
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>It means that the print job is canceled.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>The print job is canceled.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is canceled.|
 
 **Error codes**
@@ -212,7 +212,7 @@ Unsubscribes from the block events of a print job. This API uses an asynchronous
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>It means that the print job is blocked.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>The print job is blocked.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the block events of a specified print job.|
 
 **Error codes**
@@ -256,7 +256,7 @@ Unsubscribes from the success events of a print job. This API uses an asynchrono
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>It means that the print job is successful.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>The print job is successful.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the success events of a specified print job.|
 
 **Error codes**
@@ -300,7 +300,7 @@ Unsubscribes from the failure events of a print job. This API uses an asynchrono
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>It means that the print job is failed.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>The print job fails.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the failure events of a specified print job.|
 
 **Error codes**
@@ -344,7 +344,7 @@ Unsubscribes from the cancellation events of a print job. This API uses an async
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>It means that the print job is canceled.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>The print job is canceled.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the cancellation events of a specified print job.|
 
 **Error codes**
@@ -486,7 +486,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -533,7 +533,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
@@ -718,7 +718,7 @@ struct Index {
 
 print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes, context: Context): Promise&lt;PrintTask&gt;
 
-Prints a file. This API uses a promise to return the result.
+Prints a file. This API uses a promise to return the result. Currently, only the .pdf file type is supported.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -728,7 +728,7 @@ Prints a file. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| jobName | string | Yes| Name of the file to print, for example, **test.pdf**. The printer uses the [onStartLayoutWrite](#onstartlayoutwrite11) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print.|
+| jobName | string | Yes| Name of the file to print, for example, **test.pdf**. Currently, only .pdf files are supported. The printer uses the [onStartLayoutWrite](#onstartlayoutwrite11) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print.|
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | Yes| [PrintDocumentAdapter](#printdocumentadapter11) API instance implemented by a third-party application.|
 | printAttributes | [PrintAttributes](#printattributes11) | Yes| Print attributes.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
@@ -911,7 +911,7 @@ Enumerates the print job states.
 | -------- | -------- | -------- |
 | PREVIEW_DESTROY | 0 | The preview fails.|
 | PRINT_TASK_SUCCEED | 1 | The print job is successful.|
-| PRINT_TASK_FAIL | 2 | The print job is failed.|
+| PRINT_TASK_FAIL | 2 | The print job fails.|
 | PRINT_TASK_CANCEL | 3 | The print job is canceled.|
 | PRINT_TASK_BLOCK | 4 | The print job is blocked.|
 
@@ -965,8 +965,8 @@ Enumerates the print job substates.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | PRINT_JOB_COMPLETED_SUCCESS | 0 | The print job is successful.|
-| PRINT_JOB_COMPLETED_FAILED | 1 | The print job is failed.|
-| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled by user.|
+| PRINT_JOB_COMPLETED_FAILED | 1 | The print job fails.|
+| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled.|
 | PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | The print file is corrupted.|
 | PRINT_JOB_BLOCK_OFFLINE | 4 | The printer is offline.|
 | PRINT_JOB_BLOCK_BUSY | 5 | The printer is occupied by another process.|
@@ -1017,6 +1017,9 @@ Enumerates the print error codes.
 | E_PRINT_INVALID_PRINT_JOB | 13100006 | Invalid print job.|
 | E_PRINT_FILE_IO | 13100007 | Incorrect file input/output.|
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | Excessive files. Maximum number: 99.|
+| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | The SMB-based shared printer account is locked due to multiple failed login attempts.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | The SMB-based shared printer fails to be connected (due to a network error, unreachable host, or blocked port).<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | The SMB-based shared printer account or password is incorrect.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1263,6 +1266,8 @@ Defines the printer information.
 | printerMake | string | No| Yes| Printer model.|
 | preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | No| Yes| Printer preferences.|
 | alias<sup>18+</sup> | string | No| Yes| Printer alias.|
+| selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | No| Yes| Information about the driver selected when a printer is added.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| selectedProtocol<sup>24+</sup> | string | No| Yes| Protocol used when a printer is added.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | options | string | No| Yes| Printer details.|
 
 ## PrinterCapabilities<sup>14+</sup>
@@ -1337,9 +1342,9 @@ Defines the printer preferences.
 | defaultPageSizeId | string | No| Yes| ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 × 254 mm.|
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | No| Yes| Default print orientation.|
 | borderless | boolean | No| Yes| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. The default value is **false**.|
-| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | No| Yes| Default color mode. The default value is black and white.|
-| defaultCollate<sup>24+</sup> | boolean | No| Yes| Default output order. The value **true** means that pages are printed collated, and **false** means the opposite. The default value is **true**.|
-| defaultReverse<sup>24+</sup> | boolean | No| Yes| Default print order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.|
+| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | No| Yes| Default color mode. The default value is black and white.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| defaultCollate<sup>24+</sup> | boolean | No| Yes| Default output order. The value **true** means that pages are printed collated, and **false** means the opposite. The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| defaultReverse<sup>24+</sup> | boolean | No| Yes| Default print order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | options | string | No| Yes| Other fields in the printer preferences. The fields are queried from the printer or obtained from the printer driver and stored in the string in JSON format.|
 
 ## PrinterEvent<sup>18+</sup>
@@ -1752,7 +1757,7 @@ print.connectPrinter(printerId).then(() => {
 })
 ```
 
-## startPrint<sup>23+</sup>
+## print.startPrint<sup>23+</sup>
 
 startPrint(job: PrintJobData): Promise&lt;void&gt;
 
@@ -1789,11 +1794,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import fs from "@ohos.file.fs";
+import { fileIo } from '@kit.CoreFileKit';
 
 let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
-let file: fs.File;
-file = fs.openSync(tempPath, 4);
+let file: fileIo.File;
+file = fileIo.openSync(tempPath, 4);
 
 let printJobData: print.PrintJobData = {
     printerId: "printerId",
@@ -1863,7 +1868,7 @@ Defines a print job.
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | No| No| Simplex or duplex mode.|
 | pageSize | [PrintPageSize](#printpagesize11) | No| No| Selected page size.|
 | jobId | string | No| Yes| Unique identifier of the print job.|
-| fdList | Array&lt;number&gt; | No| Yes| FD list of files to print.|
+| fdList | number[]; | No| Yes| FD list of files to print.|
 | binaryData | Uint8Array | No| Yes| Binary data to print.|
 | printQuality | [PrintQuality](#printquality14) | No| Yes| Print quality.|
 | mediaType | string | No| Yes| Type of the paper to print.|
@@ -1871,7 +1876,7 @@ Defines a print job.
 | isAutoRotate | boolean | No| Yes| Whether to automatically rotate the page. The value **true** means to automatically rotate the page, and **false** means the opposite. Default value: **true**.|
 | isReverse | boolean | No| Yes| Whether pages are printed in reverse order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.|
 | isCollate | boolean | No| Yes| Whether pages are printed uncollated. The value **true** means that pages are printed uncollated, and **false** means the opposite. Default value: **true**.|
-| isSequential | boolean | No| Yes| Whether pages are printed in sequential order.|
+| isSequential | boolean | No| Yes| Whether the printing is sequential. The value **true** means that the printing is sequential, and **false** means the opposite. The default value is **false**.|
 | options | string | No| Yes| Object stringified in JSON format.|
 
 ## PrintMargin<sup>24+</sup>
@@ -2016,7 +2021,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
-| 201 | the application does not have permission to call this function. |
+| 201 | The application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -2155,4 +2160,262 @@ print.updatePrinterInformation(printerInformation).then(() => {
 }).catch((error: BusinessError) => {
     console.error('updatePrinterInformation error : ' + JSON.stringify(error));
 })
+```
+
+## PpdInfo<sup>24+</sup>
+
+Defines the PPD file information of the printer driver.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| manufacturer | string | No| No| Printer vendor name in the current PPD file.|
+| nickName | string | No| No| Printer alias in the current PPD file.|
+| ppdName | string | No| No| Name of the current PPD file.|
+
+## SharedHost<sup>24+</sup>
+
+Defines the shared device information.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| ip | string | No| No| IP address of the shared device.|
+| shareName | string | No| No| Host name of the shared device.|
+| workgroupName | string | No| No| Workgroup name of the shared device.|
+
+## print.addPrinter<sup>24+</sup>
+
+addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise&lt;boolean&gt;
+
+Adds a printer to the system. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINTER_DRIVER
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| printerName | string | Yes| Printer name.|
+| uri | string | Yes| Printer URI.|
+| ppdName | string | No| PPD file name of the printer.|
+| options | string | No| JSON object string, which indicates the printer option parameter.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise used to return the result indicating whether the printer is successfully added.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 13100003 | Add the printer to system failed. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerName : string = 'printerName';
+let uri : string = 'uri';
+let ppdName : string = 'ppdName';
+print.addPrinter(printerName, uri, ppdName).then(() => {
+    console.info('add printer success');
+}).catch((error: BusinessError) => {
+    console.error('add printer error : ' + JSON.stringify(error));
+})
+```
+
+## WatermarkHandleResult<sup>24+</sup>
+
+Enumerates the results of forcible watermark processing.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| WATERMARK_HANDLE_SUCCESS | 0 | The forcible watermark processing is successful.|
+| WATERMARK_HANDLE_FAILURE | 1 | The forcible watermark processing fails.|
+
+## print.WatermarkCallback<sup>24+</sup>
+
+type WatermarkCallback = (jobId: string, fd: number) => void
+
+Defines the callback type used to register an event listener for forcible watermark processing.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobId | string | Yes| ID of the print job.|
+| fd | number | Yes| File descriptor of the file.|
+
+## print.registerWatermarkCallback<sup>24+</sup>
+
+registerWatermarkCallback(callback: WatermarkCallback): void
+
+Registers an event listener for forcible watermark processing.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | Yes| Callback type used to register an event listener for forcible watermark processing.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.unregisterWatermarkCallback<sup>24+</sup>
+
+unregisterWatermarkCallback(callback?: WatermarkCallback): void
+
+Deregisters an event listener for forcible watermark processing.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | No| Callback type used to register an event listener for forcible watermark processing.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+    // Deregister the specified callback for watermark processing.
+    print.unregisterWatermarkCallback(watermarkCallback);
+    console.info('unregisterWatermarkCallback success');
+} catch (error) {
+    console.error('unregisterWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.notifyWatermarkComplete<sup>24+</sup>
+
+notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
+
+Notifies that watermark processing is complete.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobId | string | Yes| ID of the print job.|
+| result | [WatermarkHandleResult](#watermarkhandleresult24) | Yes| Watermark processing result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+    
+    try {
+        // Notify the system that the watermark processing is successful.
+        print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
+        console.info('notifyWatermarkComplete success');
+    } catch (error) {
+        console.error('notifyWatermarkComplete error: ' + JSON.stringify(error));
+    }
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
 ```

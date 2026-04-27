@@ -1354,7 +1354,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1409,7 +1409,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1453,6 +1453,67 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+## hidebug.dumpJsRawHeapData
+
+dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise&lt;Array&lt;string&gt;&gt;
+
+为当前线程或其所属进程生成虚拟机的原始堆快照，并支持清除nodeId缓存，生成的文件为rawheap格式。使用Promise异步回调。文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转换为heapsnapshot格式文件进行解析。
+> **注意**：
+>
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+>
+> 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**参数**：
+
+| 参数名                     | 类型      | 必填 | 说明                                          |
+|-------------------------|---------|----|---------------------------------------------|
+| needGC         | boolean | 是  | 转储堆快照前是否需要GC。true：需要GC；false：不需要GC。|
+| needClean      | boolean | 是  | 转储堆快照前是否需要清除nodeId。true：需要清除；false：不需要清除。|
+| processDump      | boolean | 是  | 是否转储当前线程所属进程的原始堆快照。true：转储当前线程所属进程的原始堆快照。|
+
+**返回值**：
+
+| 类型  | 说明                                                                                                   |
+| ------ |------------------------------------------------------------------------------------------------------|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回生成的快照文件路径数组（[应用沙箱内路径](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug错误码](errorcode-hiviewdfx-hidebug.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| ----------------------------------------------------------------- |
+| 11400106 | Quota exceeded. |
+| 11400107 | Fork operation failed. |
+| 11400108 | Failed to wait for the child process to finish. |
+| 11400109 | Timeout while waiting for the child process to finish. |
+| 11400110 | Disk remaining space too low. |
+| 11400111 | Napi interface call exception. |
+| 11400112 | Repeated data dump. |
+| 11400113 | Failed to create dump file. |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
 }).catch((error: BusinessError) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
@@ -1622,7 +1683,7 @@ setProcDumpInSharedOOM(enable: boolean): void
 
 **参数**：
 
-| 名称         | 类型  | 必填 | 说明 |
+| 参数名         | 类型  | 必填 | 说明 |
 |--------------|------|------|------|
 | enable | boolean | 是 | 当进程发生SharedHeap OOM时，系统将依据该进程在其生命周期中最后一次调用该接口所记录的信息，转储相应级别的堆快照。<br/>true：进程级。<br/>false：线程级。<br/> 默认值：false。 |
 

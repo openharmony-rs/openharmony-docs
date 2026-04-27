@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -80,7 +80,7 @@ Internal error of the multimodal input service.
 
 **Possible Causes**
 
-Unexpected errors, such as memory allocation failure, busy thread, and abnormal service exit, occur.
+Unexpected errors occurred, such as memory allocation failure, busy thread, and service execution.
 
 **Procedure**
 

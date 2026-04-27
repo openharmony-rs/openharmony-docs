@@ -1,8 +1,8 @@
 # native_node.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -262,6 +262,7 @@ enum ArkUI_NodeAttributeType
 | 枚举项 | 描述 |
 | -- | -- |
 | [基础属性](./capi-native-node-h-nodeattributetype-base.md) | 定义ArkUI在Native侧可以设置的基础属性集合，包含背景、背景图片样式和组件标识等属性设置。 |
+| [通用属性](./capi-native-node-h-nodeattributetype-common.md) | 定义ArkUI在Native侧可以设置的通用属性样式集合。 |
 | [布局属性](./capi-native-node-h-nodeattributetype-layoutattributes.md) | 定义ArkUI在Native侧可以设置的布局相关属性集合，包含尺寸、百分比尺寸、内外边距、边框、位置、对齐、方向、约束、Flex参数、布局规则及布局类组件相关属性设置。 |
 | [布局类组件相关属性](./capi-native-node-h-nodeattributetype-layoutcomponent.md) | 定义ArkUI在Native侧可以设置的布局类组件相关属性集合。 |
 | [动效、视效相关属性](./capi-native-node-h-nodeattributetype-animator.md) | 定义ArkUI在Native侧可以设置的动效、视效相关属性样式集合，包含图形变换、渐变、阴影、模糊和转场等属性设置。 |
@@ -272,9 +273,8 @@ enum ArkUI_NodeAttributeType
 | [信息展示类组件相关属性](./capi-native-node-h-nodeattributetype-informationdisplay.md) | 定义ArkUI在Native侧可以设置信息展示类组件相关属性样式集合，包含LoadingProgress、Progress等组件属性设置。 |
 | [信息选择类组件相关属性](./capi-native-node-h-nodeattributetype-informationselection.md) | 定义ArkUI在Native侧可以设置信息选择类组件相关属性样式集合，包含DatePicker、TimePicker、TextPicker、CalendarPicker等组件属性设置。 |
 | [无障碍相关属性](./capi-native-node-h-nodeattributetype-accessibility.md) | 定义ArkUI在Native侧可以设置的无障碍相关属性集合，包含无障碍文本、说明、模式、状态、信息等属性设置。 |
-| [文本类组件相关属性](./capi-native-node-h-nodeattributetype-text.md) | 定义ArkUI在Native侧可以设置的文本类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。 |
-| [TextInput组件相关属性](./capi-native-node-h-nodeattributetype-textinput.md) | 定义ArkUI在Native侧可以设置的文本输入类组件相关属性样式集合，包含TextInput组件属性设置。 |
-| [TextArea组件相关属性](./capi-native-node-h-nodeattributetype-textarea.md) | 定义ArkUI在Native侧可以设置的TextArea组件相关属性样式集合，包含TextArea组件属性设置。 |
+| [文本显示类组件相关属性](./capi-native-node-h-nodeattributetype-text.md) | 定义ArkUI在Native侧可以设置的文本类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。 |
+| [文本输入类组件相关属性](./capi-native-node-h-nodeattributetype-textinputcategory.md) | 定义ArkUI在Native侧可以设置的文本输入类组件相关属性样式集合，包含TextInput组件属性设置。 |
 | [富文本类组件相关属性](./capi-native-node-h-nodeattributetype-richeditor.md) | 定义ArkUI在Native侧可以设置的富文本类组件相关属性样式集合，包含TextEditor组件属性设置。 |
 | [图类组件相关属性](./capi-native-node-h-nodeattributetype-image.md) | 定义ArkUI在Native侧可以设置的图类组件相关属性样式集合，包含Image和ImageAnimator组件属性设置。 |
 | [X-Component组件相关属性](./capi-native-node-h-nodeattributetype-xcomponent.md) | 定义ArkUI在Native侧可以设置的XComponent组件相关属性集合。 |
@@ -3684,3 +3684,5 @@ ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectIntercept
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)* | 返回指向ArkUI_GestureCollectInterceptInfo对象的指针。仅在回调期间有效，无需释放。<br>如果传入的参数无效，或者不是手势收集拦截信息，则返回`null`。 |
+
+## 更多

@@ -51,6 +51,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.|
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -106,6 +107,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported.|
 | 32390206 | Invalid parameter.  |
 
 **示例：**

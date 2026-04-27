@@ -77,7 +77,7 @@ let param: media.PixelMapParams = {
 
 // Obtain the thumbnail.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
@@ -146,7 +146,7 @@ let param: media.PixelMapParams = {
 
 // Obtain the thumbnail.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -209,7 +209,7 @@ let outputSize: media.OutputSize = {
 };
 // Obtain the thumbnail.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
@@ -255,7 +255,7 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // Release the resources.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release((error: BusinessError) => {
@@ -303,7 +303,7 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // Release the resources.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release().then(() => {

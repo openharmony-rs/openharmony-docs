@@ -40,7 +40,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_MediaType](#oh_mediatype) | OH_MediaType | 媒体类型。 |
-| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<!--DelEnd--> |
+| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | AAC档次。 |
 | [OH_AVCProfile](#oh_avcprofile) | OH_AVCProfile | AVC档次。 |
 | [OH_HEVCProfile](#oh_hevcprofile) | OH_HEVCProfile | HEVC档次。 |
 | [OH_VVCProfile](#oh_vvcprofile) | OH_VVCProfile | VVC档次。 |
@@ -117,10 +117,10 @@
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_JPG | JPG图片编码的MIME类型，仅用于封装JPG封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_PNG | PNG图片编码的MIME类型，仅用于封装PNG封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_BMP | BMP图片编码的MIME类型，仅用于封装BMP封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_AVCODEC_MIMETYPE_AUDIO_VIVID | Audio Vivid音频解码器的MIME类型。<!--Del-->（当前规格暂未开放）<!--DelEnd--><br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_VIVID | Audio Vivid音频解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AMR_NB | AMR_NB音频<!--RP4--><!--RP4End-->解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | AMR_WB音频<!--RP4--><!--RP4End-->解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_AVCODEC_MIMETYPE_AUDIO_OPUS | OPUS音频编解码器的MIME类型。<!--Del-->（当前规格暂未开放）<!--DelEnd--><br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_OPUS | OPUS音频编解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_G711MU | G711MU音频编解码器的MIME类型。<br>**起始版本：** 11<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_ALAC | ALAC（Apple Lossless Audio Codec）音频解码器的MIME类型。<br>**起始版本：** 22 |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_AC3 | AC3（Dolby Audio Coding 3）音频解码器的MIME类型。<br>**起始版本：** 22 |
@@ -200,6 +200,7 @@
 | const char * OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY | 使能分层编码的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。<br> 使用前可以通过[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature)中的VIDEO_ENCODER_TEMPORAL_SCALABILITY来查询当前视频编码器是否支持分层编码。<br>详情请参见：[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md#接口介绍)。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE | 描述图片组基本层图片的间隔大小的键，值类型为int32_t，只在使能分层编码时生效。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE | 描述图片组内参考模式的键，值类型为int32_t，请参见[OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode)，只在使能分层编码时生效。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID | 描述图像组（GOP）内的时域层号ID键，数据类型为int32_t。<br> 时域层号为0时，表示基础层，1及以上时表示增强层，最大时域层号与OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE参数和OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE参数相关。<br> 该键目前仅用于查询编码器输出的AVBuffer中携带的时域层号。<br> 使用流程如下：<br> 1. 通过[OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)接口或[OH_VideoEncoder_GetOutputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)获取缓冲区实例（AVBuffer）。<br> 2. 通过[OH_AVBuffer_GetParameter](capi-native-avbuffer-h.md#oh_avbuffer_getparameter)获取除基础属性外的其他参数实例（OH_AVFormat）。<br> 3. 通过[OH_AVFormat_GetIntValue](capi-native-avformat-h.md#oh_avformat_getintvalue)接口和本键获取对应帧的时域层号。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT | 描述长期参考帧个数的键，值类型为int32_t，必须在支持的值范围内使用。<br> 使用前可以通过[OH_AVCapability_GetFeatureProperties](capi-native-avcapability-h.md#oh_avcapability_getfeatureproperties)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature)中的VIDEO_ENCODER_LONG_TERM_REFERENCE来查询支持的LTR数目。<br> 该键是可选的且只用于视频编码，在Configure阶段使用。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR | 标记当前帧为长期参考帧的键，值类型为int32_t，1表示被标记，0表示未被标记，默认值为0。配置非0值将按照配置1处理，表示被标记。<br> 只在长期参考帧个数被配置后生效。<br> 该键是可选的且只用于视频编码输入轮转中，配置后立即生效。<br>详情请参见：[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md#接口介绍)。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR | 描述当前帧参考的长期参考帧帧的POC号的键，值类型为int32_t。<br> 该键是可选的且只用于视频编码输入轮转中，配置后立即生效。<br>详情请参见：[时域可分层视频编码](../../media/avcodec/video-encoding-temporal-scalability.md#接口介绍)。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -278,7 +279,7 @@ enum OH_AACProfile
 
 **描述**
 
-AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<!--DelEnd-->
+AAC档次。
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -287,8 +288,8 @@ AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<
 | 枚举项 | 描述 |
 | -- | -- |
 | AAC_PROFILE_LC = 0 | AAC编码档次为Low Complexity级别。 |
-| AAC_PROFILE_HE = 3 | AAC编码档次为High Efficiency级别。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
-| AAC_PROFILE_HE_V2 = 4 | AAC编码档次为High Efficiency v2级别。<!--Del-->（此规格暂未开放）<!--DelEnd--><br>**起始版本：** 14 |
+| AAC_PROFILE_HE = 3 | AAC编码档次为High Efficiency级别。包含音频对象类型：AAC LC和SBR。<br>**起始版本：** 14 |
+| AAC_PROFILE_HE_V2 = 4 | AAC编码档次为High Efficiency v2级别。包含音频对象类型：AAC LC、SBR和PS。<br>**起始版本：** 14 |
 
 ### OH_AVCProfile
 

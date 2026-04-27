@@ -1,7 +1,7 @@
 # @ohos.enterprise.dateTimeManager （系统时间管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -103,7 +103,7 @@ setDateTime(admin: Want, time: number): Promise\<void>
 
 | 类型   | 说明                                  |
 | ----- | ----------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | 无返回结果的Promise对象。当设置系统时间失败时，抛出错误对象。 |
 
 **错误码**：
 
