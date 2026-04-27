@@ -17,7 +17,7 @@
 
 开发者可根据自身业务梳理不同设备形态下对旋转的诉求，如果单一策略（如：FOLLOW_DESKTOP、AUTO_ROTATION_UNSPECIFIED）能满足需求，推荐使用单一策略。若单一策略不能满足，可参考断点机制，实现差异化适配。
 
-比如，在三折叠设备上，期望折叠态时竖屏显示，M态时竖屏显示，G态时横屏显示；在Tablet设备上，期望横屏显示；在直板机设备上，期望竖屏显示；在此场景下，可采用[WidthBreakpoint](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#widthbreakpoint13)断点机制实现差异化适配。
+比如，在三折叠设备上，期望折叠态时竖屏显示，M态时竖屏显示，G态时横屏显示；在平板设备上，期望横屏显示；在直板机设备上，期望竖屏显示；在此场景下，可采用[WidthBreakpoint](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#widthbreakpoint13)断点机制实现差异化适配。
 
 示例代码如下：
 
@@ -95,9 +95,9 @@ struct Index {
 
 ## 实现屏幕方向和窗口的orientation的相互转换
 
-目前存在[屏幕orientation](../reference/apis-arkui/js-apis-display.md#属性)、[屏幕rotation](../reference/apis-arkui/js-apis-display.md#属性)和[窗口的orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)概念，它们之间存在关联，但并不相同，三者之间的区别与联系可以参考[display.orientation与window.orientation的区别](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section156337181114)、[window.orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section20201743171811)。
+目前存在[屏幕 orientation](../reference/apis-arkui/js-apis-display.md#属性)、[屏幕 rotation](../reference/apis-arkui/js-apis-display.md#属性)和[窗口 orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)概念，它们之间存在关联，但并不相同，三者之间的区别与联系可以参考[display.orientation与window.orientation的区别](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section156337181114)、[window.orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section20201743171811)。
 
-在多设备、多形态的场景下（例如折叠屏手机、平板、外接显示器），屏幕的rotation（物理角度）和屏幕的orientation（逻辑横竖状态）并不总是一一对应。
+在多设备、多形态的场景下（例如折叠屏手机、平板、外接显示器），屏幕的 rotation（物理角度）和屏幕的 orientation（逻辑横竖状态）并不总是一一对应。
 
 直板机屏幕角度、屏幕方向、窗口方向对应关系：
 
@@ -117,7 +117,7 @@ struct Index {
 | 270 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
 | 0 | LANDSCAPE_INVERTED | LANDSCAPE |
 
-屏幕方向与窗口方向在横屏方向上的定义并不一致。比如在直板机上，窗口方向的横屏对应屏幕方向的反向横屏；窗口方向的反向横屏则对应屏幕方向的横屏。屏幕角度和屏幕方向也不总是一一对应。比如在三折叠全展开态上，屏幕角度为0时，屏幕方向并不是竖屏，而是反向横屏。如果开发者直接用[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)来判断窗口实际显示的方向，可能会出现应用显示方向错位的问题。因此，不能简单通过屏幕的orientation或rotation来判断窗口的orientation。
+屏幕方向与窗口方向在横屏方向上的定义并不一致。比如在直板机上，窗口方向的横屏对应屏幕方向的反向横屏；窗口方向的反向横屏则对应屏幕方向的横屏。屏幕角度和屏幕方向也不总是一一对应。比如在三折叠全展开态上，屏幕角度为0时，屏幕方向并不是竖屏，而是反向横屏。如果开发者直接用[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)来判断窗口实际显示的方向，可能会出现应用显示方向错位的问题。因此，不能简单通过屏幕的 orientation 或 rotation 来判断窗口的 orientation。
 
 若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面锁定当前方向），推荐获取到[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)后，再使用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)将屏幕方向转化为窗口方向，具体示例如下：
 
