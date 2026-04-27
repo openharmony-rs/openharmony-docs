@@ -5,7 +5,7 @@
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 agentManager模块提供Agent管理能力，支持AgentExtensionAbility的连接、断开连接等操作，支持LOW_CODE类型Agent的生命周期管理，支持AgentExtensionAbility与ServiceExtensionAbility的连接管理，同时提供获取设备上的AgentCard信息。
 
