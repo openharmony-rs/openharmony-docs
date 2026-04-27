@@ -1612,7 +1612,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 
-```
+
 ## DlpFileQueryOptions<sup>26+</sup>
 
 Represents query options for DLP files.
