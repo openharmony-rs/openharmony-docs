@@ -1216,7 +1216,8 @@ export struct StyledStringHtml {
   
         // 按钮3:将HTML转换回SpanString
         /* 请将$r('app.string.Converted_HTML_back_to_SpanString')替换为实际资源文件，在本示例中该资源文件的
-         value值为"Converted HTML back to SpanString" */
+         * value值为"Converted HTML back to SpanString"
+         */
         Button($r('app.string.Converted_HTML_back_to_SpanString')).onClick(async () => {
           this.spanString = await StyledString.fromHtml(this.html);
           this.controller.setStyledString(this.spanString);
