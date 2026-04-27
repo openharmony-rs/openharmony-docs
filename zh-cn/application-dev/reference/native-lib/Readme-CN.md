@@ -49,6 +49,7 @@
   - [Job](job.md)
   - [Message 消息单元](message.md)
   - [MessageHandler 消息处理器](message_handler.md)
+- [Promise (异步操作)](arkts-sta-promise.md)
 - 附录<!--appendixes-->
   - [libc中没有导出的符号列表](musl-peculiar-symbol.md)
   - [NDK musl-libc接口受权限影响的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
