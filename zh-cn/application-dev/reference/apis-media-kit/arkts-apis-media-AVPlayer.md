@@ -3597,6 +3597,32 @@ avPlayer.onAudioInterrupt((info: audio.InterruptEvent) => {
 });
 ```
 
+## offAudioInterrupt<sup>23+</sup>
+
+offAudioInterrupt(callback?: Callback\<audio.InterruptEvent>): void;
+
+取消监听音频焦点变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Sta起始版本：** 23
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AudioInterrupt')](#offaudiointerrupt9)。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | 否   | 音频焦点变化事件回调方法。<br/>从API version 23开始支持此参数。             |
+
+**示例：**
+
+```ts
+avPlayer.offAudioInterrupt();
+```
+
 ## on('audioOutputDeviceChangeWithInfo')<sup>11+</sup>
 
 on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback\<audio.AudioStreamDeviceChangeInfo>): void
@@ -3613,7 +3639,7 @@ on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback\<audio.AudioStrea
 
 **ArkTS-Dyn起始版本：** 11
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioOutputDeviceChangeWithInfo](#onAudioOutputDeviceChangeWithInfo23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioOutputDeviceChangeWithInfo](#onaudiooutputdevicechangewithinfo23)。
 
 **参数：**
 
@@ -3658,7 +3684,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 **ArkTS-Dyn起始版本：** 11
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioOutputDeviceChangeWithInfo)](#offAudioOutputDeviceChangeWithInfo23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioOutputDeviceChangeWithInfo)](#offaudiooutputdevicechangewithinfo23)。
 
 **参数：**
 
@@ -3839,7 +3865,7 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate](#onSubtitleUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate](#onsubtitleupdate23)。
 
 **参数：**
 
@@ -3983,7 +4009,7 @@ off(type: 'trackInfoUpdate', callback?: Callback\<Array\<MediaDescription>>): vo
 
 **ArkTS-Dyn起始版本：** 12
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offTrackInfoUpdate](#offTrackInfoUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTrackInfoUpdate](#offtrackinfoupdate23)。
 
 **参数：**
 
@@ -4014,7 +4040,7 @@ on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAmplitudeUpdate](#onAmplitudeUpdate23)。       
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAmplitudeUpdate](#onamplitudeupdate23)。       
 
 **参数：**
 
@@ -4047,7 +4073,7 @@ off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
 
 **ArkTS-Dyn起始版本：** 13
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAmplitudeUpdate](#offAmplitudeUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAmplitudeUpdate](#offamplitudeupdate23)。
 
 **参数：**
 
@@ -4080,7 +4106,7 @@ on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMess
 
 **ArkTS-Dyn起始版本：** 18
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onSeiMessageReceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
 
 **参数：**
 
@@ -4130,7 +4156,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 
 **ArkTS-Dyn起始版本：** 18
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onSeiMessageReceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
 
 **参数：**
 
@@ -4456,13 +4482,13 @@ offSubtitleUpdate(callback?: Callback\<SubtitleInfo>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SubtitleUpdate')](#offSubtitleUpdate12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SubtitleUpdate')](#offsubtitleupdate12)。
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12)> | 否   | 取消外挂字幕事件的回调方法。 |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | 否   | 取消外挂字幕事件的回调方法。 |
 
 **示例：**
 
@@ -4484,7 +4510,7 @@ onTrackChange(callback: OnTrackChangeHandler): void;
 
 **ArkTS-Dyn起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#onTrackChange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#ontrackchange12)。
 
 **参数：**
 
@@ -4512,7 +4538,7 @@ offTrackChange(callback?: OnTrackChangeHandler): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TrackChange')](#offTrackChange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TrackChange')](#offtrackchange12)。
 
 **参数：**
 
