@@ -4,7 +4,7 @@
 
 ## 使用@ObjectLink代替@Prop减少不必要的深拷贝
 
-在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用@Prop装饰器会增加组件创建时间并影响性能，此时建议改用@ObjectLink。
+在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用[@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md)装饰器会增加组件创建时间并影响性能，此时建议改用[@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md)。
 
 【反例】
 
@@ -46,7 +46,7 @@ struct Parent {
 }
 ```
 
-在以上示例中，PropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据，带来性能开销，而\@ObjectLink是比\@Link和\@Prop更优的选择。
+在以上示例中，PropChild组件没有改变\@Prop testClass: MyClass的值，因此使用\@ObjectLink更为合适。因为@Prop会深拷贝数据，带来性能开销，而\@ObjectLink是比[@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md)和\@Prop更优的选择。
 
 【正例】
 
