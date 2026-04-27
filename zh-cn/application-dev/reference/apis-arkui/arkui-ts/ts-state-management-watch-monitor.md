@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 状态变量监听模块提供了对状态变量变化的感知能力。
 
@@ -75,9 +75,29 @@ Monitor: MonitorDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## MonitorDecoratorOptions
+
+@Monitor装饰器的配置选项。
+
+### 属性
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 类型    | 只读 | 可选 | 说明                                                         |
+| -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| enableWildcard | boolean | 否   | 是   | 是否支持通配符能力。true：使能通配符能力，false：关闭通配符能力。默认值为true，即默认使能通配符能力。 |
+
 ## MonitorDecorator<sup>12+</sup>
 
-type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
+type MonitorDecorator = (value: string | MonitorDecoratorOptions, ...args: string[]) => MethodDecorator
 
 @Monitor装饰器的实际类型。
 
@@ -91,7 +111,7 @@ type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
 
 | 参数名 | 类型     | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| value  | string   | 是   | 用于监听的变量名路径，内容由开发者指定。当开发者仅传入一个字符串时，入参为该类型。 |
+| value  | string \| [MonitorDecoratorOptions](#monitordecoratoroptions) | 是   | 在API版本26.0.0之前，该参数为监听的变量名路径，内容由开发者指定。当开发者仅传入一个字符串时，入参为string类型。从API版本26.0.0开始，该参数也可以为MonitorDecoratorOptions类型的对象，用于配置通配符能力。 |
 | ...args   | string[] | 否   | 用于监听的变量名路径数组，内容由开发者指定。当开发者传入多个字符串时，入参为该类型。 |
 
 **返回值：**
@@ -183,7 +203,7 @@ value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 
 | 类型                                                  | 说明                                                         |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| [IMonitorValue\<T\>](#imonitorvaluet12)  \| undefined | @Monitor监听变量的路径以及变化前后值信息。<br>T为监听变量的类型。<br>当监听的路径不存在时，返回undefined。<br>当未指定路径时，默认返回变化路径数组dirty中第一个路径对应的信息。 |
+| [IMonitorValue\<T\>](#imonitorvaluet12)  \| undefined | @Monitor监听变量的路径以及变化前后值信息。<br>T为监听变量的类型。<br>当监听的路径不存在时，返回undefined。<br>API版本26.0.0之前，当未指定路径时，默认返回变化路径数组dirty中第一个路径对应的信息。<br>从API版本26.0.0开始，当未指定路径时，默认返回变化路径数组dirty中第一个非通配符路径。<br>当指定路径为通配符路径时，返回undefined。<br>当未指定路径，且变化路径数组dirty中所有路径均为通配符路径时，返回undefined。 |
 
 **示例：**
 
