@@ -1030,9 +1030,10 @@ audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', preferredIn
 ```
 
 ## getActiveOutputDeviceDescriptors<sup>26+</sup>
+
 getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>
-获取当前音频设备场景下的活跃输出设备描述符。使用Promise异步回调。
-活跃策略与系统的音频设备策略相关。
+
+获取当前音频设备场景下的活跃输出设备描述符。使用Promise异步回调。 活跃策略与系统的音频设备策略相关。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
