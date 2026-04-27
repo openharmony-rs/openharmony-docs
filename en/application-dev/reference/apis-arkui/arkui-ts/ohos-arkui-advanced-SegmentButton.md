@@ -253,7 +253,7 @@ Inherits from [CommonSegmentButtonOptions](#commonsegmentbuttonoptions).
 | Name     | Type                                             | Read-Only| Optional| Description                       |
 | -------- | ------------------------------------------------- | ---- | ----------------------------- | ----------------------------- |
 | buttons  | [SegmentButtonItemTuple](#segmentbuttonitemtuple) | No| No | Button information.                   |
-| multiply | boolean                                           | No | Yes | Whether multiple items can be selected.<br>Default value: **false**<br>If the value is **undefined**, the default value is used.<br><br>**true**: Multi-selection is allowed.<br>**false**: Multi-selection is not allowed.|
+| multiply | boolean                                           | No | Yes | Whether multiple items can be selected.<br>Default value: **false**<br>If the value is **undefined**, the default value is used.<br>**true**: Multi-selection is allowed.<br>**false**: Multi-selection is not allowed.|
 
 ## ItemRestriction
 
