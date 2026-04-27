@@ -941,9 +941,11 @@ minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
 
 menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurStyleOptions>)
 
-背景模糊选项。
+设置Select组件的背景模糊效果。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -953,15 +955,17 @@ menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurStyleOptions>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| blurStyle  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)> | 是   | 背景模糊选项。 |
+| blurStyle  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)> | 是   | 设置Select组件的背景模糊效果。 |
 
 ### menuBackgroundEffect
 
 menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
 
-设置Select背景属性，包含背景模糊半径，亮度，饱和度，颜色等参数。
+设置Select组件的背景属性。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -971,7 +975,7 @@ menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                       |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)> | 是   | 设置Select背景属性包括：模糊半径，亮度，饱和度，颜色等。 |
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)> | 是   | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
