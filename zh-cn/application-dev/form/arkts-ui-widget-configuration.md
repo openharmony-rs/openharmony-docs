@@ -188,14 +188,12 @@
           // ...
          "sceneAnimationParams": {
             "abilityName": "MyLiveFormExtensionAbility",
-            <!--Del-->
-            "disabledDesktopBehaviors": [
+            <!--Del-->"disabledDesktopBehaviors": [
               "SWIPE_DESKTOP",
               "PULL_DOWN_SEARCH",
               "LONG_CLICK",
               "DRAG"
-            ],
-            <!--DelEnd-->
+            ],<!--DelEnd--> 
             "triggerTypes": [
               "shake"
             ]
