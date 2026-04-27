@@ -1633,7 +1633,7 @@ constructor()
 | -------- | -------- |
 | 201 | Permission denied. |
   
-  **示例：**
+**示例：**
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
