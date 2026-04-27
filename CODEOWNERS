@@ -735,24 +735,24 @@ zh-cn/application-dev/mechanicManager/mechanic-kit-intro.md @hobbycao @saga2025 
 zh-cn/application-dev/mechanicManager/Readme-CN.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/mechanicManager/rotation-control-guide-sys.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/media/Readme-CN.md 无
-zh-cn/application-dev/media/audio/audio-call-development.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/audio-call-overview.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-call-development.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-call-overview.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-collaborative-management-sys.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-ear-monitor-loopback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-ear-monitor.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/audio-fast-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/audio-fast-recording.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-fast-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-fast-recording.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-input-device-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-input-device-switcher.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-kit-intro.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/audio-latency.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-latency.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-output-device-change.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-output-device-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-output-device-switcher.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-performance.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-playback-concurrency.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/audio-playback-overview.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/audio-playback-stream-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-playback-overview.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-playback-stream-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-recording-concurrency.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-recording-overview.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-recording-stream-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -767,20 +767,20 @@ zh-cn/application-dev/media/audio/mic-management.md @songshenke @caixuejiang @ha
 zh-cn/application-dev/media/audio/midi-overview.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/power-saving-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/public-audio-spatialization-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/Readme-CN.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/Readme-CN.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/replace-opensles-by-ohaudio.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-audiocapturer-for-recording.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-audiohaptic-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/using-audiorenderer-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/using-ohaudio-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/using-audiorenderer-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/media/audio/using-ohaudio-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/using-ohaudio-for-recording.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-ohaudio-for-session.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/audio/using-ohmidi.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/using-opensl-es-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/using-opensl-es-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/using-opensl-es-for-recording.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/using-right-streamusage-and-sourcetype.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/using-soundplayer-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/media/audio/using-toneplayer-for-playback-sys.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/media/audio/using-right-streamusage-and-sourcetype.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/media/audio/using-soundplayer-for-playback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/media/audio/using-toneplayer-for-playback-sys.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/media/audio/volume-management.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/media/avcodec/audio-decoding.md @mr-chencxy @dpy2650 @w_Machine_cc
 zh-cn/application-dev/media/avcodec/audio-encoding.md @mr-chencxy @dpy2650 @w_Machine_cc
@@ -2976,23 +2976,23 @@ zh-cn/application-dev/reference/apis-asset-store-kit/Readme-CN.md @yhf @wkr321_e
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioSpatializationManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-c.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-e.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-f.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-i.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-t.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-f.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-i.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-t.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-audioconverter-oh-audioconverter-format.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-audioconverter-oh-audioconverterstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-audioconverter.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-common-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-common-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-converter-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-device-base-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-manager-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -3000,14 +3000,14 @@ zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-resource-manage
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-routing-manager-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-session-base-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-session-manager-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-stream-manager-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-stream-manager-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-suite-base-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-suite-engine-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-volume-manager-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiocapturer-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiorenderer-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiostream-base-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiostreambuilder-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiorenderer-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiostream-base-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-native-audiostreambuilder-h.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-midi-base-h.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-native-midi-h.md @owen_creeper @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -3015,23 +3015,23 @@ zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiocapturerstru
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiodevicedescriptor.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiodevicedescriptorarray.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiomanager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiorendererstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiorendererstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audioresourcemanager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audioroutingmanager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiosession-deactivatedevent.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiosession-statechangedevent.md @hao-liangfei @caixuejiang @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiosession-strategy.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiosessionmanager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiostreambuilderstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiostreaminfo.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiostreammanager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiostreambuilderstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiostreaminfo.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiostreammanager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audiovolumemanager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio-oh-audioworkgroup.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudio.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audiodataarray.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audioformat.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audionodebuilderstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audioformat.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audionodebuilderstruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audionodestruct.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
@@ -3060,7 +3060,7 @@ zh-cn/application-dev/reference/apis-audio-kit/js-apis-inner-multimedia-systemTo
 zh-cn/application-dev/reference/apis-audio-kit/js-apis-systemSoundManager-sys.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/js-apis-systemSoundManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md @ccfriend @liao_qian @w_Machine_cc
-zh-cn/application-dev/reference/apis-audio-kit/Readme-CN.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
+zh-cn/application-dev/reference/apis-audio-kit/Readme-CN.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @boxwall @magekkkk @junlintianxiawy @w_Machine_cc
 zh-cn/application-dev/reference/apis-avcodec-kit/capi-audiocodec.md @mr-chencxy @dpy2650 @w_Machine_cc
 zh-cn/application-dev/reference/apis-avcodec-kit/capi-audiodecoder.md @mr-chencxy @dpy2650 @w_Machine_cc
 zh-cn/application-dev/reference/apis-avcodec-kit/capi-audioencoder.md @mr-chencxy @dpy2650 @w_Machine_cc

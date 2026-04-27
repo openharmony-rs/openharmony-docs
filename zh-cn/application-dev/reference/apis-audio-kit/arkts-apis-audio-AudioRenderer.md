@@ -1,8 +1,8 @@
 # Interface (AudioRenderer)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk; @junlintianxiawy-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
