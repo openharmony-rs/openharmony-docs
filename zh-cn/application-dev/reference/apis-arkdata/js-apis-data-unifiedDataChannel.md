@@ -2674,8 +2674,9 @@ try {
       .catch((updateErr) => {
         console.error(`updateData fail: ${JSON.stringify(updateErr)}`);
       });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+  }).catch((err) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`Failed to insert data. code is ${error.code}, message is ${error.message} `);
   });
 } catch (err) {
   let error: BusinessError = err as BusinessError;
