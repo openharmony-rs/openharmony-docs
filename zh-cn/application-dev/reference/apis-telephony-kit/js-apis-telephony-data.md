@@ -102,7 +102,7 @@ console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 
 getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
-获取蜂窝数据业务的上下行箭头状态（信号栏旁边的上下行箭头），使用callback方式作为异步方法。
+获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用callback方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -141,7 +141,7 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 
 getCellularDataFlowType(): Promise\<DataFlowType\>
 
-获取蜂窝数据业务的上下行箭头状态（信号栏旁边的上下行箭头），使用Promise方式作为异步方法。
+获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用Promise方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -151,7 +151,7 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 | 类型                                     | 说明                                            |
 | ---------------------------------------- | ----------------------------------------------- |
-| Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回获取蜂窝数据业务的上下行状态。 |
+| Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头）。 |
 
 **错误码：**
 
