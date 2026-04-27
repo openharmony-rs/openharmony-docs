@@ -3,7 +3,7 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @jiayanhong-hw-->
+<!--Designer: @yanghaoqian-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 - [Contacts Kit简介](contacts-intro.md)
