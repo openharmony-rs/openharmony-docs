@@ -271,3 +271,72 @@ async function validateCertChainWithCrl(): Promise<void> {
 国密SM2证书链校验，通常需要设置[userId](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509certvalidatorparams)参数。
 
 <!-- @[certificate_chain_validation_for_sm2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/ValidateSm2CertChain.ets) -->
+
+``` TypeScript
+
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { util } from '@kit.ArkTS';
+
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
+}
+
+// ...
+
+async function createX509Cert(certData: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(certData),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+  }
+  return x509Cert;
+}
+
+async function validateSm2CertChain(): Promise<void> {
+  try {
+    let sm2EndEntityCert = await createX509Cert(sm2EndEntityCertData);
+    let sm2IntermediateCaCert = await createX509Cert(sm2IntermediateCaCertData);
+    let sm2RootCaCert = await createX509Cert(sm2RootCaCertData);
+
+    let userId = new Uint8Array([
+      0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38,
+      0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38
+    ]);
+
+    let params: cert.X509CertValidatorParams = {
+      // 不信任的中间证书，用于构建证书链
+      untrustedCerts: [sm2IntermediateCaCert],
+      // 信任锚证书，用于验证证书链
+      trustedCerts: [sm2RootCaCert],
+      // 不校验证书有效期（仅用于示例，实际场景建议开启）
+      validateDate: false,
+      // sm2验签使用的用户ID
+      userId: userId
+    };
+    // 创建证书链校验器实例
+    let validator = cert.createCertChainValidator('PKIX');
+
+    // 验证sm2EndEntityCert证书
+    let result: cert.VerifyCertResult = await validator.validate(sm2EndEntityCert, params);
+    console.info('validate success, certChain length: ' + result.certChain.length);
+    for (let i = 0; i < result.certChain.length; i++) {
+      let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
+      console.info(`Cert ${i} subject: ${subject}`);
+      let alg = result.certChain[i].getSignatureAlgName()
+      console.info(`Cert ${i} Signature Algorithm: ${alg}`);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+  }
+}
+```
