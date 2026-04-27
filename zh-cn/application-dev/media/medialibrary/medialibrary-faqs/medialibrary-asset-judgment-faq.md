@@ -21,12 +21,11 @@
 **示例：**
 
 ```ts
-import { BaseItemInfo } from '@kit.MediaLibraryKit';
 
-function getMediaTypeByMimeType(itemInfo: BaseItemInfo): string {
-  if (itemInfo.mimeType && itemInfo.mimeType.startsWith('video/')) {
+function getMediaTypeByMimeType(mimeType: string): string {
+  if (mimeType.startsWith('video/')) {
     return '视频';
-  } else if (itemInfo.mimeType && itemInfo.mimeType.startsWith('image/')) {
+  } else if (mimeType.startsWith('image/')) {
     return '图片';
   }
   return '未知';
