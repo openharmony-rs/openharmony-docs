@@ -953,7 +953,7 @@ function cancelSerialRight() {
 
 ## BaudRates
 
-表示波特率的枚举
+表示波特率的枚举，单位：比特/秒
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -992,7 +992,7 @@ function cancelSerialRight() {
 
 ## DataBits
 
-表示数据位宽的枚举
+表示数据位宽的枚举，单位：比特
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1019,7 +1019,7 @@ function cancelSerialRight() {
 
 ## StopBits
 
-表示停止位宽的枚举
+表示停止位宽的枚举，单位：比特
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
