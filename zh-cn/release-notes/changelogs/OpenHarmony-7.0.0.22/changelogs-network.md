@@ -31,7 +31,7 @@ API 10
 
 statistics.getUidRxBytes(uid: number, callback: AsyncCallback\<number\>): void
   
-statistics.getUidRxBytes(uid: number): Promise\<numbe\>
+statistics.getUidRxBytes(uid: number): Promise\<number\>
   
 statistics.getUidTxBytes(uid: number, callback: AsyncCallback\<number\>): void
   
