@@ -1738,7 +1738,7 @@ dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) 
 }).catch((error: BusinessError)=> {
   console.error(error.message);
 }).finally(()=> {
-  console.info("after query opened enterprise dlp files");
+  console.info("after querying opened enterprise dlp files");
 });
 ```
 
@@ -1796,6 +1796,6 @@ dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
 }).catch((error: BusinessError)=> {
   console.error(error.message);
 }).finally(()=> {
-  console.info("after close opened enterprise dlp files");
+  console.info("after closing opened enterprise dlp files");
 });
 ``` |
