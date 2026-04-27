@@ -28,7 +28,7 @@
 
 1. 导入模块。
 
-    <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
     
     ``` TypeScript
     import { notificationManager } from '@kit.NotificationKit';
@@ -96,7 +96,7 @@
 
    (3) 创建发布通知的sound信息。
 
-    <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
     
     ``` TypeScript
     // 获取沙箱文件uri
