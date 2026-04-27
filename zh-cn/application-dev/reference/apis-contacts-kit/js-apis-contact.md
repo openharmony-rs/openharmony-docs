@@ -3,7 +3,7 @@
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @librahCode-->
-<!--Designer: @yanghaoqian-->
+<!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 本模块提供联系人管理能力，包括添加联系人、删除联系人、更新联系人等。
