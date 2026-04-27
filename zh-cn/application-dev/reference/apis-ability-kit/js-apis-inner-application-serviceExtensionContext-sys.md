@@ -2881,7 +2881,7 @@ export default class EntryServiceExtAbility extends ServiceExtensionAbility {
 ```
 ## ServiceExtensionContext.requestModalUIExtensionWithAccount
 
-requestModalUIExtensionWithAccount(pickerWant: Want, accountId：int): Promise\<void>
+requestModalUIExtensionWithAccount(pickerWant: Want, accountId：number): Promise\<void>
 
 请求为指定用户在指定的获焦应用上拉起对应类型的UIExtensionAbility。其中，获焦应用通过want.parameters中bundleName来指定，如果未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility；被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需要通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型。仅支持在主线程调用。使用promise形式异步回调。
 
@@ -2908,7 +2908,7 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId：int): Promise\<
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象, 无返回结果。 |
 
 **错误码：**
 

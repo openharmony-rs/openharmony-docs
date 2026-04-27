@@ -2270,7 +2270,7 @@ export default class EntryAbility extends UIAbility {
 
 ### requestModalUIExtensionWithAccount
 
-requestModalUIExtensionWithAccount(pickerWant: Want, accountId：int): Promise\<void>
+requestModalUIExtensionWithAccount(pickerWant: Want, accountId：number): Promise\<void>
 
 请求为指定用户在指定的前台应用上拉起对应类型的UIExtensionAbility。使用Promise异步回调。仅支持在主线程调用。
 
