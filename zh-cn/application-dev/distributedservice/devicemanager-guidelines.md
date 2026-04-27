@@ -131,8 +131,6 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
-   ArkTS-Dyn示例：
-
    <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
    ``` TypeScript
@@ -144,31 +142,8 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
      logger.info('[DeviceManager.RemoteDeviceModel] deviceManager.createDeviceManager begin');
      try {
        let dmInstance = distributedDeviceManager.createDeviceManager('com.samples.devicemanager');
-       this.deviceManager = dmInstance
-       // ...
-       logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
-       value= ${JSON.stringify(this.deviceManager)}`);
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       logger.error(`[DeviceManager.RemoteDeviceModel] createDeviceManager throw error,
-       error=${error} message=${error.message}`);
-     }
-     logger.info('[DeviceManager.RemoteDeviceModel] distributedDeviceManager.createDeviceManager end');
-   }
-   ```
-
-   ArkTS-Sta示例：
-
-   ```ts
-   async createDeviceManager(): Promise<void> {
-     if (typeof (this.deviceManager) != 'undefined') {
-       return;
-     }
-
-     logger.info('[DeviceManager.RemoteDeviceModel] deviceManager.createDeviceManager begin');
-     try {
-       let dmInstance = distributedDeviceManager.createDeviceManager('com.samples.devicemanager.sta');
        this.deviceManager = dmInstance;
+       // ...
        logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
        value= ${JSON.stringify(this.deviceManager)}`);
      } catch (err) {
