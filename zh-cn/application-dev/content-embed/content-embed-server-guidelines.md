@@ -13,8 +13,7 @@
 OE服务端应用使用[OE Extension框架](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md)提供的接口，向客户端应用提供特定格式文档的嵌入与编辑能力。
 
 ## 约束限制
-- 使用此接口，需确认设备具有以下系统能力：SystemCapability.ContentEmbed.ObjectEditor。
-- 申请权限：开发者需要申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，并申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
 
 ## 接口说明
 
@@ -207,9 +206,9 @@ static void NativeOnDestroy(ContentEmbed_ExtensionInstanceHandle instance)
 
 ### 实现服务端OE对象绑定和解绑的回调函数
 
-当OE客户端通过[OH_ContentEmbed_Proxy_StartWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork)函数将客户端OE对象与服务端OE对象绑定时，会触发OE服务端的`RegisterOnObjectAttachFunc` 回调，在该回调中OE服务端需调用服务端OE对象的注册函数以响应OE客户端的请求。
+当OE客户端调用[OH_ContentEmbed_Proxy_StartWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork)函数将客户端OE对象与服务端OE对象绑定时，系统会触发OE服务端的`RegisterOnObjectAttachFunc` 回调。在此回调中，OE服务端需调用服务端OE对象的注册函数以响应OE客户端的请求。
 
-当OE客户端通过[OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork)函数将客户端OE对象与服务端OE对象解除绑定时，会触发OE服务端的`RegisterOnObjectDetachFunc` 回调，在该回调后服务端OE对象将失效。
+当OE客户端调用[OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork)函数将客户端OE对象与服务端OE对象解除绑定时，系统会触发OE服务端的`RegisterOnObjectDetachFunc` 回调，在该回调后服务端OE对象将失效。
 
 ```cpp
 static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
@@ -261,7 +260,7 @@ static void RegisterOnObjectDetachFunc(ContentEmbed_ExtensionInstanceHandle inst
 static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
 {
     // 当前OE文档快照路径
-    std::string path = "/data/storage/el2/base/haps/entry/temp/web_snapshot.png";
+    std::string path = "/data/storage/el2/base/haps/entry/temp/snapshot_demo.png";
     // 判断当前是否有UI生成的缩略图
     FILE *srcFile = fopen(path.c_str(), "rb");
     if (!srcFile) {
@@ -363,7 +362,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
             OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Read failed, errCode: %{public}d.", ret);
             return;
         }
-        std::string tempPath = "/data/storage/el2/base/cache/temp.aaa";
+        std::string tempPath = "/data/storage/el2/base/cache/temp_demo.aaa";
         // 创建输出文件流对象，并以二进制模式打开文件
         std::ofstream outputFile(tempPath, std::ios::out | std::ios::binary);
         // 检查文件是否成功打开
