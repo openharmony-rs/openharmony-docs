@@ -43450,7 +43450,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":25,
 						"name":"export_addNum",
 						"start_line":19
 					}
