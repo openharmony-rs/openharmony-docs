@@ -34,8 +34,8 @@ import  { fileShare } from '@kit.CoreFileKit';
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
 | bundleName | string | 是   | 否 | 应用程序的包名。                                       |
-| path | string | 是   | 否 | 应用程序共享的目录 |
-| permissionMode | number | 是   | 否 | 应用程序共享目录的权限，可填入[OperationMode](./js-apis-fileShare.md#operationmode11)中对应枚举值，例如：OperationMode.READ_MODE。  |
+| path | string | 是   | 否 | 应用程序捐献的目录 |
+| permissionMode | number | 是   | 否 | 应用程序捐献目录的权限，可填入[OperationMode](./js-apis-fileShare.md#operationmode11)中对应枚举值，例如：OperationMode.READ_MODE。  |
 
 ## fileShare.grantUriPermission
 
