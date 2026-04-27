@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-[自由窗口](./freeform-window-overview.md#自由窗口)状态下默认支持窗口大小缩放，且主窗口默认存在标题栏，与非自由窗口存在差异，为避免应用在自由窗口状态下出现界面截断、遮挡或控件叠加等问题，需要应用进行适配。
+[自由窗口](freeform-window-overview.md#自由窗口)状态下默认支持窗口大小缩放，且主窗口默认存在标题栏，与非自由窗口存在差异，为避免应用在自由窗口状态下出现界面截断、遮挡或控件叠加等问题，需要应用进行适配。
 
 本章将列举应用可能出现的布局问题，并提供相应的解决方案。
 
@@ -17,9 +17,9 @@
 
 - 窗口被缩小到极致时，应用布局错乱或内容截断，可通过[限制自由窗口尺寸](#限制自由窗口尺寸)，避免过度缩放。
 
-- 窗口尺寸包含了标题栏区域和窗口内的可绘制区域，如果应用是通过获取窗口尺寸进行内容布局，则需要考虑标题栏的尺寸，避免应用布局被标题栏向下挤压，发生内容截断。
+- 窗口尺寸包含了标题栏区域和窗口内的可绘制区域，如果应用是通过获取窗口尺寸进行内容布局，则需要考虑标题栏的尺寸，[调整布局避让标题栏和窗口三键](#调整布局避让标题栏和窗口三键)，避免应用布局被标题栏向下挤压，发生内容截断。
 
-- 视频类应用无法全屏播放视频，需要调用接口[自由窗口状态下窗口进入全屏显示](#自由窗口状态下窗口进入全屏显示)。
+- 视频类应用无法全屏播放视频，需要调用接口实现[自由窗口状态下窗口进入全屏显示](#自由窗口状态下窗口进入全屏显示)。
 
 ## 查询当前窗口是否处于自由窗口状态
 
@@ -29,7 +29,7 @@
 | -------- | -------- | -------- |
 | [isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22) | 查询当前窗口是否处于自由窗口状态 | 检测窗口是否处于自由窗口状态，以便根据实际情况调整布局或功能。 |
 | [on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22) | 开启自由窗口状态变化事件的监听 | 自由窗口状态发生变化时，通知应用，以便根据实际情况调整布局或功能。 |
-| [off('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#offfreewindowmodechange22) | 关闭自由窗口状态变化事件的监听 | 应用退出前关闭状态变化事件的监听。 |
+| [off('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#offfreewindowmodechange22) | 关闭自由窗口状态变化事件的监听 | 应用退出前，关闭自由窗口状态变化事件的监听。 |
 
 ## 限制自由窗口尺寸
 
@@ -77,16 +77,17 @@
 
 - 应用在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定主窗口尺寸限制。  
 
-  minWindowWidth：窗口最小的宽度，单位为vp。
+  minWindowWidth：窗口的最小宽度，单位为vp。
 
-  minWindowHeight：窗口最小的高度，单位为vp。
+  minWindowHeight：窗口的最小高度，单位为vp。
 
-  maxWindowWidth：窗口最大的宽度，单位为vp。
+  maxWindowWidth：窗口的最大宽度，单位为vp。
 
-  maxWindowHeight：窗口最大的高度，单位为vp。
+  maxWindowHeight：窗口的最大高度，单位为vp。
 
   ```ts
   // ets/entryability/EntryAbility.ets
+  // 示例应用的入口
   import { UIAbility } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   export default class EntryAbility extends UIAbility {
@@ -94,8 +95,11 @@
       windowStage.loadContent('pages/Index', (err) => {});
     }
   }
+  ```
 
+  ```ts
   // ets/pages/Index.ets
+  // 示例应用的主页面，用于创建按钮调用接口启动目标Ability
   import { common, StartOptions } from '@kit.AbilityKit';
   @Entry
   @Component
@@ -144,8 +148,11 @@
       .height('100%')
     }
   }
+  ```
 
+  ```ts
   // ets/windowtestability/WindowTestAbility.ets
+  // 新创建的UIAbility
   import { window } from '@kit.ArkUI';
   import { UIAbility } from '@kit.AbilityKit';
 
@@ -161,8 +168,11 @@
       });
     }
   }
+  ```
 
+  ```json5
   // ets/module.json5
+  // module.json5配置文件，用于配置UIAbility的name，路径等属性
   {
     "module": {
       "name": "entry",
@@ -319,9 +329,9 @@
 
 但需注意，自由窗口状态下窗口尺寸包含了标题栏区域和窗口内的可绘制区域，当需要计算页面元素相对于窗口的位置时，需要考虑避让标题栏。
 
-**标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域，标题栏默认的高度为37 vp。
+**标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域。
 
-示意图中，windowRect为窗口尺寸，drawableRect为可绘制区域尺寸，decorHeight为标题栏高度，单位为vp，density为本窗口所处屏幕的系统显示大小缩放系数。
+示意图中，windowRect为窗口尺寸，类型为rect；drawableRect为可绘制区域尺寸，类型为rect；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number。
 
 ![window](figures/window.png)
 
@@ -334,7 +344,7 @@
 
 - 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
 
-- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现[自由窗口的沉浸式布局](../windowmanager/window-terminology.md#沉浸式布局)。
+- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](window-terminology.md#沉浸式布局)。
 
 **窗口三键**是指窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。
 
@@ -351,117 +361,133 @@
 2. 通过[getTitleButtonRect()](../reference/apis-arkui/arkts-apis-window-Window.md#gettitlebuttonrect11)接口或[on('windowTitleButtonRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowtitlebuttonrectchange11)接口获取到窗口三键的位置和尺寸，在页面顶部元素布局时，去除窗口三键的区域。
 
    ```ts
-   // EntryAbility.ets
-   import { UIAbility } from '@kit.AbilityKit';
-   import { window } from '@kit.ArkUI';
-   export default class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', (err) => {
-         if (err.code) {
-           console.info('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-           return;
-         }
-         AppStorage.setOrCreate<window.WindowStage>('windowStage', windowStage);
-       });
-     }
-   }
+    // EntryAbility.ets
+    // 示例应用的入口
+    import { UIAbility } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        windowStage.loadContent('pages/Index', (err) => {
+          if (err.code) {
+            console.info('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            return;
+          }
+          AppStorage.setOrCreate<window.WindowStage>('windowStage', windowStage);
+        });
+      }
+    }
    ```
 
    ```ts
-   // Index.ets
-   import { window } from '@kit.ArkUI';
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = '顶部布局区域,不隐藏标题栏，不避让窗口三键';
-     private mainWindow: window.Window | null = null;
-     @State private topAreaHeight: number = 50;
-     @State private topAreaWidth: number | string = '100%';
-     @State private titleButtonRect: window.TitleButtonRect = {
-       right: 0,
-       top: 0,
-       width: 0,
-       height: 0
-     };
-     @State private windowSize: window.Size = { width: 0, height: 0 }
-     aboutToAppear(): void {
-       let windowStage = AppStorage.get<window.WindowStage>('windowStage');
-       if (!windowStage) {
-         return;
-       }
-       this.mainWindow = windowStage.getMainWindowSync();
-       this.mainWindow.on("windowSizeChange", (data) => {
-         this.windowSize = data;
-         this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
-       })
-     }
-     private updateTitleButtonRect(): void {
-       if (!this.mainWindow) {
-         return;
-       }
-       try {
-         let WindowProperties = this.mainWindow.getWindowProperties();
-         this.windowSize.width = WindowProperties.drawableRect.width;
-         this.titleButtonRect = this.mainWindow.getTitleButtonRect();
-         this.topAreaHeight = this.titleButtonRect.height;
-         this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
-       } catch (exception) {
-         console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);
-       }
-     }
-     build() {
-       RelativeContainer() {
-         Row() {
-           Row() {
-             Stack() {
-               Row() {
-                 Text(this.message)
-               }.width('100%').height('100%')
-               .justifyContent(FlexAlign.Center)
-               .backgroundColor(Color.Pink)
-             }.position({ x: 0, y: 0 })
-             .width(this.topAreaWidth)
-           }
-           .position({ x: 0, y: 0 })
-           .height(this.topAreaHeight)
-           .width('100%')
-           Row() {
-             Button('计算顶部布局区域，隐藏标题栏，避让窗口三键')
-               .onClick(() => {
-                 if (!this.mainWindow) {
-                   return;
-                 }
-                 this.message = '顶部布局区域，隐藏标题栏，避让窗口三键';
-                 this.mainWindow.setWindowDecorVisible(false);
-                 this.updateTitleButtonRect();
-               })
-             Button('顶部布局区域,不隐藏标题栏，不避让窗口三键')
-               .onClick(() => {
-                 if (!this.mainWindow) {
-                   return;
-                 }
-                 this.message = '顶部布局区域，不隐藏标题栏，不避让窗口三键';
-                 this.mainWindow.setWindowDecorVisible(true);
-                 this.topAreaHeight = 50;
-                 this.topAreaWidth = '100%';
-               })
-           }.height('50%')
-           .width('100%')
-           .alignItems(VerticalAlign.Center)
-           .justifyContent(FlexAlign.Center)
-         }
-         .height('100%')
-         .width('100%')
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
+    // Index.ets
+    // 示例应用的主页面
+    import { window } from '@kit.ArkUI';
+
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Top layout area, do not hide the title bar.';
+      private mainWindow: window.Window | null = null;
+      @State private topAreaHeight: number = 50;
+      @State private topAreaWidth: number | string = '100%';
+      @State private titleButtonRect: window.TitleButtonRect = {
+        right: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
+      @State private windowSize: window.Size = { width: 0, height: 0 }
+
+      aboutToAppear(): void {
+        let windowStage = AppStorage.get<window.WindowStage>('windowStage');
+        if (!windowStage) {
+          return;
+        }
+        this.mainWindow = windowStage.getMainWindowSync();
+        this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
+        this.mainWindow.on("windowSizeChange", (data) => {
+          this.windowSize = data;
+          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+        })
+      }
+
+      private updateTitleButtonRect(): void {
+        if (!this.mainWindow) {
+          return;
+        }
+        try {
+          let WindowProperties = this.mainWindow.getWindowProperties();
+          this.windowSize.width = WindowProperties.drawableRect.width;
+          this.titleButtonRect = this.mainWindow.getTitleButtonRect();
+          this.topAreaHeight = this.titleButtonRect.height;
+          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+          console.log(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
+        } catch (exception) {
+          console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+      }
+
+      build() {
+        RelativeContainer() {
+          Row() {
+            Row() {
+              Stack() {
+                Row() {
+                  Text(this.message)
+                }.width('100%').height('100%')
+                .justifyContent(FlexAlign.Center)
+                .backgroundColor(Color.Pink)
+              }.position({ x: 0, y: 0 })
+              .width(this.topAreaWidth)
+            }
+            .position({ x: 0, y: 0 })
+            .height(this.topAreaHeight)
+            .width('100%')
+
+            Row() {
+              Button('hide the title bar and avoid the three buttons.')
+                .onClick(() => {
+                  if (!this.mainWindow) {
+                    return;
+                  }
+                  this.message = 'Top layout area, hide the title bar and avoid the three buttons.';
+                  this.mainWindow.setWindowDecorVisible(false);
+                  this.updateTitleButtonRect();
+                })
+              Button('do not hide the title bar.')
+                .onClick(() => {
+                  if (!this.mainWindow) {
+                    return;
+                  }
+                  this.message = 'Top layout area, do not hide the title bar.';
+                  this.mainWindow.setWindowDecorVisible(true);
+                  this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
+                  this.topAreaWidth = '100%';
+                })
+                .margin(20)
+            }.height('50%')
+            .width('100%')
+            .alignItems(VerticalAlign.Center)
+            .justifyContent(FlexAlign.Center)
+          }
+          .height('100%')
+          .width('100%')
+        }
+        .height('100%')
+        .width('100%')
+      }
+    }
    ```
+用例图示如下：
+图一表示未隐藏标题栏，应用最顶部的布局区域（粉色区域）只能在标题栏之下。
+![existTitleBar](figures/existTitleBar.png)
+
+图二表示隐藏标题栏，避让三键，推荐的应用最顶部的布局区域（粉色区域）。
+![notExistTitleBar](figures/notExistTitleBar.png)
 
 ## 自由窗口状态下窗口进入全屏显示
 
-在2in1设备或Tablet设备的电脑模式下，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、Dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、Dock栏，则需要进行适配。
+在2in1设备或开启电脑模式的Tablet设备上，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、Dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、Dock栏，则需要进行适配。
 
 典型场景及对应方案如下：
 
