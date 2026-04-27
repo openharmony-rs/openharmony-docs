@@ -16,7 +16,7 @@ function GetImageLatitude(context : Context) {
   console.info("latitude : " + latitude);
 }
 ```
-打开图片后，解析图片无法获取图片中的地理位置信息
+使用只读模式打开图片后，解析图片无法获取图片中的地理位置信息
 
 ## 图片去隐私
 [Media Library Kit](../photoAccessHelper-overview.md)（媒体文件管理服务）提供了四档图片去隐私级别；用户分享图片时可以根据需要手动选择去隐私级别，而在默认状态下，系统会使用脱敏地理位置信息级别对图片进行去隐私处理。
