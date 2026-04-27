@@ -105,7 +105,7 @@
     ```
 3. 发布携带自定义铃声的通知。
 
-    <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
     
     ``` TypeScript
     let notificationRequest: notificationManager.NotificationRequest = {
