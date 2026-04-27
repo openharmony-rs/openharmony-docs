@@ -268,6 +268,10 @@ let properties = new unifiedDataChannel.UnifiedDataProperties();
 properties.extras = title;
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+properties.uriAuthorizationPolicies = [
+  // 从API 26.0.0版本开始，支持uri授权策略
+  unifiedDataChannel.UriPermission.WRITE
+];
 properties.getDelayData = ((type: string) => {
   if (type == 'general.plain-text') {
     let plainTextDetails: Record<string, string> = {
