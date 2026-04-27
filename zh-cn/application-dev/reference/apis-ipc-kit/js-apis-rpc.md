@@ -1482,7 +1482,7 @@ readParcelable(dataIn: Parcelable): void
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| dataIn | [Parcelable](#parcelable9) | 是   | 需要从MessageSequence读取成员变量的对象。 |
+ | dataIn | [Parcelable](#parcelable9) | 是   | 需要从MessageSequence读取成员变量的对象，使用前请先实例化可序列化对象。 |
 
 **错误码：**
 
@@ -2871,8 +2871,7 @@ readParcelableArray(parcelableArray: Parcelable[]): void
 
 | 参数名          | 类型         | 必填 | 说明                       |
 | --------------- | ------------ | ---- | -------------------------- |
-| parcelableArray | [Parcelable](#parcelable9)[] | 是   | 要读取的可序列化对象数组。 |
-
+| parcelableArray | [Parcelable](#parcelable9)[] | 是   | 要读取的可序列化对象数组，使用前请先实例化可序列化对象，且序列化与反序列化数组长度须一致。 |
 **错误码：**
 
 以下错误码的详细介绍请参见[ohos.rpc错误码](errorcode-rpc.md)
