@@ -1231,3 +1231,17 @@ Allows an application to install the PCIe driver.
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0
+
+## ohos.permission.PRINTER_DRIVER
+
+Allows an application to manage the printing system.
+
+<!--RP89--><!--RP89End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+
+**Since**: 24
