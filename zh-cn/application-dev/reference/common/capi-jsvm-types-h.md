@@ -1,7 +1,7 @@
 # jsvm_types.h
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -91,6 +91,7 @@
 | 名称                                                                                                                                                                 | typedef关键字 | 描述 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------| -- | -- |
 | [typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* finalizeHint)](#jsvm_finalize)                                                     | JSVM_CDECL* JSVM_Finalize | 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会在关联的JS对象被GC回收时被调用，用以执行native的清理动作。 |
+| [typedef void (JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied)](#jsvm_finalizearraybuffer)                   | JSVM_CDECL* JSVM_FinalizeArrayBuffer | 函数指针类型，在调用[OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口时，可传入该类型的函数调用。回调函数将会在接口创建的ArrayBuffer对象被GC回收时被调用，用以执行native的清理动作（必须先定义JSVM_EXPERIMENTAL宏才能使用此接口）。 |
 | [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | ASCII输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_handlerforgc)                         | JSVM_CDECL* JSVM_HandlerForGC | GC回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const char* detail,bool isHeapOOM)](#jsvm_handlerforoomerror)                             | JSVM_CDECL* JSVM_HandlerForOOMError | OOM-Error回调的函数指针类型。 |
@@ -601,6 +602,32 @@ typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* f
 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会在关联的JS对象被GC回收时被调用，用以执行native的清理动作。
 
 **起始版本：** 11
+
+### JSVM_FinalizeArrayBuffer()
+
+```c
+#ifdef JSVM_EXPERIMENTAL
+typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied);
+#endif // JSVM_EXPERIMENTAL
+```
+
+**描述**
+
+> **注意**：
+>
+> 此接口是实验性接口，需定义`JSVM_EXPERIMENTAL`宏后方可使用。
+
+函数指针类型，在调用[OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口时，可传入该类型的函数调用。回调函数将会在关联的ArrayBuffer对象被回收时被调用，用以执行native的清理动作。使用`JSVM_FinalizeArrayBuffer`请遵循以下规则：
+
+- 由于`JSVM_FinalizeArrayBuffer`回调函数的调用时机具有不确定性（可能是GC期间，也可能是虚拟机销毁期间等），回调时JSVM环境可能已经销毁，因此`JSVM_FinalizeArrayBuffer`的`env`参数始终是NULL。
+
+- 回调函数仅做资源释放，不要执行复杂逻辑。回调函数中不能调用其他JSVM API。
+
+- 回调函数可能在非JSVM主线程上调用，如果回调需要访问共享状态，必须使用原子操作或锁进行同步。
+
+- 根据`copied`参数决定内存的释放策略，详见[使用JSVM-API接口从外部内存创建ArrayBuffer](../../napi/use-jsvm-about-external-arraybuffer.md)。
+
+**起始版本：** 26.0.0
 
 ### JSVM_OutputStream()
 

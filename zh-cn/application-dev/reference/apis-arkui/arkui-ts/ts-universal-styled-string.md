@@ -182,7 +182,7 @@ static fromHtml(html: string): Promise\<StyledString>
 | \<sub\><sup>20+</sup>     | 下标文本。                   |
 | \<cite\>    | 斜体文本。<br/>**起始版本：** 26.0.0        |
 | \<dfn\>     | 斜体文本。<br/>**起始版本：** 26.0.0        |
-| \<small\>   | 斜体文本。<br/>**起始版本：** 26.0.0        |
+| \<small\>   | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。<br/>**起始版本：** 26.0.0        |
 | \<h1\>      | 一级标题。<br/>**起始版本：** 26.0.0        |
 | \<h2\>      | 二级标题。<br/>**起始版本：** 26.0.0        |
 | \<h3\>      | 三级标题。<br/>**起始版本：** 26.0.0        |
@@ -530,7 +530,7 @@ appendStyledString(other: StyledString): void
 ## StyledStringValue
 
 type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyle |
-TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan | UserDataSpan | BackgroundColorStyle
+TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan | UserDataSpan | BackgroundColorStyle | LineSpacingStyle
 
 样式对象类型，用于设置属性字符串的样式。
 
@@ -555,6 +555,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | [UserDataSpan](#userdataspan) | UserDataSpan样式。 |
 | [UrlStyle](#urlstyle14) | 超链接样式。 |
 | [BackgroundColorStyle](#backgroundcolorstyle14) | 文本背景颜色样式。 |
+| [LineSpacingStyle](#linespacingstyle) | 文本行间距。**起始版本：** 26.0.0 |
 
 ## StyleOptions对象说明
 
@@ -604,6 +605,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | strokeWidth<sup>20+</sup> | number                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md)。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br/>默认返回字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                           |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 获取可变字体的属性数组。<br/>默认值：空数组，表示未设置可变字体的属性。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 `fontWeight`参数与返回值的关系如下：
 | 参数        | 返回值 |
@@ -655,6 +657,7 @@ constructor(value?: TextStyleInterface)
 | strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是percent，当前设置不生效，处理为0。<br/>设置值小于0时为实心字，大于0时为空心字。<br/>默认值为0。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值为字体颜色，设置异常值时取字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 可变字体的属性。<br/>默认值：空数组，表示未设置可变字体的属性。<br/>fontVariations属性的优先级高于fontWeight。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## GestureStyle
 
@@ -842,13 +845,12 @@ constructor(value: LengthMetrics)
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| lineHeight  | number |  是  |  否  | 获取属性字符串的文本行高。<br/>单位：[vp](ts-pixel-units.md) |
+| lineHeight  | number |  是  |  否  | 获取属性字符串的文本行高。<br/>单位：[vp](ts-pixel-units.md)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| lineHeightMultiple  | number |  是  |  是  | 文本行高的倍数值。实际生效的行高为该行最高的字体高度与倍数的乘积。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### constructor
 
@@ -864,7 +866,68 @@ constructor(lineHeight: LengthMetrics)
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| lineHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本行高设置项。如果LengthMetrics的value值不大于0时，不限制文本行高，自适应字体大小。 |
+| lineHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本行高设置项。LengthMetrics的value值大于0时，文本行高设置生效，否则文本行高自适应字体大小。 |
+
+### constructor
+
+constructor(lineHeight: LengthMetrics, lineHeightMultiple?: number)
+
+文本行高及倍数的构造函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明   |
+| ------- | --------------------------------- | ---- | --------------------------------- |
+| lineHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本行高设置项。LengthMetrics的value值大于0时，文本行高设置生效，否则文本行高自适应字体大小。 |
+| lineHeightMultiple | number | 否   | 文本行高的倍数值。 <br/>取值范围：[0, +∞) <br/>**说明：** 倍数大于0时，仅lineHeightMultiple生效，此时行高为该行最高的字体高度与倍数的乘积。倍数小于等于0时，行高以lineHeight值生效。支持小数。 |
+
+## LineSpacingStyle
+
+文本行间距对象说明。
+
+### 属性
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称           | 类型              | 只读   | 可选   | 说明     |
+| ------------ |---------------------| ---- | ---- | ------ |
+| lineSpacing  | number |  是  |  否  | 文本行间距。<br/>取值范围：[0, +∞)<br/>单位：[vp](ts-pixel-units.md) |
+| options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明) |  是  |  是  | 行间距配置项。 |
+
+### constructor
+
+constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
+
+文本行间距的构造函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明   |
+| ------- | --------------------------------- | ---- | --------------------------------- |
+| lineSpacing | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本的行间距。<br/>默认值：0.0<br/>取值范围：[0, +∞) <br/>**说明：** LengthMetrics的value值小于0时，取默认值0.0。 |
+| options | [LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明) | 否   | 行间距的配置项。<br/>默认值：{ onlyBetweenLines: false } |
 
 ## TextShadowStyle
 
@@ -1267,6 +1330,7 @@ abstract getLeadingMargin(): LengthMetrics
 | LINE_HEIGHT | 5 | 文本行高样式键。[LineHeightStyle](./ts-universal-styled-string.md#lineheightstyle)所属键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | BACKGROUND_COLOR<sup>14+</sup> | 6 | 文本背景色样式键。[BackgroundColorStyle](./ts-universal-styled-string.md#backgroundcolorstyle14)所属键。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | URL<sup>14+</sup> | 7 | 超链接样式键。[UrlStyle](./ts-universal-styled-string.md#urlstyle14)所属键。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| LINE_SPACING  | 8 | 文本行间距样式键。[LineSpacingStyle](./ts-universal-styled-string.md#linespacingstyle)所属键。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | GESTURE | 100 | 事件手势键。[GestureStyle](./ts-universal-styled-string.md#gesturestyle)所属键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | PARAGRAPH_STYLE | 200 | 段落样式键。[ParagraphStyle](./ts-universal-styled-string.md#paragraphstyle)所属键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | IMAGE | 300 | 图片键。[ImageAttachment](./ts-universal-styled-string.md#imageattachment)所属键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -2589,14 +2653,14 @@ struct styled_string_html_convert_demo {
         .margin(5)
 
       // 按钮1:将HTML转换为SpanString
-      Button("将HTML转换为SpanString").onClick(async () => {
+      Button("Convert HTML to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML to SpanString successfully.";
       }).margin(5)
 
       // 按钮2:将SpanString转换为HTML
-      Button("将SpanString转换为HTML").onClick(() => {
+      Button("Convert SpanString to HTML").onClick(() => {
         if (this.spanString) {
           // 将spanString转换为HTML并替换当前的HTML状态
           const newHtml = StyledString.toHtml(this.spanString);
@@ -2610,14 +2674,14 @@ struct styled_string_html_convert_demo {
       }).margin(5)
 
       // 按钮3:将HTML转换回SpanString
-      Button("将HTML转换回SpanString").onClick(async () => {
+      Button("Convert HTML back to SpanString").onClick(async () => {
         this.spanString = await StyledString.fromHtml(this.html);
         this.controller.setStyledString(this.spanString);
         this.resultText = "Converted HTML back to SpanString successfully.";
       }).margin(5)
 
       // 重置：重置HTML和SpanString
-      Button("重置").onClick(() => {
+      Button("Reset").onClick(() => {
         this.html = "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
         this.spanString = undefined;
         this.controller.setStyledString(new StyledString("")); // 使用空的StyledString实例
@@ -3125,3 +3189,53 @@ struct html_convert_demo {
 }
 ```
 ![html_convert_demo](figures/html_convert_demo.png)
+
+### 示例19（设置可变字体的属性）
+
+该示例通过[TextStyle](#textstyle)的fontVariations属性设置可变字体的属性。
+ 
+从API版本26.0.0开始，[TextStyle](#textstyle)新增了fontVariations属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct StyledStringExample {
+  controller: TextController = new TextController();
+  @State weightValue: number = 400;
+
+  aboutToAppear() {
+    let textStyle = new TextStyle({
+      // wght代表可变字体的字重属性
+      fontVariations: [{ axis: 'wght', value: this.weightValue }]
+    });
+    let styledString = new StyledString('Hello World !', [{
+      styledKey: StyledStringKey.FONT,
+      styledValue: textStyle
+    }]);
+    this.controller.setStyledString(styledString);
+  }
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.controller })
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+          let textStyle = new TextStyle({
+            // wght代表可变字体的字重属性
+            fontVariations: [{ axis: 'wght', value: this.weightValue }]
+          });
+          let styledString = new StyledString('Hello World !', [{
+            styledKey: StyledStringKey.FONT,
+            styledValue: textStyle
+          }]);
+          this.controller.setStyledString(styledString);
+        })
+    }
+    .width('100%')
+  }
+}
+```
+![StyledStringFontVariations](figures/FontVariations.gif)

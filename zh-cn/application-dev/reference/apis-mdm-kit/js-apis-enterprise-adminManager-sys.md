@@ -1,8 +1,8 @@
 # @ohos.enterprise.adminManager（admin权限管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -26,7 +26,7 @@ import { adminManager } from '@kit.MDMKit';
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, callback: AsyncCallback\<void>): void
 
-激活指定的设备管理应用。超级设备管理应用仅在管理员用户下可激活。激活后，应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启并在用户切换后自启。使用callback异步回调。
+激活指定的设备管理应用。超级设备管理应用仅在首用户（u100）下可激活。激活后，应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启并在用户切换后自启。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -88,7 +88,7 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, userId: number, callback: AsyncCallback\<void>): void
 
-激活指定用户（通过userId指定）下指定的设备管理应用，其中超级管理应用仅能在管理员用户下被激活。使用callback异步回调。
+激活指定用户（通过userId指定）下指定的设备管理应用，其中超级管理应用仅能在首用户（u100）下被激活。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -151,7 +151,7 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, userId?: number): Promise\<void>
 
-激活当前/指定用户下指定的设备管理应用，其中超级管理应用仅能在管理员用户下被激活。使用promise异步回调。
+激活当前/指定用户下指定的设备管理应用，其中超级管理应用仅能在首用户（u100）下被激活。使用promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -581,7 +581,7 @@ adminManager.isAdminEnabled(wantTemp, 100).then((result) => {
 
 isSuperAdmin(bundleName: String, callback: AsyncCallback\<boolean>): void
 
-根据bundleName查询管理员用户下的超级设备管理应用是否被激活。使用callback异步回调。
+根据bundleName查询首用户（u100）下的超级设备管理应用是否被激活。使用callback异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -627,7 +627,7 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 
 isSuperAdmin(bundleName: String): Promise\<boolean>
 
-根据bundleName查询管理员用户下的超级设备管理应用是否被激活。使用promise异步回调。
+根据bundleName查询首用户（u100）下的超级设备管理应用是否被激活。使用promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -677,7 +677,7 @@ adminManager.isSuperAdmin(bundleName).then((result) => {
 
 getSuperAdmin(): Promise\<Want>
 
-查询管理员用户下的超级设备管理应用。使用promise异步回调。
+查询首用户（u100）下的超级设备管理应用。使用promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1509,8 +1509,8 @@ try {
 
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
-| ADMIN_TYPE_NORMAL | 0x00 | 普通设备管理应用。 |
-| ADMIN_TYPE_SUPER  | 0x01 | 超级设备管理应用。 |
+| ADMIN_TYPE_NORMAL | 0x00 | 普通设备管理应用，激活后应用可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。 |
+| ADMIN_TYPE_SUPER  | 0x01 | 超级设备管理应用，激活后应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。 |
 
 ## RunningMode<sup>19+</sup>
 

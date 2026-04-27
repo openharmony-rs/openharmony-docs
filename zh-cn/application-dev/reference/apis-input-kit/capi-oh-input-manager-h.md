@@ -246,6 +246,7 @@
 | [int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventdowntime) | - | 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。|
 | [Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)](#oh_input_settoucheventtooltype) | - | 设置触屏输入事件的工具类型。|
 | [Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventtooltype) | - | 获取触屏输入事件的工具类型。 |
+| [Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)](#oh_input_bindinputdevicetodisplay) | - | 绑定指定输入设备到指定屏幕。|
 
 ## 枚举类型说明
 
@@ -4300,6 +4301,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 获取当前屏幕上鼠标的坐标点。
 
+从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。
+
 **设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
 
 **起始版本：** 20
@@ -4391,8 +4394,6 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 通常与[OH_Input_AddKeyEventHook](#oh_input_addkeyeventhook)接口配合使用。
 
 **起始版本：** 21
-
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **参数：**
 
@@ -4702,8 +4703,6 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 设置自定义鼠标光标样式。
 
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
-
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -5135,3 +5134,33 @@ Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_Touch
 | 类型 | 说明 |
 | -- | -- |
 | [Input_TouchEventToolType](#input_toucheventtooltype) | 工具类型。 |
+
+### OH_Input_BindInputDeviceToDisplay()
+
+```c
+Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)
+```
+
+**描述**
+
+绑定指定输入设备到指定屏幕。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**需要权限：** ohos.permission.INPUT_DEVICE_CONFIGURATOR
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t inputDeviceId | 指定输入设备的设备ID。 |
+| int32_t displayId | 指定屏幕的屏幕ID。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：<br>  [INPUT_SUCCESS](#input_result)表示操作成功。<br>  [INPUT_PERMISSION_DENIED](#input_result)表示权限校验失败。<br>  [INPUT_PARAMETER_ERROR](#input_result)表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result)表示服务异常，请重试。 |

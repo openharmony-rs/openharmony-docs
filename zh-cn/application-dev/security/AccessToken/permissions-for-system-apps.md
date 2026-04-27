@@ -5569,6 +5569,20 @@
 
 **起始版本**：23
 
+## ohos.permission.RESTORE_END_NOTIFICATION
+
+允许系统应用订阅备份框架结束恢复的事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 允许应用获取本地账号授权。
@@ -5613,7 +5627,7 @@
 
 **起始版本**：24
 
-### ohos.permission.READ_APP_PROTECTION_RECORD
+## ohos.permission.READ_APP_PROTECTION_RECORD
 
 允许系统应用读取应用保护记录。
 
@@ -5627,7 +5641,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.WRITE_APP_PROTECTION_RECORD
+## ohos.permission.WRITE_APP_PROTECTION_RECORD
 
 允许系统应用修改应用保护记录。
 
@@ -5641,7 +5655,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.READ_SPAM_SHIELD_SETTING
+## ohos.permission.READ_SPAM_SHIELD_SETTING
 
 允许系统应用读取骚扰拦截配置项。
 
@@ -5655,7 +5669,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+## ohos.permission.WRITE_SPAM_SHIELD_SETTING
 
 允许系统应用修改骚扰拦截配置项。
 
@@ -5685,7 +5699,7 @@
 
 **起始版本**：24
 
-### ohos.permission.MODIFY_AGENT_CARD
+## ohos.permission.MODIFY_AGENT_CARD
 
 允许系统应用更新和删除AgentCard。
 
@@ -5699,7 +5713,7 @@
 
 **起始版本**：26.0.0
 
-### ohos.permission.START_ABILITY_TO_PAGE
+## ohos.permission.START_ABILITY_TO_PAGE
 
 允许系统应用启动其他应用到指定页面栈。
 
@@ -5727,34 +5741,6 @@
 
 **起始版本**：26.0.0
 
-## ohos.permission.ENCRYPT_VOLUME_MANAGER
-
-允许应用调用storage_manager服务中管理卷加密的接口。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：General
-
-**起始版本**：24
-
-## ohos.permission.ODD_MANAGER
-
-允许应用调用storage_manager服务中管理光驱刻录的接口。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：General
-
-**起始版本**：24
-
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。
@@ -5769,6 +5755,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.ASSET_CACHE_MANAGER
+
+允许应用通过资产缓存服务管理接口下发、控制、查询任务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 允许应用和服务接入端侧模型部署态管理。
@@ -5782,3 +5782,59 @@
 **支持设备**：General
 
 **起始版本**：24
+
+## ohos.permission.ACCESS_SUPPORT_FEEDBACK
+
+允许系统应用拉起问题反馈页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_SUPPORT_HELP
+
+允许系统应用拉起智能客服页面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+允许系统应用使用数字凭证服务的统一管理能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+允许应用使用户外模式服务提供海拔订阅能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0

@@ -119,7 +119,7 @@ module.json5配置文件包含以下标签。
 | srcEntry | 标识AbilityStage组件的代码路径，详情参考[AbilityStage组件容器](../application-models/abilitystage.md)，取值为长度不超过127字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | description | 标识当前Module的描述信息，开发者可以通过该标签描述当前模块的功能与作用，取值为长度不超过255字节的字符串，可以采用字符串资源索引格式。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | <!--DelRow-->process | 标识当前Module的进程名，取值为长度不超过31字节的字符串。如果在HAP标签下配置了process，则该Module的所有UIAbility、DataShareExtensionAbility、ServiceExtensionAbility都运行在该进程中。<br/>**说明：**<br/>开启[多实例特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)生效，三方应用配置不生效。 | 字符串 | 该标签可缺省，缺省为app.json5文件下app标签下的bundleName。 |
-| mainElement | 标识当前Module的入口UIAbility名称，取值为长度不超过255字节的字符串。<br/>**说明：**<br/>如果在[abilities](#abilities标签)中配置了多个入口[UIAbility](../application-models/uiability-overview.md)，则桌面图标、名称和启动入口以该标签配置为准。如果该标签缺省或未匹配到，则按照ASCII字典序对UIAbility的name标签正序排序，返回第一个作为桌面图标、名称和启动入口。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| mainElement | 标识当前Module的入口UIAbility名称，取值为长度不超过255字节的字符串，详情请参考配置应用图标和名称中的[配置优先级和生成策略](./layered-image.md#配置优先级和生成策略)。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | [deviceTypes](#devicetypes标签) | 标识当前Module可以运行在哪类设备上。<br/>**说明：**<br/>当存在多个模块时，各模块的配置可以不同，但都必须包含将要安装的设备类型，以确保正常运行。 | 字符串数组 | 该标签不可缺省。 |
 | deliveryWithInstall | 标识当前Module是否在用户主动安装的时候安装，即该Module对应的HAP/HSP是否跟随应用一起安装。<br/>-&nbsp;true：跟随应用一起安装。<br/>-&nbsp;false：不跟随应用一起安装。<!--RP11--><!--RP11End--> | 布尔值 | 当前Module类型为HAP或HSP时，该标签不可缺省。 |
 | installationFree | 标识当前Module是否支持免安装特性。<br/>-&nbsp;true：表示支持免安装特性，且符合免安装约束。<br/>-&nbsp;false：表示不支持免安装特性。 | 布尔值 | 该标签可缺省。该标签在编译构建时自动生成，手动配置不生效。<br/>**说明：**<br/>当[bundleType](./app-configuration-file.md#配置文件标签)为原子化服务时，该标签自动配置为true。反之，该标签自动配置为false。 |
@@ -1325,13 +1325,13 @@ definePermissions标签示例：
 
 ## executableBinaryPaths标签
 
-标识应用内可执行二进制文件的路径信息。
+标识应用内可执行二进制文件的路径信息。从API version 24开始，支持该标签。
 
 **表31** executableBinaryPaths标签说明
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| path | 标识可执行文件的路径。该路径是相对路径，其根目录为libs库的解压路径。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| path | 标识可执行文件的路径。该路径是相对路径，必须以`libs/{abi}/`为前缀，其中`{abi}`为设备CPU架构类型（如arm64-v8a、x86_64、armeabi-v7a），即可执行二进制文件必须配置在`libs/{abi}/`目录下。 | 字符串 | 该标签不可缺省。 |
 
 
 executableBinaryPaths示例：
@@ -1344,7 +1344,7 @@ executableBinaryPaths示例：
     // ...
     "executableBinaryPaths": [
       {
-        "path": "framework/test.bin"
+        "path": "libs/arm64-v8a/test.bin"
       }
     ],
     // ...

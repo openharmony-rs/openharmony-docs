@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
-<!--Tester: @leiyuqian-->
+<!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标志符（Uniform Resource Identifier，URI）以读写权限授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行相关open、read、write等操作，实现文件分享。
@@ -18,6 +18,24 @@
 ```ts
 import  { fileShare } from '@kit.CoreFileKit';
 ```
+
+## SharedDirectoryInfo
+
+应用捐献给系统的目录信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。  
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+| 名称  | 类型  | 只读 | 可选 | 说明                                                   |
+|------|-------|------|-----|------------------------------------------------------|
+| bundleName | string | 是   | 否 | 应用程序的包名。                                       |
+| path | string | 是   | 否 | 应用程序捐献的目录 |
+| permissionMode | number | 是   | 否 | 应用程序捐献目录的权限，可填入[OperationMode](./js-apis-fileShare.md#operationmode11)中对应枚举值，如需授予多个权限，可以组合使用，例如使用READ_MODE \| WRITE_MODE授予读写权限。  |
 
 ## fileShare.grantUriPermission
 
@@ -269,3 +287,166 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
     }
   }
   ```
+
+## fileShare.getSharedDirectoryInfo
+
+getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
+
+获取所有应用捐献的沙箱目录。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**返回值：**
+
+|类型|说明|
+| ------ | ------ |
+| Promise&lt;Array&lt;[SharedDirectoryInfo](#shareddirectoryinfo)&gt;&gt; | Promise对象，返回所有应用捐献的沙箱目录数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID    | 错误信息       |
+|----------| --------- |
+| 201      | Permission verification failed.|
+| 202      | The caller is not a system application.|
+| 801      | Capability not supported. |
+| 13900001      | Operation not permitted. |
+| 13900011      | Out of memory. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function getSharedDirectoryInfo() {
+  try {
+    fileShare.getSharedDirectoryInfo().then((infos: Array<fileShare.SharedDirectoryInfo>) => {
+      infos.forEach((info: fileShare.SharedDirectoryInfo) => {
+        console.info("bundleName=" + info.bundleName + " path=" + info.path + " mode=" + info.permissionMode);
+      });
+    }).catch((err: BusinessError) => {
+      console.error("getSharedDirectoryInfo err : " + JSON.stringify(err))
+    });
+  }
+  catch (error) {
+    console.error('getSharedDirectoryInfo error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
+
+
+## fileShare.grantSharedDirectoryPermission
+
+grantSharedDirectoryPermission(): Promise&lt;void&gt;
+
+授予应用捐献目录的临时访问权限。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**返回值：**
+
+|类型|说明|
+| ------ | ------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID    | 错误信息       |
+|----------| --------- |
+| 201      | Permission verification failed.|
+| 202      | The caller is not a system application.|
+| 801      | Capability not supported. |
+| 13900001      | Operation not permitted. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function grantSharedDirectoryPermission() {
+  try {
+    fileShare.grantSharedDirectoryPermission().then(() => {
+      console.info("grantSharedDirectoryPermission success")
+    }).catch((err: BusinessError) => {
+      console.error("grantSharedDirectoryPermission err : " + JSON.stringify(err))
+    });
+  }
+  catch (error) {
+    console.error('grantSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```
+
+## fileShare.revokeSharedDirectoryPermission
+
+revokeSharedDirectoryPermission(): Promise&lt;void&gt;
+
+撤销应用的捐献目录临时访问权限。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_SHARED_FILE
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**返回值：**
+
+|类型|说明|
+| ------ | ------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID    | 错误信息       |
+|----------| --------- |
+| 201      | Permission verification failed.|
+| 202      | The caller is not a system application.|
+| 801      | Capability not supported. |
+| 13900001      | Operation not permitted. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function revokeSharedDirectoryPermission() {
+  try {
+    fileShare.revokeSharedDirectoryPermission().then(() => {
+      console.info("revokeSharedDirectoryPermission success")
+    }).catch((err: BusinessError) => {
+      console.error("revokeSharedDirectoryPermission err : " + JSON.stringify(err))
+    });
+  }
+  catch (error) {
+    console.error('revokeSharedDirectoryPermission error, Code: ' + error.code + ', message: ' + error.message);
+  }
+}
+```

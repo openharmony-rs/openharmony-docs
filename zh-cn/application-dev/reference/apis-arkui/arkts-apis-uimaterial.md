@@ -16,6 +16,99 @@
 import { uiMaterial } from '@kit.ArkUI';
 ```
 
+## MaterialType
+
+系统材质类型枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 值 | 说明              |
+| ------ | --- | --------------- |
+| IMMERSIVE | 2 | 沉浸式材质类型。仅用于[MaterialInfo](#materialinfo)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过[ImmersiveMaterial](#immersivematerial)类实现。 |
+
+## MaterialState
+
+材质使能状态枚举，表示应用级沉浸式系统材质配置的状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 值 | 说明              |
+| ------ | --- | --------------- |
+| DEFAULT | 0 | 默认模式。[弹出框Dialog](../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../ui/arkts-create-toast.md)、[AlphabetIndexer](arkui-ts/ts-container-alphabet-indexer.md)在组件本身未设置背景颜色、模糊参数和阴影参数时默认开启沉浸式系统材质；[Text](arkui-ts/ts-basic-components-text.md)设置[copyOption](arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单默认开启沉浸式系统材质；其他组件由应用主动设置。 |
+| ENABLE | 1 | 使能模式。除DEFAULT模式中启用沉浸式系统材质的组件以外，[ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)、[Select](arkui-ts/ts-basic-components-select.md)、[菜单控制](arkui-ts/ts-universal-attributes-menu.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)、[bindSheet](arkui-ts/ts-universal-attributes-sheet-transition.md)组件默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件本身设置的背景色、模糊、阴影和边框样式。每个组件可通过[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置[uiMaterial.Material.empty](#empty)单独关闭；其他组件需开发者主动设置。 |
+| DISABLE | 2 | 禁用模式。所有组件禁止开启沉浸式系统材质，即使主动为组件设置沉浸式系统材质参数也不会生效。 |
+
+## MaterialInfo
+
+材质配置信息，包含材质使能状态和材质类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称       | 类型                                                        | 只读 | 可选 | 说明                                                     |
+| ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
+| state   | [MaterialState](#materialstate)                                   | 否 | 否   | 材质使能状态配置。 |
+| type   | [MaterialType](#materialtype)                                   | 否 | 否   | 材质类型标识，表示当前配置对应的材质类型。该值仅用于类型标识，不映射到底层功能。 |
+
+## getMaterialInfo
+
+getMaterialInfo(): MaterialInfo
+
+获取当前应用的材质配置信息。返回的配置信息来自应用在[module.json5](../../quick-start/module-configuration-file.md)中配置的metadata。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [MaterialInfo](#materialinfo) | 返回当前应用的材质配置信息，包含材质使能状态和材质类型。 |
+
+## empty
+
+static get empty(): Material
+
+返回空材质对象，用于组件单独关闭沉浸式系统材质效果。使用方式为`uiMaterial.Material.empty`。
+
+在enable模式下，可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [Material](#material) | 返回空材质对象，表示无材质效果。 |
+
 ## ImmersiveStyle
 
 沉浸式材质样式枚举。不同的材质样式对应不同的材质参数，主要包括材质的模糊程度、高光效果等。
@@ -201,3 +294,77 @@ struct SystemMaterialPage {
 在高档算力设备上表现：
 
 ![systemMaterial](figures/immersiveMaterialExquisite.jpg)
+
+### 示例2（获取材质配置信息并使用空材质关闭沉浸式系统材质）
+
+本示例介绍如何通过[getMaterialInfo](#getmaterialinfo)获取当前应用的材质配置信息，并根据配置状态使用[empty](#empty)关闭特定组件的沉浸式系统材质效果。
+
+从API版本26.0.0开始，新增getMaterialInfo方法和empty方法。
+
+首先在[module.json5](../../quick-start/module-configuration-file.md)文件中配置开关信息，需注意只有在entry类型的module中配置才会生效。
+``` ts
+{
+  "module": {
+    // ···
+    "type": "entry", // 需注意只有在entry类型的module中配置才会生效。
+    // ···
+    "metadata": [{
+      "name": "ohos.arkui.UIMaterial.state",
+      "value": "enable"
+    }],
+    // ···
+  }
+}
+```
+然后按照如下内容编写测试代码。
+``` ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MaterialInfoPage {
+  // 获取材质配置信息
+  private info: uiMaterial.MaterialInfo = uiMaterial.getMaterialInfo();
+  build() {
+    Column() {
+      Text(`MaterialState: ${this.info.state}`)
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Text(`MaterialType: ${this.info.type}`)
+        .fontSize(16)
+        .margin({ bottom: 20 })
+
+      // 根据状态决定组件行为
+      if (this.info.state === uiMaterial.MaterialState.ENABLE) {
+        // 主动使用沉浸式材质
+        Button('Enable UiMaterial')
+          .backgroundColor(Color.Transparent)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          }))
+          .fontColor(Color.Blue)
+          .margin({ bottom: 10 })
+        // Select组件默认开启沉浸式系统材质
+        Select([
+          {value: 'select item'}
+        ]).value('select item')
+        .margin({ bottom: 10 })
+        // 单独关闭Select组件的沉浸式系统材质
+        Select([
+          {value: 'select item'}
+        ]).value('select item')
+        .systemMaterial(uiMaterial.Material.empty)
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    // $r('app.media.img')需要替换为开发者所需的图像资源文件
+    .backgroundImage($r('app.media.img')).backgroundImageSize(ImageSize.FILL)
+  }
+}
+```
+
+在高档算力设备上表现：
+
+![systemMaterialState](figures/immersiveMaterialStateExquisite.jpg)

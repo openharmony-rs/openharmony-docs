@@ -1,7 +1,7 @@
 # usb_serial_types.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | \_\_attribute\_\_((aligned(8))) UsbSerial_Params | 定义USB Serial DDK使用的USB串口参数. |
+| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | \_\_attribute\_\_((aligned(8))) UsbSerial_Params | 定义USB Serial DDK使用的USB串口参数。 |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) | UsbSerial_Device | USB串口设备数据结构（不透明）。 |
 
 ### 枚举

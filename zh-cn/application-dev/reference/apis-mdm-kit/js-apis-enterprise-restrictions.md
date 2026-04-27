@@ -1,8 +1,8 @@
 # @ohos.enterprise.restrictions （限制类策略）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -69,7 +69,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |mobileData<sup>20+</sup>|蜂窝数据能力，当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
 |airplaneMode<sup>20+</sup>|飞行模式能力，当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
 |vpn<sup>20+</sup>|Virtual Private Network（虚拟专用网络），VPN能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|notification<sup>20+</sup>|设备通知能力。禁用后，由系统应用和三方应用发出的通知将不会显示，而系统服务通知能力不受影响。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|notification<sup>20+</sup>|设备通知能力。禁用后，由系统应用和三方应用发出的通知将不会显示，而系统服务通知能力不受影响。当此设备已经通过[addAllowedNotificationBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowednotificationbundles)设置了应用通知白名单之后，再通过此接口禁用设备通知能力，会抛出错误码9200010。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |nfc<sup>20+</sup>|Near Field Communication（近距离无线通信），NFC能力，当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |privateSpace<sup>20+</sup>|创建隐私空间能力，当前仅支持手机、平板使用。对已创建的隐私空间无效。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |telephoneCall<sup>20+</sup>|设备通话能力，禁用后电话无法呼入和呼出。当前仅支持手机、平板设备使用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -960,6 +960,7 @@ try {
 | 名称                        | 值  | 说明    |
 | ----------------------------| ----| ------------------------------- |
 | WIFI_P2P   | 0   | Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直接相互连接。禁用后，设备无法通过Wi-Fi P2P进行点对点连接，影响文件传输、游戏联机、屏幕共享等需要直接Wi-Fi连接的应用功能。 |
+| CORE_DUMP   | 6   | 创建文件转储。禁用后，无法通过任务管理器创建文件转储。<br>**起始版本：** 26.0.0 |
 
 ## FeatureForAccount
 
@@ -973,4 +974,5 @@ try {
 
 | 名称      | 值   | 说明     |
 | --------- | ---- | -------- |
-| SUPER_HUB | 2    | 中转站。禁用后，无法使用中转站功能。若中转站已开启，本次使用不受影响，但关闭后将无法再次使用。 |
+| MULTI_WINDOW | 0    | 系统多窗口。当前仅支持手机、平板设备使用，禁用后无法使用系统多窗口功能（分屏、一键分屏、智慧多窗、悬浮窗口）。若系统多窗口功能已开启，本次使用不受影响，但关闭后将无法再次使用。 |
+| SUPER_HUB | 2    | 中转站。当前仅支持手机、平板设备使用，禁用后无法使用中转站功能。若中转站已开启，本次使用不受影响，但关闭后将无法再次使用。 |

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -241,7 +241,7 @@ struct Child {
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->
+<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -256,6 +256,7 @@ struct Parent {
           Text(`parent: ${item}`).fontSize(30)
           Divider()
         })
+        // count被@Provider装饰，可以被观察到Array整体的赋值以及调用Array接口带来的变化
         Button('push').onClick(() => {
           this.count.push(111);
         })
@@ -283,6 +284,7 @@ struct Child {
         Text(`child: ${item}`).fontSize(30)
         Divider()
       })
+      // count被@Consumer装饰，可以被观察到Array整体的赋值以及调用Array接口带来的变化
       Button('push').onClick(() => {
         this.count.push(222);
       })
@@ -302,7 +304,7 @@ struct Child {
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->
+<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -313,6 +315,7 @@ struct Parent {
   build() {
     Column() {
       Text(`parent: ${this.selectedDate}`)
+      // selectedDate被@Provider装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('update the new date')
         .onClick(() => {
           this.selectedDate = new Date('2023-07-07');
@@ -341,6 +344,7 @@ struct Child {
   build() {
     Column() {
       Text(`child: ${this.selectedDate}`)
+      // selectedDate被@Consumer装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('update the new date')
         .onClick(() => {
           this.selectedDate = new Date('2025-01-01');
@@ -366,7 +370,7 @@ struct Child {
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->
+<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -382,6 +386,7 @@ struct Parent {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // message被@Provider装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
       Button('init map').onClick(() => {
         this.message = new Map([[0, 'aa'], [1, 'bb'], [3, 'cc']]);
       })
@@ -414,6 +419,7 @@ struct Child {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // message被@Consumer装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
       Button('init map').onClick(() => {
         this.message = new Map([[0, 'dd'], [1, 'ee'], [3, 'ff']]);
       })
@@ -438,7 +444,7 @@ struct Child {
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->
+<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -453,6 +459,7 @@ struct Parent {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // message被@Provider装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
       Button('init set').onClick(() => {
         this.message = new Set([1, 2, 3, 4]);
       })
@@ -481,6 +488,7 @@ struct Child {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // message被@Consumer装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
       Button('init set').onClick(() => {
         this.message = new Set([1, 2, 3, 4, 5, 6]);
       })
@@ -548,11 +556,12 @@ struct Child {
 1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，可以配合\@Trace一起使用，也可以使用[makeObserved](./arkts-new-makeObserved.md)将非可观察数据变为可观察数据。
 2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同[\@Trace](./arkts-new-observedV2-and-trace.md#观察变化)。
 
-<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->
+<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) --> 
 
 ``` TypeScript
 @ObservedV2
 class User {
+  // 复杂数据类型的属性被@Trace装饰，可以被观察到属性变化
   @Trace public name: string;
   @Trace public age: number;
 
@@ -657,7 +666,7 @@ struct Child {
 
 \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。
 
-<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->
+<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -668,6 +677,7 @@ struct Index {
   build() {
     Column() {
       Text(`Index @Provider val: ${this.val}`).fontSize(30)
+      // @Provider装饰的变量val可以初始化@Param装饰的变量val2
       Parent({ val2: this.val })
     }
   }
@@ -685,6 +695,7 @@ struct Parent {
         this.val++;
       })
       Text(`Parent @Param val2: ${this.val2}`).fontSize(30)
+      // @Consumer装饰的变量val可以初始化@Param装饰的变量val
       Child({ val: this.val })
     }.border({ width: 2, color: Color.Green })
   }

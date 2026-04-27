@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -37,7 +37,7 @@
 ## 状态管理V1版本接受外部传入的装饰器的局限性
 状态管理V1存在多种可接受外部传入的装饰器，常用的有[\@State](arkts-state.md)、[\@Prop](arkts-prop.md)、[\@Link](arkts-link.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)。这些装饰器使用有限制且不易区分，不当使用会导致性能问题。
 
-<!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) -->
+<!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -84,6 +84,7 @@ struct Index {
 
 @Component
 struct Child {
+  // V1版本接受外部传入的装饰器汇总
   @ObjectLink region: Region;
   @Prop regionProp: Region;
   @Prop infoProp: Info;
@@ -239,7 +240,7 @@ struct Child {
   ```
 
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
-  <!-- @[Param_Observe_Change_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets) -->
+  <!-- @[Param_Observe_Change_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -255,6 +256,7 @@ struct Child {
         Text(`${this.numArr[2]}`)
         Text(`${this.dimensionTwo[0][0]}`)
         Text(`${this.dimensionTwo[1][1]}`)
+        // 装饰的变量为简单类型数组时，可观察到数组项变化
         Button('change array item')
           .onClick(() => {
             this.numArr[0]++;
@@ -262,6 +264,7 @@ struct Child {
             this.dimensionTwo[0][0] = 0;
             this.dimensionTwo[1][1] = 0;
           })
+        // 装饰的变量为简单类型数组时，可观察到数组整体变化
         Button('change whole array')
           .onClick(() => {
             this.numArr = [5, 4, 3, 2, 1];

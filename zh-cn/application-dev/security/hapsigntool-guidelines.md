@@ -594,7 +594,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
    - **可能原因**
 
-     （1）openharmmony系统的配置文件不支持该app包的设备类型
+     （1）openharmony系统的配置文件不支持该app包的设备类型
 
      （2）debug类型的json文件中device-ids中没有你的设备udid
 

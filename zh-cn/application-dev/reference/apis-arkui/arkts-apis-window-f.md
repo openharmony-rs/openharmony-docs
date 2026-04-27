@@ -182,7 +182,7 @@ findWindow(name: string): Window
 
 | 类型 | 说明 |
 | ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回对象为空。 |
+| [Window](arkts-apis-window-Window.md) | 当前查找的窗口对象。如果查找指定名称对应的窗口不存在，则返回1300002错误码。 |
 
 **错误码：**
 
@@ -621,7 +621,7 @@ struct Index {
 
 getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?: number): Promise&lt;Array&lt;Window&gt;&gt;
 
-查询本应用指定坐标下的可见窗口数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
+查询本应用指定坐标下的可见窗口（可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)接口监听）数组，按当前窗口层级排列，层级最高的窗口对应数组下标为0，使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -830,6 +830,9 @@ try {
       console.info(`abilityName:${windowInfo.abilityName}`);
       console.info(`bundleName:${windowInfo.bundleName}`);
       console.info(`isFocused:${windowInfo.isFocused}`);
+      console.info(`displayId:${windowInfo.displayId}`);
+      console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
+      console.info(`globalRect:${JSON.stringify(windowInfo.globalRect)}`);
     })
   }).catch((err: BusinessError) => {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));

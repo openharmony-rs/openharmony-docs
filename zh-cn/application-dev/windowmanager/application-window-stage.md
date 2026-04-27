@@ -531,8 +531,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<!--RP2-->
-## 设置全局悬浮窗<a name="设置全局悬浮窗"></a><!--RP2End-->
+## 设置全局悬浮窗（受限开放）
 
 全局悬浮窗可以在已有的任务基础上，创建一个始终在前台显示的窗口。即使创建全局悬浮窗的任务退至后台，全局悬浮窗仍然可以在前台显示。通常全局悬浮窗位于所有应用窗口之上，开发者可以创建全局悬浮窗，并对全局悬浮窗进行属性设置等操作。
 
@@ -540,7 +539,7 @@ export default class EntryAbility extends UIAbility {
 ### 开发步骤
 
 <!--RP1-->
-**前提条件：** 创建`WindowType.TYPE_FLOAT`即全局悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+**前提条件：** 创建WindowType.TYPE_FLOAT即全局悬浮窗类型的窗口，需要申请ohos.permission.SYSTEM_FLOAT_WINDOW权限，该权限为受控开放，权限申请方式请参考：[申请使用受限权限](../security/AccessToken/declare-permissions-in-acl.md)。
 <!--RP1End-->
 
 1. 创建全局悬浮窗。

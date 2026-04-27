@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1; @xin11112-->
-<!--Designer: @chenbenzhi-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -474,6 +474,7 @@ Column() {
   Text('Hello World')
 }
 .onAppear(() => {
+  // 在onAppear中注册监听
   registerObserver(UIUtils.getLifecycle(this));
 })
 .onDisAppear(() => {
@@ -591,6 +592,7 @@ export struct SwiperExample {
   @State selectedTabIndex: number = 0;
   @ComponentAppear
   myAppear(): void {
+    // myAppear中为data赋值
     let list: number[] = [];
     for (let i = 0; i <= 11; i++) {
       list.push(i);
@@ -685,10 +687,12 @@ struct ReusableTest {
   @State flag2: boolean = false;
   build() {
     Column() {
+      // 点击Button切换flag1，触发ReusableComp1和ReusableComp2的回收/复用
       Button('a')
         .onClick(() => {
           this.flag1 = !this.flag1;
         })
+      // 点击Button切换flag2，触发ReusableComp1和ReusableComp3的回收/复用
       Button('b')
         .onClick(() => {
           this.flag2 = !this.flag2;

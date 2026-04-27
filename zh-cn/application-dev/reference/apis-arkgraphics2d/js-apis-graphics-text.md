@@ -1519,6 +1519,49 @@ struct Index {
 }
 ```
 
+### setParagraphCachesEnabled
+
+setParagraphCachesEnabled(enable: boolean): void
+
+设置是否启用排版段落缓存。排版段落缓存可以加速重复文本的排版速度，但会占用额外的内存。未调用此接口前，系统默认开启排版段落缓存。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                       |
+| ----- | ------- | ---- | ----------------------------------------- |
+| enable | boolean | 是   | 是否启用排版段落缓存。true表示启用，false表示禁用。 |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('启用段落缓存').onClick(() => {
+        text.FontCollection.getGlobalInstance().setParagraphCachesEnabled(true);
+      })
+      Button('禁用段落缓存').onClick(() => {
+        text.FontCollection.getGlobalInstance().setParagraphCachesEnabled(false);
+      })
+    }
+  }
+}
+```
+
+
+
 ## ParagraphStyle
 
 段落样式。

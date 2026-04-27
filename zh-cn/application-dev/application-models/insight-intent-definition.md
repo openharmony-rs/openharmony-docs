@@ -5,7 +5,7 @@
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 开发者可以通过如下两种方式来定义意图：
 
