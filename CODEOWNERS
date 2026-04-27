@@ -902,8 +902,8 @@ zh-cn/application-dev/media/image/image-faqs/heif-adapter-faq.md @aulight02 @Xia
 zh-cn/application-dev/media/image/image-faqs/image-common-mistakes.md @aulight02 @XiaoYao555 @ww_Machine_cc
 zh-cn/application-dev/media/image/image-faqs/image-error-faq.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-faqs/image-rotate-faq.md @aulight02 @XiaoYao555 @w_Machine_cc
-zh-cn/application-dev/media/media/avimagegenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/media/media/avmetadataextractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/media/media/avimagegenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/media/media/avmetadataextractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/media/media/avscreencapture-c-basic-process.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/avscreencapture-c-custom-scenarios.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/avscreencapture-faqs.md @zzs_911 @stupig001 @w_Machine_cc
@@ -918,8 +918,8 @@ zh-cn/application-dev/media/media/using-avrecorder-for-recording.md @shiwei75 @H
 zh-cn/application-dev/media/media/using-avscreencapture-ArkTs.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/using-avscreencapture-for-file.md @zzs_911 @stupig001 @w_Machine_cc
 zh-cn/application-dev/media/media/using-avtranscoder-for-transcodering.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/media/media/using-ndk-avimagegenerator-for-video.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/media/media/using-ndk-avmetadataextractor-for-media.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/media/media/using-ndk-avimagegenerator-for-video.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/media/media/using-ndk-avmetadataextractor-for-media.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avplayer-for-playback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avplayer-for-video-playback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/using-ndk-avrecorder-for-audio-recording.md @shiwei75 @HmQQQ @w_Machine_cc
@@ -4130,8 +4130,8 @@ zh-cn/application-dev/reference/apis-mechanic-kit/js-apis-mechanicManager.md @ho
 zh-cn/application-dev/reference/apis-mechanic-kit/Readme-CN.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AudioPlayer.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AudioRecorder.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVPlayer.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVRecorder.md @shiwei75 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md @zzs_911 @stupig001 @w_Machine_cc
@@ -4144,11 +4144,11 @@ zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-MediaSourceLoadi
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-t.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-VideoPlayer.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-base-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator-oh-avimagegenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-base-h.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-base-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimage-generator-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator-oh-avimagegenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avimagegenerator.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-base-h.md @xushubo @chennotfound @chris2981 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-h.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avhttpheader.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avmediasource.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
@@ -4156,13 +4156,13 @@ zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avmediasou
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source-oh-avmediasourceloadingrequest.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmedia-source.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avmediabase.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-base-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/capi-avmetakeys-h.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-base-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadata-extractor-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md @xushubo @chennotfound @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor-oh-avmetadataextractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetadataextractor.md @wang-haizhou6 @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/capi-avmetakeys-h.md @wang-haizhou6 @chris2981 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avplayer-avplayercallback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avplayer-base-h.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/capi-avplayer-drm-mediakeysysteminfo.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
