@@ -386,7 +386,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // 获取指定module的卡片信息
   moduleName: 'entry'
 };
 try {
