@@ -2061,6 +2061,7 @@ class TestReadable extends stream.Readable {
   constructor() {
     super();
   }
+
   doRead(size: number) {
   }
 }
@@ -2118,7 +2119,7 @@ readableStream.push(null);
 // endElement elementName: child
 // characters: 
 // endElement elementName: root
-// end
+// endDocument
 ```
 
 ArkTS-Sta示例：
@@ -2129,6 +2130,7 @@ class TestReadable extends stream.Readable {
   constructor() {
     super();
   }
+
   doRead(size: int) {
   }
 }
@@ -2186,5 +2188,5 @@ readableStream.push(null);
 // endElement elementName: child
 // characters: 
 // endElement elementName: root
-// end
+// endDocument
 ```
