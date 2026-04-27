@@ -1381,7 +1381,7 @@ drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<c
 | 参数名          | 类型                                        | 必填  | 说明                                                  |
 | ------         | -------------------                         | ---- | -----------                                          |
 | glyphIds       | Array\<number\>                             | 是   | 字形ID的数组。                                      |
-| glyphIdOffset  | number                                      | 是   | 在绘制字形Ids数组之前要跳过的元素的数量。 取值限定为整数。 |
+| glyphIdOffset  | number                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数。 |
 | positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                         |
 | positionOffset | number                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数。     |
 | glyphCount     | number                                      | 是   | 要绘制的字形的数目。                                 |
