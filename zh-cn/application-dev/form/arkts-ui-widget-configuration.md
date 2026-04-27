@@ -178,7 +178,7 @@
 | 名称                                    | 类型     | 必填 | 说明 |
 |---------------------------------------|--------|----|----------------------------|
 | abilityName                           | 字符串 | 是  | 场景动效LiveFormExtensionAbility名称。|
-| disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。<br/>**说明：**<br/>从API version 20开始支持该字段配置，功能仅对系统应用生效 |
+| disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。<br/>**说明：**<br/>从API version 20开始支持该字段配置，功能仅对系统应用生效。 |
 | triggerTypes                           | 字符串数组 | 否  | 场景动效触发类型，支持的取值包括shake（摇一摇）。<br/>**说明：**<br/>从API version 26.0.0开始，支持该字段。|
 
 <!--RP2-->
