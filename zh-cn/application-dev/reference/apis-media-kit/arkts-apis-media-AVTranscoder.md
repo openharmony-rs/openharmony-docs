@@ -33,7 +33,7 @@ import { media } from '@kit.MediaKit';
 | fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  否  | 否   | 源媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移：0，字节长度：100。其文件描述为AVFileDescriptor{ fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
 | fdDst<sup>12+</sup>                               | number                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
 
-## addWatermark<sup>26+</sup>
+## addWatermark
 
 addWatermark(watermark: image.PixelMap, configs: WatermarkConfig): Promise\<int\>
 
