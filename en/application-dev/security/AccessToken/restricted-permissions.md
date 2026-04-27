@@ -1100,3 +1100,17 @@ Allows an application to apply for a continuous task of the special scenario typ
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
+
+## ohos.permission.PRINTER_DRIVER
+
+Allows an application to manage the printing system.
+
+<!--RP89--><!--RP89End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+
+**Since**: 24
