@@ -37,9 +37,12 @@ import { media } from '@kit.MediaKit';
 
 addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
 
-为 AVTranscoder 添加水印。此接口使用 Promise 异步返回结果。应用最多可以添加 5 个水印。此接口只能在 prepared 状态之前调用。
-
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+ 为视频添加水印。使用Promise异步回调。
+ 
+ > **说明：**
+ >
+ > - 应用最多可以添加 5 个水印。
+ > - 此接口只能在prepared状态之前调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -82,7 +85,7 @@ async function test() {
   
   // 配置水印参数。
   let watermarkConfig: media.WatermarkConfiguration = {
-    // 根据实际需求配置水印参数
+    // 根据实际需求配置水印参数，单位像素。
       top : 40,
       left : 40,
       width: 200,
@@ -129,7 +132,7 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | IO error. Return by promise.              |
 | 5400105  | Service died. Return by promise.       |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400108  | The parameter check failed, parameter value out of range.  |
 
 **示例：**
 
