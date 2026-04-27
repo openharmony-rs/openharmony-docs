@@ -59,6 +59,8 @@ libhttp_interceptor.so
    #include "hilog/log.h"
    
    #include <cstring>
+   #include <cstdlib>
+   #include <string>
    
    #undef LOG_DOMAIN
    #undef LOG_TAG
@@ -73,6 +75,39 @@ libhttp_interceptor.so
        .enabled = 1,
        .handler = nullptr,
    };
+   
+   // 请求可写拦截器实例（用于修改Network Kit的请求数据包）
+   static OH_Http_Interceptor g_modifyRequestInterceptor = {
+       .groupId = 2,
+       .stage = OH_STAGE_REQUEST,
+       .type = OH_TYPE_MODIFY_NETWORK_KIT,
+       .enabled = 1,
+       .handler = nullptr,
+   };
+   
+   // 响应可写拦截器实例（用于修改Network Kit的响应数据包）
+   static OH_Http_Interceptor g_modifyResponseInterceptor = {
+       .groupId = 3,
+       .stage = OH_STAGE_RESPONSE,
+       .type = OH_TYPE_MODIFY_NETWORK_KIT,
+       .enabled = 1,
+       .handler = nullptr,
+   };
+   
+   // 内存分配和字符串拷贝辅助函数
+   char *MallocCString(const std::string &origin)
+   {
+       if (origin.empty()) {
+           return nullptr;
+       }
+   
+       auto len = origin.length() + 1;
+       char *res = static_cast<char *>(malloc(sizeof(char) * len));
+       if (res == nullptr) {
+           return nullptr;
+       }
+       return std::char_traits<char>::copy(res, origin.c_str(), len);
+   }
    
    // 日志打印辅助函数
    void LogHeader(OH_Http_Interceptor_Headers *headers)
@@ -124,6 +159,149 @@ libhttp_interceptor.so
            OH_LOG_INFO(LOG_APP, "---Response Interceptor Handler---");
            PrintResponseInfo(response);
        }
+       return OH_CONTINUE;
+   }
+   
+   // 修改请求方法
+   static void ModifyRequestMethod(OH_Http_Interceptor_Request *request)
+   {
+       if (request->method.buffer != nullptr) {
+           // 释放原有内存,必须使用free释放由malloc分配的内存
+           free((void *)request->method.buffer);
+           
+           // 重新申请内存并设置新值,必须使用malloc分配内存
+           const std::string newMethodStr = "GET";
+           char *newMethodBuffer = MallocCString(newMethodStr);
+           if (newMethodBuffer != nullptr) {
+               request->method.buffer = newMethodBuffer;
+               request->method.length = newMethodStr.length();
+               OH_LOG_INFO(LOG_APP, "Modified Method: %{public}s", request->method.buffer);
+           }
+       }
+   }
+   
+   // 修改第一个header节点
+   static void ModifyFirstHeaderNode(OH_Http_Interceptor_Headers **headers, const char *headerData)
+   {
+       size_t headerLen = strlen(headerData) + 1;
+       
+       if (*headers != nullptr) {
+           // 修改第一个header节点
+           if ((*headers)->data != nullptr) {
+               // 释放原有内存,必须使用free释放由malloc分配的内存
+               free((void *)(*headers)->data);
+           }
+           // 必须使用malloc分配内存
+           const std::string headerDataStr = headerData;
+           char *headerBuffer = MallocCString(headerDataStr);
+           if (headerBuffer != nullptr) {
+               (*headers)->data = headerBuffer;
+               OH_LOG_INFO(LOG_APP, "Modified first header: %{public}s", headerData);
+           }
+       } else {
+           // 若没有header节点，创建新的第一个节点
+           // 创建新的header节点,必须使用malloc分配内存
+           OH_Http_Interceptor_Headers *newHeader =
+               (OH_Http_Interceptor_Headers *)malloc(sizeof(OH_Http_Interceptor_Headers));
+           if (newHeader != nullptr) {
+               // 必须使用malloc分配内存
+               const std::string headerDataStr = headerData;
+               char *headerBuffer = MallocCString(headerDataStr);
+               if (headerBuffer != nullptr) {
+                   newHeader->data = headerBuffer;
+                   newHeader->next = nullptr;
+                   *headers = newHeader;
+                   OH_LOG_INFO(LOG_APP, "Created first header: %{public}s", headerData);
+               } else {
+                   // 内存分配失败，释放header节点,必须使用free释放由malloc分配的内存
+                   free((void *)newHeader);
+               }
+           }
+       }
+   }
+   
+   // 修改body内容
+   static void ModifyBodyContent(Http_Buffer *body, const char *newBodyContent)
+   {
+       // 释放原有body内存,必须使用free释放由malloc分配的内存
+       if (body->buffer != nullptr) {
+           free((void *)body->buffer);
+       }
+       
+       // 重新申请内存并设置新的body内容,必须使用malloc分配内存
+       const std::string bodyContentStr = newBodyContent;
+       char *bodyBuffer = MallocCString(bodyContentStr);
+       if (bodyBuffer != nullptr) {
+           body->buffer = bodyBuffer;
+           body->length = bodyContentStr.length();
+           OH_LOG_INFO(LOG_APP, "Modified Body: %{public}s", body->buffer);
+       }
+   }
+   
+   // 请求可写拦截器处理函数（修改Network Kit的请求数据包）
+   OH_Interceptor_Result ModifyRequestInterceptorHandler(
+       OH_Http_Interceptor_Request *request,
+       OH_Http_Interceptor_Response *response,
+       int32_t *isModified)
+   {
+       (void)response;
+       
+       if (request != nullptr) {
+           OH_LOG_INFO(LOG_APP, "---Modify Interceptor Handler---");
+           OH_LOG_INFO(LOG_APP, "Original URL: %{public}s", request->url.buffer);
+           OH_LOG_INFO(LOG_APP, "Original Method: %{public}s", request->method.buffer);
+           
+           // 修改请求方法
+           ModifyRequestMethod(request);
+           
+           // 修改第一个请求头
+           const char *requestHeaderData = "X-Custom-Header: CustomValue";
+           ModifyFirstHeaderNode(&request->headers, requestHeaderData);
+           
+           // 修改请求体
+           const char *requestBodyData = "{\"key\": \"value\"}";
+           ModifyBodyContent(&request->body, requestBodyData);
+           
+           // 标记为已修改
+           *isModified = 1;
+           OH_LOG_INFO(LOG_APP, "Request modified: %{public}d", *isModified);
+       }
+       
+       // 返回OH_CONTINUE表示继续处理请求
+       // 返回OH_ABORT表示中止请求，请求将不会发送到服务器
+       return OH_CONTINUE;
+   }
+   
+   // 响应可写拦截器处理函数（修改Network Kit的响应数据包）
+   OH_Interceptor_Result ModifyResponseInterceptorHandler(
+       OH_Http_Interceptor_Request *request,
+       OH_Http_Interceptor_Response *response,
+       int32_t *isModified)
+   {
+       (void)request;
+       
+       if (response != nullptr) {
+           OH_LOG_INFO(LOG_APP, "---Modify Response Interceptor Handler---");
+           OH_LOG_INFO(LOG_APP, "Original Response Code: %{public}d", response->responseCode);
+           if (response->body.buffer != nullptr) {
+               OH_LOG_INFO(LOG_APP, "Original Response Body: %{public}s", response->body.buffer);
+           }
+           
+           // 修改响应体
+           const char *responseBodyData = "{\"modified\": true, \"message\": \"Response modified by interceptor\"}";
+           ModifyBodyContent(&response->body, responseBodyData);
+           
+           // 修改第一个响应头
+           const char *responseHeaderData = "X-Intercepted: true";
+           ModifyFirstHeaderNode(&response->headers, responseHeaderData);
+           
+           // 标记为已修改
+           *isModified = 1;
+           OH_LOG_INFO(LOG_APP, "Response modified: %{public}d", *isModified);
+       }
+       
+       // 返回OH_CONTINUE表示继续处理响应
+       // 返回OH_ABORT表示终止当前拦截器链的执行
        return OH_CONTINUE;
    }
    
@@ -194,6 +372,142 @@ libhttp_interceptor.so
        napi_create_int32(env, ret, &result);
        return result;
    }
+   
+   // 添加请求可写拦截器（OH_TYPE_MODIFY_NETWORK_KIT类型）
+   static napi_value AddModifyRequestInterceptor(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 设置拦截器处理函数
+       g_modifyRequestInterceptor.handler = ModifyRequestInterceptorHandler;
+       
+       // 添加可写拦截器
+       int ret = OH_Http_AddWritableInterceptor(&g_modifyRequestInterceptor);
+       
+       OH_LOG_INFO(LOG_APP, "AddModifyRequestInterceptor ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 移除请求可写拦截器
+   static napi_value RemoveModifyRequestInterceptor(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 移除拦截器
+       int ret = OH_Http_RemoveInterceptor(&g_modifyRequestInterceptor);
+       
+       OH_LOG_INFO(LOG_APP, "RemoveModifyRequestInterceptor ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 启用请求可写拦截器组
+   static napi_value StartModifyRequestInterceptors(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 启用组ID为2的所有拦截器
+       int ret = OH_Http_StartAllInterceptors(2);
+       
+       OH_LOG_INFO(LOG_APP, "StartModifyRequestInterceptors ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 停用请求可写拦截器组
+   static napi_value StopModifyRequestInterceptors(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 停用组ID为2的所有拦截器
+       int ret = OH_Http_StopAllInterceptors(2);
+       
+       OH_LOG_INFO(LOG_APP, "StopModifyRequestInterceptors ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 删除请求可写拦截器组
+   static napi_value RemoveAllModifyRequestInterceptors(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 删除组ID为2的所有拦截器
+       int ret = OH_Http_RemoveAllInterceptors(2);
+       
+       OH_LOG_INFO(LOG_APP, "RemoveAllModifyRequestInterceptors ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 添加响应可写拦截器（OH_TYPE_MODIFY_NETWORK_KIT类型）
+   static napi_value AddModifyResponseInterceptor(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 设置拦截器处理函数
+       g_modifyResponseInterceptor.handler = ModifyResponseInterceptorHandler;
+       
+       // 添加可写拦截器
+       int ret = OH_Http_AddWritableInterceptor(&g_modifyResponseInterceptor);
+       
+       OH_LOG_INFO(LOG_APP, "AddModifyResponseInterceptor ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 移除响应可写拦截器
+   static napi_value RemoveModifyResponseInterceptor(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 移除拦截器
+       int ret = OH_Http_RemoveInterceptor(&g_modifyResponseInterceptor);
+       
+       OH_LOG_INFO(LOG_APP, "RemoveModifyResponseInterceptor ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 启用响应可写拦截器组
+   static napi_value StartModifyResponseInterceptors(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 启用组ID为3的所有拦截器
+       int ret = OH_Http_StartAllInterceptors(3);
+       
+       OH_LOG_INFO(LOG_APP, "StartModifyResponseInterceptors ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 停用响应可写拦截器组
+   static napi_value StopModifyResponseInterceptors(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 停用组ID为3的所有拦截器
+       int ret = OH_Http_StopAllInterceptors(3);
+       
+       OH_LOG_INFO(LOG_APP, "StopModifyResponseInterceptors ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
+   
+   // 删除响应可写拦截器组
+   static napi_value RemoveAllModifyResponseInterceptors(napi_env env, napi_callback_info info)
+   {
+       napi_value result;
+       
+       // 删除组ID为3的所有拦截器
+       int ret = OH_Http_RemoveAllInterceptors(3);
+       
+       OH_LOG_INFO(LOG_APP, "RemoveAllModifyResponseInterceptors ret: %{public}d", ret);
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
    ```
    
    上述代码实现了一个HTTP全局只读响应拦截器，用于监控HTTP响应。在响应拦截器处理函数中，会打印响应的状态码、响应体、响应头以及性能指标等信息。
@@ -212,6 +526,26 @@ libhttp_interceptor.so
            {"StartInterceptors", nullptr, StartInterceptors, nullptr, nullptr, nullptr, napi_default, nullptr},
            {"StopInterceptors", nullptr, StopInterceptors, nullptr, nullptr, nullptr, napi_default, nullptr},
            {"RemoveAllInterceptors", nullptr, RemoveAllInterceptors, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"AddModifyRequestInterceptor", nullptr, AddModifyRequestInterceptor, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"RemoveModifyRequestInterceptor", nullptr, RemoveModifyRequestInterceptor, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"StartModifyRequestInterceptors", nullptr, StartModifyRequestInterceptors, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"StopModifyRequestInterceptors", nullptr, StopModifyRequestInterceptors, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"RemoveAllModifyRequestInterceptors", nullptr, RemoveAllModifyRequestInterceptors, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"AddModifyResponseInterceptor", nullptr, AddModifyResponseInterceptor, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"RemoveModifyResponseInterceptor", nullptr, RemoveModifyResponseInterceptor, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"StartModifyResponseInterceptors", nullptr, StartModifyResponseInterceptors, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"StopModifyResponseInterceptors", nullptr, StopModifyResponseInterceptors, nullptr, nullptr, nullptr,
+               napi_default, nullptr},
+           {"RemoveAllModifyResponseInterceptors", nullptr, RemoveAllModifyResponseInterceptors, nullptr, nullptr,
+               nullptr, napi_default, nullptr},
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
@@ -250,6 +584,16 @@ libhttp_interceptor.so
    export const StartInterceptors: () => number;
    export const StopInterceptors: () => number;
    export const RemoveAllInterceptors: () => number;
+   export const AddModifyRequestInterceptor: () => number;
+   export const RemoveModifyRequestInterceptor: () => number;
+   export const StartModifyRequestInterceptors: () => number;
+   export const StopModifyRequestInterceptors: () => number;
+   export const RemoveAllModifyRequestInterceptors: () => number;
+   export const AddModifyResponseInterceptor: () => number;
+   export const RemoveModifyResponseInterceptor: () => number;
+   export const StartModifyResponseInterceptors: () => number;
+   export const StopModifyResponseInterceptors: () => number;
+   export const RemoveAllModifyResponseInterceptors: () => number;
    ```
 
 5. 在Index.ets文件中对上述封装好的接口进行调用。
@@ -330,6 +674,86 @@ libhttp_interceptor.so
                .onClick(() => {
                  let ret = httpInterceptor.RemoveAllInterceptors();
                  hilog.info(0x0000, LOG_TAG, `RemoveAllInterceptors ret: ${ret}`);
+               })
+   
+             Text('Modify Network Kit Request Interceptor')
+               .fontSize(16)
+               .fontWeight(FontWeight.Bold)
+               .margin({ bottom: 10 })
+   
+             Button('Add Modify Request Interceptor')
+               .id('AddModifyRequestInterceptor')
+               .onClick(() => {
+                 let ret = httpInterceptor.AddModifyRequestInterceptor();
+                 hilog.info(0x0000, LOG_TAG, `AddModifyRequestInterceptor ret: ${ret}`);
+               })
+   
+             Button('Start Modify Request Interceptors')
+               .id('StartModifyRequestInterceptors')
+               .onClick(() => {
+                 let ret = httpInterceptor.StartModifyRequestInterceptors();
+                 hilog.info(0x0000, LOG_TAG, `StartModifyRequestInterceptors ret: ${ret}`);
+               })
+   
+             Button('Stop Modify Request Interceptors')
+               .id('StopModifyRequestInterceptors')
+               .onClick(() => {
+                 let ret = httpInterceptor.StopModifyRequestInterceptors();
+                 hilog.info(0x0000, LOG_TAG, `StopModifyRequestInterceptors ret: ${ret}`);
+               })
+   
+             Button('Remove Modify Request Interceptor')
+               .id('RemoveModifyRequestInterceptor')
+               .onClick(() => {
+                 let ret = httpInterceptor.RemoveModifyRequestInterceptor();
+                 hilog.info(0x0000, LOG_TAG, `RemoveModifyRequestInterceptor ret: ${ret}`);
+               })
+   
+             Button('Remove All Modify Request Interceptors')
+               .id('RemoveAllModifyRequestInterceptors')
+               .onClick(() => {
+                 let ret = httpInterceptor.RemoveAllModifyRequestInterceptors();
+                 hilog.info(0x0000, LOG_TAG, `RemoveAllModifyRequestInterceptors ret: ${ret}`);
+               })
+   
+             Text('Modify Network Kit Response Interceptor')
+               .fontSize(16)
+               .fontWeight(FontWeight.Bold)
+               .margin({ bottom: 10 })
+   
+             Button('Add Modify Response Interceptor')
+               .id('AddModifyResponseInterceptor')
+               .onClick(() => {
+                 let ret = httpInterceptor.AddModifyResponseInterceptor();
+                 hilog.info(0x0000, LOG_TAG, `AddModifyResponseInterceptor ret: ${ret}`);
+               })
+   
+             Button('Start Modify Response Interceptors')
+               .id('StartModifyResponseInterceptors')
+               .onClick(() => {
+                 let ret = httpInterceptor.StartModifyResponseInterceptors();
+                 hilog.info(0x0000, LOG_TAG, `StartModifyResponseInterceptors ret: ${ret}`);
+               })
+   
+             Button('Stop Modify Response Interceptors')
+               .id('StopModifyResponseInterceptors')
+               .onClick(() => {
+                 let ret = httpInterceptor.StopModifyResponseInterceptors();
+                 hilog.info(0x0000, LOG_TAG, `StopModifyResponseInterceptors ret: ${ret}`);
+               })
+   
+             Button('Remove Modify Response Interceptor')
+               .id('RemoveModifyResponseInterceptor')
+               .onClick(() => {
+                 let ret = httpInterceptor.RemoveModifyResponseInterceptor();
+                 hilog.info(0x0000, LOG_TAG, `RemoveModifyResponseInterceptor ret: ${ret}`);
+               })
+   
+             Button('Remove All Modify Response Interceptors')
+               .id('RemoveAllModifyResponseInterceptors')
+               .onClick(() => {
+                 let ret = httpInterceptor.RemoveAllModifyResponseInterceptors();
+                 hilog.info(0x0000, LOG_TAG, `RemoveAllModifyResponseInterceptors ret: ${ret}`);
                })
            }
          }
