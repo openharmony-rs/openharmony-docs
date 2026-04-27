@@ -208,7 +208,7 @@ ArkTS-Sta: certVerificationSync(cert: CertBlob, caCert?: CertBlob): int
 
 系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书，使用同步方式返回。
 
-**系统能力：**：SystemCapability.Communication.NetStack
+**系统能力：** SystemCapability.Communication.NetStack
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -374,7 +374,7 @@ isCleartextPermittedByHostName(hostName: string): boolean
 
 **需要权限：** ohos.permission.INTERNET
 
-**系统能力：**：SystemCapability.Communication.NetStack
+**系统能力：** SystemCapability.Communication.NetStack
 
 **ArkTS-Dyn起始版本：** 18
 
