@@ -27,7 +27,6 @@ import { inputEventClient } from '@kit.InputKit';
 | injectMouseEvent(mouseEvent: MouseEventData): void |鼠标/触控板事件注入。 |
 | injectTouchEvent(touchEvent: TouchEventData): void |触屏输入事件注入。|
 
-
 ## 开发步骤
 
 应用调用Home键返回桌面，调用[injectEvent](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md#inputeventclientinjectevent)注入Home按键，查看应用中Home按键功能是否生效。
@@ -78,3 +77,4 @@ struct Index {
   }
 }
 ```
+
