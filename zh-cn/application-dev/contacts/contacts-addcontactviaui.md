@@ -18,6 +18,8 @@
 
 调用新建联系人接口，打开新建联系人UI界面，用户可在UI界面中填写并新建联系人。
 
+<!-- @[contacts_addContactByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
+
 ```js
 import { common } from '@kit.AbilityKit';
 import { contact } from '@kit.ContactsKit';
@@ -59,6 +61,8 @@ struct Index {
 ## 使用picker更新联系人信息
 
 可以通过拉起picker，将选中的联系人信息更新到现有联系人中。
+
+<!-- @[contacts_updateContactByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
 
 ```js
 import { common } from '@kit.AbilityKit';

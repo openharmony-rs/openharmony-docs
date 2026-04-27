@@ -1,8 +1,8 @@
 # 同步任务开发指导 (TaskPool和Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 

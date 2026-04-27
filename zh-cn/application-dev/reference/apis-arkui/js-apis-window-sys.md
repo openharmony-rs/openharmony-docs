@@ -1257,6 +1257,8 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 创建一个子窗，并绑定父窗。使用Promise异步回调。
 
+仅支持主窗口作为绑定的父窗。
+
 子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。
 
 建议在父窗销毁后主动销毁创建的子窗。
@@ -1293,7 +1295,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
 | 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
 | 1300003 | This window manager service works abnormally. |
-| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
+| 1300009 | The parent window is invalid. Possible cause: 1. The parent window does not exist or has been destroyed. 2. Invalid window type. Only main windows are supported.|
 
 **示例：**
 
@@ -2829,45 +2831,6 @@ try {
   windowClass.setCornerRadius(4.0);
 } catch (exception) {
   console.error(`Failed to set corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
-### setTouchableAreas<sup>12+</sup>
-
-setTouchableAreas(rects: Array&lt;Rect&gt;): void
-
-实现设置窗口可触摸区域；不设置时默认整个窗口区域可触摸；设置窗口可触摸区域后，区域外触摸事件将被透传；如果窗口区域发生变化需要重新设置。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| rects | Array<[Rect](arkts-apis-window-i.md#rect7)> | 是   | 窗口可触摸区域。可触摸区域最大个数不能超过10个，且范围不能超出窗口区域。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
-
-**示例：**
-
-```ts
-try {
-  windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
-    {left: 400, top: 100, width: 200, height:200}]);
-} catch (exception) {
-  console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 

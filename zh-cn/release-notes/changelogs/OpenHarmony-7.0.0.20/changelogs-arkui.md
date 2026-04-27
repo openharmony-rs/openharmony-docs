@@ -187,3 +187,209 @@ struct ComponentB {
   }
 }
 ```
+
+## cl.arkui.2 Dialog、Toast、AlphabetIndexer和文本选择菜单默认开启沉浸式系统材质
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+ArkUI组件支持对接沉浸式系统材质功能，为减少应用适配成本，部分高频组件默认开启沉浸式系统材质功能。组件范围为所有的弹出框Dialog、Toast、AlphabetIndexer和文本选择菜单。
+
+**变更影响**
+
+此变更为不兼容变更，涉及应用适配。
+
+- 变更前：所有组件默认均不开启沉浸式系统材质。
+
+- 变更后：Dialog、Toast、AlphabetIndexer和文本选择菜单默认开启沉浸式系统材质。
+
+**起始 API Level**
+
+12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.20开始。
+
+**变更的接口/组件**
+
+涉及接口：
+
+- [showAlertDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)
+- [showActionSheet](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)
+- [showActionMenu](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11)
+- [showDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)
+- [openCustomDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)
+- [自定义弹窗 (CustomDialog)](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+- [showToast](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)
+- [openToast](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opentoast18)
+- [AlphabetIndexer](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)
+- [文本选择菜单](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)
+
+沉浸式系统材质效果和设备算力相关，详见[系统材质](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md)。变更前后的效果图如下。
+
+Dialog变更前后的效果图：
+
+![uiMaterialDialog](./figures/uiMaterialDialog.png)
+
+Toast变更前后的效果图：
+
+![uiMaterialToast](./figures/uiMaterialToast.png)
+
+AlphabetIndexer变更前后的效果图：
+
+![uiMaterialIndexer](./figures/uiMaterialIndexer.png)
+
+文本选择菜单变更前后的效果图：
+
+![uiMaterialText](./figures/uiMaterialTextMenu.png)
+
+
+**适配指导**
+
+1. 当开发者主动为上述组件配置了背景色、背景模糊、阴影和边框样式时，沉浸式系统材质不会默认生效，如开发者期望沉浸式系统材质生效，建议删除自定义的背景色、背景模糊、阴影和边框样式设置。
+
+2. 如果开发者不期望开启沉浸式系统材质功能，可通过应用级开关能力，强制禁止应用内所有组件使用沉浸式系统材质。
+
+   在[module.json5](../../../application-dev/quick-start/module-configuration-file.md)文件中配置metadata（仅在entry类型的module中配置生效），将value设置为"disable"即可禁用所有组件的沉浸式系统材质。
+
+   ``` ts
+   {
+     "module": {
+       // ...
+       "type": "entry",
+       // ...
+       "metadata": [{
+         "name": "ohos.arkui.UIMaterial.state",
+         "value": "disable"
+       }]
+       // ...
+     }
+   }
+   ```
+   更多配置说明参见[MaterialState](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)。
+
+3. 如果开发者仅想关闭部分组件的沉浸式系统材质，可通过组件提供的组件级接口关闭指定组件的沉浸式系统材质功能。
+
+   为需要关闭材质的组件设置[systemMaterial](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为uiMaterial.Material.[empty](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md#empty)。
+
+   ``` ts
+   import { uiMaterial } from '@kit.ArkUI';
+
+   this.getUIContext().getPromptAction().showToast({
+     message: 'Toast Content',
+     // 关闭指定组件的沉浸式系统材质
+     systemMaterial: uiMaterial.Material.empty
+   });
+   ```
+
+## cl.arkui.3 鼠标事件rawDeltaX和rawDeltaY的返回值变更
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+鼠标事件rawDeltaX和rawDeltaY的返回值的含义为鼠标设备在二维平面的物理移动偏移量，其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示，上报由鼠标硬件本身决定。当前实现返回值并非是原始移动数据，而是原始移动数据缩小了X倍，X为系统的显示大小比例。因此需要变更返回值使其符合本身的含义。
+
+**变更影响**
+
+此变更涉及应用适配。
+
+- 变更前：rawDeltaX和rawDeltaY的返回值并非鼠标硬件的原始移动数据，而是原始数据缩小了X倍，X为系统的显示大小比例。
+  
+- 变更后：rawDeltaX和rawDeltaY的返回值为鼠标硬件的原始移动数据。
+
+**起始API Level**
+
+15
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.20开始。
+
+**变更的接口/组件**
+
+[rawDeltaX](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)、[rawDeltaY](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)、[OH_ArkUI_MouseEvent_GetRawDeltaX](../../../application-dev/reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_mouseevent_getrawdeltax)和[OH_ArkUI_MouseEvent_GetRawDeltaY](../../../application-dev/reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_mouseevent_getrawdeltay)。
+
+**适配指导**
+
+开发者如果想要恢复变更前的效果，可以使用[px2vp](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#px2vp12)接口获取变更之前的值。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct MouseEventExample {
+  @State mouseText: string = '';
+
+  build() {
+    Column({ space: 20 }) {
+      Button('onMouse')
+        .width(180).height(80)
+        .fontSize(24)
+        .onMouse((event: MouseEvent): void => {
+          if (event) {
+            this.mouseText = 'rawDeltaX = ' + this.getUIContext().px2vp(event.rawDeltaX) +
+              '\nrawDeltaY = ' + this.getUIContext().px2vp(event.rawDeltaY);
+          }
+        })
+      Text(this.mouseText)
+    }.padding({ top: 30 }).width('100%')
+  }
+}
+```
+
+## cl.arkui.4 表单类组件触摸热区最小高度变更
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+[Button](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Button模式的Toggle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[Chip](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[ChipGroup](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)组件触摸热区当前最小高度28vp，点击范围小，不易操作。
+
+**变更影响**
+
+此变更为不兼容变更，涉及应用适配。
+
+- 变更前：组件默认触摸热区高度最小为28vp。
+
+- 变更后：组件默认触摸热区高度最小为32vp。
+
+![response.png](../../figures/response.png)
+
+**起始 API Level**
+
+Button：7<br>
+Toggle：8<br>
+Select：8<br>
+Chip：11<br>
+ChipGroup：12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.20开始。
+
+**变更的接口/组件**
+
+Button、Button模式的Toggle、Chip、ChipGroup和Select组件。
+
+**适配指导**
+
+默认行为变更，应注意变更后的行为是否对整体应用逻辑产生影响，如开发者期望恢复默认触摸热区，可使用如下方法重置组件的触摸热区，恢复为与组件实际大小一致。如果开发者自定义了组件高度或热区，触摸热区随自定义大小生效。
+
+```ts
+@Entry
+struct ButtonExample {
+  build() {
+    Button('xxxxx')
+      .responseRegion(undefined)
+  }
+}
+```
