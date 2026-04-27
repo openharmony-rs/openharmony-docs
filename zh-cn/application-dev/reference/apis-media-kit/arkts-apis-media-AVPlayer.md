@@ -2303,13 +2303,13 @@ onPlaybackRateDone(callback: OnPlaybackRateDone): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackRateDone](#onPlaybackratedone20)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackRateDone](#onplaybackratedone20)。
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | [OnPlaybackRateDone](arkts-apis-media-t.md#OnPlaybackRateDone20) | 是   | setPlaybackRate生效的事件回调方法，上报设置后的播放速率。 |
+| callback | [OnPlaybackRateDone](arkts-apis-media-t.md#onplaybackratedone20) | 是   | setPlaybackRate生效的事件回调方法，上报设置后的播放速率。 |
 
 **示例：**
 
@@ -2358,7 +2358,7 @@ on(type: 'playbackRateDone', callback: OnPlaybackRateDone): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackRateDone](#onPlaybackRateDone23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlaybackRateDone](#onplaybackratedone23)。
 
 **参数：**
 
@@ -3036,7 +3036,7 @@ off(type: 'timeUpdate', callback?: Callback\<number>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offTimeUpdate](#offTimeUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTimeUpdate](#offtimeupdate23)。
 
 **参数：**
 
@@ -3074,7 +3074,7 @@ on(type: 'durationUpdate', callback: Callback\<number>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onDurationUpdate](#onDurationUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDurationUpdate](#ondurationupdate23)。
 
 **参数：**
 
@@ -3109,7 +3109,7 @@ off(type: 'durationUpdate', callback?: Callback\<number>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offDurationUpdate()](#offDurationUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDurationUpdate()](#offdurationupdate23)。
 
 **参数：**
 
@@ -3206,7 +3206,7 @@ onTimeUpdate(callback: Callback\<int>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('timeUpdate')](#onTimeUpdate9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('timeUpdate')](#ontimeupdate9)。
 
 **参数：**
 
@@ -3234,7 +3234,7 @@ offTimeUpdate(callback?: Callback\<int>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TimeUpdate')](#offTimeUpdate9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TimeUpdate')](#offtimeupdate9)。
 
 **参数：**
 
@@ -3266,7 +3266,7 @@ onDurationUpdate(callback: Callback\<int>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('durationUpdate')](#onDurationUpdate9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('durationUpdate')](#ondurationupdate9)。
 
 **参数：**
 
@@ -3294,7 +3294,7 @@ offDurationUpdate(callback?: Callback\<int>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('durationUpdate')](#offDurationUpdate9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('durationUpdate')](#offdurationupdate9)。
 
 **参数：**
 
@@ -3450,7 +3450,7 @@ on(type: 'audioInterrupt', callback: Callback\<audio.InterruptEvent>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt)](#onAudioInterrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt)](#onaudiointerrupt23)。
 
 **参数：**
 
@@ -3487,7 +3487,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt)](#offAudioInterrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt)](#offaudiointerrupt23)。
 
 **参数：**
 
@@ -3523,7 +3523,7 @@ onVideoSizeChange(callback: OnVideoSizeChangeHandler): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onVideoSizeChange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onvideosizechange9)。
 
 **参数：**
 
@@ -3551,7 +3551,7 @@ offVideoSizeChange(callback?: OnVideoSizeChangeHandler): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('VideoSizeChange')](#offVideoSizeChange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('VideoSizeChange')](#offvideosizechange9)。
 
 **参数：**
 
@@ -3579,7 +3579,7 @@ onAudioInterrupt(callback: Callback\<audio.InterruptEvent>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioInterrupt')](#onAudioInterrupt9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioInterrupt')](#onaudiointerrupt9)。
 
 **参数：**
 
@@ -3797,7 +3797,7 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate)](#onSubtitleUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate)](#onsubtitleupdate23)。
 
 **参数：**
 
@@ -3872,7 +3872,7 @@ on(type: 'trackChange', callback: OnTrackChangeHandler): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onTrackChange](#onTrackChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTrackChange](#ontrackchange23)。
 
 **参数：**
 
@@ -3907,7 +3907,7 @@ off(type: 'trackChange', callback?: OnTrackChangeHandler): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offTrackChange](#offTrackChange23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTrackChange](#offtrackchange23)。
 
 **参数：**
 
@@ -3940,7 +3940,7 @@ on(type: 'trackInfoUpdate', callback: Callback\<Array\<MediaDescription>>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onTrackInfoUpdate](#onTrackInfoUpdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTrackInfoUpdate](#ontrackinfoupdate23)。
 
 **参数：**
 
@@ -4282,7 +4282,7 @@ on(type:'superResolutionChanged', callback: OnSuperResolutionChanged): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSuperResolutionChanged](#onSuperResolutionChanged23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSuperResolutionChanged](#onsuperresolutionchanged23)。
 
 **参数：**
 
@@ -4317,7 +4317,7 @@ off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSuperResolutionChanged](#offSuperResolutionChanged23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSuperResolutionChanged](#offsuperresolutionchanged23)。
 
 **参数：**
 
@@ -4351,7 +4351,7 @@ onAudioOutputDeviceChangeWithInfo(callback: Callback<audio.AudioStreamDeviceChan
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioOutputDeviceChangeWithInfo')](#onAudioOutputDeviceChangeWithInfo11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioOutputDeviceChangeWithInfo')](#onaudiooutputdevicechangewithinfo11)。
 
 **参数：**
 
@@ -4387,7 +4387,7 @@ offAudioOutputDeviceChangeWithInfo(callback?: Callback\<audio.AudioStreamDeviceC
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AudioOutputDeviceChangeWithInfo')](#offAudioOutputDeviceChangeWithInfo11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AudioOutputDeviceChangeWithInfo')](#offaudiooutputdevicechangewithinfo11)。
 
 **参数：**
 
@@ -4421,13 +4421,13 @@ onSubtitleUpdate(callback: Callback\<SubtitleInfo>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SubtitleUpdate')](#onSubtitleUpdate12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SubtitleUpdate')](#onsubtitleupdate12)。
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#SubtitleInfo12)> | 是   | 外挂字幕事件回调方法。 |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | 是   | 外挂字幕事件回调方法。 |
 
 **示例：**
 
@@ -4540,7 +4540,7 @@ onTrackInfoUpdate(callback: Callback\<Array\<MediaDescription>>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('TrackInfoUpdate')](#onTrackInfoUpdate12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('TrackInfoUpdate')](#ontrackinfoupdate12)。
 
 **参数：**
 
@@ -4576,7 +4576,7 @@ offTrackInfoUpdate(callback?: Callback\<Array\<MediaDescription>>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TrackInfoUpdate')](#offTrackInfoUpdate12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('TrackInfoUpdate')](#offtrackinfoupdate12)。
 
 **参数：**
 
@@ -4602,7 +4602,7 @@ onAmplitudeUpdate(callback: Callback\<Array\<double>>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('amplitudeUpdate')](#onAmplitudeUpdate13)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('amplitudeUpdate')](#onamplitudeupdate13)。
 
 **参数：**
 
@@ -4630,7 +4630,7 @@ offAmplitudeUpdate(callback?: Callback\<Array\<double>>): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AmplitudeUpdate')](#offAmplitudeUpdate13)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AmplitudeUpdate')](#offamplitudeupdate13)。
 
 **参数：**
 
@@ -4658,7 +4658,7 @@ onSeiMessageReceived(payloadTypes: Array\<int>, callback: OnSeiMessageHandle): v
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SeiMessageReceived')](#onSeiMessageReceived18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SeiMessageReceived')](#onseimessagereceived18)。
 
 **参数：**
 
@@ -4700,7 +4700,7 @@ offSeiMessageReceived(payloadTypes?: Array\<int>, callback?: OnSeiMessageHandle)
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SeiMessageReceived')](#offSeiMessageReceived18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SeiMessageReceived')](#offseimessagereceived18)。
 
 **参数：**
 
@@ -4728,7 +4728,7 @@ onSuperResolutionChanged(callback: OnSuperResolutionChanged): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SuperResolutionChanged')](#onSuperResolutionChanged18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('SuperResolutionChanged')](#onsuperresolutionchanged18)。
 
 **参数：**
 
@@ -4756,7 +4756,7 @@ offSuperResolutionChanged(callback?: OnSuperResolutionChanged): void;
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SuperResolutionChanged')](#offSuperResolutionChanged18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('SuperResolutionChanged')](#offsuperresolutionchanged18)。
 
 **参数：**
 
