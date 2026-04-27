@@ -95,7 +95,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onRequest(want: Want, startId: number): void
 
-Extension生命周期回调，如果是startAbility、startServiceExtensionAbility或者[requestDialogService](js-apis-inner-application-uiAbilityContext.md#requestdialogservice)接口拉起的服务，会在onCreate之后回调。每次拉起服务都会回调，startId会递增。
+Extension生命周期回调，如果是startAbility或者startServiceExtensionAbility拉起的服务，会在onCreate之后回调。每次拉起服务都会回调，startId会递增。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
