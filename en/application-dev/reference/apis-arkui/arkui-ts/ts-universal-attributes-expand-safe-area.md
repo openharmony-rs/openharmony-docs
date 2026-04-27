@@ -1,7 +1,7 @@
 # Safe Area
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @WendongPang-->
+<!--Owner: @camlostshi-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
