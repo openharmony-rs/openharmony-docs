@@ -170,6 +170,102 @@ async function validateCertChainWithSystemCa(): Promise<void> {
 
 <!-- @[certificate_chain_validation_with_crl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/ValidateCertChainWithCrl.ets) -->
 
+``` TypeScript
+
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { util } from '@kit.ArkTS';
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
+}
+
+// ...
+
+async function createX509Cert(certData: string): Promise<cert.X509Cert> {
+  let encodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(certData),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+  }
+  return x509Cert;
+}
+
+async function createX509CRL(crlDataStr: string): Promise<cert.X509CRL> {
+  let encodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(crlDataStr),
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let x509CRL: cert.X509CRL = {} as cert.X509CRL;
+  try {
+    x509CRL = await cert.createX509CRL(encodingBlob);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509CRL failed: errCode: ${e.code}, message: ${e.message}`);
+  }
+  return x509CRL;
+}
+
+async function validateCertChainWithCrl(): Promise<void> {
+  try {
+    // 创建证书对象
+    let endEntityCert = await createX509Cert(endEntityCertData);
+    let intermediateCaCert = await createX509Cert(intermediateCaCertData);
+    let rootCaCert = await createX509Cert(rootCaCertData);
+
+    // 创建CRL对象
+    let crl = await createX509CRL(crlData);
+
+    // 构建吊销校验参数
+    let revokedParams: cert.X509CertRevokedParams = {
+      // 启用CRL检查
+      revocationFlags: [cert.CertRevocationFlag.CERT_REVOCATION_CRL_CHECK],
+      // 提供CRL列表
+      crls: [crl]
+    };
+
+    // 构建校验参数
+    let params: cert.X509CertValidatorParams = {
+      untrustedCerts: [intermediateCaCert],
+      trustedCerts: [rootCaCert],
+      trustSystemCa: false,
+      // 不校验证书有效期（仅用于示例，实际场景建议开启）
+      validateDate: false,
+      // 设置吊销校验参数
+      revokedParams: revokedParams,
+    };
+
+    // 创建证书链校验器实例
+    let validator = cert.createCertChainValidator('PKIX');
+
+    // 验证endEntityCert
+    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    console.info('validate success, certChain length: ' + result.certChain.length);
+    for (let i = 0; i < result.certChain.length; i++) {
+      let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
+      console.info(`Cert ${i} subject: ${subject}`);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (error.code === cert.CertResult.ERR_CERT_HAS_REVOKED) {
+      console.error('certificate has been revoked');
+    } else {
+      console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    }
+  }
+}
+```
+
 ## 场景四：国密证书链校验
 
 国密SM2证书链校验，通常需要设置[userId](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509certvalidatorparams)参数。
