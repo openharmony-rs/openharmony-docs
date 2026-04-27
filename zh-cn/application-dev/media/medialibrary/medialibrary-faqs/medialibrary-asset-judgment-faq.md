@@ -21,7 +21,6 @@
 **示例：**
 
 ```ts
-
 function getMediaTypeByMimeType(mimeType: string): string {
   if (mimeType.startsWith('video/')) {
     return 'video';
