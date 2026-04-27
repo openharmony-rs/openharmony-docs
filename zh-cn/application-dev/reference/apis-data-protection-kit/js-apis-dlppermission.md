@@ -1560,7 +1560,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 >
 > connectServer接口代表系统能力侧向前端通信的一次调用。
 
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
   
@@ -1580,6 +1580,31 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100011 | The system ability works abnormally. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { Callback } from '@kit.BasicServicesKit';
+
+export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
+  private accountId: string;
+  private accountName: string;
+  constructor() {
+    this.accountId = 'accountId';
+    this.accountName = 'accountName';
+  }
+
+  connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
+    let callbackJson = JSON.stringify({
+      'requestId': requestId,
+    });
+    callback(callbackJson);
+  }
+}
+
+let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
+```
 
  
 ## DlpConnManager<sup>21+</sup>
@@ -1596,7 +1621,7 @@ constructor()
 
 [DlpConnManager](#dlpconnmanager21) 实例化时的构造函数。
  
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
  
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1607,6 +1632,14 @@ constructor()
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnManager();
+```
 
 ### registerPlugin<sup>21+</sup>
 static registerPlugin(plugin: DlpConnPlugin): number
@@ -1617,7 +1650,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 >
 > registerPlugin将plugin注册到SA（System Ability）侧，待SA（System Ability）调用。
 
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1644,6 +1677,31 @@ static registerPlugin(plugin: DlpConnPlugin): number
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { Callback } from '@kit.BasicServicesKit';
+
+export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
+  private accountId: string;
+  private accountName: string;
+  constructor() {
+    this.accountId = 'accountId';
+    this.accountName = 'accountName';
+  }
+
+  connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
+    let callbackJson = JSON.stringify({
+      'requestId': requestId,
+    });
+    callback(callbackJson);
+  }
+}
+  
+let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsulePlugin());
+```
 
 ### unregisterPlugin<sup>21+</sup>
 static unregisterPlugin(): void
@@ -1654,7 +1712,7 @@ static unregisterPlugin(): void
 >
 > unregisterPlugin将plugin从SA（System Ability）侧注销注册。
   
-**需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+**需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1669,3 +1727,11 @@ static unregisterPlugin(): void
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
+  
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.DlpConnManager.unregisterPlugin();
+```
