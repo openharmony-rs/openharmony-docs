@@ -127,8 +127,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  firmwareVersion | string |  否   | 否  |  固件版本。          |
 |  hardwareVersion | string |  否   | 否  |  硬件版本。          |
 |  softwareVersion | string |  否  | 否  |  软件版本。          |
-|  protocolType    | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  协议类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
-|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设备类型。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
+|  protocolType    | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  协议类型。 |
+|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设备类型。 |
 |  wiseDeviceId    | string |  否   | 否  |  已注册设备标识。        |
 |  wiseUserId      | string |  否   | 否  |  已注册用户标识。        |
 |  registerTime    | string |  否   | 否  |  注册时间。          |
@@ -136,8 +136,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  shareTime       | string |  否   | 否  |  分享时间。          |
 |  isLocalDevice   | boolean | 否   | 否 |  是否为本地设备。<br /> - false：表示非本地设备，即被查询的其他设备。<br /> - true：表示本地设备，即当前正在使用该接口的设备。     |
 |  services        | Array&lt;[ServiceProfileInfo](#serviceprofileinfo15)&gt; | 否  | 是  | 服务配置信息列表。默认为空。 |
-|  productName<sup>18+</sup>     | string  | 否   | 是 |  设备所属的产品名称。默认为空。    |
-|  internalModel<sup>18+</sup>   | string  | 否   | 是 |  设备所属产品的内部型号。默认为空。 |
+|  productName<sup>18+</sup>     | string  | 否   | 是 |  设备所属的产品名称。默认为空。<br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
+|  internalModel<sup>18+</sup>   | string  | 否   | 是 |  设备所属产品的内部型号。默认为空。<br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
 
 
 ## DeviceIconInfoFilterOptions<sup>18+</sup>
@@ -197,7 +197,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | ------ | --------- | --------|
 |  wiseDeviceId       | string  | 否 | 否   |  已注册设备标识。          |
-|  onlineStatus    | ArkTS-Dyn: number <br /> ArkTS-Sta: int  | 否 | 否   |  设备在线状态，包括<br /> - 0：表示设备处于离线状态。<br /> - 1：表示设备处于在线状态。<br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
+|  onlineStatus    | ArkTS-Dyn: number <br /> ArkTS-Sta: int  | 否 | 否   |  设备在线状态，包括<br /> - 0：表示设备处于离线状态。<br /> - 1：表示设备处于在线状态。 |
 
 ## DeviceIdentification<sup>24+</sup>
 
@@ -244,7 +244,7 @@ ArkTS-Sta: replyUiAction(action: int, actionResult: string): void
 
   | 参数名       | 类型            | 必填  | 说明                |
   | ------------- | --------------- | ---- | ------------------- |
-  | action        | ArkTS-Dyn: number <br /> ArkTS-Sta: int        | 是    | 用户操作动作。<br /> - 0：允许授权。<br /> - 1：取消授权。<br /> - 2：授权框用户操作超时。<br /> - 3：取消pin码框展示。<br /> - 4：取消pin码输入框展示。<br /> - 5：pin码输入框确定操作。<br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 23 |
+  | action        | ArkTS-Dyn: number <br /> ArkTS-Sta: int        | 是    | 用户操作动作。<br /> - 0：允许授权。<br /> - 1：取消授权。<br /> - 2：授权框用户操作超时。<br /> - 3：取消pin码框展示。<br /> - 4：取消pin码输入框展示。<br /> - 5：pin码输入框确定操作。 |
   | actionResult        | string          | 是    | 表示用户操作结果，长度范围1~255字符。 |
 
 **错误码：**
@@ -537,7 +537,7 @@ ArkTS-Sta: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): voi
   | 参数名       | 类型            | 必填  | 说明                |
   | ------------- | --------------- | ---- | ------------------- |
   | policy        |  &nbsp;[StrategyForHeartbeat](#strategyforheartbeat15)&nbsp;         | 是    | 心跳广播策略。       |
-  | delayTime     | ArkTS-Dyn: number <br /> ArkTS-Sta: int          | 是    | 临时关闭心跳广播的时长，单位为：ms，取值范围1000ms到15000ms。<br /> **ArkTS-Dyn起始版本：** 15 <br /> **ArkTS-Sta起始版本：** 23 |
+  | delayTime     | ArkTS-Dyn: number <br /> ArkTS-Sta: int          | 是    | 临时关闭心跳广播的时长，单位为：ms，取值范围1000ms到15000ms。 |
 
 **错误码：**
 
@@ -674,7 +674,7 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -820,7 +820,7 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 
   | 参数名       | 类型            | 必填  | 说明                |
   | ------------- | --------------- | ---- | ------------------- |
-  |  maxNameLength       |  ArkTS-Dyn: number <br /> ArkTS-Sta: int        |  是  | 可显示的设备名称长度（字节数），取值范围为[18，100]，为0时表示不限制。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
+  |  maxNameLength       |  ArkTS-Dyn: number <br /> ArkTS-Sta: int        |  是  | 可显示的设备名称长度（字节数），取值范围为[18，100]，为0时表示不限制。 |
 
 **返回值：**
 
@@ -908,7 +908,7 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -994,7 +994,7 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 <br /> **ArkTS-Dyn起始版本：** 18 <br /> **ArkTS-Sta起始版本：** 23 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
