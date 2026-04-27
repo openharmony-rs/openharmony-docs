@@ -249,10 +249,10 @@ WebViewController与Web组件的绑定状态。
 
 | 名称           | 类型       | 只读 | 可选 | 说明                         |
 | -------------- | --------- | ---- | ---- | ---------------------------- |
-| x  | number   | 否   | 否   | 矩形区域左上角x坐标。    |
-| y  | number   | 否   | 否   | 矩形区域左上角y坐标。    |
-| width  | number   | 否   | 否   | 矩形的宽度。 <br>单位：px   |
-| height | number   | 否   | 否   | 矩形的高度。 <br>单位：px   |
+| x | number | 否 | 否 | 矩形区域左上角x坐标。 <br>单位：px。 |
+| y | number | 否 | 否 | 矩形区域左上角y坐标。 <br>单位：px。 |
+| width | number | 否 | 否 | 矩形的宽度。 <br>单位：px。 |
+| height| number | 否 | 否 | 矩形的高度。 <br>单位：px。 |
 
 ## WebHttpCookie<sup>23+</sup>
 
