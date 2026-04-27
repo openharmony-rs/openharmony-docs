@@ -28,17 +28,17 @@ Declares the USB Serial DDK APIs used by the host to access the serial port devi
 | -- | -- |
 | [int32_t OH_UsbSerial_Init(void)](#oh_usbserial_init) | Initializes the USB Serial DDK.|
 | [int32_t OH_UsbSerial_Release(void)](#oh_usbserial_release) | Releases the USB Serial DDK.|
-| [int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)](#oh_usbserial_open) | Enables the USB serial port device based on the specified **deviceId** and **interfaceIndex**.|
-| [int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)](#oh_usbserial_close) | Disables the USB serial port device.|
+| [int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)](#oh_usbserial_open) | Opens the USB serial port device based on the specified **deviceId** and **interfaceIndex**.|
+| [int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)](#oh_usbserial_close) | Closes the USB serial port device.|
 | [int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)](#oh_usbserial_read) | Reads data from the USB serial port device to the buffer.|
 | [int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)](#oh_usbserial_write) | Writes the data in the buffer to the USB serial port device.|
 | [int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)](#oh_usbserial_setbaudrate) | Sets the baud rate for a USB serial port device. If the parameters of the USB serial port device are set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the baud rate.|
 | [int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params)](#oh_usbserial_setparams) | Sets the parameters of the USB serial port device. If the parameters of the USB serial port device are not set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the related parameters.|
 | [int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)](#oh_usbserial_settimeout) | Sets the timeout interval (ms) for reading data reported by a USB serial port device. If this function is not called, the timeout value is **0** by default, indicating that data is returned immediately regardless of whether data is read. If you need to wait for a certain period of time or data must be read, call this API to set the timeout interval.|
 | [int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl)](#oh_usbserial_setflowcontrol) | Sets flow control parameters. Flow control is used to manage the data transfer rate during communication with the USB serial port device to ensure that the sender does not send data that exceeds the processing capability of the receiver.<br> If flow control is required, call this API to set flow control parameters. If this API is not called, flow control is not performed by default.|
-| [int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)](#oh_usbserial_flush) | Clears the input and output buffers after the write operation is complete. If a large amount of data is to be transmitted to the USB serial port device, the data may be buffered in the kernel for transmission. If the application closes the file descriptor or exits before the data is completely sent out, some data may be lost. You can call this API to ensure that all data is sent before subsequent operations are performed.|
-| [int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)](#oh_usbserial_flushinput) | Refreshes the input buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
-| [int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)](#oh_usbserial_flushoutput) | Refreshes the output buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
+| [int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)](#oh_usbserial_flush) | Flushes the input and output buffers after the write operation is complete. If a large amount of data is to be transmitted to the USB serial port device, the data may be buffered in the kernel for transmission. If the application closes the file descriptor or exits before the data is completely sent out, some data may be lost. You can call this API to ensure that all data is sent before subsequent operations are performed.|
+| [int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)](#oh_usbserial_flushinput) | Flushes the input buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
+| [int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)](#oh_usbserial_flushoutput) | Flushes the output buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.|
 
 ## Function Description
 
@@ -90,7 +90,7 @@ int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_D
 
 **Description**
 
-Enables the USB serial port device based on the specified **deviceId** and **interfaceIndex**.
+Opens the USB serial port device based on the specified **deviceId** and **interfaceIndex**.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB_SERIAL
 
@@ -119,7 +119,7 @@ int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)
 
 **Description**
 
-Disables the USB serial port device.
+Closes the USB serial port device.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB_SERIAL
 
@@ -188,7 +188,7 @@ Writes the data in the buffer to the USB serial port device.
 | Name| Description|
 | -- | -- |
 | [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) *dev | Device handle.|
-| uint8_t *buff | Buffer to which the data of the USB serial port device is written.|
+| uint8_t *buff | Buffer whose data is written to the USB serial port device.|
 | uint32_t bufferSize | Buffer size.|
 | uint32_t *bytesWritten | Number of bytes that are actually written.|
 
@@ -318,7 +318,7 @@ int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)
 
 **Description**
 
-Clears the input and output buffers after the write operation is complete. If a large amount of data is to be transmitted to the USB serial port device, the data may be buffered in the kernel for transmission. If the application closes the file descriptor or exits before the data is completely sent out, some data may be lost. You can call this API to ensure that all data is sent before subsequent operations are performed.
+Flushes the input and output buffers after the write operation is complete. If a large amount of data is to be transmitted to the USB serial port device, the data may be buffered in the kernel for transmission. If the application closes the file descriptor or exits before the data is completely sent out, some data may be lost. You can call this API to ensure that all data is sent before subsequent operations are performed.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB_SERIAL
 
@@ -345,7 +345,7 @@ int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)
 
 **Description**
 
-Refreshes the input buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.
+Flushes the input buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB_SERIAL
 
@@ -372,7 +372,7 @@ int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)
 
 **Description**
 
-Refreshes the output buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.
+Flushes the output buffer. The data in the buffer is cleared immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur.<br> You can call this API to clear these exceptions to restore the communication.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB_SERIAL
 
