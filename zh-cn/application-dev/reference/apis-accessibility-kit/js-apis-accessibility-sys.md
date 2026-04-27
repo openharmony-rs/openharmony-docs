@@ -159,3 +159,18 @@ import { accessibility } from '@kit.AccessibilityKit';
 | DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | 返回节点不具备可聚焦属性，需要使用返回节点的子节点列表中的最后一个节点继续查询。  |
 | SEARCH_FAILURE_IN_SCROLL                  | 8  | 节点在滚动组件内查询失败。        |
 
+## InjectActionType<sup>26+</sup>
+
+表示注入动作的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 名称                         | 值    | 说明                   |
+| -------------------------- | ---- | ------------------------ |
+| CLICK                      | 1    | 表示注入单击动作。         |
+| DOUBLE_CLICK               | 2    | 表示注入双击动作。         |
+| LONG_CLICK                 | 3    | 表示注入长按动作。         |
