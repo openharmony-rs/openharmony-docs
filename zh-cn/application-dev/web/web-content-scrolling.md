@@ -60,28 +60,58 @@
 
 当Web页面处于非顶部状态或向下抛滑时，此时若需返回Web页面顶部，可以使用[backToTop](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#backtotop22)方法，开启后通过点击状态栏，打断抛滑并将Web页面滚动到页面顶部。
 
-+ 示例代码：
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+示例代码：
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+ArkTS-Dyn示例：
 
-    build() {
+<!-- @[web_backTo_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebBackToTop.ets) --> 
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("scroll.html"), controller: this.controller })
+        .backToTop(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[web_backTo_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebBackToTop.ets) --> 
+
+```TypeScript
+import {
+  $rawfile,
+  Column,
+  Component,
+  Entry,
+  Web
+} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
       Column() {
-        Web({ src: $rawfile("index.html"), controller: this.controller })
+        Web({ src: $rawfile('scroll.html'), controller: this.controller })
           .backToTop(true)
       }
     }
-  }
-  ```
-
+}
+```
   加载的HTML文件：
   ```html
-  <!-- index.html -->
+  <!-- scroll.html -->
   <!DOCTYPE html>
   <html>
   <head>
