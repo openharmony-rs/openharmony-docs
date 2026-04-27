@@ -144,7 +144,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     └
     ```
 
-3. 在ServiceExtAbility.ets文件中，增加导入[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调，在[onConnect](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)生命周期回调里，需要将之前定义的ServiceExtImpl对象返回。
+3. 在ServiceExtAbility.ets文件中，增加导入[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)的依赖包，自定义类继承ServiceExtensionAbility并实现生命周期回调，在[onConnect](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)生命周期回调里，需要将之前定义的ServiceExtImpl对象返回。
 
     ```ts
     import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
