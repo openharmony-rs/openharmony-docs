@@ -953,7 +953,7 @@ function cancelSerialRight() {
 
 ## BaudRates
 
-表示波特率的枚举
+表示波特率的枚举，单位：比特/秒
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
