@@ -33,6 +33,70 @@ import { media } from '@kit.MediaKit';
 | fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  否  | 否   | 源媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移：0，字节长度：100。其文件描述为AVFileDescriptor{ fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
 | fdDst<sup>12+</sup>                               | number                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给AVTranscoder实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。<br> - 同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。|
 
+## addWatermark<sup>26+</sup>
+
+addWatermark(watermark: image.PixelMap, configs: WatermarkConfig): Promise\<int\>
+
+为 AVTranscoder 添加水印。此接口使用 Promise 异步返回结果。应用最多可以添加 5 个水印。此接口只能在 prepared 状态之前调用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**参数：**
+
+| 参数名    | 类型                                    | 必填 | 说明                       |
+| --------- | --------------------------------------- | ---- | -------------------------- |
+| watermark | [image.PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 水印图像。                 |
+| configs   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfig) | 是   | 水印配置参数。             |
+
+**返回值：**
+
+| 类型        | 说明                   |
+| ----------- | ---------------------- |
+| Promise\<int\> | Promise对象，返回水印ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                   |
+| -------- | ------------------------------------------ |
+| 401      | The parameter check failed. |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.              |
+| 5400105  | Service died. Return by promise.          |
+| 5400106  | Unsupported format. Returned by promise.  |
+| 5400108  |The parameter check failed, parameter value out of range.  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { image } from '@kit.ImageKit';
+
+async function test() {
+  // 创建转码实例。
+  let avTranscoder = await media.createAVTranscoder();
+  
+  // 配置水印参数。
+  let watermarkConfig: media.WatermarkConfiguration = {
+    // 根据实际需求配置水印参数
+      top : 40,
+      left : 40,
+      width: 200,
+      height: 300,
+  };
+
+  avTranscoder.addWatermark(watermarkPixelMap, watermarkConfig).then((watermarkId: number) => {
+    console.info('addWatermark success, watermarkId: ' + watermarkId);
+  }).catch((err: BusinessError) => {
+    console.error('addWatermark failed and catch error is ' + err.message);
+  });
+}
+```
+
 ## prepare<sup>12+</sup>
 
 prepare(config: AVTranscoderConfig): Promise\<void>
