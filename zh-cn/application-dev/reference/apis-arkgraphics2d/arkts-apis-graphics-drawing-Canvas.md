@@ -1364,6 +1364,65 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## drawGlyphs
+
+drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<common2D.Point\>, positionOffset: number, glyphCount: number, font: Font): void
+
+绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数**
+
+| 参数名          | 类型                                        | 必填  | 说明                                                  |
+| ------         | -------------------                         | ---- | -----------                                          |
+| glyphIds       | Array\<number\>                             | 是   | 指示字形ID的数组。                                      |
+| glyphIdOffset  | number                                      | 是   | 指示在绘制字形Ids数组之前要跳过的元素的数量。 取值限定为整数。 |
+| positions      | Array\<common2D.Point\>                     | 是   | 表示位置数组。                                          |
+| positionOffset | number                                      | 是   | 指示在绘制位置数组之前要跳过的元素的数量。取值限定为整数。     |
+| glyphCount     | number                                      | 是   | 指示要绘制的字形的数目。                                  |
+| font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 指示用于绘图的字体。                                     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<number> = [100， 200， 300];
+    let positionArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawSingleCharacter<sup>12+</sup>
 
 drawSingleCharacter(text: string, font: Font, x: number, y: number): void
