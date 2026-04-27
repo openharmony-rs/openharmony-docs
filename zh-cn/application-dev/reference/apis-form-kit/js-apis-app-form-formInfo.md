@@ -42,8 +42,8 @@ import { formInfo } from '@kit.FormKit';
 | formVisibleNotify  | boolean        | 否    | 否     | 卡片是否使能可见通知。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | scheduledUpdateTime        | string               | 否    | 否     | 卡片更新时间。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | formConfigAbility | string               | 否    | 否     | 卡片配置ability。指定长按卡片弹出的选择框内，编辑选项所对应的ability。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| updateDuration        | number       | 否    | 否     | 卡片更新周期。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[0,336]的整数。zg+= |
-| defaultDimension  | number | 否    | 否     | 卡片规格  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[1, 9]的整数。具体可选规格参考[FormDimension](#formdimension) 。 |
+| updateDuration        | number       | 否    | 否     | 卡片更新周期。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[0,336]的整数。 |
+| defaultDimension  | number | 否    | 否     | 卡片规格。具体可选规格参考[FormDimension](#formdimension)。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[1, 9]的整数。 |
 | supportDimensions    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的规格。具体可选规格参考[FormDimension](#formdimension)。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的的整数的数组，其中数值5已经废弃。 |
 | isDynamic<sup>10+</sup>      | boolean               | 否    | 否     | 卡片是否为动态卡片。<br/>仅ArkTS卡片区分动静态卡片，JS卡片均为动态卡片。<br/>-&nbsp;true：为动态卡片。<br/>-&nbsp;false：为静态卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | transparencyEnabled<sup>11+</sup>      | boolean               | 否    | 否     | 卡片是否支持设置背景透明度。<br/>ArkTS卡片由用户配置决定是否支持，JS卡片均不支持。<br/>-&nbsp;true：表示是透明卡片。<br/>-&nbsp;false：表示不是透明卡片。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
