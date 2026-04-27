@@ -35,7 +35,7 @@ import { media } from '@kit.MediaKit';
 
 ## addWatermark
 
-addWatermark(watermark: image.PixelMap, configs: WatermarkConfig): Promise\<int\>
+addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
 
 为 AVTranscoder 添加水印。此接口使用 Promise 异步返回结果。应用最多可以添加 5 个水印。此接口只能在 prepared 状态之前调用。
 
