@@ -41,9 +41,9 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 801  | Capability not supported.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 801  | 能力不支持。  |
+| 3800001  | 输入服务异常。  |
 
 **示例：**
 
@@ -91,9 +91,9 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 801  | Capability not supported.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 801  | 能力不支持。  |
+| 3800001  | 输入服务异常。  |
 
 **示例：**
 
@@ -155,8 +155,8 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300001  | 按键已被按下且不是最近按下的按键。  |
 
 **示例：**
@@ -212,8 +212,8 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300001  | 按键未被按下。  |
 
 **示例：**
@@ -281,8 +281,8 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300002  | 显示器不存在。  |
 
 **示例：**
@@ -338,8 +338,8 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300001  | 鼠标按键已被按下。  |
 
 **示例：**
@@ -395,8 +395,8 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300001  | 鼠标按键未被按下。  |
 
 **示例：**
@@ -454,8 +454,8 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300001  | 轴事件正在进行中。  |
 
 **示例：**
@@ -512,8 +512,8 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300001  | 轴事件未在进行中。  |
 
 **示例：**
@@ -570,8 +570,8 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 3800001  | Input service exception.  |
+| 201  | 权限校验失败。  |
+| 3800001  | 输入服务异常。  |
 | 4300001  | 轴事件未在进行中。  |
 
 **示例：**
