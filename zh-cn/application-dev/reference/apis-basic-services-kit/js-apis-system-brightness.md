@@ -48,7 +48,7 @@ getValue(options?: GetBrightnessOptions): void
   ```js
   brightness.getValue({
       success: (data: BrightnessResponse) => {
-        console.log('success get brightness value:' + data.value);
+        console.info('success get brightness value:' + data.value);
       },
       fail: (data: string, code: number) => {
         console.error('get brightness fail, code: ' + code + ', data: ' + data);
@@ -77,7 +77,7 @@ setValue(options?: SetBrightnessOptions): void
   brightness.setValue({
       value: 100,
       success: () => {
-        console.log('handling set brightness success.');
+        console.info('handling set brightness success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set brightness value fail, code:' + code + ', data: ' + data);
@@ -105,7 +105,7 @@ getMode(options?: GetBrightnessModeOptions): void
   ```js
   brightness.getMode({
       success: (data: BrightnessModeResponse) => {
-        console.log('success get mode:' + data.mode);
+        console.info('success get mode:' + data.mode);
       },
       fail: (data: string, code: number) => {
         console.error('handling get mode fail, code:' + code + ', data: ' + data);
@@ -133,7 +133,7 @@ setMode(options?: SetBrightnessModeOptions): void
   brightness.setMode({
       mode: 1,
       success: () => {
-        console.log('handling set mode success.');
+        console.info('handling set mode success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set mode fail, code:' + code + ', data: ' + data);
@@ -167,7 +167,7 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
   brightness.setKeepScreenOn({
       keepScreenOn: true,
       success: () => {
-        console.log('handling set keep screen on success.');
+        console.info('handling set keep screen on success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set keep screen on fail, code:' + code + ', data: ' + data);
