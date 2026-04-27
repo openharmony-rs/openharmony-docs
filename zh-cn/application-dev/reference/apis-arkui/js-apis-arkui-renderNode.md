@@ -512,7 +512,7 @@ for (let i = 0; i < 10; i++) {
   let childNode = new RenderNode();
   childNode.size = { width: i * 10, height: i * 10 };
   childNode.position = { x: i * 10, y: i * 10 };
-  childNode.backgroundColor = 0xFF0000FF - 0X11 * i;
+  childNode.backgroundColor = 0xFF0000FF.toInt() - 0X11 * i;
   renderNode.appendChild(childNode);
 }
 
@@ -913,7 +913,7 @@ renderNode.frame = {
   width: 100,
   height: 100
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0XFF00FF00.toInt();
 const backgroundColor = renderNode.backgroundColor;
 
 class MyNodeController extends NodeController {
@@ -1126,7 +1126,7 @@ renderNode.frame = {
   width: 100,
   height: 100
 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xffff0000.toInt();
 renderNode.opacity = 0.5;
 const opacity = renderNode.opacity;
 
@@ -1900,10 +1900,10 @@ ArkTS-Sta示例：
 import { RenderNode, FrameNode, NodeController, UIContext, Entry, Component, Row, NodeContainer } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xffff0000.toInt();
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 renderNode.shadowElevation = 10;
-renderNode.shadowColor = 0XFF00FF00;
+renderNode.shadowColor = 0XFF00FF00.toInt();
 const shadowColor = renderNode.shadowColor;
 
 class MyNodeController extends NodeController {
@@ -2196,10 +2196,10 @@ ArkTS-Sta示例：
 import { RenderNode, FrameNode, NodeController, UIContext, Entry, Component, Row, NodeContainer } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xffff0000.toInt();
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 renderNode.shadowElevation = 10;
-renderNode.shadowColor = 0XFF00FF00;
+renderNode.shadowColor = 0XFF00FF00.toInt();
 renderNode.shadowOffset = { x: 10, y: 10 };
 renderNode.shadowAlpha = 0.1;
 const shadowAlpha = renderNode.shadowAlpha;
@@ -2326,7 +2326,7 @@ ArkTS-Sta示例：
 import { RenderNode, FrameNode, NodeController, UIContext, Entry, Component, Row, NodeContainer } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xffff0000.toInt();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
 renderNode.shadowOffset = { x: 10, y: 10 };
 renderNode.shadowAlpha = 0.7
@@ -2463,7 +2463,7 @@ ArkTS-Sta示例：
 import { RenderNode, FrameNode, NodeController, UIContext, Entry, Component, Row, NodeContainer } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.backgroundColor = 0xff0000ff;
+renderNode.backgroundColor = 0xff0000ff.toInt();
 renderNode.frame = {
   x: 100,
   y: 100,
@@ -2875,7 +2875,7 @@ import { Entry, Component, Row, NodeContainer, BorderStyle } from '@ohos.arkui.c
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0XFF00FF00.toInt();
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
 renderNode.borderStyle = {
   left: BorderStyle.Solid,
@@ -3007,7 +3007,7 @@ import { RenderNode, FrameNode, NodeController, UIContext, Entry, Component, Row
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0XFF00FF00.toInt();
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
 const borderWidth = renderNode.borderWidth!;
 
@@ -3134,9 +3134,9 @@ import { RenderNode, FrameNode, NodeController, UIContext, Entry, Component, Row
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0XFF00FF00.toInt();
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.borderColor = { left: 0xFF0000FF.toInt(), top: 0xFF0000FF.toInt(), right: 0xFF0000FF.toInt(), bottom: 0xFF0000FF.toInt() };
 const borderColor = renderNode.borderColor!;
 
 
@@ -3265,7 +3265,7 @@ import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0XFF00FF00.toInt();
 renderNode.borderRadius = { topLeft: 32, topRight: 32, bottomLeft: 32, bottomRight: 32 };
 const borderRadius = renderNode.borderRadius!;
 
@@ -3275,7 +3275,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
 
-    const rootRenderNode = this.rootNode.getRenderNode();
+    const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
     }
@@ -3398,13 +3398,13 @@ import { Entry, Component, Row, NodeContainer } from '@ohos.arkui.component';
 
 const mask = new ShapeMask();
 mask.setRectShape({ left: 0, right: 150, top: 0, bottom: 150 });
-mask.fillColor = 0X55FF0000;
-mask.strokeColor = 0XFFFF0000;
+mask.fillColor = 0X55FF0000.toInt();
+mask.strokeColor = 0XFFFF0000.toInt();
 mask.strokeWidth = 24;
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0XFF00FF00.toInt();
 renderNode.shapeMask = mask;
 const shapeMask = renderNode.shapeMask!;
 
@@ -3414,7 +3414,7 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
 
-    const rootRenderNode = this.rootNode.getRenderNode();
+    const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
     }
@@ -3958,7 +3958,7 @@ ArkTS-Dyn中使用ArkTS-Sta的RenderNode对象。
     let renderNodeTest =new RenderNode();
     renderNodeTest.position = { x: 0, y: 0 };
     renderNodeTest.size = { width: 80, height: 80 }
-    renderNodeTest.backgroundColor = 0xff0000ff;
+    renderNodeTest.backgroundColor = 0xff0000ff.toInt();
     let renderNodeDynamic = transfer.transferDynamic(renderNodeTest, 'ArkUI.RenderNode');
     let ret = renderNodeDynamic! as Object;
     return ret;
