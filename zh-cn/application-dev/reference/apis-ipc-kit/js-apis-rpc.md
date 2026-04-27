@@ -1482,7 +1482,7 @@ readParcelable(dataIn: Parcelable): void
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
- | dataIn | [Parcelable](#parcelable9) | 是   | 需要从MessageSequence读取成员变量的对象，使用前请先实例化可序列化对象。 |
+| dataIn | [Parcelable](#parcelable9) | 是   | 需要从MessageSequence读取成员变量的对象，使用前请先实例化可序列化对象。 |
 
 **错误码：**
 
