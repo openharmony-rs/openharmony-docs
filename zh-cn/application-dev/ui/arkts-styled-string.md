@@ -739,7 +739,6 @@
 > **说明：**
 >
 > 属性字符串的构造函数[constructor](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#constructor)中，当入参value的类型为ImageAttachment或CustomSpan时，styles参数不生效。需要设置styles时，通过[setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle)、[insertStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#insertstyledstring)等方法实现。
-
   <!-- @[styledStringImageAttachment_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets) --> 
   
   ``` TypeScript
@@ -784,11 +783,11 @@
     }
   
     leadingMarginValue: ParagraphStyle = new ParagraphStyle({ leadingMargin: LengthMetrics.vp(5)});
-    //行高样式对象
+    // 行高样式对象
     lineHeightStyle1: LineHeightStyle= new LineHeightStyle(new LengthMetrics(24));
-    //Bold样式
+    // Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
-    //创建含段落样式的对象paragraphStyledString1
+    // 创建含段落样式的对象paragraphStyledString1
     // 请将$r('app.string.StyledStringImageAttachment_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送"
     paragraphStyledString1: MutableStyledString =
       new MutableStyledString(this.getUIContext()
@@ -908,6 +907,7 @@
       .title($r('app.string.StyledStringImageAttachment_title'))
     }
   }
+  ```
   ```
 
   ![StyledString_ImageAttachment](figures/StyledStringImageAttachment.png)
