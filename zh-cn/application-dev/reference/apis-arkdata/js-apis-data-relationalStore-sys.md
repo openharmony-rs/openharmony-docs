@@ -1700,16 +1700,12 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
-
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
-| ORIGIN      | '#_origin'     | 用于查找或更新时指定数据来源的字段名。    |
-| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
-| CURSOR_FIELD      | '#_cursor'     | 用于cursor查找的字段名。<br/>**起始版本：** 26.0.0<br/> |
-| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段。true表示对端删除的数据，同步到本端。false表示对端写入或更新的数据，同步到本端；或者本端写入或更新的数据。<br/>**起始版本：** 26.0.0<br/> |
+| ORIGIN      | '#_origin'     | 用于查找或更新时指定数据来源的字段名。   <br/>**ArkTS-Dyn起始版本：** 24.0.0<br/> **ArkTS-Sta起始版本：** 24.0.0|
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。<br/>**ArkTS-Dyn起始版本：** 24.0.0<br/> **ArkTS-Sta起始版本：** 24.0.0|
+| CURSOR_FIELD      | '#_cursor'     | 用于cursor查找的字段名。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0|
+| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段。true表示对端删除的数据，同步到本端。false表示对端写入或更新的数据，同步到本端；或者本端写入或更新的数据。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## DistributedInfo<sup>24+</sup>
 
