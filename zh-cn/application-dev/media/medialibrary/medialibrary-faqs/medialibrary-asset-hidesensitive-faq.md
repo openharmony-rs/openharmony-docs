@@ -31,7 +31,7 @@ function GetImageLatitude(context : Context) {
 应用申请ohos.permissions.MEDIA_LOCATION权限后，应用的去隐私级别变为不脱敏，应用即可正常获取图片所有敏感信息
 
 ## 附录
-敏感信息字段说明，具体参考[Image Kit](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)
+敏感信息字段说明，具体字段说明和使用使用方式请参考[Image Kit](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)
 ### 地理位置信息字段
 | 名称  |  说明 |
 | ----- | ---- |
