@@ -137,7 +137,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | NOTIFICATION_CENTER        | 18   | 显示通知中心。                  |
 | CONTROL_CENTER             | 19   | 显示控制中心。                  |
 | SPAN_CLICK                 | 20   | 对局部文本进行点击操作。             |
-| INJECT_ACTION<sup>26+</sup>| 21   | 表示注入动作。             |
+| INJECT_ACTION              | 21   | 表示注入动作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## FocusMoveResultCode<sup>23+</sup>
 
@@ -160,9 +160,11 @@ import { accessibility } from '@kit.AccessibilityKit';
 | DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | 返回节点不具备可聚焦属性，需要使用返回节点的子节点列表中的最后一个节点继续查询。  |
 | SEARCH_FAILURE_IN_SCROLL                  | 8  | 节点在滚动组件内查询失败。        |
 
-## InjectActionType<sup>26+</sup>
+## InjectActionType
 
 表示注入动作的枚举。
+
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

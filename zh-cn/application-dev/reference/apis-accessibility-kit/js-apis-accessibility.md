@@ -123,7 +123,7 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'notificationCenter'      | 表示打开通知栏操作。   |
 | 'controlCenter'       | 表示打开控制中心操作。   |
 | 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。   |
-| 'injectAction'<sup>26+</sup>     | 表示注入动作，需配置参数injectActionType。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| 'injectAction'    | 表示注入动作，需配置参数injectActionType。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
 
 ## Capability
 
