@@ -2,9 +2,9 @@
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @foredward-->
-<!--Designer: @h00918518-->
-<!--Tester: @WIFIroam-test-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @gcw 3Lx1FoMT-->
+<!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
 该模块提供了第三方客户端接入802.1X认证（一种基于端口的网络接入控制协议）流程的机制，支撑客户端的定制认证等功能。
