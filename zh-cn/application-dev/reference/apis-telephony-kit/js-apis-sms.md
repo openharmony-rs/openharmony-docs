@@ -27,7 +27,7 @@ ArkTS-Sta: createMessage\(pdu: Array&lt;int&gt;, specification: string, callback
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -94,7 +94,7 @@ ArkTS-Sta: createMessage\(pdu: Array&lt;int&gt;, specification: string\): Promis
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -225,7 +225,7 @@ sendShortMessage\(options: SendMessageOptions, callback: AsyncCallback&lt;void&g
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -319,7 +319,7 @@ sendShortMessage\(options: SendMessageOptions\): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -424,7 +424,7 @@ ArkTS-Sta: getDefaultSmsSlotId\(callback: AsyncCallback&lt;int&gt;\): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -473,7 +473,7 @@ ArkTS-Sta: getDefaultSmsSlotId\(\): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -521,7 +521,7 @@ hasSmsCapability\(\): boolean
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -561,7 +561,7 @@ ArkTS-Sta: getDefaultSmsSimId\(callback: AsyncCallback&lt;int&gt;\): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -624,7 +624,7 @@ ArkTS-Sta: getDefaultSmsSimId\(\): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -685,7 +685,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |         名称             |                  类型                   | 只读  | 可选 | 说明                                                         |
 | ------------------------ | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -710,7 +710,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值   | 说明                                     |
 | ---------------- | ---- | ---------------------------------------- |
@@ -729,7 +729,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |       名称       | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -751,7 +751,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 |   名称     | 类型                            | 只读 | 可选 |                                               说明                                         |
 | ---------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------- |
@@ -768,7 +768,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                | 只读 | 可选 | 说明           |
 | ---- | ------------------- | ---- | ---- | -------------- |
@@ -783,7 +783,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                 | 值   | 说明                                                   |
 | ------------------------------------ | ---- | ------------------------------------------------------ |
