@@ -4699,7 +4699,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | linkUpBandwidthKbps   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
 | linkDownBandwidthKbps | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
 | networkCap            | Array\<[NetCap](#netcap)>           | 否 | 是 |  网络具体能力。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。           |
-| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  否 | 否 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。      
+| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  否 | 否 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## NetConnectionPropertyInfo<sup>11+</sup>
 
