@@ -5741,6 +5741,20 @@ Allows an application to obtain and set the car scenario mode.
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.AUTO_UPDATER
+
+Allows a application to send update instructions to the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 Allows an application to subscribe to the notification service.
