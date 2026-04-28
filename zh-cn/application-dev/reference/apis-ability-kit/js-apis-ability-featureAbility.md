@@ -5,7 +5,7 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 FeatureAbility模块提供与用户进行交互的Ability的能力，包括启动新的Ability、停止Ability、获取dataAbilityHelper对象、获取当前Ability对应的窗口，连接断连Service等。
 
@@ -89,9 +89,9 @@ startAbility(parameter: StartAbilityParameter): Promise\<number>
 >
 > 组件启动规则详见：[组件启动规则（FA模型）](../../application-models/component-startup-rules-fa.md)。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **参数：**
 
@@ -477,7 +477,7 @@ getWant(callback: AsyncCallback\<Want>): void
 
 | 参数名       | 类型                            | 必填   | 说明        |
 | -------- | ----------------------------- | ---- | --------- |
-| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，返回want信息。 |
+| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，当获取要拉起的Ability对应的Want成功，err为undefined，data为当前Ability对应的Want；否则为错误对象。 |
 
 **示例：**
 
@@ -788,7 +788,7 @@ getWindow(callback: AsyncCallback\<window.Window>): void
 
 | 参数名     | 类型                          | 必填 | 说明                          |
 | -------- | ----------------------------- | ---- | ----------------------------- |
-| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | 是   | 回调函数，返回当前Ability对应的窗口。 |
+| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | 是   | 回调函数。当获取窗口成功，err为undefined，data为当前Ability对应的窗口；否则为错误对象。 |
 
 **示例：**
 
@@ -924,9 +924,9 @@ type Context = _Context
 
 Context模块。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
@@ -938,9 +938,9 @@ type AppVersionInfo = _AppVersionInfo
 
 应用版本信息。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |
@@ -952,9 +952,9 @@ type ProcessInfo = _ProcessInfo
 
 进程信息。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 **模型约束**：此接口仅可在FA模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 类型 | 说明 |
 | --- | --- |

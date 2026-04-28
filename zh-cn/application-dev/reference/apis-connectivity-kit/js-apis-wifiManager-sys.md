@@ -231,6 +231,8 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 根据网络ID获取单条网络配置。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
@@ -951,7 +953,7 @@ factoryReset(): void
 
 **系统接口：** 此接口为系统接口。
 
-重置wifi相关配置。
+重置wifi相关配置并关闭WiFi。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 

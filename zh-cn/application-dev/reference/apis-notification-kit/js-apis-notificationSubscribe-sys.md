@@ -20,11 +20,17 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback\<void\>): void
 
 订阅通知并指定订阅信息。使用callback异步回调。
+
+**起始版本**：9
+
+**废弃版本**：26.0.0
+
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -80,11 +86,17 @@ let info: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
 订阅当前用户下所有应用的通知。使用callback异步回调。
+
+**起始版本**：9
+
+**废弃版本**：26.0.0
+
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -136,11 +148,17 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 
 
-## notificationSubscribe.subscribe
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise\<void\>
 
 订阅通知并指定订阅信息。使用Promise异步回调。
+
+**起始版本**：9
+
+**废弃版本**：26.0.0
+
+**替代接口**：[subscribeNotification](#notificationsubscribesubscribenotification-1)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -189,10 +207,129 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber).then(() => {
   console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
+## notificationSubscribe.subscribeNotification
+
+subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
+
+订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                      | 必填 | 说明         |
+| ---------- | ------------------------- | ---- | ------------ |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅者。 |
+
+**返回值：**
+
+| 类型     | 说明               | 
+| ------- |------------------|
+| Promise\<void\> | Promise对象，无返回结果。 | 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | The caller is not a system application.     |  
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationSubscribe.subscribeNotification
+
+subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo): Promise\<void\>
+
+订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名       | 类型                      | 必填 | 说明         |
+| ---------- | ------------------------- | ---- | ------------ |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅者。 |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 是   | 通知订阅信息。   |
+
+**返回值：**
+
+| 类型     | 说明               | 
+| ------- |------------------|
+| Promise\<void\> | Promise对象，无返回结果。 | 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | The caller is not a system application.     | 
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
+  bundleNames: ["bundleName1", "bundleName2"],
+}
+notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## notificationSubscribe.subscribeSelf<sup>11+</sup>
 
@@ -243,7 +380,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribeSelf fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 

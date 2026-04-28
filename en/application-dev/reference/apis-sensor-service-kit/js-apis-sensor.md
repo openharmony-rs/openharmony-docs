@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
@@ -5488,7 +5488,7 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 | --------------------- | ---------------------------------------- | ---- | --------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | Yes  | Current rotation matrix.               |
 | preRotationMatrix     | Array&lt;number&gt;                      | Yes  | The other rotation matrix.                   |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the angle change around the z, x, and y axes.|
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5556,7 +5556,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 | Type                              | Description                             |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5927,7 +5927,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 | Name        | Type                                    | Mandatory| Description                             |
 | -------------- | ---------------------------------------- | ---- | --------------------------------- |
 | rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                   |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -5987,7 +5987,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Type                              | Description                             |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Error codes**
 
@@ -6459,7 +6459,7 @@ Defines a device status change event.
 
 | Name          | Type    | Read-Only| Optional| Description                         |
 |----------------|---------|-----|-----|-----------------------------|
-| timestamp      | number  | No | No | Timestamp when an event occurs.                  |
+| timestamp      | number  | No | No | Timestamp when the event occurs, in milliseconds.                  |
 | sensorId       | number  | No | No | Sensor ID.                     |
 | sensorIndex    | number  | No | No | Sensor index.                     |
 | isSensorOnline | boolean | No | No | Sensor status. The value **true** indicates that the sensor is online, and the value **false** indicates the opposite.|
@@ -6881,13 +6881,13 @@ Describes a geomagnetic response object.
 
 | Name           | Type  | Read-Only| Optional| Description                                              |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| x               | number | No  | No  | North component of the geomagnetic field.                                  |
-| y               | number | No  | No  | East component of the geomagnetic field.                                  |
-| z               | number | No  | No  | Vertical component of the geomagnetic field.                                |
-| geomagneticDip  | number | No  | No  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector.            |
-| deflectionAngle | number | No  | No  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field).|
-| levelIntensity  | number | No  | No  | Horizontal intensity of the magnetic field vector field.                                |
-| totalIntensity  | number | No  | No  | Total intensity of the magnetic field vector.                                  |
+| x               | number | No  | No  | North component of the geomagnetic field, in nT.                                  |
+| y               | number | No  | No  | East component of the geomagnetic field, in nT.                                  |
+| z               | number | No  | No  | Vertical component of the geomagnetic field, in nT.                                |
+| geomagneticDip  | number | No  | No  | Magnetic dip, also called magnetic inclination, which is the angle measured from the horizontal plane to the magnetic field vector, in degrees (°).            |
+| deflectionAngle | number | No  | No  | Magnetic declination, which is the angle between true north (geographic north) and the magnetic north (the horizontal component of the field), in degrees (°).|
+| levelIntensity  | number | No  | No  | Horizontal intensity of the geomagnetic field, in nT.                                |
+| totalIntensity  | number | No  | No  | Total intensity of the geomagnetic field, in nT.                                  |
 
 ## LocationOptions
 
@@ -6897,9 +6897,9 @@ Describes the geographical location.
 
 | Name     | Type  | Read-Only| Optional| Description      |
 | --------- | ------ | ---- | ---- | ---------- |
-| latitude  | number | No  | No  | Latitude.    |
-| longitude | number | No  | No  | Longitude.    |
-| altitude  | number | No  | No  | Altitude.|
+| latitude  | number | No  | No  | Latitude, in degrees (°).    |
+| longitude | number | No  | No  | Longitude, in degrees (°).    |
+| altitude  | number | No  | No  | Altitude, in meters.|
 
 ## sensor.on<sup>(deprecated)</sup>
 
@@ -9264,7 +9264,7 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 | --------------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | currentRotationMatrix | Array&lt;number&gt;                      | Yes  | Current rotation matrix.                   |
 | preRotationMatrix     | Array&lt;number&gt;                      | Yes  | The other rotation matrix.                       |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the angle change around the z, x, and y axes.|
+| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angle changes around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9307,7 +9307,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 | Type                              | Description                                         |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle changes of the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9500,7 +9500,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 | Name        | Type                                    | Mandatory| Description                                 |
 | -------------- | ---------------------------------------- | ---- | ------------------------------------- |
 | rotationMatrix | Array&lt;number&gt;                      | Yes  | Rotation matrix.                       |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the rotation angle around the z, x, and y axes.|
+| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Asynchronous callback used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Example**
 
@@ -9542,7 +9542,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Type                              | Description                                         |
 | ---------------------------------- | --------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angle around the z, x, and y axes.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the rotation angles around the z, x, and y axes, in degrees (°).|
 
 **Example**
 

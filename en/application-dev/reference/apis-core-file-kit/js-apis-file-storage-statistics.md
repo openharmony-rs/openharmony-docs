@@ -1,9 +1,9 @@
 # @ohos.file.storageStatistics (Application Storage Statistics)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **storageStatistics** module provides APIs for obtaining storage space information, including the space of built-in and plug-in memory cards, space occupied by different types of data, and space of application data.
@@ -318,7 +318,7 @@ try {
 | dataSize  | number  | No| No | Size of application files (excluding application installation files), in bytes.|
 
 ## storageStatistics.getTotalInodes<sup>24+</sup>
- 	 
+
 getTotalInodes(): Promise&lt;number&gt;
 
 Obtains the total number of inodes in the file system. Only the system data partition can be queried. This API uses a promise to return the result.
@@ -415,7 +415,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | ------------------------------------------------------------ |
 | 13600001 | IPC error.                                                   |
 | 13600002 | File system not supported.                                   |
-| 13600010 | The input parameter is invalid.                              |
 | 13600017 | Failed to query the inode information of the application.    |
 
 **Example**

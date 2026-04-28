@@ -250,7 +250,6 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
@@ -266,7 +265,7 @@ let makeOptions: call.MakeCallOptions = {
   isHideDialScreen: true
 }
 
-call.makeCall("138xxxxxxxx"， makeOptions).then(() => {
+call.makeCall("138xxxxxxxx", makeOptions).then(() => {
     console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);

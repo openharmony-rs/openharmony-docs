@@ -4,7 +4,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
 appManager模块提供应用管理的能力，包括查询当前系统是否处于稳定性测试场景、查询当前设备是否为RAM（Random Access Memory，随机存取存储器）受限设备、获取当前应用程序可以使用的最大内存值、获取有关运行进程的信息等。
@@ -68,7 +68,7 @@ isRunningInStabilityTest(): Promise&lt;boolean&gt;
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | 以Promise方式返回接口运行结果及当前是否处于稳定性测试场景，可进行错误处理或其他自定义处理。返回true表示系统处于稳定性测试场景，返回false表示系统不处于稳定性测试场景。 |
+  | Promise&lt;boolean&gt; | Promise对象。返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。 |
 
 **示例：**
     
@@ -96,7 +96,7 @@ isRamConstrainedDevice(): Promise\<boolean>
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | 以Promise方式返回接口运行结果及当前设备是否为RAM受限设备，可进行错误处理或其他自定义处理。true：当前设备为RAM受限设备，false：当前设备为非RAM受限设备。 |
+  | Promise&lt;boolean&gt; | Promise对象。返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。 |
 
 **示例：**
     
@@ -151,7 +151,7 @@ getAppMemorySize(): Promise\<number>
 
   | 类型 | 说明 | 
   | -------- | -------- |
-  | Promise&lt;number&gt; | 当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。使用Promise异步回调。|
+  | Promise&lt;number&gt; | Promise对象，返回当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。|
 
 **示例：**
     

@@ -3,10 +3,10 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向云空间应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件等。
+该模块向云盘管理应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件，全量下载等。
 
 > **说明：**
 >
@@ -359,9 +359,9 @@ let switches: Record<string, boolean> = {
   'com.example.bundleName2': false
 }
 cloudSyncManager.enableCloud(accountId, switches).then(() => {
-  console.error("enableCloud successfully");
+  console.info("enableCloud successfully.");
 }).catch((err: BusinessError) => {
-  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 
@@ -621,9 +621,9 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 
 ## DowngradeDownload<sup>20+</sup>
 
-降级下载：云空间会员服务到期，为避免用户云上数据丢失，提供的集中下载云端数据的能力。
+全量下载：为云盘管理应用提供集中下载云端数据的能力。
 
-云盘降级下载对象，用于支撑云空间应用完成云盘文件的降级下载流程。
+云盘全量下载对象，用于支撑云盘管理应用完成云盘文件的全量下载流程。
 
 **系统接口**：该接口为系统接口。
 
@@ -633,7 +633,7 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 
 constructor(bundleName: string)
 
-降级下载对象的构造函数，用于获取指定包名的DowngradeDownload类的实例。
+全量下载对象的构造函数，用于获取指定包名的DowngradeDownload类的实例。
 
 **系统接口**：该接口为系统接口。
 
@@ -676,7 +676,7 @@ try {
 
 getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
-获取需要降级下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件大小和个数信息。使用Promise异步回调。
+获取需要全量下载的应用仅位于本地、仅位于云端或者本地和云端均有的文件大小和个数信息。使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 
@@ -720,9 +720,9 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 
 startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
-启动指定应用的云文件的降级下载，使用Promise异步回调。使用callback异步回调。
+启动指定应用的云文件的全量下载，使用Promise异步回调。使用callback异步回调。
 
-同一应用存在正在执行的降级下载任务的情况下，重复触发会返回错误信息（22400006）。
+同一应用存在正在执行的全量下载任务的情况下，重复触发会返回错误信息（22400006）。
 
 **系统接口**：该接口为系统接口。
 
@@ -734,7 +734,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                                                |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 回调函数。降级下载进度，参数为DownloadProgress，返回值为void。 |
+| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 回调函数。全量下载进度，参数为DownloadProgress，返回值为void。 |
 
 **返回值：**
 
@@ -782,7 +782,7 @@ downgradeMgr.startDownload(callback).then(() => {
 
 stopDownload(): Promise&lt;void&gt;
 
-停止由[startDownload](#startdownload20)触发的降级下载任务，使用Promise异步回调。
+停止由[startDownload](#startdownload20)触发的全量下载任务，使用Promise异步回调。
 
 **系统接口**：该接口为系统接口。
 

@@ -106,25 +106,25 @@ To create a simple animator and print the current interpolation value in each fr
    ``` TypeScript
    onPageShow(): void {
      // Create an animatorResult object.
-     this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
-     this.animatorOptions.onFrame = (progress: number) => {
+     this.animatorResult = this.getUIContext().createAnimator(this.animatorOption);
+     this.animatorResult.onFrame = (progress: number) => {
        this.translateX = progress;
        if (progress > this.topWidth && this.translateY < this.bottomHeight) {
          this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
        }
      }
-     // Invoked when the animation is canceled.
-     this.animatorOptions.onCancel = () => {
+     // Execute the method when the animation is canceled.
+     this.animatorResult.onCancel = () => {
        // Replace $r('app.string.cancel') with the actual resource file. In this example, the value in the resource file is "Canceled."
        this.animatorStatus = $r('app.string.cancel');
      }
-     // Invoked when the animation finishes playing.
-     this.animatorOptions.onFinish = () => {
+     // Execute the method when the animation is complete.
+     this.animatorResult.onFinish = () => {
        // Replace $r('app.string.complete') with the actual resource file. In this example, the value in the resource file is "Finished."
        this.animatorStatus = $r('app.string.complete');
      }
-     // Invoked when the animation repeats.
-     this.animatorOptions.onRepeat = () => {
+     // Execute the method when the animation is played repeatedly.
+     this.animatorResult.onRepeat = () => {
        // The value in the 'repeat' resource file is 'Animation repeating.'
        hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
      }
@@ -138,7 +138,7 @@ To create a simple animator and print the current interpolation value in each fr
    ``` TypeScript
    // Replace $r('app.string.play') with the actual resource file. In this example, the value in the resource file is "Play."
    Button($r('app.string.play')).onClick(() => {
-     this.animatorOptions?.play();
+     this.animatorResult?.play();
      // Replace $r('app.string.playing') with the actual resource file. In this example, the value in the resource file is "Playing."
      this.animatorStatus = $r('app.string.playing');
    }).width(80).height(35)
@@ -149,7 +149,7 @@ To create a simple animator and print the current interpolation value in each fr
    }).width(80).height(35)
    // Replace $r('app.string.pause') with the actual resource file. In this example, the value in the resource file is "Pause."
    Button($r('app.string.pause')).onClick(() => {
-     this.animatorOptions?.pause();
+     this.animatorResult?.pause();
      // Replace $r('app.string.pause') with the actual resource file. In this example, the value in the resource file is "Pause."
      this.animatorStatus = $r('app.string.pause');
    }).width(80).height(35)
@@ -161,11 +161,11 @@ To create a simple animator and print the current interpolation value in each fr
    
    ``` TypeScript
    onPageHide(): void {
-     this.animatorOptions = undefined;
+     this.animatorResult = undefined;
    }
    ```
 
-A complete example is as follows:
+A complete example is as follows: 
 
 <!-- @[animator_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets) -->
 

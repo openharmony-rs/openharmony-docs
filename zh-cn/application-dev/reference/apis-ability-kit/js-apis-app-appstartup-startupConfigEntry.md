@@ -4,7 +4,7 @@
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 本模块提供[应用启动框架](../../application-models/app-startup.md)配置的能力。
@@ -52,7 +52,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     let onCompletedCallback = (error: BusinessError<void>) => {
       hilog.info(0x0000, 'testTag', `onCompletedCallback`);
       if (error) {
-        hilog.info(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
+        hilog.error(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
           error.message);
       } else {
         hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);

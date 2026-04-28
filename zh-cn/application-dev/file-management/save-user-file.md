@@ -1,9 +1,9 @@
 # 保存用户文件
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 在从网络下载文件到本地或将已有用户文件另存为新的文件路径等场景下，需要使用FilePicker提供的保存用户文件的能力。需关注以下关键点：
@@ -32,7 +32,7 @@
 
    ```ts
    import { picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -70,22 +70,19 @@
    ```
 
    > **注意**：
-   >
-   > 1. URI存储建议：
-   > 	- Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
-   > 	- 避免在Picker回调中直接操作URI。
-   > 	- 建议使用全局变量保存URI以供后续使用。
-   >
-   > 2. 快捷保存：
-   > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
+
+   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   > - 避免在Picker回调中直接操作URI。
+   > - 建议使用全局变量保存URI以供后续使用。
+   > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
 4. 待界面从FilePicker返回后，使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      // 这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
-      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
    ```
@@ -93,9 +90,9 @@
 5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
-   let writeLen: number = fs.writeSync(file.fd, 'hello, world');
+   let writeLen: number = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fs.closeSync(file);
+   fileIo.closeSync(file);
    ```
 
 ## 保存音频类文件
@@ -104,7 +101,7 @@
 
    ```ts
    import { picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -135,14 +132,11 @@
    ```
 
    > **注意**：
-   >
-   > 1. URI存储建议：
-   > 	- Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
-   > 	- 避免在Picker回调中直接操作URI。
-   > 	- 建议使用全局变量保存URI以供后续使用。
-   >
-   > 2. 快捷保存：
-   > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
+
+   > - Picker会默认[预置空文件](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)并返回保存文件的URI数组，应用拿到URI后可使用[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)模块的接口进行文件读写操作。
+   > - 避免在Picker回调中直接操作URI。
+   > - 建议使用全局变量保存URI以供后续使用。
+   > - 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
 4. 待界面从FilePicker返回后，可以使用[fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
@@ -150,7 +144,7 @@
    if (uris.length > 0) {
       let uri: string = uris[0];
       // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
-      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
    ```
@@ -158,9 +152,9 @@
 5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
-   let writeLen = fs.writeSync(file.fd, 'hello, world');
+   let writeLen = fileIo.writeSync(file.fd, 'hello, world');
    console.info('write data to file succeed and size is:' + writeLen);
-   fs.closeSync(file);
+   fileIo.closeSync(file);
  
    ```
 
@@ -180,7 +174,7 @@
 
    ```ts
    import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -206,9 +200,9 @@
      uri = documentSaveResult[0];
      console.info('documentViewPicker.save succeed and uri is:' + uri);
      const testFilePath = new fileUri.FileUri(uri + '/test.txt').path;
-     const file = fs.openSync(testFilePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-     fs.writeSync(file.fd, 'Hello World!');
-     fs.closeSync(file.fd);
+     const file = fileIo.openSync(testFilePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+     fileIo.writeSync(file.fd, 'Hello World!');
+     fileIo.closeSync(file.fd);
    }).catch((err: BusinessError) => {
      console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
    })

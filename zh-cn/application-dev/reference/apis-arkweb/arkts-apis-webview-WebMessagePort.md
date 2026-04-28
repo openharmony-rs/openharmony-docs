@@ -214,7 +214,7 @@ class TestObj {
   }
 }
 
-// 应用与网页互发消息的示例：使用"init_web_messageport"的通道，通过端口0在应用侧接受网页发送的消息，通过端口1在网页侧接受应用发送的消息。
+// 应用与网页互发消息的示例：使用"init_web_messageport"的通道，通过端口0在应用侧接收网页发送的消息，通过端口1在网页侧接收应用发送的消息。
 @Entry
 @Component
 struct WebComponent {

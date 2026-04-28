@@ -139,7 +139,7 @@ read(size: number): Promise\<ArrayBuffer\>
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  size | number | 是   | 读取WebHttpBodyStream中的字节数。 |
+|  size | number | 是   | 读取WebHttpBodyStream中的字节数。单位：字节。 |
 
 **返回值：**
 
@@ -171,7 +171,7 @@ getSize(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | 获取WebHttpBodyStream中的数据大小。 |
+| number | 获取WebHttpBodyStream中的数据大小。单位：字节。 |
 
 **示例：**
 
@@ -189,7 +189,7 @@ getPosition(): number
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| number | WebHttpBodyStream中当前的读取位置。 |
+| number | WebHttpBodyStream中当前的读取位置。单位：字节。 |
 
 **示例：**
 

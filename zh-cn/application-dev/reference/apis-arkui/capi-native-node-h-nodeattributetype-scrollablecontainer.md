@@ -670,6 +670,55 @@ NODE_SCROLL_ENABLE_BOUNCES_ZOOM = 1002026
 | -- | -- |
 | .value[0].i32 | 是否支持过缩放回弹效果，0：不支持，1：支持。 |
 
+## NODE_SCROLL_ENABLE_SCROLL_WITH_MOUSE
+
+```c
+NODE_SCROLL_ENABLE_SCROLL_WITH_MOUSE = 1002027
+```
+
+设置是否支持鼠标左键按下拖动滚动，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项        | 描述                                                         |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。默认值：0。 |
+
+**返回：**
+
+| 类型          | 说明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| .value[0].i32 | 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。 |
+
+## NODE_SCROLL_AUTO_ADJUST_MARGIN
+
+```c
+NODE_SCROLL_AUTO_ADJUST_MARGIN = 1002028
+```
+
+设置滚动条是否自动调整边距以避让组件NODE_PADDING、NODE_SCROLL_CONTENT_START_OFFSET或NODE_SCROLL_CONTENT_END_OFFSET的区域，支持属性设置，属性重置和属性获取接口。<br>
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。默认值：0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。 |
+
+
 ## NODE_LIST_DIRECTION
 
 ```c
@@ -1161,6 +1210,30 @@ NODE_LIST_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING = 1003019
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | List组件是否支持空分支。0：不支持，1：支持。 |
+
+## NODE_LIST_BACK_PRESS_BEHAVIOR
+
+```c
+NODE_LIST_BACK_PRESS_BEHAVIOR = 1003020
+```
+
+设置List组件的系统返回键行为，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 系统返回键生效时是否收起ListItem的划出组件。0：不收起，1：收起。默认值：1 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 系统返回键生效时是否收起ListItem的划出组件。0：不收起，1：收起。 |
 
 ## NODE_LIST_ITEM_SWIPE_ACTION
 
@@ -1818,6 +1891,10 @@ NODE_WATER_FLOW_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING = 1010014
 
 设置当前WaterFlow组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+> **说明：**
+>
+> 当通过[NODE_WATER_FLOW_SECTION_OPTION](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_section_option)设置了[ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)分组，或通过[NODE_WATER_FLOW_LAYOUT_MODE](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_layout_mode)设置为[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式时，设置0或1时空分支后的FlowItem都会显示。
 
 **起始版本：** 26.0.0
 

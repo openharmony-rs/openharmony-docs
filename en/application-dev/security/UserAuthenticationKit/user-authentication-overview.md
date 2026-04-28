@@ -133,7 +133,7 @@ Generally, the biometric authentication system comprises five execution units: s
 
 | ESL| Definition|
 | -------- | -------- |
-| ESL3 | Operations are performed in a secure hardware-back trusted environment, such as a secure coprocessor or a secure element (SE).|
+| ESL3 | Operations are performed in a secure hardware-backed trusted environment, such as a secure coprocessor or a secure element (SE).|
 | ESL2 | Operations are performed in a trusted execution environment (TEE) based on hardware RoT isolation, such as a TEE and an SGX.|
 | ESL1 | Operations are performed in an execution environment with access control, such as Linux.|
 | ESL0 | Operations are performed in an execution environment without access control, such as a single-process lightweight system.|

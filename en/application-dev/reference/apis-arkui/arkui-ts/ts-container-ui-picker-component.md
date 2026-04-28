@@ -21,6 +21,8 @@ The **UIPickerComponent** container is used to implement user selection operatio
 > - The alignment mode of child components in the **UIPickerComponent** container is fixed to center alignment, and cannot be changed via the [align](ts-universal-attributes-location.md#align) attribute.
 >
 > - Currently, the **UIPickerComponent** container does not support wearables.
+>
+> - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
 
 ## Child Components
 
@@ -352,7 +354,6 @@ struct UIPickerComponentEventsExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo2.gif)
 
 ### Example 3: Setting the Selected Item Index
 
@@ -702,7 +703,7 @@ struct UIPickerComponentIndicatorExample {
 }
 ```
 
-
+![containerPicker](./figures/ContainerPickerDemo4.gif)
 
 ### Example 5: Customizing the Month Picker
 
@@ -754,7 +755,7 @@ struct MonthUIPickerComponentExample {
 }
 ```
 
-
+![containerPicker](./figures/ContainerPickerDemo5.gif)
 
 ### Example 6: Customizing the Area Picker
 
@@ -872,7 +873,7 @@ struct RegionUIPickerComponentExample {
 }
 ```
 
-
+![containerPicker](./figures/ContainerPickerDemo6.gif)
 
 ### Example 7: Customizing Option Types
 
@@ -969,7 +970,7 @@ struct UIPickerComponentExample {
 }
 ```
 
-
+![containerPicker](./figures/ContainerPickerDemo7.gif)
 
 ### Example 8: Customizing the Time Picker
 
@@ -1424,4 +1425,4 @@ struct TimeUIPickerComponentExample {
 }
 ```
 
-
+![containerPicker](./figures/ContainerPickerDemo8.gif)

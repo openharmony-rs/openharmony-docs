@@ -12,19 +12,19 @@
 
 1. 编写全局配置文件。
 
-   ```ts
-   // Config.ets
+   <!-- @[global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Config.ets) -->
    
+   ``` TypeScript
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   "use shared"
+   'use shared'
    
    @Sendable
    class Config {
-     lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
-     isLogin: boolean = false;
-     loginUser?: string;
-     wifiOn: boolean = false;
+     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock;
+     public isLogin: boolean = false;
+     public loginUser?: string;
+     public wifiOn: boolean = false;
    
      async login(user: string) {
        return this.lock.lockAsync(() => {
@@ -36,7 +36,7 @@
      async logout(user?: string) {
        return this.lock.lockAsync(() => {
          this.isLogin = false;
-         this.loginUser = "";
+         this.loginUser = '';
        }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE)
      }
    
@@ -67,23 +67,23 @@
    
    export let config = new Config();
    ```
-   <!-- @[global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Config.ets) -->
 
 2. UI主线程及子线程访问全局配置项。
 
-   ```ts
-   // Index.ets
+   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) -->
+   
+   ``` TypeScript
    import { config } from './Config';
    import { taskpool } from '@kit.ArkTS';
    
    @Concurrent
    async function download() {
      if (!await config.isWifiOn()) {
-       console.info("wifi is off");
+       console.info('wifi is off');
        return false;
      }
      if (!await config.getIsLogin()) {
-       console.info("not login");
+       console.info('not login');
        return false;
      }
      console.info(`User[${await config.getUser()}] start download ...`);
@@ -94,9 +94,9 @@
    @Component
    struct Index {
      @State message: string = 'not login';
-     @State wifiState: string = "wifi off";
-     @State downloadResult: string = "";
-     input: string = ""
+     @State wifiState: string = 'wifi off';
+     @State downloadResult: string = '';
+     input: string = '';
    
      build() {
        Row() {
@@ -108,7 +108,8 @@
                center: { anchor: '__container__', align: VerticalAlign.Center },
                middle: { anchor: '__container__', align: HorizontalAlign.Center }
              })
-           TextInput({ placeholder: "请输入用户名" })
+           TextInput({ placeholder: '请输入用户名' })
+             .id('textInput')
              .fontSize(20)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -118,7 +119,7 @@
              .onChange((value) => {
                this.input = value;
              })
-           Text("login")
+           Text('login')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -127,12 +128,16 @@
              })
              .onClick(async () => {
                if (!await config.getIsLogin() && this.input) {
-                 this.message = "login: " + this.input;
-                 config.login(this.input);
+                 this.message = 'login: ' + this.input;
+                 try {
+                   config.login(this.input);
+                 } catch (e) {
+                   console.info('login failed');
+                 }
                }
              })
              .backgroundColor(0xcccccc)
-           Text("logout")
+           Text('logout')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -141,8 +146,12 @@
              })
              .onClick(async () => {
                if (await config.getIsLogin()) {
-                 this.message = "not login";
-                 config.logout();
+                 this.message = 'not login';
+                 try {
+                   config.logout();
+                 } catch (e) {
+                   console.info('logout failed');
+                 }
                }
              })
              .backgroundColor(0xcccccc)
@@ -155,10 +164,10 @@
              })
            Toggle({ type: ToggleType.Switch })
              .onChange(async (isOn: boolean) => {
-               await config.setWifiState(isOn);
-               this.wifiState = isOn ? "wifi on" : "wifi off";
+               await config.setWifiState(isOn)
+               this.wifiState = isOn ? 'wifi on' : 'wifi off';
              })
-           Text("download")
+           Text('download')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -167,7 +176,7 @@
              })
              .onClick(async () => {
                let ret = await taskpool.execute(download);
-               this.downloadResult = ret ? "download success" : "download fail";
+               this.downloadResult = ret ? 'download success' : 'download fail';
              })
            Text(this.downloadResult)
              .fontSize(20)
@@ -183,4 +192,3 @@
      }
    }
    ```
-   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) -->

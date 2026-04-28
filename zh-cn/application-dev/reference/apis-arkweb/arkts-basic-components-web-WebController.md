@@ -1,8 +1,8 @@
 # Class (WebController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -80,7 +80,7 @@ getCookieManager(): WebCookie
 
 requestFocus()
 
-使当前web页面获取焦点。
+使当前Web页面获取焦点。
 
 > **说明：**
 >
@@ -437,7 +437,7 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 loadUrl(options: { url: string | Resource, headers?: Array\<Header\> })
 
-使用指定的http头加载指定的URL。
+使用指定的HTTP头加载指定的URL。
 
 通过loadUrl注入的对象只在当前document有效，即通过loadUrl导航到新的页面会无效。
 
@@ -620,7 +620,7 @@ refresh()
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
 > **说明：**
 >
