@@ -113,6 +113,7 @@ User canceled.
 当前用户主动取消操作，请稍后重试。
 
 
+
 ## 401 打开联系人头像文件失败
 
 **错误信息**
@@ -130,6 +131,7 @@ Failed to open contact portrait file.
 **处理步骤**
 
 检查文件是否存在。
+
 
 
 ## 401 系统内部错误
@@ -160,7 +162,7 @@ Internal error. Failed to save contact portrait.
 
 **可能原因**
 
-头像文件异常。
+头像文件异常，系统内部处理异常。
 
 **处理步骤**
 
