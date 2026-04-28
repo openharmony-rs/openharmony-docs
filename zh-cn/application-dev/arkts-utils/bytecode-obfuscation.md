@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: arkoptions-guide-->
+<!--Adviser: @HelloCrease-->
 
 ## 术语清单
 
