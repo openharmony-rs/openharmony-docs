@@ -9990,7 +9990,7 @@ try {
       return;
     }
     console.info('Succeeded in putting Batch');
-    kvStore!.getResultSet('batch_test_string_key', (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
+    kvStore.getResultSet('batch_test_string_key', (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
         console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
         return;
@@ -10185,7 +10185,7 @@ try {
       return;
     }
     console.info('Succeeded in putting Batch');
-    kvStore!.getResultSet('localDeviceId', 'batch_test_string_key', (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
+    kvStore.getResultSet('localDeviceId', 'batch_test_string_key', (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
         console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
         return;
@@ -10302,7 +10302,7 @@ try {
       return;
     }
     console.info('Succeeded in putting Batch');
-    kvStore!.getResultSet('localDeviceId', 'batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet): void => {
+    kvStore.getResultSet('localDeviceId', 'batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet): void => {
       console.info('Succeeded in getting result set');
       resultSet = result;
       kvStore.closeResultSet(resultSet).then((): void => {
@@ -10436,7 +10436,7 @@ try {
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
-    kvStore!.getResultSet('localDeviceId', query, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
+    kvStore.getResultSet('localDeviceId', query, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
         console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
         return;
@@ -10579,7 +10579,7 @@ try {
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
-    kvStore!.getResultSet('localDeviceId', query).then((result: distributedKVStore.KVStoreResultSet): void => {
+    kvStore.getResultSet('localDeviceId', query).then((result: distributedKVStore.KVStoreResultSet): void => {
       console.info('Succeeded in getting resultSet');
       resultSet = result;
       kvStore.closeResultSet(resultSet).then((): void => {
@@ -10788,7 +10788,7 @@ try {
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
-    kvStore!.getResultSet(query, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
+    kvStore.getResultSet(query, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
       if (err != null) {
         console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
         return;
@@ -10808,6 +10808,116 @@ try {
   });
 } catch (error) {
   console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+}
+```
+
+### getResultSize
+
+ArkTS-Dyn: getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): void
+
+获取与指定Query对象匹配的结果数，使用callback异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                           | 必填 | 说明                                        |
+| -------- |------------------------------------------------------------------------------| ---- | ------------------------------------------- |
+| query    | [Query](#query)                                                              | 是   | 表示查询对象。                              |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与指定Query对象匹配的结果数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
+| 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
+| 15100005     | Database or result set already closed. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+    let key = 'batch_test_string_key';
+    let entry: distributedKVStore.Entry = {
+      key: key + i,
+      value: {
+        type: distributedKVStore.ValueType.STRING,
+        value: 'batch_test_string_value'
+      }
+    }
+    entries.push(entry);
+  }
+  kvStore.putBatch(entries, (err: BusinessError) => {
+    console.info('Succeeded in putting batch');
+    const query = new distributedKVStore.Query();
+    query.prefixKey("batch_test");
+    if (kvStore != null) {
+      kvStore.getResultSize(query, (err: BusinessError, resultSize: number) => {
+        if (err != undefined) {
+          console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in getting result set size');
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let entries: distributedKVStore.Entry[] = [];
+    for (let i = 0; i < 10; i++) {
+        let key = 'batch_test_string_key';
+        let entry: distributedKVStore.Entry = {
+            key: key + i,
+            value: {
+                type: distributedKVStore.ValueType.STRING,
+                value: 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    kvStore.putBatch(entries,  (err: BusinessError|null) => {
+        console.info('Succeeded in putting batch');
+        const query = new distributedKVStore.Query();
+        query.prefixKey("batch_test");
+        if (kvStore != null) {
+            kvStore.getResultSize(query,  (err: BusinessError|null, resultSize: int|undefined) : void =>  {
+                if (err != null) {
+                    console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                console.info('Succeeded in getting result set size');
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
