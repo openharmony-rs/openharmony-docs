@@ -17067,13 +17067,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ForEachFilter.ets",
-				"functions":[
-					{
-						"end_line":27,
-						"name":"filter_New_array",
-						"start_line":21
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets",
@@ -23690,13 +23684,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewOne.ets",
-				"functions":[
-					{
-						"end_line":23,
-						"name":"ApplicationLogic",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetObject.ets",
@@ -23755,13 +23743,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewTwo.ets",
-				"functions":[
-					{
-						"end_line":22,
-						"name":"ModelViewTwo",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
