@@ -829,30 +829,56 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { FoldSplitContainer, PresetSplitRatio, ExpandedRegionLayoutOptions, HoverModeRegionLayoutOptions, FoldedRegionLayoutOptions, ExtraRegionPosition } from '@ohos.arkui.advanced.FoldSplitContainer';
-import { Column, Component, Text, Entry, Builder, TextAlign, RelativeContainer,
-  BuilderParam, Scroll, Row, Blank, Toggle, ToggleType, ForEach, Radio,
-  HorizontalAlign, VerticalAlign, Color } from '@ohos.arkui.component';
-import { State, Prop, Watch, PropRef } from '@ohos.arkui.stateManagement';
+import {
+  FoldSplitContainer,
+  PresetSplitRatio,
+  ExpandedRegionLayoutOptions,
+  HoverModeRegionLayoutOptions,
+  FoldedRegionLayoutOptions,
+  ExtraRegionPosition
+} from '@ohos.arkui.advanced.FoldSplitContainer';
+import {
+  Column,
+  Component,
+  Text,
+  Entry,
+  Builder,
+  TextAlign,
+  RelativeContainer,
+  BuilderParam,
+  Scroll,
+  Row,
+  Blank,
+  Toggle,
+  ToggleType,
+  ForEach,
+  Radio,
+  HorizontalAlign,
+  VerticalAlign,
+  Color,
+  ColumnOptions
+} from '@ohos.arkui.component';
+import { State, Watch, PropRef } from '@ohos.arkui.stateManagement';
 
 @Component
 struct Region {
   @Builder
-  builder(value: string) {
+  builder() {
 
   }
+
   @PropRef title: string;
-  @BuilderParam content: (value: string) => void = this.builder;
+  @BuilderParam content: () => void = this.builder;
   @PropRef compBackgroundColor: string;
 
   build() {
-    Column() {
+    Column({ space: 8 } as ColumnOptions) {
       Text(this.title)
         .fontSize("24fp")
         .fontWeight(600)
 
       Scroll() {
-        this.content('111')
+        this.content()
       }
       .layoutWeight(1)
       .width("100%")
@@ -905,7 +931,7 @@ struct RadioOption {
     Row() {
       Text(this.label)
       Blank()
-      Column() {
+      Column({ space: 4 } as ColumnOptions) {
         ForEach(this.options, (option: RadioOptions) => {
           Row() {
             Radio({
@@ -920,7 +946,9 @@ struct RadioOption {
               })
             Text(option.label)
           }
-        },(item:RadioOptions)=>{return item.label})
+        }, (item: RadioOptions) => {
+          return item.label
+        })
       }
       .alignItems(HorizontalAlign.Start)
     }
@@ -947,10 +975,9 @@ struct Index {
     extraRegionPosition: ExtraRegionPosition.TOP
   } as HoverModeRegionLayoutOptions;
   @State foldedRegionLayoutOptions: FoldedRegionLayoutOptions = {
-    verticalSplitRatio: PresetSplitRatio.LAYOUT_3V2
+    verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1
   } as FoldedRegionLayoutOptions;
-
-  @State majorRegionOptions:Array<RadioOptions> = [
+  @State majorRegionOptions: Array<RadioOptions> = [
     {
       label: "1:1",
       value: PresetSplitRatio.LAYOUT_1V1,
@@ -980,8 +1007,7 @@ struct Index {
       }
     } as RadioOptions
   ]
-
-  @State minorRegionOptions:Array<RadioOptions> = [
+  @State minorRegionOptions: Array<RadioOptions> = [
     {
       label: "1:1",
       value: PresetSplitRatio.LAYOUT_1V1,
@@ -1011,8 +1037,7 @@ struct Index {
       }
     } as RadioOptions,
   ]
-
-  @State minorRegionOptions1:Array<RadioOptions> = [
+  @State minorRegionOptions1: Array<RadioOptions> = [
     {
       label: "顶部",
       value: ExtraRegionPosition.TOP,
@@ -1035,8 +1060,7 @@ struct Index {
       }
     } as RadioOptions,
   ]
-
-  @State extraRegionOptions:Array<RadioOptions> =[
+  @State extraRegionOptions: Array<RadioOptions> = [
     {
       label: "1:1",
       value: PresetSplitRatio.LAYOUT_1V1,
@@ -1066,8 +1090,7 @@ struct Index {
       }
     } as RadioOptions,
   ]
-
-  @State extraRegionOptions1:Array<RadioOptions> = [
+  @State extraRegionOptions1: Array<RadioOptions> = [
     {
       label: "1:1",
       value: PresetSplitRatio.LAYOUT_1V1,
@@ -1097,8 +1120,7 @@ struct Index {
       }
     } as RadioOptions,
   ]
-
-  @State extraRegionOptions2:Array<RadioOptions> = [
+  @State extraRegionOptions2: Array<RadioOptions> = [
     {
       label: "顶部",
       value: ExtraRegionPosition.TOP,
@@ -1121,17 +1143,19 @@ struct Index {
       }
     } as RadioOptions,
   ]
+
   @Builder
   MajorRegion() {
     Region({
       title: "折叠态配置",
       compBackgroundColor: "rgba(255, 0, 0, 0.1)",
     }) {
-      Column() {
+      Column({ space: 4 } as ColumnOptions) {
         RadioOption({
           label: "折叠态垂直高度比",
           value: this.foldedRegionLayoutOptions.verticalSplitRatio,
-          options:this.majorRegionOptions})
+          options: this.majorRegionOptions
+        })
       }
       .constraintSize({ minHeight: "100%" })
     }
@@ -1143,7 +1167,7 @@ struct Index {
       title: "悬停态配置",
       compBackgroundColor: "rgba(0, 255, 0, 0.1)"
     }) {
-      Column() {
+      Column({ space: 4 } as ColumnOptions) {
         RadioOption({
           label: "悬停态水平宽度比",
           value: this.foldingRegionLayoutOptions.horizontalSplitRatio,
@@ -1176,7 +1200,7 @@ struct Index {
       title: "展开态配置",
       compBackgroundColor: "rgba(0, 0, 255, 0.1)"
     }) {
-      Column() {
+      Column({ space: 4 } as ColumnOptions) {
         RadioOption({
           label: "展开态水平宽度比",
           value: this.expandedRegionLayoutOptions.horizontalSplitRatio,
